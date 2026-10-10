@@ -9,6 +9,8 @@ import { ResendProtocol, type ResendOpError, type ResendOpContext } from "../pro
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
 // Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
+
 export type { ResendOpError, ResendOpContext };
 
 export interface CancelEmailRequest {
@@ -2106,14 +2108,13 @@ export const cancelEmail: API.OperationMethod<
   Email,
   CancelEmailError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({email_id:!2.pipe(!7())}).pipe(!5({method:"POST",uri:"/emails/{email_id}/cancel",code:200})))@"CancelEmailRequest"',
-        [__v, __d1, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(cancelEmail, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(0, __c0, 0) as any as S.Schema<CancelEmailRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<Email>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateApiKeyError = ResendOpError;
 /** Create a new API key */
@@ -2122,14 +2123,13 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyResponse,
   CreateApiKeyError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({name:!2,permission:!1(!2),domain_id:!1(!2)}).pipe(!5({method:"POST",uri:"/api-keys",code:200})))@"CreateApiKeyRequest";!4(>!3({id:!1(!2),token:!1(!2)}))@"CreateApiKeyResponse"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createApiKey, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(24, __c3, 0) as any as S.Schema<CreateApiKeyRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CreateApiKeyResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateAutomationError = ResendOpError;
 /** Create an automation */
@@ -2138,14 +2138,13 @@ export const createAutomation: API.OperationMethod<
   CreateAutomationResponse,
   CreateAutomationError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^3:0,errors:[$4],protocol:$5,retry:$6};!4(>!3({name:!2,status:!1(!2),steps:^1:1,connections:^2:1}).pipe(!5({method:"POST",uri:"/automations",code:200})))@"CreateAutomationRequest"',
-        [__v, __d7, __d5, __d6, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createAutomation, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(136, __c17, 0) as any as S.Schema<CreateAutomationRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<CreateAutomationResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateBroadcastError = ResendOpError;
 /** Create a broadcast */
@@ -2154,14 +2153,13 @@ export const createBroadcast: API.OperationMethod<
   CreateBroadcastResponseSuccess,
   CreateBroadcastError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3],protocol:$4,retry:$5};!4(>!3({name:!1(!2),segment_id:!2,audience_id:!1(!2),from:!2,subject:!2,reply_to:!1(^1:0),preview_text:!1(!2),html:!1(!2),text:!1(!2),topic_id:!1(!2),send:!1(!9),scheduled_at:!1(!2)}).pipe(!5({method:"POST",uri:"/broadcasts",code:200})))@"CreateBroadcastRequest"',
-        [__v, __d0, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createBroadcast, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(248, __c31, 0) as any as S.Schema<CreateBroadcastRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateBroadcastResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateContactError = ResendOpError;
 /** Create a new contact */
@@ -2170,14 +2168,13 @@ export const createContact: API.OperationMethod<
   CreateContactResponseSuccess,
   CreateContactError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^4:0,errors:[$5],protocol:$6,retry:$7};!4(>!3({email:!2,first_name:!1(!2),last_name:!1(!2),unsubscribed:!1(!9),properties:!1(^1:0),segments:!1(^2:0),topics:!1(^3:1),audience_id:!1(!2)}).pipe(!5({method:"POST",uri:"/contacts",code:200})))@"CreateContactRequest"',
-        [__v, __d11, __d0, __d12, __d6, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createContact, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(360, __c45, 0) as any as S.Schema<CreateContactRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<CreateContactResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateContactPropertyError = ResendOpError;
 /** Create a new contact property */
@@ -2186,14 +2183,13 @@ export const createContactProperty: API.OperationMethod<
   CreateContactPropertyResponseSuccess,
   CreateContactPropertyError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({key:!2,type:!2,fallback_value:!1(!11)}).pipe(!5({method:"POST",uri:"/contact-properties",code:200})))@"CreateContactPropertyRequest"',
-        [__v, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createContactProperty, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(464, __c58, 0) as any as S.Schema<CreateContactPropertyRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateContactPropertyResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateDomainError = ResendOpError;
 /** Create a new domain */
@@ -2202,14 +2198,13 @@ export const createDomain: API.OperationMethod<
   CreateDomainResponse,
   CreateDomainError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$3],protocol:$4,retry:$5};!4(>!3({name:!2,region:!1(!2),custom_return_path:!1(!2),open_tracking:!1(!9),click_tracking:!1(!9),tls:!1(!2),capabilities:!1(^1:0),tracking_subdomain:!1(!2)}).pipe(!5({method:"POST",uri:"/domains",code:200})))@"CreateDomainRequest";!4(>!3({id:!1(!2),name:!1(!2),created_at:!1(!2),status:!1(!2),capabilities:!1(^1:0),records:!1(^2:1),region:!1(!2),open_tracking:!1(!9),click_tracking:!1(!9),tracking_subdomain:!1(!2)}))@"CreateDomainResponse"',
-        [__v, __d15, __d14, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createDomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(560, __c70, 0) as any as S.Schema<CreateDomainRequest>,
+  output: __S(561, __c70, 1) as any as S.Schema<CreateDomainResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateEmailError = ResendOpError;
 /** Send an email */
@@ -2218,14 +2213,13 @@ export const createEmail: API.OperationMethod<
   SendEmailResponse,
   CreateEmailError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:^2:0,errors:[$3],protocol:$4,retry:$5};!13(!2,!11);!4(>!3({id:!2,variables:!1(#1)}))@"CreateEmailRequestTemplate";!4(>!3({from:!2,to:!11,subject:!2,bcc:!1(!11),cc:!1(!11),reply_to:!1(!11),html:!1(!2),text:!1(!2),template:!1(#2),headers:!1(!11),scheduled_at:!1(!2),attachments:!1(^1:1),tags:!1(^1:3),topic_id:!1(!2)}).pipe(!5({method:"POST",uri:"/emails",code:200})))@"CreateEmailRequest"',
-        [__v, __d16, __d17, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createEmail, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(666, __c83, 2) as any as S.Schema<CreateEmailRequest>,
+  output: __S(680, __c85, 0) as any as S.Schema<SendEmailResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateEmailBatchError = ResendOpError;
 /** Trigger up to 100 batch emails at once. */
@@ -2234,14 +2228,13 @@ export const createEmailBatch: API.OperationMethod<
   CreateBatchEmailsResponse,
   CreateEmailBatchError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#5,output:#7,errors:[$3],protocol:$4,retry:$5};!13(!2,!11);!4(>!3({id:!2,variables:!1(#1)}))@"SendEmailRequestTemplate";!4(>!3({from:!2,to:!11,subject:!2,bcc:!1(!11),cc:!1(!11),reply_to:!1(!11),html:!1(!2),text:!1(!2),template:!1(#2),headers:!1(!11),scheduled_at:!1(!2),attachments:!1(^1:1),tags:!1(^1:3),topic_id:!1(!2)}))@"SendEmailRequest";!10(#3);!4(>!3({body:!1(#4.pipe(!15()))}).pipe(!5({method:"POST",uri:"/emails/batch",code:200})))@"CreateEmailBatchRequest";!10(^2:0);!4(>!3({data:!1(#6)}))@"CreateBatchEmailsResponse"',
-        [__v, __d16, __d17, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createEmailBatch, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(764, __c95, 4) as any as S.Schema<CreateEmailBatchRequest>,
+  output: __S(766, __c95, 6) as any as S.Schema<CreateBatchEmailsResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateEventError = ResendOpError;
 /** Create an event */
@@ -2250,14 +2243,13 @@ export const createEvent: API.OperationMethod<
   CreateEventResponse,
   CreateEventError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({name:!2,schema:!1(!8(!11))}).pipe(!5({method:"POST",uri:"/events",code:200})))@"CreateEventRequest"',
-        [__v, __d6, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createEvent, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(768, __c96, 0) as any as S.Schema<CreateEventRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<CreateEventResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateSegmentError = ResendOpError;
 /** Create a new segment */
@@ -2266,14 +2258,13 @@ export const createSegment: API.OperationMethod<
   CreateSegmentResponseSuccess,
   CreateSegmentError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({name:!2,audience_id:!1(!2),filter:!1(!11)}).pipe(!5({method:"POST",uri:"/segments",code:200})))@"CreateSegmentRequest"',
-        [__v, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createSegment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(32, __c4, 0) as any as S.Schema<CreateSegmentRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateSegmentResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateTemplateError = ResendOpError;
 /** Create a template */
@@ -2282,14 +2273,13 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateResponseSuccess,
   CreateTemplateError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^3:0,errors:[$4],protocol:$5,retry:$6};!4(>!3({name:!2,alias:!1(!2),from:!1(!2),subject:!1(!2),reply_to:!1(^1:0),html:!2,text:!1(!2),variables:!1(^2:1)}).pipe(!5({method:"POST",uri:"/templates",code:200})))@"CreateTemplateRequest"',
-        [__v, __d0, __d2, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createTemplate, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(40, __c5, 0) as any as S.Schema<CreateTemplateRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateTemplateResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateTopicError = ResendOpError;
 /** Create a new topic */
@@ -2298,14 +2288,13 @@ export const createTopic: API.OperationMethod<
   CreateTopicResponseSuccess,
   CreateTopicError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({name:!2,default_subscription:!2,description:!1(!2),visibility:!1(!2)}).pipe(!5({method:"POST",uri:"/topics",code:200})))@"CreateTopicRequest"',
-        [__v, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createTopic, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(56, __c7, 0) as any as S.Schema<CreateTopicRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<CreateTopicResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateWebhookError = ResendOpError;
 /** Create a new webhook */
@@ -2314,14 +2303,13 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookResponse,
   CreateWebhookError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$2],protocol:$3,retry:$4};!4(>!3({endpoint:!2,events:^1:0}).pipe(!5({method:"POST",uri:"/webhooks",code:200})))@"CreateWebhookRequest";!4(>!3({object:!1(!2),id:!1(!2),signing_secret:!1(!2.pipe(!14({})))}))@"CreateWebhookResponse"',
-        [__v, __d0, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(createWebhook, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(64, __c8, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(65, __c8, 1) as any as S.Schema<CreateWebhookResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteApiKeyError = ResendOpError;
 /** Remove an existing API key */
@@ -2330,14 +2318,13 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyResponse,
   DeleteApiKeyError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({api_key_id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/api-keys/{api_key_id}",code:200})))@"DeleteApiKeyRequest"',
-        [__v, __d3, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteApiKey, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteApiKeyRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteApiKeyResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteAutomationError = ResendOpError;
 /** Delete an automation */
@@ -2346,14 +2333,13 @@ export const deleteAutomation: API.OperationMethod<
   DeleteAutomationResponse,
   DeleteAutomationError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({automation_id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/automations/{automation_id}",code:200})))@"DeleteAutomationRequest"',
-        [__v, __d3, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteAutomation, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteAutomationRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteAutomationResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteBroadcastError = ResendOpError;
 /** Remove an existing broadcast that is in the draft status */
@@ -2362,14 +2348,13 @@ export const deleteBroadcast: API.OperationMethod<
   RemoveBroadcastResponseSuccess,
   DeleteBroadcastError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/broadcasts/{id}",code:200})))@"DeleteBroadcastRequest"',
-        [__v, __d4, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteBroadcast, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(96, __c12, 0) as any as S.Schema<DeleteBroadcastRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<RemoveBroadcastResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteContactError = ResendOpError;
 /** Remove an existing contact by ID or email */
@@ -2378,14 +2363,13 @@ export const deleteContact: API.OperationMethod<
   RemoveContactResponseSuccess,
   DeleteContactError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/contacts/{id}",code:200})))@"DeleteContactRequest"',
-        [__v, __d3, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteContact, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(112, __c14, 0) as any as S.Schema<DeleteContactRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<RemoveContactResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteContactPropertyError = ResendOpError;
 /** Remove an existing contact property */
@@ -2394,14 +2378,13 @@ export const deleteContactProperty: API.OperationMethod<
   RemoveContactPropertyResponseSuccess,
   DeleteContactPropertyError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/contact-properties/{id}",code:200})))@"DeleteContactPropertyRequest"',
-        [__v, __d4, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteContactProperty, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(120, __c15, 0) as any as S.Schema<DeleteContactPropertyRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<RemoveContactPropertyResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteContactSegmentError = ResendOpError;
 /** Remove a contact from a segment */
@@ -2410,14 +2393,13 @@ export const deleteContactSegment: API.OperationMethod<
   RemoveContactFromSegmentResponseSuccess,
   DeleteContactSegmentError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({contact_id:!2.pipe(!7()),segment_id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/contacts/{contact_id}/segments/{segment_id}",code:200})))@"DeleteContactSegmentRequest";!4(>!3({object:!1(!2),contact_id:!1(!2),segment_id:!1(!2),deleted:!1(!9)}))@"RemoveContactFromSegmentResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteContactSegment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteContactSegmentRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<RemoveContactFromSegmentResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteDomainError = ResendOpError;
 /** Remove an existing domain */
@@ -2426,14 +2408,13 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResponse,
   DeleteDomainError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({domain_id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/domains/{domain_id}",code:200})))@"DeleteDomainRequest"',
-        [__v, __d3, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteDomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(168, __c21, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteDomainResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteEventError = ResendOpError;
 /** Delete an event */
@@ -2442,14 +2423,13 @@ export const deleteEvent: API.OperationMethod<
   RemoveEventResponse,
   DeleteEventError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({identifier:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/events/{identifier}",code:200})))@"DeleteEventRequest"',
-        [__v, __d3, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteEvent, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(176, __c22, 0) as any as S.Schema<DeleteEventRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<RemoveEventResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteSegmentError = ResendOpError;
 /** Remove an existing segment */
@@ -2458,14 +2438,13 @@ export const deleteSegment: API.OperationMethod<
   RemoveSegmentResponseSuccess,
   DeleteSegmentError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/segments/{id}",code:200})))@"DeleteSegmentRequest"',
-        [__v, __d4, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteSegment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(184, __c23, 0) as any as S.Schema<DeleteSegmentRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<RemoveSegmentResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteTemplateError = ResendOpError;
 /** Remove an existing template */
@@ -2474,14 +2453,13 @@ export const deleteTemplate: API.OperationMethod<
   RemoveTemplateResponseSuccess,
   DeleteTemplateError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/templates/{id}",code:200})))@"DeleteTemplateRequest"',
-        [__v, __d3, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteTemplate, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(192, __c24, 0) as any as S.Schema<DeleteTemplateRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<RemoveTemplateResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteTopicError = ResendOpError;
 /** Remove an existing topic */
@@ -2490,14 +2468,13 @@ export const deleteTopic: API.OperationMethod<
   RemoveTopicResponseSuccess,
   DeleteTopicError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/topics/{id}",code:200})))@"DeleteTopicRequest"',
-        [__v, __d4, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteTopic, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(200, __c25, 0) as any as S.Schema<DeleteTopicRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<RemoveTopicResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteWebhookError = ResendOpError;
 /** Remove an existing webhook */
@@ -2506,14 +2483,13 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookResponse,
   DeleteWebhookError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({webhook_id:!2.pipe(!7())}).pipe(!5({method:"DELETE",uri:"/webhooks/{webhook_id}",code:200})))@"DeleteWebhookRequest"',
-        [__v, __d3, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(deleteWebhook, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(208, __c26, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<DeleteWebhookResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DuplicateTemplateError = ResendOpError;
 /** Duplicate a template */
@@ -2522,14 +2498,13 @@ export const duplicateTemplate: API.OperationMethod<
   DuplicateTemplateResponseSuccess,
   DuplicateTemplateError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"POST",uri:"/templates/{id}/duplicate",code:200})))@"DuplicateTemplateRequest"',
-        [__v, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(duplicateTemplate, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(216, __c27, 0) as any as S.Schema<DuplicateTemplateRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<DuplicateTemplateResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetAutomationError = ResendOpError;
 /** Retrieve a single automation */
@@ -2538,14 +2513,13 @@ export const getAutomation: API.OperationMethod<
   Automation,
   GetAutomationError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$2],protocol:$3,retry:$4};!4(>!3({automation_id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/automations/{automation_id}",code:200})))@"GetAutomationRequest";!4(>!3({key:!1(!2),type:!1(!2),config:!1(!11)}))@"AutomationStepResponse";!10(#2);!4(>!3({object:!1(!2),id:!1(!2),name:!1(!2),status:!1(!2),created_at:!1(!2),updated_at:!1(!2),steps:!1(#3),connections:!1(^1:1)}))@"Automation"',
-        [__v, __d5, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getAutomation, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(224, __c28, 0) as any as S.Schema<GetAutomationRequest>,
+  output: __S(227, __c28, 3) as any as S.Schema<Automation>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetAutomationRunError = ResendOpError;
 /** Retrieve a single automation run */
@@ -2554,14 +2528,13 @@ export const getAutomationRun: API.OperationMethod<
   AutomationRun,
   GetAutomationRunError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3};!4(>!3({automation_id:!2.pipe(!7()),run_id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/automations/{automation_id}/runs/{run_id}",code:200})))@"GetAutomationRunRequest";!4(>!3({key:!1(!2),type:!1(!2),status:!1(!2),started_at:!1(!8(!2)),completed_at:!1(!8(!2)),output:!1(!8(!11)),error:!1(!8(!11)),created_at:!1(!2)}))@"AutomationRunStep";!10(#2);!4(>!3({object:!1(!2),id:!1(!2),status:!1(!2),started_at:!1(!8(!2)),completed_at:!1(!8(!2)),created_at:!1(!2),steps:!1(#3)}))@"AutomationRun"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getAutomationRun, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(232, __c29, 0) as any as S.Schema<GetAutomationRunRequest>,
+  output: __S(235, __c29, 3) as any as S.Schema<AutomationRun>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetBroadcastError = ResendOpError;
 /** Retrieve a single broadcast */
@@ -2570,14 +2543,13 @@ export const getBroadcast: API.OperationMethod<
   GetBroadcastResponseSuccess,
   GetBroadcastError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/broadcasts/{id}",code:200})))@"GetBroadcastRequest";!4(>!3({id:!1(!2),name:!1(!2),audience_id:!1(!8(!2)),segment_id:!1(!8(!2)),from:!1(!2),subject:!1(!2),reply_to:!1(^1:0),preview_text:!1(!2),status:!1(!2),created_at:!1(!2),scheduled_at:!1(!2),sent_at:!1(!2),text:!1(!8(!2)),html:!1(!8(!2)),topic_id:!1(!8(!2))}))@"GetBroadcastResponseSuccess"',
-        [__v, __d0, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getBroadcast, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(240, __c30, 0) as any as S.Schema<GetBroadcastRequest>,
+  output: __S(241, __c30, 1) as any as S.Schema<GetBroadcastResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetContactError = ResendOpError;
 /** Retrieve a single contact by ID or email */
@@ -2586,14 +2558,13 @@ export const getContact: API.OperationMethod<
   GetContactResponseSuccess,
   GetContactError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/contacts/{id}",code:200})))@"GetContactRequest";!4(>!3({object:!1(!2),id:!1(!2),email:!1(!2),first_name:!1(!2),last_name:!1(!2),created_at:!1(!2),unsubscribed:!1(!9),properties:!1(^1:0)}))@"GetContactResponseSuccess"',
-        [__v, __d11, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getContact, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(264, __c33, 0) as any as S.Schema<GetContactRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<GetContactResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetContactPropertyError = ResendOpError;
 /** Retrieve a single contact property */
@@ -2602,14 +2573,13 @@ export const getContactProperty: API.OperationMethod<
   GetContactPropertyResponseSuccess,
   GetContactPropertyError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/contact-properties/{id}",code:200})))@"GetContactPropertyRequest";!4(>!3({object:!1(!2),id:!1(!2),key:!1(!2),type:!1(!2),fallback_value:!1(!11),created_at:!1(!2)}))@"GetContactPropertyResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getContactProperty, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(272, __c34, 0) as any as S.Schema<GetContactPropertyRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<GetContactPropertyResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetDomainError = ResendOpError;
 /** Retrieve a single domain */
@@ -2618,26 +2588,24 @@ export const getDomain: API.OperationMethod<
   Domain,
   GetDomainError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$3],protocol:$4,retry:$5};!4(>!3({domain_id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/domains/{domain_id}",code:200})))@"GetDomainRequest";!4(>!3({object:!1(!2),id:!1(!2),name:!1(!2),status:!1(!2),created_at:!1(!2),region:!1(!2),open_tracking:!1(!9),click_tracking:!1(!9),tracking_subdomain:!1(!2),capabilities:!1(^1:0),records:!1(^2:1)}))@"Domain"',
-        [__v, __d15, __d14, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getDomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(280, __c35, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<Domain>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetEmailError = ResendOpError;
 /** Retrieve a single email */
 export const getEmail: API.OperationMethod<GetEmailRequest, Email, GetEmailError, ResendOpContext> =
-  /*@__PURE__*/ API.op((i: any): any =>
-    i === API.D
-      ? [
-          '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({email_id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/emails/{email_id}",code:200})))@"GetEmailRequest"',
-          [__v, __d1, UnknownResendError, ResendProtocol, Retry.Retry],
-        ]
-      : API.call(getEmail, i),
-  );
+  /*@__PURE__*/ API.make(() => ({
+    input: __S(288, __c36, 0) as any as S.Schema<GetEmailRequest>,
+    output: __S(16, __c2, 0) as any as S.Schema<Email>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+  }));
 
 export type GetEmailAttachmentError = ResendOpError;
 /** Retrieve a single attachment for a sent email */
@@ -2646,14 +2614,13 @@ export const getEmailAttachment: API.OperationMethod<
   RetrievedAttachment,
   GetEmailAttachmentError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({email_id:!2.pipe(!7()),attachment_id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/emails/{email_id}/attachments/{attachment_id}",code:200})))@"GetEmailAttachmentRequest"',
-        [__v, __d9, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getEmailAttachment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(296, __c37, 0) as any as S.Schema<GetEmailAttachmentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<RetrievedAttachment>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetEmailReceivingError = ResendOpError;
 /** Retrieve a single received email */
@@ -2662,14 +2629,13 @@ export const getEmailReceiving: API.OperationMethod<
   GetReceivedEmailResponse,
   GetEmailReceivingError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$3],protocol:$4,retry:$5};!4(>!3({email_id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/emails/receiving/{email_id}",code:200})))@"GetEmailReceivingRequest";!4(>!3({object:!1(!2),id:!1(!2),to:!1(^1:0),from:!1(!2),subject:!1(!2),message_id:!1(!2),bcc:!1(!8(^1:0)),cc:!1(!8(^1:0)),reply_to:!1(!8(^1:0)),html:!1(!8(!2)),text:!1(!8(!2)),headers:!1(!8(!11)),created_at:!1(!2),attachments:!1(^2:1)}))@"GetReceivedEmailResponse"',
-        [__v, __d0, __d10, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getEmailReceiving, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(312, __c39, 0) as any as S.Schema<GetEmailReceivingRequest>,
+  output: __S(313, __c39, 1) as any as S.Schema<GetReceivedEmailResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetEmailReceivingAttachmentError = ResendOpError;
 /** Retrieve a single attachment for a received email */
@@ -2678,38 +2644,35 @@ export const getEmailReceivingAttachment: API.OperationMethod<
   RetrievedAttachment,
   GetEmailReceivingAttachmentError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({email_id:!2.pipe(!7()),attachment_id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/emails/receiving/{email_id}/attachments/{attachment_id}",code:200})))@"GetEmailReceivingAttachmentRequest"',
-        [__v, __d9, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getEmailReceivingAttachment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(328, __c41, 0) as any as S.Schema<GetEmailReceivingAttachmentRequest>,
+  output: __S(304, __c38, 0) as any as S.Schema<RetrievedAttachment>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetEventError = ResendOpError;
 /** Retrieve a single event */
 export const getEvent: API.OperationMethod<GetEventRequest, Event, GetEventError, ResendOpContext> =
-  /*@__PURE__*/ API.op((i: any): any =>
-    i === API.D
-      ? [
-          '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({identifier:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/events/{identifier}",code:200})))@"GetEventRequest";!4(>!3({object:!1(!2),id:!1(!2),name:!1(!2),schema:!1(!8(!11)),created_at:!1(!2),updated_at:!1(!8(!2))}))@"Event"',
-          [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-        ]
-      : API.call(getEvent, i),
-  );
+  /*@__PURE__*/ API.make(() => ({
+    input: __S(336, __c42, 0) as any as S.Schema<GetEventRequest>,
+    output: __S(337, __c42, 1) as any as S.Schema<Event>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+  }));
 
 export type GetLogError = ResendOpError;
 /** Retrieve a single log */
 export const getLog: API.OperationMethod<GetLogRequest, Log, GetLogError, ResendOpContext> =
-  /*@__PURE__*/ API.op((i: any): any =>
-    i === API.D
-      ? [
-          '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({log_id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/logs/{log_id}",code:200})))@"GetLogRequest";!4(>!3({object:!1(!2),id:!1(!2),created_at:!1(!2),endpoint:!1(!2),method:!1(!2),response_status:!1(!12),user_agent:!1(!8(!2)),request_body:!1(!8(!11)),response_body:!1(!8(!11))}))@"Log"',
-          [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-        ]
-      : API.call(getLog, i),
-  );
+  /*@__PURE__*/ API.make(() => ({
+    input: __S(344, __c43, 0) as any as S.Schema<GetLogRequest>,
+    output: __S(345, __c43, 1) as any as S.Schema<Log>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+  }));
 
 export type GetSegmentError = ResendOpError;
 /** Retrieve a single segment */
@@ -2718,14 +2681,13 @@ export const getSegment: API.OperationMethod<
   GetSegmentResponseSuccess,
   GetSegmentError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/segments/{id}",code:200})))@"GetSegmentRequest";!4(>!3({id:!1(!2),object:!1(!2),name:!1(!2),audience_id:!1(!2),filter:!1(!11),created_at:!1(!2)}))@"GetSegmentResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getSegment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(352, __c44, 0) as any as S.Schema<GetSegmentRequest>,
+  output: __S(353, __c44, 1) as any as S.Schema<GetSegmentResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetTemplateError = ResendOpError;
 /** Retrieve a single template */
@@ -2734,14 +2696,13 @@ export const getTemplate: API.OperationMethod<
   Template,
   GetTemplateError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/templates/{id}",code:200})))@"GetTemplateRequest";!4(>!3({id:!1(!2),key:!2,type:!2,fallback_value:!1(!11),created_at:!1(!2),updated_at:!1(!2)}))@"TemplateVariable";!10(#2);!4(>!3({object:!1(!2),id:!1(!2),current_version_id:!1(!2),name:!1(!2),alias:!1(!2),from:!1(!2),subject:!1(!2),reply_to:!1(!8(^1:0)),html:!1(!2),text:!1(!2),variables:!1(#3),created_at:!1(!2),updated_at:!1(!2),status:!1(!2),published_at:!1(!8(!2)),has_unpublished_versions:!1(!9)}))@"Template"',
-        [__v, __d0, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getTemplate, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(384, __c48, 0) as any as S.Schema<GetTemplateRequest>,
+  output: __S(387, __c48, 3) as any as S.Schema<Template>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetTopicError = ResendOpError;
 /** Retrieve a single topic */
@@ -2750,14 +2711,13 @@ export const getTopic: API.OperationMethod<
   GetTopicResponseSuccess,
   GetTopicError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/topics/{id}",code:200})))@"GetTopicRequest";!4(>!3({id:!1(!2),object:!1(!2),name:!1(!2),description:!1(!2),default_subscription:!1(!2),visibility:!1(!2),created_at:!1(!2)}))@"GetTopicResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getTopic, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(392, __c49, 0) as any as S.Schema<GetTopicRequest>,
+  output: __S(393, __c49, 1) as any as S.Schema<GetTopicResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetWebhookError = ResendOpError;
 /** Retrieve a single webhook */
@@ -2766,14 +2726,13 @@ export const getWebhook: API.OperationMethod<
   GetWebhookResponse,
   GetWebhookError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$2],protocol:$3,retry:$4};!4(>!3({webhook_id:!2.pipe(!7())}).pipe(!5({method:"GET",uri:"/webhooks/{webhook_id}",code:200})))@"GetWebhookRequest";!4(>!3({object:!1(!2),id:!1(!2),endpoint:!1(!2),events:!1(!8(^1:0)),status:!1(!2),created_at:!1(!2),signing_secret:!1(!2.pipe(!14({})))}))@"GetWebhookResponse"',
-        [__v, __d0, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(getWebhook, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(400, __c50, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(401, __c50, 1) as any as S.Schema<GetWebhookResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ListApiKeysError = ResendOpError;
 /** Retrieve a list of API keys */
@@ -2783,14 +2742,23 @@ export const listApiKeys: API.PaginatedOperationMethod<
   ListApiKeysError,
   ResendOpContext,
   ApiKey
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/api-keys",code:200})))@"ListApiKeysRequest";!4(>!3({id:!1(!2),name:!1(!2),created_at:!1(!2),last_used_at:!1(!8(!2))}))@"ApiKey";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListApiKeysResponse"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listApiKeys, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(408, __c51, 0) as any as S.Schema<ListApiKeysRequest>,
+    output: __S(411, __c51, 3) as any as S.Schema<ListApiKeysResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListAutomationRunsError = ResendOpError;
 /** Retrieve a list of automation runs */
@@ -2800,14 +2768,23 @@ export const listAutomationRuns: API.PaginatedOperationMethod<
   ListAutomationRunsError,
   ResendOpContext,
   AutomationRunListItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({automation_id:!2.pipe(!7()),status:!1(!2.pipe(!6())),limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/automations/{automation_id}/runs",code:200})))@"ListAutomationRunsRequest";!4(>!3({id:!1(!2),status:!1(!2),started_at:!1(!8(!2)),completed_at:!1(!8(!2)),created_at:!1(!2)}))@"AutomationRunListItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListAutomationRunsResponse"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listAutomationRuns, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(416, __c52, 0) as any as S.Schema<ListAutomationRunsRequest>,
+    output: __S(419, __c52, 3) as any as S.Schema<ListAutomationRunsResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListAutomationsError = ResendOpError;
 /** Retrieve a list of automations */
@@ -2817,14 +2794,23 @@ export const listAutomations: API.PaginatedOperationMethod<
   ListAutomationsError,
   ResendOpContext,
   AutomationListItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({status:!1(!2.pipe(!6())),limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/automations",code:200})))@"ListAutomationsRequest";!4(>!3({id:!1(!2),name:!1(!2),status:!1(!2),created_at:!1(!2),updated_at:!1(!2)}))@"AutomationListItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListAutomationsResponse"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listAutomations, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(424, __c53, 0) as any as S.Schema<ListAutomationsRequest>,
+    output: __S(427, __c53, 3) as any as S.Schema<ListAutomationsResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListBroadcastsError = ResendOpError;
 /** Retrieve a list of broadcasts */
@@ -2834,14 +2820,23 @@ export const listBroadcasts: API.PaginatedOperationMethod<
   ListBroadcastsError,
   ResendOpContext,
   ListBroadcastsResponseSuccessDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/broadcasts",code:200})))@"ListBroadcastsRequest";!4(>!3({id:!1(!2),name:!1(!2),audience_id:!1(!2),segment_id:!1(!2),status:!1(!2),created_at:!1(!2),scheduled_at:!1(!2),sent_at:!1(!2),topic_id:!1(!2)}))@"ListBroadcastsResponseSuccessDataItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListBroadcastsResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listBroadcasts, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(432, __c54, 0) as any as S.Schema<ListBroadcastsRequest>,
+    output: __S(435, __c54, 3) as any as S.Schema<ListBroadcastsResponseSuccess>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListContactPropertiesError = ResendOpError;
 /** Retrieve a list of contact properties */
@@ -2851,14 +2846,23 @@ export const listContactProperties: API.PaginatedOperationMethod<
   ListContactPropertiesError,
   ResendOpContext,
   ListContactPropertiesResponseSuccessDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/contact-properties",code:200})))@"ListContactPropertiesRequest";!4(>!3({id:!1(!2),key:!1(!2),type:!1(!2),fallback_value:!1(!11),created_at:!1(!2)}))@"ListContactPropertiesResponseSuccessDataItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListContactPropertiesResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listContactProperties, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(440, __c55, 0) as any as S.Schema<ListContactPropertiesRequest>,
+    output: __S(443, __c55, 3) as any as S.Schema<ListContactPropertiesResponseSuccess>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListContactsError = ResendOpError;
 /** Retrieve a list of contacts */
@@ -2867,14 +2871,13 @@ export const listContacts: API.OperationMethod<
   ListContactsResponseSuccess,
   ListContactsError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3};!4(>!3({segment_id:!1(!2.pipe(!6())),limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/contacts",code:200})))@"ListContactsRequest";!4(>!3({id:!1(!2),email:!1(!2),first_name:!1(!2),last_name:!1(!2),created_at:!1(!2),unsubscribed:!1(!9)}))@"ListContactsResponseSuccessDataItem";!10(#2);!4(>!3({object:!1(!2),data:!1(#3)}))@"ListContactsResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(listContacts, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(448, __c56, 0) as any as S.Schema<ListContactsRequest>,
+  output: __S(451, __c56, 3) as any as S.Schema<ListContactsResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ListContactSegmentsError = ResendOpError;
 /** Retrieve a list of segments for a contact */
@@ -2884,14 +2887,23 @@ export const listContactSegments: API.PaginatedOperationMethod<
   ListContactSegmentsError,
   ResendOpContext,
   ListContactSegmentsResponseSuccessDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({contact_id:!2.pipe(!7()),limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/contacts/{contact_id}/segments",code:200})))@"ListContactSegmentsRequest";!4(>!3({id:!1(!2),name:!1(!2),created_at:!1(!2)}))@"ListContactSegmentsResponseSuccessDataItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListContactSegmentsResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listContactSegments, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(456, __c57, 0) as any as S.Schema<ListContactSegmentsRequest>,
+    output: __S(459, __c57, 3) as any as S.Schema<ListContactSegmentsResponseSuccess>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListContactTopicsError = ResendOpError;
 /** Retrieve topics for a contact */
@@ -2901,14 +2913,23 @@ export const listContactTopics: API.PaginatedOperationMethod<
   ListContactTopicsError,
   ResendOpContext,
   GetContactTopicsResponseSuccessDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({contact_id:!2.pipe(!7()),limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/contacts/{contact_id}/topics",code:200})))@"ListContactTopicsRequest";!4(>!3({id:!1(!2),name:!1(!2),description:!1(!2),subscription:!1(!2)}))@"GetContactTopicsResponseSuccessDataItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"GetContactTopicsResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listContactTopics, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(472, __c59, 0) as any as S.Schema<ListContactTopicsRequest>,
+    output: __S(475, __c59, 3) as any as S.Schema<GetContactTopicsResponseSuccess>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListDomainsError = ResendOpError;
 /** Retrieve a list of domains */
@@ -2918,14 +2939,23 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsError,
   ResendOpContext,
   ListDomainsItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$2],protocol:$3,retry:$4,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$5};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/domains",code:200})))@"ListDomainsRequest";!4(>!3({id:!1(!2),name:!1(!2),status:!1(!2),created_at:!1(!2),region:!1(!2),capabilities:!1(^1:0)}))@"ListDomainsItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListDomainsResponse"',
-        [__v, __d15, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listDomains, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(480, __c60, 0) as any as S.Schema<ListDomainsRequest>,
+    output: __S(483, __c60, 3) as any as S.Schema<ListDomainsResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListEmailAttachmentsError = ResendOpError;
 /** Retrieve a list of attachments for a sent email */
@@ -2935,14 +2965,23 @@ export const listEmailAttachments: API.PaginatedOperationMethod<
   ListEmailAttachmentsError,
   ResendOpContext,
   ListAttachmentsResponseDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:2,errors:[$2],protocol:$3,retry:$4,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$5};!4(>!3({email_id:!2.pipe(!7()),limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/emails/{email_id}/attachments",code:200})))@"ListEmailAttachmentsRequest"',
-        [__v, __d13, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listEmailAttachments, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(488, __c61, 0) as any as S.Schema<ListEmailAttachmentsRequest>,
+    output: __S(498, __c62, 2) as any as S.Schema<ListAttachmentsResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListEmailReceivingError = ResendOpError;
 /** Retrieve a list of received emails */
@@ -2952,14 +2991,23 @@ export const listEmailReceiving: API.PaginatedOperationMethod<
   ListEmailReceivingError,
   ResendOpContext,
   ListReceivedEmailsResponseDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$3],protocol:$4,retry:$5,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$6};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/emails/receiving",code:200})))@"ListEmailReceivingRequest";!4(>!3({id:!1(!2),to:!1(^1:0),from:!1(!2),subject:!1(!8(!2)),message_id:!1(!2),bcc:!1(!8(^1:0)),cc:!1(!8(^1:0)),reply_to:!1(!8(^1:0)),created_at:!1(!2),attachments:!1(^2:1)}))@"ListReceivedEmailsResponseDataItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListReceivedEmailsResponse"',
-        [__v, __d0, __d10, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listEmailReceiving, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(504, __c63, 0) as any as S.Schema<ListEmailReceivingRequest>,
+    output: __S(507, __c63, 3) as any as S.Schema<ListReceivedEmailsResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListEmailReceivingAttachmentsError = ResendOpError;
 /** Retrieve a list of attachments for a received email */
@@ -2969,14 +3017,23 @@ export const listEmailReceivingAttachments: API.PaginatedOperationMethod<
   ListEmailReceivingAttachmentsError,
   ResendOpContext,
   ListAttachmentsResponseDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:2,errors:[$2],protocol:$3,retry:$4,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$5};!4(>!3({email_id:!2.pipe(!7()),limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/emails/receiving/{email_id}/attachments",code:200})))@"ListEmailReceivingAttachmentsRequest"',
-        [__v, __d13, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listEmailReceivingAttachments, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(512, __c64, 0) as any as S.Schema<ListEmailReceivingAttachmentsRequest>,
+    output: __S(498, __c62, 2) as any as S.Schema<ListAttachmentsResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListEmailsError = ResendOpError;
 /** Retrieve a list of emails */
@@ -2986,14 +3043,23 @@ export const listEmails: API.PaginatedOperationMethod<
   ListEmailsError,
   ResendOpContext,
   Email
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#3,errors:[$2],protocol:$3,retry:$4,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$5};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/emails",code:200})))@"ListEmailsRequest";!10(^1:0);!4(>!3({object:!1(!2),has_more:!1(!9),data:#2}))@"ListEmailsResponse"',
-        [__v, __d1, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listEmails, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(520, __c65, 0) as any as S.Schema<ListEmailsRequest>,
+    output: __S(522, __c65, 2) as any as S.Schema<ListEmailsResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListEventsError = ResendOpError;
 /** Retrieve a list of events */
@@ -3003,14 +3069,23 @@ export const listEvents: API.PaginatedOperationMethod<
   ListEventsError,
   ResendOpContext,
   EventSummary
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/events",code:200})))@"ListEventsRequest";!4(>!3({id:!1(!2),name:!1(!2),schema:!1(!8(!11)),created_at:!1(!2),updated_at:!1(!8(!2))}))@"EventSummary";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListEventsResponse"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listEvents, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(528, __c66, 0) as any as S.Schema<ListEventsRequest>,
+    output: __S(531, __c66, 3) as any as S.Schema<ListEventsResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListLogsError = ResendOpError;
 /** Retrieve a list of logs */
@@ -3020,14 +3095,23 @@ export const listLogs: API.PaginatedOperationMethod<
   ListLogsError,
   ResendOpContext,
   LogSummary
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/logs",code:200})))@"ListLogsRequest";!4(>!3({id:!1(!2),created_at:!1(!2),endpoint:!1(!2),method:!1(!2),response_status:!1(!12),user_agent:!1(!8(!2))}))@"LogSummary";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListLogsResponse"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listLogs, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(536, __c67, 0) as any as S.Schema<ListLogsRequest>,
+    output: __S(539, __c67, 3) as any as S.Schema<ListLogsResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListSegmentsError = ResendOpError;
 /** Retrieve a list of segments */
@@ -3037,14 +3121,23 @@ export const listSegments: API.PaginatedOperationMethod<
   ListSegmentsError,
   ResendOpContext,
   ListSegmentsResponseSuccessDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/segments",code:200})))@"ListSegmentsRequest";!4(>!3({id:!1(!2),name:!1(!2),audience_id:!1(!2),created_at:!1(!2)}))@"ListSegmentsResponseSuccessDataItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListSegmentsResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listSegments, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(544, __c68, 0) as any as S.Schema<ListSegmentsRequest>,
+    output: __S(547, __c68, 3) as any as S.Schema<ListSegmentsResponseSuccess>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListTemplatesError = ResendOpError;
 /** Retrieve a list of templates */
@@ -3054,14 +3147,23 @@ export const listTemplates: API.PaginatedOperationMethod<
   ListTemplatesError,
   ResendOpContext,
   TemplateListItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/templates",code:200})))@"ListTemplatesRequest";!4(>!3({id:!1(!2),name:!1(!2),status:!1(!2),published_at:!1(!8(!2)),created_at:!1(!2),updated_at:!1(!2),alias:!1(!2)}))@"TemplateListItem";!10(#2);!4(>!3({object:!1(!2),data:#3,has_more:!1(!9)}))@"ListTemplatesResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listTemplates, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(552, __c69, 0) as any as S.Schema<ListTemplatesRequest>,
+    output: __S(555, __c69, 3) as any as S.Schema<ListTemplatesResponseSuccess>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListTopicsError = ResendOpError;
 /** Retrieve a list of topics */
@@ -3071,14 +3173,23 @@ export const listTopics: API.PaginatedOperationMethod<
   ListTopicsError,
   ResendOpContext,
   ListTopicsResponseSuccessDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$1],protocol:$2,retry:$3,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$4};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/topics",code:200})))@"ListTopicsRequest";!4(>!3({id:!1(!2),name:!1(!2),description:!1(!2),default_subscription:!1(!2),visibility:!1(!2),created_at:!1(!2)}))@"ListTopicsResponseSuccessDataItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListTopicsResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listTopics, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(584, __c73, 0) as any as S.Schema<ListTopicsRequest>,
+    output: __S(587, __c73, 3) as any as S.Schema<ListTopicsResponseSuccess>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type ListWebhooksError = ResendOpError;
 /** Retrieve a list of webhooks */
@@ -3088,14 +3199,23 @@ export const listWebhooks: API.PaginatedOperationMethod<
   ListWebhooksError,
   ResendOpContext,
   ListWebhooksResponseDataItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$2],protocol:$3,retry:$4,pagination:{mode:"cursor",inputToken:"after",items:"data",hasNextPage:"has_more",pageSize:"limit"},strategy:$5};!4(>!3({limit:!1(!12.pipe(!6())),after:!1(!2.pipe(!6())),before:!1(!2.pipe(!6()))}).pipe(!5({method:"GET",uri:"/webhooks",code:200})))@"ListWebhooksRequest";!4(>!3({id:!1(!2),endpoint:!1(!2),events:!1(!8(^1:0)),status:!1(!2),created_at:!1(!2)}))@"ListWebhooksResponseDataItem";!10(#2);!4(>!3({object:!1(!2),has_more:!1(!9),data:#3}))@"ListWebhooksResponse"',
-        [__v, __d0, UnknownResendError, ResendProtocol, Retry.Retry, paginateResend],
-      ]
-    : API.call(listWebhooks, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(592, __c74, 0) as any as S.Schema<ListWebhooksRequest>,
+    output: __S(595, __c74, 3) as any as S.Schema<ListWebhooksResponse>,
+    errors: [UnknownResendError],
+    protocol: ResendProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "cursor",
+      inputToken: "after",
+      items: "data",
+      hasNextPage: "has_more",
+      pageSize: "limit",
+    } as const,
+  }),
+  paginateResend,
+) as any;
 
 export type PublishTemplateError = ResendOpError;
 /** Publish a template */
@@ -3104,14 +3224,13 @@ export const publishTemplate: API.OperationMethod<
   PublishTemplateResponseSuccess,
   PublishTemplateError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7())}).pipe(!5({method:"POST",uri:"/templates/{id}/publish",code:200})))@"PublishTemplateRequest"',
-        [__v, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(publishTemplate, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(600, __c75, 0) as any as S.Schema<PublishTemplateRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<PublishTemplateResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type SendBroadcastError = ResendOpError;
 /** Send or schedule a broadcast */
@@ -3120,14 +3239,13 @@ export const sendBroadcast: API.OperationMethod<
   SendBroadcastResponseSuccess,
   SendBroadcastError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7()),scheduled_at:!1(!2)}).pipe(!5({method:"POST",uri:"/broadcasts/{id}/send",code:200})))@"SendBroadcastRequest"',
-        [__v, __d17, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(sendBroadcast, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(608, __c76, 0) as any as S.Schema<SendBroadcastRequest>,
+  output: __S(680, __c85, 0) as any as S.Schema<SendBroadcastResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type SendEventError = ResendOpError;
 /** Send an event */
@@ -3136,14 +3254,13 @@ export const sendEvent: API.OperationMethod<
   SendEventResponse,
   SendEventError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$2],protocol:$3,retry:$4};!4(>!3({event:!2,contact_id:!1(!2),email:!1(!2),payload:!1(^1:0)}).pipe(!5({method:"POST",uri:"/events/send",code:200})))@"SendEventRequest";!4(>!3({}))@"SendEventResponse"',
-        [__v, __d11, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(sendEvent, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(616, __c77, 0) as any as S.Schema<SendEventRequest>,
+  output: __S(617, __c77, 1) as any as S.Schema<SendEventResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type StopAutomationError = ResendOpError;
 /** Stop an automation */
@@ -3152,14 +3269,13 @@ export const stopAutomation: API.OperationMethod<
   StopAutomationResponse,
   StopAutomationError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({automation_id:!2.pipe(!7())}).pipe(!5({method:"POST",uri:"/automations/{automation_id}/stop",code:200})))@"StopAutomationRequest";!4(>!3({object:!1(!2),id:!1(!2),status:!1(!2)}))@"StopAutomationResponse"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(stopAutomation, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(624, __c78, 0) as any as S.Schema<StopAutomationRequest>,
+  output: __S(625, __c78, 1) as any as S.Schema<StopAutomationResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateAutomationError = ResendOpError;
 /** Update an automation */
@@ -3168,14 +3284,13 @@ export const updateAutomation: API.OperationMethod<
   PatchAutomationResponse,
   UpdateAutomationError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^3:0,errors:[$4],protocol:$5,retry:$6};!4(>!3({automation_id:!2.pipe(!7()),name:!1(!2),status:!1(!2),steps:!1(^1:1),connections:!1(^2:1)}).pipe(!5({method:"PATCH",uri:"/automations/{automation_id}",code:200})))@"UpdateAutomationRequest"',
-        [__v, __d7, __d5, __d6, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateAutomation, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(632, __c79, 0) as any as S.Schema<UpdateAutomationRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<PatchAutomationResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateBroadcastError = ResendOpError;
 /** Update an existing broadcast */
@@ -3184,14 +3299,13 @@ export const updateBroadcast: API.OperationMethod<
   UpdateBroadcastResponseSuccess,
   UpdateBroadcastError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3],protocol:$4,retry:$5};!4(>!3({id:!2.pipe(!7()),name:!1(!2),audience_id:!1(!2),segment_id:!1(!2),from:!1(!2),subject:!1(!2),reply_to:!1(^1:0),preview_text:!1(!2),html:!1(!2),text:!1(!2),topic_id:!1(!2)}).pipe(!5({method:"PATCH",uri:"/broadcasts/{id}",code:200})))@"UpdateBroadcastRequest"',
-        [__v, __d0, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateBroadcast, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(640, __c80, 0) as any as S.Schema<UpdateBroadcastRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateBroadcastResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateContactError = ResendOpError;
 /** Update a single contact by ID or email */
@@ -3200,14 +3314,13 @@ export const updateContact: API.OperationMethod<
   UpdateContactResponseSuccess,
   UpdateContactError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3],protocol:$4,retry:$5};!4(>!3({id:!2.pipe(!7()),email:!1(!2),first_name:!1(!2),last_name:!1(!2),unsubscribed:!1(!9),properties:!1(^1:0)}).pipe(!5({method:"PATCH",uri:"/contacts/{id}",code:200})))@"UpdateContactRequest"',
-        [__v, __d11, __d6, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateContact, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(648, __c81, 0) as any as S.Schema<UpdateContactRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<UpdateContactResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateContactPropertyError = ResendOpError;
 /** Update an existing contact property */
@@ -3216,14 +3329,13 @@ export const updateContactProperty: API.OperationMethod<
   UpdateContactPropertyResponseSuccess,
   UpdateContactPropertyError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7()),fallback_value:!1(!11)}).pipe(!5({method:"PATCH",uri:"/contact-properties/{id}",code:200})))@"UpdateContactPropertyRequest"',
-        [__v, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateContactProperty, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(656, __c82, 0) as any as S.Schema<UpdateContactPropertyRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateContactPropertyResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateContactSegmentError = ResendOpError;
 /** Add a contact to a segment */
@@ -3232,14 +3344,13 @@ export const updateContactSegment: API.OperationMethod<
   AddContactToSegmentResponseSuccess,
   UpdateContactSegmentError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({contact_id:!2.pipe(!7()),segment_id:!2.pipe(!7())}).pipe(!5({method:"POST",uri:"/contacts/{contact_id}/segments/{segment_id}",code:200})))@"UpdateContactSegmentRequest";!4(>!3({object:!1(!2),contact_id:!1(!2),segment_id:!1(!2)}))@"AddContactToSegmentResponseSuccess"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateContactSegment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(688, __c86, 0) as any as S.Schema<UpdateContactSegmentRequest>,
+  output: __S(689, __c86, 1) as any as S.Schema<AddContactToSegmentResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateContactTopicsError = ResendOpError;
 /** Update topics for a contact */
@@ -3248,14 +3359,13 @@ export const updateContactTopics: API.OperationMethod<
   UpdateContactTopicsResponseSuccess,
   UpdateContactTopicsError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$2],protocol:$3,retry:$4};!4(>!3({contact_id:!2.pipe(!7()),topics:^1:1}).pipe(!5({method:"PATCH",uri:"/contacts/{contact_id}/topics",code:200})))@"UpdateContactTopicsRequest";!4(>!3({object:!1(!2),contact_id:!1(!2),topics:!1(^1:1)}))@"UpdateContactTopicsResponseSuccess"',
-        [__v, __d12, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateContactTopics, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(696, __c87, 0) as any as S.Schema<UpdateContactTopicsRequest>,
+  output: __S(697, __c87, 1) as any as S.Schema<UpdateContactTopicsResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateDomainError = ResendOpError;
 /** Update an existing domain */
@@ -3264,14 +3374,13 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainResponseSuccess,
   UpdateDomainError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3],protocol:$4,retry:$5};!4(>!3({domain_id:!2.pipe(!7()),open_tracking:!1(!9),click_tracking:!1(!9),tls:!1(!2),capabilities:!1(^1:0),tracking_subdomain:!1(!2)}).pipe(!5({method:"PATCH",uri:"/domains/{domain_id}",code:200})))@"UpdateDomainRequest"',
-        [__v, __d15, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateDomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(704, __c88, 0) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateDomainResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateEmailError = ResendOpError;
 /** Update a single email */
@@ -3280,14 +3389,13 @@ export const updateEmail: API.OperationMethod<
   UpdateEmailOptions,
   UpdateEmailError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$1],protocol:$2,retry:$3};!4(>!3({email_id:!2.pipe(!7())}).pipe(!5({method:"PATCH",uri:"/emails/{email_id}",code:200})))@"UpdateEmailRequest";!4(>!3({scheduled_at:!1(!2)}))@"UpdateEmailOptions"',
-        [__v, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateEmail, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(712, __c89, 0) as any as S.Schema<UpdateEmailRequest>,
+  output: __S(713, __c89, 1) as any as S.Schema<UpdateEmailOptions>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateEventError = ResendOpError;
 /** Update an event */
@@ -3296,14 +3404,13 @@ export const updateEvent: API.OperationMethod<
   UpdateEventResponse,
   UpdateEventError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({identifier:!2.pipe(!7()),schema:!8(!11)}).pipe(!5({method:"PATCH",uri:"/events/{identifier}",code:200})))@"UpdateEventRequest"',
-        [__v, __d6, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateEvent, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(720, __c90, 0) as any as S.Schema<UpdateEventRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<UpdateEventResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateTemplateError = ResendOpError;
 /** Update an existing template */
@@ -3312,14 +3419,13 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateResponseSuccess,
   UpdateTemplateError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^3:0,errors:[$4],protocol:$5,retry:$6};!4(>!3({id:!2.pipe(!7()),name:!1(!2),alias:!1(!2),from:!1(!2),subject:!1(!2),reply_to:!1(^1:0),html:!1(!2),text:!1(!2),variables:!1(^2:1)}).pipe(!5({method:"PATCH",uri:"/templates/{id}",code:200})))@"UpdateTemplateRequest"',
-        [__v, __d0, __d2, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateTemplate, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(728, __c91, 0) as any as S.Schema<UpdateTemplateRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateTemplateResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateTopicError = ResendOpError;
 /** Update an existing topic */
@@ -3328,14 +3434,13 @@ export const updateTopic: API.OperationMethod<
   UpdateTopicResponseSuccess,
   UpdateTopicError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({id:!2.pipe(!7()),name:!1(!2),description:!1(!2),visibility:!1(!2)}).pipe(!5({method:"PATCH",uri:"/topics/{id}",code:200})))@"UpdateTopicRequest"',
-        [__v, __d8, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateTopic, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(736, __c92, 0) as any as S.Schema<UpdateTopicRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<UpdateTopicResponseSuccess>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateWebhookError = ResendOpError;
 /** Update an existing webhook */
@@ -3344,14 +3449,13 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookResponse,
   UpdateWebhookError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3],protocol:$4,retry:$5};!4(>!3({webhook_id:!2.pipe(!7()),endpoint:!1(!2),events:!1(^1:0),status:!1(!2)}).pipe(!5({method:"PATCH",uri:"/webhooks/{webhook_id}",code:200})))@"UpdateWebhookRequest"',
-        [__v, __d0, __d6, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(updateWebhook, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(744, __c93, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<UpdateWebhookResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 export type VerifyDomainError = ResendOpError;
 /** Verify an existing domain Triggers verification of the domain's DNS records including DKIM, SPF, and the tracking CNAME (if a tracking subdomain is configured). */
@@ -3360,117 +3464,1929 @@ export const verifyDomain: API.OperationMethod<
   VerifyDomainResponse,
   VerifyDomainError,
   ResendOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^1:0,errors:[$2],protocol:$3,retry:$4};!4(>!3({domain_id:!2.pipe(!7())}).pipe(!5({method:"POST",uri:"/domains/{domain_id}/verify",code:200})))@"VerifyDomainRequest"',
-        [__v, __d6, UnknownResendError, ResendProtocol, Retry.Retry],
-      ]
-    : API.call(verifyDomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(752, __c94, 0) as any as S.Schema<VerifyDomainRequest>,
+  output: __S(152, __c19, 0) as any as S.Schema<VerifyDomainResponse>,
+  errors: [UnknownResendError],
+  protocol: ResendProtocol,
+  retry: Retry.Retry,
+}));
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/emails/{email_id}/cancel", code: 200 })),
+      ).annotate({ identifier: "CancelEmailRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          to: S.optional(__S(8, __c1, 0)),
+          from: S.optional(S.String),
+          created_at: S.optional(S.String),
+          subject: S.optional(S.String),
+          html: S.optional(S.String),
+          text: S.optional(S.String),
+          bcc: S.optional(__S(8, __c1, 0)),
+          cc: S.optional(__S(8, __c1, 0)),
+          reply_to: S.optional(__S(8, __c1, 0)),
+          last_event: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Email" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          permission: S.optional(S.String),
+          domain_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/api-keys", code: 200 })),
+      ).annotate({ identifier: "CreateApiKeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          token: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateApiKeyResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          audience_id: S.optional(S.String),
+          filter: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/segments", code: 200 })),
+      ).annotate({ identifier: "CreateSegmentRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          alias: S.optional(S.String),
+          from: S.optional(S.String),
+          subject: S.optional(S.String),
+          reply_to: S.optional(__S(8, __c1, 0)),
+          html: S.String,
+          text: S.optional(S.String),
+          variables: S.optional(__S(49, __c6, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/templates", code: 200 })),
+      ).annotate({ identifier: "CreateTemplateRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          type: S.String,
+          fallback_value: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "TemplateVariableInput" });
+    case 1:
+      return S.Array(__S(48, __c6, 0));
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          default_subscription: S.String,
+          description: S.optional(S.String),
+          visibility: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/topics", code: 200 })),
+      ).annotate({ identifier: "CreateTopicRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.String,
+          events: __S(8, __c1, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
+      ).annotate({ identifier: "CreateWebhookRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          signing_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "CreateWebhookResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          api_key_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/api-keys/{api_key_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteApiKeyRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "DeleteApiKeyResponse" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automation_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/automations/{automation_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteAutomationRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/broadcasts/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteBroadcastRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          object: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RemoveBroadcastResponseSuccess" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/contacts/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteContactRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/contact-properties/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteContactPropertyRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contact_id: S.String.pipe(T.Label()),
+          segment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/contacts/{contact_id}/segments/{segment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteContactSegmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          contact_id: S.optional(S.String),
+          segment_id: S.optional(S.String),
+          deleted: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "RemoveContactFromSegmentResponseSuccess" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          status: S.optional(S.String),
+          steps: __S(161, __c20, 1),
+          connections: __S(145, __c18, 1),
+        }).pipe(T.Http({ method: "POST", uri: "/automations", code: 200 })),
+      ).annotate({ identifier: "CreateAutomationRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.String,
+          to: S.String,
+          type: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutomationConnection" });
+    case 1:
+      return S.Array(__S(144, __c18, 0));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateAutomationResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          type: S.String,
+          config: S.Unknown,
+        }),
+      ).annotate({ identifier: "AutomationStep" });
+    case 1:
+      return S.Array(__S(160, __c20, 0));
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/domains/{domain_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteDomainRequest" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/events/{identifier}", code: 200 })),
+      ).annotate({ identifier: "DeleteEventRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/segments/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteSegmentRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/templates/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteTemplateRequest" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/topics/{id}", code: 200 })),
+      ).annotate({ identifier: "DeleteTopicRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{webhook_id}", code: 200 })),
+      ).annotate({ identifier: "DeleteWebhookRequest" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/templates/{id}/duplicate", code: 200 })),
+      ).annotate({ identifier: "DuplicateTemplateRequest" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automation_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/automations/{automation_id}", code: 200 })),
+      ).annotate({ identifier: "GetAutomationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          type: S.optional(S.String),
+          config: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "AutomationStepResponse" });
+    case 2:
+      return S.Array(__S(225, __c28, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          steps: S.optional(__S(226, __c28, 2)),
+          connections: S.optional(__S(145, __c18, 1)),
+        }),
+      ).annotate({ identifier: "Automation" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automation_id: S.String.pipe(T.Label()),
+          run_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/automations/{automation_id}/runs/{run_id}", code: 200 }),
+        ),
+      ).annotate({ identifier: "GetAutomationRunRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.optional(S.String),
+          type: S.optional(S.String),
+          status: S.optional(S.String),
+          started_at: S.optional(S.NullOr(S.String)),
+          completed_at: S.optional(S.NullOr(S.String)),
+          output: S.optional(S.NullOr(S.Unknown)),
+          error: S.optional(S.NullOr(S.Unknown)),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutomationRunStep" });
+    case 2:
+      return S.Array(__S(233, __c29, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          status: S.optional(S.String),
+          started_at: S.optional(S.NullOr(S.String)),
+          completed_at: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          steps: S.optional(__S(234, __c29, 2)),
+        }),
+      ).annotate({ identifier: "AutomationRun" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/broadcasts/{id}", code: 200 })),
+      ).annotate({ identifier: "GetBroadcastRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          audience_id: S.optional(S.NullOr(S.String)),
+          segment_id: S.optional(S.NullOr(S.String)),
+          from: S.optional(S.String),
+          subject: S.optional(S.String),
+          reply_to: S.optional(__S(8, __c1, 0)),
+          preview_text: S.optional(S.String),
+          status: S.optional(S.String),
+          created_at: S.optional(S.String),
+          scheduled_at: S.optional(S.String),
+          sent_at: S.optional(S.String),
+          text: S.optional(S.NullOr(S.String)),
+          html: S.optional(S.NullOr(S.String)),
+          topic_id: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "GetBroadcastResponseSuccess" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          segment_id: S.String,
+          audience_id: S.optional(S.String),
+          from: S.String,
+          subject: S.String,
+          reply_to: S.optional(__S(8, __c1, 0)),
+          preview_text: S.optional(S.String),
+          html: S.optional(S.String),
+          text: S.optional(S.String),
+          topic_id: S.optional(S.String),
+          send: S.optional(S.Boolean),
+          scheduled_at: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/broadcasts", code: 200 })),
+      ).annotate({ identifier: "CreateBroadcastRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          object: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateBroadcastResponseSuccess" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/contacts/{id}", code: 200 })),
+      ).annotate({ identifier: "GetContactRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          email: S.optional(S.String),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          unsubscribed: S.optional(S.Boolean),
+          properties: S.optional(__S(368, __c46, 0)),
+        }),
+      ).annotate({ identifier: "GetContactResponseSuccess" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/contact-properties/{id}", code: 200 })),
+      ).annotate({ identifier: "GetContactPropertyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          key: S.optional(S.String),
+          type: S.optional(S.String),
+          fallback_value: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetContactPropertyResponseSuccess" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/domains/{domain_id}", code: 200 })),
+      ).annotate({ identifier: "GetDomainRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          created_at: S.optional(S.String),
+          region: S.optional(S.String),
+          open_tracking: S.optional(S.Boolean),
+          click_tracking: S.optional(S.Boolean),
+          tracking_subdomain: S.optional(S.String),
+          capabilities: S.optional(__S(576, __c72, 0)),
+          records: S.optional(__S(569, __c71, 1)),
+        }),
+      ).annotate({ identifier: "Domain" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/emails/{email_id}", code: 200 })),
+      ).annotate({ identifier: "GetEmailRequest" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_id: S.String.pipe(T.Label()),
+          attachment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/emails/{email_id}/attachments/{attachment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetEmailAttachmentRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          filename: S.optional(S.String),
+          content_type: S.optional(S.String),
+          content_id: S.optional(S.String),
+          content_disposition: S.optional(S.String),
+          download_url: S.optional(S.String),
+          expires_at: S.optional(S.String),
+          size: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "RetrievedAttachment" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/emails/receiving/{email_id}", code: 200 })),
+      ).annotate({ identifier: "GetEmailReceivingRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          to: S.optional(__S(8, __c1, 0)),
+          from: S.optional(S.String),
+          subject: S.optional(S.String),
+          message_id: S.optional(S.String),
+          bcc: S.optional(S.NullOr(__S(8, __c1, 0))),
+          cc: S.optional(S.NullOr(__S(8, __c1, 0))),
+          reply_to: S.optional(S.NullOr(__S(8, __c1, 0))),
+          html: S.optional(S.NullOr(S.String)),
+          text: S.optional(S.NullOr(S.String)),
+          headers: S.optional(S.NullOr(S.Unknown)),
+          created_at: S.optional(S.String),
+          attachments: S.optional(__S(321, __c40, 1)),
+        }),
+      ).annotate({ identifier: "GetReceivedEmailResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          filename: S.optional(S.String),
+          content_type: S.optional(S.String),
+          content_id: S.optional(S.String),
+          content_disposition: S.optional(S.String),
+          size: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetReceivedEmailResponseAttachmentsItem" });
+    case 1:
+      return S.Array(__S(320, __c40, 0));
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_id: S.String.pipe(T.Label()),
+          attachment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/emails/receiving/{email_id}/attachments/{attachment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetEmailReceivingAttachmentRequest" });
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/events/{identifier}", code: 200 })),
+      ).annotate({ identifier: "GetEventRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          schema: S.optional(S.NullOr(S.Unknown)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "Event" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          log_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/logs/{log_id}", code: 200 })),
+      ).annotate({ identifier: "GetLogRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          created_at: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          method: S.optional(S.String),
+          response_status: S.optional(S.Number),
+          user_agent: S.optional(S.NullOr(S.String)),
+          request_body: S.optional(S.NullOr(S.Unknown)),
+          response_body: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({ identifier: "Log" });
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/segments/{id}", code: 200 })),
+      ).annotate({ identifier: "GetSegmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          object: S.optional(S.String),
+          name: S.optional(S.String),
+          audience_id: S.optional(S.String),
+          filter: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSegmentResponseSuccess" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email: S.String,
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          unsubscribed: S.optional(S.Boolean),
+          properties: S.optional(__S(368, __c46, 0)),
+          segments: S.optional(__S(8, __c1, 0)),
+          topics: S.optional(__S(377, __c47, 1)),
+          audience_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/contacts", code: 200 })),
+      ).annotate({ identifier: "CreateContactRequest" });
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          subscription: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateContactRequestTopicsItem" });
+    case 1:
+      return S.Array(__S(376, __c47, 0));
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/templates/{id}", code: 200 })),
+      ).annotate({ identifier: "GetTemplateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          key: S.String,
+          type: S.String,
+          fallback_value: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TemplateVariable" });
+    case 2:
+      return S.Array(__S(385, __c48, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          current_version_id: S.optional(S.String),
+          name: S.optional(S.String),
+          alias: S.optional(S.String),
+          from: S.optional(S.String),
+          subject: S.optional(S.String),
+          reply_to: S.optional(S.NullOr(__S(8, __c1, 0))),
+          html: S.optional(S.String),
+          text: S.optional(S.String),
+          variables: S.optional(__S(386, __c48, 2)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          status: S.optional(S.String),
+          published_at: S.optional(S.NullOr(S.String)),
+          has_unpublished_versions: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "Template" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/topics/{id}", code: 200 })),
+      ).annotate({ identifier: "GetTopicRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          object: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          default_subscription: S.optional(S.String),
+          visibility: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetTopicResponseSuccess" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/webhooks/{webhook_id}", code: 200 })),
+      ).annotate({ identifier: "GetWebhookRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          events: S.optional(S.NullOr(__S(8, __c1, 0))),
+          status: S.optional(S.String),
+          created_at: S.optional(S.String),
+          signing_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+        }),
+      ).annotate({ identifier: "GetWebhookResponse" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/api-keys", code: 200 })),
+      ).annotate({ identifier: "ListApiKeysRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          last_used_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ApiKey" });
+    case 2:
+      return S.Array(__S(409, __c51, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(410, __c51, 2),
+        }),
+      ).annotate({ identifier: "ListApiKeysResponse" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automation_id: S.String.pipe(T.Label()),
+          status: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/automations/{automation_id}/runs", code: 200 })),
+      ).annotate({ identifier: "ListAutomationRunsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          status: S.optional(S.String),
+          started_at: S.optional(S.NullOr(S.String)),
+          completed_at: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutomationRunListItem" });
+    case 2:
+      return S.Array(__S(417, __c52, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(418, __c52, 2),
+        }),
+      ).annotate({ identifier: "ListAutomationRunsResponse" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          status: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/automations", code: 200 })),
+      ).annotate({ identifier: "ListAutomationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AutomationListItem" });
+    case 2:
+      return S.Array(__S(425, __c53, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(426, __c53, 2),
+        }),
+      ).annotate({ identifier: "ListAutomationsResponse" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/broadcasts", code: 200 })),
+      ).annotate({ identifier: "ListBroadcastsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          audience_id: S.optional(S.String),
+          segment_id: S.optional(S.String),
+          status: S.optional(S.String),
+          created_at: S.optional(S.String),
+          scheduled_at: S.optional(S.String),
+          sent_at: S.optional(S.String),
+          topic_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListBroadcastsResponseSuccessDataItem" });
+    case 2:
+      return S.Array(__S(433, __c54, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(434, __c54, 2),
+        }),
+      ).annotate({ identifier: "ListBroadcastsResponseSuccess" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/contact-properties", code: 200 })),
+      ).annotate({ identifier: "ListContactPropertiesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          key: S.optional(S.String),
+          type: S.optional(S.String),
+          fallback_value: S.optional(S.Unknown),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListContactPropertiesResponseSuccessDataItem" });
+    case 2:
+      return S.Array(__S(441, __c55, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(442, __c55, 2),
+        }),
+      ).annotate({ identifier: "ListContactPropertiesResponseSuccess" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          segment_id: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/contacts", code: 200 })),
+      ).annotate({ identifier: "ListContactsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          email: S.optional(S.String),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          unsubscribed: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ListContactsResponseSuccessDataItem" });
+    case 2:
+      return S.Array(__S(449, __c56, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          data: S.optional(__S(450, __c56, 2)),
+        }),
+      ).annotate({ identifier: "ListContactsResponseSuccess" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contact_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/contacts/{contact_id}/segments", code: 200 })),
+      ).annotate({ identifier: "ListContactSegmentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListContactSegmentsResponseSuccessDataItem" });
+    case 2:
+      return S.Array(__S(457, __c57, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(458, __c57, 2),
+        }),
+      ).annotate({ identifier: "ListContactSegmentsResponseSuccess" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          type: S.String,
+          fallback_value: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "POST", uri: "/contact-properties", code: 200 })),
+      ).annotate({ identifier: "CreateContactPropertyRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contact_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/contacts/{contact_id}/topics", code: 200 })),
+      ).annotate({ identifier: "ListContactTopicsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          subscription: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetContactTopicsResponseSuccessDataItem" });
+    case 2:
+      return S.Array(__S(473, __c59, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(474, __c59, 2),
+        }),
+      ).annotate({ identifier: "GetContactTopicsResponseSuccess" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/domains", code: 200 })),
+      ).annotate({ identifier: "ListDomainsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          created_at: S.optional(S.String),
+          region: S.optional(S.String),
+          capabilities: S.optional(__S(576, __c72, 0)),
+        }),
+      ).annotate({ identifier: "ListDomainsItem" });
+    case 2:
+      return S.Array(__S(481, __c60, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(482, __c60, 2),
+        }),
+      ).annotate({ identifier: "ListDomainsResponse" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/emails/{email_id}/attachments", code: 200 })),
+      ).annotate({ identifier: "ListEmailAttachmentsRequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          filename: S.optional(S.String),
+          content_type: S.optional(S.String),
+          content_id: S.optional(S.String),
+          content_disposition: S.optional(S.String),
+          download_url: S.optional(S.String),
+          expires_at: S.optional(S.String),
+          size: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "ListAttachmentsResponseDataItem" });
+    case 1:
+      return S.Array(__S(496, __c62, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(497, __c62, 1),
+        }),
+      ).annotate({ identifier: "ListAttachmentsResponse" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/emails/receiving", code: 200 })),
+      ).annotate({ identifier: "ListEmailReceivingRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          to: S.optional(__S(8, __c1, 0)),
+          from: S.optional(S.String),
+          subject: S.optional(S.NullOr(S.String)),
+          message_id: S.optional(S.String),
+          bcc: S.optional(S.NullOr(__S(8, __c1, 0))),
+          cc: S.optional(S.NullOr(__S(8, __c1, 0))),
+          reply_to: S.optional(S.NullOr(__S(8, __c1, 0))),
+          created_at: S.optional(S.String),
+          attachments: S.optional(__S(321, __c40, 1)),
+        }),
+      ).annotate({ identifier: "ListReceivedEmailsResponseDataItem" });
+    case 2:
+      return S.Array(__S(505, __c63, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(506, __c63, 2),
+        }),
+      ).annotate({ identifier: "ListReceivedEmailsResponse" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_id: S.String.pipe(T.Label()),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/emails/receiving/{email_id}/attachments", code: 200 }),
+        ),
+      ).annotate({ identifier: "ListEmailReceivingAttachmentsRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/emails", code: 200 })),
+      ).annotate({ identifier: "ListEmailsRequest" });
+    case 1:
+      return S.Array(__S(16, __c2, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(521, __c65, 1),
+        }),
+      ).annotate({ identifier: "ListEmailsResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/events", code: 200 })),
+      ).annotate({ identifier: "ListEventsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          schema: S.optional(S.NullOr(S.Unknown)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "EventSummary" });
+    case 2:
+      return S.Array(__S(529, __c66, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(530, __c66, 2),
+        }),
+      ).annotate({ identifier: "ListEventsResponse" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/logs", code: 200 })),
+      ).annotate({ identifier: "ListLogsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          created_at: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          method: S.optional(S.String),
+          response_status: S.optional(S.Number),
+          user_agent: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "LogSummary" });
+    case 2:
+      return S.Array(__S(537, __c67, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(538, __c67, 2),
+        }),
+      ).annotate({ identifier: "ListLogsResponse" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/segments", code: 200 })),
+      ).annotate({ identifier: "ListSegmentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          audience_id: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListSegmentsResponseSuccessDataItem" });
+    case 2:
+      return S.Array(__S(545, __c68, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(546, __c68, 2),
+        }),
+      ).annotate({ identifier: "ListSegmentsResponseSuccess" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/templates", code: 200 })),
+      ).annotate({ identifier: "ListTemplatesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          published_at: S.optional(S.NullOr(S.String)),
+          created_at: S.optional(S.String),
+          updated_at: S.optional(S.String),
+          alias: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "TemplateListItem" });
+    case 2:
+      return S.Array(__S(553, __c69, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          data: __S(554, __c69, 2),
+          has_more: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ListTemplatesResponseSuccess" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          region: S.optional(S.String),
+          custom_return_path: S.optional(S.String),
+          open_tracking: S.optional(S.Boolean),
+          click_tracking: S.optional(S.Boolean),
+          tls: S.optional(S.String),
+          capabilities: S.optional(__S(576, __c72, 0)),
+          tracking_subdomain: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/domains", code: 200 })),
+      ).annotate({ identifier: "CreateDomainRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          created_at: S.optional(S.String),
+          status: S.optional(S.String),
+          capabilities: S.optional(__S(576, __c72, 0)),
+          records: S.optional(__S(569, __c71, 1)),
+          region: S.optional(S.String),
+          open_tracking: S.optional(S.Boolean),
+          click_tracking: S.optional(S.Boolean),
+          tracking_subdomain: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateDomainResponse" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          record: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          ttl: S.optional(S.String),
+          status: S.optional(S.String),
+          value: S.optional(S.String),
+          priority: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "DomainRecord" });
+    case 1:
+      return S.Array(__S(568, __c71, 0));
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sending: S.optional(S.String),
+          receiving: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DomainCapabilities" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/topics", code: 200 })),
+      ).annotate({ identifier: "ListTopicsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          default_subscription: S.optional(S.String),
+          visibility: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListTopicsResponseSuccessDataItem" });
+    case 2:
+      return S.Array(__S(585, __c73, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(586, __c73, 2),
+        }),
+      ).annotate({ identifier: "ListTopicsResponseSuccess" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          limit: S.optional(S.Number.pipe(T.Query())),
+          after: S.optional(S.String.pipe(T.Query())),
+          before: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/webhooks", code: 200 })),
+      ).annotate({ identifier: "ListWebhooksRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          endpoint: S.optional(S.String),
+          events: S.optional(S.NullOr(__S(8, __c1, 0))),
+          status: S.optional(S.String),
+          created_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ListWebhooksResponseDataItem" });
+    case 2:
+      return S.Array(__S(593, __c74, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          has_more: S.optional(S.Boolean),
+          data: __S(594, __c74, 2),
+        }),
+      ).annotate({ identifier: "ListWebhooksResponse" });
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/templates/{id}/publish", code: 200 })),
+      ).annotate({ identifier: "PublishTemplateRequest" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          scheduled_at: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/broadcasts/{id}/send", code: 200 })),
+      ).annotate({ identifier: "SendBroadcastRequest" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          event: S.String,
+          contact_id: S.optional(S.String),
+          email: S.optional(S.String),
+          payload: S.optional(__S(368, __c46, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/events/send", code: 200 })),
+      ).annotate({ identifier: "SendEventRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "SendEventResponse" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automation_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/automations/{automation_id}/stop", code: 200 })),
+      ).annotate({ identifier: "StopAutomationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          id: S.optional(S.String),
+          status: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StopAutomationResponse" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          automation_id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          status: S.optional(S.String),
+          steps: S.optional(__S(161, __c20, 1)),
+          connections: S.optional(__S(145, __c18, 1)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/automations/{automation_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateAutomationRequest" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          audience_id: S.optional(S.String),
+          segment_id: S.optional(S.String),
+          from: S.optional(S.String),
+          subject: S.optional(S.String),
+          reply_to: S.optional(__S(8, __c1, 0)),
+          preview_text: S.optional(S.String),
+          html: S.optional(S.String),
+          text: S.optional(S.String),
+          topic_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/broadcasts/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateBroadcastRequest" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          email: S.optional(S.String),
+          first_name: S.optional(S.String),
+          last_name: S.optional(S.String),
+          unsubscribed: S.optional(S.Boolean),
+          properties: S.optional(__S(368, __c46, 0)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/contacts/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateContactRequest" });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          fallback_value: S.optional(S.Unknown),
+        }).pipe(T.Http({ method: "PATCH", uri: "/contact-properties/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateContactPropertyRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          variables: S.optional(__S(664, __c83, 0)),
+        }),
+      ).annotate({ identifier: "CreateEmailRequestTemplate" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.String,
+          to: S.Unknown,
+          subject: S.String,
+          bcc: S.optional(S.Unknown),
+          cc: S.optional(S.Unknown),
+          reply_to: S.optional(S.Unknown),
+          html: S.optional(S.String),
+          text: S.optional(S.String),
+          template: S.optional(__S(665, __c83, 1)),
+          headers: S.optional(S.Unknown),
+          scheduled_at: S.optional(S.String),
+          attachments: S.optional(__S(673, __c84, 1)),
+          tags: S.optional(__S(675, __c84, 3)),
+          topic_id: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/emails", code: 200 })),
+      ).annotate({ identifier: "CreateEmailRequest" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          content: S.optional(S.String),
+          filename: S.optional(S.String),
+          path: S.optional(S.String),
+          content_type: S.optional(S.String),
+          content_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Attachment" });
+    case 1:
+      return S.Array(__S(672, __c84, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          value: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "Tag" });
+    case 3:
+      return S.Array(__S(674, __c84, 2));
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SendEmailResponse" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contact_id: S.String.pipe(T.Label()),
+          segment_id: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/contacts/{contact_id}/segments/{segment_id}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "UpdateContactSegmentRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          contact_id: S.optional(S.String),
+          segment_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "AddContactToSegmentResponseSuccess" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contact_id: S.String.pipe(T.Label()),
+          topics: __S(377, __c47, 1),
+        }).pipe(T.Http({ method: "PATCH", uri: "/contacts/{contact_id}/topics", code: 200 })),
+      ).annotate({ identifier: "UpdateContactTopicsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          object: S.optional(S.String),
+          contact_id: S.optional(S.String),
+          topics: S.optional(__S(377, __c47, 1)),
+        }),
+      ).annotate({ identifier: "UpdateContactTopicsResponseSuccess" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain_id: S.String.pipe(T.Label()),
+          open_tracking: S.optional(S.Boolean),
+          click_tracking: S.optional(S.Boolean),
+          tls: S.optional(S.String),
+          capabilities: S.optional(__S(576, __c72, 0)),
+          tracking_subdomain: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/domains/{domain_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateDomainRequest" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          email_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "PATCH", uri: "/emails/{email_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateEmailRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          scheduled_at: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpdateEmailOptions" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          identifier: S.String.pipe(T.Label()),
+          schema: S.NullOr(S.Unknown),
+        }).pipe(T.Http({ method: "PATCH", uri: "/events/{identifier}", code: 200 })),
+      ).annotate({ identifier: "UpdateEventRequest" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          alias: S.optional(S.String),
+          from: S.optional(S.String),
+          subject: S.optional(S.String),
+          reply_to: S.optional(__S(8, __c1, 0)),
+          html: S.optional(S.String),
+          text: S.optional(S.String),
+          variables: S.optional(__S(49, __c6, 1)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/templates/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateTemplateRequest" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          description: S.optional(S.String),
+          visibility: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/topics/{id}", code: 200 })),
+      ).annotate({ identifier: "UpdateTopicRequest" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhook_id: S.String.pipe(T.Label()),
+          endpoint: S.optional(S.String),
+          events: S.optional(__S(8, __c1, 0)),
+          status: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{webhook_id}", code: 200 })),
+      ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          domain_id: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/domains/{domain_id}/verify", code: 200 })),
+      ).annotate({ identifier: "VerifyDomainRequest" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          variables: S.optional(__S(760, __c95, 0)),
+        }),
+      ).annotate({ identifier: "SendEmailRequestTemplate" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.String,
+          to: S.Unknown,
+          subject: S.String,
+          bcc: S.optional(S.Unknown),
+          cc: S.optional(S.Unknown),
+          reply_to: S.optional(S.Unknown),
+          html: S.optional(S.String),
+          text: S.optional(S.String),
+          template: S.optional(__S(761, __c95, 1)),
+          headers: S.optional(S.Unknown),
+          scheduled_at: S.optional(S.String),
+          attachments: S.optional(__S(673, __c84, 1)),
+          tags: S.optional(__S(675, __c84, 3)),
+          topic_id: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SendEmailRequest" });
+    case 3:
+      return S.Array(__S(762, __c95, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          body: S.optional(__S(763, __c95, 3).pipe(T.HttpBody())),
+        }).pipe(T.Http({ method: "POST", uri: "/emails/batch", code: 200 })),
+      ).annotate({ identifier: "CreateEmailBatchRequest" });
+    case 5:
+      return S.Array(__S(680, __c85, 0));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          data: S.optional(__S(765, __c95, 5)),
+        }),
+      ).annotate({ identifier: "CreateBatchEmailsResponse" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          schema: S.optional(S.NullOr(S.Unknown)),
+        }).pipe(T.Http({ method: "POST", uri: "/events", code: 200 })),
+      ).annotate({ identifier: "CreateEventRequest" });
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
-
-// Operation data (see `op` in core/api): shared schema holders, then the vocabulary.
-function __d0(): any {
-  return ["!10(!2)", [__v]];
-}
-function __d1(): any {
-  return [
-    '!4(>!3({object:!1(!2),id:!1(!2),to:!1(^1:0),from:!1(!2),created_at:!1(!2),subject:!1(!2),html:!1(!2),text:!1(!2),bcc:!1(^1:0),cc:!1(^1:0),reply_to:!1(^1:0),last_event:!1(!2)}))@"Email"',
-    [__v, __d0],
-  ];
-}
-function __d2(): any {
-  return [
-    '!4(>!3({key:!2,type:!2,fallback_value:!1(!11)}))@"TemplateVariableInput";!10(#0)',
-    [__v],
-  ];
-}
-function __d3(): any {
-  return ['!4(>!3({object:!1(!2),id:!1(!2),deleted:!1(!9)}))@"DeleteApiKeyResponse"', [__v]];
-}
-function __d4(): any {
-  return [
-    '!4(>!3({id:!1(!2),object:!1(!2),deleted:!1(!9)}))@"RemoveBroadcastResponseSuccess"',
-    [__v],
-  ];
-}
-function __d5(): any {
-  return ['!4(>!3({from:!2,to:!2,type:!1(!2)}))@"AutomationConnection";!10(#0)', [__v]];
-}
-function __d6(): any {
-  return ['!4(>!3({object:!1(!2),id:!1(!2)}))@"CreateAutomationResponse"', [__v]];
-}
-function __d7(): any {
-  return ['!4(>!3({key:!2,type:!2,config:!11}))@"AutomationStep";!10(#0)', [__v]];
-}
-function __d8(): any {
-  return ['!4(>!3({id:!1(!2),object:!1(!2)}))@"CreateBroadcastResponseSuccess"', [__v]];
-}
-function __d9(): any {
-  return [
-    '!4(>!3({object:!1(!2),id:!1(!2),filename:!1(!2),content_type:!1(!2),content_id:!1(!2),content_disposition:!1(!2),download_url:!1(!2),expires_at:!1(!2),size:!1(!12)}))@"RetrievedAttachment"',
-    [__v],
-  ];
-}
-function __d10(): any {
-  return [
-    '!4(>!3({id:!1(!2),filename:!1(!2),content_type:!1(!2),content_id:!1(!2),content_disposition:!1(!2),size:!1(!12)}))@"GetReceivedEmailResponseAttachmentsItem";!10(#0)',
-    [__v],
-  ];
-}
-function __d11(): any {
-  return ["!13(!2,!11)", [__v]];
-}
-function __d12(): any {
-  return [
-    '!4(>!3({id:!1(!2),subscription:!1(!2)}))@"CreateContactRequestTopicsItem";!10(#0)',
-    [__v],
-  ];
-}
-function __d13(): any {
-  return [
-    '!4(>!3({id:!1(!2),filename:!1(!2),content_type:!1(!2),content_id:!1(!2),content_disposition:!1(!2),download_url:!1(!2),expires_at:!1(!2),size:!1(!12)}))@"ListAttachmentsResponseDataItem";!10(#0);!4(>!3({object:!1(!2),has_more:!1(!9),data:#1}))@"ListAttachmentsResponse"',
-    [__v],
-  ];
-}
-function __d14(): any {
-  return [
-    '!4(>!3({record:!1(!2),name:!1(!2),type:!1(!2),ttl:!1(!2),status:!1(!2),value:!1(!2),priority:!1(!12)}))@"DomainRecord";!10(#0)',
-    [__v],
-  ];
-}
-function __d15(): any {
-  return ['!4(>!3({sending:!1(!2),receiving:!1(!2)}))@"DomainCapabilities"', [__v]];
-}
-function __d16(): any {
-  return [
-    '!4(>!3({content:!1(!2),filename:!1(!2),path:!1(!2),content_type:!1(!2),content_id:!1(!2)}))@"Attachment";!10(#0);!4(>!3({name:!1(!2),value:!1(!2)}))@"Tag";!10(#2)',
-    [__v],
-  ];
-}
-function __d17(): any {
-  return ['!4(>!3({id:!1(!2)}))@"SendEmailResponse"', [__v]];
-}
-function __v(): any {
-  return [
-    __L.at,
-    S.optional,
-    S.String,
-    S.Struct,
-    S.suspend,
-    T.Http,
-    T.Query,
-    T.Label,
-    S.NullOr,
-    S.Boolean,
-    S.Array,
-    S.Unknown,
-    S.Number,
-    S.Record,
-    T.SensitiveValue,
-    T.HttpBody,
-  ];
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

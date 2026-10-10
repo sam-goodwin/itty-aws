@@ -16,7 +16,8 @@ const header = [
 const tabled = [
   header,
   `const __s: any[] = [];`,
-  `const KEYS = { aB: "a_b", "x-y": "x\\u00e9" };`,
+  `const __kept = /*@__PURE__*/ __L.at(__c0, 2);`,
+  `const KEYS = { aB: "a_b", "x-y": "x\\u00e9;" };`,
   `export class Oops extends /*@__PURE__*/ S.TaggedError<Oops>()("Oops", { body: S.optional(__S(2, __c0, 2)) }) {}`,
   `export const getThing: API.OperationMethod<any, any, any, any> = /*@__PURE__*/ API.make(() => ({`,
   `  input: __S(0, __c0, 0) as any as S.Schema<any>,`,
@@ -30,9 +31,9 @@ const tabled = [
   `function __c0(j: number): any {`,
   `  switch (j) {`,
   `    case 0: return S.suspend(() => S.Struct({ id: S.String.pipe(T.Label()), n: S.optional(S.Number) }).pipe(T.Http({ method: "GET", uri: "/t/{id}" }), T.KeyDictionary(KEYS))).annotate({ identifier: "GetThingRequest" });`,
-  `    case 1: return S.suspend(() => S.Struct({ tags: S.Array(__S(2, __c0, 2)), lit: S.Literals(["a", -1, true, null]) })).annotate({ identifier: "Thing", title: "it's \\\\" });`,
-  `    case 2: return S.Record(S.String, S.NullOr(S.Unknown));`,
-  `    case 3: return S.Struct({ data: S.Array(__S(1, __c0, 1)) });`,
+  `    case 1: return S.suspend(() => S.Struct({ tags: S.Array(__S(2, __c0, 2)), lit: S.Literals(["a;b", -1.5, true, null]) })).annotate({ identifier: "Thing", title: "it's \\\\" });`,
+  `    case 2: return S.Record(S.String, Sensitive.pipe(S.NullOr));`,
+  `    case 3: return S.Struct({ data: S.Array(__S(1, __c0, 1)), kept: __kept });`,
   `  }`,
   `}`,
   `function __S(i: number, f: (j: number) => unknown, j: number): any {`,
@@ -40,6 +41,7 @@ const tabled = [
   `}`,
 ].join("\n");
 
+const Sensitive = S.String;
 const strategy = () => {
   throw new Error("unused");
 };
@@ -50,23 +52,26 @@ const run = (code: string): Record<string, any> => {
     .replace(/^import .*$/gm, "")
     .replace(/^export /gm, "");
   const names = [...js.matchAll(/^(?:const|class) ([A-Za-z]\w*)/gm)].map((m) => m[1]!);
-  return new Function("API", "S", "__L", "T", "strategy", `${js}\nreturn { ${names.join(", ")} };`)(
-    API,
-    S,
-    S,
-    T,
-    strategy,
-  );
+  return new Function(
+    "API",
+    "S",
+    "__L",
+    "T",
+    "strategy",
+    "Sensitive",
+    `${js}\nreturn { ${names.join(", ")} };`,
+  )(API, S, S, T, strategy, Sensitive);
 };
 
 /** Lite ASTs with every Suspend resolved, as plain data. */
-const plain = (n: any, seen = new Map<any, unknown>()): unknown => {
+const plain = (n: any, ancestors = new Set<any>()): unknown => {
   if (n === null || typeof n !== "object") return typeof n === "function" ? n.name : n;
-  if (seen.has(n)) return "<cycle>";
-  seen.set(n, true);
+  if (ancestors.has(n)) return "<cycle>";
+  ancestors.add(n);
   const out: Record<string | symbol, unknown> = {};
-  for (const k of Reflect.ownKeys(n)) if (k !== "thunk") out[k] = plain(n[k], seen);
-  if (n._tag === "Suspend") out.resolved = plain(n.thunk(), seen);
+  for (const k of Reflect.ownKeys(n)) if (k !== "thunk") out[k] = plain(n[k], ancestors);
+  if (n._tag === "Suspend") out.resolved = plain(n.thunk(), ancestors);
+  ancestors.delete(n);
   return Array.isArray(n) ? Object.values(out) : out;
 };
 
@@ -76,11 +81,12 @@ describe("datafyOperations", () => {
   test("replaces builders and the table with data operations", () => {
     expect(operations).toBe(2);
     expect(holders).toBeGreaterThan(0);
-    expect(code).not.toMatch(/function __c0|function __S|const __s|const KEYS/);
+    expect(code).not.toMatch(/function __c0|function __S|const __s/);
     expect(code).toContain(`API.op((i: any): any => i === API.D ? ['`);
     expect(code).toContain(`API.opPaginated(`);
     expect(code).toContain(`API.call(getThing, i)`);
-    expect(code).toContain(`function __v(): any {`);
+    expect(code).toContain(`const __0 = __L.at;`);
+    expect(code).toMatch(/^const __\d+ = S\.Struct;$/m);
     // The module source stays one-byte.
     expect(code).not.toMatch(/[^\x00-\x7f]/);
   });

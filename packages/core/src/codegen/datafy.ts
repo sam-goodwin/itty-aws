@@ -7,20 +7,19 @@
  *   function __c0(j: number): any { switch (j) { case 4: return S.Struct({ ... }); } }
  * becomes
  *   export const getFile: API.OperationMethod<...> = API.op((i: any): any =>
- *     i === API.D ? ['{input:#1,...};!3({...})', [__v, ...]] : API.call(getFile, i));
- *   function __d0(): any { return ['...', [__v, ...]]; }
- *   function __v(): any { return [__L.at, S.String, S.Struct, ...]; }
+ *     i === API.D ? ['{input:#1,...};$3({...})', [__0, __4, ...]] : API.call(getFile, i));
+ *   function __d0(): any { return ['...', [__0, ...]]; }
+ *   const __0 = __L.at, __4 = S.Struct, ...;
  *
  * Each schema reached by one operation only moves into that operation's
  * arrow. Schemas reached by several roots (operations, error classes, other
  * module-level code) move into shared holders grouped by the exact set of
  * roots that reach them, so a bundle keeps a holder only when it needs all
- * of it. Module-private constants used only by schemas (Cloudflare's
- * KEY_DICTIONARY) move into holders the same way. The schema-library and
- * trait functions the module uses form one vocabulary (`__v`); everything
- * else a holder names (error classes, protocols, other holders) is listed
- * in the holder itself. Expressions are encoded in the grammar documented
- * in core/api.
+ * of it. Schema-library and trait
+ * functions get short module-level aliases (`__4 = S.Struct`) so holders
+ * list them cheaply and a bundler still drops the unused ones. Thunk bodies
+ * (`S.suspend(() => ...)`) become entries of their own. Expressions are
+ * encoded in the grammar documented in core/api.
  */
 import { parseAst } from "rolldown/parseAst";
 
@@ -43,11 +42,14 @@ const strip = (n: Node): Node => {
   return n;
 };
 
-/** `__S(i, __cK, j)` -> `K:j`, or undefined. */
+/** `__S(i, __cK, j)` or `__L.at(__cK, j)` (consts the table pass kept) -> `K:j`, or undefined. */
 const tableRef = (n: Node): string | undefined => {
-  if (n.type !== "CallExpression" || n.callee.type !== "Identifier" || n.callee.name !== "__S")
-    return undefined;
-  const [, f, j] = n.arguments as Node[];
+  if (n.type !== "CallExpression") return undefined;
+  const c = n.callee;
+  const table = c.type === "Identifier" && c.name === "__S";
+  const at = c.type === "MemberExpression" && c.object.name === "__L" && c.property.name === "at";
+  if (!table && !at) return undefined;
+  const [f, j] = (n.arguments as Node[]).slice(table ? 1 : 0);
   const m = /^__c(\d+)$/.exec(f!.name ?? "");
   if (!m || j!.type !== "Literal") throw new Error("datafy: unexpected __S call");
   return `${m[1]}:${j!.value}`;
@@ -65,21 +67,24 @@ const walk = (n: unknown, visit: (n: Node) => boolean): void => {
 
 const IDENT = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 
-/** A JSON string with every non-ASCII character escaped: the module source must stay one-byte. */
+/**
+ * A JSON string with every non-ASCII character and `;` (the entry separator)
+ * escaped: the module source must stay one-byte.
+ */
 const quote = (s: string): string =>
   JSON.stringify(s).replace(
-    /[^\x00-\x7f]/g,
+    /[^\x00-\x3a\x3c-\x7f]/g,
     (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`,
   );
 
-/** Values every holder may name through the vocabulary: namespace members of these imports. */
+/** Values that get a short module-level alias: namespace members of these imports. */
 const VOCAB = /^(?:S|T|__L)\.[A-Za-z_$][\w$]*$/;
 
 /** A data holder being written: its entries and the values they name. */
 class Holder {
   readonly entries: string[] = [];
-  readonly refs: string[] = ["__v"];
-  readonly refIndex = new Map<string, number>([["__v", 0]]);
+  readonly refs: string[] = ["__0"];
+  readonly refIndex = new Map<string, number>([["__0", 0]]);
   /** node key -> entry index in this holder */
   readonly local = new Map<string, number>();
   readonly name: string;
@@ -105,6 +110,16 @@ export const datafyOperations = (
   const program = parseAst(code, { sourceType: "module", lang: "ts" }, filename);
   const body = program.body as unknown as Node[];
   const text = (n: Node) => code.slice(n.start, n.end);
+  // `import * as X`: `X.y` is a plain value; any other receiver keeps `this` in calls.
+  const namespaces = new Set<string>();
+  for (const st of body)
+    if (st.type === "ImportDeclaration" && st.importKind !== "type")
+      for (const sp of st.specifiers as Node[])
+        if (sp.type === "ImportNamespaceSpecifier") namespaces.add(sp.local.name);
+  const isNamespace = (n: Node) => n.type === "Identifier" && namespaces.has(n.name);
+  // Emitted JS (lib/) gets no type annotations.
+  const ts = !filename.endsWith(".js");
+  const any = ts ? ": any" : "";
 
   // Graph nodes: schemas (`K:j`, from the builders) and constants (`v:NAME`).
   const nodes = new Map<string, Node>();
@@ -136,8 +151,6 @@ export const datafyOperations = (
         removals.push(st);
         continue;
       }
-      if (d.init && /^(?:Object|Array)Expression$/.test(strip(d.init).type))
-        consts.set(d.id.name, { st, init: strip(d.init) });
     }
     const decl = st.type === "ExportNamedDeclaration" ? st.declaration : st;
     if (decl?.type === "VariableDeclaration" && decl.declarations.length === 1) {
@@ -245,9 +258,13 @@ export const datafyOperations = (
     h.entries.push("");
   }
 
-  // Vocabulary: namespace members, most used first (shorter indexes).
-  const vocabCount = new Map<string, number>([["__L.at", Infinity]]);
-  const vocabIndex = new Map<string, number>();
+  // Aliases: `__0` is `at`; other namespace members are numbered on first use.
+  const aliases = new Map<string, string>([["__L.at", "__0"]]);
+  const alias = (t: string): string => {
+    let a = aliases.get(t);
+    if (!a) aliases.set(t, (a = `__${aliases.size}`));
+    return a;
+  };
 
   const nodeRef = (k: string, h: Holder): string => {
     const target = home.get(k)!;
@@ -257,24 +274,19 @@ export const datafyOperations = (
     return `${constant ? "~" : "^"}${h.ref(target.name)}:${j}`;
   };
 
-  // Two passes: the first counts vocabulary uses, the second writes.
-  const encode = (n: Node, h: Holder, count: boolean): string => {
-    const value = (t: string): string => {
-      if (!VOCAB.test(t)) return count ? "" : `$${h.ref(t)}`;
-      if (count) vocabCount.set(t, (vocabCount.get(t) ?? 0) + 1);
-      return count ? "" : `!${vocabIndex.get(t)}`;
-    };
+  const encode = (n: Node, h: Holder): string => {
+    const value = (t: string): string => `$${h.ref(VOCAB.test(t) ? alias(t) : t)}`;
     n = strip(n);
     const k = tableRef(n);
-    if (k) return count ? "" : nodeRef(k, h);
-    const enc = (x: Node) => encode(x, h, count);
+    if (k) return nodeRef(k, h);
+    const enc = (x: Node) => encode(x, h);
     switch (n.type) {
       case "Literal": {
         const v = n.value;
         if (typeof v === "string") return quote(v);
         if (typeof v === "number" && Number.isFinite(v)) return String(v);
-        if (typeof v === "boolean") return v ? "t" : "f";
-        if (v === null && !n.regex && !n.bigint) return "n";
+        if (typeof v === "boolean") return String(v);
+        if (v === null && !n.regex && !n.bigint) return "null";
         throw new Error(`datafy: unsupported literal ${text(n)}`);
       }
       case "TemplateLiteral":
@@ -291,13 +303,13 @@ export const datafyOperations = (
         throw new Error(`datafy: unsupported unary ${text(n)}`);
       case "Identifier":
         if (n.name === "undefined") return "u";
-        if (consts.has(n.name)) return count ? "" : nodeRef(`v:${n.name}`, h);
+        if (consts.has(n.name)) return nodeRef(`v:${n.name}`, h);
         return value(n.name);
       case "MemberExpression": {
         if (n.computed) throw new Error(`datafy: computed member ${text(n)}`);
         const obj = strip(n.object);
         // `S.String`, `Retry.Retry`: one value.
-        if (obj.type === "Identifier") return value(`${obj.name}.${n.property.name}`);
+        if (isNamespace(obj)) return value(`${obj.name}.${n.property.name}`);
         return `${enc(obj)}.${n.property.name}`;
       }
       case "CallExpression": {
@@ -311,7 +323,7 @@ export const datafyOperations = (
         if (
           callee.type === "MemberExpression" &&
           !callee.computed &&
-          strip(callee.object).type !== "Identifier"
+          !isNamespace(strip(callee.object))
         ) {
           const [arg] = n.arguments as Node[];
           const props = arg?.type === "ObjectExpression" ? (arg.properties as Node[]) : [];
@@ -354,27 +366,28 @@ export const datafyOperations = (
       case "ArrowFunctionExpression":
         if (n.params.length || n.body.type === "BlockStatement")
           throw new Error(`datafy: unsupported function ${text(n).slice(0, 80)}`);
-        return `>${enc(n.body)}`;
+        {
+          // The body becomes its own entry, so a reader never has to skip it.
+          const j = h.entries.length;
+          h.entries.push("");
+          h.entries[j] = enc(n.body);
+          return `>${j}`;
+        }
       default:
         throw new Error(`datafy: unsupported ${n.type}: ${text(n).slice(0, 80)}`);
     }
   };
 
-  const configOf = (o: Op, h: Holder, count: boolean): string => {
-    let config = encode(o.config, h, count);
+  const configOf = (o: Op, h: Holder): string => {
+    let config = encode(o.config, h);
     if (o.strategy) {
-      if (!count && !config.endsWith("}"))
-        throw new Error(`datafy: ${o.name} config is not an object`);
-      config = `${config.slice(0, -1)}${config.length > 2 ? "," : ""}strategy:${encode(o.strategy, h, count)}}`;
+      if (!config.endsWith("}")) throw new Error(`datafy: ${o.name} config is not an object`);
+      config = `${config.slice(0, -1)}${config.length > 2 ? "," : ""}strategy:${encode(o.strategy, h)}}`;
     }
     return config;
   };
-  for (const [k, h] of home) encode(nodes.get(k)!, h, true);
-  ops.forEach((o, i) => configOf(o, opHolders[i]!, true));
-  const vocab = [...vocabCount].sort((a, b) => b[1] - a[1]).map(([t]) => t);
-  vocab.forEach((t, i) => vocabIndex.set(t, i));
-  for (const [k, h] of home) h.entries[h.local.get(k)!] = encode(nodes.get(k)!, h, false);
-  ops.forEach((o, i) => (opHolders[i]!.entries[0] = configOf(o, opHolders[i]!, false)));
+  for (const [k, h] of home) h.entries[h.local.get(k)!] = encode(nodes.get(k)!, h);
+  ops.forEach((o, i) => (opHolders[i]!.entries[0] = configOf(o, opHolders[i]!)));
 
   // The data string is a single-quoted JS literal.
   const literal = (h: Holder) =>
@@ -392,7 +405,7 @@ export const datafyOperations = (
     edits.push([
       o.init.start,
       o.init.end,
-      `${marked ? "" : "/*@__PURE__*/ "}${fn}((i: any): any => i === API.D ? ${literal(opHolders[i]!)} : API.call(${o.name}, i))`,
+      `${marked ? "" : "/*@__PURE__*/ "}${fn}((i${any})${any} => i === API.D ? ${literal(opHolders[i]!)} : API.call(${o.name}, i))`,
     ]);
   });
   // Module-level code that names a schema at import (error classes).
@@ -401,19 +414,24 @@ export const datafyOperations = (
       const k = tableRef(n);
       if (!k) return true;
       const target = home.get(k)!;
-      edits.push([n.start, n.end, `API.schema(__L.at, ${target.name}, ${target.local.get(k)})`]);
+      edits.push([n.start, n.end, `API.schema(${target.name}, ${target.local.get(k)})`]);
       return false;
     });
 
   edits.sort((a, b) => b[0] - a[0]);
   let out = code;
   for (const [s, e, t] of edits) out = out.slice(0, s) + t + out.slice(e);
-  out = out.replace(/\n*$/, "\n");
-  out +=
-    "\n// Operation data (see `op` in core/api): shared schema holders, then the vocabulary.\n" +
-    [...shared.values()]
-      .map((h) => `function ${h.name}(): any {\n  return ${literal(h)};\n}\n`)
-      .join("") +
-    `function __v(): any {\n  return [${vocab.join(", ")}];\n}\n`;
+  out = out.replace(/\n*$/, "\n").replace(/^\/\/ Schema table, filled on first reach.*\n/m, "");
+  if (shared.size)
+    out +=
+      "\n// Shared schema data (see `op` in core/api).\n" +
+      [...shared.values()]
+        .map((h) => `function ${h.name}()${any} {\n  return ${literal(h)};\n}\n`)
+        .join("");
+  // Aliases go right after the imports: error classes reach schemas while the module evaluates.
+  const lastImport = [...body].reverse().find((st) => st.type === "ImportDeclaration");
+  const at = lastImport ? lastImport.end : 0;
+  const decls = [...aliases].map(([t, a]) => `const ${a} = ${t};`);
+  out = `${out.slice(0, at)}\n${decls.join("\n")}${out.slice(at)}`;
   return { code: out, operations: ops.length, holders: shared.size };
 };

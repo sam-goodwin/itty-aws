@@ -13,9 +13,123 @@ import {
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
 // Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
+
 export type { CloudflareOpError, CloudflareOpContext };
 
 /** Fallback camelCase->wire mapping for opaque content (mined from the distilled SDK). */
+const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
+  abrLevel: "abr_level",
+  allowedDestinationAddresses: "allowed_destination_addresses",
+  allowedSenderAddresses: "allowed_sender_addresses",
+  appId: "app_id",
+  authorEmail: "author_email",
+  authorId: "author_id",
+  bodyPart: "body_part",
+  bucketName: "bucket_name",
+  bytesRead: "bytes_read",
+  cache: "cache_options",
+  capnpSchema: "capnp_schema",
+  certId: "cert_id",
+  certificateId: "certificate_id",
+  className: "class_name",
+  compatibilityDate: "compatibility_date",
+  compatibilityFlags: "compatibility_flags",
+  contentBase64: "content_base64",
+  contentType: "content_type",
+  cpuMs: "cpu_ms",
+  createdOn: "created_on",
+  crossAccountGrant: "cross_account_grant",
+  crossVersionCache: "cross_version_cache",
+  databaseId: "database_id",
+  defaultUsageModel: "default_usage_model",
+  deletedClasses: "deleted_classes",
+  deliveryDelay: "delivery_delay",
+  destinationAddress: "destination_address",
+  destinationConf: "destination_conf",
+  dispatchNamespace: "dispatch_namespace",
+  documentationUrl: "documentation_url",
+  enableTimer: "enable_timer",
+  entryPoint: "entry_point",
+  environmentIsDefault: "environment_is_default",
+  environmentName: "environment_name",
+  errorMessage: "error_message",
+  exchangeUrl: "exchange_url",
+  expiresAt: "expires_at",
+  fromScript: "from_script",
+  greenCompute: "green_compute",
+  hasAssets: "has_assets",
+  hasModules: "has_modules",
+  headSamplingRate: "head_sampling_rate",
+  htmlHandling: "html_handling",
+  indexName: "index_name",
+  instanceName: "instance_name",
+  invocationLogs: "invocation_logs",
+  keepAssets: "keep_assets",
+  keepBindings: "keep_bindings",
+  keyBase64: "key_base64",
+  keyJwk: "key_jwk",
+  lastAnalyzedAt: "last_analyzed_at",
+  lastComplete: "last_complete",
+  lastDeployedFrom: "last_deployed_from",
+  lastError: "last_error",
+  mainModule: "main_module",
+  migrationTag: "migration_tag",
+  minimalMode: "minimal_mode",
+  mitigationTimeout: "mitigation_timeout",
+  modifiedOn: "modified_on",
+  namedHandlers: "named_handlers",
+  namespaceId: "namespace_id",
+  networkId: "network_id",
+  newClasses: "new_classes",
+  newSqliteClasses: "new_sqlite_classes",
+  newTag: "new_tag",
+  notFoundHandling: "not_found_handling",
+  oldName: "old_name",
+  oldTag: "old_tag",
+  perPage: "per_page",
+  placementMode: "placement_mode",
+  placementStatus: "placement_status",
+  previewToken: "preview_token",
+  previewsEnabled: "previews_enabled",
+  propagationPolicy: "propagation_policy",
+  queueName: "queue_name",
+  renamedClasses: "renamed_classes",
+  resultInfo: "result_info",
+  rowsRead: "rows_read",
+  runWorkerFirst: "run_worker_first",
+  scriptName: "script_name",
+  scriptRuntime: "script_runtime",
+  secretName: "secret_name",
+  serveDirectly: "serve_directly",
+  serviceId: "service_id",
+  serviceName: "service_name",
+  startupTimeMs: "startup_time_ms",
+  storeId: "store_id",
+  streamingTailConsumers: "streaming_tail_consumers",
+  tailConsumers: "tail_consumers",
+  tailUrl: "tail_url",
+  totalCount: "total_count",
+  transferredClasses: "transferred_classes",
+  tunnelId: "tunnel_id",
+  usageModel: "usage_model",
+  versionId: "version_id",
+  versionTags: "version_tags",
+  workersAlias: "workers/alias",
+  workersDev: "workers_dev",
+  workersMessage: "workers/message",
+  workersTag: "workers/tag",
+  workersTriggeredBy: "workers/triggered_by",
+  workflowName: "workflow_name",
+  wranglerSessionConfig: "wrangler-session-config",
+  zoneId: "zone_id",
+  zoneName: "zone_name",
+  previewId: "preview_id",
+  previewName: "preview_name",
+  workerName: "worker_name",
+  ignoreBaseConfig: "ignore_base_config",
+};
+
 export class ContentTypeRequired
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ContentTypeRequired>()("ContentTypeRequired", {
@@ -15475,14 +15589,13 @@ export const bulkUpdateScriptSecrets: API.OperationMethod<
   BulkUpdateScriptSecretsResponse,
   BulkUpdateScriptSecretsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:#6,errors:[$3,$4],protocol:$5,retry:$6};!11.pipe(!13([["name","text","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"]],{key:"type",values:["secret_text","secret_key"]}));!16(!2,#1);!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),secrets:!1(#2),versionTags:!1(^2:0.pipe(!4("version_tags")))}).pipe(!14({method:"PATCH",uri:"/accounts/{account_id}/workers/scripts/{script_name}/secrets-bulk",code:200})).pipe(!10(~1:0)))@"BulkUpdateScriptSecretsRequest";!11.pipe(!13([["name","text","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"]],{key:"type",values:["secret_text","secret_key"]}));!16(!2,#4);!5(>#5.pipe(!19(),!10(~1:0)))@"BulkUpdateScriptSecretsResponse"',
-        [__v, __d48, __d0, CloudflareRateLimited, CloudflareError, CloudflareProtocol, Retry.Retry],
-      ]
-    : API.call(bulkUpdateScriptSecrets, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(770, __c24, 2) as any as S.Schema<BulkUpdateScriptSecretsRequest>,
+  output: __S(773, __c24, 5) as any as S.Schema<BulkUpdateScriptSecretsResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateAssetUploadError = InvalidRoute | CloudflareOpError;
 /** Upload Worker assets ahead of creating a Worker version. To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/. */
@@ -15491,23 +15604,13 @@ export const createAssetUpload: API.OperationMethod<
   CreateAssetUploadResponse,
   CreateAssetUploadError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),base64:!8.pipe(!15()),body:!1(^2:0.pipe(!22())),jwtToken:!1(!2.pipe(!21("Authorization")))}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/assets/upload",code:200,contentType:"multipart"})).pipe(!10(~1:0)))@"CreateAssetUploadRequest";!5(>!6({jwt:!1(!3(!2))}).pipe(!10(~1:0)))@"CreateAssetUploadResponse"',
-        [
-          __v,
-          __d48,
-          __d0,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createAssetUpload, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(832, __c26, 0) as any as S.Schema<CreateAssetUploadRequest>,
+  output: __S(833, __c26, 1) as any as S.Schema<CreateAssetUploadResponse>,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateBetaWorkerError = InvalidRoute | CloudflareOpError;
 /** Create a new Worker. */
@@ -15516,30 +15619,13 @@ export const createBetaWorker: API.OperationMethod<
   CreateBetaWorkerResponse,
   CreateBetaWorkerError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:#6,errors:[$10,$11,$12],protocol:$13,retry:$14};!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({cacheOptions:!1(^1:0.pipe(!4("cache_options"))),env:!1(^2:1),limits:!1(^3:0),logpush:!1(!8),observability:!1(^4:1),placement:!1(#1),tailConsumers:!1(^5:1.pipe(!4("tail_consumers")))}))@"BetaWorkersCreateRequestPreviewsBaseConfig";!5(>!6({accountId:!2.pipe(!7("account_id")),name:!2,logpush:!1(!8),observability:!1(^4:1),previewsBaseConfig:!1(#2.pipe(!4("previews_base_config"))),subdomain:!1(^4:2),tags:!1(^7:0),tailConsumers:!1(^5:1.pipe(!4("tail_consumers")))}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/workers",code:200})).pipe(!10(~6:0)))@"CreateBetaWorkerRequest";!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({cacheOptions:!1(!3(^8:0).pipe(!4("cache_options"))),env:!1(!3(^2:1)),limits:!1(!3(^9:0)),logpush:!1(!3(!8)),observability:!1(!3(^2:3)),placement:!1(!3(#4)),tailConsumers:!1(!3(^5:1).pipe(!4("tail_consumers")))}))@"BetaWorkersCreateResponsePreviewsBaseConfig";!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),logpush:!8,name:!2,observability:^2:3,references:^2:12,subdomain:^2:13,tags:^7:0,tailConsumers:^5:1.pipe(!4("tail_consumers")),updatedOn:!2.pipe(!4("updated_on")),deployedOn:!1(!3(!2).pipe(!4("deployed_on"))),previewsBaseConfig:!1(!3(#5).pipe(!4("previews_base_config")))}).pipe(!10(~6:0)))@"CreateBetaWorkerResponse"',
-        [
-          __v,
-          __d3,
-          __d11,
-          __d5,
-          __d2,
-          __d8,
-          __d48,
-          __d4,
-          __d6,
-          __d7,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createBetaWorker, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(866, __c27, 2) as any as S.Schema<CreateBetaWorkerRequest>,
+  output: __S(869, __c27, 5) as any as S.Schema<CreateBetaWorkerResponse>,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateBetaWorkerVersionError = WorkerNotFound | CloudflareOpError;
 /** Create a new version for a Worker. */
@@ -15548,32 +15634,13 @@ export const createBetaWorkerVersion: API.OperationMethod<
   CreateBetaWorkerVersionResponse,
   CreateBetaWorkerVersionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#11,output:#21,errors:[$12,$13,$14],protocol:$15,retry:$16};!5(>!6({workersMessage:!1(!2.pipe(!4("workers/message"))),workersTag:!1(!2.pipe(!4("workers/tag"))),workersTriggeredBy:!1(!2.pipe(!4("workers/triggered_by")))}))@"BetaWorkersVersionsCreateRequestAnnotations";!11.pipe(!13([[],[]]));!5(>!6({basePath:!1(!2.pipe(!4("base_path"))),htmlHandling:!1(!2.pipe(!4("html_handling"))),notFoundHandling:!1(!2.pipe(!4("not_found_handling"))),runWorkerFirst:!1(#2.pipe(!4("run_worker_first")))}))@"BetaWorkersVersionsCreateRequestAssetsConfig";!5(>!6({config:!1(#3),jwt:!1(!2)}))@"BetaWorkersVersionsCreateRequestAssets";!11.pipe(!13([["name","type"],["instanceName","name","type","namespace"],["name","namespace","type"],["name","namespace","type"],["dataset","name","type"],["name","namespace","type"],["name","type"],["name","type"],["databaseId","name","type","id"],["name","part","type"],["name","namespace","type","outbound"],["name","type","className","dispatchNamespace","environment","namespaceId","scriptName"],["id","name","type"],["name","type","oldName","versionId"],["name","type"],["json","name","type"],["name","namespaceId","type"],["name","type"],["certificateId","name","type"],["name","text","type"],["name","pipeline","type"],["name","stream","type"],["name","queueName","type"],["name","namespaceId","simple","type"],["bucketName","name","type","jurisdiction"],["name","text","type"],["name","type","allowedDestinationAddresses","allowedSenderAddresses","destinationAddress"],["name","service","type","entrypoint","environment"],["name","part","type"],["indexName","name","type"],["name","type"],["name","secretName","storeId","type"],["appId","name","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"],["name","type","workflowName","className","scriptName"],["name","part","type"],["name","serviceId","type"],["name","type","identity","networkId","tunnelId"]],{key:"type",values:["ai","ai_search","ai_search_namespace","messaging","analytics_engine","artifacts","assets","browser","d1","data_blob","dispatch_namespace","durable_object_namespace","hyperdrive","inherit","images","json","kv_namespace","media","mtls_certificate","plain_text","pipelines","k2","queue","ratelimit","r2_bucket","secret_text","send_email","service","text_blob","vectorize","version_metadata","secrets_store_secret","flagship","secret_key","workflow","wasm_module","vpc_service","vpc_network"]}));!12(#5);!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#7);!11.pipe(!13([["deletedClasses","newClasses","newSqliteClasses","newTag","oldTag","renamedClasses","transferredClasses"],["newTag","oldTag","steps"]]));!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),deploy:!1(!8.pipe(!15())),annotations:!1(#1),assets:!1(#4),bindings:!1(#6),cacheOptions:!1(^2:0.pipe(!4("cache_options"))),compatibilityDate:!1(!2.pipe(!4("compatibility_date"))),compatibilityFlags:!1(^3:0.pipe(!4("compatibility_flags"))),containers:!1(^4:1),exports:!1(#8),limits:!1(^5:0),mainModule:!1(!2.pipe(!4("main_module"))),migrations:!1(#9),modules:!1(^6:1),packageDependencies:!1(^6:3.pipe(!4("package_dependencies"))),placement:!1(#10),usageModel:!1(!2.pipe(!4("usage_model")))}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/workers/{worker_id}/versions",code:200})).pipe(!10(~1:0)))@"CreateBetaWorkerVersionRequest";!11.pipe(!13([[],[]]));!5(>!6({basePath:!1(!3(!2).pipe(!4("base_path"))),htmlHandling:!1(!3(!2).pipe(!4("html_handling"))),notFoundHandling:!1(!3(!2).pipe(!4("not_found_handling"))),runWorkerFirst:!1(!3(#12).pipe(!4("run_worker_first")))}))@"BetaWorkersVersionsCreateResponseAssetsConfig";!5(>!6({config:!1(!3(#13)),jwt:!1(!3(!2))}))@"BetaWorkersVersionsCreateResponseAssets";!11.pipe(!13([["name","type"],["instanceName","name","type","namespace"],["name","namespace","type"],["name","namespace","type"],["dataset","name","type"],["name","namespace","type"],["name","type"],["name","type"],["databaseId","name","type","id"],["name","part","type"],["name","namespace","type","outbound"],["name","type","className","dispatchNamespace","environment","namespaceId","scriptName"],["id","name","type"],["name","type","oldName","versionId"],["name","type"],["json","name","type"],["name","namespaceId","type"],["name","type"],["certificateId","name","type"],["name","text","type"],["name","pipeline","type"],["name","stream","type"],["name","queueName","type"],["name","namespaceId","simple","type"],["bucketName","name","type","jurisdiction"],["name","text","type"],["name","type","allowedDestinationAddresses","allowedSenderAddresses","destinationAddress"],["name","service","type","entrypoint","environment"],["name","part","type"],["indexName","name","type"],["name","type"],["name","secretName","storeId","type"],["appId","name","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"],["name","type","workflowName","className","scriptName"],["name","part","type"],["name","serviceId","type"],["name","type","identity","networkId","tunnelId"]],{key:"type",values:["ai","ai_search","ai_search_namespace","messaging","analytics_engine","artifacts","assets","browser","d1","data_blob","dispatch_namespace","durable_object_namespace","hyperdrive","inherit","images","json","kv_namespace","media","mtls_certificate","plain_text","pipelines","k2","queue","ratelimit","r2_bucket","secret_text","send_email","service","text_blob","vectorize","version_metadata","secrets_store_secret","flagship","secret_key","workflow","wasm_module","vpc_service","vpc_network"]}));!12(#15);!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#17);!11.pipe(!13([["deletedClasses","newClasses","newSqliteClasses","newTag","oldTag","renamedClasses","transferredClasses"],["newTag","oldTag","steps"]]));!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),number:!9,urls:^3:0,annotations:!1(!3(^7:0)),assets:!1(!3(#14)),authorEmail:!1(!3(!2).pipe(!4("author_email"))),authorId:!1(!3(!2).pipe(!4("author_id"))),bindings:!1(!3(#16)),cacheOptions:!1(!3(^8:0).pipe(!4("cache_options"))),compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^3:0).pipe(!4("compatibility_flags"))),containers:!1(!3(^9:1)),exports:!1(!3(#18)),exportsReconciliation:!1(!3(^10:10).pipe(!4("exports_reconciliation"))),limits:!1(!3(^11:0)),mainModule:!1(!3(!2).pipe(!4("main_module"))),migrationTag:!1(!3(!2).pipe(!4("migration_tag"))),migrations:!1(!3(#19)),modules:!1(!3(^6:1)),packageDependencies:!1(!3(^6:3).pipe(!4("package_dependencies"))),placement:!1(!3(#20)),source:!1(!3(!2)),startupTimeMs:!1(!3(!9).pipe(!4("startup_time_ms"))),usageModel:!1(!3(!2).pipe(!4("usage_model")))}).pipe(!10(~1:0)))@"CreateBetaWorkerVersionResponse"',
-        [
-          __v,
-          __d48,
-          __d3,
-          __d4,
-          __d13,
-          __d5,
-          __d17,
-          __d16,
-          __d6,
-          __d15,
-          __d14,
-          __d7,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createBetaWorkerVersion, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1258, __c39, 10) as any as S.Schema<CreateBetaWorkerVersionRequest>,
+  output: __S(1268, __c39, 20) as any as S.Schema<CreateBetaWorkerVersionResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateObservabilityDestinationError =
   | ObservabilityDestinationCreateFailed
@@ -15585,25 +15652,13 @@ export const createObservabilityDestination: API.OperationMethod<
   CreateObservabilityDestinationResponse,
   CreateObservabilityDestinationError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#2,output:^3:1,errors:[$4,$5,$6,$7],protocol:$8,retry:$9};!5(>!6({headers:^1:0,logpushDataset:!2,type:!2,url:!2}))@"ObservabilityDestinationsCreateRequestConfiguration";!5(>!6({accountId:!2.pipe(!7("account_id")),configuration:#1,enabled:!8,name:!2,skipPreflightCheck:!1(!8)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/observability/destinations",code:200})).pipe(!10(~2:0)))@"CreateObservabilityDestinationRequest"',
-        [
-          __v,
-          __d12,
-          __d48,
-          __d18,
-          ObservabilityDestinationCreateFailed,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createObservabilityDestination, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1473, __c46, 1) as any as S.Schema<CreateObservabilityDestinationRequest>,
+  output: __S(1505, __c47, 1) as any as S.Schema<CreateObservabilityDestinationResponse>,
+  errors: [ObservabilityDestinationCreateFailed, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateObservabilityQueryError = CloudflareOpError;
 /** Persist query for later use. */
@@ -15612,25 +15667,13 @@ export const createObservabilityQuery: API.OperationMethod<
   CreateObservabilityQueryResponse,
   CreateObservabilityQueryError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#8,output:#16,errors:[$6,$7],protocol:$8,retry:$9};!11.pipe(!13([["operator","alias","key","keyType"],["key","operator","alias","keyType"]]));!12(#1);!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#3);!11.pipe(!13([[],[],[]]));!5(>!6({value:#5,isRegex:!1(!8),matchCase:!1(!8)}))@"ObservabilityQueriesCreateRequestParametersNeedle";!5(>!6({calculations:!1(#2),datasets:!1(^1:0),filterCombination:!1(!2),filters:!1(#4),groupBys:!1(^2:1),havings:!1(^2:3),limit:!1(!9),needle:!1(#6),orderBy:!1(^3:0)}))@"ObservabilityQueriesCreateRequestParameters";!5(>!6({accountId:!2.pipe(!7("account_id")),description:!2,name:!2,parameters:#7}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/observability/queries",code:200})).pipe(!10(~4:0)))@"CreateObservabilityQueryRequest";!11.pipe(!13([["operator","alias","key","keyType"],["key","operator","alias","keyType"]]));!12(#9);!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#11);!11.pipe(!13([[],[],[]]));!5(>!6({value:#13,isRegex:!1(!3(!8)),matchCase:!1(!3(!8))}))@"ObservabilityQueriesCreateResponseParametersNeedle";!5(>!6({calculations:!1(!3(#10)),datasets:!1(!3(^1:0)),filterCombination:!1(!3(!2)),filters:!1(!3(#12)),groupBys:!1(!3(^2:1)),havings:!1(!3(^2:3)),limit:!1(!3(!9)),needle:!1(!3(#14)),orderBy:!1(!3(^5:0))}))@"ObservabilityQueriesCreateResponseParameters";!5(>!6({id:!2,adhoc:!8,created:!2,createdBy:!2,description:!2,name:!2,parameters:#15,updated:!2,updatedBy:!2}).pipe(!10(~4:0)))@"CreateObservabilityQueryResponse"',
-        [
-          __v,
-          __d4,
-          __d20,
-          __d19,
-          __d48,
-          __d21,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createObservabilityQuery, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1543, __c48, 7) as any as S.Schema<CreateObservabilityQueryRequest>,
+  output: __S(1551, __c48, 15) as any as S.Schema<CreateObservabilityQueryResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateObservabilitySharedQueryError = CloudflareOpError;
 /** Shared queries store the results of a previously run query, allowing you to share the results with others. */
@@ -15639,25 +15682,13 @@ export const createObservabilitySharedQuery: API.OperationMethod<
   CreateObservabilitySharedQueryResponse,
   CreateObservabilitySharedQueryError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#8,output:#9,errors:[$6,$7],protocol:$8,retry:$9};!11.pipe(!13([["operator","alias","key","keyType"],["key","operator","alias","keyType"]]));!12(#1);!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#3);!11.pipe(!13([[],[],[]]));!5(>!6({value:#5,isRegex:!1(!8),matchCase:!1(!8)}))@"ObservabilitySharedQueriesCreateRequestParametersNeedle";!5(>!6({calculations:!1(#2),datasets:!1(^1:0),filterCombination:!1(!2),filters:!1(#4),groupBys:!1(^2:1),havings:!1(^2:3),limit:!1(!9),needle:!1(#6),orderBy:!1(^3:0)}))@"ObservabilitySharedQueriesCreateRequestParameters";!5(>!6({accountId:!2.pipe(!7("account_id")),queryId:!2,timeframe:^5:0,chart:!1(!8),chartType:!1(!2),compare:!1(!8),distributionScale:!1(!2),dry:!1(!8),granularity:!1(!9),ignoreSeries:!1(!8),limit:!1(!9),offset:!1(!2),offsetBy:!1(!9),offsetDirection:!1(!2),parameters:!1(#7),view:!1(!2)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/observability/shared/query",code:200})).pipe(!10(~4:0)))@"CreateObservabilitySharedQueryRequest";!5(>!6({id:!2}).pipe(!10(~4:0)))@"CreateObservabilitySharedQueryResponse"',
-        [
-          __v,
-          __d4,
-          __d20,
-          __d19,
-          __d48,
-          __d22,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createObservabilitySharedQuery, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1671, __c52, 7) as any as S.Schema<CreateObservabilitySharedQueryRequest>,
+  output: __S(1672, __c52, 8) as any as S.Schema<CreateObservabilitySharedQueryResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreatePreviewError = WorkerNotFound | PreviewAlreadyExists | CloudflareOpError;
 /** Create a Worker Preview. Does not deploy code; follow with createPreviewDeployment. */
@@ -15666,25 +15697,13 @@ export const createPreview: API.OperationMethod<
   PreviewResource,
   CreatePreviewError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^3:0,errors:[$4,$5,$6,$7],protocol:$8,retry:$9};!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),ignoreBaseConfig:!1(!8.pipe(!15("ignore_base_config"))),name:!2,logpush:!1(!8),tailConsumers:!1(^2:1.pipe(!4("tail_consumers")))}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/workers/{worker_id}/previews",code:200})).pipe(!10(~1:0)))@"CreatePreviewRequest"',
-        [
-          __v,
-          __d48,
-          __d8,
-          __d23,
-          WorkerNotFound,
-          PreviewAlreadyExists,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createPreview, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1728, __c54, 0) as any as S.Schema<CreatePreviewRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<PreviewResource>,
+  errors: [WorkerNotFound, PreviewAlreadyExists, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreatePreviewDeploymentError = PreviewNotFound | WorkerNotFound | CloudflareOpError;
 /** Upload code, bindings, and assets as a new deployment of a Preview. */
@@ -15693,26 +15712,13 @@ export const createPreviewDeployment: API.OperationMethod<
   PreviewDeploymentResource,
   CreatePreviewDeploymentError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:^4:0,errors:[$5,$6,$7,$8],protocol:$9,retry:$10};!5(>!6({jwt:!1(!2),config:!1(!11)}))@"CreatePreviewDeploymentMetadataAssets";!5(>!6({mainModule:!1(!2.pipe(!4("main_module"))),assets:!1(#1),compatibilityDate:!1(!2.pipe(!4("compatibility_date"))),compatibilityFlags:!1(^1:0.pipe(!4("compatibility_flags"))),annotations:!1(!11),migrations:!1(!11),limits:!1(!11),placement:!1(!11),cacheOptions:!1(!11.pipe(!4("cache_options"))),env:!1(!11),containers:!1(^2:1)}))@"CreatePreviewDeploymentMetadata";!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),previewId:!2.pipe(!7("preview_id")),metadata:#2,files:!1(!11.pipe(!20()))}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}/deployments",code:200,contentType:"multipart"})).pipe(!10(~3:0)))@"CreatePreviewDeploymentRequest"',
-        [
-          __v,
-          __d4,
-          __d13,
-          __d48,
-          __d24,
-          PreviewNotFound,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createPreviewDeployment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1794, __c56, 2) as any as S.Schema<CreatePreviewDeploymentRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<PreviewDeploymentResource>,
+  errors: [PreviewNotFound, WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateRouteError =
   | InvalidRoutePattern
@@ -15726,26 +15732,20 @@ export const createRoute: API.OperationMethod<
   CreateRouteResponse,
   CreateRouteError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6,$7,$8],protocol:$9,retry:$10};!5(>!6({zoneId:!2.pipe(!7("zone_id")),pattern:!2,script:!1(!2)}).pipe(!14({method:"POST",uri:"/zones/{zone_id}/workers/routes",code:200})).pipe(!10(~1:0)))@"CreateRouteRequest"',
-        [
-          __v,
-          __d48,
-          __d25,
-          InvalidRoutePattern,
-          InvalidRoute,
-          Forbidden,
-          RouteScriptNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createRoute, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1856, __c58, 0) as any as S.Schema<CreateRouteRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<CreateRouteResponse>,
+  errors: [
+    InvalidRoutePattern,
+    InvalidRoute,
+    Forbidden,
+    RouteScriptNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateScriptAssetUploadError = CloudflareOpError;
 /** Start uploading a collection of assets for use in a Worker version. To learn more about the direct uploads of assets, see https://developers.cloudflare.com/workers/static-assets/direct-upload/. */
@@ -15754,14 +15754,13 @@ export const createScriptAssetUpload: API.OperationMethod<
   CreateScriptAssetUploadResponse,
   CreateScriptAssetUploadError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:#5,errors:[$3,$4],protocol:$5,retry:$6};!5(>!6({hash:!2,size:!9}))@"ScriptsAssetsUploadCreateRequestManifestValue";!16(!2,#1);!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),manifest:#2}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/scripts/{script_name}/assets-upload-session",code:200})).pipe(!10(~1:0)))@"CreateScriptAssetUploadRequest";!12(^2:0);!5(>!6({buckets:!1(!3(#4)),jwt:!1(!3(!2))}).pipe(!10(~1:0)))@"CreateScriptAssetUploadResponse"',
-        [__v, __d48, __d4, CloudflareRateLimited, CloudflareError, CloudflareProtocol, Retry.Retry],
-      ]
-    : API.call(createScriptAssetUpload, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1922, __c60, 2) as any as S.Schema<CreateScriptAssetUploadRequest>,
+  output: __S(1924, __c60, 4) as any as S.Schema<CreateScriptAssetUploadResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateScriptDeploymentError = WorkerNotFound | CloudflareOpError;
 /** Deployments configure how [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions) are deployed to traffic. A deployment can consist of multiple versions of a Worker. */
@@ -15770,24 +15769,13 @@ export const createScriptDeployment: API.OperationMethod<
   CreateScriptDeploymentResponse,
   CreateScriptDeploymentError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#2,output:^3:0,errors:[$4,$5,$6],protocol:$7,retry:$8};!5(>!6({workersMessage:!1(!2.pipe(!4("workers/message"))),workersTriggeredBy:!1(!2.pipe(!4("workers/triggered_by")))}))@"ScriptsDeploymentsCreateRequestAnnotations";!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),force:!1(!8.pipe(!15())),strategy:!2,versions:^2:1,annotations:!1(#1)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/scripts/{script_name}/deployments",code:200})).pipe(!10(~1:0)))@"CreateScriptDeploymentRequest"',
-        [
-          __v,
-          __d48,
-          __d27,
-          __d26,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createScriptDeployment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1953, __c61, 1) as any as S.Schema<CreateScriptDeploymentRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<CreateScriptDeploymentResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateScriptEdgePreviewError = InvalidRoute | CloudflareOpError;
 /** Upload a preview worker under an edge-preview session (undocumented endpoint). */
@@ -15796,23 +15784,13 @@ export const createScriptEdgePreview: API.OperationMethod<
   CreateScriptEdgePreviewResponse,
   CreateScriptEdgePreviewError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:18,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),cfPreviewUploadConfigToken:!2.pipe(!21("cf-preview-upload-config-token")),files:!1(!11.pipe(!20())),wranglerSessionConfig:!1(^2:2.pipe(!4("wrangler-session-config"))),metadata:!1(^2:17)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/scripts/{script_name}/edge-preview",code:200,contentType:"multipart"})).pipe(!10(~1:0)))@"CreateScriptEdgePreviewRequest"',
-        [
-          __v,
-          __d48,
-          __d28,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createScriptEdgePreview, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2048, __c64, 0) as any as S.Schema<CreateScriptEdgePreviewRequest>,
+  output: __S(2098, __c65, 18) as any as S.Schema<CreateScriptEdgePreviewResponse>,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateScriptSubdomainError = WorkerNotFound | CloudflareOpError;
 /** Enable or disable a Worker script on the workers.dev subdomain. */
@@ -15821,23 +15799,13 @@ export const createScriptSubdomain: API.OperationMethod<
   CreateScriptSubdomainResponse,
   CreateScriptSubdomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),enabled:!8,previewsEnabled:!1(!8.pipe(!4("previews_enabled")))}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/scripts/{script_name}/subdomain",code:200})).pipe(!10(~1:0)))@"CreateScriptSubdomainRequest"',
-        [
-          __v,
-          __d48,
-          __d29,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createScriptSubdomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2112, __c66, 0) as any as S.Schema<CreateScriptSubdomainRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<CreateScriptSubdomainResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateScriptTailError = WorkerNotFound | CloudflareOpError;
 /** Starts a tail that receives logs and exceptions from a Worker. */
@@ -15846,23 +15814,13 @@ export const createScriptTail: API.OperationMethod<
   CreateScriptTailResponse,
   CreateScriptTailError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#2,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!12(!11);!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),filters:!1(#1)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/scripts/{script_name}/tails",code:200})).pipe(!10(~1:0)))@"CreateScriptTailRequest"',
-        [
-          __v,
-          __d48,
-          __d30,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createScriptTail, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2177, __c68, 1) as any as S.Schema<CreateScriptTailRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<CreateScriptTailResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateScriptVersionError = WorkerNotFound | CloudflareOpError;
 /** Upload a Worker Version without deploying to Cloudflare's network. You can find more about the multipart metadata on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/. */
@@ -15871,28 +15829,13 @@ export const createScriptVersion: API.OperationMethod<
   CreateScriptVersionResponse,
   CreateScriptVersionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#6,errors:[$8,$9,$10],protocol:$11,retry:$12};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),bindingsInherit:!1(!2.pipe(!15("bindings_inherit"))),metadata:^2:15.pipe(!10({abrLevel:"abr_level",allowedDestinationAddresses:"allowed_destination_addresses",allowedSenderAddresses:"allowed_sender_addresses",appId:"app_id",authorEmail:"author_email",authorId:"author_id",bodyPart:"body_part",bucketName:"bucket_name",bytesRead:"bytes_read",cache:"cache_options",capnpSchema:"capnp_schema",certId:"cert_id",certificateId:"certificate_id",className:"class_name",compatibilityDate:"compatibility_date",compatibilityFlags:"compatibility_flags",contentBase64:"content_base64",contentType:"content_type",cpuMs:"cpu_ms",createdOn:"created_on",crossAccountGrant:"cross_account_grant",crossVersionCache:"cross_version_cache",databaseId:"database_id",defaultUsageModel:"default_usage_model",deletedClasses:"deleted_classes",deliveryDelay:"delivery_delay",destinationAddress:"destination_address",destinationConf:"destination_conf",dispatchNamespace:"dispatch_namespace",documentationUrl:"documentation_url",enableTimer:"enable_timer",entryPoint:"entry_point",environmentIsDefault:"environment_is_default",environmentName:"environment_name",errorMessage:"error_message",exchangeUrl:"exchange_url",expiresAt:"expires_at",fromScript:"from_script",greenCompute:"green_compute",hasAssets:"has_assets",hasModules:"has_modules",headSamplingRate:"head_sampling_rate",htmlHandling:"html_handling",indexName:"index_name",instanceName:"instance_name",invocationLogs:"invocation_logs",keepAssets:"keep_assets",keepBindings:"keep_bindings",keyBase64:"key_base64",keyJwk:"key_jwk",lastAnalyzedAt:"last_analyzed_at",lastComplete:"last_complete",lastDeployedFrom:"last_deployed_from",lastError:"last_error",mainModule:"main_module",migrationTag:"migration_tag",minimalMode:"minimal_mode",mitigationTimeout:"mitigation_timeout",modifiedOn:"modified_on",namedHandlers:"named_handlers",namespaceId:"namespace_id",networkId:"network_id",newClasses:"new_classes",newSqliteClasses:"new_sqlite_classes",newTag:"new_tag",notFoundHandling:"not_found_handling",oldName:"old_name",oldTag:"old_tag",perPage:"per_page",placementMode:"placement_mode",placementStatus:"placement_status",previewToken:"preview_token",previewsEnabled:"previews_enabled",propagationPolicy:"propagation_policy",queueName:"queue_name",renamedClasses:"renamed_classes",resultInfo:"result_info",rowsRead:"rows_read",runWorkerFirst:"run_worker_first",scriptName:"script_name",scriptRuntime:"script_runtime",secretName:"secret_name",serveDirectly:"serve_directly",serviceId:"service_id",serviceName:"service_name",startupTimeMs:"startup_time_ms",storeId:"store_id",streamingTailConsumers:"streaming_tail_consumers",tailConsumers:"tail_consumers",tailUrl:"tail_url",totalCount:"total_count",transferredClasses:"transferred_classes",tunnelId:"tunnel_id",usageModel:"usage_model",versionId:"version_id",versionTags:"version_tags",workersDev:"workers_dev",workflowName:"workflow_name",zoneId:"zone_id",zoneName:"zone_name",renamedTo:"renamed_to",transferredTo:"transferred_to",transferFrom:"transfer_from"})),files:!1(!11.pipe(!20()))}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/scripts/{script_name}/versions",code:200,contentType:"multipart"})).pipe(!10(~1:0)))@"CreateScriptVersionRequest";!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#2);!5(>!6({compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^3:0).pipe(!4("compatibility_flags"))),exports:!1(!3(#3)),limits:!1(!3(^4:1)),migrationTag:!1(!3(!2).pipe(!4("migration_tag"))),usageModel:!1(!3(!2).pipe(!4("usage_model"))),containers:!1(!3(^5:1))}))@"ScriptsVersionsCreateResponseResourcesScriptRuntime";!5(>!6({bindings:!11,script:!1(!3(^4:0)),scriptRuntime:!1(!3(#4).pipe(!4("script_runtime")))}))@"ScriptsVersionsCreateResponseResources";!5(>!6({resources:#5,id:!1(!3(!2)),exportsReconciliation:!1(!3(^6:10).pipe(!4("exports_reconciliation"))),metadata:!1(!3(^7:0)),number:!1(!3(!9)),startupTimeMs:!1(!3(!9).pipe(!4("startup_time_ms")))}).pipe(!10(~1:0)))@"CreateScriptVersionResponse"',
-        [
-          __v,
-          __d48,
-          __d32,
-          __d4,
-          __d33,
-          __d15,
-          __d14,
-          __d35,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createScriptVersion, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2240, __c70, 0) as any as S.Schema<CreateScriptVersionRequest>,
+  output: __S(2245, __c70, 5) as any as S.Schema<CreateScriptVersionResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateServiceEdgePreviewError = InvalidRoute | CloudflareOpError;
 /** Upload a preview worker for one environment of a service under an edge-preview session (undocumented endpoint). */
@@ -15901,23 +15844,13 @@ export const createServiceEdgePreview: API.OperationMethod<
   CreateServiceEdgePreviewResponse,
   CreateServiceEdgePreviewError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:18,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),serviceName:!2.pipe(!7("service_name")),environmentName:!2.pipe(!7("environment_name")),cfPreviewUploadConfigToken:!2.pipe(!21("cf-preview-upload-config-token")),metadata:!1(^2:17),files:!1(!11.pipe(!20())),wranglerSessionConfig:!1(^2:2.pipe(!4("wrangler-session-config")))}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/edge-preview",code:200,contentType:"multipart"})).pipe(!10(~1:0)))@"CreateServiceEdgePreviewRequest"',
-        [
-          __v,
-          __d48,
-          __d28,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createServiceEdgePreview, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2432, __c76, 0) as any as S.Schema<CreateServiceEdgePreviewRequest>,
+  output: __S(2098, __c65, 18) as any as S.Schema<CreateServiceEdgePreviewResponse>,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateSubdomainEdgePreviewSessionError = InvalidRoute | CloudflareOpError;
 /** Create an edge-preview session for the account's workers.dev subdomain (undocumented endpoint). */
@@ -15926,23 +15859,13 @@ export const createSubdomainEdgePreviewSession: API.OperationMethod<
   CreateSubdomainEdgePreviewSessionResponse,
   CreateSubdomainEdgePreviewSessionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/subdomain/edge-preview",code:200})).pipe(!10(~1:0)))@"CreateSubdomainEdgePreviewSessionRequest"',
-        [
-          __v,
-          __d48,
-          __d36,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createSubdomainEdgePreviewSession, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2464, __c77, 0) as any as S.Schema<CreateSubdomainEdgePreviewSessionRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<CreateSubdomainEdgePreviewSessionResponse>,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type CreateZoneEdgePreviewSessionError = InvalidRoute | CloudflareOpError;
 /** Create an edge-preview session scoped to a zone (undocumented endpoint). */
@@ -15951,23 +15874,13 @@ export const createZoneEdgePreviewSession: API.OperationMethod<
   CreateZoneEdgePreviewSessionResponse,
   CreateZoneEdgePreviewSessionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({zoneId:!2.pipe(!7("zone_id"))}).pipe(!14({method:"GET",uri:"/zones/{zone_id}/workers/edge-preview",code:200})).pipe(!10(~1:0)))@"CreateZoneEdgePreviewSessionRequest"',
-        [
-          __v,
-          __d48,
-          __d36,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(createZoneEdgePreviewSession, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2528, __c79, 0) as any as S.Schema<CreateZoneEdgePreviewSessionRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<CreateZoneEdgePreviewSessionResponse>,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteBetaWorkerError = WorkerNotFound | CloudflareOpError;
 /** Delete a Worker and all its associated resources (versions, deployments, etc.). */
@@ -15976,23 +15889,13 @@ export const deleteBetaWorker: API.OperationMethod<
   DeleteBetaWorkerResponse,
   DeleteBetaWorkerError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),force:!1(!8.pipe(!15()))}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/workers/{worker_id}",code:200})).pipe(!10(~1:0)))@"DeleteBetaWorkerRequest"',
-        [
-          __v,
-          __d48,
-          __d37,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteBetaWorker, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2560, __c80, 0) as any as S.Schema<DeleteBetaWorkerRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteBetaWorkerResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteBetaWorkerVersionError =
   | WorkerNotFound
@@ -16004,24 +15907,13 @@ export const deleteBetaWorkerVersion: API.OperationMethod<
   DeleteBetaWorkerVersionResponse,
   DeleteBetaWorkerVersionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),versionId:!2.pipe(!7("version_id"))}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}",code:200})).pipe(!10(~1:0)))@"DeleteBetaWorkerVersionRequest"',
-        [
-          __v,
-          __d48,
-          __d37,
-          WorkerNotFound,
-          WorkerVersionNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteBetaWorkerVersion, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2624, __c82, 0) as any as S.Schema<DeleteBetaWorkerVersionRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteBetaWorkerVersionResponse>,
+  errors: [WorkerNotFound, WorkerVersionNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteDomainError = DomainNotFound | CloudflareOpError;
 /** Detaches a domain from a Worker. Both the Worker and all of its previews are no longer routable using this domain. */
@@ -16030,23 +15922,13 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResponse,
   DeleteDomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),domainId:!2.pipe(!7("domain_id"))}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/domains/{domain_id}",code:200})).pipe(!10(~1:0)))@"DeleteDomainRequest"',
-        [
-          __v,
-          __d48,
-          __d37,
-          DomainNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteDomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2656, __c83, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteDomainResponse>,
+  errors: [DomainNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteObservabilityDestinationError =
   | ObservabilityDestinationNotFound
@@ -16058,24 +15940,13 @@ export const deleteObservabilityDestination: API.OperationMethod<
   DeleteObservabilityDestinationResponse,
   DeleteObservabilityDestinationError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:1,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),slug:!2.pipe(!7())}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/observability/destinations/{slug}",code:200})).pipe(!10(~1:0)))@"DeleteObservabilityDestinationRequest"',
-        [
-          __v,
-          __d48,
-          __d18,
-          ObservabilityDestinationNotFound,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteObservabilityDestination, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2688, __c84, 0) as any as S.Schema<DeleteObservabilityDestinationRequest>,
+  output: __S(1505, __c47, 1) as any as S.Schema<DeleteObservabilityDestinationResponse>,
+  errors: [ObservabilityDestinationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeletePreviewError = PreviewNotFound | WorkerNotFound | CloudflareOpError;
 /** Delete a Worker Preview and all its deployments. */
@@ -16084,24 +15955,13 @@ export const deletePreview: API.OperationMethod<
   DeletePreviewResponse,
   DeletePreviewError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),previewId:!2.pipe(!7("preview_id"))}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}",code:200})).pipe(!10(~1:0)))@"DeletePreviewRequest"',
-        [
-          __v,
-          __d48,
-          __d37,
-          PreviewNotFound,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deletePreview, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2720, __c85, 0) as any as S.Schema<DeletePreviewRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeletePreviewResponse>,
+  errors: [PreviewNotFound, WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteRouteError = RouteNotFound | CloudflareOpError;
 /** Deletes a Worker route. */
@@ -16110,22 +15970,13 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteResponse,
   DeleteRouteError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$2,$3,$4],protocol:$5,retry:$6};!5(>!6({zoneId:!2.pipe(!7("zone_id")),routeId:!2.pipe(!7("route_id"))}).pipe(!14({method:"DELETE",uri:"/zones/{zone_id}/workers/routes/{route_id}",code:200})).pipe(!10(~1:0)))@"DeleteRouteRequest";!5(>!6({id:!1(!3(!2))}).pipe(!10(~1:0)))@"DeleteRouteResponse"',
-        [
-          __v,
-          __d48,
-          RouteNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteRoute, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2752, __c86, 0) as any as S.Schema<DeleteRouteRequest>,
+  output: __S(2753, __c86, 1) as any as S.Schema<DeleteRouteResponse>,
+  errors: [RouteNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteScriptError =
   | WorkerNotFound
@@ -16138,25 +15989,19 @@ export const deleteScript: API.OperationMethod<
   DeleteScriptResponse,
   DeleteScriptError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6,$7],protocol:$8,retry:$9};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),force:!1(!8.pipe(!15()))}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/scripts/{script_name}",code:200})).pipe(!10(~1:0)))@"DeleteScriptRequest"',
-        [
-          __v,
-          __d48,
-          __d38,
-          WorkerNotFound,
-          QueueConsumerConflict,
-          ServiceBindingConflict,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteScript, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2784, __c87, 0) as any as S.Schema<DeleteScriptRequest>,
+  output: __S(2816, __c88, 0) as any as S.Schema<DeleteScriptResponse>,
+  errors: [
+    WorkerNotFound,
+    QueueConsumerConflict,
+    ServiceBindingConflict,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteScriptDeploymentError = WorkerNotFound | DeploymentNotFound | CloudflareOpError;
 /** Delete a Worker Deployment. The latest deployment, which is actively serving traffic, cannot be deleted. All other deployments can be deleted. */
@@ -16165,24 +16010,13 @@ export const deleteScriptDeployment: API.OperationMethod<
   DeleteScriptDeploymentResponse,
   DeleteScriptDeploymentError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),deploymentId:!2.pipe(!7("deployment_id"))}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}",code:200})).pipe(!10(~1:0)))@"DeleteScriptDeploymentRequest"',
-        [
-          __v,
-          __d48,
-          __d37,
-          WorkerNotFound,
-          DeploymentNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteScriptDeployment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2848, __c89, 0) as any as S.Schema<DeleteScriptDeploymentRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteScriptDeploymentResponse>,
+  errors: [WorkerNotFound, DeploymentNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteScriptSecretError = WorkerNotFound | SecretNotFound | CloudflareOpError;
 /** Remove a secret from a Worker script by creating a new version without that secret. When changing more than one secret at a time, prefer the "Patch multiple script secrets" API instead of changing many secrets individually. */
@@ -16191,24 +16025,13 @@ export const deleteScriptSecret: API.OperationMethod<
   DeleteScriptSecretResponse,
   DeleteScriptSecretError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),secretName:!2.pipe(!7("secret_name")),urlEncoded:!1(!8.pipe(!15("url_encoded")))}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}",code:200})).pipe(!10(~1:0)))@"DeleteScriptSecretRequest"',
-        [
-          __v,
-          __d48,
-          __d38,
-          WorkerNotFound,
-          SecretNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteScriptSecret, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2880, __c90, 0) as any as S.Schema<DeleteScriptSecretRequest>,
+  output: __S(2816, __c88, 0) as any as S.Schema<DeleteScriptSecretResponse>,
+  errors: [WorkerNotFound, SecretNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteScriptSubdomainError = WorkerNotFound | CloudflareOpError;
 /** Disable all workers.dev subdomains for a Worker script. */
@@ -16217,23 +16040,13 @@ export const deleteScriptSubdomain: API.OperationMethod<
   DeleteScriptSubdomainResponse,
   DeleteScriptSubdomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/scripts/{script_name}/subdomain",code:200})).pipe(!10(~1:0)))@"DeleteScriptSubdomainRequest"',
-        [
-          __v,
-          __d48,
-          __d29,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteScriptSubdomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2912, __c91, 0) as any as S.Schema<DeleteScriptSubdomainRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DeleteScriptSubdomainResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteScriptTailError = WorkerNotFound | CloudflareOpError;
 /** Deletes a tail from a Worker. */
@@ -16242,23 +16055,13 @@ export const deleteScriptTail: API.OperationMethod<
   DeleteScriptTailResponse,
   DeleteScriptTailError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),id:!2.pipe(!7())}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/scripts/{script_name}/tails/{id}",code:200})).pipe(!10(~1:0)))@"DeleteScriptTailRequest"',
-        [
-          __v,
-          __d48,
-          __d37,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteScriptTail, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2944, __c92, 0) as any as S.Schema<DeleteScriptTailRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteScriptTailResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DeleteSubdomainError = InvalidRoute | SubdomainNotFound | Forbidden | CloudflareOpError;
 /** Deletes a Workers subdomain for an account. */
@@ -16267,25 +16070,13 @@ export const deleteSubdomain: API.OperationMethod<
   DeleteSubdomainResponse,
   DeleteSubdomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6,$7],protocol:$8,retry:$9};!5(>!6({accountId:!2.pipe(!7("account_id"))}).pipe(!14({method:"DELETE",uri:"/accounts/{account_id}/workers/subdomain",code:200})).pipe(!10(~1:0)))@"DeleteSubdomainRequest"',
-        [
-          __v,
-          __d48,
-          __d37,
-          InvalidRoute,
-          SubdomainNotFound,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(deleteSubdomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2976, __c93, 0) as any as S.Schema<DeleteSubdomainRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<DeleteSubdomainResponse>,
+  errors: [InvalidRoute, SubdomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetAccountSettingError = InvalidRoute | Forbidden | CloudflareOpError;
 /** Fetches Workers account settings for an account. */
@@ -16294,24 +16085,13 @@ export const getAccountSetting: API.OperationMethod<
   GetAccountSettingResponse,
   GetAccountSettingError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/account-settings",code:200})).pipe(!10(~1:0)))@"GetAccountSettingRequest"',
-        [
-          __v,
-          __d48,
-          __d39,
-          InvalidRoute,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getAccountSetting, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3008, __c94, 0) as any as S.Schema<GetAccountSettingRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<GetAccountSettingResponse>,
+  errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetBetaWorkerError = WorkerNotFound | InvalidRoute | CloudflareOpError;
 /** Get details about a specific Worker. */
@@ -16320,28 +16100,13 @@ export const getBetaWorker: API.OperationMethod<
   GetBetaWorkerResponse,
   GetBetaWorkerError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$7,$8,$9,$10],protocol:$11,retry:$12};!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/workers/{worker_id}",code:200})).pipe(!10(~1:0)))@"GetBetaWorkerRequest";!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({cacheOptions:!1(!3(^2:0).pipe(!4("cache_options"))),env:!1(!3(^3:1)),limits:!1(!3(^4:0)),logpush:!1(!3(!8)),observability:!1(!3(^3:3)),placement:!1(!3(#2)),tailConsumers:!1(!3(^5:1).pipe(!4("tail_consumers")))}))@"BetaWorkersGetResponsePreviewsBaseConfig";!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),logpush:!8,name:!2,observability:^3:3,references:^3:12,subdomain:^3:13,tags:^6:0,tailConsumers:^5:1.pipe(!4("tail_consumers")),updatedOn:!2.pipe(!4("updated_on")),deployedOn:!1(!3(!2).pipe(!4("deployed_on"))),previewsBaseConfig:!1(!3(#3).pipe(!4("previews_base_config")))}).pipe(!10(~1:0)))@"GetBetaWorkerResponse"',
-        [
-          __v,
-          __d48,
-          __d6,
-          __d11,
-          __d7,
-          __d8,
-          __d4,
-          WorkerNotFound,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getBetaWorker, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3072, __c96, 0) as any as S.Schema<GetBetaWorkerRequest>,
+  output: __S(3075, __c96, 3) as any as S.Schema<GetBetaWorkerResponse>,
+  errors: [WorkerNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetBetaWorkerVersionError = WorkerNotFound | WorkerVersionNotFound | CloudflareOpError;
 /** Get details about a specific Worker version. */
@@ -16350,30 +16115,13 @@ export const getBetaWorkerVersion: API.OperationMethod<
   GetBetaWorkerVersionResponse,
   GetBetaWorkerVersionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#11,errors:[$9,$10,$11,$12],protocol:$13,retry:$14};!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),versionId:!2.pipe(!7("version_id")),include:!1(!2.pipe(!15()))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}",code:200})).pipe(!10(~1:0)))@"GetBetaWorkerVersionRequest";!11.pipe(!13([[],[]]));!5(>!6({basePath:!1(!3(!2).pipe(!4("base_path"))),htmlHandling:!1(!3(!2).pipe(!4("html_handling"))),notFoundHandling:!1(!3(!2).pipe(!4("not_found_handling"))),runWorkerFirst:!1(!3(#2).pipe(!4("run_worker_first")))}))@"BetaWorkersVersionsGetResponseAssetsConfig";!5(>!6({config:!1(!3(#3)),jwt:!1(!3(!2))}))@"BetaWorkersVersionsGetResponseAssets";!11.pipe(!13([["name","type"],["instanceName","name","type","namespace"],["name","namespace","type"],["name","namespace","type"],["dataset","name","type"],["name","namespace","type"],["name","type"],["name","type"],["databaseId","name","type","id"],["name","part","type"],["name","namespace","type","outbound"],["name","type","className","dispatchNamespace","environment","namespaceId","scriptName"],["id","name","type"],["name","type","oldName","versionId"],["name","type"],["json","name","type"],["name","namespaceId","type"],["name","type"],["certificateId","name","type"],["name","text","type"],["name","pipeline","type"],["name","stream","type"],["name","queueName","type"],["name","namespaceId","simple","type"],["bucketName","name","type","jurisdiction"],["name","text","type"],["name","type","allowedDestinationAddresses","allowedSenderAddresses","destinationAddress"],["name","service","type","entrypoint","environment"],["name","part","type"],["indexName","name","type"],["name","type"],["name","secretName","storeId","type"],["appId","name","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"],["name","type","workflowName","className","scriptName"],["name","part","type"],["name","serviceId","type"],["name","type","identity","networkId","tunnelId"]],{key:"type",values:["ai","ai_search","ai_search_namespace","messaging","analytics_engine","artifacts","assets","browser","d1","data_blob","dispatch_namespace","durable_object_namespace","hyperdrive","inherit","images","json","kv_namespace","media","mtls_certificate","plain_text","pipelines","k2","queue","ratelimit","r2_bucket","secret_text","send_email","service","text_blob","vectorize","version_metadata","secrets_store_secret","flagship","secret_key","workflow","wasm_module","vpc_service","vpc_network"]}));!12(#5);!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#7);!11.pipe(!13([["deletedClasses","newClasses","newSqliteClasses","newTag","oldTag","renamedClasses","transferredClasses"],["newTag","oldTag","steps"]]));!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),number:!9,urls:^2:0,annotations:!1(!3(^3:0)),assets:!1(!3(#4)),authorEmail:!1(!3(!2).pipe(!4("author_email"))),authorId:!1(!3(!2).pipe(!4("author_id"))),bindings:!1(!3(#6)),cacheOptions:!1(!3(^4:0).pipe(!4("cache_options"))),compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^2:0).pipe(!4("compatibility_flags"))),containers:!1(!3(^5:1)),exports:!1(!3(#8)),exportsReconciliation:!1(!3(^6:10).pipe(!4("exports_reconciliation"))),limits:!1(!3(^7:0)),mainModule:!1(!3(!2).pipe(!4("main_module"))),migrationTag:!1(!3(!2).pipe(!4("migration_tag"))),migrations:!1(!3(#9)),modules:!1(!3(^8:1)),packageDependencies:!1(!3(^8:3).pipe(!4("package_dependencies"))),placement:!1(!3(#10)),source:!1(!3(!2)),startupTimeMs:!1(!3(!9).pipe(!4("startup_time_ms"))),usageModel:!1(!3(!2).pipe(!4("usage_model")))}).pipe(!10(~1:0)))@"GetBetaWorkerVersionResponse"',
-        [
-          __v,
-          __d48,
-          __d4,
-          __d16,
-          __d6,
-          __d15,
-          __d14,
-          __d7,
-          __d17,
-          WorkerNotFound,
-          WorkerVersionNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getBetaWorkerVersion, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3104, __c97, 0) as any as S.Schema<GetBetaWorkerVersionRequest>,
+  output: __S(3114, __c97, 10) as any as S.Schema<GetBetaWorkerVersionResponse>,
+  errors: [WorkerNotFound, WorkerVersionNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetDomainError = DomainNotFound | InvalidRoute | CloudflareOpError;
 /** Gets information about a Worker domain. */
@@ -16382,24 +16130,13 @@ export const getDomain: API.OperationMethod<
   GetDomainResponse,
   GetDomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),domainId:!2.pipe(!7("domain_id"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/domains/{domain_id}",code:200})).pipe(!10(~1:0)))@"GetDomainRequest"',
-        [
-          __v,
-          __d48,
-          __d40,
-          DomainNotFound,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getDomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3136, __c98, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(3168, __c99, 0) as any as S.Schema<GetDomainResponse>,
+  errors: [DomainNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetObservabilitySharedQueryError = CloudflareOpError;
 /** Shared queries store the results of a previously run query, allowing you to share the results with others. */
@@ -16408,27 +16145,13 @@ export const getObservabilitySharedQuery: API.OperationMethod<
   GetObservabilitySharedQueryResponse,
   GetObservabilitySharedQueryError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#53,errors:[$8,$9],protocol:$10,retry:$11};!5(>!6({accountId:!2.pipe(!7("account_id")),id:!2.pipe(!7()),view:!1(!2.pipe(!15()))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/observability/shared/query/{id}",code:200})).pipe(!10(~1:0)))@"GetObservabilitySharedQueryRequest";!11.pipe(!13([["operator","alias","key","keyType"],["key","operator","alias","keyType"]]));!12(#2);!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#4);!5(>!6({calculations:!1(!3(#3)),datasets:!1(!3(^2:0)),filterCombination:!1(!3(!2)),filters:!1(!3(#5)),groupBys:!1(!3(^3:1)),havings:!1(!3(^3:3)),limit:!1(!3(!9)),needle:!1(!3(^4:0)),orderBy:!1(!3(^5:0))}))@"ObservabilitySharedQueriesGetResponseRunQueryParameters";!5(>!6({id:!2,adhoc:!8,created:!2,createdBy:!2,description:!2,name:!2,parameters:#6,updated:!2,updatedBy:!2}))@"ObservabilitySharedQueriesGetResponseRunQuery";!5(>!6({id:!2,accountId:!2,dry:!8,granularity:!9,query:#7,status:!2,timeframe:^6:0,userId:!2,created:!1(!3(!2)),statistics:!1(!3(^4:1)),updated:!1(!3(!2))}))@"ObservabilitySharedQueriesGetResponseRun";!11.pipe(!13([[],[],[]]));!5(>!6({key:!2,value:#9}))@"ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem";!12(#10);!5(>!6({count:!9,interval:!9,sampleInterval:!9,value:!9,groups:!1(!3(#11))}))@"ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem";!12(#12);!11.pipe(!13([[],[],[]]));!5(>!6({key:!2,value:#14}))@"ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem";!12(#15);!5(>!6({count:!9,interval:!9,sampleInterval:!9,value:!9,firstSeen:!1(!3(!2)),groups:!1(!3(#16)),lastSeen:!1(!3(!2))}))@"ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem";!12(#17);!5(>!6({data:#18,time:!2}))@"ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem";!12(#19);!5(>!6({aggregates:#13,calculation:!2,series:#20,alias:!1(!3(!2))}))@"ObservabilitySharedQueriesGetResponseCalculationsItem";!12(#21);!11.pipe(!13([[],[],[]]));!5(>!6({key:!2,value:#23}))@"ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem";!12(#24);!5(>!6({count:!9,interval:!9,sampleInterval:!9,value:!9,groups:!1(!3(#25))}))@"ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem";!12(#26);!11.pipe(!13([[],[],[]]));!5(>!6({key:!2,value:#28}))@"ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem";!12(#29);!5(>!6({count:!9,interval:!9,sampleInterval:!9,value:!9,firstSeen:!1(!3(!2)),groups:!1(!3(#30)),lastSeen:!1(!3(!2))}))@"ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem";!12(#31);!5(>!6({data:#32,time:!2}))@"ObservabilitySharedQueriesGetResponseCompareItemSeriesItem";!12(#33);!5(>!6({aggregates:#27,calculation:!2,series:#34,alias:!1(!3(!2))}))@"ObservabilitySharedQueriesGetResponseCompareItem";!12(#35);!11.pipe(!13([[],[]]));!11.pipe(!13([["eventType","scriptName","durableObjectId","entrypoint","event","executionModel","outcome","preview","requestId","scriptVersion","spanId","traceId","truncated"],["cpuTimeMs","eventType","outcome","scriptName","wallTimeMs","diagnosticsChannelEvents","dispatchNamespace","durableObjectId","entrypoint","event","executionModel","preview","requestId","scriptVersion","spanId","traceId","truncated"]]));!5(>!6({metadata:^4:7.pipe(!4("$metadata")),dataset:!2,source:#37,timestamp:!9,containers:!1(!3(^7:0).pipe(!4("$containers"))),workers:!1(!3(#38).pipe(!4("$workers")))}))@"ObservabilitySharedQueriesGetResponseEventsEventsItem";!12(#39);!11.pipe(!13([[],[],[]]));!16(!2,#41);!5(>!6({aggregates:^4:10,count:!9,interval:!9,sampleInterval:!9,errors:!1(!3(!9)),groups:!1(!3(#42))}))@"ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem";!12(#43);!5(>!6({data:#44,time:!2}))@"ObservabilitySharedQueriesGetResponseEventsSeriesItem";!12(#45);!5(>!6({count:!1(!3(!9)),events:!1(!3(#40)),fields:!1(!3(^4:9)),series:!1(!3(#46))}))@"ObservabilitySharedQueriesGetResponseEvents";!11.pipe(!13([[],[]]));!11.pipe(!13([["eventType","scriptName","durableObjectId","entrypoint","event","executionModel","outcome","preview","requestId","scriptVersion","spanId","traceId","truncated"],["cpuTimeMs","eventType","outcome","scriptName","wallTimeMs","diagnosticsChannelEvents","dispatchNamespace","durableObjectId","entrypoint","event","executionModel","preview","requestId","scriptVersion","spanId","traceId","truncated"]]));!5(>!6({metadata:^4:7.pipe(!4("$metadata")),dataset:!2,source:#48,timestamp:!9,containers:!1(!3(^7:0).pipe(!4("$containers"))),workers:!1(!3(#49).pipe(!4("$workers")))}))@"ObservabilitySharedQueriesGetResponseInvocationsValueItem";!12(#50);!16(!2,#51);!5(>!6({run:#8,statistics:^4:1,agents:!1(!3(^4:3)),calculations:!1(!3(#22)),compare:!1(!3(#36)),distribution:!1(!3(^4:6)),events:!1(!3(#47)),invocations:!1(!3(#52)),traces:!1(!3(^4:12))}).pipe(!10(~1:0)))@"GetObservabilitySharedQueryResponse"',
-        [
-          __v,
-          __d48,
-          __d4,
-          __d20,
-          __d41,
-          __d21,
-          __d22,
-          __d0,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getObservabilitySharedQuery, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3200, __c100, 0) as any as S.Schema<GetObservabilitySharedQueryRequest>,
+  output: __S(3252, __c101, 20) as any as S.Schema<GetObservabilitySharedQueryResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetPreviewError = PreviewNotFound | WorkerNotFound | CloudflareOpError;
 /** Get a Worker Preview by id or name. */
@@ -16437,24 +16160,13 @@ export const getPreview: API.OperationMethod<
   PreviewResource,
   GetPreviewError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),previewId:!2.pipe(!7("preview_id"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}",code:200})).pipe(!10(~1:0)))@"GetPreviewRequest"',
-        [
-          __v,
-          __d48,
-          __d23,
-          PreviewNotFound,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getPreview, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3296, __c103, 0) as any as S.Schema<GetPreviewRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<PreviewResource>,
+  errors: [PreviewNotFound, WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetPreviewDeploymentError =
   | PreviewNotFound
@@ -16467,25 +16179,19 @@ export const getPreviewDeployment: API.OperationMethod<
   PreviewDeploymentResource,
   GetPreviewDeploymentError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6,$7],protocol:$8,retry:$9};!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),previewId:!2.pipe(!7("preview_id")),deploymentId:!2.pipe(!7("deployment_id"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}/deployments/{deployment_id}",code:200})).pipe(!10(~1:0)))@"GetPreviewDeploymentRequest"',
-        [
-          __v,
-          __d48,
-          __d24,
-          PreviewNotFound,
-          PreviewDeploymentNotFound,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getPreviewDeployment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3328, __c104, 0) as any as S.Schema<GetPreviewDeploymentRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<PreviewDeploymentResource>,
+  errors: [
+    PreviewNotFound,
+    PreviewDeploymentNotFound,
+    WorkerNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetRouteError =
   | WorkerNotFound
@@ -16499,26 +16205,20 @@ export const getRoute: API.OperationMethod<
   GetRouteResponse,
   GetRouteError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6,$7,$8],protocol:$9,retry:$10};!5(>!6({zoneId:!2.pipe(!7("zone_id")),routeId:!2.pipe(!7("route_id"))}).pipe(!14({method:"GET",uri:"/zones/{zone_id}/workers/routes/{route_id}",code:200})).pipe(!10(~1:0)))@"GetRouteRequest"',
-        [
-          __v,
-          __d48,
-          __d25,
-          WorkerNotFound,
-          RouteNotFound,
-          InvalidRoute,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getRoute, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3360, __c105, 0) as any as S.Schema<GetRouteRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<GetRouteResponse>,
+  errors: [
+    WorkerNotFound,
+    RouteNotFound,
+    InvalidRoute,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptError =
   | WorkerNotFound
@@ -16531,25 +16231,19 @@ export const getScript: API.OperationMethod<
   GetScriptResponse,
   GetScriptError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6,$7],protocol:$8,retry:$9};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}",code:200})).pipe(!10(~1:0)))@"GetScriptRequest"',
-        [
-          __v,
-          __d48,
-          __d37,
-          WorkerNotFound,
-          InvalidRoute,
-          WorkerHasNoVersions,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScript, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3392, __c106, 0) as any as S.Schema<GetScriptRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<GetScriptResponse>,
+  errors: [
+    WorkerNotFound,
+    InvalidRoute,
+    WorkerHasNoVersions,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptContentError = WorkerNotFound | CloudflareOpError;
 /** Fetch Worker script content only. */
@@ -16558,23 +16252,13 @@ export const getScriptContent: API.OperationMethod<
   GetScriptContentResponse,
   GetScriptContentError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/content/v2",code:200})).pipe(!10(~1:0)))@"GetScriptContentRequest"',
-        [
-          __v,
-          __d48,
-          __d37,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptContent, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3424, __c107, 0) as any as S.Schema<GetScriptContentRequest>,
+  output: __S(2592, __c81, 0) as any as S.Schema<GetScriptContentResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptDeploymentError = WorkerNotFound | DeploymentNotFound | CloudflareOpError;
 /** Get information about a Worker Deployment. */
@@ -16583,24 +16267,13 @@ export const getScriptDeployment: API.OperationMethod<
   GetScriptDeploymentResponse,
   GetScriptDeploymentError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),deploymentId:!2.pipe(!7("deployment_id"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}",code:200})).pipe(!10(~1:0)))@"GetScriptDeploymentRequest"',
-        [
-          __v,
-          __d48,
-          __d26,
-          WorkerNotFound,
-          DeploymentNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptDeployment, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3456, __c108, 0) as any as S.Schema<GetScriptDeploymentRequest>,
+  output: __S(1984, __c62, 0) as any as S.Schema<GetScriptDeploymentResponse>,
+  errors: [WorkerNotFound, DeploymentNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptEventTriggersError = CloudflareOpError;
 /** The script's event triggers. A script with none, or no script by that name, has an empty list. */
@@ -16609,22 +16282,13 @@ export const getScriptEventTriggers: API.OperationMethod<
   GetScriptEventTriggersResponse,
   GetScriptEventTriggersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:6,errors:[$3,$4],protocol:$5,retry:$6};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/triggers/{script_name}",code:200})).pipe(!10(~1:0)))@"GetScriptEventTriggersRequest"',
-        [
-          __v,
-          __d48,
-          __d42,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptEventTriggers, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3488, __c109, 0) as any as S.Schema<GetScriptEventTriggersRequest>,
+  output: __S(3526, __c110, 6) as any as S.Schema<GetScriptEventTriggersResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptScheduleError = WorkerNotFound | CloudflareOpError;
 /** Get the schedules (Cron Triggers) for a Worker script. */
@@ -16633,23 +16297,13 @@ export const getScriptSchedule: API.OperationMethod<
   GetScriptScheduleResponse,
   GetScriptScheduleError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:2,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/schedules",code:200})).pipe(!10(~1:0)))@"GetScriptScheduleRequest"',
-        [
-          __v,
-          __d48,
-          __d43,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptSchedule, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3552, __c111, 0) as any as S.Schema<GetScriptScheduleRequest>,
+  output: __S(3586, __c112, 2) as any as S.Schema<GetScriptScheduleResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptScriptAndVersionSettingError =
   | WorkerNotFound
@@ -16661,29 +16315,13 @@ export const getScriptScriptAndVersionSetting: API.OperationMethod<
   GetScriptScriptAndVersionSettingResponse,
   GetScriptScriptAndVersionSettingError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#8,errors:[$8,$9,$10,$11],protocol:$12,retry:$13};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/settings",code:200})).pipe(!10(~1:0)))@"GetScriptScriptAndVersionSettingRequest";!11.pipe(!13([["name","type"],["instanceName","name","type","namespace"],["name","namespace","type"],["name","namespace","type"],["dataset","name","type"],["name","namespace","type"],["name","type"],["name","type"],["databaseId","name","type","id"],["name","part","type"],["name","namespace","type","outbound"],["name","type","className","dispatchNamespace","environment","namespaceId","scriptName"],["id","name","type"],["name","type","oldName","versionId"],["name","type"],["json","name","type"],["name","namespaceId","type"],["name","type"],["certificateId","name","type"],["name","text","type"],["name","pipeline","type"],["name","stream","type"],["name","queueName","type"],["name","namespaceId","simple","type"],["bucketName","name","type","jurisdiction"],["name","text","type"],["name","type","allowedDestinationAddresses","allowedSenderAddresses","destinationAddress"],["name","service","type","entrypoint","environment"],["name","part","type"],["indexName","name","type"],["name","type"],["name","secretName","storeId","type"],["appId","name","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"],["name","type","workflowName","className","scriptName"],["name","part","type"],["name","serviceId","type"],["name","type","identity","networkId","tunnelId"]],{key:"type",values:["ai","ai_search","ai_search_namespace","messaging","analytics_engine","artifacts","assets","browser","d1","data_blob","dispatch_namespace","durable_object_namespace","hyperdrive","inherit","images","json","kv_namespace","media","mtls_certificate","plain_text","pipelines","k2","queue","ratelimit","r2_bucket","secret_text","send_email","service","text_blob","vectorize","version_metadata","secrets_store_secret","flagship","secret_key","workflow","wasm_module","vpc_service","vpc_network"]}));!12(#2);!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#4);!11.pipe(!13([["deletedClasses","newClasses","newSqliteClasses","newTag","oldTag","renamedClasses","transferredClasses"],["newTag","oldTag","steps"]]));!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({annotations:!1(!3(^2:0)),bindings:!1(!3(#3)),cacheOptions:!1(!3(^3:0).pipe(!4("cache_options"))),compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^4:0).pipe(!4("compatibility_flags"))),exports:!1(!3(#5)),exportsReconciliation:!1(!3(^5:10).pipe(!4("exports_reconciliation"))),limits:!1(!3(^6:0)),logpush:!1(!3(!8)),migrations:!1(!3(#6)),observability:!1(!3(^7:1)),placement:!1(!3(#7)),tags:!1(!3(^4:0)),tailConsumers:!1(!3(^7:3).pipe(!4("tail_consumers"))),usageModel:!1(!3(!2).pipe(!4("usage_model")))}).pipe(!10(~1:0)))@"GetScriptScriptAndVersionSettingResponse"',
-        [
-          __v,
-          __d48,
-          __d16,
-          __d6,
-          __d4,
-          __d14,
-          __d7,
-          __d44,
-          WorkerNotFound,
-          WorkerHasNoVersions,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptScriptAndVersionSetting, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3616, __c113, 0) as any as S.Schema<GetScriptScriptAndVersionSettingRequest>,
+  output: __S(3623, __c113, 7) as any as S.Schema<GetScriptScriptAndVersionSettingResponse>,
+  errors: [WorkerNotFound, WorkerHasNoVersions, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptSecretError = WorkerNotFound | SecretNotFound | CloudflareOpError;
 /** Get a given secret binding (value omitted) on a Worker script. */
@@ -16692,23 +16330,13 @@ export const getScriptSecret: API.OperationMethod<
   GetScriptSecretResponse,
   GetScriptSecretError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#3,errors:[$2,$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),secretName:!2.pipe(!7("secret_name")),urlEncoded:!1(!8.pipe(!15("url_encoded")))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}",code:200})).pipe(!10(~1:0)))@"GetScriptSecretRequest";!11.pipe(!13([["name","text","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"]],{key:"type",values:["secret_text","secret_key"]}));!5(>#2.pipe(!19(),!10(~1:0)))@"GetScriptSecretResponse"',
-        [
-          __v,
-          __d48,
-          WorkerNotFound,
-          SecretNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptSecret, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3680, __c115, 0) as any as S.Schema<GetScriptSecretRequest>,
+  output: __S(3682, __c115, 2) as any as S.Schema<GetScriptSecretResponse>,
+  errors: [WorkerNotFound, SecretNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptSettingError = WorkerNotFound | WorkerHasNoVersions | CloudflareOpError;
 /** Get Worker script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Includes Logpush and Tail Consumers. */
@@ -16717,24 +16345,13 @@ export const getScriptSetting: API.OperationMethod<
   GetScriptSettingResponse,
   GetScriptSettingError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/script-settings",code:200})).pipe(!10(~1:0)))@"GetScriptSettingRequest"',
-        [
-          __v,
-          __d48,
-          __d45,
-          WorkerNotFound,
-          WorkerHasNoVersions,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptSetting, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3712, __c116, 0) as any as S.Schema<GetScriptSettingRequest>,
+  output: __S(3744, __c117, 0) as any as S.Schema<GetScriptSettingResponse>,
+  errors: [WorkerNotFound, WorkerHasNoVersions, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptSubdomainError = WorkerNotFound | CloudflareOpError;
 /** Get whether a Worker script is available on the workers.dev subdomain. */
@@ -16743,23 +16360,13 @@ export const getScriptSubdomain: API.OperationMethod<
   GetScriptSubdomainResponse,
   GetScriptSubdomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/subdomain",code:200})).pipe(!10(~1:0)))@"GetScriptSubdomainRequest"',
-        [
-          __v,
-          __d48,
-          __d29,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptSubdomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3776, __c118, 0) as any as S.Schema<GetScriptSubdomainRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<GetScriptSubdomainResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptTailError = WorkerNotFound | CloudflareOpError;
 /** Get a list of tails currently deployed on a Worker. */
@@ -16768,23 +16375,13 @@ export const getScriptTail: API.OperationMethod<
   GetScriptTailResponse,
   GetScriptTailError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/tails",code:200})).pipe(!10(~1:0)))@"GetScriptTailRequest"',
-        [
-          __v,
-          __d48,
-          __d30,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptTail, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3808, __c119, 0) as any as S.Schema<GetScriptTailRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GetScriptTailResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetScriptVersionError = WorkerNotFound | VersionNotFound | CloudflareOpError;
 /** Retrieves detailed information about a specific version of a Worker script. */
@@ -16793,27 +16390,13 @@ export const getScriptVersion: API.OperationMethod<
   GetScriptVersionResponse,
   GetScriptVersionError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#6,errors:[$6,$7,$8,$9],protocol:$10,retry:$11};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),versionId:!2.pipe(!7("version_id"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/versions/{version_id}",code:200})).pipe(!10(~1:0)))@"GetScriptVersionRequest";!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#2);!5(>!6({compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^2:0).pipe(!4("compatibility_flags"))),exports:!1(!3(#3)),limits:!1(!3(^3:1)),migrationTag:!1(!3(!2).pipe(!4("migration_tag"))),usageModel:!1(!3(!2).pipe(!4("usage_model"))),containers:!1(!3(^4:1))}))@"ScriptsVersionsGetResponseResourcesScriptRuntime";!5(>!6({bindings:!11,script:!1(!3(^3:0)),scriptRuntime:!1(!3(#4).pipe(!4("script_runtime")))}))@"ScriptsVersionsGetResponseResources";!5(>!6({resources:#5,id:!1(!3(!2)),metadata:!1(!3(^5:0)),number:!1(!3(!9))}).pipe(!10(~1:0)))@"GetScriptVersionResponse"',
-        [
-          __v,
-          __d48,
-          __d4,
-          __d33,
-          __d15,
-          __d35,
-          WorkerNotFound,
-          VersionNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getScriptVersion, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3840, __c120, 0) as any as S.Schema<GetScriptVersionRequest>,
+  output: __S(3845, __c120, 5) as any as S.Schema<GetScriptVersionResponse>,
+  errors: [WorkerNotFound, VersionNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type GetSubdomainError = InvalidRoute | SubdomainNotFound | Forbidden | CloudflareOpError;
 /** Returns a Workers subdomain for an account. */
@@ -16822,25 +16405,13 @@ export const getSubdomain: API.OperationMethod<
   GetSubdomainResponse,
   GetSubdomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6,$7],protocol:$8,retry:$9};!5(>!6({accountId:!2.pipe(!7("account_id"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/subdomain",code:200})).pipe(!10(~1:0)))@"GetSubdomainRequest"',
-        [
-          __v,
-          __d48,
-          __d46,
-          InvalidRoute,
-          SubdomainNotFound,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(getSubdomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(3872, __c121, 0) as any as S.Schema<GetSubdomainRequest>,
+  output: __S(3904, __c122, 0) as any as S.Schema<GetSubdomainResponse>,
+  errors: [InvalidRoute, SubdomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type KeysObservabilityTelemetryError = InvalidRoute | CloudflareOpError;
 /** List all the keys in your telemetry events. */
@@ -16850,25 +16421,17 @@ export const keysObservabilityTelemetry: API.PaginatedOperationMethod<
   KeysObservabilityTelemetryError,
   CloudflareOpContext,
   ObservabilityTelemetryKeysResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#7,output:#10,errors:[$4,$5,$6],protocol:$7,retry:$8,pagination:{mode:"single",items:"result"},strategy:$9};!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#1);!11.pipe(!13([[],[],[]]));!5(>!6({value:#3,isRegex:!1(!8),matchCase:!1(!8)}))@"ObservabilityTelemetryKeysRequestKeyNeedle";!11.pipe(!13([[],[],[]]));!5(>!6({value:#5,isRegex:!1(!8),matchCase:!1(!8)}))@"ObservabilityTelemetryKeysRequestNeedle";!5(>!6({accountId:!2.pipe(!7("account_id")),datasets:!1(^2:0),filters:!1(#2),from:!1(!9),keyNeedle:!1(#4),limit:!1(!9),needle:!1(#6),to:!1(!9)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/observability/telemetry/keys",code:200})).pipe(!10(~1:0)))@"KeysObservabilityTelemetryRequest";!5(>!6({key:!2,lastSeenAt:!9,type:!2}))@"ObservabilityTelemetryKeysResultItem";!12(#8);!5(>!6({result:#9.pipe(!17()),resultInfo:!1(!3($3).pipe(!18()))}).pipe(!10(~1:0)))@"KeysObservabilityTelemetryResponse"',
-        [
-          __v,
-          __d48,
-          __d4,
-          ResultInfo,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(keysObservabilityTelemetry, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(3942, __c123, 6) as any as S.Schema<KeysObservabilityTelemetryRequest>,
+    output: __S(3945, __c123, 9) as any as S.Schema<KeysObservabilityTelemetryResponse>,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListBetaWorkersError = InvalidRoute | CloudflareOpError;
 /** List all Workers for an account. */
@@ -16878,29 +16441,23 @@ export const listBetaWorkers: API.PaginatedOperationMethod<
   ListBetaWorkersError,
   CloudflareOpContext,
   BetaWorkersListResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#6,errors:[$8,$9,$10],protocol:$11,retry:$12,pagination:{mode:"page",inputToken:"page",outputToken:"resultInfo.page",items:"result",pageSize:"perPage"},strategy:$13};!5(>!6({accountId:!2.pipe(!7("account_id")),order:!1(!2.pipe(!15())),orderBy:!1(!2.pipe(!15("order_by"))),page:!1(!9.pipe(!15())),perPage:!1(!9.pipe(!15("per_page")))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/workers",code:200})).pipe(!10(~1:0)))@"ListBetaWorkersRequest";!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({cacheOptions:!1(!3(^2:0).pipe(!4("cache_options"))),env:!1(!3(^3:1)),limits:!1(!3(^4:0)),logpush:!1(!3(!8)),observability:!1(!3(^3:3)),placement:!1(!3(#2)),tailConsumers:!1(!3(^5:1).pipe(!4("tail_consumers")))}))@"BetaWorkersListResultItemPreviewsBaseConfig";!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),logpush:!8,name:!2,observability:^3:3,references:^3:12,subdomain:^3:13,tags:^6:0,tailConsumers:^5:1.pipe(!4("tail_consumers")),updatedOn:!2.pipe(!4("updated_on")),deployedOn:!1(!3(!2).pipe(!4("deployed_on"))),previewsBaseConfig:!1(!3(#3).pipe(!4("previews_base_config")))}))@"BetaWorkersListResultItem";!12(#4);!5(>!6({result:#5.pipe(!17()),resultInfo:!1(!3($7).pipe(!18()))}).pipe(!10(~1:0)))@"ListBetaWorkersResponse"',
-        [
-          __v,
-          __d48,
-          __d6,
-          __d11,
-          __d7,
-          __d8,
-          __d4,
-          ResultInfo,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(listBetaWorkers, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(3968, __c124, 0) as any as S.Schema<ListBetaWorkersRequest>,
+    output: __S(3973, __c124, 5) as any as S.Schema<ListBetaWorkersResponse>,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListBetaWorkerVersionsError = WorkerNotFound | CloudflareOpError;
 /** List all versions for a Worker. */
@@ -16910,31 +16467,23 @@ export const listBetaWorkerVersions: API.PaginatedOperationMethod<
   ListBetaWorkerVersionsError,
   CloudflareOpContext,
   BetaWorkersVersionsListResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#13,errors:[$10,$11,$12],protocol:$13,retry:$14,pagination:{mode:"page",inputToken:"page",outputToken:"resultInfo.page",items:"result",pageSize:"perPage"},strategy:$15};!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),page:!1(!9.pipe(!15())),perPage:!1(!9.pipe(!15("per_page")))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/workers/{worker_id}/versions",code:200})).pipe(!10(~1:0)))@"ListBetaWorkerVersionsRequest";!11.pipe(!13([[],[]]));!5(>!6({basePath:!1(!3(!2).pipe(!4("base_path"))),htmlHandling:!1(!3(!2).pipe(!4("html_handling"))),notFoundHandling:!1(!3(!2).pipe(!4("not_found_handling"))),runWorkerFirst:!1(!3(#2).pipe(!4("run_worker_first")))}))@"BetaWorkersVersionsListResultItemAssetsConfig";!5(>!6({config:!1(!3(#3)),jwt:!1(!3(!2))}))@"BetaWorkersVersionsListResultItemAssets";!11.pipe(!13([["name","type"],["instanceName","name","type","namespace"],["name","namespace","type"],["name","namespace","type"],["dataset","name","type"],["name","namespace","type"],["name","type"],["name","type"],["databaseId","name","type","id"],["name","part","type"],["name","namespace","type","outbound"],["name","type","className","dispatchNamespace","environment","namespaceId","scriptName"],["id","name","type"],["name","type","oldName","versionId"],["name","type"],["json","name","type"],["name","namespaceId","type"],["name","type"],["certificateId","name","type"],["name","text","type"],["name","pipeline","type"],["name","stream","type"],["name","queueName","type"],["name","namespaceId","simple","type"],["bucketName","name","type","jurisdiction"],["name","text","type"],["name","type","allowedDestinationAddresses","allowedSenderAddresses","destinationAddress"],["name","service","type","entrypoint","environment"],["name","part","type"],["indexName","name","type"],["name","type"],["name","secretName","storeId","type"],["appId","name","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"],["name","type","workflowName","className","scriptName"],["name","part","type"],["name","serviceId","type"],["name","type","identity","networkId","tunnelId"]],{key:"type",values:["ai","ai_search","ai_search_namespace","messaging","analytics_engine","artifacts","assets","browser","d1","data_blob","dispatch_namespace","durable_object_namespace","hyperdrive","inherit","images","json","kv_namespace","media","mtls_certificate","plain_text","pipelines","k2","queue","ratelimit","r2_bucket","secret_text","send_email","service","text_blob","vectorize","version_metadata","secrets_store_secret","flagship","secret_key","workflow","wasm_module","vpc_service","vpc_network"]}));!12(#5);!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#7);!11.pipe(!13([["deletedClasses","newClasses","newSqliteClasses","newTag","oldTag","renamedClasses","transferredClasses"],["newTag","oldTag","steps"]]));!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),number:!9,urls:^2:0,annotations:!1(!3(^3:0)),assets:!1(!3(#4)),authorEmail:!1(!3(!2).pipe(!4("author_email"))),authorId:!1(!3(!2).pipe(!4("author_id"))),bindings:!1(!3(#6)),cacheOptions:!1(!3(^4:0).pipe(!4("cache_options"))),compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^2:0).pipe(!4("compatibility_flags"))),containers:!1(!3(^5:1)),exports:!1(!3(#8)),exportsReconciliation:!1(!3(^6:10).pipe(!4("exports_reconciliation"))),limits:!1(!3(^7:0)),mainModule:!1(!3(!2).pipe(!4("main_module"))),migrationTag:!1(!3(!2).pipe(!4("migration_tag"))),migrations:!1(!3(#9)),modules:!1(!3(^8:1)),packageDependencies:!1(!3(^8:3).pipe(!4("package_dependencies"))),placement:!1(!3(#10)),source:!1(!3(!2)),startupTimeMs:!1(!3(!9).pipe(!4("startup_time_ms"))),usageModel:!1(!3(!2).pipe(!4("usage_model")))}))@"BetaWorkersVersionsListResultItem";!12(#11);!5(>!6({result:#12.pipe(!17()),resultInfo:!1(!3($9).pipe(!18()))}).pipe(!10(~1:0)))@"ListBetaWorkerVersionsResponse"',
-        [
-          __v,
-          __d48,
-          __d4,
-          __d16,
-          __d6,
-          __d15,
-          __d14,
-          __d7,
-          __d17,
-          ResultInfo,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(listBetaWorkerVersions, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(4000, __c125, 0) as any as S.Schema<ListBetaWorkerVersionsRequest>,
+    output: __S(4012, __c125, 12) as any as S.Schema<ListBetaWorkerVersionsResponse>,
+    errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListDomainsError = InvalidRoute | CloudflareOpError;
 /** Lists all Worker domains for an account. */
@@ -16944,24 +16493,17 @@ export const listDomains: API.PaginatedOperationMethod<
   ListDomainsError,
   CloudflareOpContext,
   DomainsListResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$3,$4,$5],protocol:$6,retry:$7,pagination:{mode:"single",items:"result"},strategy:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),environment:!1(!2.pipe(!15())),hostname:!1(!2.pipe(!15())),service:!1(!2.pipe(!15())),zoneId:!1(!2.pipe(!15("zone_id"))),zoneName:!1(!2.pipe(!15("zone_name")))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/domains",code:200})).pipe(!10(~1:0)))@"ListDomainsRequest";!5(>!6({id:!2,certId:!2.pipe(!4("cert_id")),environment:!2,hostname:!2,service:!2,zoneId:!2.pipe(!4("zone_id")),zoneName:!2.pipe(!4("zone_name")),previewsEnabled:!1(!3(!8).pipe(!4("previews_enabled")))}))@"DomainsListResultItem";!12(#2);!5(>!6({result:#3.pipe(!17()),resultInfo:!1(!3($2).pipe(!18()))}).pipe(!10(~1:0)))@"ListDomainsResponse"',
-        [
-          __v,
-          __d48,
-          ResultInfo,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(listDomains, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(4032, __c126, 0) as any as S.Schema<ListDomainsRequest>,
+    output: __S(4035, __c126, 3) as any as S.Schema<ListDomainsResponse>,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListObservabilityDestinationsError = Forbidden | CloudflareOpError;
 /** List your Workers Observability Telemetry Destinations. */
@@ -16971,26 +16513,17 @@ export const listObservabilityDestinations: API.PaginatedOperationMethod<
   ListObservabilityDestinationsError,
   CloudflareOpContext,
   ObservabilityDestinationsListResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#6,errors:[$5,$6,$7],protocol:$8,retry:$9,pagination:{mode:"single",items:"result"},strategy:$10};!5(>!6({accountId:!2.pipe(!7("account_id")),order:!1(!2.pipe(!15())),orderBy:!1(!2.pipe(!15())),page:!1(!9.pipe(!15())),perPage:!1(!9.pipe(!15()))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/observability/destinations",code:200})).pipe(!10(~1:0)))@"ListObservabilityDestinationsRequest";!5(>!6({errorMessage:!2.pipe(!4("error_message")),lastComplete:!2.pipe(!4("last_complete")),lastError:!2.pipe(!4("last_error"))}))@"ObservabilityDestinationsListResultItemConfigurationJobStatus";!5(>!6({destinationConf:!2.pipe(!4("destination_conf")),headers:^2:0,jobStatus:#2,logpushDataset:!2,type:!2,url:!2}))@"ObservabilityDestinationsListResultItemConfiguration";!5(>!6({configuration:#3,enabled:!8,name:!2,scripts:^3:0,slug:!2}))@"ObservabilityDestinationsListResultItem";!12(#4);!5(>!6({result:#5.pipe(!17()),resultInfo:!1(!3($4).pipe(!18()))}).pipe(!10(~1:0)))@"ListObservabilityDestinationsResponse"',
-        [
-          __v,
-          __d48,
-          __d12,
-          __d4,
-          ResultInfo,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(listObservabilityDestinations, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(4064, __c127, 0) as any as S.Schema<ListObservabilityDestinationsRequest>,
+    output: __S(4069, __c127, 5) as any as S.Schema<ListObservabilityDestinationsResponse>,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListObservabilityQueriesError = CloudflareOpError;
 /** List saved queries. */
@@ -17000,26 +16533,17 @@ export const listObservabilityQueries: API.PaginatedOperationMethod<
   ListObservabilityQueriesError,
   CloudflareOpContext,
   ObservabilityQueriesListResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#11,errors:[$6,$7],protocol:$8,retry:$9,pagination:{mode:"single",items:"result"},strategy:$10};!5(>!6({accountId:!2.pipe(!7("account_id")),order:!1(!2.pipe(!15())),orderBy:!1(!2.pipe(!15())),page:!1(!9.pipe(!15())),perPage:!1(!9.pipe(!15()))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/observability/queries",code:200})).pipe(!10(~1:0)))@"ListObservabilityQueriesRequest";!11.pipe(!13([["operator","alias","key","keyType"],["key","operator","alias","keyType"]]));!12(#2);!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#4);!11.pipe(!13([[],[],[]]));!5(>!6({value:#6,isRegex:!1(!3(!8)),matchCase:!1(!3(!8))}))@"ObservabilityQueriesListResultItemParametersNeedle";!5(>!6({calculations:!1(!3(#3)),datasets:!1(!3(^2:0)),filterCombination:!1(!3(!2)),filters:!1(!3(#5)),groupBys:!1(!3(^3:1)),havings:!1(!3(^3:3)),limit:!1(!3(!9)),needle:!1(!3(#7)),orderBy:!1(!3(^4:0))}))@"ObservabilityQueriesListResultItemParameters";!5(>!6({id:!2,adhoc:!8,created:!2,createdBy:!2,description:!2,name:!2,parameters:#8,updated:!2,updatedBy:!2}))@"ObservabilityQueriesListResultItem";!12(#9);!5(>!6({result:#10.pipe(!17()),resultInfo:!1(!3($5).pipe(!18()))}).pipe(!10(~1:0)))@"ListObservabilityQueriesResponse"',
-        [
-          __v,
-          __d48,
-          __d4,
-          __d20,
-          __d21,
-          ResultInfo,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(listObservabilityQueries, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(4096, __c128, 0) as any as S.Schema<ListObservabilityQueriesRequest>,
+    output: __S(4106, __c128, 10) as any as S.Schema<ListObservabilityQueriesResponse>,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListRoutesError = InvalidRoute | Forbidden | CloudflareOpError;
 /** Returns Worker routes for a zone. */
@@ -17029,26 +16553,17 @@ export const listRoutes: API.PaginatedOperationMethod<
   ListRoutesError,
   CloudflareOpContext,
   RoutesListResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#2,errors:[$4,$5,$6,$7],protocol:$8,retry:$9,pagination:{mode:"single",items:"result"},strategy:$10};!5(>!6({zoneId:!2.pipe(!7("zone_id"))}).pipe(!14({method:"GET",uri:"/zones/{zone_id}/workers/routes",code:200})).pipe(!10(~1:0)))@"ListRoutesRequest";!5(>!6({result:^2:1.pipe(!17()),resultInfo:!1(!3($3).pipe(!18()))}).pipe(!10(~1:0)))@"ListRoutesResponse"',
-        [
-          __v,
-          __d48,
-          __d47,
-          ResultInfo,
-          InvalidRoute,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(listRoutes, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(4128, __c129, 0) as any as S.Schema<ListRoutesRequest>,
+    output: __S(4129, __c129, 1) as any as S.Schema<ListRoutesResponse>,
+    errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListScriptDeploymentsError = WorkerNotFound | CloudflareOpError;
 /** List Worker deployments. The first deployment in the list is the latest deployment actively serving traffic. */
@@ -17057,23 +16572,13 @@ export const listScriptDeployments: API.OperationMethod<
   ListScriptDeploymentsResponse,
   ListScriptDeploymentsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),page:!1(!9.pipe(!15())),perPage:!1(!9.pipe(!15("per_page"))),since:!1(!2.pipe(!15())),until:!1(!2.pipe(!15()))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/deployments",code:200})).pipe(!10(~1:0)))@"ListScriptDeploymentsRequest";!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),source:!2,strategy:!2,versions:^2:1,annotations:!1(!3(^2:2)),authorEmail:!1(!3(!2).pipe(!4("author_email")))}))@"ScriptsDeploymentsListResponseDeploymentsItem";!12(#2);!5(>!6({deployments:#3}).pipe(!10(~1:0)))@"ListScriptDeploymentsResponse"',
-        [
-          __v,
-          __d48,
-          __d27,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(listScriptDeployments, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(0, __c0, 0) as any as S.Schema<ListScriptDeploymentsRequest>,
+  output: __S(3, __c0, 3) as any as S.Schema<ListScriptDeploymentsResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ListScriptsError = InvalidRoute | CloudflareOpError;
 /** Fetch a list of uploaded Worker scripts. */
@@ -17083,29 +16588,17 @@ export const listScripts: API.PaginatedOperationMethod<
   ListScriptsError,
   CloudflareOpContext,
   ScriptsListResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#7,errors:[$8,$9,$10],protocol:$11,retry:$12,pagination:{mode:"single",items:"result"},strategy:$13};!5(>!6({accountId:!2.pipe(!7("account_id")),tags:!1(!2.pipe(!15()))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts",code:200})).pipe(!10(~1:0)))@"ListScriptsRequest";!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#2);!11.pipe(!13([["mode","lastAnalyzedAt","status"],["region","lastAnalyzedAt","status"],["hostname","lastAnalyzedAt","status"],["host","lastAnalyzedAt","status"],["mode","region","lastAnalyzedAt","status"],["hostname","mode","lastAnalyzedAt","status"],["host","mode","lastAnalyzedAt","status"],["mode","target","lastAnalyzedAt","status"]]));!5(>!6({id:!1(!3(!2)),cacheOptions:!1(!3(^2:0).pipe(!4("cache_options"))),compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^3:0).pipe(!4("compatibility_flags"))),createdOn:!1(!3(!2).pipe(!4("created_on"))),etag:!1(!3(!2)),exports:!1(!3(#3)),handlers:!1(!3(^3:0)),hasAssets:!1(!3(!8).pipe(!4("has_assets"))),hasModules:!1(!3(!8).pipe(!4("has_modules"))),lastDeployedFrom:!1(!3(!2).pipe(!4("last_deployed_from"))),logpush:!1(!3(!8)),migrationTag:!1(!3(!2).pipe(!4("migration_tag"))),modifiedOn:!1(!3(!2).pipe(!4("modified_on"))),namedHandlers:!1(!3(^4:1).pipe(!4("named_handlers"))),observability:!1(!3(^5:1)),placement:!1(!3(#4)),placementMode:!1(!3(!2).pipe(!4("placement_mode"))),placementStatus:!1(!3(!2).pipe(!4("placement_status"))),routes:!1(!3(^6:1)),tag:!1(!3(!2)),tags:!1(!3(^3:0)),tailConsumers:!1(!3(^5:3).pipe(!4("tail_consumers"))),usageModel:!1(!3(!2).pipe(!4("usage_model")))}))@"ScriptsListResultItem";!12(#5);!5(>!6({result:#6.pipe(!17()),resultInfo:!1(!3($7).pipe(!18()))}).pipe(!10(~1:0)))@"ListScriptsResponse"',
-        [
-          __v,
-          __d48,
-          __d6,
-          __d4,
-          __d34,
-          __d44,
-          __d47,
-          ResultInfo,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(listScripts, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(32, __c1, 0) as any as S.Schema<ListScriptsRequest>,
+    output: __S(38, __c1, 6) as any as S.Schema<ListScriptsResponse>,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListScriptSecretsError = WorkerNotFound | CloudflareOpError;
 /** List the names of secrets bound to a Worker script. */
@@ -17115,24 +16608,17 @@ export const listScriptSecrets: API.PaginatedOperationMethod<
   ListScriptSecretsError,
   CloudflareOpContext,
   ScriptsSecretsListResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$3,$4,$5],protocol:$6,retry:$7,pagination:{mode:"single",items:"result"},strategy:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name"))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/secrets",code:200})).pipe(!10(~1:0)))@"ListScriptSecretsRequest";!11.pipe(!13([["name","text","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"]],{key:"type",values:["secret_text","secret_key"]}));!12(#2);!5(>!6({result:#3.pipe(!17()),resultInfo:!1(!3($2).pipe(!18()))}).pipe(!10(~1:0)))@"ListScriptSecretsResponse"',
-        [
-          __v,
-          __d48,
-          ResultInfo,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(listScriptSecrets, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(64, __c2, 0) as any as S.Schema<ListScriptSecretsRequest>,
+    output: __S(67, __c2, 3) as any as S.Schema<ListScriptSecretsResponse>,
+    errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 export type ListScriptVersionsError = WorkerNotFound | CloudflareOpError;
 /** List of Worker Versions. The first version in the list is the latest version. */
@@ -17141,23 +16627,13 @@ export const listScriptVersions: API.OperationMethod<
   ListScriptVersionsResponse,
   ListScriptVersionsError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),deployable:!1(!8.pipe(!15())),page:!1(!9.pipe(!15())),perPage:!1(!9.pipe(!15("per_page")))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts/{script_name}/versions",code:200})).pipe(!10(~1:0)))@"ListScriptVersionsRequest";!5(>!6({id:!1(!3(!2)),metadata:!1(!3(^2:0)),number:!1(!3(!9))}))@"ScriptsVersionsListResponseItemsItem";!12(#2);!5(>!6({items:!1(!3(#3))}).pipe(!10(~1:0)))@"ListScriptVersionsResponse"',
-        [
-          __v,
-          __d48,
-          __d35,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(listScriptVersions, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(96, __c3, 0) as any as S.Schema<ListScriptVersionsRequest>,
+  output: __S(99, __c3, 3) as any as S.Schema<ListScriptVersionsResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type LiveTailHeartbeatObservabilityTelemetryError = CloudflareOpError;
 /** Notify live tail that user is still eligible to receive live events. */
@@ -17166,22 +16642,13 @@ export const liveTailHeartbeatObservabilityTelemetry: API.OperationMethod<
   LiveTailHeartbeatObservabilityTelemetryResponse,
   LiveTailHeartbeatObservabilityTelemetryError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4],protocol:$5,retry:$6};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptId:!1(!2)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat",code:200})).pipe(!10(~1:0)))@"LiveTailHeartbeatObservabilityTelemetryRequest"',
-        [
-          __v,
-          __d48,
-          __d38,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(liveTailHeartbeatObservabilityTelemetry, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(128, __c4, 0) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryRequest>,
+  output: __S(2816, __c88, 0) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type LiveTailObservabilityTelemetryError = CloudflareOpError;
 /** Prepare websocket server for live tail. */
@@ -17190,14 +16657,13 @@ export const liveTailObservabilityTelemetry: API.OperationMethod<
   LiveTailObservabilityTelemetryResponse,
   LiveTailObservabilityTelemetryError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:#4,errors:[$2,$3],protocol:$4,retry:$5};!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#1);!5(>!6({accountId:!2.pipe(!7("account_id")),filterCombination:!1(!2),filters:!1(#2),scriptId:!1(!2)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/observability/telemetry/live-tail",code:200})).pipe(!10(~1:0)))@"LiveTailObservabilityTelemetryRequest";!5(>!6({wsUrl:!2}).pipe(!10(~1:0)))@"LiveTailObservabilityTelemetryResponse"',
-        [__v, __d48, CloudflareRateLimited, CloudflareError, CloudflareProtocol, Retry.Retry],
-      ]
-    : API.call(liveTailObservabilityTelemetry, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(162, __c5, 2) as any as S.Schema<LiveTailObservabilityTelemetryRequest>,
+  output: __S(163, __c5, 3) as any as S.Schema<LiveTailObservabilityTelemetryResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PatchBetaWorkerError = WorkerNotFound | CloudflareOpError;
 /** Perform a partial update on a Worker, where omitted properties are left unchanged from their current values. */
@@ -17206,30 +16672,13 @@ export const patchBetaWorker: API.OperationMethod<
   PatchBetaWorkerResponse,
   PatchBetaWorkerError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:#6,errors:[$10,$11,$12],protocol:$13,retry:$14};!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({cacheOptions:!1(^1:0.pipe(!4("cache_options"))),env:!1(^2:1),limits:!1(^3:0),logpush:!1(!8),observability:!1(^4:1),placement:!1(#1),tailConsumers:!1(^5:1.pipe(!4("tail_consumers")))}))@"BetaWorkersEditRequestPreviewsBaseConfig";!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),logpush:!8,name:!2,observability:^4:1,subdomain:^4:2,tags:^7:0,tailConsumers:^5:1.pipe(!4("tail_consumers")),previewsBaseConfig:!1(#2.pipe(!4("previews_base_config")))}).pipe(!14({method:"PATCH",uri:"/accounts/{account_id}/workers/workers/{worker_id}",code:200})).pipe(!10(~6:0)))@"PatchBetaWorkerRequest";!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({cacheOptions:!1(!3(^8:0).pipe(!4("cache_options"))),env:!1(!3(^2:1)),limits:!1(!3(^9:0)),logpush:!1(!3(!8)),observability:!1(!3(^2:3)),placement:!1(!3(#4)),tailConsumers:!1(!3(^5:1).pipe(!4("tail_consumers")))}))@"BetaWorkersEditResponsePreviewsBaseConfig";!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),logpush:!8,name:!2,observability:^2:3,references:^2:12,subdomain:^2:13,tags:^7:0,tailConsumers:^5:1.pipe(!4("tail_consumers")),updatedOn:!2.pipe(!4("updated_on")),deployedOn:!1(!3(!2).pipe(!4("deployed_on"))),previewsBaseConfig:!1(!3(#5).pipe(!4("previews_base_config")))}).pipe(!10(~6:0)))@"PatchBetaWorkerResponse"',
-        [
-          __v,
-          __d3,
-          __d11,
-          __d5,
-          __d2,
-          __d8,
-          __d48,
-          __d4,
-          __d6,
-          __d7,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(patchBetaWorker, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(194, __c6, 2) as any as S.Schema<PatchBetaWorkerRequest>,
+  output: __S(197, __c6, 5) as any as S.Schema<PatchBetaWorkerResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PatchObservabilityDestinationError =
   | ObservabilityDestinationNotFound
@@ -17242,26 +16691,19 @@ export const patchObservabilityDestination: API.OperationMethod<
   PatchObservabilityDestinationResponse,
   PatchObservabilityDestinationError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#2,output:^3:1,errors:[$4,$5,$6,$7,$8],protocol:$9,retry:$10};!5(>!6({headers:^1:0,type:!2,url:!2}))@"ObservabilityDestinationsUpdateRequestConfiguration";!5(>!6({accountId:!2.pipe(!7("account_id")),slug:!2.pipe(!7()),configuration:#1,enabled:!8}).pipe(!14({method:"PATCH",uri:"/accounts/{account_id}/workers/observability/destinations/{slug}",code:200})).pipe(!10(~2:0)))@"PatchObservabilityDestinationRequest"',
-        [
-          __v,
-          __d12,
-          __d48,
-          __d18,
-          ObservabilityDestinationNotFound,
-          ObservabilityDestinationPreflightFailed,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(patchObservabilityDestination, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(225, __c7, 1) as any as S.Schema<PatchObservabilityDestinationRequest>,
+  output: __S(1505, __c47, 1) as any as S.Schema<PatchObservabilityDestinationResponse>,
+  errors: [
+    ObservabilityDestinationNotFound,
+    ObservabilityDestinationPreflightFailed,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PatchScriptScriptAndVersionSettingError =
   | WorkerNotFound
@@ -17273,29 +16715,13 @@ export const patchScriptScriptAndVersionSetting: API.OperationMethod<
   PatchScriptScriptAndVersionSettingResponse,
   PatchScriptScriptAndVersionSettingError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#8,errors:[$8,$9,$10,$11],protocol:$12,retry:$13};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),settings:!1(!11)}).pipe(!14({method:"PATCH",uri:"/accounts/{account_id}/workers/scripts/{script_name}/settings",code:200,contentType:"multipart"})).pipe(!10(~1:0)))@"PatchScriptScriptAndVersionSettingRequest";!11.pipe(!13([["name","type"],["instanceName","name","type","namespace"],["name","namespace","type"],["name","namespace","type"],["dataset","name","type"],["name","namespace","type"],["name","type"],["name","type"],["databaseId","name","type","id"],["name","part","type"],["name","namespace","type","outbound"],["name","type","className","dispatchNamespace","environment","namespaceId","scriptName"],["id","name","type"],["name","type","oldName","versionId"],["name","type"],["json","name","type"],["name","namespaceId","type"],["name","type"],["certificateId","name","type"],["name","text","type"],["name","pipeline","type"],["name","stream","type"],["name","queueName","type"],["name","namespaceId","simple","type"],["bucketName","name","type","jurisdiction"],["name","text","type"],["name","type","allowedDestinationAddresses","allowedSenderAddresses","destinationAddress"],["name","service","type","entrypoint","environment"],["name","part","type"],["indexName","name","type"],["name","type"],["name","secretName","storeId","type"],["appId","name","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"],["name","type","workflowName","className","scriptName"],["name","part","type"],["name","serviceId","type"],["name","type","identity","networkId","tunnelId"]],{key:"type",values:["ai","ai_search","ai_search_namespace","messaging","analytics_engine","artifacts","assets","browser","d1","data_blob","dispatch_namespace","durable_object_namespace","hyperdrive","inherit","images","json","kv_namespace","media","mtls_certificate","plain_text","pipelines","k2","queue","ratelimit","r2_bucket","secret_text","send_email","service","text_blob","vectorize","version_metadata","secrets_store_secret","flagship","secret_key","workflow","wasm_module","vpc_service","vpc_network"]}));!12(#2);!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#4);!11.pipe(!13([["deletedClasses","newClasses","newSqliteClasses","newTag","oldTag","renamedClasses","transferredClasses"],["newTag","oldTag","steps"]]));!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({annotations:!1(!3(^2:0)),bindings:!1(!3(#3)),cacheOptions:!1(!3(^3:0).pipe(!4("cache_options"))),compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^4:0).pipe(!4("compatibility_flags"))),exports:!1(!3(#5)),exportsReconciliation:!1(!3(^5:10).pipe(!4("exports_reconciliation"))),limits:!1(!3(^6:0)),logpush:!1(!3(!8)),migrations:!1(!3(#6)),observability:!1(!3(^7:1)),placement:!1(!3(#7)),tags:!1(!3(^4:0)),tailConsumers:!1(!3(^7:3).pipe(!4("tail_consumers"))),usageModel:!1(!3(!2).pipe(!4("usage_model")))}).pipe(!10(~1:0)))@"PatchScriptScriptAndVersionSettingResponse"',
-        [
-          __v,
-          __d48,
-          __d16,
-          __d6,
-          __d4,
-          __d14,
-          __d7,
-          __d44,
-          WorkerNotFound,
-          ContentTypeRequired,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(patchScriptScriptAndVersionSetting, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(256, __c8, 0) as any as S.Schema<PatchScriptScriptAndVersionSettingRequest>,
+  output: __S(263, __c8, 7) as any as S.Schema<PatchScriptScriptAndVersionSettingResponse>,
+  errors: [WorkerNotFound, ContentTypeRequired, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PatchScriptSettingError = WorkerNotFound | CloudflareOpError;
 /** Patch Worker script-level settings when using [Worker Versions](https://developers.cloudflare.com/api/operations/worker-versions-list-versions). Including but not limited to Logpush and Tail Consumers. */
@@ -17304,27 +16730,13 @@ export const patchScriptSetting: API.OperationMethod<
   PatchScriptSettingResponse,
   PatchScriptSettingError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:^6:0,errors:[$7,$8,$9],protocol:$10,retry:$11};!5(>!6({enabled:!8,invocationLogs:!8.pipe(!4("invocation_logs")),destinations:!1(^1:0),headSamplingRate:!1(!9.pipe(!4("head_sampling_rate"))),persist:!1(!8)}))@"ScriptsSettingsEditRequestObservabilityLogs";!5(>!6({enabled:!1(!8),headSamplingRate:!1(!9.pipe(!4("head_sampling_rate"))),issues:!1(^2:0),logs:!1(#1),redactQueryString:!1(!8.pipe(!4("redact_query_string"))),traces:!1(^3:0)}))@"ScriptsSettingsEditRequestObservability";!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),logpush:!1(!8),observability:!1(#2),tags:!1(^1:0),tailConsumers:!1(^5:1.pipe(!4("tail_consumers")))}).pipe(!14({method:"PATCH",uri:"/accounts/{account_id}/workers/scripts/{script_name}/script-settings",code:200})).pipe(!10(~4:0)))@"PatchScriptSettingRequest"',
-        [
-          __v,
-          __d4,
-          __d9,
-          __d1,
-          __d48,
-          __d31,
-          __d45,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(patchScriptSetting, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(290, __c9, 2) as any as S.Schema<PatchScriptSettingRequest>,
+  output: __S(3744, __c117, 0) as any as S.Schema<PatchScriptSettingResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PutAccountSettingError = InvalidRoute | Forbidden | CloudflareOpError;
 /** Configure Workers account settings for an account. */
@@ -17333,24 +16745,13 @@ export const putAccountSetting: API.OperationMethod<
   PutAccountSettingResponse,
   PutAccountSettingError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),defaultUsageModel:!1(!2.pipe(!4("default_usage_model"))),greenCompute:!1(!8.pipe(!4("green_compute")))}).pipe(!14({method:"PUT",uri:"/accounts/{account_id}/workers/account-settings",code:200})).pipe(!10(~1:0)))@"PutAccountSettingRequest"',
-        [
-          __v,
-          __d48,
-          __d39,
-          InvalidRoute,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(putAccountSetting, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(320, __c10, 0) as any as S.Schema<PutAccountSettingRequest>,
+  output: __S(3040, __c95, 0) as any as S.Schema<PutAccountSettingResponse>,
+  errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PutDomainError =
   | WorkerNotFound
@@ -17363,25 +16764,19 @@ export const putDomain: API.OperationMethod<
   PutDomainResponse,
   PutDomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6,$7],protocol:$8,retry:$9};!5(>!6({accountId:!2.pipe(!7("account_id")),hostname:!2,service:!2,zoneId:!1(!2.pipe(!4("zone_id"))),zoneName:!1(!2.pipe(!4("zone_name"))),previewsEnabled:!1(!8.pipe(!4("previews_enabled")))}).pipe(!14({method:"PUT",uri:"/accounts/{account_id}/workers/domains",code:200})).pipe(!10(~1:0)))@"PutDomainRequest"',
-        [
-          __v,
-          __d48,
-          __d40,
-          WorkerNotFound,
-          InvalidRoute,
-          HostnameAlreadyInUse,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(putDomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(352, __c11, 0) as any as S.Schema<PutDomainRequest>,
+  output: __S(3168, __c99, 0) as any as S.Schema<PutDomainResponse>,
+  errors: [
+    WorkerNotFound,
+    InvalidRoute,
+    HostnameAlreadyInUse,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PutScriptError =
   | InvalidRoute
@@ -17408,43 +16803,33 @@ export const putScript: API.OperationMethod<
   PutScriptResponse,
   PutScriptError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#5,errors:[$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22,$23,$24,$25],protocol:$26,retry:$27};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),bindingsInherit:!1(!2.pipe(!15("bindings_inherit"))),metadata:^2:15.pipe(!10({abrLevel:"abr_level",allowedDestinationAddresses:"allowed_destination_addresses",allowedSenderAddresses:"allowed_sender_addresses",appId:"app_id",authorEmail:"author_email",authorId:"author_id",bodyPart:"body_part",bucketName:"bucket_name",bytesRead:"bytes_read",cache:"cache_options",capnpSchema:"capnp_schema",certId:"cert_id",certificateId:"certificate_id",className:"class_name",compatibilityDate:"compatibility_date",compatibilityFlags:"compatibility_flags",contentBase64:"content_base64",contentType:"content_type",cpuMs:"cpu_ms",createdOn:"created_on",crossAccountGrant:"cross_account_grant",crossVersionCache:"cross_version_cache",databaseId:"database_id",defaultUsageModel:"default_usage_model",deletedClasses:"deleted_classes",deliveryDelay:"delivery_delay",destinationAddress:"destination_address",destinationConf:"destination_conf",dispatchNamespace:"dispatch_namespace",documentationUrl:"documentation_url",enableTimer:"enable_timer",entryPoint:"entry_point",environmentIsDefault:"environment_is_default",environmentName:"environment_name",errorMessage:"error_message",exchangeUrl:"exchange_url",expiresAt:"expires_at",fromScript:"from_script",greenCompute:"green_compute",hasAssets:"has_assets",hasModules:"has_modules",headSamplingRate:"head_sampling_rate",htmlHandling:"html_handling",indexName:"index_name",instanceName:"instance_name",invocationLogs:"invocation_logs",keepAssets:"keep_assets",keepBindings:"keep_bindings",keyBase64:"key_base64",keyJwk:"key_jwk",lastAnalyzedAt:"last_analyzed_at",lastComplete:"last_complete",lastDeployedFrom:"last_deployed_from",lastError:"last_error",mainModule:"main_module",migrationTag:"migration_tag",minimalMode:"minimal_mode",mitigationTimeout:"mitigation_timeout",modifiedOn:"modified_on",namedHandlers:"named_handlers",namespaceId:"namespace_id",networkId:"network_id",newClasses:"new_classes",newSqliteClasses:"new_sqlite_classes",newTag:"new_tag",notFoundHandling:"not_found_handling",oldName:"old_name",oldTag:"old_tag",perPage:"per_page",placementMode:"placement_mode",placementStatus:"placement_status",previewToken:"preview_token",previewsEnabled:"previews_enabled",propagationPolicy:"propagation_policy",queueName:"queue_name",renamedClasses:"renamed_classes",resultInfo:"result_info",rowsRead:"rows_read",runWorkerFirst:"run_worker_first",scriptName:"script_name",scriptRuntime:"script_runtime",secretName:"secret_name",serveDirectly:"serve_directly",serviceId:"service_id",serviceName:"service_name",startupTimeMs:"startup_time_ms",storeId:"store_id",streamingTailConsumers:"streaming_tail_consumers",tailConsumers:"tail_consumers",tailUrl:"tail_url",totalCount:"total_count",transferredClasses:"transferred_classes",tunnelId:"tunnel_id",usageModel:"usage_model",versionId:"version_id",versionTags:"version_tags",workersDev:"workers_dev",workflowName:"workflow_name",zoneId:"zone_id",zoneName:"zone_name",renamedTo:"renamed_to",transferredTo:"transferred_to",transferFrom:"transfer_from"})),files:!1(!11.pipe(!20()))}).pipe(!14({method:"PUT",uri:"/accounts/{account_id}/workers/scripts/{script_name}",code:200,contentType:"multipart"})).pipe(!10(~1:0)))@"PutScriptRequest";!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#2);!11.pipe(!13([["mode","lastAnalyzedAt","status"],["region","lastAnalyzedAt","status"],["hostname","lastAnalyzedAt","status"],["host","lastAnalyzedAt","status"],["mode","region","lastAnalyzedAt","status"],["hostname","mode","lastAnalyzedAt","status"],["host","mode","lastAnalyzedAt","status"],["mode","target","lastAnalyzedAt","status"],["mode"]]));!5(>!6({startupTimeMs:!9.pipe(!4("startup_time_ms")),id:!1(!3(!2)),cacheOptions:!1(!3(^3:0).pipe(!4("cache_options"))),compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^4:0).pipe(!4("compatibility_flags"))),createdOn:!1(!3(!2).pipe(!4("created_on"))),entryPoint:!1(!3(!2).pipe(!4("entry_point"))),etag:!1(!3(!2)),exports:!1(!3(#3)),handlers:!1(!3(^4:0)),hasAssets:!1(!3(!8).pipe(!4("has_assets"))),hasModules:!1(!3(!8).pipe(!4("has_modules"))),lastDeployedFrom:!1(!3(!2).pipe(!4("last_deployed_from"))),logpush:!1(!3(!8)),migrationTag:!1(!3(!2).pipe(!4("migration_tag"))),modifiedOn:!1(!3(!2).pipe(!4("modified_on"))),namedHandlers:!1(!3(^5:1).pipe(!4("named_handlers"))),observability:!1(!3(^6:1)),placement:!1(!3(#4)),placementMode:!1(!3(!2).pipe(!4("placement_mode"))),placementStatus:!1(!3(!2).pipe(!4("placement_status"))),tag:!1(!3(!2)),tags:!1(!3(^4:0)),tailConsumers:!1(!3(^6:3).pipe(!4("tail_consumers"))),usageModel:!1(!3(!2).pipe(!4("usage_model")))}).pipe(!10(~1:0)))@"PutScriptResponse"',
-        [
-          __v,
-          __d48,
-          __d32,
-          __d6,
-          __d4,
-          __d34,
-          __d44,
-          InvalidRoute,
-          InvalidWorkerScript,
-          DurableObjectMustBeSqlite,
-          DuplicateMigrationTarget,
-          ScriptStartupError,
-          ScriptModuleNotFound,
-          SecretsStoreBindingNotFound,
-          KVNamespaceNotFound,
-          R2BucketNotFound,
-          D1DatabaseNotFound,
-          QueueNotFound,
-          ServiceBindingNotFound,
-          DurableObjectClassNotFound,
-          HyperdriveConfigNotFound,
-          VectorizeIndexNotFound,
-          DispatchNamespaceNotFound,
-          MtlsCertificateNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(putScript, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(384, __c12, 0) as any as S.Schema<PutScriptRequest>,
+  output: __S(388, __c12, 4) as any as S.Schema<PutScriptResponse>,
+  errors: [
+    InvalidRoute,
+    InvalidWorkerScript,
+    DurableObjectMustBeSqlite,
+    DuplicateMigrationTarget,
+    ScriptStartupError,
+    ScriptModuleNotFound,
+    SecretsStoreBindingNotFound,
+    KVNamespaceNotFound,
+    R2BucketNotFound,
+    D1DatabaseNotFound,
+    QueueNotFound,
+    ServiceBindingNotFound,
+    DurableObjectClassNotFound,
+    HyperdriveConfigNotFound,
+    VectorizeIndexNotFound,
+    DispatchNamespaceNotFound,
+    MtlsCertificateNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PutScriptContentError =
   | WorkerNotFound
@@ -17458,29 +16843,20 @@ export const putScriptContent: API.OperationMethod<
   PutScriptContentResponse,
   PutScriptContentError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#2,output:#6,errors:[$6,$7,$8,$9,$10,$11],protocol:$12,retry:$13};!5(>!6({bodyPart:!1(!2.pipe(!4("body_part"))),mainModule:!1(!2.pipe(!4("main_module")))}))@"ScriptsContentUpdateRequestMetadata";!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),metadata:#1,files:!1(^2:0),cfworkerbodypart:!1(!2.pipe(!21("CF-WORKER-BODY-PART"))),cfworkermainmodulepart:!1(!2.pipe(!21("CF-WORKER-MAIN-MODULE-PART")))}).pipe(!14({method:"PUT",uri:"/accounts/{account_id}/workers/scripts/{script_name}/content",code:200})).pipe(!10(~1:0)))@"PutScriptContentRequest";!11.pipe(!13([["type","cache","state"],["storage","type","container","state"],["state","type"],["renamedTo","state","type"],["state","transferredTo","type"],["state","storage","transferFrom","type","container"]]));!16(!2,#3);!11.pipe(!13([["mode","lastAnalyzedAt","status"],["region","lastAnalyzedAt","status"],["hostname","lastAnalyzedAt","status"],["host","lastAnalyzedAt","status"],["mode","region","lastAnalyzedAt","status"],["hostname","mode","lastAnalyzedAt","status"],["host","mode","lastAnalyzedAt","status"],["mode","target","lastAnalyzedAt","status"]]));!5(>!6({id:!1(!3(!2)),cacheOptions:!1(!3(^3:0).pipe(!4("cache_options"))),compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),compatibilityFlags:!1(!3(^2:0).pipe(!4("compatibility_flags"))),createdOn:!1(!3(!2).pipe(!4("created_on"))),etag:!1(!3(!2)),exports:!1(!3(#4)),handlers:!1(!3(^2:0)),hasAssets:!1(!3(!8).pipe(!4("has_assets"))),hasModules:!1(!3(!8).pipe(!4("has_modules"))),lastDeployedFrom:!1(!3(!2).pipe(!4("last_deployed_from"))),logpush:!1(!3(!8)),migrationTag:!1(!3(!2).pipe(!4("migration_tag"))),modifiedOn:!1(!3(!2).pipe(!4("modified_on"))),namedHandlers:!1(!3(^4:1).pipe(!4("named_handlers"))),observability:!1(!3(^5:1)),placement:!1(!3(#5)),placementMode:!1(!3(!2).pipe(!4("placement_mode"))),placementStatus:!1(!3(!2).pipe(!4("placement_status"))),tag:!1(!3(!2)),tags:!1(!3(^2:0)),tailConsumers:!1(!3(^5:3).pipe(!4("tail_consumers"))),usageModel:!1(!3(!2).pipe(!4("usage_model")))}).pipe(!10(~1:0)))@"PutScriptContentResponse"',
-        [
-          __v,
-          __d48,
-          __d4,
-          __d6,
-          __d34,
-          __d44,
-          WorkerNotFound,
-          InvalidWorkerScript,
-          ScriptStartupError,
-          ScriptModuleNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(putScriptContent, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(417, __c13, 1) as any as S.Schema<PutScriptContentRequest>,
+  output: __S(421, __c13, 5) as any as S.Schema<PutScriptContentResponse>,
+  errors: [
+    WorkerNotFound,
+    InvalidWorkerScript,
+    ScriptStartupError,
+    ScriptModuleNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PutScriptEventTriggersError =
   | EventTriggerWorkflowNotFound
@@ -17492,24 +16868,18 @@ export const putScriptEventTriggers: API.OperationMethod<
   PutScriptEventTriggersResponse,
   PutScriptEventTriggersError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:6,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),body:^2:4.pipe(!22())}).pipe(!14({method:"PUT",uri:"/accounts/{account_id}/triggers/{script_name}",code:200})).pipe(!10(~1:0)))@"PutScriptEventTriggersRequest"',
-        [
-          __v,
-          __d48,
-          __d42,
-          EventTriggerWorkflowNotFound,
-          InvalidEventTriggers,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(putScriptEventTriggers, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(448, __c14, 0) as any as S.Schema<PutScriptEventTriggersRequest>,
+  output: __S(3526, __c110, 6) as any as S.Schema<PutScriptEventTriggersResponse>,
+  errors: [
+    EventTriggerWorkflowNotFound,
+    InvalidEventTriggers,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PutScriptScheduleError = WorkerNotFound | CloudflareOpError;
 /** Update the schedules (Cron Triggers) for a Worker script. */
@@ -17518,23 +16888,13 @@ export const putScriptSchedule: API.OperationMethod<
   PutScriptScheduleResponse,
   PutScriptScheduleError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:^2:2,errors:[$3,$4,$5],protocol:$6,retry:$7};!5(>!6({cron:!2,createdOn:!1(!2.pipe(!4("created_on"))),modifiedOn:!1(!2.pipe(!4("modified_on")))}))@"ScriptsSchedulesUpdateRequestBodyItem";!12(#1);!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),body:#2.pipe(!22())}).pipe(!14({method:"PUT",uri:"/accounts/{account_id}/workers/scripts/{script_name}/schedules",code:200})).pipe(!10(~1:0)))@"PutScriptScheduleRequest"',
-        [
-          __v,
-          __d48,
-          __d43,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(putScriptSchedule, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(482, __c15, 2) as any as S.Schema<PutScriptScheduleRequest>,
+  output: __S(3586, __c112, 2) as any as S.Schema<PutScriptScheduleResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PutScriptSecretError = WorkerNotFound | CloudflareOpError;
 /** Add a secret to a Worker script by creating a new version with that secret. When changing more than one secret at a time, prefer the "Patch multiple script secrets" API instead of changing many secrets individually. */
@@ -17543,22 +16903,13 @@ export const putScriptSecret: API.OperationMethod<
   PutScriptSecretResponse,
   PutScriptSecretError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#2,output:#4,errors:[$2,$3,$4],protocol:$5,retry:$6};!12(!2);!5(>!6({accountId:!2.pipe(!7("account_id")),scriptName:!2.pipe(!7("script_name")),name:!2,text:!1(!2),type:!2,algorithm:!1(!11),format:!1(!2),usages:!1(#1),keyBase64:!1(!2.pipe(!4("key_base64"))),keyJwk:!1(!11.pipe(!4("key_jwk")))}).pipe(!14({method:"PUT",uri:"/accounts/{account_id}/workers/scripts/{script_name}/secrets",code:200})).pipe(!10(~1:0)))@"PutScriptSecretRequest";!11.pipe(!13([["name","text","type"],["algorithm","format","name","type","usages","keyBase64","keyJwk"]],{key:"type",values:["secret_text","secret_key"]}));!5(>#3.pipe(!19(),!10(~1:0)))@"PutScriptSecretResponse"',
-        [
-          __v,
-          __d48,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(putScriptSecret, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(513, __c16, 1) as any as S.Schema<PutScriptSecretRequest>,
+  output: __S(515, __c16, 3) as any as S.Schema<PutScriptSecretResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PutSubdomainError =
   | SubdomainAlreadyExists
@@ -17571,25 +16922,13 @@ export const putSubdomain: API.OperationMethod<
   PutSubdomainResponse,
   PutSubdomainError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6,$7],protocol:$8,retry:$9};!5(>!6({accountId:!2.pipe(!7("account_id")),subdomain:!2}).pipe(!14({method:"PUT",uri:"/accounts/{account_id}/workers/subdomain",code:200})).pipe(!10(~1:0)))@"PutSubdomainRequest"',
-        [
-          __v,
-          __d48,
-          __d46,
-          SubdomainAlreadyExists,
-          InvalidRoute,
-          Forbidden,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(putSubdomain, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(544, __c17, 0) as any as S.Schema<PutSubdomainRequest>,
+  output: __S(3904, __c122, 0) as any as S.Schema<PutSubdomainResponse>,
+  errors: [SubdomainAlreadyExists, InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type QueryObservabilityTelemetryError = InvalidRoute | CloudflareOpError;
 /** Run a temporary or saved query. */
@@ -17598,29 +16937,13 @@ export const queryObservabilityTelemetry: API.OperationMethod<
   QueryObservabilityTelemetryResponse,
   QueryObservabilityTelemetryError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#8,output:#60,errors:[$9,$10,$11],protocol:$12,retry:$13};!11.pipe(!13([["operator","alias","key","keyType"],["key","operator","alias","keyType"]]));!12(#1);!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#3);!11.pipe(!13([[],[],[]]));!5(>!6({value:#5,isRegex:!1(!8),matchCase:!1(!8)}))@"ObservabilityTelemetryQueryRequestParametersNeedle";!5(>!6({calculations:!1(#2),datasets:!1(^1:0),filterCombination:!1(!2),filters:!1(#4),groupBys:!1(^2:1),havings:!1(^2:3),limit:!1(!9),needle:!1(#6),orderBy:!1(^3:0)}))@"ObservabilityTelemetryQueryRequestParameters";!5(>!6({accountId:!2.pipe(!7("account_id")),queryId:!2,timeframe:^5:0,chart:!1(!8),chartType:!1(!2),compare:!1(!8),distributionScale:!1(!2),dry:!1(!8),granularity:!1(!9),ignoreSeries:!1(!8),limit:!1(!9),offset:!1(!2),offsetBy:!1(!9),offsetDirection:!1(!2),parameters:!1(#7),view:!1(!2)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/observability/telemetry/query",code:200})).pipe(!10(~4:0)))@"QueryObservabilityTelemetryRequest";!11.pipe(!13([["operator","alias","key","keyType"],["key","operator","alias","keyType"]]));!12(#9);!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#11);!5(>!6({calculations:!1(!3(#10)),datasets:!1(!3(^1:0)),filterCombination:!1(!3(!2)),filters:!1(!3(#12)),groupBys:!1(!3(^2:1)),havings:!1(!3(^2:3)),limit:!1(!3(!9)),needle:!1(!3(^6:0)),orderBy:!1(!3(^7:0))}))@"ObservabilityTelemetryQueryResponseRunQueryParameters";!5(>!6({id:!2,adhoc:!8,created:!2,createdBy:!2,description:!2,name:!2,parameters:#13,updated:!2,updatedBy:!2}))@"ObservabilityTelemetryQueryResponseRunQuery";!5(>!6({id:!2,accountId:!2,dry:!8,granularity:!9,query:#14,status:!2,timeframe:^5:0,userId:!2,created:!1(!3(!2)),statistics:!1(!3(^6:1)),updated:!1(!3(!2))}))@"ObservabilityTelemetryQueryResponseRun";!11.pipe(!13([[],[],[]]));!5(>!6({key:!2,value:#16}))@"ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem";!12(#17);!5(>!6({count:!9,interval:!9,sampleInterval:!9,value:!9,groups:!1(!3(#18))}))@"ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem";!12(#19);!11.pipe(!13([[],[],[]]));!5(>!6({key:!2,value:#21}))@"ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem";!12(#22);!5(>!6({count:!9,interval:!9,sampleInterval:!9,value:!9,firstSeen:!1(!3(!2)),groups:!1(!3(#23)),lastSeen:!1(!3(!2))}))@"ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem";!12(#24);!5(>!6({data:#25,time:!2}))@"ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem";!12(#26);!5(>!6({aggregates:#20,calculation:!2,series:#27,alias:!1(!3(!2))}))@"ObservabilityTelemetryQueryResponseCalculationsItem";!12(#28);!11.pipe(!13([[],[],[]]));!5(>!6({key:!2,value:#30}))@"ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem";!12(#31);!5(>!6({count:!9,interval:!9,sampleInterval:!9,value:!9,groups:!1(!3(#32))}))@"ObservabilityTelemetryQueryResponseCompareItemAggregatesItem";!12(#33);!11.pipe(!13([[],[],[]]));!5(>!6({key:!2,value:#35}))@"ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem";!12(#36);!5(>!6({count:!9,interval:!9,sampleInterval:!9,value:!9,firstSeen:!1(!3(!2)),groups:!1(!3(#37)),lastSeen:!1(!3(!2))}))@"ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem";!12(#38);!5(>!6({data:#39,time:!2}))@"ObservabilityTelemetryQueryResponseCompareItemSeriesItem";!12(#40);!5(>!6({aggregates:#34,calculation:!2,series:#41,alias:!1(!3(!2))}))@"ObservabilityTelemetryQueryResponseCompareItem";!12(#42);!11.pipe(!13([[],[]]));!11.pipe(!13([["eventType","scriptName","durableObjectId","entrypoint","event","executionModel","outcome","preview","requestId","scriptVersion","spanId","traceId","truncated"],["cpuTimeMs","eventType","outcome","scriptName","wallTimeMs","diagnosticsChannelEvents","dispatchNamespace","durableObjectId","entrypoint","event","executionModel","preview","requestId","scriptVersion","spanId","traceId","truncated"]]));!5(>!6({metadata:^6:7.pipe(!4("$metadata")),dataset:!2,source:#44,timestamp:!9,containers:!1(!3(^8:0).pipe(!4("$containers"))),workers:!1(!3(#45).pipe(!4("$workers")))}))@"ObservabilityTelemetryQueryResponseEventsEventsItem";!12(#46);!11.pipe(!13([[],[],[]]));!16(!2,#48);!5(>!6({aggregates:^6:10,count:!9,interval:!9,sampleInterval:!9,errors:!1(!3(!9)),groups:!1(!3(#49))}))@"ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem";!12(#50);!5(>!6({data:#51,time:!2}))@"ObservabilityTelemetryQueryResponseEventsSeriesItem";!12(#52);!5(>!6({count:!1(!3(!9)),events:!1(!3(#47)),fields:!1(!3(^6:9)),series:!1(!3(#53))}))@"ObservabilityTelemetryQueryResponseEvents";!11.pipe(!13([[],[]]));!11.pipe(!13([["eventType","scriptName","durableObjectId","entrypoint","event","executionModel","outcome","preview","requestId","scriptVersion","spanId","traceId","truncated"],["cpuTimeMs","eventType","outcome","scriptName","wallTimeMs","diagnosticsChannelEvents","dispatchNamespace","durableObjectId","entrypoint","event","executionModel","preview","requestId","scriptVersion","spanId","traceId","truncated"]]));!5(>!6({metadata:^6:7.pipe(!4("$metadata")),dataset:!2,source:#55,timestamp:!9,containers:!1(!3(^8:0).pipe(!4("$containers"))),workers:!1(!3(#56).pipe(!4("$workers")))}))@"ObservabilityTelemetryQueryResponseInvocationsValueItem";!12(#57);!16(!2,#58);!5(>!6({run:#15,statistics:^6:1,agents:!1(!3(^6:3)),calculations:!1(!3(#29)),compare:!1(!3(#43)),distribution:!1(!3(^6:6)),events:!1(!3(#54)),invocations:!1(!3(#59)),traces:!1(!3(^6:12))}).pipe(!10(~4:0)))@"QueryObservabilityTelemetryResponse"',
-        [
-          __v,
-          __d4,
-          __d20,
-          __d19,
-          __d48,
-          __d22,
-          __d41,
-          __d21,
-          __d0,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(queryObservabilityTelemetry, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(583, __c18, 7) as any as S.Schema<QueryObservabilityTelemetryRequest>,
+  output: __S(635, __c19, 27) as any as S.Schema<QueryObservabilityTelemetryResponse>,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type SearchScriptError = InvalidRoute | CloudflareOpError;
 /** Search for Worker scripts in an account. */
@@ -17629,22 +16952,13 @@ export const searchScript: API.OperationMethod<
   SearchScriptResponse,
   SearchScriptError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:#4,errors:[$2,$3,$4],protocol:$5,retry:$6};!5(>!6({accountId:!2.pipe(!7("account_id")),id:!1(!2.pipe(!15())),name:!1(!2.pipe(!15())),orderBy:!1(!2.pipe(!15("order_by"))),page:!1(!9.pipe(!15())),perPage:!1(!9.pipe(!15("per_page")))}).pipe(!14({method:"GET",uri:"/accounts/{account_id}/workers/scripts-search",code:200})).pipe(!10(~1:0)))@"SearchScriptRequest";!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),modifiedOn:!2.pipe(!4("modified_on")),scriptName:!2.pipe(!4("script_name")),environmentIsDefault:!1(!3(!8).pipe(!4("environment_is_default"))),environmentName:!1(!3(!2).pipe(!4("environment_name"))),serviceName:!1(!3(!2).pipe(!4("service_name")))}))@"ScriptsSearchResultItem";!12(#2);!5(>#3.pipe(!19(),!10(~1:0)))@"SearchScriptResponse"',
-        [
-          __v,
-          __d48,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(searchScript, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(640, __c20, 0) as any as S.Schema<SearchScriptRequest>,
+  output: __S(643, __c20, 3) as any as S.Schema<SearchScriptResponse>,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateBetaWorkerError = WorkerNotFound | CloudflareOpError;
 /** Perform a complete replacement of a Worker, where omitted properties are set to their default values. This is the exact same as the Create Worker endpoint, but operates on an existing Worker. To perform a partial update instead, use the Edit Worker endpoint. */
@@ -17653,30 +16967,13 @@ export const updateBetaWorker: API.OperationMethod<
   UpdateBetaWorkerResponse,
   UpdateBetaWorkerError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#3,output:#6,errors:[$10,$11,$12],protocol:$13,retry:$14};!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({cacheOptions:!1(^1:0.pipe(!4("cache_options"))),env:!1(^2:1),limits:!1(^3:0),logpush:!1(!8),observability:!1(^4:1),placement:!1(#1),tailConsumers:!1(^5:1.pipe(!4("tail_consumers")))}))@"BetaWorkersUpdateRequestPreviewsBaseConfig";!5(>!6({accountId:!2.pipe(!7("account_id")),workerId:!2.pipe(!7("worker_id")),name:!2,logpush:!1(!8),observability:!1(^4:1),previewsBaseConfig:!1(#2.pipe(!4("previews_base_config"))),subdomain:!1(^4:2),tags:!1(^7:0),tailConsumers:!1(^5:1.pipe(!4("tail_consumers")))}).pipe(!14({method:"PUT",uri:"/accounts/{account_id}/workers/workers/{worker_id}",code:200})).pipe(!10(~6:0)))@"UpdateBetaWorkerRequest";!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({cacheOptions:!1(!3(^8:0).pipe(!4("cache_options"))),env:!1(!3(^2:1)),limits:!1(!3(^9:0)),logpush:!1(!3(!8)),observability:!1(!3(^2:3)),placement:!1(!3(#4)),tailConsumers:!1(!3(^5:1).pipe(!4("tail_consumers")))}))@"BetaWorkersUpdateResponsePreviewsBaseConfig";!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),logpush:!8,name:!2,observability:^2:3,references:^2:12,subdomain:^2:13,tags:^7:0,tailConsumers:^5:1.pipe(!4("tail_consumers")),updatedOn:!2.pipe(!4("updated_on")),deployedOn:!1(!3(!2).pipe(!4("deployed_on"))),previewsBaseConfig:!1(!3(#5).pipe(!4("previews_base_config")))}).pipe(!10(~6:0)))@"UpdateBetaWorkerResponse"',
-        [
-          __v,
-          __d3,
-          __d11,
-          __d5,
-          __d2,
-          __d8,
-          __d48,
-          __d4,
-          __d6,
-          __d7,
-          WorkerNotFound,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(updateBetaWorker, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(674, __c21, 2) as any as S.Schema<UpdateBetaWorkerRequest>,
+  output: __S(677, __c21, 5) as any as S.Schema<UpdateBetaWorkerResponse>,
+  errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type UpdateRouteError = RouteNotFound | InvalidRoutePattern | CloudflareOpError;
 /** Replaces the URL pattern or Worker associated with a Worker route. */
@@ -17685,24 +16982,13 @@ export const updateRoute: API.OperationMethod<
   UpdateRouteResponse,
   UpdateRouteError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.op((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#1,output:^2:0,errors:[$3,$4,$5,$6],protocol:$7,retry:$8};!5(>!6({zoneId:!2.pipe(!7("zone_id")),routeId:!2.pipe(!7("route_id")),pattern:!2,script:!1(!2)}).pipe(!14({method:"PUT",uri:"/zones/{zone_id}/workers/routes/{route_id}",code:200})).pipe(!10(~1:0)))@"UpdateRouteRequest"',
-        [
-          __v,
-          __d48,
-          __d25,
-          RouteNotFound,
-          InvalidRoutePattern,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflareProtocol,
-          Retry.Retry,
-        ],
-      ]
-    : API.call(updateRoute, i),
-);
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(704, __c22, 0) as any as S.Schema<UpdateRouteRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<UpdateRouteResponse>,
+  errors: [RouteNotFound, InvalidRoutePattern, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ValuesObservabilityTelemetryError = InvalidRoute | CloudflareOpError;
 /** List unique values found in your events. */
@@ -17712,322 +16998,6507 @@ export const valuesObservabilityTelemetry: API.PaginatedOperationMethod<
   ValuesObservabilityTelemetryError,
   CloudflareOpContext,
   ObservabilityTelemetryValuesResultItem
-> = /*@__PURE__*/ API.opPaginated((i: any): any =>
-  i === API.D
-    ? [
-        '{input:#5,output:#9,errors:[$5,$6,$7],protocol:$8,retry:$9,pagination:{mode:"single",items:"result"},strategy:$10};!11.pipe(!13([["filterCombination","filters","kind"],["key","operation","type","kind","value"]],{key:"kind",values:["group","filter"]}));!12(#1);!11.pipe(!13([[],[],[]]));!5(>!6({value:#3,isRegex:!1(!8),matchCase:!1(!8)}))@"ObservabilityTelemetryValuesRequestNeedle";!5(>!6({accountId:!2.pipe(!7("account_id")),datasets:^2:0,key:!2,timeframe:^3:0,type:!2,filters:!1(#2),limit:!1(!9),needle:!1(#4)}).pipe(!14({method:"POST",uri:"/accounts/{account_id}/workers/observability/telemetry/values",code:200})).pipe(!10(~1:0)))@"ValuesObservabilityTelemetryRequest";!11.pipe(!13([[],[],[]]));!5(>!6({dataset:!2,key:!2,type:!2,value:#6}))@"ObservabilityTelemetryValuesResultItem";!12(#7);!5(>!6({result:#8.pipe(!17()),resultInfo:!1(!3($4).pipe(!18()))}).pipe(!10(~1:0)))@"ValuesObservabilityTelemetryResponse"',
-        [
-          __v,
-          __d48,
-          __d4,
-          __d22,
-          ResultInfo,
-          InvalidRoute,
-          CloudflareRateLimited,
-          CloudflareError,
-          CloudflarePaginatedProtocol,
-          Retry.Retry,
-          cloudflarePaginate,
-        ],
-      ]
-    : API.call(valuesObservabilityTelemetry, i),
-);
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: __S(740, __c23, 4) as any as S.Schema<ValuesObservabilityTelemetryRequest>,
+    output: __S(744, __c23, 8) as any as S.Schema<ValuesObservabilityTelemetryResponse>,
+    errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+) as any;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
+function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+          since: S.optional(S.String.pipe(T.Query())),
+          until: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListScriptDeploymentsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          source: S.String,
+          strategy: S.String,
+          versions: __S(2017, __c63, 1),
+          annotations: S.optional(S.NullOr(__S(2018, __c63, 2))),
+          authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
+        }),
+      ).annotate({ identifier: "ScriptsDeploymentsListResponseDeploymentsItem" });
+    case 2:
+      return S.Array(__S(1, __c0, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          deployments: __S(2, __c0, 2),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListScriptDeploymentsResponse" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          tags: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/workers/scripts", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListScriptsRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 2:
+      return S.Record(S.String, __S(33, __c1, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode", "lastAnalyzedAt", "status"],
+          ["region", "lastAnalyzedAt", "status"],
+          ["hostname", "lastAnalyzedAt", "status"],
+          ["host", "lastAnalyzedAt", "status"],
+          ["mode", "region", "lastAnalyzedAt", "status"],
+          ["hostname", "mode", "lastAnalyzedAt", "status"],
+          ["host", "mode", "lastAnalyzedAt", "status"],
+          ["mode", "target", "lastAnalyzedAt", "status"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          etag: S.optional(S.NullOr(S.String)),
+          exports: S.optional(S.NullOr(__S(34, __c1, 2))),
+          handlers: S.optional(S.NullOr(__S(992, __c31, 0))),
+          hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
+          hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
+          lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          namedHandlers: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("named_handlers"))),
+          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          placement: S.optional(S.NullOr(__S(35, __c1, 3))),
+          placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
+          placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
+          routes: S.optional(S.NullOr(__S(4161, __c130, 1))),
+          tag: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(992, __c31, 0))),
+          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+        }),
+      ).annotate({ identifier: "ScriptsListResultItem" });
+    case 5:
+      return S.Array(__S(36, __c1, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(37, __c1, 5).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListScriptsResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListScriptSecretsRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "text", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+          ],
+          { key: "type", values: ["secret_text", "secret_key"] },
+        ),
+      );
+    case 2:
+      return S.Array(__S(65, __c2, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(66, __c2, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListScriptSecretsResponse" });
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          deployable: S.optional(S.Boolean.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/versions",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListScriptVersionsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(S.NullOr(__S(2400, __c75, 0))),
+          number: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ScriptsVersionsListResponseItemsItem" });
+    case 2:
+      return S.Array(__S(97, __c3, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          items: S.optional(S.NullOr(__S(98, __c3, 2))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListScriptVersionsResponse" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptId: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/observability/telemetry/live-tail/heartbeat",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "LiveTailHeartbeatObservabilityTelemetryRequest" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 1:
+      return S.Array(__S(160, __c5, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          filterCombination: S.optional(S.String),
+          filters: S.optional(__S(161, __c5, 1)),
+          scriptId: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/observability/telemetry/live-tail",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "LiveTailObservabilityTelemetryRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          wsUrl: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "LiveTailObservabilityTelemetryResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cacheOptions: S.optional(__S(960, __c30, 0).pipe(T.Body("cache_options"))),
+          env: S.optional(__S(1217, __c38, 1)),
+          limits: S.optional(__S(1024, __c32, 0)),
+          logpush: S.optional(S.Boolean),
+          observability: S.optional(__S(929, __c29, 1)),
+          placement: S.optional(__S(192, __c6, 0)),
+          tailConsumers: S.optional(__S(1121, __c35, 1).pipe(T.Body("tail_consumers"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersEditRequestPreviewsBaseConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          logpush: S.Boolean,
+          name: S.String,
+          observability: __S(929, __c29, 1),
+          subdomain: __S(930, __c29, 2),
+          tags: __S(992, __c31, 0),
+          tailConsumers: __S(1121, __c35, 1).pipe(T.Body("tail_consumers")),
+          previewsBaseConfig: S.optional(__S(193, __c6, 1).pipe(T.Body("previews_base_config"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchBetaWorkerRequest" });
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          env: S.optional(S.NullOr(__S(1217, __c38, 1))),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          observability: S.optional(S.NullOr(__S(1219, __c38, 3))),
+          placement: S.optional(S.NullOr(__S(195, __c6, 3))),
+          tailConsumers: S.optional(S.NullOr(__S(1121, __c35, 1)).pipe(T.Body("tail_consumers"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersEditResponsePreviewsBaseConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          logpush: S.Boolean,
+          name: S.String,
+          observability: __S(1219, __c38, 3),
+          references: __S(1228, __c38, 12),
+          subdomain: __S(1229, __c38, 13),
+          tags: __S(992, __c31, 0),
+          tailConsumers: __S(1121, __c35, 1).pipe(T.Body("tail_consumers")),
+          updatedOn: S.String.pipe(T.Body("updated_on")),
+          deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(__S(196, __c6, 4)).pipe(T.Body("previews_base_config")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchBetaWorkerResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          headers: __S(1280, __c40, 0),
+          type: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityDestinationsUpdateRequestConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          slug: S.String.pipe(T.Label()),
+          configuration: __S(224, __c7, 0),
+          enabled: S.Boolean,
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/workers/observability/destinations/{slug}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchObservabilityDestinationRequest" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          settings: S.optional(S.Unknown),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/settings",
+              code: 200,
+              contentType: "multipart",
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchScriptScriptAndVersionSettingRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "type"],
+            ["instanceName", "name", "type", "namespace"],
+            ["name", "namespace", "type"],
+            ["name", "namespace", "type"],
+            ["dataset", "name", "type"],
+            ["name", "namespace", "type"],
+            ["name", "type"],
+            ["name", "type"],
+            ["databaseId", "name", "type", "id"],
+            ["name", "part", "type"],
+            ["name", "namespace", "type", "outbound"],
+            [
+              "name",
+              "type",
+              "className",
+              "dispatchNamespace",
+              "environment",
+              "namespaceId",
+              "scriptName",
+            ],
+            ["id", "name", "type"],
+            ["name", "type", "oldName", "versionId"],
+            ["name", "type"],
+            ["json", "name", "type"],
+            ["name", "namespaceId", "type"],
+            ["name", "type"],
+            ["certificateId", "name", "type"],
+            ["name", "text", "type"],
+            ["name", "pipeline", "type"],
+            ["name", "stream", "type"],
+            ["name", "queueName", "type"],
+            ["name", "namespaceId", "simple", "type"],
+            ["bucketName", "name", "type", "jurisdiction"],
+            ["name", "text", "type"],
+            [
+              "name",
+              "type",
+              "allowedDestinationAddresses",
+              "allowedSenderAddresses",
+              "destinationAddress",
+            ],
+            ["name", "service", "type", "entrypoint", "environment"],
+            ["name", "part", "type"],
+            ["indexName", "name", "type"],
+            ["name", "type"],
+            ["name", "secretName", "storeId", "type"],
+            ["appId", "name", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+            ["name", "type", "workflowName", "className", "scriptName"],
+            ["name", "part", "type"],
+            ["name", "serviceId", "type"],
+            ["name", "type", "identity", "networkId", "tunnelId"],
+          ],
+          {
+            key: "type",
+            values: [
+              "ai",
+              "ai_search",
+              "ai_search_namespace",
+              "messaging",
+              "analytics_engine",
+              "artifacts",
+              "assets",
+              "browser",
+              "d1",
+              "data_blob",
+              "dispatch_namespace",
+              "durable_object_namespace",
+              "hyperdrive",
+              "inherit",
+              "images",
+              "json",
+              "kv_namespace",
+              "media",
+              "mtls_certificate",
+              "plain_text",
+              "pipelines",
+              "k2",
+              "queue",
+              "ratelimit",
+              "r2_bucket",
+              "secret_text",
+              "send_email",
+              "service",
+              "text_blob",
+              "vectorize",
+              "version_metadata",
+              "secrets_store_secret",
+              "flagship",
+              "secret_key",
+              "workflow",
+              "wasm_module",
+              "vpc_service",
+              "vpc_network",
+            ],
+          },
+        ),
+      );
+    case 2:
+      return S.Array(__S(257, __c8, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 4:
+      return S.Record(S.String, __S(259, __c8, 3));
+    case 5:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "deletedClasses",
+            "newClasses",
+            "newSqliteClasses",
+            "newTag",
+            "oldTag",
+            "renamedClasses",
+            "transferredClasses",
+          ],
+          ["newTag", "oldTag", "steps"],
+        ]),
+      );
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(S.NullOr(__S(1408, __c44, 0))),
+          bindings: S.optional(S.NullOr(__S(258, __c8, 2))),
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          exports: S.optional(S.NullOr(__S(260, __c8, 4))),
+          exportsReconciliation: S.optional(
+            S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
+          ),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          migrations: S.optional(S.NullOr(__S(261, __c8, 5))),
+          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          placement: S.optional(S.NullOr(__S(262, __c8, 6))),
+          tags: S.optional(S.NullOr(__S(992, __c31, 0))),
+          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchScriptScriptAndVersionSettingResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+          destinations: S.optional(__S(992, __c31, 0)),
+          headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+          persist: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ScriptsSettingsEditRequestObservabilityLogs" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+          issues: S.optional(__S(1152, __c36, 0)),
+          logs: S.optional(__S(288, __c9, 0)),
+          redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
+          traces: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({ identifier: "ScriptsSettingsEditRequestObservability" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          logpush: S.optional(S.Boolean),
+          observability: S.optional(__S(289, __c9, 1)),
+          tags: S.optional(__S(992, __c31, 0)),
+          tailConsumers: S.optional(__S(2273, __c71, 1).pipe(T.Body("tail_consumers"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/script-settings",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PatchScriptSettingRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          defaultUsageModel: S.optional(S.String.pipe(T.Body("default_usage_model"))),
+          greenCompute: S.optional(S.Boolean.pipe(T.Body("green_compute"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/workers/account-settings",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutAccountSettingRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          hostname: S.String,
+          service: S.String,
+          zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
+          zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
+          previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
+        })
+          .pipe(T.Http({ method: "PUT", uri: "/accounts/{account_id}/workers/domains", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutDomainRequest" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          bindingsInherit: S.optional(S.String.pipe(T.Query("bindings_inherit"))),
+          metadata: __S(2319, __c72, 15).pipe(
+            T.KeyDictionary({
+              abrLevel: "abr_level",
+              allowedDestinationAddresses: "allowed_destination_addresses",
+              allowedSenderAddresses: "allowed_sender_addresses",
+              appId: "app_id",
+              authorEmail: "author_email",
+              authorId: "author_id",
+              bodyPart: "body_part",
+              bucketName: "bucket_name",
+              bytesRead: "bytes_read",
+              cache: "cache_options",
+              capnpSchema: "capnp_schema",
+              certId: "cert_id",
+              certificateId: "certificate_id",
+              className: "class_name",
+              compatibilityDate: "compatibility_date",
+              compatibilityFlags: "compatibility_flags",
+              contentBase64: "content_base64",
+              contentType: "content_type",
+              cpuMs: "cpu_ms",
+              createdOn: "created_on",
+              crossAccountGrant: "cross_account_grant",
+              crossVersionCache: "cross_version_cache",
+              databaseId: "database_id",
+              defaultUsageModel: "default_usage_model",
+              deletedClasses: "deleted_classes",
+              deliveryDelay: "delivery_delay",
+              destinationAddress: "destination_address",
+              destinationConf: "destination_conf",
+              dispatchNamespace: "dispatch_namespace",
+              documentationUrl: "documentation_url",
+              enableTimer: "enable_timer",
+              entryPoint: "entry_point",
+              environmentIsDefault: "environment_is_default",
+              environmentName: "environment_name",
+              errorMessage: "error_message",
+              exchangeUrl: "exchange_url",
+              expiresAt: "expires_at",
+              fromScript: "from_script",
+              greenCompute: "green_compute",
+              hasAssets: "has_assets",
+              hasModules: "has_modules",
+              headSamplingRate: "head_sampling_rate",
+              htmlHandling: "html_handling",
+              indexName: "index_name",
+              instanceName: "instance_name",
+              invocationLogs: "invocation_logs",
+              keepAssets: "keep_assets",
+              keepBindings: "keep_bindings",
+              keyBase64: "key_base64",
+              keyJwk: "key_jwk",
+              lastAnalyzedAt: "last_analyzed_at",
+              lastComplete: "last_complete",
+              lastDeployedFrom: "last_deployed_from",
+              lastError: "last_error",
+              mainModule: "main_module",
+              migrationTag: "migration_tag",
+              minimalMode: "minimal_mode",
+              mitigationTimeout: "mitigation_timeout",
+              modifiedOn: "modified_on",
+              namedHandlers: "named_handlers",
+              namespaceId: "namespace_id",
+              networkId: "network_id",
+              newClasses: "new_classes",
+              newSqliteClasses: "new_sqlite_classes",
+              newTag: "new_tag",
+              notFoundHandling: "not_found_handling",
+              oldName: "old_name",
+              oldTag: "old_tag",
+              perPage: "per_page",
+              placementMode: "placement_mode",
+              placementStatus: "placement_status",
+              previewToken: "preview_token",
+              previewsEnabled: "previews_enabled",
+              propagationPolicy: "propagation_policy",
+              queueName: "queue_name",
+              renamedClasses: "renamed_classes",
+              resultInfo: "result_info",
+              rowsRead: "rows_read",
+              runWorkerFirst: "run_worker_first",
+              scriptName: "script_name",
+              scriptRuntime: "script_runtime",
+              secretName: "secret_name",
+              serveDirectly: "serve_directly",
+              serviceId: "service_id",
+              serviceName: "service_name",
+              startupTimeMs: "startup_time_ms",
+              storeId: "store_id",
+              streamingTailConsumers: "streaming_tail_consumers",
+              tailConsumers: "tail_consumers",
+              tailUrl: "tail_url",
+              totalCount: "total_count",
+              transferredClasses: "transferred_classes",
+              tunnelId: "tunnel_id",
+              usageModel: "usage_model",
+              versionId: "version_id",
+              versionTags: "version_tags",
+              workersDev: "workers_dev",
+              workflowName: "workflow_name",
+              zoneId: "zone_id",
+              zoneName: "zone_name",
+              renamedTo: "renamed_to",
+              transferredTo: "transferred_to",
+              transferFrom: "transfer_from",
+            }),
+          ),
+          files: S.optional(S.Unknown.pipe(T.FormDataFile())),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}",
+              code: 200,
+              contentType: "multipart",
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutScriptRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 2:
+      return S.Record(S.String, __S(385, __c12, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode", "lastAnalyzedAt", "status"],
+          ["region", "lastAnalyzedAt", "status"],
+          ["hostname", "lastAnalyzedAt", "status"],
+          ["host", "lastAnalyzedAt", "status"],
+          ["mode", "region", "lastAnalyzedAt", "status"],
+          ["hostname", "mode", "lastAnalyzedAt", "status"],
+          ["host", "mode", "lastAnalyzedAt", "status"],
+          ["mode", "target", "lastAnalyzedAt", "status"],
+          ["mode"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          startupTimeMs: S.Number.pipe(T.Body("startup_time_ms")),
+          id: S.optional(S.NullOr(S.String)),
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          entryPoint: S.optional(S.NullOr(S.String).pipe(T.Body("entry_point"))),
+          etag: S.optional(S.NullOr(S.String)),
+          exports: S.optional(S.NullOr(__S(386, __c12, 2))),
+          handlers: S.optional(S.NullOr(__S(992, __c31, 0))),
+          hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
+          hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
+          lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          namedHandlers: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("named_handlers"))),
+          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          placement: S.optional(S.NullOr(__S(387, __c12, 3))),
+          placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
+          placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
+          tag: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(992, __c31, 0))),
+          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutScriptResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
+          mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+        }),
+      ).annotate({ identifier: "ScriptsContentUpdateRequestMetadata" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          metadata: __S(416, __c13, 0),
+          files: S.optional(__S(992, __c31, 0)),
+          cfworkerbodypart: S.optional(S.String.pipe(T.Header("CF-WORKER-BODY-PART"))),
+          cfworkermainmodulepart: S.optional(S.String.pipe(T.Header("CF-WORKER-MAIN-MODULE-PART"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/content",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutScriptContentRequest" });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 3:
+      return S.Record(S.String, __S(418, __c13, 2));
+    case 4:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode", "lastAnalyzedAt", "status"],
+          ["region", "lastAnalyzedAt", "status"],
+          ["hostname", "lastAnalyzedAt", "status"],
+          ["host", "lastAnalyzedAt", "status"],
+          ["mode", "region", "lastAnalyzedAt", "status"],
+          ["hostname", "mode", "lastAnalyzedAt", "status"],
+          ["host", "mode", "lastAnalyzedAt", "status"],
+          ["mode", "target", "lastAnalyzedAt", "status"],
+        ]),
+      );
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          etag: S.optional(S.NullOr(S.String)),
+          exports: S.optional(S.NullOr(__S(419, __c13, 3))),
+          handlers: S.optional(S.NullOr(__S(992, __c31, 0))),
+          hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
+          hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
+          lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          namedHandlers: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("named_handlers"))),
+          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          placement: S.optional(S.NullOr(__S(420, __c13, 4))),
+          placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
+          placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
+          tag: S.optional(S.NullOr(S.String)),
+          tags: S.optional(S.NullOr(__S(992, __c31, 0))),
+          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutScriptContentResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          body: __S(3524, __c110, 4).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/triggers/{script_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutScriptEventTriggersRequest" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cron: S.String,
+          createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+          modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+        }),
+      ).annotate({ identifier: "ScriptsSchedulesUpdateRequestBodyItem" });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          body: __S(481, __c15, 1).pipe(T.HttpBody()),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/schedules",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutScriptScheduleRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          name: S.String,
+          text: S.optional(S.String),
+          type: S.String,
+          algorithm: S.optional(S.Unknown),
+          format: S.optional(S.String),
+          usages: S.optional(__S(512, __c16, 0)),
+          keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
+          keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutScriptSecretRequest" });
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "text", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+          ],
+          { key: "type", values: ["secret_text", "secret_key"] },
+        ),
+      );
+    case 3:
+      return S.suspend(() =>
+        __S(514, __c16, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutScriptSecretResponse" });
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          subdomain: S.String,
+        })
+          .pipe(
+            T.Http({ method: "PUT", uri: "/accounts/{account_id}/workers/subdomain", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PutSubdomainRequest" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["operator", "alias", "key", "keyType"],
+          ["key", "operator", "alias", "keyType"],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(576, __c18, 0));
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 3:
+      return S.Array(__S(578, __c18, 2));
+    case 4:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(580, __c18, 4),
+          isRegex: S.optional(S.Boolean),
+          matchCase: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryRequestParametersNeedle" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          calculations: S.optional(__S(577, __c18, 1)),
+          datasets: S.optional(__S(992, __c31, 0)),
+          filterCombination: S.optional(S.String),
+          filters: S.optional(__S(579, __c18, 3)),
+          groupBys: S.optional(__S(1601, __c50, 1)),
+          havings: S.optional(__S(1603, __c50, 3)),
+          limit: S.optional(S.Number),
+          needle: S.optional(__S(581, __c18, 5)),
+          orderBy: S.optional(__S(1568, __c49, 0)),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryRequestParameters" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          queryId: S.String,
+          timeframe: __S(1696, __c53, 0),
+          chart: S.optional(S.Boolean),
+          chartType: S.optional(S.String),
+          compare: S.optional(S.Boolean),
+          distributionScale: S.optional(S.String),
+          dry: S.optional(S.Boolean),
+          granularity: S.optional(S.Number),
+          ignoreSeries: S.optional(S.Boolean),
+          limit: S.optional(S.Number),
+          offset: S.optional(S.String),
+          offsetBy: S.optional(S.Number),
+          offsetDirection: S.optional(S.String),
+          parameters: S.optional(__S(582, __c18, 6)),
+          view: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/observability/telemetry/query",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "QueryObservabilityTelemetryRequest" });
+    case 8:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["operator", "alias", "key", "keyType"],
+          ["key", "operator", "alias", "keyType"],
+        ]),
+      );
+    case 9:
+      return S.Array(__S(584, __c18, 8));
+    case 10:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 11:
+      return S.Array(__S(586, __c18, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          calculations: S.optional(S.NullOr(__S(585, __c18, 9))),
+          datasets: S.optional(S.NullOr(__S(992, __c31, 0))),
+          filterCombination: S.optional(S.NullOr(S.String)),
+          filters: S.optional(S.NullOr(__S(587, __c18, 11))),
+          groupBys: S.optional(S.NullOr(__S(1601, __c50, 1))),
+          havings: S.optional(S.NullOr(__S(1603, __c50, 3))),
+          limit: S.optional(S.NullOr(S.Number)),
+          needle: S.optional(S.NullOr(__S(3264, __c102, 0))),
+          orderBy: S.optional(S.NullOr(__S(1632, __c51, 0))),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseRunQueryParameters" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          adhoc: S.Boolean,
+          created: S.String,
+          createdBy: S.String,
+          description: S.String,
+          name: S.String,
+          parameters: __S(588, __c18, 12),
+          updated: S.String,
+          updatedBy: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseRunQuery" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String,
+          dry: S.Boolean,
+          granularity: S.Number,
+          query: __S(589, __c18, 13),
+          status: S.String,
+          timeframe: __S(1696, __c53, 0),
+          userId: S.String,
+          created: S.optional(S.NullOr(S.String)),
+          statistics: S.optional(S.NullOr(__S(3265, __c102, 1))),
+          updated: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseRun" });
+    case 15:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: __S(591, __c18, 15),
+        }),
+      ).annotate({
+        identifier: "ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItemGroupsItem",
+      });
+    case 17:
+      return S.Array(__S(592, __c18, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          value: S.Number,
+          groups: S.optional(S.NullOr(__S(593, __c18, 17))),
+        }),
+      ).annotate({
+        identifier: "ObservabilityTelemetryQueryResponseCalculationsItemAggregatesItem",
+      });
+    case 19:
+      return S.Array(__S(594, __c18, 18));
+    case 20:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: __S(596, __c18, 20),
+        }),
+      ).annotate({
+        identifier:
+          "ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItemGroupsItem",
+      });
+    case 22:
+      return S.Array(__S(597, __c18, 21));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          value: S.Number,
+          firstSeen: S.optional(S.NullOr(S.String)),
+          groups: S.optional(S.NullOr(__S(598, __c18, 22))),
+          lastSeen: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ObservabilityTelemetryQueryResponseCalculationsItemSeriesItemDataItem",
+      });
+    case 24:
+      return S.Array(__S(599, __c18, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(600, __c18, 24),
+          time: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseCalculationsItemSeriesItem" });
+    case 26:
+      return S.Array(__S(601, __c18, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          aggregates: __S(595, __c18, 19),
+          calculation: S.String,
+          series: __S(602, __c18, 26),
+          alias: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseCalculationsItem" });
+    case 28:
+      return S.Array(__S(603, __c18, 27));
+    case 29:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: __S(605, __c18, 29),
+        }),
+      ).annotate({
+        identifier: "ObservabilityTelemetryQueryResponseCompareItemAggregatesItemGroupsItem",
+      });
+    case 31:
+      return S.Array(__S(606, __c18, 30));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          value: S.Number,
+          groups: S.optional(S.NullOr(__S(607, __c18, 31))),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseCompareItemAggregatesItem" });
+    case 1:
+      return S.Array(__S(608, __c19, 0));
+    case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: __S(610, __c19, 2),
+        }),
+      ).annotate({
+        identifier: "ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItemGroupsItem",
+      });
+    case 4:
+      return S.Array(__S(611, __c19, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          value: S.Number,
+          firstSeen: S.optional(S.NullOr(S.String)),
+          groups: S.optional(S.NullOr(__S(612, __c19, 4))),
+          lastSeen: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ObservabilityTelemetryQueryResponseCompareItemSeriesItemDataItem",
+      });
+    case 6:
+      return S.Array(__S(613, __c19, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(614, __c19, 6),
+          time: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseCompareItemSeriesItem" });
+    case 8:
+      return S.Array(__S(615, __c19, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          aggregates: __S(609, __c19, 1),
+          calculation: S.String,
+          series: __S(616, __c19, 8),
+          alias: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseCompareItem" });
+    case 10:
+      return S.Array(__S(617, __c19, 9));
+    case 11:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 12:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "eventType",
+            "scriptName",
+            "durableObjectId",
+            "entrypoint",
+            "event",
+            "executionModel",
+            "outcome",
+            "preview",
+            "requestId",
+            "scriptVersion",
+            "spanId",
+            "traceId",
+            "truncated",
+          ],
+          [
+            "cpuTimeMs",
+            "eventType",
+            "outcome",
+            "scriptName",
+            "wallTimeMs",
+            "diagnosticsChannelEvents",
+            "dispatchNamespace",
+            "durableObjectId",
+            "entrypoint",
+            "event",
+            "executionModel",
+            "preview",
+            "requestId",
+            "scriptVersion",
+            "spanId",
+            "traceId",
+            "truncated",
+          ],
+        ]),
+      );
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(3271, __c102, 7).pipe(T.Body("$metadata")),
+          dataset: S.String,
+          source: __S(619, __c19, 11),
+          timestamp: S.Number,
+          containers: S.optional(S.NullOr(__S(800, __c25, 0)).pipe(T.Body("$containers"))),
+          workers: S.optional(S.NullOr(__S(620, __c19, 12)).pipe(T.Body("$workers"))),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseEventsEventsItem" });
+    case 14:
+      return S.Array(__S(621, __c19, 13));
+    case 15:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 16:
+      return S.Record(S.String, __S(623, __c19, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          aggregates: __S(3274, __c102, 10),
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          errors: S.optional(S.NullOr(S.Number)),
+          groups: S.optional(S.NullOr(__S(624, __c19, 16))),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseEventsSeriesItemDataItem" });
+    case 18:
+      return S.Array(__S(625, __c19, 17));
+    case 19:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(626, __c19, 18),
+          time: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseEventsSeriesItem" });
+    case 20:
+      return S.Array(__S(627, __c19, 19));
+    case 21:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.NullOr(S.Number)),
+          events: S.optional(S.NullOr(__S(622, __c19, 14))),
+          fields: S.optional(S.NullOr(__S(3273, __c102, 9))),
+          series: S.optional(S.NullOr(__S(628, __c19, 20))),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseEvents" });
+    case 22:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 23:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "eventType",
+            "scriptName",
+            "durableObjectId",
+            "entrypoint",
+            "event",
+            "executionModel",
+            "outcome",
+            "preview",
+            "requestId",
+            "scriptVersion",
+            "spanId",
+            "traceId",
+            "truncated",
+          ],
+          [
+            "cpuTimeMs",
+            "eventType",
+            "outcome",
+            "scriptName",
+            "wallTimeMs",
+            "diagnosticsChannelEvents",
+            "dispatchNamespace",
+            "durableObjectId",
+            "entrypoint",
+            "event",
+            "executionModel",
+            "preview",
+            "requestId",
+            "scriptVersion",
+            "spanId",
+            "traceId",
+            "truncated",
+          ],
+        ]),
+      );
+    case 24:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(3271, __c102, 7).pipe(T.Body("$metadata")),
+          dataset: S.String,
+          source: __S(630, __c19, 22),
+          timestamp: S.Number,
+          containers: S.optional(S.NullOr(__S(800, __c25, 0)).pipe(T.Body("$containers"))),
+          workers: S.optional(S.NullOr(__S(631, __c19, 23)).pipe(T.Body("$workers"))),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryQueryResponseInvocationsValueItem" });
+    case 25:
+      return S.Array(__S(632, __c19, 24));
+    case 26:
+      return S.Record(S.String, __S(633, __c19, 25));
+    case 27:
+      return S.suspend(() =>
+        S.Struct({
+          run: __S(590, __c18, 14),
+          statistics: __S(3265, __c102, 1),
+          agents: S.optional(S.NullOr(__S(3267, __c102, 3))),
+          calculations: S.optional(S.NullOr(__S(604, __c18, 28))),
+          compare: S.optional(S.NullOr(__S(618, __c19, 10))),
+          distribution: S.optional(S.NullOr(__S(3270, __c102, 6))),
+          events: S.optional(S.NullOr(__S(629, __c19, 21))),
+          invocations: S.optional(S.NullOr(__S(634, __c19, 26))),
+          traces: S.optional(S.NullOr(__S(3276, __c102, 12))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "QueryObservabilityTelemetryResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          id: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts-search",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "SearchScriptRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          modifiedOn: S.String.pipe(T.Body("modified_on")),
+          scriptName: S.String.pipe(T.Body("script_name")),
+          environmentIsDefault: S.optional(
+            S.NullOr(S.Boolean).pipe(T.Body("environment_is_default")),
+          ),
+          environmentName: S.optional(S.NullOr(S.String).pipe(T.Body("environment_name"))),
+          serviceName: S.optional(S.NullOr(S.String).pipe(T.Body("service_name"))),
+        }),
+      ).annotate({ identifier: "ScriptsSearchResultItem" });
+    case 2:
+      return S.Array(__S(641, __c20, 1));
+    case 3:
+      return S.suspend(() =>
+        __S(642, __c20, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "SearchScriptResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cacheOptions: S.optional(__S(960, __c30, 0).pipe(T.Body("cache_options"))),
+          env: S.optional(__S(1217, __c38, 1)),
+          limits: S.optional(__S(1024, __c32, 0)),
+          logpush: S.optional(S.Boolean),
+          observability: S.optional(__S(929, __c29, 1)),
+          placement: S.optional(__S(672, __c21, 0)),
+          tailConsumers: S.optional(__S(1121, __c35, 1).pipe(T.Body("tail_consumers"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersUpdateRequestPreviewsBaseConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          name: S.String,
+          logpush: S.optional(S.Boolean),
+          observability: S.optional(__S(929, __c29, 1)),
+          previewsBaseConfig: S.optional(__S(673, __c21, 1).pipe(T.Body("previews_base_config"))),
+          subdomain: S.optional(__S(930, __c29, 2)),
+          tags: S.optional(__S(992, __c31, 0)),
+          tailConsumers: S.optional(__S(1121, __c35, 1).pipe(T.Body("tail_consumers"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PUT",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateBetaWorkerRequest" });
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          env: S.optional(S.NullOr(__S(1217, __c38, 1))),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          observability: S.optional(S.NullOr(__S(1219, __c38, 3))),
+          placement: S.optional(S.NullOr(__S(675, __c21, 3))),
+          tailConsumers: S.optional(S.NullOr(__S(1121, __c35, 1)).pipe(T.Body("tail_consumers"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersUpdateResponsePreviewsBaseConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          logpush: S.Boolean,
+          name: S.String,
+          observability: __S(1219, __c38, 3),
+          references: __S(1228, __c38, 12),
+          subdomain: __S(1229, __c38, 13),
+          tags: __S(992, __c31, 0),
+          tailConsumers: __S(1121, __c35, 1).pipe(T.Body("tail_consumers")),
+          updatedOn: S.String.pipe(T.Body("updated_on")),
+          deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(__S(676, __c21, 4)).pipe(T.Body("previews_base_config")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateBetaWorkerResponse" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          routeId: S.String.pipe(T.Label("route_id")),
+          pattern: S.String,
+          script: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({ method: "PUT", uri: "/zones/{zone_id}/workers/routes/{route_id}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UpdateRouteRequest" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 1:
+      return S.Array(__S(736, __c23, 0));
+    case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(738, __c23, 2),
+          isRegex: S.optional(S.Boolean),
+          matchCase: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryValuesRequestNeedle" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          datasets: __S(992, __c31, 0),
+          key: S.String,
+          timeframe: __S(1696, __c53, 0),
+          type: S.String,
+          filters: S.optional(__S(737, __c23, 1)),
+          limit: S.optional(S.Number),
+          needle: S.optional(__S(739, __c23, 3)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/observability/telemetry/values",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ValuesObservabilityTelemetryRequest" });
+    case 5:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          dataset: S.String,
+          key: S.String,
+          type: S.String,
+          value: __S(741, __c23, 5),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryValuesResultItem" });
+    case 7:
+      return S.Array(__S(742, __c23, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(743, __c23, 7).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ValuesObservabilityTelemetryResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "text", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+          ],
+          { key: "type", values: ["secret_text", "secret_key"] },
+        ),
+      );
+    case 1:
+      return S.Record(S.String, __S(768, __c24, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          secrets: S.optional(__S(769, __c24, 1)),
+          versionTags: S.optional(__S(800, __c25, 0).pipe(T.Body("version_tags"))),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets-bulk",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkUpdateScriptSecretsRequest" });
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "text", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+          ],
+          { key: "type", values: ["secret_text", "secret_key"] },
+        ),
+      );
+    case 4:
+      return S.Record(S.String, __S(771, __c24, 3));
+    case 5:
+      return S.suspend(() =>
+        __S(772, __c24, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "BulkUpdateScriptSecretsResponse" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.Unknown);
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          base64: S.Boolean.pipe(T.Query()),
+          body: S.optional(__S(800, __c25, 0).pipe(T.HttpBody())),
+          jwtToken: S.optional(S.String.pipe(T.Header("Authorization"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/assets/upload",
+              code: 200,
+              contentType: "multipart",
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAssetUploadRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          jwt: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateAssetUploadResponse" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cacheOptions: S.optional(__S(960, __c30, 0).pipe(T.Body("cache_options"))),
+          env: S.optional(__S(1217, __c38, 1)),
+          limits: S.optional(__S(1024, __c32, 0)),
+          logpush: S.optional(S.Boolean),
+          observability: S.optional(__S(929, __c29, 1)),
+          placement: S.optional(__S(864, __c27, 0)),
+          tailConsumers: S.optional(__S(1121, __c35, 1).pipe(T.Body("tail_consumers"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestPreviewsBaseConfig" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          name: S.String,
+          logpush: S.optional(S.Boolean),
+          observability: S.optional(__S(929, __c29, 1)),
+          previewsBaseConfig: S.optional(__S(865, __c27, 1).pipe(T.Body("previews_base_config"))),
+          subdomain: S.optional(__S(930, __c29, 2)),
+          tags: S.optional(__S(992, __c31, 0)),
+          tailConsumers: S.optional(__S(1121, __c35, 1).pipe(T.Body("tail_consumers"))),
+        })
+          .pipe(
+            T.Http({ method: "POST", uri: "/accounts/{account_id}/workers/workers", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateBetaWorkerRequest" });
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          env: S.optional(S.NullOr(__S(1217, __c38, 1))),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          observability: S.optional(S.NullOr(__S(1219, __c38, 3))),
+          placement: S.optional(S.NullOr(__S(867, __c27, 3))),
+          tailConsumers: S.optional(S.NullOr(__S(1121, __c35, 1)).pipe(T.Body("tail_consumers"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponsePreviewsBaseConfig" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          logpush: S.Boolean,
+          name: S.String,
+          observability: __S(1219, __c38, 3),
+          references: __S(1228, __c38, 12),
+          subdomain: __S(1229, __c38, 13),
+          tags: __S(992, __c31, 0),
+          tailConsumers: __S(1121, __c35, 1).pipe(T.Body("tail_consumers")),
+          updatedOn: S.String.pipe(T.Body("updated_on")),
+          deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(__S(868, __c27, 4)).pipe(T.Body("previews_base_config")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateBetaWorkerResponse" });
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          destinations: S.optional(__S(992, __c31, 0)),
+          enabled: S.optional(S.Boolean),
+          headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+          persist: S.optional(S.Boolean),
+          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestObservabilityTraces" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          destinations: S.optional(__S(992, __c31, 0)),
+          enabled: S.optional(S.Boolean),
+          headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+          invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
+          persist: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestObservabilityLogs" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+          issues: S.optional(__S(1152, __c36, 0)),
+          logs: S.optional(__S(928, __c29, 0)),
+          redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
+          traces: S.optional(__S(896, __c28, 0)),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestObservability" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          previewUrlSuffix: S.optional(S.String.pipe(T.Body("preview_url_suffix"))),
+          previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
+          url: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestSubdomain" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          crossVersionCache: S.optional(S.Boolean.pipe(T.Body("cross_version_cache"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
+          subrequests: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestPreviewsBaseConfigLimits" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          crossVersionCache: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cross_version_cache"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cpuMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_ms"))),
+          subrequests: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponsePreviewsBaseConfigLimits" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem" });
+    case 1:
+      return S.Array(__S(1120, __c35, 0));
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestObservabilityIssues" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponseObservabilityIssues" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          destinations: S.optional(S.NullOr(__S(992, __c31, 0))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+          persist: S.optional(S.NullOr(S.Boolean)),
+          propagationPolicy: S.optional(S.NullOr(S.String).pipe(T.Body("propagation_policy"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponseObservabilityTraces" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateRequestPreviewsBaseConfigEnvValue" });
+    case 1:
+      return S.Record(S.String, __S(1216, __c38, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          destinations: S.optional(S.NullOr(__S(992, __c31, 0))),
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+          invocationLogs: S.optional(S.NullOr(S.Boolean).pipe(T.Body("invocation_logs"))),
+          persist: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponseObservabilityLogs" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+          issues: S.optional(S.NullOr(__S(1184, __c37, 0))),
+          logs: S.optional(S.NullOr(__S(1218, __c38, 2))),
+          redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
+          traces: S.optional(S.NullOr(__S(1185, __c37, 1))),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponseObservability" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          namespaceId: S.String.pipe(T.Body("namespace_id")),
+          namespaceName: S.String.pipe(T.Body("namespace_name")),
+          workerId: S.String.pipe(T.Body("worker_id")),
+          workerName: S.String.pipe(T.Body("worker_name")),
+        }),
+      ).annotate({
+        identifier: "BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem",
+      });
+    case 5:
+      return S.Array(__S(1220, __c38, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          certificateId: S.String.pipe(T.Body("certificate_id")),
+          hostname: S.String,
+          zoneId: S.String.pipe(T.Body("zone_id")),
+          zoneName: S.String.pipe(T.Body("zone_name")),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponseReferencesDomainsItem" });
+    case 7:
+      return S.Array(__S(1222, __c38, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          queueConsumerId: S.String.pipe(T.Body("queue_consumer_id")),
+          queueId: S.String.pipe(T.Body("queue_id")),
+          queueName: S.String.pipe(T.Body("queue_name")),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponseReferencesQueuesItem" });
+    case 9:
+      return S.Array(__S(1224, __c38, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponseReferencesWorkersItem" });
+    case 11:
+      return S.Array(__S(1226, __c38, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          dispatchNamespaceOutbounds: __S(1221, __c38, 5).pipe(
+            T.Body("dispatch_namespace_outbounds"),
+          ),
+          domains: __S(1223, __c38, 7),
+          durableObjects: __S(1221, __c38, 5).pipe(T.Body("durable_objects")),
+          queues: __S(1225, __c38, 9),
+          workers: __S(1227, __c38, 11),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponseReferences" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.NullOr(S.Boolean)),
+          previewUrlSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("preview_url_suffix"))),
+          previewsEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("previews_enabled"))),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "BetaWorkersCreateResponseSubdomain" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+          workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
+          workersTriggeredBy: S.optional(S.String.pipe(T.Body("workers/triggered_by"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateRequestAnnotations" });
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          basePath: S.optional(S.String.pipe(T.Body("base_path"))),
+          htmlHandling: S.optional(S.String.pipe(T.Body("html_handling"))),
+          notFoundHandling: S.optional(S.String.pipe(T.Body("not_found_handling"))),
+          runWorkerFirst: S.optional(__S(1249, __c39, 1).pipe(T.Body("run_worker_first"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateRequestAssetsConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(1250, __c39, 2)),
+          jwt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateRequestAssets" });
+    case 4:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "type"],
+            ["instanceName", "name", "type", "namespace"],
+            ["name", "namespace", "type"],
+            ["name", "namespace", "type"],
+            ["dataset", "name", "type"],
+            ["name", "namespace", "type"],
+            ["name", "type"],
+            ["name", "type"],
+            ["databaseId", "name", "type", "id"],
+            ["name", "part", "type"],
+            ["name", "namespace", "type", "outbound"],
+            [
+              "name",
+              "type",
+              "className",
+              "dispatchNamespace",
+              "environment",
+              "namespaceId",
+              "scriptName",
+            ],
+            ["id", "name", "type"],
+            ["name", "type", "oldName", "versionId"],
+            ["name", "type"],
+            ["json", "name", "type"],
+            ["name", "namespaceId", "type"],
+            ["name", "type"],
+            ["certificateId", "name", "type"],
+            ["name", "text", "type"],
+            ["name", "pipeline", "type"],
+            ["name", "stream", "type"],
+            ["name", "queueName", "type"],
+            ["name", "namespaceId", "simple", "type"],
+            ["bucketName", "name", "type", "jurisdiction"],
+            ["name", "text", "type"],
+            [
+              "name",
+              "type",
+              "allowedDestinationAddresses",
+              "allowedSenderAddresses",
+              "destinationAddress",
+            ],
+            ["name", "service", "type", "entrypoint", "environment"],
+            ["name", "part", "type"],
+            ["indexName", "name", "type"],
+            ["name", "type"],
+            ["name", "secretName", "storeId", "type"],
+            ["appId", "name", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+            ["name", "type", "workflowName", "className", "scriptName"],
+            ["name", "part", "type"],
+            ["name", "serviceId", "type"],
+            ["name", "type", "identity", "networkId", "tunnelId"],
+          ],
+          {
+            key: "type",
+            values: [
+              "ai",
+              "ai_search",
+              "ai_search_namespace",
+              "messaging",
+              "analytics_engine",
+              "artifacts",
+              "assets",
+              "browser",
+              "d1",
+              "data_blob",
+              "dispatch_namespace",
+              "durable_object_namespace",
+              "hyperdrive",
+              "inherit",
+              "images",
+              "json",
+              "kv_namespace",
+              "media",
+              "mtls_certificate",
+              "plain_text",
+              "pipelines",
+              "k2",
+              "queue",
+              "ratelimit",
+              "r2_bucket",
+              "secret_text",
+              "send_email",
+              "service",
+              "text_blob",
+              "vectorize",
+              "version_metadata",
+              "secrets_store_secret",
+              "flagship",
+              "secret_key",
+              "workflow",
+              "wasm_module",
+              "vpc_service",
+              "vpc_network",
+            ],
+          },
+        ),
+      );
+    case 5:
+      return S.Array(__S(1252, __c39, 4));
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 7:
+      return S.Record(S.String, __S(1254, __c39, 6));
+    case 8:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "deletedClasses",
+            "newClasses",
+            "newSqliteClasses",
+            "newTag",
+            "oldTag",
+            "renamedClasses",
+            "transferredClasses",
+          ],
+          ["newTag", "oldTag", "steps"],
+        ]),
+      );
+    case 9:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          deploy: S.optional(S.Boolean.pipe(T.Query())),
+          annotations: S.optional(__S(1248, __c39, 0)),
+          assets: S.optional(__S(1251, __c39, 3)),
+          bindings: S.optional(__S(1253, __c39, 5)),
+          cacheOptions: S.optional(__S(960, __c30, 0).pipe(T.Body("cache_options"))),
+          compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(__S(992, __c31, 0).pipe(T.Body("compatibility_flags"))),
+          containers: S.optional(__S(1313, __c41, 1)),
+          exports: S.optional(__S(1255, __c39, 7)),
+          limits: S.optional(__S(1024, __c32, 0)),
+          mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+          migrations: S.optional(__S(1256, __c39, 8)),
+          modules: S.optional(__S(1441, __c45, 1)),
+          packageDependencies: S.optional(__S(1443, __c45, 3).pipe(T.Body("package_dependencies"))),
+          placement: S.optional(__S(1257, __c39, 9)),
+          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateBetaWorkerVersionRequest" });
+    case 11:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          basePath: S.optional(S.NullOr(S.String).pipe(T.Body("base_path"))),
+          htmlHandling: S.optional(S.NullOr(S.String).pipe(T.Body("html_handling"))),
+          notFoundHandling: S.optional(S.NullOr(S.String).pipe(T.Body("not_found_handling"))),
+          runWorkerFirst: S.optional(
+            S.NullOr(__S(1259, __c39, 11)).pipe(T.Body("run_worker_first")),
+          ),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateResponseAssetsConfig" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(S.NullOr(__S(1260, __c39, 12))),
+          jwt: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateResponseAssets" });
+    case 14:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "type"],
+            ["instanceName", "name", "type", "namespace"],
+            ["name", "namespace", "type"],
+            ["name", "namespace", "type"],
+            ["dataset", "name", "type"],
+            ["name", "namespace", "type"],
+            ["name", "type"],
+            ["name", "type"],
+            ["databaseId", "name", "type", "id"],
+            ["name", "part", "type"],
+            ["name", "namespace", "type", "outbound"],
+            [
+              "name",
+              "type",
+              "className",
+              "dispatchNamespace",
+              "environment",
+              "namespaceId",
+              "scriptName",
+            ],
+            ["id", "name", "type"],
+            ["name", "type", "oldName", "versionId"],
+            ["name", "type"],
+            ["json", "name", "type"],
+            ["name", "namespaceId", "type"],
+            ["name", "type"],
+            ["certificateId", "name", "type"],
+            ["name", "text", "type"],
+            ["name", "pipeline", "type"],
+            ["name", "stream", "type"],
+            ["name", "queueName", "type"],
+            ["name", "namespaceId", "simple", "type"],
+            ["bucketName", "name", "type", "jurisdiction"],
+            ["name", "text", "type"],
+            [
+              "name",
+              "type",
+              "allowedDestinationAddresses",
+              "allowedSenderAddresses",
+              "destinationAddress",
+            ],
+            ["name", "service", "type", "entrypoint", "environment"],
+            ["name", "part", "type"],
+            ["indexName", "name", "type"],
+            ["name", "type"],
+            ["name", "secretName", "storeId", "type"],
+            ["appId", "name", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+            ["name", "type", "workflowName", "className", "scriptName"],
+            ["name", "part", "type"],
+            ["name", "serviceId", "type"],
+            ["name", "type", "identity", "networkId", "tunnelId"],
+          ],
+          {
+            key: "type",
+            values: [
+              "ai",
+              "ai_search",
+              "ai_search_namespace",
+              "messaging",
+              "analytics_engine",
+              "artifacts",
+              "assets",
+              "browser",
+              "d1",
+              "data_blob",
+              "dispatch_namespace",
+              "durable_object_namespace",
+              "hyperdrive",
+              "inherit",
+              "images",
+              "json",
+              "kv_namespace",
+              "media",
+              "mtls_certificate",
+              "plain_text",
+              "pipelines",
+              "k2",
+              "queue",
+              "ratelimit",
+              "r2_bucket",
+              "secret_text",
+              "send_email",
+              "service",
+              "text_blob",
+              "vectorize",
+              "version_metadata",
+              "secrets_store_secret",
+              "flagship",
+              "secret_key",
+              "workflow",
+              "wasm_module",
+              "vpc_service",
+              "vpc_network",
+            ],
+          },
+        ),
+      );
+    case 15:
+      return S.Array(__S(1262, __c39, 14));
+    case 16:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 17:
+      return S.Record(S.String, __S(1264, __c39, 16));
+    case 18:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "deletedClasses",
+            "newClasses",
+            "newSqliteClasses",
+            "newTag",
+            "oldTag",
+            "renamedClasses",
+            "transferredClasses",
+          ],
+          ["newTag", "oldTag", "steps"],
+        ]),
+      );
+    case 19:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          number: S.Number,
+          urls: __S(992, __c31, 0),
+          annotations: S.optional(S.NullOr(__S(1408, __c44, 0))),
+          assets: S.optional(S.NullOr(__S(1261, __c39, 13))),
+          authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
+          authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
+          bindings: S.optional(S.NullOr(__S(1263, __c39, 15))),
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          containers: S.optional(S.NullOr(__S(1377, __c43, 1))),
+          exports: S.optional(S.NullOr(__S(1265, __c39, 17))),
+          exportsReconciliation: S.optional(
+            S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
+          ),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
+          migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+          migrations: S.optional(S.NullOr(__S(1266, __c39, 18))),
+          modules: S.optional(S.NullOr(__S(1441, __c45, 1))),
+          packageDependencies: S.optional(
+            S.NullOr(__S(1443, __c45, 3)).pipe(T.Body("package_dependencies")),
+          ),
+          placement: S.optional(S.NullOr(__S(1267, __c39, 19))),
+          source: S.optional(S.NullOr(S.String)),
+          startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateBetaWorkerVersionResponse" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c41(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          className: S.String.pipe(T.Body("class_name")),
+          name: S.optional(S.String),
+          images: S.optional(__S(1280, __c40, 0).pipe(T.KeyDictionary({}))),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateRequestContainersItem" });
+    case 1:
+      return S.Array(__S(1312, __c41, 0));
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          class: S.String,
+          message: S.String,
+          scenario: S.String,
+          namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+          referencingScripts: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("referencing_scripts")),
+          ),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem" });
+    case 1:
+      return S.Array(__S(1344, __c42, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.String,
+          to: S.String,
+        }),
+      ).annotate({
+        identifier: "BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem",
+      });
+    case 3:
+      return S.Array(__S(1346, __c42, 2));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          class: S.String,
+          from: S.String,
+        }),
+      ).annotate({
+        identifier: "BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem",
+      });
+    case 5:
+      return S.Array(__S(1348, __c42, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          class: S.String,
+          phase: S.String,
+          to: S.String,
+        }),
+      ).annotate({
+        identifier: "BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem",
+      });
+    case 7:
+      return S.Array(__S(1350, __c42, 6));
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          class: S.String,
+          message: S.String,
+          scenario: S.String,
+          namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
+        }),
+      ).annotate({
+        identifier: "BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem",
+      });
+    case 9:
+      return S.Array(__S(1352, __c42, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          created: __S(992, __c31, 0),
+          deleted: __S(992, __c31, 0),
+          info: __S(1345, __c42, 1),
+          removableEntries: __S(992, __c31, 0).pipe(T.Body("removable_entries")),
+          renamed: __S(1347, __c42, 3),
+          transferPending: __S(1349, __c42, 5).pipe(T.Body("transfer_pending")),
+          transferred: __S(1351, __c42, 7),
+          updated: __S(992, __c31, 0),
+          warnings: __S(1353, __c42, 9),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateResponseExportsReconciliation" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          className: S.String.pipe(T.Body("class_name")),
+          name: S.optional(S.NullOr(S.String)),
+          images: S.optional(S.NullOr(__S(1280, __c40, 0)).pipe(T.KeyDictionary({}))),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateResponseContainersItem" });
+    case 1:
+      return S.Array(__S(1376, __c43, 0));
+  }
+}
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workersMessage: S.optional(S.NullOr(S.String).pipe(T.Body("workers/message"))),
+          workersTag: S.optional(S.NullOr(S.String).pipe(T.Body("workers/tag"))),
+          workersTriggeredBy: S.optional(S.NullOr(S.String).pipe(T.Body("workers/triggered_by"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateResponseAnnotations" });
+  }
+}
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          contentBase64: S.String.pipe(T.Body("content_base64")),
+          contentType: S.String.pipe(T.Body("content_type")),
+          name: S.String,
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateRequestModulesItem" });
+    case 1:
+      return S.Array(__S(1440, __c45, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          installedVersion: S.String,
+          name: S.String,
+          packageJsonVersion: S.String,
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateRequestPackageDependenciesItem" });
+    case 3:
+      return S.Array(__S(1442, __c45, 2));
+  }
+}
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          headers: __S(1280, __c40, 0),
+          logpushDataset: S.String,
+          type: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityDestinationsCreateRequestConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          configuration: __S(1472, __c46, 0),
+          enabled: S.Boolean,
+          name: S.String,
+          skipPreflightCheck: S.optional(S.Boolean),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/observability/destinations",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateObservabilityDestinationRequest" });
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+          logpushDataset: S.String,
+          logpushJob: S.Number,
+          type: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityDestinationsCreateResponseConfiguration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: __S(1504, __c47, 0),
+          enabled: S.Boolean,
+          name: S.String,
+          scripts: __S(992, __c31, 0),
+          slug: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateObservabilityDestinationResponse" });
+  }
+}
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["operator", "alias", "key", "keyType"],
+          ["key", "operator", "alias", "keyType"],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(1536, __c48, 0));
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 3:
+      return S.Array(__S(1538, __c48, 2));
+    case 4:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1540, __c48, 4),
+          isRegex: S.optional(S.Boolean),
+          matchCase: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesCreateRequestParametersNeedle" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          calculations: S.optional(__S(1537, __c48, 1)),
+          datasets: S.optional(__S(992, __c31, 0)),
+          filterCombination: S.optional(S.String),
+          filters: S.optional(__S(1539, __c48, 3)),
+          groupBys: S.optional(__S(1601, __c50, 1)),
+          havings: S.optional(__S(1603, __c50, 3)),
+          limit: S.optional(S.Number),
+          needle: S.optional(__S(1541, __c48, 5)),
+          orderBy: S.optional(__S(1568, __c49, 0)),
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesCreateRequestParameters" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          description: S.String,
+          name: S.String,
+          parameters: __S(1542, __c48, 6),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/observability/queries",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateObservabilityQueryRequest" });
+    case 8:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["operator", "alias", "key", "keyType"],
+          ["key", "operator", "alias", "keyType"],
+        ]),
+      );
+    case 9:
+      return S.Array(__S(1544, __c48, 8));
+    case 10:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 11:
+      return S.Array(__S(1546, __c48, 10));
+    case 12:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1548, __c48, 12),
+          isRegex: S.optional(S.NullOr(S.Boolean)),
+          matchCase: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesCreateResponseParametersNeedle" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          calculations: S.optional(S.NullOr(__S(1545, __c48, 9))),
+          datasets: S.optional(S.NullOr(__S(992, __c31, 0))),
+          filterCombination: S.optional(S.NullOr(S.String)),
+          filters: S.optional(S.NullOr(__S(1547, __c48, 11))),
+          groupBys: S.optional(S.NullOr(__S(1601, __c50, 1))),
+          havings: S.optional(S.NullOr(__S(1603, __c50, 3))),
+          limit: S.optional(S.NullOr(S.Number)),
+          needle: S.optional(S.NullOr(__S(1549, __c48, 13))),
+          orderBy: S.optional(S.NullOr(__S(1632, __c51, 0))),
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesCreateResponseParameters" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          adhoc: S.Boolean,
+          created: S.String,
+          createdBy: S.String,
+          description: S.String,
+          name: S.String,
+          parameters: __S(1550, __c48, 14),
+          updated: S.String,
+          updatedBy: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateObservabilityQueryResponse" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          order: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesCreateRequestParametersOrderBy" });
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          value: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesCreateRequestParametersGroupBysItem" });
+    case 1:
+      return S.Array(__S(1600, __c50, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          operation: S.String,
+          value: S.Number,
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesCreateRequestParametersHavingsItem" });
+    case 3:
+      return S.Array(__S(1602, __c50, 2));
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.String,
+          order: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesCreateResponseParametersOrderBy" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["operator", "alias", "key", "keyType"],
+          ["key", "operator", "alias", "keyType"],
+        ]),
+      );
+    case 1:
+      return S.Array(__S(1664, __c52, 0));
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 3:
+      return S.Array(__S(1666, __c52, 2));
+    case 4:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(1668, __c52, 4),
+          isRegex: S.optional(S.Boolean),
+          matchCase: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesCreateRequestParametersNeedle" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          calculations: S.optional(__S(1665, __c52, 1)),
+          datasets: S.optional(__S(992, __c31, 0)),
+          filterCombination: S.optional(S.String),
+          filters: S.optional(__S(1667, __c52, 3)),
+          groupBys: S.optional(__S(1601, __c50, 1)),
+          havings: S.optional(__S(1603, __c50, 3)),
+          limit: S.optional(S.Number),
+          needle: S.optional(__S(1669, __c52, 5)),
+          orderBy: S.optional(__S(1568, __c49, 0)),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesCreateRequestParameters" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          queryId: S.String,
+          timeframe: __S(1696, __c53, 0),
+          chart: S.optional(S.Boolean),
+          chartType: S.optional(S.String),
+          compare: S.optional(S.Boolean),
+          distributionScale: S.optional(S.String),
+          dry: S.optional(S.Boolean),
+          granularity: S.optional(S.Number),
+          ignoreSeries: S.optional(S.Boolean),
+          limit: S.optional(S.Number),
+          offset: S.optional(S.String),
+          offsetBy: S.optional(S.Number),
+          offsetDirection: S.optional(S.String),
+          parameters: S.optional(__S(1670, __c52, 6)),
+          view: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/observability/shared/query",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateObservabilitySharedQueryRequest" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateObservabilitySharedQueryResponse" });
+  }
+}
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.Number,
+          to: S.Number,
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesCreateRequestTimeframe" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          ignoreBaseConfig: S.optional(S.Boolean.pipe(T.Query("ignore_base_config"))),
+          name: S.String,
+          logpush: S.optional(S.Boolean),
+          tailConsumers: S.optional(__S(1121, __c35, 1).pipe(T.Body("tail_consumers"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}/previews",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePreviewRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          slug: S.String,
+          workerName: S.String.pipe(T.Body("worker_name")),
+          urls: S.optional(S.NullOr(__S(992, __c31, 0))),
+          tags: S.optional(S.NullOr(__S(992, __c31, 0))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          tailConsumers: S.optional(S.NullOr(__S(1121, __c35, 1)).pipe(T.Body("tail_consumers"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          updatedOn: S.optional(S.NullOr(S.String).pipe(T.Body("updated_on"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PreviewResource" });
+  }
+}
+function __c56(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          jwt: S.optional(S.String),
+          config: S.optional(S.Unknown),
+        }),
+      ).annotate({ identifier: "CreatePreviewDeploymentMetadataAssets" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+          assets: S.optional(__S(1792, __c56, 0)),
+          compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(__S(992, __c31, 0).pipe(T.Body("compatibility_flags"))),
+          annotations: S.optional(S.Unknown),
+          migrations: S.optional(S.Unknown),
+          limits: S.optional(S.Unknown),
+          placement: S.optional(S.Unknown),
+          cacheOptions: S.optional(S.Unknown.pipe(T.Body("cache_options"))),
+          env: S.optional(S.Unknown),
+          containers: S.optional(__S(1313, __c41, 1)),
+        }),
+      ).annotate({ identifier: "CreatePreviewDeploymentMetadata" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          previewId: S.String.pipe(T.Label("preview_id")),
+          metadata: __S(1793, __c56, 1),
+          files: S.optional(S.Unknown.pipe(T.FormDataFile())),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}/deployments",
+              code: 200,
+              contentType: "multipart",
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreatePreviewDeploymentRequest" });
+  }
+}
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          previewId: S.optional(S.NullOr(S.String).pipe(T.Body("preview_id"))),
+          previewName: S.optional(S.NullOr(S.String).pipe(T.Body("preview_name"))),
+          migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+          urls: S.optional(S.NullOr(__S(992, __c31, 0))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "PreviewDeploymentResource" });
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          pattern: S.String,
+          script: S.optional(S.String),
+        })
+          .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/workers/routes", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRouteRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          pattern: S.String,
+          script: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateRouteResponse" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          hash: S.String,
+          size: S.Number,
+        }),
+      ).annotate({ identifier: "ScriptsAssetsUploadCreateRequestManifestValue" });
+    case 1:
+      return S.Record(S.String, __S(1920, __c60, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          manifest: __S(1921, __c60, 1),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/assets-upload-session",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptAssetUploadRequest" });
+    case 3:
+      return S.Array(__S(992, __c31, 0));
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          buckets: S.optional(S.NullOr(__S(1923, __c60, 3))),
+          jwt: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptAssetUploadResponse" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+          workersTriggeredBy: S.optional(S.String.pipe(T.Body("workers/triggered_by"))),
+        }),
+      ).annotate({ identifier: "ScriptsDeploymentsCreateRequestAnnotations" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+          strategy: S.String,
+          versions: __S(2017, __c63, 1),
+          annotations: S.optional(__S(1952, __c61, 0)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptDeploymentRequest" });
+  }
+}
+function __c62(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          source: S.String,
+          strategy: S.String,
+          versions: __S(2017, __c63, 1),
+          annotations: S.optional(S.NullOr(__S(2018, __c63, 2))),
+          authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptDeploymentResponse" });
+  }
+}
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          percentage: S.Number,
+          versionId: S.String.pipe(T.Body("version_id")),
+        }),
+      ).annotate({ identifier: "ScriptsDeploymentsCreateRequestVersionsItem" });
+    case 1:
+      return S.Array(__S(2016, __c63, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          workersMessage: S.optional(S.NullOr(S.String).pipe(T.Body("workers/message"))),
+          workersTriggeredBy: S.optional(S.NullOr(S.String).pipe(T.Body("workers/triggered_by"))),
+        }),
+      ).annotate({ identifier: "ScriptsDeploymentsCreateResponseAnnotations" });
+  }
+}
+function __c64(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          cfPreviewUploadConfigToken: S.String.pipe(T.Header("cf-preview-upload-config-token")),
+          files: S.optional(S.Unknown.pipe(T.FormDataFile())),
+          wranglerSessionConfig: S.optional(
+            __S(2082, __c65, 2).pipe(T.Body("wrangler-session-config")),
+          ),
+          metadata: S.optional(__S(2097, __c65, 17)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/edge-preview",
+              code: 200,
+              contentType: "multipart",
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptEdgePreviewRequest" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          from: S.optional(S.String),
+          to: S.optional(S.String),
+        }),
+      ).annotate({
+        identifier:
+          "BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem",
+      });
+    case 1:
+      return S.Array(__S(2080, __c65, 0));
+    case 2:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["workersDev", "minimalMode"],
+          ["routes", "minimalMode"],
+        ]),
+      );
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["type", "name", "text"],
+            ["type", "name", "text"],
+            ["type", "name", "json"],
+            ["type", "name", "namespaceId", "raw"],
+            ["type", "name", "className", "scriptName", "environment", "namespaceId"],
+            ["type", "name", "bucketName", "jurisdiction", "raw"],
+            ["type", "name", "id", "internalEnv", "raw"],
+            ["type", "name", "queueName", "deliveryDelay", "raw"],
+            ["type", "name", "service", "environment", "entrypoint", "crossAccountGrant"],
+            ["type", "name", "staging", "raw"],
+            ["type", "name", "raw"],
+            ["type", "name", "raw"],
+            ["type", "name", "indexName", "internalEnv", "raw"],
+            ["type", "name", "workflowName", "className", "scriptName", "raw"],
+            ["type", "name", "id"],
+            ["type", "name", "dataset"],
+            ["type", "name", "namespace", "outbound"],
+            [
+              "type",
+              "name",
+              "destinationAddress",
+              "allowedDestinationAddresses",
+              "allowedSenderAddresses",
+            ],
+            ["type", "name", "certificateId"],
+            ["type", "name", "part"],
+            ["type", "name", "part"],
+            ["type", "name", "part"],
+            ["type", "name", "pipeline"],
+            ["type", "name", "storeId", "secretName"],
+            ["type", "name"],
+            ["type", "name"],
+            ["type", "name"],
+            ["type", "name"],
+            ["type", "name"],
+            ["type", "name", "destination"],
+            ["type", "name", "namespace"],
+            ["type", "name", "instanceName"],
+            ["type", "name", "namespaceId", "simple"],
+            ["type", "name", "namespace"],
+            ["type", "name", "enableTimer"],
+            ["type", "name", "appId"],
+            ["type", "name", "serviceId"],
+            ["type", "name", "tunnelId", "networkId"],
+            ["type", "name"],
+          ],
+          {
+            key: "type",
+            values: [
+              "plain_text",
+              "secret_text",
+              "json",
+              "kv_namespace",
+              "durable_object_namespace",
+              "r2_bucket",
+              "d1",
+              "queue",
+              "service",
+              "ai",
+              "browser",
+              "images",
+              "vectorize",
+              "workflow",
+              "hyperdrive",
+              "analytics_engine",
+              "dispatch_namespace",
+              "send_email",
+              "mtls_certificate",
+              "wasm_module",
+              "text_blob",
+              "data_blob",
+              "pipelines",
+              "secrets_store_secret",
+              "stream",
+              "media",
+              "version_metadata",
+              "assets",
+              "worker_loader",
+              "logfwdr",
+              "ai_search_namespace",
+              "ai_search",
+              "ratelimit",
+              "artifacts",
+              "unsafe_hello_world",
+              "flagship",
+              "vpc_service",
+              "vpc_network",
+              "inherit",
+            ],
+          },
+        ),
+      );
+    case 4:
+      return S.Array(__S(2083, __c65, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          newClasses: S.optional(__S(992, __c31, 0).pipe(T.Body("new_classes"))),
+          newSqliteClasses: S.optional(__S(992, __c31, 0).pipe(T.Body("new_sqlite_classes"))),
+          renamedClasses: S.optional(__S(2081, __c65, 1).pipe(T.Body("renamed_classes"))),
+          deletedClasses: S.optional(__S(992, __c31, 0).pipe(T.Body("deleted_classes"))),
+        }),
+      ).annotate({ identifier: "CreateScriptEdgePreviewMetadataMigrationStep" });
+    case 6:
+      return S.Array(__S(2085, __c65, 5));
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
+          newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
+          steps: S.optional(__S(2086, __c65, 6)),
+        }),
+      ).annotate({ identifier: "CreateScriptEdgePreviewMetadataMigrations" });
+    case 8:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([["mode", "hint"], ["region"], ["host"], ["hostname"]]),
+      );
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String,
+          environment: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateScriptEdgePreviewMetadataTailConsumer" });
+    case 10:
+      return S.Array(__S(2089, __c65, 9));
+    case 11:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          htmlHandling: S.optional(S.String.pipe(T.Body("html_handling"))),
+          notFoundHandling: S.optional(S.String.pipe(T.Body("not_found_handling"))),
+          runWorkerFirst: S.optional(__S(2091, __c65, 11).pipe(T.Body("run_worker_first"))),
+          redirects: S.optional(S.String),
+          headers: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateScriptEdgePreviewMetadataAssetsConfig" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          jwt: S.optional(S.String),
+          config: S.optional(__S(2092, __c65, 12)),
+        }),
+      ).annotate({ identifier: "CreateScriptEdgePreviewMetadataAssets" });
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+          invocationLogs: S.optional(S.Boolean.pipe(T.Body("invocation_logs"))),
+          persist: S.optional(S.Boolean),
+          destinations: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({ identifier: "CreateScriptEdgePreviewMetadataObservabilityLogs" });
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+          persist: S.optional(S.Boolean),
+          destinations: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({ identifier: "CreateScriptEdgePreviewMetadataObservabilityTraces" });
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
+          logs: S.optional(__S(2094, __c65, 14)),
+          redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
+          issues: S.optional(__S(1152, __c36, 0)),
+          traces: S.optional(__S(2095, __c65, 15)),
+        }),
+      ).annotate({ identifier: "CreateScriptEdgePreviewMetadataObservability" });
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+          bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
+          compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(__S(992, __c31, 0).pipe(T.Body("compatibility_flags"))),
+          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
+          bindings: S.optional(__S(2084, __c65, 4)),
+          keepBindings: S.optional(__S(992, __c31, 0).pipe(T.Body("keep_bindings"))),
+          migrations: S.optional(__S(2087, __c65, 7)),
+          capnpSchema: S.optional(S.String.pipe(T.Body("capnp_schema"))),
+          logpush: S.optional(S.Boolean),
+          placement: S.optional(__S(2088, __c65, 8)),
+          tailConsumers: S.optional(__S(2090, __c65, 10).pipe(T.Body("tail_consumers"))),
+          streamingTailConsumers: S.optional(
+            __S(2090, __c65, 10).pipe(T.Body("streaming_tail_consumers")),
+          ),
+          limits: S.optional(__S(1024, __c32, 0)),
+          assets: S.optional(__S(2093, __c65, 13)),
+          observability: S.optional(__S(2096, __c65, 16)),
+          containers: S.optional(__S(1313, __c41, 1)),
+          annotations: S.optional(S.Unknown),
+          keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
+          tags: S.optional(__S(992, __c31, 0)),
+        }),
+      ).annotate({ identifier: "CreateScriptEdgePreviewMetadata" });
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          previewToken: S.String.pipe(T.Body("preview_token")),
+          tailUrl: S.optional(S.NullOr(S.String).pipe(T.Body("tail_url"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptEdgePreviewResponse" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          enabled: S.Boolean,
+          previewsEnabled: S.optional(S.Boolean.pipe(T.Body("previews_enabled"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptSubdomainRequest" });
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          previewsEnabled: S.Boolean.pipe(T.Body("previews_enabled")),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptSubdomainResponse" });
+  }
+}
+function __c68(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Unknown);
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          filters: S.optional(__S(2176, __c68, 0)),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptTailRequest" });
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          expiresAt: S.String.pipe(T.Body("expires_at")),
+          url: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptTailResponse" });
+  }
+}
+function __c70(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          bindingsInherit: S.optional(S.String.pipe(T.Query("bindings_inherit"))),
+          metadata: __S(2319, __c72, 15).pipe(
+            T.KeyDictionary({
+              abrLevel: "abr_level",
+              allowedDestinationAddresses: "allowed_destination_addresses",
+              allowedSenderAddresses: "allowed_sender_addresses",
+              appId: "app_id",
+              authorEmail: "author_email",
+              authorId: "author_id",
+              bodyPart: "body_part",
+              bucketName: "bucket_name",
+              bytesRead: "bytes_read",
+              cache: "cache_options",
+              capnpSchema: "capnp_schema",
+              certId: "cert_id",
+              certificateId: "certificate_id",
+              className: "class_name",
+              compatibilityDate: "compatibility_date",
+              compatibilityFlags: "compatibility_flags",
+              contentBase64: "content_base64",
+              contentType: "content_type",
+              cpuMs: "cpu_ms",
+              createdOn: "created_on",
+              crossAccountGrant: "cross_account_grant",
+              crossVersionCache: "cross_version_cache",
+              databaseId: "database_id",
+              defaultUsageModel: "default_usage_model",
+              deletedClasses: "deleted_classes",
+              deliveryDelay: "delivery_delay",
+              destinationAddress: "destination_address",
+              destinationConf: "destination_conf",
+              dispatchNamespace: "dispatch_namespace",
+              documentationUrl: "documentation_url",
+              enableTimer: "enable_timer",
+              entryPoint: "entry_point",
+              environmentIsDefault: "environment_is_default",
+              environmentName: "environment_name",
+              errorMessage: "error_message",
+              exchangeUrl: "exchange_url",
+              expiresAt: "expires_at",
+              fromScript: "from_script",
+              greenCompute: "green_compute",
+              hasAssets: "has_assets",
+              hasModules: "has_modules",
+              headSamplingRate: "head_sampling_rate",
+              htmlHandling: "html_handling",
+              indexName: "index_name",
+              instanceName: "instance_name",
+              invocationLogs: "invocation_logs",
+              keepAssets: "keep_assets",
+              keepBindings: "keep_bindings",
+              keyBase64: "key_base64",
+              keyJwk: "key_jwk",
+              lastAnalyzedAt: "last_analyzed_at",
+              lastComplete: "last_complete",
+              lastDeployedFrom: "last_deployed_from",
+              lastError: "last_error",
+              mainModule: "main_module",
+              migrationTag: "migration_tag",
+              minimalMode: "minimal_mode",
+              mitigationTimeout: "mitigation_timeout",
+              modifiedOn: "modified_on",
+              namedHandlers: "named_handlers",
+              namespaceId: "namespace_id",
+              networkId: "network_id",
+              newClasses: "new_classes",
+              newSqliteClasses: "new_sqlite_classes",
+              newTag: "new_tag",
+              notFoundHandling: "not_found_handling",
+              oldName: "old_name",
+              oldTag: "old_tag",
+              perPage: "per_page",
+              placementMode: "placement_mode",
+              placementStatus: "placement_status",
+              previewToken: "preview_token",
+              previewsEnabled: "previews_enabled",
+              propagationPolicy: "propagation_policy",
+              queueName: "queue_name",
+              renamedClasses: "renamed_classes",
+              resultInfo: "result_info",
+              rowsRead: "rows_read",
+              runWorkerFirst: "run_worker_first",
+              scriptName: "script_name",
+              scriptRuntime: "script_runtime",
+              secretName: "secret_name",
+              serveDirectly: "serve_directly",
+              serviceId: "service_id",
+              serviceName: "service_name",
+              startupTimeMs: "startup_time_ms",
+              storeId: "store_id",
+              streamingTailConsumers: "streaming_tail_consumers",
+              tailConsumers: "tail_consumers",
+              tailUrl: "tail_url",
+              totalCount: "total_count",
+              transferredClasses: "transferred_classes",
+              tunnelId: "tunnel_id",
+              usageModel: "usage_model",
+              versionId: "version_id",
+              versionTags: "version_tags",
+              workersDev: "workers_dev",
+              workflowName: "workflow_name",
+              zoneId: "zone_id",
+              zoneName: "zone_name",
+              renamedTo: "renamed_to",
+              transferredTo: "transferred_to",
+              transferFrom: "transfer_from",
+            }),
+          ),
+          files: S.optional(S.Unknown.pipe(T.FormDataFile())),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/versions",
+              code: 200,
+              contentType: "multipart",
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptVersionRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 2:
+      return S.Record(S.String, __S(2241, __c70, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          exports: S.optional(S.NullOr(__S(2242, __c70, 2))),
+          limits: S.optional(S.NullOr(__S(2337, __c73, 1))),
+          migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          containers: S.optional(S.NullOr(__S(1377, __c43, 1))),
+        }),
+      ).annotate({ identifier: "ScriptsVersionsCreateResponseResourcesScriptRuntime" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          bindings: S.Unknown,
+          script: S.optional(S.NullOr(__S(2336, __c73, 0))),
+          scriptRuntime: S.optional(S.NullOr(__S(2243, __c70, 3)).pipe(T.Body("script_runtime"))),
+        }),
+      ).annotate({ identifier: "ScriptsVersionsCreateResponseResources" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resources: __S(2244, __c70, 4),
+          id: S.optional(S.NullOr(S.String)),
+          exportsReconciliation: S.optional(
+            S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
+          ),
+          metadata: S.optional(S.NullOr(__S(2400, __c75, 0))),
+          number: S.optional(S.NullOr(S.Number)),
+          startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateScriptVersionResponse" });
+  }
+}
+function __c71(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String,
+          environment: S.optional(S.String),
+          namespace: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PutScriptTailConsumer" });
+    case 1:
+      return S.Array(__S(2272, __c71, 0));
+  }
+}
+function __c72(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsCreateRequestExportsValueWorkerCache" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
+          workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
+          workersAlias: S.optional(S.String.pipe(T.Body("workers/alias"))),
+        }),
+      ).annotate({ identifier: "PutScriptMetadataAnnotations" });
+    case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          htmlHandling: S.optional(S.String.pipe(T.Body("html_handling"))),
+          notFoundHandling: S.optional(S.String.pipe(T.Body("not_found_handling"))),
+          runWorkerFirst: S.optional(__S(2306, __c72, 2).pipe(T.Body("run_worker_first"))),
+          serveDirectly: S.optional(S.Boolean.pipe(T.Body("serve_directly"))),
+          headers: S.optional(S.String.pipe(T.Body("_headers"))),
+          redirects: S.optional(S.String.pipe(T.Body("_redirects"))),
+        }),
+      ).annotate({ identifier: "PutScriptAssetsConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(__S(2307, __c72, 3)),
+          jwt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PutScriptMetadataAssets" });
+    case 5:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "type"],
+            ["instanceName", "name", "namespace", "type"],
+            ["name", "namespace", "type"],
+            ["dataset", "name", "type"],
+            ["name", "type"],
+            ["name", "type"],
+            ["databaseId", "name", "id", "type"],
+            ["name", "part", "type"],
+            ["name", "namespace", "outbound", "type"],
+            [
+              "name",
+              "className",
+              "dispatchNamespace",
+              "environment",
+              "namespaceId",
+              "scriptName",
+              "type",
+            ],
+            ["id", "name", "type"],
+            ["name", "oldName", "versionId", "type"],
+            ["name", "type"],
+            ["json", "name", "type"],
+            ["name", "namespaceId", "type"],
+            ["name", "type"],
+            ["certificateId", "name", "type"],
+            ["name", "text", "type"],
+            ["name", "pipeline", "type"],
+            ["name", "queueName", "type"],
+            ["name", "namespaceId", "simple", "type"],
+            ["bucketName", "name", "jurisdiction", "type"],
+            ["name", "text", "type"],
+            [
+              "name",
+              "allowedDestinationAddresses",
+              "allowedSenderAddresses",
+              "destinationAddress",
+              "type",
+            ],
+            ["name", "service", "entrypoint", "environment", "type"],
+            ["name", "part", "type"],
+            ["indexName", "name", "type"],
+            ["name", "type"],
+            ["name", "secretName", "storeId", "type"],
+            ["appId", "name", "type"],
+            ["algorithm", "format", "name", "usages", "keyBase64", "keyJwk", "type"],
+            ["name", "workflowName", "className", "scriptName", "type"],
+            ["name", "part", "type"],
+            ["name", "serviceId", "type"],
+            ["name", "networkId", "tunnelId", "type"],
+            ["name", "type"],
+            ["name", "namespace", "type"],
+            ["name", "type"],
+            ["name", "stream", "type"],
+          ],
+          {
+            key: "type",
+            values: [
+              "ai",
+              "ai_search",
+              "ai_search_namespace",
+              "analytics_engine",
+              "assets",
+              "browser",
+              "d1",
+              "data_blob",
+              "dispatch_namespace",
+              "durable_object_namespace",
+              "hyperdrive",
+              "inherit",
+              "images",
+              "json",
+              "kv_namespace",
+              "media",
+              "mtls_certificate",
+              "plain_text",
+              "pipelines",
+              "queue",
+              "ratelimit",
+              "r2_bucket",
+              "secret_text",
+              "send_email",
+              "service",
+              "text_blob",
+              "vectorize",
+              "version_metadata",
+              "secrets_store_secret",
+              "flagship",
+              "secret_key",
+              "workflow",
+              "wasm_module",
+              "vpc_service",
+              "vpc_network",
+              "worker_loader",
+              "artifacts",
+              "stream",
+              "k2",
+            ],
+          },
+        ),
+      );
+    case 6:
+      return S.Array(__S(2309, __c72, 5));
+    case 7:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "deletedClasses",
+            "newClasses",
+            "newSqliteClasses",
+            "newTag",
+            "oldTag",
+            "renamedClasses",
+            "transferredClasses",
+          ],
+          ["newTag", "oldTag", "steps"],
+        ]),
+      );
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+          destinations: S.optional(__S(992, __c31, 0)),
+          headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+          persist: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "PutScriptObservabilityLogs" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          destinations: S.optional(__S(992, __c31, 0)),
+          enabled: S.optional(S.Boolean),
+          headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+          persist: S.optional(S.Boolean),
+          propagationPolicy: S.optional(S.String.pipe(T.Body("propagation_policy"))),
+        }),
+      ).annotate({ identifier: "PutScriptObservabilityTraces" });
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+          logs: S.optional(S.NullOr(__S(2312, __c72, 8))),
+          traces: S.optional(S.NullOr(__S(2313, __c72, 9))),
+          issues: S.optional(__S(2304, __c72, 0)),
+          redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
+        }),
+      ).annotate({ identifier: "PutScriptMetadataObservability" });
+    case 11:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          crossVersionCache: S.optional(S.Boolean.pipe(T.Body("cross_version_cache"))),
+        }),
+      ).annotate({ identifier: "PutScriptMetadataCache" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          cache: S.optional(__S(2316, __c72, 12)),
+          storage: S.optional(S.String),
+          container: S.optional(S.String),
+          state: S.optional(S.String),
+          renamedTo: S.optional(S.String.pipe(T.Body("renamed_to"))),
+          transferredTo: S.optional(S.String.pipe(T.Body("transferred_to"))),
+          transferFrom: S.optional(S.String.pipe(T.Body("transfer_from"))),
+        }),
+      ).annotate({ identifier: "PutScriptMetadataExport" });
+    case 14:
+      return S.Record(S.String, __S(2317, __c72, 13));
+    case 15:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(__S(2305, __c72, 1)),
+          assets: S.optional(__S(2308, __c72, 4)),
+          bindings: S.optional(__S(2310, __c72, 6)),
+          bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
+          compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(__S(992, __c31, 0).pipe(T.Body("compatibility_flags"))),
+          containers: S.optional(__S(1313, __c41, 1)),
+          keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
+          keepBindings: S.optional(__S(992, __c31, 0).pipe(T.Body("keep_bindings"))),
+          limits: S.optional(__S(1024, __c32, 0)),
+          logpush: S.optional(S.Boolean),
+          mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
+          migrations: S.optional(__S(2311, __c72, 7)),
+          observability: S.optional(__S(2314, __c72, 10)),
+          placement: S.optional(__S(2315, __c72, 11)),
+          tags: S.optional(__S(992, __c31, 0)),
+          tailConsumers: S.optional(S.NullOr(__S(2273, __c71, 1)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
+          cacheOptions: S.optional(__S(2316, __c72, 12).pipe(T.Body("cache_options"))),
+          streamingTailConsumers: S.optional(
+            S.NullOr(__S(2273, __c71, 1)).pipe(T.Body("streaming_tail_consumers")),
+          ),
+          exports: S.optional(__S(2318, __c72, 14).pipe(T.KeyDictionary({}))),
+        }),
+      ).annotate({ identifier: "PutScriptMetadata" });
+  }
+}
+function __c73(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          etag: S.optional(S.NullOr(S.String)),
+          handlers: S.optional(S.NullOr(__S(992, __c31, 0))),
+          lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
+          namedHandlers: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("named_handlers"))),
+        }),
+      ).annotate({ identifier: "ScriptsVersionsCreateResponseResourcesScript" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          cpuMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_ms"))),
+        }),
+      ).annotate({ identifier: "ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits" });
+  }
+}
+function __c74(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          handlers: S.optional(S.NullOr(__S(992, __c31, 0))),
+          name: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem" });
+    case 1:
+      return S.Array(__S(2368, __c74, 0));
+  }
+}
+function __c75(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
+          authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          hasPreview: S.optional(S.NullOr(S.Boolean)),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+          source: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ScriptsVersionsCreateResponseMetadata" });
+  }
+}
+function __c76(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          serviceName: S.String.pipe(T.Label("service_name")),
+          environmentName: S.String.pipe(T.Label("environment_name")),
+          cfPreviewUploadConfigToken: S.String.pipe(T.Header("cf-preview-upload-config-token")),
+          metadata: S.optional(__S(2097, __c65, 17)),
+          files: S.optional(S.Unknown.pipe(T.FormDataFile())),
+          wranglerSessionConfig: S.optional(
+            __S(2082, __c65, 2).pipe(T.Body("wrangler-session-config")),
+          ),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/services/{service_name}/environments/{environment_name}/edge-preview",
+              code: 200,
+              contentType: "multipart",
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateServiceEdgePreviewRequest" });
+  }
+}
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/subdomain/edge-preview",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateSubdomainEdgePreviewSessionRequest" });
+  }
+}
+function __c78(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          token: S.String,
+          exchangeUrl: S.optional(S.NullOr(S.String).pipe(T.Body("exchange_url"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateSubdomainEdgePreviewSessionResponse" });
+  }
+}
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/workers/edge-preview", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "CreateZoneEdgePreviewSessionRequest" });
+  }
+}
+function __c80(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteBetaWorkerRequest" });
+  }
+}
+function __c81(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
+        identifier: "DeleteBetaWorkerResponse",
+      });
+  }
+}
+function __c82(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          versionId: S.String.pipe(T.Label("version_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteBetaWorkerVersionRequest" });
+  }
+}
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          domainId: S.String.pipe(T.Label("domain_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/domains/{domain_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteDomainRequest" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          slug: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/observability/destinations/{slug}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteObservabilityDestinationRequest" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          previewId: S.String.pipe(T.Label("preview_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeletePreviewRequest" });
+  }
+}
+function __c86(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          routeId: S.String.pipe(T.Label("route_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/zones/{zone_id}/workers/routes/{route_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRouteRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteRouteResponse" });
+  }
+}
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          force: S.optional(S.Boolean.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteScriptRequest" });
+  }
+}
+function __c88(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteScriptResponse" });
+  }
+}
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          deploymentId: S.String.pipe(T.Label("deployment_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteScriptDeploymentRequest" });
+  }
+}
+function __c90(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          secretName: S.String.pipe(T.Label("secret_name")),
+          urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteScriptSecretRequest" });
+  }
+}
+function __c91(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteScriptSubdomainRequest" });
+  }
+}
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          id: S.String.pipe(T.Label()),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails/{id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteScriptTailRequest" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "DELETE",
+              uri: "/accounts/{account_id}/workers/subdomain",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "DeleteSubdomainRequest" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/account-settings",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAccountSettingRequest" });
+  }
+}
+function __c95(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          defaultUsageModel: S.optional(S.NullOr(S.String).pipe(T.Body("default_usage_model"))),
+          greenCompute: S.optional(S.NullOr(S.Boolean).pipe(T.Body("green_compute"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetAccountSettingResponse" });
+  }
+}
+function __c96(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetBetaWorkerRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          env: S.optional(S.NullOr(__S(1217, __c38, 1))),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          observability: S.optional(S.NullOr(__S(1219, __c38, 3))),
+          placement: S.optional(S.NullOr(__S(3073, __c96, 1))),
+          tailConsumers: S.optional(S.NullOr(__S(1121, __c35, 1)).pipe(T.Body("tail_consumers"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersGetResponsePreviewsBaseConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          logpush: S.Boolean,
+          name: S.String,
+          observability: __S(1219, __c38, 3),
+          references: __S(1228, __c38, 12),
+          subdomain: __S(1229, __c38, 13),
+          tags: __S(992, __c31, 0),
+          tailConsumers: __S(1121, __c35, 1).pipe(T.Body("tail_consumers")),
+          updatedOn: S.String.pipe(T.Body("updated_on")),
+          deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(__S(3074, __c96, 2)).pipe(T.Body("previews_base_config")),
+          ),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetBetaWorkerResponse" });
+  }
+}
+function __c97(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          versionId: S.String.pipe(T.Label("version_id")),
+          include: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetBetaWorkerVersionRequest" });
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          basePath: S.optional(S.NullOr(S.String).pipe(T.Body("base_path"))),
+          htmlHandling: S.optional(S.NullOr(S.String).pipe(T.Body("html_handling"))),
+          notFoundHandling: S.optional(S.NullOr(S.String).pipe(T.Body("not_found_handling"))),
+          runWorkerFirst: S.optional(
+            S.NullOr(__S(3105, __c97, 1)).pipe(T.Body("run_worker_first")),
+          ),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsGetResponseAssetsConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(S.NullOr(__S(3106, __c97, 2))),
+          jwt: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsGetResponseAssets" });
+    case 4:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "type"],
+            ["instanceName", "name", "type", "namespace"],
+            ["name", "namespace", "type"],
+            ["name", "namespace", "type"],
+            ["dataset", "name", "type"],
+            ["name", "namespace", "type"],
+            ["name", "type"],
+            ["name", "type"],
+            ["databaseId", "name", "type", "id"],
+            ["name", "part", "type"],
+            ["name", "namespace", "type", "outbound"],
+            [
+              "name",
+              "type",
+              "className",
+              "dispatchNamespace",
+              "environment",
+              "namespaceId",
+              "scriptName",
+            ],
+            ["id", "name", "type"],
+            ["name", "type", "oldName", "versionId"],
+            ["name", "type"],
+            ["json", "name", "type"],
+            ["name", "namespaceId", "type"],
+            ["name", "type"],
+            ["certificateId", "name", "type"],
+            ["name", "text", "type"],
+            ["name", "pipeline", "type"],
+            ["name", "stream", "type"],
+            ["name", "queueName", "type"],
+            ["name", "namespaceId", "simple", "type"],
+            ["bucketName", "name", "type", "jurisdiction"],
+            ["name", "text", "type"],
+            [
+              "name",
+              "type",
+              "allowedDestinationAddresses",
+              "allowedSenderAddresses",
+              "destinationAddress",
+            ],
+            ["name", "service", "type", "entrypoint", "environment"],
+            ["name", "part", "type"],
+            ["indexName", "name", "type"],
+            ["name", "type"],
+            ["name", "secretName", "storeId", "type"],
+            ["appId", "name", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+            ["name", "type", "workflowName", "className", "scriptName"],
+            ["name", "part", "type"],
+            ["name", "serviceId", "type"],
+            ["name", "type", "identity", "networkId", "tunnelId"],
+          ],
+          {
+            key: "type",
+            values: [
+              "ai",
+              "ai_search",
+              "ai_search_namespace",
+              "messaging",
+              "analytics_engine",
+              "artifacts",
+              "assets",
+              "browser",
+              "d1",
+              "data_blob",
+              "dispatch_namespace",
+              "durable_object_namespace",
+              "hyperdrive",
+              "inherit",
+              "images",
+              "json",
+              "kv_namespace",
+              "media",
+              "mtls_certificate",
+              "plain_text",
+              "pipelines",
+              "k2",
+              "queue",
+              "ratelimit",
+              "r2_bucket",
+              "secret_text",
+              "send_email",
+              "service",
+              "text_blob",
+              "vectorize",
+              "version_metadata",
+              "secrets_store_secret",
+              "flagship",
+              "secret_key",
+              "workflow",
+              "wasm_module",
+              "vpc_service",
+              "vpc_network",
+            ],
+          },
+        ),
+      );
+    case 5:
+      return S.Array(__S(3108, __c97, 4));
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 7:
+      return S.Record(S.String, __S(3110, __c97, 6));
+    case 8:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "deletedClasses",
+            "newClasses",
+            "newSqliteClasses",
+            "newTag",
+            "oldTag",
+            "renamedClasses",
+            "transferredClasses",
+          ],
+          ["newTag", "oldTag", "steps"],
+        ]),
+      );
+    case 9:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          number: S.Number,
+          urls: __S(992, __c31, 0),
+          annotations: S.optional(S.NullOr(__S(1408, __c44, 0))),
+          assets: S.optional(S.NullOr(__S(3107, __c97, 3))),
+          authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
+          authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
+          bindings: S.optional(S.NullOr(__S(3109, __c97, 5))),
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          containers: S.optional(S.NullOr(__S(1377, __c43, 1))),
+          exports: S.optional(S.NullOr(__S(3111, __c97, 7))),
+          exportsReconciliation: S.optional(
+            S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
+          ),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
+          migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+          migrations: S.optional(S.NullOr(__S(3112, __c97, 8))),
+          modules: S.optional(S.NullOr(__S(1441, __c45, 1))),
+          packageDependencies: S.optional(
+            S.NullOr(__S(1443, __c45, 3)).pipe(T.Body("package_dependencies")),
+          ),
+          placement: S.optional(S.NullOr(__S(3113, __c97, 9))),
+          source: S.optional(S.NullOr(S.String)),
+          startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetBetaWorkerVersionResponse" });
+  }
+}
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          domainId: S.String.pipe(T.Label("domain_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/domains/{domain_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetDomainRequest" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          certId: S.String.pipe(T.Body("cert_id")),
+          environment: S.String,
+          hostname: S.String,
+          service: S.String,
+          zoneId: S.String.pipe(T.Body("zone_id")),
+          zoneName: S.String.pipe(T.Body("zone_name")),
+          previewsEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("previews_enabled"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetDomainResponse" });
+  }
+}
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          id: S.String.pipe(T.Label()),
+          view: S.optional(S.String.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/observability/shared/query/{id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetObservabilitySharedQueryRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["operator", "alias", "key", "keyType"],
+          ["key", "operator", "alias", "keyType"],
+        ]),
+      );
+    case 2:
+      return S.Array(__S(3201, __c100, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 4:
+      return S.Array(__S(3203, __c100, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          calculations: S.optional(S.NullOr(__S(3202, __c100, 2))),
+          datasets: S.optional(S.NullOr(__S(992, __c31, 0))),
+          filterCombination: S.optional(S.NullOr(S.String)),
+          filters: S.optional(S.NullOr(__S(3204, __c100, 4))),
+          groupBys: S.optional(S.NullOr(__S(1601, __c50, 1))),
+          havings: S.optional(S.NullOr(__S(1603, __c50, 3))),
+          limit: S.optional(S.NullOr(S.Number)),
+          needle: S.optional(S.NullOr(__S(3264, __c102, 0))),
+          orderBy: S.optional(S.NullOr(__S(1632, __c51, 0))),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseRunQueryParameters" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          adhoc: S.Boolean,
+          created: S.String,
+          createdBy: S.String,
+          description: S.String,
+          name: S.String,
+          parameters: __S(3205, __c100, 5),
+          updated: S.String,
+          updatedBy: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseRunQuery" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          accountId: S.String,
+          dry: S.Boolean,
+          granularity: S.Number,
+          query: __S(3206, __c100, 6),
+          status: S.String,
+          timeframe: __S(1696, __c53, 0),
+          userId: S.String,
+          created: S.optional(S.NullOr(S.String)),
+          statistics: S.optional(S.NullOr(__S(3265, __c102, 1))),
+          updated: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseRun" });
+    case 8:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: __S(3208, __c100, 8),
+        }),
+      ).annotate({
+        identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem",
+      });
+    case 10:
+      return S.Array(__S(3209, __c100, 9));
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          value: S.Number,
+          groups: S.optional(S.NullOr(__S(3210, __c100, 10))),
+        }),
+      ).annotate({
+        identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem",
+      });
+    case 12:
+      return S.Array(__S(3211, __c100, 11));
+    case 13:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: __S(3213, __c100, 13),
+        }),
+      ).annotate({
+        identifier:
+          "ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem",
+      });
+    case 15:
+      return S.Array(__S(3214, __c100, 14));
+    case 16:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          value: S.Number,
+          firstSeen: S.optional(S.NullOr(S.String)),
+          groups: S.optional(S.NullOr(__S(3215, __c100, 15))),
+          lastSeen: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem",
+      });
+    case 17:
+      return S.Array(__S(3216, __c100, 16));
+    case 18:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3217, __c100, 17),
+          time: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem" });
+    case 19:
+      return S.Array(__S(3218, __c100, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          aggregates: __S(3212, __c100, 12),
+          calculation: S.String,
+          series: __S(3219, __c100, 19),
+          alias: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCalculationsItem" });
+    case 21:
+      return S.Array(__S(3220, __c100, 20));
+    case 22:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 23:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: __S(3222, __c100, 22),
+        }),
+      ).annotate({
+        identifier: "ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem",
+      });
+    case 24:
+      return S.Array(__S(3223, __c100, 23));
+    case 25:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          value: S.Number,
+          groups: S.optional(S.NullOr(__S(3224, __c100, 24))),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem" });
+    case 26:
+      return S.Array(__S(3225, __c100, 25));
+    case 27:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 28:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          value: __S(3227, __c100, 27),
+        }),
+      ).annotate({
+        identifier: "ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem",
+      });
+    case 29:
+      return S.Array(__S(3228, __c100, 28));
+    case 30:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          value: S.Number,
+          firstSeen: S.optional(S.NullOr(S.String)),
+          groups: S.optional(S.NullOr(__S(3229, __c100, 29))),
+          lastSeen: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({
+        identifier: "ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem",
+      });
+    case 31:
+      return S.Array(__S(3230, __c100, 30));
+  }
+}
+function __c101(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3231, __c100, 31),
+          time: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCompareItemSeriesItem" });
+    case 1:
+      return S.Array(__S(3232, __c101, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          aggregates: __S(3226, __c100, 26),
+          calculation: S.String,
+          series: __S(3233, __c101, 1),
+          alias: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCompareItem" });
+    case 3:
+      return S.Array(__S(3234, __c101, 2));
+    case 4:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 5:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "eventType",
+            "scriptName",
+            "durableObjectId",
+            "entrypoint",
+            "event",
+            "executionModel",
+            "outcome",
+            "preview",
+            "requestId",
+            "scriptVersion",
+            "spanId",
+            "traceId",
+            "truncated",
+          ],
+          [
+            "cpuTimeMs",
+            "eventType",
+            "outcome",
+            "scriptName",
+            "wallTimeMs",
+            "diagnosticsChannelEvents",
+            "dispatchNamespace",
+            "durableObjectId",
+            "entrypoint",
+            "event",
+            "executionModel",
+            "preview",
+            "requestId",
+            "scriptVersion",
+            "spanId",
+            "traceId",
+            "truncated",
+          ],
+        ]),
+      );
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(3271, __c102, 7).pipe(T.Body("$metadata")),
+          dataset: S.String,
+          source: __S(3236, __c101, 4),
+          timestamp: S.Number,
+          containers: S.optional(S.NullOr(__S(800, __c25, 0)).pipe(T.Body("$containers"))),
+          workers: S.optional(S.NullOr(__S(3237, __c101, 5)).pipe(T.Body("$workers"))),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEventsEventsItem" });
+    case 7:
+      return S.Array(__S(3238, __c101, 6));
+    case 8:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 9:
+      return S.Record(S.String, __S(3240, __c101, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          aggregates: __S(3274, __c102, 10),
+          count: S.Number,
+          interval: S.Number,
+          sampleInterval: S.Number,
+          errors: S.optional(S.NullOr(S.Number)),
+          groups: S.optional(S.NullOr(__S(3241, __c101, 9))),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem" });
+    case 11:
+      return S.Array(__S(3242, __c101, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          data: __S(3243, __c101, 11),
+          time: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEventsSeriesItem" });
+    case 13:
+      return S.Array(__S(3244, __c101, 12));
+    case 14:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.optional(S.NullOr(S.Number)),
+          events: S.optional(S.NullOr(__S(3239, __c101, 7))),
+          fields: S.optional(S.NullOr(__S(3273, __c102, 9))),
+          series: S.optional(S.NullOr(__S(3245, __c101, 13))),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEvents" });
+    case 15:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 16:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "eventType",
+            "scriptName",
+            "durableObjectId",
+            "entrypoint",
+            "event",
+            "executionModel",
+            "outcome",
+            "preview",
+            "requestId",
+            "scriptVersion",
+            "spanId",
+            "traceId",
+            "truncated",
+          ],
+          [
+            "cpuTimeMs",
+            "eventType",
+            "outcome",
+            "scriptName",
+            "wallTimeMs",
+            "diagnosticsChannelEvents",
+            "dispatchNamespace",
+            "durableObjectId",
+            "entrypoint",
+            "event",
+            "executionModel",
+            "preview",
+            "requestId",
+            "scriptVersion",
+            "spanId",
+            "traceId",
+            "truncated",
+          ],
+        ]),
+      );
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
+          metadata: __S(3271, __c102, 7).pipe(T.Body("$metadata")),
+          dataset: S.String,
+          source: __S(3247, __c101, 15),
+          timestamp: S.Number,
+          containers: S.optional(S.NullOr(__S(800, __c25, 0)).pipe(T.Body("$containers"))),
+          workers: S.optional(S.NullOr(__S(3248, __c101, 16)).pipe(T.Body("$workers"))),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseInvocationsValueItem" });
+    case 18:
+      return S.Array(__S(3249, __c101, 17));
+    case 19:
+      return S.Record(S.String, __S(3250, __c101, 18));
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          run: __S(3207, __c100, 7),
+          statistics: __S(3265, __c102, 1),
+          agents: S.optional(S.NullOr(__S(3267, __c102, 3))),
+          calculations: S.optional(S.NullOr(__S(3221, __c100, 21))),
+          compare: S.optional(S.NullOr(__S(3235, __c101, 3))),
+          distribution: S.optional(S.NullOr(__S(3270, __c102, 6))),
+          events: S.optional(S.NullOr(__S(3246, __c101, 14))),
+          invocations: S.optional(S.NullOr(__S(3251, __c101, 19))),
+          traces: S.optional(S.NullOr(__S(3276, __c102, 12))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetObservabilitySharedQueryResponse" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.Unknown,
+          isRegex: S.optional(S.NullOr(S.Boolean)),
+          matchCase: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          bytesRead: S.Number.pipe(T.Body("bytes_read")),
+          elapsed: S.Number,
+          rowsRead: S.Number.pipe(T.Body("rows_read")),
+          abrLevel: S.optional(S.NullOr(S.Number).pipe(T.Body("abr_level"))),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseRunStatistics" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          errors: __S(992, __c31, 0),
+          models: __S(992, __c31, 0),
+          providers: __S(992, __c31, 0),
+          services: __S(992, __c31, 0),
+          spans: S.Number,
+          status: S.String,
+          traceDurationMs: S.Number,
+          traceEndMs: S.Number,
+          traceId: S.String,
+          traceStartMs: S.Number,
+          agentId: S.optional(S.NullOr(S.String)),
+          agentName: S.optional(S.NullOr(S.String)),
+          conversationId: S.optional(S.NullOr(S.String)),
+          inputTokens: S.optional(S.NullOr(S.Number)),
+          outputTokens: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseAgentsItem" });
+    case 3:
+      return S.Array(__S(3266, __c102, 2));
+    case 4:
+      return S.Array(S.Number);
+    case 5:
+      return S.Array(__S(3268, __c102, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          bins: __S(992, __c31, 0),
+          bucketBoundaries: __S(3268, __c102, 4),
+          bucketMode: S.String,
+          buckets: __S(992, __c31, 0),
+          matrix: __S(3269, __c102, 5),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseDistribution" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          account: S.optional(S.NullOr(S.String)),
+          cloudService: S.optional(S.NullOr(S.String)),
+          coldStart: S.optional(S.NullOr(S.Number)),
+          cost: S.optional(S.NullOr(S.Number)),
+          duration: S.optional(S.NullOr(S.Number)),
+          endTime: S.optional(S.NullOr(S.Number)),
+          endTimeNs: S.optional(S.NullOr(S.String)),
+          error: S.optional(S.NullOr(S.String)),
+          errorTemplate: S.optional(S.NullOr(S.String)),
+          fingerprint: S.optional(S.NullOr(S.String)),
+          level: S.optional(S.NullOr(S.String)),
+          message: S.optional(S.NullOr(S.String)),
+          messageTemplate: S.optional(S.NullOr(S.String)),
+          metricName: S.optional(S.NullOr(S.String)),
+          origin: S.optional(S.NullOr(S.String)),
+          parentSpanId: S.optional(S.NullOr(S.String)),
+          provider: S.optional(S.NullOr(S.String)),
+          rayId: S.optional(S.NullOr(S.String)),
+          region: S.optional(S.NullOr(S.String)),
+          requestId: S.optional(S.NullOr(S.String)),
+          service: S.optional(S.NullOr(S.String)),
+          spanId: S.optional(S.NullOr(S.String)),
+          spanName: S.optional(S.NullOr(S.String)),
+          stackId: S.optional(S.NullOr(S.String)),
+          startTime: S.optional(S.NullOr(S.Number)),
+          startTimeNs: S.optional(S.NullOr(S.String)),
+          statusCode: S.optional(S.NullOr(S.Number)),
+          timestampNs: S.optional(S.NullOr(S.String)),
+          traceDuration: S.optional(S.NullOr(S.Number)),
+          traceId: S.optional(S.NullOr(S.String)),
+          transactionName: S.optional(S.NullOr(S.String)),
+          trigger: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEventsFieldsItem" });
+    case 9:
+      return S.Array(__S(3272, __c102, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          count: S.Number.pipe(T.Body("_count")),
+          interval: S.Number.pipe(T.Body("_interval")),
+          firstSeen: S.optional(S.NullOr(S.String).pipe(T.Body("_firstSeen"))),
+          lastSeen: S.optional(S.NullOr(S.String).pipe(T.Body("_lastSeen"))),
+          bin: S.optional(S.NullOr(S.Unknown)),
+        }),
+      ).annotate({
+        identifier: "ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates",
+      });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
+          rootSpanName: S.String,
+          rootTransactionName: S.String,
+          service: __S(992, __c31, 0),
+          spans: S.Number,
+          traceDurationMs: S.Number,
+          traceEndMs: S.Number,
+          traceId: S.String,
+          traceStartMs: S.Number,
+          errors: S.optional(S.NullOr(__S(992, __c31, 0))),
+        }),
+      ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseTracesItem" });
+    case 12:
+      return S.Array(__S(3275, __c102, 11));
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          previewId: S.String.pipe(T.Label("preview_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetPreviewRequest" });
+  }
+}
+function __c104(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          previewId: S.String.pipe(T.Label("preview_id")),
+          deploymentId: S.String.pipe(T.Label("deployment_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}/previews/{preview_id}/deployments/{deployment_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetPreviewDeploymentRequest" });
+  }
+}
+function __c105(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+          routeId: S.String.pipe(T.Label("route_id")),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/zones/{zone_id}/workers/routes/{route_id}", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetRouteRequest" });
+  }
+}
+function __c106(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptRequest" });
+  }
+}
+function __c107(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/content/v2",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptContentRequest" });
+  }
+}
+function __c108(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          deploymentId: S.String.pipe(T.Label("deployment_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/deployments/{deployment_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptDeploymentRequest" });
+  }
+}
+function __c109(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/triggers/{script_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptEventTriggersRequest" });
+  }
+}
+function __c110(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          namespace: S.optional(S.NullOr(S.String)),
+          repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+        }),
+      ).annotate({ identifier: "EventTriggerFilter" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          workflowName: S.String.pipe(T.Body("workflow_name")),
+          scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
+        }),
+      ).annotate({ identifier: "EventTriggerTarget" });
+    case 2:
+      return S.Array(__S(3521, __c110, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          filter: S.optional(S.NullOr(__S(3520, __c110, 0))),
+          targets: __S(3522, __c110, 2),
+        }),
+      ).annotate({ identifier: "EventTrigger" });
+    case 4:
+      return S.Array(__S(3523, __c110, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          scriptName: S.String.pipe(T.Body("script_name")),
+          triggers: __S(3524, __c110, 4),
+        }),
+      ).annotate({ identifier: "ScriptEventTriggers" });
+    case 6:
+      return S.suspend(() =>
+        __S(3525, __c110, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptEventTriggersResponse" });
+  }
+}
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/schedules",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptScheduleRequest" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          cron: S.String,
+          createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+          modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+        }),
+      ).annotate({ identifier: "ScriptsSchedulesGetResponseSchedulesItem" });
+    case 1:
+      return S.Array(__S(3584, __c112, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          schedules: __S(3585, __c112, 1),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptScheduleResponse" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/settings",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptScriptAndVersionSettingRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "type"],
+            ["instanceName", "name", "type", "namespace"],
+            ["name", "namespace", "type"],
+            ["name", "namespace", "type"],
+            ["dataset", "name", "type"],
+            ["name", "namespace", "type"],
+            ["name", "type"],
+            ["name", "type"],
+            ["databaseId", "name", "type", "id"],
+            ["name", "part", "type"],
+            ["name", "namespace", "type", "outbound"],
+            [
+              "name",
+              "type",
+              "className",
+              "dispatchNamespace",
+              "environment",
+              "namespaceId",
+              "scriptName",
+            ],
+            ["id", "name", "type"],
+            ["name", "type", "oldName", "versionId"],
+            ["name", "type"],
+            ["json", "name", "type"],
+            ["name", "namespaceId", "type"],
+            ["name", "type"],
+            ["certificateId", "name", "type"],
+            ["name", "text", "type"],
+            ["name", "pipeline", "type"],
+            ["name", "stream", "type"],
+            ["name", "queueName", "type"],
+            ["name", "namespaceId", "simple", "type"],
+            ["bucketName", "name", "type", "jurisdiction"],
+            ["name", "text", "type"],
+            [
+              "name",
+              "type",
+              "allowedDestinationAddresses",
+              "allowedSenderAddresses",
+              "destinationAddress",
+            ],
+            ["name", "service", "type", "entrypoint", "environment"],
+            ["name", "part", "type"],
+            ["indexName", "name", "type"],
+            ["name", "type"],
+            ["name", "secretName", "storeId", "type"],
+            ["appId", "name", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+            ["name", "type", "workflowName", "className", "scriptName"],
+            ["name", "part", "type"],
+            ["name", "serviceId", "type"],
+            ["name", "type", "identity", "networkId", "tunnelId"],
+          ],
+          {
+            key: "type",
+            values: [
+              "ai",
+              "ai_search",
+              "ai_search_namespace",
+              "messaging",
+              "analytics_engine",
+              "artifacts",
+              "assets",
+              "browser",
+              "d1",
+              "data_blob",
+              "dispatch_namespace",
+              "durable_object_namespace",
+              "hyperdrive",
+              "inherit",
+              "images",
+              "json",
+              "kv_namespace",
+              "media",
+              "mtls_certificate",
+              "plain_text",
+              "pipelines",
+              "k2",
+              "queue",
+              "ratelimit",
+              "r2_bucket",
+              "secret_text",
+              "send_email",
+              "service",
+              "text_blob",
+              "vectorize",
+              "version_metadata",
+              "secrets_store_secret",
+              "flagship",
+              "secret_key",
+              "workflow",
+              "wasm_module",
+              "vpc_service",
+              "vpc_network",
+            ],
+          },
+        ),
+      );
+    case 2:
+      return S.Array(__S(3617, __c113, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 4:
+      return S.Record(S.String, __S(3619, __c113, 3));
+    case 5:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "deletedClasses",
+            "newClasses",
+            "newSqliteClasses",
+            "newTag",
+            "oldTag",
+            "renamedClasses",
+            "transferredClasses",
+          ],
+          ["newTag", "oldTag", "steps"],
+        ]),
+      );
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          annotations: S.optional(S.NullOr(__S(1408, __c44, 0))),
+          bindings: S.optional(S.NullOr(__S(3618, __c113, 2))),
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          exports: S.optional(S.NullOr(__S(3620, __c113, 4))),
+          exportsReconciliation: S.optional(
+            S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
+          ),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          migrations: S.optional(S.NullOr(__S(3621, __c113, 5))),
+          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          placement: S.optional(S.NullOr(__S(3622, __c113, 6))),
+          tags: S.optional(S.NullOr(__S(992, __c31, 0))),
+          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptScriptAndVersionSettingResponse" });
+  }
+}
+function __c114(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+          destinations: S.optional(S.NullOr(__S(992, __c31, 0))),
+          headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+          persist: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.Boolean,
+          headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+          issues: S.optional(S.NullOr(__S(1184, __c37, 0))),
+          logs: S.optional(S.NullOr(__S(3648, __c114, 0))),
+          redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
+          traces: S.optional(S.NullOr(__S(1185, __c37, 1))),
+        }),
+      ).annotate({ identifier: "ScriptsScriptAndVersionSettingsGetResponseObservability" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          service: S.String,
+          environment: S.optional(S.NullOr(S.String)),
+          namespace: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem" });
+    case 3:
+      return S.Array(__S(3650, __c114, 2));
+  }
+}
+function __c115(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          secretName: S.String.pipe(T.Label("secret_name")),
+          urlEncoded: S.optional(S.Boolean.pipe(T.Query("url_encoded"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/secrets/{secret_name}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptSecretRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "text", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+          ],
+          { key: "type", values: ["secret_text", "secret_key"] },
+        ),
+      );
+    case 2:
+      return S.suspend(() =>
+        __S(3681, __c115, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptSecretResponse" });
+  }
+}
+function __c116(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/script-settings",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptSettingRequest" });
+  }
+}
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          tags: S.optional(S.NullOr(__S(992, __c31, 0))),
+          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptSettingResponse" });
+  }
+}
+function __c118(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/subdomain",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptSubdomainRequest" });
+  }
+}
+function __c119(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/tails",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptTailRequest" });
+  }
+}
+function __c120(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          scriptName: S.String.pipe(T.Label("script_name")),
+          versionId: S.String.pipe(T.Label("version_id")),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/scripts/{script_name}/versions/{version_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptVersionRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 2:
+      return S.Record(S.String, __S(3841, __c120, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          exports: S.optional(S.NullOr(__S(3842, __c120, 2))),
+          limits: S.optional(S.NullOr(__S(2337, __c73, 1))),
+          migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+          containers: S.optional(S.NullOr(__S(1377, __c43, 1))),
+        }),
+      ).annotate({ identifier: "ScriptsVersionsGetResponseResourcesScriptRuntime" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          bindings: S.Unknown,
+          script: S.optional(S.NullOr(__S(2336, __c73, 0))),
+          scriptRuntime: S.optional(S.NullOr(__S(3843, __c120, 3)).pipe(T.Body("script_runtime"))),
+        }),
+      ).annotate({ identifier: "ScriptsVersionsGetResponseResources" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          resources: __S(3844, __c120, 4),
+          id: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(S.NullOr(__S(2400, __c75, 0))),
+          number: S.optional(S.NullOr(S.Number)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetScriptVersionResponse" });
+  }
+}
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(
+            T.Http({ method: "GET", uri: "/accounts/{account_id}/workers/subdomain", code: 200 }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSubdomainRequest" });
+  }
+}
+function __c122(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subdomain: S.String,
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetSubdomainResponse" });
+  }
+}
+function __c123(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 1:
+      return S.Array(__S(3936, __c123, 0));
+    case 2:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3938, __c123, 2),
+          isRegex: S.optional(S.Boolean),
+          matchCase: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryKeysRequestKeyNeedle" });
+    case 4:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(3940, __c123, 4),
+          isRegex: S.optional(S.Boolean),
+          matchCase: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryKeysRequestNeedle" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          datasets: S.optional(__S(992, __c31, 0)),
+          filters: S.optional(__S(3937, __c123, 1)),
+          from: S.optional(S.Number),
+          keyNeedle: S.optional(__S(3939, __c123, 3)),
+          limit: S.optional(S.Number),
+          needle: S.optional(__S(3941, __c123, 5)),
+          to: S.optional(S.Number),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/workers/observability/telemetry/keys",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "KeysObservabilityTelemetryRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          key: S.String,
+          lastSeenAt: S.Number,
+          type: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityTelemetryKeysResultItem" });
+    case 8:
+      return S.Array(__S(3943, __c123, 7));
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(3944, __c123, 8).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "KeysObservabilityTelemetryResponse" });
+  }
+}
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          order: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/workers/workers", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListBetaWorkersRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          env: S.optional(S.NullOr(__S(1217, __c38, 1))),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          logpush: S.optional(S.NullOr(S.Boolean)),
+          observability: S.optional(S.NullOr(__S(1219, __c38, 3))),
+          placement: S.optional(S.NullOr(__S(3969, __c124, 1))),
+          tailConsumers: S.optional(S.NullOr(__S(1121, __c35, 1)).pipe(T.Body("tail_consumers"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersListResultItemPreviewsBaseConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          logpush: S.Boolean,
+          name: S.String,
+          observability: __S(1219, __c38, 3),
+          references: __S(1228, __c38, 12),
+          subdomain: __S(1229, __c38, 13),
+          tags: __S(992, __c31, 0),
+          tailConsumers: __S(1121, __c35, 1).pipe(T.Body("tail_consumers")),
+          updatedOn: S.String.pipe(T.Body("updated_on")),
+          deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
+          previewsBaseConfig: S.optional(
+            S.NullOr(__S(3970, __c124, 2)).pipe(T.Body("previews_base_config")),
+          ),
+        }),
+      ).annotate({ identifier: "BetaWorkersListResultItem" });
+    case 4:
+      return S.Array(__S(3971, __c124, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(3972, __c124, 4).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListBetaWorkersResponse" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          workerId: S.String.pipe(T.Label("worker_id")),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/workers/{worker_id}/versions",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListBetaWorkerVersionsRequest" });
+    case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          basePath: S.optional(S.NullOr(S.String).pipe(T.Body("base_path"))),
+          htmlHandling: S.optional(S.NullOr(S.String).pipe(T.Body("html_handling"))),
+          notFoundHandling: S.optional(S.NullOr(S.String).pipe(T.Body("not_found_handling"))),
+          runWorkerFirst: S.optional(
+            S.NullOr(__S(4001, __c125, 1)).pipe(T.Body("run_worker_first")),
+          ),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsListResultItemAssetsConfig" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          config: S.optional(S.NullOr(__S(4002, __c125, 2))),
+          jwt: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsListResultItemAssets" });
+    case 4:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["name", "type"],
+            ["instanceName", "name", "type", "namespace"],
+            ["name", "namespace", "type"],
+            ["name", "namespace", "type"],
+            ["dataset", "name", "type"],
+            ["name", "namespace", "type"],
+            ["name", "type"],
+            ["name", "type"],
+            ["databaseId", "name", "type", "id"],
+            ["name", "part", "type"],
+            ["name", "namespace", "type", "outbound"],
+            [
+              "name",
+              "type",
+              "className",
+              "dispatchNamespace",
+              "environment",
+              "namespaceId",
+              "scriptName",
+            ],
+            ["id", "name", "type"],
+            ["name", "type", "oldName", "versionId"],
+            ["name", "type"],
+            ["json", "name", "type"],
+            ["name", "namespaceId", "type"],
+            ["name", "type"],
+            ["certificateId", "name", "type"],
+            ["name", "text", "type"],
+            ["name", "pipeline", "type"],
+            ["name", "stream", "type"],
+            ["name", "queueName", "type"],
+            ["name", "namespaceId", "simple", "type"],
+            ["bucketName", "name", "type", "jurisdiction"],
+            ["name", "text", "type"],
+            [
+              "name",
+              "type",
+              "allowedDestinationAddresses",
+              "allowedSenderAddresses",
+              "destinationAddress",
+            ],
+            ["name", "service", "type", "entrypoint", "environment"],
+            ["name", "part", "type"],
+            ["indexName", "name", "type"],
+            ["name", "type"],
+            ["name", "secretName", "storeId", "type"],
+            ["appId", "name", "type"],
+            ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+            ["name", "type", "workflowName", "className", "scriptName"],
+            ["name", "part", "type"],
+            ["name", "serviceId", "type"],
+            ["name", "type", "identity", "networkId", "tunnelId"],
+          ],
+          {
+            key: "type",
+            values: [
+              "ai",
+              "ai_search",
+              "ai_search_namespace",
+              "messaging",
+              "analytics_engine",
+              "artifacts",
+              "assets",
+              "browser",
+              "d1",
+              "data_blob",
+              "dispatch_namespace",
+              "durable_object_namespace",
+              "hyperdrive",
+              "inherit",
+              "images",
+              "json",
+              "kv_namespace",
+              "media",
+              "mtls_certificate",
+              "plain_text",
+              "pipelines",
+              "k2",
+              "queue",
+              "ratelimit",
+              "r2_bucket",
+              "secret_text",
+              "send_email",
+              "service",
+              "text_blob",
+              "vectorize",
+              "version_metadata",
+              "secrets_store_secret",
+              "flagship",
+              "secret_key",
+              "workflow",
+              "wasm_module",
+              "vpc_service",
+              "vpc_network",
+            ],
+          },
+        ),
+      );
+    case 5:
+      return S.Array(__S(4004, __c125, 4));
+    case 6:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["type", "cache", "state"],
+          ["storage", "type", "container", "state"],
+          ["state", "type"],
+          ["renamedTo", "state", "type"],
+          ["state", "transferredTo", "type"],
+          ["state", "storage", "transferFrom", "type", "container"],
+        ]),
+      );
+    case 7:
+      return S.Record(S.String, __S(4006, __c125, 6));
+    case 8:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          [
+            "deletedClasses",
+            "newClasses",
+            "newSqliteClasses",
+            "newTag",
+            "oldTag",
+            "renamedClasses",
+            "transferredClasses",
+          ],
+          ["newTag", "oldTag", "steps"],
+        ]),
+      );
+    case 9:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["mode"],
+          ["region"],
+          ["hostname"],
+          ["host"],
+          ["mode", "region"],
+          ["hostname", "mode"],
+          ["host", "mode"],
+          ["mode", "target"],
+        ]),
+      );
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdOn: S.String.pipe(T.Body("created_on")),
+          number: S.Number,
+          urls: __S(992, __c31, 0),
+          annotations: S.optional(S.NullOr(__S(1408, __c44, 0))),
+          assets: S.optional(S.NullOr(__S(4003, __c125, 3))),
+          authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
+          authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
+          bindings: S.optional(S.NullOr(__S(4005, __c125, 5))),
+          cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
+          compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
+          compatibilityFlags: S.optional(
+            S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
+          ),
+          containers: S.optional(S.NullOr(__S(1377, __c43, 1))),
+          exports: S.optional(S.NullOr(__S(4007, __c125, 7))),
+          exportsReconciliation: S.optional(
+            S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
+          ),
+          limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
+          mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
+          migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
+          migrations: S.optional(S.NullOr(__S(4008, __c125, 8))),
+          modules: S.optional(S.NullOr(__S(1441, __c45, 1))),
+          packageDependencies: S.optional(
+            S.NullOr(__S(1443, __c45, 3)).pipe(T.Body("package_dependencies")),
+          ),
+          placement: S.optional(S.NullOr(__S(4009, __c125, 9))),
+          source: S.optional(S.NullOr(S.String)),
+          startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
+          usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
+        }),
+      ).annotate({ identifier: "BetaWorkersVersionsListResultItem" });
+    case 11:
+      return S.Array(__S(4010, __c125, 10));
+    case 12:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(4011, __c125, 11).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListBetaWorkerVersionsResponse" });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          environment: S.optional(S.String.pipe(T.Query())),
+          hostname: S.optional(S.String.pipe(T.Query())),
+          service: S.optional(S.String.pipe(T.Query())),
+          zoneId: S.optional(S.String.pipe(T.Query("zone_id"))),
+          zoneName: S.optional(S.String.pipe(T.Query("zone_name"))),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/workers/domains", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListDomainsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          certId: S.String.pipe(T.Body("cert_id")),
+          environment: S.String,
+          hostname: S.String,
+          service: S.String,
+          zoneId: S.String.pipe(T.Body("zone_id")),
+          zoneName: S.String.pipe(T.Body("zone_name")),
+          previewsEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("previews_enabled"))),
+        }),
+      ).annotate({ identifier: "DomainsListResultItem" });
+    case 2:
+      return S.Array(__S(4033, __c126, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(4034, __c126, 2).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListDomainsResponse" });
+  }
+}
+function __c127(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          order: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/observability/destinations",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListObservabilityDestinationsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          errorMessage: S.String.pipe(T.Body("error_message")),
+          lastComplete: S.String.pipe(T.Body("last_complete")),
+          lastError: S.String.pipe(T.Body("last_error")),
+        }),
+      ).annotate({ identifier: "ObservabilityDestinationsListResultItemConfigurationJobStatus" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          destinationConf: S.String.pipe(T.Body("destination_conf")),
+          headers: __S(1280, __c40, 0),
+          jobStatus: __S(4065, __c127, 1),
+          logpushDataset: S.String,
+          type: S.String,
+          url: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityDestinationsListResultItemConfiguration" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          configuration: __S(4066, __c127, 2),
+          enabled: S.Boolean,
+          name: S.String,
+          scripts: __S(992, __c31, 0),
+          slug: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityDestinationsListResultItem" });
+    case 4:
+      return S.Array(__S(4067, __c127, 3));
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(4068, __c127, 4).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListObservabilityDestinationsResponse" });
+  }
+}
+function __c128(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          order: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query())),
+          page: S.optional(S.Number.pipe(T.Query())),
+          perPage: S.optional(S.Number.pipe(T.Query())),
+        })
+          .pipe(
+            T.Http({
+              method: "GET",
+              uri: "/accounts/{account_id}/workers/observability/queries",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListObservabilityQueriesRequest" });
+    case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["operator", "alias", "key", "keyType"],
+          ["key", "operator", "alias", "keyType"],
+        ]),
+      );
+    case 2:
+      return S.Array(__S(4097, __c128, 1));
+    case 3:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases(
+          [
+            ["filterCombination", "filters", "kind"],
+            ["key", "operation", "type", "kind", "value"],
+          ],
+          { key: "kind", values: ["group", "filter"] },
+        ),
+      );
+    case 4:
+      return S.Array(__S(4099, __c128, 3));
+    case 5:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          value: __S(4101, __c128, 5),
+          isRegex: S.optional(S.NullOr(S.Boolean)),
+          matchCase: S.optional(S.NullOr(S.Boolean)),
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesListResultItemParametersNeedle" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          calculations: S.optional(S.NullOr(__S(4098, __c128, 2))),
+          datasets: S.optional(S.NullOr(__S(992, __c31, 0))),
+          filterCombination: S.optional(S.NullOr(S.String)),
+          filters: S.optional(S.NullOr(__S(4100, __c128, 4))),
+          groupBys: S.optional(S.NullOr(__S(1601, __c50, 1))),
+          havings: S.optional(S.NullOr(__S(1603, __c50, 3))),
+          limit: S.optional(S.NullOr(S.Number)),
+          needle: S.optional(S.NullOr(__S(4102, __c128, 6))),
+          orderBy: S.optional(S.NullOr(__S(1632, __c51, 0))),
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesListResultItemParameters" });
+    case 8:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          adhoc: S.Boolean,
+          created: S.String,
+          createdBy: S.String,
+          description: S.String,
+          name: S.String,
+          parameters: __S(4103, __c128, 7),
+          updated: S.String,
+          updatedBy: S.String,
+        }),
+      ).annotate({ identifier: "ObservabilityQueriesListResultItem" });
+    case 9:
+      return S.Array(__S(4104, __c128, 8));
+    case 10:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(4105, __c128, 9).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListObservabilityQueriesResponse" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/workers/routes", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListRoutesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          result: __S(4161, __c130, 1).pipe(T.EnvelopePayload()),
+          resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListRoutesResponse" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          pattern: S.String,
+          script: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "RoutesListResultItem" });
+    case 1:
+      return S.Array(__S(4160, __c130, 0));
+  }
+}
 // Schema table: entry i is schema j of builder f, made on first reach.
-
-// Operation data (see `op` in core/api): shared schema holders, then the vocabulary.
-function __d0(): any {
-  return ["!16(!2,!11)", [__v]];
-}
-function __d1(): any {
-  return [
-    '!5(>!6({destinations:!1(^1:0),enabled:!1(!8),headSamplingRate:!1(!9.pipe(!4("head_sampling_rate"))),persist:!1(!8),propagationPolicy:!1(!2.pipe(!4("propagation_policy")))}))@"BetaWorkersCreateRequestObservabilityTraces"',
-    [__v, __d4],
-  ];
-}
-function __d2(): any {
-  return [
-    '!5(>!6({destinations:!1(^1:0),enabled:!1(!8),headSamplingRate:!1(!9.pipe(!4("head_sampling_rate"))),invocationLogs:!1(!8.pipe(!4("invocation_logs"))),persist:!1(!8)}))@"BetaWorkersCreateRequestObservabilityLogs";!5(>!6({enabled:!1(!8),headSamplingRate:!1(!9.pipe(!4("head_sampling_rate"))),issues:!1(^2:0),logs:!1(#0),redactQueryString:!1(!8.pipe(!4("redact_query_string"))),traces:!1(^3:0)}))@"BetaWorkersCreateRequestObservability";!5(>!6({enabled:!1(!8),previewUrlSuffix:!1(!2.pipe(!4("preview_url_suffix"))),previewsEnabled:!1(!8.pipe(!4("previews_enabled"))),url:!1(!2)}))@"BetaWorkersCreateRequestSubdomain"',
-    [__v, __d4, __d9, __d1],
-  ];
-}
-function __d3(): any {
-  return [
-    '!5(>!6({enabled:!8,crossVersionCache:!1(!8.pipe(!4("cross_version_cache")))}))@"BetaWorkersCreateRequestPreviewsBaseConfigCacheOptions"',
-    [__v],
-  ];
-}
-function __d4(): any {
-  return ["!12(!2)", [__v]];
-}
-function __d5(): any {
-  return [
-    '!5(>!6({cpuMs:!1(!9.pipe(!4("cpu_ms"))),subrequests:!1(!9)}))@"BetaWorkersCreateRequestPreviewsBaseConfigLimits"',
-    [__v],
-  ];
-}
-function __d6(): any {
-  return [
-    '!5(>!6({enabled:!8,crossVersionCache:!1(!3(!8).pipe(!4("cross_version_cache")))}))@"BetaWorkersCreateResponsePreviewsBaseConfigCacheOptions"',
-    [__v],
-  ];
-}
-function __d7(): any {
-  return [
-    '!5(>!6({cpuMs:!1(!3(!9).pipe(!4("cpu_ms"))),subrequests:!1(!3(!9))}))@"BetaWorkersCreateResponsePreviewsBaseConfigLimits"',
-    [__v],
-  ];
-}
-function __d8(): any {
-  return [
-    '!5(>!6({name:!2}))@"BetaWorkersCreateRequestPreviewsBaseConfigTailConsumersItem";!12(#0)',
-    [__v],
-  ];
-}
-function __d9(): any {
-  return ['!5(>!6({enabled:!1(!8)}))@"BetaWorkersCreateRequestObservabilityIssues"', [__v]];
-}
-function __d10(): any {
-  return [
-    '!5(>!6({enabled:!1(!3(!8))}))@"BetaWorkersCreateResponseObservabilityIssues";!5(>!6({destinations:!1(!3(^1:0)),enabled:!1(!3(!8)),headSamplingRate:!1(!3(!9).pipe(!4("head_sampling_rate"))),persist:!1(!3(!8)),propagationPolicy:!1(!3(!2).pipe(!4("propagation_policy")))}))@"BetaWorkersCreateResponseObservabilityTraces"',
-    [__v, __d4],
-  ];
-}
-function __d11(): any {
-  return [
-    '!5(>!6({type:!2}))@"BetaWorkersCreateRequestPreviewsBaseConfigEnvValue";!16(!2,#0);!5(>!6({destinations:!1(!3(^1:0)),enabled:!1(!3(!8)),headSamplingRate:!1(!3(!9).pipe(!4("head_sampling_rate"))),invocationLogs:!1(!3(!8).pipe(!4("invocation_logs"))),persist:!1(!3(!8))}))@"BetaWorkersCreateResponseObservabilityLogs";!5(>!6({enabled:!1(!3(!8)),headSamplingRate:!1(!3(!9).pipe(!4("head_sampling_rate"))),issues:!1(!3(^2:0)),logs:!1(!3(#2)),redactQueryString:!1(!3(!8).pipe(!4("redact_query_string"))),traces:!1(!3(^2:1))}))@"BetaWorkersCreateResponseObservability";!5(>!6({namespaceId:!2.pipe(!4("namespace_id")),namespaceName:!2.pipe(!4("namespace_name")),workerId:!2.pipe(!4("worker_id")),workerName:!2.pipe(!4("worker_name"))}))@"BetaWorkersCreateResponseReferencesDispatchNamespaceOutboundsItem";!12(#4);!5(>!6({id:!2,certificateId:!2.pipe(!4("certificate_id")),hostname:!2,zoneId:!2.pipe(!4("zone_id")),zoneName:!2.pipe(!4("zone_name"))}))@"BetaWorkersCreateResponseReferencesDomainsItem";!12(#6);!5(>!6({queueConsumerId:!2.pipe(!4("queue_consumer_id")),queueId:!2.pipe(!4("queue_id")),queueName:!2.pipe(!4("queue_name"))}))@"BetaWorkersCreateResponseReferencesQueuesItem";!12(#8);!5(>!6({id:!2,name:!2}))@"BetaWorkersCreateResponseReferencesWorkersItem";!12(#10);!5(>!6({dispatchNamespaceOutbounds:#5.pipe(!4("dispatch_namespace_outbounds")),domains:#7,durableObjects:#5.pipe(!4("durable_objects")),queues:#9,workers:#11}))@"BetaWorkersCreateResponseReferences";!5(>!6({enabled:!1(!3(!8)),previewUrlSuffix:!1(!3(!2).pipe(!4("preview_url_suffix"))),previewsEnabled:!1(!3(!8).pipe(!4("previews_enabled"))),url:!1(!3(!2))}))@"BetaWorkersCreateResponseSubdomain"',
-    [__v, __d4, __d10],
-  ];
-}
-function __d12(): any {
-  return ["!16(!2,!2)", [__v]];
-}
-function __d13(): any {
-  return [
-    '!5(>!6({className:!2.pipe(!4("class_name")),name:!1(!2),images:!1(^1:0.pipe(!10({})))}))@"BetaWorkersVersionsCreateRequestContainersItem";!12(#0)',
-    [__v, __d12],
-  ];
-}
-function __d14(): any {
-  return [
-    '!5(>!6({class:!2,message:!2,scenario:!2,namespaceId:!1(!3(!2).pipe(!4("namespace_id"))),referencingScripts:!1(!3(^1:0).pipe(!4("referencing_scripts")))}))@"BetaWorkersVersionsCreateResponseExportsReconciliationInfoItem";!12(#0);!5(>!6({from:!2,to:!2}))@"BetaWorkersVersionsCreateResponseExportsReconciliationRenamedItem";!12(#2);!5(>!6({class:!2,from:!2}))@"BetaWorkersVersionsCreateResponseExportsReconciliationTransferPendingItem";!12(#4);!5(>!6({class:!2,phase:!2,to:!2}))@"BetaWorkersVersionsCreateResponseExportsReconciliationTransferredItem";!12(#6);!5(>!6({class:!2,message:!2,scenario:!2,namespaceId:!1(!3(!2).pipe(!4("namespace_id")))}))@"BetaWorkersVersionsCreateResponseExportsReconciliationWarningsItem";!12(#8);!5(>!6({created:^1:0,deleted:^1:0,info:#1,removableEntries:^1:0.pipe(!4("removable_entries")),renamed:#3,transferPending:#5.pipe(!4("transfer_pending")),transferred:#7,updated:^1:0,warnings:#9}))@"BetaWorkersVersionsCreateResponseExportsReconciliation"',
-    [__v, __d4],
-  ];
-}
-function __d15(): any {
-  return [
-    '!5(>!6({className:!2.pipe(!4("class_name")),name:!1(!3(!2)),images:!1(!3(^1:0).pipe(!10({})))}))@"BetaWorkersVersionsCreateResponseContainersItem";!12(#0)',
-    [__v, __d12],
-  ];
-}
-function __d16(): any {
-  return [
-    '!5(>!6({workersMessage:!1(!3(!2).pipe(!4("workers/message"))),workersTag:!1(!3(!2).pipe(!4("workers/tag"))),workersTriggeredBy:!1(!3(!2).pipe(!4("workers/triggered_by")))}))@"BetaWorkersVersionsCreateResponseAnnotations"',
-    [__v],
-  ];
-}
-function __d17(): any {
-  return [
-    '!5(>!6({contentBase64:!2.pipe(!4("content_base64")),contentType:!2.pipe(!4("content_type")),name:!2}))@"BetaWorkersVersionsCreateRequestModulesItem";!12(#0);!5(>!6({installedVersion:!2,name:!2,packageJsonVersion:!2}))@"BetaWorkersVersionsCreateRequestPackageDependenciesItem";!12(#2)',
-    [__v],
-  ];
-}
-function __d18(): any {
-  return [
-    '!5(>!6({destinationConf:!2.pipe(!4("destination_conf")),logpushDataset:!2,logpushJob:!9,type:!2,url:!2}))@"ObservabilityDestinationsCreateResponseConfiguration";!5(>!6({configuration:#0,enabled:!8,name:!2,scripts:^2:0,slug:!2}).pipe(!10(~1:0)))@"CreateObservabilityDestinationResponse"',
-    [__v, __d48, __d4],
-  ];
-}
-function __d19(): any {
-  return [
-    '!5(>!6({value:!2,order:!1(!2)}))@"ObservabilityQueriesCreateRequestParametersOrderBy"',
-    [__v],
-  ];
-}
-function __d20(): any {
-  return [
-    '!5(>!6({type:!2,value:!2}))@"ObservabilityQueriesCreateRequestParametersGroupBysItem";!12(#0);!5(>!6({key:!2,operation:!2,value:!9}))@"ObservabilityQueriesCreateRequestParametersHavingsItem";!12(#2)',
-    [__v],
-  ];
-}
-function __d21(): any {
-  return [
-    '!5(>!6({value:!2,order:!1(!3(!2))}))@"ObservabilityQueriesCreateResponseParametersOrderBy"',
-    [__v],
-  ];
-}
-function __d22(): any {
-  return ['!5(>!6({from:!9,to:!9}))@"ObservabilitySharedQueriesCreateRequestTimeframe"', [__v]];
-}
-function __d23(): any {
-  return [
-    '!5(>!6({id:!2,name:!2,slug:!2,workerName:!2.pipe(!4("worker_name")),urls:!1(!3(^2:0)),tags:!1(!3(^2:0)),logpush:!1(!3(!8)),tailConsumers:!1(!3(^3:1).pipe(!4("tail_consumers"))),createdOn:!1(!3(!2).pipe(!4("created_on"))),updatedOn:!1(!3(!2).pipe(!4("updated_on")))}).pipe(!10(~1:0)))@"PreviewResource"',
-    [__v, __d48, __d4, __d8],
-  ];
-}
-function __d24(): any {
-  return [
-    '!5(>!6({id:!2,previewId:!1(!3(!2).pipe(!4("preview_id"))),previewName:!1(!3(!2).pipe(!4("preview_name"))),migrationTag:!1(!3(!2).pipe(!4("migration_tag"))),urls:!1(!3(^2:0)),compatibilityDate:!1(!3(!2).pipe(!4("compatibility_date"))),createdOn:!1(!3(!2).pipe(!4("created_on")))}).pipe(!10(~1:0)))@"PreviewDeploymentResource"',
-    [__v, __d48, __d4],
-  ];
-}
-function __d25(): any {
-  return [
-    '!5(>!6({id:!2,pattern:!2,script:!1(!3(!2))}).pipe(!10(~1:0)))@"CreateRouteResponse"',
-    [__v, __d48],
-  ];
-}
-function __d26(): any {
-  return [
-    '!5(>!6({id:!2,createdOn:!2.pipe(!4("created_on")),source:!2,strategy:!2,versions:^2:1,annotations:!1(!3(^2:2)),authorEmail:!1(!3(!2).pipe(!4("author_email")))}).pipe(!10(~1:0)))@"CreateScriptDeploymentResponse"',
-    [__v, __d48, __d27],
-  ];
-}
-function __d27(): any {
-  return [
-    '!5(>!6({percentage:!9,versionId:!2.pipe(!4("version_id"))}))@"ScriptsDeploymentsCreateRequestVersionsItem";!12(#0);!5(>!6({workersMessage:!1(!3(!2).pipe(!4("workers/message"))),workersTriggeredBy:!1(!3(!2).pipe(!4("workers/triggered_by")))}))@"ScriptsDeploymentsCreateResponseAnnotations"',
-    [__v],
-  ];
-}
-function __d28(): any {
-  return [
-    '!5(>!6({from:!1(!2),to:!1(!2)}))@"BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem";!12(#0);!11.pipe(!13([["workersDev","minimalMode"],["routes","minimalMode"]]));!11.pipe(!13([["type","name","text"],["type","name","text"],["type","name","json"],["type","name","namespaceId","raw"],["type","name","className","scriptName","environment","namespaceId"],["type","name","bucketName","jurisdiction","raw"],["type","name","id","internalEnv","raw"],["type","name","queueName","deliveryDelay","raw"],["type","name","service","environment","entrypoint","crossAccountGrant"],["type","name","staging","raw"],["type","name","raw"],["type","name","raw"],["type","name","indexName","internalEnv","raw"],["type","name","workflowName","className","scriptName","raw"],["type","name","id"],["type","name","dataset"],["type","name","namespace","outbound"],["type","name","destinationAddress","allowedDestinationAddresses","allowedSenderAddresses"],["type","name","certificateId"],["type","name","part"],["type","name","part"],["type","name","part"],["type","name","pipeline"],["type","name","storeId","secretName"],["type","name"],["type","name"],["type","name"],["type","name"],["type","name"],["type","name","destination"],["type","name","namespace"],["type","name","instanceName"],["type","name","namespaceId","simple"],["type","name","namespace"],["type","name","enableTimer"],["type","name","appId"],["type","name","serviceId"],["type","name","tunnelId","networkId"],["type","name"]],{key:"type",values:["plain_text","secret_text","json","kv_namespace","durable_object_namespace","r2_bucket","d1","queue","service","ai","browser","images","vectorize","workflow","hyperdrive","analytics_engine","dispatch_namespace","send_email","mtls_certificate","wasm_module","text_blob","data_blob","pipelines","secrets_store_secret","stream","media","version_metadata","assets","worker_loader","logfwdr","ai_search_namespace","ai_search","ratelimit","artifacts","unsafe_hello_world","flagship","vpc_service","vpc_network","inherit"]}));!12(#3);!5(>!6({newClasses:!1(^1:0.pipe(!4("new_classes"))),newSqliteClasses:!1(^1:0.pipe(!4("new_sqlite_classes"))),renamedClasses:!1(#1.pipe(!4("renamed_classes"))),deletedClasses:!1(^1:0.pipe(!4("deleted_classes")))}))@"CreateScriptEdgePreviewMetadataMigrationStep";!12(#5);!5(>!6({oldTag:!1(!2.pipe(!4("old_tag"))),newTag:!1(!2.pipe(!4("new_tag"))),steps:!1(#6)}))@"CreateScriptEdgePreviewMetadataMigrations";!11.pipe(!13([["mode","hint"],["region"],["host"],["hostname"]]));!5(>!6({service:!2,environment:!1(!2)}))@"CreateScriptEdgePreviewMetadataTailConsumer";!12(#9);!11.pipe(!13([[],[]]));!5(>!6({htmlHandling:!1(!2.pipe(!4("html_handling"))),notFoundHandling:!1(!2.pipe(!4("not_found_handling"))),runWorkerFirst:!1(#11.pipe(!4("run_worker_first"))),redirects:!1(!2),headers:!1(!2)}))@"CreateScriptEdgePreviewMetadataAssetsConfig";!5(>!6({jwt:!1(!2),config:!1(#12)}))@"CreateScriptEdgePreviewMetadataAssets";!5(>!6({enabled:!1(!8),headSamplingRate:!1(!9.pipe(!4("head_sampling_rate"))),invocationLogs:!1(!8.pipe(!4("invocation_logs"))),persist:!1(!8),destinations:!1(^1:0)}))@"CreateScriptEdgePreviewMetadataObservabilityLogs";!5(>!6({enabled:!1(!8),headSamplingRate:!1(!9.pipe(!4("head_sampling_rate"))),persist:!1(!8),destinations:!1(^1:0)}))@"CreateScriptEdgePreviewMetadataObservabilityTraces";!5(>!6({enabled:!1(!8),headSamplingRate:!1(!9.pipe(!4("head_sampling_rate"))),logs:!1(#14),redactQueryString:!1(!8.pipe(!4("redact_query_string"))),issues:!1(^2:0),traces:!1(#15)}))@"CreateScriptEdgePreviewMetadataObservability";!5(>!6({mainModule:!1(!2.pipe(!4("main_module"))),bodyPart:!1(!2.pipe(!4("body_part"))),compatibilityDate:!1(!2.pipe(!4("compatibility_date"))),compatibilityFlags:!1(^1:0.pipe(!4("compatibility_flags"))),usageModel:!1(!2.pipe(!4("usage_model"))),bindings:!1(#4),keepBindings:!1(^1:0.pipe(!4("keep_bindings"))),migrations:!1(#7),capnpSchema:!1(!2.pipe(!4("capnp_schema"))),logpush:!1(!8),placement:!1(#8),tailConsumers:!1(#10.pipe(!4("tail_consumers"))),streamingTailConsumers:!1(#10.pipe(!4("streaming_tail_consumers"))),limits:!1(^3:0),assets:!1(#13),observability:!1(#16),containers:!1(^4:1),annotations:!1(!11),keepAssets:!1(!8.pipe(!4("keep_assets"))),tags:!1(^1:0)}))@"CreateScriptEdgePreviewMetadata";!5(>!6({previewToken:!2.pipe(!4("preview_token")),tailUrl:!1(!3(!2).pipe(!4("tail_url")))}).pipe(!10(~5:0)))@"CreateScriptEdgePreviewResponse"',
-    [__v, __d4, __d9, __d5, __d13, __d48],
-  ];
-}
-function __d29(): any {
-  return [
-    '!5(>!6({enabled:!8,previewsEnabled:!8.pipe(!4("previews_enabled"))}).pipe(!10(~1:0)))@"CreateScriptSubdomainResponse"',
-    [__v, __d48],
-  ];
-}
-function __d30(): any {
-  return [
-    '!5(>!6({id:!2,expiresAt:!2.pipe(!4("expires_at")),url:!2}).pipe(!10(~1:0)))@"CreateScriptTailResponse"',
-    [__v, __d48],
-  ];
-}
-function __d31(): any {
-  return [
-    '!5(>!6({service:!2,environment:!1(!2),namespace:!1(!2)}))@"PutScriptTailConsumer";!12(#0)',
-    [__v],
-  ];
-}
-function __d32(): any {
-  return [
-    '!5(>!6({enabled:!8}))@"BetaWorkersVersionsCreateRequestExportsValueWorkerCache";!5(>!6({workersMessage:!1(!2.pipe(!4("workers/message"))),workersTag:!1(!2.pipe(!4("workers/tag"))),workersAlias:!1(!2.pipe(!4("workers/alias")))}))@"PutScriptMetadataAnnotations";!11.pipe(!13([[],[]]));!5(>!6({htmlHandling:!1(!2.pipe(!4("html_handling"))),notFoundHandling:!1(!2.pipe(!4("not_found_handling"))),runWorkerFirst:!1(#2.pipe(!4("run_worker_first"))),serveDirectly:!1(!8.pipe(!4("serve_directly"))),headers:!1(!2.pipe(!4("_headers"))),redirects:!1(!2.pipe(!4("_redirects")))}))@"PutScriptAssetsConfig";!5(>!6({config:!1(#3),jwt:!1(!2)}))@"PutScriptMetadataAssets";!11.pipe(!13([["name","type"],["instanceName","name","namespace","type"],["name","namespace","type"],["dataset","name","type"],["name","type"],["name","type"],["databaseId","name","id","type"],["name","part","type"],["name","namespace","outbound","type"],["name","className","dispatchNamespace","environment","namespaceId","scriptName","type"],["id","name","type"],["name","oldName","versionId","type"],["name","type"],["json","name","type"],["name","namespaceId","type"],["name","type"],["certificateId","name","type"],["name","text","type"],["name","pipeline","type"],["name","queueName","type"],["name","namespaceId","simple","type"],["bucketName","name","jurisdiction","type"],["name","text","type"],["name","allowedDestinationAddresses","allowedSenderAddresses","destinationAddress","type"],["name","service","entrypoint","environment","type"],["name","part","type"],["indexName","name","type"],["name","type"],["name","secretName","storeId","type"],["appId","name","type"],["algorithm","format","name","usages","keyBase64","keyJwk","type"],["name","workflowName","className","scriptName","type"],["name","part","type"],["name","serviceId","type"],["name","networkId","tunnelId","type"],["name","type"],["name","namespace","type"],["name","type"],["name","stream","type"]],{key:"type",values:["ai","ai_search","ai_search_namespace","analytics_engine","assets","browser","d1","data_blob","dispatch_namespace","durable_object_namespace","hyperdrive","inherit","images","json","kv_namespace","media","mtls_certificate","plain_text","pipelines","queue","ratelimit","r2_bucket","secret_text","send_email","service","text_blob","vectorize","version_metadata","secrets_store_secret","flagship","secret_key","workflow","wasm_module","vpc_service","vpc_network","worker_loader","artifacts","stream","k2"]}));!12(#5);!11.pipe(!13([["deletedClasses","newClasses","newSqliteClasses","newTag","oldTag","renamedClasses","transferredClasses"],["newTag","oldTag","steps"]]));!5(>!6({enabled:!8,invocationLogs:!8.pipe(!4("invocation_logs")),destinations:!1(^1:0),headSamplingRate:!1(!3(!9).pipe(!4("head_sampling_rate"))),persist:!1(!8)}))@"PutScriptObservabilityLogs";!5(>!6({destinations:!1(^1:0),enabled:!1(!8),headSamplingRate:!1(!3(!9).pipe(!4("head_sampling_rate"))),persist:!1(!8),propagationPolicy:!1(!2.pipe(!4("propagation_policy")))}))@"PutScriptObservabilityTraces";!5(>!6({enabled:!1(!8),headSamplingRate:!1(!3(!9).pipe(!4("head_sampling_rate"))),logs:!1(!3(#8)),traces:!1(!3(#9)),issues:!1(#0),redactQueryString:!1(!8.pipe(!4("redact_query_string")))}))@"PutScriptMetadataObservability";!11.pipe(!13([["mode"],["region"],["hostname"],["host"],["mode","region"],["hostname","mode"],["host","mode"],["mode","target"]]));!5(>!6({enabled:!1(!8),crossVersionCache:!1(!8.pipe(!4("cross_version_cache")))}))@"PutScriptMetadataCache";!5(>!6({type:!1(!2),cache:!1(#12),storage:!1(!2),container:!1(!2),state:!1(!2),renamedTo:!1(!2.pipe(!4("renamed_to"))),transferredTo:!1(!2.pipe(!4("transferred_to"))),transferFrom:!1(!2.pipe(!4("transfer_from")))}))@"PutScriptMetadataExport";!16(!2,#13);!5(>!6({annotations:!1(#1),assets:!1(#4),bindings:!1(#6),bodyPart:!1(!2.pipe(!4("body_part"))),compatibilityDate:!1(!2.pipe(!4("compatibility_date"))),compatibilityFlags:!1(^1:0.pipe(!4("compatibility_flags"))),containers:!1(^2:1),keepAssets:!1(!8.pipe(!4("keep_assets"))),keepBindings:!1(^1:0.pipe(!4("keep_bindings"))),limits:!1(^3:0),logpush:!1(!8),mainModule:!1(!2.pipe(!4("main_module"))),migrations:!1(#7),observability:!1(#10),placement:!1(#11),tags:!1(^1:0),tailConsumers:!1(!3(^4:1).pipe(!4("tail_consumers"))),usageModel:!1(!2.pipe(!4("usage_model"))),cacheOptions:!1(#12.pipe(!4("cache_options"))),streamingTailConsumers:!1(!3(^4:1).pipe(!4("streaming_tail_consumers"))),exports:!1(#14.pipe(!10({})))}))@"PutScriptMetadata"',
-    [__v, __d4, __d13, __d5, __d31],
-  ];
-}
-function __d33(): any {
-  return [
-    '!5(>!6({etag:!1(!3(!2)),handlers:!1(!3(^1:0)),lastDeployedFrom:!1(!3(!2).pipe(!4("last_deployed_from"))),namedHandlers:!1(!3(^2:1).pipe(!4("named_handlers")))}))@"ScriptsVersionsCreateResponseResourcesScript";!5(>!6({cpuMs:!1(!3(!9).pipe(!4("cpu_ms")))}))@"ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits"',
-    [__v, __d4, __d34],
-  ];
-}
-function __d34(): any {
-  return [
-    '!5(>!6({handlers:!1(!3(^1:0)),name:!1(!3(!2))}))@"ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem";!12(#0)',
-    [__v, __d4],
-  ];
-}
-function __d35(): any {
-  return [
-    '!5(>!6({authorEmail:!1(!3(!2).pipe(!4("author_email"))),authorId:!1(!3(!2).pipe(!4("author_id"))),createdOn:!1(!3(!2).pipe(!4("created_on"))),hasPreview:!1(!3(!8)),modifiedOn:!1(!3(!2).pipe(!4("modified_on"))),source:!1(!3(!2))}))@"ScriptsVersionsCreateResponseMetadata"',
-    [__v],
-  ];
-}
-function __d36(): any {
-  return [
-    '!5(>!6({token:!2,exchangeUrl:!1(!3(!2).pipe(!4("exchange_url")))}).pipe(!10(~1:0)))@"CreateSubdomainEdgePreviewSessionResponse"',
-    [__v, __d48],
-  ];
-}
-function __d37(): any {
-  return ['!5(>!6({}).pipe(!10(~1:0)))@"DeleteBetaWorkerResponse"', [__v, __d48]];
-}
-function __d38(): any {
-  return ['!5(>!11.pipe(!19(),!10(~1:0)))@"DeleteScriptResponse"', [__v, __d48]];
-}
-function __d39(): any {
-  return [
-    '!5(>!6({defaultUsageModel:!1(!3(!2).pipe(!4("default_usage_model"))),greenCompute:!1(!3(!8).pipe(!4("green_compute")))}).pipe(!10(~1:0)))@"GetAccountSettingResponse"',
-    [__v, __d48],
-  ];
-}
-function __d40(): any {
-  return [
-    '!5(>!6({id:!2,certId:!2.pipe(!4("cert_id")),environment:!2,hostname:!2,service:!2,zoneId:!2.pipe(!4("zone_id")),zoneName:!2.pipe(!4("zone_name")),previewsEnabled:!1(!3(!8).pipe(!4("previews_enabled")))}).pipe(!10(~1:0)))@"GetDomainResponse"',
-    [__v, __d48],
-  ];
-}
-function __d41(): any {
-  return [
-    '!5(>!6({value:!11,isRegex:!1(!3(!8)),matchCase:!1(!3(!8))}))@"ObservabilitySharedQueriesGetResponseRunQueryParametersNeedle";!5(>!6({bytesRead:!9.pipe(!4("bytes_read")),elapsed:!9,rowsRead:!9.pipe(!4("rows_read")),abrLevel:!1(!3(!9).pipe(!4("abr_level")))}))@"ObservabilitySharedQueriesGetResponseRunStatistics";!5(>!6({id:!2,errors:^1:0,models:^1:0,providers:^1:0,services:^1:0,spans:!9,status:!2,traceDurationMs:!9,traceEndMs:!9,traceId:!2,traceStartMs:!9,agentId:!1(!3(!2)),agentName:!1(!3(!2)),conversationId:!1(!3(!2)),inputTokens:!1(!3(!9)),outputTokens:!1(!3(!9))}))@"ObservabilitySharedQueriesGetResponseAgentsItem";!12(#2);!12(!9);!12(#4);!5(>!6({bins:^1:0,bucketBoundaries:#4,bucketMode:!2,buckets:^1:0,matrix:#5}))@"ObservabilitySharedQueriesGetResponseDistribution";!5(>!6({id:!2,account:!1(!3(!2)),cloudService:!1(!3(!2)),coldStart:!1(!3(!9)),cost:!1(!3(!9)),duration:!1(!3(!9)),endTime:!1(!3(!9)),endTimeNs:!1(!3(!2)),error:!1(!3(!2)),errorTemplate:!1(!3(!2)),fingerprint:!1(!3(!2)),level:!1(!3(!2)),message:!1(!3(!2)),messageTemplate:!1(!3(!2)),metricName:!1(!3(!2)),origin:!1(!3(!2)),parentSpanId:!1(!3(!2)),provider:!1(!3(!2)),rayId:!1(!3(!2)),region:!1(!3(!2)),requestId:!1(!3(!2)),service:!1(!3(!2)),spanId:!1(!3(!2)),spanName:!1(!3(!2)),stackId:!1(!3(!2)),startTime:!1(!3(!9)),startTimeNs:!1(!3(!2)),statusCode:!1(!3(!9)),timestampNs:!1(!3(!2)),traceDuration:!1(!3(!9)),traceId:!1(!3(!2)),transactionName:!1(!3(!2)),trigger:!1(!3(!2)),type:!1(!3(!2)),url:!1(!3(!2))}))@"ObservabilitySharedQueriesGetResponseEventsEventsItemMetadata";!5(>!6({key:!2,type:!2}))@"ObservabilitySharedQueriesGetResponseEventsFieldsItem";!12(#8);!5(>!6({count:!9.pipe(!4("_count")),interval:!9.pipe(!4("_interval")),firstSeen:!1(!3(!2).pipe(!4("_firstSeen"))),lastSeen:!1(!3(!2).pipe(!4("_lastSeen"))),bin:!1(!3(!11))}))@"ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItemAggregates";!5(>!6({rootSpanName:!2,rootTransactionName:!2,service:^1:0,spans:!9,traceDurationMs:!9,traceEndMs:!9,traceId:!2,traceStartMs:!9,errors:!1(!3(^1:0))}))@"ObservabilitySharedQueriesGetResponseTracesItem";!12(#11)',
-    [__v, __d4],
-  ];
-}
-function __d42(): any {
-  return [
-    '!5(>!6({namespace:!1(!3(!2)),repoName:!1(!3(!2).pipe(!4("repo_name")))}))@"EventTriggerFilter";!5(>!6({type:!2,workflowName:!2.pipe(!4("workflow_name")),scriptName:!1(!3(!2).pipe(!4("script_name")))}))@"EventTriggerTarget";!12(#1);!5(>!6({type:!2,filter:!1(!3(#0)),targets:#2}))@"EventTrigger";!12(#3);!5(>!6({scriptName:!2.pipe(!4("script_name")),triggers:#4}))@"ScriptEventTriggers";!5(>#5.pipe(!19(),!10(~1:0)))@"GetScriptEventTriggersResponse"',
-    [__v, __d48],
-  ];
-}
-function __d43(): any {
-  return [
-    '!5(>!6({cron:!2,createdOn:!1(!3(!2).pipe(!4("created_on"))),modifiedOn:!1(!3(!2).pipe(!4("modified_on")))}))@"ScriptsSchedulesGetResponseSchedulesItem";!12(#0);!5(>!6({schedules:#1}).pipe(!10(~1:0)))@"GetScriptScheduleResponse"',
-    [__v, __d48],
-  ];
-}
-function __d44(): any {
-  return [
-    '!5(>!6({enabled:!8,invocationLogs:!8.pipe(!4("invocation_logs")),destinations:!1(!3(^1:0)),headSamplingRate:!1(!3(!9).pipe(!4("head_sampling_rate"))),persist:!1(!3(!8))}))@"ScriptsScriptAndVersionSettingsGetResponseObservabilityLogs";!5(>!6({enabled:!8,headSamplingRate:!1(!3(!9).pipe(!4("head_sampling_rate"))),issues:!1(!3(^2:0)),logs:!1(!3(#0)),redactQueryString:!1(!3(!8).pipe(!4("redact_query_string"))),traces:!1(!3(^2:1))}))@"ScriptsScriptAndVersionSettingsGetResponseObservability";!5(>!6({service:!2,environment:!1(!3(!2)),namespace:!1(!3(!2))}))@"ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem";!12(#2)',
-    [__v, __d4, __d10],
-  ];
-}
-function __d45(): any {
-  return [
-    '!5(>!6({logpush:!1(!3(!8)),observability:!1(!3(^2:1)),tags:!1(!3(^3:0)),tailConsumers:!1(!3(^2:3).pipe(!4("tail_consumers")))}).pipe(!10(~1:0)))@"GetScriptSettingResponse"',
-    [__v, __d48, __d44, __d4],
-  ];
-}
-function __d46(): any {
-  return ['!5(>!6({subdomain:!2}).pipe(!10(~1:0)))@"GetSubdomainResponse"', [__v, __d48]];
-}
-function __d47(): any {
-  return ['!5(>!6({id:!2,pattern:!2,script:!1(!3(!2))}))@"RoutesListResultItem";!12(#0)', [__v]];
-}
-function __d48(): any {
-  return [
-    '{abrLevel:"abr_level",allowedDestinationAddresses:"allowed_destination_addresses",allowedSenderAddresses:"allowed_sender_addresses",appId:"app_id",authorEmail:"author_email",authorId:"author_id",bodyPart:"body_part",bucketName:"bucket_name",bytesRead:"bytes_read",cache:"cache_options",capnpSchema:"capnp_schema",certId:"cert_id",certificateId:"certificate_id",className:"class_name",compatibilityDate:"compatibility_date",compatibilityFlags:"compatibility_flags",contentBase64:"content_base64",contentType:"content_type",cpuMs:"cpu_ms",createdOn:"created_on",crossAccountGrant:"cross_account_grant",crossVersionCache:"cross_version_cache",databaseId:"database_id",defaultUsageModel:"default_usage_model",deletedClasses:"deleted_classes",deliveryDelay:"delivery_delay",destinationAddress:"destination_address",destinationConf:"destination_conf",dispatchNamespace:"dispatch_namespace",documentationUrl:"documentation_url",enableTimer:"enable_timer",entryPoint:"entry_point",environmentIsDefault:"environment_is_default",environmentName:"environment_name",errorMessage:"error_message",exchangeUrl:"exchange_url",expiresAt:"expires_at",fromScript:"from_script",greenCompute:"green_compute",hasAssets:"has_assets",hasModules:"has_modules",headSamplingRate:"head_sampling_rate",htmlHandling:"html_handling",indexName:"index_name",instanceName:"instance_name",invocationLogs:"invocation_logs",keepAssets:"keep_assets",keepBindings:"keep_bindings",keyBase64:"key_base64",keyJwk:"key_jwk",lastAnalyzedAt:"last_analyzed_at",lastComplete:"last_complete",lastDeployedFrom:"last_deployed_from",lastError:"last_error",mainModule:"main_module",migrationTag:"migration_tag",minimalMode:"minimal_mode",mitigationTimeout:"mitigation_timeout",modifiedOn:"modified_on",namedHandlers:"named_handlers",namespaceId:"namespace_id",networkId:"network_id",newClasses:"new_classes",newSqliteClasses:"new_sqlite_classes",newTag:"new_tag",notFoundHandling:"not_found_handling",oldName:"old_name",oldTag:"old_tag",perPage:"per_page",placementMode:"placement_mode",placementStatus:"placement_status",previewToken:"preview_token",previewsEnabled:"previews_enabled",propagationPolicy:"propagation_policy",queueName:"queue_name",renamedClasses:"renamed_classes",resultInfo:"result_info",rowsRead:"rows_read",runWorkerFirst:"run_worker_first",scriptName:"script_name",scriptRuntime:"script_runtime",secretName:"secret_name",serveDirectly:"serve_directly",serviceId:"service_id",serviceName:"service_name",startupTimeMs:"startup_time_ms",storeId:"store_id",streamingTailConsumers:"streaming_tail_consumers",tailConsumers:"tail_consumers",tailUrl:"tail_url",totalCount:"total_count",transferredClasses:"transferred_classes",tunnelId:"tunnel_id",usageModel:"usage_model",versionId:"version_id",versionTags:"version_tags",workersAlias:"workers/alias",workersDev:"workers_dev",workersMessage:"workers/message",workersTag:"workers/tag",workersTriggeredBy:"workers/triggered_by",workflowName:"workflow_name",wranglerSessionConfig:"wrangler-session-config",zoneId:"zone_id",zoneName:"zone_name",previewId:"preview_id",previewName:"preview_name",workerName:"worker_name",ignoreBaseConfig:"ignore_base_config"}',
-    [__v],
-  ];
-}
-function __v(): any {
-  return [
-    __L.at,
-    S.optional,
-    S.String,
-    S.NullOr,
-    T.Body,
-    S.suspend,
-    S.Struct,
-    T.Label,
-    S.Boolean,
-    S.Number,
-    T.KeyDictionary,
-    S.Unknown,
-    S.Array,
-    T.UnionCases,
-    T.Http,
-    T.Query,
-    S.Record,
-    T.EnvelopePayload,
-    T.ResultInfo,
-    T.EnvelopePayloadRoot,
-    T.FormDataFile,
-    T.Header,
-    T.HttpBody,
-  ];
+function __S(i: number, f: (j: number) => unknown, j: number): any {
+  return (__s[i] ??= __L.at(f, j));
 }

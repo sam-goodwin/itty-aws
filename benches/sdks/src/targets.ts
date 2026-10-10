@@ -92,19 +92,7 @@ const awsFamily = (trait: string): string => trait.charAt(0).toLowerCase() + tra
 const protocolLayerAt = (source: string, index: number): string | undefined => {
   const end = source.indexOf("\nexport const ", index + 1);
   const block = source.slice(index, end === -1 ? index + 4000 : Math.min(end, index + 4000));
-  return /\bprotocol: (\w+),/.exec(block)?.[1] ?? dataProtocolAt(source, index, end);
-};
-
-/**
- * The same for a data operation (`API.op((i) => i === API.D ? ['{...,protocol:$5,...};...', [refs]] : ...)`):
- * the config names the layer by its index in the refs list.
- */
-const dataProtocolAt = (source: string, index: number, end: number): string | undefined => {
-  const block = source.slice(index, end === -1 ? undefined : end);
-  const m = /\?\s*\[\s*'\{(?:[^'\\]|\\.)*?\bprotocol:\$(\d+)(?:[^'\\]|\\.)*',\s*\[([^\]]*)\]/.exec(
-    block,
-  );
-  return m ? m[2]!.split(",")[Number(m[1])]?.trim() : undefined;
+  return /\bprotocol: (\w+),/.exec(block)?.[1];
 };
 
 /** Protocol label for SDKs without generated operations (hand-written targets). */

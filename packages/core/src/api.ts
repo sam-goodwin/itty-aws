@@ -583,286 +583,121 @@ export function makePaginated<
  * A service module holds each operation as one arrow that is both the
  * callable operation and the holder of its description:
  *
- *   export const getFile = API.op((i) => i === API.D ? ['{input:#1,...};!2({...})', [__v, ...]] : API.call(getFile, i));
+ *   export const getFile = API.op((i) => i === API.D ? ['{input:#1,...};__more', [__0, __4, ...]] : API.call(getFile, i));
  *
- * Called with {@link D}, it returns `[data, refs]`: entries in a small
- * expression language (below) and the values they name. `refs[0]` is the
- * module's vocabulary function, `function __v() { return [__L.at, S.String,
- * ...]; }`: the schema and trait functions the module uses, `at` first.
- * Schemas reached by more than one operation live in shared holders,
- * `function __d3() { return [data, refs]; }`, named in `refs` so a bundler
- * keeps only the holders an operation reaches. Entry 0 of an operation is
- * its config; the rest are schemas and constants. Evaluating an entry calls
- * the same constructors the code form called, in the same order, so the
- * result is the same schema.
+ * Called with {@link D}, it returns `[data, refs]`: `;`-separated entries
+ * in a small expression language (below) and the values they name. `refs[0]`
+ * is the schema-lite `at` (lazy schema wrapper). Schemas reached by more
+ * than one operation live in shared holders, `function __d3() { return
+ * [data, refs]; }`, named in `refs` so a bundler keeps only the holders an
+ * operation reaches. Entry 0 of an operation is its config; the rest are
+ * schemas and thunk bodies. Evaluating an entry calls the same
+ * constructors the code form called, in the same order, so the result is
+ * the same schema.
  *
  * Importing a module allocates one function per operation and one per
- * shared holder. The data is text inside function bodies: V8 keeps it in
- * the module source (external to the heap) until an operation first runs.
+ * holder; the data stays text in the module source until first use.
  *
- * Grammar (entries separated by `;`):
+ * Grammar (`;` never appears outside an entry separator; strings escape it):
  *
  *   $N        refs[N]
- *   !N        vocabulary[N]
- *   #N        schema entry N of this holder (lazy, memoized)
- *   ^R:N      schema entry N of the holder refs[R]
- *   ~N  ~R:N  constant entry N of this holder / of refs[R] (memoized)
- *   "..."     string (JSON escapes)    -1.5  number    t f n u  true false null undefined
- *   {k:e,"k":e}  object    [e,e]  array    >e  thunk `() => e`
- *   e(a,b)    call    e.name    member    e.name(a,b)  method call
- *   e@"X"     e.annotate({ identifier: "X" })
+ *   #N  ^R:N  schema entry N of this holder / of the holder refs[R] (lazy, memoized)
+ *   >N        thunk `() => entry N`
+ *   "..." -1.5 true false null   JSON literal   u  undefined
+ *   {k:e,"k":e}  object   [e,e]  array
+ *   e(a,b)    call   e.name  member   e.name(a,b)  method call   e@"X"  e.annotate({ identifier: "X" })
  */
 export const D: unique symbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/api/D") as any;
 
 type DataFn = (i?: unknown) => any;
-type At = (build: (j: number) => unknown, j: number) => unknown;
 
 interface Source {
   readonly fn: DataFn;
-  s?: string;
+  e?: string[];
   r?: ReadonlyArray<any>;
-  offs?: number[];
-  build?: (j: number) => unknown;
-  readonly cache: unknown[];
-  vals?: unknown[];
+  b?: (j: number) => unknown;
+  readonly c: unknown[];
 }
 
 const sources = /*@__PURE__*/ new WeakMap<DataFn, Source>();
-const vocabs = /*@__PURE__*/ new WeakMap<() => ReadonlyArray<any>, ReadonlyArray<any>>();
-
-const vocabOf = (r: ReadonlyArray<any>): ReadonlyArray<any> => {
-  const fn = r[0] as () => ReadonlyArray<any>;
-  let v = vocabs.get(fn);
-  if (!v) vocabs.set(fn, (v = fn()));
-  return v;
-};
 
 const sourceOf = (fn: DataFn): Source => {
   let src = sources.get(fn);
-  if (!src) sources.set(fn, (src = { fn, cache: [] }));
+  if (!src) sources.set(fn, (src = { fn, c: [] }));
+  if (!src.e) {
+    const [s, r] = fn(D);
+    src.e = s.split(";");
+    src.r = r;
+  }
   return src;
 };
 
-const load = (src: Source): void => {
-  if (src.s !== undefined) return;
-  const [s, r] = src.fn(D) as [string, ReadonlyArray<unknown>];
-  const rd: Reader = { src, s, r, v: [], p: 0 };
-  const offs = [0];
-  for (;;) {
-    skip(rd);
-    if (s.charCodeAt(rd.p) !== 59) break;
-    offs.push(++rd.p);
-  }
-  src.s = s;
-  src.r = r;
-  src.offs = offs;
-};
-
-/** Schema `j` of a holder, wrapped by the module's `at` (lazy until first use). */
-const schemaOf = (src: Source, j: number, at: At): unknown =>
-  (src.cache[j] ??= at((src.build ??= (k) => evalEntry(src, k)), j));
+/** Schema `j` of a holder, wrapped by `at` (lazy until first use). */
+const schemaOf = (src: Source, j: number): unknown =>
+  (src.c[j] ??= src.r![0]((src.b ??= (k: number) => evalEntry(src, k)), j));
 
 /** A schema of a holder, for module-level code (error classes) that names one at import. */
-export const schema = (at: At, fn: DataFn, j: number): any => schemaOf(sourceOf(fn), j, at);
+export const schema = (fn: DataFn, j: number): any => schemaOf(sourceOf(fn), j);
+
+const TOKEN = /"(?:[^"\\]|\\.)*"|[\w$.+-]*/y;
+const NAME = /[\w$]*/y;
 
 const evalEntry = (src: Source, j: number): any => {
-  load(src);
-  return evalAt(src, src.offs![j]!);
-};
-
-const evalAt = (src: Source, p: number): any =>
-  expr({ src, s: src.s!, r: src.r!, v: vocabOf(src.r!), p });
-
-/** Constant entry `j` of a holder, evaluated once. */
-const constantOf = (src: Source, j: number): unknown => {
-  const vals = (src.vals ??= []);
-  return j in vals ? vals[j] : (vals[j] = evalEntry(src, j));
-};
-
-interface Reader {
-  readonly src: Source;
-  readonly s: string;
-  readonly r: ReadonlyArray<any>;
-  /** vocabulary */
-  readonly v: ReadonlyArray<any>;
-  p: number;
-}
-
-const int = (rd: Reader): number => {
-  const s = rd.s;
-  let n = 0;
-  let c = s.charCodeAt(rd.p);
-  while (c >= 48 && c <= 57) {
-    n = n * 10 + c - 48;
-    c = s.charCodeAt(++rd.p);
-  }
-  return n;
-};
-
-const str = (rd: Reader): string => {
-  const s = rd.s;
-  const start = rd.p;
-  let escaped = false;
-  for (let p = start + 1; ; p++) {
-    const c = s.charCodeAt(p);
-    if (c === 92) {
-      escaped = true;
+  const s = src.e![j]!;
+  const r = src.r!;
+  let p = 0;
+  const tok = (re = NAME): string => {
+    re.lastIndex = p;
+    const t = re.exec(s)![0];
+    p += t.length;
+    return t;
+  };
+  const list = (close: string): any[] => {
+    const a: any[] = [];
+    if (s[p] === close) p++;
+    else
+      do a.push(expr());
+      while (s[p++] !== close);
+    return a;
+  };
+  const expr = (): any => {
+    let v: any;
+    const c = s[p++];
+    if (c === "$") v = r[+tok()];
+    else if (c === "#") v = schemaOf(src, +tok());
+    else if (c === "^") {
+      const h = sourceOf(r[+tok()]);
       p++;
-    } else if (c === 34) {
-      rd.p = p + 1;
-      return escaped ? JSON.parse(s.slice(start, p + 1)) : s.slice(start + 1, p);
-    }
-  }
-};
-
-const isIdent = (c: number): boolean =>
-  (c >= 97 && c <= 122) || (c >= 65 && c <= 90) || (c >= 48 && c <= 57) || c === 95 || c === 36;
-
-const ident = (rd: Reader): string => {
-  const start = rd.p;
-  while (isIdent(rd.s.charCodeAt(rd.p))) rd.p++;
-  return rd.s.slice(start, rd.p);
-};
-
-/** Expressions up to `close`, separated by commas; the cursor ends after `close`. */
-const list = (rd: Reader, close: number): any[] => {
-  const out: any[] = [];
-  if (rd.s.charCodeAt(rd.p) === close) {
-    rd.p++;
-    return out;
-  }
-  for (;;) {
-    out.push(expr(rd));
-    if (rd.s.charCodeAt(rd.p++) === close) return out;
-  }
-};
-
-const expr = (rd: Reader): any => {
-  const s = rd.s;
-  let v: any;
-  const c = s.charCodeAt(rd.p);
-  switch (c) {
-    case 36: // $
-      rd.p++;
-      v = rd.r[int(rd)];
-      break;
-    case 33: // !
-      rd.p++;
-      v = rd.v[int(rd)];
-      break;
-    case 35: // #
-      rd.p++;
-      v = schemaOf(rd.src, int(rd), rd.v[0]);
-      break;
-    case 94: {
-      // ^
-      rd.p++;
-      const k = int(rd);
-      rd.p++;
-      v = schemaOf(sourceOf(rd.r[k]), int(rd), rd.v[0]);
-      break;
-    }
-    case 126: {
-      // ~
-      rd.p++;
-      const k = int(rd);
-      if (s.charCodeAt(rd.p) === 58) {
-        rd.p++;
-        v = constantOf(sourceOf(rd.r[k]), int(rd));
-      } else v = constantOf(rd.src, k);
-      break;
-    }
-    case 34:
-      v = str(rd);
-      break;
-    case 123: {
-      // {
-      rd.p++;
+      v = schemaOf(h, +tok());
+    } else if (c === ">") {
+      const k = +tok();
+      v = () => evalEntry(src, k);
+    } else if (c === "{") {
       v = {};
-      if (s.charCodeAt(rd.p) === 125) {
-        rd.p++;
-        break;
-      }
-      for (;;) {
-        const key = s.charCodeAt(rd.p) === 34 ? str(rd) : ident(rd);
-        rd.p++;
-        v[key] = expr(rd);
-        if (s.charCodeAt(rd.p++) === 125) break;
-      }
-      break;
+      if (s[p] === "}") p++;
+      else
+        do {
+          const k = tok(TOKEN);
+          p++;
+          v[k[0] === '"' ? JSON.parse(k) : k] = expr();
+        } while (s[p++] !== "}");
+    } else if (c === "[") v = list("]");
+    else {
+      p--;
+      const t = tok(TOKEN);
+      v = t === "u" ? undefined : JSON.parse(t);
     }
-    case 91: // [
-      rd.p++;
-      v = list(rd, 93);
-      break;
-    case 62: {
-      // >
-      const src = rd.src;
-      const at = ++rd.p;
-      skip(rd);
-      v = () => evalAt(src, at);
-      break;
+    for (;;) {
+      const d = s[p++];
+      if (d === "(") v = v(...list(")"));
+      else if (d === "@") v = v.annotate({ identifier: JSON.parse(tok(TOKEN)) });
+      else if (d === ".") {
+        const name = tok();
+        v = s[p] === "(" ? (p++, v[name](...list(")"))) : v[name];
+      } else return (p--, v);
     }
-    case 116:
-      rd.p++;
-      v = true;
-      break;
-    case 102:
-      rd.p++;
-      v = false;
-      break;
-    case 110:
-      rd.p++;
-      v = null;
-      break;
-    case 117:
-      rd.p++;
-      v = undefined;
-      break;
-    default: {
-      const start = rd.p;
-      let d = c;
-      while ((d >= 48 && d <= 57) || d === 45 || d === 46 || d === 43 || d === 101 || d === 69)
-        d = s.charCodeAt(++rd.p);
-      if (rd.p === start) throw new Error(`distilled: bad operation data at ${start}`);
-      v = Number(s.slice(start, rd.p));
-    }
-  }
-  for (;;) {
-    const d = s.charCodeAt(rd.p);
-    if (d === 40) {
-      rd.p++;
-      v = v(...list(rd, 41));
-    } else if (d === 46) {
-      rd.p++;
-      const name = ident(rd);
-      if (s.charCodeAt(rd.p) === 40) {
-        rd.p++;
-        v = v[name](...list(rd, 41));
-      } else v = v[name];
-    } else if (d === 64) {
-      rd.p++;
-      v = v.annotate({ identifier: str(rd) });
-    } else return v;
-  }
-};
-
-/** Move past one expression without evaluating it. */
-const skip = (rd: Reader): void => {
-  const s = rd.s;
-  let depth = 0;
-  for (;;) {
-    const c = s.charCodeAt(rd.p);
-    if (c !== c) return;
-    if (c === 34) {
-      for (rd.p++; s.charCodeAt(rd.p) !== 34; rd.p++) if (s.charCodeAt(rd.p) === 92) rd.p++;
-    } else if (c === 40 || c === 91 || c === 123) depth++;
-    else if (c === 41 || c === 93 || c === 125) {
-      if (depth === 0) return;
-      depth--;
-    } else if ((c === 44 || c === 59) && depth === 0) return;
-    rd.p++;
-  }
+  };
+  return expr();
 };
 
 /** An operation described by data (see the region header). */

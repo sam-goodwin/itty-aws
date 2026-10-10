@@ -17,7 +17,6 @@ import { Command } from "effect/cli";
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import { chunkSchemas } from "./chunk.ts";
-import { datafyOperations } from "./datafy.ts";
 import { dedupeSchemas } from "./dedupe.ts";
 import { barrel } from "./emit.ts";
 import { formatGenerated } from "./format.ts";
@@ -198,17 +197,13 @@ export const runGeneratorCli = (options: GeneratorCliOptions): void => {
           // Latin-1-only source halves the heap V8 keeps for the module text.
           // Structurally identical schemas become aliases of one schema, and
           // schema consts become module-private (types stay exported).
-          // Operations and schemas then become data (see datafy.ts).
           const resourceFile = `${resource}.ts`;
           const marked = annotateNestedCalls(generated.code, resourceFile);
           const code = toLatin1(
             typeOnlyNamespaceImports(
-              datafyOperations(
-                tableSchemas(
-                  chunkSchemas(
-                    privatizeSchemas(dedupeSchemas(marked, resourceFile).code, resourceFile).code,
-                    resourceFile,
-                  ).code,
+              tableSchemas(
+                chunkSchemas(
+                  privatizeSchemas(dedupeSchemas(marked, resourceFile).code, resourceFile).code,
                   resourceFile,
                 ).code,
                 resourceFile,
