@@ -7,7 +7,7 @@
 import { failIfStrict } from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
 import * as Result from "effect/Result";
-import * as S from "effect/Schema";
+import type * as S from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import type { Operation } from "../client/operation.ts";
 import type { Protocol, ProtocolHandler } from "../client/protocol.ts";
@@ -46,6 +46,7 @@ import {
   isStringAST,
   unwrapUnion,
 } from "../util/ast.ts";
+import { inputEncoder } from "../util/codec.ts";
 import { sanitizeErrorCode } from "../util/error.ts";
 import { extractStaticQueryParams } from "../util/query-params.ts";
 import { applyHttpTrait, bindInputToRequest } from "../util/serialize-input.ts";
@@ -72,7 +73,7 @@ export const restXmlProtocol: Protocol = (operation: Operation): ProtocolHandler
   const outputAst = outputSchema.ast;
 
   // Pre-compute encoder (done once at init)
-  const encodeInput = S.encodeEffect(inputSchema);
+  const encodeInput = inputEncoder(inputAst as any);
   const outputXmlName = getXmlNameFromAST(outputAst) ?? getIdentifier(outputAst);
 
   // Pre-compute s3UnwrappedXmlOutput handling (done once at init)
@@ -158,9 +159,7 @@ export const restXmlProtocol: Protocol = (operation: Operation): ProtocolHandler
   return {
     serializeRequest: Effect.fnUntraced(function* (input: unknown) {
       // Encode the input via schema - handles all transformations
-      const encoded = yield* encodeInput(input).pipe(
-        Effect.mapError((err) => new ParseError({ message: err.message })),
-      );
+      const encoded = yield* encodeInput(input);
 
       const request: Request = {
         method: "POST",

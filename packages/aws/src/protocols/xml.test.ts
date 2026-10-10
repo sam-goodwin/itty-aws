@@ -6,7 +6,7 @@ import * as HttpClientRequest from "effect/http/HttpClientRequest";
 import * as HttpClientResponse from "effect/http/HttpClientResponse";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
-import * as S from "effect/Schema";
+import * as S from "@distilled.cloud/core/schema-lite";
 import * as Stream from "effect/Stream";
 import { describe, it } from "vitest";
 import type { Response } from "../client/response.ts";

@@ -13,7 +13,7 @@
 
 import * as Effect from "effect/Effect";
 import type * as S from "effect/Schema";
-import * as AST from "effect/SchemaAST";
+import type * as AST from "effect/SchemaAST";
 import type { Request as ProtocolRequest } from "../client/request.ts";
 import {
   hasHttpPayload,
