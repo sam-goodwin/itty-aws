@@ -501,3 +501,100 @@ describe("SigV4.sign crypto implementations", () => {
     expect(calls).toContain("hmac");
   });
 });
+
+describe("SigV4.signSync with URL parts", () => {
+  /** Sign on a fiber, with and without handing over the URL as parts. */
+  const both = (options: SigV4.SignOptions, parts: SigV4.UrlParts) =>
+    Effect.runSync(
+      Effect.withFiber((fiber) => {
+        const outcome = (p?: SigV4.UrlParts) => {
+          try {
+            return { signed: SigV4.signSync(options, fiber as any, p) };
+          } catch (error) {
+            return { error: String(error) };
+          }
+        };
+        return Effect.succeed({ fromParts: outcome(parts), fromUrl: outcome() });
+      }),
+    );
+
+  /** The query string protocol.ts builds from a query record. */
+  const searchOf = (query: Record<string, unknown>) =>
+    Object.entries(query)
+      .filter(([, v]) => v !== undefined)
+      .flatMap(([k, v]) =>
+        (Array.isArray(v) ? v : [v]).map((item) =>
+          item ? `${encodeURIComponent(k)}=${encodeURIComponent(item)}` : encodeURIComponent(k),
+        ),
+      )
+      .join("&");
+
+  const origins = [
+    { origin: "https://s3.us-east-1.amazonaws.com", host: "s3.us-east-1.amazonaws.com" },
+    { origin: "http://localhost:4566", host: "localhost:4566" },
+  ];
+  const paths = [
+    "",
+    "/",
+    "/a%20b/c",
+    "/b/a/../x",
+    "/b/./x",
+    "/b/%2e%2E/x",
+    "//x//y",
+    "/k+e y",
+    "/é",
+    "/a%2Fb~!$'()*",
+  ];
+  const queries: Array<Record<string, unknown>> = [
+    {},
+    { uploadId: "ü-é", "x-id": "Abort" },
+    { b: "2", a: ["1", "0", ""], "": "empty", "k'": "v'(x)" },
+    { tagging: "", versionId: undefined, n: 0 },
+  ];
+  const headerSets: Array<Record<string, string>> = [
+    {},
+    { "Content-Type": "application/xml", "X-Amz-Meta-A": "  x  y  ", "x-amz-meta-a": "z" },
+    {
+      Host: "evil",
+      "X-Amz-Date": "19990101T000000Z",
+      Range: "bytes=0-1",
+      "x-amz-content-sha256": "abc",
+    },
+    { "x-amz-meta-u": "ünicode" },
+    { "bad header": "x" },
+    { "x-amz-meta-nl": "a\nb" },
+    { "X-Amz-Target": "\tT.Op \t" },
+  ];
+
+  test("matches the URL-based canonicalization", () => {
+    let compared = 0;
+    for (const service of ["s3", "dynamodb", "iotdevicegateway"]) {
+      for (const { origin, host } of origins) {
+        for (const path of paths) {
+          for (const query of queries) {
+            for (const headers of headerSets) {
+              const search = searchOf(query);
+              const options: SigV4.SignOptions = {
+                ...creds,
+                sessionToken: service === "dynamodb" ? Redacted.make("TOKEN") : undefined,
+                method: path === "/" ? "PUT" : "GET",
+                url: `${origin}${search ? `${path}?${search}` : path}`,
+                headers,
+                body: path === "" ? "body" : undefined,
+                service,
+                region: "us-east-1",
+                datetime,
+              };
+              const { fromParts, fromUrl } = both(options, { origin, host, path, query, search });
+              expect(fromParts, `${service} ${options.url} ${JSON.stringify(headers)}`).toEqual(
+                fromUrl,
+              );
+              compared++;
+            }
+          }
+        }
+      }
+    }
+    expect(compared).toBe(3 * 2 * 10 * 4 * 7);
+  });
+});
