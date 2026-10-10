@@ -143,17 +143,24 @@ export const makeResponseParser = <A>(
     trait: SyntheticErrorTrait;
   }> = [];
 
-  for (const err of COMMON_ERRORS) {
-    registerError(err);
-  }
-  for (const err of operation.errors ?? []) {
-    const synthetic = getSyntheticError(err.ast);
-    if (synthetic) {
-      syntheticErrors.push({ schema: err, trait: synthetic });
-    } else {
+  // Filled on the first error response: a successful call never needs it, and
+  // registering reads every error class's AST (24 common + the operation's).
+  let errorsRegistered = false;
+  const registerErrors = () => {
+    if (errorsRegistered) return;
+    errorsRegistered = true;
+    for (const err of COMMON_ERRORS) {
       registerError(err);
     }
-  }
+    for (const err of operation.errors ?? []) {
+      const synthetic = getSyntheticError(err.ast);
+      if (synthetic) {
+        syntheticErrors.push({ schema: err, trait: synthetic });
+      } else {
+        registerError(err);
+      }
+    }
+  };
 
   // Return a function that parses responses
   // @ts-expect-error
@@ -197,6 +204,7 @@ export const makeResponseParser = <A>(
     }
 
     // Error path
+    registerErrors();
     const { errorCode, data } = yield* protocol.deserializeError(response);
 
     // Fold the XML-style `Message` wire key onto `message`. AWS XML protocols
