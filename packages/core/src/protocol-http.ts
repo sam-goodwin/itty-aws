@@ -536,6 +536,25 @@ const planFor = (inputAst: AST.AST): RequestPlan => {
 const emptyRequest = /*@__PURE__*/ HttpClientRequest.get("");
 
 /**
+ * `HttpClientRequest.make(method)(url)` with `headers` set, in one object:
+ * the same request as `make(...).pipe(setHeaders(headers))` without the
+ * intermediate copies. `url` may carry a query string.
+ */
+export const makeRequest = (
+  method: HttpTrait["method"],
+  url: string,
+  headers: Record<string, string>,
+): HttpClientRequest.HttpClientRequest =>
+  HttpClientRequest.makeWith(
+    method,
+    url,
+    emptyRequest.urlParams,
+    emptyRequest.hash,
+    Headers.fromInput(headers),
+    HttpBody.empty,
+  );
+
+/**
  * Build an HTTP request from an operation input and its schema, driven by
  * the trait annotations: `Http()` supplies method + URI template, `Label()`
  * members fill URI placeholders, `Header()`/`Query()` members bind to
@@ -663,14 +682,7 @@ export const buildRequest = ({
     console.error(`[distilled] -> ${http.method} ${http.uri}`);
   }
 
-  const request = HttpClientRequest.makeWith(
-    http.method,
-    url,
-    emptyRequest.urlParams,
-    emptyRequest.hash,
-    Headers.fromInput(headers),
-    HttpBody.empty,
-  );
+  const request = makeRequest(http.method, url, headers);
   const bodied = !BODYLESS.has(http.method);
   if (http.contentType === "multipart") {
     // Multipart upload: each body member is a form part (objects

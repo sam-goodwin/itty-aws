@@ -262,8 +262,8 @@ const defaultErrorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
 // here; the generated operation annotations reintroduce it for callers.
 const fail = (e: unknown): Effect.Effect<never> => Effect.fail(e) as Effect.Effect<never>;
 
-/** Whether {@link wrapSensitive} can change any value of `root`. */
-const hasSensitive = (root: AST.AST): boolean => {
+/** Whether {@link wrapSensitive} can change any value of `root`. Cached per schema. */
+export const hasSensitive = (root: AST.AST): boolean => {
   let result = sensitiveCache.get(root);
   if (result !== undefined) return result;
   result = false;
