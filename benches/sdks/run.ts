@@ -374,6 +374,7 @@ if (has("runtime")) {
         log(`  strict: found schema-valid responses for ${found} program(s)`);
       }
     }
+    const coldPrograms: typeof programs = [];
     await pool(programs, opts.runtimeJobs, async (p) => {
       const op = await probe(opRequest(p.target));
       if (op.fatal || op.error) fail(p.pkg, "runtime", op.fatal ?? op.error, p.protocol);
@@ -392,6 +393,7 @@ if (has("runtime")) {
         sop.firstCallObjects = sCounted.firstCallObjects;
         put(p, "strictRuntime", sop);
       }
+      coldPrograms.push(p);
       let barrel: any;
       // The package root import does not depend on the protocol: once per SDK.
       if (p.primary) {
@@ -408,6 +410,30 @@ if (has("runtime")) {
           `  ${tag(p)}: +${op.addedP50Us?.toFixed(1)} µs/call, import ${fmtMs(op.importMs)}, heap ${fmtBytes(op.importHeap?.heapUsed)}${barrel ? `; root ${fmtMs(barrel.importMs)} ${fmtBytes(barrel.heap?.heapUsed)}` : ""}`,
         );
     });
+
+    // Cold-start timings (import time, first call) depend on CPU contention:
+    // the parallel probes above inflated them up to ~3x. Re-measure them one
+    // program at a time, median of 3 fresh processes, normal and strict.
+    log("runtime: cold-start pass (sequential)");
+    const median3 = (xs: number[]) => [...xs].sort((a, b) => a - b)[1]!;
+    for (const p of coldPrograms) {
+      for (const [suite, req] of [
+        ["runtime", opRequest(p.target)],
+        ...(hasStrict
+          ? [["strictRuntime", { ...opRequest(strictTarget(p.target)), strictCore: undefined }]]
+          : []),
+      ] as Array<[string, ProbeRequest]>) {
+        const rec = record[p.pkg].programs[p.protocol]?.[suite];
+        if (!rec || rec.error || rec.fatal) continue;
+        const runs: any[] = [];
+        for (let i = 0; i < 3; i++) runs.push(await probe({ ...req, firstOnly: true }));
+        const ok = runs.filter((r) => !r.error && !r.fatal && Number.isFinite(r.firstCallMs));
+        if (ok.length < 3) continue;
+        rec.firstCallMs = median3(ok.map((r) => r.firstCallMs));
+        rec.importMs = median3(ok.map((r) => r.importMs));
+        rec.coldStartPass = true;
+      }
+    }
   });
 }
 
