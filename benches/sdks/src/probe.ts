@@ -42,6 +42,8 @@ export interface ProbeRequest {
   readonly strictCore?: string;
   /** op/barrel: count live objects only (see the header). */
   readonly objects?: boolean;
+  /** op mode: stop after the first call (cold-start timing pass). */
+  readonly firstOnly?: boolean;
 }
 
 export interface MemorySnapshot {
@@ -385,6 +387,7 @@ const main = async (req: ProbeRequest) => {
   } catch (e) {
     error = errorText(e);
   }
+  if (req.firstOnly) return { importMs, firstCallMs, ...(error ? { error } : {}) };
   const m3 = snap();
   if (error) {
     return {

@@ -84,3 +84,8 @@ overrides:
   "@aws-sdk/nested-clients": "3.997.46"
   "@aws-sdk/signature-v4-multi-region": "3.996.47"
   "@aws-sdk/token-providers": "3.1147.0"
+
+# Upstream candidate: lets bundlers drop HttpClientErrorSchema (and Effect
+# Schema behind it) when unused. Remove once Effect ships it.
+patchedDependencies:
+  effect@4.0.0: patches/effect@4.0.0.patch

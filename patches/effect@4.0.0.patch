@@ -1,0 +1,22 @@
+diff --git a/dist/http/HttpClientError.js b/dist/http/HttpClientError.js
+index abf34ae..7313257 100644
+--- a/dist/http/HttpClientError.js
++++ b/dist/http/HttpClientError.js
+@@ -244,7 +244,7 @@ export class EmptyBodyError extends /*#__PURE__*/Data.TaggedError("EmptyBodyErro
+  * @category schemas
+  * @since 4.0.0
+  */
+-export class HttpClientErrorSchema extends /*#__PURE__*/Schema.Error(TypeId)({
++export const HttpClientErrorSchema = /*#__PURE__*/ (() => class HttpClientErrorSchema extends /*#__PURE__*/Schema.Error(TypeId)({
+   _tag: /*#__PURE__*/Schema.tag("HttpError"),
+   kind: /*#__PURE__*/Schema.Literals(["EncodeError", "DecodeError", "TransportError", "InvalidUrlError", "StatusCodeError", "EmptyBodyError"]),
+   cause: /*#__PURE__*/Schema.optional(/*#__PURE__*/Schema.Defect())
+@@ -262,5 +262,6 @@ export class HttpClientErrorSchema extends /*#__PURE__*/Schema.Error(TypeId)({
+       cause: error.reason
+     });
+   }
+-}
++})();
++
+ //# sourceMappingURL=HttpClientError.js.map
+\ No newline at end of file
