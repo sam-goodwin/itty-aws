@@ -26,7 +26,7 @@
  *   export class Oops extends S.TaggedError<Oops>()("Oops", { ... }) {}
  * becomes
  *   export const Oops = API.error(function Oops(i) {
- *     return i === API.D ? ['$1()("Oops",{...})', [...]] : API.newError(Oops, i, new.target);
+ *     return API.newError(i, new.target, ['$1()("Oops",{...})', [...]]);
  *   });
  */
 import { parseAst } from "rolldown/parseAst";
@@ -496,7 +496,7 @@ export const datafyOperations = (
       edits.push([
         o.init.start,
         o.init.end,
-        `${o.error.exported ? "export " : ""}const ${o.name}${any} = /*@__PURE__*/ API.error(function ${o.name}(i${any})${any} {\n  return i === API.D ? ${literal(opHolders[i]!)} : API.newError(${o.name}, i, new.target);\n});`,
+        `${o.error.exported ? "export " : ""}const ${o.name}${any} = /*@__PURE__*/ API.error(function ${o.name}(i${any})${any} {\n  return API.newError(i, new.target, ${literal(opHolders[i]!)});\n});`,
       ]);
       return;
     }

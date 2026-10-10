@@ -793,51 +793,55 @@ export const call = (op: unknown, input: unknown): Effect.Effect<any, any, any> 
  * Generated error classes described by data:
  *
  *   export const Oops = API.error(function Oops(i) {
- *     return i === API.D ? ['$1()("Oops",{...})', [...]] : API.newError(Oops, i, new.target);
+ *     return API.newError(i, new.target, ['$1()("Oops",{...})', [...]]);
  *   });
  *
- * The function is the class callers see. Entry 0 of its data is the
- * expression the class extended (e.g. `S.TaggedError()(...).pipe(category)`).
- * The first `new`, or the first read of a static the function does not own
- * (`ast`, `fields`, `identifier`, error matchers, ...), builds that base
- * class and puts it underneath: the function's statics and prototype then
- * inherit from it as `class Oops extends Base {}` did, so `instanceof`,
- * `_tag`, categories and subclasses behave as before. Until then an error
- * class costs one function. The `in` operator sees only `Function`
- * members until the class is built.
+ * The function is the class callers see: `new Oops(props)` constructs, a
+ * plain call returns the data. Entry 0 of the data is the expression the
+ * class extended (e.g. `S.TaggedError()(...).pipe(category)`). The first
+ * `new`, or the first read of a static the function does not own (`ast`,
+ * `fields`, `identifier`, error matchers, ...), builds that base class and
+ * puts it underneath: the function's statics and prototype then inherit
+ * from it as `class Oops extends Base {}` did, so `instanceof`, `_tag`,
+ * categories and subclasses behave as before. Until then an error class
+ * costs one function. The `in` operator sees only `Function` members until
+ * the class is built.
  */
-const errorBase = (fn: DataFn): Function => {
-  const src = sourceOf(fn);
+const errorBase = (f: any): Function | undefined => {
+  // `f` may be a subclass: find the data class it extends.
+  while (f && Object.getPrototypeOf(f) !== lazyErrorStatics && !sources.get(f)?.k)
+    f = Object.getPrototypeOf(f);
+  if (!f) return undefined;
+  const src = sourceOf(f);
   if (!src.k) {
     const base = evalEntry(src, 0) as Function;
     src.k = base;
-    Object.setPrototypeOf(fn, base);
-    Object.setPrototypeOf(fn.prototype, base.prototype);
+    Object.setPrototypeOf(f, base);
+    Object.setPrototypeOf(f.prototype, base.prototype);
   }
   return src.k;
 };
 
 // The statics of an unbuilt error class: `Function.prototype` members answer
-// directly; any other read builds the class, then reads again.
+// directly; any other read builds the class, then reads again. Made on first
+// use, so bundles without data errors drop it.
 let lazyErrorStatics: object | undefined;
 const LazyErrorStatics = (): object =>
   (lazyErrorStatics ??= new Proxy(Object.create(Function.prototype), {
-    get(target, key, receiver) {
-      if (key in target) return Reflect.get(target, key, receiver);
-      let fn = receiver;
-      while (fn !== null && Object.getPrototypeOf(fn) !== lazyErrorStatics)
-        fn = Object.getPrototypeOf(fn);
-      if (fn === null) return undefined;
-      errorBase(fn);
-      return Reflect.get(receiver, key, receiver);
-    },
+    get: (target, key, receiver) =>
+      key in target || !errorBase(receiver)
+        ? Reflect.get(target, key, receiver)
+        : Reflect.get(receiver, key, receiver),
   }));
 
 /** An error class described by data (see {@link errorBase}). */
 export const error = (fn: DataFn): any => Object.setPrototypeOf(fn, LazyErrorStatics());
 
-/** `new` on a data error class: an instance of the built base, with `newTarget`'s prototype. */
-export const newError = (fn: DataFn, props: unknown, newTarget: Function | undefined): any =>
-  Reflect.construct(errorBase(fn), [props], newTarget ?? fn);
+/**
+ * The body of a data error class: with `new`, an instance of the built
+ * base whose prototype is `newTarget`'s; called plainly, the class's data.
+ */
+export const newError = (props: unknown, newTarget: Function | undefined, data: unknown): any =>
+  newTarget ? Reflect.construct(errorBase(newTarget)!, [props], newTarget) : data;
 
 //#endregion

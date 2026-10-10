@@ -93,7 +93,7 @@ describe("datafyOperations", () => {
     expect(code).toContain(
       `export const Gone: any = /*@__PURE__*/ API.error(function Gone(i: any): any {`,
     );
-    expect(code).toContain(`API.newError(Gone, i, new.target)`);
+    expect(code).toContain(`  return API.newError(i, new.target, ['`);
     expect(code).toContain(`/** Not found. */\nexport const Gone`);
     expect(code).toContain(`class Kept extends Error { readonly x = 1; }`);
     expect(holders).toBeGreaterThan(0);
