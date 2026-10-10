@@ -5,8 +5,8 @@
  * when the user doesn't provide a value. This ensures request retry safety.
  */
 
-import * as S from "effect/Schema";
-import * as AST from "effect/SchemaAST";
+import type * as S from "effect/Schema";
+import type * as AST from "effect/SchemaAST";
 import { hasIdempotencyToken } from "../traits.ts";
 
 /**

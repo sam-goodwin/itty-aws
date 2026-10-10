@@ -7,7 +7,8 @@
 
 import * as Effect from "effect/Effect";
 import * as Ref from "effect/Ref";
-import * as Schema from "effect/Schema";
+import type * as Schema from "effect/Schema";
+import { decode } from "../util/codec.ts";
 import * as Stream from "effect/Stream";
 import {
   decodeMessage,
@@ -239,19 +240,14 @@ export const decodeEventStreamUnion = (
   eventSchema: Schema.Schema<unknown> | undefined,
 ): Stream.Stream<ParsedEvent, EventStreamParseError> => {
   if (!eventSchema) return eventStream;
-  const decode = Schema.decodeUnknownEffect(eventSchema);
-  return Stream.mapEffect(
-    eventStream,
-    (event) =>
-      decode(event).pipe(
-        Effect.map((decoded) => decoded as ParsedEvent),
-        Effect.catch(() => Effect.succeed(event)),
-        // The schema arrives via untyped AST annotations as `Schema<unknown>`,
-        // whose decoding-services slot is `unknown`; generated event schemas
-        // are plain data codecs with no decode services, so the effect is
-        // service-free at runtime.
-      ) as Effect.Effect<ParsedEvent, never>,
-  );
+  const ast = eventSchema.ast as any;
+  return Stream.map(eventStream, (event) => {
+    try {
+      return decode(ast, event, true) as ParsedEvent;
+    } catch {
+      return event;
+    }
+  });
 };
 
 /**

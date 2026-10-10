@@ -1,7 +1,7 @@
 import * as ResponseValidation from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
-import * as S from "effect/Schema";
+import * as S from "@distilled.cloud/core/schema-lite";
 import * as Stream from "effect/Stream";
 import { describe, expect, test } from "vitest";
 import type { Operation } from "../client/operation.ts";
@@ -40,7 +40,7 @@ const response = (
 });
 
 const op = (input: S.Top, output: S.Top = S.Struct({}), operationName?: string): Operation => ({
-  input: input as S.Any,
+  input: input as any,
   output,
   errors: [],
   ...(operationName ? { operationName } : {}),

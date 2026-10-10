@@ -1,6 +1,7 @@
 import * as Context from "effect/Context";
 import type * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
+import * as Exit from "effect/Exit";
 import * as HttpClient from "effect/http/HttpClient";
 import type * as HttpClientError from "effect/http/HttpClientError";
 import type * as HttpClientRequest from "effect/http/HttpClientRequest";
@@ -82,12 +83,52 @@ export class Protocol
         /** The operation's config (memoized per operation -- see {@link ProtocolOperationConfig}). */
         readonly config: ProtocolOperationConfig;
       }) => Effect.Effect<unknown>;
+      /**
+       * Optional whole-call implementation. When present, `API.make` runs a
+       * call as `call(operation, input)` instead of encode -> HttpClient ->
+       * decode, so a protocol can read the context once, build the request
+       * synchronously and decode the response without intermediate effects.
+       * It must read the `HttpClient` from the calling fiber's context and
+       * produce the same request, result and errors as encode/decode.
+       */
+      readonly call?: (operation: PreparedOperation, input: unknown) => Effect.Effect<unknown>;
     }
   >()("Protocol") {}
+
+/** The service a protocol layer provides. */
+export type ProtocolShape = (typeof Protocol)["Service"];
+
+/**
+ * One operation as a protocol's {@link Protocol.call} sees it. Built once per
+ * operation on its first call; the same object is passed on every call.
+ */
+export interface PreparedOperation {
+  readonly config: ProtocolOperationConfig;
+  readonly inputAst: AST.AST;
+  readonly outputAst: AST.AST;
+  readonly errors: ReadonlyArray<ApiErrorClass>;
+  /** Per-operation slot owned by the operation's protocol (compiled codecs). */
+  compiled?: unknown;
+}
 
 //#endregion
 
 //#region Make
+
+/**
+ * Run `f` on the value of `effect` -- directly when `effect` is already a
+ * successful `Exit` (e.g. a `Credentials` service holding
+ * `Effect.succeed(config)`), so a resolved value costs no fiber step.
+ */
+export const withValue = <A, B>(
+  effect: Effect.Effect<A, any, any>,
+  f: (a: A) => Effect.Effect<B, any, any>,
+): Effect.Effect<B, any, any> =>
+  Exit.isExit(effect)
+    ? Exit.isSuccess(effect)
+      ? f(effect.value as A)
+      : (effect as unknown as Effect.Effect<never, any>)
+    : Effect.flatMap(effect, f);
 
 export type ApiErrorClass = {
   new (...args: any[]): {
@@ -306,10 +347,10 @@ interface OperationState {
   readonly strategy?: Pagination.PaginationStrategy;
 }
 
-interface Prepared {
+interface Prepared extends PreparedOperation {
   readonly cfg: OperationConfig<any, any, any, any, any>;
-  readonly inputAst: AST.AST;
-  readonly outputAst: AST.AST;
+  /** The built protocol service, once its layer has been built. */
+  service?: ProtocolShape;
 }
 
 const stateKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/api/OperationState");
@@ -323,28 +364,54 @@ const stateKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/api/OperationSt
 const prepare = (state: OperationState): Prepared => {
   if (state.prepared) return state.prepared;
   const cfg = state.configFn();
-  return (state.prepared = { cfg, inputAst: cfg.input!.ast, outputAst: cfg.output!.ast });
+  return (state.prepared = {
+    cfg,
+    config: cfg,
+    inputAst: cfg.input!.ast,
+    outputAst: cfg.output!.ast,
+    errors: cfg.errors ?? [],
+    compiled: undefined,
+    service: undefined,
+  });
 };
 
 const stateOf = (op: unknown): OperationState => (op as Record<symbol, OperationState>)[stateKey]!;
 
-const callOperation = (state: OperationState, input: unknown): Effect.Effect<any, any, any> =>
-  Effect.suspend(() => {
-    const { cfg, inputAst, outputAst } = prepare(state);
-    // A plain flatMap chain: no generator, and the protocol is read from its
-    // cached context instead of being provided around the call.
-    const call = Effect.flatMap(protocolContext(cfg.protocol), (protocolCtx) => {
-      const protocol = Context.get(protocolCtx, Protocol);
-      return Effect.flatMap(HttpClient.HttpClient, (client) =>
-        Effect.flatMap(protocol.encode({ input, inputAst, config: cfg }), (request) =>
-          Effect.flatMap(client.execute(request), (response) =>
-            protocol.decode({ response, outputAst, errors: cfg.errors ?? [], config: cfg }),
-          ),
-        ),
-      );
+const defineState = (op: unknown, state: OperationState): OperationState => {
+  Object.defineProperty(op, stateKey, { value: state });
+  return state;
+};
+
+const runWith = (
+  p: Prepared,
+  protocol: ProtocolShape,
+  input: unknown,
+): Effect.Effect<any, any, any> => {
+  if (protocol.call !== undefined) return protocol.call(p, input);
+  const { cfg, inputAst, outputAst, errors } = p;
+  return Effect.flatMap(HttpClient.HttpClient, (client) =>
+    Effect.flatMap(protocol.encode({ input, inputAst, config: cfg }), (request) =>
+      Effect.flatMap(client.execute(request), (response) =>
+        protocol.decode({ response, outputAst, errors, config: cfg }),
+      ),
+    ),
+  );
+};
+
+const callOperation = (state: OperationState, input: unknown): Effect.Effect<any, any, any> => {
+  // Warm path: the operation is prepared and its protocol built, so the call
+  // is whatever the protocol returns, with no wrapper effects around it.
+  const p = state.prepared;
+  if (p?.service !== undefined) return applyRetry(runWith(p, p.service, input), p.cfg.retry);
+  return Effect.suspend(() => {
+    const prepared = prepare(state);
+    const call = Effect.flatMap(protocolContext(prepared.cfg.protocol), (protocolCtx) => {
+      const service = (prepared.service = Context.get(protocolCtx, Protocol));
+      return runWith(prepared, service, input);
     });
-    return applyRetry(call, cfg.retry);
+    return applyRetry(call, prepared.cfg.retry);
   });
+};
 
 /**
  * `const fn = yield* operation`: a requirement-free call function over the
@@ -408,7 +475,7 @@ const OperationProto: object = /*@__PURE__*/ Object.setPrototypeOf(
 
 const makeOperation = (state: OperationState, proto: object): any => {
   const fn = (input: unknown) => callOperation(state, input);
-  Object.defineProperty(fn, stateKey, { value: state });
+  defineState(fn, state);
   return Object.setPrototypeOf(fn, proto);
 };
 
@@ -496,7 +563,11 @@ export interface PaginatedOperationConfig<
 /** `.pages` / `.items` over any call function (the operation itself or a context-bound one). */
 const streamsOf = (state: OperationState, call: (input: any) => Effect.Effect<any, any, any>) => {
   const pag = () => (prepare(state).cfg as PaginatedOperationConfig<any, any, any, any>).pagination;
-  const paginate = state.strategy ?? Pagination.paginateWithDefaults;
+  // Data operations carry their strategy in the config.
+  const paginate =
+    state.strategy ??
+    (prepare(state).cfg as { strategy?: Pagination.PaginationStrategy }).strategy ??
+    Pagination.paginateWithDefaults;
   const pages = (input: Record<string, unknown>) => paginate(call, input, pag());
   const items = (input: Record<string, unknown>) => {
     const p = pag();
@@ -560,5 +631,160 @@ export function makePaginated<
 > {
   return makeOperation(strategy ? { configFn, strategy } : { configFn }, PaginatedOperationProto);
 }
+
+//#endregion
+
+//#region Data operations
+
+/**
+ * Generated operations described by data instead of code.
+ *
+ * A service module holds each operation as one arrow that is both the
+ * callable operation and the holder of its description:
+ *
+ *   export const getFile = API.op((i) => i === API.D ? ['{input:#1,...};__more', [__0, __4, ...]] : API.call(getFile, i));
+ *
+ * Called with {@link D}, it returns `[data, refs]`: `;`-separated entries
+ * in a small expression language (below) and the values they name. `refs[0]`
+ * is the schema-lite `at` (lazy schema wrapper). Schemas reached by more
+ * than one operation live in shared holders, `function __d3() { return
+ * [data, refs]; }`, named in `refs` so a bundler keeps only the holders an
+ * operation reaches. Entry 0 of an operation is its config; the rest are
+ * schemas and thunk bodies. Evaluating an entry calls the same
+ * constructors the code form called, in the same order, so the result is
+ * the same schema.
+ *
+ * Importing a module allocates one function per operation and one per
+ * holder; the data stays text in the module source until first use.
+ *
+ * Grammar (`;` never appears outside an entry separator; strings escape it):
+ *
+ *   $N        refs[N]
+ *   #N  ^R:N  schema entry N of this holder / of the holder refs[R] (lazy, memoized)
+ *   >N        thunk `() => entry N`
+ *   "..." -1.5 true false null   JSON literal   u  undefined
+ *   {k:e,"k":e}  object   [e,e]  array
+ *   e(a,b)    call   e.name  member   e.name(a,b)  method call   e@"X"  e.annotate({ identifier: "X" })
+ */
+export const D: unique symbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/api/D") as any;
+
+type DataFn = (i?: unknown) => any;
+
+interface Source {
+  readonly fn: DataFn;
+  e?: string[];
+  r?: ReadonlyArray<any>;
+  b?: (j: number) => unknown;
+  readonly c: unknown[];
+}
+
+const sources = /*@__PURE__*/ new WeakMap<DataFn, Source>();
+
+const sourceOf = (fn: DataFn): Source => {
+  let src = sources.get(fn);
+  if (!src) sources.set(fn, (src = { fn, c: [] }));
+  if (!src.e) {
+    const [s, r] = fn(D);
+    src.e = s.split(";");
+    src.r = r;
+  }
+  return src;
+};
+
+/** Schema `j` of a holder, wrapped by `at` (lazy until first use). */
+const schemaOf = (src: Source, j: number): unknown =>
+  (src.c[j] ??= src.r![0]((src.b ??= (k: number) => evalEntry(src, k)), j));
+
+/** A schema of a holder, for module-level code (error classes) that names one at import. */
+export const schema = (fn: DataFn, j: number): any => schemaOf(sourceOf(fn), j);
+
+const TOKEN = /"(?:[^"\\]|\\.)*"|[\w$.+-]*/y;
+const NAME = /[\w$]*/y;
+
+const evalEntry = (src: Source, j: number): any => {
+  const s = src.e![j]!;
+  const r = src.r!;
+  let p = 0;
+  const tok = (re = NAME): string => {
+    re.lastIndex = p;
+    const t = re.exec(s)![0];
+    p += t.length;
+    return t;
+  };
+  const list = (close: string): any[] => {
+    const a: any[] = [];
+    if (s[p] === close) p++;
+    else
+      do a.push(expr());
+      while (s[p++] !== close);
+    return a;
+  };
+  const expr = (): any => {
+    let v: any;
+    const c = s[p++];
+    if (c === "$") v = r[+tok()];
+    else if (c === "#") v = schemaOf(src, +tok());
+    else if (c === "^") {
+      const h = sourceOf(r[+tok()]);
+      p++;
+      v = schemaOf(h, +tok());
+    } else if (c === ">") {
+      const k = +tok();
+      v = () => evalEntry(src, k);
+    } else if (c === "{") {
+      v = {};
+      if (s[p] === "}") p++;
+      else
+        do {
+          const k = tok(TOKEN);
+          p++;
+          v[k[0] === '"' ? JSON.parse(k) : k] = expr();
+        } while (s[p++] !== "}");
+    } else if (c === "[") v = list("]");
+    else {
+      p--;
+      const t = tok(TOKEN);
+      v = t === "u" ? undefined : JSON.parse(t);
+    }
+    for (;;) {
+      const d = s[p++];
+      if (d === "(") v = v(...list(")"));
+      else if (d === "@") v = v.annotate({ identifier: JSON.parse(tok(TOKEN)) });
+      else if (d === ".") {
+        const name = tok();
+        v = s[p] === "(" ? (p++, v[name](...list(")"))) : v[name];
+      } else return (p--, v);
+    }
+  };
+  return expr();
+};
+
+// A data operation gets its state on first use, from this inherited getter.
+const dataState = {
+  get(this: DataFn): OperationState {
+    return defineState(this, { configFn: () => evalEntry(sourceOf(this), 0) });
+  },
+  configurable: true,
+};
+let dataProto: object | undefined;
+let dataPaginatedProto: object | undefined;
+
+/** An operation described by data (see the region header). */
+export const op = (fn: DataFn): any =>
+  Object.setPrototypeOf(
+    fn,
+    (dataProto ??= Object.create(OperationProto, { [stateKey]: dataState })),
+  );
+
+/** A paginated operation described by data; its config may name a `strategy`. */
+export const opPaginated = (fn: DataFn): any =>
+  Object.setPrototypeOf(
+    fn,
+    (dataPaginatedProto ??= Object.create(PaginatedOperationProto, { [stateKey]: dataState })),
+  );
+
+/** The call path of a data operation. */
+export const call = (op: unknown, input: unknown): Effect.Effect<any, any, any> =>
+  callOperation(stateOf(op), input);
 
 //#endregion

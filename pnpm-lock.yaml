@@ -198,8 +198,8 @@ catalogs:
       specifier: ^1.86.0
       version: 1.86.0
     rolldown:
-      specifier: 1.2.5
-      version: 1.2.5
+      specifier: 1.2.8
+      version: 1.2.8
     typescript:
       specifier: ^7.0.2
       version: 7.0.2
@@ -229,19 +229,16 @@ overrides:
   '@aws-sdk/signature-v4-multi-region': 3.996.47
   '@aws-sdk/token-providers': 3.1147.0
 
-patchedDependencies:
-  effect@4.0.0: a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93
-
 importers:
 
   .:
     devDependencies:
       '@alchemy.run/pkg':
         specifier: 2.0.0-beta.81
-        version: 2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
+        version: 2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+        version: 4.0.0(effect@4.0.0)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.2.0
@@ -250,7 +247,7 @@ importers:
         version: 13.16.1
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
       husky:
         specifier: 'catalog:'
         version: 9.1.7
@@ -280,7 +277,7 @@ importers:
         version: link:../../packages/core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@oxc-project/types':
         specifier: 'catalog:'
@@ -290,7 +287,7 @@ importers:
         version: 26.2.0
       rolldown:
         specifier: 'catalog:'
-        version: 1.2.5
+        version: 1.2.8
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -308,7 +305,7 @@ importers:
         version: link:../../packages/core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
       mitata:
         specifier: 'catalog:'
         version: 1.0.34
@@ -336,10 +333,10 @@ importers:
         version: link:../../packages/stripe
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
       rolldown:
         specifier: 'catalog:'
-        version: 1.2.5
+        version: 1.2.8
       typebox:
         specifier: 1.0.81
         version: 1.0.81
@@ -354,7 +351,7 @@ importers:
     dependencies:
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@aws-sdk/client-dynamodb':
         specifier: 3.1147.0
@@ -385,7 +382,7 @@ importers:
         version: 7.3.0
       rolldown:
         specifier: 'catalog:'
-        version: 1.2.5
+        version: 1.2.8
       typescript:
         specifier: 'catalog:'
         version: 7.0.2
@@ -406,7 +403,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -419,7 +416,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -432,7 +429,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -445,7 +442,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -458,7 +455,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -471,7 +468,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -484,7 +481,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -497,7 +494,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -510,7 +507,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -523,7 +520,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -536,7 +533,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -549,7 +546,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -562,7 +559,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -575,11 +572,11 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+        version: 4.0.0(effect@4.0.0)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.2.0
@@ -591,7 +588,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -607,7 +604,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -617,16 +614,16 @@ importers:
     devDependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+        version: 4.0.0(effect@4.0.0)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.2.0
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
       rolldown:
         specifier: 'catalog:'
-        version: 1.2.5
+        version: 1.2.8
       vitest:
         specifier: 'catalog:'
         version: 4.1.11(@types/node@26.2.0)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))
@@ -638,7 +635,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -651,7 +648,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -664,7 +661,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -677,7 +674,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -690,7 +687,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -703,7 +700,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -716,7 +713,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -729,7 +726,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -742,7 +739,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -755,7 +752,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -768,7 +765,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -781,7 +778,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -794,7 +791,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -807,7 +804,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -820,7 +817,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -833,7 +830,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -846,7 +843,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -859,7 +856,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -872,7 +869,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -885,7 +882,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -898,7 +895,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -914,7 +911,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -927,7 +924,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -940,7 +937,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -953,7 +950,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -966,7 +963,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -979,7 +976,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -992,7 +989,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1005,7 +1002,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1018,7 +1015,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1031,7 +1028,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1044,7 +1041,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1057,7 +1054,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1070,7 +1067,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1083,7 +1080,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1096,7 +1093,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1109,7 +1106,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1122,7 +1119,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1135,7 +1132,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1148,7 +1145,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1164,7 +1161,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1177,7 +1174,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1190,7 +1187,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1203,7 +1200,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1216,7 +1213,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1229,7 +1226,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1242,7 +1239,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1255,7 +1252,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1268,7 +1265,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1281,7 +1278,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1294,7 +1291,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1307,7 +1304,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1320,11 +1317,11 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+        version: 4.0.0(effect@4.0.0)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.2.0
@@ -1336,7 +1333,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1349,7 +1346,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1362,7 +1359,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1375,7 +1372,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1388,7 +1385,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1401,7 +1398,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1414,7 +1411,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1427,7 +1424,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1440,7 +1437,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1453,7 +1450,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1466,7 +1463,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1482,7 +1479,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1495,7 +1492,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1508,7 +1505,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1521,11 +1518,11 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+        version: 4.0.0(effect@4.0.0)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.2.0
@@ -1537,7 +1534,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1553,7 +1550,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1566,7 +1563,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1579,7 +1576,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1589,13 +1586,13 @@ importers:
     dependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+        version: 4.0.0(effect@4.0.0)(redis@6.2.1)
       alchemy:
         specifier: 'catalog:'
-        version: 2.0.0-beta.80(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
+        version: 2.0.0-beta.80(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       typescript:
         specifier: 'catalog:'
@@ -1605,13 +1602,13 @@ importers:
     dependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+        version: 4.0.0(effect@4.0.0)(redis@6.2.1)
       alchemy:
         specifier: 'catalog:'
-        version: 2.0.0-beta.80(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
+        version: 2.0.0-beta.80(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
     devDependencies:
       graphql:
         specifier: 'catalog:'
@@ -1627,7 +1624,7 @@ importers:
     dependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+        version: 4.0.0(effect@4.0.0)(redis@6.2.1)
       '@solidjs/meta':
         specifier: 0.29.4
         version: 0.29.4(solid-js@1.9.15)
@@ -1639,10 +1636,10 @@ importers:
         version: 2.0.5(@solidjs/router@1.0.0(solid-js@1.9.15))(crossws@0.4.12(srvx@1.0.5))(ocache@0.3.0)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))
       alchemy:
         specifier: 'catalog:'
-        version: 2.0.0-beta.80(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
+        version: 2.0.0-beta.80(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
       effect:
         specifier: 'catalog:'
-        version: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+        version: 4.0.0
       solid-js:
         specifier: 1.9.15
         version: 1.9.15
@@ -5262,14 +5259,14 @@ packages:
 
 snapshots:
 
-  '@alchemy.run/cloudflare-runtime@2.0.0-beta.80(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))':
+  '@alchemy.run/cloudflare-runtime@2.0.0-beta.80(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0))(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@alchemy.run/node-utils': 2.0.0-beta.80
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260918.1)
-      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
+      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.0)
       '@puppeteer/browsers': 3.2.1(yauzl@3.4.0)
       capnp-es: 0.0.16(typescript@7.0.2)
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
       magic-string: 0.30.21
       mime: 4.1.0
       sharp: 0.35.4(@types/node@26.2.0)
@@ -5277,8 +5274,8 @@ snapshots:
       workerd: 1.20260918.1
       yauzl: 3.4.0
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@effect/platform-node': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+      '@effect/platform-bun': 4.0.0(effect@4.0.0)
+      '@effect/platform-node': 4.0.0(effect@4.0.0)(redis@6.2.1)
       rolldown: 1.2.5
       vite: 8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
@@ -5286,14 +5283,14 @@ snapshots:
       - proxy-agent
       - typescript
 
-  '@alchemy.run/cloudflare-runtime@2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))':
+  '@alchemy.run/cloudflare-runtime@2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0))(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@alchemy.run/node-utils': 2.0.0-beta.81
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260918.1)
-      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
+      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.0)
       '@puppeteer/browsers': 3.2.1(yauzl@3.4.0)
       capnp-es: 0.0.16(typescript@7.0.2)
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
       magic-string: 0.30.21
       mime: 4.1.0
       sharp: 0.35.4(@types/node@26.2.0)
@@ -5301,8 +5298,8 @@ snapshots:
       workerd: 1.20260918.1
       yauzl: 3.4.0
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@effect/platform-node': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+      '@effect/platform-bun': 4.0.0(effect@4.0.0)
+      '@effect/platform-node': 4.0.0(effect@4.0.0)(redis@6.2.1)
       rolldown: 1.2.5
       vite: 8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
@@ -5310,13 +5307,13 @@ snapshots:
       - proxy-agent
       - typescript
 
-  '@alchemy.run/floci@2.0.0-beta.80(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@alchemy.run/floci@2.0.0-beta.80(effect@4.0.0)':
     dependencies:
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
 
-  '@alchemy.run/floci@2.0.0-beta.81(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@alchemy.run/floci@2.0.0-beta.81(effect@4.0.0)':
     dependencies:
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
 
   '@alchemy.run/node-utils@2.0.0-beta.80':
     dependencies:
@@ -5328,15 +5325,15 @@ snapshots:
       chokidar: 5.0.0
       rolldown: 1.2.5
 
-  '@alchemy.run/pkg@2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)':
+  '@alchemy.run/pkg@2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)':
     dependencies:
-      '@distilled.cloud/github': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      alchemy: 2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/github': 1.0.0-rc.13(effect@4.0.0)
+      alchemy: 2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
+      effect: 4.0.0
       modern-tar: 0.8.4
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@effect/platform-node': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+      '@effect/platform-bun': 4.0.0(effect@4.0.0)
+      '@effect/platform-node': 4.0.0(effect@4.0.0)(redis@6.2.1)
     transitivePeerDependencies:
       - '@alchemy.run/frontend-frameworks'
       - '@aws/durable-execution-sdk-js'
@@ -5766,128 +5763,128 @@ snapshots:
 
   '@cloudflare/workers-types@5.20261003.1': {}
 
-  '@distilled.cloud/acme@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/acme@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/aws@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/aws@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
       '@smithy/types': 4.17.2
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
 
-  '@distilled.cloud/axiom@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/axiom@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/core@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/core@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
       graphql: 16.11.0
 
-  '@distilled.cloud/doppler@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/doppler@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/fly-io@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/fly-io@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/gcp@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/gcp@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/github@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/github@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/hetzner@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/hetzner@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/infisical@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/infisical@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/neon@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/neon@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/planetscale@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/planetscale@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/prisma@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/prisma@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/railway@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/railway@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/stripe@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/stripe@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@distilled.cloud/zerossl@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@distilled.cloud/zerossl@1.0.0-rc.13(effect@4.0.0)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      effect: 4.0.0
 
-  '@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@effect/platform-bun@4.0.0(effect@4.0.0)':
     dependencies:
-      '@effect/platform-node-shared': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@effect/platform-node-shared': 4.0.0(effect@4.0.0)
+      effect: 4.0.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
     optional: true
 
-  '@effect/platform-node-shared@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@effect/platform-node-shared@4.0.0(effect@4.0.0)':
     dependencies:
       '@types/ws': 8.18.1
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
       ws: 8.22.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)':
+  '@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1)':
     dependencies:
-      '@effect/platform-node-shared': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      '@effect/platform-node-shared': 4.0.0(effect@4.0.0)
+      effect: 4.0.0
       redis: 6.2.1
       undici: 8.11.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/sql-d1@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@effect/sql-d1@4.0.0(effect@4.0.0)':
     dependencies:
       '@cloudflare/workers-types': 5.20261003.1
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
 
-  '@effect/sql-sqlite-do@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))':
+  '@effect/sql-sqlite-do@4.0.0(effect@4.0.0)':
     dependencies:
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
 
   '@electric-sql/pglite-socket@0.0.20(@electric-sql/pglite@0.3.15)':
     dependencies:
@@ -6948,30 +6945,30 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  alchemy@2.0.0-beta.80(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0):
+  alchemy@2.0.0-beta.80(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0):
     dependencies:
-      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.80(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))
-      '@alchemy.run/floci': 2.0.0-beta.80(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
+      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.80(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0))(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))
+      '@alchemy.run/floci': 2.0.0-beta.80(effect@4.0.0)
       '@alchemy.run/node-utils': 2.0.0-beta.80
       '@alchemy.run/sigil': 0.1.0-alpha.1
-      '@distilled.cloud/acme': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/aws': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/axiom': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/doppler': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/fly-io': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/gcp': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/hetzner': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/infisical': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/neon': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/planetscale': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/prisma': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/railway': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/stripe': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/zerossl': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@effect/sql-d1': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@effect/sql-sqlite-do': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
+      '@distilled.cloud/acme': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/aws': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/axiom': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/doppler': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/fly-io': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/gcp': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/hetzner': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/infisical': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/neon': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/planetscale': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/prisma': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/railway': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/stripe': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/zerossl': 1.0.0-rc.13(effect@4.0.0)
+      '@effect/sql-d1': 4.0.0(effect@4.0.0)
+      '@effect/sql-sqlite-do': 4.0.0(effect@4.0.0)
       '@libsql/client': 0.17.4
       '@neon/functions': 0.11.0(hono@4.11.4)
       '@octokit/rest': 22.0.1
@@ -6979,7 +6976,7 @@ snapshots:
       '@prisma/dev': 0.20.0(typescript@7.0.2)
       '@types/aws-lambda': 8.10.162
       capnweb: 0.12.0
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
       fflate: 0.8.3
       libsodium-wrappers: 0.8.4
       pathe: 2.0.3
@@ -6988,8 +6985,8 @@ snapshots:
       tinyglobby: 0.2.17
       yaml: 2.9.0
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@effect/platform-node': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+      '@effect/platform-bun': 4.0.0(effect@4.0.0)
+      '@effect/platform-node': 4.0.0(effect@4.0.0)(redis@6.2.1)
       vite: 8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0)
       ws: 8.22.0
     transitivePeerDependencies:
@@ -7002,30 +6999,30 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  alchemy@2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0):
+  alchemy@2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0):
     dependencies:
-      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-bun@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)))(@effect/platform-node@4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))
-      '@alchemy.run/floci': 2.0.0-beta.81(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
+      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.0))(@effect/platform-bun@4.0.0(effect@4.0.0))(@effect/platform-node@4.0.0(effect@4.0.0)(redis@6.2.1))(@types/node@26.2.0)(effect@4.0.0)(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0))
+      '@alchemy.run/floci': 2.0.0-beta.81(effect@4.0.0)
       '@alchemy.run/node-utils': 2.0.0-beta.81
       '@alchemy.run/sigil': 0.1.0-alpha.1
-      '@distilled.cloud/acme': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/aws': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/axiom': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/doppler': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/fly-io': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/gcp': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/hetzner': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/infisical': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/neon': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/planetscale': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/prisma': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/railway': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/stripe': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@distilled.cloud/zerossl': 1.0.0-rc.13(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@effect/sql-d1': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@effect/sql-sqlite-do': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
+      '@distilled.cloud/acme': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/aws': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/axiom': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/doppler': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/fly-io': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/gcp': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/hetzner': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/infisical': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/neon': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/planetscale': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/prisma': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/railway': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/stripe': 1.0.0-rc.13(effect@4.0.0)
+      '@distilled.cloud/zerossl': 1.0.0-rc.13(effect@4.0.0)
+      '@effect/sql-d1': 4.0.0(effect@4.0.0)
+      '@effect/sql-sqlite-do': 4.0.0(effect@4.0.0)
       '@libsql/client': 0.17.4
       '@neon/functions': 0.11.0(hono@4.11.4)
       '@octokit/rest': 22.0.1
@@ -7033,7 +7030,7 @@ snapshots:
       '@prisma/dev': 0.20.0(typescript@7.0.2)
       '@types/aws-lambda': 8.10.162
       capnweb: 0.12.0
-      effect: 4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93)
+      effect: 4.0.0
       fflate: 0.8.3
       libsodium-wrappers: 0.8.4
       pathe: 2.0.3
@@ -7042,8 +7039,8 @@ snapshots:
       tinyglobby: 0.2.17
       yaml: 2.9.0
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))
-      '@effect/platform-node': 4.0.0(effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93))(redis@6.2.1)
+      '@effect/platform-bun': 4.0.0(effect@4.0.0)
+      '@effect/platform-node': 4.0.0(effect@4.0.0)(redis@6.2.1)
       vite: 8.3.0(@types/node@26.2.0)(jiti@2.7.0)(yaml@2.9.0)
       ws: 8.22.0
     transitivePeerDependencies:
@@ -7319,7 +7316,7 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  effect@4.0.0(patch_hash=a2977b94eedad5a411ad36582e9eb64ec2f4383b3691288b3eb693170fc48e93): {}
+  effect@4.0.0: {}
 
   electron-to-chromium@1.5.429: {}
 

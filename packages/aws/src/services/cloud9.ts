@@ -1,6 +1,6 @@
 import * as API from "@distilled.cloud/core/api";
-import * as __L from "@distilled.cloud/core/chunks";
-import * as S from "@distilled.cloud/core/schema";
+import * as S from "@distilled.cloud/core/schema-lite";
+import * as __L from "@distilled.cloud/core/schema-lite";
 import type * as HttpClient from "effect/http/HttpClient";
 import type * as redacted from "effect/Redacted";
 import type { Credentials } from "../credentials.ts";

@@ -11,8 +11,8 @@
 
 import { failIfStrict } from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
-import * as Schema from "effect/Schema";
-import * as AST from "effect/SchemaAST";
+import type * as Schema from "effect/Schema";
+import type * as AST from "effect/SchemaAST";
 import type * as Stream from "effect/Stream";
 import type { Operation } from "../client/operation.ts";
 import type { Protocol, ProtocolHandler } from "../client/protocol.ts";
@@ -48,6 +48,7 @@ import {
   isBooleanAST,
   isNumberAST,
 } from "../util/ast.ts";
+import { inputEncoder } from "../util/codec.ts";
 import { extractJsonErrorCode, extractJsonErrorData, sanitizeErrorCode } from "../util/error.ts";
 import { extractStaticQueryParams } from "../util/query-params.ts";
 import { applyHttpTrait, bindInputToRequest } from "../util/serialize-input.ts";
@@ -66,7 +67,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
   const outputAst = outputSchema.ast;
 
   // Pre-compute encoder (done once at init)
-  const encodeInput = Schema.encodeEffect(inputSchema);
+  const encodeInput = inputEncoder(inputAst as any);
 
   // Check for service-specific customizations (done once at init)
   const serviceInfo = getAwsApiService(inputAst);
@@ -170,9 +171,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
 
   return {
     serializeRequest: Effect.fnUntraced(function* (input: unknown) {
-      const encoded = yield* encodeInput(input).pipe(
-        Effect.mapError((err) => new ParseError({ message: err.message })),
-      );
+      const encoded = yield* encodeInput(input);
 
       // Start without Content-Type - we'll set it based on the body type
       // unless user explicitly provides one via httpHeader binding
@@ -415,7 +414,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
 function isRawPayload(ast: AST.AST): boolean {
   if (isStreamingType(ast)) return true;
   if (ast._tag === "String") return true;
-  if (AST.isUnion(ast)) return ast.types.some(isRawPayload);
+  if (ast._tag === "Union") return ast.types.some(isRawPayload);
   return false;
 }
 
@@ -426,7 +425,7 @@ function isRawPayload(ast: AST.AST): boolean {
  * bytes instead of JSON-parsing the body.
  */
 function isBlobPayload(ast: AST.AST): boolean {
-  if (AST.isUnion(ast)) return ast.types.some(isBlobPayload);
+  if (ast._tag === "Union") return ast.types.some(isBlobPayload);
   return getIdentifier(ast) === "Blob";
 }
 

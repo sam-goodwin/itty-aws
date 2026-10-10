@@ -14,7 +14,7 @@
 import { failIfStrict } from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
 import * as Result from "effect/Result";
-import * as S from "effect/Schema";
+import type * as S from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import type { Operation } from "../client/operation.ts";
 import type { Protocol, ProtocolHandler } from "../client/protocol.ts";
@@ -28,6 +28,7 @@ import {
   getIdentifier,
   isArrayAST,
 } from "../util/ast.ts";
+import { inputEncoder } from "../util/codec.ts";
 import { sanitizeErrorCode } from "../util/error.ts";
 import { readStreamAsText } from "../util/stream.ts";
 import { deserializePrimitive, extractXmlRoot, parseXml, unwrapArrayValue } from "../util/xml.ts";
@@ -43,7 +44,7 @@ export const ec2QueryProtocol: Protocol = (operation: Operation): ProtocolHandle
   const outputAst = outputSchema.ast;
 
   // Pre-compute encoder (done once at init)
-  const encodeInput = S.encodeEffect(inputSchema);
+  const encodeInput = inputEncoder(inputAst as any);
 
   // Pre-compute operation name and version from annotations. Prefer the
   // explicit operation name emitted by the generator; fall back to deriving
@@ -56,9 +57,7 @@ export const ec2QueryProtocol: Protocol = (operation: Operation): ProtocolHandle
     serializeRequest: Effect.fnUntraced(function* (input: unknown) {
       // Encode the input via schema - handles all transformations
       // (TimestampFormat -> ISO 8601 strings, etc.)
-      const encoded = yield* encodeInput(input).pipe(
-        Effect.mapError((err) => new ParseError({ message: err.message })),
-      );
+      const encoded = yield* encodeInput(input);
 
       const request: Request = {
         method: "POST",

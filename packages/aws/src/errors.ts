@@ -1,4 +1,4 @@
-import * as S from "@distilled.cloud/core/schema";
+import * as S from "@distilled.cloud/core/schema-lite";
 import type * as HttpClientError from "effect/http/HttpClientError";
 import * as Category from "./category.ts";
 import type * as Credentials from "./credentials-service.ts";

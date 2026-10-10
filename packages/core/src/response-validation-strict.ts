@@ -3,11 +3,11 @@
  * Effect Schema is bundled and loaded only by programs that provide
  * `ResponseValidation.strict`.
  */
-import * as Effect from "effect/Effect";
 import {
   Any,
   Array,
   Boolean,
+  declare,
   Literal,
   make,
   Null,
@@ -22,14 +22,19 @@ import {
   Void,
   optional,
   suspend,
-  decodeUnknownEffect,
+  decodeUnknownExit,
   type SchemaError,
   type Top,
 } from "effect/Schema";
+import type * as S from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import { toEffect } from "./schema-lite-impl.ts";
 
-export type Decode = (input: unknown) => Effect.Effect<unknown, SchemaError>;
+/**
+ * Validate `input` synchronously: `undefined` when it matches, else the
+ * schema error. A decoding defect (not a mismatch) is thrown.
+ */
+export type Decode = (input: unknown) => SchemaError | undefined;
 
 const decoders = /*@__PURE__*/ new WeakMap<AST.AST, Decode>();
 
@@ -37,12 +42,13 @@ const decoders = /*@__PURE__*/ new WeakMap<AST.AST, Decode>();
 export const decoderFor = (ast: AST.AST): Decode => {
   let decode = decoders.get(ast);
   if (!decode) {
-    decode = decodeUnknownEffect(
+    const exitOf = decodeUnknownExit(
       toEffect(
         {
           Any,
           Array,
           Boolean,
+          declare,
           Literal,
           Null,
           Number,
@@ -59,8 +65,16 @@ export const decoderFor = (ast: AST.AST): Decode => {
           make,
         },
         ast as any,
-      ) as Top,
-    ) as Decode;
+      ) as Top as S.Codec<unknown>,
+    );
+    decode = (input) => {
+      const exit = exitOf(input);
+      if (exit._tag === "Success") return undefined;
+      for (const reason of exit.cause.reasons) {
+        if (reason._tag === "Fail") return reason.error;
+      }
+      throw exit.cause.reasons[0]?._tag === "Die" ? exit.cause.reasons[0].defect : exit.cause;
+    };
     decoders.set(ast, decode);
   }
   return decode;
