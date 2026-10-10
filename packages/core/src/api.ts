@@ -676,6 +676,8 @@ interface Source {
   r?: ReadonlyArray<any>;
   b?: (j: number) => unknown;
   readonly c: unknown[];
+  /** Data error classes: the built base class. */
+  k?: Function;
 }
 
 const sources = /*@__PURE__*/ new WeakMap<DataFn, Source>();
@@ -786,5 +788,56 @@ export const opPaginated = (fn: DataFn): any =>
 /** The call path of a data operation. */
 export const call = (op: unknown, input: unknown): Effect.Effect<any, any, any> =>
   callOperation(stateOf(op), input);
+
+/**
+ * Generated error classes described by data:
+ *
+ *   export const Oops = API.error(function Oops(i) {
+ *     return i === API.D ? ['$1()("Oops",{...})', [...]] : API.newError(Oops, i, new.target);
+ *   });
+ *
+ * The function is the class callers see. Entry 0 of its data is the
+ * expression the class extended (e.g. `S.TaggedError()(...).pipe(category)`).
+ * The first `new`, or the first read of a static the function does not own
+ * (`ast`, `fields`, `identifier`, error matchers, ...), builds that base
+ * class and puts it underneath: the function's statics and prototype then
+ * inherit from it as `class Oops extends Base {}` did, so `instanceof`,
+ * `_tag`, categories and subclasses behave as before. Until then an error
+ * class costs one function. The `in` operator sees only `Function`
+ * members until the class is built.
+ */
+const errorBase = (fn: DataFn): Function => {
+  const src = sourceOf(fn);
+  if (!src.k) {
+    const base = evalEntry(src, 0) as Function;
+    src.k = base;
+    Object.setPrototypeOf(fn, base);
+    Object.setPrototypeOf(fn.prototype, base.prototype);
+  }
+  return src.k;
+};
+
+// The statics of an unbuilt error class: `Function.prototype` members answer
+// directly; any other read builds the class, then reads again.
+let lazyErrorStatics: object | undefined;
+const LazyErrorStatics = (): object =>
+  (lazyErrorStatics ??= new Proxy(Object.create(Function.prototype), {
+    get(target, key, receiver) {
+      if (key in target) return Reflect.get(target, key, receiver);
+      let fn = receiver;
+      while (fn !== null && Object.getPrototypeOf(fn) !== lazyErrorStatics)
+        fn = Object.getPrototypeOf(fn);
+      if (fn === null) return undefined;
+      errorBase(fn);
+      return Reflect.get(receiver, key, receiver);
+    },
+  }));
+
+/** An error class described by data (see {@link errorBase}). */
+export const error = (fn: DataFn): any => Object.setPrototypeOf(fn, LazyErrorStatics());
+
+/** `new` on a data error class: an instance of the built base, with `newTarget`'s prototype. */
+export const newError = (fn: DataFn, props: unknown, newTarget: Function | undefined): any =>
+  Reflect.construct(errorBase(fn), [props], newTarget ?? fn);
 
 //#endregion

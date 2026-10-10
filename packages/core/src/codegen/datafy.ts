@@ -20,6 +20,14 @@
  * list them cheaply and a bundler still drops the unused ones. Thunk bodies
  * (`S.suspend(() => ...)`) become entries of their own. Expressions are
  * encoded in the grammar documented in core/api.
+ *
+ * Error classes become data too: their `extends` expression is entry 0 of a
+ * function that stands in for the class until first use (`API.error`):
+ *   export class Oops extends S.TaggedError<Oops>()("Oops", { ... }) {}
+ * becomes
+ *   export const Oops = API.error(function Oops(i) {
+ *     return i === API.D ? ['$1()("Oops",{...})', [...]] : API.newError(Oops, i, new.target);
+ *   });
  */
 import { parseAst } from "rolldown/parseAst";
 
@@ -67,6 +75,58 @@ const walk = (n: unknown, visit: (n: Node) => boolean): void => {
 
 const IDENT = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
 
+/** Whether `encode` (below) accepts an expression: the grammar's subset of JS. */
+const encodable = (n: Node): boolean => {
+  n = strip(n);
+  if (tableRef(n)) return true;
+  switch (n.type) {
+    case "Literal": {
+      const v = n.value;
+      return (
+        typeof v === "string" ||
+        typeof v === "boolean" ||
+        (typeof v === "number" && Number.isFinite(v)) ||
+        (v === null && !n.regex && !n.bigint)
+      );
+    }
+    case "TemplateLiteral":
+      return !n.expressions.length;
+    case "UnaryExpression":
+      return (
+        n.operator === "void" ||
+        (n.operator === "-" &&
+          n.argument.type === "Literal" &&
+          typeof n.argument.value === "number")
+      );
+    case "Identifier":
+      return true;
+    case "MemberExpression":
+      return !n.computed && encodable(n.object);
+    case "CallExpression":
+      return (
+        encodable(n.callee) &&
+        (n.arguments as Node[]).every((a) => a.type !== "SpreadElement" && encodable(a))
+      );
+    case "ObjectExpression":
+      return (n.properties as Node[]).every(
+        (p) =>
+          p.type === "Property" &&
+          p.kind === "init" &&
+          !p.method &&
+          ((!p.computed && p.key.type === "Identifier") || p.key.type === "Literal") &&
+          encodable(p.value),
+      );
+    case "ArrayExpression":
+      return (n.elements as Array<Node | null>).every(
+        (e) => !!e && e.type !== "SpreadElement" && encodable(e),
+      );
+    case "ArrowFunctionExpression":
+      return !n.params.length && n.body.type !== "BlockStatement" && encodable(n.body);
+    default:
+      return false;
+  }
+};
+
 /**
  * A JSON string with every non-ASCII character and `;` (the entry separator)
  * escaped: the module source must stay one-byte.
@@ -105,8 +165,8 @@ class Holder {
 export const datafyOperations = (
   code: string,
   filename = "generated.ts",
-): { code: string; operations: number; holders: number } => {
-  if (!/\bfunction __S\(/.test(code)) return { code, operations: 0, holders: 0 };
+): { code: string; operations: number; holders: number; errors: number } => {
+  if (!/\bfunction __S\(/.test(code)) return { code, operations: 0, holders: 0, errors: 0 };
   const program = parseAst(code, { sourceType: "module", lang: "ts" }, filename);
   const body = program.body as unknown as Node[];
   const text = (n: Node) => code.slice(n.start, n.end);
@@ -124,11 +184,39 @@ export const datafyOperations = (
   // Graph nodes: schemas (`K:j`, from the builders) and constants (`v:NAME`).
   const nodes = new Map<string, Node>();
   const removals: Node[] = [];
-  type Op = { name: string; init: Node; paginated: boolean; config: Node; strategy?: Node };
+  // A root: an operation (`init` is its `API.make(...)` call) or an error
+  // class (`init` is its whole statement, `config` its `extends` expression).
+  type Op = {
+    name: string;
+    init: Node;
+    paginated: boolean;
+    config: Node;
+    strategy?: Node;
+    error?: { exported: boolean };
+  };
   const ops: Op[] = [];
+  const errors: Op[] = [];
   const rest: Node[] = [];
   const consts = new Map<string, { st: Node; init: Node }>();
   for (const st of body) {
+    const cls = st.type === "ExportNamedDeclaration" ? st.declaration : st;
+    if (
+      cls?.type === "ClassDeclaration" &&
+      cls.id &&
+      cls.superClass &&
+      !cls.body.body.length &&
+      !cls.decorators?.length &&
+      encodable(cls.superClass)
+    ) {
+      errors.push({
+        name: cls.id.name,
+        init: st,
+        paginated: false,
+        config: cls.superClass,
+        error: { exported: st !== cls },
+      });
+      continue;
+    }
     if (st.type === "FunctionDeclaration" && /^__c\d+$/.test(st.id?.name ?? "")) {
       const k = st.id.name.slice(3);
       const sw = st.body.body[0] as Node;
@@ -181,7 +269,10 @@ export const datafyOperations = (
     }
     if (st.type !== "ImportDeclaration") rest.push(st);
   }
-  if (!ops.length) return { code, operations: 0, holders: 0 };
+  if (!ops.length && !errors.length) return { code, operations: 0, holders: 0, errors: 0 };
+  const operations = ops.length;
+  // From here on an error class is a root like an operation; its entry 0 is its base class.
+  ops.push(...errors);
 
   // A constant becomes data only if schemas and operation configs are its only readers.
   const identUses = (n: unknown, name: string): number => {
@@ -400,6 +491,15 @@ export const datafyOperations = (
     edits.push([st.start, end, ""]);
   }
   ops.forEach((o, i) => {
+    if (o.error) {
+      // A plain function, not an arrow: it is the class (`new`, `instanceof`, `extends`).
+      edits.push([
+        o.init.start,
+        o.init.end,
+        `${o.error.exported ? "export " : ""}const ${o.name}${any} = /*@__PURE__*/ API.error(function ${o.name}(i${any})${any} {\n  return i === API.D ? ${literal(opHolders[i]!)} : API.newError(${o.name}, i, new.target);\n});`,
+      ]);
+      return;
+    }
     const fn = o.paginated ? "API.opPaginated" : "API.op";
     const marked = /\/\*[@#]__PURE__\*\/\s*$/.test(code.slice(o.init.start - 20, o.init.start));
     edits.push([
@@ -433,5 +533,5 @@ export const datafyOperations = (
   const at = lastImport ? lastImport.end : 0;
   const decls = [...aliases].map(([t, a]) => `const ${a} = ${t};`);
   out = `${out.slice(0, at)}\n${decls.join("\n")}${out.slice(at)}`;
-  return { code: out, operations: ops.length, holders: shared.size };
+  return { code: out, operations, holders: shared.size, errors: errors.length };
 };
