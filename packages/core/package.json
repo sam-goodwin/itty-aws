@@ -20,6 +20,7 @@
       "worker": "./src/index.ts",
       "import": "./lib/index.js"
     },
+    "./_bundle/*": "./lib/_bundle/*.js",
     "./*": {
       "types": "./lib/*.d.ts",
       "bun": "./src/*.ts",

@@ -111,12 +111,18 @@ if (opts.build || missingLib.length > 0) {
     `build: tsc -b (${missingLib.length ? `lib/ missing for ${missingLib.slice(0, 5).join(", ")}…` : "--build"})`,
   );
   const res = await run(join(REPO, "node_modules", ".bin", "tsc"), ["-b"], { cwd: REPO });
-  // Same post-build step `pnpm build` runs, when this checkout has it.
-  if (res.code === 0 && existsSync(join(REPO, "scripts", "strip-lib-docs.ts")))
-    await run("node", [join(REPO, "scripts", "strip-lib-docs.ts")], { cwd: REPO });
   if (res.code !== 0) {
     console.error(res.stdout.slice(-4000), res.stderr.slice(-4000));
     process.exit(1);
+  }
+  // Same post-build steps `pnpm build` runs, when this checkout has them.
+  for (const step of ["bundle-lib.ts", "strip-lib-docs.ts"]) {
+    if (!existsSync(join(REPO, "scripts", step))) continue;
+    const r = await run("node", [join(REPO, "scripts", step)], { cwd: REPO });
+    if (r.code !== 0) {
+      console.error(`${step} failed`, r.stdout.slice(-4000), r.stderr.slice(-4000));
+      process.exit(1);
+    }
   }
 }
 
