@@ -459,6 +459,8 @@ const serviceImport = (pkg: string, service: string, alias = "Barrel") => ({
   src: "",
 });
 
+const IMPORT_RUNS = 3;
+
 if (has("imports")) {
   await phase("imports", async () => {
     // Each provider/service pair: a fresh process (effect preloaded) imports that one module.
@@ -466,13 +468,23 @@ if (has("imports")) {
     const pairs = sdks.flatMap((pkg) => servicesOf(pkg).map((service) => ({ pkg, service })));
     log(`  ${pairs.length} service modules in ${sdks.length} SDKs`);
     for (const pkg of sdks) record[pkg].services = {};
+    // Import time is one cold measurement and very sensitive to machine load
+    // (a busy machine once showed a fake +30%): take the minimum over
+    // IMPORT_RUNS fresh processes. Heap is deterministic; it comes from the first.
     await pool(pairs, opts.runtimeJobs, async ({ pkg, service }) => {
-      const r = await probe({ mode: "barrel", imports: [serviceImport(pkg, service)] });
-      if (r.fatal) {
-        fail(pkg, "imports", `${service}: ${r.fatal}`);
-        return;
+      const runs: any[] = [];
+      for (let i = 0; i < IMPORT_RUNS; i++) {
+        const r = await probe({ mode: "barrel", imports: [serviceImport(pkg, service)] });
+        if (r.fatal) {
+          fail(pkg, "imports", `${service}: ${r.fatal}`);
+          return;
+        }
+        runs.push(r);
       }
-      record[pkg].services[service] = { importMs: r.importMs, heap: r.heap?.heapUsed };
+      record[pkg].services[service] = {
+        importMs: Math.min(...runs.map((r) => r.importMs)),
+        heap: runs[0].heap?.heapUsed,
+      };
     });
     // Each provider: one fresh process imports every service module it publishes.
     await pool(sdks, opts.runtimeJobs, async (pkg) => {
@@ -480,6 +492,11 @@ if (has("imports")) {
       if (!services.length) return;
       const imports = services.map((service, i) => serviceImport(pkg, service, `S${i}`));
       const r = await probe({ mode: "barrel", imports });
+      // Minimum import time over IMPORT_RUNS fresh processes (see above).
+      for (let i = 1; i < IMPORT_RUNS && !r.fatal; i++) {
+        const again = await probe({ mode: "barrel", imports });
+        if (!again.fatal) r.importMs = Math.min(r.importMs, again.importMs);
+      }
       if (r.fatal) {
         fail(pkg, "imports", `all services: ${r.fatal}`);
         return;
