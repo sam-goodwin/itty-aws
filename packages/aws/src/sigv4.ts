@@ -181,138 +181,234 @@ export const SigningKeyCache = /*@__PURE__*/ Context.Reference<
 });
 
 /**
- * Sign a request with SigV4. Fails with a {@link SigningError} when the URL
- * or headers cannot be canonicalised or WebCrypto rejects an operation.
+ * The canonical form of a request, before any hashing: everything SigV4
+ * derives from the URL and headers. `finish` writes the signature in.
  */
-export const sign: (options: SignOptions) => Effect.Effect<SignedRequest, SigningError> =
-  /*@__PURE__*/ Effect.fnUntraced(function* (options: SignOptions) {
-    const { accessKeyId, service, region, signQuery, allHeaders, body } = options;
-    const sessionToken = options.sessionToken ? Redacted.value(options.sessionToken) : undefined;
-    const method = options.method ?? (body ? "POST" : "GET");
-    const url = yield* Effect.try({
-      try: () => new URL(options.url),
-      catch: (cause) => new InvalidSigningUrl({ url: options.url, cause }),
-    });
-    const headers = yield* Effect.try({
-      try: () => new Headers(options.headers),
-      catch: (cause) => new InvalidSigningHeaders({ cause }),
-    });
-    headers.delete("host");
-    const datetime = options.datetime ?? new Date().toISOString().replace(/[:-]|\.\d{3}/g, "");
-    const appendSessionToken = service === "iotdevicegateway";
+interface Canonical {
+  readonly method: string;
+  readonly date: string;
+  readonly datetime: string;
+  readonly credentialString: string;
+  /** The payload hash when it is fixed by a header or S3 presigning; else the body is hashed. */
+  readonly payloadHash: string | undefined;
+  readonly canonicalPrefix: string;
+  readonly finish: (signature: string) => SignedRequest;
+}
 
-    if (service === "s3" && !signQuery && !headers.has("x-amz-content-sha256")) {
-      headers.set("x-amz-content-sha256", "UNSIGNED-PAYLOAD");
+/** Canonicalise `options`; throws {@link InvalidSigningUrl} / {@link InvalidSigningHeaders}. */
+const canonicalize = (options: SignOptions): Canonical => {
+  const { accessKeyId, service, region, signQuery, allHeaders, body } = options;
+  const sessionToken = options.sessionToken ? Redacted.value(options.sessionToken) : undefined;
+  const method = options.method ?? (body ? "POST" : "GET");
+  let url: URL;
+  try {
+    url = new URL(options.url);
+  } catch (cause) {
+    throw new InvalidSigningUrl({ url: options.url, cause });
+  }
+  let headers: Headers;
+  try {
+    headers = new Headers(options.headers);
+  } catch (cause) {
+    throw new InvalidSigningHeaders({ cause });
+  }
+  headers.delete("host");
+  const datetime = options.datetime ?? new Date().toISOString().replace(/[:-]|\.\d{3}/g, "");
+  const appendSessionToken = service === "iotdevicegateway";
+
+  if (service === "s3" && !signQuery && !headers.has("x-amz-content-sha256")) {
+    headers.set("x-amz-content-sha256", "UNSIGNED-PAYLOAD");
+  }
+
+  const params = signQuery ? url.searchParams : headers;
+  params.set("X-Amz-Date", datetime);
+  if (sessionToken && !appendSessionToken) {
+    params.set("X-Amz-Security-Token", sessionToken);
+  }
+
+  const signableHeaders = ["host", ...headers.keys()]
+    .filter((header) => allHeaders || !UNSIGNABLE_HEADERS.has(header))
+    .sort();
+  const signedHeaders = signableHeaders.join(";");
+  const canonicalHeaders = signableHeaders
+    .map(
+      (header) =>
+        header +
+        ":" +
+        (header === "host" ? url.host : (headers.get(header) ?? "").replace(/\s+/g, " ")),
+    )
+    .join("\n");
+  const date = datetime.slice(0, 8);
+  const credentialString = [date, region, service, "aws4_request"].join("/");
+
+  if (signQuery) {
+    if (service === "s3" && !url.searchParams.has("X-Amz-Expires")) {
+      url.searchParams.set("X-Amz-Expires", "86400");
     }
+    url.searchParams.set("X-Amz-Algorithm", "AWS4-HMAC-SHA256");
+    url.searchParams.set("X-Amz-Credential", accessKeyId + "/" + credentialString);
+    url.searchParams.set("X-Amz-SignedHeaders", signedHeaders);
+  }
 
-    const params = signQuery ? url.searchParams : headers;
-    params.set("X-Amz-Date", datetime);
-    if (sessionToken && !appendSessionToken) {
-      params.set("X-Amz-Security-Token", sessionToken);
+  let encodedPath: string;
+  if (service === "s3") {
+    try {
+      encodedPath = decodeURIComponent(url.pathname.replace(/\+/g, " "));
+    } catch {
+      encodedPath = url.pathname;
     }
+  } else {
+    encodedPath = url.pathname.replace(/\/+/g, "/");
+  }
+  encodedPath = encodeRfc3986(encodeURIComponent(encodedPath).replace(/%2F/g, "/"));
 
-    const signableHeaders = ["host", ...headers.keys()]
-      .filter((header) => allHeaders || !UNSIGNABLE_HEADERS.has(header))
-      .sort();
-    const signedHeaders = signableHeaders.join(";");
-    const canonicalHeaders = signableHeaders
-      .map(
-        (header) =>
-          header +
-          ":" +
-          (header === "host" ? url.host : (headers.get(header) ?? "").replace(/\s+/g, " ")),
-      )
-      .join("\n");
-    const date = datetime.slice(0, 8);
-    const credentialString = [date, region, service, "aws4_request"].join("/");
-
-    if (signQuery) {
-      if (service === "s3" && !url.searchParams.has("X-Amz-Expires")) {
-        url.searchParams.set("X-Amz-Expires", "86400");
+  const seenKeys = new Set<string>();
+  const encodedSearch = [...url.searchParams]
+    .filter(([k]) => {
+      if (!k) return false;
+      if (service === "s3") {
+        if (seenKeys.has(k)) return false;
+        seenKeys.add(k);
       }
-      url.searchParams.set("X-Amz-Algorithm", "AWS4-HMAC-SHA256");
-      url.searchParams.set("X-Amz-Credential", accessKeyId + "/" + credentialString);
-      url.searchParams.set("X-Amz-SignedHeaders", signedHeaders);
-    }
+      return true;
+    })
+    .map(
+      ([k, v]) =>
+        [encodeRfc3986(encodeURIComponent(k)), encodeRfc3986(encodeURIComponent(v))] as const,
+    )
+    .sort(([k1, v1], [k2, v2]) => (k1 < k2 ? -1 : k1 > k2 ? 1 : v1 < v2 ? -1 : v1 > v2 ? 1 : 0))
+    .map((pair) => pair.join("="))
+    .join("&");
 
-    let encodedPath: string;
-    if (service === "s3") {
-      try {
-        encodedPath = decodeURIComponent(url.pathname.replace(/\+/g, " "));
-      } catch {
-        encodedPath = url.pathname;
-      }
-    } else {
-      encodedPath = url.pathname.replace(/\/+/g, "/");
-    }
-    encodedPath = encodeRfc3986(encodeURIComponent(encodedPath).replace(/%2F/g, "/"));
+  const payloadHash =
+    headers.get("x-amz-content-sha256") ??
+    (service === "s3" && signQuery ? "UNSIGNED-PAYLOAD" : undefined);
 
-    const seenKeys = new Set<string>();
-    const encodedSearch = [...url.searchParams]
-      .filter(([k]) => {
-        if (!k) return false;
-        if (service === "s3") {
-          if (seenKeys.has(k)) return false;
-          seenKeys.add(k);
-        }
-        return true;
-      })
-      .map(
-        ([k, v]) =>
-          [encodeRfc3986(encodeURIComponent(k)), encodeRfc3986(encodeURIComponent(v))] as const,
-      )
-      .sort(([k1, v1], [k2, v2]) => (k1 < k2 ? -1 : k1 > k2 ? 1 : v1 < v2 ? -1 : v1 > v2 ? 1 : 0))
-      .map((pair) => pair.join("="))
-      .join("&");
-
-    const payloadHash =
-      headers.get("x-amz-content-sha256") ??
-      (service === "s3" && signQuery ? "UNSIGNED-PAYLOAD" : yield* sha256Hex(body || ""));
-
-    const canonicalRequest = [
+  return {
+    method,
+    date,
+    datetime,
+    credentialString,
+    payloadHash,
+    canonicalPrefix: [
       method.toUpperCase(),
       encodedPath,
       encodedSearch,
       canonicalHeaders + "\n",
       signedHeaders,
-      payloadHash,
-    ].join("\n");
-    const stringToSign = [
-      "AWS4-HMAC-SHA256",
-      datetime,
-      credentialString,
-      yield* sha256Hex(canonicalRequest),
-    ].join("\n");
+    ].join("\n"),
+    finish: (signature) => {
+      if (signQuery) {
+        url.searchParams.set("X-Amz-Signature", signature);
+        if (sessionToken && appendSessionToken) {
+          url.searchParams.set("X-Amz-Security-Token", sessionToken);
+        }
+      } else {
+        headers.set(
+          "authorization",
+          [
+            "AWS4-HMAC-SHA256 Credential=" + accessKeyId + "/" + credentialString,
+            "SignedHeaders=" + signedHeaders,
+            "Signature=" + signature,
+          ].join(", "),
+        );
+      }
+      return { method, url: url.toString(), headers: Object.fromEntries(headers) };
+    },
+  };
+};
+
+const stringToSignOf = (c: Canonical, canonicalRequestHash: string): string =>
+  ["AWS4-HMAC-SHA256", c.datetime, c.credentialString, canonicalRequestHash].join("\n");
+
+/**
+ * Derived keys for the synchronous path, per secret (by `Redacted` identity,
+ * so the secret is never a map key) and `date/region/service` scope. Each
+ * secret keeps at most 16 scopes.
+ */
+const syncKeys = /*@__PURE__*/ new WeakMap<
+  Redacted.Redacted<string>,
+  Map<string, { readonly impl: CoreCrypto.CryptoImpl; readonly key: CoreCrypto.HmacKey }>
+>();
+
+const syncSigningKey = (
+  impl: CoreCrypto.CryptoImpl,
+  sync: NonNullable<CoreCrypto.CryptoImpl["sync"]>,
+  options: SignOptions,
+  date: string,
+): CoreCrypto.HmacKey => {
+  let scopes = syncKeys.get(options.secretAccessKey);
+  if (scopes === undefined) {
+    scopes = new Map();
+    syncKeys.set(options.secretAccessKey, scopes);
+  }
+  const scope = `${date}/${options.region}/${options.service}`;
+  const hit = scopes.get(scope);
+  if (hit !== undefined && hit.impl === impl) return hit.key;
+  const step = (key: Uint8Array | string, data: string) =>
+    sync.hmacSha256(sync.importHmacKey(key), data);
+  const kDate = step("AWS4" + Redacted.value(options.secretAccessKey), date);
+  const kSigning = step(step(step(kDate, options.region), options.service), "aws4_request");
+  const key = sync.importHmacKey(kSigning);
+  if (scopes.size >= 16) scopes.clear();
+  scopes.set(scope, { impl, key });
+  return key;
+};
+
+/**
+ * Sign a request with SigV4. Fails with a {@link SigningError} when the URL
+ * or headers cannot be canonicalised or WebCrypto rejects an operation.
+ *
+ * With a synchronous crypto implementation (node:crypto, the default on
+ * Node/Bun/Deno) and no {@link SigningKeyCache} override in the context, the
+ * whole signature is computed in one step without intermediate effects.
+ */
+export const sign = (options: SignOptions): Effect.Effect<SignedRequest, SigningError> =>
+  Effect.withFiber((fiber) => {
+    const impl = fiber.getRef(CoreCrypto.Crypto);
+    const sync = impl.sync;
+    if (
+      sync === undefined ||
+      Context.getOrUndefined(fiber.context, SigningKeyCache) !== undefined
+    ) {
+      return signAsync(options);
+    }
+    let canonical: Canonical;
+    try {
+      canonical = canonicalize(options);
+    } catch (e) {
+      return Effect.fail(e as SigningError);
+    }
+    try {
+      const payloadHash =
+        canonical.payloadHash ?? CoreCrypto.hex(sync.sha256(toBytes(options.body || "")));
+      const canonicalRequest = canonical.canonicalPrefix + "\n" + payloadHash;
+      const stringToSign = stringToSignOf(canonical, CoreCrypto.hex(sync.sha256(canonicalRequest)));
+      const key = syncSigningKey(impl, sync, options, canonical.date);
+      return Effect.succeed(canonical.finish(CoreCrypto.hex(sync.hmacSha256(key, stringToSign))));
+    } catch (cause) {
+      return Effect.fail(new CryptoError({ operation: "hmac", cause }));
+    }
+  });
+
+const signAsync: (options: SignOptions) => Effect.Effect<SignedRequest, SigningError> =
+  /*@__PURE__*/ Effect.fnUntraced(function* (options: SignOptions) {
+    const canonical = yield* Effect.try({
+      try: () => canonicalize(options),
+      catch: (e) => e as InvalidSigningUrl | InvalidSigningHeaders,
+    });
+    const payloadHash = canonical.payloadHash ?? (yield* sha256Hex(options.body || ""));
+    const canonicalRequest = canonical.canonicalPrefix + "\n" + payloadHash;
+    const stringToSign = stringToSignOf(canonical, yield* sha256Hex(canonicalRequest));
     const signingKey = yield* Cache.get(yield* SigningKeyCache, {
       secretAccessKey: options.secretAccessKey,
-      date,
-      region,
-      service,
+      date: canonical.date,
+      region: options.region,
+      service: options.service,
       crypto: yield* CoreCrypto.Crypto,
     });
     const signature = CoreCrypto.hex(
       yield* Effect.mapError(signingKey.impl.hmacSha256(signingKey.key, stringToSign), fromCore),
     );
-
-    if (signQuery) {
-      url.searchParams.set("X-Amz-Signature", signature);
-      if (sessionToken && appendSessionToken) {
-        url.searchParams.set("X-Amz-Security-Token", sessionToken);
-      }
-    } else {
-      headers.set(
-        "authorization",
-        [
-          "AWS4-HMAC-SHA256 Credential=" + accessKeyId + "/" + credentialString,
-          "SignedHeaders=" + signedHeaders,
-          "Signature=" + signature,
-        ].join(", "),
-      );
-    }
-
-    return {
-      method,
-      url: url.toString(),
-      headers: Object.fromEntries(headers),
-    };
+    return canonical.finish(signature);
   });
