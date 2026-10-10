@@ -434,7 +434,8 @@ const reannotate = (pretty: string, min: string, map: any): string => {
   const b = calls(min);
   if (a.length !== b.length)
     throw new Error(`reannotate: ${a.length} calls before minify, ${b.length} after`);
-  const at = b.filter((_, i) => a[i]!.pure).map((c) => c.start);
+  // Calls the minifier left annotated (comments kept) need nothing.
+  const at = b.filter((c, i) => a[i]!.pure && !c.pure).map((c) => c.start);
   if (at.length === 0) return min;
   let code = "";
   let last = 0;
