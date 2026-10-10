@@ -368,6 +368,117 @@ const exportNames = async (plan: Plan, plugins: object[]): Promise<Map<string, s
   return out;
 };
 
+//#region PURE annotations through minification
+
+const PURE = "/*@__PURE__*/";
+const B64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+/** Call and `new` expressions in pre-order, with whether a PURE annotation precedes each. */
+const calls = (code: string): { start: number; pure: boolean }[] => {
+  const out: { start: number; pure: boolean }[] = [];
+  const visit = (node: any): void => {
+    if (Array.isArray(node)) return node.forEach(visit);
+    if (!node || typeof node !== "object") return;
+    if (node.type === "CallExpression" || node.type === "NewExpression") {
+      const before = code.slice(Math.max(0, node.start - 20), node.start).trimEnd();
+      out.push({ start: node.start, pure: /\/\*\s*[@#]__PURE__\s*\*\/$/.test(before) });
+    }
+    for (const k in node)
+      if (k !== "type" && node[k] && typeof node[k] === "object") visit(node[k]);
+  };
+  visit(parseAst(code, { sourceType: "module" }, "chunk.js"));
+  return out;
+};
+
+const vlqDecode = (s: string): number[] => {
+  const out: number[] = [];
+  let shift = 0;
+  let value = 0;
+  for (const ch of s) {
+    const d = B64.indexOf(ch);
+    value += (d & 31) << shift;
+    if (d & 32) shift += 5;
+    else {
+      out.push(value & 1 ? -(value >>> 1) : value >>> 1);
+      shift = 0;
+      value = 0;
+    }
+  }
+  return out;
+};
+
+const vlqEncode = (values: number[]): string =>
+  values
+    .map((v) => {
+      let x = v < 0 ? (-v << 1) | 1 : v << 1;
+      let out = "";
+      do {
+        let d = x & 31;
+        x >>>= 5;
+        if (x) d |= 32;
+        out += B64[d];
+      } while (x);
+      return out;
+    })
+    .join("");
+
+/**
+ * The minifier drops comments, PURE annotations included, and consumers that
+ * bundle `lib/` need them to tree-shake (`const op = make(...)`). With
+ * `compress: false` the minified chunk has the same AST as the readable one,
+ * so the k-th call carries the k-th call's annotation. Returns the new code;
+ * shifts the source map's generated columns to match.
+ */
+const reannotate = (pretty: string, min: string, map: any): string => {
+  const a = calls(pretty);
+  const b = calls(min);
+  if (a.length !== b.length)
+    throw new Error(`reannotate: ${a.length} calls before minify, ${b.length} after`);
+  const at = b.filter((_, i) => a[i]!.pure).map((c) => c.start);
+  if (at.length === 0) return min;
+  let code = "";
+  let last = 0;
+  for (const i of at) {
+    code += min.slice(last, i) + PURE;
+    last = i;
+  }
+  code += min.slice(last);
+  if (map) {
+    // Insertion offsets as (line, column) of the minified code.
+    const lineStarts = [0];
+    for (let i = 0; i < min.length; i++) if (min.charCodeAt(i) === 10) lineStarts.push(i + 1);
+    const byLine = new Map<number, number[]>();
+    let line = 0;
+    for (const off of at) {
+      while (line + 1 < lineStarts.length && lineStarts[line + 1]! <= off) line++;
+      byLine.set(line, [...(byLine.get(line) ?? []), off - lineStarts[line]!]);
+    }
+    map.mappings = (map.mappings as string)
+      .split(";")
+      .map((segs, l) => {
+        const cols = byLine.get(l);
+        if (!cols || !segs) return segs;
+        let abs = 0;
+        let prevOut = 0;
+        return segs
+          .split(",")
+          .map((seg) => {
+            const f = vlqDecode(seg);
+            abs += f[0]!;
+            const shifted = abs + PURE.length * cols.filter((c) => c <= abs).length;
+            f[0] = shifted - prevOut;
+            prevOut = shifted;
+            return vlqEncode(f);
+          })
+          .join(",");
+      })
+      .join(";");
+  }
+  return code;
+};
+
+//#endregion
+
 /**
  * V8 stores a whole module source as two-byte if any character is outside
  * Latin-1. The sources are Latin-1 (codegen's toLatin1 pass), but rolldown
@@ -503,21 +614,48 @@ const buildPackage = async (
     ],
     preserveEntrySignatures: "allow-extension",
   });
-  const { output } = await bundle.write({
+  const outputOptions = {
     dir: lib,
     format: "es",
     entryFileNames: "[name].js",
     chunkFileNames: "_chunks/[name]-[hash].js",
     sourcemap: true,
+    // Maps point at `src/`, which every package publishes.
+    sourcemapExcludeSources: true,
     comments: { legal: true, annotation: true, jsdoc: false },
-    // V8 keeps every module's source text in the heap: whitespace and long
-    // local names cost memory in every process (S3: -160 KB). Function and
-    // class names stay (`.name`, stack traces); source maps map back to src/.
-    minify: process.env.BUNDLE_LIB_MINIFY
-      ? JSON.parse(process.env.BUNDLE_LIB_MINIFY)
-      : { compress: false, mangle: { keepNames: true }, codegen: { removeWhitespace: true } },
-  });
+  };
+  // V8 keeps every module's source text in the heap: whitespace and long
+  // local names cost memory in every process (S3 -27%, Resend -22% import
+  // heap with the bundling). Function and class names stay (`.name`, stack
+  // traces); source maps map back to src/. BUNDLE_LIB_MINIFY=false for
+  // readable output.
+  const minify = process.env.BUNDLE_LIB_MINIFY
+    ? JSON.parse(process.env.BUNDLE_LIB_MINIFY)
+    : { compress: false, mangle: { keepNames: true }, codegen: { removeWhitespace: true } };
+  const key = (c: any) => `${c.name}|${c.moduleIds.join(",")}`;
+  const pretty = minify
+    ? new Map(
+        (await bundle.generate({ ...outputOptions, sourcemap: false })).output
+          .filter((c: any) => c.type === "chunk")
+          .map((c: any) => [key(c), c.code]),
+      )
+    : undefined;
+  const { output } = await bundle.generate({ ...outputOptions, minify });
   await bundle.close();
+  mkdirSync(lib, { recursive: true });
+  for (const c of output) {
+    const file = join(lib, c.fileName);
+    mkdirSync(dirname(file), { recursive: true });
+    if (c.type !== "chunk") {
+      // Chunk source maps are written below, after reannotate shifts them.
+      if (!c.fileName.endsWith(".js.map")) writeFileSync(file, c.source);
+      continue;
+    }
+    const map = c.map ? JSON.parse(c.map.toString()) : undefined;
+    // `c.code` already ends with the sourceMappingURL comment.
+    writeFileSync(file, pretty ? reannotate(pretty.get(key(c))!, c.code, map) : c.code);
+    if (map) writeFileSync(`${file}.map`, JSON.stringify(map));
+  }
 
   // A group that split into several chunks would duplicate nothing, but costs modules; fail loudly.
   const written = new Set<string>();
