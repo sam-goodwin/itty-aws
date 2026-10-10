@@ -27,7 +27,14 @@ export type Annotations = Record<string | symbol, unknown>;
 export interface Node {
   readonly _tag: string;
   readonly annotations?: Annotations;
-  readonly encoding?: undefined;
+  /**
+   * The wire-side node, for nodes whose value changes on the wire (AWS
+   * timestamps, blobs, sensitive values). Same shape as Effect's encoding
+   * chain, so code that follows `encoding[0].to` reads the wire type.
+   */
+  readonly encoding?: ReadonlyArray<{ readonly to: Node }>;
+  /** Declaration: the type guard strict validation applies (Unknown without one). */
+  readonly check?: (u: unknown) => boolean;
   readonly context?: { readonly isOptional: boolean };
   /** Objects */
   readonly propertySignatures?: ReadonlyArray<PropertySignature>;
@@ -83,6 +90,9 @@ const make = (ast: Node, from?: object): Lite => {
     for (const k of ["fields", "key", "value"]) if (k in from) (self as any)[k] = (from as any)[k];
   return self as unknown as Lite;
 };
+
+/** A lite schema for a hand-built node (SDK-specific declarations). */
+export const fromNode = (n: Node): Lite => make(node(n));
 
 export const isLite = (u: unknown): u is Lite =>
   (typeof u === "object" || typeof u === "function") && u !== null && (u as Lite)["~lite"] === true;
@@ -209,6 +219,21 @@ export const declare = (_is: (u: unknown) => boolean, annotations?: Annotations)
  */
 const tagKey = "~distilled/tag";
 const keysKey = "~distilled/keys";
+const astKey = "~distilled/ast";
+const annotationsKey = "~distilled/annotations";
+const annotationMetaKey = /*@__PURE__*/ Symbol.for("@distilled.cloud/core/annotation-meta");
+
+/**
+ * The annotations an error class declares: a plain object, or a pipeable
+ * trait (`T.all(...)`), whose own enumerable keys are its annotations.
+ */
+const ownAnnotations = (from: object): Annotations => {
+  const out: Annotations = {};
+  for (const k of Reflect.ownKeys(from))
+    if (k !== annotationMetaKey && Object.prototype.propertyIsEnumerable.call(from, k))
+      out[k] = (from as any)[k];
+  return out;
+};
 
 /**
  * Shared base of every lite error class: a yieldable `Data.Error` that keeps
@@ -226,12 +251,20 @@ const LiteErrorBase = (): any =>
       super(picked);
       (this as any)._tag = (new.target as any)[tagKey];
     }
+    /** The fields as a struct node carrying the tag (`identifier`) and class annotations. */
     static get ast(): Node {
-      return node({
-        _tag: "Declaration",
-        typeParameters: [],
-        annotations: { identifier: (this as any)[tagKey] },
-      });
+      const C = this as any;
+      if (Object.hasOwn(C, astKey)) return C[astKey];
+      const fields: Record<string, Lite> = C.fields;
+      return (C[astKey] = node({
+        _tag: "Objects",
+        propertySignatures: Object.keys(fields).map((name) => ({
+          name,
+          type: astOf(fields[name]!),
+        })),
+        indexSignatures: [],
+        annotations: { identifier: C[tagKey], ...C[annotationsKey] },
+      }));
     }
     static pipe(this: unknown) {
       return pipeArguments(this, arguments);
@@ -245,19 +278,58 @@ const LiteErrorBase = (): any =>
  */
 export const TaggedError =
   (_identifier?: string) =>
-  (tag: string, fields: Readonly<Record<string, Lite>> = {}): any => {
+  (tag: string, fields: Readonly<Record<string, Lite>> = {}, annotations?: object): any => {
     const C = class extends LiteErrorBase() {} as any;
     C[tagKey] = tag;
     C[keysKey] = Object.keys(fields);
+    if (annotations) C[annotationsKey] = ownAnnotations(annotations);
     C.fields = fields;
     C.identifier = tag;
     C.prototype.name = tag;
     return C;
   };
 
-/** Schema `j` of builder `build`, made on first use (the lite `chunks.at`). */
-export const at = (build: (j: number) => unknown, j: number): any =>
-  suspend(() => build(j) as Lite);
+/**
+ * Schema `j` of builder `build`, made on first use (the lite `chunks.at`).
+ * Its `.ast` is the built schema's own node, not a Suspend around it, so
+ * protocol code sees the same node shapes as with eager schemas.
+ */
+export const at = (build: (j: number) => unknown, j: number): any => {
+  const self = Object.create(AtProto);
+  self.b = build;
+  self.j = j;
+  return self;
+};
+
+interface At {
+  readonly b: (j: number) => unknown;
+  readonly j: number;
+  s?: any;
+}
+const resolveAt = (self: At): any => (self.s ??= self.b(self.j));
+
+const AtProto: object = /*@__PURE__*/ Object.create(Proto, {
+  ast: {
+    get(this: At) {
+      return resolveAt(this).ast;
+    },
+  },
+  fields: {
+    get(this: At) {
+      return resolveAt(this).fields;
+    },
+  },
+  key: {
+    get(this: At) {
+      return resolveAt(this).key;
+    },
+  },
+  value: {
+    get(this: At) {
+      return resolveAt(this).value;
+    },
+  },
+});
 
 //#endregion
 
@@ -285,6 +357,7 @@ export type EffectSchemaApi = Pick<
   | "Union"
   | "Unknown"
   | "Void"
+  | "declare"
   | "make"
   | "optional"
   | "suspend"
@@ -366,7 +439,7 @@ export const toEffect = (S: EffectSchemaApi, ast: Node): unknown => {
         break;
       }
       case "Declaration":
-        out = S.Unknown;
+        out = n.check ? S.declare(n.check) : S.Unknown;
         break;
       case "Unknown":
         out = S.Unknown;
