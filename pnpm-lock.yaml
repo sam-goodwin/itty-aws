@@ -335,26 +335,26 @@ importers:
         version: 4.0.0
     devDependencies:
       '@aws-sdk/client-dynamodb':
-        specifier: 3.1149.0
-        version: 3.1149.0
+        specifier: 3.1147.0
+        version: 3.1147.0
       '@aws-sdk/client-ec2':
-        specifier: 3.1149.0
-        version: 3.1149.0
+        specifier: 3.1147.0
+        version: 3.1147.0
       '@aws-sdk/client-kms':
-        specifier: 3.1149.0
-        version: 3.1149.0
+        specifier: 3.1147.0
+        version: 3.1147.0
       '@aws-sdk/client-lambda':
-        specifier: 3.1149.0
-        version: 3.1149.0
+        specifier: 3.1147.0
+        version: 3.1147.0
       '@aws-sdk/client-s3':
-        specifier: 3.1149.0
-        version: 3.1149.0
+        specifier: 3.1147.0
+        version: 3.1147.0
       '@aws-sdk/client-sts':
-        specifier: 3.1149.0
-        version: 3.1149.0
+        specifier: 3.1147.0
+        version: 3.1147.0
       '@google-cloud/storage':
-        specifier: 8.4.0
-        version: 8.4.0
+        specifier: 8.2.0
+        version: 8.2.0
       '@types/node':
         specifier: 'catalog:'
         version: 26.2.0
@@ -1734,28 +1734,28 @@ packages:
     resolution: {integrity: sha512-gKRj5IXZ/O0ehk2rwfb55YygdNKNhK5N1l/Ztg/w06tk21AJtCPuyErETk2RS/6XOmpBkcZY6CN3GlQ2fWTh1g==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/client-dynamodb@3.1149.0':
-    resolution: {integrity: sha512-4rQKa/Y9C4p1QFGPni2OjDiLLyIZi2niGiWUktzxZl5dxMZycz7bKjzt6c7kQ5CA0KzCcz8hu/huyXneYTBEkg==}
+  '@aws-sdk/client-dynamodb@3.1147.0':
+    resolution: {integrity: sha512-lONixsTyj2jt5bb14ir4VYuBEy8kMNMZt7DSVxZ4HHE89hEfND5lO4Qj+F3Z74sENdFCaSAgK8RYQaiQWm5pfw==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/client-ec2@3.1149.0':
-    resolution: {integrity: sha512-XhotfMZNeIVjT/D2lM0wzfrlXqM+4b6VwItom1eFLIbCZxicsuJ8mFl5fAa5IsZGfYp4pCqjR+HvHLYPEnRmdA==}
+  '@aws-sdk/client-ec2@3.1147.0':
+    resolution: {integrity: sha512-Z0pb4bqKrReI8w3PgcZ+bIYIYumNoXAgBjdymetoieqJTgI328X7NKdvkLnVL56Hi45vHkRCZAcyeIbW1+TyfQ==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/client-kms@3.1149.0':
-    resolution: {integrity: sha512-+nkx9W8OA4MAZAmDAvDsTSZ3lwidQyOF/lha5FwHUXxOcb5suwfkst2uSM3PsnB/dtYDvfCzGzRXouh+EWzQOg==}
+  '@aws-sdk/client-kms@3.1147.0':
+    resolution: {integrity: sha512-DqFDAAPtuxT7cJ4JnFfqzY9PPow/Ut4932O1jPmZ2o3ReFJOwaCqC0zvFdXGI1b9LKzlFNhce0xyWdwfPO4Q8Q==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/client-lambda@3.1149.0':
-    resolution: {integrity: sha512-79qc6FmC3ijauLlYST85HG7E6npCW+JKt6d7FUggP6nU44gs0HYvDRXgQ6FTitB1BQkC1BiYtMWJLnBiJiGP9w==}
+  '@aws-sdk/client-lambda@3.1147.0':
+    resolution: {integrity: sha512-cigyFImTZgnFCdx55Hl7IUaw8oynzLbO6uJa66leQUHpUr4EQBf+NMTz0s9zxF2QochOmVFujVbHbE/NCU+sQQ==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/client-s3@3.1149.0':
-    resolution: {integrity: sha512-wEccG+3/ap7iIBO4DbWwqNHh2u5Qm5OCQJzJaAvtVFIoZbp0qia8HIXv4rpnNmJJEX8205mlq67F9QJ0nKlcxg==}
+  '@aws-sdk/client-s3@3.1147.0':
+    resolution: {integrity: sha512-uTrcJxnJKPr8bc1z7cMxopYSQyAm2dPfiMK+UiBr51L8MzimDxHbW/d9GR6X/LFbWDpMzfFPLhB4UohDrCSaPQ==}
     engines: {node: '>=20.0.0'}
 
-  '@aws-sdk/client-sts@3.1149.0':
-    resolution: {integrity: sha512-0In5ROb7LuUKsixQIe5YeKrHTScOxpmDhSUBRgZY+wgsd2OotS6IwJfPHhT8IqeNoZtW/qPpX13xUX7YfoUJDA==}
+  '@aws-sdk/client-sts@3.1147.0':
+    resolution: {integrity: sha512-o44v8eslmnAPYmTmZcIjq8KDJJnGdLwenhX18CDgqiKF44EVUvevzvWPnVHV6rEGmRWrjh63y5uJS9xmZuiDGw==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/core@3.978.2':
@@ -2127,8 +2127,8 @@ packages:
     resolution: {integrity: sha512-H+Rytzi5zYMyoAmU/zgYLgq7fJ9FY4QQEg4k6gfFx/RY1COJ2xxyIfe8bZ62lqEbWM1DJH7IYETqTFmqNtuUhQ==}
     engines: {node: '>=22'}
 
-  '@google-cloud/storage@8.4.0':
-    resolution: {integrity: sha512-M3kA6UA2Tjp5aznCrgKcm9CzOjiQyRMnquqalqXAeS5wvkqqZxN8wpNjjHafOSYs6lQ82U7f2i8we4eTfIrpkA==}
+  '@google-cloud/storage@8.2.0':
+    resolution: {integrity: sha512-7ckgSjeEprV92VrlLjpYFA3PFerflvFtF7Ea86oQXGNCprGZq5rtpAVK0zgWnCy+44mLjms42M7MiWa433gz2A==}
     engines: {node: '>=22'}
 
   '@hono/node-server@1.19.9':
@@ -4008,13 +4008,13 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
 
-  gaxios@7.3.1:
-    resolution: {integrity: sha512-kB3rzJV7d9juLZh8/56QTXCwQfxyhdOMdyYk1HdQKFtF8TJTDTZQJtixWIwXdE9Jji91mC41DUNpjleo4L4eAQ==}
-    engines: {node: '>=18'}
+  gaxios@6.7.1:
+    resolution: {integrity: sha512-LDODD4TMYx7XXdpwxAVRAIAuB0bzv0s+ywFonY46k126qzQHT9ygyoa9tncmOiQmmDrik65UYsEkv3lbfqQ3yQ==}
+    engines: {node: '>=14'}
 
-  gcp-metadata@9.1.0:
-    resolution: {integrity: sha512-hV4Abmis9XY9ch/HK8t4oGy/Ho4WNzd6QAj/7PHKF5Ae25LUDviZET0s7DD3i+mG1QpGCqnDji/R/jBiuux4jw==}
-    engines: {node: '>=22'}
+  gcp-metadata@6.1.1:
+    resolution: {integrity: sha512-a4tiq7E0/5fTjxPAaH4jpjkSv/uCaU2p5KC6HVGrvl0cDjA8iBZv4vv1gyzlmK0ZUKqwpOyQMKzZQe3lTit77A==}
+    engines: {node: '>=14'}
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -4047,13 +4047,13 @@ packages:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
 
-  google-auth-library@11.2.0:
-    resolution: {integrity: sha512-R9/Dwc3swSur04RnizQ6EBUmmcno2cC5cAKtrG/C+pY+W7c5l6rSnFWgMkR7NSYj1n6XWmb/KhcjxGslWm4yIA==}
-    engines: {node: '>=22'}
+  google-auth-library@9.15.1:
+    resolution: {integrity: sha512-Jb6Z0+nvECVz+2lzSMt9u98UsoakXxA2HGHMCxh+so3n90XgYWkq5dur19JAJV7ONiJY22yBTyJB1TSkvPq9Ng==}
+    engines: {node: '>=14'}
 
-  google-logging-utils@2.0.1:
-    resolution: {integrity: sha512-HMhaQghlOTvbcb3c4T5jmmOMtG3JUF1iOQMezaJXL86CDS+Tm2vHd0IeLFRAx3+ewd+bo9E1HFHoy17X5aJa9A==}
-    engines: {node: '>=22'}
+  google-logging-utils@0.0.2:
+    resolution: {integrity: sha512-NEgUnEcBiP5HrPzufUkBzJOD/Sxsco3rLNo1F1TNf7ieU8ryUzBhqba8r756CjLX7rn3fHl6iLEwPYuqpoKgQQ==}
+    engines: {node: '>=14'}
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
@@ -4071,6 +4071,10 @@ packages:
   graphql@16.14.2:
     resolution: {integrity: sha512-Chq1s4CY7jmh8gO2qvLIJyfCDIN+EHLFW/9iShnp1z8FjBQMoodWP1kDC36VAMXXIvAjj4ARa7ntfAV2BrjsbA==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
+
+  gtoken@7.1.0:
+    resolution: {integrity: sha512-pCcEwRi+TKpMlxAQObHDQ56KawURgyAf6jtIY046fJ5tIv3zDe/LEIubckAO8fj6JnAxLdmWkUfNyulQ2iKdEw==}
+    engines: {node: '>=14.0.0'}
 
   h3@2.0.1-rc.32:
     resolution: {integrity: sha512-Epg1E85L8yIKd9UeAQAVdm6QVrnHbppMsQ641EjpNi4c0IlAg+PJlwp4Xw03Z1loRXPQaH9k64gJT5qDELqm+g==}
@@ -4165,6 +4169,10 @@ packages:
   is-plain-obj@4.1.0:
     resolution: {integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==}
     engines: {node: '>=12'}
+
+  is-stream@2.0.1:
+    resolution: {integrity: sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==}
+    engines: {node: '>=8'}
 
   is-stream@4.0.1:
     resolution: {integrity: sha512-Dnz92NInDqYckGEUJv689RbRiTSEHCQ7wOVeALbkOz999YpqT46yMRIGtSNl2iCL1waAZSx40+h59NV/EwzV/A==}
@@ -4493,6 +4501,15 @@ packages:
 
   node-fetch-native@1.6.7:
     resolution: {integrity: sha512-g9yhqoedzIUm0nTnTqAQvueMPVOuIY16bqgAJJC8XOOubYFNwz6IER9qs0Gq2Xd0+CecCKFjtdDTMA4u4xG06Q==}
+
+  node-fetch@2.7.0:
+    resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
 
   node-fetch@3.3.2:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
@@ -4940,6 +4957,9 @@ packages:
       vue:
         optional: true
 
+  tr46@0.0.3:
+    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+
   trim-lines@3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
 
@@ -5000,6 +5020,11 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  uuid@9.0.1:
+    resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+    hasBin: true
 
   valibot@1.2.0:
     resolution: {integrity: sha512-mm1rxUsmOxzrwnX5arGS+U4T25RdvpPjPN4yR0u9pUBov9+zGVtO84tif1eY4r6zWxVxu3KzIyknJy3rxfRZZg==}
@@ -5120,6 +5145,12 @@ packages:
   web-streams-polyfill@3.3.3:
     resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
     engines: {node: '>= 8'}
+
+  webidl-conversions@3.0.1:
+    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
+
+  whatwg-url@5.0.0:
+    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
 
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
@@ -5319,7 +5350,7 @@ snapshots:
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-dynamodb@3.1149.0':
+  '@aws-sdk/client-dynamodb@3.1147.0':
     dependencies:
       '@aws-sdk/core': 3.978.2
       '@aws-sdk/credential-provider-node': 3.972.85
@@ -5332,7 +5363,7 @@ snapshots:
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-ec2@3.1149.0':
+  '@aws-sdk/client-ec2@3.1147.0':
     dependencies:
       '@aws-sdk/core': 3.978.2
       '@aws-sdk/credential-provider-node': 3.972.85
@@ -5344,7 +5375,7 @@ snapshots:
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-kms@3.1149.0':
+  '@aws-sdk/client-kms@3.1147.0':
     dependencies:
       '@aws-sdk/core': 3.978.2
       '@aws-sdk/credential-provider-node': 3.972.85
@@ -5355,7 +5386,7 @@ snapshots:
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-lambda@3.1149.0':
+  '@aws-sdk/client-lambda@3.1147.0':
     dependencies:
       '@aws-sdk/core': 3.978.2
       '@aws-sdk/credential-provider-node': 3.972.85
@@ -5366,7 +5397,7 @@ snapshots:
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-s3@3.1149.0':
+  '@aws-sdk/client-s3@3.1147.0':
     dependencies:
       '@aws-sdk/checksums': 3.1001.2
       '@aws-sdk/core': 3.978.2
@@ -5380,7 +5411,7 @@ snapshots:
       '@smithy/types': 4.19.0
       tslib: 2.8.1
 
-  '@aws-sdk/client-sts@3.1149.0':
+  '@aws-sdk/client-sts@3.1147.0':
     dependencies:
       '@aws-sdk/core': 3.978.2
       '@aws-sdk/credential-provider-node': 3.972.85
@@ -5877,7 +5908,7 @@ snapshots:
 
   '@google-cloud/promisify@6.1.0': {}
 
-  '@google-cloud/storage@8.4.0':
+  '@google-cloud/storage@8.2.0':
     dependencies:
       '@google-cloud/paginator': 7.1.0
       '@google-cloud/projectify': 6.1.0
@@ -5886,14 +5917,15 @@ snapshots:
       async-retry: 1.3.3
       duplexify: 4.1.3
       fast-xml-parser: 5.11.2
-      gaxios: 7.3.1
-      google-auth-library: 11.2.0
+      gaxios: 6.7.1
+      google-auth-library: 9.15.1
       html-entities: 2.6.0
       mime: 3.0.0
       p-limit: 3.1.0
       retry-request: 9.0.2
       teeny-request: 11.0.1
     transitivePeerDependencies:
+      - encoding
       - supports-color
 
   '@hono/node-server@1.19.9(hono@4.11.4)':
@@ -7383,20 +7415,24 @@ snapshots:
   fsevents@2.3.3:
     optional: true
 
-  gaxios@7.3.1:
+  gaxios@6.7.1:
     dependencies:
       extend: 3.0.2
       https-proxy-agent: 7.0.6
-      node-fetch: 3.3.2
+      is-stream: 2.0.1
+      node-fetch: 2.7.0
+      uuid: 9.0.1
     transitivePeerDependencies:
+      - encoding
       - supports-color
 
-  gcp-metadata@9.1.0:
+  gcp-metadata@6.1.1:
     dependencies:
-      gaxios: 7.3.1
-      google-logging-utils: 2.0.1
+      gaxios: 6.7.1
+      google-logging-utils: 0.0.2
       json-bigint: 1.0.0
     transitivePeerDependencies:
+      - encoding
       - supports-color
 
   gensync@1.0.0-beta.2: {}
@@ -7428,18 +7464,19 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  google-auth-library@11.2.0:
+  google-auth-library@9.15.1:
     dependencies:
       base64-js: 1.5.1
       ecdsa-sig-formatter: 1.0.11
-      gaxios: 7.3.1
-      gcp-metadata: 9.1.0
-      google-logging-utils: 2.0.1
+      gaxios: 6.7.1
+      gcp-metadata: 6.1.1
+      gtoken: 7.1.0
       jws: 4.0.1
     transitivePeerDependencies:
+      - encoding
       - supports-color
 
-  google-logging-utils@2.0.1: {}
+  google-logging-utils@0.0.2: {}
 
   graceful-fs@4.2.11: {}
 
@@ -7450,6 +7487,14 @@ snapshots:
   graphql@16.11.0: {}
 
   graphql@16.14.2: {}
+
+  gtoken@7.1.0:
+    dependencies:
+      gaxios: 6.7.1
+      jws: 4.0.1
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
 
   h3@2.0.1-rc.32(crossws@0.4.12(srvx@1.0.5))(ocache@0.3.0):
     dependencies:
@@ -7532,6 +7577,8 @@ snapshots:
   is-number@7.0.0: {}
 
   is-plain-obj@4.1.0: {}
+
+  is-stream@2.0.1: {}
 
   is-stream@4.0.1: {}
 
@@ -7806,6 +7853,10 @@ snapshots:
   node-domexception@1.0.0: {}
 
   node-fetch-native@1.6.7: {}
+
+  node-fetch@2.7.0:
+    dependencies:
+      whatwg-url: 5.0.0
 
   node-fetch@3.3.2:
     dependencies:
@@ -8314,6 +8365,8 @@ snapshots:
     optionalDependencies:
       react: 19.2.8
 
+  tr46@0.0.3: {}
+
   trim-lines@3.0.1: {}
 
   tslib@2.8.1: {}
@@ -8390,6 +8443,8 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
+  uuid@9.0.1: {}
+
   valibot@1.2.0(typescript@7.0.2):
     optionalDependencies:
       typescript: 7.0.2
@@ -8462,6 +8517,13 @@ snapshots:
       - msw
 
   web-streams-polyfill@3.3.3: {}
+
+  webidl-conversions@3.0.1: {}
+
+  whatwg-url@5.0.0:
+    dependencies:
+      tr46: 0.0.3
+      webidl-conversions: 3.0.1
 
   which@2.0.2:
     dependencies:
