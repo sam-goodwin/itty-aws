@@ -97,6 +97,8 @@ interface Plan {
   readonly direct: string[];
   /** public modules grouped only if a group already reaches them, else direct */
   readonly deep: string[];
+  /** directories of generated service modules (`./*`, `./unstable/*` exports) */
+  readonly serviceDirs: string[];
   /** lib paths (relative to lib/) that must not be touched */
   readonly keep: (rel: string) => boolean;
 }
@@ -143,6 +145,7 @@ const corePlan = (): Plan => {
     groups: new Map(Object.entries(CORE_GROUPS)),
     direct: all.filter((m) => !grouped.has(m)),
     deep: [],
+    serviceDirs: [],
     // codegen runs from src (bun condition); its tsc output is left alone.
     keep: (p) => p.startsWith("codegen/") || p.startsWith("fixtures/"),
   };
@@ -155,22 +158,34 @@ const exportTargets = (value: unknown, out: string[] = []): string[] => {
   return out;
 };
 
+const isService = (plan: Plan, m: string) => plan.serviceDirs.some((d) => m.startsWith(`${d}/`));
+
 const sdkPlan = (dir: string): Plan | undefined => {
   const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf8"));
   if (!pkg.exports || !existsSync(join(dir, "src"))) return undefined;
   const src = join(dir, "src");
   const publicMods = new Set<string>();
+  const serviceDirs = new Set<string>();
   for (const [key, value] of Object.entries(pkg.exports)) {
-    if (key.includes("*")) continue;
+    if (key.includes("*")) {
+      for (const t of exportTargets(value)) {
+        const m = /^\.\/lib\/(.+)\/\*\.js$/.exec(t);
+        if (m && existsSync(join(src, m[1]!))) serviceDirs.add(m[1]!);
+      }
+      continue;
+    }
     for (const t of exportTargets(value)) {
       const m = /^\.\/lib\/(.+)\.js$/.exec(t);
       if (m && existsSync(join(src, `${m[1]}.ts`))) publicMods.add(m[1]!);
     }
   }
-  const services = walk(join(src, "services"))
-    .map((p) => rel(src, p))
-    .filter(isSource)
-    .map(noExt);
+  const services = [...serviceDirs].flatMap((d) =>
+    walk(join(src, d))
+      .map((p) => rel(src, p))
+      .filter(isSource)
+      .map(noExt),
+  );
+  const inServiceDir = (m: string) => [...serviceDirs].some((d) => m.startsWith(`${d}/`));
   const direct = [...publicMods].filter((m) => m === "index" || m.startsWith("index."));
   // The group is what a program (credentials + one service) loads anyway:
   // credentials and every module a service imports, with their static
@@ -184,11 +199,11 @@ const sdkPlan = (dir: string): Plan | undefined => {
       /^(?:import|export)[^;]*? from "(\.[^"]+)";/gm,
     )) {
       const target = noExt(rel(src, join(src, dirname(s), m[1]!)));
-      if (!target.startsWith("services/")) roots.add(target);
+      if (!inServiceDir(target)) roots.add(target);
     }
   const group = [...roots];
   const deep = [...publicMods].filter(
-    (m) => !direct.includes(m) && !roots.has(m) && !m.startsWith("services/"),
+    (m) => !direct.includes(m) && !roots.has(m) && !inServiceDir(m),
   );
   return {
     name: pkg.name.replace("@distilled.cloud/", ""),
@@ -196,6 +211,7 @@ const sdkPlan = (dir: string): Plan | undefined => {
     groups: new Map([[SDK_GROUP, group]]),
     direct: [...direct, ...services],
     deep,
+    serviceDirs: [...serviceDirs],
     keep: () => false,
   };
 };
@@ -245,7 +261,7 @@ const graphOf = (plan: Plan): Map<string, Imports> => {
   const graph = new Map<string, Imports>();
   for (const file of walk(src)) {
     const r = rel(src, file);
-    if (!isSource(r) || r.startsWith("services/") || r.startsWith("codegen/")) continue;
+    if (!isSource(r) || isService(plan, r) || r.startsWith("codegen/")) continue;
     const m = noExt(r);
     const i = importsOf(file);
     const local = (s: string) => noExt(rel(src, join(dirname(file), s)));
@@ -527,7 +543,7 @@ const buildPackage = async (
     for (const file of walk(src))
       if (
         isSource(rel(src, file)) &&
-        (rel(src, file).startsWith("services/") || groupOf.has(noExt(rel(src, file))))
+        (isService(plan, rel(src, file)) || groupOf.has(noExt(rel(src, file))))
       )
         for (const m of readFileSync(file, "utf8").matchAll(
           /"(@distilled\.cloud\/core(?:\/[\w.-]+)?)"/g,
@@ -587,7 +603,7 @@ const buildPackage = async (
       // this is the same rewrite strip-lib-docs applies to tsc's output, done
       // here on the source because the bundled, minified output no longer
       // has the shape datafy reads.
-      if (m.startsWith("services/")) code = datafyOperations(code, id).code;
+      if (isService(plan, m)) code = datafyOperations(code, id).code;
       const own = groupOf.get(m);
       const deps = graph.get(m);
       // Services are not in the parsed graph (too big to parse twice); they import the SDK group.
