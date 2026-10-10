@@ -1,3 +1,11 @@
+import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
+import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
+import { cpus, totalmem } from "node:os";
+import { join, resolve } from "node:path";
+import { BASELINES, bundle, fixtureSource } from "./src/bundle.ts";
+import { discoverMissing } from "./src/discover.ts";
+import { METRICS } from "./src/metrics.ts";
 /**
  * Per-SDK benchmarks across every distilled package. Offline.
  *
@@ -9,14 +17,7 @@
  *
  * Writes `.out/latest.json` (and `<history>/<timestamp>-<sha>.json`). See README.md.
  */
-import { execFileSync } from "node:child_process";
-import { createHash } from "node:crypto";
-import { copyFileSync, existsSync, mkdirSync, readdirSync, writeFileSync } from "node:fs";
-import { cpus, totalmem } from "node:os";
-import { join, resolve } from "node:path";
-import { BASELINES, bundle, fixtureSource } from "./src/bundle.ts";
-import { discoverMissing } from "./src/discover.ts";
-import { METRICS } from "./src/metrics.ts";
+import { runOfficial } from "./src/official-run.ts";
 import type { ProbeRequest } from "./src/probe.ts";
 import { effectSize, packSize, sizeOf } from "./src/size.ts";
 import {
@@ -45,8 +46,8 @@ import {
   run,
 } from "./src/util.ts";
 
-type Suite = "size" | "bundle" | "runtime" | "imports" | "typecheck";
-const ALL_SUITES: Suite[] = ["size", "bundle", "runtime", "imports", "typecheck"];
+type Suite = "size" | "bundle" | "runtime" | "imports" | "typecheck" | "official";
+const ALL_SUITES: Suite[] = ["size", "bundle", "runtime", "imports", "typecheck", "official"];
 
 const parseArgs = (argv: string[]) => {
   const opts = {
@@ -502,6 +503,13 @@ if (has("typecheck")) {
 
 //#region Output
 
+// Official SDKs (AWS SDK v3, cloudflare, @google-cloud/storage) on the same calls.
+let official: Record<string, unknown> | undefined;
+if (opts.suites.includes("official")) {
+  log("official SDKs");
+  official = await runOfficial({ budgetMs: opts.budgetMs, log });
+}
+
 const sum = (f: (r: any) => number | undefined) =>
   Object.values(record).reduce((s, r) => s + (f(r) ?? 0), 0);
 const medianOf = (f: (r: any) => number | undefined) => {
@@ -523,6 +531,7 @@ const runFile = {
   durationMs: Math.round(performance.now() - t0),
   note: opts.note,
   suites: opts.suites,
+  ...(official ? { official } : {}),
   partial: !!opts.only,
   git: {
     sha,
