@@ -326,10 +326,7 @@ const prepare = (state: OperationState): Prepared => {
   return (state.prepared = { cfg, inputAst: cfg.input!.ast, outputAst: cfg.output!.ast });
 };
 
-// Data operations (see `op`) get their state on first use.
-const stateOf = (op: unknown): OperationState =>
-  (op as Record<symbol, OperationState>)[stateKey] ??
-  defineState(op, { configFn: () => evalEntry(sourceOf(op as DataFn), 0) });
+const stateOf = (op: unknown): OperationState => (op as Record<symbol, OperationState>)[stateKey]!;
 
 const defineState = (op: unknown, state: OperationState): OperationState => {
   Object.defineProperty(op, stateKey, { value: state });
@@ -700,11 +697,29 @@ const evalEntry = (src: Source, j: number): any => {
   return expr();
 };
 
+// A data operation gets its state on first use, from this inherited getter.
+const dataState = {
+  get(this: DataFn): OperationState {
+    return defineState(this, { configFn: () => evalEntry(sourceOf(this), 0) });
+  },
+  configurable: true,
+};
+let dataProto: object | undefined;
+let dataPaginatedProto: object | undefined;
+
 /** An operation described by data (see the region header). */
-export const op = (fn: DataFn): any => Object.setPrototypeOf(fn, OperationProto);
+export const op = (fn: DataFn): any =>
+  Object.setPrototypeOf(
+    fn,
+    (dataProto ??= Object.create(OperationProto, { [stateKey]: dataState })),
+  );
 
 /** A paginated operation described by data; its config may name a `strategy`. */
-export const opPaginated = (fn: DataFn): any => Object.setPrototypeOf(fn, PaginatedOperationProto);
+export const opPaginated = (fn: DataFn): any =>
+  Object.setPrototypeOf(
+    fn,
+    (dataPaginatedProto ??= Object.create(PaginatedOperationProto, { [stateKey]: dataState })),
+  );
 
 /** The call path of a data operation. */
 export const call = (op: unknown, input: unknown): Effect.Effect<any, any, any> =>
