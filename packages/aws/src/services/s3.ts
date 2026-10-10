@@ -18,174 +18,201 @@ const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "S3", serviceShapeName: "Amaz
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "s3" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2006-03-01");
 const proto = /*@__PURE__*/ T.AwsProtocolsRestXml();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const {
-    Bucket,
-    Region,
-    UseFIPS = false,
-    UseDualStack = false,
-    Endpoint,
-    ForcePathStyle = false,
-    Accelerate = false,
-    UseGlobalEndpoint = false,
-    UseObjectLambdaEndpoint,
-    _Key,
-    _Prefix,
-    _CopySource,
-    DisableAccessPoints,
-    DisableMultiRegionAccessPoints = false,
-    UseArnRegion,
-    UseS3ExpressControlEndpoint,
-    DisableS3ExpressSessionAuth,
-  } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  const _p0 = (_0: unknown) => ({
-    backend: "S3Express",
-    authSchemes: [
-      {
-        disableDoubleEncoding: true,
-        name: "sigv4",
-        signingName: "s3express",
-        signingRegion: `${_0}`,
-      },
-    ],
-  });
-  const _p1 = (_0: unknown) => ({
-    backend: "S3Express",
-    authSchemes: [
-      {
-        disableDoubleEncoding: true,
-        name: "sigv4-s3express",
-        signingName: "s3express",
-        signingRegion: `${_0}`,
-      },
-    ],
-  });
-  const _p2 = (_0: unknown) => ({
-    authSchemes: [
-      {
-        disableDoubleEncoding: true,
-        name: "sigv4a",
-        signingName: "s3-outposts",
-        signingRegionSet: ["*"],
-      },
-      {
-        disableDoubleEncoding: true,
-        name: "sigv4",
-        signingName: "s3-outposts",
-        signingRegion: `${_0}`,
-      },
-    ],
-  });
-  const _p3 = () => ({
-    authSchemes: [
-      { disableDoubleEncoding: true, name: "sigv4", signingName: "s3", signingRegion: "us-east-1" },
-    ],
-  });
-  const _p4 = (_0: unknown) => ({
-    authSchemes: [
-      { disableDoubleEncoding: true, name: "sigv4", signingName: "s3", signingRegion: `${_0}` },
-    ],
-  });
-  const _p5 = (_0: unknown) => ({
-    authSchemes: [
-      {
-        disableDoubleEncoding: true,
-        name: "sigv4",
-        signingName: "s3-object-lambda",
-        signingRegion: `${_.getAttr(_0, "region")}`,
-      },
-    ],
-  });
-  const _p6 = (_0: unknown) => ({
-    authSchemes: [
-      {
-        disableDoubleEncoding: true,
-        name: "sigv4",
-        signingName: "s3",
-        signingRegion: `${_.getAttr(_0, "region")}`,
-      },
-    ],
-  });
-  const _p7 = (_0: unknown) => ({
-    authSchemes: [
-      {
-        disableDoubleEncoding: true,
-        name: "sigv4a",
-        signingName: "s3-outposts",
-        signingRegionSet: ["*"],
-      },
-      {
-        disableDoubleEncoding: true,
-        name: "sigv4",
-        signingName: "s3-outposts",
-        signingRegion: `${_.getAttr(_0, "region")}`,
-      },
-    ],
-  });
-  const _p8 = (_0: unknown) => ({
-    authSchemes: [
-      {
-        disableDoubleEncoding: true,
-        name: "sigv4",
-        signingName: "s3-object-lambda",
-        signingRegion: `${_0}`,
-      },
-    ],
-  });
-  if (Region != null) {
-    if (Accelerate === true && UseFIPS === true) {
-      return err("Accelerate cannot be used with FIPS");
-    }
-    if (UseDualStack === true && Endpoint != null) {
-      return err("Cannot set dual-stack in combination with a custom endpoint.");
-    }
-    if (Endpoint != null && UseFIPS === true) {
-      return err("A custom endpoint cannot be combined with FIPS");
-    }
-    if (Endpoint != null && Accelerate === true) {
-      return err("A custom endpoint cannot be combined with S3 Accelerate");
-    }
-    {
-      const partitionResult = _.partition(Region);
-      if (
-        UseFIPS === true &&
-        partitionResult != null &&
-        partitionResult !== false &&
-        _.getAttr(partitionResult, "name") === "aws-cn"
-      ) {
-        return err("Partition does not support FIPS");
-      }
-    }
-    {
-      const bucketSuffix = _.substring(Bucket, 0, 6, true);
-      if (
-        Bucket != null &&
-        bucketSuffix != null &&
-        bucketSuffix !== false &&
-        bucketSuffix === "--x-s3"
-      ) {
-        if (Accelerate === true) {
-          return err("S3Express does not support S3 Accelerate.");
-        }
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const {
+      Bucket,
+      Region,
+      UseFIPS = false,
+      UseDualStack = false,
+      Endpoint,
+      ForcePathStyle = false,
+      Accelerate = false,
+      UseGlobalEndpoint = false,
+      UseObjectLambdaEndpoint,
+      _Key,
+      _Prefix,
+      _CopySource,
+      DisableAccessPoints,
+      DisableMultiRegionAccessPoints = false,
+      UseArnRegion,
+      UseS3ExpressControlEndpoint,
+      DisableS3ExpressSessionAuth,
+    } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    const _p0 = (_0: unknown) => ({
+      backend: "S3Express",
+      authSchemes: [
         {
-          const url = _.parseURL(Endpoint);
-          if (Endpoint != null && url != null && url !== false) {
-            if (DisableS3ExpressSessionAuth != null && DisableS3ExpressSessionAuth === true) {
+          disableDoubleEncoding: true,
+          name: "sigv4",
+          signingName: "s3express",
+          signingRegion: `${_0}`,
+        },
+      ],
+    });
+    const _p1 = (_0: unknown) => ({
+      backend: "S3Express",
+      authSchemes: [
+        {
+          disableDoubleEncoding: true,
+          name: "sigv4-s3express",
+          signingName: "s3express",
+          signingRegion: `${_0}`,
+        },
+      ],
+    });
+    const _p2 = (_0: unknown) => ({
+      authSchemes: [
+        {
+          disableDoubleEncoding: true,
+          name: "sigv4a",
+          signingName: "s3-outposts",
+          signingRegionSet: ["*"],
+        },
+        {
+          disableDoubleEncoding: true,
+          name: "sigv4",
+          signingName: "s3-outposts",
+          signingRegion: `${_0}`,
+        },
+      ],
+    });
+    const _p3 = () => ({
+      authSchemes: [
+        {
+          disableDoubleEncoding: true,
+          name: "sigv4",
+          signingName: "s3",
+          signingRegion: "us-east-1",
+        },
+      ],
+    });
+    const _p4 = (_0: unknown) => ({
+      authSchemes: [
+        { disableDoubleEncoding: true, name: "sigv4", signingName: "s3", signingRegion: `${_0}` },
+      ],
+    });
+    const _p5 = (_0: unknown) => ({
+      authSchemes: [
+        {
+          disableDoubleEncoding: true,
+          name: "sigv4",
+          signingName: "s3-object-lambda",
+          signingRegion: `${_.getAttr(_0, "region")}`,
+        },
+      ],
+    });
+    const _p6 = (_0: unknown) => ({
+      authSchemes: [
+        {
+          disableDoubleEncoding: true,
+          name: "sigv4",
+          signingName: "s3",
+          signingRegion: `${_.getAttr(_0, "region")}`,
+        },
+      ],
+    });
+    const _p7 = (_0: unknown) => ({
+      authSchemes: [
+        {
+          disableDoubleEncoding: true,
+          name: "sigv4a",
+          signingName: "s3-outposts",
+          signingRegionSet: ["*"],
+        },
+        {
+          disableDoubleEncoding: true,
+          name: "sigv4",
+          signingName: "s3-outposts",
+          signingRegion: `${_.getAttr(_0, "region")}`,
+        },
+      ],
+    });
+    const _p8 = (_0: unknown) => ({
+      authSchemes: [
+        {
+          disableDoubleEncoding: true,
+          name: "sigv4",
+          signingName: "s3-object-lambda",
+          signingRegion: `${_0}`,
+        },
+      ],
+    });
+    if (Region != null) {
+      if (Accelerate === true && UseFIPS === true) {
+        return err("Accelerate cannot be used with FIPS");
+      }
+      if (UseDualStack === true && Endpoint != null) {
+        return err("Cannot set dual-stack in combination with a custom endpoint.");
+      }
+      if (Endpoint != null && UseFIPS === true) {
+        return err("A custom endpoint cannot be combined with FIPS");
+      }
+      if (Endpoint != null && Accelerate === true) {
+        return err("A custom endpoint cannot be combined with S3 Accelerate");
+      }
+      {
+        const partitionResult = _.partition(Region);
+        if (
+          UseFIPS === true &&
+          partitionResult != null &&
+          partitionResult !== false &&
+          _.getAttr(partitionResult, "name") === "aws-cn"
+        ) {
+          return err("Partition does not support FIPS");
+        }
+      }
+      {
+        const bucketSuffix = _.substring(Bucket, 0, 6, true);
+        if (
+          Bucket != null &&
+          bucketSuffix != null &&
+          bucketSuffix !== false &&
+          bucketSuffix === "--x-s3"
+        ) {
+          if (Accelerate === true) {
+            return err("S3Express does not support S3 Accelerate.");
+          }
+          {
+            const url = _.parseURL(Endpoint);
+            if (Endpoint != null && url != null && url !== false) {
+              if (DisableS3ExpressSessionAuth != null && DisableS3ExpressSessionAuth === true) {
+                if (_.getAttr(url, "isIp") === true) {
+                  {
+                    const uri_encoded_bucket = _.uriEncode(Bucket);
+                    if (uri_encoded_bucket != null && uri_encoded_bucket !== false) {
+                      return e(
+                        `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}/${uri_encoded_bucket}${_.getAttr(url, "path")}`,
+                        _p0(Region),
+                        {},
+                      );
+                    }
+                  }
+                }
+                if (_.isVirtualHostableS3Bucket(Bucket, false)) {
+                  return e(
+                    `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                    _p0(Region),
+                    {},
+                  );
+                }
+                return err("S3Express bucket name is not a valid virtual hostable name.");
+              }
               if (_.getAttr(url, "isIp") === true) {
                 {
                   const uri_encoded_bucket = _.uriEncode(Bucket);
                   if (uri_encoded_bucket != null && uri_encoded_bucket !== false) {
                     return e(
                       `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}/${uri_encoded_bucket}${_.getAttr(url, "path")}`,
-                      _p0(Region),
+                      _p1(Region),
                       {},
                     );
                   }
@@ -194,83 +221,264 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
               if (_.isVirtualHostableS3Bucket(Bucket, false)) {
                 return e(
                   `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                  _p0(Region),
+                  _p1(Region),
                   {},
                 );
               }
               return err("S3Express bucket name is not a valid virtual hostable name.");
             }
-            if (_.getAttr(url, "isIp") === true) {
-              {
-                const uri_encoded_bucket = _.uriEncode(Bucket);
-                if (uri_encoded_bucket != null && uri_encoded_bucket !== false) {
-                  return e(
-                    `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}/${uri_encoded_bucket}${_.getAttr(url, "path")}`,
-                    _p1(Region),
-                    {},
-                  );
-                }
-              }
-            }
-            if (_.isVirtualHostableS3Bucket(Bucket, false)) {
-              return e(
-                `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                _p1(Region),
-                {},
-              );
-            }
-            return err("S3Express bucket name is not a valid virtual hostable name.");
           }
-        }
-        if (UseS3ExpressControlEndpoint != null && UseS3ExpressControlEndpoint === true) {
-          {
-            const partitionResult = _.partition(Region);
-            if (partitionResult != null && partitionResult !== false) {
-              {
-                const uri_encoded_bucket = _.uriEncode(Bucket);
-                if (
-                  uri_encoded_bucket != null &&
-                  uri_encoded_bucket !== false &&
-                  !(Endpoint != null)
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://s3express-control-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                      _p0(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://s3express-control-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                      _p0(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://s3express-control.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                      _p0(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://s3express-control.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                      _p0(Region),
-                      {},
-                    );
+          if (UseS3ExpressControlEndpoint != null && UseS3ExpressControlEndpoint === true) {
+            {
+              const partitionResult = _.partition(Region);
+              if (partitionResult != null && partitionResult !== false) {
+                {
+                  const uri_encoded_bucket = _.uriEncode(Bucket);
+                  if (
+                    uri_encoded_bucket != null &&
+                    uri_encoded_bucket !== false &&
+                    !(Endpoint != null)
+                  ) {
+                    if (UseFIPS === true && UseDualStack === true) {
+                      return e(
+                        `https://s3express-control-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                        _p0(Region),
+                        {},
+                      );
+                    }
+                    if (UseFIPS === true && UseDualStack === false) {
+                      return e(
+                        `https://s3express-control-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                        _p0(Region),
+                        {},
+                      );
+                    }
+                    if (UseFIPS === false && UseDualStack === true) {
+                      return e(
+                        `https://s3express-control.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                        _p0(Region),
+                        {},
+                      );
+                    }
+                    if (UseFIPS === false && UseDualStack === false) {
+                      return e(
+                        `https://s3express-control.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                        _p0(Region),
+                        {},
+                      );
+                    }
                   }
                 }
               }
             }
           }
-        }
-        if (_.isVirtualHostableS3Bucket(Bucket, false)) {
-          {
-            const partitionResult = _.partition(Region);
-            if (partitionResult != null && partitionResult !== false) {
-              if (DisableS3ExpressSessionAuth != null && DisableS3ExpressSessionAuth === true) {
+          if (_.isVirtualHostableS3Bucket(Bucket, false)) {
+            {
+              const partitionResult = _.partition(Region);
+              if (partitionResult != null && partitionResult !== false) {
+                if (DisableS3ExpressSessionAuth != null && DisableS3ExpressSessionAuth === true) {
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 14, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 14, 16, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 15, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 15, 17, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 19, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 19, 21, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 20, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 20, 22, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 26, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 26, 28, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  return err("Unrecognized S3Express bucket name format.");
+                }
                 {
                   const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 14, true);
                   const s3expressAvailabilityZoneDelim = _.substring(Bucket, 14, 16, true);
@@ -284,28 +492,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -324,28 +532,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -364,28 +572,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -404,28 +612,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -444,28 +652,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -473,235 +681,54 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                 }
                 return err("Unrecognized S3Express bucket name format.");
               }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 14, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 14, 16, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 15, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 15, 17, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 19, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 19, 21, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 20, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 20, 22, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 6, 26, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 26, 28, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              return err("Unrecognized S3Express bucket name format.");
             }
           }
+          return err("S3Express bucket name is not a valid virtual hostable name.");
         }
-        return err("S3Express bucket name is not a valid virtual hostable name.");
       }
-    }
-    {
-      const accessPointSuffix = _.substring(Bucket, 0, 7, true);
-      if (
-        Bucket != null &&
-        accessPointSuffix != null &&
-        accessPointSuffix !== false &&
-        accessPointSuffix === "--xa-s3"
-      ) {
-        if (Accelerate === true) {
-          return err("S3Express does not support S3 Accelerate.");
-        }
-        {
-          const url = _.parseURL(Endpoint);
-          if (Endpoint != null && url != null && url !== false) {
-            if (DisableS3ExpressSessionAuth != null && DisableS3ExpressSessionAuth === true) {
+      {
+        const accessPointSuffix = _.substring(Bucket, 0, 7, true);
+        if (
+          Bucket != null &&
+          accessPointSuffix != null &&
+          accessPointSuffix !== false &&
+          accessPointSuffix === "--xa-s3"
+        ) {
+          if (Accelerate === true) {
+            return err("S3Express does not support S3 Accelerate.");
+          }
+          {
+            const url = _.parseURL(Endpoint);
+            if (Endpoint != null && url != null && url !== false) {
+              if (DisableS3ExpressSessionAuth != null && DisableS3ExpressSessionAuth === true) {
+                if (_.getAttr(url, "isIp") === true) {
+                  {
+                    const uri_encoded_bucket = _.uriEncode(Bucket);
+                    if (uri_encoded_bucket != null && uri_encoded_bucket !== false) {
+                      return e(
+                        `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}/${uri_encoded_bucket}${_.getAttr(url, "path")}`,
+                        _p0(Region),
+                        {},
+                      );
+                    }
+                  }
+                }
+                if (_.isVirtualHostableS3Bucket(Bucket, false)) {
+                  return e(
+                    `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                    _p0(Region),
+                    {},
+                  );
+                }
+                return err("S3Express bucket name is not a valid virtual hostable name.");
+              }
               if (_.getAttr(url, "isIp") === true) {
                 {
                   const uri_encoded_bucket = _.uriEncode(Bucket);
                   if (uri_encoded_bucket != null && uri_encoded_bucket !== false) {
                     return e(
                       `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}/${uri_encoded_bucket}${_.getAttr(url, "path")}`,
-                      _p0(Region),
+                      _p1(Region),
                       {},
                     );
                   }
@@ -710,39 +737,220 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
               if (_.isVirtualHostableS3Bucket(Bucket, false)) {
                 return e(
                   `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                  _p0(Region),
+                  _p1(Region),
                   {},
                 );
               }
               return err("S3Express bucket name is not a valid virtual hostable name.");
             }
-            if (_.getAttr(url, "isIp") === true) {
-              {
-                const uri_encoded_bucket = _.uriEncode(Bucket);
-                if (uri_encoded_bucket != null && uri_encoded_bucket !== false) {
-                  return e(
-                    `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}/${uri_encoded_bucket}${_.getAttr(url, "path")}`,
-                    _p1(Region),
-                    {},
-                  );
-                }
-              }
-            }
-            if (_.isVirtualHostableS3Bucket(Bucket, false)) {
-              return e(
-                `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                _p1(Region),
-                {},
-              );
-            }
-            return err("S3Express bucket name is not a valid virtual hostable name.");
           }
-        }
-        if (_.isVirtualHostableS3Bucket(Bucket, false)) {
-          {
-            const partitionResult = _.partition(Region);
-            if (partitionResult != null && partitionResult !== false) {
-              if (DisableS3ExpressSessionAuth != null && DisableS3ExpressSessionAuth === true) {
+          if (_.isVirtualHostableS3Bucket(Bucket, false)) {
+            {
+              const partitionResult = _.partition(Region);
+              if (partitionResult != null && partitionResult !== false) {
+                if (DisableS3ExpressSessionAuth != null && DisableS3ExpressSessionAuth === true) {
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 15, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 15, 17, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 16, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 16, 18, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 20, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 20, 22, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 21, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 21, 23, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  {
+                    const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 27, true);
+                    const s3expressAvailabilityZoneDelim = _.substring(Bucket, 27, 29, true);
+                    if (
+                      s3expressAvailabilityZoneId != null &&
+                      s3expressAvailabilityZoneId !== false &&
+                      s3expressAvailabilityZoneDelim != null &&
+                      s3expressAvailabilityZoneDelim !== false &&
+                      s3expressAvailabilityZoneDelim === "--"
+                    ) {
+                      if (UseFIPS === true && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === true && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === true) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                      if (UseFIPS === false && UseDualStack === false) {
+                        return e(
+                          `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                          _p0(Region),
+                          {},
+                        );
+                      }
+                    }
+                  }
+                  return err("Unrecognized S3Express bucket name format.");
+                }
                 {
                   const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 15, true);
                   const s3expressAvailabilityZoneDelim = _.substring(Bucket, 15, 17, true);
@@ -756,28 +964,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -796,28 +1004,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -836,28 +1044,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -876,28 +1084,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -916,28 +1124,28 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                     if (UseFIPS === true && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === true && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === true) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
                     if (UseFIPS === false && UseDualStack === false) {
                       return e(
                         `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                        _p0(Region),
+                        _p1(Region),
                         {},
                       );
                     }
@@ -945,895 +1153,593 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                 }
                 return err("Unrecognized S3Express bucket name format.");
               }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 15, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 15, 17, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 16, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 16, 18, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 20, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 20, 22, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 21, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 21, 23, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              {
-                const s3expressAvailabilityZoneId = _.substring(Bucket, 7, 27, true);
-                const s3expressAvailabilityZoneDelim = _.substring(Bucket, 27, 29, true);
-                if (
-                  s3expressAvailabilityZoneId != null &&
-                  s3expressAvailabilityZoneId !== false &&
-                  s3expressAvailabilityZoneDelim != null &&
-                  s3expressAvailabilityZoneDelim !== false &&
-                  s3expressAvailabilityZoneDelim === "--"
-                ) {
-                  if (UseFIPS === true && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === true && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-fips-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === true) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                  if (UseFIPS === false && UseDualStack === false) {
-                    return e(
-                      `https://${Bucket}.s3express-${s3expressAvailabilityZoneId}.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                      _p1(Region),
-                      {},
-                    );
-                  }
-                }
-              }
-              return err("Unrecognized S3Express bucket name format.");
             }
           }
+          return err("S3Express bucket name is not a valid virtual hostable name.");
         }
-        return err("S3Express bucket name is not a valid virtual hostable name.");
       }
-    }
-    if (
-      !(Bucket != null) &&
-      UseS3ExpressControlEndpoint != null &&
-      UseS3ExpressControlEndpoint === true
-    ) {
-      {
-        const partitionResult = _.partition(Region);
-        if (partitionResult != null && partitionResult !== false) {
-          {
-            const url = _.parseURL(Endpoint);
-            if (Endpoint != null && url != null && url !== false) {
+      if (
+        !(Bucket != null) &&
+        UseS3ExpressControlEndpoint != null &&
+        UseS3ExpressControlEndpoint === true
+      ) {
+        {
+          const partitionResult = _.partition(Region);
+          if (partitionResult != null && partitionResult !== false) {
+            {
+              const url = _.parseURL(Endpoint);
+              if (Endpoint != null && url != null && url !== false) {
+                return e(
+                  `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                  _p0(Region),
+                  {},
+                );
+              }
+            }
+            if (UseFIPS === true && UseDualStack === true) {
               return e(
-                `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                `https://s3express-control-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                _p0(Region),
+                {},
+              );
+            }
+            if (UseFIPS === true && UseDualStack === false) {
+              return e(
+                `https://s3express-control-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                _p0(Region),
+                {},
+              );
+            }
+            if (UseFIPS === false && UseDualStack === true) {
+              return e(
+                `https://s3express-control.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                _p0(Region),
+                {},
+              );
+            }
+            if (UseFIPS === false && UseDualStack === false) {
+              return e(
+                `https://s3express-control.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
                 _p0(Region),
                 {},
               );
             }
           }
-          if (UseFIPS === true && UseDualStack === true) {
-            return e(
-              `https://s3express-control-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-              _p0(Region),
-              {},
-            );
-          }
-          if (UseFIPS === true && UseDualStack === false) {
-            return e(
-              `https://s3express-control-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-              _p0(Region),
-              {},
-            );
-          }
-          if (UseFIPS === false && UseDualStack === true) {
-            return e(
-              `https://s3express-control.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-              _p0(Region),
-              {},
-            );
-          }
-          if (UseFIPS === false && UseDualStack === false) {
-            return e(
-              `https://s3express-control.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-              _p0(Region),
-              {},
-            );
-          }
         }
       }
-    }
-    {
-      const hardwareType = _.substring(Bucket, 49, 50, true);
-      const regionPrefix = _.substring(Bucket, 8, 12, true);
-      const bucketAliasSuffix = _.substring(Bucket, 0, 7, true);
-      const outpostId = _.substring(Bucket, 32, 49, true);
-      const regionPartition = _.partition(Region);
-      if (
-        Bucket != null &&
-        hardwareType != null &&
-        hardwareType !== false &&
-        regionPrefix != null &&
-        regionPrefix !== false &&
-        bucketAliasSuffix != null &&
-        bucketAliasSuffix !== false &&
-        outpostId != null &&
-        outpostId !== false &&
-        regionPartition != null &&
-        regionPartition !== false &&
-        bucketAliasSuffix === "--op-s3"
-      ) {
-        if (_.isValidHostLabel(outpostId, false)) {
-          if (_.isVirtualHostableS3Bucket(Bucket, false)) {
-            if (hardwareType === "e") {
-              if (regionPrefix === "beta") {
-                if (!(Endpoint != null)) {
-                  return err("Expected a endpoint to be specified but no endpoint was found");
-                }
-                {
-                  const url = _.parseURL(Endpoint);
-                  if (Endpoint != null && url != null && url !== false) {
-                    return e(
-                      `https://${Bucket}.ec2.${_.getAttr(url, "authority")}`,
-                      _p2(Region),
-                      {},
-                    );
+      {
+        const hardwareType = _.substring(Bucket, 49, 50, true);
+        const regionPrefix = _.substring(Bucket, 8, 12, true);
+        const bucketAliasSuffix = _.substring(Bucket, 0, 7, true);
+        const outpostId = _.substring(Bucket, 32, 49, true);
+        const regionPartition = _.partition(Region);
+        if (
+          Bucket != null &&
+          hardwareType != null &&
+          hardwareType !== false &&
+          regionPrefix != null &&
+          regionPrefix !== false &&
+          bucketAliasSuffix != null &&
+          bucketAliasSuffix !== false &&
+          outpostId != null &&
+          outpostId !== false &&
+          regionPartition != null &&
+          regionPartition !== false &&
+          bucketAliasSuffix === "--op-s3"
+        ) {
+          if (_.isValidHostLabel(outpostId, false)) {
+            if (_.isVirtualHostableS3Bucket(Bucket, false)) {
+              if (hardwareType === "e") {
+                if (regionPrefix === "beta") {
+                  if (!(Endpoint != null)) {
+                    return err("Expected a endpoint to be specified but no endpoint was found");
+                  }
+                  {
+                    const url = _.parseURL(Endpoint);
+                    if (Endpoint != null && url != null && url !== false) {
+                      return e(
+                        `https://${Bucket}.ec2.${_.getAttr(url, "authority")}`,
+                        _p2(Region),
+                        {},
+                      );
+                    }
                   }
                 }
+                return e(
+                  `https://${Bucket}.ec2.s3-outposts.${Region}.${_.getAttr(regionPartition, "dnsSuffix")}`,
+                  _p2(Region),
+                  {},
+                );
               }
-              return e(
-                `https://${Bucket}.ec2.s3-outposts.${Region}.${_.getAttr(regionPartition, "dnsSuffix")}`,
-                _p2(Region),
-                {},
-              );
-            }
-            if (hardwareType === "o") {
-              if (regionPrefix === "beta") {
-                if (!(Endpoint != null)) {
-                  return err("Expected a endpoint to be specified but no endpoint was found");
-                }
-                {
-                  const url = _.parseURL(Endpoint);
-                  if (Endpoint != null && url != null && url !== false) {
-                    return e(
-                      `https://${Bucket}.op-${outpostId}.${_.getAttr(url, "authority")}`,
-                      _p2(Region),
-                      {},
-                    );
+              if (hardwareType === "o") {
+                if (regionPrefix === "beta") {
+                  if (!(Endpoint != null)) {
+                    return err("Expected a endpoint to be specified but no endpoint was found");
+                  }
+                  {
+                    const url = _.parseURL(Endpoint);
+                    if (Endpoint != null && url != null && url !== false) {
+                      return e(
+                        `https://${Bucket}.op-${outpostId}.${_.getAttr(url, "authority")}`,
+                        _p2(Region),
+                        {},
+                      );
+                    }
                   }
                 }
+                return e(
+                  `https://${Bucket}.op-${outpostId}.s3-outposts.${Region}.${_.getAttr(regionPartition, "dnsSuffix")}`,
+                  _p2(Region),
+                  {},
+                );
               }
-              return e(
-                `https://${Bucket}.op-${outpostId}.s3-outposts.${Region}.${_.getAttr(regionPartition, "dnsSuffix")}`,
-                _p2(Region),
-                {},
+              return err(
+                `Unrecognized hardware type: "Expected hardware type o or e but got ${hardwareType}"`,
               );
             }
-            return err(
-              `Unrecognized hardware type: "Expected hardware type o or e but got ${hardwareType}"`,
-            );
+            return err("Invalid Outposts Bucket alias - it must be a valid bucket name.");
           }
-          return err("Invalid Outposts Bucket alias - it must be a valid bucket name.");
+          return err("Invalid ARN: The outpost Id must only contain a-z, A-Z, 0-9 and `-`.");
         }
-        return err("Invalid ARN: The outpost Id must only contain a-z, A-Z, 0-9 and `-`.");
       }
-    }
-    if (Bucket != null) {
-      if (Endpoint != null && !(_.parseURL(Endpoint) != null)) {
-        return err(`Custom endpoint \`${Endpoint}\` was not a valid URI`);
-      }
-      if (ForcePathStyle === false && _.isVirtualHostableS3Bucket(Bucket, false)) {
-        {
-          const partitionResult = _.partition(Region);
-          if (partitionResult != null && partitionResult !== false) {
-            if (_.isValidHostLabel(Region, false)) {
-              if (Accelerate === true && _.getAttr(partitionResult, "name") === "aws-cn") {
-                return err("S3 Accelerate cannot be used in this region");
-              }
-              if (
-                UseDualStack === true &&
-                UseFIPS === true &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                Region === "aws-global"
-              ) {
-                return e(
-                  `https://${Bucket}.s3-fips.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p3(),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === true &&
-                UseFIPS === true &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === true
-              ) {
-                return e(
-                  `https://${Bucket}.s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === true &&
-                UseFIPS === true &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === false
-              ) {
-                return e(
-                  `https://${Bucket}.s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === false &&
-                UseFIPS === true &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                Region === "aws-global"
-              ) {
-                return e(
-                  `https://${Bucket}.s3-fips.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p3(),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === false &&
-                UseFIPS === true &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === true
-              ) {
-                return e(
-                  `https://${Bucket}.s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === false &&
-                UseFIPS === true &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === false
-              ) {
-                return e(
-                  `https://${Bucket}.s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === true &&
-                UseFIPS === false &&
-                Accelerate === true &&
-                !(Endpoint != null) &&
-                Region === "aws-global"
-              ) {
-                return e(
-                  `https://${Bucket}.s3-accelerate.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p3(),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === true &&
-                UseFIPS === false &&
-                Accelerate === true &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === true
-              ) {
-                return e(
-                  `https://${Bucket}.s3-accelerate.dualstack.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === true &&
-                UseFIPS === false &&
-                Accelerate === true &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === false
-              ) {
-                return e(
-                  `https://${Bucket}.s3-accelerate.dualstack.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === true &&
-                UseFIPS === false &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                Region === "aws-global"
-              ) {
-                return e(
-                  `https://${Bucket}.s3.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p3(),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === true &&
-                UseFIPS === false &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === true
-              ) {
-                return e(
-                  `https://${Bucket}.s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === true &&
-                UseFIPS === false &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === false
-              ) {
-                return e(
-                  `https://${Bucket}.s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              {
-                const url = _.parseURL(Endpoint);
+      if (Bucket != null) {
+        if (Endpoint != null && !(_.parseURL(Endpoint) != null)) {
+          return err(`Custom endpoint \`${Endpoint}\` was not a valid URI`);
+        }
+        if (ForcePathStyle === false && _.isVirtualHostableS3Bucket(Bucket, false)) {
+          {
+            const partitionResult = _.partition(Region);
+            if (partitionResult != null && partitionResult !== false) {
+              if (_.isValidHostLabel(Region, false)) {
+                if (Accelerate === true && _.getAttr(partitionResult, "name") === "aws-cn") {
+                  return err("S3 Accelerate cannot be used in this region");
+                }
                 if (
-                  UseDualStack === false &&
-                  UseFIPS === false &&
+                  UseDualStack === true &&
+                  UseFIPS === true &&
                   Accelerate === false &&
-                  Endpoint != null &&
-                  url != null &&
-                  url !== false &&
-                  _.getAttr(url, "isIp") === true &&
+                  !(Endpoint != null) &&
                   Region === "aws-global"
                 ) {
                   return e(
-                    `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${Bucket}`,
+                    `https://${Bucket}.s3-fips.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
                     _p3(),
                     {},
                   );
                 }
-              }
-              {
-                const url = _.parseURL(Endpoint);
                 if (
-                  UseDualStack === false &&
-                  UseFIPS === false &&
+                  UseDualStack === true &&
+                  UseFIPS === true &&
                   Accelerate === false &&
-                  Endpoint != null &&
-                  url != null &&
-                  url !== false &&
-                  _.getAttr(url, "isIp") === false &&
-                  Region === "aws-global"
-                ) {
-                  return e(
-                    `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                    _p3(),
-                    {},
-                  );
-                }
-              }
-              {
-                const url = _.parseURL(Endpoint);
-                if (
-                  UseDualStack === false &&
-                  UseFIPS === false &&
-                  Accelerate === false &&
-                  Endpoint != null &&
-                  url != null &&
-                  url !== false &&
-                  _.getAttr(url, "isIp") === true &&
+                  !(Endpoint != null) &&
                   !(Region === "aws-global") &&
                   UseGlobalEndpoint === true
                 ) {
-                  if (Region === "us-east-1") {
+                  return e(
+                    `https://${Bucket}.s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === true &&
+                  UseFIPS === true &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === false
+                ) {
+                  return e(
+                    `https://${Bucket}.s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === false &&
+                  UseFIPS === true &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  Region === "aws-global"
+                ) {
+                  return e(
+                    `https://${Bucket}.s3-fips.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p3(),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === false &&
+                  UseFIPS === true &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === true
+                ) {
+                  return e(
+                    `https://${Bucket}.s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === false &&
+                  UseFIPS === true &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === false
+                ) {
+                  return e(
+                    `https://${Bucket}.s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === true &&
+                  UseFIPS === false &&
+                  Accelerate === true &&
+                  !(Endpoint != null) &&
+                  Region === "aws-global"
+                ) {
+                  return e(
+                    `https://${Bucket}.s3-accelerate.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p3(),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === true &&
+                  UseFIPS === false &&
+                  Accelerate === true &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === true
+                ) {
+                  return e(
+                    `https://${Bucket}.s3-accelerate.dualstack.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === true &&
+                  UseFIPS === false &&
+                  Accelerate === true &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === false
+                ) {
+                  return e(
+                    `https://${Bucket}.s3-accelerate.dualstack.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === true &&
+                  UseFIPS === false &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  Region === "aws-global"
+                ) {
+                  return e(
+                    `https://${Bucket}.s3.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p3(),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === true &&
+                  UseFIPS === false &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === true
+                ) {
+                  return e(
+                    `https://${Bucket}.s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === true &&
+                  UseFIPS === false &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === false
+                ) {
+                  return e(
+                    `https://${Bucket}.s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+                {
+                  const url = _.parseURL(Endpoint);
+                  if (
+                    UseDualStack === false &&
+                    UseFIPS === false &&
+                    Accelerate === false &&
+                    Endpoint != null &&
+                    url != null &&
+                    url !== false &&
+                    _.getAttr(url, "isIp") === true &&
+                    Region === "aws-global"
+                  ) {
+                    return e(
+                      `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${Bucket}`,
+                      _p3(),
+                      {},
+                    );
+                  }
+                }
+                {
+                  const url = _.parseURL(Endpoint);
+                  if (
+                    UseDualStack === false &&
+                    UseFIPS === false &&
+                    Accelerate === false &&
+                    Endpoint != null &&
+                    url != null &&
+                    url !== false &&
+                    _.getAttr(url, "isIp") === false &&
+                    Region === "aws-global"
+                  ) {
+                    return e(
+                      `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                      _p3(),
+                      {},
+                    );
+                  }
+                }
+                {
+                  const url = _.parseURL(Endpoint);
+                  if (
+                    UseDualStack === false &&
+                    UseFIPS === false &&
+                    Accelerate === false &&
+                    Endpoint != null &&
+                    url != null &&
+                    url !== false &&
+                    _.getAttr(url, "isIp") === true &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === true
+                  ) {
+                    if (Region === "us-east-1") {
+                      return e(
+                        `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${Bucket}`,
+                        _p4(Region),
+                        {},
+                      );
+                    }
                     return e(
                       `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${Bucket}`,
                       _p4(Region),
                       {},
                     );
                   }
-                  return e(
-                    `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${Bucket}`,
-                    _p4(Region),
-                    {},
-                  );
                 }
-              }
-              {
-                const url = _.parseURL(Endpoint);
-                if (
-                  UseDualStack === false &&
-                  UseFIPS === false &&
-                  Accelerate === false &&
-                  Endpoint != null &&
-                  url != null &&
-                  url !== false &&
-                  _.getAttr(url, "isIp") === false &&
-                  !(Region === "aws-global") &&
-                  UseGlobalEndpoint === true
-                ) {
-                  if (Region === "us-east-1") {
+                {
+                  const url = _.parseURL(Endpoint);
+                  if (
+                    UseDualStack === false &&
+                    UseFIPS === false &&
+                    Accelerate === false &&
+                    Endpoint != null &&
+                    url != null &&
+                    url !== false &&
+                    _.getAttr(url, "isIp") === false &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === true
+                  ) {
+                    if (Region === "us-east-1") {
+                      return e(
+                        `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                        _p4(Region),
+                        {},
+                      );
+                    }
                     return e(
                       `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
                       _p4(Region),
                       {},
                     );
                   }
-                  return e(
-                    `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                    _p4(Region),
-                    {},
-                  );
                 }
-              }
-              {
-                const url = _.parseURL(Endpoint);
+                {
+                  const url = _.parseURL(Endpoint);
+                  if (
+                    UseDualStack === false &&
+                    UseFIPS === false &&
+                    Accelerate === false &&
+                    Endpoint != null &&
+                    url != null &&
+                    url !== false &&
+                    _.getAttr(url, "isIp") === true &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === false
+                  ) {
+                    return e(
+                      `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${Bucket}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
+                }
+                {
+                  const url = _.parseURL(Endpoint);
+                  if (
+                    UseDualStack === false &&
+                    UseFIPS === false &&
+                    Accelerate === false &&
+                    Endpoint != null &&
+                    url != null &&
+                    url !== false &&
+                    _.getAttr(url, "isIp") === false &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === false
+                  ) {
+                    return e(
+                      `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
+                }
                 if (
                   UseDualStack === false &&
                   UseFIPS === false &&
-                  Accelerate === false &&
-                  Endpoint != null &&
-                  url != null &&
-                  url !== false &&
-                  _.getAttr(url, "isIp") === true &&
-                  !(Region === "aws-global") &&
-                  UseGlobalEndpoint === false
+                  Accelerate === true &&
+                  !(Endpoint != null) &&
+                  Region === "aws-global"
                 ) {
                   return e(
-                    `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${Bucket}`,
-                    _p4(Region),
+                    `https://${Bucket}.s3-accelerate.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p3(),
                     {},
                   );
                 }
-              }
-              {
-                const url = _.parseURL(Endpoint);
                 if (
                   UseDualStack === false &&
                   UseFIPS === false &&
-                  Accelerate === false &&
-                  Endpoint != null &&
-                  url != null &&
-                  url !== false &&
-                  _.getAttr(url, "isIp") === false &&
+                  Accelerate === true &&
+                  !(Endpoint != null) &&
                   !(Region === "aws-global") &&
-                  UseGlobalEndpoint === false
+                  UseGlobalEndpoint === true
                 ) {
-                  return e(
-                    `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                    _p4(Region),
-                    {},
-                  );
-                }
-              }
-              if (
-                UseDualStack === false &&
-                UseFIPS === false &&
-                Accelerate === true &&
-                !(Endpoint != null) &&
-                Region === "aws-global"
-              ) {
-                return e(
-                  `https://${Bucket}.s3-accelerate.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p3(),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === false &&
-                UseFIPS === false &&
-                Accelerate === true &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === true
-              ) {
-                if (Region === "us-east-1") {
+                  if (Region === "us-east-1") {
+                    return e(
+                      `https://${Bucket}.s3-accelerate.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
                   return e(
                     `https://${Bucket}.s3-accelerate.${_.getAttr(partitionResult, "dnsSuffix")}`,
                     _p4(Region),
                     {},
                   );
                 }
-                return e(
-                  `https://${Bucket}.s3-accelerate.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === false &&
-                UseFIPS === false &&
-                Accelerate === true &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === false
-              ) {
-                return e(
-                  `https://${Bucket}.s3-accelerate.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === false &&
-                UseFIPS === false &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                Region === "aws-global"
-              ) {
-                return e(
-                  `https://${Bucket}.s3.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p3(),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === false &&
-                UseFIPS === false &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === true
-              ) {
-                if (Region === "us-east-1") {
+                if (
+                  UseDualStack === false &&
+                  UseFIPS === false &&
+                  Accelerate === true &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === false
+                ) {
                   return e(
-                    `https://${Bucket}.s3.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    `https://${Bucket}.s3-accelerate.${_.getAttr(partitionResult, "dnsSuffix")}`,
                     _p4(Region),
                     {},
                   );
                 }
-                return e(
-                  `https://${Bucket}.s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-              if (
-                UseDualStack === false &&
-                UseFIPS === false &&
-                Accelerate === false &&
-                !(Endpoint != null) &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === false
-              ) {
-                return e(
-                  `https://${Bucket}.s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                  _p4(Region),
-                  {},
-                );
-              }
-            }
-            return err("Invalid region: region was not a valid DNS name.");
-          }
-        }
-      }
-      {
-        const url = _.parseURL(Endpoint);
-        if (
-          Endpoint != null &&
-          url != null &&
-          url !== false &&
-          _.getAttr(url, "scheme") === "http" &&
-          _.isVirtualHostableS3Bucket(Bucket, true) &&
-          ForcePathStyle === false &&
-          UseFIPS === false &&
-          UseDualStack === false &&
-          Accelerate === false
-        ) {
-          {
-            const partitionResult = _.partition(Region);
-            if (partitionResult != null && partitionResult !== false) {
-              if (_.isValidHostLabel(Region, false)) {
-                return e(
-                  `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                  _p4(Region),
-                  {},
-                );
+                if (
+                  UseDualStack === false &&
+                  UseFIPS === false &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  Region === "aws-global"
+                ) {
+                  return e(
+                    `https://${Bucket}.s3.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p3(),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === false &&
+                  UseFIPS === false &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === true
+                ) {
+                  if (Region === "us-east-1") {
+                    return e(
+                      `https://${Bucket}.s3.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
+                  return e(
+                    `https://${Bucket}.s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+                if (
+                  UseDualStack === false &&
+                  UseFIPS === false &&
+                  Accelerate === false &&
+                  !(Endpoint != null) &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === false
+                ) {
+                  return e(
+                    `https://${Bucket}.s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
               }
               return err("Invalid region: region was not a valid DNS name.");
             }
           }
         }
-      }
-      {
-        const bucketArn = _.parseArn(Bucket);
-        if (ForcePathStyle === false && bucketArn != null && bucketArn !== false) {
-          {
-            const arnType = _.getAttr(bucketArn, "resourceId[0]");
-            if (arnType != null && arnType !== false && !(arnType === "")) {
-              if (_.getAttr(bucketArn, "service") === "s3-object-lambda") {
-                if (arnType === "accesspoint") {
-                  {
-                    const accessPointName = _.getAttr(bucketArn, "resourceId[1]");
-                    if (
-                      accessPointName != null &&
-                      accessPointName !== false &&
-                      !(accessPointName === "")
-                    ) {
-                      if (UseDualStack === true) {
-                        return err("S3 Object Lambda does not support Dual-stack");
-                      }
-                      if (Accelerate === true) {
-                        return err("S3 Object Lambda does not support S3 Accelerate");
-                      }
-                      if (!(_.getAttr(bucketArn, "region") === "")) {
-                        if (DisableAccessPoints != null && DisableAccessPoints === true) {
-                          return err("Access points are not supported for this operation");
-                        }
-                        if (!(_.getAttr(bucketArn, "resourceId[2]") != null)) {
-                          if (
-                            UseArnRegion != null &&
-                            UseArnRegion === false &&
-                            !(_.getAttr(bucketArn, "region") === `${Region}`)
-                          ) {
-                            return err(
-                              `Invalid configuration: region from ARN \`${_.getAttr(bucketArn, "region")}\` does not match client region \`${Region}\` and UseArnRegion is \`false\``,
-                            );
-                          }
-                          {
-                            const bucketPartition = _.partition(_.getAttr(bucketArn, "region"));
-                            if (bucketPartition != null && bucketPartition !== false) {
-                              {
-                                const partitionResult = _.partition(Region);
-                                if (partitionResult != null && partitionResult !== false) {
-                                  if (
-                                    _.getAttr(bucketPartition, "name") ===
-                                    _.getAttr(partitionResult, "name")
-                                  ) {
-                                    if (_.isValidHostLabel(_.getAttr(bucketArn, "region"), true)) {
-                                      if (_.getAttr(bucketArn, "accountId") === "") {
-                                        return err("Invalid ARN: Missing account id");
-                                      }
-                                      if (
-                                        _.isValidHostLabel(_.getAttr(bucketArn, "accountId"), false)
-                                      ) {
-                                        if (_.isValidHostLabel(accessPointName, false)) {
-                                          {
-                                            const url = _.parseURL(Endpoint);
-                                            if (Endpoint != null && url != null && url !== false) {
-                                              return e(
-                                                `${_.getAttr(url, "scheme")}://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                                                _p5(bucketArn),
-                                                {},
-                                              );
-                                            }
-                                          }
-                                          if (UseFIPS === true) {
-                                            return e(
-                                              `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-object-lambda-fips.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
-                                              _p5(bucketArn),
-                                              {},
-                                            );
-                                          }
-                                          return e(
-                                            `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-object-lambda.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
-                                            _p5(bucketArn),
-                                            {},
-                                          );
-                                        }
-                                        return err(
-                                          `Invalid ARN: The access point name may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${accessPointName}\``,
-                                        );
-                                      }
-                                      return err(
-                                        `Invalid ARN: The account id may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${_.getAttr(bucketArn, "accountId")}\``,
-                                      );
-                                    }
-                                    return err(
-                                      `Invalid region in ARN: \`${_.getAttr(bucketArn, "region")}\` (invalid DNS name)`,
-                                    );
-                                  }
-                                  return err(
-                                    `Client was configured for partition \`${_.getAttr(partitionResult, "name")}\` but ARN (\`${Bucket}\`) has \`${_.getAttr(bucketPartition, "name")}\``,
-                                  );
-                                }
-                              }
-                            }
-                          }
-                        }
-                        return err(
-                          "Invalid ARN: The ARN may only contain a single resource component after `accesspoint`.",
-                        );
-                      }
-                      return err("Invalid ARN: bucket ARN is missing a region");
-                    }
-                  }
-                  return err(
-                    "Invalid ARN: Expected a resource of the format `accesspoint:<accesspoint name>` but no name was provided",
+        {
+          const url = _.parseURL(Endpoint);
+          if (
+            Endpoint != null &&
+            url != null &&
+            url !== false &&
+            _.getAttr(url, "scheme") === "http" &&
+            _.isVirtualHostableS3Bucket(Bucket, true) &&
+            ForcePathStyle === false &&
+            UseFIPS === false &&
+            UseDualStack === false &&
+            Accelerate === false
+          ) {
+            {
+              const partitionResult = _.partition(Region);
+              if (partitionResult != null && partitionResult !== false) {
+                if (_.isValidHostLabel(Region, false)) {
+                  return e(
+                    `${_.getAttr(url, "scheme")}://${Bucket}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                    _p4(Region),
+                    {},
                   );
                 }
-                return err(
-                  `Invalid ARN: Object Lambda ARNs only support \`accesspoint\` arn types, but found: \`${arnType}\``,
-                );
+                return err("Invalid region: region was not a valid DNS name.");
               }
-              if (arnType === "accesspoint") {
-                {
-                  const accessPointName = _.getAttr(bucketArn, "resourceId[1]");
-                  if (
-                    accessPointName != null &&
-                    accessPointName !== false &&
-                    !(accessPointName === "")
-                  ) {
-                    if (!(_.getAttr(bucketArn, "region") === "")) {
-                      if (arnType === "accesspoint") {
+            }
+          }
+        }
+        {
+          const bucketArn = _.parseArn(Bucket);
+          if (ForcePathStyle === false && bucketArn != null && bucketArn !== false) {
+            {
+              const arnType = _.getAttr(bucketArn, "resourceId[0]");
+              if (arnType != null && arnType !== false && !(arnType === "")) {
+                if (_.getAttr(bucketArn, "service") === "s3-object-lambda") {
+                  if (arnType === "accesspoint") {
+                    {
+                      const accessPointName = _.getAttr(bucketArn, "resourceId[1]");
+                      if (
+                        accessPointName != null &&
+                        accessPointName !== false &&
+                        !(accessPointName === "")
+                      ) {
+                        if (UseDualStack === true) {
+                          return err("S3 Object Lambda does not support Dual-stack");
+                        }
+                        if (Accelerate === true) {
+                          return err("S3 Object Lambda does not support S3 Accelerate");
+                        }
                         if (!(_.getAttr(bucketArn, "region") === "")) {
                           if (DisableAccessPoints != null && DisableAccessPoints === true) {
                             return err("Access points are not supported for this operation");
@@ -1856,79 +1762,54 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                                   if (partitionResult != null && partitionResult !== false) {
                                     if (
                                       _.getAttr(bucketPartition, "name") ===
-                                      `${_.getAttr(partitionResult, "name")}`
+                                      _.getAttr(partitionResult, "name")
                                     ) {
                                       if (
                                         _.isValidHostLabel(_.getAttr(bucketArn, "region"), true)
                                       ) {
-                                        if (_.getAttr(bucketArn, "service") === "s3") {
-                                          if (
-                                            _.isValidHostLabel(
-                                              _.getAttr(bucketArn, "accountId"),
-                                              false,
-                                            )
-                                          ) {
-                                            if (_.isValidHostLabel(accessPointName, false)) {
-                                              if (Accelerate === true) {
-                                                return err(
-                                                  "Access Points do not support S3 Accelerate",
-                                                );
-                                              }
-                                              if (UseFIPS === true && UseDualStack === true) {
+                                        if (_.getAttr(bucketArn, "accountId") === "") {
+                                          return err("Invalid ARN: Missing account id");
+                                        }
+                                        if (
+                                          _.isValidHostLabel(
+                                            _.getAttr(bucketArn, "accountId"),
+                                            false,
+                                          )
+                                        ) {
+                                          if (_.isValidHostLabel(accessPointName, false)) {
+                                            {
+                                              const url = _.parseURL(Endpoint);
+                                              if (
+                                                Endpoint != null &&
+                                                url != null &&
+                                                url !== false
+                                              ) {
                                                 return e(
-                                                  `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-accesspoint-fips.dualstack.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
-                                                  _p6(bucketArn),
-                                                  {},
-                                                );
-                                              }
-                                              if (UseFIPS === true && UseDualStack === false) {
-                                                return e(
-                                                  `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-accesspoint-fips.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
-                                                  _p6(bucketArn),
-                                                  {},
-                                                );
-                                              }
-                                              if (UseFIPS === false && UseDualStack === true) {
-                                                return e(
-                                                  `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-accesspoint.dualstack.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
-                                                  _p6(bucketArn),
-                                                  {},
-                                                );
-                                              }
-                                              {
-                                                const url = _.parseURL(Endpoint);
-                                                if (
-                                                  UseFIPS === false &&
-                                                  UseDualStack === false &&
-                                                  Endpoint != null &&
-                                                  url != null &&
-                                                  url !== false
-                                                ) {
-                                                  return e(
-                                                    `${_.getAttr(url, "scheme")}://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                                                    _p6(bucketArn),
-                                                    {},
-                                                  );
-                                                }
-                                              }
-                                              if (UseFIPS === false && UseDualStack === false) {
-                                                return e(
-                                                  `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-accesspoint.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
-                                                  _p6(bucketArn),
+                                                  `${_.getAttr(url, "scheme")}://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                                                  _p5(bucketArn),
                                                   {},
                                                 );
                                               }
                                             }
-                                            return err(
-                                              `Invalid ARN: The access point name may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${accessPointName}\``,
+                                            if (UseFIPS === true) {
+                                              return e(
+                                                `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-object-lambda-fips.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
+                                                _p5(bucketArn),
+                                                {},
+                                              );
+                                            }
+                                            return e(
+                                              `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-object-lambda.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
+                                              _p5(bucketArn),
+                                              {},
                                             );
                                           }
                                           return err(
-                                            `Invalid ARN: The account id may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${_.getAttr(bucketArn, "accountId")}\``,
+                                            `Invalid ARN: The access point name may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${accessPointName}\``,
                                           );
                                         }
                                         return err(
-                                          `Invalid ARN: The ARN was not for the S3 service, found: ${_.getAttr(bucketArn, "service")}`,
+                                          `Invalid ARN: The account id may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${_.getAttr(bucketArn, "accountId")}\``,
                                         );
                                       }
                                       return err(
@@ -1947,683 +1828,824 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
                             "Invalid ARN: The ARN may only contain a single resource component after `accesspoint`.",
                           );
                         }
+                        return err("Invalid ARN: bucket ARN is missing a region");
                       }
                     }
-                    if (_.isValidHostLabel(accessPointName, true)) {
-                      if (UseDualStack === true) {
-                        return err("S3 MRAP does not support dual-stack");
-                      }
-                      if (UseFIPS === true) {
-                        return err("S3 MRAP does not support FIPS");
-                      }
-                      if (Accelerate === true) {
-                        return err("S3 MRAP does not support S3 Accelerate");
-                      }
-                      if (DisableMultiRegionAccessPoints === true) {
-                        return err(
-                          "Invalid configuration: Multi-Region Access Point ARNs are disabled.",
-                        );
-                      }
-                      {
-                        const mrapPartition = _.partition(Region);
-                        if (mrapPartition != null && mrapPartition !== false) {
-                          if (
-                            _.getAttr(mrapPartition, "name") === _.getAttr(bucketArn, "partition")
-                          ) {
-                            return e(
-                              `https://${accessPointName}.accesspoint.s3-global.${_.getAttr(mrapPartition, "dnsSuffix")}`,
-                              {
-                                authSchemes: [
-                                  {
-                                    disableDoubleEncoding: true,
-                                    name: "sigv4a",
-                                    signingName: "s3",
-                                    signingRegionSet: ["*"],
-                                  },
-                                ],
-                              },
-                              {},
-                            );
-                          }
-                          return err(
-                            `Client was configured for partition \`${_.getAttr(mrapPartition, "name")}\` but bucket referred to partition \`${_.getAttr(bucketArn, "partition")}\``,
-                          );
-                        }
-                      }
-                    }
-                    return err("Invalid Access Point Name");
+                    return err(
+                      "Invalid ARN: Expected a resource of the format `accesspoint:<accesspoint name>` but no name was provided",
+                    );
                   }
+                  return err(
+                    `Invalid ARN: Object Lambda ARNs only support \`accesspoint\` arn types, but found: \`${arnType}\``,
+                  );
                 }
-                return err(
-                  "Invalid ARN: Expected a resource of the format `accesspoint:<accesspoint name>` but no name was provided",
-                );
-              }
-              if (_.getAttr(bucketArn, "service") === "s3-outposts") {
-                if (UseDualStack === true) {
-                  return err("S3 Outposts does not support Dual-stack");
-                }
-                if (UseFIPS === true) {
-                  return err("S3 Outposts does not support FIPS");
-                }
-                if (Accelerate === true) {
-                  return err("S3 Outposts does not support S3 Accelerate");
-                }
-                if (_.getAttr(bucketArn, "resourceId[4]") != null) {
-                  return err("Invalid Arn: Outpost Access Point ARN contains sub resources");
-                }
-                {
-                  const outpostId = _.getAttr(bucketArn, "resourceId[1]");
-                  if (outpostId != null && outpostId !== false) {
-                    if (_.isValidHostLabel(outpostId, false)) {
-                      if (
-                        UseArnRegion != null &&
-                        UseArnRegion === false &&
-                        !(_.getAttr(bucketArn, "region") === `${Region}`)
-                      ) {
-                        return err(
-                          `Invalid configuration: region from ARN \`${_.getAttr(bucketArn, "region")}\` does not match client region \`${Region}\` and UseArnRegion is \`false\``,
-                        );
-                      }
-                      {
-                        const bucketPartition = _.partition(_.getAttr(bucketArn, "region"));
-                        if (bucketPartition != null && bucketPartition !== false) {
-                          {
-                            const partitionResult = _.partition(Region);
-                            if (partitionResult != null && partitionResult !== false) {
+                if (arnType === "accesspoint") {
+                  {
+                    const accessPointName = _.getAttr(bucketArn, "resourceId[1]");
+                    if (
+                      accessPointName != null &&
+                      accessPointName !== false &&
+                      !(accessPointName === "")
+                    ) {
+                      if (!(_.getAttr(bucketArn, "region") === "")) {
+                        if (arnType === "accesspoint") {
+                          if (!(_.getAttr(bucketArn, "region") === "")) {
+                            if (DisableAccessPoints != null && DisableAccessPoints === true) {
+                              return err("Access points are not supported for this operation");
+                            }
+                            if (!(_.getAttr(bucketArn, "resourceId[2]") != null)) {
                               if (
-                                _.getAttr(bucketPartition, "name") ===
-                                _.getAttr(partitionResult, "name")
+                                UseArnRegion != null &&
+                                UseArnRegion === false &&
+                                !(_.getAttr(bucketArn, "region") === `${Region}`)
                               ) {
-                                if (_.isValidHostLabel(_.getAttr(bucketArn, "region"), true)) {
-                                  if (
-                                    _.isValidHostLabel(_.getAttr(bucketArn, "accountId"), false)
-                                  ) {
-                                    {
-                                      const outpostType = _.getAttr(bucketArn, "resourceId[2]");
-                                      if (outpostType != null && outpostType !== false) {
-                                        {
-                                          const accessPointName = _.getAttr(
-                                            bucketArn,
-                                            "resourceId[3]",
-                                          );
-                                          if (
-                                            accessPointName != null &&
-                                            accessPointName !== false
-                                          ) {
-                                            if (outpostType === "accesspoint") {
+                                return err(
+                                  `Invalid configuration: region from ARN \`${_.getAttr(bucketArn, "region")}\` does not match client region \`${Region}\` and UseArnRegion is \`false\``,
+                                );
+                              }
+                              {
+                                const bucketPartition = _.partition(_.getAttr(bucketArn, "region"));
+                                if (bucketPartition != null && bucketPartition !== false) {
+                                  {
+                                    const partitionResult = _.partition(Region);
+                                    if (partitionResult != null && partitionResult !== false) {
+                                      if (
+                                        _.getAttr(bucketPartition, "name") ===
+                                        `${_.getAttr(partitionResult, "name")}`
+                                      ) {
+                                        if (
+                                          _.isValidHostLabel(_.getAttr(bucketArn, "region"), true)
+                                        ) {
+                                          if (_.getAttr(bucketArn, "service") === "s3") {
+                                            if (
+                                              _.isValidHostLabel(
+                                                _.getAttr(bucketArn, "accountId"),
+                                                false,
+                                              )
+                                            ) {
                                               if (_.isValidHostLabel(accessPointName, false)) {
+                                                if (Accelerate === true) {
+                                                  return err(
+                                                    "Access Points do not support S3 Accelerate",
+                                                  );
+                                                }
+                                                if (UseFIPS === true && UseDualStack === true) {
+                                                  return e(
+                                                    `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-accesspoint-fips.dualstack.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
+                                                    _p6(bucketArn),
+                                                    {},
+                                                  );
+                                                }
+                                                if (UseFIPS === true && UseDualStack === false) {
+                                                  return e(
+                                                    `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-accesspoint-fips.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
+                                                    _p6(bucketArn),
+                                                    {},
+                                                  );
+                                                }
+                                                if (UseFIPS === false && UseDualStack === true) {
+                                                  return e(
+                                                    `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-accesspoint.dualstack.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
+                                                    _p6(bucketArn),
+                                                    {},
+                                                  );
+                                                }
                                                 {
                                                   const url = _.parseURL(Endpoint);
                                                   if (
+                                                    UseFIPS === false &&
+                                                    UseDualStack === false &&
                                                     Endpoint != null &&
                                                     url != null &&
                                                     url !== false
                                                   ) {
                                                     return e(
-                                                      `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${outpostId}.${_.getAttr(url, "authority")}`,
-                                                      _p7(bucketArn),
+                                                      `${_.getAttr(url, "scheme")}://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                                                      _p6(bucketArn),
                                                       {},
                                                     );
                                                   }
                                                 }
-                                                return e(
-                                                  `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${outpostId}.s3-outposts.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
-                                                  _p7(bucketArn),
-                                                  {},
-                                                );
+                                                if (UseFIPS === false && UseDualStack === false) {
+                                                  return e(
+                                                    `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.s3-accesspoint.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
+                                                    _p6(bucketArn),
+                                                    {},
+                                                  );
+                                                }
                                               }
                                               return err(
                                                 `Invalid ARN: The access point name may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${accessPointName}\``,
                                               );
                                             }
                                             return err(
-                                              `Expected an outpost type \`accesspoint\`, found ${outpostType}`,
+                                              `Invalid ARN: The account id may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${_.getAttr(bucketArn, "accountId")}\``,
                                             );
                                           }
+                                          return err(
+                                            `Invalid ARN: The ARN was not for the S3 service, found: ${_.getAttr(bucketArn, "service")}`,
+                                          );
                                         }
-                                        return err("Invalid ARN: expected an access point name");
+                                        return err(
+                                          `Invalid region in ARN: \`${_.getAttr(bucketArn, "region")}\` (invalid DNS name)`,
+                                        );
                                       }
+                                      return err(
+                                        `Client was configured for partition \`${_.getAttr(partitionResult, "name")}\` but ARN (\`${Bucket}\`) has \`${_.getAttr(bucketPartition, "name")}\``,
+                                      );
                                     }
-                                    return err("Invalid ARN: Expected a 4-component resource");
+                                  }
+                                }
+                              }
+                            }
+                            return err(
+                              "Invalid ARN: The ARN may only contain a single resource component after `accesspoint`.",
+                            );
+                          }
+                        }
+                      }
+                      if (_.isValidHostLabel(accessPointName, true)) {
+                        if (UseDualStack === true) {
+                          return err("S3 MRAP does not support dual-stack");
+                        }
+                        if (UseFIPS === true) {
+                          return err("S3 MRAP does not support FIPS");
+                        }
+                        if (Accelerate === true) {
+                          return err("S3 MRAP does not support S3 Accelerate");
+                        }
+                        if (DisableMultiRegionAccessPoints === true) {
+                          return err(
+                            "Invalid configuration: Multi-Region Access Point ARNs are disabled.",
+                          );
+                        }
+                        {
+                          const mrapPartition = _.partition(Region);
+                          if (mrapPartition != null && mrapPartition !== false) {
+                            if (
+                              _.getAttr(mrapPartition, "name") === _.getAttr(bucketArn, "partition")
+                            ) {
+                              return e(
+                                `https://${accessPointName}.accesspoint.s3-global.${_.getAttr(mrapPartition, "dnsSuffix")}`,
+                                {
+                                  authSchemes: [
+                                    {
+                                      disableDoubleEncoding: true,
+                                      name: "sigv4a",
+                                      signingName: "s3",
+                                      signingRegionSet: ["*"],
+                                    },
+                                  ],
+                                },
+                                {},
+                              );
+                            }
+                            return err(
+                              `Client was configured for partition \`${_.getAttr(mrapPartition, "name")}\` but bucket referred to partition \`${_.getAttr(bucketArn, "partition")}\``,
+                            );
+                          }
+                        }
+                      }
+                      return err("Invalid Access Point Name");
+                    }
+                  }
+                  return err(
+                    "Invalid ARN: Expected a resource of the format `accesspoint:<accesspoint name>` but no name was provided",
+                  );
+                }
+                if (_.getAttr(bucketArn, "service") === "s3-outposts") {
+                  if (UseDualStack === true) {
+                    return err("S3 Outposts does not support Dual-stack");
+                  }
+                  if (UseFIPS === true) {
+                    return err("S3 Outposts does not support FIPS");
+                  }
+                  if (Accelerate === true) {
+                    return err("S3 Outposts does not support S3 Accelerate");
+                  }
+                  if (_.getAttr(bucketArn, "resourceId[4]") != null) {
+                    return err("Invalid Arn: Outpost Access Point ARN contains sub resources");
+                  }
+                  {
+                    const outpostId = _.getAttr(bucketArn, "resourceId[1]");
+                    if (outpostId != null && outpostId !== false) {
+                      if (_.isValidHostLabel(outpostId, false)) {
+                        if (
+                          UseArnRegion != null &&
+                          UseArnRegion === false &&
+                          !(_.getAttr(bucketArn, "region") === `${Region}`)
+                        ) {
+                          return err(
+                            `Invalid configuration: region from ARN \`${_.getAttr(bucketArn, "region")}\` does not match client region \`${Region}\` and UseArnRegion is \`false\``,
+                          );
+                        }
+                        {
+                          const bucketPartition = _.partition(_.getAttr(bucketArn, "region"));
+                          if (bucketPartition != null && bucketPartition !== false) {
+                            {
+                              const partitionResult = _.partition(Region);
+                              if (partitionResult != null && partitionResult !== false) {
+                                if (
+                                  _.getAttr(bucketPartition, "name") ===
+                                  _.getAttr(partitionResult, "name")
+                                ) {
+                                  if (_.isValidHostLabel(_.getAttr(bucketArn, "region"), true)) {
+                                    if (
+                                      _.isValidHostLabel(_.getAttr(bucketArn, "accountId"), false)
+                                    ) {
+                                      {
+                                        const outpostType = _.getAttr(bucketArn, "resourceId[2]");
+                                        if (outpostType != null && outpostType !== false) {
+                                          {
+                                            const accessPointName = _.getAttr(
+                                              bucketArn,
+                                              "resourceId[3]",
+                                            );
+                                            if (
+                                              accessPointName != null &&
+                                              accessPointName !== false
+                                            ) {
+                                              if (outpostType === "accesspoint") {
+                                                if (_.isValidHostLabel(accessPointName, false)) {
+                                                  {
+                                                    const url = _.parseURL(Endpoint);
+                                                    if (
+                                                      Endpoint != null &&
+                                                      url != null &&
+                                                      url !== false
+                                                    ) {
+                                                      return e(
+                                                        `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${outpostId}.${_.getAttr(url, "authority")}`,
+                                                        _p7(bucketArn),
+                                                        {},
+                                                      );
+                                                    }
+                                                  }
+                                                  return e(
+                                                    `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${outpostId}.s3-outposts.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
+                                                    _p7(bucketArn),
+                                                    {},
+                                                  );
+                                                }
+                                                return err(
+                                                  `Invalid ARN: The access point name may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${accessPointName}\``,
+                                                );
+                                              }
+                                              return err(
+                                                `Expected an outpost type \`accesspoint\`, found ${outpostType}`,
+                                              );
+                                            }
+                                          }
+                                          return err("Invalid ARN: expected an access point name");
+                                        }
+                                      }
+                                      return err("Invalid ARN: Expected a 4-component resource");
+                                    }
+                                    return err(
+                                      `Invalid ARN: The account id may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${_.getAttr(bucketArn, "accountId")}\``,
+                                    );
                                   }
                                   return err(
-                                    `Invalid ARN: The account id may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${_.getAttr(bucketArn, "accountId")}\``,
+                                    `Invalid region in ARN: \`${_.getAttr(bucketArn, "region")}\` (invalid DNS name)`,
                                   );
                                 }
                                 return err(
-                                  `Invalid region in ARN: \`${_.getAttr(bucketArn, "region")}\` (invalid DNS name)`,
+                                  `Client was configured for partition \`${_.getAttr(partitionResult, "name")}\` but ARN (\`${Bucket}\`) has \`${_.getAttr(bucketPartition, "name")}\``,
                                 );
                               }
-                              return err(
-                                `Client was configured for partition \`${_.getAttr(partitionResult, "name")}\` but ARN (\`${Bucket}\`) has \`${_.getAttr(bucketPartition, "name")}\``,
-                              );
                             }
                           }
                         }
                       }
+                      return err(
+                        `Invalid ARN: The outpost Id may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${outpostId}\``,
+                      );
                     }
-                    return err(
-                      `Invalid ARN: The outpost Id may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${outpostId}\``,
-                    );
                   }
+                  return err("Invalid ARN: The Outpost Id was not set");
                 }
-                return err("Invalid ARN: The Outpost Id was not set");
+                return err(`Invalid ARN: Unrecognized format: ${Bucket} (type: ${arnType})`);
               }
-              return err(`Invalid ARN: Unrecognized format: ${Bucket} (type: ${arnType})`);
             }
+            return err("Invalid ARN: No ARN type specified");
           }
-          return err("Invalid ARN: No ARN type specified");
         }
-      }
-      {
-        const arnPrefix = _.substring(Bucket, 0, 4, false);
-        if (
-          arnPrefix != null &&
-          arnPrefix !== false &&
-          arnPrefix === "arn:" &&
-          !(_.parseArn(Bucket) != null)
-        ) {
-          return err(`Invalid ARN: \`${Bucket}\` was not a valid ARN`);
+        {
+          const arnPrefix = _.substring(Bucket, 0, 4, false);
+          if (
+            arnPrefix != null &&
+            arnPrefix !== false &&
+            arnPrefix === "arn:" &&
+            !(_.parseArn(Bucket) != null)
+          ) {
+            return err(`Invalid ARN: \`${Bucket}\` was not a valid ARN`);
+          }
         }
-      }
-      if (ForcePathStyle === true && _.parseArn(Bucket)) {
-        return err("Path-style addressing cannot be used with ARN buckets");
-      }
-      {
-        const uri_encoded_bucket = _.uriEncode(Bucket);
-        if (uri_encoded_bucket != null && uri_encoded_bucket !== false) {
-          {
-            const partitionResult = _.partition(Region);
-            if (partitionResult != null && partitionResult !== false) {
-              if (Accelerate === false) {
-                if (
-                  UseDualStack === true &&
-                  !(Endpoint != null) &&
-                  UseFIPS === true &&
-                  Region === "aws-global"
-                ) {
-                  return e(
-                    `https://s3-fips.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p3(),
-                    {},
-                  );
-                }
-                if (
-                  UseDualStack === true &&
-                  !(Endpoint != null) &&
-                  UseFIPS === true &&
-                  !(Region === "aws-global") &&
-                  UseGlobalEndpoint === true
-                ) {
-                  return e(
-                    `https://s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p4(Region),
-                    {},
-                  );
-                }
-                if (
-                  UseDualStack === true &&
-                  !(Endpoint != null) &&
-                  UseFIPS === true &&
-                  !(Region === "aws-global") &&
-                  UseGlobalEndpoint === false
-                ) {
-                  return e(
-                    `https://s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p4(Region),
-                    {},
-                  );
-                }
-                if (
-                  UseDualStack === false &&
-                  !(Endpoint != null) &&
-                  UseFIPS === true &&
-                  Region === "aws-global"
-                ) {
-                  return e(
-                    `https://s3-fips.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p3(),
-                    {},
-                  );
-                }
-                if (
-                  UseDualStack === false &&
-                  !(Endpoint != null) &&
-                  UseFIPS === true &&
-                  !(Region === "aws-global") &&
-                  UseGlobalEndpoint === true
-                ) {
-                  return e(
-                    `https://s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p4(Region),
-                    {},
-                  );
-                }
-                if (
-                  UseDualStack === false &&
-                  !(Endpoint != null) &&
-                  UseFIPS === true &&
-                  !(Region === "aws-global") &&
-                  UseGlobalEndpoint === false
-                ) {
-                  return e(
-                    `https://s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p4(Region),
-                    {},
-                  );
-                }
-                if (
-                  UseDualStack === true &&
-                  !(Endpoint != null) &&
-                  UseFIPS === false &&
-                  Region === "aws-global"
-                ) {
-                  return e(
-                    `https://s3.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p3(),
-                    {},
-                  );
-                }
-                if (
-                  UseDualStack === true &&
-                  !(Endpoint != null) &&
-                  UseFIPS === false &&
-                  !(Region === "aws-global") &&
-                  UseGlobalEndpoint === true
-                ) {
-                  return e(
-                    `https://s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p4(Region),
-                    {},
-                  );
-                }
-                if (
-                  UseDualStack === true &&
-                  !(Endpoint != null) &&
-                  UseFIPS === false &&
-                  !(Region === "aws-global") &&
-                  UseGlobalEndpoint === false
-                ) {
-                  return e(
-                    `https://s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p4(Region),
-                    {},
-                  );
-                }
-                {
-                  const url = _.parseURL(Endpoint);
+        if (ForcePathStyle === true && _.parseArn(Bucket)) {
+          return err("Path-style addressing cannot be used with ARN buckets");
+        }
+        {
+          const uri_encoded_bucket = _.uriEncode(Bucket);
+          if (uri_encoded_bucket != null && uri_encoded_bucket !== false) {
+            {
+              const partitionResult = _.partition(Region);
+              if (partitionResult != null && partitionResult !== false) {
+                if (Accelerate === false) {
                   if (
-                    UseDualStack === false &&
-                    Endpoint != null &&
-                    url != null &&
-                    url !== false &&
-                    UseFIPS === false &&
+                    UseDualStack === true &&
+                    !(Endpoint != null) &&
+                    UseFIPS === true &&
                     Region === "aws-global"
                   ) {
                     return e(
-                      `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${uri_encoded_bucket}`,
+                      `https://s3-fips.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
                       _p3(),
                       {},
                     );
                   }
-                }
-                {
-                  const url = _.parseURL(Endpoint);
+                  if (
+                    UseDualStack === true &&
+                    !(Endpoint != null) &&
+                    UseFIPS === true &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === true
+                  ) {
+                    return e(
+                      `https://s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
+                  if (
+                    UseDualStack === true &&
+                    !(Endpoint != null) &&
+                    UseFIPS === true &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === false
+                  ) {
+                    return e(
+                      `https://s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
                   if (
                     UseDualStack === false &&
-                    Endpoint != null &&
-                    url != null &&
-                    url !== false &&
+                    !(Endpoint != null) &&
+                    UseFIPS === true &&
+                    Region === "aws-global"
+                  ) {
+                    return e(
+                      `https://s3-fips.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      _p3(),
+                      {},
+                    );
+                  }
+                  if (
+                    UseDualStack === false &&
+                    !(Endpoint != null) &&
+                    UseFIPS === true &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === true
+                  ) {
+                    return e(
+                      `https://s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
+                  if (
+                    UseDualStack === false &&
+                    !(Endpoint != null) &&
+                    UseFIPS === true &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === false
+                  ) {
+                    return e(
+                      `https://s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
+                  if (
+                    UseDualStack === true &&
+                    !(Endpoint != null) &&
+                    UseFIPS === false &&
+                    Region === "aws-global"
+                  ) {
+                    return e(
+                      `https://s3.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      _p3(),
+                      {},
+                    );
+                  }
+                  if (
+                    UseDualStack === true &&
+                    !(Endpoint != null) &&
                     UseFIPS === false &&
                     !(Region === "aws-global") &&
                     UseGlobalEndpoint === true
                   ) {
-                    if (Region === "us-east-1") {
+                    return e(
+                      `https://s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
+                  if (
+                    UseDualStack === true &&
+                    !(Endpoint != null) &&
+                    UseFIPS === false &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === false
+                  ) {
+                    return e(
+                      `https://s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      _p4(Region),
+                      {},
+                    );
+                  }
+                  {
+                    const url = _.parseURL(Endpoint);
+                    if (
+                      UseDualStack === false &&
+                      Endpoint != null &&
+                      url != null &&
+                      url !== false &&
+                      UseFIPS === false &&
+                      Region === "aws-global"
+                    ) {
+                      return e(
+                        `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${uri_encoded_bucket}`,
+                        _p3(),
+                        {},
+                      );
+                    }
+                  }
+                  {
+                    const url = _.parseURL(Endpoint);
+                    if (
+                      UseDualStack === false &&
+                      Endpoint != null &&
+                      url != null &&
+                      url !== false &&
+                      UseFIPS === false &&
+                      !(Region === "aws-global") &&
+                      UseGlobalEndpoint === true
+                    ) {
+                      if (Region === "us-east-1") {
+                        return e(
+                          `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${uri_encoded_bucket}`,
+                          _p4(Region),
+                          {},
+                        );
+                      }
                       return e(
                         `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${uri_encoded_bucket}`,
                         _p4(Region),
                         {},
                       );
                     }
+                  }
+                  {
+                    const url = _.parseURL(Endpoint);
+                    if (
+                      UseDualStack === false &&
+                      Endpoint != null &&
+                      url != null &&
+                      url !== false &&
+                      UseFIPS === false &&
+                      !(Region === "aws-global") &&
+                      UseGlobalEndpoint === false
+                    ) {
+                      return e(
+                        `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${uri_encoded_bucket}`,
+                        _p4(Region),
+                        {},
+                      );
+                    }
+                  }
+                  if (
+                    UseDualStack === false &&
+                    !(Endpoint != null) &&
+                    UseFIPS === false &&
+                    Region === "aws-global"
+                  ) {
                     return e(
-                      `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${uri_encoded_bucket}`,
+                      `https://s3.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      _p3(),
+                      {},
+                    );
+                  }
+                  if (
+                    UseDualStack === false &&
+                    !(Endpoint != null) &&
+                    UseFIPS === false &&
+                    !(Region === "aws-global") &&
+                    UseGlobalEndpoint === true
+                  ) {
+                    if (Region === "us-east-1") {
+                      return e(
+                        `https://s3.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                        _p4(Region),
+                        {},
+                      );
+                    }
+                    return e(
+                      `https://s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
                       _p4(Region),
                       {},
                     );
                   }
-                }
-                {
-                  const url = _.parseURL(Endpoint);
                   if (
                     UseDualStack === false &&
-                    Endpoint != null &&
-                    url != null &&
-                    url !== false &&
+                    !(Endpoint != null) &&
                     UseFIPS === false &&
                     !(Region === "aws-global") &&
                     UseGlobalEndpoint === false
                   ) {
                     return e(
-                      `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "normalizedPath")}${uri_encoded_bucket}`,
+                      `https://s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
                       _p4(Region),
                       {},
                     );
                   }
                 }
+                return err("Path-style addressing cannot be used with S3 Accelerate");
+              }
+            }
+          }
+        }
+      }
+      if (UseObjectLambdaEndpoint != null && UseObjectLambdaEndpoint === true) {
+        {
+          const partitionResult = _.partition(Region);
+          if (partitionResult != null && partitionResult !== false) {
+            if (_.isValidHostLabel(Region, true)) {
+              if (UseDualStack === true) {
+                return err("S3 Object Lambda does not support Dual-stack");
+              }
+              if (Accelerate === true) {
+                return err("S3 Object Lambda does not support S3 Accelerate");
+              }
+              {
+                const url = _.parseURL(Endpoint);
+                if (Endpoint != null && url != null && url !== false) {
+                  return e(
+                    `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                    _p8(Region),
+                    {},
+                  );
+                }
+              }
+              if (UseFIPS === true) {
+                return e(
+                  `https://s3-object-lambda-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p8(Region),
+                  {},
+                );
+              }
+              return e(
+                `https://s3-object-lambda.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                _p8(Region),
+                {},
+              );
+            }
+            return err("Invalid region: region was not a valid DNS name.");
+          }
+        }
+      }
+      if (!(Bucket != null)) {
+        {
+          const partitionResult = _.partition(Region);
+          if (partitionResult != null && partitionResult !== false) {
+            if (_.isValidHostLabel(Region, true)) {
+              if (
+                UseFIPS === true &&
+                UseDualStack === true &&
+                !(Endpoint != null) &&
+                Region === "aws-global"
+              ) {
+                return e(
+                  `https://s3-fips.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p3(),
+                  {},
+                );
+              }
+              if (
+                UseFIPS === true &&
+                UseDualStack === true &&
+                !(Endpoint != null) &&
+                !(Region === "aws-global") &&
+                UseGlobalEndpoint === true
+              ) {
+                return e(
+                  `https://s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p4(Region),
+                  {},
+                );
+              }
+              if (
+                UseFIPS === true &&
+                UseDualStack === true &&
+                !(Endpoint != null) &&
+                !(Region === "aws-global") &&
+                UseGlobalEndpoint === false
+              ) {
+                return e(
+                  `https://s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p4(Region),
+                  {},
+                );
+              }
+              if (
+                UseFIPS === true &&
+                UseDualStack === false &&
+                !(Endpoint != null) &&
+                Region === "aws-global"
+              ) {
+                return e(
+                  `https://s3-fips.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p3(),
+                  {},
+                );
+              }
+              if (
+                UseFIPS === true &&
+                UseDualStack === false &&
+                !(Endpoint != null) &&
+                !(Region === "aws-global") &&
+                UseGlobalEndpoint === true
+              ) {
+                return e(
+                  `https://s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p4(Region),
+                  {},
+                );
+              }
+              if (
+                UseFIPS === true &&
+                UseDualStack === false &&
+                !(Endpoint != null) &&
+                !(Region === "aws-global") &&
+                UseGlobalEndpoint === false
+              ) {
+                return e(
+                  `https://s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p4(Region),
+                  {},
+                );
+              }
+              if (
+                UseFIPS === false &&
+                UseDualStack === true &&
+                !(Endpoint != null) &&
+                Region === "aws-global"
+              ) {
+                return e(
+                  `https://s3.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p3(),
+                  {},
+                );
+              }
+              if (
+                UseFIPS === false &&
+                UseDualStack === true &&
+                !(Endpoint != null) &&
+                !(Region === "aws-global") &&
+                UseGlobalEndpoint === true
+              ) {
+                return e(
+                  `https://s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p4(Region),
+                  {},
+                );
+              }
+              if (
+                UseFIPS === false &&
+                UseDualStack === true &&
+                !(Endpoint != null) &&
+                !(Region === "aws-global") &&
+                UseGlobalEndpoint === false
+              ) {
+                return e(
+                  `https://s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                  _p4(Region),
+                  {},
+                );
+              }
+              {
+                const url = _.parseURL(Endpoint);
                 if (
-                  UseDualStack === false &&
-                  !(Endpoint != null) &&
                   UseFIPS === false &&
+                  UseDualStack === false &&
+                  Endpoint != null &&
+                  url != null &&
+                  url !== false &&
                   Region === "aws-global"
                 ) {
                   return e(
-                    `https://s3.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                    `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
                     _p3(),
                     {},
                   );
                 }
+              }
+              {
+                const url = _.parseURL(Endpoint);
                 if (
-                  UseDualStack === false &&
-                  !(Endpoint != null) &&
                   UseFIPS === false &&
+                  UseDualStack === false &&
+                  Endpoint != null &&
+                  url != null &&
+                  url !== false &&
                   !(Region === "aws-global") &&
                   UseGlobalEndpoint === true
                 ) {
                   if (Region === "us-east-1") {
                     return e(
-                      `https://s3.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
+                      `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
                       _p4(Region),
                       {},
                     );
                   }
-                  return e(
-                    `https://s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p4(Region),
-                    {},
-                  );
-                }
-                if (
-                  UseDualStack === false &&
-                  !(Endpoint != null) &&
-                  UseFIPS === false &&
-                  !(Region === "aws-global") &&
-                  UseGlobalEndpoint === false
-                ) {
-                  return e(
-                    `https://s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}/${uri_encoded_bucket}`,
-                    _p4(Region),
-                    {},
-                  );
-                }
-              }
-              return err("Path-style addressing cannot be used with S3 Accelerate");
-            }
-          }
-        }
-      }
-    }
-    if (UseObjectLambdaEndpoint != null && UseObjectLambdaEndpoint === true) {
-      {
-        const partitionResult = _.partition(Region);
-        if (partitionResult != null && partitionResult !== false) {
-          if (_.isValidHostLabel(Region, true)) {
-            if (UseDualStack === true) {
-              return err("S3 Object Lambda does not support Dual-stack");
-            }
-            if (Accelerate === true) {
-              return err("S3 Object Lambda does not support S3 Accelerate");
-            }
-            {
-              const url = _.parseURL(Endpoint);
-              if (Endpoint != null && url != null && url !== false) {
-                return e(
-                  `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                  _p8(Region),
-                  {},
-                );
-              }
-            }
-            if (UseFIPS === true) {
-              return e(
-                `https://s3-object-lambda-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p8(Region),
-                {},
-              );
-            }
-            return e(
-              `https://s3-object-lambda.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-              _p8(Region),
-              {},
-            );
-          }
-          return err("Invalid region: region was not a valid DNS name.");
-        }
-      }
-    }
-    if (!(Bucket != null)) {
-      {
-        const partitionResult = _.partition(Region);
-        if (partitionResult != null && partitionResult !== false) {
-          if (_.isValidHostLabel(Region, true)) {
-            if (
-              UseFIPS === true &&
-              UseDualStack === true &&
-              !(Endpoint != null) &&
-              Region === "aws-global"
-            ) {
-              return e(
-                `https://s3-fips.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p3(),
-                {},
-              );
-            }
-            if (
-              UseFIPS === true &&
-              UseDualStack === true &&
-              !(Endpoint != null) &&
-              !(Region === "aws-global") &&
-              UseGlobalEndpoint === true
-            ) {
-              return e(
-                `https://s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p4(Region),
-                {},
-              );
-            }
-            if (
-              UseFIPS === true &&
-              UseDualStack === true &&
-              !(Endpoint != null) &&
-              !(Region === "aws-global") &&
-              UseGlobalEndpoint === false
-            ) {
-              return e(
-                `https://s3-fips.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p4(Region),
-                {},
-              );
-            }
-            if (
-              UseFIPS === true &&
-              UseDualStack === false &&
-              !(Endpoint != null) &&
-              Region === "aws-global"
-            ) {
-              return e(
-                `https://s3-fips.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p3(),
-                {},
-              );
-            }
-            if (
-              UseFIPS === true &&
-              UseDualStack === false &&
-              !(Endpoint != null) &&
-              !(Region === "aws-global") &&
-              UseGlobalEndpoint === true
-            ) {
-              return e(
-                `https://s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p4(Region),
-                {},
-              );
-            }
-            if (
-              UseFIPS === true &&
-              UseDualStack === false &&
-              !(Endpoint != null) &&
-              !(Region === "aws-global") &&
-              UseGlobalEndpoint === false
-            ) {
-              return e(
-                `https://s3-fips.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p4(Region),
-                {},
-              );
-            }
-            if (
-              UseFIPS === false &&
-              UseDualStack === true &&
-              !(Endpoint != null) &&
-              Region === "aws-global"
-            ) {
-              return e(
-                `https://s3.dualstack.us-east-1.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p3(),
-                {},
-              );
-            }
-            if (
-              UseFIPS === false &&
-              UseDualStack === true &&
-              !(Endpoint != null) &&
-              !(Region === "aws-global") &&
-              UseGlobalEndpoint === true
-            ) {
-              return e(
-                `https://s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p4(Region),
-                {},
-              );
-            }
-            if (
-              UseFIPS === false &&
-              UseDualStack === true &&
-              !(Endpoint != null) &&
-              !(Region === "aws-global") &&
-              UseGlobalEndpoint === false
-            ) {
-              return e(
-                `https://s3.dualstack.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p4(Region),
-                {},
-              );
-            }
-            {
-              const url = _.parseURL(Endpoint);
-              if (
-                UseFIPS === false &&
-                UseDualStack === false &&
-                Endpoint != null &&
-                url != null &&
-                url !== false &&
-                Region === "aws-global"
-              ) {
-                return e(
-                  `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
-                  _p3(),
-                  {},
-                );
-              }
-            }
-            {
-              const url = _.parseURL(Endpoint);
-              if (
-                UseFIPS === false &&
-                UseDualStack === false &&
-                Endpoint != null &&
-                url != null &&
-                url !== false &&
-                !(Region === "aws-global") &&
-                UseGlobalEndpoint === true
-              ) {
-                if (Region === "us-east-1") {
                   return e(
                     `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
                     _p4(Region),
                     {},
                   );
                 }
+              }
+              {
+                const url = _.parseURL(Endpoint);
+                if (
+                  UseFIPS === false &&
+                  UseDualStack === false &&
+                  Endpoint != null &&
+                  url != null &&
+                  url !== false &&
+                  !(Region === "aws-global") &&
+                  UseGlobalEndpoint === false
+                ) {
+                  return e(
+                    `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
+              }
+              if (
+                UseFIPS === false &&
+                UseDualStack === false &&
+                !(Endpoint != null) &&
+                Region === "aws-global"
+              ) {
+                return e(`https://s3.${_.getAttr(partitionResult, "dnsSuffix")}`, _p3(), {});
+              }
+              if (
+                UseFIPS === false &&
+                UseDualStack === false &&
+                !(Endpoint != null) &&
+                !(Region === "aws-global") &&
+                UseGlobalEndpoint === true
+              ) {
+                if (Region === "us-east-1") {
+                  return e(
+                    `https://s3.${_.getAttr(partitionResult, "dnsSuffix")}`,
+                    _p4(Region),
+                    {},
+                  );
+                }
                 return e(
-                  `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                  `https://s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
                   _p4(Region),
                   {},
                 );
               }
-            }
-            {
-              const url = _.parseURL(Endpoint);
               if (
                 UseFIPS === false &&
                 UseDualStack === false &&
-                Endpoint != null &&
-                url != null &&
-                url !== false &&
+                !(Endpoint != null) &&
                 !(Region === "aws-global") &&
                 UseGlobalEndpoint === false
               ) {
                 return e(
-                  `${_.getAttr(url, "scheme")}://${_.getAttr(url, "authority")}${_.getAttr(url, "path")}`,
+                  `https://s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
                   _p4(Region),
                   {},
                 );
               }
             }
-            if (
-              UseFIPS === false &&
-              UseDualStack === false &&
-              !(Endpoint != null) &&
-              Region === "aws-global"
-            ) {
-              return e(`https://s3.${_.getAttr(partitionResult, "dnsSuffix")}`, _p3(), {});
-            }
-            if (
-              UseFIPS === false &&
-              UseDualStack === false &&
-              !(Endpoint != null) &&
-              !(Region === "aws-global") &&
-              UseGlobalEndpoint === true
-            ) {
-              if (Region === "us-east-1") {
-                return e(`https://s3.${_.getAttr(partitionResult, "dnsSuffix")}`, _p4(Region), {});
-              }
-              return e(
-                `https://s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p4(Region),
-                {},
-              );
-            }
-            if (
-              UseFIPS === false &&
-              UseDualStack === false &&
-              !(Endpoint != null) &&
-              !(Region === "aws-global") &&
-              UseGlobalEndpoint === false
-            ) {
-              return e(
-                `https://s3.${Region}.${_.getAttr(partitionResult, "dnsSuffix")}`,
-                _p4(Region),
-                {},
-              );
-            }
+            return err("Invalid region: region was not a valid DNS name.");
           }
-          return err("Invalid region: region was not a valid DNS name.");
         }
       }
     }
-  }
-  return err("A region must be set when sending requests to S3.");
-});
+    return err("A region must be set when sending requests to S3.");
+  },
+  '{"url":"https://s3.{R}.{D}","properties":{"authSchemes":[{"disableDoubleEncoding":true,"name":"sigv4","signingName":"s3","signingRegion":"{R}"}]},"headers":{}}',
+  ["aws-global"],
+);
 
 export class AccessDenied
   extends /*@__PURE__*/ S.TaggedError<AccessDenied>()(

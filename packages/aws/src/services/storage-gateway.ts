@@ -77,7 +77,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://storagegateway.{R}.{D}","properties":{},"headers":{}}');
 
 export class InternalServerError
   extends /*@__PURE__*/ S.TaggedError<InternalServerError>()(

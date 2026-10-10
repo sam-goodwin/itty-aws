@@ -16,104 +16,110 @@ const svc = /*@__PURE__*/ T.AwsApiService({
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "health" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2016-08-04");
 const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      !(Endpoint != null) &&
-      UseDualStack === false &&
-      Region != null &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      !(_.getAttr(PartitionResult, "name") === "aws") &&
-      !(_.getAttr(PartitionResult, "name") === "aws-cn") &&
-      !(_.getAttr(PartitionResult, "name") === "aws-us-gov") &&
-      !(_.getAttr(PartitionResult, "name") === "aws-iso") &&
-      !(_.getAttr(PartitionResult, "name") === "aws-iso-b") &&
-      !(_.getAttr(PartitionResult, "name") === "aws-iso-e") &&
-      !(_.getAttr(PartitionResult, "name") === "aws-iso-f")
-    ) {
-      if (UseFIPS === true) {
-        return e(
-          `https://health-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-        );
-      }
-      return e(`https://health.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`);
-    }
-  }
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
-    }
-    if (UseDualStack === true) {
-      return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
-    }
-    return e(Endpoint);
-  }
-  if (Region != null) {
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
     {
       const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (UseFIPS === true && UseDualStack === true) {
-          if (
-            true === _.getAttr(PartitionResult, "supportsFIPS") &&
-            true === _.getAttr(PartitionResult, "supportsDualStack")
-          ) {
-            return e(
-              `https://health-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            );
-          }
-          return err(
-            "FIPS and DualStack are enabled, but this partition does not support one or both",
-          );
-        }
+      if (
+        !(Endpoint != null) &&
+        UseDualStack === false &&
+        Region != null &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        !(_.getAttr(PartitionResult, "name") === "aws") &&
+        !(_.getAttr(PartitionResult, "name") === "aws-cn") &&
+        !(_.getAttr(PartitionResult, "name") === "aws-us-gov") &&
+        !(_.getAttr(PartitionResult, "name") === "aws-iso") &&
+        !(_.getAttr(PartitionResult, "name") === "aws-iso-b") &&
+        !(_.getAttr(PartitionResult, "name") === "aws-iso-e") &&
+        !(_.getAttr(PartitionResult, "name") === "aws-iso-f")
+      ) {
         if (UseFIPS === true) {
-          if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
-            return e(`https://health-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
-          }
-          return err("FIPS is enabled but this partition does not support FIPS");
-        }
-        if (UseDualStack === true) {
-          if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
-            return e(
-              `https://health.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            );
-          }
-          return err("DualStack is enabled but this partition does not support DualStack");
-        }
-        if (Region === "aws-global") {
           return e(
-            "https://global.health.amazonaws.com",
-            { authSchemes: [{ name: "sigv4", signingName: "health", signingRegion: "us-east-1" }] },
-            {},
+            `https://health-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
           );
         }
-        if (Region === "aws-cn-global") {
-          return e(
-            "https://global.health.amazonaws.com.cn",
-            {
-              authSchemes: [
-                { name: "sigv4", signingName: "health", signingRegion: "cn-northwest-1" },
-              ],
-            },
-            {},
-          );
-        }
-        return e(`https://health.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+        return e(`https://health.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`);
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      if (UseDualStack === true) {
+        return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+      }
+      return e(Endpoint);
+    }
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
+          if (UseFIPS === true && UseDualStack === true) {
+            if (
+              true === _.getAttr(PartitionResult, "supportsFIPS") &&
+              true === _.getAttr(PartitionResult, "supportsDualStack")
+            ) {
+              return e(
+                `https://health-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err(
+              "FIPS and DualStack are enabled, but this partition does not support one or both",
+            );
+          }
+          if (UseFIPS === true) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              return e(`https://health-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+            }
+            return err("FIPS is enabled but this partition does not support FIPS");
+          }
+          if (UseDualStack === true) {
+            if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+              return e(
+                `https://health.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err("DualStack is enabled but this partition does not support DualStack");
+          }
+          if (Region === "aws-global") {
+            return e(
+              "https://global.health.amazonaws.com",
+              {
+                authSchemes: [{ name: "sigv4", signingName: "health", signingRegion: "us-east-1" }],
+              },
+              {},
+            );
+          }
+          if (Region === "aws-cn-global") {
+            return e(
+              "https://global.health.amazonaws.com.cn",
+              {
+                authSchemes: [
+                  { name: "sigv4", signingName: "health", signingRegion: "cn-northwest-1" },
+                ],
+              },
+              {},
+            );
+          }
+          return e(`https://health.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+        }
+      }
+    }
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://health.{R}.{D}","properties":{},"headers":{}}',
+  ["aws-global", "aws-cn-global", "eusc-de-east-1"],
+);
 
 export class ConcurrentModificationException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentModificationException>()(

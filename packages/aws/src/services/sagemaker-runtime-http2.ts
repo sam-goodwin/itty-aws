@@ -329,7 +329,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://runtime.sagemaker.{R}.{D}:8443","properties":{},"headers":{}}');
 
 export class InputValidationError
   extends /*@__PURE__*/ S.TaggedError<InputValidationError>()(

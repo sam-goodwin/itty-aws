@@ -21,12 +21,18 @@ import {
   type EndpointResolverHelpers,
   getContextParam,
   getEndpointResolver,
+  getEndpointTemplate,
   getStaticContextParams,
   hasHttpLabel,
 } from "../traits.ts";
 import { getPropertySignatures } from "../util/ast.ts";
 import { encodeLabel } from "../util/serialize-input.ts";
-import { isVirtualHostableS3Bucket, parseArn, partition } from "./aws-functions.ts";
+import {
+  isVirtualHostableS3Bucket,
+  parseArn,
+  partition,
+  regionDnsSuffix,
+} from "./aws-functions.ts";
 import type { EndpointParams, ResolvedEndpoint, RulesValue } from "./expression.ts";
 import { getAttr, isValidHostLabel, parseURL, substring, uriEncode } from "./standard-functions.ts";
 
@@ -100,9 +106,37 @@ export const makeEndpointResolver = (operation: Operation) => {
   // Extract static context params (done once)
   const staticContextParams = getStaticContextParams(inputAst);
 
+  // Region-only calls read the generator's precomputed template instead of
+  // running the rules (whose code would otherwise compile on first call).
+  const template = staticContextParams ? undefined : getEndpointTemplate(resolver);
+  const templated = template && new Map<string, ResolvedEndpoint | null>();
+  const fromTemplate = (region: string): ResolvedEndpoint | undefined => {
+    let hit = templated!.get(region);
+    if (hit === undefined) {
+      const dns = template!.exceptions.includes(region) ? undefined : regionDnsSuffix(region);
+      hit = dns
+        ? JSON.parse(template!.template.replaceAll("{R}", region).replaceAll("{D}", dns))
+        : null;
+      templated!.set(region, hit!);
+    }
+    return hit ?? undefined;
+  };
+
   // Return a function that resolves endpoints and adjusts request
   return Effect.fnUntraced(function* (resolverInput: EndpointResolverInput) {
     const { input, region, request } = resolverInput;
+
+    if (templated) {
+      let regionOnly = true;
+      for (const propName of contextParamMappings.keys()) {
+        if ((input as Record<string, unknown>)[propName] !== undefined) {
+          regionOnly = false;
+          break;
+        }
+      }
+      const endpoint = regionOnly ? fromTemplate(region) : undefined;
+      if (endpoint) return { endpoint, request };
+    }
 
     // Build endpoint params from input + region
     const endpointParams: EndpointParams = {

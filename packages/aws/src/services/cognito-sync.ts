@@ -75,7 +75,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://cognito-sync.{R}.{D}","properties":{},"headers":{}}');
 
 export class AlreadyStreamedException
   extends /*@__PURE__*/ S.TaggedError<AlreadyStreamedException>()(

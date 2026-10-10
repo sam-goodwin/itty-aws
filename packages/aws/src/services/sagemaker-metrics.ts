@@ -76,7 +76,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://metrics.sagemaker.{R}.{D}","properties":{},"headers":{}}');
 
 export type MetricName = string;
 export type SageMakerResourceArn = string;

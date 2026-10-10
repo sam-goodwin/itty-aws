@@ -20,309 +20,329 @@ const svc = /*@__PURE__*/ T.AwsApiService({
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "iam" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2010-05-08");
 const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  const _p0 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-east-1" }] });
-  const _p1 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "cn-north-1" }] });
-  const _p2 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-gov-west-1" }] });
-  const _p3 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-iso-east-1" }] });
-  const _p4 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-isob-east-1" }] });
-  const _p5 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "eu-isoe-west-1" }] });
-  const _p6 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-isof-south-1" }] });
-  const _p7 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "eusc-de-east-1" }] });
-  const _p8 = (_0: unknown) => ({
-    authSchemes: [{ name: "sigv4", signingRegion: `${_.getAttr(_0, "implicitGlobalRegion")}` }],
-  });
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    const _p0 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-east-1" }] });
+    const _p1 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "cn-north-1" }] });
+    const _p2 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-gov-west-1" }] });
+    const _p3 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-iso-east-1" }] });
+    const _p4 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-isob-east-1" }] });
+    const _p5 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "eu-isoe-west-1" }] });
+    const _p6 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "us-isof-south-1" }] });
+    const _p7 = () => ({ authSchemes: [{ name: "sigv4", signingRegion: "eusc-de-east-1" }] });
+    const _p8 = (_0: unknown) => ({
+      authSchemes: [{ name: "sigv4", signingRegion: `${_.getAttr(_0, "implicitGlobalRegion")}` }],
+    });
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      if (UseDualStack === true) {
+        return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+      }
+      return e(Endpoint);
     }
-    if (UseDualStack === true) {
-      return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
-    }
-    return e(Endpoint);
-  }
-  if (Region != null) {
-    {
-      const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e("https://iam.amazonaws.com", _p0(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e("https://iam-fips.amazonaws.com", _p0(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e("https://iam.global.api.aws", _p0(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e("https://iam-fips.global.api.aws", _p0(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-cn" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e("https://iam.global.api.amazonwebservices.com.cn", _p1(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-cn" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e("https://iam-fips.api.amazonwebservices.com.cn", _p1(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-cn" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e("https://iam.cn-north-1.amazonaws.com.cn", _p1(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-cn" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e("https://iam-fips.amazonaws.com.cn", _p1(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e("https://iam.us-gov.api.aws", _p2(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e("https://iam.us-gov.api.aws", _p2(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e("https://iam.us-gov.amazonaws.com", _p2(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e("https://iam.us-gov.amazonaws.com", _p2(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e("https://iam.us-iso-east-1.c2s.ic.gov", _p3(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e("https://iam-fips.us-iso-east-1.c2s.ic.gov", _p3(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e("https://iam.api.aws.ic.gov", _p3(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e("https://iam-fips.api.aws.ic.gov", _p3(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-b" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e("https://iam.us-isob-east-1.sc2s.sgov.gov", _p4(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-b" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e("https://iam-fips.us-isob-east-1.sc2s.sgov.gov", _p4(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-b" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e("https://iam.api.aws.scloud", _p4(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-b" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e("https://iam-fips.api.aws.scloud", _p4(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-e" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e("https://iam.eu-isoe-west-1.cloud.adc-e.uk", _p5(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-e" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e("https://iam-fips.cloud.adc-e.uk", _p5(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-e" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e("https://iam.api.cloud-aws.adc-e.uk", _p5(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-e" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e("https://iam-fips.api.cloud-aws.adc-e.uk", _p5(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-f" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e("https://iam.us-isof-south-1.csp.hci.ic.gov", _p6(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-f" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e("https://iam-fips.csp.hci.ic.gov", _p6(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-f" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e("https://iam.api.aws.hci.ic.gov", _p6(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-iso-f" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e("https://iam-fips.api.aws.hci.ic.gov", _p6(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-eusc" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e("https://iam.eusc-de-east-1.amazonaws.eu", _p7(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-eusc" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e("https://iam-fips.amazonaws.eu", _p7(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-eusc" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e("https://iam.global.api.amazonwebservices.eu", _p7(), {});
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-eusc" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e("https://iam-fips.api.amazonwebservices.eu", _p7(), {});
-        }
-        if (UseFIPS === true && UseDualStack === true) {
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
           if (
-            true === _.getAttr(PartitionResult, "supportsFIPS") &&
-            true === _.getAttr(PartitionResult, "supportsDualStack")
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === false &&
+            UseDualStack === false
           ) {
-            return e(
-              `https://iam-fips.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-              _p8(PartitionResult),
-              {},
+            return e("https://iam.amazonaws.com", _p0(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e("https://iam-fips.amazonaws.com", _p0(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
+            return e("https://iam.global.api.aws", _p0(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === true &&
+            UseDualStack === true
+          ) {
+            return e("https://iam-fips.global.api.aws", _p0(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-cn" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
+            return e("https://iam.global.api.amazonwebservices.com.cn", _p1(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-cn" &&
+            UseFIPS === true &&
+            UseDualStack === true
+          ) {
+            return e("https://iam-fips.api.amazonwebservices.com.cn", _p1(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-cn" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e("https://iam.cn-north-1.amazonaws.com.cn", _p1(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-cn" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e("https://iam-fips.amazonaws.com.cn", _p1(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
+            return e("https://iam.us-gov.api.aws", _p2(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseFIPS === true &&
+            UseDualStack === true
+          ) {
+            return e("https://iam.us-gov.api.aws", _p2(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e("https://iam.us-gov.amazonaws.com", _p2(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e("https://iam.us-gov.amazonaws.com", _p2(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e("https://iam.us-iso-east-1.c2s.ic.gov", _p3(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e("https://iam-fips.us-iso-east-1.c2s.ic.gov", _p3(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
+            return e("https://iam.api.aws.ic.gov", _p3(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso" &&
+            UseFIPS === true &&
+            UseDualStack === true
+          ) {
+            return e("https://iam-fips.api.aws.ic.gov", _p3(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-b" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e("https://iam.us-isob-east-1.sc2s.sgov.gov", _p4(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-b" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e("https://iam-fips.us-isob-east-1.sc2s.sgov.gov", _p4(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-b" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
+            return e("https://iam.api.aws.scloud", _p4(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-b" &&
+            UseFIPS === true &&
+            UseDualStack === true
+          ) {
+            return e("https://iam-fips.api.aws.scloud", _p4(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-e" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e("https://iam.eu-isoe-west-1.cloud.adc-e.uk", _p5(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-e" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e("https://iam-fips.cloud.adc-e.uk", _p5(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-e" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
+            return e("https://iam.api.cloud-aws.adc-e.uk", _p5(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-e" &&
+            UseFIPS === true &&
+            UseDualStack === true
+          ) {
+            return e("https://iam-fips.api.cloud-aws.adc-e.uk", _p5(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-f" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e("https://iam.us-isof-south-1.csp.hci.ic.gov", _p6(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-f" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e("https://iam-fips.csp.hci.ic.gov", _p6(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-f" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
+            return e("https://iam.api.aws.hci.ic.gov", _p6(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-iso-f" &&
+            UseFIPS === true &&
+            UseDualStack === true
+          ) {
+            return e("https://iam-fips.api.aws.hci.ic.gov", _p6(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-eusc" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e("https://iam.eusc-de-east-1.amazonaws.eu", _p7(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-eusc" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e("https://iam-fips.amazonaws.eu", _p7(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-eusc" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
+            return e("https://iam.global.api.amazonwebservices.eu", _p7(), {});
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-eusc" &&
+            UseFIPS === true &&
+            UseDualStack === true
+          ) {
+            return e("https://iam-fips.api.amazonwebservices.eu", _p7(), {});
+          }
+          if (UseFIPS === true && UseDualStack === true) {
+            if (
+              true === _.getAttr(PartitionResult, "supportsFIPS") &&
+              true === _.getAttr(PartitionResult, "supportsDualStack")
+            ) {
+              return e(
+                `https://iam-fips.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+                _p8(PartitionResult),
+                {},
+              );
+            }
+            return err(
+              "FIPS and DualStack are enabled, but this partition does not support one or both",
             );
           }
-          return err(
-            "FIPS and DualStack are enabled, but this partition does not support one or both",
+          if (UseFIPS === true && UseDualStack === false) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              return e(
+                `https://iam-fips.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+                _p8(PartitionResult),
+                {},
+              );
+            }
+            return err("FIPS is enabled but this partition does not support FIPS");
+          }
+          if (UseFIPS === false && UseDualStack === true) {
+            if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+              return e(
+                `https://iam.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+                _p8(PartitionResult),
+                {},
+              );
+            }
+            return err("DualStack is enabled but this partition does not support DualStack");
+          }
+          return e(
+            `https://iam.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+            _p8(PartitionResult),
+            {},
           );
         }
-        if (UseFIPS === true && UseDualStack === false) {
-          if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
-            return e(
-              `https://iam-fips.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
-              _p8(PartitionResult),
-              {},
-            );
-          }
-          return err("FIPS is enabled but this partition does not support FIPS");
-        }
-        if (UseFIPS === false && UseDualStack === true) {
-          if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
-            return e(
-              `https://iam.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-              _p8(PartitionResult),
-              {},
-            );
-          }
-          return err("DualStack is enabled but this partition does not support DualStack");
-        }
-        return e(
-          `https://iam.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
-          _p8(PartitionResult),
-          {},
-        );
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://iam.{D}","properties":{"authSchemes":[{"name":"sigv4","signingRegion":"us-east-1"}]},"headers":{}}',
+  [
+    "us-gov-west-1",
+    "us-gov-east-1",
+    "aws-us-gov-global",
+    "cn-north-1",
+    "cn-northwest-1",
+    "aws-cn-global",
+    "us-iso-east-1",
+    "us-iso-west-1",
+    "aws-iso-global",
+    "us-isob-east-1",
+    "aws-iso-b-global",
+    "aws-iso-f-global",
+    "us-isof-east-1",
+    "us-isof-south-1",
+    "eusc-de-east-1",
+  ],
+);
 
 export class AccountNotManagementOrDelegatedAdministratorException
   extends /*@__PURE__*/ S.TaggedError<AccountNotManagementOrDelegatedAdministratorException>()(

@@ -74,7 +74,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://codebuild.{R}.{D}","properties":{},"headers":{}}');
 
 export class AccountLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<AccountLimitExceededException>()(

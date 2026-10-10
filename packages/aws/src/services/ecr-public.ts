@@ -80,7 +80,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://api.ecr-public.{R}.{D}","properties":{},"headers":{}}');
 
 export class EmptyUploadException
   extends /*@__PURE__*/ S.TaggedError<EmptyUploadException>()("EmptyUploadException", {

@@ -30,7 +30,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p) => {
     return e(`${Endpoint}`, _p0(), {});
   }
   return e("https://pricingplanmanager.us-east-1.api.aws", _p0(), {});
-});
+}, '{"url":"https://pricingplanmanager.us-east-1.api.aws","properties":{"authSchemes":[{"name":"sigv4","signingName":"pricingplanmanager","signingRegion":"us-east-1"}]},"headers":{}}');
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(

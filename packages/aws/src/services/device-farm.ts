@@ -77,7 +77,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://devicefarm.{R}.{D}","properties":{},"headers":{}}');
 
 export class ArgumentException
   extends /*@__PURE__*/ S.TaggedError<ArgumentException>()("ArgumentException", {

@@ -14,76 +14,80 @@ const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Transcribe", serviceShapeNam
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "transcribe" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2017-10-26");
 const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_1();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      if (UseDualStack === true) {
+        return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+      }
+      return e(Endpoint);
     }
-    if (UseDualStack === true) {
-      return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
-    }
-    return e(Endpoint);
-  }
-  if (Region != null) {
-    {
-      const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (UseFIPS === true && UseDualStack === true) {
-          if (
-            true === _.getAttr(PartitionResult, "supportsFIPS") &&
-            true === _.getAttr(PartitionResult, "supportsDualStack")
-          ) {
-            return e(
-              `https://transcribe-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            );
-          }
-          return err(
-            "FIPS and DualStack are enabled, but this partition does not support one or both",
-          );
-        }
-        if (UseFIPS === true) {
-          if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
-            if (_.getAttr(PartitionResult, "name") === "aws") {
-              return e(`https://fips.transcribe.${Region}.amazonaws.com`);
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
+          if (UseFIPS === true && UseDualStack === true) {
+            if (
+              true === _.getAttr(PartitionResult, "supportsFIPS") &&
+              true === _.getAttr(PartitionResult, "supportsDualStack")
+            ) {
+              return e(
+                `https://transcribe-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
             }
-            if (_.getAttr(PartitionResult, "name") === "aws-us-gov") {
-              return e(`https://fips.transcribe.${Region}.amazonaws.com`);
+            return err(
+              "FIPS and DualStack are enabled, but this partition does not support one or both",
+            );
+          }
+          if (UseFIPS === true) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              if (_.getAttr(PartitionResult, "name") === "aws") {
+                return e(`https://fips.transcribe.${Region}.amazonaws.com`);
+              }
+              if (_.getAttr(PartitionResult, "name") === "aws-us-gov") {
+                return e(`https://fips.transcribe.${Region}.amazonaws.com`);
+              }
+              return e(
+                `https://transcribe-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+              );
             }
-            return e(
-              `https://transcribe-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
-            );
+            return err("FIPS is enabled but this partition does not support FIPS");
           }
-          return err("FIPS is enabled but this partition does not support FIPS");
-        }
-        if (UseDualStack === true) {
-          if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
-            return e(
-              `https://transcribe.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            );
+          if (UseDualStack === true) {
+            if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+              return e(
+                `https://transcribe.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err("DualStack is enabled but this partition does not support DualStack");
           }
-          return err("DualStack is enabled but this partition does not support DualStack");
+          if (Region === "cn-north-1") {
+            return e("https://cn.transcribe.cn-north-1.amazonaws.com.cn");
+          }
+          if (Region === "cn-northwest-1") {
+            return e("https://cn.transcribe.cn-northwest-1.amazonaws.com.cn");
+          }
+          return e(`https://transcribe.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
         }
-        if (Region === "cn-north-1") {
-          return e("https://cn.transcribe.cn-north-1.amazonaws.com.cn");
-        }
-        if (Region === "cn-northwest-1") {
-          return e("https://cn.transcribe.cn-northwest-1.amazonaws.com.cn");
-        }
-        return e(`https://transcribe.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://transcribe.{R}.{D}","properties":{},"headers":{}}',
+  ["cn-north-1", "cn-northwest-1"],
+);
 
 export class BadRequestException
   extends /*@__PURE__*/ S.TaggedError<BadRequestException>()(

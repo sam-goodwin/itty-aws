@@ -38,7 +38,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p) => {
   return err(
     "Unable to resolve an Agent Registry Control endpoint: Region was not set and no explicit Endpoint override was provided.",
   );
-});
+}, '{"url":"https://agent-registry-control.{R}.api.aws","properties":{},"headers":{}}');
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(
