@@ -2315,7 +2315,7 @@ export const awsSpec = (model: SmithyModel, serviceSpec: ServiceSpec): SdkSpec =
         'import * as HttpClient from "effect/http/HttpClient";',
         "__EFFECT_IMPORT__",
         "__REDACTED_IMPORT__",
-        'import * as S from "@distilled.cloud/core/schema";',
+        'import * as S from "@distilled.cloud/core/schema-lite";',
         "__STREAM_IMPORT__",
         'import * as API from "@distilled.cloud/core/api";',
         'import { AwsProtocol } from "../protocol.ts";',

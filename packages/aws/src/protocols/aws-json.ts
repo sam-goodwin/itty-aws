@@ -19,8 +19,8 @@
 
 import { failIfStrict } from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
-import * as Schema from "effect/Schema";
-import * as AST from "effect/SchemaAST";
+import type * as Schema from "effect/Schema";
+import type * as AST from "effect/SchemaAST";
 import type { Operation } from "../client/operation.ts";
 import type { Protocol, ProtocolHandler } from "../client/protocol.ts";
 import type { Request } from "../client/request.ts";
@@ -34,6 +34,7 @@ import {
   eventStreamWith,
 } from "../traits.ts";
 import { getEncodedPropertySignatures, getIdentifier } from "../util/ast.ts";
+import { inputEncoder } from "../util/codec.ts";
 import { extractJsonErrorCode, extractJsonErrorData, sanitizeErrorCode } from "../util/error.ts";
 import { readStreamAsText } from "../util/stream.ts";
 
@@ -56,7 +57,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
     const outputAst = outputSchema.ast;
 
     // Pre-compute encoder (done once at init)
-    const encodeInput = Schema.encodeEffect(inputSchema);
+    const encodeInput = inputEncoder(inputAst as any);
 
     // Prefer the explicit operation name emitted by the generator; fall back
     // to extracting it from the input schema's identifier by removing the
@@ -93,9 +94,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
     return {
       serializeRequest: Effect.fnUntraced(function* (input: unknown) {
         // Encode the input via schema - handles all transformations
-        const encoded = yield* encodeInput(input).pipe(
-          Effect.mapError((err) => new ParseError({ message: err.message })),
-        );
+        const encoded = yield* encodeInput(input);
 
         const request: Request = {
           method: "POST",

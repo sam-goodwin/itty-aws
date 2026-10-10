@@ -10,10 +10,9 @@
  * This is independently testable without making HTTP requests.
  */
 
-import { isStrict } from "@distilled.cloud/core/response-validation";
+import { validateResponse } from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
-import * as Schema from "effect/Schema";
-import * as SchemaIssue from "effect/SchemaIssue";
+import type * as SchemaIssue from "effect/SchemaIssue";
 import { COMMON_ERRORS, InternalError, ParseError, UnknownAwsError } from "../errors.ts";
 import {
   getAwsQueryError,
@@ -25,6 +24,7 @@ import {
   type SyntheticErrorTrait,
 } from "../traits.ts";
 import { getIdentifier, getPropertySignatures, isBooleanAST, isNumberAST } from "../util/ast.ts";
+import { decode } from "../util/codec.ts";
 import type { Operation } from "./operation.ts";
 import type { Protocol, ProtocolHandler } from "./protocol.ts";
 import type { Response } from "./response.ts";
@@ -40,6 +40,9 @@ export interface ResponseParserOptions {
   /** Operation name for error context (e.g., "createBucket", "putObject") */
   operation?: string;
 }
+
+/** A generated error class: constructible from its members, with a lite `ast`. */
+type ErrorClass = (new (props: Record<string, unknown>) => unknown) & { readonly ast: any };
 
 export type ResponseParser<A, R> = (response: Response) => Effect.Effect<A, SchemaIssue.Issue, R>;
 
@@ -86,8 +89,7 @@ export const makeResponseParser = <A>(
   options?: ResponseParserOptions,
 ): ((response: Response) => Effect.Effect<any, never, never>) => {
   const inputAst = operation.input.ast;
-  const outputSchema = operation.output;
-  const outputAst = outputSchema.ast;
+  const outputAst = operation.output.ast;
 
   // Discover protocol factory from annotations or use override (done once)
   const protocolFactory = options?.protocol ?? getProtocol(inputAst);
@@ -98,8 +100,7 @@ export const makeResponseParser = <A>(
   // Create the protocol handler (preprocessing done once)
   const protocol: ProtocolHandler = protocolFactory(operation as Operation);
 
-  // Pre-create the decoder (done once, unless skipping validation)
-  const decode = options?.skipValidation ? undefined : Schema.decodeUnknownEffect(outputSchema);
+  const skipValidation = options?.skipValidation === true;
 
   // Create stream parser if output has event stream member (done once)
   const streamParser = makeStreamParser(outputAst);
@@ -109,9 +110,9 @@ export const makeResponseParser = <A>(
   // 1. Schema identifier (e.g., "EntityAlreadyExistsException")
   // 2. awsQueryError code if present (e.g., "EntityAlreadyExists")
   // 3. Short form without Exception/Error suffix (for services that return short codes)
-  const errorSchemas = new Map<string, Schema.Top>();
+  const errorSchemas = new Map<string, ErrorClass>();
 
-  const registerError = (err: Schema.Top) => {
+  const registerError = (err: ErrorClass) => {
     const tag = getIdentifier(err.ast);
     if (tag) {
       errorSchemas.set(tag, err);
@@ -139,7 +140,7 @@ export const makeResponseParser = <A>(
   // are intentionally NOT registered by wire code (the wire never returns
   // the synthetic tag).
   const syntheticErrors: Array<{
-    schema: Schema.Top;
+    schema: ErrorClass;
     trait: SyntheticErrorTrait;
   }> = [];
 
@@ -178,28 +179,23 @@ export const makeResponseParser = <A>(
       }
 
       // Skip validation if requested - return raw deserialized response
-      if (!decode) {
+      if (skipValidation) {
         return deserialized as A;
       }
 
-      // Decode applies the schema's transformations (timestamp -> Date,
-      // sensitive -> Redacted). In lenient mode (the default) a shape
-      // mismatch falls back to the raw deserialized response; in strict mode
-      // (the core ResponseValidation.strict layer) it fails with
-      // ParseError.
-      const strict = yield* isStrict;
-      if (!strict) {
-        return yield* decode(deserialized).pipe(
-          Effect.catch(() => Effect.succeed(deserialized as A)),
-        );
-      }
-      return yield* decode(deserialized).pipe(
-        Effect.mapError(
-          (error) =>
-            new ParseError({
-              message: `${options?.service ?? "AWS"}.${options?.operation ?? "operation"} response does not match its output schema: ${error.message}`,
-            }),
-        ),
+      // Convert wire values to the declared types (timestamp -> Date,
+      // sensitive -> Redacted, blob -> Uint8Array, wire keys -> type keys).
+      // A value that does not fit stays as read. In strict mode (the core
+      // ResponseValidation.strict layer) the result is then validated
+      // against the output schema, and a mismatch fails with ParseError.
+      const decoded = decode(outputAst, deserialized);
+      return yield* validateResponse(
+        outputAst as any,
+        decoded,
+        (error) =>
+          new ParseError({
+            message: `${options?.service ?? "AWS"}.${options?.operation ?? "operation"} response does not match its output schema: ${error.message}`,
+          }),
       );
     }
 
@@ -227,7 +223,7 @@ export const makeResponseParser = <A>(
       data && typeof (data as Record<string, unknown>).message === "string"
         ? ((data as Record<string, unknown>).message as string)
         : "";
-    let errorSchema: Schema.Top | undefined;
+    let errorSchema: ErrorClass | undefined;
     let bestScore = 0;
     for (const { schema, trait } of syntheticErrors) {
       if (!wireCodeMatches(trait.from, errorCode)) continue;
@@ -305,13 +301,11 @@ export const makeResponseParser = <A>(
         }
       }
 
-      // Get the schema identifier to use as _tag (may differ from wire errorCode)
-      // e.g., wire code "EntityAlreadyExists" maps to schema tag "EntityAlreadyExistsException"
-      const schemaTag = getIdentifier(errorSchema.ast) ?? errorCode;
-      // Add _tag to data for TaggedError decoding
-      const dataWithTag = { _tag: schemaTag, ...data };
-      const decoded = yield* Schema.decodeUnknownEffect(errorSchema)(dataWithTag).pipe(
-        Effect.catch(() => Effect.succeed(dataWithTag)),
+      // The error class's members, converted from the wire (the class sets
+      // its own _tag, which may differ from the wire errorCode: wire code
+      // "EntityAlreadyExists" maps to "EntityAlreadyExistsException").
+      const decoded: unknown = new errorSchema(
+        decode(errorSchema.ast, data) as Record<string, unknown>,
       );
       // Ensure the JS `Error.message` carries the service's message. The
       // generator tags exactly one member per error class as the canonical

@@ -10,15 +10,15 @@ import {
   responseCodeSymbol as coreResponseCodeSymbol,
   type Annotation,
 } from "@distilled.cloud/core/trait";
+import * as S from "@distilled.cloud/core/schema-lite";
 import * as Effect from "effect/Effect";
-import * as S from "effect/Schema";
-import * as AST from "effect/SchemaAST";
-import * as SchemaTransformation from "effect/SchemaTransformation";
+import type * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
 import type { Operation } from "./client/operation.ts";
 import type { DeserializedError, Protocol, ProtocolHandler } from "./client/protocol.ts";
 import type { Request as ProtocolRequest } from "./client/request.ts";
 import { ErrorMessage, errorMessageSymbol } from "./error-message.ts";
+import { blob, timestamp } from "./lite.ts";
 
 /**
  * A protocol whose implementation module loads on the first request.
@@ -212,15 +212,7 @@ export const Ec2QueryName = (name: string) => makeAnnotation(ec2QueryNameSymbol,
  * DateFromString - String <-> Date transformation via ISO 8601.
  * Use this instead of bare S.Date when the wire format is a string.
  */
-export const DateFromString = /*@__PURE__*/ S.Date.pipe(
-  /*@__PURE__*/ S.encodeTo(
-    S.String,
-    /*@__PURE__*/ SchemaTransformation.transform({
-      decode: (s: string) => new Date(s),
-      encode: (d: Date) => d.toISOString(),
-    }),
-  ),
-);
+export const DateFromString: S.Schema<Date> = /*@__PURE__*/ timestamp("date-string");
 
 /** smithy.api#timestampFormat - Timestamp serialization format */
 export const timestampFormatSymbol = "distilled-aws/timestamp-format" as const;
@@ -235,39 +227,12 @@ export type TimestampFormatType = "date-time" | "http-date" | "epoch-seconds";
  * - "date-time": Date <-> string (ISO 8601)
  */
 export const TimestampFormat = (format: TimestampFormatType) => {
-  return <A extends S.Top>(schema: A): A => {
-    // Apply the appropriate transform based on format
-    const transformed =
-      format === "epoch-seconds"
-        ? S.Number.pipe(
-            S.decodeTo(
-              S.Date,
-              SchemaTransformation.transform({
-                decode: (n) => new Date(n * 1000),
-                // Truncate to whole seconds: some services parse
-                // epoch-seconds strictly and reject fractional values --
-                // e.g. IoT SiteWise's GetAssetPropertyAggregates fails
-                // with "The date can only be in seconds."
-                encode: (d) => Math.floor(d.getTime() / 1000),
-              }),
-            ),
-          )
-        : format === "http-date"
-          ? S.String.pipe(
-              S.decodeTo(
-                S.Date,
-                SchemaTransformation.transform({
-                  decode: (s) => new Date(s),
-                  encode: (d) => d.toUTCString(),
-                }),
-              ),
-            )
-          : // date-time (ISO 8601) - S.Date already handles this
-            schema;
-
-    // Add the annotation
-    return transformed.annotate({ [timestampFormatSymbol]: format }) as any;
-  };
+  return <A extends S.Top>(schema: A): A =>
+    // epoch-seconds and http-date replace the wire form; date-time keeps
+    // the schema's own (ISO 8601 for DateFromString).
+    (format === "date-time"
+      ? schema.annotate({ [timestampFormatSymbol]: format })
+      : timestamp(format, { [timestampFormatSymbol]: format })) as any;
 };
 
 // =============================================================================
@@ -608,16 +573,9 @@ export const isIdempotencyToken = (ast: AST.AST): boolean =>
  * Smithy blob type - binary data that encodes to base64 on the wire.
  * Used for non-streaming blobs in request/response bodies.
  */
-export const Blob = /*@__PURE__*/ S.String.pipe(
-  /*@__PURE__*/ S.decodeTo(
-    /*@__PURE__*/ S.instanceOf(Uint8Array<ArrayBufferLike>),
-    /*@__PURE__*/ SchemaTransformation.transform({
-      decode: (s) =>
-        Uint8Array.from(atob(s), (c) => c.charCodeAt(0)) as any as Uint8Array<ArrayBufferLike>,
-      encode: (u) => btoa(String.fromCharCode(...u)),
-    }),
-  ),
-).annotate({ identifier: "Blob" });
+export const Blob: S.Schema<Uint8Array<ArrayBufferLike>> = /*@__PURE__*/ blob({
+  identifier: "Blob",
+}) as any;
 
 // =============================================================================
 // Streaming Body (smithy.api#blob + smithy.api#streaming)
@@ -888,11 +846,18 @@ const unwrapSuspend = (ast: AST.AST): AST.AST => {
   return current;
 };
 
+/** The wire-side node: suspends resolved, encoding links followed. */
+const wireOf = (ast: AST.AST): AST.AST => {
+  let current = unwrapSuspend(ast);
+  while (current.encoding?.length) current = unwrapSuspend(current.encoding[0].to);
+  return current;
+};
+
 const eventPayloadKind = (ast: AST.AST): EventPayloadKind => {
   const id = findIdentifier(ast);
   if (id === "Blob" || id === "SensitiveBlob") return "blob";
-  const encoded = AST.toEncoded(unwrapSuspend(ast));
-  const types = encoded._tag === "Union" ? encoded.types : [encoded];
+  const encoded = wireOf(ast);
+  const types = encoded._tag === "Union" ? encoded.types.map(wireOf) : [encoded];
   const defined = types.filter((t) => t._tag !== "Undefined");
   if (defined.length > 0 && defined.every((t) => t._tag === "String" || t._tag === "Literal")) {
     return "string";
