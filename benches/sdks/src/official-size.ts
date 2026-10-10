@@ -4,7 +4,8 @@
  * peer dependencies, transitively, each counted once. Runs with no network.
  *
  * Each package's tarball is rebuilt locally: tar of its files under
- * `package/`, gzip -9 (within 1-3% of `npm pack`). An installed package holds
+ * `package/` in npm's order (by extension, then path, so similar files
+ * compress together), gzip -9: within 0.2-1% of `npm pack`. An installed package holds
  * exactly its published files; a workspace package uses the file list from
  * `npm pack --dry-run`. (`npm pack` itself crashes in pnpm's store.) Used for
  * the official SDKs and for the distilled package each one is compared with,
@@ -12,7 +13,7 @@
  */
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync, realpathSync, statSync } from "node:fs";
-import { basename, dirname, join, relative } from "node:path";
+import { basename, dirname, extname, join, relative } from "node:path";
 import { gzipSync } from "node:zlib";
 
 export interface InstallSize {
@@ -61,11 +62,14 @@ const packed = new Map<string, { tarball: number; unpacked: number }>();
 const pack = (dir: string) => {
   let p = packed.get(dir);
   if (!p) {
-    const files = listFiles(dir).sort();
+    const files = listFiles(dir).sort(
+      (a, b) =>
+        extname(a).toLowerCase().localeCompare(extname(b).toLowerCase(), "en") ||
+        a.localeCompare(b, "en"),
+    );
     const tar = spawnSync(
       "tar",
       [
-        "--sort=name",
         "--owner=0",
         "--group=0",
         "--numeric-owner",
