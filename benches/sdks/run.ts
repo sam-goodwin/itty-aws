@@ -437,6 +437,13 @@ if (has("runtime")) {
         if (ok.length < 3) continue;
         rec.firstCallMs = median3(ok.map((r) => r.firstCallMs));
         rec.importMs = median3(ok.map((r) => r.importMs));
+        // Import heap dips ~250 KB at random (GC timing around the snapshots),
+        // in either mode: take the median of the cold-start runs and this run.
+        const heaps = [rec.importHeap?.heapUsed, ...ok.map((r) => r.importHeap?.heapUsed)].filter(
+          Number.isFinite,
+        ) as number[];
+        if (heaps.length >= 3 && rec.importHeap)
+          rec.importHeap.heapUsed = [...heaps].sort((a, b) => a - b)[heaps.length >> 1]!;
         rec.coldStartPass = true;
       }
     }

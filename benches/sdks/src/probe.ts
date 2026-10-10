@@ -387,7 +387,8 @@ const main = async (req: ProbeRequest) => {
   } catch (e) {
     error = errorText(e);
   }
-  if (req.firstOnly) return { importMs, firstCallMs, ...(error ? { error } : {}) };
+  if (req.firstOnly)
+    return { importMs, firstCallMs, importHeap: diff(m1, m2), ...(error ? { error } : {}) };
   const m3 = snap();
   if (error) {
     return {
