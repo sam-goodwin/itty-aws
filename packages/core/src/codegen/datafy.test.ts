@@ -155,7 +155,8 @@ describe("datafyOperations", () => {
     expect(o.body).toEqual({ a: "b" });
     // Subclasses declared before the class is built.
     const run2 = run(code);
-    class Sub extends run2.Gone {}
+    const Base: new (props: object) => any = run2.Gone;
+    class Sub extends Base {}
     const s = new Sub({ message: "m" });
     expect(s).toBeInstanceOf(Sub);
     expect(s).toBeInstanceOf(run2.Gone);
