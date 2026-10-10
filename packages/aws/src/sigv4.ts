@@ -355,6 +355,230 @@ const syncSigningKey = (
   return key;
 };
 
+/** SHA-256 of the empty string, the payload hash of every bodiless request. */
+const EMPTY_SHA256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
+
+/** Sign a canonical request with synchronous crypto. Throws {@link CryptoError}. */
+const finishSync = (
+  canonical: Canonical,
+  options: SignOptions,
+  impl: CoreCrypto.CryptoImpl,
+  sync: NonNullable<CoreCrypto.CryptoImpl["sync"]>,
+): SignedRequest => {
+  try {
+    const sha256Hex =
+      sync.sha256Hex ?? ((data: CoreCrypto.Bytes) => CoreCrypto.hex(sync.sha256(data)));
+    const body = options.body;
+    const payloadHash =
+      canonical.payloadHash ??
+      (body === undefined || body === "" ? EMPTY_SHA256 : sha256Hex(toBytes(body)));
+    const canonicalRequest = canonical.canonicalPrefix + "\n" + payloadHash;
+    const stringToSign = stringToSignOf(canonical, sha256Hex(canonicalRequest));
+    const key = syncSigningKey(impl, sync, options, canonical.date);
+    return canonical.finish(
+      sync.hmacSha256Hex !== undefined
+        ? sync.hmacSha256Hex(key, stringToSign)
+        : CoreCrypto.hex(sync.hmacSha256(key, stringToSign)),
+    );
+  } catch (cause) {
+    throw new CryptoError({ operation: "hmac", cause });
+  }
+};
+
+/** The parts of `options.url`, already split by the caller. */
+export interface UrlParts {
+  /** `scheme://host[:port]`, exactly as the URL standard serializes it. */
+  readonly origin: string;
+  /** The URL's `host`. */
+  readonly host: string;
+  /** Path, percent-encoded; `""` is `/`. */
+  readonly path: string;
+  /** Query parameters before encoding (arrays repeat the key). */
+  readonly query: Readonly<Record<string, unknown>>;
+  /** The encoded query string, without `?`. */
+  readonly search: string;
+}
+
+let lastSecond = -1;
+let lastDate = "";
+/** The current `YYYYMMDDTHHMMSSZ`, formatted once per second. */
+const amzDate = (): string => {
+  const now = Date.now();
+  const second = Math.floor(now / 1000);
+  if (second !== lastSecond) {
+    lastDate = new Date(now).toISOString().replace(/[:-]|\.\d{3}/g, "");
+    lastSecond = second;
+  }
+  return lastDate;
+};
+
+/** Path characters the URL parser keeps as they are. */
+const PLAIN_PATH = /^\/[A-Za-z0-9\-._~%!$&'()*+,;=:@/]*$/;
+/** `.` / `..` segments (the parser resolves them), plain or percent-encoded. */
+const DOT_SEGMENT = /(?:^|\/)(?:\.|%2e){1,2}(?:\/|$)/i;
+/** An HTTP header name (RFC 9110 token). */
+const TOKEN = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
+/** Characters a `Headers` value rejects after trimming (or as a ByteString). */
+const BAD_VALUE = /[\0\r\n\u0100-\uffff]/;
+/** HTTP whitespace a `Headers` value is trimmed of. */
+const EDGE_SPACE = /^[\t\n\r ]+|[\t\n\r ]+$/g;
+const isHttpSpace = (c: number) => c === 32 || c === 9 || c === 10 || c === 13;
+
+/**
+ * {@link canonicalize} for header signing of a URL given as parts, without
+ * `URL` or `Headers`. Returns `undefined` when the request needs either
+ * one's normalization (or its errors); the caller then signs the URL.
+ */
+const canonicalizeParts = (options: SignOptions, parts: UrlParts): Canonical | undefined => {
+  const { accessKeyId, service, region } = options;
+  if (options.signQuery || options.allHeaders) return undefined;
+  const rawPath = parts.path === "" ? "/" : parts.path;
+  if (!PLAIN_PATH.test(rawPath) || DOT_SEGMENT.test(rawPath)) return undefined;
+
+  const headers: Record<string, string> = Object.create(null);
+  const input = options.headers;
+  if (input !== undefined) {
+    for (const name of Object.keys(input)) {
+      const raw = input[name] as unknown;
+      if (typeof raw !== "string" || !TOKEN.test(name)) return undefined;
+      let value = raw;
+      if (
+        value.length > 0 &&
+        (isHttpSpace(value.charCodeAt(0)) || isHttpSpace(value.charCodeAt(value.length - 1)))
+      ) {
+        value = value.replace(EDGE_SPACE, "");
+      }
+      if (BAD_VALUE.test(value)) return undefined;
+      const lower = name.toLowerCase();
+      if (lower === "set-cookie" || lower === "__proto__") return undefined;
+      headers[lower] = Object.hasOwn(headers, lower) ? `${headers[lower]}, ${value}` : value;
+    }
+  }
+  delete headers.host;
+  const sessionToken = options.sessionToken ? Redacted.value(options.sessionToken) : undefined;
+  const datetime = options.datetime ?? amzDate();
+  const appendSessionToken = service === "iotdevicegateway";
+  if (service === "s3" && headers["x-amz-content-sha256"] === undefined) {
+    headers["x-amz-content-sha256"] = "UNSIGNED-PAYLOAD";
+  }
+  headers["x-amz-date"] = datetime;
+  if (sessionToken && !appendSessionToken) headers["x-amz-security-token"] = sessionToken;
+
+  const names = Object.keys(headers);
+  const signable = ["host"];
+  for (const name of names) if (!UNSIGNABLE_HEADERS.has(name)) signable.push(name);
+  signable.sort();
+  const signedHeaders = signable.join(";");
+  let canonicalHeaders = "";
+  for (let i = 0; i < signable.length; i++) {
+    const name = signable[i]!;
+    canonicalHeaders +=
+      (i === 0 ? "" : "\n") +
+      name +
+      ":" +
+      (name === "host" ? parts.host : headers[name]!.replace(/\s+/g, " "));
+  }
+  const date = datetime.slice(0, 8);
+  const credentialString = date + "/" + region + "/" + service + "/aws4_request";
+
+  let decodedPath: string;
+  if (service === "s3") {
+    try {
+      decodedPath = decodeURIComponent(rawPath.replace(/\+/g, " "));
+    } catch {
+      decodedPath = rawPath;
+    }
+  } else {
+    decodedPath = rawPath.replace(/\/+/g, "/");
+  }
+  const encodedPath = encodeRfc3986(encodeURIComponent(decodedPath).replace(/%2F/g, "/"));
+
+  // The query pairs as `URLSearchParams` reads them back from `search`.
+  const pairs: Array<readonly [string, string]> = [];
+  const seenKeys = service === "s3" ? new Set<string>() : undefined;
+  const add = (k: string, v: string) => {
+    if (!k) return;
+    if (seenKeys !== undefined) {
+      if (seenKeys.has(k)) return;
+      seenKeys.add(k);
+    }
+    pairs.push([encodeRfc3986(encodeURIComponent(k)), encodeRfc3986(encodeURIComponent(v))]);
+  };
+  for (const k of Object.keys(parts.query)) {
+    const v = parts.query[k];
+    if (v === undefined) continue;
+    if (Array.isArray(v)) for (const item of v) add(k, item ? String(item) : "");
+    else add(k, v ? String(v) : "");
+  }
+  const encodedSearch =
+    pairs.length === 0
+      ? ""
+      : pairs
+          .sort(([k1, v1], [k2, v2]) =>
+            k1 < k2 ? -1 : k1 > k2 ? 1 : v1 < v2 ? -1 : v1 > v2 ? 1 : 0,
+          )
+          .map((pair) => pair[0] + "=" + pair[1])
+          .join("&");
+
+  const method = options.method ?? (options.body ? "POST" : "GET");
+  // `URL` percent-encodes `'` in the query of special-scheme URLs.
+  const url =
+    parts.origin + rawPath + (parts.search === "" ? "" : "?" + parts.search.replace(/'/g, "%27"));
+  return {
+    method,
+    date,
+    datetime,
+    credentialString,
+    payloadHash: headers["x-amz-content-sha256"],
+    canonicalPrefix:
+      method.toUpperCase() +
+      "\n" +
+      encodedPath +
+      "\n" +
+      encodedSearch +
+      "\n" +
+      canonicalHeaders +
+      "\n\n" +
+      signedHeaders,
+    finish: (signature) => {
+      headers.authorization =
+        "AWS4-HMAC-SHA256 Credential=" +
+        accessKeyId +
+        "/" +
+        credentialString +
+        ", SignedHeaders=" +
+        signedHeaders +
+        ", Signature=" +
+        signature;
+      const out: Record<string, string> = {};
+      for (const name of Object.keys(headers).sort()) out[name] = headers[name]!;
+      return { method, url, headers: out };
+    },
+  };
+};
+
+/**
+ * {@link sign} without effects, for callers already running on a fiber.
+ * `parts` lets the caller hand over the URL already split, which skips
+ * `URL` and `Headers` for ordinary requests. Returns `undefined` when the
+ * signature needs effects (WebCrypto, or a {@link SigningKeyCache} in the
+ * context); use {@link sign} then. Throws a {@link SigningError}.
+ */
+export const signSync = (
+  options: SignOptions,
+  fiber: { readonly context: Context.Context<never>; getRef<A>(ref: Context.Reference<A>): A },
+  parts?: UrlParts,
+): SignedRequest | undefined => {
+  const impl = fiber.getRef(CoreCrypto.Crypto);
+  const sync = impl.sync;
+  if (sync === undefined || Context.getOrUndefined(fiber.context, SigningKeyCache) !== undefined) {
+    return undefined;
+  }
+  const canonical =
+    (parts !== undefined ? canonicalizeParts(options, parts) : undefined) ?? canonicalize(options);
+  return finishSync(canonical, options, impl, sync);
+};
+
 /**
  * Sign a request with SigV4. Fails with a {@link SigningError} when the URL
  * or headers cannot be canonicalised or WebCrypto rejects an operation.
@@ -365,30 +589,13 @@ const syncSigningKey = (
  */
 export const sign = (options: SignOptions): Effect.Effect<SignedRequest, SigningError> =>
   Effect.withFiber((fiber) => {
-    const impl = fiber.getRef(CoreCrypto.Crypto);
-    const sync = impl.sync;
-    if (
-      sync === undefined ||
-      Context.getOrUndefined(fiber.context, SigningKeyCache) !== undefined
-    ) {
-      return signAsync(options);
-    }
-    let canonical: Canonical;
+    let signed: SignedRequest | undefined;
     try {
-      canonical = canonicalize(options);
+      signed = signSync(options, fiber as any);
     } catch (e) {
       return Effect.fail(e as SigningError);
     }
-    try {
-      const payloadHash =
-        canonical.payloadHash ?? CoreCrypto.hex(sync.sha256(toBytes(options.body || "")));
-      const canonicalRequest = canonical.canonicalPrefix + "\n" + payloadHash;
-      const stringToSign = stringToSignOf(canonical, CoreCrypto.hex(sync.sha256(canonicalRequest)));
-      const key = syncSigningKey(impl, sync, options, canonical.date);
-      return Effect.succeed(canonical.finish(CoreCrypto.hex(sync.hmacSha256(key, stringToSign))));
-    } catch (cause) {
-      return Effect.fail(new CryptoError({ operation: "hmac", cause }));
-    }
+    return signed === undefined ? signAsync(options) : Effect.succeed(signed);
   });
 
 const signAsync: (options: SignOptions) => Effect.Effect<SignedRequest, SigningError> =

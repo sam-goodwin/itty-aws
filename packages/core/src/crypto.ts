@@ -54,15 +54,25 @@ export interface CryptoImpl {
     readonly sha256: (data: Bytes) => Uint8Array;
     readonly importHmacKey: (key: Bytes) => HmacKey;
     readonly hmacSha256: (key: HmacKey, data: Bytes) => Uint8Array;
+    /** `hex(sha256(data))`, when the implementation can produce hex itself. */
+    readonly sha256Hex?: (data: Bytes) => string;
+    /** `hex(hmacSha256(key, data))`, when the implementation can produce hex itself. */
+    readonly hmacSha256Hex?: (key: HmacKey, data: Bytes) => string;
   };
 }
 
 //#region node:crypto
 
+interface Digest {
+  update(d: Bytes): { digest(): Uint8Array; digest(encoding: "hex"): string };
+}
+
 interface NodeCryptoModule {
   createSecretKey(key: Uint8Array): object;
-  createHmac(alg: string, key: object): { update(d: Bytes): { digest(): Uint8Array } };
-  createHash(alg: string): { update(d: Bytes): { digest(): Uint8Array } };
+  createHmac(alg: string, key: object): Digest;
+  createHash(alg: string): Digest;
+  /** One-shot hashing (Node 20.12+/21.7+). */
+  hash?: (alg: string, data: Bytes, encoding: "hex") => string;
 }
 
 /** `node:crypto`, found without a static import so this module loads in any runtime. */
@@ -93,6 +103,14 @@ export const makeNodeCrypto = (): CryptoImpl | undefined => {
           .createHmac("sha256", key as unknown as object)
           .update(data)
           .digest(),
+      sha256Hex: c.hash
+        ? (data) => c.hash!("sha256", data, "hex")
+        : (data) => c.createHash("sha256").update(data).digest("hex"),
+      hmacSha256Hex: (key, data) =>
+        c
+          .createHmac("sha256", key as unknown as object)
+          .update(data)
+          .digest("hex"),
     },
     sha256: (data) =>
       Effect.try({
