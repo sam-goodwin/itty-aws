@@ -1,8 +1,12 @@
 import assert from "node:assert/strict";
 import * as Effect from "effect/Effect";
 import { describe, it } from "vitest";
+import {
+  parseXmlReference,
+  XmlParseError as ReferenceXmlParseError,
+} from "./fixtures/xml/reference-parser.ts";
 import fixtures from "./fixtures/xml/upstream-validator.json" with { type: "json" };
-import { escapeXml, parseXml, parseXmlFull, parseXmlSync, XmlParseError } from "./xml.ts";
+import { escapeXml, parseXml, parseXmlSync, XmlParseError } from "./xml.ts";
 
 function parse(xml: string) {
   // Compare the wire values independently of the null prototypes used for safety.
@@ -254,23 +258,32 @@ describe("malformed and unsupported XML", () => {
   });
 });
 
-describe("plain-document fast path", () => {
+describe("parser fast paths", () => {
   /** The value or error of a parser, comparable across parsers. */
   const outcome = (parser: (xml: string) => unknown, xml: string) => {
     try {
       return { value: JSON.stringify(parser(xml)) };
     } catch (error) {
-      return { error: error instanceof XmlParseError ? error.message : String(error) };
+      return {
+        error:
+          error instanceof XmlParseError || error instanceof ReferenceXmlParseError
+            ? error.message
+            : String(error),
+      };
     }
   };
   const same = (xml: string) =>
-    assert.deepEqual(outcome(parseXmlSync, xml), outcome(parseXmlFull, xml), JSON.stringify(xml));
+    assert.deepEqual(
+      outcome(parseXmlSync, xml),
+      outcome(parseXmlReference, xml),
+      JSON.stringify(xml),
+    );
 
-  it("matches the full parser on the upstream corpus", () => {
+  it("matches the reference parser on the upstream corpus", () => {
     for (const fixture of fixtures) same(fixture.xml);
   });
 
-  it("matches the full parser on generated documents and their corruptions", () => {
+  it("matches the reference parser on generated documents and their corruptions", () => {
     // Deterministic generator over the constructs both paths handle and the
     // ones only the full parser does (comments, CDATA, PIs, non-ASCII names).
     let seed = 1;
@@ -353,12 +366,12 @@ describe("plain-document fast path", () => {
     }
   });
 
-  it("matches the full parser under depth and length limits", () => {
+  it("matches the reference parser under depth and length limits", () => {
     for (const maxDepth of [1, 2, 3]) {
       const xml = "<a><b><c/></b></a>";
       assert.deepEqual(
         outcome((x) => parseXmlSync(x, { maxDepth }), xml),
-        outcome((x) => parseXmlFull(x, { maxDepth }), xml),
+        outcome((x) => parseXmlReference(x, { maxDepth }), xml),
       );
     }
   });

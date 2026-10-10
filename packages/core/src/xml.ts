@@ -38,17 +38,18 @@ const declarationPattern =
 /**
  * The prototype of every object the parser returns. It has no prototype
  * itself, so element names such as `__proto__` or `constructor` are plain
- * own keys, as with `Object.create(null)` -- but V8 keeps objects with a
- * non-null prototype in fast mode, which makes parsing about three times
- * faster.
+ * own keys, as with a null prototype -- but V8 keeps objects with a
+ * non-null prototype in fast mode, which makes parsing several times faster.
  */
 const nodeProto: object = /*@__PURE__*/ Object.create(null);
-const newNode = (): XmlObject => Object.create(nodeProto);
+
+/** An ASCII XML name not followed by a non-ASCII (possibly name) character. */
+const asciiName = /[A-Za-z_:][\w:.-]*(?![^\0-\x7f])/y;
 
 interface Element {
   name: string;
   object: XmlObject;
-  text: string[];
+  text: string;
   hasChildren: boolean;
   hasAttributes: boolean;
   hasCdata: boolean;
@@ -64,265 +65,12 @@ interface Element {
  * The iterative scanner allocates no Effects while traversing the document.
  */
 export function parseXmlSync(xml: string, options: XmlParseOptions = {}): XmlObject {
-  const maxDepth = options.maxDepth ?? 256;
-  const maxLength = options.maxLength ?? 64 * 1024 * 1024;
-  if (
-    Number.isSafeInteger(maxDepth) &&
-    maxDepth >= 1 &&
-    Number.isSafeInteger(maxLength) &&
-    xml.length <= maxLength
-  ) {
-    const fast = parsePlain(xml, maxDepth);
-    if (fast !== undefined) return fast;
-  }
-  return parseXmlFull(xml, options);
-}
-
-//#region Plain documents
-
-// Everything the full parser accepts, minus comments, CDATA, processing
-// instructions (other than the XML declaration) and non-ASCII names: what
-// AWS and most HTTP APIs send. `parsePlain` returns `undefined` for any
-// other input, and for any input the full parser rejects, so the full
-// parser decides those (and reports the error).
-
-/** Characters that need the full parser's check: controls, surrogates, U+FFFE/F. */
-const unusualCharacter = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\uD800-\uDFFF\uFFFE\uFFFF]/;
-
-const isSpace = (c: number): boolean => c === 32 || c === 9 || c === 10 || c === 13;
-
-/** ASCII NameStartChar. */
-const isNameStart = (c: number): boolean =>
-  (c >= 97 && c <= 122) || (c >= 65 && c <= 90) || c === 95 || c === 58;
-
-/** ASCII NameChar. */
-const isNameChar = (c: number): boolean =>
-  isNameStart(c) || (c >= 48 && c <= 57) || c === 46 || c === 45;
-
-/** The full parser's `decode`, returning `undefined` where it would fail. */
-const decodePlain = (raw: string, attribute: boolean): string | undefined => {
-  if (raw.indexOf("&") < 0) {
-    if (attribute) {
-      return /[\t\r\n]/.test(raw) ? raw.replace(/\r\n|[\t\r\n]/g, " ") : raw;
-    }
-    return raw.indexOf("\r") < 0 ? raw : raw.replace(/\r\n?/g, "\n");
-  }
-  let out = "";
-  let from = 0;
-  while (from < raw.length) {
-    const amp = raw.indexOf("&", from);
-    const end = amp < 0 ? raw.length : amp;
-    const literal = raw.slice(from, end);
-    out += attribute ? literal.replace(/\r\n|[\t\r\n]/g, " ") : literal.replace(/\r\n?/g, "\n");
-    if (amp < 0) break;
-    const semi = raw.indexOf(";", amp + 1);
-    if (semi < 0) return undefined;
-    const entity = raw.slice(amp + 1, semi);
-    switch (entity) {
-      case "amp":
-        out += "&";
-        break;
-      case "lt":
-        out += "<";
-        break;
-      case "gt":
-        out += ">";
-        break;
-      case "quot":
-        out += '"';
-        break;
-      case "apos":
-        out += "'";
-        break;
-      default: {
-        if (!/^#(?:[0-9]+|x[0-9a-fA-F]+)$/.test(entity)) return undefined;
-        const code =
-          entity[1] === "x"
-            ? Number.parseInt(entity.slice(2), 16)
-            : Number.parseInt(entity.slice(1), 10);
-        if (
-          !(
-            code === 9 ||
-            code === 10 ||
-            code === 13 ||
-            (code >= 0x20 && code <= 0xd7ff) ||
-            (code >= 0xe000 && code <= 0xfffd) ||
-            (code >= 0x10000 && code <= 0x10ffff)
-          )
-        ) {
-          return undefined;
-        }
-        out += String.fromCodePoint(code);
-      }
-    }
-    from = semi + 1;
-  }
-  return out;
-};
-
-const HAS_CHILDREN = 1;
-const HAS_ATTRIBUTES = 2;
-
-/**
- * Parse a plain document (see above) into the same value as the full
- * parser, or return `undefined` to hand the document to it.
- */
-const parsePlain = (xml: string, maxDepth: number): XmlObject | undefined => {
-  const length = xml.length;
-  if (unusualCharacter.test(xml)) return undefined;
-  let pos = xml.charCodeAt(0) === 0xfeff ? 1 : 0;
-  if (xml.startsWith("<?", pos)) {
-    const end = xml.indexOf("?>", pos + 2);
-    if (end < 0 || !declarationPattern.test(xml.slice(pos + 2, end))) return undefined;
-    pos = end + 2;
-  }
-
-  const document: XmlObject = newNode();
-  // The open elements, one entry per depth.
-  const names: string[] = [];
-  const objects: XmlObject[] = [];
-  const texts: string[] = [];
-  const flags: number[] = [];
-  let depth = 0;
-  let hasRoot = false;
-
-  /** Read an ASCII name at `pos`; `undefined` when it is not one. */
-  const readName = (): string | undefined => {
-    const start = pos;
-    if (!isNameStart(xml.charCodeAt(pos))) return undefined;
-    pos++;
-    while (pos < length && isNameChar(xml.charCodeAt(pos))) pos++;
-    // A non-ASCII character may continue the name: the full parser decides.
-    if (pos < length && xml.charCodeAt(pos) >= 0x80) return undefined;
-    return xml.slice(start, pos);
-  };
-
-  const add = (name: string, value: XmlValue): void => {
-    let target = document;
-    if (depth > 0) {
-      target = objects[depth - 1]!;
-      flags[depth - 1]! |= HAS_CHILDREN;
-    }
-    if (!Object.hasOwn(target, name)) target[name] = value;
-    else {
-      const previous = target[name];
-      if (Array.isArray(previous)) previous.push(value);
-      else target[name] = [previous!, value];
-    }
-  };
-
-  /** The value of a finished element, as the full parser's `finish` makes it. */
-  const valueOf = (object: XmlObject, text: string, elementFlags: number): XmlValue => {
-    if (elementFlags === 0) return text;
-    if (text && (!(elementFlags & HAS_CHILDREN) || !xmlSpace.test(text))) {
-      object["#text"] = text;
-    }
-    return object;
-  };
-
-  while (pos < length) {
-    if (xml.charCodeAt(pos) !== 60) {
-      let next = xml.indexOf("<", pos);
-      if (next < 0) next = length;
-      if (depth === 0) {
-        for (let i = pos; i < next; i++) if (!isSpace(xml.charCodeAt(i))) return undefined;
-      } else {
-        const raw = xml.slice(pos, next);
-        if (raw.includes("]]>")) return undefined;
-        const text = decodePlain(raw, false);
-        if (text === undefined) return undefined;
-        texts[depth - 1] += text;
-      }
-      pos = next;
-      continue;
-    }
-
-    const second = xml.charCodeAt(pos + 1);
-    if (second === 47) {
-      // Closing tag
-      pos += 2;
-      const name = readName();
-      if (name === undefined) return undefined;
-      while (pos < length && isSpace(xml.charCodeAt(pos))) pos++;
-      if (xml.charCodeAt(pos) !== 62) return undefined;
-      pos++;
-      if (depth === 0 || names[depth - 1] !== name) return undefined;
-      depth--;
-      add(name, valueOf(objects[depth]!, texts[depth]!, flags[depth]!));
-      continue;
-    }
-    // Comments, CDATA, declarations and processing instructions.
-    if (second === 33 || second === 63) return undefined;
-
-    // Opening tag
-    if (depth >= maxDepth) return undefined;
-    if (depth === 0) {
-      if (hasRoot) return undefined;
-      hasRoot = true;
-    }
-    pos++;
-    const name = readName();
-    if (name === undefined) return undefined;
-    const object: XmlObject = newNode();
-    let elementFlags = 0;
-    while (true) {
-      const before = pos;
-      while (pos < length && isSpace(xml.charCodeAt(pos))) pos++;
-      const c = xml.charCodeAt(pos);
-      if (c === 47 && xml.charCodeAt(pos + 1) === 62) {
-        pos += 2;
-        add(name, valueOf(object, "", elementFlags));
-        break;
-      }
-      if (c === 62) {
-        pos++;
-        names[depth] = name;
-        objects[depth] = object;
-        texts[depth] = "";
-        flags[depth] = elementFlags;
-        depth++;
-        break;
-      }
-      if (pos === before) return undefined;
-      const attribute = readName();
-      if (attribute === undefined) return undefined;
-      const key = `@_${attribute}`;
-      if (Object.hasOwn(object, key)) return undefined;
-      while (pos < length && isSpace(xml.charCodeAt(pos))) pos++;
-      if (xml.charCodeAt(pos) !== 61) return undefined;
-      pos++;
-      while (pos < length && isSpace(xml.charCodeAt(pos))) pos++;
-      const quote = xml[pos];
-      if (quote !== '"' && quote !== "'") return undefined;
-      pos++;
-      const end = xml.indexOf(quote, pos);
-      if (end < 0) return undefined;
-      const raw = xml.slice(pos, end);
-      if (raw.includes("<")) return undefined;
-      const value = decodePlain(raw, true);
-      if (value === undefined) return undefined;
-      object[key] = value;
-      elementFlags |= HAS_ATTRIBUTES;
-      pos = end + 1;
-    }
-  }
-  if (depth !== 0 || !hasRoot) return undefined;
-  return document;
-};
-
-//#endregion
-
-/**
- * The complete parser behind {@link parseXmlSync}, without its fast path for
- * plain documents. Same results; exported for differential tests.
- */
-export function parseXmlFull(xml: string, options: XmlParseOptions = {}): XmlObject {
   let pos = xml.charCodeAt(0) === 0xfeff ? 1 : 0;
   const start = pos;
   const maxDepth = options.maxDepth ?? 256;
   const maxLength = options.maxLength ?? 64 * 1024 * 1024;
   const stack: Element[] = [];
-  const document: XmlObject = newNode();
+  const document: XmlObject = Object.create(nodeProto);
   let hasRoot = false;
 
   function fail(message: string, offset = pos): never {
@@ -356,14 +104,16 @@ export function parseXmlFull(xml: string, options: XmlParseOptions = {}): XmlObj
   }
 
   function readName(): string {
-    namePattern.lastIndex = pos;
-    const match = namePattern.exec(xml);
+    // ASCII names (most documents) match a cheaper, non-Unicode pattern first.
+    asciiName.lastIndex = namePattern.lastIndex = pos;
+    const match = asciiName.exec(xml) ?? namePattern.exec(xml);
     if (!match) fail("Expected XML name");
-    pos = namePattern.lastIndex;
+    pos += match[0].length;
     return match[0];
   }
 
   function decode(raw: string, offset: number, attribute = false): string {
+    if (raw.indexOf("&") < 0 && !(attribute ? /[\t\r\n]/ : /\r/).test(raw)) return raw;
     const parts: string[] = [];
     let from = 0;
     while (from < raw.length) {
@@ -422,7 +172,7 @@ export function parseXmlFull(xml: string, options: XmlParseOptions = {}): XmlObj
   }
 
   function finish(element: Element): void {
-    const text = element.text.join("");
+    const text = element.text;
     let value: XmlValue;
     if (!element.hasChildren && !element.hasAttributes) {
       value = text;
@@ -455,7 +205,7 @@ export function parseXmlFull(xml: string, options: XmlParseOptions = {}): XmlObj
       } else {
         const cdataEnd = raw.indexOf("]]>");
         if (cdataEnd >= 0) fail("Unexpected CDATA terminator", offset + cdataEnd);
-        element.text.push(decode(raw, offset));
+        element.text += decode(raw, offset);
       }
       continue;
     }
@@ -471,7 +221,7 @@ export function parseXmlFull(xml: string, options: XmlParseOptions = {}): XmlObj
       if (!element) fail("CDATA outside root element");
       const end = xml.indexOf("]]>", pos + 9);
       if (end < 0) fail("Unterminated CDATA");
-      element.text.push(xml.slice(pos + 9, end).replace(/\r\n?/g, "\n"));
+      element.text += xml.slice(pos + 9, end).replace(/\r\n?/g, "\n");
       element.hasCdata = true;
       pos = end + 3;
     } else if (xml.startsWith("<?", pos)) {
@@ -507,8 +257,8 @@ export function parseXmlFull(xml: string, options: XmlParseOptions = {}): XmlObj
       pos++;
       const element: Element = {
         name: readName(),
-        object: newNode(),
-        text: [],
+        object: Object.create(nodeProto),
+        text: "",
         hasChildren: false,
         hasAttributes: false,
         hasCdata: false,
