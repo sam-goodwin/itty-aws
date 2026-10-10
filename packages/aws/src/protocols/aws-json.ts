@@ -17,12 +17,18 @@
  *   (clients must accept either format for both protocols)
  */
 
-import { failIfStrict } from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
 import type * as Schema from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import type { Operation } from "../client/operation.ts";
-import type { Protocol, ProtocolHandler } from "../client/protocol.ts";
+import {
+  fromText,
+  serializeEffect,
+  Unreadable,
+  type Protocol,
+  type ProtocolHandler,
+  type TextResponse,
+} from "../client/protocol.ts";
 import type { Request } from "../client/request.ts";
 import type { Response } from "../client/response.ts";
 import { ParseError } from "../errors.ts";
@@ -34,7 +40,7 @@ import {
   eventStreamWith,
 } from "../traits.ts";
 import { getEncodedPropertySignatures, getIdentifier } from "../util/ast.ts";
-import { inputEncoder } from "../util/codec.ts";
+import { inputEncoderSync } from "../util/codec.ts";
 import { extractJsonErrorCode, extractJsonErrorData, sanitizeErrorCode } from "../util/error.ts";
 import { readStreamAsText } from "../util/stream.ts";
 
@@ -57,7 +63,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
     const outputAst = outputSchema.ast;
 
     // Pre-compute encoder (done once at init)
-    const encodeInput = inputEncoder(inputAst as any);
+    const encodeInput = inputEncoderSync(inputAst as any);
 
     // Prefer the explicit operation name emitted by the generator; fall back
     // to extracting it from the input schema's identifier by removing the
@@ -91,25 +97,49 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
       }
     }
 
+    const serialize = (input: unknown): Request => {
+      // Encode the input via schema - handles all transformations
+      const encoded = encodeInput(input);
+
+      const request: Request = {
+        method: "POST",
+        path: "/",
+        query: {},
+        headers: {
+          "Content-Type": contentType,
+          "X-Amz-Target": targetHeader,
+        },
+      };
+
+      request.body = JSON.stringify(encoded ?? {});
+
+      return request;
+    };
+
+    const deserializeText = (response: TextResponse): unknown => {
+      const bodyText = response.body;
+      // Parse JSON body (reviver converts null -> undefined since AWS returns null for absent fields)
+      if (bodyText) {
+        try {
+          const parsed = JSON.parse(bodyText, (_, v) => (v === null ? undefined : v));
+          if (parsed && typeof parsed === "object") {
+            return parsed as Record<string, unknown>;
+          }
+        } catch {
+          // Lenient mode returns the body as read.
+          return new Unreadable(
+            new ParseError({ message: `Failed to parse JSON body: ${bodyText}` }),
+            bodyText,
+          );
+        }
+      }
+      return {};
+    };
+
     return {
-      serializeRequest: Effect.fnUntraced(function* (input: unknown) {
-        // Encode the input via schema - handles all transformations
-        const encoded = yield* encodeInput(input);
-
-        const request: Request = {
-          method: "POST",
-          path: "/",
-          query: {},
-          headers: {
-            "Content-Type": contentType,
-            "X-Amz-Target": targetHeader,
-          },
-        };
-
-        request.body = JSON.stringify(encoded ?? {});
-
-        return request;
-      }),
+      serialize,
+      serializeRequest: serializeEffect(serialize),
+      deserializeText,
 
       deserializeResponse: Effect.fnUntraced(function* (response: Response) {
         // Handle streaming output (event stream)
@@ -137,26 +167,7 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
 
         // Read body as text
         const bodyText = yield* readStreamAsText(response.body);
-
-        // Parse JSON body (reviver converts null -> undefined since AWS returns null for absent fields)
-        if (bodyText) {
-          try {
-            const parsed = JSON.parse(bodyText, (_, v) => (v === null ? undefined : v));
-            if (parsed && typeof parsed === "object") {
-              return parsed as Record<string, unknown>;
-            }
-          } catch {
-            // Lenient mode returns the body as read.
-            return yield* failIfStrict(
-              new ParseError({
-                message: `Failed to parse JSON body: ${bodyText}`,
-              }),
-              bodyText,
-            );
-          }
-        }
-
-        return {};
+        return yield* fromText(deserializeText({ ...response, body: bodyText }));
       }),
 
       deserializeError: Effect.fnUntraced(function* (response: Response) {

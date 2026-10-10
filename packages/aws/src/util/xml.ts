@@ -2,9 +2,16 @@
  * Shared XML utilities for AWS protocols (aws-query, ec2-query, rest-xml)
  */
 
-import { parseXml as parseCoreXml, type XmlParseOptions } from "@distilled.cloud/core/xml";
+import {
+  parseXml as parseCoreXml,
+  parseXmlSync,
+  XmlParseError,
+  type XmlObject,
+  type XmlParseOptions,
+} from "@distilled.cloud/core/xml";
 import * as Effect from "effect/Effect";
 import type * as AST from "effect/SchemaAST";
+import { Unreadable } from "../client/protocol.ts";
 import { ParseError } from "../errors.ts";
 import { isBooleanAST, isNumberAST } from "./ast.ts";
 
@@ -23,6 +30,21 @@ export const parseXml = (xml: string, options?: XmlParseOptions) =>
   parseCoreXml(xml, options).pipe(
     Effect.mapError((error) => new ParseError({ message: error.message })),
   );
+
+/**
+ * A 2xx XML body, parsed; a malformed one is {@link Unreadable} with the
+ * `ParseError` {@link parseXml} fails with.
+ */
+export const readXml = (xml: string): XmlObject | Unreadable => {
+  try {
+    return parseXmlSync(xml);
+  } catch (error) {
+    if (error instanceof XmlParseError) {
+      return new Unreadable(new ParseError({ message: error.message }), xml);
+    }
+    throw error;
+  }
+};
 
 // =============================================================================
 // XML Response Helpers

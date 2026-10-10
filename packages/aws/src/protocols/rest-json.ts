@@ -9,13 +9,19 @@
  * - Default timestamp format is epoch-seconds
  */
 
-import { failIfStrict } from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
 import type * as Schema from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import type * as Stream from "effect/Stream";
 import type { Operation } from "../client/operation.ts";
-import type { Protocol, ProtocolHandler } from "../client/protocol.ts";
+import {
+  fromText,
+  serializeEffect,
+  Unreadable,
+  type Protocol,
+  type ProtocolHandler,
+  type TextResponse,
+} from "../client/protocol.ts";
 import type { Request } from "../client/request.ts";
 import type { Response } from "../client/response.ts";
 import { applyApiGatewayCustomizations, isApiGateway } from "../customizations/api-gateway.ts";
@@ -48,7 +54,7 @@ import {
   isBooleanAST,
   isNumberAST,
 } from "../util/ast.ts";
-import { inputEncoder } from "../util/codec.ts";
+import { inputEncoderSync } from "../util/codec.ts";
 import { extractJsonErrorCode, extractJsonErrorData, sanitizeErrorCode } from "../util/error.ts";
 import { extractStaticQueryParams } from "../util/query-params.ts";
 import { applyHttpTrait, bindInputToRequest } from "../util/serialize-input.ts";
@@ -67,7 +73,7 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
   const outputAst = outputSchema.ast;
 
   // Pre-compute encoder (done once at init)
-  const encodeInput = inputEncoder(inputAst as any);
+  const encodeInput = inputEncoderSync(inputAst as any);
 
   // Check for service-specific customizations (done once at init)
   const serviceInfo = getAwsApiService(inputAst);
@@ -169,130 +175,145 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
       !hasHttpPayload(prop),
   );
 
-  return {
-    serializeRequest: Effect.fnUntraced(function* (input: unknown) {
-      const encoded = yield* encodeInput(input);
+  const serialize = (input: unknown): Request => {
+    const encoded = encodeInput(input);
 
-      // Start without Content-Type - we'll set it based on the body type
-      // unless user explicitly provides one via httpHeader binding
-      let request: Request = {
-        method: "POST",
-        path: "/",
-        query: {},
-        headers: {},
-      };
+    // Start without Content-Type - we'll set it based on the body type
+    // unless user explicitly provides one via httpHeader binding
+    let request: Request = {
+      method: "POST",
+      path: "/",
+      query: {},
+      headers: {},
+    };
 
-      applyHttpTrait(inputAst, request);
-      const { payloadValue, payloadAst, bodyMembers, hasBodyMembers } = bindInputToRequest(
-        inputAst,
-        encoded as Record<string, unknown>,
-        request,
-      );
-      extractStaticQueryParams(request);
+    applyHttpTrait(inputAst, request);
+    const { payloadValue, payloadAst, bodyMembers, hasBodyMembers } = bindInputToRequest(
+      inputAst,
+      encoded as Record<string, unknown>,
+      request,
+    );
+    extractStaticQueryParams(request);
 
-      // Track if user set Content-Type explicitly via httpHeader binding
-      const userSetContentType = request.headers["Content-Type"] !== undefined;
+    // Track if user set Content-Type explicitly via httpHeader binding
+    const userSetContentType = request.headers["Content-Type"] !== undefined;
 
-      // Serialize body
-      if (payloadValue !== undefined && payloadAst !== undefined) {
-        // Check for input event stream - only when the schema explicitly marks it as an event stream
-        // (not for regular streaming blobs like S3 putObject or EBS putSnapshotBlock)
-        const isInputEventStreamPayload =
-          isInputEventStream(payloadAst) && isEffectStream(payloadValue);
+    // Serialize body
+    if (payloadValue !== undefined && payloadAst !== undefined) {
+      // Check for input event stream - only when the schema explicitly marks it as an event stream
+      // (not for regular streaming blobs like S3 putObject or EBS putSnapshotBlock)
+      const isInputEventStreamPayload =
+        isInputEventStream(payloadAst) && isEffectStream(payloadValue);
 
-        if (isInputEventStreamPayload) {
-          // Input event stream - frame each event per its eventPayload /
-          // eventHeader member annotations (as the output side does).
-          request.body = eventStreamBody(getEventSchema(payloadAst), (codec) =>
-            codec.serializeInputEventStreamWithSchema(
-              payloadValue as Stream.Stream<InputEvent, unknown>,
-              getEventSchema(payloadAst),
-              getEventPayloadMap(payloadAst),
-            ),
-          );
-          // Set content type for event streams (always override)
-          request.headers["Content-Type"] = "application/vnd.amazon.eventstream";
-        } else if (isStreamingType(payloadAst)) {
-          request.body = convertStreamingInput(payloadValue as StreamingInputBody);
-          // Streaming-input operations are signed UNSIGNED-PAYLOAD (see
-          // Request.hasStreamingInput) -- some services (Lex Runtime V2)
-          // reject payload-hash signatures on these routes.
-          request.hasStreamingInput = true;
-          // Default to octet-stream for streaming payloads, unless user set explicitly
-          if (!userSetContentType) {
-            request.headers["Content-Type"] = "application/octet-stream";
-          }
-        } else if (isRawPayload(payloadAst)) {
-          request.body = payloadValue as string;
-          // Default to JSON for raw payloads unless user set explicitly
-          if (!userSetContentType) {
-            request.headers["Content-Type"] = "application/json";
-          }
-        } else {
-          request.body = JSON.stringify(payloadValue);
-          // Default to JSON for structured payloads
-          if (!userSetContentType) {
-            request.headers["Content-Type"] = "application/json";
-          }
+      if (isInputEventStreamPayload) {
+        // Input event stream - frame each event per its eventPayload /
+        // eventHeader member annotations (as the output side does).
+        request.body = eventStreamBody(getEventSchema(payloadAst), (codec) =>
+          codec.serializeInputEventStreamWithSchema(
+            payloadValue as Stream.Stream<InputEvent, unknown>,
+            getEventSchema(payloadAst),
+            getEventPayloadMap(payloadAst),
+          ),
+        );
+        // Set content type for event streams (always override)
+        request.headers["Content-Type"] = "application/vnd.amazon.eventstream";
+      } else if (isStreamingType(payloadAst)) {
+        request.body = convertStreamingInput(payloadValue as StreamingInputBody);
+        // Streaming-input operations are signed UNSIGNED-PAYLOAD (see
+        // Request.hasStreamingInput) -- some services (Lex Runtime V2)
+        // reject payload-hash signatures on these routes.
+        request.hasStreamingInput = true;
+        // Default to octet-stream for streaming payloads, unless user set explicitly
+        if (!userSetContentType) {
+          request.headers["Content-Type"] = "application/octet-stream";
         }
-      } else if (hasBodyMembers) {
-        request.body = JSON.stringify(bodyMembers);
-        // Default to JSON for body members
+      } else if (isRawPayload(payloadAst)) {
+        request.body = payloadValue as string;
+        // Default to JSON for raw payloads unless user set explicitly
         if (!userSetContentType) {
           request.headers["Content-Type"] = "application/json";
         }
       } else {
-        if (hasBodyCapableInputMembers) {
-          // Body-capable members exist but none were set: send an explicit
-          // empty JSON document, matching AWS SDK v3 / botocore.
-          request.body = "{}";
-        }
-        // No body members set - default JSON content type for consistency
+        request.body = JSON.stringify(payloadValue);
+        // Default to JSON for structured payloads
         if (!userSetContentType) {
           request.headers["Content-Type"] = "application/json";
         }
       }
-
-      // Apply API Gateway customizations
-      if (isApiGatewayService) {
-        request = applyApiGatewayCustomizations(request);
+    } else if (hasBodyMembers) {
+      request.body = JSON.stringify(bodyMembers);
+      // Default to JSON for body members
+      if (!userSetContentType) {
+        request.headers["Content-Type"] = "application/json";
       }
-
-      // Apply Glacier customizations
-      if (isGlacierService && serviceVersion) {
-        request = applyGlacierCustomizations(request, serviceVersion);
+    } else {
+      if (hasBodyCapableInputMembers) {
+        // Body-capable members exist but none were set: send an explicit
+        // empty JSON document, matching AWS SDK v3 / botocore.
+        request.body = "{}";
       }
+      // No body members set - default JSON content type for consistency
+      if (!userSetContentType) {
+        request.headers["Content-Type"] = "application/json";
+      }
+    }
 
-      return request;
-    }),
+    // Apply API Gateway customizations
+    if (isApiGatewayService) {
+      request = applyApiGatewayCustomizations(request);
+    }
+
+    // Apply Glacier customizations
+    if (isGlacierService && serviceVersion) {
+      request = applyGlacierCustomizations(request, serviceVersion);
+    }
+
+    return request;
+  };
+
+  /** The members bound to the status code and headers. */
+  const bindResponse = (response: Response): Record<string, unknown> => {
+    const result: Record<string, unknown> = {};
+
+    // Extract HTTP response status code if bound to a property
+    if (responseCodePropName) {
+      result[responseCodePropName] = response.status;
+    }
+
+    // Extract header-bound properties using pre-computed metadata
+    for (const hp of headerProps) {
+      const v = response.headers[hp.headerLower] ?? response.headers[hp.header];
+      if (v !== undefined) {
+        // Convert string header values to appropriate types
+        result[hp.name] = hp.isNumber ? Number(v) : hp.isBoolean ? v === "true" : v;
+      }
+    }
+
+    // Extract prefix header properties
+    for (const php of prefixHeaderProps) {
+      const prefixed: Record<string, string> = {};
+      for (const [k, v] of Object.entries(response.headers)) {
+        if (k.toLowerCase().startsWith(php.prefix)) {
+          prefixed[k.slice(php.prefix.length)] = v;
+        }
+      }
+      if (Object.keys(prefixed).length) result[php.name] = prefixed;
+    }
+    return result;
+  };
+
+  return {
+    serialize,
+    serializeRequest: serializeEffect(serialize),
+    deserializeText,
 
     deserializeResponse: Effect.fnUntraced(function* (response: Response) {
-      const result: Record<string, unknown> = {};
-
-      // Extract HTTP response status code if bound to a property
-      if (responseCodePropName) {
-        result[responseCodePropName] = response.status;
+      if (!outputPayloadProp?.isStreaming && !outputPayloadProp?.isBlob) {
+        // Non-streaming response - read body as text
+        const bodyText = yield* readStreamAsText(response.body);
+        return yield* fromText(deserializeText({ ...response, body: bodyText }));
       }
-
-      // Extract header-bound properties using pre-computed metadata
-      for (const hp of headerProps) {
-        const v = response.headers[hp.headerLower] ?? response.headers[hp.header];
-        if (v !== undefined) {
-          // Convert string header values to appropriate types
-          result[hp.name] = hp.isNumber ? Number(v) : hp.isBoolean ? v === "true" : v;
-        }
-      }
-
-      // Extract prefix header properties
-      for (const php of prefixHeaderProps) {
-        const prefixed: Record<string, string> = {};
-        for (const [k, v] of Object.entries(response.headers)) {
-          if (k.toLowerCase().startsWith(php.prefix)) {
-            prefixed[k.slice(php.prefix.length)] = v;
-          }
-        }
-        if (Object.keys(prefixed).length) result[php.name] = prefixed;
-      }
+      const result = bindResponse(response);
 
       // Handle streaming output payload - return early
       if (outputPayloadProp?.isStreaming) {
@@ -325,33 +346,6 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
           result[outputPayloadProp.name] = bytesToBase64(bytes);
         }
         return result;
-      }
-
-      // Non-streaming response - read body as text
-      const bodyText = yield* readStreamAsText(response.body);
-
-      // A string httpPayload is the body as-is, not a JSON document.
-      if (outputPayloadProp?.isRaw) {
-        if (bodyText) result[outputPayloadProp.name] = bodyText;
-        return result;
-      }
-
-      // Parse JSON body (reviver converts null -> undefined since AWS returns null for absent fields)
-      if (bodyText) {
-        try {
-          const parsed = JSON.parse(bodyText, (_, v) => (v === null ? undefined : v));
-          if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
-            Object.assign(result, parsed);
-          }
-        } catch {
-          // Lenient mode returns the body as read.
-          return yield* failIfStrict(
-            new ParseError({
-              message: `Failed to parse JSON body: ${bodyText}`,
-            }),
-            bodyText,
-          );
-        }
       }
 
       return result;
@@ -408,6 +402,37 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
       return { errorCode, data };
     }),
   };
+
+  function deserializeText(response: TextResponse): unknown {
+    const result = bindResponse(response);
+    const bodyText = response.body;
+
+    // A string httpPayload is the body as-is, not a JSON document.
+    if (outputPayloadProp?.isRaw) {
+      if (bodyText) result[outputPayloadProp.name] = bodyText;
+      return result;
+    }
+
+    // Parse JSON body (reviver converts null -> undefined since AWS returns null for absent fields)
+    if (bodyText) {
+      try {
+        const parsed = JSON.parse(bodyText, (_, v) => (v === null ? undefined : v));
+        if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+          Object.assign(result, parsed);
+        }
+      } catch {
+        // Lenient mode returns the body as read.
+        return new Unreadable(
+          new ParseError({
+            message: `Failed to parse JSON body: ${bodyText}`,
+          }),
+          bodyText,
+        );
+      }
+    }
+
+    return result;
+  }
 };
 
 /** Check if AST represents a raw payload type (string, blob, stream) */

@@ -1,3 +1,4 @@
+import * as S from "@distilled.cloud/core/schema-lite";
 import {
   all,
   annotationMetaSymbol,
@@ -10,7 +11,6 @@ import {
   responseCodeSymbol as coreResponseCodeSymbol,
   type Annotation,
 } from "@distilled.cloud/core/trait";
-import * as S from "@distilled.cloud/core/schema-lite";
 import * as Effect from "effect/Effect";
 import type * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
@@ -44,6 +44,7 @@ const lazyProtocol = (load: () => Promise<Protocol>): Protocol => {
           : Effect.map(protocol, (p) => (handler ??= p(operation))),
     );
     return {
+      ready: get,
       serializeRequest: (input) =>
         handler
           ? handler.serializeRequest(input)

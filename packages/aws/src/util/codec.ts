@@ -350,3 +350,14 @@ export const inputEncoder =
       return Effect.fail(new ParseError({ message: e instanceof Error ? e.message : String(e) }));
     }
   };
+
+/** {@link inputEncoder} as a plain function: encode failures throw `ParseError`. */
+export const inputEncoderSync =
+  (ast: Node) =>
+  (input: unknown): unknown => {
+    try {
+      return encode(ast, input);
+    } catch (e) {
+      throw new ParseError({ message: e instanceof Error ? e.message : String(e) });
+    }
+  };

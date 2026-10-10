@@ -11,11 +11,15 @@
  */
 
 import * as Effect from "effect/Effect";
-import { makeStreamingBodyMiddleware } from "../middleware/streaming-body.ts";
+import {
+  getStreamingPayloadInfo,
+  makeStreamingBodyMiddleware,
+} from "../middleware/streaming-body.ts";
 import { getMiddleware, getProtocol } from "../traits.ts";
 import { fillIdempotencyTokens, findIdempotencyTokenProps } from "./generate-idempotency-tokens.ts";
 import type { Operation } from "./operation.ts";
 import type { Protocol, ProtocolHandler } from "./protocol.ts";
+import type { Request } from "./request.ts";
 
 export interface RequestBuilderOptions {
   /** Override the protocol (otherwise discovered from schema annotations) */
@@ -81,4 +85,36 @@ export const makeRequestBuilder = (operation: Operation, options?: RequestBuilde
 
     return request;
   });
+};
+
+/**
+ * {@link makeRequestBuilder} as a plain function, for an operation whose
+ * request needs no effects: a protocol with a synchronous `serialize`, no
+ * middleware and no streaming payload. `undefined` for any other operation.
+ * The function throws the `ParseError` the effect would fail with.
+ */
+export const makeSyncRequestBuilder = (
+  operation: Operation,
+  protocol: ProtocolHandler,
+): ((input: unknown) => Request) | undefined => {
+  const inputAst = operation.input.ast;
+  const serialize = protocol.serialize;
+  if (
+    serialize === undefined ||
+    getMiddleware(inputAst).length > 0 ||
+    getStreamingPayloadInfo(inputAst).hasStreamingPayload
+  ) {
+    return undefined;
+  }
+  const idempotencyTokenProps = findIdempotencyTokenProps(operation.input);
+  return (input) => {
+    const request = serialize(fillIdempotencyTokens(input, idempotencyTokenProps));
+    return {
+      ...request,
+      headers: {
+        ...request.headers,
+        "User-Agent": "distilled-aws/1.0",
+      },
+    };
+  };
 };

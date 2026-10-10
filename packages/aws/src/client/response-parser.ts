@@ -10,7 +10,13 @@
  * This is independently testable without making HTTP requests.
  */
 
-import { failIfStrict, validateResponse } from "@distilled.cloud/core/response-validation";
+import {
+  checkResponse,
+  failIfStrict,
+  ResponseValidation,
+  validateResponse,
+} from "@distilled.cloud/core/response-validation";
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import type * as SchemaIssue from "effect/SchemaIssue";
 import { COMMON_ERRORS, InternalError, ParseError, UnknownAwsError } from "../errors.ts";
@@ -26,7 +32,7 @@ import {
 import { getIdentifier, getPropertySignatures, isBooleanAST, isNumberAST } from "../util/ast.ts";
 import { decode } from "../util/codec.ts";
 import type { Operation } from "./operation.ts";
-import type { Protocol, ProtocolHandler } from "./protocol.ts";
+import { Unreadable, type Protocol, type ProtocolHandler } from "./protocol.ts";
 import type { Response } from "./response.ts";
 import { makeStreamParser } from "./stream-parser.ts";
 
@@ -73,6 +79,53 @@ const matchesMessage = (matcher: SyntheticErrorTrait["message"], message: string
   if (includes !== undefined && !message.includes(includes)) return false;
   if (matches !== undefined && !new RegExp(matches).test(message)) return false;
   return true;
+};
+
+/** The outcome of decoding a 2xx response: the value, or the error the call fails with. */
+export type Decoded =
+  | { readonly ok: true; readonly value: unknown }
+  | { readonly ok: false; readonly error: unknown };
+
+/**
+ * The success path of {@link makeResponseParser} without effects, for an
+ * operation whose output never streams: converts what the protocol's
+ * `deserializeText` read and, in strict mode, validates it. `context` is
+ * the calling fiber's (it carries the validation mode).
+ */
+export const makeSuccessDecoder = (
+  operation: Operation<any, any, any>,
+  options?: ResponseParserOptions,
+) => {
+  const outputAst = operation.output.ast;
+  const what = `${options?.service ?? "AWS"}.${options?.operation ?? "operation"}`;
+  return (context: Context.Context<any>, read: unknown): Decoded => {
+    const strict = Context.get(context, ResponseValidation) === "strict";
+    if (read instanceof Unreadable) {
+      return strict ? { ok: false, error: read.error } : { ok: true, value: read.asRead };
+    }
+    let decoded: unknown;
+    try {
+      decoded = decode(outputAst, read, true);
+    } catch (error) {
+      return strict
+        ? {
+            ok: false,
+            error: new ParseError({
+              message: `${what} response does not match its output schema: ${(error as Error).message}`,
+            }),
+          }
+        : { ok: true, value: read };
+    }
+    const invalid = strict ? checkResponse(context, outputAst as any, decoded) : undefined;
+    return invalid === undefined
+      ? { ok: true, value: decoded }
+      : {
+          ok: false,
+          error: new ParseError({
+            message: `${what} response does not match its output schema: ${invalid.message}`,
+          }),
+        };
+  };
 };
 
 /**
@@ -319,9 +372,7 @@ export const makeResponseParser = <A>(
       const schemaTag = getIdentifier(errorSchema.ast) ?? errorCode;
       let decoded: unknown;
       try {
-        decoded = new errorSchema(
-          decode(errorSchema.ast, data, true) as Record<string, unknown>,
-        );
+        decoded = new errorSchema(decode(errorSchema.ast, data, true) as Record<string, unknown>);
       } catch {
         decoded = { _tag: schemaTag, ...data };
       }

@@ -157,7 +157,7 @@ const checkIsEventStream = (ast: AST.AST): boolean => {
  * Returns whether the schema has a streaming payload, if it's an event stream,
  * and if it requires length.
  */
-const getStreamingPayloadInfo = (ast: AST.AST): StreamingPayloadInfo => {
+export const getStreamingPayloadInfo = (ast: AST.AST): StreamingPayloadInfo => {
   // For Suspend (S.suspend), unwrap and recurse
   if (ast._tag === "Suspend") {
     return getStreamingPayloadInfo(ast.thunk());
