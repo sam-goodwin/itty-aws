@@ -16,10 +16,11 @@ import {
   getProps,
   hasPropAnn,
   mapKeys,
+  mapsVerbatim,
   matchTypedError,
   nameOf,
 } from "@distilled.cloud/core/protocol-http";
-import { validateResponse } from "@distilled.cloud/core/response-validation";
+import { checkResponse } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus, parseServerRetryHint } from "@distilled.cloud/core/retry-after";
 import {
   bodySymbol,
@@ -51,8 +52,9 @@ import {
  *                 ResponseCode()     -> the HTTP status code
  *                 (otherwise)        -> result.<field>
  */
+import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
-import type * as HttpClient from "effect/http/HttpClient";
+import * as HttpClient from "effect/http/HttpClient";
 import type * as HttpClientError from "effect/http/HttpClientError";
 import type * as HttpClientRequest from "effect/http/HttpClientRequest";
 import type * as HttpClientResponse from "effect/http/HttpClientResponse";
@@ -231,9 +233,14 @@ const bearerPrefixAuthorization = (name: string, value: string): string =>
  * that only names the host is still consumed by `buildRequest`, so it never
  * leaks into the body.
  */
+const hostTemplates = /*@__PURE__*/ new WeakMap<AST.AST, string | null>();
 const hostFor = (input: unknown, inputAst: AST.AST): string | undefined => {
-  const template = getAnn(inputAst, hostSymbol) as string | undefined;
-  if (template === undefined) return undefined;
+  let template = hostTemplates.get(inputAst);
+  if (template === undefined) {
+    template = (getAnn(inputAst, hostSymbol) as string | undefined) ?? null;
+    hostTemplates.set(inputAst, template);
+  }
+  if (template === null) return undefined;
   const values = (input ?? {}) as Record<string, unknown>;
   let host = template;
   for (const prop of getProps(inputAst)) {
@@ -257,22 +264,40 @@ const hostFor = (input: unknown, inputAst: AST.AST): string | undefined => {
 // erased at this boundary (Protocol effects are typed with no requirements)
 // and reintroduced for callers by the generated `CloudflareOpContext`
 // annotations.
+const requestFor = (
+  creds: ResolvedCredentials,
+  input: unknown,
+  inputAst: AST.AST,
+): HttpClientRequest.HttpClientRequest =>
+  buildRequest({
+    input,
+    inputAst,
+    baseUrl: hostFor(input, inputAst) ?? creds.apiBaseUrl,
+    headers: formatHeaders(creds),
+    mapMemberHeader: bearerPrefixAuthorization,
+    unknownKeyToWire: camelToSnake,
+  });
+
+/**
+ * The calling fiber's credentials, then `f` on them. The Credentials service
+ * holds an effect -- resolving it per request picks up token refreshes. Its
+ * ConfigError/OAuthRefreshError channel is erased at this boundary like the
+ * rest of the protocol's requirements; CloudflareOpError reintroduces it for
+ * callers.
+ */
+const withCredentials = <B>(
+  context: Context.Context<any>,
+  f: (creds: ResolvedCredentials) => Effect.Effect<B, any, any>,
+): Effect.Effect<B, any, any> =>
+  API.withValue(
+    Context.get(context, Credentials) as Effect.Effect<ResolvedCredentials, any, any>,
+    f,
+  );
+
 const encode = ({ input, inputAst }: { readonly input: unknown; readonly inputAst: AST.AST }) =>
-  // Plain combinators (no generator): this runs on every request.
-  // The Credentials service holds an effect -- resolving it here (per
-  // request) picks up token refreshes. Its ConfigError/OAuthRefreshError
-  // channel is erased at this boundary like the rest of encode's
-  // requirements; CloudflareOpError reintroduces it for callers.
-  Effect.flatMap(Credentials, (resolveCredentials) =>
-    Effect.map(resolveCredentials as Effect.Effect<ResolvedCredentials>, (creds) =>
-      buildRequest({
-        input,
-        inputAst,
-        baseUrl: hostFor(input, inputAst) ?? creds.apiBaseUrl,
-        headers: formatHeaders(creds),
-        mapMemberHeader: bearerPrefixAuthorization,
-        unknownKeyToWire: camelToSnake,
-      }),
+  Effect.withFiber((fiber) =>
+    withCredentials(fiber.context as Context.Context<any>, (creds) =>
+      Effect.succeed(requestFor(creds, input, inputAst)),
     ),
   );
 
@@ -297,53 +322,112 @@ const wantsNumber = (ast: AST.AST): boolean =>
   (ast._tag === "Union" &&
     (ast as { types?: readonly AST.AST[] }).types?.some(wantsNumber) === true);
 
+/** How one output member is read from a successful response. */
+interface MemberPlan {
+  readonly key: string;
+  readonly kind: "payload" | "header" | "code" | "field" | "binary";
+  /** Marked `T.ResultInfo()` (read by the paginated protocol only). */
+  readonly resultInfo: boolean;
+  readonly type: AST.AST;
+  /** Lower-cased header name (`header`), else the body wire name. */
+  readonly wire: string;
+  /** The service key dictionary's wire name for the member. */
+  readonly dictWire: string | undefined;
+  /** `mapKeys(type, value, "decode", rootDict)` returns the value unchanged. */
+  readonly verbatim: boolean;
+  readonly number: boolean;
+}
+
+/** What decoding reads from an output schema, computed once per schema. */
+interface OutputPlan {
+  readonly binary: boolean;
+  readonly root: boolean;
+  readonly rootVerbatim: boolean;
+  readonly rootDict: Record<string, string> | undefined;
+  readonly members: ReadonlyArray<MemberPlan>;
+}
+
+const outputPlans = /*@__PURE__*/ new WeakMap<AST.AST, OutputPlan>();
+const outputPlanFor = (outputAst: AST.AST): OutputPlan => {
+  let plan = outputPlans.get(outputAst);
+  if (plan !== undefined) return plan;
+  const rootDict = getAnn(outputAst, keyDictionarySymbol) as Record<string, string> | undefined;
+  const members = getProps(outputAst).map((prop): MemberPlan => {
+    const key = String(prop.name);
+    const kind = hasPropAnn(prop, binaryResponseBodySymbol)
+      ? "binary"
+      : hasPropAnn(prop, envelopePayloadSymbol)
+        ? "payload"
+        : hasPropAnn(prop, headerSymbol)
+          ? "header"
+          : hasPropAnn(prop, responseCodeSymbol)
+            ? "code"
+            : "field";
+    return {
+      key,
+      kind,
+      resultInfo: hasPropAnn(prop, resultInfoSymbol),
+      type: prop.type,
+      wire: kind === "header" ? nameOf(prop, headerSymbol).toLowerCase() : nameOf(prop, bodySymbol),
+      dictWire: rootDict?.[key],
+      verbatim: rootDict === undefined && mapsVerbatim(prop.type, "decode"),
+      number: wantsNumber(prop.type),
+    };
+  });
+  plan = {
+    binary: members.some((m) => m.kind === "binary"),
+    root: getAnn(outputAst, envelopePayloadRootSymbol) !== undefined,
+    rootVerbatim: rootDict === undefined && mapsVerbatim(outputAst, "decode"),
+    rootDict,
+    members,
+  };
+  outputPlans.set(outputAst, plan);
+  return plan;
+};
+
 /**
- * Build a decode implementation. `resultInfo: true` (the paginated protocol)
+ * Build the protocol service. `resultInfo: true` (the paginated protocol)
  * additionally maps the envelope's top-level `result_info` onto the output
  * member marked with `T.ResultInfo()`, camelCased.
  */
-const makeDecode =
-  (options: { readonly resultInfo: boolean }) =>
-  ({
-    response,
-    outputAst,
-    errors: errorClasses,
-  }: {
-    readonly response: HttpClientResponse.HttpClientResponse;
-    readonly outputAst: AST.AST;
-    readonly errors: ReadonlyArray<unknown>;
-  }) =>
-    Effect.suspend((): Effect.Effect<unknown> => {
-      // Raw binary response: when an output member carries
-      // `BinaryResponseBody()`, a successful response is decoded from the
-      // response headers plus the body as a lazy byte stream -- the body is
-      // never consumed as text. Error statuses (JSON envelopes) fall
-      // through to the normal path below.
-      if (response.status < 400) {
-        const props = getProps(outputAst);
-        const binary = props.find((p) => hasPropAnn(p, binaryResponseBodySymbol));
-        if (binary !== undefined) {
-          const result: Record<string, unknown> = {};
-          for (const prop of props) {
-            const key = String(prop.name);
-            if (prop === binary) {
-              result[key] = response.stream;
-            } else if (hasPropAnn(prop, headerSymbol)) {
-              const v = response.headers[nameOf(prop, headerSymbol).toLowerCase()];
-              if (v !== undefined) {
-                result[key] = wantsNumber(prop.type) ? Number(v) : v;
-              }
-            } else if (hasPropAnn(prop, responseCodeSymbol)) {
-              result[key] = response.status;
-            }
+const makeProtocol = (options: { readonly resultInfo: boolean }) => {
+  const decodeResponse = (
+    context: Context.Context<any>,
+    response: HttpClientResponse.HttpClientResponse,
+    outputAst: AST.AST,
+    errorClasses: ReadonlyArray<unknown>,
+  ): Effect.Effect<unknown> => {
+    // Raw binary response: when an output member carries
+    // `BinaryResponseBody()`, a successful response is decoded from the
+    // response headers plus the body as a lazy byte stream -- the body is
+    // never consumed as text. Error statuses (JSON envelopes) fall
+    // through to the normal path below.
+    const plan = outputPlanFor(outputAst);
+    if (response.status < 400 && plan.binary) {
+      const result: Record<string, unknown> = {};
+      let streamed = false;
+      for (const m of plan.members) {
+        if (m.kind === "binary" && !streamed) {
+          // Only the first binary member receives the stream.
+          streamed = true;
+          result[m.key] = response.stream;
+        } else if (m.kind === "header") {
+          const v = response.headers[m.wire];
+          if (v !== undefined) {
+            result[m.key] = m.number ? Number(v) : v;
           }
-          return Effect.succeed(result);
+        } else if (m.kind === "code") {
+          result[m.key] = response.status;
         }
       }
+      return Effect.succeed(result);
+    }
 
-      // Read as text and parse tolerantly -- Cloudflare answers some errors
-      // (HTML 5xx pages, bare plain-text 4xx) with non-JSON bodies.
-      return Effect.flatMap(Effect.orDie(response.text), (read): Effect.Effect<unknown> => {
+    // Read as text and parse tolerantly -- Cloudflare answers some errors
+    // (HTML 5xx pages, bare plain-text 4xx) with non-JSON bodies.
+    return Effect.matchEffect(response.text, {
+      onFailure: Effect.die,
+      onSuccess: (read): Effect.Effect<unknown> => {
         const text = read ?? "";
         if (debugHttp()) {
           console.error(`[distilled] <- ${response.status} ${text.slice(0, 400)}`);
@@ -455,12 +539,12 @@ const makeDecode =
         // Strict mode (core/response-validation) checks the TS-shaped output
         // against the schema; lenient mode returns it as built.
         const body: unknown = nonJson ? text : json;
-        const validate = (value: unknown) =>
-          validateResponse(
-            outputAst,
-            value,
-            (cause) => new CloudflareParseError({ body, cause }),
-          ).pipe(Effect.catch(fail));
+        const validate = (value: unknown): Effect.Effect<unknown> => {
+          const cause = checkResponse(context, outputAst, value);
+          return cause === undefined
+            ? Effect.succeed(value)
+            : fail(new CloudflareParseError({ body, cause }));
+        };
 
         if (nonJson) json = {};
 
@@ -472,14 +556,14 @@ const makeDecode =
         const payload = (nonJson ? text : "result" in json ? json.result : json) as
           | Record<string, unknown>
           | unknown;
-        const rootDict = getAnn(outputAst, keyDictionarySymbol) as
-          | Record<string, string>
-          | undefined;
+        const rootDict = plan.rootDict;
 
         // Bare-payload response: the whole value IS the envelope's `result`
         // (array/scalar), returned directly rather than wrapped in a struct.
-        if (getAnn(outputAst, envelopePayloadRootSymbol) !== undefined) {
-          return validate(mapKeys(outputAst, payload, "decode", rootDict));
+        if (plan.root) {
+          return validate(
+            plan.rootVerbatim ? payload : mapKeys(outputAst, payload, "decode", rootDict),
+          );
         }
 
         // A non-JSON body for a struct output: lenient returns the text as
@@ -488,18 +572,18 @@ const makeDecode =
 
         const result: Record<string, unknown> = {};
 
-        for (const prop of getProps(outputAst)) {
-          const key = String(prop.name);
-          if (options.resultInfo && hasPropAnn(prop, resultInfoSymbol)) {
+        for (const m of plan.members) {
+          const key = m.key;
+          if (options.resultInfo && m.resultInfo) {
             if (json.result_info !== undefined) {
               result[key] = camelizeKeys(json.result_info);
             }
-          } else if (hasPropAnn(prop, envelopePayloadSymbol)) {
-            result[key] = mapKeys(prop.type, payload, "decode", rootDict);
-          } else if (hasPropAnn(prop, headerSymbol)) {
-            const v = response.headers[nameOf(prop, headerSymbol).toLowerCase()];
+          } else if (m.kind === "payload") {
+            result[key] = m.verbatim ? payload : mapKeys(m.type, payload, "decode", rootDict);
+          } else if (m.kind === "header") {
+            const v = response.headers[m.wire];
             if (v !== undefined) result[key] = v;
-          } else if (hasPropAnn(prop, responseCodeSymbol)) {
+          } else if (m.kind === "code") {
             result[key] = response.status;
           } else {
             // The schema's own wire name first; fall back to the service key
@@ -507,8 +591,8 @@ const makeDecode =
             // document a field under a name the live wire doesn't use (e.g. R2
             // event notifications document `queueId` but the wire sends
             // `queue`), and the dictionary carries the real mapping.
-            const wire = nameOf(prop, bodySymbol);
-            const dictWire = rootDict?.[key];
+            const wire = m.wire;
+            const dictWire = m.dictWire;
             const src =
               payload && typeof payload === "object"
                 ? wire in payload
@@ -518,26 +602,42 @@ const makeDecode =
                     : undefined
                 : undefined;
             if (src !== undefined) {
-              result[key] = mapKeys(
-                prop.type,
-                (payload as Record<string, unknown>)[src],
-                "decode",
-                rootDict,
-              );
+              const v = (payload as Record<string, unknown>)[src];
+              result[key] = m.verbatim ? v : mapKeys(m.type, v, "decode", rootDict);
             }
           }
         }
         return validate(result);
-      });
+      },
     });
+  };
+
+  const call = (op: API.PreparedOperation, input: unknown): Effect.Effect<unknown> =>
+    Effect.withFiber((fiber) => {
+      const context = fiber.context as Context.Context<any>;
+      return withCredentials(context, (creds) => {
+        const request = requestFor(creds, input, op.inputAst);
+        const client = Context.get(context, HttpClient.HttpClient);
+        return Effect.flatMap(client.execute(request), (response) =>
+          decodeResponse(context, response, op.outputAst, op.errors),
+        );
+      });
+    }) as Effect.Effect<unknown>;
+
+  return API.Protocol.of({
+    // Erase encode's Credentials requirement (see comment above).
+    encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
+    decode: ({ response, outputAst, errors }) =>
+      Effect.withFiber((fiber) =>
+        decodeResponse(fiber.context as Context.Context<any>, response, outputAst, errors),
+      ),
+    call,
+  });
+};
 
 export const CloudflareProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  /*@__PURE__*/ API.Protocol.of({
-    // Erase encode's Credentials requirement (see comment above).
-    encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
-    decode: /*@__PURE__*/ makeDecode({ resultInfo: false }),
-  }),
+  /*@__PURE__*/ makeProtocol({ resultInfo: false }),
 );
 
 /**
@@ -548,8 +648,5 @@ export const CloudflareProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer
  */
 export const CloudflarePaginatedProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  /*@__PURE__*/ API.Protocol.of({
-    encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
-    decode: /*@__PURE__*/ makeDecode({ resultInfo: true }),
-  }),
+  /*@__PURE__*/ makeProtocol({ resultInfo: true }),
 );

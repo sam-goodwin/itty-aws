@@ -27,7 +27,6 @@
  */
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
-import * as Exit from "effect/Exit";
 import * as HttpClient from "effect/http/HttpClient";
 import type * as HttpClientRequest from "effect/http/HttpClientRequest";
 import type * as HttpClientResponse from "effect/http/HttpClientResponse";
@@ -263,21 +262,6 @@ const defaultErrorEnvelope = (body: unknown): RestErrorEnvelope | undefined => {
 // here; the generated operation annotations reintroduce it for callers.
 const fail = (e: unknown): Effect.Effect<never> => Effect.fail(e) as Effect.Effect<never>;
 
-/**
- * Run `f` on the value of `effect` -- directly when `effect` is already a
- * successful `Exit` (e.g. `Effect.succeed(config)`), so a resolved value
- * costs no extra fiber step.
- */
-export const withValue = <A, B>(
-  effect: Effect.Effect<A, any, any>,
-  f: (a: A) => Effect.Effect<B, any, any>,
-): Effect.Effect<B, any, any> =>
-  Exit.isExit(effect)
-    ? Exit.isSuccess(effect)
-      ? f(effect.value as A)
-      : (effect as unknown as Effect.Effect<never, any>)
-    : Effect.flatMap(effect, f);
-
 /** Whether {@link wrapSensitive} can change any value of `root`. */
 const hasSensitive = (root: AST.AST): boolean => {
   let result = sensitiveCache.get(root);
@@ -358,7 +342,7 @@ export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Laye
     context: Context.Context<any>,
     f: (creds: C) => Effect.Effect<B, any, any>,
   ): Effect.Effect<B, any, any> =>
-    withValue(
+    API.withValue(
       credentialsKey === undefined ? credentialsEffect : Context.get(context, credentialsKey),
       f,
     );

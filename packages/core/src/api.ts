@@ -1,6 +1,7 @@
 import * as Context from "effect/Context";
 import type * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
+import * as Exit from "effect/Exit";
 import * as HttpClient from "effect/http/HttpClient";
 import type * as HttpClientError from "effect/http/HttpClientError";
 import type * as HttpClientRequest from "effect/http/HttpClientRequest";
@@ -113,6 +114,21 @@ export interface PreparedOperation {
 //#endregion
 
 //#region Make
+
+/**
+ * Run `f` on the value of `effect` -- directly when `effect` is already a
+ * successful `Exit` (e.g. a `Credentials` service holding
+ * `Effect.succeed(config)`), so a resolved value costs no fiber step.
+ */
+export const withValue = <A, B>(
+  effect: Effect.Effect<A, any, any>,
+  f: (a: A) => Effect.Effect<B, any, any>,
+): Effect.Effect<B, any, any> =>
+  Exit.isExit(effect)
+    ? Exit.isSuccess(effect)
+      ? f(effect.value as A)
+      : (effect as unknown as Effect.Effect<never, any>)
+    : Effect.flatMap(effect, f);
 
 export type ApiErrorClass = {
   new (...args: any[]): {
