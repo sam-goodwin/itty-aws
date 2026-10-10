@@ -31,9 +31,10 @@
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
-import type * as Schema from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
-import { type Decode, decoderFor } from "./response-validation-strict.ts";
+import { type Decode, decoderFor, type SchemaMismatch } from "./response-validation-strict.ts";
+
+export { SchemaMismatch } from "./response-validation-strict.ts";
 
 export type Mode = "lenient" | "strict";
 
@@ -48,8 +49,8 @@ export const ResponseValidation = /*@__PURE__*/ Context.Reference<Mode>(
 
 /** Decode every 2xx response against its output schema; fail on mismatch. */
 /**
- * The decoder strict mode uses. The `strict` layer provides it, so Effect
- * Schema is bundled only with programs that use `strict`.
+ * The checker strict mode uses. The `strict` layer provides it, so the
+ * checker is bundled only with programs that use `strict`.
  */
 export const StrictDecoder = /*@__PURE__*/ Context.Reference<
   ((ast: AST.AST) => Decode) | undefined
@@ -111,7 +112,7 @@ export const checkResponse = (
   context: Context.Context<any>,
   outputAst: AST.AST,
   value: unknown,
-): Schema.SchemaError | undefined => {
+): SchemaMismatch | undefined => {
   if (Context.get(context, ResponseValidation) === "lenient") return undefined;
   const decoderOf = Context.get(context, StrictDecoder);
   if (!decoderOf) {
@@ -123,7 +124,7 @@ export const checkResponse = (
 export const validateResponse = <E>(
   outputAst: AST.AST,
   value: unknown,
-  onError: (cause: Schema.SchemaError) => E,
+  onError: (cause: SchemaMismatch) => E,
 ): Effect.Effect<unknown, E> =>
   Effect.withFiber((fiber) => {
     const error = checkResponse(fiber.context as Context.Context<any>, outputAst, value);
