@@ -44,7 +44,10 @@ import { dirname, join, relative } from "node:path";
 
 const ROOT = join(import.meta.dirname, "..");
 const require = createRequire(join(ROOT, "packages", "core", "package.json"));
-const { rolldown } = (await import(require.resolve("rolldown"))) as { rolldown: any };
+const { rolldown, RUNTIME_MODULE_ID } = (await import(require.resolve("rolldown"))) as {
+  rolldown: any;
+  RUNTIME_MODULE_ID: string;
+};
 const { parseAst } = (await import(require.resolve("rolldown/parseAst"))) as {
   parseAst: (code: string, options: object, filename: string) => any;
 };
@@ -366,99 +369,23 @@ const exportNames = async (plan: Plan, plugins: object[]): Promise<Map<string, s
 };
 
 /**
- * Rolldown puts its runtime helpers (`__exportAll`, for namespace objects) in
- * a chunk of their own when several chunks use them: one more ES module per
- * package. The helpers are pure, so each user chunk gets a private copy.
+ * V8 stores a whole module source as two-byte if any character is outside
+ * Latin-1. The sources are Latin-1 (codegen's toLatin1 pass), but rolldown
+ * prints `\u2019` in a string as the character itself; escape it back. Only
+ * strings, regexes and comments can hold such characters, and `\uXXXX` means
+ * the same there.
  */
-const inlineRuntime = (lib: string, output: any[], written: Set<string>) => {
-  const runtime = output.find(
-    (c) =>
-      c.type === "chunk" && c.moduleIds.length === 1 && c.moduleIds[0] === "\0rolldown/runtime.js",
-  );
-  if (!runtime) return;
-  const lines = (runtime.code as string)
-    .split("\n")
-    .filter((l) => !/^\/\/#(end)?region/.test(l) && l.trim());
-  const exp = /^export \{(.*)\};$/.exec(lines.pop()!);
-  if (!exp) throw new Error(`unexpected rolldown runtime chunk ${runtime.fileName}`);
-  const returns = exp[1]!
-    .split(",")
-    .map((s) => s.trim().split(/\s+as\s+/))
-    .map(([local, name]) => `${name ?? local}: ${local}`)
-    .join(", ");
-  const base = runtime.fileName.split("/").at(-1);
+const toLatin1 = (lib: string, output: any[]) => {
   for (const c of output) {
-    if (c.type !== "chunk" || c === runtime || !c.imports.includes(runtime.fileName)) continue;
+    if (c.type !== "chunk" || !/[^\x00-\xff]/.test(c.code)) continue;
     const file = join(lib, c.fileName);
-    const code = readFileSync(file, "utf8").split("\n");
-    const at = code.findIndex((l) => l.startsWith("import {") && l.endsWith(`/${base}";`));
-    if (at < 0) throw new Error(`${c.fileName}: runtime import not found`);
-    const specs = /^import \{(.*)\} from/
-      .exec(code[at]!)![1]!
-      .split(",")
-      .map((s) => s.trim().split(/\s+as\s+/))
-      .map(([name, local]) => `${name}: ${local ?? name}`)
-      .join(", ");
-    const block = [`var { ${specs} } = (() => {`, ...lines, `return { ${returns} };`, `})();`];
-    code.splice(at, 1, ...block);
-    writeFileSync(file, code.join("\n"));
-    const mapFile = `${file}.map`;
-    if (existsSync(mapFile)) {
-      const map = JSON.parse(readFileSync(mapFile, "utf8"));
-      const m = (map.mappings as string).split(";");
-      m.splice(at + 1, 0, ...Array(block.length - 1).fill(""));
-      map.mappings = m.join(";");
-      writeFileSync(mapFile, JSON.stringify(map));
-    }
-  }
-  for (const f of [runtime.fileName, runtime.sourcemapFileName].filter(Boolean)) {
-    rmSync(join(lib, f), { force: true });
-    written.delete(f);
+    const code = readFileSync(file, "utf8");
+    writeFileSync(
+      file,
+      code.replace(/[^\x00-\xff]/g, (ch) => `\\u${ch.charCodeAt(0).toString(16).padStart(4, "0")}`),
+    );
   }
 };
-
-/** BUNDLE_LIB_DEBUG=1: print which entries reach the group modules, by distinct entry set. */
-const debugPlugin = (src: string, groupOf: Map<string, string>) => ({
-  name: "distilled-bundle-debug",
-  buildEnd(this: any) {
-    const ids = [...this.getModuleIds()] as string[];
-    const info = new Map(ids.map((id) => [id, this.getModuleInfo(id)]));
-    const entries = ids.filter(
-      (id) => info.get(id).isEntry || info.get(id).dynamicImporters.length > 0,
-    );
-    const sets = new Map<string, string[]>();
-    for (const e of entries) {
-      const seen = new Set<string>();
-      const stack = [e];
-      while (stack.length) {
-        const id = stack.pop()!;
-        if (seen.has(id)) continue;
-        seen.add(id);
-        for (const d of info.get(id)?.importedIds ?? []) stack.push(d);
-      }
-      for (const id of seen) {
-        const list = sets.get(id) ?? [];
-        list.push(e);
-        sets.set(id, list);
-      }
-    }
-    const byKey = new Map<string, string[]>();
-    for (const [id, es] of sets) {
-      if (!id.startsWith(src + "/") || !groupOf.has(noExt(rel(src, id)))) continue;
-      const key = es.sort().join("|");
-      byKey.set(key, [...(byKey.get(key) ?? []), rel(src, id)]);
-    }
-    const all = [...byKey.keys()].map((k) => new Set(k.split("|")));
-    const union = new Set(all.flatMap((s) => [...s]));
-    for (const [k, mods] of byKey) {
-      const set = new Set(k.split("|"));
-      const missing = [...union].filter((e) => !set.has(e)).map((e) => e.replace(src + "/", ""));
-      console.log(
-        `  ${mods.length} modules (${mods.slice(0, 4).join(", ")}) missing ${missing.length}: ${missing.slice(0, 6).join(", ")}`,
-      );
-    }
-  },
-});
 
 const buildPackage = async (
   plan: Plan,
@@ -512,6 +439,7 @@ const buildPackage = async (
   const exportsOf = await exportNames(plan, plugins);
   const built: Built = { groupOf, exportsOf };
   const groupNames = [...plan.groups.keys()].filter((g) => plan.groups.get(g)!.length > 0);
+  const fileOf = (g: string) => `_bundle/${g}`;
 
   const bundlePlugin = {
     name: "distilled-bundle",
@@ -522,12 +450,16 @@ const buildPackage = async (
       if (!id.startsWith("\0" + VIRTUAL)) return;
       const g = id.slice(VIRTUAL.length + 1);
       const lines: string[] = g === SDK_GROUP ? [...coreRefs].map((r) => `import "${r}";`) : [];
+      // Rolldown's helpers (`__exportAll` for namespace objects) go in the
+      // first group's chunk, which every chunk of the package already imports,
+      // instead of a chunk of their own.
+      if (g === groupNames[0]) lines.unshift(`import "${RUNTIME_MODULE_ID}";`);
       for (const m of plan.groups.get(g)!) {
         const names = exportsOf.get(m)!;
         const file = JSON.stringify(join(src, `${m}.ts`));
         lines.push(
           names.length
-            ? `export { ${names.map((e) => `${e === "default" ? "default" : e} as ${exportName(m, e)}`).join(", ")} } from ${file};`
+            ? `export { ${names.map((e) => `${e} as ${exportName(m, e)}`).join(", ")} } from ${file};`
             : `import ${file};`,
         );
       }
@@ -557,7 +489,7 @@ const buildPackage = async (
   };
 
   const input: Record<string, string> = {};
-  for (const g of groupNames) input[`_bundle/${g}`] = VIRTUAL + g;
+  for (const g of groupNames) input[fileOf(g)] = VIRTUAL + g;
   for (const m of plan.direct) if (!barrels.has(m)) input[m] = join(src, `${m}.ts`);
 
   const bundle = await rolldown({
@@ -578,6 +510,12 @@ const buildPackage = async (
     chunkFileNames: "_chunks/[name]-[hash].js",
     sourcemap: true,
     comments: { legal: true, annotation: true, jsdoc: false },
+    // V8 keeps every module's source text in the heap: whitespace and long
+    // local names cost memory in every process (S3: -160 KB). Function and
+    // class names stay (`.name`, stack traces); source maps map back to src/.
+    minify: process.env.BUNDLE_LIB_MINIFY
+      ? JSON.parse(process.env.BUNDLE_LIB_MINIFY)
+      : { compress: false, mangle: { keepNames: true }, codegen: { removeWhitespace: true } },
   });
   await bundle.close();
 
@@ -588,7 +526,7 @@ const buildPackage = async (
     written.add(c.fileName);
     if (c.type !== "chunk") continue;
     if (c.sourcemapFileName) written.add(c.sourcemapFileName);
-    const own = c.fileName.startsWith("_bundle/") ? c.name.slice("_bundle/".length) : undefined;
+    const own = groupNames.find((g) => c.isEntry && c.name === fileOf(g));
     for (const id of c.moduleIds as string[]) {
       if (!id.startsWith(src + "/")) continue;
       const g = groupOf.get(noExt(rel(src, id)));
@@ -605,14 +543,16 @@ const buildPackage = async (
     console.warn(
       `bundle-lib: ${plan.name}: group code outside its chunk:\n  ${big.slice(0, 20).join("\n  ")}`,
     );
-  inlineRuntime(lib, output, written);
+  if (output.some((c: any) => c.moduleIds?.length === 1 && c.moduleIds[0] === RUNTIME_MODULE_ID))
+    throw new Error(`${plan.name}: rolldown runtime got a chunk of its own`);
+  toLatin1(lib, output);
 
   // Facades for grouped public modules.
   for (const [g, mods] of plan.groups)
     for (const m of mods) {
       const file = `${m}.js`;
       const names = exportsOf.get(m)!;
-      const target = rel(dirname(join(lib, file)), join(lib, "_bundle", `${g}.js`));
+      const target = rel(dirname(join(lib, file)), join(lib, `${fileOf(g)}.js`));
       const spec = target.startsWith(".") ? target : `./${target}`;
       mkdirSync(dirname(join(lib, file)), { recursive: true });
       writeFileSync(
@@ -641,7 +581,7 @@ const buildPackage = async (
   }
   const chunks = output.filter((c: any) => c.type === "chunk");
   console.log(
-    `bundle-lib: ${plan.name}: ${chunks.length} chunks (${groupNames.map((g) => `_bundle/${g}`).join(", ")}, ${chunks.filter((c: any) => c.fileName.startsWith("_chunks/")).length} lazy), ${[...plan.groups.values()].flat().length} facades, ${removed} stale files removed`,
+    `bundle-lib: ${plan.name}: ${chunks.length} chunks (${groupNames.map(fileOf).join(", ")}, ${chunks.filter((c: any) => c.fileName.startsWith("_chunks/")).length} lazy), ${[...plan.groups.values()].flat().length} facades, ${removed} stale files removed`,
   );
   return built;
 };
