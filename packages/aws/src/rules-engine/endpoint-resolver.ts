@@ -13,7 +13,6 @@
  * This is independently testable without making HTTP requests.
  */
 
-import * as Effect from "effect/Effect";
 import type * as AST from "effect/SchemaAST";
 import type { Operation } from "../client/operation.ts";
 import type { Request } from "../client/request.ts";
@@ -100,55 +99,93 @@ export const makeEndpointResolver = (operation: Operation) => {
   // Extract static context params (done once)
   const staticContextParams = getStaticContextParams(inputAst);
 
-  // Return a function that resolves endpoints and adjusts request
-  return Effect.fnUntraced(function* (resolverInput: EndpointResolverInput) {
+  // Resolution depends only on the endpoint parameters, so results are
+  // cached per parameter set (region + context params from the input).
+  const cache = new Map<string, Resolved>();
+
+  /**
+   * The endpoint for `resolverInput`, with the request path adjusted, or
+   * the `Error` the rule set ends in when no endpoint matches.
+   */
+  return (resolverInput: EndpointResolverInput): EndpointResolverOutput | Error => {
     const { input, region, request } = resolverInput;
-
-    // Build endpoint params from input + region
-    const endpointParams: EndpointParams = {
-      Region: region,
-    };
-
-    // Apply static context params first (operation-level fixed values)
-    if (staticContextParams) {
-      for (const [paramName, paramDef] of Object.entries(staticContextParams)) {
-        endpointParams[paramName] = paramDef.value as RulesValue;
-      }
-    }
-
-    // Extract context parameters from the payload
     const payloadObj = input as Record<string, RulesValue>;
-    for (const [propName, info] of contextParamMappings) {
-      if (payloadObj[propName] !== undefined) {
-        endpointParams[info.paramName] = payloadObj[propName];
+
+    // Only primitive parameter values make a cache key; anything else resolves uncached.
+    let key: string | undefined = region;
+    for (const [propName] of contextParamMappings) {
+      const value: unknown = payloadObj[propName];
+      const type = typeof value;
+      if (value === undefined) key += "\0u";
+      else if (type === "string" || type === "number" || type === "boolean") {
+        key += "\0" + type[0] + String(value);
+      } else {
+        key = undefined;
+        break;
       }
     }
+    let resolved = key === undefined ? undefined : cache.get(key);
+    if (resolved === undefined) {
+      // Build endpoint params from input + region
+      const endpointParams: EndpointParams = {
+        Region: region,
+      };
 
-    // Resolve endpoint using the compiled resolver
-    const result = resolver(endpointParams as Record<string, unknown>, endpointResolverHelpers);
+      // Apply static context params first (operation-level fixed values)
+      if (staticContextParams) {
+        for (const [paramName, paramDef] of Object.entries(staticContextParams)) {
+          endpointParams[paramName] = paramDef.value as RulesValue;
+        }
+      }
 
-    if (result.type === "error") {
-      return yield* Effect.fail(new Error(result.message));
+      // Extract context parameters from the payload
+      for (const [propName, info] of contextParamMappings) {
+        if (payloadObj[propName] !== undefined) {
+          endpointParams[info.paramName] = payloadObj[propName];
+        }
+      }
+
+      // Resolve endpoint using the compiled resolver
+      const result = resolver(endpointParams as Record<string, unknown>, endpointResolverHelpers);
+
+      if (result.type === "error") {
+        return new Error(result.message);
+      }
+
+      const endpoint: ResolvedEndpoint = {
+        url: result.endpoint.url,
+        properties: result.endpoint.properties as Record<string, RulesValue>,
+        headers: result.endpoint.headers,
+      };
+      let hostname: string | undefined;
+      try {
+        hostname = new URL(endpoint.url).hostname;
+      } catch {
+        hostname = undefined;
+      }
+      resolved = { endpoint, hostname };
+      if (key !== undefined) {
+        if (cache.size >= 64) cache.clear();
+        cache.set(key, resolved);
+      }
     }
-
-    const endpoint: ResolvedEndpoint = {
-      url: result.endpoint.url,
-      properties: result.endpoint.properties as Record<string, RulesValue>,
-      headers: result.endpoint.headers,
-    };
 
     // Adjust request path if context params were moved to hostname
     // This handles S3 virtual-hosted style where Bucket is in the hostname
-    const adjustedRequest = adjustRequestPath(
-      request,
-      endpoint.url,
-      contextParamMappings,
-      payloadObj,
-    );
+    const adjustedRequest =
+      resolved.hostname === undefined
+        ? request
+        : adjustRequestPath(request, resolved.hostname, contextParamMappings, payloadObj);
 
-    return { endpoint, request: adjustedRequest };
-  });
+    return { endpoint: resolved.endpoint, request: adjustedRequest };
+  };
 };
+
+/** A resolved endpoint and its URL's hostname (undefined when the URL does not parse). */
+interface Resolved {
+  readonly endpoint: ResolvedEndpoint;
+  readonly hostname: string | undefined;
+}
 
 interface ContextParamInfo {
   /** The endpoint param name (e.g., "Bucket") */
@@ -188,14 +225,11 @@ function extractContextParamMappings(ast: AST.AST): Map<string, ContextParamInfo
  */
 function adjustRequestPath(
   request: Request,
-  endpointUrl: string,
+  hostname: string,
   contextParamMappings: Map<string, ContextParamInfo>,
   input: Record<string, unknown>,
 ): Request {
   try {
-    const url = new URL(endpointUrl);
-    const hostname = url.hostname;
-
     // Check each context param that is also an HTTP label
     for (const [propName, info] of contextParamMappings) {
       if (!info.isHttpLabel) continue;
@@ -220,7 +254,7 @@ function adjustRequestPath(
       }
     }
   } catch {
-    // URL parsing failed, return original request
+    // Encoding the label failed, return original request
   }
 
   return request;
