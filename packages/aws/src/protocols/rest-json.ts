@@ -15,10 +15,8 @@ import type * as AST from "effect/SchemaAST";
 import type * as Stream from "effect/Stream";
 import type { Operation } from "../client/operation.ts";
 import {
-  fromText,
-  serializeEffect,
   Unreadable,
-  type Protocol,
+  type ProtocolImpl,
   type ProtocolHandler,
   type TextResponse,
 } from "../client/protocol.ts";
@@ -66,7 +64,7 @@ import {
   readStreamAsText,
 } from "../util/stream.ts";
 
-export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandler => {
+export const restJson1Protocol: ProtocolImpl = (operation: Operation): ProtocolHandler => {
   const inputSchema = operation.input;
   const outputSchema = operation.output;
   const inputAst = inputSchema.ast;
@@ -304,19 +302,14 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
 
   return {
     serialize,
-    serializeRequest: serializeEffect(serialize),
     deserializeText,
 
-    deserializeResponse: Effect.fnUntraced(function* (response: Response) {
-      if (!outputPayloadProp?.isStreaming && !outputPayloadProp?.isBlob) {
-        // Non-streaming response - read body as text
-        const bodyText = yield* readStreamAsText(response.body);
-        return yield* fromText(deserializeText({ ...response, body: bodyText }));
-      }
+    deserializeStream: (response) => {
+      // Streaming and blob payloads; everything else is read as text.
+      if (!outputPayloadProp?.isStreaming && !outputPayloadProp?.isBlob) return undefined;
       const result = bindResponse(response);
 
-      // Handle streaming output payload - return early
-      if (outputPayloadProp?.isStreaming) {
+      if (outputPayloadProp.isStreaming) {
         if (outputPayloadProp.isEventStream && response.body) {
           // Parse event stream - converts raw bytes to typed union events,
           // decoded through the event schema so blob/timestamp members match
@@ -333,23 +326,20 @@ export const restJson1Protocol: Protocol = (operation: Operation): ProtocolHandl
           // Raw streaming output (blob)
           result[outputPayloadProp.name] = readableToEffectStream(response.body);
         }
-        return result;
+        return Effect.succeed(result);
       }
 
       // Non-streaming blob payload (e.g. geo-maps GetTile / GetStaticMap):
       // the raw body bytes ARE the payload. Read them as bytes and re-encode
       // to the wire (base64 string) form the Blob schema decodes from.
       // The body is binary, not a JSON document, so JSON parsing is skipped.
-      if (outputPayloadProp?.isBlob) {
-        const bytes = yield* readStreamAsBytes(response.body);
+      return Effect.map(readStreamAsBytes(response.body), (bytes) => {
         if (bytes.byteLength > 0) {
           result[outputPayloadProp.name] = bytesToBase64(bytes);
         }
         return result;
-      }
-
-      return result;
-    }),
+      });
+    },
 
     deserializeError: Effect.fnUntraced(function* (response: Response) {
       // Read body as text

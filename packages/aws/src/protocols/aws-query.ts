@@ -16,10 +16,8 @@ import type * as S from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import type { Operation } from "../client/operation.ts";
 import {
-  fromText,
-  serializeEffect,
   Unreadable,
-  type Protocol,
+  type ProtocolImpl,
   type ProtocolHandler,
   type TextResponse,
 } from "../client/protocol.ts";
@@ -46,19 +44,13 @@ import {
 import { inputEncoderSync } from "../util/codec.ts";
 import { sanitizeErrorCode } from "../util/error.ts";
 import { readStreamAsText } from "../util/stream.ts";
-import {
-  deserializePrimitive,
-  extractXmlRoot,
-  parseXml,
-  readXml,
-  unwrapArrayValue,
-} from "../util/xml.ts";
+import { extractXmlRoot, parseXml, readXml, unwrapArrayValue } from "../util/xml.ts";
 
 // =============================================================================
 // Protocol Export
 // =============================================================================
 
-export const awsQueryProtocol: Protocol = (operation: Operation): ProtocolHandler => {
+export const awsQueryProtocol: ProtocolImpl = (operation: Operation): ProtocolHandler => {
   const inputSchema = operation.input;
   const outputSchema = operation.output;
   const inputAst = inputSchema.ast;
@@ -106,14 +98,7 @@ export const awsQueryProtocol: Protocol = (operation: Operation): ProtocolHandle
 
   return {
     serialize,
-    serializeRequest: serializeEffect(serialize),
     deserializeText,
-
-    deserializeResponse: Effect.fnUntraced(function* (response: Response) {
-      // Read body as text
-      const bodyText = yield* readStreamAsText(response.body);
-      return yield* fromText(deserializeText({ ...response, body: bodyText }));
-    }),
 
     deserializeError: Effect.fnUntraced(function* (response: Response) {
       // Read body as text

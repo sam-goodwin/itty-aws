@@ -10,12 +10,7 @@
  * This is independently testable without making HTTP requests.
  */
 
-import {
-  checkResponse,
-  failIfStrict,
-  ResponseValidation,
-  validateResponse,
-} from "@distilled.cloud/core/response-validation";
+import { checkResponse, ResponseValidation } from "@distilled.cloud/core/response-validation";
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import type * as SchemaIssue from "effect/SchemaIssue";
@@ -32,7 +27,7 @@ import {
 import { getIdentifier, getPropertySignatures, isBooleanAST, isNumberAST } from "../util/ast.ts";
 import { decode } from "../util/codec.ts";
 import type { Operation } from "./operation.ts";
-import { Unreadable, type Protocol, type ProtocolHandler } from "./protocol.ts";
+import { deserialize, loadHandler, Unreadable, type Protocol } from "./protocol.ts";
 import type { Response } from "./response.ts";
 import { makeStreamParser } from "./stream-parser.ts";
 
@@ -151,9 +146,11 @@ export const makeResponseParser = <A>(
   }
 
   // Create the protocol handler (preprocessing done once)
-  const protocol: ProtocolHandler = protocolFactory(operation as Operation);
+  const handler = loadHandler(protocolFactory(operation as Operation));
 
   const skipValidation = options?.skipValidation === true;
+
+  const decodeSuccess = makeSuccessDecoder(operation, options);
 
   // Create stream parser if output has event stream member (done once)
   const streamParser = makeStreamParser(outputAst);
@@ -219,9 +216,10 @@ export const makeResponseParser = <A>(
   // Return a function that parses responses
   // @ts-expect-error
   return Effect.fnUntraced(function* (response: Response) {
+    const protocol = yield* handler;
     // Success path
     if (response.status >= 200 && response.status < 300) {
-      const deserialized = (yield* protocol.deserializeResponse(response)) as
+      const deserialized = (yield* deserialize(protocol, response)) as
         | Record<string, unknown>
         | undefined;
 
@@ -237,30 +235,13 @@ export const makeResponseParser = <A>(
       }
 
       // Convert wire values to the declared types (timestamp -> Date,
-      // sensitive -> Redacted, blob -> Uint8Array, wire keys -> type keys).
-      // A response that does not match the output schema is returned as
-      // read in lenient mode (the default) and fails with ParseError in
-      // strict mode (the core ResponseValidation.strict layer), which also
-      // validates the converted value with Effect Schema.
-      let decoded: unknown;
-      try {
-        decoded = decode(outputAst, deserialized, true);
-      } catch (error) {
-        return yield* failIfStrict(
-          new ParseError({
-            message: `${options?.service ?? "AWS"}.${options?.operation ?? "operation"} response does not match its output schema: ${(error as Error).message}`,
-          }),
-          deserialized as A,
-        );
-      }
-      return yield* validateResponse(
-        outputAst as any,
-        decoded,
-        (error) =>
-          new ParseError({
-            message: `${options?.service ?? "AWS"}.${options?.operation ?? "operation"} response does not match its output schema: ${error.message}`,
-          }),
+      // sensitive -> Redacted, blob -> Uint8Array, wire keys -> type keys);
+      // see makeSuccessDecoder.
+      const decoded = yield* Effect.withFiber((fiber) =>
+        Effect.succeed(decodeSuccess(fiber.context as Context.Context<any>, deserialized)),
       );
+      if (!decoded.ok) return yield* Effect.fail(decoded.error);
+      return decoded.value as A;
     }
 
     // Error path

@@ -9,10 +9,8 @@ import type * as S from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import type { Operation } from "../client/operation.ts";
 import {
-  fromText,
-  serializeEffect,
   Unreadable,
-  type Protocol,
+  type ProtocolImpl,
   type ProtocolHandler,
   type TextResponse,
 } from "../client/protocol.ts";
@@ -58,7 +56,6 @@ import { applyHttpTrait, bindInputToRequest } from "../util/serialize-input.ts";
 import { convertStreamingInput, readableToEffectStream, readStreamAsText } from "../util/stream.ts";
 import { formatTimestamp } from "../util/timestamp.ts";
 import {
-  deserializePrimitive,
   escapeXml,
   parseXml,
   parseXmlSync,
@@ -72,7 +69,7 @@ import {
 // Protocol Export
 // =============================================================================
 
-export const restXmlProtocol: Protocol = (operation: Operation): ProtocolHandler => {
+export const restXmlProtocol: ProtocolImpl = (operation: Operation): ProtocolHandler => {
   const inputSchema = operation.input;
   const outputSchema = operation.output;
   const inputAst = inputSchema.ast;
@@ -232,47 +229,37 @@ export const restXmlProtocol: Protocol = (operation: Operation): ProtocolHandler
 
   return {
     serialize,
-    serializeRequest: serializeEffect(serialize),
     deserializeText,
 
-    deserializeResponse: Effect.fnUntraced(function* (response: Response) {
-      if (!outputPayloadProp?.isStreaming) {
-        // Non-streaming response - read body as text
-        const bodyText = yield* readStreamAsText(response.body);
-        return yield* fromText(deserializeText({ ...response, body: bodyText }));
-      }
+    deserializeStream: (response) => {
+      // Streaming output payload; everything else is read as text.
+      if (!outputPayloadProp?.isStreaming) return undefined;
       const result = bindResponse(response);
-
-      // Handle streaming output payload - return early
-      if (outputPayloadProp?.isStreaming) {
-        if (outputPayloadProp.isEventStream && response.body) {
-          // Parse event stream with XML payload parser
-          const xmlPayloadParser: PayloadParser = (payload: Uint8Array) => {
-            const text = new TextDecoder().decode(payload);
-            if (!text) return {};
-            try {
-              return parseXmlSync(text);
-            } catch (error) {
-              if (error instanceof XmlParseError) return { payload: text };
-              throw error;
-            }
-          };
-          result[outputPayloadProp.name] = eventStreamWith(outputPayloadProp.eventSchema, (codec) =>
-            codec.parseEventStreamToUnion(
-              response.body as ReadableStream<Uint8Array>,
-              xmlPayloadParser,
-              outputPayloadProp.eventSchema,
-            ),
-          );
-        } else {
-          // Raw streaming output (blob)
-          result[outputPayloadProp.name] = readableToEffectStream(response.body);
-        }
-        return result;
+      if (outputPayloadProp.isEventStream && response.body) {
+        // Parse event stream with XML payload parser
+        const xmlPayloadParser: PayloadParser = (payload: Uint8Array) => {
+          const text = new TextDecoder().decode(payload);
+          if (!text) return {};
+          try {
+            return parseXmlSync(text);
+          } catch (error) {
+            if (error instanceof XmlParseError) return { payload: text };
+            throw error;
+          }
+        };
+        result[outputPayloadProp.name] = eventStreamWith(outputPayloadProp.eventSchema, (codec) =>
+          codec.parseEventStreamToUnion(
+            response.body as ReadableStream<Uint8Array>,
+            xmlPayloadParser,
+            outputPayloadProp.eventSchema,
+          ),
+        );
+      } else {
+        // Raw streaming output (blob)
+        result[outputPayloadProp.name] = readableToEffectStream(response.body);
       }
-
-      return result;
-    }),
+      return Effect.succeed(result);
+    },
 
     deserializeError: Effect.fnUntraced(
       function* (response: Response) {

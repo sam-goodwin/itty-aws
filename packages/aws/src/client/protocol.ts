@@ -1,6 +1,7 @@
 import { failIfStrict } from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
 import { ParseError } from "../errors.ts";
+import { readStreamAsText } from "../util/stream.ts";
 import type { Operation } from "./operation.ts";
 import type { Request } from "./request.ts";
 import type { Response } from "./response.ts";
@@ -23,18 +24,25 @@ export interface DeserializedError {
 
 export interface ProtocolHandler {
   /**
-   * Serialize an input object into an HTTP request.
-   * @param input - The input object to serialize
-   * @returns Effect yielding the serialized HTTP request
+   * Serialize an input object into a request, without effects. Throws the
+   * `ParseError` an input that does not match the schema fails with.
    */
-  serializeRequest(input: unknown): Effect.Effect<Request, ParseError>;
+  readonly serialize: (input: unknown) => Request;
 
   /**
-   * Deserialize an HTTP response into an output object.
-   * @param response - The HTTP response to deserialize
-   * @returns Effect yielding the deserialized output object
+   * Deserialize a 2xx response whose body has been read as text, without
+   * effects. A body the protocol cannot read comes back as {@link Unreadable}.
    */
-  deserializeResponse(response: Response): Effect.Effect<unknown, ParseError>;
+  readonly deserializeText: (response: TextResponse) => unknown;
+
+  /**
+   * Deserialize a 2xx response of an output with a streaming, event-stream
+   * or blob member; `undefined` for outputs that are read as text (see
+   * {@link deserialize}).
+   */
+  readonly deserializeStream?: (
+    response: Response,
+  ) => Effect.Effect<unknown, ParseError> | undefined;
 
   /**
    * Deserialize an error response and extract the error code and data.
@@ -42,22 +50,11 @@ export interface ProtocolHandler {
    * @returns Effect yielding the error code and additional data
    */
   deserializeError(response: Response): Effect.Effect<DeserializedError, ParseError>;
+}
 
-  /**
-   * `serializeRequest` as a plain function: the same request, built without
-   * effects. Throws the `ParseError` `serializeRequest` would fail with.
-   */
-  readonly serialize?: (input: unknown) => Request;
-
-  /**
-   * `deserializeResponse` for a body already read as text, without effects.
-   * Only valid for operations whose output never streams. A body the
-   * protocol cannot read comes back as {@link Unreadable}.
-   */
-  readonly deserializeText?: (response: TextResponse) => unknown;
-
-  /** The loaded handler, for protocols whose implementation loads on first use. */
-  readonly ready?: Effect.Effect<ProtocolHandler>;
+/** A handler whose implementation loads on first use. */
+export interface LazyHandler {
+  readonly ready: Effect.Effect<ProtocolHandler>;
 }
 
 /** A response whose body has been read as text. */
@@ -83,9 +80,17 @@ export class Unreadable {
  * This allows expensive operations like getEncodedPropertySignatures
  * to be done once at initialization time rather than on every request.
  */
-export type Protocol = (operation: Operation) => ProtocolHandler;
+export type Protocol = (operation: Operation) => ProtocolHandler | LazyHandler;
 
-/** `serializeRequest` from a `serialize`: a thrown `ParseError` fails, anything else dies. */
+/** A protocol implementation: builds the handler directly. */
+export type ProtocolImpl = (operation: Operation) => ProtocolHandler;
+
+/** The loaded handler. */
+export const loadHandler = (
+  handler: ProtocolHandler | LazyHandler,
+): Effect.Effect<ProtocolHandler> => ("ready" in handler ? handler.ready : Effect.succeed(handler));
+
+/** `serialize` as an effect: a thrown `ParseError` fails, anything else dies. */
 export const serializeEffect =
   (serialize: (input: unknown) => Request) =>
   (input: unknown): Effect.Effect<Request, ParseError> => {
@@ -96,6 +101,31 @@ export const serializeEffect =
     }
   };
 
-/** A `deserializeText` result as `deserializeResponse` returns it. */
-export const fromText = (result: unknown): Effect.Effect<unknown, ParseError> =>
-  result instanceof Unreadable ? failIfStrict(result.error, result.asRead) : Effect.succeed(result);
+/**
+ * A 2xx response through the handler: `deserializeStream` for outputs
+ * that stream, else the body (read as text) through `deserializeText`. An {@link Unreadable} body fails in strict mode and is returned as
+ * read in lenient mode.
+ */
+export const deserialize = (
+  protocol: ProtocolHandler,
+  response: Response,
+): Effect.Effect<unknown, ParseError> => {
+  const fromText = (body: string): Effect.Effect<unknown, ParseError> => {
+    const result = protocol.deserializeText({ ...response, body });
+    return result instanceof Unreadable
+      ? failIfStrict(result.error, result.asRead)
+      : Effect.succeed(result);
+  };
+  const body = response.body;
+  return (
+    protocol.deserializeStream?.(response) ??
+    (typeof body === "string" ? fromText(body) : Effect.flatMap(readStreamAsText(body), fromText))
+  );
+};
+
+/** The handler with effect-returning `serializeRequest` / `deserializeResponse`, for tests. */
+export const withEffects = (handler: ProtocolHandler) => ({
+  ...handler,
+  serializeRequest: serializeEffect(handler.serialize),
+  deserializeResponse: (response: Response) => deserialize(handler, response),
+});

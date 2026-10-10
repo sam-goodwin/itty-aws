@@ -9,12 +9,9 @@
  * intentionally absent.
  */
 import * as CoreCrypto from "@distilled.cloud/core/crypto";
-import * as Cache from "effect/Cache";
 import * as Context from "effect/Context";
 import * as Data from "effect/Data";
-import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
-import * as Exit from "effect/Exit";
 import * as Redacted from "effect/Redacted";
 
 /**
@@ -61,7 +58,18 @@ export interface SignOptions {
   readonly signQuery?: boolean;
   /** Include the normally unsignable headers (content-type, range, ...). */
   readonly allHeaders?: boolean;
+  /**
+   * Send and sign the body's SHA-256 as `X-Amz-Content-Sha256`, so services
+   * signing as `s3` do not default to UNSIGNED-PAYLOAD.
+   */
+  readonly hashPayload?: boolean;
 }
+
+/** `options` with the body's hash as `X-Amz-Content-Sha256`, given `hashPayload`. */
+const withPayloadHash = (options: SignOptions, hash: string): SignOptions => ({
+  ...options,
+  headers: { ...options.headers, "X-Amz-Content-Sha256": hash },
+});
 
 export interface SignedRequest {
   readonly method: string;
@@ -155,30 +163,29 @@ const deriveSigningKey = ({
   );
 
 /** A derived key imported into the implementation that will use it. */
-interface SigningKey {
+export interface SigningKey {
   readonly key: CoreCrypto.HmacKey;
   readonly impl: CoreCrypto.CryptoImpl;
 }
 
+/** Where signing gets derived keys from, when a scope supplies its own. */
+export interface SigningKeyStore {
+  /** The key for `scope`. A failed derivation should not be retained. */
+  readonly get: (scope: SigningKeyScope) => Effect.Effect<SigningKey, CryptoError>;
+}
+
 /**
- * Derived signing keys, keyed on secret/date/region/service. Deriving one
- * costs four HMACs; requests within a UTC day for the same scope share it.
- * The cache is bounded (LRU) so long-lived processes rotating temporary
- * credentials do not accumulate secret-derived material, and it is a context
- * reference so a scope can substitute its own. Failed derivations are not
- * retained, so a transient WebCrypto failure is retried on the next request.
+ * A key store to use instead of the built-in one. Deriving a key costs four
+ * HMACs; by default keys are kept per secret (by `Redacted` identity, so the
+ * secret is never a map key), date, region and service, at most 16 scopes
+ * per secret, so long-lived processes rotating temporary credentials do not
+ * accumulate secret-derived material. Failed derivations are not retained.
+ * Over an effect `Cache`: `{ get: (scope) => Cache.get(cache, scope) }`.
  */
-export const SigningKeyCache = /*@__PURE__*/ Context.Reference<
-  Cache.Cache<SigningKeyScope, SigningKey, CryptoError>
->("AWS::SigningKeyCache", {
-  defaultValue: () =>
-    Effect.runSync(
-      Cache.makeWith(deriveSigningKey, {
-        capacity: 64,
-        timeToLive: (exit) => (Exit.isSuccess(exit) ? Duration.infinity : Duration.zero),
-      }),
-    ),
-});
+export const SigningKeyCache = /*@__PURE__*/ Context.Reference<SigningKeyStore | undefined>(
+  "AWS::SigningKeyCache",
+  { defaultValue: () => undefined },
+);
 
 /**
  * The canonical form of a request, before any hashing: everything SigV4
@@ -195,6 +202,43 @@ interface Canonical {
   readonly finish: (signature: string) => SignedRequest;
 }
 
+/** An HTTP header name (RFC 9110 token). */
+const TOKEN = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
+
+/**
+ * `options.headers` as `Headers` normalizes them -- lower-case names,
+ * trimmed values, repeated names joined with ", " -- as a record. Plain
+ * headers are copied directly; anything else (invalid names or values,
+ * non-string values, set-cookie) goes through `Headers`, which also decides
+ * what is invalid. Throws {@link InvalidSigningHeaders}.
+ */
+const headerRecord = (input: Record<string, string> | undefined): Record<string, string> => {
+  const out: Record<string, string> = Object.create(null);
+  if (input === undefined) return out;
+  for (const name of Object.keys(input)) {
+    const value = input[name] as unknown;
+    const lower = name.toLowerCase();
+    if (
+      typeof value !== "string" ||
+      !TOKEN.test(name) ||
+      /^[\t\n\r ]|[\t\n\r ]$|[\0\r\n\u0100-\uffff]/.test(value) ||
+      lower === "set-cookie"
+    ) {
+      let headers: Headers;
+      try {
+        headers = new Headers(input);
+      } catch (cause) {
+        throw new InvalidSigningHeaders({ cause });
+      }
+      const all: Record<string, string> = Object.create(null);
+      for (const key of headers.keys()) all[key] = headers.get(key)!;
+      return all;
+    }
+    out[lower] = lower in out ? `${out[lower]}, ${value}` : value;
+  }
+  return out;
+};
+
 /** Canonicalise `options`; throws {@link InvalidSigningUrl} / {@link InvalidSigningHeaders}. */
 const canonicalize = (options: SignOptions): Canonical => {
   const { accessKeyId, service, region, signQuery, allHeaders, body } = options;
@@ -206,36 +250,33 @@ const canonicalize = (options: SignOptions): Canonical => {
   } catch (cause) {
     throw new InvalidSigningUrl({ url: options.url, cause });
   }
-  let headers: Headers;
-  try {
-    headers = new Headers(options.headers);
-  } catch (cause) {
-    throw new InvalidSigningHeaders({ cause });
-  }
-  headers.delete("host");
+  const headers = headerRecord(options.headers);
+  delete headers.host;
   const datetime = options.datetime ?? new Date().toISOString().replace(/[:-]|\.\d{3}/g, "");
   const appendSessionToken = service === "iotdevicegateway";
 
-  if (service === "s3" && !signQuery && !headers.has("x-amz-content-sha256")) {
-    headers.set("x-amz-content-sha256", "UNSIGNED-PAYLOAD");
+  if (service === "s3" && !signQuery && headers["x-amz-content-sha256"] === undefined) {
+    headers["x-amz-content-sha256"] = "UNSIGNED-PAYLOAD";
   }
 
-  const params = signQuery ? url.searchParams : headers;
-  params.set("X-Amz-Date", datetime);
-  if (sessionToken && !appendSessionToken) {
-    params.set("X-Amz-Security-Token", sessionToken);
+  if (signQuery) {
+    url.searchParams.set("X-Amz-Date", datetime);
+    if (sessionToken && !appendSessionToken) {
+      url.searchParams.set("X-Amz-Security-Token", sessionToken);
+    }
+  } else {
+    headers["x-amz-date"] = datetime;
+    if (sessionToken && !appendSessionToken) headers["x-amz-security-token"] = sessionToken;
   }
 
-  const signableHeaders = ["host", ...headers.keys()]
+  const signableHeaders = ["host", ...Object.keys(headers)]
     .filter((header) => allHeaders || !UNSIGNABLE_HEADERS.has(header))
     .sort();
   const signedHeaders = signableHeaders.join(";");
   const canonicalHeaders = signableHeaders
     .map(
       (header) =>
-        header +
-        ":" +
-        (header === "host" ? url.host : (headers.get(header) ?? "").replace(/\s+/g, " ")),
+        header + ":" + (header === "host" ? url.host : headers[header]!.replace(/\s+/g, " ")),
     )
     .join("\n");
   const date = datetime.slice(0, 8);
@@ -263,7 +304,8 @@ const canonicalize = (options: SignOptions): Canonical => {
   encodedPath = encodeRfc3986(encodeURIComponent(encodedPath).replace(/%2F/g, "/"));
 
   const seenKeys = new Set<string>();
-  const encodedSearch = [...url.searchParams]
+  // `searchParams` parses the query; skip it when there is none.
+  const encodedSearch = (url.search ? [...url.searchParams] : [])
     .filter(([k]) => {
       if (!k) return false;
       if (service === "s3") {
@@ -281,7 +323,7 @@ const canonicalize = (options: SignOptions): Canonical => {
     .join("&");
 
   const payloadHash =
-    headers.get("x-amz-content-sha256") ??
+    headers["x-amz-content-sha256"] ??
     (service === "s3" && signQuery ? "UNSIGNED-PAYLOAD" : undefined);
 
   return {
@@ -304,16 +346,15 @@ const canonicalize = (options: SignOptions): Canonical => {
           url.searchParams.set("X-Amz-Security-Token", sessionToken);
         }
       } else {
-        headers.set(
-          "authorization",
-          [
-            "AWS4-HMAC-SHA256 Credential=" + accessKeyId + "/" + credentialString,
-            "SignedHeaders=" + signedHeaders,
-            "Signature=" + signature,
-          ].join(", "),
-        );
+        headers.authorization = [
+          "AWS4-HMAC-SHA256 Credential=" + accessKeyId + "/" + credentialString,
+          "SignedHeaders=" + signedHeaders,
+          "Signature=" + signature,
+        ].join(", ");
       }
-      return { method, url: url.toString(), headers: Object.fromEntries(headers) };
+      const sorted: Record<string, string> = {};
+      for (const name of Object.keys(headers).sort()) sorted[name] = headers[name]!;
+      return { method, url: url.toString(), headers: sorted };
     },
   };
 };
@@ -326,10 +367,19 @@ const stringToSignOf = (c: Canonical, canonicalRequestHash: string): string =>
  * so the secret is never a map key) and `date/region/service` scope. Each
  * secret keeps at most 16 scopes.
  */
-const syncKeys = /*@__PURE__*/ new WeakMap<
-  Redacted.Redacted<string>,
-  Map<string, { readonly impl: CoreCrypto.CryptoImpl; readonly key: CoreCrypto.HmacKey }>
->();
+const signingKeys = /*@__PURE__*/ new WeakMap<Redacted.Redacted<string>, Map<string, SigningKey>>();
+
+/** The derived keys of one secret, by `date/region/service`. */
+const scopesOf = (secret: Redacted.Redacted<string>): Map<string, SigningKey> => {
+  let scopes = signingKeys.get(secret);
+  if (scopes === undefined) signingKeys.set(secret, (scopes = new Map()));
+  return scopes;
+};
+
+const keep = (scopes: Map<string, SigningKey>, name: string, key: SigningKey): void => {
+  if (scopes.size >= 16) scopes.clear();
+  scopes.set(name, key);
+};
 
 const syncSigningKey = (
   impl: CoreCrypto.CryptoImpl,
@@ -337,11 +387,7 @@ const syncSigningKey = (
   options: SignOptions,
   date: string,
 ): CoreCrypto.HmacKey => {
-  let scopes = syncKeys.get(options.secretAccessKey);
-  if (scopes === undefined) {
-    scopes = new Map();
-    syncKeys.set(options.secretAccessKey, scopes);
-  }
+  const scopes = scopesOf(options.secretAccessKey);
   const scope = `${date}/${options.region}/${options.service}`;
   const hit = scopes.get(scope);
   if (hit !== undefined && hit.impl === impl) return hit.key;
@@ -350,30 +396,43 @@ const syncSigningKey = (
   const kDate = step("AWS4" + Redacted.value(options.secretAccessKey), date);
   const kSigning = step(step(step(kDate, options.region), options.service), "aws4_request");
   const key = sync.importHmacKey(kSigning);
-  if (scopes.size >= 16) scopes.clear();
-  scopes.set(scope, { impl, key });
+  keep(scopes, scope, { impl, key });
   return key;
 };
 
-/** SHA-256 of the empty string, the payload hash of every bodiless request. */
-const EMPTY_SHA256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855";
-
-/** Sign a canonical request with synchronous crypto. Throws {@link CryptoError}. */
-const finishSync = (
-  canonical: Canonical,
+/**
+ * {@link sign} without effects, for callers already running on a fiber.
+ * Returns `undefined` when the
+ * signature needs effects (WebCrypto, or a {@link SigningKeyCache} in the
+ * context); use {@link sign} then. Throws a {@link SigningError}.
+ */
+export const signSync = (
   options: SignOptions,
-  impl: CoreCrypto.CryptoImpl,
-  sync: NonNullable<CoreCrypto.CryptoImpl["sync"]>,
-): SignedRequest => {
+  fiber: { readonly context: Context.Context<never>; getRef<A>(ref: Context.Reference<A>): A },
+): SignedRequest | undefined => {
+  const impl = fiber.getRef(CoreCrypto.Crypto);
+  const sync = impl.sync;
+  if (sync === undefined || Context.getOrUndefined(fiber.context, SigningKeyCache) !== undefined) {
+    return undefined;
+  }
+  const sha256Hex =
+    sync.sha256Hex ?? ((data: CoreCrypto.Bytes) => CoreCrypto.hex(sync.sha256(data)));
+  if (options.hashPayload) {
+    let hash: string;
+    try {
+      hash = sha256Hex(toBytes(options.body || ""));
+    } catch (cause) {
+      throw new CryptoError({ operation: "sha256", cause });
+    }
+    options = withPayloadHash(options, hash);
+  }
+  const canonical = canonicalize(options);
   try {
-    const sha256Hex =
-      sync.sha256Hex ?? ((data: CoreCrypto.Bytes) => CoreCrypto.hex(sync.sha256(data)));
-    const body = options.body;
-    const payloadHash =
-      canonical.payloadHash ??
-      (body === undefined || body === "" ? EMPTY_SHA256 : sha256Hex(toBytes(body)));
-    const canonicalRequest = canonical.canonicalPrefix + "\n" + payloadHash;
-    const stringToSign = stringToSignOf(canonical, sha256Hex(canonicalRequest));
+    const payloadHash = canonical.payloadHash ?? sha256Hex(toBytes(options.body || ""));
+    const stringToSign = stringToSignOf(
+      canonical,
+      sha256Hex(canonical.canonicalPrefix + "\n" + payloadHash),
+    );
     const key = syncSigningKey(impl, sync, options, canonical.date);
     return canonical.finish(
       sync.hmacSha256Hex !== undefined
@@ -383,200 +442,6 @@ const finishSync = (
   } catch (cause) {
     throw new CryptoError({ operation: "hmac", cause });
   }
-};
-
-/** The parts of `options.url`, already split by the caller. */
-export interface UrlParts {
-  /** `scheme://host[:port]`, exactly as the URL standard serializes it. */
-  readonly origin: string;
-  /** The URL's `host`. */
-  readonly host: string;
-  /** Path, percent-encoded; `""` is `/`. */
-  readonly path: string;
-  /** Query parameters before encoding (arrays repeat the key). */
-  readonly query: Readonly<Record<string, unknown>>;
-  /** The encoded query string, without `?`. */
-  readonly search: string;
-}
-
-let lastSecond = -1;
-let lastDate = "";
-/** The current `YYYYMMDDTHHMMSSZ`, formatted once per second. */
-const amzDate = (): string => {
-  const now = Date.now();
-  const second = Math.floor(now / 1000);
-  if (second !== lastSecond) {
-    lastDate = new Date(now).toISOString().replace(/[:-]|\.\d{3}/g, "");
-    lastSecond = second;
-  }
-  return lastDate;
-};
-
-/** Path characters the URL parser keeps as they are. */
-const PLAIN_PATH = /^\/[A-Za-z0-9\-._~%!$&'()*+,;=:@/]*$/;
-/** `.` / `..` segments (the parser resolves them), plain or percent-encoded. */
-const DOT_SEGMENT = /(?:^|\/)(?:\.|%2e){1,2}(?:\/|$)/i;
-/** An HTTP header name (RFC 9110 token). */
-const TOKEN = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
-/** Characters a `Headers` value rejects after trimming (or as a ByteString). */
-const BAD_VALUE = /[\0\r\n\u0100-\uffff]/;
-/** HTTP whitespace a `Headers` value is trimmed of. */
-const EDGE_SPACE = /^[\t\n\r ]+|[\t\n\r ]+$/g;
-const isHttpSpace = (c: number) => c === 32 || c === 9 || c === 10 || c === 13;
-
-/**
- * {@link canonicalize} for header signing of a URL given as parts, without
- * `URL` or `Headers`. Returns `undefined` when the request needs either
- * one's normalization (or its errors); the caller then signs the URL.
- */
-const canonicalizeParts = (options: SignOptions, parts: UrlParts): Canonical | undefined => {
-  const { accessKeyId, service, region } = options;
-  if (options.signQuery || options.allHeaders) return undefined;
-  const rawPath = parts.path === "" ? "/" : parts.path;
-  if (!PLAIN_PATH.test(rawPath) || DOT_SEGMENT.test(rawPath)) return undefined;
-
-  const headers: Record<string, string> = Object.create(null);
-  const input = options.headers;
-  if (input !== undefined) {
-    for (const name of Object.keys(input)) {
-      const raw = input[name] as unknown;
-      if (typeof raw !== "string" || !TOKEN.test(name)) return undefined;
-      let value = raw;
-      if (
-        value.length > 0 &&
-        (isHttpSpace(value.charCodeAt(0)) || isHttpSpace(value.charCodeAt(value.length - 1)))
-      ) {
-        value = value.replace(EDGE_SPACE, "");
-      }
-      if (BAD_VALUE.test(value)) return undefined;
-      const lower = name.toLowerCase();
-      if (lower === "set-cookie" || lower === "__proto__") return undefined;
-      headers[lower] = Object.hasOwn(headers, lower) ? `${headers[lower]}, ${value}` : value;
-    }
-  }
-  delete headers.host;
-  const sessionToken = options.sessionToken ? Redacted.value(options.sessionToken) : undefined;
-  const datetime = options.datetime ?? amzDate();
-  const appendSessionToken = service === "iotdevicegateway";
-  if (service === "s3" && headers["x-amz-content-sha256"] === undefined) {
-    headers["x-amz-content-sha256"] = "UNSIGNED-PAYLOAD";
-  }
-  headers["x-amz-date"] = datetime;
-  if (sessionToken && !appendSessionToken) headers["x-amz-security-token"] = sessionToken;
-
-  const names = Object.keys(headers);
-  const signable = ["host"];
-  for (const name of names) if (!UNSIGNABLE_HEADERS.has(name)) signable.push(name);
-  signable.sort();
-  const signedHeaders = signable.join(";");
-  let canonicalHeaders = "";
-  for (let i = 0; i < signable.length; i++) {
-    const name = signable[i]!;
-    canonicalHeaders +=
-      (i === 0 ? "" : "\n") +
-      name +
-      ":" +
-      (name === "host" ? parts.host : headers[name]!.replace(/\s+/g, " "));
-  }
-  const date = datetime.slice(0, 8);
-  const credentialString = date + "/" + region + "/" + service + "/aws4_request";
-
-  let decodedPath: string;
-  if (service === "s3") {
-    try {
-      decodedPath = decodeURIComponent(rawPath.replace(/\+/g, " "));
-    } catch {
-      decodedPath = rawPath;
-    }
-  } else {
-    decodedPath = rawPath.replace(/\/+/g, "/");
-  }
-  const encodedPath = encodeRfc3986(encodeURIComponent(decodedPath).replace(/%2F/g, "/"));
-
-  // The query pairs as `URLSearchParams` reads them back from `search`.
-  const pairs: Array<readonly [string, string]> = [];
-  const seenKeys = service === "s3" ? new Set<string>() : undefined;
-  const add = (k: string, v: string) => {
-    if (!k) return;
-    if (seenKeys !== undefined) {
-      if (seenKeys.has(k)) return;
-      seenKeys.add(k);
-    }
-    pairs.push([encodeRfc3986(encodeURIComponent(k)), encodeRfc3986(encodeURIComponent(v))]);
-  };
-  for (const k of Object.keys(parts.query)) {
-    const v = parts.query[k];
-    if (v === undefined) continue;
-    if (Array.isArray(v)) for (const item of v) add(k, item ? String(item) : "");
-    else add(k, v ? String(v) : "");
-  }
-  const encodedSearch =
-    pairs.length === 0
-      ? ""
-      : pairs
-          .sort(([k1, v1], [k2, v2]) =>
-            k1 < k2 ? -1 : k1 > k2 ? 1 : v1 < v2 ? -1 : v1 > v2 ? 1 : 0,
-          )
-          .map((pair) => pair[0] + "=" + pair[1])
-          .join("&");
-
-  const method = options.method ?? (options.body ? "POST" : "GET");
-  // `URL` percent-encodes `'` in the query of special-scheme URLs.
-  const url =
-    parts.origin + rawPath + (parts.search === "" ? "" : "?" + parts.search.replace(/'/g, "%27"));
-  return {
-    method,
-    date,
-    datetime,
-    credentialString,
-    payloadHash: headers["x-amz-content-sha256"],
-    canonicalPrefix:
-      method.toUpperCase() +
-      "\n" +
-      encodedPath +
-      "\n" +
-      encodedSearch +
-      "\n" +
-      canonicalHeaders +
-      "\n\n" +
-      signedHeaders,
-    finish: (signature) => {
-      headers.authorization =
-        "AWS4-HMAC-SHA256 Credential=" +
-        accessKeyId +
-        "/" +
-        credentialString +
-        ", SignedHeaders=" +
-        signedHeaders +
-        ", Signature=" +
-        signature;
-      const out: Record<string, string> = {};
-      for (const name of Object.keys(headers).sort()) out[name] = headers[name]!;
-      return { method, url, headers: out };
-    },
-  };
-};
-
-/**
- * {@link sign} without effects, for callers already running on a fiber.
- * `parts` lets the caller hand over the URL already split, which skips
- * `URL` and `Headers` for ordinary requests. Returns `undefined` when the
- * signature needs effects (WebCrypto, or a {@link SigningKeyCache} in the
- * context); use {@link sign} then. Throws a {@link SigningError}.
- */
-export const signSync = (
-  options: SignOptions,
-  fiber: { readonly context: Context.Context<never>; getRef<A>(ref: Context.Reference<A>): A },
-  parts?: UrlParts,
-): SignedRequest | undefined => {
-  const impl = fiber.getRef(CoreCrypto.Crypto);
-  const sync = impl.sync;
-  if (sync === undefined || Context.getOrUndefined(fiber.context, SigningKeyCache) !== undefined) {
-    return undefined;
-  }
-  const canonical =
-    (parts !== undefined ? canonicalizeParts(options, parts) : undefined) ?? canonicalize(options);
-  return finishSync(canonical, options, impl, sync);
 };
 
 /**
@@ -600,6 +465,9 @@ export const sign = (options: SignOptions): Effect.Effect<SignedRequest, Signing
 
 const signAsync: (options: SignOptions) => Effect.Effect<SignedRequest, SigningError> =
   /*@__PURE__*/ Effect.fnUntraced(function* (options: SignOptions) {
+    if (options.hashPayload) {
+      options = withPayloadHash(options, yield* sha256Hex(options.body || ""));
+    }
     const canonical = yield* Effect.try({
       try: () => canonicalize(options),
       catch: (e) => e as InvalidSigningUrl | InvalidSigningHeaders,
@@ -607,13 +475,27 @@ const signAsync: (options: SignOptions) => Effect.Effect<SignedRequest, SigningE
     const payloadHash = canonical.payloadHash ?? (yield* sha256Hex(options.body || ""));
     const canonicalRequest = canonical.canonicalPrefix + "\n" + payloadHash;
     const stringToSign = stringToSignOf(canonical, yield* sha256Hex(canonicalRequest));
-    const signingKey = yield* Cache.get(yield* SigningKeyCache, {
+    const store = yield* SigningKeyCache;
+    const impl = yield* CoreCrypto.Crypto;
+    const scope: SigningKeyScope = {
       secretAccessKey: options.secretAccessKey,
       date: canonical.date,
       region: options.region,
       service: options.service,
-      crypto: yield* CoreCrypto.Crypto,
-    });
+      crypto: impl,
+    };
+    let signingKey: SigningKey;
+    if (store !== undefined) signingKey = yield* store.get(scope);
+    else {
+      const scopes = scopesOf(options.secretAccessKey);
+      const name = `${canonical.date}/${options.region}/${options.service}`;
+      const hit = scopes.get(name);
+      if (hit !== undefined && hit.impl === impl) signingKey = hit;
+      else {
+        signingKey = yield* deriveSigningKey(scope);
+        keep(scopes, name, signingKey);
+      }
+    }
     const signature = CoreCrypto.hex(
       yield* Effect.mapError(signingKey.impl.hmacSha256(signingKey.key, stringToSign), fromCore),
     );

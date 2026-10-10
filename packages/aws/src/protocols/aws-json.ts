@@ -22,10 +22,8 @@ import type * as Schema from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
 import type { Operation } from "../client/operation.ts";
 import {
-  fromText,
-  serializeEffect,
   Unreadable,
-  type Protocol,
+  type ProtocolImpl,
   type ProtocolHandler,
   type TextResponse,
 } from "../client/protocol.ts";
@@ -53,7 +51,7 @@ export const awsJson1_1Protocol = /*@__PURE__*/ createAwsJsonProtocol("1.1");
 /**
  * Create an AWS JSON protocol handler for the specified version.
  */
-function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
+function createAwsJsonProtocol(version: "1.0" | "1.1"): ProtocolImpl {
   const contentType = `application/x-amz-json-${version}`;
 
   return (operation: Operation): ProtocolHandler => {
@@ -138,37 +136,27 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
 
     return {
       serialize,
-      serializeRequest: serializeEffect(serialize),
       deserializeText,
 
-      deserializeResponse: Effect.fnUntraced(function* (response: Response) {
+      deserializeStream: (response) => {
         // Handle streaming output (event stream)
-        if (streamingOutputProp && response.body) {
-          if (streamingOutputProp.isEventStream) {
-            // Parse event stream to typed union events, decoded through the
-            // event schema so blob/timestamp members match the generated types
-            return {
-              [streamingOutputProp.name]: eventStreamWith(
+        if (!streamingOutputProp || !response.body) return undefined;
+        if (streamingOutputProp.isEventStream) {
+          // Parse event stream to typed union events, decoded through the
+          // event schema so blob/timestamp members match the generated types
+          return Effect.succeed({
+            [streamingOutputProp.name]: eventStreamWith(streamingOutputProp.eventSchema, (codec) =>
+              codec.parseEventStreamToUnion(
+                response.body as ReadableStream<Uint8Array>,
+                undefined,
                 streamingOutputProp.eventSchema,
-                (codec) =>
-                  codec.parseEventStreamToUnion(
-                    response.body as ReadableStream<Uint8Array>,
-                    undefined,
-                    streamingOutputProp.eventSchema,
-                  ),
               ),
-            };
-          }
-          // Raw streaming output (shouldn't happen for awsJson, but handle it)
-          return {
-            [streamingOutputProp.name]: response.body,
-          };
+            ),
+          });
         }
-
-        // Read body as text
-        const bodyText = yield* readStreamAsText(response.body);
-        return yield* fromText(deserializeText({ ...response, body: bodyText }));
-      }),
+        // Raw streaming output (shouldn't happen for awsJson, but handle it)
+        return Effect.succeed({ [streamingOutputProp.name]: response.body });
+      },
 
       deserializeError: Effect.fnUntraced(function* (response: Response) {
         // Read body as text

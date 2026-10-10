@@ -115,14 +115,11 @@ export const makeEndpointResolver = (operation: Operation) => {
     let key: string | undefined = region;
     for (const [propName] of contextParamMappings) {
       const value: unknown = payloadObj[propName];
-      const type = typeof value;
-      if (value === undefined) key += "\0u";
-      else if (type === "string" || type === "number" || type === "boolean") {
-        key += "\0" + type[0] + String(value);
-      } else {
+      if (value !== null && typeof value === "object") {
         key = undefined;
         break;
       }
+      key += "\0" + typeof value + String(value);
     }
     let resolved = key === undefined ? undefined : cache.get(key);
     if (resolved === undefined) {

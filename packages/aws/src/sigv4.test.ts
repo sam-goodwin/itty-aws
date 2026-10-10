@@ -9,6 +9,7 @@ import * as Redacted from "effect/Redacted";
 import { describe, expect, test } from "vitest";
 import * as Credentials from "./credentials.browser.ts";
 import * as Endpoint from "./endpoint.ts";
+import * as Reference from "./fixtures/sigv4-reference.ts";
 import * as Presign from "./presign.ts";
 import * as Region from "./region.ts";
 import * as SigV4 from "./sigv4.ts";
@@ -173,17 +174,65 @@ describe("SigV4.sign", () => {
     expect(error._tag).toBe("AWS::SigV4::InvalidSigningHeaders");
   });
 
-  test("a failed key derivation is not retained by the cache", async () => {
+  test("a failed key derivation is not retained by the built-in key store", async () => {
     let attempts = 0;
-    const defaultCache = Effect.runSync(SigV4.SigningKeyCache);
+    const flaky: CoreCrypto.CryptoImpl = {
+      ...CoreCrypto.makeWebCrypto(),
+      importHmacKey: (key) =>
+        attempts++ === 0
+          ? Effect.fail(new CoreCrypto.CryptoError({ operation: "importKey", cause: "boom" }))
+          : CoreCrypto.makeWebCrypto().importHmacKey(key),
+    };
+    const request = {
+      ...creds,
+      secretAccessKey: Redacted.make("wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"),
+      method: "GET",
+      url: "https://examplebucket.s3.amazonaws.com/test.txt",
+      headers: { Range: "bytes=0-9" },
+      service: "s3",
+      region: "us-east-1",
+      datetime,
+    } as const;
+    const withCrypto = Effect.provide(CoreCrypto.layer(flaky));
+
+    const first = await Effect.runPromise(SigV4.sign(request).pipe(Effect.flip, withCrypto));
+    expect(first).toBeInstanceOf(SigV4.CryptoError);
+
+    const second = await Effect.runPromise(SigV4.sign(request).pipe(withCrypto));
+    expect(second.headers.authorization).toBe(
+      "AWS4-HMAC-SHA256 Credential=AKIAIOSFODNN7EXAMPLE/20130524/us-east-1/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=5c0d4ff29e72b8f94c5b6720369921e587e39bf7a64e456887dec4b43a2d1b77",
+    );
+    // Five imports: four derivation steps and the final key.
+    expect(attempts).toBe(1 + 5);
+  });
+
+  test("signs with keys from a SigningKeyCache store, which may refuse", async () => {
+    let attempts = 0;
+    const hmac = (key: string | Buffer, data: string) =>
+      createHmac("sha256", key).update(data).digest();
     const flakyCache = Effect.runSync(
       Cache.makeWith(
         (scope: SigV4.SigningKeyScope) =>
-          Effect.suspend(() =>
-            attempts++ === 0
-              ? Effect.fail(new SigV4.CryptoError({ operation: "hmac", cause: "boom" }))
-              : Cache.get(defaultCache, scope),
-          ),
+          Effect.suspend(() => {
+            if (attempts++ === 0) {
+              return Effect.fail(new SigV4.CryptoError({ operation: "hmac", cause: "boom" }));
+            }
+            const raw = hmac(
+              hmac(
+                hmac(
+                  hmac("AWS4" + Redacted.value(scope.secretAccessKey), scope.date),
+                  scope.region,
+                ),
+                scope.service,
+              ),
+              "aws4_request",
+            );
+            const impl = CoreCrypto.makeWebCrypto();
+            return Effect.map(
+              Effect.orDie(impl.importHmacKey(new Uint8Array(raw))),
+              (key): SigV4.SigningKey => ({ impl, key }),
+            );
+          }),
         {
           capacity: 4,
           timeToLive: (exit) => (Exit.isSuccess(exit) ? Duration.infinity : Duration.zero),
@@ -199,7 +248,9 @@ describe("SigV4.sign", () => {
       region: "us-east-1",
       datetime,
     } as const;
-    const withCache = Effect.provideService(SigV4.SigningKeyCache, flakyCache);
+    const withCache = Effect.provideService(SigV4.SigningKeyCache, {
+      get: (scope) => Cache.get(flakyCache, scope),
+    });
 
     const first = await Effect.runPromise(SigV4.sign(request).pipe(Effect.flip, withCache));
     expect(first).toBeInstanceOf(SigV4.CryptoError);
@@ -502,54 +553,22 @@ describe("SigV4.sign crypto implementations", () => {
   });
 });
 
-describe("SigV4.signSync with URL parts", () => {
-  /** Sign on a fiber, with and without handing over the URL as parts. */
-  const both = (options: SigV4.SignOptions, parts: SigV4.UrlParts) =>
-    Effect.runSync(
-      Effect.withFiber((fiber) => {
-        const outcome = (p?: SigV4.UrlParts) => {
-          try {
-            return { signed: SigV4.signSync(options, fiber as any, p) };
-          } catch (error) {
-            return { error: String(error) };
-          }
-        };
-        return Effect.succeed({ fromParts: outcome(parts), fromUrl: outcome() });
-      }),
-    );
+describe("SigV4.sign against the Headers-based reference signer", () => {
+  /** The signed request, or the error's tag, from one signer. */
+  const outcome = (sign: typeof SigV4.sign, options: SigV4.SignOptions) => {
+    const exit = Effect.runSyncExit(sign(options));
+    return Exit.isSuccess(exit) ? { signed: exit.value } : { error: String(exit.cause) };
+  };
 
-  /** The query string protocol.ts builds from a query record. */
-  const searchOf = (query: Record<string, unknown>) =>
-    Object.entries(query)
-      .filter(([, v]) => v !== undefined)
-      .flatMap(([k, v]) =>
-        (Array.isArray(v) ? v : [v]).map((item) =>
-          item ? `${encodeURIComponent(k)}=${encodeURIComponent(item)}` : encodeURIComponent(k),
-        ),
-      )
-      .join("&");
-
-  const origins = [
-    { origin: "https://s3.us-east-1.amazonaws.com", host: "s3.us-east-1.amazonaws.com" },
-    { origin: "http://localhost:4566", host: "localhost:4566" },
-  ];
-  const paths = [
-    "",
-    "/",
-    "/a%20b/c",
-    "/b/a/../x",
-    "/b/./x",
-    "/b/%2e%2E/x",
-    "//x//y",
-    "/k+e y",
-    "/é",
-    "/a%2Fb~!$'()*",
-  ];
-  const queries: Array<Record<string, unknown>> = [
-    {},
-    { uploadId: "ü-é", "x-id": "Abort" },
-    { b: "2", a: ["1", "0", ""], "": "empty", "k'": "v'(x)" },
-    { tagging: "", versionId: undefined, n: 0 },
+  const urls = [
+    "https://s3.us-east-1.amazonaws.com",
+    "https://s3.us-east-1.amazonaws.com/",
+    "http://localhost:4566/a%20b/c?uploadId=%C3%BC-%C3%A9&x-id=Abort",
+    "https://x.example.com/b/a/../x?b=2&a=1&a=0&=empty&k%27=v'(x)",
+    "https://x.example.com/b/%2e%2E/x?tagging",
+    "https://x.example.com//x//y?n=0&n=1",
+    "https://Example.COM:443/k+e y/é?q=a+b",
+    "https://x.example.com/a%2Fb~!$'()*?X-Amz-Expires=10",
   ];
   const headerSets: Array<Record<string, string>> = [
     {},
@@ -561,40 +580,44 @@ describe("SigV4.signSync with URL parts", () => {
       "x-amz-content-sha256": "abc",
     },
     { "x-amz-meta-u": "ünicode" },
+    { "X-Amz-Meta-D": "1", "x-amz-meta-d": "2", "x-amz-meta-e": "a  \t b" },
+    { "x-amz-meta-w": "\u0100wide" },
     { "bad header": "x" },
     { "x-amz-meta-nl": "a\nb" },
-    { "X-Amz-Target": "\tT.Op \t" },
+    { "X-Amz-Target": "\tT.Op \t", "x-amz-meta-n": 5 as unknown as string },
+    { "Set-Cookie": "a=1", "x-amz-meta-z": "" },
   ];
 
-  test("matches the URL-based canonicalization", () => {
+  test("produces the same signature, headers and URL", () => {
     let compared = 0;
     for (const service of ["s3", "dynamodb", "iotdevicegateway"]) {
-      for (const { origin, host } of origins) {
-        for (const path of paths) {
-          for (const query of queries) {
-            for (const headers of headerSets) {
-              const search = searchOf(query);
+      for (const url of urls) {
+        for (const headers of headerSets) {
+          for (const signQuery of [false, true]) {
+            for (const allHeaders of [false, true]) {
               const options: SigV4.SignOptions = {
                 ...creds,
-                sessionToken: service === "dynamodb" ? Redacted.make("TOKEN") : undefined,
-                method: path === "/" ? "PUT" : "GET",
-                url: `${origin}${search ? `${path}?${search}` : path}`,
+                sessionToken: service === "s3" ? undefined : Redacted.make("TOKEN"),
+                method: compared % 3 === 0 ? undefined : "PUT",
+                url,
                 headers,
-                body: path === "" ? "body" : undefined,
+                body: compared % 2 === 0 ? "body" : undefined,
                 service,
                 region: "us-east-1",
                 datetime,
+                signQuery,
+                allHeaders,
               };
-              const { fromParts, fromUrl } = both(options, { origin, host, path, query, search });
-              expect(fromParts, `${service} ${options.url} ${JSON.stringify(headers)}`).toEqual(
-                fromUrl,
-              );
+              expect(
+                outcome(SigV4.sign, options),
+                `${service} ${url} ${JSON.stringify(headers)}`,
+              ).toEqual(outcome(Reference.sign as typeof SigV4.sign, options));
               compared++;
             }
           }
         }
       }
     }
-    expect(compared).toBe(3 * 2 * 10 * 4 * 7);
+    expect(compared).toBe(3 * 8 * 10 * 2 * 2);
   });
 });

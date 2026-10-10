@@ -44,9 +44,11 @@ import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 import * as Stream from "effect/Stream";
 import type { Operation } from "./client/operation.ts";
-import { makeRequestBuilder, makeSyncRequestBuilder } from "./client/request-builder.ts";
+import { loadHandler, type LazyHandler, type ProtocolHandler } from "./client/protocol.ts";
+import { makeRequestBuilder } from "./client/request-builder.ts";
 import type { Request } from "./client/request.ts";
-import { makeResponseParser, makeSuccessDecoder } from "./client/response-parser.ts";
+import { type Decoded, makeResponseParser, makeSuccessDecoder } from "./client/response-parser.ts";
+import type { Response } from "./client/response.ts";
 import * as Credentials from "./credentials-service.ts";
 import * as Endpoint from "./endpoint.ts";
 import { ParseError } from "./errors.ts";
@@ -54,6 +56,7 @@ import * as Region from "./region.ts";
 import { makeEndpointResolver } from "./rules-engine/endpoint-resolver.ts";
 import * as SigV4 from "./sigv4.ts";
 import {
+  type AwsAuthSigv2Trait,
   getAwsApiService,
   getAwsAuthSigv2,
   getAwsAuthSigv4,
@@ -75,8 +78,11 @@ export type AwsOpContext = Credentials.Credentials | HttpClient.HttpClient;
 
 interface Prepared {
   readonly op: Operation;
+  /** Set by {@link planOf}. */
+  readonly plan?: Plan;
+  readonly handler: ProtocolHandler | LazyHandler | undefined;
+  readonly hostPrefix: string | undefined;
   readonly operationName: string | undefined;
-  readonly buildRequest: (input: unknown) => Effect.Effect<Request, any, any>;
   readonly parseResponse: (response: {
     status: number;
     statusText: string;
@@ -85,7 +91,7 @@ interface Prepared {
   }) => Effect.Effect<any, any, any>;
   readonly sigv4: { name: string } | undefined;
   /** Legacy SigV2 (SimpleDB only) -- signs via body parameters, no header. */
-  readonly sigv2: unknown;
+  readonly sigv2: AwsAuthSigv2Trait | undefined;
   readonly serviceSdkId: string | undefined;
   readonly resolveEndpoint: ReturnType<typeof makeEndpointResolver>;
   /**
@@ -118,11 +124,18 @@ const prepare = (config: API.ProtocolOperationConfig): Prepared => {
   const operationName =
     config.operationName ?? getIdentifier(inputAst)?.replace(/(?:Request|Input|Message)$/, "");
 
+  // One protocol handler per operation, shared by the request builder, the
+  // response parser and the call plan.
+  const factory = getProtocol(inputAst);
+  const handler = factory?.(op);
+  const protocol = handler && (() => handler);
   const prepared: Prepared = {
     op,
+    handler,
+    hostPrefix: config.endpointHostPrefix,
     operationName,
-    buildRequest: makeRequestBuilder(op),
     parseResponse: makeResponseParser(op, {
+      protocol,
       service: serviceSdkId,
       operation: operationName,
       // Validation follows the caller's ResponseValidation layer
@@ -172,27 +185,6 @@ const withAwsContext = (
   });
 
 /**
- * The URL parts of an endpoint that is a bare origin (`scheme://host[:port]`
- * exactly as `URL` serializes it), or `null`. Such endpoints let the signer
- * skip `URL` parsing. Cached per endpoint string.
- */
-const originCache = /*@__PURE__*/ new Map<string, { origin: string; host: string } | null>();
-const originOf = (endpoint: string): { origin: string; host: string } | null => {
-  let parts = originCache.get(endpoint);
-  if (parts === undefined) {
-    try {
-      const url = new URL(endpoint);
-      parts = url.origin === endpoint ? { origin: url.origin, host: url.host } : null;
-    } catch {
-      parts = null;
-    }
-    if (originCache.size >= 256) originCache.clear();
-    originCache.set(endpoint, parts);
-  }
-  return parts;
-};
-
-/**
  * Turn a serialized request into the signed HTTP request: endpoint
  * resolution, host prefix, query string and signing. Synchronous unless the
  * request needs an effect (SigV2, a payload digest, asynchronous crypto) or
@@ -200,7 +192,6 @@ const originOf = (endpoint: string): { origin: string; host: string } | null => 
  */
 const toHttpRequest = (
   prepared: Prepared,
-  config: API.ProtocolOperationConfig,
   input: unknown,
   request: Request,
   credentials: Credentials.ResolvedCredentials,
@@ -209,7 +200,7 @@ const toHttpRequest = (
   fiber: Fiber,
 ):
   | HttpClientRequest.HttpClientRequest
-  | Effect.Effect<HttpClientRequest.HttpClientRequest, any> => {
+  | Effect.Effect<HttpClientRequest.HttpClientRequest, any, any> => {
   const { sigv4, sigv2, serviceSdkId, resolveEndpoint: rulesResolver } = prepared;
   const serviceName = sigv4?.name ?? "s3";
 
@@ -257,8 +248,8 @@ const toHttpRequest = (
   // Step Functions StartSyncExecution -> sync-states.{region}). Skipped for
   // custom endpoints, matching official AWS SDK behavior. Labels of the
   // form {memberName} are substituted from the operation input.
-  if (config.endpointHostPrefix !== undefined && !customEndpoint) {
-    const resolvedPrefix = config.endpointHostPrefix.replace(/\{(\w+)\}/g, (_, member: string) =>
+  if (prepared.hostPrefix !== undefined && !customEndpoint) {
+    const resolvedPrefix = prepared.hostPrefix.replace(/\{(\w+)\}/g, (_, member: string) =>
       String((input as Record<string, unknown>)?.[member] ?? ""),
     );
     // The endpoint rules engine may already have baked the same label into
@@ -274,27 +265,22 @@ const toHttpRequest = (
   }
 
   // Build full URL with query string
-  let queryString = "";
-  for (const k in resolvedRequest.query) {
-    const v = resolvedRequest.query[k];
-    if (v === undefined) continue;
-    // Handle arrays as repeated query parameters (e.g., tagKeys=A&tagKeys=B)
-    if (Array.isArray(v)) {
-      for (const item of v) {
-        queryString +=
-          (queryString ? "&" : "") +
-          (item ? `${encodeURIComponent(k)}=${encodeURIComponent(item)}` : encodeURIComponent(k));
+  const queryString = Object.entries(resolvedRequest.query)
+    .filter(([, v]) => v !== undefined)
+    .flatMap(([k, v]) => {
+      // Handle arrays as repeated query parameters (e.g., tagKeys=A&tagKeys=B)
+      if (Array.isArray(v)) {
+        return v.map((item) =>
+          item ? `${encodeURIComponent(k)}=${encodeURIComponent(item)}` : encodeURIComponent(k),
+        );
       }
-    } else {
-      queryString +=
-        (queryString ? "&" : "") +
-        (v ? `${encodeURIComponent(k)}=${encodeURIComponent(v)}` : encodeURIComponent(k));
-    }
-  }
+      return v ? `${encodeURIComponent(k)}=${encodeURIComponent(v)}` : encodeURIComponent(k);
+    })
+    .join("&");
 
   const fullPath = queryString ? `${resolvedRequest.path}?${queryString}` : resolvedRequest.path;
 
-  if (sigv2) return signV2(resolvedRequest, endpoint, fullPath, credentials);
+  if (sigv2) return sigv2.sign(resolvedRequest, endpoint, fullPath, credentials);
 
   // For streaming bodies (ReadableStream), we can't compute a hash
   // so we use UNSIGNED-PAYLOAD and don't pass the body to the signer
@@ -302,13 +288,10 @@ const toHttpRequest = (
   // Check if content-sha256 header is already set (e.g., by checksum middleware)
   // Check if service provides its own checksum (e.g., EBS x-amz-Checksum header)
   // In this case, the body should not be included in SigV4 signing
-  let hasContentSha256 = false;
-  let hasServiceChecksum = false;
-  for (const k in resolvedRequest.headers) {
-    const lower = k.toLowerCase();
-    if (lower === "x-amz-content-sha256") hasContentSha256 = true;
-    else if (lower === "x-amz-checksum") hasServiceChecksum = true;
-  }
+  const hasHeader = (name: string) =>
+    Object.keys(resolvedRequest.headers).some((k) => k.toLowerCase() === name);
+  const hasContentSha256 = hasHeader("x-amz-content-sha256");
+  const hasServiceChecksum = hasHeader("x-amz-checksum");
   // Check if there's a body to sign
   const hasBody = resolvedRequest.body !== undefined;
   // Operations with a streaming input payload (smithy `@streaming` blob)
@@ -338,7 +321,7 @@ const toHttpRequest = (
       }
     : resolvedRequest.headers;
 
-  const signOptions: SigV4.SignOptions = {
+  const options: SigV4.SignOptions = {
     method: resolvedRequest.method,
     url: `${endpoint}${fullPath}`,
     headers: signingHeaders,
@@ -346,7 +329,7 @@ const toHttpRequest = (
     // body only reaches here with an explicit x-amz-content-sha256, in
     // which case the signer never reads the body.
     body:
-      useUnsignedPayload || resolvedRequest.body instanceof ReadableStream
+      useUnsignedPayload || isStreamingBody
         ? undefined
         : (resolvedRequest.body as SigV4.SignableBody | undefined),
     accessKeyId: Redacted.value(credentials.accessKeyId),
@@ -354,82 +337,32 @@ const toHttpRequest = (
     sessionToken: credentials.sessionToken,
     service: signingServiceName,
     region: signingRegion,
+    // S3 Control rejects UNSIGNED-PAYLOAD on several routes (access point
+    // operations fail with `InvalidRequest: "Request body cannot be
+    // unsigned"`). The signer injects UNSIGNED-PAYLOAD for any service signing
+    // as "s3" when the header is absent, so pre-compute the real payload
+    // SHA-256 here (matching the official SDK's applyChecksum behavior).
+    // Glacier likewise REQUIRES the x-amz-content-sha256 header on
+    // payload-bearing requests (UploadArchive / UploadMultipartPart) -- the
+    // service reconstructs the canonical request from that header, so
+    // omitting it fails with InvalidSignatureException (the official SDK's
+    // addChecksumHeaders middleware always sets it).
+    hashPayload:
+      (serviceSdkId === "S3 Control" || serviceSdkId === "Glacier") &&
+      !useUnsignedPayload &&
+      !hasContentSha256 &&
+      !isStreamingBody,
   };
-
-  // S3 Control rejects UNSIGNED-PAYLOAD on several routes (access point
-  // operations fail with `InvalidRequest: "Request body cannot be
-  // unsigned"`). The signer injects UNSIGNED-PAYLOAD for any service signing
-  // as "s3" when the header is absent, so pre-compute the real payload
-  // SHA-256 here (matching the official SDK's applyChecksum behavior).
-  // Glacier likewise REQUIRES the x-amz-content-sha256 header on
-  // payload-bearing requests (UploadArchive / UploadMultipartPart) -- the
-  // service reconstructs the canonical request from that header, so
-  // omitting it fails with InvalidSignatureException (the official SDK's
-  // addChecksumHeaders middleware always sets it).
-  if (
-    (serviceSdkId === "S3 Control" || serviceSdkId === "Glacier") &&
-    !useUnsignedPayload &&
-    !hasContentSha256 &&
-    !isStreamingBody
-  ) {
-    const bodyBytes =
-      resolvedRequest.body === undefined
-        ? new Uint8Array(0)
-        : resolvedRequest.body instanceof Uint8Array
-          ? resolvedRequest.body
-          : new TextEncoder().encode(String(resolvedRequest.body));
-    return Effect.flatMap(
-      Effect.promise(() =>
-        crypto.subtle.digest(
-          "SHA-256",
-          // copy into a fresh ArrayBuffer-backed view for the DOM typings
-          bodyBytes.slice(),
-        ),
-      ),
-      (digest) => {
-        const payloadHash = Array.from(new Uint8Array(digest))
-          .map((byte) => byte.toString(16).padStart(2, "0"))
-          .join("");
-        const options = {
-          ...signOptions,
-          headers: { ...signingHeaders, "X-Amz-Content-Sha256": payloadHash },
-        };
-        return Effect.map(SigV4.sign(options), (signed) =>
-          httpRequestOf(signed, resolvedRequest.body, isStreamingBody),
-        );
-      },
-    );
-  }
-
-  // The URL as parts lets the signer skip `URL` / `Headers` parsing.
-  const origin = isStreamingBody ? null : originOf(endpoint);
+  const toRequest = (signed: SigV4.SignedRequest) =>
+    httpRequestOf(signed, resolvedRequest.body, isStreamingBody);
   let signed: SigV4.SignedRequest | undefined;
   try {
-    signed = SigV4.signSync(
-      signOptions,
-      fiber,
-      origin === null
-        ? undefined
-        : {
-            origin: origin.origin,
-            host: origin.host,
-            path: resolvedRequest.path,
-            query: resolvedRequest.query,
-            search: queryString,
-          },
-    );
+    signed = SigV4.signSync(options, fiber);
   } catch (e) {
     return Effect.fail(e);
   }
-  if (signed === undefined) {
-    return Effect.map(SigV4.sign(signOptions), (s) =>
-      httpRequestOf(s, resolvedRequest.body, isStreamingBody),
-    );
-  }
-  return httpRequestOf(signed, resolvedRequest.body, isStreamingBody);
+  return signed === undefined ? Effect.map(SigV4.sign(options), toRequest) : toRequest(signed);
 };
-
-const emptyRequest = /*@__PURE__*/ HttpClientRequest.get("");
 
 /** The `HttpClientRequest` for a signed request and its body. */
 const httpRequestOf = (
@@ -462,321 +395,172 @@ const httpRequestOf = (
     httpBody = HttpBody.empty;
   }
 
-  // `make(method)(url)` + `setHeaders`, built in one step. setBody must come
-  // after the headers because it adds content-type/content-length from the
-  // HttpBody, which should match our signed headers.
-  const request = HttpClientRequest.setBody(
-    HttpClientRequest.makeWith(
-      signedRequest.method as HttpClientRequest.HttpClientRequest["method"],
-      signedRequest.url,
-      emptyRequest.urlParams,
-      emptyRequest.hash,
-      HttpClientRequest.setHeaders(emptyRequest, signedHeaders).headers,
-      HttpBody.empty,
-    ),
-    httpBody,
-  );
-  // Empty bodies clear Content-Type, which S3 also uses for object metadata.
-  return httpBody._tag === "Empty" && contentType !== undefined
-    ? HttpClientRequest.setHeader(request, "content-type", contentType)
-    : request;
-};
-
-/**
- * Legacy Signature Version 2 (SimpleDB is the sole remaining SigV2-only
- * service). The signature is an HMAC-SHA256 over the sorted,
- * RFC3986-encoded form parameters and travels IN the form-encoded body --
- * there is no Authorization header. The classic endpoint rejects SigV4
- * with `AuthFailure: access credentials are missing`.
- */
-const signV2 = (
-  resolvedRequest: Request,
-  endpoint: string,
-  fullPath: string,
-  credentials: Credentials.ResolvedCredentials,
-): Effect.Effect<HttpClientRequest.HttpClientRequest> => {
-  const rfc3986 = (s: string) =>
-    encodeURIComponent(s).replace(
-      /[!'()*]/g,
-      (c) => "%" + c.charCodeAt(0).toString(16).toUpperCase(),
-    );
-  const pairs: Array<[string, string]> = [];
-  const bodyStr = typeof resolvedRequest.body === "string" ? resolvedRequest.body : "";
-  for (const part of bodyStr.split("&")) {
-    if (!part) continue;
-    const eq = part.indexOf("=");
-    pairs.push([
-      decodeURIComponent(eq === -1 ? part : part.slice(0, eq)),
-      eq === -1 ? "" : decodeURIComponent(part.slice(eq + 1)),
-    ]);
-  }
-  pairs.push(
-    ["AWSAccessKeyId", Redacted.value(credentials.accessKeyId)],
-    ["SignatureVersion", "2"],
-    ["SignatureMethod", "HmacSHA256"],
-    ["Timestamp", new Date().toISOString().replace(/\.\d{3}/, "")],
-  );
-  if (credentials.sessionToken) {
-    pairs.push(["SecurityToken", Redacted.value(credentials.sessionToken)]);
-  }
-  const canonical = pairs
-    .map(([k, v]) => [rfc3986(k), rfc3986(v)] as const)
-    .sort(([a, av], [b, bv]) => (a < b ? -1 : a > b ? 1 : av < bv ? -1 : av > bv ? 1 : 0))
-    .map(([k, v]) => `${k}=${v}`)
-    .join("&");
-  const requestUrl = new URL(`${endpoint}${fullPath}`);
-  const stringToSign = [
-    resolvedRequest.method,
-    requestUrl.host,
-    requestUrl.pathname || "/",
-    canonical,
-  ].join("\n");
-  return Effect.map(
-    Effect.promise(async () => {
-      const key = await crypto.subtle.importKey(
-        "raw",
-        new TextEncoder().encode(Redacted.value(credentials.secretAccessKey)),
-        { name: "HMAC", hash: "SHA-256" },
-        false,
-        ["sign"],
-      );
-      return crypto.subtle.sign("HMAC", key, new TextEncoder().encode(stringToSign));
-    }),
-    (signatureBytes) => {
-      const signature = Buffer.from(signatureBytes).toString("base64");
-      const signedBody = `${canonical}&Signature=${rfc3986(signature)}`;
-      const contentTypeV2 =
-        resolvedRequest.headers["Content-Type"] ??
-        resolvedRequest.headers["content-type"] ??
-        "application/x-www-form-urlencoded";
-
-      return pipe(
-        HttpClientRequest.make(resolvedRequest.method as "GET" | "POST" | "PUT" | "DELETE")(
-          requestUrl.toString(),
-        ),
-        HttpClientRequest.setHeaders(resolvedRequest.headers),
-        HttpClientRequest.setBody(HttpBody.text(signedBody, contentTypeV2)),
-      );
-    },
+  // setBody must come after setHeaders because it adds
+  // content-type/content-length from the HttpBody, which should match our
+  // signed headers.
+  return pipe(
+    HttpClientRequest.make(
+      signedRequest.method as "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "OPTIONS",
+    )(signedRequest.url),
+    HttpClientRequest.setHeaders(signedHeaders),
+    HttpClientRequest.setBody(httpBody),
+    // Empty bodies clear Content-Type, which S3 also uses for object metadata.
+    (request) =>
+      httpBody._tag === "Empty" && contentType !== undefined
+        ? HttpClientRequest.setHeader(request, "content-type", contentType)
+        : request,
   );
 };
 
-const signedOrEffect = (
-  r: HttpClientRequest.HttpClientRequest | Effect.Effect<HttpClientRequest.HttpClientRequest, any>,
-): Effect.Effect<HttpClientRequest.HttpClientRequest, any> =>
-  HttpClientRequest.isHttpClientRequest(r) ? Effect.succeed(r) : r;
-
-// The protocol layer is memoized per process by `API.make` (see
-// `OperationConfig.protocol`), so the build must not capture credentials --
-// `encode` resolves Credentials/Region/Endpoint from the calling fiber's
-// context on every request instead (credentials are lazy: the service holds
-// an effect, so refreshes are picked up per call). The requirements and
-// error channels are erased at this boundary (Protocol effects are typed
-// with no requirements) and reintroduced for callers by the generated
-// operation type annotations.
-const encode = ({
-  input,
-  config,
-}: {
-  readonly input: unknown;
-  readonly config: API.ProtocolOperationConfig;
-}): Effect.Effect<HttpClientRequest.HttpClientRequest, any, any> =>
-  Effect.withFiber((fiber) => {
-    const prepared = prepare(config);
-    // Serialize the input (protocol serializer + annotation middleware)
-    return Effect.flatMap(prepared.buildRequest(input), (request) =>
-      withAwsContext(fiber.context as Context.Context<any>, (credentials, region, custom) =>
-        signedOrEffect(
-          toHttpRequest(
-            prepared,
-            config,
-            input,
-            request,
-            credentials,
-            region,
-            custom,
-            fiber as unknown as Fiber,
-          ),
-        ),
-      ),
-    );
-  });
+/** `f` on a request that may still be an effect. */
+const thenSend = <A>(
+  r:
+    | HttpClientRequest.HttpClientRequest
+    | Effect.Effect<HttpClientRequest.HttpClientRequest, any, any>,
+  f: (request: HttpClientRequest.HttpClientRequest) => Effect.Effect<A, any, any>,
+): Effect.Effect<A, any, any> =>
+  HttpClientRequest.isHttpClientRequest(r) ? f(r) : Effect.flatMap(r, f);
 
 /**
  * Stamp a server-provided `retryAfterSeconds` hint (modeled on several AWS
  * throttling errors) as the `retryAfter` Duration that core's default retry
  * policy honors with precedence over its backoff.
  */
-const stampRetryAfter = (error: unknown): void => {
-  if (typeof error !== "object" || error === null) return;
+const stampRetryAfter = (error: unknown): unknown => {
+  if (typeof error !== "object" || error === null) return error;
   const e = error as Record<string, unknown>;
-  if (e.retryAfter !== undefined) return;
+  if (e.retryAfter !== undefined) return error;
   const seconds = Number(e.retryAfterSeconds ?? e.RetryAfterSeconds ?? NaN);
   if (Number.isFinite(seconds) && seconds >= 0) {
     e.retryAfter = Duration.seconds(seconds);
   }
+  return error;
 };
 
-/** A response with no body: HEAD requests, `content-length: 0` and 204s. */
-const isEmptyBody = (response: HttpClientResponse.HttpClientResponse): boolean =>
-  response.request.method === "HEAD" ||
-  (response.headers as Record<string, string>)["content-length"] === "0" ||
-  response.status === 204;
-
-/** A response through the operation's response parser. */
-const parseResponseWith = (
-  prepared: Prepared,
-  response: HttpClientResponse.HttpClientResponse,
-  body: string | ReadableStream<Uint8Array>,
-): Effect.Effect<unknown, any, any> =>
-  prepared
-    .parseResponse({
-      status: response.status,
-      statusText: "OK",
-      headers: response.headers as Record<string, string>,
-      body,
-    })
-    .pipe(
-      Effect.tapError((error) => {
-        stampRetryAfter(error);
-        return Effect.void;
-      }),
-    );
-
-const decode = ({
-  response,
-  config,
-}: {
-  readonly response: HttpClientResponse.HttpClientResponse;
-  readonly config: API.ProtocolOperationConfig;
-}) =>
-  Effect.gen(function* () {
-    const prepared = prepare(config);
-    const { textBody } = prepared;
-
-    // Create response body stream. HEAD requests never have a body, and some
-    // responses have no body (204, etc.) -- Effect's HttpClientResponse.stream
-    // raises on empty bodies, so detect those up front.
-    const responseBody = isEmptyBody(response)
-      ? textBody
-        ? ""
-        : new ReadableStream<Uint8Array>({ start: (c) => c.close() })
-      : textBody
-        ? yield* response.text
-        : yield* Stream.toReadableStreamEffect(response.stream);
-
-    // Parse the response: success -> protocol deserialization + schema
-    // decoding (+ event streams); error -> typed error matching.
-    return yield* parseResponseWith(prepared, response, responseBody);
-  });
-
-//#region call
-
-/** How {@link call} runs one operation, compiled on its first call. */
+/**
+ * The parts of an operation that run without effects, compiled once its
+ * protocol module has loaded: the request builder, and the 2xx decoder for
+ * outputs that are read as text. Missing parts run as effects.
+ */
 interface Plan {
-  readonly run: (fiber: Fiber, input: unknown) => Effect.Effect<unknown, any, any>;
+  readonly build: (input: unknown) => Request | Effect.Effect<Request, ParseError>;
+  readonly decodeText:
+    | ((context: Context.Context<any>, response: Response, text: string) => Decoded)
+    | undefined;
 }
 
-/** encode -> execute -> decode, for operations without a synchronous plan. */
-const generalPlan = (config: API.ProtocolOperationConfig): Plan => ({
-  run: (fiber, input) => {
-    const client = Context.get(fiber.context as Context.Context<any>, HttpClient.HttpClient);
-    return Effect.flatMap(encode({ input, config }), (request) =>
-      Effect.flatMap(client.execute(request), (response) => decode({ response, config })),
-    );
-  },
-});
-
-const compile = (op: API.PreparedOperation): Effect.Effect<Plan> => {
-  const config = op.config;
-  const prepared = prepare(config);
-  const factory = getProtocol(prepared.op.input.ast);
-  if (prepared.sigv2 || !prepared.textBody || factory === undefined) {
-    return Effect.succeed(generalPlan(config));
-  }
-  const handler = factory(prepared.op);
-  return Effect.map(handler.ready ?? Effect.succeed(handler), (protocol): Plan => {
-    const build = makeSyncRequestBuilder(prepared.op, protocol);
-    const deserializeText = protocol.deserializeText;
-    if (build === undefined || deserializeText === undefined) return generalPlan(config);
+/** The operation's plan, compiled on first use (its protocol module loads then). */
+const planOf = (prepared: Prepared): Effect.Effect<Plan> => {
+  if (prepared.plan !== undefined) return Effect.succeed(prepared.plan);
+  const handler = prepared.handler;
+  if (handler === undefined) return Effect.die(new Error("No protocol found on input schema"));
+  return Effect.map(loadHandler(handler), (protocol) => {
     const decodeSuccess = makeSuccessDecoder(prepared.op, {
       service: prepared.serviceSdkId,
       operation: prepared.operationName,
     });
-
-    const respond = (
-      context: Context.Context<any>,
-      response: HttpClientResponse.HttpClientResponse,
-      text: string,
-    ): Effect.Effect<unknown, any, any> => {
-      if (response.status < 200 || response.status >= 300) {
-        return parseResponseWith(prepared, response, text);
-      }
-      const decoded = decodeSuccess(
-        context,
-        deserializeText({
-          status: response.status,
-          statusText: "OK",
-          headers: response.headers as Record<string, string>,
-          body: text,
-        }),
-      );
-      if (decoded.ok) return Effect.succeed(decoded.value);
-      stampRetryAfter(decoded.error);
-      return Effect.fail(decoded.error);
+    const plan: Plan = {
+      build: makeRequestBuilder(prepared.op, protocol),
+      decodeText: prepared.textBody
+        ? (context, response, text) =>
+            decodeSuccess(
+              context,
+              protocol.deserializeText({
+                status: response.status,
+                statusText: "OK",
+                headers: response.headers as Record<string, string>,
+                body: text,
+              }),
+            )
+        : undefined,
     };
-
-    return {
-      run: (fiber, input) => {
-        let request: Request;
-        try {
-          request = build(input);
-        } catch (e) {
-          return e instanceof ParseError ? Effect.fail(e) : Effect.die(e);
-        }
-        const context = fiber.context as Context.Context<any>;
-        return withAwsContext(context, (credentials, region, custom) => {
-          const client = Context.get(context, HttpClient.HttpClient);
-          const execute = (httpRequest: HttpClientRequest.HttpClientRequest) =>
-            Effect.flatMap(client.execute(httpRequest), (response) =>
-              isEmptyBody(response)
-                ? respond(context, response, "")
-                : Effect.flatMap(response.text, (text) => respond(context, response, text)),
-            );
-          const signed = toHttpRequest(
-            prepared,
-            config,
-            input,
-            request,
-            credentials,
-            region,
-            custom,
-            fiber,
-          );
-          return HttpClientRequest.isHttpClientRequest(signed)
-            ? execute(signed)
-            : Effect.flatMap(signed, execute);
-        });
-      },
-    };
+    return ((prepared as { plan?: Plan }).plan = plan);
   });
 };
 
+/** The signed HTTP request for `input`, on the calling fiber. */
+const encodeWith = <A>(
+  prepared: Prepared,
+  plan: Plan,
+  fiber: Fiber,
+  input: unknown,
+  f: (request: HttpClientRequest.HttpClientRequest) => Effect.Effect<A, any, any>,
+): Effect.Effect<A, any, any> => {
+  const send = (request: Request) =>
+    withAwsContext(fiber.context as Context.Context<any>, (credentials, region, custom) =>
+      thenSend(toHttpRequest(prepared, input, request, credentials, region, custom, fiber), f),
+    );
+  // Serialize the input (protocol serializer + annotation middleware)
+  let request: Request | Effect.Effect<Request, ParseError>;
+  try {
+    request = plan.build(input);
+  } catch (e) {
+    return e instanceof ParseError ? Effect.fail(e) : Effect.die(e);
+  }
+  return Effect.isEffect(request) ? Effect.flatMap(request, send) : send(request);
+};
+
 /**
- * One operation call: the operation's plan, compiled on its first call
- * (the protocol implementation loads then), run on the calling fiber.
+ * The call's result from the response: a 2xx text body through the
+ * synchronous decoder, anything else through the operation's response
+ * parser (success -> protocol deserialization + schema decoding + event
+ * streams; error -> typed error matching).
+ */
+const decodeWith = (
+  prepared: Prepared,
+  plan: Plan,
+  context: Context.Context<any>,
+  response: HttpClientResponse.HttpClientResponse,
+): Effect.Effect<unknown, any, any> => {
+  // HEAD requests never have a body, and some responses have no body (204,
+  // etc.) -- Effect's HttpClientResponse.stream raises on empty bodies, so
+  // detect those up front.
+  const empty =
+    response.request.method === "HEAD" ||
+    (response.headers as Record<string, string>)["content-length"] === "0" ||
+    response.status === 204;
+  const parse = (body: string | ReadableStream<Uint8Array>) =>
+    Effect.mapError(
+      prepared.parseResponse({
+        status: response.status,
+        statusText: "OK",
+        headers: response.headers as Record<string, string>,
+        body,
+      }),
+      stampRetryAfter,
+    );
+  const fromText = (text: string) => {
+    if (plan.decodeText === undefined || response.status < 200 || response.status >= 300) {
+      return parse(text);
+    }
+    const decoded = plan.decodeText(context, response as unknown as Response, text);
+    return decoded.ok ? Effect.succeed(decoded.value) : Effect.fail(stampRetryAfter(decoded.error));
+  };
+  if (prepared.textBody) return empty ? fromText("") : Effect.flatMap(response.text, fromText);
+  return empty
+    ? parse(new ReadableStream<Uint8Array>({ start: (c) => c.close() }))
+    : Effect.flatMap(Stream.toReadableStreamEffect(response.stream), parse);
+};
+
+/**
+ * One operation call on the calling fiber: encode -> one `client.execute`
+ * -> decode. The operation's plan is compiled on its first call (the
+ * protocol implementation loads then).
  */
 const call = (op: API.PreparedOperation, input: unknown): Effect.Effect<unknown> =>
   Effect.withFiber((fiber) => {
-    const plan = op.compiled as Plan | undefined;
-    if (plan !== undefined) return plan.run(fiber as unknown as Fiber, input);
-    return Effect.flatMap(compile(op), (compiled) => {
-      op.compiled = compiled;
-      return compiled.run(fiber as unknown as Fiber, input);
-    });
+    const prepared = prepare(op.config);
+    const run = (plan: Plan) => {
+      const context = fiber.context as Context.Context<any>;
+      const client = Context.get(context, HttpClient.HttpClient);
+      return encodeWith(prepared, plan, fiber as unknown as Fiber, input, (request) =>
+        Effect.flatMap(client.execute(request), (response) =>
+          decodeWith(prepared, plan, context, response),
+        ),
+      );
+    };
+    return prepared.plan ? run(prepared.plan) : Effect.flatMap(planOf(prepared), run);
   }) as Effect.Effect<unknown>;
-
-//#endregion
 
 /**
  * The Protocol layer every generated AWS operation references. Failure and
@@ -786,8 +570,23 @@ const call = (op: API.PreparedOperation, input: unknown): Effect.Effect<unknown>
 export const AwsProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
   /*@__PURE__*/ API.Protocol.of({
-    encode: (args) => encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
-    decode: (args) => decode(args) as Effect.Effect<unknown>,
+    // The protocol layer is memoized per process by `API.make`, so nothing
+    // here captures credentials: they, the region and the endpoint are read
+    // from the calling fiber's context on every request.
+    encode: ({ input, config }) =>
+      Effect.withFiber((fiber) => {
+        const prepared = prepare(config);
+        return Effect.flatMap(planOf(prepared), (plan) =>
+          encodeWith(prepared, plan, fiber as unknown as Fiber, input, Effect.succeed),
+        );
+      }) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
+    decode: ({ response, config }) =>
+      Effect.withFiber((fiber) => {
+        const prepared = prepare(config);
+        return Effect.flatMap(planOf(prepared), (plan) =>
+          decodeWith(prepared, plan, fiber.context as any, response),
+        );
+      }) as Effect.Effect<unknown>,
     call,
   }),
 );

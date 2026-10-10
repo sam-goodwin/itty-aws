@@ -1,10 +1,11 @@
 import * as ResponseValidation from "@distilled.cloud/core/response-validation";
+import * as S from "@distilled.cloud/core/schema-lite";
 import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
-import * as S from "@distilled.cloud/core/schema-lite";
 import * as Stream from "effect/Stream";
 import { describe, expect, test } from "vitest";
 import type { Operation } from "../client/operation.ts";
+import { withEffects } from "../client/protocol.ts";
 import type { Request } from "../client/request.ts";
 import type { Response } from "../client/response.ts";
 import { ParseError } from "../errors.ts";
@@ -26,8 +27,13 @@ import * as LexRuntimeV2 from "../services/lex-runtime-v2.ts";
 import * as SageMakerRuntimeHttp2 from "../services/sagemaker-runtime-http2.ts";
 import * as TranscribeStreaming from "../services/transcribe-streaming.ts";
 import * as T from "../traits.ts";
-import { awsJson1_0Protocol, awsJson1_1Protocol } from "./aws-json.ts";
-import { restJson1Protocol } from "./rest-json.ts";
+import { awsJson1_0Protocol as json10, awsJson1_1Protocol as json11 } from "./aws-json.ts";
+import { restJson1Protocol as restJson1 } from "./rest-json.ts";
+
+// The handlers with effect-returning serializeRequest / deserializeResponse.
+const awsJson1_0Protocol = (op: Operation) => withEffects(json10(op));
+const awsJson1_1Protocol = (op: Operation) => withEffects(json11(op));
+const restJson1Protocol = (op: Operation) => withEffects(restJson1(op));
 
 const response = (
   body: Response["body"],

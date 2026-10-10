@@ -15,10 +15,11 @@ import * as Effect from "effect/Effect";
 import type * as AST from "effect/SchemaAST";
 import * as Stream from "effect/Stream";
 import type { Operation } from "./client/operation.ts";
-import type { DeserializedError, Protocol, ProtocolHandler } from "./client/protocol.ts";
+import type { LazyHandler, Protocol, ProtocolHandler, ProtocolImpl } from "./client/protocol.ts";
 import type { Request as ProtocolRequest } from "./client/request.ts";
 import { ErrorMessage, errorMessageSymbol } from "./error-message.ts";
 import { blob, timestamp } from "./lite.ts";
+import { signV2 } from "./sigv2.ts";
 
 /**
  * A protocol whose implementation module loads on the first request.
@@ -27,36 +28,23 @@ import { blob, timestamp } from "./lite.ts";
  * traits, so importing them statically loaded all five protocol
  * implementations (with XML, event stream and customization code) into
  * every program: about 750 KB of heap, of which one protocol is used.
- * The handler's methods are Effects, so they can wait for the import.
+ * Consumers get the implementation's handler through `ready`.
  */
-const lazyProtocol = (load: () => Promise<Protocol>): Protocol => {
-  let loaded: Promise<Protocol> | undefined;
-  let ready: Protocol | undefined;
+const lazyProtocol = (load: () => Promise<ProtocolImpl>): Protocol => {
+  let loaded: Promise<ProtocolImpl> | undefined;
+  let ready: ProtocolImpl | undefined;
   const protocol = Effect.promise(() => (loaded ??= load()).then((p) => (ready = p)));
-  return (operation: Operation): ProtocolHandler => {
+  return (operation: Operation): LazyHandler => {
     let handler: ProtocolHandler | undefined;
-    // After the first request the handler is called directly: no promise per call.
-    const get = Effect.suspend(() =>
-      handler
-        ? Effect.succeed(handler)
-        : ready
-          ? Effect.succeed((handler = ready(operation)))
-          : Effect.map(protocol, (p) => (handler ??= p(operation))),
-    );
+    // After the first request the handler is returned directly: no promise per call.
     return {
-      ready: get,
-      serializeRequest: (input) =>
+      ready: Effect.suspend(() =>
         handler
-          ? handler.serializeRequest(input)
-          : Effect.flatMap(get, (h) => h.serializeRequest(input)),
-      deserializeResponse: (response) =>
-        handler
-          ? handler.deserializeResponse(response)
-          : Effect.flatMap(get, (h) => h.deserializeResponse(response)),
-      deserializeError: (response): Effect.Effect<DeserializedError, any> =>
-        handler
-          ? handler.deserializeError(response)
-          : Effect.flatMap(get, (h) => h.deserializeError(response)),
+          ? Effect.succeed(handler)
+          : ready
+            ? Effect.succeed((handler = ready(operation)))
+            : Effect.map(protocol, (p) => (handler ??= p(operation))),
+      ),
     };
   };
 };
@@ -284,8 +272,11 @@ export const AwsAuthSigv4 = (trait: AwsAuthSigv4Trait) => makeAnnotation(awsAuth
 export const awsAuthSigv2Symbol = "distilled-aws/aws.auth#sigv2" as const;
 export interface AwsAuthSigv2Trait {
   name: string;
+  /** The signer, carried by the trait so only SigV2 services bundle it. */
+  readonly sign: typeof signV2;
 }
-export const AwsAuthSigv2 = (trait: AwsAuthSigv2Trait) => makeAnnotation(awsAuthSigv2Symbol, trait);
+export const AwsAuthSigv2 = (trait: { name: string }) =>
+  makeAnnotation(awsAuthSigv2Symbol, { ...trait, sign: signV2 });
 
 // =============================================================================
 // AWS Protocol Traits (aws.protocols#*)
