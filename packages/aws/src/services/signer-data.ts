@@ -50,7 +50,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("No matching endpoint rule");
-});
+}, '{"url":"https://data-signer.{R}.{D}","properties":{},"headers":{}}');
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(

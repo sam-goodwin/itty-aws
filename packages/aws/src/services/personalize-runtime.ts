@@ -78,7 +78,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://personalize-runtime.{R}.{D}","properties":{},"headers":{}}');
 
 export class InvalidInputException
   extends /*@__PURE__*/ S.TaggedError<InvalidInputException>()(

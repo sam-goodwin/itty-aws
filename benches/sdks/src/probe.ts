@@ -147,6 +147,11 @@ const main = async (req: ProbeRequest) => {
   const HttpClientRequest = await import(`${EFFECT_HTTP}/HttpClientRequest`);
   const HttpClientResponse = await import(`${EFFECT_HTTP}/HttpClientResponse`);
   const effectImportMs = now() - tEffect;
+  // Warm Node's fetch classes (undici Response/Headers), as official-probe.ts
+  // does with its 200 baseline fetches before importing the SDK, so cold-start
+  // numbers compare the SDKs and not who first touched undici.
+  for (let i = 0; i < 200; i++)
+    await new Response('{"warm":true}', { headers: { "content-type": "application/json" } }).text();
   const m1 = snap();
 
   const mockLayer = (canned: CannedResponse) =>
@@ -387,7 +392,8 @@ const main = async (req: ProbeRequest) => {
   } catch (e) {
     error = errorText(e);
   }
-  if (req.firstOnly) return { importMs, firstCallMs, ...(error ? { error } : {}) };
+  if (req.firstOnly)
+    return { importMs, firstCallMs, importHeap: diff(m1, m2), ...(error ? { error } : {}) };
   const m3 = snap();
   if (error) {
     return {

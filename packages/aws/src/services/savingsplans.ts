@@ -17,93 +17,113 @@ const svc = /*@__PURE__*/ T.AwsApiService({
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "savingsplans" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2019-06-28");
 const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  const _p0 = () => ({
-    authSchemes: [{ name: "sigv4", signingName: "savingsplans", signingRegion: "us-east-1" }],
-  });
-  if (!(Endpoint != null) && UseFIPS === false && UseDualStack === true) {
-    {
-      const PartitionResult = _.partition(Region);
-      if (Region != null && PartitionResult != null && PartitionResult !== false) {
-        if (_.getAttr(PartitionResult, "name") === "aws") {
-          return e("https://savingsplans.global.api.aws", _p0(), {});
-        }
-        if (_.getAttr(PartitionResult, "supportsDualStack") === true) {
-          return e(
-            `https://savingsplans.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-          );
-        }
-        return err("DualStack is enabled but this partition does not support DualStack");
-      }
-    }
-    if (!(Region != null)) {
-      return e("https://savingsplans.global.api.aws", _p0(), {});
-    }
-  }
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
-    }
-    if (UseDualStack === true) {
-      return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
-    }
-    return e(Endpoint);
-  }
-  if (Region != null) {
-    {
-      const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e("https://savingsplans.amazonaws.com", _p0(), {});
-        }
-        if (UseFIPS === true && UseDualStack === true) {
-          if (
-            true === _.getAttr(PartitionResult, "supportsFIPS") &&
-            true === _.getAttr(PartitionResult, "supportsDualStack")
-          ) {
-            return e(
-              `https://savingsplans-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            );
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    const _p0 = () => ({
+      authSchemes: [{ name: "sigv4", signingName: "savingsplans", signingRegion: "us-east-1" }],
+    });
+    if (!(Endpoint != null) && UseFIPS === false && UseDualStack === true) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (Region != null && PartitionResult != null && PartitionResult !== false) {
+          if (_.getAttr(PartitionResult, "name") === "aws") {
+            return e("https://savingsplans.global.api.aws", _p0(), {});
           }
-          return err(
-            "FIPS and DualStack are enabled, but this partition does not support one or both",
-          );
-        }
-        if (UseFIPS === true) {
-          if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
-            return e(
-              `https://savingsplans-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
-            );
-          }
-          return err("FIPS is enabled but this partition does not support FIPS");
-        }
-        if (UseDualStack === true) {
-          if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+          if (_.getAttr(PartitionResult, "supportsDualStack") === true) {
             return e(
               `https://savingsplans.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
             );
           }
           return err("DualStack is enabled but this partition does not support DualStack");
         }
-        return e(`https://savingsplans.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+      }
+      if (!(Region != null)) {
+        return e("https://savingsplans.global.api.aws", _p0(), {});
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      if (UseDualStack === true) {
+        return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+      }
+      return e(Endpoint);
+    }
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
+          if (
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e("https://savingsplans.amazonaws.com", _p0(), {});
+          }
+          if (UseFIPS === true && UseDualStack === true) {
+            if (
+              true === _.getAttr(PartitionResult, "supportsFIPS") &&
+              true === _.getAttr(PartitionResult, "supportsDualStack")
+            ) {
+              return e(
+                `https://savingsplans-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err(
+              "FIPS and DualStack are enabled, but this partition does not support one or both",
+            );
+          }
+          if (UseFIPS === true) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              return e(
+                `https://savingsplans-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+              );
+            }
+            return err("FIPS is enabled but this partition does not support FIPS");
+          }
+          if (UseDualStack === true) {
+            if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+              return e(
+                `https://savingsplans.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err("DualStack is enabled but this partition does not support DualStack");
+          }
+          return e(`https://savingsplans.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+        }
+      }
+    }
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://savingsplans.{D}","properties":{"authSchemes":[{"name":"sigv4","signingName":"savingsplans","signingRegion":"us-east-1"}]},"headers":{}}',
+  [
+    "us-gov-west-1",
+    "us-gov-east-1",
+    "aws-us-gov-global",
+    "cn-north-1",
+    "cn-northwest-1",
+    "aws-cn-global",
+    "us-iso-east-1",
+    "us-iso-west-1",
+    "aws-iso-global",
+    "us-isob-east-1",
+    "aws-iso-b-global",
+    "aws-iso-f-global",
+    "us-isof-east-1",
+    "us-isof-south-1",
+    "eusc-de-east-1",
+  ],
+);
 
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(

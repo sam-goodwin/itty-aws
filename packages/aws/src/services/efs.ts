@@ -122,7 +122,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://elasticfilesystem.{R}.{D}","properties":{},"headers":{}}');
 
 export class AccessPointAlreadyExists
   extends /*@__PURE__*/ S.TaggedError<AccessPointAlreadyExists>()(

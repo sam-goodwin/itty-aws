@@ -68,7 +68,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://email.{R}.{D}","properties":{},"headers":{}}');
 
 export class AccountSendingPausedException
   extends /*@__PURE__*/ S.TaggedError<AccountSendingPausedException>()(

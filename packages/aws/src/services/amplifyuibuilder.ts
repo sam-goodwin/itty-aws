@@ -76,7 +76,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://amplifyuibuilder.{R}.{D}","properties":{},"headers":{}}');
 
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(

@@ -32,7 +32,7 @@ import { errorCategories, type SdkSpec } from "@distilled.cloud/core/codegen/gen
  */
 import { cyclicShapeIds } from "@distilled.cloud/core/codegen/graph";
 import { mergePaginated } from "@distilled.cloud/core/codegen/pagination";
-import { generateRuleSetCode, type RuleSetObject } from "./compile-rules.ts";
+import { endpointTemplate, generateRuleSetCode, type RuleSetObject } from "./compile-rules.ts";
 import type { SmithyModel, ServiceShape } from "./model-schema.ts";
 import type { ServiceSpec, SyntheticError } from "./spec-schema.ts";
 
@@ -2354,11 +2354,19 @@ export const awsSpec = (model: SmithyModel, serviceSpec: ServiceSpec): SdkSpec =
 
       // Compiled endpoint resolver function (if a rule set is available)
       if (endpointRuleSet) {
+        // The Region-only template lets most calls skip the rules (see
+        // T.EndpointTemplate).
+        const fast = endpointTemplate(endpointRuleSet as RuleSetObject);
+        const fastArgs = fast
+          ? `, ${JSON.stringify(fast.template)}${
+              fast.exceptions.length ? `, ${JSON.stringify(fast.exceptions)}` : ""
+            }`
+          : "";
         serviceConstants.push(
           `const rules = T.EndpointResolver(${generateRuleSetCode(
             endpointRuleSet as RuleSetObject,
             { typed: true },
-          )});`,
+          )}${fastArgs});`,
         );
       }
 

@@ -459,10 +459,37 @@ export type EndpointResolverFn = (
   helpers: EndpointResolverHelpers,
 ) => EndpointResolverResult;
 
+/**
+ * What the rule set resolves to when `Region` is its only parameter, for
+ * every region partitions.json names: the `endpoint` object as JSON, with
+ * `{R}` for the region and `{D}` for its partition's DNS suffix. The
+ * generator evaluates the rules for each named region and lists the regions
+ * the template does not reproduce in `exceptions`; those, and regions named
+ * by no partition, run the rules.
+ */
+export interface EndpointTemplate {
+  readonly template: string;
+  readonly exceptions: ReadonlyArray<string>;
+}
+
+const endpointTemplateKey = "distilled-aws/endpoint-template";
+
 /** Endpoint resolver - compiled function for endpoint resolution */
 export const endpointResolverSymbol = "distilled-aws/endpoint-resolver" as const;
-export const EndpointResolver = (resolver: EndpointResolverFn) =>
-  makeAnnotation(endpointResolverSymbol, resolver);
+export const EndpointResolver = (
+  resolver: EndpointResolverFn,
+  template?: string,
+  exceptions: ReadonlyArray<string> = [],
+) => {
+  if (template !== undefined) {
+    (resolver as any)[endpointTemplateKey] = { template, exceptions } satisfies EndpointTemplate;
+  }
+  return makeAnnotation(endpointResolverSymbol, resolver);
+};
+
+/** The Region-only endpoint template the generator attached to a resolver. */
+export const getEndpointTemplate = (resolver: EndpointResolverFn): EndpointTemplate | undefined =>
+  (resolver as any)[endpointTemplateKey];
 
 /** smithy.rules#clientContextParams - Client-level endpoint parameters */
 export const clientContextParamsSymbol = "distilled-aws/smithy.rules#clientContextParams" as const;

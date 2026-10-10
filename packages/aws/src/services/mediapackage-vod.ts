@@ -74,7 +74,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://mediapackage-vod.{R}.{D}","properties":{},"headers":{}}');
 
 export class ForbiddenException
   extends /*@__PURE__*/ S.TaggedError<ForbiddenException>()(

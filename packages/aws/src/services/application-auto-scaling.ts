@@ -79,7 +79,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://application-autoscaling.{R}.{D}","properties":{},"headers":{}}');
 
 export class ConcurrentUpdateException
   extends /*@__PURE__*/ S.TaggedError<ConcurrentUpdateException>()(

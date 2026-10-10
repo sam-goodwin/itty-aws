@@ -82,7 +82,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://emr-containers.{R}.{D}","properties":{},"headers":{}}');
 
 export class EKSRequestThrottledException
   extends /*@__PURE__*/ S.TaggedError<EKSRequestThrottledException>()(

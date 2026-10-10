@@ -75,7 +75,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://data.mediastore.{R}.{D}","properties":{},"headers":{}}');
 
 export class ContainerNotFoundException
   extends /*@__PURE__*/ S.TaggedError<ContainerNotFoundException>()(

@@ -111,12 +111,18 @@ if (opts.build || missingLib.length > 0) {
     `build: tsc -b (${missingLib.length ? `lib/ missing for ${missingLib.slice(0, 5).join(", ")}…` : "--build"})`,
   );
   const res = await run(join(REPO, "node_modules", ".bin", "tsc"), ["-b"], { cwd: REPO });
-  // Same post-build step `pnpm build` runs, when this checkout has it.
-  if (res.code === 0 && existsSync(join(REPO, "scripts", "strip-lib-docs.ts")))
-    await run("node", [join(REPO, "scripts", "strip-lib-docs.ts")], { cwd: REPO });
   if (res.code !== 0) {
     console.error(res.stdout.slice(-4000), res.stderr.slice(-4000));
     process.exit(1);
+  }
+  // Same post-build steps `pnpm build` runs, when this checkout has them.
+  for (const step of ["bundle-lib.ts", "strip-lib-docs.ts"]) {
+    if (!existsSync(join(REPO, "scripts", step))) continue;
+    const r = await run("node", [join(REPO, "scripts", step)], { cwd: REPO });
+    if (r.code !== 0) {
+      console.error(`${step} failed`, r.stdout.slice(-4000), r.stderr.slice(-4000));
+      process.exit(1);
+    }
   }
 }
 
@@ -431,6 +437,13 @@ if (has("runtime")) {
         if (ok.length < 3) continue;
         rec.firstCallMs = median3(ok.map((r) => r.firstCallMs));
         rec.importMs = median3(ok.map((r) => r.importMs));
+        // Import heap dips ~250 KB at random (GC timing around the snapshots),
+        // in either mode: take the median of the cold-start runs and this run.
+        const heaps = [rec.importHeap?.heapUsed, ...ok.map((r) => r.importHeap?.heapUsed)].filter(
+          Number.isFinite,
+        ) as number[];
+        if (heaps.length >= 3 && rec.importHeap)
+          rec.importHeap.heapUsed = [...heaps].sort((a, b) => a - b)[heaps.length >> 1]!;
         rec.coldStartPass = true;
       }
     }
@@ -459,6 +472,8 @@ const serviceImport = (pkg: string, service: string, alias = "Barrel") => ({
   src: "",
 });
 
+const IMPORT_RUNS = 3;
+
 if (has("imports")) {
   await phase("imports", async () => {
     // Each provider/service pair: a fresh process (effect preloaded) imports that one module.
@@ -466,13 +481,23 @@ if (has("imports")) {
     const pairs = sdks.flatMap((pkg) => servicesOf(pkg).map((service) => ({ pkg, service })));
     log(`  ${pairs.length} service modules in ${sdks.length} SDKs`);
     for (const pkg of sdks) record[pkg].services = {};
+    // Import time is one cold measurement and very sensitive to machine load
+    // (a busy machine once showed a fake +30%): take the minimum over
+    // IMPORT_RUNS fresh processes. Heap is deterministic; it comes from the first.
     await pool(pairs, opts.runtimeJobs, async ({ pkg, service }) => {
-      const r = await probe({ mode: "barrel", imports: [serviceImport(pkg, service)] });
-      if (r.fatal) {
-        fail(pkg, "imports", `${service}: ${r.fatal}`);
-        return;
+      const runs: any[] = [];
+      for (let i = 0; i < IMPORT_RUNS; i++) {
+        const r = await probe({ mode: "barrel", imports: [serviceImport(pkg, service)] });
+        if (r.fatal) {
+          fail(pkg, "imports", `${service}: ${r.fatal}`);
+          return;
+        }
+        runs.push(r);
       }
-      record[pkg].services[service] = { importMs: r.importMs, heap: r.heap?.heapUsed };
+      record[pkg].services[service] = {
+        importMs: Math.min(...runs.map((r) => r.importMs)),
+        heap: runs[0].heap?.heapUsed,
+      };
     });
     // Each provider: one fresh process imports every service module it publishes.
     await pool(sdks, opts.runtimeJobs, async (pkg) => {
@@ -480,6 +505,11 @@ if (has("imports")) {
       if (!services.length) return;
       const imports = services.map((service, i) => serviceImport(pkg, service, `S${i}`));
       const r = await probe({ mode: "barrel", imports });
+      // Minimum import time over IMPORT_RUNS fresh processes (see above).
+      for (let i = 1; i < IMPORT_RUNS && !r.fatal; i++) {
+        const again = await probe({ mode: "barrel", imports });
+        if (!again.fatal) r.importMs = Math.min(r.importMs, again.importMs);
+      }
       if (r.fatal) {
         fail(pkg, "imports", `all services: ${r.fatal}`);
         return;

@@ -16,126 +16,145 @@ const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Geo Maps", serviceShapeName:
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "geo-maps" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2020-11-19");
 const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      if (UseDualStack === true) {
+        return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+      }
+      return e(Endpoint);
     }
-    if (UseDualStack === true) {
-      return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
-    }
-    return e(Endpoint);
-  }
-  if (Region != null) {
-    {
-      const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e(`https://maps.geo.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e(
-            `https://maps.geo-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-          );
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e(`https://maps.geo-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e(
-            `https://maps.geo.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-          );
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e(`https://maps.geo.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
-          UseFIPS === true &&
-          UseDualStack === true
-        ) {
-          return e(
-            `https://maps.geo-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-          );
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
-          UseFIPS === true &&
-          UseDualStack === false
-        ) {
-          return e(`https://maps.geo-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
-          UseFIPS === false &&
-          UseDualStack === true
-        ) {
-          return e(
-            `https://maps.geo.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-          );
-        }
-        if (UseFIPS === true && UseDualStack === true) {
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
           if (
-            true === _.getAttr(PartitionResult, "supportsFIPS") &&
-            true === _.getAttr(PartitionResult, "supportsDualStack")
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e(`https://maps.geo.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === true &&
+            UseDualStack === true
           ) {
             return e(
-              `https://geo-maps-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              `https://maps.geo-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
             );
           }
-          return err(
-            "FIPS and DualStack are enabled, but this partition does not support one or both",
-          );
-        }
-        if (UseFIPS === true && UseDualStack === false) {
-          if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
-            return e(`https://geo-maps-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+          if (
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e(`https://maps.geo-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
           }
-          return err("FIPS is enabled but this partition does not support FIPS");
-        }
-        if (UseFIPS === false && UseDualStack === true) {
-          if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+          if (
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
             return e(
-              `https://geo-maps.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              `https://maps.geo.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
             );
           }
-          return err("DualStack is enabled but this partition does not support DualStack");
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e(`https://maps.geo.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseFIPS === true &&
+            UseDualStack === true
+          ) {
+            return e(
+              `https://maps.geo-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+            );
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseFIPS === true &&
+            UseDualStack === false
+          ) {
+            return e(`https://maps.geo-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseFIPS === false &&
+            UseDualStack === true
+          ) {
+            return e(
+              `https://maps.geo.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+            );
+          }
+          if (UseFIPS === true && UseDualStack === true) {
+            if (
+              true === _.getAttr(PartitionResult, "supportsFIPS") &&
+              true === _.getAttr(PartitionResult, "supportsDualStack")
+            ) {
+              return e(
+                `https://geo-maps-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err(
+              "FIPS and DualStack are enabled, but this partition does not support one or both",
+            );
+          }
+          if (UseFIPS === true && UseDualStack === false) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              return e(
+                `https://geo-maps-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+              );
+            }
+            return err("FIPS is enabled but this partition does not support FIPS");
+          }
+          if (UseFIPS === false && UseDualStack === true) {
+            if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+              return e(
+                `https://geo-maps.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err("DualStack is enabled but this partition does not support DualStack");
+          }
+          return e(`https://geo-maps.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
         }
-        return e(`https://geo-maps.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://maps.geo.{R}.{D}","properties":{},"headers":{}}',
+  [
+    "cn-north-1",
+    "cn-northwest-1",
+    "aws-cn-global",
+    "us-iso-east-1",
+    "us-iso-west-1",
+    "aws-iso-global",
+    "us-isob-east-1",
+    "aws-iso-b-global",
+    "aws-iso-f-global",
+    "us-isof-east-1",
+    "us-isof-south-1",
+    "eusc-de-east-1",
+  ],
+);
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(

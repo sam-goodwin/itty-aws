@@ -17,97 +17,101 @@ const svc = /*@__PURE__*/ T.AwsApiService({
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "iotdata" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2015-05-28");
 const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const { Region, UseDualStack = false, UseFIPS = false, Endpoint } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      if (UseDualStack === true) {
+        return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+      }
+      return e(Endpoint);
     }
-    if (UseDualStack === true) {
-      return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
-    }
-    return e(Endpoint);
-  }
-  if (Region != null) {
-    {
-      const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (UseFIPS === true && UseDualStack === true) {
-          if (
-            true === _.getAttr(PartitionResult, "supportsFIPS") &&
-            true === _.getAttr(PartitionResult, "supportsDualStack")
-          ) {
-            return e(
-              `https://data-ats.iot-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
+          if (UseFIPS === true && UseDualStack === true) {
+            if (
+              true === _.getAttr(PartitionResult, "supportsFIPS") &&
+              true === _.getAttr(PartitionResult, "supportsDualStack")
+            ) {
+              return e(
+                `https://data-ats.iot-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err(
+              "FIPS and DualStack are enabled, but this partition does not support one or both",
             );
           }
-          return err(
-            "FIPS and DualStack are enabled, but this partition does not support one or both",
-          );
-        }
-        if (UseFIPS === true) {
-          if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
-            if (Region === "ca-central-1") {
-              return e("https://data.iot-fips.ca-central-1.amazonaws.com");
+          if (UseFIPS === true) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              if (Region === "ca-central-1") {
+                return e("https://data.iot-fips.ca-central-1.amazonaws.com");
+              }
+              if (Region === "us-east-1") {
+                return e("https://data.iot-fips.us-east-1.amazonaws.com");
+              }
+              if (Region === "us-east-2") {
+                return e("https://data.iot-fips.us-east-2.amazonaws.com");
+              }
+              if (Region === "us-west-1") {
+                return e("https://data.iot-fips.us-west-1.amazonaws.com");
+              }
+              if (Region === "us-west-2") {
+                return e("https://data.iot-fips.us-west-2.amazonaws.com");
+              }
+              if (Region === "us-gov-east-1") {
+                return e("https://data.iot-fips.us-gov-east-1.amazonaws.com");
+              }
+              if (Region === "us-gov-west-1") {
+                return e("https://data.iot-fips.us-gov-west-1.amazonaws.com");
+              }
+              return e(
+                `https://data-ats.iot-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+              );
             }
-            if (Region === "us-east-1") {
-              return e("https://data.iot-fips.us-east-1.amazonaws.com");
-            }
-            if (Region === "us-east-2") {
-              return e("https://data.iot-fips.us-east-2.amazonaws.com");
-            }
-            if (Region === "us-west-1") {
-              return e("https://data.iot-fips.us-west-1.amazonaws.com");
-            }
-            if (Region === "us-west-2") {
-              return e("https://data.iot-fips.us-west-2.amazonaws.com");
-            }
-            if (Region === "us-gov-east-1") {
-              return e("https://data.iot-fips.us-gov-east-1.amazonaws.com");
-            }
-            if (Region === "us-gov-west-1") {
-              return e("https://data.iot-fips.us-gov-west-1.amazonaws.com");
-            }
-            return e(
-              `https://data-ats.iot-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
-            );
+            return err("FIPS is enabled but this partition does not support FIPS");
           }
-          return err("FIPS is enabled but this partition does not support FIPS");
-        }
-        if (UseDualStack === true) {
-          if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
-            return e(
-              `https://data-ats.iot.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            );
+          if (UseDualStack === true) {
+            if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+              return e(
+                `https://data-ats.iot.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err("DualStack is enabled but this partition does not support DualStack");
           }
-          return err("DualStack is enabled but this partition does not support DualStack");
+          if (Region === "cn-north-1") {
+            return e("https://data.ats.iot.cn-north-1.amazonaws.com.cn");
+          }
+          if ("aws" === _.getAttr(PartitionResult, "name")) {
+            return e(`https://data-ats.iot.${Region}.amazonaws.com`);
+          }
+          if ("aws-cn" === _.getAttr(PartitionResult, "name")) {
+            return e(`https://data-ats.iot.${Region}.amazonaws.com.cn`);
+          }
+          if ("aws-us-gov" === _.getAttr(PartitionResult, "name")) {
+            return e(`https://data-ats.iot.${Region}.amazonaws.com`);
+          }
+          return e(`https://data-ats.iot.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
         }
-        if (Region === "cn-north-1") {
-          return e("https://data.ats.iot.cn-north-1.amazonaws.com.cn");
-        }
-        if ("aws" === _.getAttr(PartitionResult, "name")) {
-          return e(`https://data-ats.iot.${Region}.amazonaws.com`);
-        }
-        if ("aws-cn" === _.getAttr(PartitionResult, "name")) {
-          return e(`https://data-ats.iot.${Region}.amazonaws.com.cn`);
-        }
-        if ("aws-us-gov" === _.getAttr(PartitionResult, "name")) {
-          return e(`https://data-ats.iot.${Region}.amazonaws.com`);
-        }
-        return e(`https://data-ats.iot.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://data-ats.iot.{R}.{D}","properties":{},"headers":{}}',
+  ["cn-north-1"],
+);
 
 export class ConflictException
   extends /*@__PURE__*/ S.TaggedError<ConflictException>()(

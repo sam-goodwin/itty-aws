@@ -17,85 +17,105 @@ const svc = /*@__PURE__*/ T.AwsApiService({
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sustainability" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2018-05-10");
 const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { UseFIPS = false, Endpoint, Region } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  const _p0 = () => ({
-    authSchemes: [
-      { name: "sigv4a", signingRegionSet: ["*"] },
-      { name: "sigv4", signingRegion: "us-gov-west-1" },
-    ],
-  });
-  const _p1 = (_0: unknown) => ({
-    authSchemes: [
-      { name: "sigv4a", signingRegionSet: ["*"] },
-      { name: "sigv4", signingRegion: `${_.getAttr(_0, "implicitGlobalRegion")}` },
-    ],
-  });
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const { UseFIPS = false, Endpoint, Region } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    const _p0 = () => ({
+      authSchemes: [
+        { name: "sigv4a", signingRegionSet: ["*"] },
+        { name: "sigv4", signingRegion: "us-gov-west-1" },
+      ],
+    });
+    const _p1 = (_0: unknown) => ({
+      authSchemes: [
+        { name: "sigv4a", signingRegionSet: ["*"] },
+        { name: "sigv4", signingRegion: `${_.getAttr(_0, "implicitGlobalRegion")}` },
+      ],
+    });
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      return e(
+        Endpoint,
+        { authSchemes: [{ name: "sigv4a", signingRegionSet: ["*"] }, { name: "sigv4" }] },
+        {},
+      );
     }
-    return e(
-      Endpoint,
-      { authSchemes: [{ name: "sigv4a", signingRegionSet: ["*"] }, { name: "sigv4" }] },
-      {},
-    );
-  }
-  if (Region != null) {
-    {
-      const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (_.getAttr(PartitionResult, "name") === "aws" && UseFIPS === false) {
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
+          if (_.getAttr(PartitionResult, "name") === "aws" && UseFIPS === false) {
+            return e(
+              `https://api.sustainability.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              {
+                authSchemes: [
+                  { name: "sigv4a", signingRegionSet: ["*"] },
+                  { name: "sigv4", signingRegion: "us-east-1" },
+                ],
+              },
+              {},
+            );
+          }
+          if (_.getAttr(PartitionResult, "name") === "aws-us-gov" && UseFIPS === false) {
+            return e(
+              `https://sustainability.us-gov.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              _p0(),
+              {},
+            );
+          }
+          if (_.getAttr(PartitionResult, "name") === "aws-us-gov" && UseFIPS === true) {
+            return e(
+              `https://sustainability-fips.us-gov.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              _p0(),
+              {},
+            );
+          }
+          if (UseFIPS === true) {
+            return e(
+              `https://sustainability-fips.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              _p1(PartitionResult),
+              {},
+            );
+          }
           return e(
-            `https://api.sustainability.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            {
-              authSchemes: [
-                { name: "sigv4a", signingRegionSet: ["*"] },
-                { name: "sigv4", signingRegion: "us-east-1" },
-              ],
-            },
-            {},
-          );
-        }
-        if (_.getAttr(PartitionResult, "name") === "aws-us-gov" && UseFIPS === false) {
-          return e(
-            `https://sustainability.us-gov.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            _p0(),
-            {},
-          );
-        }
-        if (_.getAttr(PartitionResult, "name") === "aws-us-gov" && UseFIPS === true) {
-          return e(
-            `https://sustainability-fips.us-gov.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            _p0(),
-            {},
-          );
-        }
-        if (UseFIPS === true) {
-          return e(
-            `https://sustainability-fips.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+            `https://sustainability.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
             _p1(PartitionResult),
             {},
           );
         }
-        return e(
-          `https://sustainability.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-          _p1(PartitionResult),
-          {},
-        );
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://api.sustainability.{R}.api.aws","properties":{"authSchemes":[{"name":"sigv4a","signingRegionSet":["*"]},{"name":"sigv4","signingRegion":"us-east-1"}]},"headers":{}}',
+  [
+    "us-gov-west-1",
+    "us-gov-east-1",
+    "aws-us-gov-global",
+    "cn-north-1",
+    "cn-northwest-1",
+    "aws-cn-global",
+    "us-iso-east-1",
+    "us-iso-west-1",
+    "aws-iso-global",
+    "us-isob-east-1",
+    "aws-iso-b-global",
+    "aws-iso-f-global",
+    "us-isof-east-1",
+    "us-isof-south-1",
+    "eusc-de-east-1",
+  ],
+);
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(

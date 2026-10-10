@@ -20,12 +20,18 @@ import {
   type EndpointResolverHelpers,
   getContextParam,
   getEndpointResolver,
+  getEndpointTemplate,
   getStaticContextParams,
   hasHttpLabel,
 } from "../traits.ts";
 import { getPropertySignatures } from "../util/ast.ts";
 import { encodeLabel } from "../util/serialize-input.ts";
-import { isVirtualHostableS3Bucket, parseArn, partition } from "./aws-functions.ts";
+import {
+  isVirtualHostableS3Bucket,
+  parseArn,
+  partition,
+  regionDnsSuffix,
+} from "./aws-functions.ts";
 import type { EndpointParams, ResolvedEndpoint, RulesValue } from "./expression.ts";
 import { getAttr, isValidHostLabel, parseURL, substring, uriEncode } from "./standard-functions.ts";
 
@@ -99,6 +105,22 @@ export const makeEndpointResolver = (operation: Operation) => {
   // Extract static context params (done once)
   const staticContextParams = getStaticContextParams(inputAst);
 
+  // Region-only calls read the generator's precomputed template instead of
+  // running the rules (whose code would otherwise compile on first call).
+  const template = staticContextParams ? undefined : getEndpointTemplate(resolver);
+  const templated = template && new Map<string, ResolvedEndpoint | null>();
+  const fromTemplate = (region: string): ResolvedEndpoint | undefined => {
+    let hit = templated!.get(region);
+    if (hit === undefined) {
+      const dns = template!.exceptions.includes(region) ? undefined : regionDnsSuffix(region);
+      hit = dns
+        ? JSON.parse(template!.template.replaceAll("{R}", region).replaceAll("{D}", dns))
+        : null;
+      templated!.set(region, hit!);
+    }
+    return hit ?? undefined;
+  };
+
   // Resolution depends only on the endpoint parameters, so results are
   // cached per parameter set (region + context params from the input).
   const cache = new Map<string, Resolved>();
@@ -113,8 +135,10 @@ export const makeEndpointResolver = (operation: Operation) => {
 
     // Only primitive parameter values make a cache key; anything else resolves uncached.
     let key: string | undefined = region;
+    let regionOnly = true;
     for (const [propName] of contextParamMappings) {
       const value: unknown = payloadObj[propName];
+      if (value !== undefined) regionOnly = false;
       if (value !== null && typeof value === "object") {
         key = undefined;
         break;
@@ -142,18 +166,21 @@ export const makeEndpointResolver = (operation: Operation) => {
         }
       }
 
-      // Resolve endpoint using the compiled resolver
-      const result = resolver(endpointParams as Record<string, unknown>, endpointResolverHelpers);
+      let endpoint = templated && regionOnly ? fromTemplate(region) : undefined;
+      if (endpoint === undefined) {
+        // Resolve endpoint using the compiled resolver
+        const result = resolver(endpointParams as Record<string, unknown>, endpointResolverHelpers);
 
-      if (result.type === "error") {
-        return new Error(result.message);
+        if (result.type === "error") {
+          return new Error(result.message);
+        }
+
+        endpoint = {
+          url: result.endpoint.url,
+          properties: result.endpoint.properties as Record<string, RulesValue>,
+          headers: result.endpoint.headers,
+        };
       }
-
-      const endpoint: ResolvedEndpoint = {
-        url: result.endpoint.url,
-        properties: result.endpoint.properties as Record<string, RulesValue>,
-        headers: result.endpoint.headers,
-      };
       let hostname: string | undefined;
       try {
         hostname = new URL(endpoint.url).hostname;

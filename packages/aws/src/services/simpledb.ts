@@ -18,33 +18,51 @@ const svc = /*@__PURE__*/ T.AwsApiService({
 const auth = /*@__PURE__*/ T.AwsAuthSigv2({ name: "sdb" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2009-04-15");
 const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
-const rules = /*@__PURE__*/ T.EndpointResolver((p) => {
-  const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p) => {
+    const { UseDualStack = false, UseFIPS = false, Endpoint, Region } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      if (UseDualStack === true) {
+        return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+      }
+      return e(Endpoint);
     }
-    if (UseDualStack === true) {
-      return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+    if (Region != null) {
+      if (Region === "us-east-1") {
+        return e("https://sdb.amazonaws.com");
+      }
+      return e(`https://sdb.${Region}.amazonaws.com`);
     }
-    return e(Endpoint);
-  }
-  if (Region != null) {
-    if (Region === "us-east-1") {
-      return e("https://sdb.amazonaws.com");
-    }
-    return e(`https://sdb.${Region}.amazonaws.com`);
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://sdb.{R}.{D}","properties":{},"headers":{}}',
+  [
+    "us-east-1",
+    "cn-north-1",
+    "cn-northwest-1",
+    "aws-cn-global",
+    "us-iso-east-1",
+    "us-iso-west-1",
+    "aws-iso-global",
+    "us-isob-east-1",
+    "aws-iso-b-global",
+    "aws-iso-f-global",
+    "us-isof-east-1",
+    "us-isof-south-1",
+    "eusc-de-east-1",
+  ],
+);
 
 export class AttributeDoesNotExist
   extends /*@__PURE__*/ S.TaggedError<AttributeDoesNotExist>()("AttributeDoesNotExist", {

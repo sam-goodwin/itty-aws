@@ -80,7 +80,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://cloudhsmv2.{R}.{D}","properties":{},"headers":{}}');
 
 export class CloudHsmAccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<CloudHsmAccessDeniedException>()(

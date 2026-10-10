@@ -78,7 +78,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://elasticbeanstalk.{R}.{D}","properties":{},"headers":{}}');
 
 export class CodeBuildNotInServiceRegionException
   extends /*@__PURE__*/ S.TaggedError<CodeBuildNotInServiceRegionException>()(

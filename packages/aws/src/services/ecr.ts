@@ -315,7 +315,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://api.ecr.{R}.{D}","properties":{},"headers":{}}');
 
 export class BlockedByOrganizationPolicyException
   extends /*@__PURE__*/ S.TaggedError<BlockedByOrganizationPolicyException>()(

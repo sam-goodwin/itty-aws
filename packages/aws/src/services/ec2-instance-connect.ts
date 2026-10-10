@@ -76,7 +76,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://ec2-instance-connect.{R}.{D}","properties":{},"headers":{}}');
 
 export class AuthException
   extends /*@__PURE__*/ S.TaggedError<AuthException>()(
