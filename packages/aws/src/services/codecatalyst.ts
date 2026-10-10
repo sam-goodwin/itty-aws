@@ -18,49 +18,66 @@ const svc = /*@__PURE__*/ T.AwsApiService({
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "CodeCatalyst" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2022-09-28");
 const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { UseFIPS = false, Region, Endpoint } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  if (Endpoint != null) {
-    return e(Endpoint);
-  }
-  {
-    const PartitionResult = _.partition("us-west-2");
-    if (!(Region != null) && PartitionResult != null && PartitionResult !== false) {
-      if (UseFIPS === true) {
-        if (_.getAttr(PartitionResult, "supportsFIPS") === false) {
-          return err("Partition does not support FIPS.");
-        }
-        return e(
-          `https://codecatalyst-fips.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-        );
-      }
-      return e(`https://codecatalyst.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`);
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const { UseFIPS = false, Region, Endpoint } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    if (Endpoint != null) {
+      return e(Endpoint);
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (Region != null && PartitionResult != null && PartitionResult !== false) {
-      if (UseFIPS === true) {
-        if (_.getAttr(PartitionResult, "supportsFIPS") === false) {
-          return err("Partition does not support FIPS.");
+    {
+      const PartitionResult = _.partition("us-west-2");
+      if (!(Region != null) && PartitionResult != null && PartitionResult !== false) {
+        if (UseFIPS === true) {
+          if (_.getAttr(PartitionResult, "supportsFIPS") === false) {
+            return err("Partition does not support FIPS.");
+          }
+          return e(
+            `https://codecatalyst-fips.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+          );
         }
-        return e(
-          `https://codecatalyst-fips.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-        );
+        return e(`https://codecatalyst.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`);
       }
-      return e(`https://codecatalyst.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`);
     }
-  }
-  return err("No matching endpoint rule");
-});
+    {
+      const PartitionResult = _.partition(Region);
+      if (Region != null && PartitionResult != null && PartitionResult !== false) {
+        if (UseFIPS === true) {
+          if (_.getAttr(PartitionResult, "supportsFIPS") === false) {
+            return err("Partition does not support FIPS.");
+          }
+          return e(
+            `https://codecatalyst-fips.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+          );
+        }
+        return e(`https://codecatalyst.global.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`);
+      }
+    }
+    return err("No matching endpoint rule");
+  },
+  '{"url":"https://codecatalyst.global.api.aws","properties":{},"headers":{}}',
+  [
+    "cn-north-1",
+    "cn-northwest-1",
+    "aws-cn-global",
+    "us-iso-east-1",
+    "us-iso-west-1",
+    "aws-iso-global",
+    "us-isob-east-1",
+    "aws-iso-b-global",
+    "aws-iso-f-global",
+    "us-isof-east-1",
+    "us-isof-south-1",
+    "eusc-de-east-1",
+  ],
+);
 
 export type AccessTokenName = string;
 export interface CreateAccessTokenRequest {

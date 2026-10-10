@@ -74,7 +74,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://mediaconnect.{R}.{D}","properties":{},"headers":{}}');
 
 export class AddFlowOutputs420Exception
   extends /*@__PURE__*/ S.TaggedError<AddFlowOutputs420Exception>()(

@@ -77,7 +77,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://route53domains.{R}.{D}","properties":{},"headers":{}}');
 
 export class DnssecLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<DnssecLimitExceeded>()(

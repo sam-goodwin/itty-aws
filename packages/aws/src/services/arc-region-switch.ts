@@ -17,110 +17,127 @@ const svc = /*@__PURE__*/ T.AwsApiService({
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "arc-region-switch" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2022-07-26");
 const proto = /*@__PURE__*/ T.AwsProtocolsAwsJson1_0();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { UseFIPS = false, Endpoint, Region, UseControlPlaneEndpoint } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  const _p0 = (_0: unknown) => ({
-    authSchemes: [
-      {
-        name: "sigv4",
-        signingName: "arc-region-switch",
-        signingRegion: `${_.getAttr(_0, "implicitGlobalRegion")}`,
-      },
-    ],
-  });
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      UseControlPlaneEndpoint != null &&
-      UseControlPlaneEndpoint === true &&
-      Region != null &&
-      !(UseFIPS === true) &&
-      !(Endpoint != null) &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws-cn"
-    ) {
-      return e(
-        `https://arc-region-switch-control-plane.cn-north-1.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const { UseFIPS = false, Endpoint, Region, UseControlPlaneEndpoint } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    const _p0 = (_0: unknown) => ({
+      authSchemes: [
         {
-          authSchemes: [
-            { name: "sigv4", signingName: "arc-region-switch", signingRegion: "cn-north-1" },
-          ],
+          name: "sigv4",
+          signingName: "arc-region-switch",
+          signingRegion: `${_.getAttr(_0, "implicitGlobalRegion")}`,
         },
-        {},
-      );
-    }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      !(Endpoint != null) &&
-      UseControlPlaneEndpoint != null &&
-      UseControlPlaneEndpoint === true &&
-      Region != null &&
-      UseFIPS === true &&
-      PartitionResult != null &&
-      PartitionResult !== false
-    ) {
-      if (_.getAttr(PartitionResult, "name") === "aws-cn") {
-        return err("Invalid Configuration: FIPS is not supported in this partition");
-      }
-      return e(
-        `https://arc-region-switch-control-plane-fips.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-        _p0(PartitionResult),
-        {},
-      );
-    }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      UseControlPlaneEndpoint != null &&
-      UseControlPlaneEndpoint === true &&
-      Region != null &&
-      !(UseFIPS === true) &&
-      !(Endpoint != null) &&
-      PartitionResult != null &&
-      PartitionResult !== false
-    ) {
-      return e(
-        `https://arc-region-switch-control-plane.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-        _p0(PartitionResult),
-        {},
-      );
-    }
-  }
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
-    }
-    return e(Endpoint);
-  }
-  if (Region != null) {
+      ],
+    });
     {
       const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (UseFIPS === true) {
-          return e(
-            `https://arc-region-switch-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-          );
-        }
+      if (
+        UseControlPlaneEndpoint != null &&
+        UseControlPlaneEndpoint === true &&
+        Region != null &&
+        !(UseFIPS === true) &&
+        !(Endpoint != null) &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws-cn"
+      ) {
         return e(
-          `https://arc-region-switch.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+          `https://arc-region-switch-control-plane.cn-north-1.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+          {
+            authSchemes: [
+              { name: "sigv4", signingName: "arc-region-switch", signingRegion: "cn-north-1" },
+            ],
+          },
+          {},
         );
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        !(Endpoint != null) &&
+        UseControlPlaneEndpoint != null &&
+        UseControlPlaneEndpoint === true &&
+        Region != null &&
+        UseFIPS === true &&
+        PartitionResult != null &&
+        PartitionResult !== false
+      ) {
+        if (_.getAttr(PartitionResult, "name") === "aws-cn") {
+          return err("Invalid Configuration: FIPS is not supported in this partition");
+        }
+        return e(
+          `https://arc-region-switch-control-plane-fips.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+          _p0(PartitionResult),
+          {},
+        );
+      }
+    }
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        UseControlPlaneEndpoint != null &&
+        UseControlPlaneEndpoint === true &&
+        Region != null &&
+        !(UseFIPS === true) &&
+        !(Endpoint != null) &&
+        PartitionResult != null &&
+        PartitionResult !== false
+      ) {
+        return e(
+          `https://arc-region-switch-control-plane.${_.getAttr(PartitionResult, "implicitGlobalRegion")}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+          _p0(PartitionResult),
+          {},
+        );
+      }
+    }
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      return e(Endpoint);
+    }
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
+          if (UseFIPS === true) {
+            return e(
+              `https://arc-region-switch-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+            );
+          }
+          return e(
+            `https://arc-region-switch.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+          );
+        }
+      }
+    }
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://arc-region-switch.{R}.api.aws","properties":{},"headers":{}}',
+  [
+    "cn-north-1",
+    "cn-northwest-1",
+    "aws-cn-global",
+    "us-iso-east-1",
+    "us-iso-west-1",
+    "aws-iso-global",
+    "us-isob-east-1",
+    "aws-iso-b-global",
+    "aws-iso-f-global",
+    "us-isof-east-1",
+    "us-isof-south-1",
+    "eusc-de-east-1",
+  ],
+);
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()(

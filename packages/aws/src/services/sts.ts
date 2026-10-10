@@ -20,135 +20,145 @@ const svc = /*@__PURE__*/ T.AwsApiService({
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "sts" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2011-06-15");
 const proto = /*@__PURE__*/ T.AwsProtocolsAwsQuery();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const { Region, UseDualStack = false, UseFIPS = false, Endpoint, UseGlobalEndpoint = false } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  const _p0 = () => ({
-    authSchemes: [{ name: "sigv4", signingName: "sts", signingRegion: "us-east-1" }],
-  });
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      UseGlobalEndpoint === true &&
-      !(Endpoint != null) &&
-      Region != null &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      UseFIPS === false &&
-      UseDualStack === false
-    ) {
-      if (Region === "ap-northeast-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "ap-south-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "ap-southeast-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "ap-southeast-2") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "aws-global") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "ca-central-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "eu-central-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "eu-north-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "eu-west-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "eu-west-2") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "eu-west-3") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "sa-east-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "us-east-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "us-east-2") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "us-west-1") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      if (Region === "us-west-2") {
-        return e("https://sts.amazonaws.com", _p0(), {});
-      }
-      return e(
-        `https://sts.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
-        { authSchemes: [{ name: "sigv4", signingName: "sts", signingRegion: `${Region}` }] },
-        {},
-      );
-    }
-  }
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
-    }
-    if (UseDualStack === true) {
-      return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
-    }
-    return e(Endpoint);
-  }
-  if (Region != null) {
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const {
+      Region,
+      UseDualStack = false,
+      UseFIPS = false,
+      Endpoint,
+      UseGlobalEndpoint = false,
+    } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    const _p0 = () => ({
+      authSchemes: [{ name: "sigv4", signingName: "sts", signingRegion: "us-east-1" }],
+    });
     {
       const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (UseFIPS === true && UseDualStack === true) {
-          if (
-            true === _.getAttr(PartitionResult, "supportsFIPS") &&
-            true === _.getAttr(PartitionResult, "supportsDualStack")
-          ) {
-            return e(
-              `https://sts-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            );
-          }
-          return err(
-            "FIPS and DualStack are enabled, but this partition does not support one or both",
-          );
+      if (
+        UseGlobalEndpoint === true &&
+        !(Endpoint != null) &&
+        Region != null &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        UseFIPS === false &&
+        UseDualStack === false
+      ) {
+        if (Region === "ap-northeast-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
         }
-        if (UseFIPS === true) {
-          if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
-            if (_.getAttr(PartitionResult, "name") === "aws-us-gov") {
-              return e(`https://sts.${Region}.amazonaws.com`);
-            }
-            return e(`https://sts-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
-          }
-          return err("FIPS is enabled but this partition does not support FIPS");
+        if (Region === "ap-south-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
         }
-        if (UseDualStack === true) {
-          if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
-            return e(`https://sts.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`);
-          }
-          return err("DualStack is enabled but this partition does not support DualStack");
+        if (Region === "ap-southeast-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "ap-southeast-2") {
+          return e("https://sts.amazonaws.com", _p0(), {});
         }
         if (Region === "aws-global") {
           return e("https://sts.amazonaws.com", _p0(), {});
         }
-        return e(`https://sts.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+        if (Region === "ca-central-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "eu-central-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "eu-north-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "eu-west-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "eu-west-2") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "eu-west-3") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "sa-east-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "us-east-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "us-east-2") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "us-west-1") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        if (Region === "us-west-2") {
+          return e("https://sts.amazonaws.com", _p0(), {});
+        }
+        return e(
+          `https://sts.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`,
+          { authSchemes: [{ name: "sigv4", signingName: "sts", signingRegion: `${Region}` }] },
+          {},
+        );
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      if (UseDualStack === true) {
+        return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+      }
+      return e(Endpoint);
+    }
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
+          if (UseFIPS === true && UseDualStack === true) {
+            if (
+              true === _.getAttr(PartitionResult, "supportsFIPS") &&
+              true === _.getAttr(PartitionResult, "supportsDualStack")
+            ) {
+              return e(
+                `https://sts-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err(
+              "FIPS and DualStack are enabled, but this partition does not support one or both",
+            );
+          }
+          if (UseFIPS === true) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              if (_.getAttr(PartitionResult, "name") === "aws-us-gov") {
+                return e(`https://sts.${Region}.amazonaws.com`);
+              }
+              return e(`https://sts-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+            }
+            return err("FIPS is enabled but this partition does not support FIPS");
+          }
+          if (UseDualStack === true) {
+            if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+              return e(`https://sts.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`);
+            }
+            return err("DualStack is enabled but this partition does not support DualStack");
+          }
+          if (Region === "aws-global") {
+            return e("https://sts.amazonaws.com", _p0(), {});
+          }
+          return e(`https://sts.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+        }
+      }
+    }
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://sts.{R}.{D}","properties":{},"headers":{}}',
+  ["aws-global"],
+);
 
 export class ExpiredTokenException
   extends /*@__PURE__*/ S.TaggedError<ExpiredTokenException>()(

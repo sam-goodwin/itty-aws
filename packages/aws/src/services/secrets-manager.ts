@@ -91,7 +91,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://secretsmanager.{R}.{D}","properties":{},"headers":{}}');
 
 export class DecryptionFailure
   extends /*@__PURE__*/ S.TaggedError<DecryptionFailure>()("DecryptionFailure", {

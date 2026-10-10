@@ -374,7 +374,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://dynamodb.{R}.{D}","properties":{},"headers":{}}');
 
 export class BackupInUseException
   extends /*@__PURE__*/ S.TaggedError<BackupInUseException>()("BackupInUseException", {

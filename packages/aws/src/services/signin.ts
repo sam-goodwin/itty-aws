@@ -16,282 +16,302 @@ const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Signin", serviceShapeName: "
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "signin" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2023-01-01");
 const proto = /*@__PURE__*/ T.AwsProtocolsRestJson1();
-const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
-  const {
-    UseDualStack = false,
-    UseFIPS = false,
-    Endpoint,
-    Region,
-    IsControlPlane,
-    IsOAuthEndpoint,
-  } = p;
-  const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
-    type: "endpoint" as const,
-    endpoint: { url: u as string, properties: p, headers: h },
-  });
-  const err = (m: unknown): T.EndpointResolverResult => ({
-    type: "error" as const,
-    message: m as string,
-  });
-  const _p0 = (_0: unknown) => ({
-    authSchemes: [{ name: "sigv4", signingName: "signin", signingRegion: `${_0}` }],
-  });
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      IsControlPlane != null &&
-      IsControlPlane === true &&
-      Region != null &&
-      PartitionResult != null &&
-      PartitionResult !== false
-    ) {
-      if (_.getAttr(PartitionResult, "name") === "aws") {
-        return e(`https://signin.${Region}.api.aws`, _p0(Region), {});
+const rules = /*@__PURE__*/ T.EndpointResolver(
+  (p, _) => {
+    const {
+      UseDualStack = false,
+      UseFIPS = false,
+      Endpoint,
+      Region,
+      IsControlPlane,
+      IsOAuthEndpoint,
+    } = p;
+    const e = (u: unknown, p = {}, h = {}): T.EndpointResolverResult => ({
+      type: "endpoint" as const,
+      endpoint: { url: u as string, properties: p, headers: h },
+    });
+    const err = (m: unknown): T.EndpointResolverResult => ({
+      type: "error" as const,
+      message: m as string,
+    });
+    const _p0 = (_0: unknown) => ({
+      authSchemes: [{ name: "sigv4", signingName: "signin", signingRegion: `${_0}` }],
+    });
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        IsControlPlane != null &&
+        IsControlPlane === true &&
+        Region != null &&
+        PartitionResult != null &&
+        PartitionResult !== false
+      ) {
+        if (_.getAttr(PartitionResult, "name") === "aws") {
+          return e(`https://signin.${Region}.api.aws`, _p0(Region), {});
+        }
+        if (_.getAttr(PartitionResult, "name") === "aws-cn") {
+          return e(`https://signin.${Region}.api.amazonwebservices.com.cn`, _p0(Region), {});
+        }
+        return e(
+          `https://signin.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+          _p0(Region),
+          {},
+        );
       }
-      if (_.getAttr(PartitionResult, "name") === "aws-cn") {
-        return e(`https://signin.${Region}.api.amazonwebservices.com.cn`, _p0(Region), {});
-      }
-      return e(
-        `https://signin.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-        _p0(Region),
-        {},
+    }
+    if (IsOAuthEndpoint != null && IsOAuthEndpoint === true && UseFIPS === true) {
+      return err(
+        "FIPS endpoints are not supported for OAuth operations. Disable FIPS or use a non-OAuth operation.",
       );
     }
-  }
-  if (IsOAuthEndpoint != null && IsOAuthEndpoint === true && UseFIPS === true) {
-    return err(
-      "FIPS endpoints are not supported for OAuth operations. Disable FIPS or use a non-OAuth operation.",
-    );
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      IsOAuthEndpoint != null &&
-      IsOAuthEndpoint === true &&
-      Region != null &&
-      !(Endpoint != null) &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws"
-    ) {
-      return e(`https://${Region}.oauth.signin.aws`, _p0(Region), {});
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        IsOAuthEndpoint != null &&
+        IsOAuthEndpoint === true &&
+        Region != null &&
+        !(Endpoint != null) &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws"
+      ) {
+        return e(`https://${Region}.oauth.signin.aws`, _p0(Region), {});
+      }
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      Region != null &&
-      !(Endpoint != null) &&
-      UseFIPS === false &&
-      UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws"
-    ) {
-      return e(`https://${Region}.signin.aws.amazon.com`);
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === false &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws"
+      ) {
+        return e(`https://${Region}.signin.aws.amazon.com`);
+      }
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      Region != null &&
-      !(Endpoint != null) &&
-      UseFIPS === false &&
-      UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws-cn"
-    ) {
-      return e(`https://${Region}.signin.amazonaws.cn`);
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === false &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws-cn"
+      ) {
+        return e(`https://${Region}.signin.amazonaws.cn`);
+      }
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      Region != null &&
-      !(Endpoint != null) &&
-      UseFIPS === false &&
-      UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws-us-gov"
-    ) {
-      return e(`https://${Region}.signin.amazonaws-us-gov.com`);
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === false &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws-us-gov"
+      ) {
+        return e(`https://${Region}.signin.amazonaws-us-gov.com`);
+      }
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      Region != null &&
-      !(Endpoint != null) &&
-      UseFIPS === false &&
-      UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws-iso"
-    ) {
-      return e(`https://${Region}.signin.c2shome.ic.gov`);
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === false &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws-iso"
+      ) {
+        return e(`https://${Region}.signin.c2shome.ic.gov`);
+      }
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      Region != null &&
-      !(Endpoint != null) &&
-      UseFIPS === false &&
-      UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws-iso-b"
-    ) {
-      return e(`https://${Region}.signin.sc2shome.sgov.gov`);
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === false &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws-iso-b"
+      ) {
+        return e(`https://${Region}.signin.sc2shome.sgov.gov`);
+      }
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      Region != null &&
-      !(Endpoint != null) &&
-      UseFIPS === false &&
-      UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws-iso-f"
-    ) {
-      return e(`https://${Region}.signin.csphome.hci.ic.gov`);
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === false &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws-iso-f"
+      ) {
+        return e(`https://${Region}.signin.csphome.hci.ic.gov`);
+      }
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      Region != null &&
-      !(Endpoint != null) &&
-      UseFIPS === false &&
-      UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws-iso-e"
-    ) {
-      return e(`https://${Region}.signin.csphome.adc-e.uk`);
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === false &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws-iso-e"
+      ) {
+        return e(`https://${Region}.signin.csphome.adc-e.uk`);
+      }
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      Region != null &&
-      !(Endpoint != null) &&
-      UseFIPS === false &&
-      UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws-eusc"
-    ) {
-      return e(`https://${Region}.signin.amazonaws-eusc.eu`);
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === false &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws-eusc"
+      ) {
+        return e(`https://${Region}.signin.amazonaws-eusc.eu`);
+      }
     }
-  }
-  if (
-    Region != null &&
-    !(Endpoint != null) &&
-    UseFIPS === true &&
-    UseDualStack === false &&
-    Region === "us-gov-west-1"
-  ) {
-    return e("https://signin-fips.amazonaws-us-gov.com");
-  }
-  {
-    const PartitionResult = _.partition(Region);
     if (
       Region != null &&
       !(Endpoint != null) &&
       UseFIPS === true &&
       UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false &&
-      _.getAttr(PartitionResult, "name") === "aws-us-gov"
+      Region === "us-gov-west-1"
     ) {
-      return e(`https://${Region}.signin-fips.amazonaws-us-gov.com`);
+      return e("https://signin-fips.amazonaws-us-gov.com");
     }
-  }
-  {
-    const PartitionResult = _.partition(Region);
-    if (
-      Region != null &&
-      !(Endpoint != null) &&
-      UseFIPS === false &&
-      UseDualStack === false &&
-      PartitionResult != null &&
-      PartitionResult !== false
-    ) {
-      return e(`https://${Region}.signin.${_.getAttr(PartitionResult, "dnsSuffix")}`);
-    }
-  }
-  if (Endpoint != null) {
-    if (UseFIPS === true) {
-      return err("Invalid Configuration: FIPS and custom endpoint are not supported");
-    }
-    if (UseDualStack === true) {
-      return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
-    }
-    return e(Endpoint);
-  }
-  if (Region != null) {
     {
       const PartitionResult = _.partition(Region);
-      if (PartitionResult != null && PartitionResult !== false) {
-        if (
-          _.getAttr(PartitionResult, "name") === "aws" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e(`https://${Region}.signin.aws.amazon.com`);
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-cn" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e(`https://${Region}.signin.amazonaws.cn`);
-        }
-        if (
-          _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
-          UseFIPS === false &&
-          UseDualStack === false
-        ) {
-          return e(`https://${Region}.signin.amazonaws-us-gov.com`);
-        }
-        if (UseFIPS === true && UseDualStack === true) {
-          if (
-            true === _.getAttr(PartitionResult, "supportsFIPS") &&
-            true === _.getAttr(PartitionResult, "supportsDualStack")
-          ) {
-            return e(
-              `https://signin-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            );
-          }
-          return err(
-            "FIPS and DualStack are enabled, but this partition does not support one or both",
-          );
-        }
-        if (UseFIPS === true && UseDualStack === false) {
-          if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
-            return e(`https://signin-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
-          }
-          return err("FIPS is enabled but this partition does not support FIPS");
-        }
-        if (UseFIPS === false && UseDualStack === true) {
-          if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
-            return e(
-              `https://signin.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
-            );
-          }
-          return err("DualStack is enabled but this partition does not support DualStack");
-        }
-        return e(`https://signin.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === true &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false &&
+        _.getAttr(PartitionResult, "name") === "aws-us-gov"
+      ) {
+        return e(`https://${Region}.signin-fips.amazonaws-us-gov.com`);
       }
     }
-  }
-  return err("Invalid Configuration: Missing Region");
-});
+    {
+      const PartitionResult = _.partition(Region);
+      if (
+        Region != null &&
+        !(Endpoint != null) &&
+        UseFIPS === false &&
+        UseDualStack === false &&
+        PartitionResult != null &&
+        PartitionResult !== false
+      ) {
+        return e(`https://${Region}.signin.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+      }
+    }
+    if (Endpoint != null) {
+      if (UseFIPS === true) {
+        return err("Invalid Configuration: FIPS and custom endpoint are not supported");
+      }
+      if (UseDualStack === true) {
+        return err("Invalid Configuration: Dualstack and custom endpoint are not supported");
+      }
+      return e(Endpoint);
+    }
+    if (Region != null) {
+      {
+        const PartitionResult = _.partition(Region);
+        if (PartitionResult != null && PartitionResult !== false) {
+          if (
+            _.getAttr(PartitionResult, "name") === "aws" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e(`https://${Region}.signin.aws.amazon.com`);
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-cn" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e(`https://${Region}.signin.amazonaws.cn`);
+          }
+          if (
+            _.getAttr(PartitionResult, "name") === "aws-us-gov" &&
+            UseFIPS === false &&
+            UseDualStack === false
+          ) {
+            return e(`https://${Region}.signin.amazonaws-us-gov.com`);
+          }
+          if (UseFIPS === true && UseDualStack === true) {
+            if (
+              true === _.getAttr(PartitionResult, "supportsFIPS") &&
+              true === _.getAttr(PartitionResult, "supportsDualStack")
+            ) {
+              return e(
+                `https://signin-fips.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err(
+              "FIPS and DualStack are enabled, but this partition does not support one or both",
+            );
+          }
+          if (UseFIPS === true && UseDualStack === false) {
+            if (_.getAttr(PartitionResult, "supportsFIPS") === true) {
+              return e(`https://signin-fips.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+            }
+            return err("FIPS is enabled but this partition does not support FIPS");
+          }
+          if (UseFIPS === false && UseDualStack === true) {
+            if (true === _.getAttr(PartitionResult, "supportsDualStack")) {
+              return e(
+                `https://signin.${Region}.${_.getAttr(PartitionResult, "dualStackDnsSuffix")}`,
+              );
+            }
+            return err("DualStack is enabled but this partition does not support DualStack");
+          }
+          return e(`https://signin.${Region}.${_.getAttr(PartitionResult, "dnsSuffix")}`);
+        }
+      }
+    }
+    return err("Invalid Configuration: Missing Region");
+  },
+  '{"url":"https://{R}.signin.aws.amazon.com","properties":{},"headers":{}}',
+  [
+    "us-gov-west-1",
+    "us-gov-east-1",
+    "aws-us-gov-global",
+    "cn-north-1",
+    "cn-northwest-1",
+    "aws-cn-global",
+    "us-iso-east-1",
+    "us-iso-west-1",
+    "aws-iso-global",
+    "us-isob-east-1",
+    "aws-iso-b-global",
+    "aws-iso-f-global",
+    "us-isof-east-1",
+    "us-isof-south-1",
+    "eusc-de-east-1",
+  ],
+);
 
 export class AccessDeniedException
   extends /*@__PURE__*/ S.TaggedError<AccessDeniedException>()("AccessDeniedException", {

@@ -78,7 +78,7 @@ const rules = /*@__PURE__*/ T.EndpointResolver((p, _) => {
     }
   }
   return err("Invalid Configuration: Missing Region");
-});
+}, '{"url":"https://mturk-requester.{R}.{D}","properties":{},"headers":{}}');
 
 export class RequestError
   extends /*@__PURE__*/ S.TaggedError<RequestError>()(
