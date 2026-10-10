@@ -51,6 +51,9 @@ const { rolldown, RUNTIME_MODULE_ID } = (await import(require.resolve("rolldown"
 const { parseAst } = (await import(require.resolve("rolldown/parseAst"))) as {
   parseAst: (code: string, options: object, filename: string) => any;
 };
+const { datafyOperations } = (await import(
+  join(ROOT, "packages", "core", "src", "codegen", "datafy.ts")
+)) as typeof import("../packages/core/src/codegen/datafy.ts");
 
 /** Core modules by group, in load order. Modules not listed are entries of their own. */
 const CORE_GROUPS: Record<string, string[]> = {
@@ -580,6 +583,11 @@ const buildPackage = async (
     transform(code: string, id: string) {
       if (!id.startsWith(src + "/") || !id.endsWith(".ts")) return;
       const m = noExt(rel(src, id));
+      // Service modules ship as data operations (see core/codegen/datafy.ts);
+      // this is the same rewrite strip-lib-docs applies to tsc's output, done
+      // here on the source because the bundled, minified output no longer
+      // has the shape datafy reads.
+      if (m.startsWith("services/")) code = datafyOperations(code, id).code;
       const own = groupOf.get(m);
       const deps = graph.get(m);
       // Services are not in the parsed graph (too big to parse twice); they import the SDK group.
