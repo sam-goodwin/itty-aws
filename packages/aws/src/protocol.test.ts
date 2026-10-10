@@ -84,7 +84,7 @@ const run = async (
           Layer.succeed(HttpClient.HttpClient, client),
         ),
       ),
-    ),
+    ) as Effect.Effect<unknown, unknown>,
   );
   return {
     sent,
