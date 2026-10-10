@@ -1,4 +1,3 @@
-import * as Effect from "effect/Effect";
 import { describe, expect, it } from "vitest";
 import * as IAM from "../services/iam.ts";
 import * as KMS from "../services/kms.ts";
@@ -29,8 +28,12 @@ const regions = [
 
 const request = { method: "GET", path: "/", query: {}, headers: {}, body: undefined } as any;
 
-const resolve = (op: any, input: unknown, region: string) =>
-  Effect.runSync(makeEndpointResolver(op)!({ input, region, request }) as any) as any;
+/** The resolved endpoint and request; throws the rule set's error. */
+const resolve = (op: any, input: unknown, region: string) => {
+  const result = makeEndpointResolver(op)!({ input, region, request });
+  if (result instanceof Error) throw result;
+  return result;
+};
 
 describe("Region-only endpoint templates", () => {
   const ops = {
@@ -60,18 +63,23 @@ describe("Region-only endpoint templates", () => {
     });
   }
 
-  it("serves Region-only calls from the template, and the rest from the rules", () => {
-    const run = (op: any, input: unknown) => {
-      const resolver = makeEndpointResolver(op)!;
-      const once = () =>
-        (Effect.runSync(resolver({ input, region: "eu-west-1", request }) as any) as any).endpoint;
-      return [once(), once()];
+  it("serves Region-only calls from the template, and caches every parameter set", () => {
+    const resolver = makeEndpointResolver(S3.getObject as any)!;
+    const endpoint = (input: unknown) => {
+      const result = resolver({ input, region: "eu-west-1", request });
+      if (result instanceof Error) throw result;
+      return result.endpoint;
     };
     // A templated endpoint is parsed once per region and then shared.
-    const [a, b] = run(S3.listBuckets, {});
-    expect(a).toBe(b);
-    const [c, d] = run(S3.getObject, { Bucket: "bench-bucket", Key: "k" });
-    expect(c).not.toBe(d);
+    const listBuckets = makeEndpointResolver(S3.listBuckets as any)!;
+    const once = () => (listBuckets({ input: {}, region: "eu-west-1", request }) as any).endpoint;
+    expect(once()).toBe(once());
+    // Calls with context params run the rules once per parameter set.
+    const c = endpoint({ Bucket: "bench-bucket", Key: "k" });
+    expect(endpoint({ Bucket: "bench-bucket", Key: "k" })).toBe(c);
     expect(c.url).toBe("https://bench-bucket.s3.eu-west-1.amazonaws.com");
+    expect(endpoint({ Bucket: "other-bucket", Key: "k" }).url).toBe(
+      "https://other-bucket.s3.eu-west-1.amazonaws.com",
+    );
   });
 });
