@@ -18,6 +18,8 @@
  *   index.js, services/*.js
  *                       real entry chunks; they import the group chunks directly.
  *   _chunks/*.js        lazily imported code (AWS protocols, credential providers).
+ *   services.full/*.js  the service entry chunks, for bundlers; services/*.js
+ *                       are then Node's lazy stubs (see lazy-services.ts).
  *
  * SDK chunks import core through `@distilled.cloud/core/_bundle/<group>`, never
  * through core's facades. Each source module lands in exactly one chunk, so
