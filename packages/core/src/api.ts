@@ -905,7 +905,13 @@ interface LazyService {
   readonly url: string;
   readonly spec: string;
   readonly kinds: string;
-  readonly names: (() => string) | undefined;
+  /** Namespaces of the full module's imports, when it has a slice index. */
+  readonly ns: readonly any[] | undefined;
+  /** Byte range of the slice index, a comment at the end of the full module. */
+  readonly at: number | undefined;
+  readonly len: number | undefined;
+  /** The slice index (see {@link sliced}); false: load the whole module. */
+  ix?: SliceIndex | false;
   readonly o: any[];
   readonly e: any[];
   /** Data functions by placeholder, filled while the full module loads. */
@@ -936,11 +942,8 @@ const load = (svc: LazyService): void => {
   svc.ed = [];
   const outer = loading;
   loading = svc;
-  let ns: any;
   try {
-    ns = (globalThis as any).process.getBuiltinModule("node:module").createRequire(svc.url)(
-      svc.spec,
-    );
+    (globalThis as any).process.getBuiltinModule("node:module").createRequire(svc.url)(svc.spec);
   } catch (e) {
     svc.od = svc.ed = undefined;
     svc.oi = svc.ei = 0;
@@ -948,16 +951,285 @@ const load = (svc: LazyService): void => {
   } finally {
     loading = outer;
   }
-  if (svc.oi === 0 && svc.ei === 0 && svc.names) {
-    // Evaluated before: read the data of its own objects.
-    const names = svc.names().split(" ");
-    svc.od = names.slice(0, svc.o.length).map((n) => ns[n]);
-    svc.ed = names.slice(svc.o.length).map((n) => ns[n]);
-    svc.ed.forEach((e, i) => e && Object.defineProperty(svc.e[i], "name", { value: e.name }));
-  } else if (svc.oi !== svc.o.length || svc.ei !== svc.e.length)
+  if (svc.oi !== svc.o.length || svc.ei !== svc.e.length)
     throw new Error(
-      `distilled: ${svc.spec} defined ${svc.oi} of ${svc.o.length} operations and ${svc.ei} of ${svc.e.length} errors`,
+      `distilled: ${svc.spec} defined ${svc.oi} of ${svc.o.length} operations and ${svc.ei} of ${svc.e.length} errors (was it imported directly before?)`,
     );
+};
+
+/**
+ * Per-operation loading. bundle-lib ends a full module with a comment
+ * holding its slice index (see scripts/lazy-services.ts): for every top-level
+ * declaration, the byte range of its expression and the declarations it may
+ * read. A placeholder's first use evaluates only its own data function and,
+ * on demand, what that reaches -- one `Function` per declaration, the
+ * module's imports and its dependencies passed in as parameters -- instead
+ * of the whole module. Function declarations (the shared schema holders)
+ * become forwarding functions compiled on their first call, so cycles
+ * between them need no order. Without an index, or where code generation
+ * from strings is disallowed, the whole module is loaded instead.
+ */
+interface SliceIndex {
+  readonly file: string;
+  /** Open while a burst of evaluations runs; closed in a microtask. */
+  fd?: number;
+  /** The index text, and where its sections start. */
+  readonly raw: string;
+  readonly imports: number;
+  readonly importsAt: number;
+  readonly namesAt: number;
+  readonly tableAt: number;
+  readonly linesAt: number;
+  /** Split on first use: import specs, declaration names. */
+  specs?: string[];
+  names?: string[];
+  readonly importValues: unknown[];
+  /** Values by declaration; `busy` marks one being evaluated. */
+  readonly v: unknown[];
+}
+
+const busy = {};
+
+const node = (m: string): any => (globalThis as any).process?.getBuiltinModule?.(m);
+
+/** Reads `length` bytes at `position` of the full module. */
+const read = (ix: { file: string; fd?: number }, position: number, length: number): string => {
+  const fs = node("node:fs");
+  if (ix.fd === undefined) {
+    ix.fd = fs.openSync(ix.file, "r") as number;
+    queueMicrotask(() => {
+      fs.closeSync(ix.fd);
+      ix.fd = undefined;
+    });
+  }
+  const buf = new Uint8Array(length);
+  fs.readSync(ix.fd, buf, 0, length, position);
+  return new TextDecoder().decode(buf);
+};
+
+const indexOf = (file: string, raw: string): SliceIndex => {
+  const importsAt = raw.indexOf("\n") + 1;
+  const namesAt = raw.indexOf("\n", importsAt) + 1;
+  const tableAt = raw.indexOf("\n", namesAt) + 1;
+  return {
+    file,
+    raw,
+    imports: parseInt(raw),
+    importsAt,
+    namesAt,
+    tableAt,
+    linesAt: raw.indexOf("\n", tableAt) + 1,
+    importValues: [],
+    v: [],
+  };
+};
+
+const fileOf = (svc: LazyService): string =>
+  node("node:url").fileURLToPath(new URL(svc.spec, svc.url));
+
+const sliced = (svc: LazyService): SliceIndex | false => {
+  if (svc.ix !== undefined) return svc.ix;
+  svc.ix = false;
+  if (svc.at === undefined || svc.od) return false;
+  try {
+    Function("");
+    const file = fileOf(svc);
+    svc.ix = indexOf(file, read({ file }, svc.at, svc.len!));
+    svc.od = [];
+    svc.ed = [];
+  } catch {}
+  return svc.ix;
+};
+
+/**
+ * The first sliced operation of a process would also pay for compiling this
+ * runtime and for Node setting up file reads and text decoding (~0.4 ms;
+ * each further service costs ~0.07 ms). The first lazy service runs the
+ * slice path once on a one-line index instead, while it is imported; it
+ * reads one byte of its full module and keeps nothing.
+ */
+let warmed = false;
+const warm = (svc: LazyService): void => {
+  warmed = true;
+  try {
+    const fake: LazyService = { ...svc, o: [undefined], e: [], od: [], ed: [] };
+    // An operation (with a name stem) reaching a data holder, a code holder
+    // and a value that is passed a function.
+    const lines = ["2 0 1|=x;0 1;0,2,3,4", "1 0 1|=;0 1;0", "1 0 1|;0 1 1;|", "0 0 1|(0 1 0 1 1 |"];
+    let at = 0;
+    const table = [...lines, ""]
+      .map((l) => [(at += l.length + 1) - l.length - 1][0]!.toString(36).padStart(5, "0"))
+      .join("");
+    let name = "x";
+    for (const k in svc.ns?.[0]) {
+      name = k;
+      break;
+    }
+    fake.ix = indexOf(fileOf(svc), `1 4\nq:0:${name}\nA B C E\n${table}\n${lines.join("\n")}`);
+    for (const r of dataOf(fake, 0, 0)(D)[1]) if (typeof r === "function") r();
+    Function("q", `"use strict";return(q\n)`)(0);
+    read({ file: fake.ix.file }, svc.at!, 1);
+  } catch {}
+};
+
+/** The index line of declaration `k`. */
+const lineOf = (ix: SliceIndex, k: number): string => {
+  const at = ix.tableAt + 5 * k;
+  return ix.raw.slice(
+    ix.linesAt + parseInt(ix.raw.slice(at, at + 5), 36),
+    ix.linesAt + parseInt(ix.raw.slice(at + 5, at + 10), 36) - 1,
+  );
+};
+
+const nameOf = (ix: SliceIndex, k: number): string =>
+  (ix.names ??= ix.raw.slice(ix.namesAt, ix.tableAt - 1).split(" "))[k]!;
+
+const importSpec = (ix: SliceIndex, j: number): string[] =>
+  (ix.specs ??= ix.raw.slice(ix.importsAt, ix.namesAt - 1).split(" "))[j]!.split(":");
+
+const importOf = (svc: LazyService, ix: SliceIndex, j: number): unknown => {
+  if (j in ix.importValues) return ix.importValues[j];
+  const [, source, name] = importSpec(ix, j);
+  return (ix.importValues[j] = svc.ns![+source!][name!]);
+};
+
+/** A top-level name of the full module: imports first, then declarations. */
+const refOf = (svc: LazyService, ix: SliceIndex, j: number): unknown =>
+  j < ix.imports ? importOf(svc, ix, j) : valueOf(svc, ix, j - ix.imports);
+
+/**
+ * Evaluates declaration `k`. A data function in its generated shape reads
+ * its data and compiles nothing. Other code is compiled with the imports and
+ * its dependencies in scope; a function with plain parameters from its body,
+ * so it is parsed once, bound to those values.
+ */
+const evaluate = (svc: LazyService, ix: SliceIndex, k: number): any => {
+  const [head, fn, depText] = lineOf(ix, k).split("|");
+  if (fn?.[0] === "=") {
+    const [stem, range, refs] = fn.slice(1).split(";");
+    const [start, end] = range!.split(" ").map((x) => parseInt(x, 36));
+    return () => {
+      const data = read(ix, start!, end! - start!);
+      return [
+        stem ? data.replaceAll("%", stem) : data,
+        refs ? refs.split(",").map((x) => refOf(svc, ix, parseInt(x, 36))) : [],
+      ];
+    };
+  }
+  const deps = depText ? depText.split(" ").map((x) => parseInt(x, 36)) : [];
+  const names = deps.map((j) =>
+    j < ix.imports ? importSpec(ix, j)[0]! : nameOf(ix, j - ix.imports),
+  );
+  const values = deps.map((j) => refOf(svc, ix, j));
+  const url = `\n//# sourceURL=${ix.file}#${nameOf(ix, k)}`;
+  if (fn && fn[0] !== "(") {
+    const [params, range] = fn.split(";");
+    const [start, end, expr] = range!.split(" ").map((x) => parseInt(x, 36));
+    return compileBody(
+      ix,
+      names,
+      values,
+      params ? params.split(",") : [],
+      start!,
+      end!,
+      expr!,
+      url,
+    );
+  }
+  const [, start, end] = head!.split(" ").map((x) => parseInt(x, 36));
+  let text: string;
+  if (fn?.[0] === "(") {
+    // Functions it passes compile on their first call (many never are): it
+    // reads the text around them only.
+    const args = fn.slice(1).split(",");
+    const outer = { names: names.slice(), values: values.slice() };
+    text = "";
+    let at = start!;
+    args.forEach((arg, i) => {
+      const [a, b, bs, be, expr] = arg.split(" ").map((x) => parseInt(x, 36));
+      const params = arg.split(" ")[5];
+      let compiled: Function | undefined;
+      names.push(`$lazy${i}`);
+      values.push(function (this: unknown) {
+        compiled ??= compileBody(
+          ix,
+          outer.names,
+          outer.values,
+          params ? params.split("+") : [],
+          bs!,
+          be!,
+          expr!,
+          url,
+        );
+        return compiled.apply(this, arguments);
+      });
+      text += `${read(ix, at, a! - at)}$lazy${i}`;
+      at = b!;
+    });
+    text += read(ix, at, end! - at);
+  } else text = read(ix, start!, end! - start!);
+  return Function(...names, `"use strict";return(${text}\n)${url}`)(...values);
+};
+
+/**
+ * A function with plain parameters, compiled from its body (parsed once)
+ * with `names` in scope bound to `values`; its parameters shadow them.
+ */
+const compileBody = (
+  ix: SliceIndex,
+  names: string[],
+  values: unknown[],
+  own: string[],
+  start: number,
+  end: number,
+  expr: number,
+  url: string,
+): Function => {
+  const text = read(ix, start, end - start);
+  const keep = names.map((n) => !own.includes(n));
+  return Function(
+    ...names.filter((_, i) => keep[i]),
+    ...own,
+    `"use strict";${expr ? `return(${text}\n)` : text}${url}`,
+  ).bind(undefined, ...values.filter((_, i) => keep[i]));
+};
+
+/** The value declaration `k` of the full module has. */
+const valueOf = (svc: LazyService, ix: SliceIndex, k: number): unknown => {
+  if (k in ix.v) return ix.v[k] === busy ? undefined : ix.v[k];
+  const ops = svc.o.length;
+  if (k < ops) return (ix.v[k] = svc.o[k]);
+  if (k < ops + svc.e.length) return (ix.v[k] = svc.e[k - ops]);
+  const line = lineOf(ix, k);
+  if (line[0] === "1" && !line.includes("|=")) {
+    // A function declaration: compiled on its first call, so cycles need no order.
+    let fn: Function | undefined;
+    return (ix.v[k] = function (this: unknown) {
+      return (fn ??= evaluate(svc, ix, k)).apply(this, arguments);
+    });
+  }
+  ix.v[k] = busy;
+  return (ix.v[k] = evaluate(svc, ix, k));
+};
+
+/** The class name an error line records (see {@link evaluate}). */
+const errorName = (fn: string): string | undefined => fn.split(";")[fn[0] === "=" ? 3 : 2];
+
+/** The data function of placeholder `i` (`kind` 0: operation, 1: error class). */
+const dataOf = (svc: LazyService, kind: 0 | 1, i: number): DataFn => {
+  const loaded = kind === 0 ? svc.od : svc.ed;
+  if (loaded?.[i]) return loaded[i]!;
+  const ix = sliced(svc);
+  if (!ix) {
+    load(svc);
+    return (kind === 0 ? svc.od : svc.ed)![i]!;
+  }
+  const fn = evaluate(svc, ix, kind === 0 ? i : svc.o.length + i);
+  if (kind === 1)
+    Object.defineProperty(svc.e[i], "name", {
+      value: errorName(lineOf(ix, svc.o.length + i).split("|")[1]!) || fn.name,
+    });
+  return ((kind === 0 ? svc.od : svc.ed)![i] = fn);
 };
 
 /**
@@ -970,14 +1242,17 @@ export const lazyService = (
   url: string,
   spec: string,
   kinds: string,
-  names?: () => string,
+  ns?: readonly any[],
+  at?: number,
+  len?: number,
 ): { readonly o: () => any; readonly e: () => any } => {
-  const svc: LazyService = { url, spec, kinds, names, o: [], e: [], oi: 0, ei: 0 };
+  const svc: LazyService = { url, spec, kinds, ns, at, len, o: [], e: [], oi: 0, ei: 0 };
+  if (!warmed && at !== undefined) warm(svc);
   return {
     o: () => {
       const paginated = kinds[svc.o.length] === "p";
       const f: DataFn = function op(x) {
-        return x === D ? (load(svc), svc.od![svc.o.indexOf(op)]!(D)) : call(op, x);
+        return x === D ? dataOf(svc, 0, svc.o.indexOf(op))(D) : call(op, x);
       };
       svc.o.push(paginated ? asOpPaginated(f) : asOp(f));
       return f;
@@ -986,7 +1261,7 @@ export const lazyService = (
       const f = function error(x: unknown) {
         return new.target
           ? newError(x, new.target, undefined)
-          : (load(svc), svc.ed![svc.e.indexOf(error)]!(x));
+          : dataOf(svc, 1, svc.e.indexOf(error))(x);
       };
       svc.e.push(asError(f));
       return f;

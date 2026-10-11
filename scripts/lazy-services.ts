@@ -33,7 +33,16 @@ const { parseAst } = (await import(require.resolve("rolldown/parseAst"))) as {
 
 const FULL = ".full";
 const CORE_BASE = "@distilled.cloud/core/_bundle/base";
-const KIND: Record<string, string> = { api$op: "o", api$opPaginated: "p", api$error: "e" };
+const KIND: Record<string, string> = {
+  api$op: "o",
+  api$opPaginated: "p",
+  api$error: "e",
+  // Helpers the data functions call (see dataForm).
+  api$named: "n",
+  api$newError: "x",
+  api$D: "D",
+};
+const DEF_KINDS = new Set(["o", "p", "e"]);
 
 //#region source edits that keep a source map valid
 
@@ -69,14 +78,18 @@ const vlqEncode = (values: number[]): string =>
     })
     .join("");
 
-/** Inserts `text` at each offset (none may contain a newline); shifts the map's generated columns. */
-const insert = (code: string, map: any, edits: { at: number; text: string }[]): string => {
+/** Replaces `del` chars at each offset with `text` (no newlines); shifts the map's generated columns. */
+const insert = (
+  code: string,
+  map: any,
+  edits: { at: number; text: string; del?: number }[],
+): string => {
   edits = [...edits].sort((a, b) => a.at - b.at);
   let out = "";
   let last = 0;
   for (const e of edits) {
     out += code.slice(last, e.at) + e.text;
-    last = e.at;
+    last = e.at + (e.del ?? 0);
   }
   out += code.slice(last);
   if (map) {
@@ -88,7 +101,7 @@ const insert = (code: string, map: any, edits: { at: number; text: string }[]): 
       while (line + 1 < lineStarts.length && lineStarts[line + 1]! <= e.at) line++;
       byLine.set(line, [
         ...(byLine.get(line) ?? []),
-        { col: e.at - lineStarts[line]!, len: e.text.length },
+        { col: e.at - lineStarts[line]! + (e.del ?? 0), len: e.text.length - (e.del ?? 0) },
       ]);
     }
     map.mappings = (map.mappings as string)
@@ -146,6 +159,218 @@ const isBinding = (n: string) => /^[A-Za-z_$][\w$]*$/.test(n) && !RESERVED.has(n
 const shortName = (i: number) => `_${i.toString(36)}`;
 
 /**
+ * The slice index of a full module: where each top-level declaration's
+ * expression is in the file (UTF-8 byte offsets) and which declarations it
+ * may read, so Node can evaluate one operation and what it reaches instead
+ * of the whole module (`API.lazyService`). Undefined when the module has
+ * top-level code other than imports, consts and function declarations.
+ * Text, one line each:
+ *
+ *   imports declarations       the counts
+ *   local:source:imported ...   the imports (source: index into the stub's namespaces)
+ *   name ...                    the declarations: operations in definition
+ *                               order, then error classes, then the rest
+ *   offset...                   where each declaration's line starts in the
+ *                               lines that follow (5 base-36 digits each,
+ *                               one more for the end)
+ *   kind start end|fn|dep ...   one line per declaration (numbers base 36);
+ *                               fn, for a function with plain parameters:
+ *                               `params;bodyStart bodyEnd expr;name`
+ *   kind start end|(s e bs be expr params,...|dep ...
+ *                               a value whose call is passed functions: at
+ *                               s..e, each with its body
+ *                               bs..be and `+`-joined parameters
+ *   kind start end|=stem;ds de;ref,...[;name]
+ *                               a data function in its generated shape: its
+ *                               data is the template at ds..de (`%` -> stem),
+ *                               its refs these names (index into the names)
+ *
+ * kind: 0 value const, 1 function declaration, 2 operation, 3 error class;
+ * for 2 and 3 the range is the data function, the argument of `op(...)` /
+ * `error(...)`. Deps are the names (imports, then declarations) it reads: a
+ * superset, shadowed names count too.
+ */
+const sliceIndex = (
+  code: string,
+  ast: any,
+  sources: string[],
+  imports: Map<string, { source: string; imported: string }>,
+  defs: Map<string, { kind: string; index: number }>,
+  helpers: Map<string, string>,
+): string | undefined => {
+  const decls: { node: any; name: string; kind: number; order: number }[] = [];
+  for (const n of ast.body) {
+    if (n.type === "ImportDeclaration" || n.type === "ExportNamedDeclaration") continue;
+    if (n.type === "FunctionDeclaration" && n.id && !n.async && !n.generator)
+      decls.push({ node: n, name: n.id.name, kind: 1, order: 0 });
+    else if (n.type === "VariableDeclaration" && n.kind === "const")
+      for (const d of n.declarations) {
+        if (d.id.type !== "Identifier" || !d.init) return undefined;
+        const def = defs.get(d.id.name);
+        if (def) {
+          if (d.init.arguments.length !== 1) return undefined;
+          decls.push({
+            node: d.init.arguments[0],
+            name: d.id.name,
+            kind: def.kind === "e" ? 3 : 2,
+            order: def.index,
+          });
+        } else decls.push({ node: d.init, name: d.id.name, kind: 0, order: 0 });
+      }
+    else return undefined;
+  }
+  const rank = (k: number) => (k === 2 ? 0 : k === 3 ? 1 : 2);
+  decls.sort((a, b) => rank(a.kind) - rank(b.kind) || (a.kind >= 2 ? a.order - b.order : 0));
+  const idx = new Map(decls.map((d, i) => [d.name, i]));
+  const importPos = new Map([...imports.keys()].map((n, i) => [n, i]));
+  if ([...imports.keys()].some((n) => idx.has(n))) return undefined;
+  // Latin-1 source written as UTF-8: bytes before a char = chars + chars >= 0x80.
+  const wide = new Int32Array(code.length + 1);
+  for (let i = 0; i < code.length; i++)
+    wide[i + 1] = wide[i]! + (code.charCodeAt(i) >= 0x80 ? 1 : 0);
+  const byte = (i: number) => i + wide[i]!;
+  const depsOf = (node: any): number[] => {
+    const out = new Set<number>();
+    const visit = (n: any, parent: any, key: string): void => {
+      if (Array.isArray(n)) return n.forEach((c) => visit(c, parent, key));
+      if (!n || typeof n !== "object") return;
+      if (n.type === "Identifier") {
+        const notRef =
+          (parent?.type === "MemberExpression" && key === "property" && !parent.computed) ||
+          (parent?.type === "Property" && key === "key" && !parent.computed && !parent.shorthand) ||
+          (parent?.type === "MethodDefinition" && key === "key" && !parent.computed);
+        // Names: the imports, then the declarations.
+        const d = idx.get(n.name);
+        const i = d !== undefined ? imports.size + d : importPos.get(n.name);
+        if (!notRef && i !== undefined) out.add(i);
+        return;
+      }
+      for (const k in n) if (k !== "type" && n[k] && typeof n[k] === "object") visit(n[k], n, k);
+    };
+    visit(node, undefined, "");
+    return [...out];
+  };
+  const b36 = (x: number) => x.toString(36);
+  // A function with plain parameters: its parameters and body, so Node
+  // compiles the body as the function itself (one parse, not two).
+  const fnForm = (n: any, kind: number): string => {
+    const fn =
+      n.type === "ArrowFunctionExpression" ||
+      n.type === "FunctionExpression" ||
+      n.type === "FunctionDeclaration";
+    if (!fn || n.async || n.generator || !n.params.every((p: any) => p.type === "Identifier"))
+      return "";
+    const self = n.id?.name;
+    if (self && code.slice(n.body.start, n.body.end).includes(self)) return "";
+    const expr = n.body.type !== "BlockStatement";
+    const [bs, be] = expr ? [n.body.start, n.body.end] : [n.body.start + 1, n.body.end - 1];
+    return `${n.params.map((p: any) => p.name).join(",")};${b36(byte(bs))} ${b36(byte(be))} ${expr ? 1 : 0};${kind === 3 ? (self ?? "") : ""}`;
+  };
+  // Data functions in their generated shape need no compiling: their data
+  // is a template literal without escapes and their refs are names.
+  const importIdx = new Map([...imports.keys()].map((n, i) => [n, i]));
+  const is = (n: any, kind: string) => n?.type === "Identifier" && helpers.get(n.name) === kind;
+  const dataExpr = (n: any): string | undefined => {
+    let stem = "";
+    let tpl: any;
+    let refs: any;
+    if (n?.type === "ArrayExpression" && n.elements.length === 2) [tpl, refs] = n.elements;
+    else if (n?.type === "CallExpression" && is(n.callee, "n") && n.arguments.length === 3) {
+      const s = n.arguments[0];
+      if (s.type !== "TemplateLiteral" || s.expressions.length) return undefined;
+      stem = s.quasis[0].value.cooked;
+      if (stem !== s.quasis[0].value.raw || /[;| ]/.test(stem)) return undefined;
+      [, tpl, refs] = n.arguments;
+    } else return undefined;
+    if (tpl?.type !== "TemplateLiteral" || tpl.expressions.length) return undefined;
+    const q = tpl.quasis[0];
+    if (q.value.cooked !== q.value.raw || refs?.type !== "ArrayExpression") return undefined;
+    const names: number[] = [];
+    for (const r of refs.elements) {
+      if (r?.type !== "Identifier") return undefined;
+      const i = importIdx.get(r.name) ?? (idx.has(r.name) ? imports.size + idx.get(r.name)! : -1);
+      if (i < 0) return undefined;
+      names.push(i);
+    }
+    return `=${stem};${b36(byte(q.start))} ${b36(byte(q.end))};${names.map(b36).join(",")}`;
+  };
+  const dataForm = (n: any, kind: number): string | undefined => {
+    if (kind === 2) {
+      // t => t === D ? data : call(op, t)
+      const b = n.body;
+      if (n.type !== "ArrowFunctionExpression" || b?.type !== "ConditionalExpression")
+        return undefined;
+      if (b.test.type !== "BinaryExpression" || b.test.operator !== "===" || !is(b.test.right, "D"))
+        return undefined;
+      return dataExpr(b.consequent);
+    }
+    if (kind !== 1 && kind !== 3) return undefined;
+    const body = n.body?.body;
+    if (!Array.isArray(body) || body.length !== 1 || body[0].type !== "ReturnStatement")
+      return undefined;
+    const r = body[0].argument;
+    if (kind === 1) return n.params.length === 0 ? dataExpr(r) : undefined;
+    // function X(t) { return newError(t, new.target, data) }
+    if (r?.type !== "CallExpression" || !is(r.callee, "x") || r.arguments.length !== 3)
+      return undefined;
+    const e = dataExpr(r.arguments[2]);
+    return e && `${e};${n.id?.name ?? ""}`;
+  };
+  // A value made by a call that is passed functions (an endpoint resolver,
+  // often never called): where each function is (relative to the value) and
+  // its parameters and body, so Node compiles it on its first call only.
+  const lazyArgs = (n: any, kind: number): string => {
+    if (kind !== 0 || n.type !== "CallExpression") return "";
+    const out: string[] = [];
+    for (const a of n.arguments) {
+      if (a.type !== "ArrowFunctionExpression" && a.type !== "FunctionExpression") continue;
+      if (a.async || a.generator || !a.params.every((p: any) => p.type === "Identifier")) continue;
+      if (
+        a.type === "FunctionExpression" &&
+        (a.id || /\b(this|arguments)\b/.test(code.slice(a.start, a.end)))
+      )
+        continue;
+      const expr = a.body.type !== "BlockStatement";
+      const [bs, be] = expr ? [a.body.start, a.body.end] : [a.body.start + 1, a.body.end - 1];
+      out.push(
+        [byte(a.start), byte(a.end), byte(bs), byte(be), expr ? 1 : 0]
+          .map(b36)
+          .concat(a.params.map((p: any) => p.name).join("+"))
+          .join(" "),
+      );
+    }
+    return out.length ? `(${out.join(",")}` : "";
+  };
+  const lines = decls.map((d) => {
+    const head = [d.kind, byte(d.node.start), byte(d.node.end)].map(b36).join(" ");
+    const data = dataForm(d.node, d.kind);
+    return data
+      ? `${head}|${data}`
+      : `${head}|${fnForm(d.node, d.kind) || lazyArgs(d.node, d.kind)}|${depsOf(d.node).map(b36).join(" ")}`;
+  });
+  // Offsets of each line in the lines section (fixed width), so Node finds
+  // one without splitting the index.
+  let off = 0;
+  const table = [...lines, ""]
+    .map((l) => {
+      const o = b36(off).padStart(5, "0");
+      off += l.length + 1;
+      return o;
+    })
+    .join("");
+  if (off >= 36 ** 5) return undefined;
+  return [
+    `${imports.size} ${decls.length}`,
+    [...imports]
+      .map(([local, m]) => `${local}:${sources.indexOf(m.source)}:${m.imported}`)
+      .join(" "),
+    decls.map((d) => d.name).join(" "),
+    table,
+    ...lines,
+  ].join("\n");
+};
+
+/**
  * The stub of one service chunk, and the full module with its definitions
  * bracketed; undefined when the module is not made only of data
  * definitions and re-exports.
@@ -154,7 +379,6 @@ const lazyModule = (
   file: string,
   fullSpec: string,
   kindsOf: (source: string) => Map<string, string> | undefined,
-  withNames: boolean,
 ): { stub: string; full: string } | undefined => {
   const code = readFileSync(file, "utf8");
   if (code.includes("api$lazyService"))
@@ -162,6 +386,7 @@ const lazyModule = (
   const ast = parseAst(code, { sourceType: "module" }, file);
   const imports = new Map<string, { source: string; imported: string }>();
   const kindOfLocal = new Map<string, string>();
+  const helperOfLocal = new Map<string, string>();
   const sources: string[] = [];
   for (const n of ast.body) {
     if (n.type !== "ImportDeclaration") continue;
@@ -172,7 +397,8 @@ const lazyModule = (
       if (s.type !== "ImportSpecifier") return undefined;
       imports.set(s.local.name, { source: n.source.value, imported: idOf(s.imported) });
       const k = kinds?.get(idOf(s.imported));
-      if (k) kindOfLocal.set(s.local.name, k);
+      if (k && DEF_KINDS.has(k)) kindOfLocal.set(s.local.name, k);
+      else if (k) helperOfLocal.set(s.local.name, k);
     }
   }
   if (kindOfLocal.size === 0) return undefined;
@@ -238,20 +464,33 @@ const lazyModule = (
   const decl = (names: string[], make: string) => {
     const [first, ...rest] = names;
     const local =
-      first && isBinding(first) && !["$L", "$o", "$e"].includes(first) ? first : shortName(next++);
+      first && isBinding(first) && !["$L", "$o", "$e"].includes(first) && !/^\$\d+$/.test(first)
+        ? first
+        : shortName(next++);
     if (first && local !== first) aliases.push(`${local} as ${JSON.stringify(first)}`);
     for (const n of rest) aliases.push(`${local} as ${isBinding(n) ? n : JSON.stringify(n)}`);
     return { exported: local === first, text: `${local}=${make}()` };
   };
   const decls = [...errNames.map((n) => decl(n, "$e")), ...opNames.map((n) => decl(n, "$o"))];
+  const text = sliceIndex(code, ast, sources, imports, defs, helperOfLocal);
+  // The index goes in a comment at the end of the full module (before its
+  // sourceMappingURL), which bundlers drop; declarations keep their offsets.
+  let index: { full: string; at: number; len: number } | undefined;
+  if (text) {
+    const tail = code.lastIndexOf("\n//# sourceMappingURL=");
+    const head = `${tail >= 0 ? code.slice(0, tail) : code}\n/*\n`;
+    index = {
+      full: `${head}${text}\n*/${tail >= 0 ? code.slice(tail) : "\n"}`,
+      at: Buffer.byteLength(head),
+      len: Buffer.byteLength(text),
+    };
+  }
   const stub = [
-    ...sources.map((s) => `import"${s}";`),
+    ...sources.map((s, i) => (index ? `import*as $${i} from"${s}";` : `import"${s}";`)),
     `import{api$lazyService as $L}from"${CORE_BASE}";`,
     ...[...reexports].map(([s, l]) => `export{${l.join(",")}}from"${s}";`),
     `const{o:$o,e:$e}=/*@__PURE__*/$L(import.meta.url,${JSON.stringify(fullSpec)},"${ops}"${
-      withNames
-        ? `,()=>${JSON.stringify([...opNames, ...errNames].map((n) => n[0] ?? "-").join(" "))}`
-        : ""
+      index ? `,[${sources.map((_, i) => `$${i}`).join(",")}],${index.at},${index.len}` : ""
     });`,
     // One declaration, so the placeholders are made in definition order.
     ...(decls.length ? [`const ${decls.map((d) => d.text).join(",")};`] : []),
@@ -262,7 +501,7 @@ const lazyModule = (
       : []),
     "",
   ].join("\n");
-  return { stub, full: code };
+  return { stub, full: index ? index.full : code };
 };
 
 /** `export * as x from "./x.js"` lines become lazy namespaces; other lines stay. */
@@ -296,14 +535,25 @@ const lazyBarrel = (code: string): string => {
 const SPECIFIER = /(["'`])((?:\.\.?\/)+)([\w./-]+?)\/([\w.-]+\.js)\1/g;
 
 /** Specifiers of `lib/` code that name a module of a service directory, pointed at the full one. */
-const toFull = (code: string, map: any, dirs: string[], from: string, lib: string): string => {
-  const edits: { at: number; text: string }[] = [];
+const toFull = (
+  code: string,
+  map: any,
+  dirs: string[],
+  from: string,
+  lib: string,
+  selfRef?: (dir: string, file: string) => string | undefined,
+): string => {
+  const edits: { at: number; text: string; del?: number }[] = [];
   for (const m of code.matchAll(SPECIFIER)) {
     const target = relative(lib, resolve(dirname(from), m[2]! + m[3]!))
       .split("\\")
       .join("/");
     if (!dirs.includes(target)) continue;
-    edits.push({ at: m.index! + 1 + m[2]!.length + m[3]!.length, text: FULL });
+    const self = selfRef?.(target, m[4]!);
+    if (self) {
+      const at = m.index! + 1;
+      edits.push({ at, del: m[0].length - 2, text: self });
+    } else edits.push({ at: m.index! + 1 + m[2]!.length + m[3]!.length, text: FULL });
   }
   return edits.length ? insert(code, map, edits) : code;
 };
@@ -334,15 +584,6 @@ export const lazyServices = (
   const kindCache = new Map<string, Map<string, string> | undefined>();
   let stubs = 0;
   let kept = 0;
-  // Service modules other lib code imports by path: their stubs may find the
-  // full module already evaluated.
-  const referenced = new Set<string>();
-  for (const file of walkJs(lib)) {
-    const r = rel(lib, file);
-    if (serviceDirs.some((d) => r.startsWith(`${d}/`) || r.startsWith(`${d}${FULL}/`))) continue;
-    for (const m of readFileSync(file, "utf8").matchAll(SPECIFIER))
-      referenced.add(resolve(dirname(file), m[2]! + m[3]!, m[4]!));
-  }
   const lazyDirs: string[] = [];
   for (const d of serviceDirs) {
     const dir = join(lib, d);
@@ -359,12 +600,7 @@ export const lazyServices = (
         f,
         f === "index.js"
           ? undefined
-          : lazyModule(
-              join(dir, f),
-              `../${d.split("/").at(-1)}${FULL}/${f}`,
-              kindsOf,
-              referenced.has(join(dir, f)),
-            ),
+          : lazyModule(join(dir, f), `../${d.split("/").at(-1)}${FULL}/${f}`, kindsOf),
       ]),
     );
     // Only directories of generated service modules.
@@ -401,6 +637,15 @@ export const lazyServices = (
   serviceDirs = lazyDirs;
   // Other files naming a service module.
   const defaults = defaultTargets(pkgDir);
+  const pkgJson = JSON.parse(readFileSync(join(pkgDir, "package.json"), "utf8"));
+  const selfRef = (dir: string, f: string): string | undefined => {
+    for (const [key, v] of Object.entries<any>(pkgJson.exports ?? {})) {
+      const t = typeof v === "object" ? (v?.["module-sync"] ?? v?.default) : v;
+      if (key.endsWith("/*") && t === `./lib/${dir}/*.js`)
+        return `${pkgJson.name}/${key.slice(2, -1)}${f.replace(/\.js$/, "")}`;
+    }
+    return undefined;
+  };
   const twins: string[] = [];
   const inService = (r: string) =>
     serviceDirs.some((d) => r.startsWith(`${d}/`) || r.startsWith(`${d}${FULL}/`));
@@ -409,7 +654,10 @@ export const lazyServices = (
     if (inService(r) || r.endsWith(`${FULL}.js`)) continue;
     const code = readFileSync(file, "utf8");
     const map = readMap(file);
-    const out = toFull(code, map, serviceDirs, file, lib);
+    // Files only bundlers or lazy code reach name the module through the
+    // package (`@distilled.cloud/aws/sts`): Node resolves the stub, so a
+    // service has one set of objects; bundlers resolve the full module.
+    const out = toFull(code, map, serviceDirs, file, lib, defaults.has(r) ? undefined : selfRef);
     if (out === code) continue;
     if (defaults.has(r)) {
       const twin = file.replace(/\.js$/, `${FULL}.js`);
