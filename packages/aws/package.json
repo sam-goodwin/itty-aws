@@ -26,7 +26,9 @@
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "module": "./lib/services.full/*.js",
+      "module-sync": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     },
     "./Auth": {
       "types": "./lib/auth.d.ts",

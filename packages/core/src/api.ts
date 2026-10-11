@@ -779,6 +779,8 @@ const dataState = function (this: DataFn): OperationState {
 };
 let dataProto: object | undefined;
 let dataPaginatedProto: object | undefined;
+/** The lazy service whose full module is being evaluated (see {@link lazyService}). */
+let loading: LazyService | undefined;
 
 /**
  * The data of an operation whose name recurs in its strings: `%` in them
@@ -789,8 +791,7 @@ export const named = (stem: string, data: string, refs: unknown): [string, unkno
   refs,
 ];
 
-/** An operation described by data (see the region header). */
-export const op = (fn: DataFn): any =>
+const asOp = (fn: DataFn): any =>
   Object.setPrototypeOf(
     fn,
     (dataProto ??= Object.create(OperationProto, {
@@ -798,14 +799,20 @@ export const op = (fn: DataFn): any =>
     })),
   );
 
-/** A paginated operation described by data; its config may name a `strategy`. */
-export const opPaginated = (fn: DataFn): any =>
+const asOpPaginated = (fn: DataFn): any =>
   Object.setPrototypeOf(
     fn,
     (dataPaginatedProto ??= Object.create(PaginatedOperationProto, {
       [stateKey]: { get: dataState, configurable: true },
     })),
   );
+
+/** An operation described by data (see the region header). */
+export const op = (fn: DataFn): any => (loading ? define(loading, fn, 0) : asOp(fn));
+
+/** A paginated operation described by data; its config may name a `strategy`. */
+export const opPaginated = (fn: DataFn): any =>
+  loading ? define(loading, fn, 1) : asOpPaginated(fn);
 
 /** The call path of a data operation. */
 export const call = (op: unknown, input: unknown): Effect.Effect<any, any, any> =>
@@ -856,8 +863,10 @@ const LazyErrorStatics = (): object =>
         : Reflect.get(receiver, key, receiver),
   }));
 
+const asError = (fn: DataFn): any => Object.setPrototypeOf(fn, LazyErrorStatics());
+
 /** An error class described by data (see {@link errorBase}). */
-export const error = (fn: DataFn): any => Object.setPrototypeOf(fn, LazyErrorStatics());
+export const error = (fn: DataFn): any => (loading ? define(loading, fn, 2) : asError(fn));
 
 /**
  * The body of a data error class: with `new`, an instance of the built
@@ -865,5 +874,162 @@ export const error = (fn: DataFn): any => Object.setPrototypeOf(fn, LazyErrorSta
  */
 export const newError = (props: unknown, newTarget: Function | undefined, data: unknown): any =>
   newTarget ? Reflect.construct(errorBase(newTarget)!, [props], newTarget) : data;
+
+//#endregion
+
+//#region Lazy service modules
+
+/**
+ * Node loads a service module as a stub (`lib/services/<name>.js`): one cheap
+ * placeholder per operation and error class, no operation data. Its first
+ * use loads the full module (`lib/services.full/<name>.js`, what bundlers
+ * get) with `require(esm)`.
+ *
+ *   const { o, e } = API.lazyService(import.meta.url, "../services.full/sqs.js", "oop");
+ *   export const OverLimit = e(), QueueDoesNotExist = e();
+ *   export const addPermission = o(), _1 = o(), listQueues = o();
+ *
+ * `kinds` has one letter per operation definition of the full module: `o`
+ * plain, `p` paginated. While the stub's load evaluates the full module,
+ * `op` / `opPaginated` / `error` hand back the stub's placeholders in
+ * definition order instead of new values, and each placeholder takes the
+ * data function it stands for: the full module's operations, error lists
+ * and exports are the very objects the stub exported.
+ *
+ * A full module that other lib code imports directly may have been
+ * evaluated before its stub loads it. Such a stub passes `names`: the export
+ * name of each definition (operations, then errors; `-` for none), and its
+ * placeholders read the data of the full module's own objects instead.
+ */
+interface LazyService {
+  readonly url: string;
+  readonly spec: string;
+  readonly kinds: string;
+  readonly names: (() => string) | undefined;
+  readonly o: any[];
+  readonly e: any[];
+  /** Data functions by placeholder, filled while the full module loads. */
+  od?: DataFn[];
+  ed?: DataFn[];
+  oi: number;
+  ei: number;
+}
+
+const define = (svc: LazyService, fn: DataFn, kind: 0 | 1 | 2): any => {
+  if (kind === 2) {
+    const i = svc.ei++;
+    if (i >= svc.e.length) throw new Error(`distilled: ${svc.spec}: error ${i} has no stub`);
+    svc.ed![i] = fn;
+    Object.defineProperty(svc.e[i], "name", { value: fn.name });
+    return svc.e[i];
+  }
+  const i = svc.oi++;
+  if (i >= svc.o.length || (svc.kinds[i] === "p") !== (kind === 1))
+    throw new Error(`distilled: ${svc.spec}: operation ${i} does not match its stub`);
+  svc.od![i] = fn;
+  return svc.o[i];
+};
+
+const load = (svc: LazyService): void => {
+  if (svc.od) return;
+  svc.od = [];
+  svc.ed = [];
+  const outer = loading;
+  loading = svc;
+  let ns: any;
+  try {
+    ns = (globalThis as any).process.getBuiltinModule("node:module").createRequire(svc.url)(
+      svc.spec,
+    );
+  } catch (e) {
+    svc.od = svc.ed = undefined;
+    svc.oi = svc.ei = 0;
+    throw e;
+  } finally {
+    loading = outer;
+  }
+  if (svc.oi === 0 && svc.ei === 0 && svc.names) {
+    // Evaluated before: read the data of its own objects.
+    const names = svc.names().split(" ");
+    svc.od = names.slice(0, svc.o.length).map((n) => ns[n]);
+    svc.ed = names.slice(svc.o.length).map((n) => ns[n]);
+    svc.ed.forEach((e, i) => e && Object.defineProperty(svc.e[i], "name", { value: e.name }));
+  } else if (svc.oi !== svc.o.length || svc.ei !== svc.e.length)
+    throw new Error(
+      `distilled: ${svc.spec} defined ${svc.oi} of ${svc.o.length} operations and ${svc.ei} of ${svc.e.length} errors`,
+    );
+};
+
+/**
+ * The placeholders of a lazy service module (see the region header): `o()`
+ * and `e()` make the next operation / error class. A placeholder finds its
+ * data by its index; it closes over nothing of its own, so it costs one
+ * function.
+ */
+export const lazyService = (
+  url: string,
+  spec: string,
+  kinds: string,
+  names?: () => string,
+): { readonly o: () => any; readonly e: () => any } => {
+  const svc: LazyService = { url, spec, kinds, names, o: [], e: [], oi: 0, ei: 0 };
+  return {
+    o: () => {
+      const paginated = kinds[svc.o.length] === "p";
+      const f: DataFn = function op(x) {
+        return x === D ? (load(svc), svc.od![svc.o.indexOf(op)]!(D)) : call(op, x);
+      };
+      svc.o.push(paginated ? asOpPaginated(f) : asOp(f));
+      return f;
+    },
+    e: () => {
+      const f = function error(x: unknown) {
+        return new.target
+          ? newError(x, new.target, undefined)
+          : (load(svc), svc.ed![svc.e.indexOf(error)]!(x));
+      };
+      svc.e.push(asError(f));
+      return f;
+    },
+  };
+};
+
+/**
+ * A service barrel's stand-in for `export * as sqs from "./sqs.js"` in Node:
+ * a namespace whose module is loaded (`require(esm)`) on first access, so
+ * importing a provider's barrel loads no service module. Reads, `in`,
+ * `Object.keys` and spreading see the module's exports; it is read-only.
+ */
+interface LazyNamespace {
+  readonly url: string;
+  readonly spec: string;
+  ns?: any;
+}
+
+const namespaceOf = (t: LazyNamespace): any =>
+  (t.ns ??= (globalThis as any).process.getBuiltinModule("node:module").createRequire(t.url)(
+    t.spec,
+  ));
+
+let lazyNamespaceHandler: ProxyHandler<LazyNamespace> | undefined;
+
+export const lazyNamespace = (url: string, spec: string): any =>
+  new Proxy<LazyNamespace>(
+    { url, spec },
+    (lazyNamespaceHandler ??= {
+      get: (t, k) => namespaceOf(t)[k],
+      has: (t, k) => k in namespaceOf(t),
+      ownKeys: (t) => Reflect.ownKeys(namespaceOf(t)),
+      getOwnPropertyDescriptor: (t, k) => {
+        const d = Reflect.getOwnPropertyDescriptor(namespaceOf(t), k);
+        // The target does not hold these: a proxy may only report them configurable.
+        return d && { ...d, configurable: true };
+      },
+      getPrototypeOf: () => null,
+      set: () => false,
+      defineProperty: () => false,
+      deleteProperty: () => false,
+    }),
+  );
 
 //#endregion
