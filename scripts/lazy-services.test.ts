@@ -85,7 +85,7 @@ const point = (file: string) =>
     ),
   );
 point(join(pkg, "lib", "_bundle", "sdk.js"));
-point(join(pkg, "lib", "services", "thing.js"));
+point(join(pkg, "lib", "_bundle", "lazy.js"));
 const stub = join(pkg, "lib", "services", "thing.js");
 const full = join(pkg, "lib", "services.full", "thing.js");
 // The full module, for the whole-module fallback: its core import pointed at api.ts.
@@ -94,19 +94,23 @@ writeFileSync(
   join(pkg, "lib", "services", "whole.js"),
   readFileSync(stub, "utf8")
     .replace("../services.full/thing.js", "../services.full/whole.js")
-    .replace(/,\[\$0\],\d+,\d+\)/, ")"),
+    .replace(/,\d+,\d+\)/, ")"),
 );
 
 describe("lazy service modules", () => {
   it("bundle-lib output: a stub, the unchanged full module and its slice index", () => {
     expect(result.stubs).toBe(1);
     const s = readFileSync(stub, "utf8");
-    const at = /"opoo",\[\$0\],(\d+),(\d+)\)/.exec(s);
+    const at = /\$L\("\.\.\/services\.full\/thing\.js","opoo",(\d+),(\d+)\)/.exec(s);
     expect(at).not.toBeNull();
+    // One helper import; each export name written once.
+    expect(s.startsWith(`import{$L}from"../_bundle/lazy.js";`)).toBe(true);
     expect(s).toContain(
-      `const Oops=$e("Oops"),Other=$e("Other"),getThing=$o(),listThings=$o(),_0=$o(),dataOp=$o();`,
+      `export const{Oops,Other}=$E;\nexport const getThing=$o(),listThings=$o();\nconst _0=$o();\nexport const dataOp=$o();\nexport{_0 as "delete"};`,
     );
-    expect(s).toContain(`export{Oops,Other,getThing,listThings,dataOp,_0 as "delete"};`);
+    expect(readFileSync(join(pkg, "lib", "_bundle", "lazy.js"), "utf8")).toContain(
+      `import*as $0 from"./sdk.js";`,
+    );
     // Operations first, then error classes, then the rest.
     const index = readFileSync(full)
       .subarray(+at![1]!, +at![1]! + +at![2]!)

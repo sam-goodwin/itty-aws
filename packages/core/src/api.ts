@@ -899,9 +899,12 @@ export const newError = (props: unknown, newTarget: Function | undefined, data: 
  * use loads the full module (`lib/services.full/<name>.js`, what bundlers
  * get) with `require(esm)`.
  *
- *   const { o, e } = API.lazyService(import.meta.url, "../services.full/sqs.js", "oop", [$0], at, len);
- *   export const OverLimit = e("OverLimit"), QueueDoesNotExist = e("QueueDoesNotExist");
+ *   const { o, e, E } = API.lazyService(import.meta.url, "../services.full/sqs.js", "oop", [$0], at, len);
+ *   export const { OverLimit, QueueDoesNotExist } = E;  // or OverLimit = e("OverLimit"), ...
  *   export const addPermission = o(), _1 = o(), listQueues = o();
+ *
+ * Generated stubs reach this through their package's `_bundle/lazy.js`,
+ * which passes its own URL and the namespaces every stub imports.
  *
  * `kinds` has one letter per operation definition of the full module: `o`
  * plain, `p` paginated. While the stub's load evaluates the full module,
@@ -1266,7 +1269,7 @@ export const lazyService = (
   ns?: readonly any[],
   at?: number,
   len?: number,
-): { readonly o: () => any; readonly e: (name: string) => any } => {
+): { readonly o: () => any; readonly e: (name: string) => any; readonly E: any } => {
   const svc: LazyService = { url, spec, kinds, ns, at, len, o: [], e: [], oi: 0, ei: 0 };
   if (!primed && at !== undefined && !(globalThis as any).process?.env?.NOPRIME) prime(svc);
   return {
@@ -1289,6 +1292,11 @@ export const lazyService = (
       }[name]!;
       svc.e.push(asError(f));
       return f;
+    },
+    // Destructured once by the stub: each property read makes the error class of that name.
+    get E() {
+      const e = this.e;
+      return new Proxy({}, { get: (_, name) => e(name as string) });
     },
   };
 };

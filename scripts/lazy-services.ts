@@ -390,13 +390,24 @@ const sliceIndex = (
  * bracketed; undefined when the module is not made only of data
  * definitions and re-exports.
  */
+/** How a package's stubs reach core: one helper module (see {@link LAZY_HELPER}). */
+interface Helper {
+  /** The helper, relative to the stub. */
+  readonly spec: string;
+  /** The full module, relative to the helper. */
+  readonly full: string;
+  /** Whether the helper imports a source of this stub (as namespace `N[i]`). */
+  readonly has: (source: string) => number | undefined;
+}
+
+type Render = (helper: Helper) => { stub: string; full: string };
+
 const lazyModule = (
   file: string,
-  fullSpec: string,
   kindsOf: (source: string) => Map<string, string> | undefined,
-): { stub: string; full: string } | undefined => {
+): { sources: string[]; render: Render } | undefined => {
   const code = readFileSync(file, "utf8");
-  if (code.includes("api$lazyService"))
+  if (code.includes("api$lazyService") || code.includes("import{$L}from"))
     throw new Error(`${file} is already a lazy stub: rebuild the package with bundle-lib`);
   const ast = parseAst(code, { sourceType: "module" }, file);
   const imports = new Map<string, { source: string; imported: string }>();
@@ -491,41 +502,89 @@ const lazyModule = (
     for (const n of rest) aliases.push(`${local} as ${isBinding(n) ? n : JSON.stringify(n)}`);
     return { exported: local === first, text: `${local}=${make}(${arg})` };
   };
-  const decls = [
-    ...errNames.map((n, i) => decl(n, "$e", JSON.stringify(errClass[i]))),
-    ...opNames.map((n) => decl(n, "$o")),
-  ];
-  const text = sliceIndex(code, ast, sources, imports, defs, helperOfLocal);
-  // The index goes in a comment at the end of the full module (before its
-  // sourceMappingURL), which bundlers drop; declarations keep their offsets.
-  let index: { full: string; at: number; len: number } | undefined;
-  if (text) {
-    const tail = code.lastIndexOf("\n//# sourceMappingURL=");
-    const head = `${tail >= 0 ? code.slice(0, tail) : code}\n/*\n`;
-    index = {
-      full: `${head}${text}\n*/${tail >= 0 ? code.slice(tail) : "\n"}`,
-      at: Buffer.byteLength(head),
-      len: Buffer.byteLength(text),
-    };
-  }
-  const stub = [
-    ...sources.map((s, i) => (index ? `import*as $${i} from"${s}";` : `import"${s}";`)),
-    `import{api$lazyService as $L}from"${CORE_BASE}";`,
-    ...[...reexports].map(([s, l]) => `export{${l.join(",")}}from"${s}";`),
-    `const{o:$o,e:$e}=/*@__PURE__*/$L(import.meta.url,${JSON.stringify(fullSpec)},"${ops}"${
-      index ? `,[${sources.map((_, i) => `$${i}`).join(",")}],${index.at},${index.len}` : ""
-    });`,
-    // One declaration, so the placeholders are made in definition order.
-    ...(decls.length ? [`const ${decls.map((d) => d.text).join(",")};`] : []),
-    ...(decls.length
-      ? [
-          `export{${[...decls.filter((d) => d.exported).map((d) => d.text.split("=")[0]), ...aliases].join(",")}};`,
-        ]
-      : []),
-    "",
-  ].join("\n");
-  return { stub, full: index ? index.full : code };
+  // An error class exported once under its own class name is a property of
+  // `$E` (a proxy that makes the placeholder named after the property read),
+  // so the name is written once; otherwise `$e("Name")`.
+  const destructure =
+    errors > 0 &&
+    errNames.every((n, i) => n[0] === errClass[i] && isBinding(n[0]!) && !/^\$/.test(n[0]!));
+  const errDecls = destructure
+    ? errNames.map((n) => {
+        for (const x of n.slice(1))
+          aliases.push(`${n[0]} as ${isBinding(x) ? x : JSON.stringify(x)}`);
+        return { exported: true, text: n[0]! };
+      })
+    : errNames.map((n, i) => decl(n, "$e", JSON.stringify(errClass[i])));
+  const opDecls = opNames.map((n) => decl(n, "$o"));
+  // Each export name written once (`export const a=…`): V8 keeps a module's
+  // source on the heap. Declarations stay in definition order.
+  const groups: string[] = [];
+  const declare = (list: { exported: boolean; text: string }[]) => {
+    for (let i = 0; i < list.length;) {
+      const exported = list[i]!.exported;
+      let j = i;
+      while (j < list.length && list[j]!.exported === exported) j++;
+      groups.push(
+        `${exported ? "export " : ""}const ${list
+          .slice(i, j)
+          .map((d) => d.text)
+          .join(",")};`,
+      );
+      i = j;
+    }
+  };
+  if (destructure) groups.push(`export const{${errDecls.map((d) => d.text).join(",")}}=$E;`);
+  else declare(errDecls);
+  declare(opDecls);
+  const render: Render = (helper) => {
+    // Namespaces: the helper's first, then the stub's own imports.
+    const own = sources.filter((src) => helper.has(src) === undefined);
+    const common = sources.filter((src) => helper.has(src) !== undefined);
+    const order = [...common.sort((a, b) => helper.has(a)! - helper.has(b)!), ...own];
+    // Positions in `order` must match the helper's namespace list.
+    const shared = common.length > 0 && common.every((src, i) => helper.has(src) === i);
+    const text =
+      shared || common.length === 0
+        ? sliceIndex(code, ast, order, imports, defs, helperOfLocal)
+        : undefined;
+    // The index goes in a comment at the end of the full module (before its
+    // sourceMappingURL), which bundlers drop; declarations keep their offsets.
+    let index: { full: string; at: number; len: number } | undefined;
+    if (text) {
+      const tail = code.lastIndexOf("\n//# sourceMappingURL=");
+      const head = `${tail >= 0 ? code.slice(0, tail) : code}\n/*\n`;
+      index = {
+        full: `${head}${text}\n*/${tail >= 0 ? code.slice(tail) : "\n"}`,
+        at: Buffer.byteLength(head),
+        len: Buffer.byteLength(text),
+      };
+    }
+    const base = common.length;
+    const stub = [
+      ...own.map((src, i) => (index ? `import*as $${base + i} from"${src}";` : `import"${src}";`)),
+      `import{$L}from"${helper.spec}";`,
+      ...[...reexports].map(([src, l]) => `export{${l.join(",")}}from"${src}";`),
+      `const{o:$o,e:$e${destructure ? ",E:$E" : ""}}=/*@__PURE__*/$L(${JSON.stringify(helper.full)},"${ops}"${
+        index
+          ? `,${index.at},${index.len}${own.length ? `,[${own.map((_, i) => `$${base + i}`).join(",")}]` : ""}`
+          : ""
+      });`,
+      ...groups,
+      ...(aliases.length ? [`export{${aliases.join(",")}};`] : []),
+      "",
+    ].join("\n");
+    return { stub, full: index ? index.full : code };
+  };
+  return { sources, render };
 };
+
+/**
+ * The module every stub of a package imports instead of core and
+ * `import.meta.url`: it resolves the full modules relative to itself, and
+ * imports (as namespaces) the chunks every stub imports. Each import costs a
+ * module ~1 KB of heap.
+ */
+const LAZY_HELPER = "_bundle/lazy.js";
 
 /** `export * as x from "./x.js"` lines become lazy namespaces; other lines stay. */
 const lazyBarrel = (code: string): string => {
@@ -609,9 +668,14 @@ export const lazyServices = (
   let stubs = 0;
   let kept = 0;
   const lazyDirs: string[] = [];
+  const plans: {
+    d: string;
+    dir: string;
+    files: string[];
+    lazy: Map<string, ReturnType<typeof lazyModule>>;
+  }[] = [];
   for (const d of serviceDirs) {
     const dir = join(lib, d);
-    const fullDir = `${dir}${FULL}`;
     const kindsOf = (source: string) => {
       if (!source.startsWith(".")) return undefined;
       const abs = resolve(dir, source);
@@ -620,12 +684,7 @@ export const lazyServices = (
     };
     const files = readdirSync(dir).filter((f) => f.endsWith(".js"));
     const lazy = new Map(
-      files.map((f) => [
-        f,
-        f === "index.js"
-          ? undefined
-          : lazyModule(join(dir, f), `../${d.split("/").at(-1)}${FULL}/${f}`, kindsOf),
-      ]),
+      files.map((f) => [f, f === "index.js" ? undefined : lazyModule(join(dir, f), kindsOf)]),
     );
     // Only directories of generated service modules.
     if (![...lazy.values()].some(Boolean)) continue;
@@ -633,19 +692,60 @@ export const lazyServices = (
     for (const [f, l] of lazy)
       if (l && statSync(join(dir, f)).size < minBytes) lazy.set(f, undefined);
     lazyDirs.push(d);
+    plans.push({ d, dir, files, lazy });
+  }
+  // The imports every stub has (a lib file or a bare specifier), in a fixed order.
+  const target = (dir: string, src: string) => (src.startsWith(".") ? resolve(dir, src) : src);
+  let common: string[] | undefined;
+  for (const { dir, lazy } of plans)
+    for (const l of lazy.values()) {
+      if (!l) continue;
+      const t = new Set(l.sources.map((src) => target(dir, src)));
+      common = common ? common.filter((x) => t.has(x)) : [...t];
+    }
+  const helperFile = join(lib, LAZY_HELPER);
+  const relSpec = (from: string, to: string) => {
+    const r = rel(from, to);
+    return r.startsWith(".") ? r : `./${r}`;
+  };
+  if (common) {
+    mkdirSync(dirname(helperFile), { recursive: true });
+    writeFileSync(
+      helperFile,
+      [
+        ...common.map(
+          (t, i) =>
+            `import*as $${i} from"${t.startsWith("/") ? relSpec(dirname(helperFile), t) : t}";`,
+        ),
+        `import{api$lazyService as L}from"${CORE_BASE}";`,
+        `const u=import.meta.url,N=[${common.map((_, i) => `$${i}`).join(",")}];`,
+        "export const $L=(s,k,a,l,x)=>L(u,s,k,a===void 0?void 0:x?N.concat(x):N,a,l);",
+        "",
+      ].join("\n"),
+    );
+    written.push(rel(lib, helperFile));
+  }
+  for (const { d, dir, files, lazy } of plans) {
+    const fullDir = `${dir}${FULL}`;
     mkdirSync(fullDir, { recursive: true });
+    const at = new Map((common ?? []).map((t, i) => [t, i]));
     for (const f of files) {
       const file = join(dir, f);
       const fullFile = join(fullDir, f);
       const l = lazy.get(f);
       const map = readMap(file);
       if (l) {
-        writeFileSync(fullFile, l.full);
+        const { stub, full } = l.render({
+          spec: relSpec(dir, helperFile),
+          full: relSpec(dirname(helperFile), fullFile),
+          has: (src) => at.get(target(dir, src)),
+        });
+        writeFileSync(fullFile, full);
         if (map) {
           writeFileSync(`${fullFile}.map`, JSON.stringify(map));
           written.push(rel(lib, `${fullFile}.map`));
         }
-        writeFileSync(file, l.stub);
+        writeFileSync(file, stub);
         rmSync(`${file}.map`, { force: true });
         stubs++;
       } else if (f === "index.js") {
