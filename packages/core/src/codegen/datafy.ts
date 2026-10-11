@@ -322,6 +322,9 @@ interface Value {
   readonly code?: string;
 }
 
+/** Longest function (source characters) a moved module constant may hold. */
+const MAX_MOVED_FUNCTION = 4000;
+
 /** Shortest constant (encoded characters) worth a value entry. */
 const MIN_LEN = 16;
 /** Smallest saving (source characters) worth a value entry: each costs a bundle some indirection. */
@@ -593,6 +596,8 @@ export const datafyOperations = (
     let internal = false;
     walk(d.init, (x) => {
       if (tableRef(x) || (x.type === "Identifier" && /^__[cSs]\d*$/.test(x.name))) internal = true;
+      // A first call would parse a big function twice (holder, then itself): it stays.
+      if (/Function/.test(x.type) && x.end - x.start > MAX_MOVED_FUNCTION) internal = true;
       return true;
     });
     if (!internal) pinnable.set(d.id.name, { st, init: d.init });
