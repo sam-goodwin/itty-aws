@@ -603,7 +603,7 @@ const buildPackage = async (
       // this is the same rewrite strip-lib-docs applies to tsc's output, done
       // here on the source because the bundled, minified output no longer
       // has the shape datafy reads.
-      if (isService(plan, m)) code = datafyOperations(code, id).code;
+      if (isService(plan, m)) code = datafyOperations(code, id, { aliases: false }).code;
       const own = groupOf.get(m);
       const deps = graph.get(m);
       // Services are not in the parsed graph (too big to parse twice); they import the SDK group.
