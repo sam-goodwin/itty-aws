@@ -773,11 +773,9 @@ const evalEntry = (src: Source, j: number): any => {
 };
 
 // A data operation gets its state on first use, from this inherited getter.
-const dataState = {
-  get(this: DataFn): OperationState {
-    return defineState(this, { configFn: () => evalEntry(sourceOf(this), 0) });
-  },
-  configurable: true,
+// Its descriptors are written inline: nothing keeps them after the prototype is made.
+const dataState = function (this: DataFn): OperationState {
+  return defineState(this, { configFn: () => evalEntry(sourceOf(this), 0) });
 };
 let dataProto: object | undefined;
 let dataPaginatedProto: object | undefined;
@@ -795,14 +793,18 @@ export const named = (stem: string, data: string, refs: unknown): [string, unkno
 export const op = (fn: DataFn): any =>
   Object.setPrototypeOf(
     fn,
-    (dataProto ??= Object.create(OperationProto, { [stateKey]: dataState })),
+    (dataProto ??= Object.create(OperationProto, {
+      [stateKey]: { get: dataState, configurable: true },
+    })),
   );
 
 /** A paginated operation described by data; its config may name a `strategy`. */
 export const opPaginated = (fn: DataFn): any =>
   Object.setPrototypeOf(
     fn,
-    (dataPaginatedProto ??= Object.create(PaginatedOperationProto, { [stateKey]: dataState })),
+    (dataPaginatedProto ??= Object.create(PaginatedOperationProto, {
+      [stateKey]: { get: dataState, configurable: true },
+    })),
   );
 
 /** The call path of a data operation. */
