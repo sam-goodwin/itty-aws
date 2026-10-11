@@ -84,6 +84,57 @@ const plain = (n: any, ancestors = new Set<any>()): unknown => {
   return Array.isArray(n) ? Object.values(out) : out;
 };
 
+// Several operations sharing module constants and a repeated trait call.
+const long = `/long/${"y".repeat(200)}`;
+const shared = [
+  header,
+  `const __s: any[] = [];`,
+  `const svc = /*@__PURE__*/ T.Http({ method: "POST", uri: "/a;b%" });`,
+  `const lbl = /*@__PURE__*/ T.Label();`,
+  ...["a", "b", "c", "d"].map(
+    (x, j) =>
+      `export const get${x.toUpperCase()}: API.OperationMethod<any, any, any, any> = /*@__PURE__*/ API.make(() => ({\n  input: __S(${j}, __c0, ${j}),\n  output: __S(9, __c0, 9),\n  errors: [Oops],\n  operationName: "GetThing${x}",\n}));`,
+  ),
+  `export class Oops extends /*@__PURE__*/ S.TaggedError<Oops>()("Oops", { m: S.String.pipe(svc) }) {}`,
+  `function __c0(j: number): any {`,
+  `  switch (j) {`,
+  ...["a", "b", "c", "d"].map(
+    (x, j) =>
+      `    case ${j}: return S.suspend(() => S.Struct({ ${x}: S.String.pipe(lbl) }).pipe(T.all(svc, T.Http({ method: "PUT", uri: "${long}" })))).annotate({ identifier: "GetThing${x}Request" });`,
+  ),
+  `    case 9: return S.Struct({});`,
+  `  }`,
+  `}`,
+  `function __S(i: number, f: (j: number) => unknown, j: number): any {`,
+  `  return (__s[i] ??= __L.at(f, j));`,
+  `}`,
+].join("\n");
+
+describe("shared constants and values", () => {
+  const { code } = datafyOperations(shared);
+
+  test("module constants and repeated calls are written once, in holders their users reach", () => {
+    expect(code).not.toMatch(/const (svc|lbl) =/);
+    expect(code.match(/T\.Http\(\{ method: "POST", uri: "\/a;b%" \}\)/g)).toHaveLength(1);
+    expect(code.match(/y{200}/g)).toHaveLength(1);
+    expect(code).toMatch(/\.pipe\(~\d+:\d+\)/);
+    // The operation name is written once, as the stem of its strings.
+    expect(code).toMatch(/API\.named\("GetThinga", '[^']*"%"[^']*', \[/);
+    expect(code).toContain(`@"%Request"`);
+  });
+
+  test("evaluates to the same schemas, errors and names as the code form", () => {
+    const before = run(shared);
+    const after = run(code);
+    for (const name of ["getA", "getB", "getC", "getD"]) {
+      expect(plain(after[name].input.ast)).toEqual(plain(before[name].input.ast));
+      expect(after[name].operationName).toBe(before[name].operationName);
+      expect(after[name].errors).toEqual([after.Oops]);
+    }
+    expect(plain(after.Oops.ast)).toEqual(plain(before.Oops.ast));
+  });
+});
+
 describe("datafyOperations", () => {
   const { code, operations, holders, errors } = datafyOperations(tabled);
 

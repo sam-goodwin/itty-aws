@@ -655,12 +655,15 @@ export function makePaginated<
  * the same schema.
  *
  * Importing a module allocates one function per operation and one per
- * holder; the data stays text in the module source until first use.
+ * holder; the data stays text in the module source until first use. A
+ * holder's refs may also be values built from module code on first use
+ * (service traits, endpoint rules), which its value entries name.
  *
  * Grammar (`;` never appears outside an entry separator; strings escape it):
  *
  *   $N        refs[N]
- *   #N  ^R:N  schema entry N of this holder / of the holder refs[R] (lazy, memoized)
+ *   #N  #R:N  schema entry N of this holder / of the holder refs[R] (lazy, memoized)
+ *   ~N  ~R:N  value entry N of this holder / of refs[R] (a constant, evaluated once)
  *   >N        thunk `() => entry N`
  *   "..." -1.5 true false null   JSON literal   u  undefined
  *   {k:e,"k":e}  object   [e,e]  array
@@ -723,17 +726,8 @@ const evalEntry = (src: Source, j: number): any => {
   };
   const expr = (): any => {
     let v: any;
-    const c = s[p++];
-    if (c === "$") v = r[+tok()];
-    else if (c === "#") v = schemaOf(src, +tok());
-    else if (c === "^") {
-      const h = sourceOf(r[+tok()]);
-      p++;
-      v = schemaOf(h, +tok());
-    } else if (c === ">") {
-      const k = +tok();
-      v = () => evalEntry(src, k);
-    } else if (c === "{") {
+    const c = s[p++]!;
+    if (c === "{") {
       v = {};
       if (s[p] === "}") p++;
       else
@@ -743,7 +737,24 @@ const evalEntry = (src: Source, j: number): any => {
           v[k[0] === '"' ? JSON.parse(k) : k] = expr();
         } while (s[p++] !== "}");
     } else if (c === "[") v = list("]");
-    else {
+    else if ("$#~>".includes(c)) {
+      let h = src;
+      let k = +tok();
+      if (s[p] === ":") {
+        p++;
+        h = sourceOf(r[k]);
+        k = +tok();
+      }
+      // A value entry is evaluated once, unwrapped.
+      v =
+        c === "$"
+          ? r[k]
+          : c === ">"
+            ? () => evalEntry(src, k)
+            : c === "#"
+              ? schemaOf(h, k)
+              : (h.c[k] ??= evalEntry(h, k));
+    } else {
       p--;
       const t = tok(TOKEN);
       v = t === "u" ? undefined : JSON.parse(t);
@@ -770,6 +781,15 @@ const dataState = {
 };
 let dataProto: object | undefined;
 let dataPaginatedProto: object | undefined;
+
+/**
+ * The data of an operation whose name recurs in its strings: `%` in them
+ * stands for `stem` (a literal `%` is escaped).
+ */
+export const named = (stem: string, data: string, refs: unknown): [string, unknown] => [
+  data.replaceAll("%", stem),
+  refs,
+];
 
 /** An operation described by data (see the region header). */
 export const op = (fn: DataFn): any =>

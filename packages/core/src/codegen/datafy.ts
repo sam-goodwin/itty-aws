@@ -15,11 +15,22 @@
  * arrow. Schemas reached by several roots (operations, error classes, other
  * module-level code) move into shared holders grouped by the exact set of
  * roots that reach them, so a bundle keeps a holder only when it needs all
- * of it. Schema-library and trait
- * functions get short module-level aliases (`__4 = S.Struct`) so holders
- * list them cheaply and a bundler still drops the unused ones. Thunk bodies
- * (`S.suspend(() => ...)`) become entries of their own. Expressions are
- * encoded in the grammar documented in core/api.
+ * of it. Unless the caller is about to bundle (and rename imports anyway),
+ * schema-library and trait functions get short module-level aliases
+ * (`__4 = S.Struct`) so holders list them cheaply and a bundler still drops
+ * the unused ones. Thunk bodies (`S.suspend(() => ...)`) become entries of
+ * their own. Expressions are encoded in the grammar documented in core/api.
+ *
+ * Every function a module defines costs heap and an object at import, and
+ * its text stays in the heap as module source, so:
+ *  - a module constant only data reads (`const svc = T.AwsApiService(...)`,
+ *    the endpoint rules) moves, as written, into the refs of the holder of
+ *    the roots that reach it, and is built on first use;
+ *  - a constant expression repeated across holders (the service trait pipe
+ *    of every input, a base URL) becomes one value entry, `~R:N`, in the
+ *    holder of the roots that reach it (see `hoistConstants`);
+ *  - an operation whose name recurs in its strings writes it once, as a
+ *    stem (`API.named("GetThing", '..."%Request"...', refs)`).
  *
  * Error classes become data too: their `extends` expression is entry 0 of a
  * function that stands in for the class until first use (`API.error`):
@@ -128,12 +139,12 @@ const encodable = (n: Node): boolean => {
 };
 
 /**
- * A JSON string with every non-ASCII character and `;` (the entry separator)
- * escaped: the module source must stay one-byte.
+ * A JSON string with every non-ASCII character, `;` (the entry separator)
+ * and `%` (a holder's stem) escaped: the module source must stay one-byte.
  */
 const quote = (s: string): string =>
   JSON.stringify(s).replace(
-    /[^\x00-\x3a\x3c-\x7f]/g,
+    /[^\x00-\x24\x26-\x3a\x3c-\x7f]/g,
     (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`,
   );
 
@@ -148,6 +159,8 @@ class Holder {
   /** node key -> entry index in this holder */
   readonly local = new Map<string, number>();
   readonly name: string;
+  /** Written once at the start of the data, `%` in its strings (see `stemOf`). */
+  stem?: string;
   constructor(name: string) {
     this.name = name;
   }
@@ -162,9 +175,294 @@ class Holder {
   }
 }
 
+/** `x.annotate({ identifier: "X" })` -> `"X"` (encoded `x@"X"`), else undefined. */
+const identifierOf = (n: Node): string | undefined => {
+  const callee = strip(n.callee);
+  const [arg] = n.arguments as Node[];
+  const props = arg?.type === "ObjectExpression" ? (arg.properties as Node[]) : [];
+  const p = props[0];
+  return callee.property.name === "annotate" &&
+    n.arguments.length === 1 &&
+    props.length === 1 &&
+    p!.type === "Property" &&
+    !p!.computed &&
+    p!.key.name === "identifier" &&
+    p!.value.type === "Literal" &&
+    typeof p!.value.value === "string"
+    ? p!.value.value
+    : undefined;
+};
+
+/**
+ * The encoded form of an expression with every value named by identifier
+ * (`$S.Struct`, `$svc`), and its estimated encoded length; undefined when
+ * the expression names a schema entry or holds a thunk (it is not
+ * constant). `onNode` sees every expression `encode` visits, children first.
+ */
+const canon = (
+  n: Node,
+  isNamespace: (n: Node) => boolean,
+  onNode?: (n: Node, up: Node | undefined, key: string | undefined, len: number) => void,
+  up?: Node,
+): [string, number] | undefined => {
+  n = strip(n);
+  const go = (x: Node) => canon(x, isNamespace, onNode, n);
+  const all = (xs: Node[]) => {
+    const parts = xs.map(go);
+    return parts.every((p) => p) ? (parts as Array<[string, number]>) : undefined;
+  };
+  const join = (ps: Array<[string, number]>) => ps.map((p) => p[0]).join(",");
+  const width = (ps: Array<[string, number]>) => ps.reduce((a, p) => a + p[1] + 1, 0);
+  let out: [string, number] | undefined;
+  if (tableRef(n)) out = undefined;
+  else
+    switch (n.type) {
+      case "Literal":
+      case "TemplateLiteral":
+      case "UnaryExpression": {
+        const v =
+          n.type === "TemplateLiteral"
+            ? n.expressions.length
+              ? undefined
+              : quote(n.quasis[0].value.cooked)
+            : n.type === "UnaryExpression"
+              ? n.operator === "void"
+                ? "u"
+                : `-${n.argument.value}`
+              : typeof n.value === "string"
+                ? quote(n.value)
+                : String(n.value);
+        out = v === undefined ? undefined : [v, v.length];
+        break;
+      }
+      case "Identifier":
+        out = n.name === "undefined" ? ["u", 1] : [`$${n.name}`, 3];
+        break;
+      case "MemberExpression": {
+        const obj = strip(n.object);
+        if (isNamespace(obj)) out = [`$${obj.name}.${n.property.name}`, 3];
+        else {
+          const o = go(obj);
+          out = o && [`${o[0]}.${n.property.name}`, o[1] + 1 + n.property.name.length];
+        }
+        break;
+      }
+      case "CallExpression": {
+        const callee = strip(n.callee);
+        if (callee.type === "MemberExpression" && !isNamespace(strip(callee.object))) {
+          const o = go(callee.object);
+          const name = callee.property.name as string;
+          const id = identifierOf(n);
+          if (id !== undefined) out = o && [`${o[0]}@${quote(id)}`, o[1] + 3 + id.length];
+          else {
+            const args = all(n.arguments as Node[]);
+            out = o &&
+              args && [`${o[0]}.${name}(${join(args)})`, o[1] + name.length + 2 + width(args)];
+          }
+        } else {
+          const args = all(n.arguments as Node[]);
+          const c = go(callee);
+          out = c && args && [`${c[0]}(${join(args)})`, c[1] + 1 + width(args)];
+        }
+        break;
+      }
+      case "ObjectExpression": {
+        const props = n.properties as Node[];
+        const vals = all(props.map((p) => p.value));
+        out = vals && [
+          `{${props.map((p, i) => `${quote(String(p.key.name ?? p.key.value))}:${vals[i]![0]}`).join(",")}}`,
+          props.reduce(
+            (a, p, i) => a + String(p.key.name ?? p.key.value).length + 2 + vals[i]![1],
+            1,
+          ),
+        ];
+        break;
+      }
+      case "ArrayExpression": {
+        const els = all(n.elements as Node[]);
+        out = els && [`[${join(els)}]`, width(els) + 1];
+        break;
+      }
+      case "ArrowFunctionExpression":
+        go(n.body);
+        out = undefined;
+        break;
+      default:
+        out = undefined;
+    }
+  onNode?.(n, up, out?.[0], out?.[1] ?? 0);
+  return out;
+};
+
+/** An operation's config; a paginated operation's `strategy` argument becomes a member. */
+const configOf = (o: { name: string; config: Node; strategy?: Node }): Node => {
+  if (!o.strategy) return o.config;
+  const c = strip(o.config);
+  if (c.type !== "ObjectExpression") throw new Error(`datafy: ${o.name} config is not an object`);
+  const key = { type: "Identifier", start: 0, end: 0, name: "strategy" };
+  const member = {
+    type: "Property",
+    start: 0,
+    end: 0,
+    kind: "init",
+    method: false,
+    computed: false,
+    key,
+    value: o.strategy,
+  };
+  return { ...c, properties: [...c.properties, member] };
+};
+
+/** A constant expression evaluated once per holder and shared by every place that named it. */
+interface Value {
+  readonly nodes: Node[];
+  readonly holder: Holder;
+  j: number;
+  /** A module constant moved as written: the code of its initializer, a ref of the holder. */
+  readonly code?: string;
+}
+
+/** Shortest constant (encoded characters) worth a value entry. */
+const MIN_LEN = 16;
+/** Smallest saving (source characters) worth a value entry: each costs a bundle some indirection. */
+const MIN_SAVING = 64;
+/**
+ * What a new holder must save first: about 300 characters of heap, plus the
+ * function wrapper every bundle that keeps it pays.
+ */
+const NEW_HOLDER_COST = 3000;
+
+/**
+ * Common constant expressions (calls and longer strings that name no schema
+ * entry) found in more than one place move into value entries: the
+ * service trait pipe of every input, base URLs, ... Each lands in the holder of exactly the roots that reach it,
+ * so a bundle still keeps only data its operations need. Biggest savings
+ * first; a nested expression only counts where its container stays.
+ */
+const hoistConstants = (
+  roots: ReadonlyArray<[Node, Holder]>,
+  isNamespace: (n: Node) => boolean,
+  holderOf: (key: string, create: boolean) => Holder | undefined,
+  rootsOf: Map<Holder, string>,
+  pinned: ReadonlyMap<string, string>,
+): Value[] => {
+  const pinnedUses = new Map<string, Node[]>();
+  const parent = new Map<Node, Node>();
+  const container = new Map<Node, Holder>();
+  const byKey = new Map<string, { len: number; nodes: Node[] }>();
+  for (const [root, h] of roots) {
+    container.set(strip(root), h);
+    canon(root, isNamespace, (n, up, key, len) => {
+      if (up) parent.set(n, up);
+      if (n.type === "Identifier" && pinned.has(n.name)) {
+        let uses = pinnedUses.get(n.name);
+        if (!uses) pinnedUses.set(n.name, (uses = []));
+        uses.push(n);
+      }
+      if (key === undefined) return;
+      const candidate =
+        (len >= MIN_LEN && n.type === "CallExpression" && n.arguments.length > 0) ||
+        ((n.type === "Literal" || n.type === "TemplateLiteral") && len >= MIN_LEN);
+      if (!candidate) return;
+      let c = byKey.get(key);
+      if (!c) byKey.set(key, (c = { len, nodes: [] }));
+      c.nodes.push(n);
+    });
+  }
+  const valueOf = new Map<Node, Value>();
+  const liveIn = (n: Node): Holder | undefined => {
+    for (let x = n; ;) {
+      const p = parent.get(x);
+      if (!p) return container.get(x);
+      const v = valueOf.get(p);
+      if (v) return v.nodes[0] === p ? v.holder : undefined;
+      x = p;
+    }
+  };
+  const keyOf = (holders: Iterable<Holder>) => {
+    const rs = new Set<number>();
+    for (const h of holders) for (const r of rootsOf.get(h)!.split(",")) rs.add(+r);
+    return [...rs].sort((a, b) => a - b).join(",");
+  };
+  // Each moved constant was at least one object at import; the holder it moves to may be new.
+  let newHolders = Math.max(0, pinned.size - 1);
+  const values: Value[] = [];
+  const candidates = [...byKey.values()]
+    .filter((c) => c.nodes.length > 1)
+    .sort((a, b) => (b.nodes.length - 1) * b.len - (a.nodes.length - 1) * a.len);
+  for (const c of candidates) {
+    const live: Array<[Node, Holder]> = [];
+    for (const n of c.nodes) {
+      const h = liveIn(n);
+      if (h) live.push([n, h]);
+    }
+    if (live.length < 2) continue;
+    const key = keyOf(live.map(([, h]) => h));
+    const existing = holderOf(key, false);
+    // A new holder is one more function at import: only as many as moved constants free.
+    if (!existing && !newHolders) continue;
+    let cost = c.len + (existing ? 0 : NEW_HOLDER_COST);
+    const users = new Set<Holder>();
+    for (const [, h] of live) {
+      cost += h === existing ? 3 : 6;
+      users.add(h);
+    }
+    cost += 6 * [...users].filter((h) => h !== existing).length;
+    if (live.length * c.len - cost < MIN_SAVING) continue;
+    if (!existing) newHolders--;
+    const holder = existing ?? holderOf(key, true)!;
+    rootsOf.set(holder, key);
+    const v: Value = { nodes: live.map(([n]) => n), holder, j: -1 };
+    for (const n of v.nodes) valueOf.set(n, v);
+    values.push(v);
+  }
+  for (const [name, code] of pinned) {
+    const live: Array<[Node, Holder]> = [];
+    for (const n of pinnedUses.get(name) ?? []) {
+      const h = liveIn(n);
+      if (h) live.push([n, h]);
+    }
+    if (!live.length) throw new Error(`datafy: constant ${name} has no live reader`);
+    const key = keyOf(live.map(([, h]) => h));
+    const holder = holderOf(key, true)!;
+    rootsOf.set(holder, key);
+    values.push({ nodes: live.map(([n]) => n), holder, j: -1, code });
+  }
+  return values;
+};
+
+const STRING = /"(?:[^"\\]|\\.)*"/g;
+const STEM = /^[\w.-]{4,}$/;
+
+/**
+ * An operation's name recurs in its strings (`"GetThing"`, `"GetThingRequest"`,
+ * `"GetThingOutput"`): the string that saves most when written once as the
+ * holder's stem and as `%` everywhere else becomes the stem.
+ */
+const stemOf = (h: Holder): void => {
+  const strings = h.entries.flatMap((e) => e.match(STRING) ?? []).map((t) => t.slice(1, -1));
+  let best = 0;
+  for (const c of new Set(strings)) {
+    if (!STEM.test(c)) continue;
+    let uses = 0;
+    for (const t of strings) uses += t.split(c).length - 1;
+    const saving = uses * (c.length - 1) - (c.length + 4);
+    if (saving > best) [best, h.stem] = [saving, c];
+  }
+  const stem = h.stem;
+  if (stem)
+    for (let j = 0; j < h.entries.length; j++)
+      h.entries[j] = h.entries[j]!.replace(STRING, (t) => t.split(stem).join("%"));
+};
+
 export const datafyOperations = (
   code: string,
   filename = "generated.ts",
+  /**
+   * Short module-level aliases for namespace members (`const __4 = S.Struct`).
+   * A bundler that is about to rename imports anyway does not need them.
+   */
+  { aliases: aliased = true }: { aliases?: boolean } = {},
 ): { code: string; operations: number; holders: number; errors: number } => {
   if (!/\bfunction __S\(/.test(code)) return { code, operations: 0, holders: 0, errors: 0 };
   const program = parseAst(code, { sourceType: "module", lang: "ts" }, filename);
@@ -181,7 +479,7 @@ export const datafyOperations = (
   const ts = !filename.endsWith(".js");
   const any = ts ? ": any" : "";
 
-  // Graph nodes: schemas (`K:j`, from the builders) and constants (`v:NAME`).
+  // Graph nodes: schemas (`K:j`, from the builders).
   const nodes = new Map<string, Node>();
   const removals: Node[] = [];
   // A root: an operation (`init` is its `API.make(...)` call) or an error
@@ -197,7 +495,6 @@ export const datafyOperations = (
   const ops: Op[] = [];
   const errors: Op[] = [];
   const rest: Node[] = [];
-  const consts = new Map<string, { st: Node; init: Node }>();
   for (const st of body) {
     const cls = st.type === "ExportNamedDeclaration" ? st.declaration : st;
     if (
@@ -274,8 +571,9 @@ export const datafyOperations = (
   // From here on an error class is a root like an operation; its entry 0 is its base class.
   ops.push(...errors);
 
-  // A constant becomes data only if schemas and operation configs are its only readers.
-  const identUses = (n: unknown, name: string): number => {
+  // Module constants only data reads (service traits, endpoint rules, ...)
+  // move, as written, into the holder of the roots that reach them.
+  const reads = (n: unknown, name: string): number => {
     let count = 0;
     walk(n, (x) => {
       if (x.type === "Identifier" && x.name === name) count++;
@@ -283,12 +581,36 @@ export const datafyOperations = (
     });
     return count;
   };
-  for (const [name, c] of consts) {
-    const outside = rest.filter((st) => st !== c.st).reduce((a, st) => a + identUses(st, name), 0);
-    if (outside || identUses(c.init, name)) consts.delete(name);
+  const dataRoots: unknown[] = [[...nodes.values()], ops.map((o) => [o.config, o.strategy])];
+  const pinnable = new Map<string, { st: Node; init: Node }>();
+  for (const st of rest) {
+    if (st.type !== "VariableDeclaration" || st.kind !== "const" || st.declarations.length !== 1)
+      continue;
+    const d = st.declarations[0] as Node;
+    if (d.id.type !== "Identifier" || !d.init || strip(d.init).type !== "CallExpression") continue;
+    if (!/\/\*[@#]__PURE__\*\/\s*$/.test(code.slice(Math.max(0, d.init.start - 20), d.init.start)))
+      continue;
+    let internal = false;
+    walk(d.init, (x) => {
+      if (tableRef(x) || (x.type === "Identifier" && /^__[cSs]\d*$/.test(x.name))) internal = true;
+      return true;
+    });
+    if (!internal) pinnable.set(d.id.name, { st, init: d.init });
   }
-  for (const [name, c] of consts) {
-    nodes.set(`v:${name}`, c.init);
+  for (let changed = true; changed;) {
+    changed = false;
+    for (const [name, c] of pinnable) {
+      const outside = rest.some((st) => st !== c.st && reads(st, name) > 0);
+      const chained = [...pinnable.keys()].some((other) => reads(c.init, other) > 0);
+      if (outside || chained || reads(c.init, name) || !reads(dataRoots, name)) {
+        pinnable.delete(name);
+        changed = true;
+      }
+    }
+  }
+  const pinned = new Map<string, string>();
+  for (const [name, c] of pinnable) {
+    pinned.set(name, text(c.init));
     removals.push(c.st);
   }
   const roots = rest.filter((st) => !removals.includes(st));
@@ -299,7 +621,6 @@ export const datafyOperations = (
     walk(n, (x) => {
       const k = tableRef(x);
       if (k) out.add(k);
-      else if (x.type === "Identifier" && consts.has(x.name)) out.add(`v:${x.name}`);
       return !k;
     });
     return out;
@@ -360,14 +681,38 @@ export const datafyOperations = (
   const nodeRef = (k: string, h: Holder): string => {
     const target = home.get(k)!;
     const j = target.local.get(k)!;
-    const constant = k.startsWith("v:");
-    if (target === h) return `${constant ? "~" : "#"}${j}`;
-    return `${constant ? "~" : "^"}${h.ref(target.name)}:${j}`;
+    if (target === h) return `#${j}`;
+    return `#${h.ref(target.name)}:${j}`;
   };
 
-  const encode = (n: Node, h: Holder): string => {
-    const value = (t: string): string => `$${h.ref(VOCAB.test(t) ? alias(t) : t)}`;
+  const configs = ops.map(configOf);
+
+  // Repeated constant expressions become value entries (`~N`, `~R:N`).
+  const holderOfKey = (key: string, create: boolean): Holder | undefined => {
+    const rs = key.split(",").map(Number);
+    if (rs.length === 1 && rs[0]! < ops.length) return opHolders[rs[0]!]!;
+    let h = shared.get(key);
+    if (!h && create) shared.set(key, (h = new Holder(`__d${shared.size}`)));
+    return h;
+  };
+  const rootsOf = new Map<Holder, string>();
+  opHolders.forEach((h, i) => rootsOf.set(h, String(i)));
+  for (const [key, h] of shared) rootsOf.set(h, key);
+  const exprRoots: Array<[Node, Holder]> = [...home].map(([k, h]) => [nodes.get(k)!, h]);
+  configs.forEach((c, i) => exprRoots.push([c, opHolders[i]!]));
+  const values = hoistConstants(exprRoots, isNamespace, holderOfKey, rootsOf, pinned);
+  for (const v of values) {
+    v.j = v.holder.entries.length;
+    v.holder.entries.push("");
+  }
+  const valueOf = new Map<Node, Value>();
+  for (const v of values) for (const n of v.nodes) valueOf.set(n, v);
+
+  const encode = (n: Node, h: Holder, self?: Value): string => {
+    const value = (t: string): string => `$${h.ref(aliased && VOCAB.test(t) ? alias(t) : t)}`;
     n = strip(n);
+    const v = valueOf.get(n);
+    if (v && v !== self) return v.holder === h ? `~${v.j}` : `~${h.ref(v.holder.name)}:${v.j}`;
     const k = tableRef(n);
     if (k) return nodeRef(k, h);
     const enc = (x: Node) => encode(x, h);
@@ -394,7 +739,6 @@ export const datafyOperations = (
         throw new Error(`datafy: unsupported unary ${text(n)}`);
       case "Identifier":
         if (n.name === "undefined") return "u";
-        if (consts.has(n.name)) return nodeRef(`v:${n.name}`, h);
         return value(n.name);
       case "MemberExpression": {
         if (n.computed) throw new Error(`datafy: computed member ${text(n)}`);
@@ -416,21 +760,9 @@ export const datafyOperations = (
           !callee.computed &&
           !isNamespace(strip(callee.object))
         ) {
-          const [arg] = n.arguments as Node[];
-          const props = arg?.type === "ObjectExpression" ? (arg.properties as Node[]) : [];
-          const p = props[0];
           // `.annotate({ identifier: "X" })`, on most schemas: `@"X"`.
-          if (
-            callee.property.name === "annotate" &&
-            n.arguments.length === 1 &&
-            props.length === 1 &&
-            p!.type === "Property" &&
-            !p!.computed &&
-            p!.key.name === "identifier" &&
-            p!.value.type === "Literal" &&
-            typeof p!.value.value === "string"
-          )
-            return `${enc(callee.object)}@${quote(p!.value.value)}`;
+          const id = identifierOf(n);
+          if (id !== undefined) return `${enc(callee.object)}@${quote(id)}`;
           return `${enc(callee.object)}.${callee.property.name}(${args.join(",")})`;
         }
         return `${enc(callee)}(${args.join(",")})`;
@@ -469,20 +801,20 @@ export const datafyOperations = (
     }
   };
 
-  const configOf = (o: Op, h: Holder): string => {
-    let config = encode(o.config, h);
-    if (o.strategy) {
-      if (!config.endsWith("}")) throw new Error(`datafy: ${o.name} config is not an object`);
-      config = `${config.slice(0, -1)}${config.length > 2 ? "," : ""}strategy:${encode(o.strategy, h)}}`;
-    }
-    return config;
-  };
   for (const [k, h] of home) h.entries[h.local.get(k)!] = encode(nodes.get(k)!, h);
-  ops.forEach((o, i) => (opHolders[i]!.entries[0] = configOf(o, opHolders[i]!)));
+  configs.forEach((c, i) => (opHolders[i]!.entries[0] = encode(c, opHolders[i]!)));
+  for (const v of values)
+    v.holder.entries[v.j] = v.code ? `$${v.holder.ref(v.code)}` : encode(v.nodes[0]!, v.holder, v);
+
+  // Operations only: an error class's data is built on every construction.
+  for (const h of opHolders.slice(0, operations)) stemOf(h);
 
   // The data string is a single-quoted JS literal.
-  const literal = (h: Holder) =>
-    `['${h.entries.join(";").replace(/[\\']/g, (c) => `\\${c}`)}', [${h.refs.join(", ")}]]`;
+  const literal = (h: Holder) => {
+    const data = `'${h.entries.join(";").replace(/[\\']/g, (c) => `\\${c}`)}'`;
+    const refs = `[${(aliased ? h.refs : ["__L.at", ...h.refs.slice(1)]).join(", ")}]`;
+    return h.stem ? `API.named(${quote(h.stem)}, ${data}, ${refs})` : `[${data}, ${refs}]`;
+  };
 
   const edits: Array<[number, number, string]> = [];
   for (const st of removals) {
@@ -531,7 +863,7 @@ export const datafyOperations = (
   // Aliases go right after the imports: error classes reach schemas while the module evaluates.
   const lastImport = [...body].reverse().find((st) => st.type === "ImportDeclaration");
   const at = lastImport ? lastImport.end : 0;
-  const decls = [...aliases].map(([t, a]) => `const ${a} = ${t};`);
+  const decls = aliased ? [...aliases].map(([t, a]) => `const ${a} = ${t};`) : [];
   out = `${out.slice(0, at)}\n${decls.join("\n")}${out.slice(at)}`;
   return { code: out, operations, holders: shared.size, errors: errors.length };
 };
