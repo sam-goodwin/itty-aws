@@ -9,19 +9,30 @@
  * operation data. Node resolves the stub (the `module-sync` export
  * condition; bundlers take `module` or `default` first), so importing a
  * service, or every service of a provider, parses no operation until one is
- * used; the first use loads the full module with `require(esm)`, and its
- * definitions become the stub's placeholders. The full module is the
- * bundled module unchanged.
+ * used. The full module is the bundled module plus a trailing comment, its
+ * slice index (see sliceIndex): the first use of an operation reads and
+ * evaluates only what it reaches. Without an index the first use loads the
+ * whole full module with `require(esm)`, and its definitions become the
+ * stub's placeholders. Modules under MIN_BYTES stay whole.
  *
- * Every other `lib/` file that names a service module is pointed at the full
- * one: in place for files only bundlers or lazy code reach, and as a
- * `<file>.full.js` twin for files that are a package's `default` export
- * target (barrels), whose original keeps pointing at the stubs for Node.
+ * Every other `lib/` file that names a service module: barrels get a
+ * `<file>.full.js` twin naming the full modules for bundlers (the original,
+ * for Node, keeps the stubs); other files name the module through the
+ * package (`@distilled.cloud/aws/sts`), so Node resolves the stub and
+ * bundlers the full module.
  *
  * `node scripts/lazy-services.ts --exports [packages/<pkg> ...]` rewrites the
  * packages' `exports` to that layout; bundle-lib fails when they differ.
  */
-import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join, relative, resolve } from "node:path";
 
@@ -32,6 +43,11 @@ const { parseAst } = (await import(require.resolve("rolldown/parseAst"))) as {
 };
 
 const FULL = ".full";
+/**
+ * Service modules below this size stay whole for Node: a stub and its first
+ * use cost more than such a module (a stub costs ~0.5 KB of heap per export).
+ */
+const MIN_BYTES = Number(process.env.DISTILLED_LAZY_MIN_BYTES ?? 8192);
 const CORE_BASE = "@distilled.cloud/core/_bundle/base";
 const KIND: Record<string, string> = {
   api$op: "o",
@@ -168,19 +184,20 @@ const shortName = (i: number) => `_${i.toString(36)}`;
  *
  *   imports declarations       the counts
  *   local:source:imported ...   the imports (source: index into the stub's namespaces)
- *   name ...                    the declarations: operations in definition
- *                               order, then error classes, then the rest
  *   offset...                   where each declaration's line starts in the
  *                               lines that follow (5 base-36 digits each,
  *                               one more for the end)
- *   kind start end|fn|dep ...   one line per declaration (numbers base 36);
+ *   kind start end name|fn|dep ...
+ *                               one line per declaration (numbers base 36):
+ *                               operations in definition order, then error
+ *                               classes, then the rest;
  *                               fn, for a function with plain parameters:
- *                               `params;bodyStart bodyEnd expr;name`
+ *                               `params;bodyStart bodyEnd expr`
  *   kind start end|(s e bs be expr params,...|dep ...
  *                               a value whose call is passed functions: at
  *                               s..e, each with its body
  *                               bs..be and `+`-joined parameters
- *   kind start end|=stem;ds de;ref,...[;name]
+ *   kind start end|=stem;ds de;ref,...
  *                               a data function in its generated shape: its
  *                               data is the template at ds..de (`%` -> stem),
  *                               its refs these names (index into the names)
@@ -264,7 +281,7 @@ const sliceIndex = (
     if (self && code.slice(n.body.start, n.body.end).includes(self)) return "";
     const expr = n.body.type !== "BlockStatement";
     const [bs, be] = expr ? [n.body.start, n.body.end] : [n.body.start + 1, n.body.end - 1];
-    return `${n.params.map((p: any) => p.name).join(",")};${b36(byte(bs))} ${b36(byte(be))} ${expr ? 1 : 0};${kind === 3 ? (self ?? "") : ""}`;
+    return `${n.params.map((p: any) => p.name).join(",")};${b36(byte(bs))} ${b36(byte(be))} ${expr ? 1 : 0}`;
   };
   // Data functions in their generated shape need no compiling: their data
   // is a template literal without escapes and their refs are names.
@@ -313,8 +330,7 @@ const sliceIndex = (
     // function X(t) { return newError(t, new.target, data) }
     if (r?.type !== "CallExpression" || !is(r.callee, "x") || r.arguments.length !== 3)
       return undefined;
-    const e = dataExpr(r.arguments[2]);
-    return e && `${e};${n.id?.name ?? ""}`;
+    return dataExpr(r.arguments[2]);
   };
   // A value made by a call that is passed functions (an endpoint resolver,
   // often never called): where each function is (relative to the value) and
@@ -342,7 +358,7 @@ const sliceIndex = (
     return out.length ? `(${out.join(",")}` : "";
   };
   const lines = decls.map((d) => {
-    const head = [d.kind, byte(d.node.start), byte(d.node.end)].map(b36).join(" ");
+    const head = `${[d.kind, byte(d.node.start), byte(d.node.end)].map(b36).join(" ")} ${d.name}`;
     const data = dataForm(d.node, d.kind);
     return data
       ? `${head}|${data}`
@@ -364,7 +380,6 @@ const sliceIndex = (
     [...imports]
       .map(([local, m]) => `${local}:${sources.indexOf(m.source)}:${m.imported}`)
       .join(" "),
-    decls.map((d) => d.name).join(" "),
     table,
     ...lines,
   ].join("\n");
@@ -406,6 +421,8 @@ const lazyModule = (
   const defs = new Map<string, { kind: string; index: number }>();
   let ops = "";
   let errors = 0;
+  /** The class name of each error class, in definition order. */
+  const errClass: string[] = [];
   let exportNode: any;
   for (const n of ast.body) {
     if (n.type === "VariableDeclaration")
@@ -416,8 +433,11 @@ const lazyModule = (
           c.callee.type === "Identifier" &&
           kindOfLocal.get(c.callee.name);
         if (!k || d.id.type !== "Identifier") continue;
-        if (k === "e") defs.set(d.id.name, { kind: k, index: errors++ });
-        else defs.set(d.id.name, { kind: k, index: (ops += k).length - 1 });
+        if (k === "e") {
+          defs.set(d.id.name, { kind: k, index: errors++ });
+          const a = c.arguments[0];
+          errClass.push(a?.type === "FunctionExpression" && a.id ? a.id.name : d.id.name);
+        } else defs.set(d.id.name, { kind: k, index: (ops += k).length - 1 });
       }
     else if (n.type === "ExportNamedDeclaration") {
       if (n.source || n.declaration || exportNode) return undefined;
@@ -461,7 +481,7 @@ const lazyModule = (
   }
   let next = 0;
   const aliases: string[] = [];
-  const decl = (names: string[], make: string) => {
+  const decl = (names: string[], make: string, arg = "") => {
     const [first, ...rest] = names;
     const local =
       first && isBinding(first) && !["$L", "$o", "$e"].includes(first) && !/^\$\d+$/.test(first)
@@ -469,9 +489,12 @@ const lazyModule = (
         : shortName(next++);
     if (first && local !== first) aliases.push(`${local} as ${JSON.stringify(first)}`);
     for (const n of rest) aliases.push(`${local} as ${isBinding(n) ? n : JSON.stringify(n)}`);
-    return { exported: local === first, text: `${local}=${make}()` };
+    return { exported: local === first, text: `${local}=${make}(${arg})` };
   };
-  const decls = [...errNames.map((n) => decl(n, "$e")), ...opNames.map((n) => decl(n, "$o"))];
+  const decls = [
+    ...errNames.map((n, i) => decl(n, "$e", JSON.stringify(errClass[i]))),
+    ...opNames.map((n) => decl(n, "$o")),
+  ];
   const text = sliceIndex(code, ast, sources, imports, defs, helperOfLocal);
   // The index goes in a comment at the end of the full module (before its
   // sourceMappingURL), which bundlers drop; declarations keep their offsets.
@@ -578,6 +601,7 @@ const readMap = (file: string) =>
 export const lazyServices = (
   pkgDir: string,
   serviceDirs: string[],
+  minBytes = MIN_BYTES,
 ): { written: string[]; twins: string[]; stubs: number; kept: number; dirs: string[] } => {
   const lib = join(pkgDir, "lib");
   const written: string[] = [];
@@ -605,6 +629,9 @@ export const lazyServices = (
     );
     // Only directories of generated service modules.
     if (![...lazy.values()].some(Boolean)) continue;
+    // A small module costs Node less whole than as a stub plus slices.
+    for (const [f, l] of lazy)
+      if (l && statSync(join(dir, f)).size < minBytes) lazy.set(f, undefined);
     lazyDirs.push(d);
     mkdirSync(fullDir, { recursive: true });
     for (const f of files) {

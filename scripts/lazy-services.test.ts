@@ -9,9 +9,9 @@ import { lazyServices } from "./lazy-services.ts";
 // Lazy service modules read files and load with `require(esm)` / `new
 // Function`, which vitest's module runner does not provide: run the
 // fixtures in Node itself.
-const api = pathToFileURL(
-  join(import.meta.dirname, "..", "packages", "core", "src", "api.ts"),
-).href;
+const core = (m: string) =>
+  pathToFileURL(join(import.meta.dirname, "..", "packages", "core", "src", m)).href;
+const api = core("api.ts");
 const dir = mkdtempSync(join(tmpdir(), "distilled-lazy-"));
 afterAll(() => rmSync(dir, { recursive: true, force: true }));
 
@@ -69,17 +69,20 @@ writeFileSync(
     "",
   ].join(""),
 );
-const result = lazyServices(pkg, ["services"]);
+const result = lazyServices(pkg, ["services"], 0);
 // Core's bundle names its exports `api$<name>`.
-const core = join(dir, "core.mjs");
+const coreFile = join(dir, "core.mjs");
 writeFileSync(
-  core,
+  coreFile,
   `export { op as api$op, opPaginated as api$opPaginated, error as api$error, newError as api$newError, D as api$D, call as api$call, lazyService as api$lazyService } from ${JSON.stringify(api)};\n`,
 );
 const point = (file: string) =>
   writeFileSync(
     file,
-    readFileSync(file, "utf8").replaceAll(`"${CORE}"`, JSON.stringify(pathToFileURL(core).href)),
+    readFileSync(file, "utf8").replaceAll(
+      `"${CORE}"`,
+      JSON.stringify(pathToFileURL(coreFile).href),
+    ),
   );
 point(join(pkg, "lib", "_bundle", "sdk.js"));
 point(join(pkg, "lib", "services", "thing.js"));
@@ -101,16 +104,31 @@ describe("lazy service modules", () => {
     const at = /"opoo",\[\$0\],(\d+),(\d+)\)/.exec(s);
     expect(at).not.toBeNull();
     expect(s).toContain(
-      `const Oops=$e(),Other=$e(),getThing=$o(),listThings=$o(),_0=$o(),dataOp=$o();`,
+      `const Oops=$e("Oops"),Other=$e("Other"),getThing=$o(),listThings=$o(),_0=$o(),dataOp=$o();`,
     );
     expect(s).toContain(`export{Oops,Other,getThing,listThings,dataOp,_0 as "delete"};`);
     // Operations first, then error classes, then the rest.
     const index = readFileSync(full)
       .subarray(+at![1]!, +at![1]! + +at![2]!)
       .toString("latin1");
-    expect(index.split("\n")[2]).toBe(
-      "getThing listThings unused dataOp Oops Other Base Never __d0 __d1 __d2",
-    );
+    expect(
+      index
+        .split("\n")
+        .slice(3)
+        .map((l) => l.split("|")[0]!.split(" ")[3]),
+    ).toEqual([
+      "getThing",
+      "listThings",
+      "unused",
+      "dataOp",
+      "Oops",
+      "Other",
+      "Base",
+      "Never",
+      "__d0",
+      "__d1",
+      "__d2",
+    ]);
     // Data functions in their generated shape are indexed as data.
     expect(index.split("\n").filter((l) => l.includes("|=")).length).toBe(2);
   });
@@ -119,10 +137,11 @@ describe("lazy service modules", () => {
     const r = run(`
       const s = await import(${JSON.stringify(pathToFileURL(stub).href)});
       const keys = Object.keys(s);
+      const untouchedName = s.Other.name;
       const name = s.getThing.operationName;
       const e = new s.Oops({ code: 1 });
       console.log(JSON.stringify({
-        keys, name, never: globalThis.never ?? 0,
+        keys, name, untouchedName, never: globalThis.never ?? 0,
         errorsAreStubs: s.getThing.errors[0] === s.Oops,
         instance: e instanceof s.Oops, tag: e._tag, code: e.code, className: s.Oops.name,
         ast: s.getThing.input.ast, listAst: s.listThings.input.ast,
@@ -135,6 +154,7 @@ describe("lazy service modules", () => {
     expect(r).toEqual({
       keys: ["Oops", "Other", "dataOp", "delete", "getThing", "listThings"],
       name: "GetThing",
+      untouchedName: "Other",
       never: 0,
       errorsAreStubs: true,
       instance: true,
