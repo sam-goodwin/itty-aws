@@ -11,6 +11,11 @@
  * Every published version is generated: Scaleway serves them side by side
  * and its own SDKs ship one client per version.
  *
+ * Documents the mirror derived from scaleway-sdk-js (`"source":
+ * "scaleway-sdk-js"` in the manifest — APIs the portal publishes no
+ * document for) convert like any other; one with `mergeInto` adds its
+ * routes to that published document instead ({@link mergeDerived}).
+ *
  * Before conversion ({@link preprocess}):
  *
  *   1. Map-typed members. Scaleway writes `map<string, T>` as an object
@@ -76,6 +81,10 @@ interface ManifestEntry {
   readonly version: string;
   readonly api: string;
   readonly output: string;
+  /** `scaleway-sdk-js` for a document the mirror derived from the JS SDK. */
+  readonly source?: string;
+  /** A derived document whose routes join this published one. */
+  readonly mergeInto?: string;
 }
 
 /**
@@ -88,13 +97,25 @@ const EXCLUDED: Record<string, string> = {
   "scaleway.test.v1.Api": "not served by api.scaleway.com",
 };
 
-const manifest = (JSON.parse(fs.readFileSync(manifestPath, "utf8")) as ManifestEntry[]).filter(
-  (entry) => {
-    const reason = EXCLUDED[entry.proto];
-    if (reason !== undefined) console.warn(`   ⚠️  ${entry.proto}: skipped — ${reason}`);
-    return reason === undefined;
-  },
-);
+const allEntries = JSON.parse(fs.readFileSync(manifestPath, "utf8")) as ManifestEntry[];
+
+/**
+ * Derived documents that extend a published one (Edge Services' VPC
+ * endpoints): their routes and schemas are merged into the target in
+ * {@link preprocess}, so they surface in the published API's module.
+ */
+const merges = new Map<string, ManifestEntry[]>();
+for (const entry of allEntries) {
+  if (entry.mergeInto === undefined) continue;
+  merges.set(entry.mergeInto, [...(merges.get(entry.mergeInto) ?? []), entry]);
+}
+
+const manifest = allEntries.filter((entry) => {
+  if (entry.mergeInto !== undefined) return false;
+  const reason = EXCLUDED[entry.proto];
+  if (reason !== undefined) console.warn(`   ⚠️  ${entry.proto}: skipped — ${reason}`);
+  return reason === undefined;
+});
 
 const toPascal = (slug: string): string =>
   slug
@@ -155,7 +176,23 @@ const WRAPPERS: Record<string, Record<string, unknown>> = {
   "google.protobuf.BytesValue": { type: ["string", "null"], format: "byte" },
 };
 
+/** Add a derived document's routes and schemas to a published one. */
+const mergeDerived = (spec: any, extra: ManifestEntry): void => {
+  const derived = JSON.parse(fs.readFileSync(path.join(specsDir, extra.output), "utf8"));
+  for (const [route, item] of Object.entries<any>(derived.paths ?? {})) {
+    for (const [method, op] of Object.entries<any>(item)) {
+      if (spec.paths?.[route]?.[method] !== undefined) {
+        throw new Error(`${extra.output}: ${method.toUpperCase()} ${route} is already published`);
+      }
+      spec.paths[route] = { ...spec.paths[route], [method]: op };
+    }
+  }
+  spec.components.schemas = { ...derived.components?.schemas, ...spec.components.schemas };
+};
+
 const preprocess = (entry: ManifestEntry) => (spec: any) => {
+  const slug = entry.output.replace(/\.json$/, "");
+  for (const extra of merges.get(slug) ?? []) mergeDerived(spec, extra);
   walk(spec, mapPlaceholder);
   walk(spec, unrequireNullable);
   for (const [name, schema] of Object.entries(WRAPPERS)) {

@@ -831,6 +831,54 @@ export const TLSStage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TLSStage" }) as any as S.Schema<TLSStage>;
 
+export interface CreateVPCEndpointRequest {
+  /** Project ID of the VPC Endpoint. */
+  project_id?: string;
+  /** Zone of the VPC Endpoint. */
+  region?: string;
+  /** Private Network ID of the VPC Endpoint. */
+  private_network_id: string;
+}
+export const CreateVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.optional(S.String),
+    region: S.optional(S.String),
+    private_network_id: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/edge-services/v1beta1/vpc-endpoints",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+    }),
+  ),
+).annotate({ identifier: "CreateVPCEndpointRequest" }) as any as S.Schema<CreateVPCEndpointRequest>;
+
+export interface VPCEndpoint {
+  /** The VPC Endpoint ID. */
+  id?: string;
+  /** Project ID of the VPC Endpoint. */
+  project_id?: string;
+  /** Zone of the VPC Endpoint. */
+  region?: string;
+  /** Private Network ID of the VPC Endpoint. */
+  private_network_id?: string;
+  /** Date the VPC Endpoint was created. */
+  created_at?: string;
+  /** Date the VPC Endpoint was last updated. */
+  updated_at?: string;
+}
+export const VPCEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    project_id: S.optional(S.String),
+    region: S.optional(S.String),
+    private_network_id: S.optional(S.String),
+    created_at: S.optional(S.String),
+    updated_at: S.optional(S.String),
+  }),
+).annotate({ identifier: "VPCEndpoint" }) as any as S.Schema<VPCEndpoint>;
+
 export type WafStageMode = "unknown_mode" | "disable" | "log_only" | "enable";
 export const WafStageMode = S.String;
 
@@ -1081,6 +1129,28 @@ export interface DeleteTLSStageResponse {}
 export const DeleteTLSStageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteTLSStageResponse",
 }) as any as S.Schema<DeleteTLSStageResponse>;
+
+export interface DeleteVPCEndpointRequest {
+  /** The VPC Endpoint ID. */
+  vpc_endpoint_id: string;
+}
+export const DeleteVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vpc_endpoint_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/edge-services/v1beta1/vpc-endpoints/{vpc_endpoint_id}",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+    }),
+  ),
+).annotate({ identifier: "DeleteVPCEndpointRequest" }) as any as S.Schema<DeleteVPCEndpointRequest>;
+
+export interface DeleteVPCEndpointResponse {}
+export const DeleteVPCEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteVPCEndpointResponse",
+}) as any as S.Schema<DeleteVPCEndpointResponse>;
 
 export interface DeleteWafStageRequest {
   /** ID of the WAF stage to delete. */
@@ -1371,6 +1441,23 @@ export const GetTLSStageRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "GetTLSStageRequest" }) as any as S.Schema<GetTLSStageRequest>;
+
+export interface GetVPCEndpointRequest {
+  /** The VPC Endpoint ID. */
+  vpc_endpoint_id: string;
+}
+export const GetVPCEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vpc_endpoint_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/edge-services/v1beta1/vpc-endpoints/{vpc_endpoint_id}",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+    }),
+  ),
+).annotate({ identifier: "GetVPCEndpointRequest" }) as any as S.Schema<GetVPCEndpointRequest>;
 
 export interface GetWafStageRequest {
   /** ID of the requested WAF stage. */
@@ -1922,6 +2009,61 @@ export const ListTLSStagesResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListTLSStagesResponse" }) as any as S.Schema<ListTLSStagesResponse>;
 
+export type ListVPCEndpointsRequestOrderBy =
+  | "created_at_asc"
+  | "created_at_desc"
+  | "name_asc"
+  | "name_desc";
+export const ListVPCEndpointsRequestOrderBy = S.String;
+
+export interface ListVPCEndpointsRequest {
+  /** Sort order of VPC Endpoints in the response. */
+  order_by?: ListVPCEndpointsRequestOrderBy | (string & {});
+  /** Organization ID to filter for. Only VPC Endpoints from this Organization will be returned. */
+  organization_id?: string;
+  /** Page number to return, from the paginated results. */
+  page?: number;
+  /** Number of VPC Endpoints to return per page. */
+  page_size?: number;
+  /** Project ID to filter for. Only VPC Endpoints from this project will be returned. */
+  project_id?: string;
+}
+export const ListVPCEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    order_by: S.optional(ListVPCEndpointsRequestOrderBy.pipe(T.Query())),
+    organization_id: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    page_size: S.optional(S.Number.pipe(T.Query())),
+    project_id: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/edge-services/v1beta1/vpc-endpoints",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+    }),
+  ),
+).annotate({ identifier: "ListVPCEndpointsRequest" }) as any as S.Schema<ListVPCEndpointsRequest>;
+
+/** Paginated list of VPC Endpoints. */
+export type ListVPCEndpointsResponseVpcEndpointsList = Array<VPCEndpoint>;
+export const ListVPCEndpointsResponseVpcEndpointsList = /*@__PURE__*/ S.Array(
+  VPCEndpoint,
+) as any as S.Schema<ListVPCEndpointsResponseVpcEndpointsList>;
+
+export interface ListVPCEndpointsResponse {
+  /** Paginated list of VPC Endpoints. */
+  vpc_endpoints: ListVPCEndpointsResponseVpcEndpointsList;
+  /** Count of all VPC Endpoints matching the requested criteria. */
+  total_count?: number;
+}
+export const ListVPCEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vpc_endpoints: ListVPCEndpointsResponseVpcEndpointsList,
+    total_count: S.optional(S.Number),
+  }),
+).annotate({ identifier: "ListVPCEndpointsResponse" }) as any as S.Schema<ListVPCEndpointsResponse>;
+
 export type ListWafStagesRequestOrderBy = "created_at_asc" | "created_at_desc";
 export const ListWafStagesRequestOrderBy = S.String;
 
@@ -2066,6 +2208,58 @@ export const HeadStageResponse = /*@__PURE__*/ S.suspend(() =>
     head_stage: S.optional(ListHeadStagesResponseHeadStage),
   }),
 ).annotate({ identifier: "HeadStageResponse" }) as any as S.Schema<HeadStageResponse>;
+
+/** List of VPC Endpoints to attach. */
+export type SetPipelineVPCEndpointsRequestVpcEndpointIdsList = Array<string>;
+export const SetPipelineVPCEndpointsRequestVpcEndpointIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SetPipelineVPCEndpointsRequestVpcEndpointIdsList>;
+
+export interface SetPipelineVPCEndpointsRequest {
+  /** Pipeline ID for which VPC Endpoints must be set. */
+  pipeline_id: string;
+  /** List of VPC Endpoints to attach. */
+  vpc_endpoint_ids?: SetPipelineVPCEndpointsRequestVpcEndpointIdsList;
+}
+export const SetPipelineVPCEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipeline_id: S.String.pipe(T.Label()),
+    vpc_endpoint_ids: S.optional(SetPipelineVPCEndpointsRequestVpcEndpointIdsList),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/edge-services/v1beta1/pipelines/{pipeline_id}/vpc-endpoints",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+    }),
+  ),
+).annotate({
+  identifier: "SetPipelineVPCEndpointsRequest",
+}) as any as S.Schema<SetPipelineVPCEndpointsRequest>;
+
+/** List of VPC Endpoints for the given Pipeline ID. */
+export type SetPipelineVPCEndpointsResponseVpcEndpointsList = Array<VPCEndpoint>;
+export const SetPipelineVPCEndpointsResponseVpcEndpointsList = /*@__PURE__*/ S.Array(
+  VPCEndpoint,
+) as any as S.Schema<SetPipelineVPCEndpointsResponseVpcEndpointsList>;
+
+export interface SetPipelineVPCEndpointsResponse {
+  /** Pipeline ID. */
+  pipeline_id?: string;
+  /** List of VPC Endpoints for the given Pipeline ID. */
+  vpc_endpoints?: SetPipelineVPCEndpointsResponseVpcEndpointsList;
+  /** Count of all VPC Endpoints for the given Pipeline ID. */
+  total_count?: number;
+}
+export const SetPipelineVPCEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipeline_id: S.optional(S.String),
+    vpc_endpoints: S.optional(SetPipelineVPCEndpointsResponseVpcEndpointsList),
+    total_count: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SetPipelineVPCEndpointsResponse",
+}) as any as S.Schema<SetPipelineVPCEndpointsResponse>;
 
 /** List of rules to be checked against every HTTP request. The first matching rule will forward the request to its specified backend stage. If no rules are matched, the request is forwarded to the stage defined by `waf_stage_id` or `backend_stage_id`. */
 export type SetRouteRulesRequestRouteRulesList = Array<SetRouteRulesRequestRouteRule>;
@@ -2459,6 +2653,21 @@ export const createTLSStage: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateVPCEndpointError = ScalewayOpError;
+/** Create VPC Endpoint. Create a new VPC Endpoint. You must specify a `private_network_id` to define to which Private Network the VPC endpoint will be attached to. Derived from scaleway-sdk-js (`API.createVPCEndpoint`): Scaleway publishes no OpenAPI document for this route. */
+export const createVPCEndpoint: API.OperationMethod<
+  CreateVPCEndpointRequest,
+  VPCEndpoint,
+  CreateVPCEndpointError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateVPCEndpointRequest,
+  output: VPCEndpoint,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CreateWafStageError = ScalewayOpError;
 /** Create WAF stage Create a new WAF stage. You must specify the `mode` and `paranoia_level` fields to customize the WAF. */
 export const createWafStage: API.OperationMethod<
@@ -2574,6 +2783,21 @@ export const deleteTLSStage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTLSStageRequest,
   output: DeleteTLSStageResponse,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteVPCEndpointError = ScalewayOpError;
+/** Delete VPC Endpoint. Delete an existing VPC Endpoint, specified by its `vpc_endpoint_id`. Derived from scaleway-sdk-js (`API.deleteVPCEndpoint`): Scaleway publishes no OpenAPI document for this route. */
+export const deleteVPCEndpoint: API.OperationMethod<
+  DeleteVPCEndpointRequest,
+  DeleteVPCEndpointResponse,
+  DeleteVPCEndpointError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteVPCEndpointRequest,
+  output: DeleteVPCEndpointResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,
@@ -2724,6 +2948,21 @@ export const getTLSStage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetTLSStageRequest,
   output: TLSStage,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetVPCEndpointError = ScalewayOpError;
+/** Get VPC Endpoint. Retrieve information about an existing VPC Endpoint, specified by its `vpc_endpoint_id`. Derived from scaleway-sdk-js (`API.getVPCEndpoint`): Scaleway publishes no OpenAPI document for this route. */
+export const getVPCEndpoint: API.OperationMethod<
+  GetVPCEndpointRequest,
+  VPCEndpoint,
+  GetVPCEndpointError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetVPCEndpointRequest,
+  output: VPCEndpoint,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,
@@ -2996,6 +3235,32 @@ export const listTLSStages: API.PaginatedOperationMethod<
   paginateByTotalCount,
 ) as any;
 
+export type ListVPCEndpointsError = ScalewayOpError;
+/** List VPC Endpoints. List all VPC Endpoints, for a Scaleway Organization or Scaleway Project. By default, the VPC Endpoints returned in the list are ordered by creation date in ascending order, though this can be modified via the `order_by` field. Derived from scaleway-sdk-js (`API.listVPCEndpoints`): Scaleway publishes no OpenAPI document for this route. */
+export const listVPCEndpoints: API.PaginatedOperationMethod<
+  ListVPCEndpointsRequest,
+  ListVPCEndpointsResponse,
+  ListVPCEndpointsError,
+  ScalewayOpContext,
+  VPCEndpoint
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListVPCEndpointsRequest,
+    output: ListVPCEndpointsResponse,
+    errors: [UnknownScalewayError],
+    protocol: ScalewayProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "total_count",
+      items: "vpc_endpoints",
+      pageSize: "page_size",
+    } as const,
+  }),
+  paginateByTotalCount,
+) as any;
+
 export type ListWafStagesError = ScalewayOpError;
 /** List WAF stages List all WAF stages, for a Scaleway Organization or Scaleway Project. By default, the WAF stages returned in the list are ordered by creation date in ascending order, though this can be modified via the `order_by` field. */
 export const listWafStages: API.PaginatedOperationMethod<
@@ -3047,6 +3312,21 @@ export const setHeadStage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SetHeadStageRequest,
   output: HeadStageResponse,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetPipelineVPCEndpointsError = ScalewayOpError;
+/** Attach VPC Endpoints. Attach VPC Endpoint to the given Pipeline. You must specify a `pipeline_id` and `vpc_endpoint_ids` which contains the list of VPC Endpoints. Derived from scaleway-sdk-js (`API.setPipelineVPCEndpoints`): Scaleway publishes no OpenAPI document for this route. */
+export const setPipelineVPCEndpoints: API.OperationMethod<
+  SetPipelineVPCEndpointsRequest,
+  SetPipelineVPCEndpointsResponse,
+  SetPipelineVPCEndpointsError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetPipelineVPCEndpointsRequest,
+  output: SetPipelineVPCEndpointsResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

@@ -7,6 +7,12 @@ fetched, converted from YAML to JSON and committed so the repo serves as a
 versioned snapshot. `specs/_manifest.json` maps each file to its proto
 service (`scaleway.instance.v1.Api`) and its download URL.
 
+A few APIs the portal publishes no document for (Billing v2, Edge Services'
+VPC endpoints) are derived from the generated client in
+[scaleway-sdk-js](https://github.com/scaleway/scaleway-sdk-js) and marked
+`"source": "scaleway-sdk-js"` in the manifest; a derived document gives way
+to the portal's as soon as one is published.
+
 The mirror is updated every 24 hours and is designed to be used as a stable git submodule.
 
 ## Usage as a submodule

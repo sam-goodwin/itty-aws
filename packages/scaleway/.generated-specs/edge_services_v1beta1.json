@@ -4750,6 +4750,368 @@
         "smithy.api#documentation": "Delete WAF stage\n\nDelete an existing WAF stage, specified by its `waf_stage_id`. Deleting a WAF stage is permanent, and cannot be undone."
       }
     },
+    "com.scaleway.edge_services_v1beta1#GetVPCEndpointRequest": {
+      "type": "structure",
+      "members": {
+        "vpc_endpoint_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The VPC Endpoint ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#VPCEndpoint": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The VPC Endpoint ID."
+          }
+        },
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Project ID of the VPC Endpoint."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone of the VPC Endpoint."
+          }
+        },
+        "private_network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Private Network ID of the VPC Endpoint."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date the VPC Endpoint was created."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date the VPC Endpoint was last updated."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.edge_services_v1beta1#GetVPCEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.edge_services_v1beta1#GetVPCEndpointRequest"
+      },
+      "output": {
+        "target": "com.scaleway.edge_services_v1beta1#VPCEndpoint"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/edge-services/v1beta1/vpc-endpoints/{vpc_endpoint_id}",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com"
+        },
+        "smithy.api#documentation": "Get VPC Endpoint. Retrieve information about an existing VPC Endpoint, specified by its `vpc_endpoint_id`.\n\nDerived from scaleway-sdk-js (`API.getVPCEndpoint`): Scaleway publishes no OpenAPI document for this route."
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#DeleteVPCEndpointRequest": {
+      "type": "structure",
+      "members": {
+        "vpc_endpoint_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The VPC Endpoint ID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#DeleteVPCEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.edge_services_v1beta1#DeleteVPCEndpointRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/edge-services/v1beta1/vpc-endpoints/{vpc_endpoint_id}",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com"
+        },
+        "smithy.api#documentation": "Delete VPC Endpoint. Delete an existing VPC Endpoint, specified by its `vpc_endpoint_id`.\n\nDerived from scaleway-sdk-js (`API.deleteVPCEndpoint`): Scaleway publishes no OpenAPI document for this route."
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#ListVPCEndpointsRequestOrderBy": {
+      "type": "enum",
+      "members": {
+        "CREATED_AT_ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_at_asc"
+          }
+        },
+        "CREATED_AT_DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_at_desc"
+          }
+        },
+        "NAME_ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name_asc"
+          }
+        },
+        "NAME_DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name_desc"
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.edge_services_v1beta1#ListVPCEndpointsRequest": {
+      "type": "structure",
+      "members": {
+        "order_by": {
+          "target": "com.scaleway.edge_services_v1beta1#ListVPCEndpointsRequestOrderBy",
+          "traits": {
+            "smithy.api#httpQuery": "order_by",
+            "smithy.api#documentation": "Sort order of VPC Endpoints in the response."
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "organization_id",
+            "smithy.api#documentation": "Organization ID to filter for. Only VPC Endpoints from this Organization will be returned."
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Page number to return, from the paginated results."
+          }
+        },
+        "page_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "page_size",
+            "smithy.api#documentation": "Number of VPC Endpoints to return per page."
+          }
+        },
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "project_id",
+            "smithy.api#documentation": "Project ID to filter for. Only VPC Endpoints from this project will be returned."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#ListVPCEndpointsResponse": {
+      "type": "structure",
+      "members": {
+        "vpc_endpoints": {
+          "target": "com.scaleway.edge_services_v1beta1#ListVPCEndpointsResponseVpcEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "Paginated list of VPC Endpoints."
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Count of all VPC Endpoints matching the requested criteria."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.edge_services_v1beta1#ListVPCEndpointsResponseVpcEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.scaleway.edge_services_v1beta1#VPCEndpoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "Paginated list of VPC Endpoints."
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#ListVPCEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.edge_services_v1beta1#ListVPCEndpointsRequest"
+      },
+      "output": {
+        "target": "com.scaleway.edge_services_v1beta1#ListVPCEndpointsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/edge-services/v1beta1/vpc-endpoints",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com"
+        },
+        "smithy.api#documentation": "List VPC Endpoints. List all VPC Endpoints, for a Scaleway Organization or Scaleway Project. By default, the VPC Endpoints returned in the list are ordered by creation date in ascending order, though this can be modified via the `order_by` field.\n\nDerived from scaleway-sdk-js (`API.listVPCEndpoints`): Scaleway publishes no OpenAPI document for this route.",
+        "smithy.api#paginated": {
+          "mode": "page",
+          "inputToken": "page",
+          "outputToken": "total_count",
+          "items": "vpc_endpoints",
+          "pageSize": "page_size"
+        }
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#CreateVPCEndpointRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Project ID of the VPC Endpoint."
+          }
+        },
+        "region": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone of the VPC Endpoint."
+          }
+        },
+        "private_network_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Private Network ID of the VPC Endpoint.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#CreateVPCEndpoint": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.edge_services_v1beta1#CreateVPCEndpointRequest"
+      },
+      "output": {
+        "target": "com.scaleway.edge_services_v1beta1#VPCEndpoint"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/edge-services/v1beta1/vpc-endpoints",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com"
+        },
+        "smithy.api#documentation": "Create VPC Endpoint. Create a new VPC Endpoint. You must specify a `private_network_id` to define to which Private Network the VPC endpoint will be attached to.\n\nDerived from scaleway-sdk-js (`API.createVPCEndpoint`): Scaleway publishes no OpenAPI document for this route."
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpointsRequestVpcEndpointIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of VPC Endpoints to attach."
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpointsRequest": {
+      "type": "structure",
+      "members": {
+        "pipeline_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Pipeline ID for which VPC Endpoints must be set."
+          }
+        },
+        "vpc_endpoint_ids": {
+          "target": "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpointsRequestVpcEndpointIdsList",
+          "traits": {
+            "smithy.api#documentation": "List of VPC Endpoints to attach."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpointsResponse": {
+      "type": "structure",
+      "members": {
+        "pipeline_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pipeline ID."
+          }
+        },
+        "vpc_endpoints": {
+          "target": "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpointsResponseVpcEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "List of VPC Endpoints for the given Pipeline ID."
+          }
+        },
+        "total_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Count of all VPC Endpoints for the given Pipeline ID."
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpointsResponseVpcEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "com.scaleway.edge_services_v1beta1#VPCEndpoint"
+      },
+      "traits": {
+        "smithy.api#documentation": "List of VPC Endpoints for the given Pipeline ID."
+      }
+    },
+    "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpoints": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpointsRequest"
+      },
+      "output": {
+        "target": "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpointsResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/edge-services/v1beta1/pipelines/{pipeline_id}/vpc-endpoints",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com"
+        },
+        "smithy.api#documentation": "Attach VPC Endpoints. Attach VPC Endpoint to the given Pipeline. You must specify a `pipeline_id` and `vpc_endpoint_ids` which contains the list of VPC Endpoints.\n\nDerived from scaleway-sdk-js (`API.setPipelineVPCEndpoints`): Scaleway publishes no OpenAPI document for this route."
+      }
+    },
     "com.scaleway.edge_services_v1beta1#EdgeServicesV1beta1": {
       "type": "service",
       "version": "v1beta1",
@@ -4900,6 +5262,21 @@
         },
         {
           "target": "com.scaleway.edge_services_v1beta1#DeleteWafStage"
+        },
+        {
+          "target": "com.scaleway.edge_services_v1beta1#GetVPCEndpoint"
+        },
+        {
+          "target": "com.scaleway.edge_services_v1beta1#DeleteVPCEndpoint"
+        },
+        {
+          "target": "com.scaleway.edge_services_v1beta1#ListVPCEndpoints"
+        },
+        {
+          "target": "com.scaleway.edge_services_v1beta1#CreateVPCEndpoint"
+        },
+        {
+          "target": "com.scaleway.edge_services_v1beta1#SetPipelineVPCEndpoints"
         }
       ],
       "traits": {
