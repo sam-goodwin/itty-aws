@@ -1,3 +1,13 @@
+## v1.0.0-rc.15
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**: Ssh connection rules on reusable Access policies, keep service_auth_401_redirect &nbsp;-&nbsp; by **Damjan Znidarsic** and **Sam Goodwin** in https://github.com/alchemy-run/distilled/issues/658 [<samp>(81fea)</samp>](https://github.com/alchemy-run/distilled/commit/81fea8548)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.14...HEAD)
+
+---
+
 ## v1.0.0-rc.14
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
