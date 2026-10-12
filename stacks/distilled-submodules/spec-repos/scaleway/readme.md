@@ -7,7 +7,7 @@ fetched, converted from YAML to JSON and committed so the repo serves as a
 versioned snapshot. `specs/_manifest.json` maps each file to its proto
 service (`scaleway.instance.v1.Api`) and its download URL.
 
-A few APIs the portal publishes no document for (Billing v2, Edge Services'
+APIs the portal publishes no document for (Billing v2, Dedibox billing/RPN/IPv6, Search, Dataviz, Edge Services'
 VPC endpoints) are derived from the generated client in
 [scaleway-sdk-js](https://github.com/scaleway/scaleway-sdk-js) and marked
 `"source": "scaleway-sdk-js"` in the manifest; a derived document gives way

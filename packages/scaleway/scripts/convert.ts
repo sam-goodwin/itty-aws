@@ -459,12 +459,16 @@ for (const entry of manifest) {
   const prepared = preprocess(entry)(structuredClone(spec));
 
   const byRoute = new Map<string, Record<string, string>>();
+  const rawRoutes = new Set<string>(RAW_DOWNLOADS[slug] ?? []);
   for (const [pathTemplate, pathItem] of Object.entries<any>(prepared.paths ?? {})) {
     for (const method of HTTP_METHODS) {
       const op = pathItem?.[method];
       if (!op || op.deprecated) continue;
       const trait = paginationFor(prepared, op);
       if (trait) byRoute.set(`${method.toUpperCase()} ${pathTemplate}`, trait);
+      // Derived `Blob` downloads (Dedibox invoices) are flagged by the mirror.
+      if (op["x-distilled-raw-download"] === true)
+        rawRoutes.add(`${method.toUpperCase()} ${pathTemplate}`);
     }
   }
 
@@ -503,7 +507,7 @@ for (const entry of manifest) {
   }
   stampedPages += paginated;
 
-  for (const route of RAW_DOWNLOADS[slug] ?? []) {
+  for (const route of rawRoutes) {
     const [method, uri] = route.split(" ");
     const found = Object.entries<any>(model.shapes).find(
       ([, s]) =>

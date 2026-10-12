@@ -140,12 +140,16 @@ interface DerivedSource {
   readonly package: string;
   readonly product: string;
   readonly version: string;
-  /** SDK class → proto API name (`ElectronicBillingAPI` → `ElectronicBillingApi`). */
-  readonly classes: Readonly<Record<string, string>>;
+  /**
+   * SDK class → proto API name (`ElectronicBillingAPI` → `ElectronicBillingApi`),
+   * or `{ api, mergeInto }` to add the class's routes to that published
+   * document (only the routes it lacks) instead of standing alone.
+   */
+  readonly classes: Readonly<
+    Record<string, string | { readonly api: string; readonly mergeInto: string }>
+  >;
   /** Keep only routes matching this. */
   readonly routes?: RegExp;
-  /** Merge into this published document instead of standing alone. */
-  readonly mergeInto?: string;
 }
 
 const DERIVED: readonly DerivedSource[] = [
@@ -156,12 +160,39 @@ const DERIVED: readonly DerivedSource[] = [
     classes: { API: "Api", ElectronicBillingAPI: "ElectronicBillingApi" },
   },
   {
+    // The portal publishes `scaleway.dedibox.v1.Api` only.
+    package: "dedibox",
+    product: "dedibox",
+    version: "v1",
+    classes: {
+      API: { api: "Api", mergeInto: "dedibox_v1" },
+      BillingAPI: "BillingApi",
+      IPv6BlockAPI: "IPv6BlockApi",
+      RpnAPI: "RpnApi",
+      RpnSanAPI: "RpnSanApi",
+      RpnV1API: "RpnV1Api",
+      RpnV2API: "RpnV2Api",
+    },
+  },
+  {
+    // Not served yet: every region answered `501 unknown service` (2026-10-12).
+    package: "dataviz",
+    product: "dataviz",
+    version: "v1alpha1",
+    classes: { API: "Api" },
+  },
+  {
     package: "edge_services",
     product: "edge_services",
     version: "v1beta1",
-    classes: { API: "Api" },
+    classes: { API: { api: "Api", mergeInto: "edge_services_v1beta1" } },
     routes: /vpc-endpoints/,
-    mergeInto: "edge_services_v1beta1",
+  },
+  {
+    package: "search",
+    product: "search",
+    version: "v1alpha1",
+    classes: { API: "Api" },
   },
 ];
 
@@ -197,7 +228,7 @@ const docText = (block: string): string =>
 const parseTypes = (src: string): Map<string, TypeDef> => {
   const types = new Map<string, TypeDef>();
   const declaration =
-    /(?:\/\*\*((?:(?!\*\/)[\s\S])*)\*\/\s*)?export (?:type (\w+) =([^{\n]*\n(?:\s+\|[^\n]*\n)*)|(?:interface (\w+)|type (\w+) =) \{\n([\s\S]*?)\n\})/g;
+    /(?:\/\*\*((?:(?!\*\/)[\s\S])*)\*\/\s*)?export (?:type (\w+) =([^{\n]*\n(?:\s+\|[^\n]*\n)*)|(?:interface (\w+)|type (\w+) =) \{(\n[\s\S]*?)??\n\})/g;
   for (const m of src.matchAll(declaration)) {
     const doc = m[1] ? docText(m[1]) : "";
     if (m[2] !== undefined) {
@@ -208,7 +239,7 @@ const parseTypes = (src: string): Map<string, TypeDef> => {
     }
     const name = (m[4] ?? m[5])!;
     const fields: Field[] = [];
-    for (const f of m[6]!.matchAll(
+    for (const f of (m[6] ?? "").matchAll(
       /(?:\s*\/\*\*((?:(?!\*\/)[\s\S])*)\*\/)?\n?  (\w+)(\??): ([^\n]+)/g,
     )) {
       fields.push({
@@ -382,7 +413,9 @@ async function deriveFromSdkJs(source: DerivedSource): Promise<DerivedDocument[]
   };
 
   const documents: DerivedDocument[] = [];
-  for (const [className, api] of Object.entries(source.classes)) {
+  for (const [className, target] of Object.entries(source.classes)) {
+    const api = typeof target === "string" ? target : target.api;
+    const mergeInto = typeof target === "string" ? undefined : target.mergeInto;
     const own = methods.filter((m) => m.className === className);
     if (own.length === 0) continue;
     const components: Record<string, Schema> = {};
@@ -500,9 +533,15 @@ async function deriveFromSdkJs(source: DerivedSource): Promise<DerivedDocument[]
             : {
                 "200": {
                   description: "",
-                  content: { "application/json": { schema: schemaFor(m.responseType) } },
+                  content: {
+                    "application/json": {
+                      // A `Blob` download (`?dl=1`) answers the JSON file object without `dl`.
+                      schema: schemaFor(m.responseType === "Blob" ? "ScwFile" : m.responseType),
+                    },
+                  },
                 },
               },
+        ...(m.responseType === "Blob" ? { "x-distilled-raw-download": true } : {}),
         security: [{ scaleway: [] }],
       };
     }
@@ -510,13 +549,13 @@ async function deriveFromSdkJs(source: DerivedSource): Promise<DerivedDocument[]
     const proto = `${prefix}${api}`;
     documents.push({
       slug:
-        source.mergeInto !== undefined
-          ? `${source.mergeInto}.sdk-js`
+        mergeInto !== undefined
+          ? `${mergeInto}.sdk-js`
           : toSlug(source.product, api, source.version),
       proto,
       api,
       url: base,
-      ...(source.mergeInto !== undefined ? { mergeInto: source.mergeInto } : {}),
+      ...(mergeInto !== undefined ? { mergeInto } : {}),
       doc: {
         openapi: "3.1.0",
         info: {
@@ -609,8 +648,12 @@ async function main() {
           );
         }
         const officialDoc = JSON.parse(await readFile(`${SPECS_DIR}/${official.output}`, "utf8"));
-        for (const route of Object.keys(derived.doc.paths)) {
-          if (route in (officialDoc.paths ?? {})) delete derived.doc.paths[route];
+        // Keep only the operations the published document lacks.
+        for (const [route, item] of Object.entries(derived.doc.paths)) {
+          for (const method of Object.keys(item)) {
+            if (officialDoc.paths?.[route]?.[method] !== undefined) delete item[method];
+          }
+          if (Object.keys(item).length === 0) delete derived.doc.paths[route];
         }
         if (Object.keys(derived.doc.paths).length === 0) {
           console.log(`Skipping derived ${derived.slug}: ${derived.mergeInto} has every route now`);

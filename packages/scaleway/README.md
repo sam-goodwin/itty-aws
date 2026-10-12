@@ -48,13 +48,21 @@ portal except the `test` API, which `api.scaleway.com` does not serve.
 Operations deprecated upstream are not generated. Member names are
 Scaleway's wire names (`project_id`, `commercial_type`, `page_size`).
 
-Three APIs have no document on the portal and are **derived from Scaleway's
+Some APIs have no document on the portal and are **derived from Scaleway's
 official JS SDK** (its generated client, built from the same API
-definitions): `billingV2` (budgets, budget alerts and their notifications),
-`billingElectronicBillingV2` (e-invoicing addresses), and the VPC endpoint
-operations in `edgeServicesV1beta1` (`createVPCEndpoint`, …). Their docs say
-so. When Scaleway publishes a document for one of them, the mirror switches
-to it automatically.
+definitions); their docs say so, and the mirror switches to a portal
+document automatically once one is published:
+
+- `billingV2` (budgets, budget alerts and notifications) and
+  `billingElectronicBillingV2` (e-invoicing addresses);
+- `searchV1alpha1.searchResources` — find any resource across products;
+- Dedibox's other API groups: `dediboxBillingV1` (invoices, refunds, with
+  `…Raw` PDF downloads), `dediboxIpv6BlockV1`, `dediboxRpnV1`,
+  `dediboxRpnSanV1`, `dediboxRpnV1V1`, `dediboxRpnV2V1` — they need Dedibox
+  enabled on the Organization;
+- `datavizV1alpha1` — not served yet (every region answers
+  `501 unknown service`);
+- the VPC endpoint operations in `edgeServicesV1beta1` (`createVPCEndpoint`, …).
 
 ## Auth
 
@@ -165,10 +173,9 @@ before decoding, as the official SDKs do, so an unset field is absent.
   `image_label` / `version_id`) and `locale` on
   `accountContractV3.downloadContractSignature`, which the spec marks
   optional. The API answers `InvalidArgumentsError` naming the field.
-- APIs with neither a portal document nor coverage worth deriving are not
-  generated: the regional Load Balancer API (`/lb/v1/regions/…` — use
-  `lbZonedV1`), Dedibox billing / RPN / IPv6 blocks, Dataviz (not deployed),
-  Search, and console-only APIs (Data Orchestrator, Payment, Support,
-  Notification Center).
+- Not generated: the regional Load Balancer API (`/lb/v1/regions/…` — use
+  `lbZonedV1`, which covers the same resources) and console-only APIs no
+  official SDK covers (Data Orchestrator, Payment, Support, Notification
+  Center).
 - Edge Services VPC endpoints answer an empty object and create nothing
   unless the feature is enabled on the Organization.
