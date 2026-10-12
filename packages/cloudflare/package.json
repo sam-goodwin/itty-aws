@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/cloudflare",
-  "version": "1.0.0-rc.13",
+  "version": "1.0.0-rc.15",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -533,7 +533,7 @@
     "effect": "catalog:"
   },
   "distilled": {
-    "generatedAt": "2026-10-09",
+    "generatedAt": "2026-10-12",
     "specUpdatedAt": "2026-10-05"
   }
 }

@@ -8258,6 +8258,57 @@ export const CreatePreviewDeploymentMetadataContainersList = /*@__PURE__*/ S.Arr
   CreatePreviewDeploymentMetadataContainer,
 ) as any as S.Schema<CreatePreviewDeploymentMetadataContainersList>;
 
+export type PutScriptMetadataExportType = "worker" | "durable-object";
+export const PutScriptMetadataExportType = S.String;
+
+export interface PutScriptMetadataCache {
+  enabled?: boolean;
+  crossVersionCache?: boolean;
+}
+export const PutScriptMetadataCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    crossVersionCache: S.optional(S.Boolean.pipe(T.Body("cross_version_cache"))),
+  }),
+).annotate({ identifier: "PutScriptMetadataCache" }) as any as S.Schema<PutScriptMetadataCache>;
+
+export type PutScriptMetadataExportState =
+  | "created"
+  | "deleted"
+  | "renamed"
+  | "transferred"
+  | "expecting-transfer";
+export const PutScriptMetadataExportState = S.String;
+
+export interface PutScriptMetadataExport {
+  type?: PutScriptMetadataExportType | (string & {});
+  cache?: PutScriptMetadataCache;
+  storage?: string;
+  container?: string;
+  state?: PutScriptMetadataExportState | (string & {});
+  renamedTo?: string;
+  transferredTo?: string;
+  transferFrom?: string;
+}
+export const PutScriptMetadataExport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(PutScriptMetadataExportType),
+    cache: S.optional(PutScriptMetadataCache),
+    storage: S.optional(S.String),
+    container: S.optional(S.String),
+    state: S.optional(PutScriptMetadataExportState),
+    renamedTo: S.optional(S.String.pipe(T.Body("renamed_to"))),
+    transferredTo: S.optional(S.String.pipe(T.Body("transferred_to"))),
+    transferFrom: S.optional(S.String.pipe(T.Body("transfer_from"))),
+  }),
+).annotate({ identifier: "PutScriptMetadataExport" }) as any as S.Schema<PutScriptMetadataExport>;
+
+export type PutScriptMetadataExports = { [key: string]: PutScriptMetadataExport | undefined };
+export const PutScriptMetadataExports = /*@__PURE__*/ S.Record(
+  S.String,
+  PutScriptMetadataExport,
+) as any as S.Schema<PutScriptMetadataExports>;
+
 export interface CreatePreviewDeploymentMetadata {
   /** Entrypoint module filename. */
   mainModule?: string;
@@ -8274,6 +8325,8 @@ export interface CreatePreviewDeploymentMetadata {
   /** Binding map keyed by runtime name (wrangler `env` format). */
   env?: unknown;
   containers?: CreatePreviewDeploymentMetadataContainersList;
+  /** Per-export settings keyed by the verbatim export name (default for the default export). */
+  exports?: PutScriptMetadataExports;
 }
 export const CreatePreviewDeploymentMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8290,6 +8343,7 @@ export const CreatePreviewDeploymentMetadata = /*@__PURE__*/ S.suspend(() =>
     cacheOptions: S.optional(S.Unknown.pipe(T.Body("cache_options"))),
     env: S.optional(S.Unknown),
     containers: S.optional(CreatePreviewDeploymentMetadataContainersList),
+    exports: S.optional(PutScriptMetadataExports.pipe(T.KeyDictionary({}))),
   }),
 ).annotate({
   identifier: "CreatePreviewDeploymentMetadata",
@@ -11395,61 +11449,10 @@ export const PutScriptMetadataTailConsumersList = /*@__PURE__*/ S.Array(
 export type PutScriptMetadataUsageModel = "standard" | "bundled" | "unbound";
 export const PutScriptMetadataUsageModel = S.String;
 
-export interface PutScriptMetadataCache {
-  enabled?: boolean;
-  crossVersionCache?: boolean;
-}
-export const PutScriptMetadataCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    crossVersionCache: S.optional(S.Boolean.pipe(T.Body("cross_version_cache"))),
-  }),
-).annotate({ identifier: "PutScriptMetadataCache" }) as any as S.Schema<PutScriptMetadataCache>;
-
 export type PutScriptMetadataStreamingTailConsumersList = Array<PutScriptTailConsumer>;
 export const PutScriptMetadataStreamingTailConsumersList = /*@__PURE__*/ S.Array(
   PutScriptTailConsumer,
 ) as any as S.Schema<PutScriptMetadataStreamingTailConsumersList>;
-
-export type PutScriptMetadataExportType = "worker" | "durable-object";
-export const PutScriptMetadataExportType = S.String;
-
-export type PutScriptMetadataExportState =
-  | "created"
-  | "deleted"
-  | "renamed"
-  | "transferred"
-  | "expecting-transfer";
-export const PutScriptMetadataExportState = S.String;
-
-export interface PutScriptMetadataExport {
-  type?: PutScriptMetadataExportType | (string & {});
-  cache?: PutScriptMetadataCache;
-  storage?: string;
-  container?: string;
-  state?: PutScriptMetadataExportState | (string & {});
-  renamedTo?: string;
-  transferredTo?: string;
-  transferFrom?: string;
-}
-export const PutScriptMetadataExport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(PutScriptMetadataExportType),
-    cache: S.optional(PutScriptMetadataCache),
-    storage: S.optional(S.String),
-    container: S.optional(S.String),
-    state: S.optional(PutScriptMetadataExportState),
-    renamedTo: S.optional(S.String.pipe(T.Body("renamed_to"))),
-    transferredTo: S.optional(S.String.pipe(T.Body("transferred_to"))),
-    transferFrom: S.optional(S.String.pipe(T.Body("transfer_from"))),
-  }),
-).annotate({ identifier: "PutScriptMetadataExport" }) as any as S.Schema<PutScriptMetadataExport>;
-
-export type PutScriptMetadataExports = { [key: string]: PutScriptMetadataExport | undefined };
-export const PutScriptMetadataExports = /*@__PURE__*/ S.Record(
-  S.String,
-  PutScriptMetadataExport,
-) as any as S.Schema<PutScriptMetadataExports>;
 
 export interface PutScriptMetadata {
   annotations?: PutScriptMetadataAnnotations;
