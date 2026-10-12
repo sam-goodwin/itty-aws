@@ -1550,6 +1550,34 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface GetInstanceCertificateRawRequest {
+  /** The region you want to target */
+  region?: GetInstanceCertificateRequestRegion | (string & {});
+  /** UUID of the Database Instance. */
+  instance_id: string;
+}
+export const GetInstanceCertificateRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(GetInstanceCertificateRequestRegion.pipe(T.Label())),
+    instance_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/rdb/v1/regions/{region}/instances/{instance_id}/certificate",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "GetInstanceCertificateRawRequest",
+}) as any as S.Schema<GetInstanceCertificateRawRequest>;
+
+export type GetInstanceCertificateRawResponse = Uint8Array;
+export const GetInstanceCertificateRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<GetInstanceCertificateRawResponse>;
+
 export type GetInstanceLogRequestRegion = "fr-par" | "nl-ams" | "pl-waw";
 export const GetInstanceLogRequestRegion = S.String;
 
@@ -1756,15 +1784,6 @@ export const ListDatabaseEnginesRequest = /*@__PURE__*/ S.suspend(() =>
 export type EngineSettingPropertyType = "BOOLEAN" | "INT" | "STRING" | "FLOAT";
 export const EngineSettingPropertyType = S.String;
 
-export interface GoogleProtobufFloatValue {
-  value?: number;
-}
-export const GoogleProtobufFloatValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "GoogleProtobufFloatValue" }) as any as S.Schema<GoogleProtobufFloatValue>;
-
 export interface EngineSetting {
   /** Setting name from the database engine. */
   name?: string;
@@ -1785,9 +1804,9 @@ export interface EngineSetting {
   /** Maximum value for int types. */
   int_max?: number | null;
   /** Minimum value for float types. */
-  float_min?: GoogleProtobufFloatValue;
+  float_min?: number | null;
   /** Maximum value for float types. */
-  float_max?: GoogleProtobufFloatValue;
+  float_max?: number | null;
 }
 export const EngineSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1800,8 +1819,8 @@ export const EngineSetting = /*@__PURE__*/ S.suspend(() =>
     string_constraint: S.optional(S.NullOr(S.String)),
     int_min: S.optional(S.NullOr(S.Number)),
     int_max: S.optional(S.NullOr(S.Number)),
-    float_min: S.optional(GoogleProtobufFloatValue),
-    float_max: S.optional(GoogleProtobufFloatValue),
+    float_min: S.optional(S.NullOr(S.Number)),
+    float_max: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({ identifier: "EngineSetting" }) as any as S.Schema<EngineSetting>;
 
@@ -3523,6 +3542,21 @@ export const getInstanceCertificate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceCertificateRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetInstanceCertificateRawError = ScalewayOpError;
+/** Get the TLS certificate of a Database Instance The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const getInstanceCertificateRaw: API.OperationMethod<
+  GetInstanceCertificateRawRequest,
+  GetInstanceCertificateRawResponse,
+  GetInstanceCertificateRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInstanceCertificateRawRequest,
+  output: GetInstanceCertificateRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

@@ -90,6 +90,20 @@
             "smithy.api#httpQuery": "page_size",
             "smithy.api#documentation": "Maximum number of consumption limits to return per page."
           }
+        },
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "organization_id",
+            "smithy.api#documentation": "List the consumption limits of this Organization. One-of `organization_project_id`: exactly one of `organization_id`, `project_id` — the API rejects a call with neither."
+          }
+        },
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "project_id",
+            "smithy.api#documentation": "List the consumption limits of this Project. One-of `organization_project_id`: exactly one of `organization_id`, `project_id` — the API rejects a call with neither."
+          }
         }
       },
       "traits": {

@@ -580,6 +580,34 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface GetDeploymentCertificateRawRequest {
+  /** The region you want to target */
+  region?: GetDeploymentCertificateRequestRegion | (string & {});
+  /** UUID of the deployment. */
+  deployment_id: string;
+}
+export const GetDeploymentCertificateRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(GetDeploymentCertificateRequestRegion.pipe(T.Label())),
+    deployment_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/datawarehouse/v1beta1/regions/{region}/deployments/{deployment_id}/certificate",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "GetDeploymentCertificateRawRequest",
+}) as any as S.Schema<GetDeploymentCertificateRawRequest>;
+
+export type GetDeploymentCertificateRawResponse = Uint8Array;
+export const GetDeploymentCertificateRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<GetDeploymentCertificateRawResponse>;
+
 export type ListDatabasesRequestRegion = "fr-par";
 export const ListDatabasesRequestRegion = S.String;
 
@@ -1159,6 +1187,21 @@ export const getDeploymentCertificate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentCertificateRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDeploymentCertificateRawError = ScalewayOpError;
+/** Get deployment TLS certificate The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const getDeploymentCertificateRaw: API.OperationMethod<
+  GetDeploymentCertificateRawRequest,
+  GetDeploymentCertificateRawResponse,
+  GetDeploymentCertificateRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDeploymentCertificateRawRequest,
+  output: GetDeploymentCertificateRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

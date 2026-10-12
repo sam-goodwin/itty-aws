@@ -24,7 +24,12 @@ import {
   UnknownScalewayError,
 } from "./errors.ts";
 import * as Retry from "./retry.ts";
+import {
+  downloadContractSignature,
+  downloadContractSignatureRaw,
+} from "./services/account_contract_v3.ts";
 import { listEvents } from "./services/audit_trail_v1alpha1.ts";
+import { createContainer } from "./services/containers_v1.ts";
 import { listModels } from "./services/generative_apis_openai_v1.ts";
 import {
   getServer,
@@ -41,7 +46,11 @@ interface Captured {
   readonly body: string | undefined;
 }
 
-type Reply = readonly [status: number, body: string | null, headers?: Record<string, string>];
+type Reply = readonly [
+  status: number,
+  body: string | Uint8Array<ArrayBuffer> | null,
+  headers?: Record<string, string>,
+];
 
 const json = (status: number, body: unknown, headers: Record<string, string> = {}): Reply => [
   status,
@@ -384,7 +393,87 @@ describe("{ type, message } failure envelope", () => {
   });
 });
 
+describe("file downloads", () => {
+  const contract_signature_id = serverId;
+
+  test("the generated operation reads the JSON file object, without dl", async () => {
+    const file = { name: "tos.pdf", content_type: "application/pdf", content: "JVBERi0=" };
+    const { calls, layer } = fakeScaleway(json(200, file));
+    expect(
+      await run(downloadContractSignature({ contract_signature_id, locale: "en_US" }), layer),
+    ).toEqual(file);
+    expect(calls[0]!.url.searchParams.get("dl")).toBeNull();
+  });
+
+  test("…Raw asks for dl=1 beside the other query params and answers the bytes", async () => {
+    const pdf = new Uint8Array([0x25, 0x50, 0x44, 0x46, 0x2d, 0x00, 0xff]);
+    const { calls, layer } = fakeScaleway([200, pdf, { "content-type": "application/pdf" }]);
+    const bytes = await run(
+      downloadContractSignatureRaw({ contract_signature_id, locale: "en_US" }),
+      layer,
+    );
+    expect(bytes).toBeInstanceOf(Uint8Array);
+    expect(Array.from(bytes)).toEqual(Array.from(pdf));
+    expect(calls[0]!.url.searchParams.get("dl")).toBe("1");
+    expect(calls[0]!.url.searchParams.get("locale")).toBe("en_US");
+  });
+
+  test("a failed …Raw download is still a typed error", async () => {
+    const { layer } = fakeScaleway(
+      json(400, {
+        type: "invalid_arguments",
+        message: "invalid argument(s)",
+        details: [
+          {
+            argument_name: "locale",
+            reason: "constraint",
+            help_message: "value must be in list [1 2]",
+          },
+        ],
+      }),
+    );
+    const error = await runFlip(downloadContractSignatureRaw({ contract_signature_id }), layer);
+    expect(error).toBeInstanceOf(InvalidArgumentsError);
+  });
+});
+
+describe("secret maps", () => {
+  test("Redacted values are unwrapped into the request body", async () => {
+    const { calls, layer } = fakeScaleway(json(200, { id: "c" }));
+    await run(
+      createContainer({
+        namespace_id: serverId,
+        name: "web",
+        image: "rg.fr-par.scw.cloud/ns/web:latest",
+        secret_environment_variables: { TOKEN: Redacted.make("s3cr3t"), PLAIN: "x" },
+      }),
+      layer,
+    );
+    expect(JSON.parse(calls[0]!.body!).secret_environment_variables).toEqual({
+      TOKEN: "s3cr3t",
+      PLAIN: "x",
+    });
+  });
+});
+
 describe("success decoding", () => {
+  test("null properties are dropped, as the official SDKs do", async () => {
+    const { layer } = fakeScaleway(
+      json(200, { server: { id: serverId, name: "web", public_ip: null, tags: ["a"] } }),
+    );
+    const result = await Effect.runPromise(
+      getServer({ server_id: serverId }).pipe(
+        Retry.none,
+        Effect.provide(creds()),
+        Effect.provide(layer),
+        Effect.provide(ResponseValidation.strict),
+        Effect.result,
+      ),
+    );
+    expect(result._tag).toBe("Success");
+    expect((result as any).success.server).not.toHaveProperty("public_ip");
+  });
+
   test("the 2xx JSON body is the payload", async () => {
     const server = { server: { id: serverId, name: "web" } };
     const get = fakeScaleway(json(200, server));

@@ -35,11 +35,11 @@ export interface Protocol {
   /** Protocol type. */
   type: ProtocolType;
   /** Protocol status. */
-  active: boolean | null;
+  active?: boolean | null;
   /** The region you want to target */
   region: string;
   /** Number of credentials for this protocol. */
-  credentials: number | null;
+  credentials?: number | null;
   /** (UUID format) */
   project_id: string;
   /** Number of resources, only used for NATS protocol. */
@@ -48,9 +48,9 @@ export interface Protocol {
 export const Protocol = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ProtocolType,
-    active: S.NullOr(S.Boolean),
+    active: S.optional(S.NullOr(S.Boolean)),
     region: S.String,
-    credentials: S.NullOr(S.Number),
+    credentials: S.optional(S.NullOr(S.Number)),
     project_id: S.String,
     resources: S.optional(S.NullOr(S.Number)),
   }),

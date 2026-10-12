@@ -3411,11 +3411,69 @@
         },
         {
           "target": "com.scaleway.redis_v1#ListNodeTypes"
+        },
+        {
+          "target": "com.scaleway.redis_v1#GetClusterCertificateRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Managed Database for Redis™ API",
         "smithy.api#documentation": "Managed Database for Redis™ is a low-latency caching solution. It allows you to easily set up a secure cache and lighten the load on your main database. Based on the in-memory data storage, Managed Database for Redis™ improves your application response time and helps you provide a better experience to your users.\n\nUsing Managed Database for Redis™ as a cache optimizes the speed of your requests as copies of the most frequently used data are stored in memory, making them accessible in milliseconds.\n\n## Concepts\n\nRefer to our [dedicated concepts page](https://www.scaleway.com/en/docs/managed-databases-for-redis/concepts/) to find definitions of the different terms referring to Managed Database for Redis™.\n\n## Quickstart\n\n1. Configure your environment variables.\n   <Message type=\"note\">\n   This is an optional step that seeks to simplify your usage of the APIs\n   </Message>\n\n    ```bash\n    export ACCESS_KEY=\"<access-key>\"\n    export SECRET_KEY=\"<secret-key>\"\n    export SCW_ZONE=\"<zone>\"\n    ```\n\n2. Edit the POST request payload you will use to create your Redis™ Database Instance cluster. Replace the parameters in the following example:\n\n    ```json\n    {\n    \"project_id\":\"50e8d5d3-c623-4df8-a5ef-1972a5432001\",\n    \"name\":\"cluster1\",\n    \"version\":\"7.0.5\",\n    \"tags\":[\n        \"tag1\"\n    ],\n    \"node_type\":\"RED1-micro\",\n    \"user_name\":\"redis-user\",\n    \"password\":\"lxbemloZiPT1l37*\",\n    \"cluster_size\": 3,\n    \"tls_enabled\": true\n    }\n    ```\n\n\n3. Create a Redis™ Database Instance by running the following command. Make sure you include the payload you edited in the previous step.\n\n    ```bash\n    curl -X POST \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" https://api.scaleway.com/redis/v1/zones/$SCW_ZONE/clusters \\\n      -d  '{\n        \"project_id\":\"50e8d5d3-c623-4df8-a5ef-1972a5432001\",\n        \"name\":\"cluster1\",\n        \"version\":\"7.0.5\",\n        \"tags\":[\n            \"tag1\"\n        ],\n        \"node_type\":\"RED1-micro\",\n        \"user_name\":\"redis-user\",\n        \"password\":\"lxbemloZiPT1l37*\",\n        \"cluster_size\": 2,\n        \"tls_enabled\": true\n      }'\n    ```\n\n4. List your Redis™ Database Instances.\n\n    ```bash\n    curl -X GET\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" https://api.scaleway.com/redis/v1/zones/$SCW_ZONE/clusters\n    ```\n\n5. Retrieve your Redis™ Database Instance IP and port from the response.\n   <Message type=\"note\">\n   In this tutorial, we will use `192.0.2.0` and `6379` as the IP and port, respectively\n   </Message>\n6. Connect to your Database Instance with the Redis™ client.\n   <Message type=\"note\">\n   You can use only one of your node IP addresses at a time to connect to your Redis™ Database Instance, as the Redis™ CLI does not support cluster mode.\n   </Message>\n\n    ```bash\n    redis-cli -h 192.0.2.0 -p 6379 --user redis-user --askpass --tls --cacert SSL_redis-cluster1.pem\n    ```\n\n   <Message type=\"note\">\n   The command above uses TLS to add an extra layer of security to your connection. The TLS certificate is generated automatically if you set tls_enabled to true. The certificates take on the following name structure: `SSL_redis-<name-of-your-redis-database-instance>.pem`. When using connectors other than redis-cli, you might need to specify the path to your certificate.\n   </Message>\n\n   <Message type=\"important\">\n   Scaleway supports TLS1.2 and TLS1.3. If you use older versions of `libssl`, you might encounter connexion issues when using `redis-cli`. If this is the case, we recommend you check the libssl versions installed on your local machine and update if necessary.\n   </Message>\n7. Enter the database password that you defined upon creation.\n\nYou are now connected to your Managed Database for Redis™.\n\n<Message type=\"requirement\">\nTo perform the following steps, you must first ensure that:\n  - you have an account and are logged into the [Scaleway console](https://console.scaleway.com/organization)\n  - you have created an [API key](https://www.scaleway.com/en/docs/iam/how-to/create-api-keys/) and that the API key has sufficient [IAM permissions](https://www.scaleway.com/en/docs/iam/reference-content/permission-sets/) to perform the actions described on this page.\n  - you have [installed `curl`](https://curl.se/download.html)\n</Message>\n\n## Going Further\n\nFor more information about Managed Database for Redis™, you can check out the following pages:\n\n- [Managed Database for Redis™ Documentation](https://www.scaleway.com/en/docs/managed-databases-for-redis/quickstart/)\n- [Managed Database for Redis™ FAQ](https://www.scaleway.com/en/docs/managed-databases-for-redis/faq/)\n- [Scaleway Slack Community](https://scaleway-community.slack.com/) join the #database channel\n- [Contact our support team](https://console.scaleway.com/support/tickets/)."
+      }
+    },
+    "com.scaleway.redis_v1#GetClusterCertificateRawRequest": {
+      "type": "structure",
+      "members": {
+        "zone": {
+          "target": "com.scaleway.redis_v1#GetClusterCertificateRequestZone",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#documentation": "The zone you want to target"
+          }
+        },
+        "cluster_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "UUID of the cluster. (UUID format)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.redis_v1#GetClusterCertificateRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.redis_v1#GetClusterCertificateRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.redis_v1#GetClusterCertificateRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.redis_v1#GetClusterCertificateRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/redis/v1/zones/{zone}/clusters/{cluster_id}/certificate",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Get the TLS certificate of a cluster\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

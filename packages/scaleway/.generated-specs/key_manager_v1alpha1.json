@@ -1210,15 +1210,6 @@
       },
       "traits": {}
     },
-    "com.scaleway.key_manager_v1alpha1#GoogleProtobufBytesValue": {
-      "type": "structure",
-      "members": {
-        "value": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {}
-    },
     "com.scaleway.key_manager_v1alpha1#DecryptRequest": {
       "type": "structure",
       "members": {
@@ -1244,9 +1235,10 @@
           }
         },
         "associated_data": {
-          "target": "com.scaleway.key_manager_v1alpha1#GoogleProtobufBytesValue",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "(Optional) Additional authenticated data.\nThe additional data must match the value passed in the encryption request. Only supported by keys with a usage set to `symmetric_encryption`."
+            "smithy.api#documentation": "(Optional) Additional authenticated data.\nThe additional data must match the value passed in the encryption request. Only supported by keys with a usage set to `symmetric_encryption`.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1271,9 +1263,10 @@
           }
         },
         "ciphertext": {
-          "target": "com.scaleway.key_manager_v1alpha1#GoogleProtobufBytesValue",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "(Optional) Data encrypted with the latest key rotation.\nIf the data was already encrypted with the latest key rotation, no output will be returned in the response object."
+            "smithy.api#documentation": "(Optional) Data encrypted with the latest key rotation.\nIf the data was already encrypted with the latest key rotation, no output will be returned in the response object.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1549,9 +1542,10 @@
           }
         },
         "associated_data": {
-          "target": "com.scaleway.key_manager_v1alpha1#GoogleProtobufBytesValue",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "(Optional) Additional authenticated data.\nAdditional data which will not be encrypted, but authenticated and appended to the encrypted payload. Only supported by keys with a usage set to `symmetric_encryption`."
+            "smithy.api#documentation": "(Optional) Additional authenticated data.\nAdditional data which will not be encrypted, but authenticated and appended to the encrypted payload. Only supported by keys with a usage set to `symmetric_encryption`.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -1694,9 +1688,11 @@
           }
         },
         "plaintext": {
-          "target": "com.scaleway.key_manager_v1alpha1#GoogleProtobufBytesValue",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Data encryption key plaintext.\n(Optional) Your data encryption key's plaintext allows you to use the key immediately upon creation. It must neither be stored or shared."
+            "smithy.api#documentation": "Data encryption key plaintext.\n(Optional) Your data encryption key's plaintext allows you to use the key immediately upon creation. It must neither be stored or shared.",
+            "com.distilled.openapi#nullable": {},
+            "smithy.api#sensitive": {}
           }
         },
         "created_at": {
@@ -1795,9 +1791,10 @@
           }
         },
         "salt": {
-          "target": "com.scaleway.key_manager_v1alpha1#GoogleProtobufBytesValue",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "(Optional) Salt value to pass the key derivation function.\nA salt is random data added to key material to ensure unique derived keys, even if the input is similar. It helps strengthen security when the key material has low randomness (low entropy)."
+            "smithy.api#documentation": "(Optional) Salt value to pass the key derivation function.\nA salt is random data added to key material to ensure unique derived keys, even if the input is similar. It helps strengthen security when the key material has low randomness (low entropy).",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "encrypted_key_material": {
@@ -2664,7 +2661,10 @@
           "target": "smithy.api#String"
         },
         "associated_data": {
-          "target": "com.scaleway.key_manager_v1alpha1#GoogleProtobufBytesValue"
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {
@@ -2850,7 +2850,10 @@
           }
         },
         "associated_data": {
-          "target": "com.scaleway.key_manager_v1alpha1#GoogleProtobufBytesValue"
+          "target": "smithy.api#String",
+          "traits": {
+            "com.distilled.openapi#nullable": {}
+          }
         }
       },
       "traits": {

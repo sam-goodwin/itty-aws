@@ -302,6 +302,34 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface ExportRawDNSZoneRawRequest {
+  /** DNS zone to export. */
+  dns_zone: string;
+  /** DNS zone format. */
+  format?: RawFormat | (string & {});
+}
+export const ExportRawDNSZoneRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dns_zone: S.String.pipe(T.Label()),
+    format: S.optional(RawFormat.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/domain/v2beta1/dns-zones/{dns_zone}/raw",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "ExportRawDNSZoneRawRequest",
+}) as any as S.Schema<ExportRawDNSZoneRawRequest>;
+
+export type ExportRawDNSZoneRawResponse = Uint8Array;
+export const ExportRawDNSZoneRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<ExportRawDNSZoneRawResponse>;
+
 export interface GetDNSZoneTsigKeyRequest {
   dns_zone: string;
 }
@@ -1180,14 +1208,14 @@ export interface UpdateDNSZoneRequest {
   /** The full name of the DNS zone to modify. For a root zone (e.g., example.com), enter `example.com`. For a specific sub-zone (e.g., prod.example.com), enter `prod.example.com`. */
   dns_zone: string;
   /** Name of the new DNS zone to create. */
-  new_dns_zone: string | null;
+  new_dns_zone?: string | null;
   /** Project ID in which to create the new DNS zone. */
   project_id: string;
 }
 export const UpdateDNSZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dns_zone: S.String.pipe(T.Label()),
-    new_dns_zone: S.NullOr(S.String),
+    new_dns_zone: S.optional(S.NullOr(S.String)),
     project_id: S.String,
   }).pipe(
     T.Http({
@@ -1415,6 +1443,21 @@ export const exportRawDNSZone: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportRawDNSZoneRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ExportRawDNSZoneRawError = ScalewayOpError;
+/** Export a raw DNS zone The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const exportRawDNSZoneRaw: API.OperationMethod<
+  ExportRawDNSZoneRawRequest,
+  ExportRawDNSZoneRawResponse,
+  ExportRawDNSZoneRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ExportRawDNSZoneRawRequest,
+  output: ExportRawDNSZoneRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

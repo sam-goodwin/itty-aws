@@ -708,7 +708,8 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Secret environment variables of the container."
+        "smithy.api#documentation": "Secret environment variables of the container.",
+        "smithy.api#sensitive": {}
       }
     },
     "com.scaleway.containers_v1#CreateContainerRequestTagsList": {
@@ -1064,7 +1065,8 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Secret environment variables of the container."
+        "smithy.api#documentation": "Secret environment variables of the container.",
+        "smithy.api#sensitive": {}
       }
     },
     "com.scaleway.containers_v1#UpdateContainerRequestProbe": {
@@ -2501,7 +2503,8 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Namespace secret environment variables."
+        "smithy.api#documentation": "Namespace secret environment variables.",
+        "smithy.api#sensitive": {}
       }
     },
     "com.scaleway.containers_v1#CreateNamespaceRequestTagsList": {
@@ -2707,7 +2710,8 @@
         "target": "smithy.api#String"
       },
       "traits": {
-        "smithy.api#documentation": "Namespace secret environment variables."
+        "smithy.api#documentation": "Namespace secret environment variables.",
+        "smithy.api#sensitive": {}
       }
     },
     "com.scaleway.containers_v1#UpdateNamespaceRequestTagsList": {
@@ -4307,11 +4311,61 @@
         },
         {
           "target": "com.scaleway.containers_v1#DeleteTrigger"
+        },
+        {
+          "target": "com.scaleway.containers_v1#GetPrivateEndpointCertificateAuthorityRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Serverless Containers API",
         "smithy.api#documentation": "Scaleway Serverless Containers is a «Container As A Service» product which gives users the ability to deploy atomic serverless workloads and only pay for resources used while containers are running.\n\nIt provides many advantages, such as:\n\n- Containers are only executed when an event is triggered, which allows users to save money while code is not running\n- Auto-Scalability:\n  - Automated `Scaling up and down` based on user configuration (e.g. min: 0, max: 50 replicas of my container).\n  - Automated `Scaling to zero` when a container is not executed, which is cost-effective for the user and saves computing resources for the cloud provider.\n- Endpoint-only scaling\n\n### Serverless Framework\n\nThis page explains how to use the Scaleway Containers API, including a quickstart and the full API documentation. However, you may prefer to use the\n[Serverless Framework plugin](https://github.com/scaleway/serverless-scaleway-functions) enabling users to deploy their serverless workloads\nmuch more easily with a single `serverless deploy` command.\n\nIf what you are looking for is an easy way to deploy your code, you may prefer Serverless Framework.\n\nBelow, you will find a step-by-step guide on how to create a `namespace`, configure and deploy `containers`, and trigger your `containers` via HTTP, CRON triggers, or messaging triggers.\n\n## Concepts\n\nRefer to our [dedicated concepts page](https://www.scaleway.com/en/docs/serverless-containers/concepts/) to find definitions of the different terms referring to Serverless Containers.\n\n## Technical information\n\nA **Container** in Scaleway Containers consists of multiple components:\n\n- **Environment variables**: Users may configure specific environment variables (Database host/credentials for example) which are safely encrypted in our Database, and will be mounted inside your containers. **Note** that environment variables set at `namespace` level will also be mounted (in every container). Environment variables written at `container` level override the ones set at `namespace` level (if two of them bear the same name for example).\n- **Docker image**: A Docker image contains all the elements required to run your software: code, a runtime environment, tools, scripts, libraries, etc.\n- **Resources**: Users may decide how much computing resource to allocate to each container -> `Memory Limit` (in MB). We will then allocate the right amount of `CPU` based on Memory Limit choice. The right choice for your container's resources is very important, as you will be billed based on compute usage over time and the number of Containers executions.\n\n### Product features\n\n- Fully isolated environments\n- Scaling to zero (saves money and computing resources while the code is not executed)\n- High availability and scalability (automated and configurable, each container may scale automatically according to incoming workloads)\n- Multiple event sources:\n  - HTTP (request on our gateway will execute the container)\n  - CRON (time-based job, runs according to configurable cron schedule)\n  - SQS messaging, compatible with [Scaleway Queues](https://www.scaleway.com/en/docs/queues/)\n  - NATS messaging, compatible with [Scaleway NATS](https://www.scaleway.com/en/docs/nats/)\n- Integrated to the Scaleway Container Registry product:\n  - Deploy any docker image from one of your registry namespace\n- Flexible resources: you can choose values separately for your memory and CPU within a range in respect with maximum and minimum allowed values in [Containers Limitation documentation](https://www.scaleway.com/en/docs/serverless-containers/reference-content/containers-limitations/).\n\n### Regions\n\nServerless Containers is available in the Paris, Amsterdam, Warsaw and Milan regions, which are represented by the following path parameters:\n\n- `fr-par`\n- `nl-ams`\n- `pl-waw`\n- `it-mil`\n\n### Authentication\n\nBy default new containers are `public` meaning that no credentials are required to invoke them.\n\nA container can be `private` or `public`. This can be configured through the `privacy` parameter.\n\nCalling a `private` container without authentication will return HTTP code `403`.\n\n### Logs\n\nContainers logs are sent to the project's [Cockpit](https://www.scaleway.com/en/developers/api/cockpit/regional-api/).\n\nThe **Serverless Containers Logs** dashboard in Grafana can be used to see containers logs. More complex queries can be done using the \"Explore\" section of Grafana, and LogQL queries:\n\n```logql\n{resource_type=\"serverless_container\"}\n```\n\nAdditionally, the logs can be retrieved programmatically. For instance, using the `logcli` utility. For more information, refer to our [dedicated documentation](https://www.scaleway.com/en/docs/cockpit/api-cli/querying-logs-with-logcli/).\n\n## Going further\n\nFor more help using Scaleway Serverless containers, check out the following resources:\n\n- Our [main documentation](https://www.scaleway.com/en/docs/serverless-containers/)\n- The #serverless-containers channel on our [Slack Community](https://www.scaleway.com/en/docs/tutorials/scaleway-slack-community/)\n- Our [support ticketing system](https://www.scaleway.com/en/docs/account/how-to/open-a-support-ticket/)."
+      }
+    },
+    "com.scaleway.containers_v1#GetPrivateEndpointCertificateAuthorityRawRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "com.scaleway.containers_v1#GetPrivateEndpointCertificateAuthorityRequestRegion",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#documentation": "The region you want to target"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.containers_v1#GetPrivateEndpointCertificateAuthorityRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.containers_v1#GetPrivateEndpointCertificateAuthorityRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.containers_v1#GetPrivateEndpointCertificateAuthorityRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.containers_v1#GetPrivateEndpointCertificateAuthorityRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/containers/v1/regions/{region}/private-endpoint-ca",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Get the private endpoint certificate authority.\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

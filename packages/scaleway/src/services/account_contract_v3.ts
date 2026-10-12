@@ -182,6 +182,34 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface DownloadContractSignatureRawRequest {
+  /** The contract signature ID. (UUID format) */
+  contract_signature_id: string;
+  /** The locale requested for the content of the contract. */
+  locale?: ScalewayStdLanguageCode | (string & {});
+}
+export const DownloadContractSignatureRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contract_signature_id: S.String.pipe(T.Label()),
+    locale: S.optional(ScalewayStdLanguageCode.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/account/v3/contract-signatures/{contract_signature_id}/download",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "DownloadContractSignatureRawRequest",
+}) as any as S.Schema<DownloadContractSignatureRawRequest>;
+
+export type DownloadContractSignatureRawResponse = Uint8Array;
+export const DownloadContractSignatureRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<DownloadContractSignatureRawResponse>;
+
 export type ListContractSignaturesRequestOrderBy =
   | "signed_at_asc"
   | "signed_at_desc"
@@ -299,6 +327,21 @@ export const downloadContractSignature: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DownloadContractSignatureRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DownloadContractSignatureRawError = ScalewayOpError;
+/** Download a contract content The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const downloadContractSignatureRaw: API.OperationMethod<
+  DownloadContractSignatureRawRequest,
+  DownloadContractSignatureRawResponse,
+  DownloadContractSignatureRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DownloadContractSignatureRawRequest,
+  output: DownloadContractSignatureRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

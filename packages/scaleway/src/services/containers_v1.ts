@@ -22,11 +22,11 @@ export const CreateContainerRequestEnvironmentVariablesMap = /*@__PURE__*/ S.Rec
 
 /** Secret environment variables of the container. */
 export type CreateContainerRequestSecretEnvironmentVariablesMap = {
-  [key: string]: string | undefined;
+  [key: string]: string | Redacted.Redacted<string> | undefined;
 };
 export const CreateContainerRequestSecretEnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.String.pipe(T.SensitiveValue({})),
 ) as any as S.Schema<CreateContainerRequestSecretEnvironmentVariablesMap>;
 
 export type ContainerPrivacy = "unknown_privacy" | "public" | "private";
@@ -452,11 +452,11 @@ export const CreateNamespaceRequestEnvironmentVariablesMap = /*@__PURE__*/ S.Rec
 
 /** Namespace secret environment variables. */
 export type CreateNamespaceRequestSecretEnvironmentVariablesMap = {
-  [key: string]: string | undefined;
+  [key: string]: string | Redacted.Redacted<string> | undefined;
 };
 export const CreateNamespaceRequestSecretEnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.String.pipe(T.SensitiveValue({})),
 ) as any as S.Schema<CreateNamespaceRequestSecretEnvironmentVariablesMap>;
 
 /** A list of arbitrary tags associated with the namespace. */
@@ -1091,6 +1091,31 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface GetPrivateEndpointCertificateAuthorityRawRequest {
+  /** The region you want to target */
+  region?: GetPrivateEndpointCertificateAuthorityRequestRegion | (string & {});
+}
+export const GetPrivateEndpointCertificateAuthorityRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(GetPrivateEndpointCertificateAuthorityRequestRegion.pipe(T.Label())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/containers/v1/regions/{region}/private-endpoint-ca",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "GetPrivateEndpointCertificateAuthorityRawRequest",
+}) as any as S.Schema<GetPrivateEndpointCertificateAuthorityRawRequest>;
+
+export type GetPrivateEndpointCertificateAuthorityRawResponse = Uint8Array;
+export const GetPrivateEndpointCertificateAuthorityRawResponse = /*@__PURE__*/ S.instanceOf(
+  Uint8Array,
+).pipe(T.BinaryResponse()) as any as S.Schema<GetPrivateEndpointCertificateAuthorityRawResponse>;
+
 export type GetTriggerRequestRegion = "fr-par" | "nl-ams" | "pl-waw" | "it-mil";
 export const GetTriggerRequestRegion = S.String;
 
@@ -1377,11 +1402,11 @@ export const UpdateContainerRequestEnvironmentVariablesMap = /*@__PURE__*/ S.Rec
 
 /** Secret environment variables of the container. */
 export type UpdateContainerRequestSecretEnvironmentVariablesMap = {
-  [key: string]: string | undefined;
+  [key: string]: string | Redacted.Redacted<string> | undefined;
 };
 export const UpdateContainerRequestSecretEnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.String.pipe(T.SensitiveValue({})),
 ) as any as S.Schema<UpdateContainerRequestSecretEnvironmentVariablesMap>;
 
 export interface UpdateContainerRequestProbeHTTPProbe {
@@ -1572,11 +1597,11 @@ export const UpdateNamespaceRequestEnvironmentVariablesMap = /*@__PURE__*/ S.Rec
 
 /** Namespace secret environment variables. */
 export type UpdateNamespaceRequestSecretEnvironmentVariablesMap = {
-  [key: string]: string | undefined;
+  [key: string]: string | Redacted.Redacted<string> | undefined;
 };
 export const UpdateNamespaceRequestSecretEnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.String,
+  S.String.pipe(T.SensitiveValue({})),
 ) as any as S.Schema<UpdateNamespaceRequestSecretEnvironmentVariablesMap>;
 
 /** A list of arbitrary tags associated with the namespace. */
@@ -1944,6 +1969,21 @@ export const getPrivateEndpointCertificateAuthority: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPrivateEndpointCertificateAuthorityRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPrivateEndpointCertificateAuthorityRawError = ScalewayOpError;
+/** Get the private endpoint certificate authority. The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const getPrivateEndpointCertificateAuthorityRaw: API.OperationMethod<
+  GetPrivateEndpointCertificateAuthorityRawRequest,
+  GetPrivateEndpointCertificateAuthorityRawResponse,
+  GetPrivateEndpointCertificateAuthorityRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPrivateEndpointCertificateAuthorityRawRequest,
+  output: GetPrivateEndpointCertificateAuthorityRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

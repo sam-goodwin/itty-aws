@@ -2209,11 +2209,69 @@
         },
         {
           "target": "com.scaleway.datawarehouse_v1beta1#ListVersions"
+        },
+        {
+          "target": "com.scaleway.datawarehouse_v1beta1#GetDeploymentCertificateRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Data Warehouse API",
         "smithy.api#documentation": "Data Warehouse for ClickHouse® is a centralized repository to store large sets of structured data, to streamline analysis and reporting for data science and business intelligence.\n\n## Concepts\n\nRefer to our [dedicated concepts page](https://www.scaleway.com/en/docs/data-warehouse/concepts/) to find definitions of terms related to Data Warehouse for ClickHouse®.\n\n## Quickstart\n\n1. Configure your environment variables.\n\n   <Message type=\"note\">\n   This is an optional step that seeks to simplify your usage of the Data Warehouse API.\n   </Message>\n\n    ```bash\n    export SCW_SECRET_KEY=\"<API secret key>\"\n    export SCW_DEFAULT_ZONE=\"<Scaleway default Availability Zone>\"\n    export SCW_DEFAULT_REGION=\"<Scaleway default region>\"\n    export SCW_PROJECT_ID=\"<Scaleway Project ID>\"\n    ```\n\n2. **Create a deployment**: run the following command to create a deployment. You can customize the details in the payload to your needs, using the table below to help.\n\n    ```bash\n    curl -X POST \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      -H \"Content-Type: application/json\" \\\n      -d '{\n        \"cpu_max\": 1,\n        \"cpu_min\": 4,\n        \"name\": \"MyDeployment\",\n        \"password\": \"string\",\n        \"project_id\": $SCW_PROJECT_ID,\n      }' \\\n      \"https://api.scaleway.com/datawarehouse/v1beta1/regions/fr-par/deployments\"\n    ```\n\n3. **Get a list of your deployments**: run the following command to get a list of all the deployments in your account, with their details:\n\n    ```bash\n    curl -X GET \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"https://api.scaleway.com/datawarehouse/v1beta1/regions/fr-par/deployments\"\n    ```\n\n4. **Delete your deployment**: run the following command to delete a deployment. Ensure that you replace `{resource-id}` in the URL with the ID of the deployment you want to delete.\n\n    ```bash\n    curl -X DELETE \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"https://api.scaleway.com/datawarehouse/v1beta1/regions/fr-par/deployments/{resource-id}\"\n    ```\n\n<Message type=\"requirement\">\n- You have a [Scaleway account](https://console.scaleway.com/)\n- You have created an [API key](https://www.scaleway.com/en/docs/iam/how-to/create-api-keys/) and that the API key has sufficient [IAM permissions](https://www.scaleway.com/en/docs/iam/reference-content/permission-sets/) to perform the actions described on this page\n- You have [installed `curl`](https://curl.se/download.html)\n</Message>\n\n## Going further\n\nFor more help using Scaleway Data Warehouse for ClickHouse®, check out the following resources:\n\n- Our [main documentation](https://www.scaleway.com/en/docs/data-warehouse/)\n- The #data-warehouse-beta channel on our [Slack Community](https://www.scaleway.com/en/docs/tutorials/scaleway-slack-community/)\n- Our [support ticketing system](https://www.scaleway.com/en/docs/account/how-to/open-a-support-ticket/)."
+      }
+    },
+    "com.scaleway.datawarehouse_v1beta1#GetDeploymentCertificateRawRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "com.scaleway.datawarehouse_v1beta1#GetDeploymentCertificateRequestRegion",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#documentation": "The region you want to target"
+          }
+        },
+        "deployment_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "UUID of the deployment."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.datawarehouse_v1beta1#GetDeploymentCertificateRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.datawarehouse_v1beta1#GetDeploymentCertificateRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.datawarehouse_v1beta1#GetDeploymentCertificateRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.datawarehouse_v1beta1#GetDeploymentCertificateRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/datawarehouse/v1beta1/regions/{region}/deployments/{deployment_id}/certificate",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Get deployment TLS certificate\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

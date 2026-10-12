@@ -67,7 +67,6 @@
           "target": "com.scaleway.baremetal_v1#CreateServerRequestZone",
           "traits": {
             "smithy.api#documentation": "The zone you want to target",
-            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -131,9 +130,10 @@
           }
         },
         "user_data": {
-          "target": "com.scaleway.baremetal_v1#GoogleProtobufBytesValue",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script."
+            "smithy.api#documentation": "Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -630,15 +630,6 @@
         "smithy.api#documentation": "IDs of options to enable on server."
       }
     },
-    "com.scaleway.baremetal_v1#GoogleProtobufBytesValue": {
-      "type": "structure",
-      "members": {
-        "value": {
-          "target": "smithy.api#String"
-        }
-      },
-      "traits": {}
-    },
     "com.scaleway.baremetal_v1#BatchCreateServersRequestServerConfig": {
       "type": "structure",
       "members": {
@@ -832,9 +823,10 @@
           }
         },
         "user_data": {
-          "target": "com.scaleway.baremetal_v1#GoogleProtobufBytesValue",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional configuration data passed to cloud-init."
+            "smithy.api#documentation": "Optional configuration data passed to cloud-init.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -3297,9 +3289,10 @@
           }
         },
         "user_data": {
-          "target": "com.scaleway.baremetal_v1#GoogleProtobufBytesValue",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script."
+            "smithy.api#documentation": "Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },
@@ -3506,9 +3499,10 @@
           }
         },
         "user_data": {
-          "target": "com.scaleway.baremetal_v1#GoogleProtobufBytesValue",
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script."
+            "smithy.api#documentation": "Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script.",
+            "com.distilled.openapi#nullable": {}
           }
         }
       },

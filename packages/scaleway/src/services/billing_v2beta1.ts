@@ -45,6 +45,34 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface DownloadInvoiceRawRequest {
+  /** Invoice ID. (UUID format) */
+  invoice_id: string;
+  /** File type. PDF by default. */
+  file_type?: DownloadInvoiceRequestFileType | (string & {});
+}
+export const DownloadInvoiceRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invoice_id: S.String.pipe(T.Label()),
+    file_type: S.optional(DownloadInvoiceRequestFileType.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/billing/v2beta1/invoices/{invoice_id}/download",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "DownloadInvoiceRawRequest",
+}) as any as S.Schema<DownloadInvoiceRawRequest>;
+
+export type DownloadInvoiceRawResponse = Uint8Array;
+export const DownloadInvoiceRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<DownloadInvoiceRawResponse>;
+
 export type InvoiceType = "unknown_type" | "periodic" | "purchase" | "credit_note";
 export const InvoiceType = S.String;
 
@@ -105,6 +133,50 @@ export const ExportInvoicesRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "ExportInvoicesRequest" }) as any as S.Schema<ExportInvoicesRequest>;
+
+export interface ExportInvoicesRawRequest {
+  /** Organization ID. If specified, only invoices from this Organization will be returned. (UUID format) */
+  organization_id?: string;
+  /** Return only invoice with start date greater than billing_period_start. (RFC 3339 format) */
+  billing_period_start_after?: string;
+  /** Return only invoice with start date less than billing_period_start. (RFC 3339 format) */
+  billing_period_start_before?: string;
+  /** Invoice type. It can either be `periodic`, `purchase` or `credit_note`. */
+  invoice_type?: InvoiceType | (string & {});
+  /** Page number. */
+  page?: number;
+  /** Positive integer lower or equal to 100 to select the number of items to return. */
+  page_size?: number;
+  /** How invoices are ordered in the response. */
+  order_by?: ExportInvoicesRequestOrderBy | (string & {});
+  /** File format for exporting the invoice list. */
+  file_type?: ExportInvoicesRequestFileType | (string & {});
+}
+export const ExportInvoicesRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.optional(S.String.pipe(T.Query())),
+    billing_period_start_after: S.optional(S.String.pipe(T.Query())),
+    billing_period_start_before: S.optional(S.String.pipe(T.Query())),
+    invoice_type: S.optional(InvoiceType.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    page_size: S.optional(S.Number.pipe(T.Query())),
+    order_by: S.optional(ExportInvoicesRequestOrderBy.pipe(T.Query())),
+    file_type: S.optional(ExportInvoicesRequestFileType.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/billing/v2beta1/export-invoices",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({ identifier: "ExportInvoicesRawRequest" }) as any as S.Schema<ExportInvoicesRawRequest>;
+
+export type ExportInvoicesRawResponse = Uint8Array;
+export const ExportInvoicesRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<ExportInvoicesRawResponse>;
 
 export interface GetInvoiceRequest {
   /** Invoice ID. (UUID format) */
@@ -555,33 +627,22 @@ export const ListTaxesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListTaxesRequest" }) as any as S.Schema<ListTaxesRequest>;
 
-export interface GoogleProtobufDoubleValue {
-  value?: number;
-}
-export const GoogleProtobufDoubleValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GoogleProtobufDoubleValue",
-}) as any as S.Schema<GoogleProtobufDoubleValue>;
-
 export interface ListTaxesResponseTax {
   /** Description of the tax applied. */
   description?: string;
   /** The three-letter currency code. */
   currency?: string;
   /** Applied tax rate (0.2 means a VAT of 20%). */
-  rate?: GoogleProtobufDoubleValue;
+  rate?: number | null;
   /** The total tax value of the consumption. */
-  total_tax_value?: GoogleProtobufDoubleValue;
+  total_tax_value?: number | null;
 }
 export const ListTaxesResponseTax = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     currency: S.optional(S.String),
-    rate: S.optional(GoogleProtobufDoubleValue),
-    total_tax_value: S.optional(GoogleProtobufDoubleValue),
+    rate: S.optional(S.NullOr(S.Number)),
+    total_tax_value: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({ identifier: "ListTaxesResponseTax" }) as any as S.Schema<ListTaxesResponseTax>;
 
@@ -642,6 +703,21 @@ export const downloadInvoice: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type DownloadInvoiceRawError = ScalewayOpError;
+/** Download an invoice The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const downloadInvoiceRaw: API.OperationMethod<
+  DownloadInvoiceRawRequest,
+  DownloadInvoiceRawResponse,
+  DownloadInvoiceRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DownloadInvoiceRawRequest,
+  output: DownloadInvoiceRawResponse,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ExportInvoicesError = ScalewayOpError;
 /** Export invoices Export invoices in a CSV file. */
 export const exportInvoices: API.OperationMethod<
@@ -652,6 +728,21 @@ export const exportInvoices: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportInvoicesRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ExportInvoicesRawError = ScalewayOpError;
+/** Export invoices The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const exportInvoicesRaw: API.OperationMethod<
+  ExportInvoicesRawRequest,
+  ExportInvoicesRawResponse,
+  ExportInvoicesRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ExportInvoicesRawRequest,
+  output: ExportInvoicesRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

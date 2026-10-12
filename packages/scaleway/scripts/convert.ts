@@ -18,7 +18,11 @@
  *      `additionalProperties: true`. That placeholder is the VALUE schema;
  *      it becomes `additionalProperties`, so the member is a record rather
  *      than a struct with a member literally named `<fooKey>`.
- *   2. Component names. Schemas are named by their proto message
+ *   2. Nullable properties are not required — the protocol drops `null`
+ *      properties, so such a member arrives absent ({@link unrequireNullable}).
+ *      The `Float`/`Double`/`BytesValue` wrappers become the bare scalars
+ *      proto3 JSON sends ({@link WRAPPERS}).
+ *   3. Component names. Schemas are named by their proto message
  *      (`scaleway.instance.v1.Server.State`); the document's own package
  *      prefix is dropped (`Server.State`), so shapes read `ServerState`
  *      rather than `ScalewayInstanceV1ServerState`. Shared protos
@@ -28,25 +32,31 @@
  *
  * After the shared OpenAPI→Smithy conversion:
  *
- *   3. Stamp the spec's `servers[0].url` onto every operation's
+ *   4. Stamp the spec's `servers[0].url` onto every operation's
  *      `smithy.api#http.baseUrl` (Generative APIs answer on
  *      `api.scaleway.ai`, everything else on `api.scaleway.com`).
- *   4. Stamp `smithy.api#paginated` on list operations — see
+ *   5. Stamp `smithy.api#paginated` on list operations — see
  *      {@link paginationFor}.
- *   5. Make `region` / `zone` path labels optional: the protocol fills them
+ *   6. Make `region` / `zone` path labels optional: the protocol fills them
  *      from the configured default (`SCW_DEFAULT_REGION` /
  *      `SCW_DEFAULT_ZONE`), as the official SDKs do — see
  *      {@link relaxLocality}.
+ *   7. Add a `…Raw` sibling to every file download (`?dl=1`) — see
+ *      {@link RAW_DOWNLOADS}.
  *
  * Operation names are verbNoun from Scaleway's PascalCase operationIds
- * (`ListServers` → `listServers`). Patches, when added, live in
+ * (`ListServers` → `listServers`). Patches live in
  * `patches/<slug>/*.json` and apply in finalizeConvert.
  */
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { SENSITIVE_FIELD_PATTERNS } from "@distilled.cloud/core/codegen/openapi";
+import {
+  RAW_RESPONSE_TRAIT,
+  SENSITIVE_FIELD_PATTERNS,
+} from "@distilled.cloud/core/codegen/openapi";
 import { runOpenApiConvert } from "@distilled.cloud/core/codegen/openapi-cli";
 import { finalizeConvert } from "@distilled.cloud/core/codegen/patches";
+import { RENAME_METADATA_KEY } from "@distilled.cloud/core/codegen/rewrite-operation-ids";
 import { resolveSpecPath } from "@distilled.cloud/core/codegen/spec-path";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -118,8 +128,39 @@ const mapPlaceholder = (schema: Record<string, any>): void => {
   delete schema["x-properties-order"];
 };
 
+/**
+ * A required property that may be `null` → optional. The protocol drops
+ * `null` properties (see src/protocol.ts), so on the response side such a
+ * member is absent, never `null` (MNQ `Protocol.active`).
+ */
+const unrequireNullable = (schema: Record<string, any>): void => {
+  if (!Array.isArray(schema.required) || schema.properties === undefined) return;
+  schema.required = schema.required.filter((name: string) => {
+    const type = schema.properties?.[name]?.type;
+    return !(Array.isArray(type) && type.includes("null"));
+  });
+  if (schema.required.length === 0) delete schema.required;
+};
+
+/**
+ * proto3 JSON writes the `google.protobuf.*Value` wrappers as the bare
+ * value (or `null`). The export gets that right for most of them
+ * (`Int32Value` is `["integer", "null"]`) but writes these three as
+ * `{ value: … }` objects, which the wire never sends (RDB
+ * `EngineSetting.float_min` answers `0.5`).
+ */
+const WRAPPERS: Record<string, Record<string, unknown>> = {
+  "google.protobuf.FloatValue": { type: ["number", "null"], format: "float" },
+  "google.protobuf.DoubleValue": { type: ["number", "null"], format: "double" },
+  "google.protobuf.BytesValue": { type: ["string", "null"], format: "byte" },
+};
+
 const preprocess = (entry: ManifestEntry) => (spec: any) => {
   walk(spec, mapPlaceholder);
+  walk(spec, unrequireNullable);
+  for (const [name, schema] of Object.entries(WRAPPERS)) {
+    if (spec.components?.schemas?.[name] !== undefined) spec.components.schemas[name] = schema;
+  }
 
   // `scaleway.instance.v1.` is this document's own package.
   const own = `scaleway.${entry.product}.${entry.version}.`;
@@ -273,8 +314,95 @@ const relaxLocality = (model: any, inputShape: string | undefined): number => {
   return relaxed;
 };
 
+/**
+ * Operations that also answer the file itself with `?dl=1` — the routes
+ * scaleway-sdk-js calls with `urlParams(['dl', 1])` and
+ * `responseType: 'blob'`. Without `dl` they answer the JSON
+ * `scaleway.std.File` (`content` base64), which is what the Go SDK and the
+ * CLI read and what the generated operation keeps. Each gets a `…Raw`
+ * sibling whose output is the bytes; see {@link addRawDownload}.
+ */
+const RAW_DOWNLOADS: Record<string, readonly string[]> = {
+  account_contract_v3: ["GET /account/v3/contract-signatures/{contract_signature_id}/download"],
+  billing_v2beta1: [
+    "GET /billing/v2beta1/export-invoices",
+    "GET /billing/v2beta1/invoices/{invoice_id}/download",
+  ],
+  containers_v1: ["GET /containers/v1/regions/{region}/private-endpoint-ca"],
+  datawarehouse_v1beta1: [
+    "GET /datawarehouse/v1beta1/regions/{region}/deployments/{deployment_id}/certificate",
+  ],
+  domain_v2beta1: ["GET /domain/v2beta1/dns-zones/{dns_zone}/raw"],
+  environmental_footprint_user_v1alpha1: [
+    "POST /environmental-footprint/v1alpha1/reports/download",
+  ],
+  inference_v1: ["GET /inference/v1/regions/{region}/deployments/{deployment_id}/certificate"],
+  k8s_v1: [
+    "GET /k8s/v1/regions/{region}/clusters/{cluster_id}/kubeconfig",
+    "GET /k8s/v1/regions/{region}/pools/{pool_id}/user-data/{key}",
+  ],
+  kafka_v1alpha1: [
+    "GET /kafka/v1alpha1/regions/{region}/clusters/{cluster_id}/certificate-authority",
+  ],
+  messageq_v1alpha1: [
+    "GET /messageq/v1alpha1/regions/{region}/deployments/{deployment_id}/certificate-authority",
+  ],
+  mongodb_v1: ["GET /mongodb/v1/regions/{region}/instances/{instance_id}/certificate"],
+  mongodb_v1alpha1: ["GET /mongodb/v1alpha1/regions/{region}/instances/{instance_id}/certificate"],
+  rdb_v1: ["GET /rdb/v1/regions/{region}/instances/{instance_id}/certificate"],
+  redis_v1: ["GET /redis/v1/zones/{zone}/clusters/{cluster_id}/certificate"],
+  searchdb_v1alpha1: [
+    "GET /searchdb/v1alpha1/regions/{region}/deployments/{deployment_id}/certificate-authority",
+  ],
+};
+
+/**
+ * Add `<Op>Raw` beside a file-download operation: the same input, the
+ * `rawDownload` flag on its http trait (the protocol appends `dl=1`), and
+ * an output that is the response body's bytes (generate.ts emits it as
+ * `Uint8Array`). Named after the operation's final name, so the deferred
+ * rename leaves it alone.
+ */
+const addRawDownload = (model: any, ns: string, opId: string): void => {
+  const op = model.shapes[opId];
+  const rename: Record<string, string> = model.metadata?.[RENAME_METADATA_KEY] ?? {};
+  const base = (rename[opId] ?? opId).split("#")[1]!;
+  const rawId = `${ns}#${base}Raw`;
+  const inputId = `${ns}#${base}RawRequest`;
+  const outputId = `${ns}#${base}RawResponse`;
+  for (const id of [rawId, inputId, outputId]) {
+    if (id in model.shapes) throw new Error(`${id} already exists`);
+  }
+  model.shapes[inputId] = structuredClone(model.shapes[op.input.target]);
+  model.shapes[outputId] = {
+    type: "structure",
+    members: {
+      body: {
+        target: "smithy.api#Blob",
+        traits: { [RAW_RESPONSE_TRAIT]: {}, "smithy.api#required": {} },
+      },
+    },
+    traits: {},
+  };
+  const doc = op.traits["smithy.api#documentation"];
+  model.shapes[rawId] = {
+    ...structuredClone(op),
+    input: { target: inputId },
+    output: { target: outputId },
+    traits: {
+      ...structuredClone(op.traits),
+      "smithy.api#http": { ...op.traits["smithy.api#http"], rawDownload: true },
+      // The summary only: the operation's body text describes the JSON form.
+      "smithy.api#documentation": `${typeof doc === "string" ? `${doc.split("\n\n")[0]}\n\n` : ""}The file itself, as bytes (\`?dl=1\`), rather than the JSON file object.`,
+    },
+  };
+  const service = Object.values<any>(model.shapes).find((s) => s?.type === "service");
+  service?.operations?.push({ target: rawId });
+};
+
 let stampedUrls = 0;
 let stampedPages = 0;
+let rawDownloads = 0;
 let relaxedLabels = 0;
 for (const entry of manifest) {
   const slug = entry.output.replace(/\.json$/, "");
@@ -337,12 +465,25 @@ for (const entry of manifest) {
     );
   }
   stampedPages += paginated;
+
+  for (const route of RAW_DOWNLOADS[slug] ?? []) {
+    const [method, uri] = route.split(" ");
+    const found = Object.entries<any>(model.shapes).find(
+      ([, s]) =>
+        s?.type === "operation" &&
+        s.traits?.["smithy.api#http"]?.method === method &&
+        s.traits["smithy.api#http"].uri === uri,
+    );
+    if (found === undefined) throw new Error(`${slug}: no operation for raw download ${route}`);
+    addRawDownload(model, `com.scaleway.${slug}`, found[0]);
+    rawDownloads++;
+  }
   fs.writeFileSync(modelPath, JSON.stringify(model, null, 2) + "\n");
 }
 
 console.log(
   `🔗 stamped ${stampedUrls} operation baseUrl(s), ${stampedPages} paginated, ` +
-    `${relaxedLabels} region/zone label(s) defaulted`,
+    `${relaxedLabels} region/zone label(s) defaulted, ${rawDownloads} raw download(s)`,
 );
 
 await finalizeConvert({ root });

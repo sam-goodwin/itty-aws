@@ -661,14 +661,14 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "session_id",
-            "smithy.api#documentation": "List jobs of this session. One-of `resource_id`: at most one of `session_id`, `project_id`."
+            "smithy.api#documentation": "List jobs of this session. One-of `resource_id` with `session_id` / `project_id`; the API requires `session_id` in practice (a call with only `project_id` is rejected)."
           }
         },
         "project_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "project_id",
-            "smithy.api#documentation": "List jobs of this Project. One-of `resource_id`: at most one of `session_id`, `project_id`."
+            "smithy.api#documentation": "List jobs of this Project. One-of `resource_id` with `session_id` / `project_id`; the API requires `session_id` in practice (a call with only `project_id` is rejected)."
           }
         }
       },
@@ -2439,7 +2439,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "ID of the platform for which the process was created.",
-            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -2447,7 +2446,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "ID of the application for which the process was created.",
-            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },

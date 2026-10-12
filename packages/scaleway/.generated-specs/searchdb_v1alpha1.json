@@ -1887,11 +1887,68 @@
         },
         {
           "target": "com.scaleway.searchdb_v1alpha1#ListVersions"
+        },
+        {
+          "target": "com.scaleway.searchdb_v1alpha1#DownloadDeploymentCertificateAuthorityRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Cloud Essentials for Opensearch API",
         "smithy.api#documentation": "Cloud Essential for Opensearch is Scaleway's product to provide a managed infrastructure for your OpenSearch.\n\nThe product is currently in Public Beta.\n\n## Quickstart\n\n1. **Create a deployment**: Run the following command to create a deployment of 3 nodes with 5GB of storage per node and a public endpoint.\n\n```bash\n    curl -X POST \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      -H \"Content-Type: application/json\" \\\n      -d '{\n        \"project_id\": $SCW_PROJECT_ID,\n        \"name\":\"deployment-1\",\n        \"tags\":[],\n        \"node_count\":1,\n        // \"node_amount\": 1, <-- DEPRECATED (use node_count instead)\n        \"node_type\":\"SEARCHDB-DEDICATED-2C-8G\",\n        \"user_name\":\"awesomeUser\",\n        \"password\":\"MyAwesomeSecureP@ssword1\",\n        \"volume\":{\n            \"type\":\"sbs_5k\",\n            \"size_bytes\":5000000000\n        },\n        \"endpoints\": [{\"public\": {}}],\n        \"version\":\"2.0\"\n        }' \\\n      \"https://api.scaleway.com/searchdb/v1alpha1/regions/fr-par/deployments\"\n\n```\n\n2. **Get a list of your deployments**: Run the following command to get a list of all the clusters in your account, with their details:\n\n```bash\n    curl -X GET \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"https://api.scaleway.com/searchdb/v1alpha1/regions/fr-par/deployments\"\n```\n\n3. **Delete your deployment**: Run the following command to delete a cluster. Ensure that you replace `{resource-id}` in the URLwith the ID of the cluster you want to delete.\n\n```bash\n    curl -X DELETE \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"https://api.scaleway.com/searchdb/v1alpha1/regions/fr-par/deployments/{resource-id}\"\n```\n\n## Technical information\n\n### Regions\n\nScaleway's infrastructure spans different [regions and Availability Zones](https://www.scaleway.com/en/docs/account/reference-content/products-availability/).\n\nOpensaerchis currently available in the Paris region, which is represented by the following path parameter:\n\n- fr-par\n\n## Going further\n\nFor more information about Opensaerch, you can check out the following pages:\n\n- [Cloud Essential for Opensearch Documentation](https://www.scaleway.com/en/docs/opensearch/)\n- [Contact our support team](https://console.scaleway.com/support/tickets)."
+      }
+    },
+    "com.scaleway.searchdb_v1alpha1#DownloadDeploymentCertificateAuthorityRawRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "com.scaleway.searchdb_v1alpha1#DownloadDeploymentCertificateAuthorityRequestRegion",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#documentation": "The region you want to target"
+          }
+        },
+        "deployment_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.searchdb_v1alpha1#DownloadDeploymentCertificateAuthorityRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.searchdb_v1alpha1#DownloadDeploymentCertificateAuthorityRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.searchdb_v1alpha1#DownloadDeploymentCertificateAuthorityRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.searchdb_v1alpha1#DownloadDeploymentCertificateAuthorityRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/searchdb/v1alpha1/regions/{region}/deployments/{deployment_id}/certificate-authority",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "The file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

@@ -45,5 +45,11 @@ export {
   type ScalewayOpContext,
 } from "./protocol.ts";
 export { paginateByTotalCount, paginateToken } from "./pagination.ts";
+export {
+  streamChatCompletion,
+  streamResponse,
+  type ChatCompletionChunk,
+  type ResponseStreamEvent,
+} from "./streaming.ts";
 export * as Retry from "./retry.ts";
 export * from "./services/index.ts";

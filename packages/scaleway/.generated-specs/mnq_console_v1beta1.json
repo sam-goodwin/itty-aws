@@ -64,7 +64,6 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Protocol status.",
-            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -79,7 +78,6 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#documentation": "Number of credentials for this protocol.",
-            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },

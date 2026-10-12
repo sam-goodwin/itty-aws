@@ -428,6 +428,34 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface GetClusterCertificateAuthorityRawRequest {
+  /** The region you want to target */
+  region?: GetClusterCertificateAuthorityRequestRegion | (string & {});
+  /** UUID of the Kafka Cluster. */
+  cluster_id: string;
+}
+export const GetClusterCertificateAuthorityRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(GetClusterCertificateAuthorityRequestRegion.pipe(T.Label())),
+    cluster_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/kafka/v1alpha1/regions/{region}/clusters/{cluster_id}/certificate-authority",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "GetClusterCertificateAuthorityRawRequest",
+}) as any as S.Schema<GetClusterCertificateAuthorityRawRequest>;
+
+export type GetClusterCertificateAuthorityRawResponse = Uint8Array;
+export const GetClusterCertificateAuthorityRawResponse = /*@__PURE__*/ S.instanceOf(
+  Uint8Array,
+).pipe(T.BinaryResponse()) as any as S.Schema<GetClusterCertificateAuthorityRawResponse>;
+
 export type ListClustersRequestRegion = "fr-par";
 export const ListClustersRequestRegion = S.String;
 
@@ -995,6 +1023,21 @@ export const getClusterCertificateAuthority: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetClusterCertificateAuthorityRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetClusterCertificateAuthorityRawError = ScalewayOpError;
+/** Get a Kafka cluster's certificate authority The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const getClusterCertificateAuthorityRaw: API.OperationMethod<
+  GetClusterCertificateAuthorityRawRequest,
+  GetClusterCertificateAuthorityRawResponse,
+  GetClusterCertificateAuthorityRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetClusterCertificateAuthorityRawRequest,
+  output: GetClusterCertificateAuthorityRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

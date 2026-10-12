@@ -298,11 +298,11 @@ export interface ListLocalImagesRequest {
   arch?: string;
   /** Filter by type. */
   type?: LocalImageType | (string & {});
-  /** Local images of this marketplace image ID. One-of `scope`: at most one of `image_id`, `version_id`, `image_label`. */
+  /** Local images of this marketplace image ID. One-of `scope`: exactly one of `image_id`, `version_id`, `image_label` — the API rejects a call with none. */
   image_id?: string;
-  /** Local images of this marketplace version ID. One-of `scope`: at most one of `image_id`, `version_id`, `image_label`. */
+  /** Local images of this marketplace version ID. One-of `scope`: exactly one of `image_id`, `version_id`, `image_label` — the API rejects a call with none. */
   version_id?: string;
-  /** Local images of this marketplace image label (`ubuntu_noble`). One-of `scope`: at most one of `image_id`, `version_id`, `image_label`. */
+  /** Local images of this marketplace image label (`ubuntu_noble`). One-of `scope`: exactly one of `image_id`, `version_id`, `image_label` — the API rejects a call with none. */
   image_label?: string;
 }
 export const ListLocalImagesRequest = /*@__PURE__*/ S.suspend(() =>

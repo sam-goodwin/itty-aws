@@ -974,7 +974,7 @@ export interface AclRule {
   /** Policy to apply to the packet. */
   action: Action | (string & {});
   /** Rule description. */
-  description: string | null;
+  description?: string | null;
 }
 export const AclRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -986,7 +986,7 @@ export const AclRule = /*@__PURE__*/ S.suspend(() =>
     dst_port_low: S.Number,
     dst_port_high: S.Number,
     action: Action,
-    description: S.NullOr(S.String),
+    description: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "AclRule" }) as any as S.Schema<AclRule>;
 

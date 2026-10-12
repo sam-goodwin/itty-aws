@@ -11,7 +11,11 @@ import {
   mapKeys,
   matchTypedError,
 } from "@distilled.cloud/core/protocol-http";
-import { unwrapRedactedDeep, wrapSensitive } from "@distilled.cloud/core/protocol-rest";
+import {
+  binaryResponseSymbol,
+  unwrapRedactedDeep,
+  wrapSensitive,
+} from "@distilled.cloud/core/protocol-rest";
 import { validateResponse } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import { httpSymbol } from "@distilled.cloud/core/trait";
@@ -30,10 +34,14 @@ import { httpSymbol } from "@distilled.cloud/core/trait";
  * repeat the key (`tags=a&tags=b`), which core's request builder already
  * does.
  *
- * Responses: success bodies are the payload, no envelope. Instance v1 list
- * endpoints answer their count as `X-Total-Count` rather than in the body;
- * it is folded into the body as `total_count` (scaleway-sdk-js
- * `fixLegacyTotalCount`). A non-JSON success body (Instance user data is
+ * Responses: success bodies are the payload, no envelope. Scaleway's
+ * proto3 JSON writes every unset message or wrapper field as `null` where
+ * the specs declare a plain optional member (`gpu_info`, `price_per_month`,
+ * `float_min`, …), so `null` properties are dropped before decoding — the
+ * same thing the official SDKs' unmarshallers do (`null` → `undefined`).
+ * Instance v1 list endpoints answer their count as `X-Total-Count` rather
+ * than in the body; it is folded into the body as `total_count`
+ * (scaleway-sdk-js `fixLegacyTotalCount`). A non-JSON success body (Instance user data is
  * `text/plain`) is returned as text.
  *
  * Failures are `{ type, message, ... }`; see `errors.ts` for the `type`
@@ -43,7 +51,7 @@ import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import type * as HttpClient from "effect/http/HttpClient";
 import type * as HttpClientError from "effect/http/HttpClientError";
-import type * as HttpClientRequest from "effect/http/HttpClientRequest";
+import * as HttpClientRequest from "effect/http/HttpClientRequest";
 import type * as HttpClientResponse from "effect/http/HttpClientResponse";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
@@ -281,30 +289,117 @@ const withLocality = (input: unknown, uri: string, creds: Config): unknown => {
   };
 };
 
+/** Drop `null` properties, recursively (array elements are kept). */
+export const stripNulls = (value: unknown): unknown => {
+  if (Array.isArray(value)) return value.map(stripNulls);
+  if (isObject(value)) {
+    const out: Json = {};
+    for (const [k, v] of Object.entries(value)) {
+      if (v !== null) out[k] = stripNulls(v);
+    }
+    return out;
+  }
+  return value;
+};
+
 const isJsonContentType = (contentType: string | undefined): boolean =>
   contentType === undefined || contentType === "" || /[/+]json\b/i.test(contentType);
+
+/**
+ * The HTTP request for an operation input — shared by the protocol and the
+ * streaming helpers (`streaming.ts`). Resolves credentials, fills the
+ * default region / zone, picks the host and sets the auth headers; a `…Raw`
+ * download also asks for the file itself with `dl=1`.
+ */
+export const encodeRequest = (
+  input: unknown,
+  inputAst: AST.AST,
+  extraHeaders: Record<string, string> = {},
+): Effect.Effect<HttpClientRequest.HttpClientRequest, never, Credentials> =>
+  Effect.gen(function* () {
+    const resolve = yield* Credentials;
+    const creds = yield* resolve;
+    const http = httpTraitOf(inputAst);
+    const secretKey = Redacted.value(creds.secretKey);
+    const request = buildRequest({
+      input: withLocality(unwrapRedactedDeep(input), http.uri, creds),
+      inputAst,
+      baseUrl: baseUrlFor(creds, http),
+      headers: {
+        "X-Auth-Token": secretKey,
+        ...(http.baseUrl === GENERATIVE_APIS_HOST ? { Authorization: `Bearer ${secretKey}` } : {}),
+        ...extraHeaders,
+      },
+    });
+    return http.rawDownload === true
+      ? HttpClientRequest.appendUrlParam(request, "dl", "1")
+      : request;
+  });
+
+/**
+ * The typed error for a failed response: per-operation matchers (from
+ * patches), then Scaleway's `type` envelope, then the HTTP status, then
+ * {@link UnknownScalewayError}.
+ */
+export const failureFor = (
+  status: number,
+  text: string,
+  headers: Record<string, string | undefined>,
+  errorClasses: ReadonlyArray<unknown> = [],
+): unknown => {
+  let json: unknown;
+  let nonJson = false;
+  if (text.trim().length > 0) {
+    try {
+      json = JSON.parse(text);
+    } catch {
+      nonJson = true;
+    }
+  }
+  const body = nonJson ? text : json;
+  const message = failureMessage(json, status, text);
+
+  // 1. Per-operation typed error (matcher metadata from patches).
+  const typed = matchTypedError(errorClasses, status, [{ code: undefined, message }], {
+    body,
+    headers,
+  });
+  if (typed !== undefined) return typed;
+
+  // 2. Scaleway's `type` envelope.
+  const scw = nonJson ? undefined : scalewayError(json, message, headers, status);
+  if (scw !== undefined) return scw;
+
+  // 3. The HTTP status.
+  const StatusErrorClass = (
+    HTTP_STATUS_MAP as Record<
+      number,
+      (new (args: { message: string; retryAfter?: unknown }) => unknown) | undefined
+    >
+  )[status];
+  if (StatusErrorClass) {
+    return new StatusErrorClass({ message, retryAfter: parseRetryAfterForStatus(status, headers) });
+  }
+  if (status >= 500) {
+    return new InternalServerError({
+      message,
+      retryAfter: parseRetryAfterForStatus(status, headers),
+    });
+  }
+
+  // 4. Fallback.
+  return new UnknownScalewayError({
+    code: isObject(json) ? str(json.type) : undefined,
+    message,
+    body,
+  });
+};
 
 export const ScalewayProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
   API.Protocol,
   API.Protocol.of({
     encode: ({ input, inputAst }: { readonly input: unknown; readonly inputAst: AST.AST }) =>
-      Effect.gen(function* () {
-        const resolve = yield* Credentials;
-        const creds = yield* resolve;
-        const http = httpTraitOf(inputAst);
-        const secretKey = Redacted.value(creds.secretKey);
-        return buildRequest({
-          input: withLocality(unwrapRedactedDeep(input), http.uri, creds),
-          inputAst,
-          baseUrl: baseUrlFor(creds, http),
-          headers: {
-            "X-Auth-Token": secretKey,
-            ...(http.baseUrl === GENERATIVE_APIS_HOST
-              ? { Authorization: `Bearer ${secretKey}` }
-              : {}),
-          },
-        });
-      }) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
+      encodeRequest(input, inputAst) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode: ({
       response,
       outputAst,
@@ -315,19 +410,30 @@ export const ScalewayProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
       readonly errors: ReadonlyArray<unknown>;
     }) =>
       Effect.gen(function* () {
-        const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
-        if (process.env.DISTILLED_DEBUG_HTTP) {
-          console.error(`[distilled] <- ${response.status} ${text.slice(0, 400)}`);
-        }
         const status = response.status;
         const headers = response.headers as Record<string, string | undefined>;
 
-        // Failures are JSON whatever their content type claims; a success
-        // body is JSON only when it says so (user data is `text/plain`).
+        // `…Raw` downloads: the body is the file.
+        if (
+          status >= 200 &&
+          status < 300 &&
+          getAnn(outputAst, binaryResponseSymbol) !== undefined
+        ) {
+          return new Uint8Array(yield* response.arrayBuffer.pipe(Effect.orDie));
+        }
+
+        const text = (yield* response.text.pipe(Effect.orDie)) ?? "";
+        if (process.env.DISTILLED_DEBUG_HTTP) {
+          console.error(`[distilled] <- ${status} ${text.slice(0, 400)}`);
+        }
+        if (status >= 400) return yield* fail(failureFor(status, text, headers, errorClasses));
+
+        // A success body is JSON only when it says so (user data is
+        // `text/plain`).
         let json: unknown;
         let nonJson = false;
         if (text.trim().length > 0) {
-          if (status >= 400 || isJsonContentType(headers["content-type"])) {
+          if (isJsonContentType(headers["content-type"])) {
             try {
               json = JSON.parse(text);
             } catch {
@@ -338,56 +444,7 @@ export const ScalewayProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
           }
         }
 
-        if (status >= 400) {
-          const body = nonJson ? text : json;
-          const message = failureMessage(json, status, text);
-
-          // 1. Per-operation typed error (matcher metadata from patches).
-          const typed = matchTypedError(errorClasses, status, [{ code: undefined, message }], {
-            body,
-            headers,
-          });
-          if (typed !== undefined) return yield* fail(typed);
-
-          // 2. Scaleway's `type` envelope.
-          const scw = nonJson ? undefined : scalewayError(json, message, headers, status);
-          if (scw !== undefined) return yield* fail(scw);
-
-          // 3. The HTTP status.
-          const StatusErrorClass = (
-            HTTP_STATUS_MAP as Record<
-              number,
-              (new (args: { message: string; retryAfter?: unknown }) => unknown) | undefined
-            >
-          )[status];
-          if (StatusErrorClass) {
-            return yield* fail(
-              new StatusErrorClass({
-                message,
-                retryAfter: parseRetryAfterForStatus(status, headers),
-              }),
-            );
-          }
-          if (status >= 500) {
-            return yield* fail(
-              new InternalServerError({
-                message,
-                retryAfter: parseRetryAfterForStatus(status, headers),
-              }),
-            );
-          }
-
-          // 4. Fallback.
-          return yield* fail(
-            new UnknownScalewayError({
-              code: isObject(json) ? str(json.type) : undefined,
-              message,
-              body,
-            }),
-          );
-        }
-
-        let body: unknown = nonJson ? text : (json ?? {});
+        let body: unknown = nonJson ? text : stripNulls(json ?? {});
         const totalCount = headers["x-total-count"];
         if (isObject(body) && !("total_count" in body) && totalCount !== undefined) {
           const n = Math.trunc(Number(totalCount));

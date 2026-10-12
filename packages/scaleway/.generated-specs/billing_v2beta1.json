@@ -1374,25 +1374,18 @@
           }
         },
         "rate": {
-          "target": "com.scaleway.billing_v2beta1#GoogleProtobufDoubleValue",
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Applied tax rate (0.2 means a VAT of 20%)."
+            "smithy.api#documentation": "Applied tax rate (0.2 means a VAT of 20%).",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "total_tax_value": {
-          "target": "com.scaleway.billing_v2beta1#GoogleProtobufDoubleValue",
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The total tax value of the consumption."
+            "smithy.api#documentation": "The total tax value of the consumption.",
+            "com.distilled.openapi#nullable": {}
           }
-        }
-      },
-      "traits": {}
-    },
-    "com.scaleway.billing_v2beta1#GoogleProtobufDoubleValue": {
-      "type": "structure",
-      "members": {
-        "value": {
-          "target": "smithy.api#Double"
         }
       },
       "traits": {}
@@ -1458,11 +1451,168 @@
         },
         {
           "target": "com.scaleway.billing_v2beta1#ListTaxes"
+        },
+        {
+          "target": "com.scaleway.billing_v2beta1#ExportInvoicesRaw"
+        },
+        {
+          "target": "com.scaleway.billing_v2beta1#DownloadInvoiceRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Billing API",
         "smithy.api#documentation": "Scaleway's Billing API provides a quick overview of your cloud consumption and allows you to monitor expenses. Public cloud services follow a 'pay as you go' model, ensuring you pay only for what you use. Some products offer plan options. Your monthly invoice is calculated at month-end based on exact resource usage and may include additional invoices for upfront payments during the month.\n\n<Message type=\"note\">\nYou may also be interested in the [Account API](https://www.scaleway.com/en/developers/api/account/project-api/) to manage your Projects, and the [IAM API](https://www.scaleway.com/en/developers/api/iam/) to manage users, permissions, and API keys in your Organization.\n</Message>\n\n## Concepts and pricing\n\nScaleway products offer different billing models, with billing cycles by the minute, hour, month, or year. For a clear estimate of product prices, visit our [pricing page](https://www.scaleway.com/en/pricing/?tags=available). You will also find a cost estimator for each product in the console when you order a resource.\n\n### Money type\n\nAll fields referencing money across Scaleway APIs are represented with a common Money definition - AKA Money type.\n\nThe gRPC `google.type.Money` type is used to represent amounts of money with their currency type.\n\nThe Money type is [defined by Google](https://developers.google.com/actions-center/verticals/things-to-do/reference/feed-spec/google-types#googletypemoney_definition) as such:\n\n```protobuf\nsyntax = \"proto3\";\n\n// Represents an amount of money with its currency type.\nmessage Money {\n  // The three-letter currency code defined in ISO 4217.\n  string currency_code = 1;\n\n  // The whole units of the amount.\n  // For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.\n  int64 units = 2;\n\n  // Number of nano (10^-9) units of the amount.\n  // The value must be between -999,999,999 and +999,999,999 inclusive.\n  // If `units` is positive, `nanos` must be positive or zero.\n  // If `units` is zero, `nanos` can be positive, zero, or negative.\n  // If `units` is negative, `nanos` must be negative or zero.\n  // For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.\n  int32 nanos = 3;\n}\n```\n\n## Quickstart\n\n<Message type=\"requirement\">\n - You have an account and are logged into the [Scaleway console](https://console.scaleway.com/organization)\n - You have created an [API key](https://www.scaleway.com/en/docs/iam/how-to/create-api-keys/) and the API key has sufficient [IAM permissions](https://www.scaleway.com/en/docs/iam/reference-content/permission-sets/) to perform the actions described on this page\n - You have [installed `curl`](https://curl.se/download.html)\n</Message>\n\n1. Configure your environment variables.\n\n   <Message type=\"note\">\n   This is an optional step that aims at simplifying your usage of the API.\n   </Message>\n\n   ```bash\n   export SCW_SECRET_KEY=\"<API secret key>\"\n   export SCW_ORGANIZATION_ID=\"<Scaleway Organization ID>\"\n   ```\n\n2. Run the following command to obtain your consumption over the current month.\n\n   ```bash\n   curl -X GET \\\n     -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n     -H \"Content-Type: application/json\" \\\n     \"https://api.scaleway.com/billing/v2beta1/consumptions?organization_id=$SCW_ORGANIZATION_ID\"\n   ```\n\n3. Run the following command to obtain your consumption over the current month for just one category of products.\n\n   Specify the target `category_name` as one of:\n\n   - `BareMetal`\n   - `Compute`\n   - `Containers`\n   - `Labs`\n   - `Managed Databases`\n   - `Managed Services`\n   - `Network`\n   - `Object Storage`\n   - `Observability`\n   - `Security and Identity`\n   - `Serverless`\n   - `Storage`\n   - `Subscription`\n\n   ```bash\n   curl -X GET \\\n     -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n     -H \"Content-Type: application/json\" \\\n     \"https://api.scaleway.com/billing/v2beta1/consumptions?organization_id=$SCW_ORGANIZATION_ID&category_name=Compute\"\n   ```\n\n4. Run the following command to obtain your consumption for a specific month.\n\n   Specify the target billing period as `YYYY-MM`, e.g., `2023-11`.\n\n   ```bash\n   curl -X GET \\\n     -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n     -H \"Content-Type: application/json\" \\\n     \"https://api.scaleway.com/billing/v2beta1/consumptions?organization_id=$SCW_ORGANIZATION_ID&billing_period=2023-11\"\n   ```\n\n5. Run the following command to obtain your consumption for a specific project only.\n\n   First, choose your target `project_id`:\n\n   ```bash\n   export SCW_PROJECT_ID=\"<Scaleway Project ID>\"\n   ```\n\n   Then inject it in your API request:\n\n   ```bash\n   curl -X GET \\\n     -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n     -H \"Content-Type: application/json\" \\\n     \"https://api.scaleway.com/billing/v2beta1/consumptions?project_id=SCW_PROJECT_ID\"\n   ```\n\n## Technical information\n\n### IAM requirements\n\nKeep in mind that:\n\n- You must have appropriate IAM permissions to manage billing. If you are the Owner of the Organization, you will automatically have these permissions. Otherwise, you will need a policy giving you the `BillingManager` permission set. If you were previously a Billing Administrator, you will automatically have been migrated to the `BillingAdministrator` group when you activated IAM, which gives you the appropriate permissions.\n- You only need `BillingReadOnly` permissions to query consumption.\n  ​\n\n## Going further\n\n​\nFor more help using Scaleway’s Billing API, check out the following resources:\n​\n\n- Our [main documentation](https://www.scaleway.com/en/docs/billing/)\n- Our [Slack Community](https://www.scaleway-community.slack.com/)\n- Our [support ticketing system](https://www.scaleway.com/en/docs/account/how-to/open-a-support-ticket/)."
+      }
+    },
+    "com.scaleway.billing_v2beta1#ExportInvoicesRawRequest": {
+      "type": "structure",
+      "members": {
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "organization_id",
+            "smithy.api#documentation": "Organization ID. If specified, only invoices from this Organization will be returned. (UUID format)"
+          }
+        },
+        "billing_period_start_after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "billing_period_start_after",
+            "smithy.api#documentation": "Return only invoice with start date greater than billing_period_start. (RFC 3339 format)"
+          }
+        },
+        "billing_period_start_before": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "billing_period_start_before",
+            "smithy.api#documentation": "Return only invoice with start date less than billing_period_start. (RFC 3339 format)"
+          }
+        },
+        "invoice_type": {
+          "target": "com.scaleway.billing_v2beta1#InvoiceType",
+          "traits": {
+            "smithy.api#httpQuery": "invoice_type",
+            "smithy.api#documentation": "Invoice type. It can either be `periodic`, `purchase` or `credit_note`."
+          }
+        },
+        "page": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page",
+            "smithy.api#documentation": "Page number."
+          }
+        },
+        "page_size": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpQuery": "page_size",
+            "smithy.api#documentation": "Positive integer lower or equal to 100 to select the number of items to return."
+          }
+        },
+        "order_by": {
+          "target": "com.scaleway.billing_v2beta1#ExportInvoicesRequestOrderBy",
+          "traits": {
+            "smithy.api#httpQuery": "order_by",
+            "smithy.api#documentation": "How invoices are ordered in the response."
+          }
+        },
+        "file_type": {
+          "target": "com.scaleway.billing_v2beta1#ExportInvoicesRequestFileType",
+          "traits": {
+            "smithy.api#httpQuery": "file_type",
+            "smithy.api#documentation": "File format for exporting the invoice list."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.billing_v2beta1#ExportInvoicesRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.billing_v2beta1#ExportInvoicesRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.billing_v2beta1#ExportInvoicesRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.billing_v2beta1#ExportInvoicesRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/billing/v2beta1/export-invoices",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Export invoices\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
+      }
+    },
+    "com.scaleway.billing_v2beta1#DownloadInvoiceRawRequest": {
+      "type": "structure",
+      "members": {
+        "invoice_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Invoice ID. (UUID format)"
+          }
+        },
+        "file_type": {
+          "target": "com.scaleway.billing_v2beta1#DownloadInvoiceRequestFileType",
+          "traits": {
+            "smithy.api#httpQuery": "file_type",
+            "smithy.api#documentation": "File type. PDF by default."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.billing_v2beta1#DownloadInvoiceRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.billing_v2beta1#DownloadInvoiceRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.billing_v2beta1#DownloadInvoiceRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.billing_v2beta1#DownloadInvoiceRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/billing/v2beta1/invoices/{invoice_id}/download",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Download an invoice\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

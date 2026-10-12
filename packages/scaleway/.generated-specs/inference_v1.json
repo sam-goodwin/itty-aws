@@ -2017,11 +2017,69 @@
         },
         {
           "target": "com.scaleway.inference_v1#VerifyModel"
+        },
+        {
+          "target": "com.scaleway.inference_v1#GetDeploymentCertificateRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Generative APIs - Dedicated Deployment API",
         "smithy.api#documentation": "Scaleway Generative APIs - Dedicated Deployment allows you to deploy and run machine learning models on Scaleway infrastructure. This service provides scalable and efficient endpoints for your model inference needs. The Scaleway Generative APIs - Dedicated Deployment API enables you to manage these endpoints and perform inference operations with any OpenAI API compatible software.\n\n<Message type=\"tip\">\nFor details about the available models, refer to the [Generative APIs supported models](https://www.scaleway.com/en/docs/generative-apis/reference-content/supported-models/) page.\n</Message>\n\n## Concepts\n\nRefer to the [Generative APIs - Concepts](https://www.scaleway.com/en/docs/generative-apis/concepts/) page to find the definitions of all concepts and terminology related to Generative APIs - Dedicated Deployment.\n\n## Quickstart\n\n<Message type=\"requirement\">\n- A [Scaleway account](https://console.scaleway.com/)\n- A valid [API key](https://www.scaleway.com/en/docs/iam/how-to/create-api-keys/) with sufficient [IAM permissions](https://www.scaleway.com/en/docs/iam/reference-content/permission-sets/) to perform the actions on this page\n- [`curl`](https://curl.se/download.html) installed\n</Message>\n\n1. **Configure your environment variables**. This is an optional step to simplify your usage of the Generative APIs - Dedicated Deployment API. You can find your Project ID in the [Scaleway console](https://console.scaleway.com/project/settings).\n   </Message>\n\n    ```bash\n    export SCW_SECRET_KEY=\"<YOUR_API_SECRET_KEY>\"\n    export SCW_DEFAULT_REGION=\"fr-par\"\n    export SCW_PROJECT_ID=\"<YOUR_SCALEWAY_PROJECT_ID>\"\n    ```\n\n2. **List available models**: Run the following command to get a list of all the models available for deployment, with their details.\n\n    ```bash\n    curl -X GET \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"https://api.scaleway.com/inference/v1/regions/$SCW_DEFAULT_REGION/endpoints\"\n    ```\n\n3. **Create a model deployment**: Run the following command to create a deployment. Customize the details in the payload.\n\n    ```bash\n    curl -X POST https://api.scaleway.com/inference/v1/regions/$SCW_DEFAULT_REGION/deployments \\\n    -H \"Content-Type: application/json\" \\\n    -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n    -d '{\n      \"project_id\": \"'\"$SCW_PROJECT_ID\"'\",\n      \"name\": \"<YOUR_INFERENCE_DEPLOYMENT>\",\n      \"model_id\": \"<YOUR_CHOSEN_MODEL_ID>\",\n      \"node_type\": \"L4\",\n      \"min_size\": 1,\n      \"max_size\": 1,\n      \"accept_eula\": true,\n      \"endpoints\": [\n        {\n          \"public\": {}\n        }\n      ]\n    }'\n    ```\n\n\n4. **Create a model endpoint**: Run the following command to create an inference endpoint for the deployment. Customize the details in the payload.\n\n   Example for creating a public endpoint\n\n    ```bash\n    curl -X POST https://api.scaleway.com/inference/v1/regions/$SCW_DEFAULT_REGION/endpoints \\\n    -H \"Content-Type: application/json\" \\\n    -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n    -d '{\n      \"project_id\": \"'\"$SCW_PROJECT_ID\"'\",\n      \"deployment_id\": \"your-deployment-id\",\n      \"endpoint\": {\n        \"disable_auth\": false,\n        \"public\": {}\n      }\n    }'\n    ```\n\n   Example for creating a private endpoint\n\n    ```bash\n    curl -X POST https://api.scaleway.com/inference/v1/regions/$SCW_DEFAULT_REGION/endpoints \\\n    -H \"Content-Type: application/json\" \\\n    -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n    -d '{\n      \"project_id\": \"'\"$SCW_PROJECT_ID\"'\",\n      \"deployment_id\": \"your-deployment-id\",\n      \"endpoint\": {\n        \"disable_auth\": false,\n        \"private_network\": {\n          \"private_network_id\": \"your-private-network-id\"\n        }\n      }\n    }'\n    ```\n\n\n5. **List your deployments**: Run the following command to get a list of all the deployments in your account, with their details.\n\n    ```bash\n    curl -X GET \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"https://api.scaleway.com/inference/v1/regions/$SCW_DEFAULT_REGION/deployments\"\n    ```\n\n6. **List your endpoints**: Run the following command to get a list of all the inference endpoints in your account, with their details.\n\n    ```bash\n    curl -X GET \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"https://api.scaleway.com/inference/v1/regions/$SCW_DEFAULT_REGION/endpoints\"\n    ```\n\n7. **Delete an endpoint**: Run the following command to delete an inference endpoint, specified by its endpoint ID.\n\n    ```bash\n    curl -X DELETE \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      -H \"Content-Type: application/json\" \\\n      \"https://api.scaleway.com/inference/v1/regions/$SCW_DEFAULT_REGION/endpoints/<endpoint-ID>\"\n    ```\n\n   The expected successful response is empty.\n\n   <Message type=\"important\">\n   Dedicated Generative APIs deployments must have at least one endpoint, either public or private.\n   </Message>\n\n## Technical information\n\n### Region\n\nGenerative APIs - Dedicated Deployment endpoints are available in the following region:\n\n\n### Pagination\n\nMost listing requests receive a paginated response. Requests against paginated endpoints accept two `query` arguments:\n\n- `page`, a positive integer to choose which page to return\n- `per_page`, a positive integer lower or equal to 100 to set the number of items returned per page. The default value is `50`.\n\nPaginated endpoints usually also accept filters to search and sort results. These filters are documented in each endpoint's documentation.\n\nThe `X-Total-Count` header contains the total number of items returned.\n\n### Creating a deployment: the model object\n\nWhen creating a deployment, the `model_id` parameter is required to specify the model to deploy. Use the [List Models](https://www.scaleway.com/en/developers/api/inference/models#list-models) endpoint to retrieve available model IDs.\n\n<Message type=\"note\">\nThis information is designed to help you correctly configure the `model_id` parameter when using the [Create a deployment](https://www.scaleway.com/en/developers/api/inference/deployments#create-a-deployment) method.\n</Message>\n\n## Going further\n\nFor more information about Generative APIs - Dedicated Deployment, refer to the following resources:\n\n- The [Generative APIs](https://www.scaleway.com/en/docs/generative-apis/) documentation\n- The #ai channel on Scaleway [Slack Community](https://www.scaleway.com/en/docs/tutorials/scaleway-slack-community/)\n- Contact [Scaleway Support](https://console.scaleway.com/support) if the issue persists."
+      }
+    },
+    "com.scaleway.inference_v1#GetDeploymentCertificateRawRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "com.scaleway.inference_v1#GetDeploymentCertificateRequestRegion",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#documentation": "The region you want to target"
+          }
+        },
+        "deployment_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "(UUID format)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.inference_v1#GetDeploymentCertificateRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.inference_v1#GetDeploymentCertificateRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.inference_v1#GetDeploymentCertificateRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.inference_v1#GetDeploymentCertificateRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/inference/v1/regions/{region}/deployments/{deployment_id}/certificate",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Get the CA certificate\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

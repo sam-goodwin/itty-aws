@@ -398,15 +398,6 @@ export const ServerRescueServer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServerRescueServer" }) as any as S.Schema<ServerRescueServer>;
 
-export interface GoogleProtobufBytesValue {
-  value?: string;
-}
-export const GoogleProtobufBytesValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "GoogleProtobufBytesValue" }) as any as S.Schema<GoogleProtobufBytesValue>;
-
 export interface Server {
   /** ID of the server. */
   id?: string;
@@ -449,7 +440,7 @@ export interface Server {
   /** If enabled, the server can not be deleted. */
   protected?: boolean;
   /** Optional configuration data passed to cloud-init. */
-  user_data?: GoogleProtobufBytesValue;
+  user_data?: string | null;
 }
 export const Server = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -473,7 +464,7 @@ export const Server = /*@__PURE__*/ S.suspend(() =>
     options: S.optional(ServerOptionsList),
     rescue_server: S.optional(ServerRescueServer),
     protected: S.optional(S.Boolean),
-    user_data: S.optional(GoogleProtobufBytesValue),
+    user_data: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "Server" }) as any as S.Schema<Server>;
 
@@ -549,7 +540,7 @@ export const CreateServerRequestOptionIdsList = /*@__PURE__*/ S.Array(
 
 export interface CreateServerRequest {
   /** The zone you want to target */
-  zone: CreateServerRequestZone | (string & {}) | null;
+  zone?: CreateServerRequestZone | (string & {}) | null;
   /** Offer ID of the new server. */
   offer_id: string;
   /** Organization ID with which the server will be created. */
@@ -569,11 +560,11 @@ export interface CreateServerRequest {
   /** If enabled, the server can not be deleted. */
   protected?: boolean;
   /** Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script. */
-  user_data?: GoogleProtobufBytesValue;
+  user_data?: string | null;
 }
 export const CreateServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zone: S.NullOr(CreateServerRequestZone),
+    zone: S.optional(S.NullOr(CreateServerRequestZone)),
     offer_id: S.String,
     organization_id: S.optional(S.NullOr(S.String)),
     project_id: S.optional(S.NullOr(S.String)),
@@ -583,7 +574,7 @@ export const CreateServerRequest = /*@__PURE__*/ S.suspend(() =>
     install: S.optional(CreateServerRequestInstall),
     option_ids: S.optional(CreateServerRequestOptionIdsList),
     protected: S.optional(S.Boolean),
-    user_data: S.optional(GoogleProtobufBytesValue),
+    user_data: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "CreateServerRequest" }) as any as S.Schema<CreateServerRequest>;
 
@@ -697,7 +688,7 @@ export interface CreateServerRequest2 {
   /** If enabled, the server can not be deleted. */
   protected?: boolean;
   /** Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script. */
-  user_data?: GoogleProtobufBytesValue;
+  user_data?: string | null;
 }
 export const CreateServerRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -711,7 +702,7 @@ export const CreateServerRequest2 = /*@__PURE__*/ S.suspend(() =>
     install: S.optional(CreateServerRequestInstall),
     option_ids: S.optional(CreateServerRequestOptionIdsList2),
     protected: S.optional(S.Boolean),
-    user_data: S.optional(GoogleProtobufBytesValue),
+    user_data: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -2216,7 +2207,7 @@ export interface UpdateServerRequest {
   /** If enabled, the server can not be deleted. */
   protected?: boolean | null;
   /** Configuration data to pass to cloud-init such as a YAML cloud config data or a user-data script. */
-  user_data?: GoogleProtobufBytesValue;
+  user_data?: string | null;
 }
 export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2226,7 +2217,7 @@ export const UpdateServerRequest = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.NullOr(S.String)),
     tags: S.optional(S.NullOr(UpdateServerRequestTagsList)),
     protected: S.optional(S.NullOr(S.Boolean)),
-    user_data: S.optional(GoogleProtobufBytesValue),
+    user_data: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "PATCH",

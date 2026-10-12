@@ -1884,11 +1884,69 @@
         },
         {
           "target": "com.scaleway.kafka_v1alpha1#ListVersions"
+        },
+        {
+          "target": "com.scaleway.kafka_v1alpha1#GetClusterCertificateAuthorityRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Clusters for Apache Kafka®",
         "smithy.api#documentation": "Clusters for Apache Kafka® is Scaleway's product to provide a secure, fully-managed infrastructure for your Apache Kafka® deployments. With our clusters, you can create data pipelines and event-driven architectures that run natively on Apache Kafka®, without having to manage the underlying infrastructure.\n\n## Concepts\n\nRefer to our [dedicated concepts page](https://www.scaleway.com/en/docs/clusters-for-kafka/concepts/) to find definitions of the different terms referring to Clusters for Apache Kafka®.\n\n## Quickstart\n\n1. Configure your environment variables.\n\n   <Message type=\"note\">\n   This is an optional step that seeks to simplify your usage of the Kafka API.\n   </Message>\n\n    ```bash\n    export SCW_SECRET_KEY=\"<API secret key>\"\n    export SCW_DEFAULT_ZONE=\"<Scaleway default Availability Zone>\"\n    export SCW_DEFAULT_REGION=\"<Scaleway default region>\"\n    export SCW_PROJECT_ID=\"<Scaleway Project ID>\"\n    ```\n\n2. **Create a cluster**: Run the following command to create a cluster with a node on each AZ (3 nodes by default) with 20GB storage capacity per node. You can customize the details in the payload to your needs, using the table below to help. Note that you will need to have a [VPC and a Private Network](https://www.scaleway.com/en/developers/api/vpc/) before running this command.\n\n    ```bash\n    curl -X POST \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      -H \"Content-Type: application/json\" \\\n      -d '{\n        \"version\": \"4.0.0\",\n        \"node_amount\": 3,\n        \"multi_az\": {},\n        \"name\": \"MyCluster\",\n        \"user_name\": \"MyUser\n        \"password\": \"MySecurePassword\",\n        \"project_id\": $SCW_PROJECT_ID,\n        \"volume\": {\n            \"size_bytes\": 20000000000,\n            \"type\": \"sbs_5k\"\n        },\n        \"endpoints\": [\n            {\n                \"private_network\": {\n                    \"private_network_id\": {Your PN ID}\n                }\n            }\n        ]\n      }' \\\n      \"https://api.scaleway.com/kafka/v1alpha1/regions/fr-par/clusters\"\n    ```\n\n3. **Get a list of your clusters**: Run the following command to get a list of all the clusters in your account, with their details:\n\n    ```bash\n    curl -X GET \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"https://api.scaleway.com/kafka/v1alpha1/regions/fr-par/clusters\"\n    ```\n\n4. **Delete your cluster**: Run the following command to delete a cluster. Ensure that you replace `{resource-id}` in the URL with the ID of the cluster you want to delete.\n\n    ```bash\n    curl -X DELETE \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"https://api.scaleway.com/kafka/v1alpha1/regions/fr-par/clusters/{resource-id}\"\n    ```\n\n## Technical information\n\n### Regions\n\nScaleway's infrastructure spans different [regions and Availability Zones](https://www.scaleway.com/en/docs/account/reference-content/products-availability/).\n\nClusters for Apache Kafka is currently available in the Paris region, which is represented by the following path parameter:\n\n- fr-par\n\n## Technical limitations\n\nFind out about product limitations in our [FAQ](https://www.scaleway.com/en/docs/clusters-for-kafka/faq/#quotas-and-limitations).\n\n## Going further\n\nFor more information about Clusters for Apache Kafka®, you can check out the following pages:\n\n- [Clusters for Apache Kafka® Documentation](https://www.scaleway.com/en/docs/clusters-for-kafka/)\n- [Contact our support team](https://console.scaleway.com/support/tickets)."
+      }
+    },
+    "com.scaleway.kafka_v1alpha1#GetClusterCertificateAuthorityRawRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "com.scaleway.kafka_v1alpha1#GetClusterCertificateAuthorityRequestRegion",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#documentation": "The region you want to target"
+          }
+        },
+        "cluster_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "UUID of the Kafka Cluster."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.kafka_v1alpha1#GetClusterCertificateAuthorityRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.kafka_v1alpha1#GetClusterCertificateAuthorityRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.kafka_v1alpha1#GetClusterCertificateAuthorityRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.kafka_v1alpha1#GetClusterCertificateAuthorityRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/kafka/v1alpha1/regions/{region}/clusters/{cluster_id}/certificate-authority",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Get a Kafka cluster's certificate authority\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

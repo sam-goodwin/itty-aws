@@ -1614,9 +1614,10 @@
           }
         },
         "scale_down_utilization_threshold": {
-          "target": "com.scaleway.k8s_v1#GoogleProtobufFloatValue",
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Node utilization level, defined as a sum of requested resources divided by allocatable capacity, below which a node can be considered for scale down."
+            "smithy.api#documentation": "Node utilization level, defined as a sum of requested resources divided by allocatable capacity, below which a node can be considered for scale down.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "max_graceful_termination_sec": {
@@ -1639,15 +1640,6 @@
             "smithy.api#documentation": "Cluster autoscaler logging level expressed from 0 to 4 (4 being the more verbose), defaults to 2. see https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#how-can-i-increase-the-information-that-the-ca-is-logging for details.",
             "com.distilled.openapi#nullable": {}
           }
-        }
-      },
-      "traits": {}
-    },
-    "com.scaleway.k8s_v1#GoogleProtobufFloatValue": {
-      "type": "structure",
-      "members": {
-        "value": {
-          "target": "smithy.api#Double"
         }
       },
       "traits": {}
@@ -2092,9 +2084,10 @@
           }
         },
         "scale_down_utilization_threshold": {
-          "target": "com.scaleway.k8s_v1#GoogleProtobufFloatValue",
+          "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Node utilization level, defined as a sum of requested resources divided by allocatable capacity, below which a node can be considered for scale down."
+            "smithy.api#documentation": "Node utilization level, defined as a sum of requested resources divided by allocatable capacity, below which a node can be considered for scale down.",
+            "com.distilled.openapi#nullable": {}
           }
         },
         "max_graceful_termination_sec": {
@@ -6089,11 +6082,149 @@
         },
         {
           "target": "com.scaleway.k8s_v1#GetVersion"
+        },
+        {
+          "target": "com.scaleway.k8s_v1#GetClusterKubeConfigRaw"
+        },
+        {
+          "target": "com.scaleway.k8s_v1#GetUserDataRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Kubernetes API",
         "smithy.api#documentation": "Kubernetes is an open-source platform that enables developers to manage their containerized applications. Scaleway Kubernetes Kapsule and Kosmos are powerful tools to help you manage your containerized workloads and services.\n\nThey both provide a managed environment for creating, configuring, and running clusters of pre-configured machines.\n\nThe primary difference between Kapsule and Kosmos is that Kapsule clusters are composed solely of Scaleway Instances. In contrast, Kosmos is a managed Multi-Cloud Kubernetes Engine that allows you to connect Instances and virtual or dedicated servers from any cloud provider to a single managed Control-Plane.\n\n## Concepts\n\nRefer to our [dedicated concepts page](https://www.scaleway.com/en/docs/kubernetes/concepts/) to find definitions of all Kubetnetes-related terminology.\n\n## Quickstart\n\n1. Configure your environment variables. Note: This is an optional step that seeks to simplify your usage of the Kapsule and Kosmos API.\n\n    ```bash\n    export SCW_ACCESS_KEY=\"<API access key>\"\n    export SCW_SECRET_KEY=\"<API secret key>\"\n    export SCW_REGION=\"<Scaleway service region>\"\n    export SCW_PROJECT_ID=\"<Scaleway Project ID>\"\n    export SCW_PRIVATE_NETWORK_ID=\"<Scaleway Private Network ID>\"\n    ```\n\n2. Edit the POST request payload you will use to create your Kubernetes cluster. Replace the parameters in the following example:\n\n    ```json\n    {\n      \"project_id\": \"$SCW_PROJECT_ID\",\n      \"private_network_id\": \"$SCW_PRIVATE_NETWORK_ID\",\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\"\n      ],\n      \"version\": \"string\",\n      \"cni\": \"unknown_cni\",\n      \"pools\": [\n        {\n          \"name\": \"string\",\n          \"node_type\": \"string\",\n          \"size\": \"integer\",\n          \"tags\": [\n            \"string\"\n          ],\n          \"zone\": \"string\",\n          \"root_volume_type\": \"default_volume_type\",\n          \"root_volume_size\": \"integer\"\n        }\n      ]\n    }\n    ```\n\n\n3. Create a Kapsule cluster and node pool by running the following command. Make sure you include the payload you edited in the previous step.\n\n    ```bash\n    curl -X POST \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      \"Content-Type: application/json\" \\\n      \"https://api.scaleway.com/k8s/v1/regions/$SCW_REGION/clusters\" \\\n      -d \"{\n            \\\"project_id\\\": \\\"$SCW_PROJECT_ID\\\",\n            \\\"private_network_id\\\": \\\"$SCW_PRIVATE_NETWORK_ID\\\",\n            \\\"type\\\": \\\"kapsule\\\",\n            \\\"name\\\": \\\"MyFirstKapsuleCluster\\\",\n            \\\"description\\\": \\\"My first Kapsule Cluster\\\",\n            \\\"tags\\\": [\n              \\\"kapsule\\\",\n              \\\"kubernetes\\\"\n            ],\n            \\\"version\\\": \\\"1.31.2\\\",\n            \\\"cni\\\": \\\"unknown_cni\\\",\n            \\\"pools\\\": [\n              {\n                \\\"name\\\": \\\"MyFirstKapsulePool\\\",\n                \\\"node_type\\\": \\\"PLAY2-MICRO\\\",\n                \\\"size\\\": \\\"2\\\",\n                \\\"tags\\\": [\n                  \\\"pool\\\"\n                ],\n                \\\"zone\\\": \\\"fr-par-1\\\",\n                \\\"root_volume_type\\\": \\\"default_volume_type\\\",\n                \\\"root_volume_size\\\": \\\"20000000000\\\"\n              }\n            ]\n          }\"\n    ```\n\n4. List your Kapsule clusters.\n\n    ```bash\n    curl -X GET \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      https://api.scaleway.com/k8s/v1/regions/$SCW_REGION/clusters\n    ```\n\n   You will see detailed information about your clusters.\n\n5. Download the kubeconfig file for your cluster.\n\n    ```bash\n    curl -X GET \\\n      -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" \\\n      https://api.scaleway.com/k8s/v1/regions/$SCW_REGION/clusters/$SCW_CLUSTER_ID/kubeconfig\n    ```\n\n   <Message type=\"tip\">\n   Add `?dl=1` at the end of the URL to directly get the `base64`-decoded kubeconfig. If not, the kubeconfig will be `base64`-encoded.\n   </Message>\n\n6. [Connect to your cluster](https://www.scaleway.com/en/docs/kubernetes/how-to/connect-cluster-kubectl) using kubectl.\n\n7. Delete your cluster.\n\n    ```bash\n    curl -X GET -H \"Content-Type: application/json\" \\\n      -H \"X-Auth-Token: $SCW_SECRET_KEY\" https://api.scaleway.com/k8s/v1/regions/$SCW_REGION/clusters/$SCW_CLUSTER_ID\n    ```\n\n<Message type=\"requirement\">\nTo perform the following steps, you must first ensure that:\n  - you have an account and are logged into the [Scaleway console](https://console.scaleway.com/organization)\n  - you have created an [API key](https://www.scaleway.com/en/docs/iam/how-to/create-api-keys/) and that the API key has sufficient [IAM permissions](https://www.scaleway.com/en/docs/iam/reference-content/permission-sets/) to perform the actions described on this page.\n  - you have [installed `curl`](https://curl.se/download.html)\n</Message>\n\n## Technical information\n\nKubernetes Kapsule provides features such as:\n\n- Persistent Volume Claims (PVC) are available through Scaleway Block Volumes.\n- Pool autoscaling and autohealing is available.\n- Kubernetes auto upgrades features is available.\n\n### Regions\n\nScaleway's infrastructure is spread across different [regions and Availability Zones](https://www.scaleway.com/en/docs/account/reference-content/products-availability/).\n\nKubernetes Kapsule and Kosmos are available in the Paris, Amsterdam and Warsaw regions, which are represented by the following path parameters:\n\n- `fr-par`\n- `nl-ams`\n- `pl-waw`\n\n### Versions\n\nKubernetes Kosmos and Kapsule supports at least the latest version of the last 3 major Kubernetes releases.\n\n## Technical limitations\n\nThe following limitations should be taken into account when using the Kubernetes API:\n\n- The maximum number of pods per node is 110, as per the official k8s project recommendation (configurable).\n- The maximum number of volumes (PVC) per node is 15.\n- The maximum number of nodes per cluster varies from 150 to up to 500 (depending on the control plane tier).\n- [VPC Limitations](https://www.scaleway.com/en/docs/vpc/troubleshooting/vpc-limitations/) may restrict the number of nodes and loadbalancers.\n- Private network must not conflict with the 198.18.0.0/15 subnet.\n- Users cannot expose port 53 (DNS) to `hostPort` or in `hostNetwork` mode.\n- Security groups set to drop all inbound must have stateful group enabled.\n- Security groups must have ports `80` and `443` left open in outbound.\n- For Kosmos clusters **or** if ACLs are not activated (no network tab in console), ports `8132` and `6443` must also be opened.\n- Kilo CNI (kosmos nodes) also needs UDP port `51820` to be open.\n\nThe following limitations should be acknowledged, while Scaleway is actively working on planned solutions to address them:\n\n- Dual Stack IPv4/IPv6 is not (yet) available.\n- Read Write Many / Read Only Many are not (yet) available.\n- Kubernetes control plane network access is managed by a Load Balancer located on `ZONE-1`. In the event of a global failure for this AZ, the Control Plane will be unreachable.\n\nThe following limitations should be taken into account when setting custom settings for Pod & Service CIDRs and DNS IP:\n\n- Setting these may reduce the number of nodes and pods per nodes the cluster can handle.\n- The Pod and Service CIDRs must not conflict between them.\n- The Pod & Service CIDRs must not conflict with the Private Networks' subnets of the VPC attached to the cluster.\n- The Pod & Service CIDRs must not conflict with the routes set in the VPC attached to the cluster.\n- The Pod & Service CIDRs subnets must be part of the RFC 1918 and RFC 6598 (subnet included in: 10.0.0.0/8 or 172.16.0.0/12 or 192.168.0.0/16 or 100.64.0.0/10).\n- Mask /16 minimum for the Pod CIDR (not above 16)\n- Mask /24 minimum for the Service CIDR (not above 24)\n- The Service DNS IP must be included in the Service CIDR\n\n## Going further\n\nFor more help using Kubernetes Kapsule and Kosmos, check out the following resources:\n\n- Our [main documentation](https://www.scaleway.com/en/docs/kubernetes/)\n- The `#k8s` channel on our [Slack Community](https://www.scaleway.com/en/docs/tutorials/scaleway-slack-community/)\n- Our [support ticketing system](https://www.scaleway.com/en/docs/account/how-to/open-a-support-ticket/)."
+      }
+    },
+    "com.scaleway.k8s_v1#GetClusterKubeConfigRawRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "com.scaleway.k8s_v1#GetClusterKubeConfigRequestRegion",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#documentation": "The region you want to target"
+          }
+        },
+        "cluster_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Cluster ID for which to download the kubeconfig."
+          }
+        },
+        "redacted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#httpQuery": "redacted",
+            "smithy.api#documentation": "Hide the legacy token from the kubeconfig."
+          }
+        },
+        "endpoint": {
+          "target": "com.scaleway.k8s_v1#GetClusterKubeConfigRequestEndpoint",
+          "traits": {
+            "smithy.api#httpQuery": "endpoint",
+            "smithy.api#documentation": "Which endpoint to use to reach the APIServer (default: public)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.k8s_v1#GetClusterKubeConfigRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.k8s_v1#GetClusterKubeConfigRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.k8s_v1#GetClusterKubeConfigRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.k8s_v1#GetClusterKubeConfigRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/k8s/v1/regions/{region}/clusters/{cluster_id}/kubeconfig",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Download the kubeconfig for a Cluster\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
+      }
+    },
+    "com.scaleway.k8s_v1#GetUserDataRawRequest": {
+      "type": "structure",
+      "members": {
+        "region": {
+          "target": "com.scaleway.k8s_v1#GetUserDataRequestRegion",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#documentation": "The region you want to target"
+          }
+        },
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Pool the user data are associated to."
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "User data key to retrieved."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.k8s_v1#GetUserDataRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.k8s_v1#GetUserDataRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.k8s_v1#GetUserDataRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.k8s_v1#GetUserDataRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/k8s/v1/regions/{region}/pools/{pool_id}/user-data/{key}",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Get a pool related user data\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

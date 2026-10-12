@@ -481,21 +481,21 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "image_id",
-            "smithy.api#documentation": "Local images of this marketplace image ID. One-of `scope`: at most one of `image_id`, `version_id`, `image_label`."
+            "smithy.api#documentation": "Local images of this marketplace image ID. One-of `scope`: exactly one of `image_id`, `version_id`, `image_label` — the API rejects a call with none."
           }
         },
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "version_id",
-            "smithy.api#documentation": "Local images of this marketplace version ID. One-of `scope`: at most one of `image_id`, `version_id`, `image_label`."
+            "smithy.api#documentation": "Local images of this marketplace version ID. One-of `scope`: exactly one of `image_id`, `version_id`, `image_label` — the API rejects a call with none."
           }
         },
         "image_label": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#httpQuery": "image_label",
-            "smithy.api#documentation": "Local images of this marketplace image label (`ubuntu_noble`). One-of `scope`: at most one of `image_id`, `version_id`, `image_label`."
+            "smithy.api#documentation": "Local images of this marketplace image label (`ubuntu_noble`). One-of `scope`: exactly one of `image_id`, `version_id`, `image_label` — the API rejects a call with none."
           }
         }
       },

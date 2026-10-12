@@ -724,6 +724,34 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface GetClusterCertificateRawRequest {
+  /** The zone you want to target */
+  zone?: GetClusterCertificateRequestZone | (string & {});
+  /** UUID of the cluster. (UUID format) */
+  cluster_id: string;
+}
+export const GetClusterCertificateRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zone: S.optional(GetClusterCertificateRequestZone.pipe(T.Label())),
+    cluster_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/redis/v1/zones/{zone}/clusters/{cluster_id}/certificate",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "GetClusterCertificateRawRequest",
+}) as any as S.Schema<GetClusterCertificateRawRequest>;
+
+export type GetClusterCertificateRawResponse = Uint8Array;
+export const GetClusterCertificateRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<GetClusterCertificateRawResponse>;
+
 export type GetClusterMetricsRequestZone =
   | "fr-par-1"
   | "fr-par-2"
@@ -1594,6 +1622,21 @@ export const getClusterCertificate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetClusterCertificateRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetClusterCertificateRawError = ScalewayOpError;
+/** Get the TLS certificate of a cluster The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const getClusterCertificateRaw: API.OperationMethod<
+  GetClusterCertificateRawRequest,
+  GetClusterCertificateRawResponse,
+  GetClusterCertificateRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetClusterCertificateRawRequest,
+  output: GetClusterCertificateRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

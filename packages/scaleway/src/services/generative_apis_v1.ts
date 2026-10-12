@@ -27,6 +27,10 @@ export interface ListConsumptionLimitsRequest {
   page?: number;
   /** Maximum number of consumption limits to return per page. */
   page_size?: number;
+  /** List the consumption limits of this Organization. One-of `organization_project_id`: exactly one of `organization_id`, `project_id` — the API rejects a call with neither. */
+  organization_id?: string;
+  /** List the consumption limits of this Project. One-of `organization_project_id`: exactly one of `organization_id`, `project_id` — the API rejects a call with neither. */
+  project_id?: string;
 }
 export const ListConsumptionLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -34,6 +38,8 @@ export const ListConsumptionLimitsRequest = /*@__PURE__*/ S.suspend(() =>
     order_by: S.optional(ListConsumptionLimitsRequestOrderBy.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
+    organization_id: S.optional(S.String.pipe(T.Query())),
+    project_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",

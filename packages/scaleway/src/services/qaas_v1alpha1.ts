@@ -278,9 +278,9 @@ export interface CreateProcessRequest {
   /** ID of the project in which the process was created. (UUID format) */
   project_id: string;
   /** ID of the platform for which the process was created. */
-  platform_id: string | null;
+  platform_id?: string | null;
   /** ID of the application for which the process was created. */
-  application_id: string | null;
+  application_id?: string | null;
   /** Name of the process. */
   name?: string;
   /** Process parameters in JSON format. */
@@ -291,8 +291,8 @@ export interface CreateProcessRequest {
 export const CreateProcessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String,
-    platform_id: S.NullOr(S.String),
-    application_id: S.NullOr(S.String),
+    platform_id: S.optional(S.NullOr(S.String)),
+    application_id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
     input: S.optional(S.NullOr(S.String)),
     tags: S.optional(CreateProcessRequestTagsList),
@@ -1087,9 +1087,9 @@ export interface ListJobsRequest {
   page_size?: number;
   /** Sort order of the returned jobs. */
   order_by?: ListJobsRequestOrderBy | (string & {});
-  /** List jobs of this session. One-of `resource_id`: at most one of `session_id`, `project_id`. */
+  /** List jobs of this session. One-of `resource_id` with `session_id` / `project_id`; the API requires `session_id` in practice (a call with only `project_id` is rejected). */
   session_id?: string;
-  /** List jobs of this Project. One-of `resource_id`: at most one of `session_id`, `project_id`. */
+  /** List jobs of this Project. One-of `resource_id` with `session_id` / `project_id`; the API requires `session_id` in practice (a call with only `project_id` is rejected). */
   project_id?: string;
 }
 export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>

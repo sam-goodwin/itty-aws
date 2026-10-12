@@ -418,6 +418,33 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface DownloadDeploymentCertificateAuthorityRawRequest {
+  /** The region you want to target */
+  region?: DownloadDeploymentCertificateAuthorityRequestRegion | (string & {});
+  deployment_id: string;
+}
+export const DownloadDeploymentCertificateAuthorityRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(DownloadDeploymentCertificateAuthorityRequestRegion.pipe(T.Label())),
+    deployment_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/messageq/v1alpha1/regions/{region}/deployments/{deployment_id}/certificate-authority",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "DownloadDeploymentCertificateAuthorityRawRequest",
+}) as any as S.Schema<DownloadDeploymentCertificateAuthorityRawRequest>;
+
+export type DownloadDeploymentCertificateAuthorityRawResponse = Uint8Array;
+export const DownloadDeploymentCertificateAuthorityRawResponse = /*@__PURE__*/ S.instanceOf(
+  Uint8Array,
+).pipe(T.BinaryResponse()) as any as S.Schema<DownloadDeploymentCertificateAuthorityRawResponse>;
+
 export type GetDeploymentRequestRegion = "fr-par";
 export const GetDeploymentRequestRegion = S.String;
 
@@ -949,6 +976,21 @@ export const downloadDeploymentCertificateAuthority: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DownloadDeploymentCertificateAuthorityRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DownloadDeploymentCertificateAuthorityRawError = ScalewayOpError;
+/** The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const downloadDeploymentCertificateAuthorityRaw: API.OperationMethod<
+  DownloadDeploymentCertificateAuthorityRawRequest,
+  DownloadDeploymentCertificateAuthorityRawResponse,
+  DownloadDeploymentCertificateAuthorityRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DownloadDeploymentCertificateAuthorityRawRequest,
+  output: DownloadDeploymentCertificateAuthorityRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

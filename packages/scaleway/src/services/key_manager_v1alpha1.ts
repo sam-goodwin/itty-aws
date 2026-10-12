@@ -212,15 +212,6 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
 export type DecryptRequestRegion = "fr-par" | "nl-ams" | "pl-waw";
 export const DecryptRequestRegion = S.String;
 
-export interface GoogleProtobufBytesValue {
-  value?: string;
-}
-export const GoogleProtobufBytesValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "GoogleProtobufBytesValue" }) as any as S.Schema<GoogleProtobufBytesValue>;
-
 export interface DecryptRequest {
   /** The region you want to target */
   region?: DecryptRequestRegion | (string & {});
@@ -229,14 +220,14 @@ export interface DecryptRequest {
   /** Ciphertext data to decrypt. Data size must be between 1 and 131071 bytes. */
   ciphertext?: string;
   /** (Optional) Additional authenticated data. The additional data must match the value passed in the encryption request. Only supported by keys with a usage set to `symmetric_encryption`. */
-  associated_data?: GoogleProtobufBytesValue;
+  associated_data?: string | null;
 }
 export const DecryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(DecryptRequestRegion.pipe(T.Label())),
     key_id: S.String.pipe(T.Label()),
     ciphertext: S.optional(S.String),
-    associated_data: S.optional(GoogleProtobufBytesValue),
+    associated_data: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -253,13 +244,13 @@ export interface DecryptResponse {
   /** Key's decrypted data. */
   plaintext?: string | Redacted.Redacted<string>;
   /** (Optional) Data encrypted with the latest key rotation. If the data was already encrypted with the latest key rotation, no output will be returned in the response object. */
-  ciphertext?: GoogleProtobufBytesValue;
+  ciphertext?: string | null;
 }
 export const DecryptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_id: S.optional(S.String),
     plaintext: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    ciphertext: S.optional(GoogleProtobufBytesValue),
+    ciphertext: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "DecryptResponse" }) as any as S.Schema<DecryptResponse>;
 
@@ -379,14 +370,14 @@ export interface EncryptRequest {
   /** Plaintext data to encrypt. Data size must be between 1 and 65535 bytes. */
   plaintext?: string | Redacted.Redacted<string>;
   /** (Optional) Additional authenticated data. Additional data which will not be encrypted, but authenticated and appended to the encrypted payload. Only supported by keys with a usage set to `symmetric_encryption`. */
-  associated_data?: GoogleProtobufBytesValue;
+  associated_data?: string | null;
 }
 export const EncryptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(EncryptRequestRegion.pipe(T.Label())),
     key_id: S.String.pipe(T.Label()),
     plaintext: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    associated_data: S.optional(GoogleProtobufBytesValue),
+    associated_data: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -450,7 +441,7 @@ export interface DataKey {
   /** Data encryption key ciphertext. Your data encryption key's ciphertext can be stored safely. It can only be decrypted through the keys you create in Key Manager, using the relevant key ID. */
   ciphertext?: string;
   /** Data encryption key plaintext. (Optional) Your data encryption key's plaintext allows you to use the key immediately upon creation. It must neither be stored or shared. */
-  plaintext?: GoogleProtobufBytesValue;
+  plaintext?: string | Redacted.Redacted<string> | null;
   /** Data encryption key creation date. (RFC 3339 format) */
   created_at?: string | null;
 }
@@ -459,7 +450,7 @@ export const DataKey = /*@__PURE__*/ S.suspend(() =>
     key_id: S.optional(S.String),
     algorithm: S.optional(DataKeyAlgorithmSymmetricEncryption),
     ciphertext: S.optional(S.String),
-    plaintext: S.optional(GoogleProtobufBytesValue),
+    plaintext: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
     created_at: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "DataKey" }) as any as S.Schema<DataKey>;
@@ -601,7 +592,7 @@ export interface ImportKeyMaterialRequest {
   /** The key material. Deprecated. Use `encrypted_key_material` instead. The key material is a random sequence of bytes used to derive a cryptographic key. */
   key_material?: string | null;
   /** (Optional) Salt value to pass the key derivation function. A salt is random data added to key material to ensure unique derived keys, even if the input is similar. It helps strengthen security when the key material has low randomness (low entropy). */
-  salt?: GoogleProtobufBytesValue;
+  salt?: string | null;
   /** The encrypted key material to import. This material must be encrypted using the public key and the exact wrapping algorithm returned by the `GetKeyMaterialImportParameters` method. */
   encrypted_key_material?: ImportKeyMaterialRequestEncryptedKeyMaterial | null;
 }
@@ -610,7 +601,7 @@ export const ImportKeyMaterialRequest = /*@__PURE__*/ S.suspend(() =>
     region: S.optional(ImportKeyMaterialRequestRegion.pipe(T.Label())),
     key_id: S.String.pipe(T.Label()),
     key_material: S.optional(S.NullOr(S.String)),
-    salt: S.optional(GoogleProtobufBytesValue),
+    salt: S.optional(S.NullOr(S.String)),
     encrypted_key_material: S.optional(S.NullOr(ImportKeyMaterialRequestEncryptedKeyMaterial)),
   }).pipe(
     T.Http({
@@ -1005,14 +996,14 @@ export interface UnwrapKeyRequest {
   region?: UnwrapKeyRequestRegion | (string & {});
   key_id: string;
   ciphertext?: string;
-  associated_data?: GoogleProtobufBytesValue;
+  associated_data?: string | null;
 }
 export const UnwrapKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(UnwrapKeyRequestRegion.pipe(T.Label())),
     key_id: S.String.pipe(T.Label()),
     ciphertext: S.optional(S.String),
-    associated_data: S.optional(GoogleProtobufBytesValue),
+    associated_data: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",
@@ -1126,14 +1117,14 @@ export interface WrapKeyRequest {
   region?: WrapKeyRequestRegion | (string & {});
   key_id: string;
   plaintext?: string | Redacted.Redacted<string>;
-  associated_data?: GoogleProtobufBytesValue;
+  associated_data?: string | null;
 }
 export const WrapKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(WrapKeyRequestRegion.pipe(T.Label())),
     key_id: S.String.pipe(T.Label()),
     plaintext: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    associated_data: S.optional(GoogleProtobufBytesValue),
+    associated_data: S.optional(S.NullOr(S.String)),
   }).pipe(
     T.Http({
       method: "POST",

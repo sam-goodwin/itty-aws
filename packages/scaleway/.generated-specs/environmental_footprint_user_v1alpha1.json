@@ -637,7 +637,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The start date of the period for which you want to download a report (ISO 8601 format, e.g. 2025-05-01T00:00:00Z). (RFC 3339 format)",
-            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         },
@@ -697,11 +696,74 @@
         },
         {
           "target": "com.scaleway.environmental_footprint_user_v1alpha1#DownloadImpactReport"
+        },
+        {
+          "target": "com.scaleway.environmental_footprint_user_v1alpha1#DownloadImpactReportRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Environmental Footprint API",
         "smithy.api#documentation": "The Environmental Footprint API offers tools that help monitor your environmental impact using Scaleway's services.\n\n## Calculation\n\nRefer to our dedicated [Environmental Footprint calculation breakdown](https://www.scaleway.com/en/docs/environmental-footprint/additional-content/environmental-footprint-calculator/) documentation page for more information on how we measure your environmental footprint.\n\n## Quickstart\n\n1. Configure your environment variables.\n\n    ```bash\n    export SCW_ORGANIZATION_ID=<your-organization-ID>\n    export SCW_SECRET_KEY=\"<secret-key>\"\n    ```\n\n2. Run the query below to retrieve a list of available reports:\n\n    ```bash\n    curl \\\n    -H \"X-Auth-Token: ${SCW_SECRET_KEY}\" \\\n    \"https://api.scaleway.com/environmental-footprint/v1alpha1/reports/availability?\\\n    organization_id=${SCW_ORGANIZATION_ID}&\\\n    start_date=<start-date>\"\n    ```\n\n   You can add the following parameters to your endpoint:\n\n\n3. Run the query below to retrieve a specific impact report.\n\n    ```bash\n    curl \\\n      -H \"X-Auth-Token: ${SCW_SECRET_KEY}\" \\\n      -d \"{\n        \\\"organization_id\\\": \\\"${SCW_ORGANIZATION_ID}\\\",\n        \\\"type\\\": \\\"<report-type>\\\",\n        \\\"date\\\": \\\"<report-date>\\\"\n      }\" \\\n      \"https://api.scaleway.com/environmental-footprint/v1alpha1/reports/download\" \\\n      > /tmp/report.pdf\n    ```\n\n   You can add the following parameters to your endpoint:\n\n\n4. Open the report.\n\n   <Tabs>\n   <TabsTab label=\"With Linux\">\n   ```bash\n   xdg-open /tmp/report.pdf\n   ```\n   </TabsTab>\n   <TabsTab label=\"With MacOS\">\n   ```bash\n   open /tmp/report.pdf\n   ```\n   </TabsTab>\n   </Tabs>\n\n5. Run the query below to retrieve specific impact data for your Organization. You can add the parameters of your choice in the endpoint to filter the query by project ID, region, zone, service category, and/or product category. In the example below we retrieve the impact data of all Elastic Metal servers in the Organization.\n\n    ```bash\n    curl -H \"X-Auth-Token: ${SCW_SECRET_KEY}\" \"https://api.scaleway.com/environmental-footprint/v1alpha1/data/query?organization_id=${SCW_ORGANIZATION_ID}&start_date=<start_date>&product_categories=elastic_metal\"\n    ```\n\n\n   <Message type=\"tip\">\n   Refer to the [Retrieve detailed impact data](#path-metrics-retrieve-detailed-impact-data) endpoint reference for an extensive list of available parameters and corresponding values.\n   </Message>\n\n   If the request was successful you will see a response like the following:\n\n    ```json\n    {\n      \"start_date\": \"2025-07-01T00:00:00Z\",\n      \"end_date\": \"2025-07-04T00:00:00Z\",\n      \"total_impact\": {\n        \"kg_co2_equivalent\": 2.453914,\n        \"m3_water_usage\": 0.016715\n      },\n      \"projects\": [\n        {\n          \"project_id\": <project_id>,\n          \"total_project_impact\": {\n            \"kg_co2_equivalent\": 2.453914,\n            \"m3_water_usage\": 0.016715\n          },\n          \"regions\": [\n            {\n              \"region\": \"fr-par\",\n              \"total_region_impact\": {\n                \"kg_co2_equivalent\": 2.453914,\n                \"m3_water_usage\": 0.016715\n              },\n              \"zones\": [\n                {\n                  \"zone\": \"fr-par-2\",\n                  \"total_zone_impact\": {\n                    \"kg_co2_equivalent\": 2.453914,\n                    \"m3_water_usage\": 0.016715\n                  },\n                  \"skus\": [\n                    {\n                      \"sku\": \"/baremetal/em-a115x-ssd/monthly/run_par2\",\n                      \"total_sku_impact\": {\n                        \"kg_co2_equivalent\": 2.058405,\n                        \"m3_water_usage\": 0.003345\n                      },\n                      \"service_category\": \"baremetal\",\n                      \"product_category\": \"elastic_metal\"\n                    }\n                  ]\n                }\n              ]\n            },\n          ]\n        }\n      ]\n    }\n    ```\n\n   The response gives you the estimated impact for the projects, regions, zones, service categories, and product categories that match your filters.\n\n<Message type=\"important\">\n  Your environmental footprint data may change for the same consumption.\n\n  This is due to updates in the energy mix of data center locations, adjustments to PUE, or enhancements in our calculation methodology. These updates ensure that your reports reflect the most accurate and up-to-date information, enhancing transparency and trust in our reporting system.\n</Message>\n\n<Message type=\"requirement\">\n- You have a [Scaleway account](https://console.scaleway.com/) and you know your Organization ID\n- You have created an [API key](https://www.scaleway.com/en/docs/iam/how-to/create-api-keys/) and that the API key has sufficient [IAM permissions](https://www.scaleway.com/en/docs/iam/reference-content/permission-sets/) to perform the actions described on this page\n- You know your [Organization ID](https://console.scaleway.com/organization/settings)\n- You have [installed `curl`](https://curl.se/download.html)\n</Message>"
+      }
+    },
+    "com.scaleway.environmental_footprint_user_v1alpha1#DownloadImpactReportRawRequest": {
+      "type": "structure",
+      "members": {
+        "organization_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The UUID of the Organization for which you want to download a report.",
+            "smithy.api#required": {}
+          }
+        },
+        "date": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The start date of the period for which you want to download a report (ISO 8601 format, e.g. 2025-05-01T00:00:00Z). (RFC 3339 format)",
+            "com.distilled.openapi#nullable": {}
+          }
+        },
+        "type": {
+          "target": "com.scaleway.environmental_footprint_user_v1alpha1#ReportType",
+          "traits": {
+            "smithy.api#documentation": "Type of report to download (e.g. `monthly`)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.environmental_footprint_user_v1alpha1#DownloadImpactReportRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.environmental_footprint_user_v1alpha1#DownloadImpactReportRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.environmental_footprint_user_v1alpha1#DownloadImpactReportRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.environmental_footprint_user_v1alpha1#DownloadImpactReportRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/environmental-footprint/v1alpha1/reports/download",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Download PDF impact report\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

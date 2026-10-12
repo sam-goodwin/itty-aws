@@ -566,11 +566,69 @@
         },
         {
           "target": "com.scaleway.account_contract_v3#CheckContractSignature"
+        },
+        {
+          "target": "com.scaleway.account_contract_v3#DownloadContractSignatureRaw"
         }
       ],
       "traits": {
         "smithy.api#title": "Contract API",
         "smithy.api#documentation": "The Contract API allows you to manage contracts."
+      }
+    },
+    "com.scaleway.account_contract_v3#DownloadContractSignatureRawRequest": {
+      "type": "structure",
+      "members": {
+        "contract_signature_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "The contract signature ID. (UUID format)"
+          }
+        },
+        "locale": {
+          "target": "com.scaleway.account_contract_v3#ScalewayStdLanguageCode",
+          "traits": {
+            "smithy.api#httpQuery": "locale",
+            "smithy.api#documentation": "The locale requested for the content of the contract."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.scaleway.account_contract_v3#DownloadContractSignatureRawResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#Blob",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.scaleway.account_contract_v3#DownloadContractSignatureRaw": {
+      "type": "operation",
+      "input": {
+        "target": "com.scaleway.account_contract_v3#DownloadContractSignatureRawRequest"
+      },
+      "output": {
+        "target": "com.scaleway.account_contract_v3#DownloadContractSignatureRawResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/account/v3/contract-signatures/{contract_signature_id}/download",
+          "code": 200,
+          "baseUrl": "https://api.scaleway.com",
+          "rawDownload": true
+        },
+        "smithy.api#documentation": "Download a contract content\n\nThe file itself, as bytes (`?dl=1`), rather than the JSON file object."
       }
     }
   }

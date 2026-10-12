@@ -15,14 +15,14 @@ export interface DownloadImpactReportRequest {
   /** The UUID of the Organization for which you want to download a report. */
   organization_id: string;
   /** The start date of the period for which you want to download a report (ISO 8601 format, e.g. 2025-05-01T00:00:00Z). (RFC 3339 format) */
-  date: string | null;
+  date?: string | null;
   /** Type of report to download (e.g. `monthly`). */
   type?: ReportType | (string & {});
 }
 export const DownloadImpactReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String,
-    date: S.NullOr(S.String),
+    date: S.optional(S.NullOr(S.String)),
     type: S.optional(ReportType),
   }).pipe(
     T.Http({
@@ -48,6 +48,37 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
     content: S.optional(S.String),
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
+
+export interface DownloadImpactReportRawRequest {
+  /** The UUID of the Organization for which you want to download a report. */
+  organization_id: string;
+  /** The start date of the period for which you want to download a report (ISO 8601 format, e.g. 2025-05-01T00:00:00Z). (RFC 3339 format) */
+  date?: string | null;
+  /** Type of report to download (e.g. `monthly`). */
+  type?: ReportType | (string & {});
+}
+export const DownloadImpactReportRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.String,
+    date: S.optional(S.NullOr(S.String)),
+    type: S.optional(ReportType),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/environmental-footprint/v1alpha1/reports/download",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "DownloadImpactReportRawRequest",
+}) as any as S.Schema<DownloadImpactReportRawRequest>;
+
+export type DownloadImpactReportRawResponse = Uint8Array;
+export const DownloadImpactReportRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<DownloadImpactReportRawResponse>;
 
 export type GetImpactDataRequestRegionsList = Array<string>;
 export const GetImpactDataRequestRegionsList = /*@__PURE__*/ S.Array(
@@ -336,6 +367,21 @@ export const downloadImpactReport: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DownloadImpactReportRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DownloadImpactReportRawError = ScalewayOpError;
+/** Download PDF impact report The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const downloadImpactReportRaw: API.OperationMethod<
+  DownloadImpactReportRawRequest,
+  DownloadImpactReportRawResponse,
+  DownloadImpactReportRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DownloadImpactReportRawRequest,
+  output: DownloadImpactReportRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

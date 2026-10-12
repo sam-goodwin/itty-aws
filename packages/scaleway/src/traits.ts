@@ -41,9 +41,11 @@ export {
   SensitiveValue,
   RawResponse,
   RawResponseRoot,
+  BinaryResponse,
   sensitiveValueSymbol,
   rawResponseSymbol,
   rawResponseRootSymbol,
+  binaryResponseSymbol,
 } from "@distilled.cloud/core/protocol-rest";
 
 /**
@@ -53,6 +55,8 @@ export {
  */
 export interface ScalewayHttpTrait extends HttpTrait {
   readonly baseUrl: string;
+  /** A `…Raw` file download: the protocol appends `dl=1`. */
+  readonly rawDownload?: boolean;
 }
 
 /** Operation-level HTTP binding carrying the Scaleway API host. */

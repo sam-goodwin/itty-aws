@@ -99,13 +99,59 @@ Scaleway.instanceV1.getServer({ server_id }).pipe(
 );
 ```
 
-## Not generated
+## Streaming (Generative APIs)
 
-- Streaming responses: Generative APIs' chat/completions/responses endpoints
-  are generated as plain request/response calls; `stream: true` (SSE) is not
-  supported.
-- `generativeApisOpenaiV1.createAudioTranscription`: the spec declares a JSON body
-  with `file` as an object, but the OpenAI-compatible endpoint takes a
+`createChatCompletion` / `createResponse` with `stream: true` answer
+server-sent events, which a generated operation cannot decode. Use the
+streaming helpers instead:
+
+```ts
+import * as Stream from "effect/Stream";
+
+const text = Scaleway.streamChatCompletion({
+  project_id,
+  model: "llama-3.1-8b-instruct",
+  messages: [{ role: "user", content: "Say hello" }],
+}).pipe(
+  Stream.map((chunk) => chunk.choices[0]?.delta.content ?? ""),
+  Stream.mkString,
+);
+```
+
+`streamResponse` does the same for the Responses API. A failure before the
+first event is the usual typed error.
+
+## File downloads
+
+Operations that answer a file (kubeconfigs, database certificates, invoices,
+DNS zone exports, contract PDFs) return Scaleway's JSON file object —
+`{ name, content_type, content }`, `content` base64 — as the Go SDK and CLI
+read it. Each also has a `…Raw` twin that asks for the file itself
+(`?dl=1`, as the JS SDK does) and answers a `Uint8Array`:
+
+```ts
+const pdf = yield* Scaleway.accountContractV3.downloadContractSignatureRaw({
+  contract_signature_id,
+  locale: "en_US",
+});
+```
+
+## Responses and `null`
+
+Scaleway writes unset fields as `null`; the protocol drops `null` properties
+before decoding, as the official SDKs do, so an unset field is absent.
+
+## Known limits
+
+- `generativeApisOpenaiV1.createAudioTranscription`: the spec declares a JSON
+  body with `file` as an object, but the OpenAI-compatible endpoint takes a
   multipart upload, so the generated call cannot send audio.
-- File downloads take the JSON `scaleway.std.File` form (`content` is
-  base64); the raw `?dl=1` form the official SDKs also offer is not modelled.
+- Some parameters the API requires are optional in the types: one-of
+  groups (`marketplaceV2.listLocalImages` needs one of `image_id` /
+  `image_label` / `version_id`) and `locale` on
+  `accountContractV3.downloadContractSignature`, which the spec marks
+  optional. The API answers `InvalidArgumentsError` naming the field.
+- APIs that Scaleway's SDKs cover but its developer portal publishes no
+  OpenAPI for are not generated: the regional Load Balancer API
+  (`/lb/v1/regions/…`, use `lbZonedV1`), Dedibox billing / RPN / IPv6 blocks,
+  Billing v2, Dataviz, Search and Object Storage admin.

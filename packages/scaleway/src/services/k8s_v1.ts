@@ -287,15 +287,6 @@ export type AutoscalerExpander =
   | "price";
 export const AutoscalerExpander = S.String;
 
-export interface GoogleProtobufFloatValue {
-  value?: number;
-}
-export const GoogleProtobufFloatValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Number),
-  }),
-).annotate({ identifier: "GoogleProtobufFloatValue" }) as any as S.Schema<GoogleProtobufFloatValue>;
-
 export interface CreateClusterRequestAutoscalerConfig {
   /** Forbid cluster autoscaler to scale down the cluster, defaults to false. */
   scale_down_disabled?: boolean | null;
@@ -314,7 +305,7 @@ export interface CreateClusterRequestAutoscalerConfig {
   /** How long a node should be unneeded before it is eligible for scale down, defaults to 10 minutes. */
   scale_down_unneeded_time?: string | null;
   /** Node utilization level, defined as a sum of requested resources divided by allocatable capacity, below which a node can be considered for scale down. */
-  scale_down_utilization_threshold?: GoogleProtobufFloatValue;
+  scale_down_utilization_threshold?: number | null;
   /** Maximum number of seconds the cluster autoscaler waits for pod termination when trying to scale down a node, defaults to 600 (10 minutes). */
   max_graceful_termination_sec?: number | null;
   /** Cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath, defaults to true. */
@@ -332,7 +323,7 @@ export const CreateClusterRequestAutoscalerConfig = /*@__PURE__*/ S.suspend(() =
     balance_similar_node_groups: S.optional(S.NullOr(S.Boolean)),
     expendable_pods_priority_cutoff: S.optional(S.NullOr(S.Number)),
     scale_down_unneeded_time: S.optional(S.NullOr(S.String)),
-    scale_down_utilization_threshold: S.optional(GoogleProtobufFloatValue),
+    scale_down_utilization_threshold: S.optional(S.NullOr(S.Number)),
     max_graceful_termination_sec: S.optional(S.NullOr(S.Number)),
     skip_nodes_with_local_storage: S.optional(S.NullOr(S.Boolean)),
     log_level: S.optional(S.NullOr(S.Number)),
@@ -1253,6 +1244,40 @@ export const ScalewayStdFile = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScalewayStdFile" }) as any as S.Schema<ScalewayStdFile>;
 
+export interface GetClusterKubeConfigRawRequest {
+  /** The region you want to target */
+  region?: GetClusterKubeConfigRequestRegion | (string & {});
+  /** Cluster ID for which to download the kubeconfig. */
+  cluster_id: string;
+  /** Hide the legacy token from the kubeconfig. */
+  redacted?: boolean;
+  /** Which endpoint to use to reach the APIServer (default: public). */
+  endpoint?: GetClusterKubeConfigRequestEndpoint | (string & {});
+}
+export const GetClusterKubeConfigRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(GetClusterKubeConfigRequestRegion.pipe(T.Label())),
+    cluster_id: S.String.pipe(T.Label()),
+    redacted: S.optional(S.Boolean.pipe(T.Query())),
+    endpoint: S.optional(GetClusterKubeConfigRequestEndpoint.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/k8s/v1/regions/{region}/clusters/{cluster_id}/kubeconfig",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({
+  identifier: "GetClusterKubeConfigRawRequest",
+}) as any as S.Schema<GetClusterKubeConfigRawRequest>;
+
+export type GetClusterKubeConfigRawResponse = Uint8Array;
+export const GetClusterKubeConfigRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<GetClusterKubeConfigRawResponse>;
+
 export type GetNodeRequestRegion = "fr-par" | "nl-ams" | "pl-waw" | "it-mil";
 export const GetNodeRequestRegion = S.String;
 
@@ -1324,6 +1349,35 @@ export const GetUserDataRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "GetUserDataRequest" }) as any as S.Schema<GetUserDataRequest>;
+
+export interface GetUserDataRawRequest {
+  /** The region you want to target */
+  region?: GetUserDataRequestRegion | (string & {});
+  /** Pool the user data are associated to. */
+  pool_id: string;
+  /** User data key to retrieved. */
+  key: string;
+}
+export const GetUserDataRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    region: S.optional(GetUserDataRequestRegion.pipe(T.Label())),
+    pool_id: S.String.pipe(T.Label()),
+    key: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/k8s/v1/regions/{region}/pools/{pool_id}/user-data/{key}",
+      code: 200,
+      baseUrl: "https://api.scaleway.com",
+      rawDownload: true,
+    }),
+  ),
+).annotate({ identifier: "GetUserDataRawRequest" }) as any as S.Schema<GetUserDataRawRequest>;
+
+export type GetUserDataRawResponse = Uint8Array;
+export const GetUserDataRawResponse = /*@__PURE__*/ S.instanceOf(Uint8Array).pipe(
+  T.BinaryResponse(),
+) as any as S.Schema<GetUserDataRawResponse>;
 
 export type GetVersionRequestRegion = "fr-par" | "nl-ams" | "pl-waw" | "it-mil";
 export const GetVersionRequestRegion = S.String;
@@ -2629,6 +2683,21 @@ export const getClusterKubeConfig: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetClusterKubeConfigRawError = ScalewayOpError;
+/** Download the kubeconfig for a Cluster The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const getClusterKubeConfigRaw: API.OperationMethod<
+  GetClusterKubeConfigRawRequest,
+  GetClusterKubeConfigRawResponse,
+  GetClusterKubeConfigRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetClusterKubeConfigRawRequest,
+  output: GetClusterKubeConfigRawResponse,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetNodeError = ScalewayOpError;
 /** Get a Node in a Cluster Retrieve details about a specific Kubernetes Node. */
 export const getNode: API.OperationMethod<GetNodeRequest, Node, GetNodeError, ScalewayOpContext> =
@@ -2661,6 +2730,21 @@ export const getUserData: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetUserDataRequest,
   output: ScalewayStdFile,
+  errors: [UnknownScalewayError],
+  protocol: ScalewayProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetUserDataRawError = ScalewayOpError;
+/** Get a pool related user data The file itself, as bytes (`?dl=1`), rather than the JSON file object. */
+export const getUserDataRaw: API.OperationMethod<
+  GetUserDataRawRequest,
+  GetUserDataRawResponse,
+  GetUserDataRawError,
+  ScalewayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUserDataRawRequest,
+  output: GetUserDataRawResponse,
   errors: [UnknownScalewayError],
   protocol: ScalewayProtocol,
   retry: Retry.Retry,

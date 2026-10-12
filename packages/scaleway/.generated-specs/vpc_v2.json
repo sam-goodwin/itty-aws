@@ -4291,7 +4291,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Rule description.",
-            "smithy.api#required": {},
             "com.distilled.openapi#nullable": {}
           }
         }
