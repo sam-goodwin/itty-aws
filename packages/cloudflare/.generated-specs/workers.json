@@ -74881,6 +74881,13 @@
         },
         "containers": {
           "target": "com.cloudflare.workers#CreatePreviewDeploymentMetadataContainersList"
+        },
+        "exports": {
+          "target": "com.cloudflare.workers#PutScriptMetadataExports",
+          "traits": {
+            "com.cloudflare.protocols#keyDictionary": {},
+            "smithy.api#documentation": "Per-export settings keyed by the verbatim export name (default for the default export)."
+          }
         }
       }
     },
