@@ -2034,9 +2034,9 @@ export interface ListOSRequest {
   type?: OSType | (string & {});
   /** Project ID. */
   project_id?: string;
-  /** Filter OS by compatible server ID. One-of `filter`: at most one of `server_id`, `offer_id`. */
+  /** Filter OS by compatible server ID. One-of `filter`: exactly one of `server_id`, `offer_id` — the API rejects a call with neither. */
   server_id?: number;
-  /** Filter OS by compatible offer ID. One-of `filter`: at most one of `server_id`, `offer_id`. */
+  /** Filter OS by compatible offer: the Offer's `offer_id` (the product, e.g. Pro-8-XS), not its `id` (one priced variant), which the API rejects as an invalid choice. One-of `filter`: exactly one of `server_id`, `offer_id` — the API rejects a call with neither. */
   offer_id?: number;
 }
 export const ListOSRequest = /*@__PURE__*/ S.suspend(() =>

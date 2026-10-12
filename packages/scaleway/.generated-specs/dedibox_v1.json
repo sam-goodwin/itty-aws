@@ -2497,14 +2497,14 @@
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#httpQuery": "server_id",
-            "smithy.api#documentation": "Filter OS by compatible server ID. One-of `filter`: at most one of `server_id`, `offer_id`."
+            "smithy.api#documentation": "Filter OS by compatible server ID. One-of `filter`: exactly one of `server_id`, `offer_id` — the API rejects a call with neither."
           }
         },
         "offer_id": {
           "target": "smithy.api#Integer",
           "traits": {
             "smithy.api#httpQuery": "offer_id",
-            "smithy.api#documentation": "Filter OS by compatible offer ID. One-of `filter`: at most one of `server_id`, `offer_id`."
+            "smithy.api#documentation": "Filter OS by compatible offer: the Offer's `offer_id` (the product, e.g. Pro-8-XS), not its `id` (one priced variant), which the API rejects as an invalid choice. One-of `filter`: exactly one of `server_id`, `offer_id` — the API rejects a call with neither."
           }
         }
       },
