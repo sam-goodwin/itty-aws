@@ -136,6 +136,12 @@ const pdf = yield* Scaleway.accountContractV3.downloadContractSignatureRaw({
 });
 ```
 
+## Instance volumes
+
+`instanceV1.serverAction({ action: "terminate" })` deletes the server but
+not its Block Storage (SBS) volumes — delete them with
+`blockV1.deleteVolume` (observed live, 2026-10-12).
+
 ## Responses and `null`
 
 Scaleway writes unset fields as `null`; the protocol drops `null` properties

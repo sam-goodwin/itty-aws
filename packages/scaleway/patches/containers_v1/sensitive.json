@@ -1,5 +1,5 @@
 {
-  "description": "Serverless Containers takes secret environment variables as a `map<string, string>` of plaintext values on CreateContainer / UpdateContainer / CreateNamespace / UpdateNamespace (https://www.scaleway.com/en/developers/api/serverless-containers/), with no sensitive mark. The map shapes are marked sensitive; generate.ts emits their values as `string | Redacted<string>` (the protocol unwraps Redacted before sending). Response-side maps are left alone: core does not redact record values on decode, so marking them would type values as Redacted that arrive as strings.",
+  "description": "Serverless Containers takes secret environment variables as a `map<string, string>` of plaintext values on CreateContainer / UpdateContainer / CreateNamespace / UpdateNamespace (https://www.scaleway.com/en/developers/api/serverless-containers/), with no sensitive mark. The map shapes are marked sensitive; generate.ts emits their values as `string | Redacted<string>` (the protocol unwraps Redacted before sending). Response-side maps are left alone: live on 2026-10-12, GetNamespace answered the value hashed, not the plaintext sent, and core does not redact record values on decode anyway.",
   "patches": [
     {
       "op": "add",
