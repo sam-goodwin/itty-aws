@@ -1,3 +1,269 @@
+## v1.0.0-rc.14
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- Credential providers take secrets as Redacted only &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/710 [<samp>(ca81e)</samp>](https://github.com/alchemy-run/distilled/commit/ca81ed2f9)
+- **gcp**: FromWorkloadIdentity credentials (workload identity federation) &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/712 [<samp>(703f0)</samp>](https://github.com/alchemy-run/distilled/commit/703f0d884)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- K2 + Pipelines ingest (cloudflare) and Apache Iceberg REST Catalog SDK &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/730 [<samp>(fb909)</samp>](https://github.com/alchemy-run/distilled/commit/fb909f88e)
+- **acme**:
+  - Convert the SDK from RFC 8555 &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/852 [<samp>(424e5)</samp>](https://github.com/alchemy-run/distilled/commit/424e54104)
+- **adyen**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/759 [<samp>(a5189)</samp>](https://github.com/alchemy-run/distilled/commit/a5189aec3)
+- **apache-superset**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/761 [<samp>(59ce4)</samp>](https://github.com/alchemy-run/distilled/commit/59ce4ddb4)
+- **archil**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/755 [<samp>(17de2)</samp>](https://github.com/alchemy-run/distilled/commit/17de22511)
+- **argocd**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/756 [<samp>(3e0f4)</samp>](https://github.com/alchemy-run/distilled/commit/3e0f47c32)
+- **auth0**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/757 [<samp>(587db)</samp>](https://github.com/alchemy-run/distilled/commit/587db8a3b)
+- **aws**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/743 [<samp>(8dffe)</samp>](https://github.com/alchemy-run/distilled/commit/8dffe77b3)
+  - **auto-scaling**: Type InvalidIamInstanceProfile on create/updateAutoScalingGroup &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/764 [<samp>(d6ae0)</samp>](https://github.com/alchemy-run/distilled/commit/d6ae0c898)
+  - **ec2**: Type ClientVpnEndpointCreationInProgress on createClientVpnEndpoint &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/830 [<samp>(2df2d)</samp>](https://github.com/alchemy-run/distilled/commit/2df2d5f4e)
+  - **ses**: Type ReceiptRuleRoleNotAssumable on receipt rule create/update &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/753 [<samp>(02984)</samp>](https://github.com/alchemy-run/distilled/commit/02984c254)
+- **axiom**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/742 [<samp>(0803d)</samp>](https://github.com/alchemy-run/distilled/commit/0803d6152)
+- **azure**:
+  - Greedy ARM scope labels and typed Azure errors &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/687 [<samp>(08829)</samp>](https://github.com/alchemy-run/distilled/commit/08829c695)
+  - Quota, relationships and hybridnetwork patches + typed errors &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/719 [<samp>(877aa)</samp>](https://github.com/alchemy-run/distilled/commit/877aac922)
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/751 [<samp>(1abeb)</samp>](https://github.com/alchemy-run/distilled/commit/1abebeb9e)
+- **boat-dev**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/758 [<samp>(5137b)</samp>](https://github.com/alchemy-run/distilled/commit/5137bc5a1)
+- **celld, fly-io**:
+  - Read the hand-written specs from their mirrors &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/854 [<samp>(676ad)</samp>](https://github.com/alchemy-run/distilled/commit/676ad9b26)
+- **chronosphere**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/760 [<samp>(3f69a)</samp>](https://github.com/alchemy-run/distilled/commit/3f69a17c8)
+- **clerk**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/768 [<samp>(2fb67)</samp>](https://github.com/alchemy-run/distilled/commit/2fb67bae7)
+- **cloudflare**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/727 [<samp>(0807b)</samp>](https://github.com/alchemy-run/distilled/commit/0807b95e9)
+  - Support Workers Issues observability &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/728 [<samp>(bd6ae)</samp>](https://github.com/alchemy-run/distilled/commit/bd6aeee52)
+  - Artifacts events: Worker event triggers and subscription sources &nbsp;-&nbsp; by **Matthew Aylward**, **Butch78**, **Claude Opus 5.5** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/705 [<samp>(71e1f)</samp>](https://github.com/alchemy-run/distilled/commit/71e1fb450)
+  - Add observability.issues + redact_query_string to script upload metadata &nbsp;-&nbsp; by **viz** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/700 [<samp>(9c986)</samp>](https://github.com/alchemy-run/distilled/commit/9c9862d2b)
+  - Add Worker upload metadata exports &nbsp;-&nbsp; by **Alex**, **Claude Opus 5.5** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/589 [<samp>(9aff5)</samp>](https://github.com/alchemy-run/distilled/commit/9aff5a2ac)
+  - Support the Durable Object Container API &nbsp;-&nbsp; by **Dan van der Merwe** and **Rahul Mishra** in https://github.com/alchemy-run/distilled/issues/685 [<samp>(490a2)</samp>](https://github.com/alchemy-run/distilled/commit/490a23b0f)
+  - Exports on Worker Preview deployments &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/870 [<samp>(6e75f)</samp>](https://github.com/alchemy-run/distilled/commit/6e75fecd2)
+- **codegen**:
+  - Stamp distilled.generatedAt in each SDK's package.json &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/845 [<samp>(21dc2)</samp>](https://github.com/alchemy-run/distilled/commit/21dc2dddd)
+  - Stamp distilled.specUpdatedAt next to generatedAt &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/846 [<samp>(cced6)</samp>](https://github.com/alchemy-run/distilled/commit/cced62a87)
+- **coinbase**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/736 [<samp>(a5bb7)</samp>](https://github.com/alchemy-run/distilled/commit/a5bb7b42d)
+- **coolify**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/772 [<samp>(37778)</samp>](https://github.com/alchemy-run/distilled/commit/37778a0bb)
+- **core**:
+  - Patch audit in core, with a generate-time patch stage &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/714 [<samp>(d7039)</samp>](https://github.com/alchemy-run/distilled/commit/d7039a080)
+  - Apply Smithy patches before the verbNoun rename &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/818 [<samp>(56741)</samp>](https://github.com/alchemy-run/distilled/commit/56741e3f0)
+- **customerio**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/767 [<samp>(ca07f)</samp>](https://github.com/alchemy-run/distilled/commit/ca07fd58f)
+- **datadog**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/775 [<samp>(72dcf)</samp>](https://github.com/alchemy-run/distilled/commit/72dcf015a)
+- **daytona**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/771 [<samp>(d6ab5)</samp>](https://github.com/alchemy-run/distilled/commit/d6ab57fd8)
+- **digitalocean**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/766 [<samp>(2c751)</samp>](https://github.com/alchemy-run/distilled/commit/2c7517159)
+- **discord**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/734 [<samp>(45a68)</samp>](https://github.com/alchemy-run/distilled/commit/45a68016e)
+- **docker**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/769 [<samp>(01599)</samp>](https://github.com/alchemy-run/distilled/commit/01599386a)
+- **doppler**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/774 [<samp>(dead2)</samp>](https://github.com/alchemy-run/distilled/commit/dead2296c)
+- **elasticsearch**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/770 [<samp>(9ee11)</samp>](https://github.com/alchemy-run/distilled/commit/9ee112738)
+- **expo-eas**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/737 [<samp>(0d855)</samp>](https://github.com/alchemy-run/distilled/commit/0d855ca67)
+- **fly-io**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/741 [<samp>(076c2)</samp>](https://github.com/alchemy-run/distilled/commit/076c254d5)
+  - Build sprites and add-ons from the spec mirror &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/849 [<samp>(b841f)</samp>](https://github.com/alchemy-run/distilled/commit/b841ff257)
+- **forgejo**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/783 [<samp>(c55c1)</samp>](https://github.com/alchemy-run/distilled/commit/c55c134f0)
+- **gcp**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/763 [<samp>(9b10b)</samp>](https://github.com/alchemy-run/distilled/commit/9b10b9258)
+  - Application Default Credentials (fromApplicationDefault) &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/831 [<samp>(566fc)</samp>](https://github.com/alchemy-run/distilled/commit/566fc5fc0)
+  - Mirror the Storage Insights v1 discovery doc &nbsp;-&nbsp; by **Bartek**, **Claude Opus 5.5**, **sam** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/828 [<samp>(1db06)</samp>](https://github.com/alchemy-run/distilled/commit/1db06c7e1)
+- **github**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/773 [<samp>(c4a1e)</samp>](https://github.com/alchemy-run/distilled/commit/c4a1ecab7)
+- **google-workspace**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/802 [<samp>(165c1)</samp>](https://github.com/alchemy-run/distilled/commit/165c1b0d8)
+- **grafana**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/784 [<samp>(387e3)</samp>](https://github.com/alchemy-run/distilled/commit/387e30c64)
+- **growthbook**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/777 [<samp>(f69da)</samp>](https://github.com/alchemy-run/distilled/commit/f69da861c)
+- **gusto**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/780 [<samp>(434ef)</samp>](https://github.com/alchemy-run/distilled/commit/434efb2b4)
+- **hetzner**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/740 [<samp>(9ffe1)</samp>](https://github.com/alchemy-run/distilled/commit/9ffe11447)
+- **hostinger**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/778 [<samp>(dcb1b)</samp>](https://github.com/alchemy-run/distilled/commit/dcb1bf184)
+- **huggingface**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/739 [<samp>(bf695)</samp>](https://github.com/alchemy-run/distilled/commit/bf695406b)
+- **infisical**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/782 [<samp>(cbd3a)</samp>](https://github.com/alchemy-run/distilled/commit/cbd3a7987)
+- **inngest**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/776 [<samp>(2b588)</samp>](https://github.com/alchemy-run/distilled/commit/2b5884807)
+- **intercom**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/781 [<samp>(36e7f)</samp>](https://github.com/alchemy-run/distilled/commit/36e7f3d2e)
+- **kubernetes**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/785 [<samp>(8d9ed)</samp>](https://github.com/alchemy-run/distilled/commit/8d9ed20bc)
+- **launchdarkly**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/779 [<samp>(21466)</samp>](https://github.com/alchemy-run/distilled/commit/214667265)
+- **mercury**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/788 [<samp>(8aa2d)</samp>](https://github.com/alchemy-run/distilled/commit/8aa2d0d9f)
+- **metabase**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/791 [<samp>(4eacc)</samp>](https://github.com/alchemy-run/distilled/commit/4eacc9a78)
+- **modal**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/738 [<samp>(eae71)</samp>](https://github.com/alchemy-run/distilled/commit/eae71fa81)
+- **modrinth**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/786 [<samp>(1b53d)</samp>](https://github.com/alchemy-run/distilled/commit/1b53d50b6)
+- **mongodb-atlas**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/735 [<samp>(650e6)</samp>](https://github.com/alchemy-run/distilled/commit/650e6bf50)
+- **neon**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/748 [<samp>(1c946)</samp>](https://github.com/alchemy-run/distilled/commit/1c946073a)
+- **notion**:
+  - Add the Notion SDK &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/855 [<samp>(40a95)</samp>](https://github.com/alchemy-run/distilled/commit/40a9500a7)
+- **okta**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/793 [<samp>(09275)</samp>](https://github.com/alchemy-run/distilled/commit/092750720)
+- **onepassword**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/787 [<samp>(21293)</samp>](https://github.com/alchemy-run/distilled/commit/21293af0d)
+- **opencode**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/794 [<samp>(6cdf6)</samp>](https://github.com/alchemy-run/distilled/commit/6cdf6f986)
+- **ovh**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/790 [<samp>(3be8a)</samp>](https://github.com/alchemy-run/distilled/commit/3be8abd73)
+- **paypal**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/789 [<samp>(1c9d5)</samp>](https://github.com/alchemy-run/distilled/commit/1c9d591e4)
+- **plaid**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/800 [<samp>(ee0ef)</samp>](https://github.com/alchemy-run/distilled/commit/ee0ef3696)
+- **planetscale**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/747 [<samp>(f6883)</samp>](https://github.com/alchemy-run/distilled/commit/f68836875)
+- **polar**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/732 [<samp>(04334)</samp>](https://github.com/alchemy-run/distilled/commit/043349b95)
+- **porkbun**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/796 [<samp>(7b99d)</samp>](https://github.com/alchemy-run/distilled/commit/7b99d88c9)
+- **posthog**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/765 [<samp>(03f99)</samp>](https://github.com/alchemy-run/distilled/commit/03f9946a3)
+- **prisma**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Kristof Siket**, **Claude Opus 5.5**, **sam** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/659 [<samp>(a8e37)</samp>](https://github.com/alchemy-run/distilled/commit/a8e3756ac)
+- **railway**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/746 [<samp>(f1ab2)</samp>](https://github.com/alchemy-run/distilled/commit/f1ab215c7)
+- **redis-cloud**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/803 [<samp>(ff666)</samp>](https://github.com/alchemy-run/distilled/commit/ff66635dd)
+- **remote**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/795 [<samp>(bbad5)</samp>](https://github.com/alchemy-run/distilled/commit/bbad55364)
+- **render**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/799 [<samp>(8623c)</samp>](https://github.com/alchemy-run/distilled/commit/8623cae72)
+- **resend**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/798 [<samp>(08370)</samp>](https://github.com/alchemy-run/distilled/commit/083707f30)
+- **s2**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/797 [<samp>(d2770)</samp>](https://github.com/alchemy-run/distilled/commit/d2770ac88)
+- **sentry**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/801 [<samp>(f8e67)</samp>](https://github.com/alchemy-run/distilled/commit/f8e676980)
+- **slack**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/816 [<samp>(a77c0)</samp>](https://github.com/alchemy-run/distilled/commit/a77c0102f)
+- **slack, meilisearch**:
+  - Read the spec from their mirrors &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/844 [<samp>(61283)</samp>](https://github.com/alchemy-run/distilled/commit/612830516)
+- **spacetimedb**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/805 [<samp>(e5260)</samp>](https://github.com/alchemy-run/distilled/commit/e526057e1)
+- **specs**:
+  - Mirror Slack, fix the Meilisearch mirror, link Iceberg &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/842 [<samp>(778c6)</samp>](https://github.com/alchemy-run/distilled/commit/778c6d41c)
+  - Fix the fly-io mirror and add Sprites and the GraphQL schema &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/847 [<samp>(715b1)</samp>](https://github.com/alchemy-run/distilled/commit/715b1bd70)
+  - Mirror the ZeroSSL API reference &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/848 [<samp>(932b9)</samp>](https://github.com/alchemy-run/distilled/commit/932b95a96)
+  - Mirror RFC 8555 for the ACME SDK &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/850 [<samp>(67746)</samp>](https://github.com/alchemy-run/distilled/commit/677463270)
+  - Ship hand-written models through spec mirrors (celld, fly-io mpg) &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/853 [<samp>(3f8ab)</samp>](https://github.com/alchemy-run/distilled/commit/3f8ab328d)
+- **squarespace**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/813 [<samp>(02e89)</samp>](https://github.com/alchemy-run/distilled/commit/02e891147)
+- **stackit**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/810 [<samp>(72dca)</samp>](https://github.com/alchemy-run/distilled/commit/72dca34e4)
+- **stripe**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/792 [<samp>(3f2f2)</samp>](https://github.com/alchemy-run/distilled/commit/3f2f2b380)
+- **supabase**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/750 [<samp>(c470f)</samp>](https://github.com/alchemy-run/distilled/commit/c470fd9db)
+- **surrealdb**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/804 [<samp>(5b16f)</samp>](https://github.com/alchemy-run/distilled/commit/5b16fedf0)
+- **temporal**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/812 [<samp>(24f07)</samp>](https://github.com/alchemy-run/distilled/commit/24f077afa)
+- **trigger-dev**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/806 [<samp>(03690)</samp>](https://github.com/alchemy-run/distilled/commit/03690c5e4)
+- **turbopuffer**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/809 [<samp>(98a3a)</samp>](https://github.com/alchemy-run/distilled/commit/98a3a8d34)
+- **turso**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/745 [<samp>(f8ffc)</samp>](https://github.com/alchemy-run/distilled/commit/f8ffc6166)
+  - Type API token errors, redact minted tokens &nbsp;-&nbsp; by **sam** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/838 [<samp>(30219)</samp>](https://github.com/alchemy-run/distilled/commit/302193da7)
+- **typesense**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/744 [<samp>(e0110)</samp>](https://github.com/alchemy-run/distilled/commit/e011014b8)
+- **unkey**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/808 [<samp>(5273a)</samp>](https://github.com/alchemy-run/distilled/commit/5273a84d9)
+- **vanta**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/811 [<samp>(accb3)</samp>](https://github.com/alchemy-run/distilled/commit/accb3b911)
+- **vercel**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/749 [<samp>(271d3)</samp>](https://github.com/alchemy-run/distilled/commit/271d30550)
+- **whop**:
+  - Regenerate from the 2026-10-05 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/807 [<samp>(b403b)</samp>](https://github.com/alchemy-run/distilled/commit/b403b898b)
+  - Read the spec from its mirror; regenerate from 2026-09-25 &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/843 [<samp>(9b6be)</samp>](https://github.com/alchemy-run/distilled/commit/9b6be4f8d)
+- **workos**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/762 [<samp>(51943)</samp>](https://github.com/alchemy-run/distilled/commit/51943fb9b)
+- **xata**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/815 [<samp>(df7be)</samp>](https://github.com/alchemy-run/distilled/commit/df7be0b95)
+- **zendesk**:
+  - Regenerate from the 2026-10-06 spec &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/814 [<samp>(707ca)</samp>](https://github.com/alchemy-run/distilled/commit/707ca83ab)
+- **zerossl**:
+  - Convert the SDK from ZeroSSL's Markdown API reference &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/851 [<samp>(4a7d0)</samp>](https://github.com/alchemy-run/distilled/commit/4a7d0e825)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **acme**:
+  - Problem documents without detail decode to their typed error &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/723 [<samp>(c7e81)</samp>](https://github.com/alchemy-run/distilled/commit/c7e818d83)
+- **aws**:
+  - Send eventPayload members of input event streams as raw frames &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/722 [<samp>(4f3dc)</samp>](https://github.com/alchemy-run/distilled/commit/4f3dce00e)
+  - Bind empty-prefix response headers and raw string payloads in restJson1 &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/720 [<samp>(8a0ce)</samp>](https://github.com/alchemy-run/distilled/commit/8a0cebf48)
+  - Keep "/" in greedy URI labels &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/721 [<samp>(8ea7a)</samp>](https://github.com/alchemy-run/distilled/commit/8ea7a5cf9)
+- **azure**:
+  - Type ParameterOutOfRange and LocationNotAvailableForResourceGroup &nbsp;-&nbsp; by **Maxwell Brown**, **Claude Opus 5.5** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/693 [<samp>(c24c2)</samp>](https://github.com/alchemy-run/distilled/commit/c24c295ea)
+- **cloudflare**:
+  - Type Workers Builds repository configuration errors &nbsp;-&nbsp; by **sam** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/629 [<samp>(426af)</samp>](https://github.com/alchemy-run/distilled/commit/426af50e5)
+  - Keep zone_id and domain on email.sending queue subscription sources &nbsp;-&nbsp; by **0xMilkEnjoyer** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/689 [<samp>(1117b)</samp>](https://github.com/alchemy-run/distilled/commit/1117b0ac3)
+  - Keep the map when the docs list a map's value cases &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/729 [<samp>(efe6e)</samp>](https://github.com/alchemy-run/distilled/commit/efe6ea9bf)
+  - Type the in-use 400 on deleteMtlsCertificate &nbsp;-&nbsp; by **TBIQ007** in https://github.com/alchemy-run/distilled/issues/829 [<samp>(2157b)</samp>](https://github.com/alchemy-run/distilled/commit/2157bf3ed)
+  - Type the containers DurableObjectNamespaceNotFound error &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/859 [<samp>(7cec2)</samp>](https://github.com/alchemy-run/distilled/commit/7cec261f9)
+  - Send declarative exports on dispatch script uploads &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/860 [<samp>(88818)</samp>](https://github.com/alchemy-run/distilled/commit/8881801e7)
+  - Type dispatch_namespace on Durable Object namespace listings &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/861 [<samp>(f445f)</samp>](https://github.com/alchemy-run/distilled/commit/f445ff754)
+  - Type WorkerHasNoVersions on getDispatchNamespaceScriptSetting &nbsp;-&nbsp; by **Pedro Toledo** in https://github.com/alchemy-run/distilled/issues/866 [<samp>(5f4a8)</samp>](https://github.com/alchemy-run/distilled/commit/5f4a89531)
+  - Type hyperdrive destination_not_found as HyperdriveOriginUnavailable &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/871 [<samp>(f8064)</samp>](https://github.com/alchemy-run/distilled/commit/f8064b680)
+  - **bot-management**: Decode the AI crawler policy fields &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/733 [<samp>(74082)</samp>](https://github.com/alchemy-run/distilled/commit/740826382)
+- **cloudflare,aws**:
+  - Fix stream live-input listing and zaraz workflow updates; add typed errors &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/862 [<samp>(bc87d)</samp>](https://github.com/alchemy-run/distilled/commit/bc87db82a)
+- **core**:
+  - RateLimit hint only when remaining is 0 &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/725 [<samp>(44ffd)</samp>](https://github.com/alchemy-run/distilled/commit/44ffd6567)
+  - Send a raw body under its modeled Content-Type header &nbsp;-&nbsp; by **0xMilkEnjoyer**, **Benjamin Tang** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/662 [<samp>(f26ee)</samp>](https://github.com/alchemy-run/distilled/commit/f26eee597)
+- **digitalocean**:
+  - Accept 202 responses and type the droplet, firewall, and ssh key envelopes &nbsp;-&nbsp; by **Ricardo**, **Claude Opus 5.5** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/561 [<samp>(9041e)</samp>](https://github.com/alchemy-run/distilled/commit/9041e5041)
+- **discord**:
+  - Type NotFound on getGuild and getChannel &nbsp;-&nbsp; by **Patt O'Brien** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/699 [<samp>(c1eb0)</samp>](https://github.com/alchemy-run/distilled/commit/c1eb00ce5)
+- **distilled-submodules**:
+  - Detect Cloudflare's new truncated-markdown marker &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/726 [<samp>(c2798)</samp>](https://github.com/alchemy-run/distilled/commit/c27980c6f)
+- **expo-eas**:
+  - Map non-JSON error responses through the status map &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/724 [<samp>(fb457)</samp>](https://github.com/alchemy-run/distilled/commit/fb45799a5)
+- **fly-io**:
+  - Restore Sprites exec, checkpoint, labels, and Conflict shapes &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/857 [<samp>(83bd6)</samp>](https://github.com/alchemy-run/distilled/commit/83bd68e69)
+- **gcp**:
+  - Keep Dataplex unstructured data profile scans after a discovery flap &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/858 [<samp>(46d2d)</samp>](https://github.com/alchemy-run/distilled/commit/46d2d3b5d)
+- **planetscale**:
+  - Type invoice line-item subtotal as a string &nbsp;-&nbsp; by **Ethan Shumate** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/686 [<samp>(4d421)</samp>](https://github.com/alchemy-run/distilled/commit/4d4212647)
+- **railway**:
+  - Type missing login sessions on loginSessionConsume &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/832 [<samp>(45d4d)</samp>](https://github.com/alchemy-run/distilled/commit/45d4da4f8)
+- **release**:
+  - Create every GitHub release as Latest, never prerelease &nbsp;-&nbsp; by **Rahul Mishra** in https://github.com/alchemy-run/distilled/issues/837 [<samp>(4406d)</samp>](https://github.com/alchemy-run/distilled/commit/4406d5f9b)
+
+### &nbsp;&nbsp;&nbsp;🏎 Performance
+
+- **core**: Judge Smithy-model patches in memory in patches:audit &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/817 [<samp>(42e59)</samp>](https://github.com/alchemy-run/distilled/commit/42e591a88)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.13...HEAD)
+
+---
+
 ## v1.0.0-rc.13
 
 ### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
