@@ -22,10 +22,10 @@
     "@effect/platform-node": "catalog:",
     "@solidjs/meta": "0.29.4",
     "@solidjs/router": "1.0.0",
-    "@solidjs/start": "2.0.5",
+    "@solidjs/start": "2.0.6",
     "alchemy": "catalog:",
     "effect": "catalog:",
-    "solid-js": "1.9.15",
+    "solid-js": "1.9.17",
     "torph": "0.1.3"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "nitro": "3.0.260903-beta",
     "tailwindcss": "4.3.3",
     "typescript": "catalog:",
-    "vite": "8.3.0"
+    "vite": "8.3.4"
   },
   "engines": {
     "node": ">=24"
