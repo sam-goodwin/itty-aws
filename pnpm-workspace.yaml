@@ -27,7 +27,7 @@ catalog:
   oxlint: "^1.87.0"
   rolldown: "1.2.13"
   typescript: "^7.0.2"
-  vitest: "^4.1.8"
+  vitest: "^5.0.4"
   yaml: "^2.9.1"
 minimumReleaseAgeExclude:
   - "@effect/atom-react@4.0.4"
