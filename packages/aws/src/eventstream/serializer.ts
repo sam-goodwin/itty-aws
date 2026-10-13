@@ -8,13 +8,13 @@
 import * as Effect from "effect/Effect";
 import * as Redacted from "effect/Redacted";
 import type * as Schema from "effect/Schema";
-import { encode } from "../util/codec.ts";
 import * as Stream from "effect/Stream";
 import {
   getEventMemberBindings,
   type EventMemberBindings,
   type EventPayloadKind,
 } from "../traits.ts";
+import { encode } from "../util/codec.ts";
 import {
   encodeEvent,
   type EventStreamEncodeError,

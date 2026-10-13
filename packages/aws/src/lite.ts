@@ -31,7 +31,6 @@ export const codecSymbol = "distilled-aws/codec" as const;
  */
 export type CodecKind = "epoch-seconds" | "http-date" | "date-string" | "blob" | "sensitive";
 
-
 export const isValidDate = (u: unknown): u is Date => u instanceof Date && !isNaN(u.getTime());
 const isBytes = (u: unknown): boolean => u instanceof Uint8Array;
 

@@ -8,8 +8,8 @@
 import * as Effect from "effect/Effect";
 import * as Ref from "effect/Ref";
 import type * as Schema from "effect/Schema";
-import { decode } from "../util/codec.ts";
 import * as Stream from "effect/Stream";
+import { decode } from "../util/codec.ts";
 import {
   decodeMessage,
   EventParseError,

@@ -87,31 +87,31 @@ function parseTypedEventStream<A>(
 
   // Decode each event's payload into the typed event
   return Stream.map(wireEventStream, (wireEvent: any): A | null => {
-      // Only decode MessageEvent payloads that have an event type
-      if (
-        wireEvent._tag === "MessageEvent" &&
-        wireEvent.eventType &&
-        wireEvent.eventType !== "initial-response"
-      ) {
-        // Parse the JSON payload
-        const payloadText = new TextDecoder().decode(wireEvent.payload);
-        const payloadData = JSON.parse(payloadText);
+    // Only decode MessageEvent payloads that have an event type
+    if (
+      wireEvent._tag === "MessageEvent" &&
+      wireEvent.eventType &&
+      wireEvent.eventType !== "initial-response"
+    ) {
+      // Parse the JSON payload
+      const payloadText = new TextDecoder().decode(wireEvent.payload);
+      const payloadData = JSON.parse(payloadText);
 
-        // Decode using the event schema (union of event types)
-        // The _tag should match the eventType for TaggedClass matching
-        try {
-          return decode(
-            eventSchema.ast as any,
-            { _tag: wireEvent.eventType, ...payloadData },
-            true,
-          ) as A;
-        } catch {
-          // If decoding fails, return the raw payload data
-          return payloadData as A;
-        }
+      // Decode using the event schema (union of event types)
+      // The _tag should match the eventType for TaggedClass matching
+      try {
+        return decode(
+          eventSchema.ast as any,
+          { _tag: wireEvent.eventType, ...payloadData },
+          true,
+        ) as A;
+      } catch {
+        // If decoding fails, return the raw payload data
+        return payloadData as A;
       }
-      // For initial-response or other events, skip them
-      return null;
+    }
+    // For initial-response or other events, skip them
+    return null;
   }).pipe(
     // Filter out null values (skipped events)
     Stream.filter((e): e is A => e !== null),
