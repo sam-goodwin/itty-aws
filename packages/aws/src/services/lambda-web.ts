@@ -84,6 +84,15 @@ export class ConflictException
     },
     T.HttpError(409),
   ).pipe(C.withConflictError) {}
+export class ExecutionRoleNotAssumable
+  extends /*@__PURE__*/ S.TaggedError<ExecutionRoleNotAssumable>()(
+    "ExecutionRoleNotAssumable",
+    { message: S.String.pipe(T.ErrorMessage()) },
+    T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "cannot be assumed by lambda.amazonaws.com" },
+    }),
+  ) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
@@ -129,15 +138,6 @@ export class ValidationException
     { message: S.String.pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
-export class WebFunctionRoleNotAssumable
-  extends /*@__PURE__*/ S.TaggedError<WebFunctionRoleNotAssumable>()(
-    "WebFunctionRoleNotAssumable",
-    { message: S.String.pipe(T.ErrorMessage()) },
-    T.SyntheticError({
-      from: "ValidationException",
-      message: { includes: "cannot be assumed by lambda.amazonaws.com" },
-    }),
-  ) {}
 export type FunctionName = string;
 export type Description = string;
 export type KmsKeyArn = string;
@@ -1253,7 +1253,7 @@ export type CreateWebFunctionError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
-  | WebFunctionRoleNotAssumable
+  | ExecutionRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a web function with an initial revision and endpoint. To create a web function, you provide the function name, revision configuration (code and service settings), and endpoint configuration.
@@ -1278,7 +1278,7 @@ export const createWebFunction: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
-    WebFunctionRoleNotAssumable,
+    ExecutionRoleNotAssumable,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1331,7 +1331,7 @@ export type CreateWebFunctionRevisionError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
-  | WebFunctionRoleNotAssumable
+  | ExecutionRoleNotAssumable
   | CommonErrors;
 /**
  * Creates an immutable revision for a web function. A revision represents a specific version of the function code and configuration.
@@ -1356,7 +1356,7 @@ export const createWebFunctionRevision: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
-    WebFunctionRoleNotAssumable,
+    ExecutionRoleNotAssumable,
   ],
   protocol: AwsProtocol,
   retry: Retry,

@@ -265,7 +265,7 @@
           "target": "com.amazonaws.lambdaweb#ValidationException"
         },
         {
-          "target": "aws.synthetic#WebFunctionRoleNotAssumable"
+          "target": "aws.synthetic#ExecutionRoleNotAssumable"
         }
       ],
       "traits": {
@@ -683,7 +683,7 @@
           "target": "com.amazonaws.lambdaweb#ValidationException"
         },
         {
-          "target": "aws.synthetic#WebFunctionRoleNotAssumable"
+          "target": "aws.synthetic#ExecutionRoleNotAssumable"
         }
       ],
       "traits": {
@@ -5189,7 +5189,7 @@
         "smithy.api#suppress": ["IamResourceTrait"]
       }
     },
-    "aws.synthetic#WebFunctionRoleNotAssumable": {
+    "aws.synthetic#ExecutionRoleNotAssumable": {
       "type": "structure",
       "members": {
         "message": {
