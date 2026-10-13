@@ -12,7 +12,6 @@
     "effect": "catalog:"
   },
   "devDependencies": {
-    "graphql": "catalog:",
     "typescript": "catalog:",
     "yaml": "catalog:"
   }
