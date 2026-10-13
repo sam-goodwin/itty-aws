@@ -263,6 +263,9 @@
         },
         {
           "target": "com.amazonaws.lambdaweb#ValidationException"
+        },
+        {
+          "target": "aws.synthetic#WebFunctionRoleNotAssumable"
         }
       ],
       "traits": {
@@ -678,6 +681,9 @@
         },
         {
           "target": "com.amazonaws.lambdaweb#ValidationException"
+        },
+        {
+          "target": "aws.synthetic#WebFunctionRoleNotAssumable"
         }
       ],
       "traits": {
@@ -5181,6 +5187,26 @@
           "name": "webFunctionRevision"
         },
         "smithy.api#suppress": ["IamResourceTrait"]
+      }
+    },
+    "aws.synthetic#WebFunctionRoleNotAssumable": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>A message describing the validation error.</p>",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "aws.codegen#synthetic": {
+          "from": "ValidationException",
+          "message": {
+            "includes": "cannot be assumed by lambda.amazonaws.com"
+          }
+        }
       }
     }
   }
