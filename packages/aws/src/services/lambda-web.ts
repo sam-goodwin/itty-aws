@@ -205,6 +205,7 @@ export const TelemetryConfig = /*@__PURE__*/ S.suspend(() =>
 export interface ServiceConfig {
   executionRoleArn: string;
   timeoutSeconds?: number;
+  egressNetworkConnectorArn?: string;
   maxConcurrencyPerEnvironment?: number;
   environmentVariables?: { [key: string]: string | undefined };
   telemetryConfig?: TelemetryConfig;
@@ -213,6 +214,7 @@ export const ServiceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionRoleArn: S.String,
     timeoutSeconds: S.optional(S.Number),
+    egressNetworkConnectorArn: S.optional(S.String),
     maxConcurrencyPerEnvironment: S.optional(S.Number),
     environmentVariables: S.optional(EnvironmentVariables),
     telemetryConfig: S.optional(TelemetryConfig),
@@ -1259,8 +1261,6 @@ export type CreateWebFunctionError =
  * Creates a web function with an initial revision and endpoint. To create a web function, you provide the function name, revision configuration (code and service settings), and endpoint configuration.
  *
  * To use this operation, you must have the `CreateWebFunction` permission on the web function. You don't need separate permissions for the initial revision or endpoint.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const createWebFunction: API.OperationMethod<
   CreateWebFunctionRequest,
@@ -1298,8 +1298,6 @@ export type CreateWebFunctionEndpointError =
  * Creates an endpoint for a web function. An endpoint exposes the web function over HTTPS and routes traffic to one or more revisions.
  *
  * To use this operation, you must have the `CreateWebFunctionEndpoint` permission on the web function, not on the endpoint being created.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const createWebFunctionEndpoint: API.OperationMethod<
   CreateWebFunctionEndpointRequest,
@@ -1337,8 +1335,6 @@ export type CreateWebFunctionRevisionError =
  * Creates an immutable revision for a web function. A revision represents a specific version of the function code and configuration.
  *
  * To use this operation, you must have the `CreateWebFunctionRevision` permission on the web function, not on the revision being created.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const createWebFunctionRevision: API.OperationMethod<
   CreateWebFunctionRevisionRequest,
@@ -1373,8 +1369,6 @@ export type DeleteResourcePolicyError =
   | CommonErrors;
 /**
  * Removes the resource-based policy from a web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
@@ -1409,8 +1403,6 @@ export type DeleteWebFunctionError =
  * Deletes a web function and all of its associated revisions and endpoints.
  *
  * To use this operation, you must have the `DeleteWebFunction` permission on the web function. You don't need the `DeleteWebFunctionRevision` or `DeleteWebFunctionEndpoint` permission.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const deleteWebFunction: API.OperationMethod<
   DeleteWebFunctionRequest,
@@ -1443,8 +1435,6 @@ export type DeleteWebFunctionEndpointError =
   | CommonErrors;
 /**
  * Deletes a web function endpoint.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const deleteWebFunctionEndpoint: API.OperationMethod<
   DeleteWebFunctionEndpointRequest,
@@ -1477,8 +1467,6 @@ export type DeleteWebFunctionRevisionError =
   | CommonErrors;
 /**
  * Deletes a web function revision. You cannot delete a revision that is currently serving traffic on an endpoint.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const deleteWebFunctionRevision: API.OperationMethod<
   DeleteWebFunctionRevisionRequest,
@@ -1510,8 +1498,6 @@ export type GetResourcePolicyError =
   | CommonErrors;
 /**
  * Retrieves the resource-based policy attached to a web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
@@ -1540,8 +1526,6 @@ export type GetWebAccountSettingsError =
   | CommonErrors;
 /**
  * Retrieves details about your AWS Lambda Web Functions account settings for the current AWS Region, including the quotas that apply to web functions and your current usage.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getWebAccountSettings: API.OperationMethod<
   GetWebAccountSettingsRequest,
@@ -1566,8 +1550,6 @@ export type GetWebFunctionError =
   | CommonErrors;
 /**
  * Retrieves details about a web function, including its current state and configuration.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getWebFunction: API.OperationMethod<
   GetWebFunctionRequest,
@@ -1598,8 +1580,6 @@ export type GetWebFunctionEndpointError =
   | CommonErrors;
 /**
  * Retrieves details about a web function endpoint, including its current state, configuration, and domain name.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getWebFunctionEndpoint: API.OperationMethod<
   GetWebFunctionEndpointRequest,
@@ -1630,8 +1610,6 @@ export type GetWebFunctionRevisionError =
   | CommonErrors;
 /**
  * Retrieves details about a web function revision, including its state and configuration.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getWebFunctionRevision: API.OperationMethod<
   GetWebFunctionRevisionRequest,
@@ -1662,8 +1640,6 @@ export type ListTagsError =
   | CommonErrors;
 /**
  * Returns a list of tags applied to a web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const listTags: API.OperationMethod<
   ListTagsRequest,
@@ -1693,9 +1669,7 @@ export type ListWebFunctionEndpointsError =
   | ValidationException
   | CommonErrors;
 /**
- * Lists endpoints for a web function. We recommend using pagination to ensure that the operation returns quickly and successfully.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
+ * Lists endpoints for a web function. Use pagination to ensure that the operation returns quickly and successfully.
  */
 export const listWebFunctionEndpoints: API.PaginatedOperationMethod<
   ListWebFunctionEndpointsRequest,
@@ -1732,9 +1706,7 @@ export type ListWebFunctionRevisionsError =
   | ValidationException
   | CommonErrors;
 /**
- * Lists revisions for a web function. We recommend using pagination to ensure that the operation returns quickly and successfully.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
+ * Lists revisions for a web function. Use pagination to ensure that the operation returns quickly and successfully.
  */
 export const listWebFunctionRevisions: API.PaginatedOperationMethod<
   ListWebFunctionRevisionsRequest,
@@ -1770,9 +1742,7 @@ export type ListWebFunctionsError =
   | ValidationException
   | CommonErrors;
 /**
- * Lists web functions in your account. We recommend using pagination to ensure that the operation returns quickly and successfully.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
+ * Lists web functions in your account. Use pagination to ensure that the operation returns quickly and successfully.
  */
 export const listWebFunctions: API.PaginatedOperationMethod<
   ListWebFunctionsRequest,
@@ -1811,8 +1781,6 @@ export type PutResourcePolicyError =
   | CommonErrors;
 /**
  * Adds or updates a resource-based policy on a web function. A resource-based policy grants permissions to other AWS accounts or services to perform actions on the web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
@@ -1847,8 +1815,6 @@ export type TagResourceError =
   | CommonErrors;
 /**
  * Adds tags to a web function. If a tag key already exists, the existing value is overwritten with the new value.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const tagResource: API.OperationMethod<
   TagResourceRequest,
@@ -1882,8 +1848,6 @@ export type UntagResourceError =
   | CommonErrors;
 /**
  * Removes tags from a web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const untagResource: API.OperationMethod<
   UntagResourceRequest,
@@ -1917,8 +1881,6 @@ export type UpdateWebFunctionEndpointError =
   | CommonErrors;
 /**
  * Updates the configuration of a web function endpoint. You can modify the authorization type, auto-deployment mode, revision weights, scaling, and throttling settings.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const updateWebFunctionEndpoint: API.OperationMethod<
   UpdateWebFunctionEndpointRequest,
