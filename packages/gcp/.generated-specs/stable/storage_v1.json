@@ -7757,6 +7757,9 @@
         },
         {
           "target": "com.gcp.storage_v1#Conflict"
+        },
+        {
+          "target": "com.gcp.storage_v1#ObjectPreconditionFailed"
         }
       ],
       "traits": {
@@ -8455,6 +8458,9 @@
         },
         {
           "target": "com.gcp.storage_v1#Conflict"
+        },
+        {
+          "target": "com.gcp.storage_v1#ObjectPreconditionFailed"
         }
       ],
       "traits": {
@@ -9803,6 +9809,20 @@
             "message": {
               "includes": "Cloud Pub/Sub topic"
             }
+          }
+        ]
+      }
+    },
+    "com.gcp.storage_v1#ObjectPreconditionFailed": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 412,
+        "smithy.api#documentation": "The object's live generation or metageneration does not match the request's ifGenerationMatch / ifMetagenerationMatch precondition (HTTP 412). Another writer changed or replaced the object.",
+        "com.gcp.protocols#errorMatchers": [
+          {
+            "status": 412
           }
         ]
       }
