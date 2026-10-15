@@ -1,3 +1,4 @@
+import * as EffectSchema from "effect/Schema";
 import { describe, expect, test } from "vitest";
 import * as S from "./schema-lite-typed.ts";
 
@@ -9,6 +10,17 @@ describe("lite TaggedError", () => {
     expect(e).toBeInstanceOf(Oops);
     expect(e._tag).toBe("Oops");
     expect(e.message).toBe("boom");
+  });
+
+  test("is typed by its fields and is not an Effect Schema", () => {
+    const e = new Oops({ message: "boom" });
+    const message: string | undefined = e.message;
+    expect(message).toBe("boom");
+    // @ts-expect-error message is `string | undefined`
+    const wrong: number = e.message;
+    void wrong;
+    // @ts-expect-error a lite error class has no Effect Schema AST; match with _tag or instanceof
+    expect(() => EffectSchema.is(Oops)(e)).toThrow();
   });
 
   test("make keeps only the declared fields", () => {

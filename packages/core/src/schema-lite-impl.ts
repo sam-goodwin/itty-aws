@@ -18,8 +18,10 @@
  * `.pipe(...)`, `.annotate(...)`, `.fields` (structs) and `.key`/`.value`
  * (records).
  */
+import type * as Cause from "effect/Cause";
 import * as Data from "effect/Data";
-import { pipeArguments } from "effect/Pipeable";
+import { pipeArguments, type Pipeable } from "effect/Pipeable";
+import type * as EffectSchema from "effect/Schema";
 
 export type Annotations = Record<string | symbol, unknown>;
 
@@ -277,6 +279,44 @@ const LiteErrorBase = (): any =>
       return new this(props);
     }
   });
+
+/**
+ * The type of a lite tagged error class: what the class really has. It is
+ * not an Effect Schema, so `Schema.is(E)`, `Schema.decode(E)` and friends do
+ * not compile against it -- at runtime they would fail on the lite `.ast`.
+ * Match errors with `_tag` (`Effect.catchTag`) or `instanceof`.
+ */
+export interface TaggedErrorClass<
+  Tag extends string,
+  Fields extends EffectSchema.Struct.Fields,
+> extends Pipeable {
+  new (
+    ...args: {} extends EffectSchema.Struct.MakeIn<Fields>
+      ? [props?: EffectSchema.Struct.MakeIn<Fields>]
+      : [props: EffectSchema.Struct.MakeIn<Fields>]
+  ): Cause.YieldableError & { readonly _tag: Tag } & EffectSchema.Struct.Type<Fields>;
+  /** `new this(props)`. */
+  make<C extends abstract new (...args: any) => any>(
+    this: C,
+    ...args: ConstructorParameters<C>
+  ): InstanceType<C>;
+  readonly fields: Fields;
+  readonly identifier: Tag;
+  /** The lite struct node (not an Effect Schema AST). */
+  readonly ast: Node;
+}
+
+/**
+ * `TaggedError<Self>()(tag, fields)`, typed by the field schemas. `Self` is
+ * accepted for source compatibility with `Schema.TaggedError` and unused.
+ */
+export type TaggedErrorFactory = <_Self = never>(
+  identifier?: string,
+) => <Tag extends string, const Fields extends EffectSchema.Struct.Fields = {}>(
+  tag: Tag,
+  fields?: Fields,
+  annotations?: object,
+) => TaggedErrorClass<Tag, Fields>;
 
 /**
  * A tagged error class without Effect Schema. It does not validate on
