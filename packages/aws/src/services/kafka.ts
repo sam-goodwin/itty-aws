@@ -241,8 +241,8 @@ export class ReassignmentInProgressException
 export class ServerlessUnsupported
   extends /*@__PURE__*/ S.TaggedError<ServerlessUnsupported>()(
     "ServerlessUnsupported",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "ServerlessUnsupportedException",
       message: { includes: "not supported on serverless" },
     }),

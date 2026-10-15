@@ -749,6 +749,7 @@ export const transformToMarkdown: API.OperationMethod<
 }));
 
 // Alias of transformToMarkdown (same route, alternate export name upstream).
+export const createAiToMarkdown = transformToMarkdown;
 export type CreateAiToMarkdownRequest = TransformToMarkdownRequest;
 export type CreateAiToMarkdownResponse = TransformToMarkdownResponse;
 export type CreateAiToMarkdownError = TransformToMarkdownError;

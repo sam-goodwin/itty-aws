@@ -452,6 +452,7 @@ export const updateTotalTls: API.OperationMethod<
 }));
 
 // Alias of updateTotalTl (same route, alternate export name upstream).
+export const editTotalTl = updateTotalTl;
 export type EditTotalTlRequest = UpdateTotalTlRequest;
 export type EditTotalTlResponse = UpdateTotalTlResponse;
 export type EditTotalTlError = UpdateTotalTlError;

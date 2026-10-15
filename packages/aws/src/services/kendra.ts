@@ -94,7 +94,7 @@ export class FeaturedResultsConflictException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ConflictingItems: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => __S(609, __c19, 1)).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(481, __c15, 1)).annotate({
           identifier: "ConflictingItems",
         }),
       ),
@@ -116,15 +116,15 @@ export class InvalidRequestException
 export class KendraClosedToNewCustomers
   extends /*@__PURE__*/ S.TaggedError<KendraClosedToNewCustomers>()(
     "KendraClosedToNewCustomers",
-    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
-    T.SyntheticError({
+    { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
       from: "NotAuthorizedException",
       message: { includes: "no longer accepting new customers" },
     }),
   ).pipe(C.withAuthError) {}
 export class NotAuthorizedException
   extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()("NotAuthorizedException", {
-    message: S.optional(S.String).pipe(T.ErrorMessage()),
+    message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
   }).pipe(C.withAuthError) {}
 export class ResourceAlreadyExistException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistException>()(
@@ -2557,8 +2557,8 @@ export const clearQuerySuggestions: API.OperationMethod<
   ClearQuerySuggestionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<ClearQuerySuggestionsRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<ClearQuerySuggestionsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<ClearQuerySuggestionsRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<ClearQuerySuggestionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2615,8 +2615,8 @@ export const createAccessControlConfiguration: API.OperationMethod<
   CreateAccessControlConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<CreateAccessControlConfigurationRequest>,
-  output: __S(576, __c18, 0) as any as S.Schema<CreateAccessControlConfigurationResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<CreateAccessControlConfigurationRequest>,
+  output: __S(608, __c19, 0) as any as S.Schema<CreateAccessControlConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2663,7 +2663,7 @@ export const createDataSource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<CreateDataSourceRequest>,
-  output: __S(576, __c18, 0) as any as S.Schema<CreateDataSourceResponse>,
+  output: __S(608, __c19, 0) as any as S.Schema<CreateDataSourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2701,7 +2701,7 @@ export const createExperience: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(800, __c25, 0) as any as S.Schema<CreateExperienceRequest>,
-  output: __S(576, __c18, 0) as any as S.Schema<CreateExperienceResponse>,
+  output: __S(608, __c19, 0) as any as S.Schema<CreateExperienceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2957,7 +2957,7 @@ export const deleteAccessControlConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1184, __c37, 0) as any as S.Schema<DeleteAccessControlConfigurationRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<DeleteAccessControlConfigurationResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteAccessControlConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2996,7 +2996,7 @@ export const deleteDataSource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1216, __c38, 0) as any as S.Schema<DeleteDataSourceRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<DeleteDataSourceResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteDataSourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3030,7 +3030,7 @@ export const deleteExperience: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1248, __c39, 0) as any as S.Schema<DeleteExperienceRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<DeleteExperienceResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteExperienceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3062,7 +3062,7 @@ export const deleteFaq: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1280, __c40, 0) as any as S.Schema<DeleteFaqRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<DeleteFaqResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteFaqResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3096,7 +3096,7 @@ export const deleteIndex: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1312, __c41, 0) as any as S.Schema<DeleteIndexRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<DeleteIndexResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteIndexResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3142,7 +3142,7 @@ export const deletePrincipalMapping: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1344, __c42, 0) as any as S.Schema<DeletePrincipalMappingRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<DeletePrincipalMappingResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeletePrincipalMappingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3181,7 +3181,7 @@ export const deleteQuerySuggestionsBlockList: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1376, __c43, 0) as any as S.Schema<DeleteQuerySuggestionsBlockListRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<DeleteQuerySuggestionsBlockListResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteQuerySuggestionsBlockListResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3213,7 +3213,7 @@ export const deleteThesaurus: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1408, __c44, 0) as any as S.Schema<DeleteThesaurusRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<DeleteThesaurusResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<DeleteThesaurusResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4208,7 +4208,7 @@ export const putPrincipalMapping: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2501, __c78, 5) as any as S.Schema<PutPrincipalMappingRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<PutPrincipalMappingResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<PutPrincipalMappingResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4419,7 +4419,7 @@ export const stopDataSourceSyncJob: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2688, __c84, 0) as any as S.Schema<StopDataSourceSyncJobRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<StopDataSourceSyncJobResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<StopDataSourceSyncJobResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4454,7 +4454,7 @@ export const submitFeedback: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2724, __c85, 4) as any as S.Schema<SubmitFeedbackRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<SubmitFeedbackResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<SubmitFeedbackResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4486,7 +4486,7 @@ export const tagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2752, __c86, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<TagResourceResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4516,7 +4516,7 @@ export const untagResource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2784, __c87, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<UntagResourceResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4573,7 +4573,7 @@ export const updateAccessControlConfiguration: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2816, __c88, 0) as any as S.Schema<UpdateAccessControlConfigurationRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<UpdateAccessControlConfigurationResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<UpdateAccessControlConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4606,7 +4606,7 @@ export const updateDataSource: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2848, __c89, 0) as any as S.Schema<UpdateDataSourceRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<UpdateDataSourceResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<UpdateDataSourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4640,7 +4640,7 @@ export const updateExperience: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2880, __c90, 0) as any as S.Schema<UpdateExperienceRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<UpdateExperienceResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<UpdateExperienceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4709,7 +4709,7 @@ export const updateIndex: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2944, __c92, 0) as any as S.Schema<UpdateIndexRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<UpdateIndexResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<UpdateIndexResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4755,7 +4755,7 @@ export const updateQuerySuggestionsBlockList: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2976, __c93, 0) as any as S.Schema<UpdateQuerySuggestionsBlockListRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<UpdateQuerySuggestionsBlockListResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<UpdateQuerySuggestionsBlockListResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4802,7 +4802,7 @@ export const updateQuerySuggestionsConfig: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(3008, __c94, 0) as any as S.Schema<UpdateQuerySuggestionsConfigRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<UpdateQuerySuggestionsConfigResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<UpdateQuerySuggestionsConfigResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4834,7 +4834,7 @@ export const updateThesaurus: API.OperationMethod<
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(3040, __c95, 0) as any as S.Schema<UpdateThesaurusRequest>,
-  output: __S(512, __c16, 0) as any as S.Schema<UpdateThesaurusResponse>,
+  output: __S(544, __c17, 0) as any as S.Schema<UpdateThesaurusResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5137,13 +5137,27 @@ function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
+        S.Struct({
+          QueryText: S.optional(S.String),
+          SetName: S.optional(S.String),
+          SetId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConflictingItem" });
+    case 1:
+      return S.Array(__S(480, __c15, 0));
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
         S.Struct({ IndexId: S.String }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ClearQuerySuggestionsRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -5151,7 +5165,7 @@ function __c16(j: number): any {
       });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5166,26 +5180,12 @@ function __c17(j: number): any {
       ).annotate({ identifier: "CreateAccessControlConfigurationRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ Id: S.String })).annotate({
         identifier: "CreateAccessControlConfigurationResponse",
       });
-  }
-}
-function __c19(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          QueryText: S.optional(S.String),
-          SetName: S.optional(S.String),
-          SetId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConflictingItem" });
-    case 1:
-      return S.Array(__S(608, __c19, 0));
   }
 }
 function __c20(j: number): any {
@@ -6574,7 +6574,7 @@ function __c65(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListAccessControlConfigurationsRequest" });
     case 1:
-      return S.Array(__S(576, __c18, 0));
+      return S.Array(__S(608, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({

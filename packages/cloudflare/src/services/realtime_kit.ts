@@ -8229,6 +8229,7 @@ export const updateMeetingByIdMeeting: API.OperationMethod<
 }));
 
 // Alias of getOrgAnalyticsAnalytic (same route, alternate export name upstream).
+export const getOrgAnalyticsLivestream = getOrgAnalyticsAnalytic;
 export type GetOrgAnalyticsLivestreamRequest = GetOrgAnalyticsAnalyticRequest;
 export type GetOrgAnalyticsLivestreamResponse = GetOrgAnalyticsAnalyticResponse;
 export type GetOrgAnalyticsLivestreamError = GetOrgAnalyticsAnalyticError;

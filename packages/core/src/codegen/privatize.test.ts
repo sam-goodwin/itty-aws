@@ -50,6 +50,21 @@ describe("privatizeSchemas", () => {
     expect(out).toContain(`export class Boom`);
   });
 
+  test("keeps operation aliases exported", () => {
+    const code = [
+      `export const In = S.String;`,
+      `export const listBucketObjects = API.make(() => ({ input: In, output: In }));`,
+      `export const listObjects = listBucketObjects;`,
+    ].join("\n");
+    expect(run(code)).toBe(
+      [
+        `const In = S.String;`,
+        `export const listBucketObjects = API.make(() => ({ input: In, output: In }));`,
+        `export const listObjects = listBucketObjects;`,
+      ].join("\n"),
+    );
+  });
+
   test("type-only references do not keep a schema alive", () => {
     const code = [
       `export const Gone = S.String;`,

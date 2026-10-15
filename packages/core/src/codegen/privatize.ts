@@ -86,6 +86,22 @@ export const privatizeSchemas = (
   const schemaDecls = new Map<string, Decl>();
   const roots = new Set<string>();
 
+  // Operation names, so an operation alias (`export const listObjects =
+  // listBucketObjects`) stays an exported operation and is not taken for a schema.
+  const operations = new Set<string>();
+  for (const raw of program.body as unknown as Node[]) {
+    if (raw.type !== "ExportNamedDeclaration" || !isNode(raw.declaration)) continue;
+    const stmt = raw.declaration as Node;
+    if (stmt.type !== "VariableDeclaration") continue;
+    for (const d of stmt.declarations as Node[]) {
+      const id = d.id as Node;
+      if (id.type === "Identifier" && isNode(d.init) && isOperation(d.init, code))
+        operations.add(id.name as string);
+    }
+  }
+  const isOperationAlias = (init: Node) =>
+    init.type === "Identifier" && operations.has(init.name as string);
+
   for (const raw of program.body as unknown as Node[]) {
     const exported = raw.type === "ExportNamedDeclaration" && isNode(raw.declaration);
     const stmt = exported ? (raw.declaration as Node) : raw;
@@ -96,7 +112,12 @@ export const privatizeSchemas = (
     ) {
       const d = (stmt.declarations as Node[])[0]!;
       const id = d.id as Node;
-      if (id.type === "Identifier" && isNode(d.init) && !isOperation(d.init, code)) {
+      if (
+        id.type === "Identifier" &&
+        isNode(d.init) &&
+        !isOperation(d.init, code) &&
+        !isOperationAlias(d.init)
+      ) {
         schemaDecls.set(id.name as string, {
           name: id.name as string,
           stmt: raw,

@@ -3921,6 +3921,7 @@ export const verifyToken: API.OperationMethod<
 }));
 
 // Alias of getTokenPermissionGroup (same route, alternate export name upstream).
+export const listTokenPermissionGroups = getTokenPermissionGroup;
 export type ListTokenPermissionGroupsRequest = GetTokenPermissionGroupRequest;
 export type ListTokenPermissionGroupsResponse = GetTokenPermissionGroupResponse;
 export type ListTokenPermissionGroupsError = GetTokenPermissionGroupError;
