@@ -88,6 +88,8 @@ export interface NamespacesListResultItem {
   name?: string | null;
   script?: string | null;
   useSqlite?: boolean | null;
+  /** Workers for Platforms dispatch namespace of the script that owns this namespace; absent for account-level scripts. */
+  dispatchNamespace?: string | null;
 }
 export type NamespacesListResultList = Array<NamespacesListResultItem>;
 export interface ListNamespacesResponse {
@@ -221,6 +223,7 @@ function __c1(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           script: S.optional(S.NullOr(S.String)),
           useSqlite: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_sqlite"))),
+          dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
         }),
       ).annotate({ identifier: "NamespacesListResultItem" });
     case 2:

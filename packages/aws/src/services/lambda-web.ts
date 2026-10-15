@@ -87,6 +87,15 @@ export class ConflictException
     },
     /*@__PURE__*/ T.HttpError(409),
   ).pipe(C.withConflictError) {}
+export class ExecutionRoleNotAssumable
+  extends /*@__PURE__*/ S.TaggedError<ExecutionRoleNotAssumable>()(
+    "ExecutionRoleNotAssumable",
+    { message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()) },
+    /*@__PURE__*/ T.SyntheticError({
+      from: "ValidationException",
+      message: { includes: "cannot be assumed by lambda.amazonaws.com" },
+    }),
+  ) {}
 export class InternalServerException
   extends /*@__PURE__*/ S.TaggedError<InternalServerException>()(
     "InternalServerException",
@@ -177,6 +186,7 @@ export interface TelemetryConfig {
 export interface ServiceConfig {
   executionRoleArn: string;
   timeoutSeconds?: number;
+  egressNetworkConnectorArn?: string;
   maxConcurrencyPerEnvironment?: number;
   environmentVariables?: { [key: string]: string | undefined };
   telemetryConfig?: TelemetryConfig;
@@ -549,13 +559,12 @@ export type CreateWebFunctionError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ExecutionRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a web function with an initial revision and endpoint. To create a web function, you provide the function name, revision configuration (code and service settings), and endpoint configuration.
  *
  * To use this operation, you must have the `CreateWebFunction` permission on the web function. You don't need separate permissions for the initial revision or endpoint.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const createWebFunction: API.OperationMethod<
   CreateWebFunctionRequest,
@@ -563,8 +572,8 @@ export const createWebFunction: API.OperationMethod<
   CreateWebFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<CreateWebFunctionRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<CreateWebFunctionResponse>,
+  input: __S(186, __c23, 2) as any as S.Schema<CreateWebFunctionRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<CreateWebFunctionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -573,6 +582,7 @@ export const createWebFunction: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ExecutionRoleNotAssumable,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -592,8 +602,6 @@ export type CreateWebFunctionEndpointError =
  * Creates an endpoint for a web function. An endpoint exposes the web function over HTTPS and routes traffic to one or more revisions.
  *
  * To use this operation, you must have the `CreateWebFunctionEndpoint` permission on the web function, not on the endpoint being created.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const createWebFunctionEndpoint: API.OperationMethod<
   CreateWebFunctionEndpointRequest,
@@ -601,8 +609,8 @@ export const createWebFunctionEndpoint: API.OperationMethod<
   CreateWebFunctionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<CreateWebFunctionEndpointRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<CreateWebFunctionEndpointResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<CreateWebFunctionEndpointRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<CreateWebFunctionEndpointResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -625,13 +633,12 @@ export type CreateWebFunctionRevisionError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | ExecutionRoleNotAssumable
   | CommonErrors;
 /**
  * Creates an immutable revision for a web function. A revision represents a specific version of the function code and configuration.
  *
  * To use this operation, you must have the `CreateWebFunctionRevision` permission on the web function, not on the revision being created.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const createWebFunctionRevision: API.OperationMethod<
   CreateWebFunctionRevisionRequest,
@@ -639,8 +646,8 @@ export const createWebFunctionRevision: API.OperationMethod<
   CreateWebFunctionRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<CreateWebFunctionRevisionRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<CreateWebFunctionRevisionResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<CreateWebFunctionRevisionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateWebFunctionRevisionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -649,6 +656,7 @@ export const createWebFunctionRevision: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    ExecutionRoleNotAssumable,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -665,8 +673,6 @@ export type DeleteResourcePolicyError =
   | CommonErrors;
 /**
  * Removes the resource-based policy from a web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyRequest,
@@ -674,8 +680,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
+  input: __S(16, __c2, 0) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -701,8 +707,6 @@ export type DeleteWebFunctionError =
  * Deletes a web function and all of its associated revisions and endpoints.
  *
  * To use this operation, you must have the `DeleteWebFunction` permission on the web function. You don't need the `DeleteWebFunctionRevision` or `DeleteWebFunctionEndpoint` permission.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const deleteWebFunction: API.OperationMethod<
   DeleteWebFunctionRequest,
@@ -710,8 +714,8 @@ export const deleteWebFunction: API.OperationMethod<
   DeleteWebFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteWebFunctionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteWebFunctionResponse>,
+  input: __S(32, __c4, 0) as any as S.Schema<DeleteWebFunctionRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteWebFunctionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -735,8 +739,6 @@ export type DeleteWebFunctionEndpointError =
   | CommonErrors;
 /**
  * Deletes a web function endpoint.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const deleteWebFunctionEndpoint: API.OperationMethod<
   DeleteWebFunctionEndpointRequest,
@@ -744,8 +746,8 @@ export const deleteWebFunctionEndpoint: API.OperationMethod<
   DeleteWebFunctionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(24, __c3, 0) as any as S.Schema<DeleteWebFunctionEndpointRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteWebFunctionEndpointResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<DeleteWebFunctionEndpointRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteWebFunctionEndpointResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -769,8 +771,6 @@ export type DeleteWebFunctionRevisionError =
   | CommonErrors;
 /**
  * Deletes a web function revision. You cannot delete a revision that is currently serving traffic on an endpoint.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const deleteWebFunctionRevision: API.OperationMethod<
   DeleteWebFunctionRevisionRequest,
@@ -778,8 +778,8 @@ export const deleteWebFunctionRevision: API.OperationMethod<
   DeleteWebFunctionRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteWebFunctionRevisionRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<DeleteWebFunctionRevisionResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<DeleteWebFunctionRevisionRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<DeleteWebFunctionRevisionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -802,8 +802,6 @@ export type GetResourcePolicyError =
   | CommonErrors;
 /**
  * Retrieves the resource-based policy attached to a web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyRequest,
@@ -811,8 +809,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetResourcePolicyRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<GetResourcePolicyResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -832,8 +830,6 @@ export type GetWebAccountSettingsError =
   | CommonErrors;
 /**
  * Retrieves details about your AWS Lambda Web Functions account settings for the current AWS Region, including the quotas that apply to web functions and your current usage.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getWebAccountSettings: API.OperationMethod<
   GetWebAccountSettingsRequest,
@@ -841,8 +837,8 @@ export const getWebAccountSettings: API.OperationMethod<
   GetWebAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetWebAccountSettingsRequest>,
-  output: __S(59, __c7, 3) as any as S.Schema<GetWebAccountSettingsResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetWebAccountSettingsRequest>,
+  output: __S(75, __c9, 3) as any as S.Schema<GetWebAccountSettingsResponse>,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -858,8 +854,6 @@ export type GetWebFunctionError =
   | CommonErrors;
 /**
  * Retrieves details about a web function, including its current state and configuration.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getWebFunction: API.OperationMethod<
   GetWebFunctionRequest,
@@ -867,8 +861,8 @@ export const getWebFunction: API.OperationMethod<
   GetWebFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<GetWebFunctionRequest>,
-  output: __S(72, __c9, 0) as any as S.Schema<GetWebFunctionResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetWebFunctionRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetWebFunctionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -890,8 +884,6 @@ export type GetWebFunctionEndpointError =
   | CommonErrors;
 /**
  * Retrieves details about a web function endpoint, including its current state, configuration, and domain name.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getWebFunctionEndpoint: API.OperationMethod<
   GetWebFunctionEndpointRequest,
@@ -899,8 +891,8 @@ export const getWebFunctionEndpoint: API.OperationMethod<
   GetWebFunctionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<GetWebFunctionEndpointRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<GetWebFunctionEndpointResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetWebFunctionEndpointRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<GetWebFunctionEndpointResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -922,8 +914,6 @@ export type GetWebFunctionRevisionError =
   | CommonErrors;
 /**
  * Retrieves details about a web function revision, including its state and configuration.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const getWebFunctionRevision: API.OperationMethod<
   GetWebFunctionRevisionRequest,
@@ -931,8 +921,8 @@ export const getWebFunctionRevision: API.OperationMethod<
   GetWebFunctionRevisionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<GetWebFunctionRevisionRequest>,
-  output: __S(250, __c31, 2) as any as S.Schema<GetWebFunctionRevisionResponse>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetWebFunctionRevisionRequest>,
+  output: __S(10, __c1, 2) as any as S.Schema<GetWebFunctionRevisionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -954,8 +944,6 @@ export type ListTagsError =
   | CommonErrors;
 /**
  * Returns a list of tags applied to a web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const listTags: API.OperationMethod<
   ListTagsRequest,
@@ -963,8 +951,8 @@ export const listTags: API.OperationMethod<
   ListTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListTagsRequest>,
-  output: __S(97, __c12, 1) as any as S.Schema<ListTagsResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListTagsRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<ListTagsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -985,9 +973,7 @@ export type ListWebFunctionEndpointsError =
   | ValidationException
   | CommonErrors;
 /**
- * Lists endpoints for a web function. We recommend using pagination to ensure that the operation returns quickly and successfully.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
+ * Lists endpoints for a web function. Use pagination to ensure that the operation returns quickly and successfully.
  */
 export const listWebFunctionEndpoints: API.PaginatedOperationMethod<
   ListWebFunctionEndpointsRequest,
@@ -996,8 +982,8 @@ export const listWebFunctionEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FunctionEndpointSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListWebFunctionEndpointsRequest>,
-  output: __S(106, __c13, 2) as any as S.Schema<ListWebFunctionEndpointsResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListWebFunctionEndpointsRequest>,
+  output: __S(122, __c15, 2) as any as S.Schema<ListWebFunctionEndpointsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1024,9 +1010,7 @@ export type ListWebFunctionRevisionsError =
   | ValidationException
   | CommonErrors;
 /**
- * Lists revisions for a web function. We recommend using pagination to ensure that the operation returns quickly and successfully.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
+ * Lists revisions for a web function. Use pagination to ensure that the operation returns quickly and successfully.
  */
 export const listWebFunctionRevisions: API.PaginatedOperationMethod<
   ListWebFunctionRevisionsRequest,
@@ -1035,8 +1019,8 @@ export const listWebFunctionRevisions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FunctionRevisionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListWebFunctionRevisionsRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<ListWebFunctionRevisionsResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListWebFunctionRevisionsRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<ListWebFunctionRevisionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1062,9 +1046,7 @@ export type ListWebFunctionsError =
   | ValidationException
   | CommonErrors;
 /**
- * Lists web functions in your account. We recommend using pagination to ensure that the operation returns quickly and successfully.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
+ * Lists web functions in your account. Use pagination to ensure that the operation returns quickly and successfully.
  */
 export const listWebFunctions: API.PaginatedOperationMethod<
   ListWebFunctionsRequest,
@@ -1073,8 +1055,8 @@ export const listWebFunctions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FunctionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<ListWebFunctionsRequest>,
-  output: __S(130, __c16, 2) as any as S.Schema<ListWebFunctionsResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListWebFunctionsRequest>,
+  output: __S(146, __c18, 2) as any as S.Schema<ListWebFunctionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1103,8 +1085,6 @@ export type PutResourcePolicyError =
   | CommonErrors;
 /**
  * Adds or updates a resource-based policy on a web function. A resource-based policy grants permissions to other AWS accounts or services to perform actions on the web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyRequest,
@@ -1112,8 +1092,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<PutResourcePolicyRequest>,
-  output: __S(48, __c6, 0) as any as S.Schema<PutResourcePolicyResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1139,8 +1119,6 @@ export type TagResourceError =
   | CommonErrors;
 /**
  * Adds tags to a web function. If a tag key already exists, the existing value is overwritten with the new value.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const tagResource: API.OperationMethod<
   TagResourceRequest,
@@ -1148,8 +1126,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<TagResourceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<TagResourceResponse>,
+  input: __S(160, __c20, 0) as any as S.Schema<TagResourceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1174,8 +1152,6 @@ export type UntagResourceError =
   | CommonErrors;
 /**
  * Removes tags from a web function.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const untagResource: API.OperationMethod<
   UntagResourceRequest,
@@ -1183,8 +1159,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<UntagResourceRequest>,
-  output: __S(8, __c1, 0) as any as S.Schema<UntagResourceResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<UntagResourceRequest>,
+  output: __S(24, __c3, 0) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1209,8 +1185,6 @@ export type UpdateWebFunctionEndpointError =
   | CommonErrors;
 /**
  * Updates the configuration of a web function endpoint. You can modify the authorization type, auto-deployment mode, revision weights, scaling, and throttling settings.
- *
- * This API is experimental and for internal AWS use only. It is not yet available to external customers.
  */
 export const updateWebFunctionEndpoint: API.OperationMethod<
   UpdateWebFunctionEndpointRequest,
@@ -1218,8 +1192,8 @@ export const updateWebFunctionEndpoint: API.OperationMethod<
   UpdateWebFunctionEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<UpdateWebFunctionEndpointRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<UpdateWebFunctionEndpointResponse>,
+  input: __S(176, __c22, 0) as any as S.Schema<UpdateWebFunctionEndpointRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<UpdateWebFunctionEndpointResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1240,6 +1214,55 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          functionName: S.String.pipe(T.HttpLabel("functionName")),
+          description: S.optional(S.String),
+          kmsKeyArn: S.optional(S.String),
+          buildConfig: __S(195, __c24, 3),
+          serviceConfig: __S(198, __c24, 6),
+        }).pipe(
+          T.all(
+            T.Http({ method: "POST", uri: "/2025-03-07/web-functions/{functionName}/revisions" }),
+            svc,
+            auth,
+            proto,
+            ver,
+            rules,
+          ),
+        ),
+      ).annotate({ identifier: "CreateWebFunctionRevisionRequest" });
+  }
+}
+function __c1(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ attribute: S.String, errorCode: S.String, errorMessage: S.String }),
+      ).annotate({ identifier: "RevisionError" });
+    case 1:
+      return S.Array(__S(8, __c1, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          functionArn: S.String,
+          revisionArn: S.String,
+          revisionId: S.String,
+          description: S.optional(S.String),
+          kmsKeyArn: S.optional(S.String),
+          buildConfig: __S(195, __c24, 3),
+          serviceConfig: __S(198, __c24, 6),
+          state: S.String,
+          stateReason: S.String,
+          errors: S.optional(__S(9, __c1, 1)),
+          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+        }),
+      ).annotate({ identifier: "CreateWebFunctionRevisionResponse" });
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
           revisionId: S.optional(S.String).pipe(T.HttpQuery("RevisionId")),
         }).pipe(
@@ -1255,13 +1278,13 @@ function __c0(j: number): any {
       ).annotate({ identifier: "DeleteResourcePolicyRequest" });
   }
 }
-function __c1(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteResourcePolicyResponse" });
   }
 }
-function __c2(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1278,7 +1301,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DeleteWebFunctionRequest" });
   }
 }
-function __c3(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1301,7 +1324,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DeleteWebFunctionEndpointRequest" });
   }
 }
-function __c4(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1324,7 +1347,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DeleteWebFunctionRevisionRequest" });
   }
 }
-function __c5(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1341,7 +1364,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "GetResourcePolicyRequest" });
   }
 }
-function __c6(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1351,7 +1374,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "GetResourcePolicyResponse" });
   }
 }
-function __c7(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1381,11 +1404,11 @@ function __c7(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ accountQuotas: __S(57, __c7, 1), accountUsage: __S(58, __c7, 2) }),
+        S.Struct({ accountQuotas: __S(73, __c9, 1), accountUsage: __S(74, __c9, 2) }),
       ).annotate({ identifier: "GetWebAccountSettingsResponse" });
   }
 }
-function __c8(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1402,7 +1425,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetWebFunctionRequest" });
   }
 }
-function __c9(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1417,7 +1440,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetWebFunctionResponse" });
   }
 }
-function __c10(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1440,7 +1463,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetWebFunctionEndpointRequest" });
   }
 }
-function __c11(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1463,7 +1486,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetWebFunctionRevisionRequest" });
   }
 }
-function __c12(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1480,17 +1503,17 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListTagsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ tags: S.optional(__S(216, __c27, 0)) }).pipe(S.encodeKeys({ tags: "Tags" })),
+        S.Struct({ tags: S.optional(__S(200, __c25, 0)) }).pipe(S.encodeKeys({ tags: "Tags" })),
       ).annotate({ identifier: "ListTagsResponse" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           functionName: S.String.pipe(T.HttpLabel("functionName")),
-          filters: S.optional(__S(113, __c14, 1)),
+          filters: S.optional(__S(129, __c16, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -1508,30 +1531,30 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "ListWebFunctionEndpointsRequest" });
     case 1:
-      return S.Array(__S(176, __c22, 0));
+      return S.Array(__S(208, __c26, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ endpoints: __S(105, __c13, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ endpoints: __S(121, __c15, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWebFunctionEndpointsResponse" });
   }
 }
-function __c14(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ name: S.String, values: __S(192, __c24, 0) })).annotate({
+      return S.suspend(() => S.Struct({ name: S.String, values: __S(224, __c28, 0) })).annotate({
         identifier: "Filter",
       });
     case 1:
-      return S.Array(__S(112, __c14, 0));
+      return S.Array(__S(128, __c16, 0));
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           functionName: S.String.pipe(T.HttpLabel("functionName")),
-          filters: S.optional(__S(113, __c14, 1)),
+          filters: S.optional(__S(129, __c16, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -1549,19 +1572,19 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListWebFunctionRevisionsRequest" });
     case 1:
-      return S.Array(__S(184, __c23, 0));
+      return S.Array(__S(216, __c27, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ revisions: __S(121, __c15, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ revisions: __S(137, __c17, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWebFunctionRevisionsResponse" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(__S(113, __c14, 1)),
+          filters: S.optional(__S(129, __c16, 1)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -1576,14 +1599,14 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListWebFunctionsRequest" });
     case 1:
-      return S.Array(__S(72, __c9, 0));
+      return S.Array(__S(88, __c11, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ functions: __S(129, __c16, 1), nextToken: S.optional(S.String) }),
+        S.Struct({ functions: __S(145, __c18, 1), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListWebFunctionsResponse" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1606,11 +1629,11 @@ function __c17(j: number): any {
       ).annotate({ identifier: "PutResourcePolicyRequest" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resource: S.String.pipe(T.HttpLabel("resource")), tags: __S(216, __c27, 0) })
+        S.Struct({ resource: S.String.pipe(T.HttpLabel("resource")), tags: __S(200, __c25, 0) })
           .pipe(S.encodeKeys({ tags: "Tags" }))
           .pipe(
             T.all(
@@ -1625,13 +1648,13 @@ function __c18(j: number): any {
       ).annotate({ identifier: "TagResourceRequest" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.HttpLabel("resource")),
-          tagKeys: __S(192, __c24, 0).pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(224, __c28, 0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/2025-03-07/tags/{resource}" }),
@@ -1645,7 +1668,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "UntagResourceRequest" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1655,9 +1678,9 @@ function __c20(j: number): any {
           description: S.optional(S.String),
           authType: S.optional(S.String),
           autoDeploymentMode: S.optional(S.String),
-          revisionWeights: S.optional(__S(203, __c25, 3)),
-          scalingConfig: S.optional(__S(200, __c25, 0)),
-          throttleConfig: S.optional(__S(201, __c25, 1)),
+          revisionWeights: S.optional(__S(235, __c29, 3)),
+          scalingConfig: S.optional(__S(232, __c29, 0)),
+          throttleConfig: S.optional(__S(233, __c29, 1)),
         }).pipe(
           T.all(
             T.Http({
@@ -1674,15 +1697,15 @@ function __c20(j: number): any {
       ).annotate({ identifier: "UpdateWebFunctionEndpointRequest" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          buildConfig: __S(211, __c26, 3),
-          serviceConfig: __S(214, __c26, 6),
+          buildConfig: __S(195, __c24, 3),
+          serviceConfig: __S(198, __c24, 6),
         }),
       ).annotate({ identifier: "RevisionConfig" });
     case 1:
@@ -1693,18 +1716,18 @@ function __c21(j: number): any {
           endpointType: S.String,
           authType: S.String,
           autoDeploymentMode: S.optional(S.String),
-          regions: S.optional(__S(192, __c24, 0)),
-          scalingConfig: S.optional(__S(200, __c25, 0)),
-          throttleConfig: S.optional(__S(201, __c25, 1)),
+          regions: S.optional(__S(224, __c28, 0)),
+          scalingConfig: S.optional(__S(232, __c29, 0)),
+          throttleConfig: S.optional(__S(233, __c29, 1)),
         }),
       ).annotate({ identifier: "EndpointConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           functionName: S.String,
-          revisionConfig: S.optional(__S(168, __c21, 0)),
-          endpointConfig: S.optional(__S(169, __c21, 1)),
-          tags: S.optional(__S(216, __c27, 0)),
+          revisionConfig: S.optional(__S(184, __c23, 0)),
+          endpointConfig: S.optional(__S(185, __c23, 1)),
+          tags: S.optional(__S(200, __c25, 0)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/2025-03-07/web-functions" }),
@@ -1725,14 +1748,63 @@ function __c21(j: number): any {
           stateReason: S.String,
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          revision: S.optional(__S(184, __c23, 0)),
-          endpoint: S.optional(__S(176, __c22, 0)),
-          tags: S.optional(__S(216, __c27, 0)),
+          revision: S.optional(__S(216, __c27, 0)),
+          endpoint: S.optional(__S(208, __c26, 0)),
+          tags: S.optional(__S(200, __c25, 0)),
         }),
       ).annotate({ identifier: "CreateWebFunctionResponse" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({ bucket: S.String, key: S.String, versionId: S.optional(S.String) }),
+      ).annotate({ identifier: "S3Object" });
+    case 1:
+      return S.suspend(() => S.Struct({ s3Object: __S(192, __c24, 0) })).annotate({
+        identifier: "CodeConfig",
+      });
+    case 2:
+      return S.suspend(() => S.Struct({ runtime: S.String })).annotate({
+        identifier: "RuntimeConfig",
+      });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({ codeConfig: __S(193, __c24, 1), runtimeConfig: __S(194, __c24, 2) }),
+      ).annotate({ identifier: "BuildConfig" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          logGroup: S.optional(S.String),
+          applicationLogLevel: S.optional(S.String),
+          systemLogLevel: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "LoggingConfig" });
+    case 5:
+      return S.suspend(() => S.Struct({ loggingConfig: S.optional(__S(196, __c24, 4)) })).annotate({
+        identifier: "TelemetryConfig",
+      });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          executionRoleArn: S.String,
+          timeoutSeconds: S.optional(S.Number),
+          egressNetworkConnectorArn: S.optional(S.String),
+          maxConcurrencyPerEnvironment: S.optional(S.Number),
+          environmentVariables: S.optional(__S(200, __c25, 0)),
+          telemetryConfig: S.optional(__S(197, __c24, 5)),
+        }),
+      ).annotate({ identifier: "ServiceConfig" });
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1744,10 +1816,10 @@ function __c22(j: number): any {
           domainName: S.String,
           authType: S.String,
           autoDeploymentMode: S.String,
-          revisionWeights: __S(203, __c25, 3),
-          regions: __S(192, __c24, 0),
-          scalingConfig: S.optional(__S(200, __c25, 0)),
-          throttleConfig: S.optional(__S(201, __c25, 1)),
+          revisionWeights: __S(235, __c29, 3),
+          regions: __S(224, __c28, 0),
+          scalingConfig: S.optional(__S(232, __c29, 0)),
+          throttleConfig: S.optional(__S(233, __c29, 1)),
           state: S.String,
           stateReason: S.String,
           updateStatus: S.optional(S.String),
@@ -1758,7 +1830,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "FunctionEndpointSummary" });
   }
 }
-function __c23(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1773,13 +1845,13 @@ function __c23(j: number): any {
       ).annotate({ identifier: "FunctionRevisionSummary" });
   }
 }
-function __c24(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c25(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({ maxEnvironments: S.optional(S.Number) })).annotate({
@@ -1794,58 +1866,10 @@ function __c25(j: number): any {
         identifier: "RevisionWeight",
       });
     case 3:
-      return S.Array(__S(202, __c25, 2));
+      return S.Array(__S(234, __c29, 2));
   }
 }
-function __c26(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ bucket: S.String, key: S.String, versionId: S.optional(S.String) }),
-      ).annotate({ identifier: "S3Object" });
-    case 1:
-      return S.suspend(() => S.Struct({ s3Object: __S(208, __c26, 0) })).annotate({
-        identifier: "CodeConfig",
-      });
-    case 2:
-      return S.suspend(() => S.Struct({ runtime: S.String })).annotate({
-        identifier: "RuntimeConfig",
-      });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({ codeConfig: __S(209, __c26, 1), runtimeConfig: __S(210, __c26, 2) }),
-      ).annotate({ identifier: "BuildConfig" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          logGroup: S.optional(S.String),
-          applicationLogLevel: S.optional(S.String),
-          systemLogLevel: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "LoggingConfig" });
-    case 5:
-      return S.suspend(() => S.Struct({ loggingConfig: S.optional(__S(212, __c26, 4)) })).annotate({
-        identifier: "TelemetryConfig",
-      });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          executionRoleArn: S.String,
-          timeoutSeconds: S.optional(S.Number),
-          maxConcurrencyPerEnvironment: S.optional(S.Number),
-          environmentVariables: S.optional(__S(216, __c27, 0)),
-          telemetryConfig: S.optional(__S(213, __c26, 5)),
-        }),
-      ).annotate({ identifier: "ServiceConfig" });
-  }
-}
-function __c27(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
-  }
-}
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1856,10 +1880,10 @@ function __c28(j: number): any {
           endpointType: S.String,
           authType: S.String,
           autoDeploymentMode: S.optional(S.String),
-          revisionWeights: S.optional(__S(203, __c25, 3)),
-          regions: S.optional(__S(192, __c24, 0)),
-          scalingConfig: S.optional(__S(200, __c25, 0)),
-          throttleConfig: S.optional(__S(201, __c25, 1)),
+          revisionWeights: S.optional(__S(235, __c29, 3)),
+          regions: S.optional(__S(224, __c28, 0)),
+          scalingConfig: S.optional(__S(232, __c29, 0)),
+          throttleConfig: S.optional(__S(233, __c29, 1)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/2025-03-07/web-functions/{functionName}/endpoints" }),
@@ -1873,16 +1897,16 @@ function __c28(j: number): any {
       ).annotate({ identifier: "CreateWebFunctionEndpointRequest" });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
           authType: S.String,
-          revisionWeights: __S(203, __c25, 3),
-          scalingConfig: S.optional(__S(200, __c25, 0)),
-          throttleConfig: S.optional(__S(201, __c25, 1)),
+          revisionWeights: __S(235, __c29, 3),
+          scalingConfig: S.optional(__S(232, __c29, 0)),
+          throttleConfig: S.optional(__S(233, __c29, 1)),
           state: S.String,
           stateReason: S.String,
           updateStatus: S.optional(S.String),
@@ -1890,7 +1914,7 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "RegionalEndpoint" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ __S(232, __c29, 0).pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(248, __c31, 0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1902,68 +1926,19 @@ function __c29(j: number): any {
           domainName: S.String,
           authType: S.String,
           autoDeploymentMode: S.String,
-          revisionWeights: __S(203, __c25, 3),
-          regions: __S(192, __c24, 0),
-          scalingConfig: S.optional(__S(200, __c25, 0)),
-          throttleConfig: S.optional(__S(201, __c25, 1)),
+          revisionWeights: __S(235, __c29, 3),
+          regions: __S(224, __c28, 0),
+          scalingConfig: S.optional(__S(232, __c29, 0)),
+          throttleConfig: S.optional(__S(233, __c29, 1)),
           state: S.String,
           stateReason: S.String,
           updateStatus: S.optional(S.String),
           updateStatusReason: S.optional(S.String),
-          regionalEndpoints: __S(233, __c29, 1),
+          regionalEndpoints: __S(249, __c31, 1),
           createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
         }),
       ).annotate({ identifier: "CreateWebFunctionEndpointResponse" });
-  }
-}
-function __c30(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          functionName: S.String.pipe(T.HttpLabel("functionName")),
-          description: S.optional(S.String),
-          kmsKeyArn: S.optional(S.String),
-          buildConfig: __S(211, __c26, 3),
-          serviceConfig: __S(214, __c26, 6),
-        }).pipe(
-          T.all(
-            T.Http({ method: "POST", uri: "/2025-03-07/web-functions/{functionName}/revisions" }),
-            svc,
-            auth,
-            proto,
-            ver,
-            rules,
-          ),
-        ),
-      ).annotate({ identifier: "CreateWebFunctionRevisionRequest" });
-  }
-}
-function __c31(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({ attribute: S.String, errorCode: S.String, errorMessage: S.String }),
-      ).annotate({ identifier: "RevisionError" });
-    case 1:
-      return S.Array(__S(248, __c31, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          functionArn: S.String,
-          revisionArn: S.String,
-          revisionId: S.String,
-          description: S.optional(S.String),
-          kmsKeyArn: S.optional(S.String),
-          buildConfig: __S(211, __c26, 3),
-          serviceConfig: __S(214, __c26, 6),
-          state: S.String,
-          stateReason: S.String,
-          errors: S.optional(__S(249, __c31, 1)),
-          createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-        }),
-      ).annotate({ identifier: "CreateWebFunctionRevisionResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

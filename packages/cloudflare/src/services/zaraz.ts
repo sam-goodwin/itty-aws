@@ -919,10 +919,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          workflow: S.String,
+          workflow: S.String.pipe(T.HttpBody()),
         })
           .pipe(
-            T.Http({ method: "PUT", uri: "/zones/{zone_id}/settings/zaraz/workflow", code: 200 }),
+            T.Http({
+              method: "PUT",
+              uri: "/zones/{zone_id}/settings/zaraz/workflow",
+              code: 200,
+              bodyMediaType: "text/plain",
+            }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutZarazRequest" });

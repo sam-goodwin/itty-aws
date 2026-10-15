@@ -3855,6 +3855,28 @@ export interface CreatePreviewDeploymentMetadataContainer {
 }
 export type CreatePreviewDeploymentMetadataContainersList =
   Array<CreatePreviewDeploymentMetadataContainer>;
+export type PutScriptMetadataExportType = "worker" | "durable-object";
+export interface PutScriptMetadataCache {
+  enabled?: boolean;
+  crossVersionCache?: boolean;
+}
+export type PutScriptMetadataExportState =
+  | "created"
+  | "deleted"
+  | "renamed"
+  | "transferred"
+  | "expecting-transfer";
+export interface PutScriptMetadataExport {
+  type?: PutScriptMetadataExportType | (string & {});
+  cache?: PutScriptMetadataCache;
+  storage?: string;
+  container?: string;
+  state?: PutScriptMetadataExportState | (string & {});
+  renamedTo?: string;
+  transferredTo?: string;
+  transferFrom?: string;
+}
+export type PutScriptMetadataExports = { [key: string]: PutScriptMetadataExport | undefined };
 export interface CreatePreviewDeploymentMetadata {
   /** Entrypoint module filename. */
   mainModule?: string;
@@ -3871,6 +3893,8 @@ export interface CreatePreviewDeploymentMetadata {
   /** Binding map keyed by runtime name (wrangler `env` format). */
   env?: unknown;
   containers?: CreatePreviewDeploymentMetadataContainersList;
+  /** Per-export settings keyed by the verbatim export name (default for the default export). */
+  exports?: PutScriptMetadataExports;
 }
 export interface CreatePreviewDeploymentRequest {
   accountId: string;
@@ -4943,29 +4967,7 @@ export interface PutScriptTailConsumer {
 }
 export type PutScriptMetadataTailConsumersList = Array<PutScriptTailConsumer>;
 export type PutScriptMetadataUsageModel = "standard" | "bundled" | "unbound";
-export interface PutScriptMetadataCache {
-  enabled?: boolean;
-  crossVersionCache?: boolean;
-}
 export type PutScriptMetadataStreamingTailConsumersList = Array<PutScriptTailConsumer>;
-export type PutScriptMetadataExportType = "worker" | "durable-object";
-export type PutScriptMetadataExportState =
-  | "created"
-  | "deleted"
-  | "renamed"
-  | "transferred"
-  | "expecting-transfer";
-export interface PutScriptMetadataExport {
-  type?: PutScriptMetadataExportType | (string & {});
-  cache?: PutScriptMetadataCache;
-  storage?: string;
-  container?: string;
-  state?: PutScriptMetadataExportState | (string & {});
-  renamedTo?: string;
-  transferredTo?: string;
-  transferFrom?: string;
-}
-export type PutScriptMetadataExports = { [key: string]: PutScriptMetadataExport | undefined };
 export interface PutScriptMetadata {
   annotations?: PutScriptMetadataAnnotations;
   assets?: PutScriptMetadataAssets;
@@ -15714,7 +15716,7 @@ export const createPreviewDeployment: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1794, __c56, 2) as any as S.Schema<CreatePreviewDeploymentRequest>,
-  output: __S(1824, __c57, 0) as any as S.Schema<PreviewDeploymentResource>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PreviewDeploymentResource>,
   errors: [PreviewNotFound, WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15733,8 +15735,8 @@ export const createRoute: API.OperationMethod<
   CreateRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<CreateRouteRequest>,
-  output: __S(1888, __c59, 0) as any as S.Schema<CreateRouteResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<CreateRouteRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<CreateRouteResponse>,
   errors: [
     InvalidRoutePattern,
     InvalidRoute,
@@ -15755,8 +15757,8 @@ export const createScriptAssetUpload: API.OperationMethod<
   CreateScriptAssetUploadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1922, __c60, 2) as any as S.Schema<CreateScriptAssetUploadRequest>,
-  output: __S(1924, __c60, 4) as any as S.Schema<CreateScriptAssetUploadResponse>,
+  input: __S(1954, __c61, 2) as any as S.Schema<CreateScriptAssetUploadRequest>,
+  output: __S(1956, __c61, 4) as any as S.Schema<CreateScriptAssetUploadResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15770,8 +15772,8 @@ export const createScriptDeployment: API.OperationMethod<
   CreateScriptDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1953, __c61, 1) as any as S.Schema<CreateScriptDeploymentRequest>,
-  output: __S(1984, __c62, 0) as any as S.Schema<CreateScriptDeploymentResponse>,
+  input: __S(1985, __c62, 1) as any as S.Schema<CreateScriptDeploymentRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<CreateScriptDeploymentResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15785,8 +15787,8 @@ export const createScriptEdgePreview: API.OperationMethod<
   CreateScriptEdgePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<CreateScriptEdgePreviewRequest>,
-  output: __S(2098, __c65, 18) as any as S.Schema<CreateScriptEdgePreviewResponse>,
+  input: __S(2080, __c65, 0) as any as S.Schema<CreateScriptEdgePreviewRequest>,
+  output: __S(2130, __c66, 18) as any as S.Schema<CreateScriptEdgePreviewResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15800,8 +15802,8 @@ export const createScriptSubdomain: API.OperationMethod<
   CreateScriptSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<CreateScriptSubdomainRequest>,
-  output: __S(2144, __c67, 0) as any as S.Schema<CreateScriptSubdomainResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<CreateScriptSubdomainRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<CreateScriptSubdomainResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15815,8 +15817,8 @@ export const createScriptTail: API.OperationMethod<
   CreateScriptTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2177, __c68, 1) as any as S.Schema<CreateScriptTailRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<CreateScriptTailResponse>,
+  input: __S(2209, __c69, 1) as any as S.Schema<CreateScriptTailRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<CreateScriptTailResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15830,8 +15832,8 @@ export const createScriptVersion: API.OperationMethod<
   CreateScriptVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<CreateScriptVersionRequest>,
-  output: __S(2245, __c70, 5) as any as S.Schema<CreateScriptVersionResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<CreateScriptVersionRequest>,
+  output: __S(2277, __c71, 5) as any as S.Schema<CreateScriptVersionResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15845,8 +15847,8 @@ export const createServiceEdgePreview: API.OperationMethod<
   CreateServiceEdgePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<CreateServiceEdgePreviewRequest>,
-  output: __S(2098, __c65, 18) as any as S.Schema<CreateServiceEdgePreviewResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<CreateServiceEdgePreviewRequest>,
+  output: __S(2130, __c66, 18) as any as S.Schema<CreateServiceEdgePreviewResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15860,8 +15862,8 @@ export const createSubdomainEdgePreviewSession: API.OperationMethod<
   CreateSubdomainEdgePreviewSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<CreateSubdomainEdgePreviewSessionRequest>,
-  output: __S(2496, __c78, 0) as any as S.Schema<CreateSubdomainEdgePreviewSessionResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<CreateSubdomainEdgePreviewSessionRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<CreateSubdomainEdgePreviewSessionResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15875,8 +15877,8 @@ export const createZoneEdgePreviewSession: API.OperationMethod<
   CreateZoneEdgePreviewSessionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<CreateZoneEdgePreviewSessionRequest>,
-  output: __S(2496, __c78, 0) as any as S.Schema<CreateZoneEdgePreviewSessionResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<CreateZoneEdgePreviewSessionRequest>,
+  output: __S(2528, __c79, 0) as any as S.Schema<CreateZoneEdgePreviewSessionResponse>,
   errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15890,8 +15892,8 @@ export const deleteBetaWorker: API.OperationMethod<
   DeleteBetaWorkerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<DeleteBetaWorkerRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<DeleteBetaWorkerResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<DeleteBetaWorkerRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteBetaWorkerResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15908,8 +15910,8 @@ export const deleteBetaWorkerVersion: API.OperationMethod<
   DeleteBetaWorkerVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<DeleteBetaWorkerVersionRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<DeleteBetaWorkerVersionResponse>,
+  input: __S(2656, __c83, 0) as any as S.Schema<DeleteBetaWorkerVersionRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteBetaWorkerVersionResponse>,
   errors: [WorkerNotFound, WorkerVersionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15923,8 +15925,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<DeleteDomainRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<DeleteDomainResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteDomainResponse>,
   errors: [DomainNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15941,7 +15943,7 @@ export const deleteObservabilityDestination: API.OperationMethod<
   DeleteObservabilityDestinationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<DeleteObservabilityDestinationRequest>,
+  input: __S(2720, __c85, 0) as any as S.Schema<DeleteObservabilityDestinationRequest>,
   output: __S(1505, __c47, 1) as any as S.Schema<DeleteObservabilityDestinationResponse>,
   errors: [ObservabilityDestinationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -15956,8 +15958,8 @@ export const deletePreview: API.OperationMethod<
   DeletePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<DeletePreviewRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<DeletePreviewResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<DeletePreviewRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeletePreviewResponse>,
   errors: [PreviewNotFound, WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15971,8 +15973,8 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<DeleteRouteRequest>,
-  output: __S(2753, __c86, 1) as any as S.Schema<DeleteRouteResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<DeleteRouteRequest>,
+  output: __S(2785, __c87, 1) as any as S.Schema<DeleteRouteResponse>,
   errors: [RouteNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -15990,8 +15992,8 @@ export const deleteScript: API.OperationMethod<
   DeleteScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<DeleteScriptRequest>,
-  output: __S(2816, __c88, 0) as any as S.Schema<DeleteScriptResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<DeleteScriptRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<DeleteScriptResponse>,
   errors: [
     WorkerNotFound,
     QueueConsumerConflict,
@@ -16011,8 +16013,8 @@ export const deleteScriptDeployment: API.OperationMethod<
   DeleteScriptDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<DeleteScriptDeploymentRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<DeleteScriptDeploymentResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<DeleteScriptDeploymentRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteScriptDeploymentResponse>,
   errors: [WorkerNotFound, DeploymentNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16026,8 +16028,8 @@ export const deleteScriptSecret: API.OperationMethod<
   DeleteScriptSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2880, __c90, 0) as any as S.Schema<DeleteScriptSecretRequest>,
-  output: __S(2816, __c88, 0) as any as S.Schema<DeleteScriptSecretResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<DeleteScriptSecretRequest>,
+  output: __S(2848, __c89, 0) as any as S.Schema<DeleteScriptSecretResponse>,
   errors: [WorkerNotFound, SecretNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16041,8 +16043,8 @@ export const deleteScriptSubdomain: API.OperationMethod<
   DeleteScriptSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<DeleteScriptSubdomainRequest>,
-  output: __S(2144, __c67, 0) as any as S.Schema<DeleteScriptSubdomainResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<DeleteScriptSubdomainRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<DeleteScriptSubdomainResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16056,8 +16058,8 @@ export const deleteScriptTail: API.OperationMethod<
   DeleteScriptTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2944, __c92, 0) as any as S.Schema<DeleteScriptTailRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<DeleteScriptTailResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<DeleteScriptTailRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteScriptTailResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16071,8 +16073,8 @@ export const deleteSubdomain: API.OperationMethod<
   DeleteSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<DeleteSubdomainRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<DeleteSubdomainResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<DeleteSubdomainRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<DeleteSubdomainResponse>,
   errors: [InvalidRoute, SubdomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16086,8 +16088,8 @@ export const getAccountSetting: API.OperationMethod<
   GetAccountSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<GetAccountSettingRequest>,
-  output: __S(3040, __c95, 0) as any as S.Schema<GetAccountSettingResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetAccountSettingRequest>,
+  output: __S(3072, __c96, 0) as any as S.Schema<GetAccountSettingResponse>,
   errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16101,8 +16103,8 @@ export const getBetaWorker: API.OperationMethod<
   GetBetaWorkerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<GetBetaWorkerRequest>,
-  output: __S(3075, __c96, 3) as any as S.Schema<GetBetaWorkerResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetBetaWorkerRequest>,
+  output: __S(3107, __c97, 3) as any as S.Schema<GetBetaWorkerResponse>,
   errors: [WorkerNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16116,8 +16118,8 @@ export const getBetaWorkerVersion: API.OperationMethod<
   GetBetaWorkerVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3104, __c97, 0) as any as S.Schema<GetBetaWorkerVersionRequest>,
-  output: __S(3114, __c97, 10) as any as S.Schema<GetBetaWorkerVersionResponse>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetBetaWorkerVersionRequest>,
+  output: __S(3146, __c98, 10) as any as S.Schema<GetBetaWorkerVersionResponse>,
   errors: [WorkerNotFound, WorkerVersionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16131,8 +16133,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<GetDomainRequest>,
-  output: __S(3168, __c99, 0) as any as S.Schema<GetDomainResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetDomainRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<GetDomainResponse>,
   errors: [DomainNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16146,8 +16148,8 @@ export const getObservabilitySharedQuery: API.OperationMethod<
   GetObservabilitySharedQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c100, 0) as any as S.Schema<GetObservabilitySharedQueryRequest>,
-  output: __S(3252, __c101, 20) as any as S.Schema<GetObservabilitySharedQueryResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetObservabilitySharedQueryRequest>,
+  output: __S(3284, __c102, 20) as any as S.Schema<GetObservabilitySharedQueryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16161,7 +16163,7 @@ export const getPreview: API.OperationMethod<
   GetPreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<GetPreviewRequest>,
+  input: __S(3328, __c104, 0) as any as S.Schema<GetPreviewRequest>,
   output: __S(1760, __c55, 0) as any as S.Schema<PreviewResource>,
   errors: [PreviewNotFound, WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -16180,8 +16182,8 @@ export const getPreviewDeployment: API.OperationMethod<
   GetPreviewDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c104, 0) as any as S.Schema<GetPreviewDeploymentRequest>,
-  output: __S(1824, __c57, 0) as any as S.Schema<PreviewDeploymentResource>,
+  input: __S(3360, __c105, 0) as any as S.Schema<GetPreviewDeploymentRequest>,
+  output: __S(1856, __c58, 0) as any as S.Schema<PreviewDeploymentResource>,
   errors: [
     PreviewNotFound,
     PreviewDeploymentNotFound,
@@ -16206,8 +16208,8 @@ export const getRoute: API.OperationMethod<
   GetRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3360, __c105, 0) as any as S.Schema<GetRouteRequest>,
-  output: __S(1888, __c59, 0) as any as S.Schema<GetRouteResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<GetRouteRequest>,
+  output: __S(1920, __c60, 0) as any as S.Schema<GetRouteResponse>,
   errors: [
     WorkerNotFound,
     RouteNotFound,
@@ -16232,8 +16234,8 @@ export const getScript: API.OperationMethod<
   GetScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<GetScriptRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<GetScriptResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<GetScriptRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GetScriptResponse>,
   errors: [
     WorkerNotFound,
     InvalidRoute,
@@ -16253,8 +16255,8 @@ export const getScriptContent: API.OperationMethod<
   GetScriptContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<GetScriptContentRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<GetScriptContentResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<GetScriptContentRequest>,
+  output: __S(2624, __c82, 0) as any as S.Schema<GetScriptContentResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16268,8 +16270,8 @@ export const getScriptDeployment: API.OperationMethod<
   GetScriptDeploymentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<GetScriptDeploymentRequest>,
-  output: __S(1984, __c62, 0) as any as S.Schema<GetScriptDeploymentResponse>,
+  input: __S(3488, __c109, 0) as any as S.Schema<GetScriptDeploymentRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<GetScriptDeploymentResponse>,
   errors: [WorkerNotFound, DeploymentNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16283,8 +16285,8 @@ export const getScriptEventTriggers: API.OperationMethod<
   GetScriptEventTriggersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3488, __c109, 0) as any as S.Schema<GetScriptEventTriggersRequest>,
-  output: __S(3526, __c110, 6) as any as S.Schema<GetScriptEventTriggersResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<GetScriptEventTriggersRequest>,
+  output: __S(3558, __c111, 6) as any as S.Schema<GetScriptEventTriggersResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16298,8 +16300,8 @@ export const getScriptSchedule: API.OperationMethod<
   GetScriptScheduleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3552, __c111, 0) as any as S.Schema<GetScriptScheduleRequest>,
-  output: __S(3586, __c112, 2) as any as S.Schema<GetScriptScheduleResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<GetScriptScheduleRequest>,
+  output: __S(3618, __c113, 2) as any as S.Schema<GetScriptScheduleResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16316,8 +16318,8 @@ export const getScriptScriptAndVersionSetting: API.OperationMethod<
   GetScriptScriptAndVersionSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3616, __c113, 0) as any as S.Schema<GetScriptScriptAndVersionSettingRequest>,
-  output: __S(3623, __c113, 7) as any as S.Schema<GetScriptScriptAndVersionSettingResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<GetScriptScriptAndVersionSettingRequest>,
+  output: __S(3655, __c114, 7) as any as S.Schema<GetScriptScriptAndVersionSettingResponse>,
   errors: [WorkerNotFound, WorkerHasNoVersions, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16331,8 +16333,8 @@ export const getScriptSecret: API.OperationMethod<
   GetScriptSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<GetScriptSecretRequest>,
-  output: __S(3682, __c115, 2) as any as S.Schema<GetScriptSecretResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<GetScriptSecretRequest>,
+  output: __S(3714, __c116, 2) as any as S.Schema<GetScriptSecretResponse>,
   errors: [WorkerNotFound, SecretNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16346,8 +16348,8 @@ export const getScriptSetting: API.OperationMethod<
   GetScriptSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3712, __c116, 0) as any as S.Schema<GetScriptSettingRequest>,
-  output: __S(3744, __c117, 0) as any as S.Schema<GetScriptSettingResponse>,
+  input: __S(3744, __c117, 0) as any as S.Schema<GetScriptSettingRequest>,
+  output: __S(3776, __c118, 0) as any as S.Schema<GetScriptSettingResponse>,
   errors: [WorkerNotFound, WorkerHasNoVersions, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16361,8 +16363,8 @@ export const getScriptSubdomain: API.OperationMethod<
   GetScriptSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3776, __c118, 0) as any as S.Schema<GetScriptSubdomainRequest>,
-  output: __S(2144, __c67, 0) as any as S.Schema<GetScriptSubdomainResponse>,
+  input: __S(3808, __c119, 0) as any as S.Schema<GetScriptSubdomainRequest>,
+  output: __S(2176, __c68, 0) as any as S.Schema<GetScriptSubdomainResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16376,8 +16378,8 @@ export const getScriptTail: API.OperationMethod<
   GetScriptTailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3808, __c119, 0) as any as S.Schema<GetScriptTailRequest>,
-  output: __S(2208, __c69, 0) as any as S.Schema<GetScriptTailResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<GetScriptTailRequest>,
+  output: __S(2240, __c70, 0) as any as S.Schema<GetScriptTailResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16391,8 +16393,8 @@ export const getScriptVersion: API.OperationMethod<
   GetScriptVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3840, __c120, 0) as any as S.Schema<GetScriptVersionRequest>,
-  output: __S(3845, __c120, 5) as any as S.Schema<GetScriptVersionResponse>,
+  input: __S(3872, __c121, 0) as any as S.Schema<GetScriptVersionRequest>,
+  output: __S(3877, __c121, 5) as any as S.Schema<GetScriptVersionResponse>,
   errors: [WorkerNotFound, VersionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16406,8 +16408,8 @@ export const getSubdomain: API.OperationMethod<
   GetSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3872, __c121, 0) as any as S.Schema<GetSubdomainRequest>,
-  output: __S(3904, __c122, 0) as any as S.Schema<GetSubdomainResponse>,
+  input: __S(3904, __c122, 0) as any as S.Schema<GetSubdomainRequest>,
+  output: __S(3936, __c123, 0) as any as S.Schema<GetSubdomainResponse>,
   errors: [InvalidRoute, SubdomainNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16423,8 +16425,8 @@ export const keysObservabilityTelemetry: API.PaginatedOperationMethod<
   ObservabilityTelemetryKeysResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3942, __c123, 6) as any as S.Schema<KeysObservabilityTelemetryRequest>,
-    output: __S(3945, __c123, 9) as any as S.Schema<KeysObservabilityTelemetryResponse>,
+    input: __S(3974, __c124, 6) as any as S.Schema<KeysObservabilityTelemetryRequest>,
+    output: __S(3977, __c124, 9) as any as S.Schema<KeysObservabilityTelemetryResponse>,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16443,8 +16445,8 @@ export const listBetaWorkers: API.PaginatedOperationMethod<
   BetaWorkersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3968, __c124, 0) as any as S.Schema<ListBetaWorkersRequest>,
-    output: __S(3973, __c124, 5) as any as S.Schema<ListBetaWorkersResponse>,
+    input: __S(4000, __c125, 0) as any as S.Schema<ListBetaWorkersRequest>,
+    output: __S(4005, __c125, 5) as any as S.Schema<ListBetaWorkersResponse>,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16469,8 +16471,8 @@ export const listBetaWorkerVersions: API.PaginatedOperationMethod<
   BetaWorkersVersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4000, __c125, 0) as any as S.Schema<ListBetaWorkerVersionsRequest>,
-    output: __S(4012, __c125, 12) as any as S.Schema<ListBetaWorkerVersionsResponse>,
+    input: __S(4032, __c126, 0) as any as S.Schema<ListBetaWorkerVersionsRequest>,
+    output: __S(4044, __c126, 12) as any as S.Schema<ListBetaWorkerVersionsResponse>,
     errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16495,8 +16497,8 @@ export const listDomains: API.PaginatedOperationMethod<
   DomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4032, __c126, 0) as any as S.Schema<ListDomainsRequest>,
-    output: __S(4035, __c126, 3) as any as S.Schema<ListDomainsResponse>,
+    input: __S(4064, __c127, 0) as any as S.Schema<ListDomainsRequest>,
+    output: __S(4067, __c127, 3) as any as S.Schema<ListDomainsResponse>,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16515,8 +16517,8 @@ export const listObservabilityDestinations: API.PaginatedOperationMethod<
   ObservabilityDestinationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4064, __c127, 0) as any as S.Schema<ListObservabilityDestinationsRequest>,
-    output: __S(4069, __c127, 5) as any as S.Schema<ListObservabilityDestinationsResponse>,
+    input: __S(4096, __c128, 0) as any as S.Schema<ListObservabilityDestinationsRequest>,
+    output: __S(4101, __c128, 5) as any as S.Schema<ListObservabilityDestinationsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16535,8 +16537,8 @@ export const listObservabilityQueries: API.PaginatedOperationMethod<
   ObservabilityQueriesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4096, __c128, 0) as any as S.Schema<ListObservabilityQueriesRequest>,
-    output: __S(4106, __c128, 10) as any as S.Schema<ListObservabilityQueriesResponse>,
+    input: __S(4128, __c129, 0) as any as S.Schema<ListObservabilityQueriesRequest>,
+    output: __S(4138, __c129, 10) as any as S.Schema<ListObservabilityQueriesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16555,8 +16557,8 @@ export const listRoutes: API.PaginatedOperationMethod<
   RoutesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(4128, __c129, 0) as any as S.Schema<ListRoutesRequest>,
-    output: __S(4129, __c129, 1) as any as S.Schema<ListRoutesResponse>,
+    input: __S(4160, __c130, 0) as any as S.Schema<ListRoutesRequest>,
+    output: __S(4161, __c130, 1) as any as S.Schema<ListRoutesResponse>,
     errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -16644,7 +16646,7 @@ export const liveTailHeartbeatObservabilityTelemetry: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c4, 0) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryRequest>,
-  output: __S(2816, __c88, 0) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>,
+  output: __S(2848, __c89, 0) as any as S.Schema<LiveTailHeartbeatObservabilityTelemetryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16732,7 +16734,7 @@ export const patchScriptSetting: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(290, __c9, 2) as any as S.Schema<PatchScriptSettingRequest>,
-  output: __S(3744, __c117, 0) as any as S.Schema<PatchScriptSettingResponse>,
+  output: __S(3776, __c118, 0) as any as S.Schema<PatchScriptSettingResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16747,7 +16749,7 @@ export const putAccountSetting: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(320, __c10, 0) as any as S.Schema<PutAccountSettingRequest>,
-  output: __S(3040, __c95, 0) as any as S.Schema<PutAccountSettingResponse>,
+  output: __S(3072, __c96, 0) as any as S.Schema<PutAccountSettingResponse>,
   errors: [InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16766,7 +16768,7 @@ export const putDomain: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<PutDomainRequest>,
-  output: __S(3168, __c99, 0) as any as S.Schema<PutDomainResponse>,
+  output: __S(3200, __c100, 0) as any as S.Schema<PutDomainResponse>,
   errors: [
     WorkerNotFound,
     InvalidRoute,
@@ -16870,7 +16872,7 @@ export const putScriptEventTriggers: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<PutScriptEventTriggersRequest>,
-  output: __S(3526, __c110, 6) as any as S.Schema<PutScriptEventTriggersResponse>,
+  output: __S(3558, __c111, 6) as any as S.Schema<PutScriptEventTriggersResponse>,
   errors: [
     EventTriggerWorkflowNotFound,
     InvalidEventTriggers,
@@ -16890,7 +16892,7 @@ export const putScriptSchedule: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(482, __c15, 2) as any as S.Schema<PutScriptScheduleRequest>,
-  output: __S(3586, __c112, 2) as any as S.Schema<PutScriptScheduleResponse>,
+  output: __S(3618, __c113, 2) as any as S.Schema<PutScriptScheduleResponse>,
   errors: [WorkerNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16924,7 +16926,7 @@ export const putSubdomain: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<PutSubdomainRequest>,
-  output: __S(3904, __c122, 0) as any as S.Schema<PutSubdomainResponse>,
+  output: __S(3936, __c123, 0) as any as S.Schema<PutSubdomainResponse>,
   errors: [SubdomainAlreadyExists, InvalidRoute, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -16984,7 +16986,7 @@ export const updateRoute: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<UpdateRouteRequest>,
-  output: __S(1888, __c59, 0) as any as S.Schema<UpdateRouteResponse>,
+  output: __S(1920, __c60, 0) as any as S.Schema<UpdateRouteResponse>,
   errors: [RouteNotFound, InvalidRoutePattern, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -17039,8 +17041,8 @@ function __c0(j: number): any {
           createdOn: S.String.pipe(T.Body("created_on")),
           source: S.String,
           strategy: S.String,
-          versions: __S(2017, __c63, 1),
-          annotations: S.optional(S.NullOr(__S(2018, __c63, 2))),
+          versions: __S(2049, __c64, 1),
+          annotations: S.optional(S.NullOr(__S(2050, __c64, 2))),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
         }),
       ).annotate({ identifier: "ScriptsDeploymentsListResponseDeploymentsItem" });
@@ -17110,15 +17112,15 @@ function __c1(j: number): any {
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          namedHandlers: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("named_handlers"))),
-          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          namedHandlers: S.optional(S.NullOr(__S(2401, __c75, 1)).pipe(T.Body("named_handlers"))),
+          observability: S.optional(S.NullOr(__S(3681, __c115, 1))),
           placement: S.optional(S.NullOr(__S(35, __c1, 3))),
           placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
           placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
-          routes: S.optional(S.NullOr(__S(4161, __c130, 1))),
+          routes: S.optional(S.NullOr(__S(4193, __c131, 1))),
           tag: S.optional(S.NullOr(S.String)),
           tags: S.optional(S.NullOr(__S(992, __c31, 0))),
-          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(S.NullOr(__S(3683, __c115, 3)).pipe(T.Body("tail_consumers"))),
           usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }),
       ).annotate({ identifier: "ScriptsListResultItem" });
@@ -17195,7 +17197,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(2400, __c75, 0))),
+          metadata: S.optional(S.NullOr(__S(2432, __c76, 0))),
           number: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ScriptsVersionsListResponseItemsItem" });
@@ -17572,10 +17574,10 @@ function __c8(j: number): any {
           limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrations: S.optional(S.NullOr(__S(261, __c8, 5))),
-          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          observability: S.optional(S.NullOr(__S(3681, __c115, 1))),
           placement: S.optional(S.NullOr(__S(262, __c8, 6))),
           tags: S.optional(S.NullOr(__S(992, __c31, 0))),
-          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(S.NullOr(__S(3683, __c115, 3)).pipe(T.Body("tail_consumers"))),
           usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchScriptScriptAndVersionSettingResponse" });
@@ -17612,7 +17614,7 @@ function __c9(j: number): any {
           logpush: S.optional(S.Boolean),
           observability: S.optional(__S(289, __c9, 1)),
           tags: S.optional(__S(992, __c31, 0)),
-          tailConsumers: S.optional(__S(2273, __c71, 1).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(__S(2305, __c72, 1).pipe(T.Body("tail_consumers"))),
         })
           .pipe(
             T.Http({
@@ -17670,7 +17672,7 @@ function __c12(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
           bindingsInherit: S.optional(S.String.pipe(T.Query("bindings_inherit"))),
-          metadata: __S(2319, __c72, 15).pipe(
+          metadata: __S(2348, __c73, 12).pipe(
             T.KeyDictionary({
               abrLevel: "abr_level",
               allowedDestinationAddresses: "allowed_destination_addresses",
@@ -17837,14 +17839,14 @@ function __c12(j: number): any {
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          namedHandlers: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("named_handlers"))),
-          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          namedHandlers: S.optional(S.NullOr(__S(2401, __c75, 1)).pipe(T.Body("named_handlers"))),
+          observability: S.optional(S.NullOr(__S(3681, __c115, 1))),
           placement: S.optional(S.NullOr(__S(387, __c12, 3))),
           placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
           placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
           tag: S.optional(S.NullOr(S.String)),
           tags: S.optional(S.NullOr(__S(992, __c31, 0))),
-          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(S.NullOr(__S(3683, __c115, 3)).pipe(T.Body("tail_consumers"))),
           usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutScriptResponse" });
@@ -17923,14 +17925,14 @@ function __c13(j: number): any {
           logpush: S.optional(S.NullOr(S.Boolean)),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          namedHandlers: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("named_handlers"))),
-          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          namedHandlers: S.optional(S.NullOr(__S(2401, __c75, 1)).pipe(T.Body("named_handlers"))),
+          observability: S.optional(S.NullOr(__S(3681, __c115, 1))),
           placement: S.optional(S.NullOr(__S(420, __c13, 4))),
           placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
           placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
           tag: S.optional(S.NullOr(S.String)),
           tags: S.optional(S.NullOr(__S(992, __c31, 0))),
-          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(S.NullOr(__S(3683, __c115, 3)).pipe(T.Body("tail_consumers"))),
           usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutScriptContentResponse" });
@@ -17943,7 +17945,7 @@ function __c14(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          body: __S(3524, __c110, 4).pipe(T.HttpBody()),
+          body: __S(3556, __c111, 4).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -18151,7 +18153,7 @@ function __c18(j: number): any {
           groupBys: S.optional(S.NullOr(__S(1601, __c50, 1))),
           havings: S.optional(S.NullOr(__S(1603, __c50, 3))),
           limit: S.optional(S.NullOr(S.Number)),
-          needle: S.optional(S.NullOr(__S(3264, __c102, 0))),
+          needle: S.optional(S.NullOr(__S(3296, __c103, 0))),
           orderBy: S.optional(S.NullOr(__S(1632, __c51, 0))),
         }),
       ).annotate({ identifier: "ObservabilityTelemetryQueryResponseRunQueryParameters" });
@@ -18181,7 +18183,7 @@ function __c18(j: number): any {
           timeframe: __S(1696, __c53, 0),
           userId: S.String,
           created: S.optional(S.NullOr(S.String)),
-          statistics: S.optional(S.NullOr(__S(3265, __c102, 1))),
+          statistics: S.optional(S.NullOr(__S(3297, __c103, 1))),
           updated: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ObservabilityTelemetryQueryResponseRun" });
@@ -18384,7 +18386,7 @@ function __c19(j: number): any {
     case 13:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(3271, __c102, 7).pipe(T.Body("$metadata")),
+          metadata: __S(3303, __c103, 7).pipe(T.Body("$metadata")),
           dataset: S.String,
           source: __S(619, __c19, 11),
           timestamp: S.Number,
@@ -18401,7 +18403,7 @@ function __c19(j: number): any {
     case 17:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(3274, __c102, 10),
+          aggregates: __S(3306, __c103, 10),
           count: S.Number,
           interval: S.Number,
           sampleInterval: S.Number,
@@ -18425,7 +18427,7 @@ function __c19(j: number): any {
         S.Struct({
           count: S.optional(S.NullOr(S.Number)),
           events: S.optional(S.NullOr(__S(622, __c19, 14))),
-          fields: S.optional(S.NullOr(__S(3273, __c102, 9))),
+          fields: S.optional(S.NullOr(__S(3305, __c103, 9))),
           series: S.optional(S.NullOr(__S(628, __c19, 20))),
         }),
       ).annotate({ identifier: "ObservabilityTelemetryQueryResponseEvents" });
@@ -18473,7 +18475,7 @@ function __c19(j: number): any {
     case 24:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(3271, __c102, 7).pipe(T.Body("$metadata")),
+          metadata: __S(3303, __c103, 7).pipe(T.Body("$metadata")),
           dataset: S.String,
           source: __S(630, __c19, 22),
           timestamp: S.Number,
@@ -18489,14 +18491,14 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           run: __S(590, __c18, 14),
-          statistics: __S(3265, __c102, 1),
-          agents: S.optional(S.NullOr(__S(3267, __c102, 3))),
+          statistics: __S(3297, __c103, 1),
+          agents: S.optional(S.NullOr(__S(3299, __c103, 3))),
           calculations: S.optional(S.NullOr(__S(604, __c18, 28))),
           compare: S.optional(S.NullOr(__S(618, __c19, 10))),
-          distribution: S.optional(S.NullOr(__S(3270, __c102, 6))),
+          distribution: S.optional(S.NullOr(__S(3302, __c103, 6))),
           events: S.optional(S.NullOr(__S(629, __c19, 21))),
           invocations: S.optional(S.NullOr(__S(634, __c19, 26))),
-          traces: S.optional(S.NullOr(__S(3276, __c102, 12))),
+          traces: S.optional(S.NullOr(__S(3308, __c103, 12))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "QueryObservabilityTelemetryResponse" });
   }
@@ -20075,6 +20077,7 @@ function __c56(j: number): any {
           cacheOptions: S.optional(S.Unknown.pipe(T.Body("cache_options"))),
           env: S.optional(S.Unknown),
           containers: S.optional(__S(1313, __c41, 1)),
+          exports: S.optional(__S(1826, __c57, 2).pipe(T.KeyDictionary({}))),
         }),
       ).annotate({ identifier: "CreatePreviewDeploymentMetadata" });
     case 2:
@@ -20103,6 +20106,32 @@ function __c57(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          enabled: S.optional(S.Boolean),
+          crossVersionCache: S.optional(S.Boolean.pipe(T.Body("cross_version_cache"))),
+        }),
+      ).annotate({ identifier: "PutScriptMetadataCache" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          cache: S.optional(__S(1824, __c57, 0)),
+          storage: S.optional(S.String),
+          container: S.optional(S.String),
+          state: S.optional(S.String),
+          renamedTo: S.optional(S.String.pipe(T.Body("renamed_to"))),
+          transferredTo: S.optional(S.String.pipe(T.Body("transferred_to"))),
+          transferFrom: S.optional(S.String.pipe(T.Body("transfer_from"))),
+        }),
+      ).annotate({ identifier: "PutScriptMetadataExport" });
+    case 2:
+      return S.Record(S.String, __S(1825, __c57, 1));
+  }
+}
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           id: S.String,
           previewId: S.optional(S.NullOr(S.String).pipe(T.Body("preview_id"))),
           previewName: S.optional(S.NullOr(S.String).pipe(T.Body("preview_name"))),
@@ -20114,7 +20143,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "PreviewDeploymentResource" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20128,7 +20157,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "CreateRouteRequest" });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20140,7 +20169,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "CreateRouteResponse" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20150,13 +20179,13 @@ function __c60(j: number): any {
         }),
       ).annotate({ identifier: "ScriptsAssetsUploadCreateRequestManifestValue" });
     case 1:
-      return S.Record(S.String, __S(1920, __c60, 0));
+      return S.Record(S.String, __S(1952, __c61, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          manifest: __S(1921, __c60, 1),
+          manifest: __S(1953, __c61, 1),
         })
           .pipe(
             T.Http({
@@ -20172,13 +20201,13 @@ function __c60(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          buckets: S.optional(S.NullOr(__S(1923, __c60, 3))),
+          buckets: S.optional(S.NullOr(__S(1955, __c61, 3))),
           jwt: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateScriptAssetUploadResponse" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20194,8 +20223,8 @@ function __c61(j: number): any {
           scriptName: S.String.pipe(T.Label("script_name")),
           force: S.optional(S.Boolean.pipe(T.Query())),
           strategy: S.String,
-          versions: __S(2017, __c63, 1),
-          annotations: S.optional(__S(1952, __c61, 0)),
+          versions: __S(2049, __c64, 1),
+          annotations: S.optional(__S(1984, __c62, 0)),
         })
           .pipe(
             T.Http({
@@ -20208,7 +20237,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "CreateScriptDeploymentRequest" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20217,14 +20246,14 @@ function __c62(j: number): any {
           createdOn: S.String.pipe(T.Body("created_on")),
           source: S.String,
           strategy: S.String,
-          versions: __S(2017, __c63, 1),
-          annotations: S.optional(S.NullOr(__S(2018, __c63, 2))),
+          versions: __S(2049, __c64, 1),
+          annotations: S.optional(S.NullOr(__S(2050, __c64, 2))),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateScriptDeploymentResponse" });
   }
 }
-function __c63(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20234,7 +20263,7 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "ScriptsDeploymentsCreateRequestVersionsItem" });
     case 1:
-      return S.Array(__S(2016, __c63, 0));
+      return S.Array(__S(2048, __c64, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -20244,7 +20273,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "ScriptsDeploymentsCreateResponseAnnotations" });
   }
 }
-function __c64(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20254,9 +20283,9 @@ function __c64(j: number): any {
           cfPreviewUploadConfigToken: S.String.pipe(T.Header("cf-preview-upload-config-token")),
           files: S.optional(S.Unknown.pipe(T.FormDataFile())),
           wranglerSessionConfig: S.optional(
-            __S(2082, __c65, 2).pipe(T.Body("wrangler-session-config")),
+            __S(2114, __c66, 2).pipe(T.Body("wrangler-session-config")),
           ),
-          metadata: S.optional(__S(2097, __c65, 17)),
+          metadata: S.optional(__S(2129, __c66, 17)),
         })
           .pipe(
             T.Http({
@@ -20270,7 +20299,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "CreateScriptEdgePreviewRequest" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20283,7 +20312,7 @@ function __c65(j: number): any {
           "BetaWorkersVersionsCreateRequestMigrationsSingleStepMigrationRenamedClassesItem",
       });
     case 1:
-      return S.Array(__S(2080, __c65, 0));
+      return S.Array(__S(2112, __c66, 0));
     case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -20388,24 +20417,24 @@ function __c65(j: number): any {
         ),
       );
     case 4:
-      return S.Array(__S(2083, __c65, 3));
+      return S.Array(__S(2115, __c66, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           newClasses: S.optional(__S(992, __c31, 0).pipe(T.Body("new_classes"))),
           newSqliteClasses: S.optional(__S(992, __c31, 0).pipe(T.Body("new_sqlite_classes"))),
-          renamedClasses: S.optional(__S(2081, __c65, 1).pipe(T.Body("renamed_classes"))),
+          renamedClasses: S.optional(__S(2113, __c66, 1).pipe(T.Body("renamed_classes"))),
           deletedClasses: S.optional(__S(992, __c31, 0).pipe(T.Body("deleted_classes"))),
         }),
       ).annotate({ identifier: "CreateScriptEdgePreviewMetadataMigrationStep" });
     case 6:
-      return S.Array(__S(2085, __c65, 5));
+      return S.Array(__S(2117, __c66, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
           newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-          steps: S.optional(__S(2086, __c65, 6)),
+          steps: S.optional(__S(2118, __c66, 6)),
         }),
       ).annotate({ identifier: "CreateScriptEdgePreviewMetadataMigrations" });
     case 8:
@@ -20420,7 +20449,7 @@ function __c65(j: number): any {
         }),
       ).annotate({ identifier: "CreateScriptEdgePreviewMetadataTailConsumer" });
     case 10:
-      return S.Array(__S(2089, __c65, 9));
+      return S.Array(__S(2121, __c66, 9));
     case 11:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 12:
@@ -20428,7 +20457,7 @@ function __c65(j: number): any {
         S.Struct({
           htmlHandling: S.optional(S.String.pipe(T.Body("html_handling"))),
           notFoundHandling: S.optional(S.String.pipe(T.Body("not_found_handling"))),
-          runWorkerFirst: S.optional(__S(2091, __c65, 11).pipe(T.Body("run_worker_first"))),
+          runWorkerFirst: S.optional(__S(2123, __c66, 11).pipe(T.Body("run_worker_first"))),
           redirects: S.optional(S.String),
           headers: S.optional(S.String),
         }),
@@ -20437,7 +20466,7 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jwt: S.optional(S.String),
-          config: S.optional(__S(2092, __c65, 12)),
+          config: S.optional(__S(2124, __c66, 12)),
         }),
       ).annotate({ identifier: "CreateScriptEdgePreviewMetadataAssets" });
     case 14:
@@ -20464,10 +20493,10 @@ function __c65(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
-          logs: S.optional(__S(2094, __c65, 14)),
+          logs: S.optional(__S(2126, __c66, 14)),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
           issues: S.optional(__S(1152, __c36, 0)),
-          traces: S.optional(__S(2095, __c65, 15)),
+          traces: S.optional(__S(2127, __c66, 15)),
         }),
       ).annotate({ identifier: "CreateScriptEdgePreviewMetadataObservability" });
     case 17:
@@ -20478,19 +20507,19 @@ function __c65(j: number): any {
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(__S(992, __c31, 0).pipe(T.Body("compatibility_flags"))),
           usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          bindings: S.optional(__S(2084, __c65, 4)),
+          bindings: S.optional(__S(2116, __c66, 4)),
           keepBindings: S.optional(__S(992, __c31, 0).pipe(T.Body("keep_bindings"))),
-          migrations: S.optional(__S(2087, __c65, 7)),
+          migrations: S.optional(__S(2119, __c66, 7)),
           capnpSchema: S.optional(S.String.pipe(T.Body("capnp_schema"))),
           logpush: S.optional(S.Boolean),
-          placement: S.optional(__S(2088, __c65, 8)),
-          tailConsumers: S.optional(__S(2090, __c65, 10).pipe(T.Body("tail_consumers"))),
+          placement: S.optional(__S(2120, __c66, 8)),
+          tailConsumers: S.optional(__S(2122, __c66, 10).pipe(T.Body("tail_consumers"))),
           streamingTailConsumers: S.optional(
-            __S(2090, __c65, 10).pipe(T.Body("streaming_tail_consumers")),
+            __S(2122, __c66, 10).pipe(T.Body("streaming_tail_consumers")),
           ),
           limits: S.optional(__S(1024, __c32, 0)),
-          assets: S.optional(__S(2093, __c65, 13)),
-          observability: S.optional(__S(2096, __c65, 16)),
+          assets: S.optional(__S(2125, __c66, 13)),
+          observability: S.optional(__S(2128, __c66, 16)),
           containers: S.optional(__S(1313, __c41, 1)),
           annotations: S.optional(S.Unknown),
           keepAssets: S.optional(S.Boolean.pipe(T.Body("keep_assets"))),
@@ -20506,7 +20535,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "CreateScriptEdgePreviewResponse" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20527,7 +20556,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "CreateScriptSubdomainRequest" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20538,7 +20567,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "CreateScriptSubdomainResponse" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
@@ -20547,7 +20576,7 @@ function __c68(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
-          filters: S.optional(__S(2176, __c68, 0)),
+          filters: S.optional(__S(2208, __c69, 0)),
         })
           .pipe(
             T.Http({
@@ -20560,7 +20589,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "CreateScriptTailRequest" });
   }
 }
-function __c69(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20572,7 +20601,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "CreateScriptTailResponse" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20580,7 +20609,7 @@ function __c70(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           scriptName: S.String.pipe(T.Label("script_name")),
           bindingsInherit: S.optional(S.String.pipe(T.Query("bindings_inherit"))),
-          metadata: __S(2319, __c72, 15).pipe(
+          metadata: __S(2348, __c73, 12).pipe(
             T.KeyDictionary({
               abrLevel: "abr_level",
               allowedDestinationAddresses: "allowed_destination_addresses",
@@ -20711,7 +20740,7 @@ function __c70(j: number): any {
         ]),
       );
     case 2:
-      return S.Record(S.String, __S(2241, __c70, 1));
+      return S.Record(S.String, __S(2273, __c71, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -20719,8 +20748,8 @@ function __c70(j: number): any {
           compatibilityFlags: S.optional(
             S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
           ),
-          exports: S.optional(S.NullOr(__S(2242, __c70, 2))),
-          limits: S.optional(S.NullOr(__S(2337, __c73, 1))),
+          exports: S.optional(S.NullOr(__S(2274, __c71, 2))),
+          limits: S.optional(S.NullOr(__S(2369, __c74, 1))),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
           containers: S.optional(S.NullOr(__S(1377, __c43, 1))),
@@ -20730,26 +20759,26 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bindings: S.Unknown,
-          script: S.optional(S.NullOr(__S(2336, __c73, 0))),
-          scriptRuntime: S.optional(S.NullOr(__S(2243, __c70, 3)).pipe(T.Body("script_runtime"))),
+          script: S.optional(S.NullOr(__S(2368, __c74, 0))),
+          scriptRuntime: S.optional(S.NullOr(__S(2275, __c71, 3)).pipe(T.Body("script_runtime"))),
         }),
       ).annotate({ identifier: "ScriptsVersionsCreateResponseResources" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resources: __S(2244, __c70, 4),
+          resources: __S(2276, __c71, 4),
           id: S.optional(S.NullOr(S.String)),
           exportsReconciliation: S.optional(
             S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
           ),
-          metadata: S.optional(S.NullOr(__S(2400, __c75, 0))),
+          metadata: S.optional(S.NullOr(__S(2432, __c76, 0))),
           number: S.optional(S.NullOr(S.Number)),
           startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateScriptVersionResponse" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20760,10 +20789,10 @@ function __c71(j: number): any {
         }),
       ).annotate({ identifier: "PutScriptTailConsumer" });
     case 1:
-      return S.Array(__S(2272, __c71, 0));
+      return S.Array(__S(2304, __c72, 0));
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20786,7 +20815,7 @@ function __c72(j: number): any {
         S.Struct({
           htmlHandling: S.optional(S.String.pipe(T.Body("html_handling"))),
           notFoundHandling: S.optional(S.String.pipe(T.Body("not_found_handling"))),
-          runWorkerFirst: S.optional(__S(2306, __c72, 2).pipe(T.Body("run_worker_first"))),
+          runWorkerFirst: S.optional(__S(2338, __c73, 2).pipe(T.Body("run_worker_first"))),
           serveDirectly: S.optional(S.Boolean.pipe(T.Body("serve_directly"))),
           headers: S.optional(S.String.pipe(T.Body("_headers"))),
           redirects: S.optional(S.String.pipe(T.Body("_redirects"))),
@@ -20795,7 +20824,7 @@ function __c72(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(__S(2307, __c72, 3)),
+          config: S.optional(__S(2339, __c73, 3)),
           jwt: S.optional(S.String),
         }),
       ).annotate({ identifier: "PutScriptMetadataAssets" });
@@ -20904,7 +20933,7 @@ function __c72(j: number): any {
         ),
       );
     case 6:
-      return S.Array(__S(2309, __c72, 5));
+      return S.Array(__S(2341, __c73, 5));
     case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -20945,9 +20974,9 @@ function __c72(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-          logs: S.optional(S.NullOr(__S(2312, __c72, 8))),
-          traces: S.optional(S.NullOr(__S(2313, __c72, 9))),
-          issues: S.optional(__S(2304, __c72, 0)),
+          logs: S.optional(S.NullOr(__S(2344, __c73, 8))),
+          traces: S.optional(S.NullOr(__S(2345, __c73, 9))),
+          issues: S.optional(__S(2336, __c73, 0)),
           redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
         }),
       ).annotate({ identifier: "PutScriptMetadataObservability" });
@@ -20967,31 +20996,9 @@ function __c72(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          enabled: S.optional(S.Boolean),
-          crossVersionCache: S.optional(S.Boolean.pipe(T.Body("cross_version_cache"))),
-        }),
-      ).annotate({ identifier: "PutScriptMetadataCache" });
-    case 13:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          cache: S.optional(__S(2316, __c72, 12)),
-          storage: S.optional(S.String),
-          container: S.optional(S.String),
-          state: S.optional(S.String),
-          renamedTo: S.optional(S.String.pipe(T.Body("renamed_to"))),
-          transferredTo: S.optional(S.String.pipe(T.Body("transferred_to"))),
-          transferFrom: S.optional(S.String.pipe(T.Body("transfer_from"))),
-        }),
-      ).annotate({ identifier: "PutScriptMetadataExport" });
-    case 14:
-      return S.Record(S.String, __S(2317, __c72, 13));
-    case 15:
-      return S.suspend(() =>
-        S.Struct({
-          annotations: S.optional(__S(2305, __c72, 1)),
-          assets: S.optional(__S(2308, __c72, 4)),
-          bindings: S.optional(__S(2310, __c72, 6)),
+          annotations: S.optional(__S(2337, __c73, 1)),
+          assets: S.optional(__S(2340, __c73, 4)),
+          bindings: S.optional(__S(2342, __c73, 6)),
           bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
           compatibilityDate: S.optional(S.String.pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(__S(992, __c31, 0).pipe(T.Body("compatibility_flags"))),
@@ -21001,22 +21008,22 @@ function __c72(j: number): any {
           limits: S.optional(__S(1024, __c32, 0)),
           logpush: S.optional(S.Boolean),
           mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
-          migrations: S.optional(__S(2311, __c72, 7)),
-          observability: S.optional(__S(2314, __c72, 10)),
-          placement: S.optional(__S(2315, __c72, 11)),
+          migrations: S.optional(__S(2343, __c73, 7)),
+          observability: S.optional(__S(2346, __c73, 10)),
+          placement: S.optional(__S(2347, __c73, 11)),
           tags: S.optional(__S(992, __c31, 0)),
-          tailConsumers: S.optional(S.NullOr(__S(2273, __c71, 1)).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(S.NullOr(__S(2305, __c72, 1)).pipe(T.Body("tail_consumers"))),
           usageModel: S.optional(S.String.pipe(T.Body("usage_model"))),
-          cacheOptions: S.optional(__S(2316, __c72, 12).pipe(T.Body("cache_options"))),
+          cacheOptions: S.optional(__S(1824, __c57, 0).pipe(T.Body("cache_options"))),
           streamingTailConsumers: S.optional(
-            S.NullOr(__S(2273, __c71, 1)).pipe(T.Body("streaming_tail_consumers")),
+            S.NullOr(__S(2305, __c72, 1)).pipe(T.Body("streaming_tail_consumers")),
           ),
-          exports: S.optional(__S(2318, __c72, 14).pipe(T.KeyDictionary({}))),
+          exports: S.optional(__S(1826, __c57, 2).pipe(T.KeyDictionary({}))),
         }),
       ).annotate({ identifier: "PutScriptMetadata" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21024,7 +21031,7 @@ function __c73(j: number): any {
           etag: S.optional(S.NullOr(S.String)),
           handlers: S.optional(S.NullOr(__S(992, __c31, 0))),
           lastDeployedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("last_deployed_from"))),
-          namedHandlers: S.optional(S.NullOr(__S(2369, __c74, 1)).pipe(T.Body("named_handlers"))),
+          namedHandlers: S.optional(S.NullOr(__S(2401, __c75, 1)).pipe(T.Body("named_handlers"))),
         }),
       ).annotate({ identifier: "ScriptsVersionsCreateResponseResourcesScript" });
     case 1:
@@ -21035,7 +21042,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "ScriptsVersionsCreateResponseResourcesScriptRuntimeLimits" });
   }
 }
-function __c74(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21045,10 +21052,10 @@ function __c74(j: number): any {
         }),
       ).annotate({ identifier: "ScriptsVersionsCreateResponseResourcesScriptNamedHandlersItem" });
     case 1:
-      return S.Array(__S(2368, __c74, 0));
+      return S.Array(__S(2400, __c75, 0));
   }
 }
-function __c75(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21063,7 +21070,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "ScriptsVersionsCreateResponseMetadata" });
   }
 }
-function __c76(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21072,10 +21079,10 @@ function __c76(j: number): any {
           serviceName: S.String.pipe(T.Label("service_name")),
           environmentName: S.String.pipe(T.Label("environment_name")),
           cfPreviewUploadConfigToken: S.String.pipe(T.Header("cf-preview-upload-config-token")),
-          metadata: S.optional(__S(2097, __c65, 17)),
+          metadata: S.optional(__S(2129, __c66, 17)),
           files: S.optional(S.Unknown.pipe(T.FormDataFile())),
           wranglerSessionConfig: S.optional(
-            __S(2082, __c65, 2).pipe(T.Body("wrangler-session-config")),
+            __S(2114, __c66, 2).pipe(T.Body("wrangler-session-config")),
           ),
         })
           .pipe(
@@ -21090,7 +21097,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "CreateServiceEdgePreviewRequest" });
   }
 }
-function __c77(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21108,7 +21115,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "CreateSubdomainEdgePreviewSessionRequest" });
   }
 }
-function __c78(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21119,7 +21126,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "CreateSubdomainEdgePreviewSessionResponse" });
   }
 }
-function __c79(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21131,7 +21138,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "CreateZoneEdgePreviewSessionRequest" });
   }
 }
-function __c80(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21151,7 +21158,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "DeleteBetaWorkerRequest" });
   }
 }
-function __c81(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
@@ -21159,7 +21166,7 @@ function __c81(j: number): any {
       });
   }
 }
-function __c82(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21179,7 +21186,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "DeleteBetaWorkerVersionRequest" });
   }
 }
-function __c83(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21198,7 +21205,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "DeleteDomainRequest" });
   }
 }
-function __c84(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21217,7 +21224,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "DeleteObservabilityDestinationRequest" });
   }
 }
-function __c85(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21237,7 +21244,7 @@ function __c85(j: number): any {
       ).annotate({ identifier: "DeletePreviewRequest" });
   }
 }
-function __c86(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21262,7 +21269,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "DeleteRouteResponse" });
   }
 }
-function __c87(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21282,7 +21289,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "DeleteScriptRequest" });
   }
 }
-function __c88(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21290,7 +21297,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "DeleteScriptResponse" });
   }
 }
-function __c89(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21310,7 +21317,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "DeleteScriptDeploymentRequest" });
   }
 }
-function __c90(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21331,7 +21338,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "DeleteScriptSecretRequest" });
   }
 }
-function __c91(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21350,7 +21357,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "DeleteScriptSubdomainRequest" });
   }
 }
-function __c92(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21370,7 +21377,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "DeleteScriptTailRequest" });
   }
 }
-function __c93(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21388,7 +21395,7 @@ function __c93(j: number): any {
       ).annotate({ identifier: "DeleteSubdomainRequest" });
   }
 }
-function __c94(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21406,7 +21413,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "GetAccountSettingRequest" });
   }
 }
-function __c95(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21417,7 +21424,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "GetAccountSettingResponse" });
   }
 }
-function __c96(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21455,7 +21462,7 @@ function __c96(j: number): any {
           limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
           logpush: S.optional(S.NullOr(S.Boolean)),
           observability: S.optional(S.NullOr(__S(1219, __c38, 3))),
-          placement: S.optional(S.NullOr(__S(3073, __c96, 1))),
+          placement: S.optional(S.NullOr(__S(3105, __c97, 1))),
           tailConsumers: S.optional(S.NullOr(__S(1121, __c35, 1)).pipe(T.Body("tail_consumers"))),
         }),
       ).annotate({ identifier: "BetaWorkersGetResponsePreviewsBaseConfig" });
@@ -21474,13 +21481,13 @@ function __c96(j: number): any {
           updatedOn: S.String.pipe(T.Body("updated_on")),
           deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
           previewsBaseConfig: S.optional(
-            S.NullOr(__S(3074, __c96, 2)).pipe(T.Body("previews_base_config")),
+            S.NullOr(__S(3106, __c97, 2)).pipe(T.Body("previews_base_config")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetBetaWorkerResponse" });
   }
 }
-function __c97(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21508,14 +21515,14 @@ function __c97(j: number): any {
           htmlHandling: S.optional(S.NullOr(S.String).pipe(T.Body("html_handling"))),
           notFoundHandling: S.optional(S.NullOr(S.String).pipe(T.Body("not_found_handling"))),
           runWorkerFirst: S.optional(
-            S.NullOr(__S(3105, __c97, 1)).pipe(T.Body("run_worker_first")),
+            S.NullOr(__S(3137, __c98, 1)).pipe(T.Body("run_worker_first")),
           ),
         }),
       ).annotate({ identifier: "BetaWorkersVersionsGetResponseAssetsConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(__S(3106, __c97, 2))),
+          config: S.optional(S.NullOr(__S(3138, __c98, 2))),
           jwt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "BetaWorkersVersionsGetResponseAssets" });
@@ -21622,7 +21629,7 @@ function __c97(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(3108, __c97, 4));
+      return S.Array(__S(3140, __c98, 4));
     case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -21635,7 +21642,7 @@ function __c97(j: number): any {
         ]),
       );
     case 7:
-      return S.Record(S.String, __S(3110, __c97, 6));
+      return S.Record(S.String, __S(3142, __c98, 6));
     case 8:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -21672,29 +21679,29 @@ function __c97(j: number): any {
           number: S.Number,
           urls: __S(992, __c31, 0),
           annotations: S.optional(S.NullOr(__S(1408, __c44, 0))),
-          assets: S.optional(S.NullOr(__S(3107, __c97, 3))),
+          assets: S.optional(S.NullOr(__S(3139, __c98, 3))),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
           authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
-          bindings: S.optional(S.NullOr(__S(3109, __c97, 5))),
+          bindings: S.optional(S.NullOr(__S(3141, __c98, 5))),
           cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(
             S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
           ),
           containers: S.optional(S.NullOr(__S(1377, __c43, 1))),
-          exports: S.optional(S.NullOr(__S(3111, __c97, 7))),
+          exports: S.optional(S.NullOr(__S(3143, __c98, 7))),
           exportsReconciliation: S.optional(
             S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
           ),
           limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
           mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
-          migrations: S.optional(S.NullOr(__S(3112, __c97, 8))),
+          migrations: S.optional(S.NullOr(__S(3144, __c98, 8))),
           modules: S.optional(S.NullOr(__S(1441, __c45, 1))),
           packageDependencies: S.optional(
             S.NullOr(__S(1443, __c45, 3)).pipe(T.Body("package_dependencies")),
           ),
-          placement: S.optional(S.NullOr(__S(3113, __c97, 9))),
+          placement: S.optional(S.NullOr(__S(3145, __c98, 9))),
           source: S.optional(S.NullOr(S.String)),
           startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
           usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
@@ -21702,7 +21709,7 @@ function __c97(j: number): any {
       ).annotate({ identifier: "GetBetaWorkerVersionResponse" });
   }
 }
-function __c98(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21721,7 +21728,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "GetDomainRequest" });
   }
 }
-function __c99(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21738,7 +21745,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "GetDomainResponse" });
   }
 }
-function __c100(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21764,7 +21771,7 @@ function __c100(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(3201, __c100, 1));
+      return S.Array(__S(3233, __c101, 1));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -21776,18 +21783,18 @@ function __c100(j: number): any {
         ),
       );
     case 4:
-      return S.Array(__S(3203, __c100, 3));
+      return S.Array(__S(3235, __c101, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          calculations: S.optional(S.NullOr(__S(3202, __c100, 2))),
+          calculations: S.optional(S.NullOr(__S(3234, __c101, 2))),
           datasets: S.optional(S.NullOr(__S(992, __c31, 0))),
           filterCombination: S.optional(S.NullOr(S.String)),
-          filters: S.optional(S.NullOr(__S(3204, __c100, 4))),
+          filters: S.optional(S.NullOr(__S(3236, __c101, 4))),
           groupBys: S.optional(S.NullOr(__S(1601, __c50, 1))),
           havings: S.optional(S.NullOr(__S(1603, __c50, 3))),
           limit: S.optional(S.NullOr(S.Number)),
-          needle: S.optional(S.NullOr(__S(3264, __c102, 0))),
+          needle: S.optional(S.NullOr(__S(3296, __c103, 0))),
           orderBy: S.optional(S.NullOr(__S(1632, __c51, 0))),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseRunQueryParameters" });
@@ -21800,7 +21807,7 @@ function __c100(j: number): any {
           createdBy: S.String,
           description: S.String,
           name: S.String,
-          parameters: __S(3205, __c100, 5),
+          parameters: __S(3237, __c101, 5),
           updated: S.String,
           updatedBy: S.String,
         }),
@@ -21812,12 +21819,12 @@ function __c100(j: number): any {
           accountId: S.String,
           dry: S.Boolean,
           granularity: S.Number,
-          query: __S(3206, __c100, 6),
+          query: __S(3238, __c101, 6),
           status: S.String,
           timeframe: __S(1696, __c53, 0),
           userId: S.String,
           created: S.optional(S.NullOr(S.String)),
-          statistics: S.optional(S.NullOr(__S(3265, __c102, 1))),
+          statistics: S.optional(S.NullOr(__S(3297, __c103, 1))),
           updated: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseRun" });
@@ -21827,13 +21834,13 @@ function __c100(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(3208, __c100, 8),
+          value: __S(3240, __c101, 8),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItemGroupsItem",
       });
     case 10:
-      return S.Array(__S(3209, __c100, 9));
+      return S.Array(__S(3241, __c101, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -21841,27 +21848,27 @@ function __c100(j: number): any {
           interval: S.Number,
           sampleInterval: S.Number,
           value: S.Number,
-          groups: S.optional(S.NullOr(__S(3210, __c100, 10))),
+          groups: S.optional(S.NullOr(__S(3242, __c101, 10))),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemAggregatesItem",
       });
     case 12:
-      return S.Array(__S(3211, __c100, 11));
+      return S.Array(__S(3243, __c101, 11));
     case 13:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 14:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(3213, __c100, 13),
+          value: __S(3245, __c101, 13),
         }),
       ).annotate({
         identifier:
           "ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItemGroupsItem",
       });
     case 15:
-      return S.Array(__S(3214, __c100, 14));
+      return S.Array(__S(3246, __c101, 14));
     case 16:
       return S.suspend(() =>
         S.Struct({
@@ -21870,47 +21877,47 @@ function __c100(j: number): any {
           sampleInterval: S.Number,
           value: S.Number,
           firstSeen: S.optional(S.NullOr(S.String)),
-          groups: S.optional(S.NullOr(__S(3215, __c100, 15))),
+          groups: S.optional(S.NullOr(__S(3247, __c101, 15))),
           lastSeen: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItemDataItem",
       });
     case 17:
-      return S.Array(__S(3216, __c100, 16));
+      return S.Array(__S(3248, __c101, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
-          data: __S(3217, __c100, 17),
+          data: __S(3249, __c101, 17),
           time: S.String,
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCalculationsItemSeriesItem" });
     case 19:
-      return S.Array(__S(3218, __c100, 18));
+      return S.Array(__S(3250, __c101, 18));
     case 20:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(3212, __c100, 12),
+          aggregates: __S(3244, __c101, 12),
           calculation: S.String,
-          series: __S(3219, __c100, 19),
+          series: __S(3251, __c101, 19),
           alias: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCalculationsItem" });
     case 21:
-      return S.Array(__S(3220, __c100, 20));
+      return S.Array(__S(3252, __c101, 20));
     case 22:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 23:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(3222, __c100, 22),
+          value: __S(3254, __c101, 22),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCompareItemAggregatesItemGroupsItem",
       });
     case 24:
-      return S.Array(__S(3223, __c100, 23));
+      return S.Array(__S(3255, __c101, 23));
     case 25:
       return S.suspend(() =>
         S.Struct({
@@ -21918,24 +21925,24 @@ function __c100(j: number): any {
           interval: S.Number,
           sampleInterval: S.Number,
           value: S.Number,
-          groups: S.optional(S.NullOr(__S(3224, __c100, 24))),
+          groups: S.optional(S.NullOr(__S(3256, __c101, 24))),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCompareItemAggregatesItem" });
     case 26:
-      return S.Array(__S(3225, __c100, 25));
+      return S.Array(__S(3257, __c101, 25));
     case 27:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 28:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          value: __S(3227, __c100, 27),
+          value: __S(3259, __c101, 27),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItemGroupsItem",
       });
     case 29:
-      return S.Array(__S(3228, __c100, 28));
+      return S.Array(__S(3260, __c101, 28));
     case 30:
       return S.suspend(() =>
         S.Struct({
@@ -21944,38 +21951,38 @@ function __c100(j: number): any {
           sampleInterval: S.Number,
           value: S.Number,
           firstSeen: S.optional(S.NullOr(S.String)),
-          groups: S.optional(S.NullOr(__S(3229, __c100, 29))),
+          groups: S.optional(S.NullOr(__S(3261, __c101, 29))),
           lastSeen: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ObservabilitySharedQueriesGetResponseCompareItemSeriesItemDataItem",
       });
     case 31:
-      return S.Array(__S(3230, __c100, 30));
+      return S.Array(__S(3262, __c101, 30));
   }
 }
-function __c101(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: __S(3231, __c100, 31),
+          data: __S(3263, __c101, 31),
           time: S.String,
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCompareItemSeriesItem" });
     case 1:
-      return S.Array(__S(3232, __c101, 0));
+      return S.Array(__S(3264, __c102, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(3226, __c100, 26),
+          aggregates: __S(3258, __c101, 26),
           calculation: S.String,
-          series: __S(3233, __c101, 1),
+          series: __S(3265, __c102, 1),
           alias: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseCompareItem" });
     case 3:
-      return S.Array(__S(3234, __c101, 2));
+      return S.Array(__S(3266, __c102, 2));
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 5:
@@ -22020,49 +22027,49 @@ function __c101(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(3271, __c102, 7).pipe(T.Body("$metadata")),
+          metadata: __S(3303, __c103, 7).pipe(T.Body("$metadata")),
           dataset: S.String,
-          source: __S(3236, __c101, 4),
+          source: __S(3268, __c102, 4),
           timestamp: S.Number,
           containers: S.optional(S.NullOr(__S(800, __c25, 0)).pipe(T.Body("$containers"))),
-          workers: S.optional(S.NullOr(__S(3237, __c101, 5)).pipe(T.Body("$workers"))),
+          workers: S.optional(S.NullOr(__S(3269, __c102, 5)).pipe(T.Body("$workers"))),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEventsEventsItem" });
     case 7:
-      return S.Array(__S(3238, __c101, 6));
+      return S.Array(__S(3270, __c102, 6));
     case 8:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 9:
-      return S.Record(S.String, __S(3240, __c101, 8));
+      return S.Record(S.String, __S(3272, __c102, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          aggregates: __S(3274, __c102, 10),
+          aggregates: __S(3306, __c103, 10),
           count: S.Number,
           interval: S.Number,
           sampleInterval: S.Number,
           errors: S.optional(S.NullOr(S.Number)),
-          groups: S.optional(S.NullOr(__S(3241, __c101, 9))),
+          groups: S.optional(S.NullOr(__S(3273, __c102, 9))),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEventsSeriesItemDataItem" });
     case 11:
-      return S.Array(__S(3242, __c101, 10));
+      return S.Array(__S(3274, __c102, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
-          data: __S(3243, __c101, 11),
+          data: __S(3275, __c102, 11),
           time: S.String,
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEventsSeriesItem" });
     case 13:
-      return S.Array(__S(3244, __c101, 12));
+      return S.Array(__S(3276, __c102, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.NullOr(S.Number)),
-          events: S.optional(S.NullOr(__S(3239, __c101, 7))),
-          fields: S.optional(S.NullOr(__S(3273, __c102, 9))),
-          series: S.optional(S.NullOr(__S(3245, __c101, 13))),
+          events: S.optional(S.NullOr(__S(3271, __c102, 7))),
+          fields: S.optional(S.NullOr(__S(3305, __c103, 9))),
+          series: S.optional(S.NullOr(__S(3277, __c102, 13))),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEvents" });
     case 15:
@@ -22109,35 +22116,35 @@ function __c101(j: number): any {
     case 17:
       return S.suspend(() =>
         S.Struct({
-          metadata: __S(3271, __c102, 7).pipe(T.Body("$metadata")),
+          metadata: __S(3303, __c103, 7).pipe(T.Body("$metadata")),
           dataset: S.String,
-          source: __S(3247, __c101, 15),
+          source: __S(3279, __c102, 15),
           timestamp: S.Number,
           containers: S.optional(S.NullOr(__S(800, __c25, 0)).pipe(T.Body("$containers"))),
-          workers: S.optional(S.NullOr(__S(3248, __c101, 16)).pipe(T.Body("$workers"))),
+          workers: S.optional(S.NullOr(__S(3280, __c102, 16)).pipe(T.Body("$workers"))),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseInvocationsValueItem" });
     case 18:
-      return S.Array(__S(3249, __c101, 17));
+      return S.Array(__S(3281, __c102, 17));
     case 19:
-      return S.Record(S.String, __S(3250, __c101, 18));
+      return S.Record(S.String, __S(3282, __c102, 18));
     case 20:
       return S.suspend(() =>
         S.Struct({
-          run: __S(3207, __c100, 7),
-          statistics: __S(3265, __c102, 1),
-          agents: S.optional(S.NullOr(__S(3267, __c102, 3))),
-          calculations: S.optional(S.NullOr(__S(3221, __c100, 21))),
-          compare: S.optional(S.NullOr(__S(3235, __c101, 3))),
-          distribution: S.optional(S.NullOr(__S(3270, __c102, 6))),
-          events: S.optional(S.NullOr(__S(3246, __c101, 14))),
-          invocations: S.optional(S.NullOr(__S(3251, __c101, 19))),
-          traces: S.optional(S.NullOr(__S(3276, __c102, 12))),
+          run: __S(3239, __c101, 7),
+          statistics: __S(3297, __c103, 1),
+          agents: S.optional(S.NullOr(__S(3299, __c103, 3))),
+          calculations: S.optional(S.NullOr(__S(3253, __c101, 21))),
+          compare: S.optional(S.NullOr(__S(3267, __c102, 3))),
+          distribution: S.optional(S.NullOr(__S(3302, __c103, 6))),
+          events: S.optional(S.NullOr(__S(3278, __c102, 14))),
+          invocations: S.optional(S.NullOr(__S(3283, __c102, 19))),
+          traces: S.optional(S.NullOr(__S(3308, __c103, 12))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetObservabilitySharedQueryResponse" });
   }
 }
-function __c102(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22178,19 +22185,19 @@ function __c102(j: number): any {
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseAgentsItem" });
     case 3:
-      return S.Array(__S(3266, __c102, 2));
+      return S.Array(__S(3298, __c103, 2));
     case 4:
       return S.Array(S.Number);
     case 5:
-      return S.Array(__S(3268, __c102, 4));
+      return S.Array(__S(3300, __c103, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           bins: __S(992, __c31, 0),
-          bucketBoundaries: __S(3268, __c102, 4),
+          bucketBoundaries: __S(3300, __c103, 4),
           bucketMode: S.String,
           buckets: __S(992, __c31, 0),
-          matrix: __S(3269, __c102, 5),
+          matrix: __S(3301, __c103, 5),
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseDistribution" });
     case 7:
@@ -22241,7 +22248,7 @@ function __c102(j: number): any {
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseEventsFieldsItem" });
     case 9:
-      return S.Array(__S(3272, __c102, 8));
+      return S.Array(__S(3304, __c103, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -22269,10 +22276,10 @@ function __c102(j: number): any {
         }),
       ).annotate({ identifier: "ObservabilitySharedQueriesGetResponseTracesItem" });
     case 12:
-      return S.Array(__S(3275, __c102, 11));
+      return S.Array(__S(3307, __c103, 11));
   }
 }
-function __c103(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22292,7 +22299,7 @@ function __c103(j: number): any {
       ).annotate({ identifier: "GetPreviewRequest" });
   }
 }
-function __c104(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22313,7 +22320,7 @@ function __c104(j: number): any {
       ).annotate({ identifier: "GetPreviewDeploymentRequest" });
   }
 }
-function __c105(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22328,7 +22335,7 @@ function __c105(j: number): any {
       ).annotate({ identifier: "GetRouteRequest" });
   }
 }
-function __c106(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22347,7 +22354,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "GetScriptRequest" });
   }
 }
-function __c107(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22366,7 +22373,7 @@ function __c107(j: number): any {
       ).annotate({ identifier: "GetScriptContentRequest" });
   }
 }
-function __c108(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22386,7 +22393,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "GetScriptDeploymentRequest" });
   }
 }
-function __c109(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22405,7 +22412,7 @@ function __c109(j: number): any {
       ).annotate({ identifier: "GetScriptEventTriggersRequest" });
   }
 }
-function __c110(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22423,31 +22430,31 @@ function __c110(j: number): any {
         }),
       ).annotate({ identifier: "EventTriggerTarget" });
     case 2:
-      return S.Array(__S(3521, __c110, 1));
+      return S.Array(__S(3553, __c111, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          filter: S.optional(S.NullOr(__S(3520, __c110, 0))),
-          targets: __S(3522, __c110, 2),
+          filter: S.optional(S.NullOr(__S(3552, __c111, 0))),
+          targets: __S(3554, __c111, 2),
         }),
       ).annotate({ identifier: "EventTrigger" });
     case 4:
-      return S.Array(__S(3523, __c110, 3));
+      return S.Array(__S(3555, __c111, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           scriptName: S.String.pipe(T.Body("script_name")),
-          triggers: __S(3524, __c110, 4),
+          triggers: __S(3556, __c111, 4),
         }),
       ).annotate({ identifier: "ScriptEventTriggers" });
     case 6:
       return S.suspend(() =>
-        __S(3525, __c110, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(3557, __c111, 5).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptEventTriggersResponse" });
   }
 }
-function __c111(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22466,7 +22473,7 @@ function __c111(j: number): any {
       ).annotate({ identifier: "GetScriptScheduleRequest" });
   }
 }
-function __c112(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22477,16 +22484,16 @@ function __c112(j: number): any {
         }),
       ).annotate({ identifier: "ScriptsSchedulesGetResponseSchedulesItem" });
     case 1:
-      return S.Array(__S(3584, __c112, 0));
+      return S.Array(__S(3616, __c113, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          schedules: __S(3585, __c112, 1),
+          schedules: __S(3617, __c113, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptScheduleResponse" });
   }
 }
-function __c113(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22606,7 +22613,7 @@ function __c113(j: number): any {
         ),
       );
     case 2:
-      return S.Array(__S(3617, __c113, 1));
+      return S.Array(__S(3649, __c114, 1));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -22619,7 +22626,7 @@ function __c113(j: number): any {
         ]),
       );
     case 4:
-      return S.Record(S.String, __S(3619, __c113, 3));
+      return S.Record(S.String, __S(3651, __c114, 3));
     case 5:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -22652,29 +22659,29 @@ function __c113(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotations: S.optional(S.NullOr(__S(1408, __c44, 0))),
-          bindings: S.optional(S.NullOr(__S(3618, __c113, 2))),
+          bindings: S.optional(S.NullOr(__S(3650, __c114, 2))),
           cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(
             S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
           ),
-          exports: S.optional(S.NullOr(__S(3620, __c113, 4))),
+          exports: S.optional(S.NullOr(__S(3652, __c114, 4))),
           exportsReconciliation: S.optional(
             S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
           ),
           limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
           logpush: S.optional(S.NullOr(S.Boolean)),
-          migrations: S.optional(S.NullOr(__S(3621, __c113, 5))),
-          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
-          placement: S.optional(S.NullOr(__S(3622, __c113, 6))),
+          migrations: S.optional(S.NullOr(__S(3653, __c114, 5))),
+          observability: S.optional(S.NullOr(__S(3681, __c115, 1))),
+          placement: S.optional(S.NullOr(__S(3654, __c114, 6))),
           tags: S.optional(S.NullOr(__S(992, __c31, 0))),
-          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(S.NullOr(__S(3683, __c115, 3)).pipe(T.Body("tail_consumers"))),
           usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptScriptAndVersionSettingResponse" });
   }
 }
-function __c114(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22692,7 +22699,7 @@ function __c114(j: number): any {
           enabled: S.Boolean,
           headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
           issues: S.optional(S.NullOr(__S(1184, __c37, 0))),
-          logs: S.optional(S.NullOr(__S(3648, __c114, 0))),
+          logs: S.optional(S.NullOr(__S(3680, __c115, 0))),
           redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
           traces: S.optional(S.NullOr(__S(1185, __c37, 1))),
         }),
@@ -22706,10 +22713,10 @@ function __c114(j: number): any {
         }),
       ).annotate({ identifier: "ScriptsScriptAndVersionSettingsGetResponseTailConsumersItem" });
     case 3:
-      return S.Array(__S(3650, __c114, 2));
+      return S.Array(__S(3682, __c115, 2));
   }
 }
-function __c115(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22740,11 +22747,11 @@ function __c115(j: number): any {
       );
     case 2:
       return S.suspend(() =>
-        __S(3681, __c115, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(3713, __c116, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptSecretResponse" });
   }
 }
-function __c116(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22763,20 +22770,20 @@ function __c116(j: number): any {
       ).annotate({ identifier: "GetScriptSettingRequest" });
   }
 }
-function __c117(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           logpush: S.optional(S.NullOr(S.Boolean)),
-          observability: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          observability: S.optional(S.NullOr(__S(3681, __c115, 1))),
           tags: S.optional(S.NullOr(__S(992, __c31, 0))),
-          tailConsumers: S.optional(S.NullOr(__S(3651, __c114, 3)).pipe(T.Body("tail_consumers"))),
+          tailConsumers: S.optional(S.NullOr(__S(3683, __c115, 3)).pipe(T.Body("tail_consumers"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptSettingResponse" });
   }
 }
-function __c118(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22795,7 +22802,7 @@ function __c118(j: number): any {
       ).annotate({ identifier: "GetScriptSubdomainRequest" });
   }
 }
-function __c119(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22814,7 +22821,7 @@ function __c119(j: number): any {
       ).annotate({ identifier: "GetScriptTailRequest" });
   }
 }
-function __c120(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22844,7 +22851,7 @@ function __c120(j: number): any {
         ]),
       );
     case 2:
-      return S.Record(S.String, __S(3841, __c120, 1));
+      return S.Record(S.String, __S(3873, __c121, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -22852,8 +22859,8 @@ function __c120(j: number): any {
           compatibilityFlags: S.optional(
             S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
           ),
-          exports: S.optional(S.NullOr(__S(3842, __c120, 2))),
-          limits: S.optional(S.NullOr(__S(2337, __c73, 1))),
+          exports: S.optional(S.NullOr(__S(3874, __c121, 2))),
+          limits: S.optional(S.NullOr(__S(2369, __c74, 1))),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
           usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
           containers: S.optional(S.NullOr(__S(1377, __c43, 1))),
@@ -22863,22 +22870,22 @@ function __c120(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bindings: S.Unknown,
-          script: S.optional(S.NullOr(__S(2336, __c73, 0))),
-          scriptRuntime: S.optional(S.NullOr(__S(3843, __c120, 3)).pipe(T.Body("script_runtime"))),
+          script: S.optional(S.NullOr(__S(2368, __c74, 0))),
+          scriptRuntime: S.optional(S.NullOr(__S(3875, __c121, 3)).pipe(T.Body("script_runtime"))),
         }),
       ).annotate({ identifier: "ScriptsVersionsGetResponseResources" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resources: __S(3844, __c120, 4),
+          resources: __S(3876, __c121, 4),
           id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(S.NullOr(__S(2400, __c75, 0))),
+          metadata: S.optional(S.NullOr(__S(2432, __c76, 0))),
           number: S.optional(S.NullOr(S.Number)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetScriptVersionResponse" });
   }
 }
-function __c121(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22892,7 +22899,7 @@ function __c121(j: number): any {
       ).annotate({ identifier: "GetSubdomainRequest" });
   }
 }
-function __c122(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -22902,7 +22909,7 @@ function __c122(j: number): any {
       ).annotate({ identifier: "GetSubdomainResponse" });
   }
 }
-function __c123(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
@@ -22915,13 +22922,13 @@ function __c123(j: number): any {
         ),
       );
     case 1:
-      return S.Array(__S(3936, __c123, 0));
+      return S.Array(__S(3968, __c124, 0));
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3938, __c123, 2),
+          value: __S(3970, __c124, 2),
           isRegex: S.optional(S.Boolean),
           matchCase: S.optional(S.Boolean),
         }),
@@ -22931,7 +22938,7 @@ function __c123(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3940, __c123, 4),
+          value: __S(3972, __c124, 4),
           isRegex: S.optional(S.Boolean),
           matchCase: S.optional(S.Boolean),
         }),
@@ -22941,11 +22948,11 @@ function __c123(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           datasets: S.optional(__S(992, __c31, 0)),
-          filters: S.optional(__S(3937, __c123, 1)),
+          filters: S.optional(__S(3969, __c124, 1)),
           from: S.optional(S.Number),
-          keyNeedle: S.optional(__S(3939, __c123, 3)),
+          keyNeedle: S.optional(__S(3971, __c124, 3)),
           limit: S.optional(S.Number),
-          needle: S.optional(__S(3941, __c123, 5)),
+          needle: S.optional(__S(3973, __c124, 5)),
           to: S.optional(S.Number),
         })
           .pipe(
@@ -22966,17 +22973,17 @@ function __c123(j: number): any {
         }),
       ).annotate({ identifier: "ObservabilityTelemetryKeysResultItem" });
     case 8:
-      return S.Array(__S(3943, __c123, 7));
+      return S.Array(__S(3975, __c124, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          result: __S(3944, __c123, 8).pipe(T.EnvelopePayload()),
+          result: __S(3976, __c124, 8).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "KeysObservabilityTelemetryResponse" });
   }
 }
-function __c124(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23011,7 +23018,7 @@ function __c124(j: number): any {
           limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
           logpush: S.optional(S.NullOr(S.Boolean)),
           observability: S.optional(S.NullOr(__S(1219, __c38, 3))),
-          placement: S.optional(S.NullOr(__S(3969, __c124, 1))),
+          placement: S.optional(S.NullOr(__S(4001, __c125, 1))),
           tailConsumers: S.optional(S.NullOr(__S(1121, __c35, 1)).pipe(T.Body("tail_consumers"))),
         }),
       ).annotate({ identifier: "BetaWorkersListResultItemPreviewsBaseConfig" });
@@ -23030,22 +23037,22 @@ function __c124(j: number): any {
           updatedOn: S.String.pipe(T.Body("updated_on")),
           deployedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_on"))),
           previewsBaseConfig: S.optional(
-            S.NullOr(__S(3970, __c124, 2)).pipe(T.Body("previews_base_config")),
+            S.NullOr(__S(4002, __c125, 2)).pipe(T.Body("previews_base_config")),
           ),
         }),
       ).annotate({ identifier: "BetaWorkersListResultItem" });
     case 4:
-      return S.Array(__S(3971, __c124, 3));
+      return S.Array(__S(4003, __c125, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(3972, __c124, 4).pipe(T.EnvelopePayload()),
+          result: __S(4004, __c125, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListBetaWorkersResponse" });
   }
 }
-function __c125(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23073,14 +23080,14 @@ function __c125(j: number): any {
           htmlHandling: S.optional(S.NullOr(S.String).pipe(T.Body("html_handling"))),
           notFoundHandling: S.optional(S.NullOr(S.String).pipe(T.Body("not_found_handling"))),
           runWorkerFirst: S.optional(
-            S.NullOr(__S(4001, __c125, 1)).pipe(T.Body("run_worker_first")),
+            S.NullOr(__S(4033, __c126, 1)).pipe(T.Body("run_worker_first")),
           ),
         }),
       ).annotate({ identifier: "BetaWorkersVersionsListResultItemAssetsConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(__S(4002, __c125, 2))),
+          config: S.optional(S.NullOr(__S(4034, __c126, 2))),
           jwt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "BetaWorkersVersionsListResultItemAssets" });
@@ -23187,7 +23194,7 @@ function __c125(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(4004, __c125, 4));
+      return S.Array(__S(4036, __c126, 4));
     case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -23200,7 +23207,7 @@ function __c125(j: number): any {
         ]),
       );
     case 7:
-      return S.Record(S.String, __S(4006, __c125, 6));
+      return S.Record(S.String, __S(4038, __c126, 6));
     case 8:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -23237,46 +23244,46 @@ function __c125(j: number): any {
           number: S.Number,
           urls: __S(992, __c31, 0),
           annotations: S.optional(S.NullOr(__S(1408, __c44, 0))),
-          assets: S.optional(S.NullOr(__S(4003, __c125, 3))),
+          assets: S.optional(S.NullOr(__S(4035, __c126, 3))),
           authorEmail: S.optional(S.NullOr(S.String).pipe(T.Body("author_email"))),
           authorId: S.optional(S.NullOr(S.String).pipe(T.Body("author_id"))),
-          bindings: S.optional(S.NullOr(__S(4005, __c125, 5))),
+          bindings: S.optional(S.NullOr(__S(4037, __c126, 5))),
           cacheOptions: S.optional(S.NullOr(__S(1056, __c33, 0)).pipe(T.Body("cache_options"))),
           compatibilityDate: S.optional(S.NullOr(S.String).pipe(T.Body("compatibility_date"))),
           compatibilityFlags: S.optional(
             S.NullOr(__S(992, __c31, 0)).pipe(T.Body("compatibility_flags")),
           ),
           containers: S.optional(S.NullOr(__S(1377, __c43, 1))),
-          exports: S.optional(S.NullOr(__S(4007, __c125, 7))),
+          exports: S.optional(S.NullOr(__S(4039, __c126, 7))),
           exportsReconciliation: S.optional(
             S.NullOr(__S(1354, __c42, 10)).pipe(T.Body("exports_reconciliation")),
           ),
           limits: S.optional(S.NullOr(__S(1088, __c34, 0))),
           mainModule: S.optional(S.NullOr(S.String).pipe(T.Body("main_module"))),
           migrationTag: S.optional(S.NullOr(S.String).pipe(T.Body("migration_tag"))),
-          migrations: S.optional(S.NullOr(__S(4008, __c125, 8))),
+          migrations: S.optional(S.NullOr(__S(4040, __c126, 8))),
           modules: S.optional(S.NullOr(__S(1441, __c45, 1))),
           packageDependencies: S.optional(
             S.NullOr(__S(1443, __c45, 3)).pipe(T.Body("package_dependencies")),
           ),
-          placement: S.optional(S.NullOr(__S(4009, __c125, 9))),
+          placement: S.optional(S.NullOr(__S(4041, __c126, 9))),
           source: S.optional(S.NullOr(S.String)),
           startupTimeMs: S.optional(S.NullOr(S.Number).pipe(T.Body("startup_time_ms"))),
           usageModel: S.optional(S.NullOr(S.String).pipe(T.Body("usage_model"))),
         }),
       ).annotate({ identifier: "BetaWorkersVersionsListResultItem" });
     case 11:
-      return S.Array(__S(4010, __c125, 10));
+      return S.Array(__S(4042, __c126, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
-          result: __S(4011, __c125, 11).pipe(T.EnvelopePayload()),
+          result: __S(4043, __c126, 11).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListBetaWorkerVersionsResponse" });
   }
 }
-function __c126(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23305,17 +23312,17 @@ function __c126(j: number): any {
         }),
       ).annotate({ identifier: "DomainsListResultItem" });
     case 2:
-      return S.Array(__S(4033, __c126, 1));
+      return S.Array(__S(4065, __c127, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(4034, __c126, 2).pipe(T.EnvelopePayload()),
+          result: __S(4066, __c127, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDomainsResponse" });
   }
 }
-function __c127(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23348,7 +23355,7 @@ function __c127(j: number): any {
         S.Struct({
           destinationConf: S.String.pipe(T.Body("destination_conf")),
           headers: __S(1280, __c40, 0),
-          jobStatus: __S(4065, __c127, 1),
+          jobStatus: __S(4097, __c128, 1),
           logpushDataset: S.String,
           type: S.String,
           url: S.String,
@@ -23357,7 +23364,7 @@ function __c127(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          configuration: __S(4066, __c127, 2),
+          configuration: __S(4098, __c128, 2),
           enabled: S.Boolean,
           name: S.String,
           scripts: __S(992, __c31, 0),
@@ -23365,17 +23372,17 @@ function __c127(j: number): any {
         }),
       ).annotate({ identifier: "ObservabilityDestinationsListResultItem" });
     case 4:
-      return S.Array(__S(4067, __c127, 3));
+      return S.Array(__S(4099, __c128, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(4068, __c127, 4).pipe(T.EnvelopePayload()),
+          result: __S(4100, __c128, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListObservabilityDestinationsResponse" });
   }
 }
-function __c128(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23403,7 +23410,7 @@ function __c128(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(4097, __c128, 1));
+      return S.Array(__S(4129, __c129, 1));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -23415,13 +23422,13 @@ function __c128(j: number): any {
         ),
       );
     case 4:
-      return S.Array(__S(4099, __c128, 3));
+      return S.Array(__S(4131, __c129, 3));
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4101, __c128, 5),
+          value: __S(4133, __c129, 5),
           isRegex: S.optional(S.NullOr(S.Boolean)),
           matchCase: S.optional(S.NullOr(S.Boolean)),
         }),
@@ -23429,14 +23436,14 @@ function __c128(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          calculations: S.optional(S.NullOr(__S(4098, __c128, 2))),
+          calculations: S.optional(S.NullOr(__S(4130, __c129, 2))),
           datasets: S.optional(S.NullOr(__S(992, __c31, 0))),
           filterCombination: S.optional(S.NullOr(S.String)),
-          filters: S.optional(S.NullOr(__S(4100, __c128, 4))),
+          filters: S.optional(S.NullOr(__S(4132, __c129, 4))),
           groupBys: S.optional(S.NullOr(__S(1601, __c50, 1))),
           havings: S.optional(S.NullOr(__S(1603, __c50, 3))),
           limit: S.optional(S.NullOr(S.Number)),
-          needle: S.optional(S.NullOr(__S(4102, __c128, 6))),
+          needle: S.optional(S.NullOr(__S(4134, __c129, 6))),
           orderBy: S.optional(S.NullOr(__S(1632, __c51, 0))),
         }),
       ).annotate({ identifier: "ObservabilityQueriesListResultItemParameters" });
@@ -23449,23 +23456,23 @@ function __c128(j: number): any {
           createdBy: S.String,
           description: S.String,
           name: S.String,
-          parameters: __S(4103, __c128, 7),
+          parameters: __S(4135, __c129, 7),
           updated: S.String,
           updatedBy: S.String,
         }),
       ).annotate({ identifier: "ObservabilityQueriesListResultItem" });
     case 9:
-      return S.Array(__S(4104, __c128, 8));
+      return S.Array(__S(4136, __c129, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          result: __S(4105, __c128, 9).pipe(T.EnvelopePayload()),
+          result: __S(4137, __c129, 9).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListObservabilityQueriesResponse" });
   }
 }
-function __c129(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23478,13 +23485,13 @@ function __c129(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(4161, __c130, 1).pipe(T.EnvelopePayload()),
+          result: __S(4193, __c131, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRoutesResponse" });
   }
 }
-function __c130(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -23495,7 +23502,7 @@ function __c130(j: number): any {
         }),
       ).annotate({ identifier: "RoutesListResultItem" });
     case 1:
-      return S.Array(__S(4160, __c130, 0));
+      return S.Array(__S(4192, __c131, 0));
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

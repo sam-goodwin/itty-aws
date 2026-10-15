@@ -1270,13 +1270,7 @@ export interface LiveInputsListResponseLiveInputsItem {
 }
 export type LiveInputsListResponseLiveInputsList = Array<LiveInputsListResponseLiveInputsItem>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListLiveInputsResponse {
-  liveInputs?: LiveInputsListResponseLiveInputsList | null;
-  /** The total number of remaining live inputs based on cursor position. */
-  range?: number | null;
-  /** The total number of live inputs that match the provided filters. */
-  total?: number | null;
-}
+export type ListLiveInputsResponse = LiveInputsListResponseLiveInputsList;
 export type ListRequestStatus =
   | "pendingupload"
   | "downloading"
@@ -3185,11 +3179,7 @@ function __c39(j: number): any {
       return S.Array(__S(313, __c39, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          liveInputs: S.optional(S.NullOr(__S(314, __c39, 2))),
-          range: S.optional(S.NullOr(S.Number)),
-          total: S.optional(S.NullOr(S.Number)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+        __S(314, __c39, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLiveInputsResponse" });
   }
 }

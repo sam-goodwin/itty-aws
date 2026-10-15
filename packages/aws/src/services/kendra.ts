@@ -113,6 +113,19 @@ export class InvalidRequestException
     { message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()) },
     /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
+export class KendraClosedToNewCustomers
+  extends /*@__PURE__*/ S.TaggedError<KendraClosedToNewCustomers>()(
+    "KendraClosedToNewCustomers",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.SyntheticError({
+      from: "NotAuthorizedException",
+      message: { includes: "no longer accepting new customers" },
+    }),
+  ).pipe(C.withAuthError) {}
+export class NotAuthorizedException
+  extends /*@__PURE__*/ S.TaggedError<NotAuthorizedException>()("NotAuthorizedException", {
+    message: S.optional(S.String).pipe(T.ErrorMessage()),
+  }).pipe(C.withAuthError) {}
 export class ResourceAlreadyExistException
   extends /*@__PURE__*/ S.TaggedError<ResourceAlreadyExistException>()(
     "ResourceAlreadyExistException",
@@ -2791,6 +2804,8 @@ export type CreateIndexError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | NotAuthorizedException
+  | KendraClosedToNewCustomers
   | CommonErrors;
 /**
  * Creates an Amazon Kendra index. Index creation is an asynchronous API. To determine
@@ -2822,6 +2837,8 @@ export const createIndex: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    NotAuthorizedException,
+    KendraClosedToNewCustomers,
   ],
   protocol: AwsProtocol,
   retry: Retry,

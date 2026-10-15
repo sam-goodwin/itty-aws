@@ -3,7 +3,7 @@ import * as API from "@distilled.cloud/core/api";
 import * as S from "@distilled.cloud/core/schema-lite";
 import * as __L from "@distilled.cloud/core/schema-lite";
 import type * as Redacted from "effect/Redacted";
-import { BadRequest, NotFound, SpritesNotEnabled } from "../errors.ts";
+import { BadRequest, Conflict, NotFound, SpritesNotEnabled } from "../errors.ts";
 import { paginateCursor } from "../pagination.ts";
 import { SpritesProtocol, type SpritesOpError, type SpritesOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
@@ -90,7 +90,14 @@ export interface CreateCheckpointRequest {
   name: string;
   comment?: string;
 }
-export interface CreateCheckpointResponse {}
+export interface StreamEvent {
+  type?: string;
+  data?: string;
+  error?: string;
+  time?: string;
+}
+export type CreateCheckpointResponseBodyList = Array<StreamEvent>;
+export type CreateCheckpointResponse = CreateCheckpointResponseBodyList;
 /** Provider API paths the connector may call. Supports exact paths and trailing `*` prefix wildcards. */
 export type AccessPolicyAllowedEndpointsList = Array<string>;
 /** Provider API paths the connector may not call. Block rules are checked before allow rules. */
@@ -179,11 +186,14 @@ export interface UrlSettingsRequest {
   /** Authentication type (default: sprite) */
   auth?: UrlSettingsRequestAuth | (string & {});
 }
+export type SpritesCreatePostRequestLabelsList = Array<string>;
 export interface CreateSpriteRequest {
   /** Unique name for the sprite within the organization */
   name: string;
   /** URL access configuration */
   url_settings?: UrlSettingsRequest;
+  /** Labels stamped on the sprite */
+  labels?: SpritesCreatePostRequestLabelsList;
 }
 /** Labels assigned to the sprite. Omitted when empty. */
 export type SpriteResponseLabelsList = Array<string>;
@@ -257,21 +267,27 @@ export interface DeleteSpriteRequest {
   name: string;
 }
 export interface DeleteSpriteResponse {}
+export type SpriteEnvExecuteCommandRequestCmdList = Array<string>;
+export type SpriteEnvExecuteCommandRequestEnvList = Array<string>;
 export interface ExecCommandRequest {
   name: string;
   /** Command to execute (can be repeated for command + args) */
-  cmd: string;
+  cmd: SpriteEnvExecuteCommandRequestCmdList;
   /** Explicit path to executable (defaults to first `cmd` value or `bash`) */
   path?: string;
   /** Enable stdin from request body (default: `false`) */
   stdin?: boolean;
   /** Environment variables in `KEY=VALUE` format (can be repeated) */
-  env?: string;
+  env?: SpriteEnvExecuteCommandRequestEnvList;
   /** Working directory for the command */
   dir?: string;
   body?: Uint8Array | string;
 }
-export interface ExecCommandResponse {}
+export interface ExecResult {
+  exit_code?: number;
+  stdout?: string;
+  stderr?: string;
+}
 export interface GetCheckpointRequest {
   name: string;
   checkpoint_id: string;
@@ -479,7 +495,7 @@ export interface PutServiceRequest {
   /** Time to monitor logs after starting (default: `5s`) */
   duration?: number;
   /** Command arguments */
-  args: PutServiceRequestArgsList;
+  args?: PutServiceRequestArgsList;
   /** Command to execute */
   cmd: string;
   /** Working directory for the service */
@@ -489,7 +505,7 @@ export interface PutServiceRequest {
   /** HTTP port for proxy routing */
   http_port?: number | null;
   /** Service dependencies (started first) */
-  needs: PutServiceRequestNeedsList;
+  needs?: PutServiceRequestNeedsList;
 }
 export interface ReadFileRequest {
   name: string;
@@ -521,7 +537,8 @@ export interface RestoreCheckpointRequest {
   name: string;
   checkpoint_id: string;
 }
-export interface RestoreCheckpointResponse {}
+export type RestoreCheckpointResponseBodyList = Array<StreamEvent>;
+export type RestoreCheckpointResponse = RestoreCheckpointResponseBodyList;
 /** List of network policy rules */
 export type SetNetworkPolicyRequestRulesList = Array<NetworkPolicyRule>;
 export interface SetNetworkPolicyRequest {
@@ -648,7 +665,7 @@ export const createCheckpoint: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(152, __c38, 0) as any as S.Schema<CreateCheckpointRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<CreateCheckpointResponse>,
+  output: __S(158, __c39, 2) as any as S.Schema<CreateCheckpointResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -684,7 +701,7 @@ export const createOrganizationToken: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateSpriteError = BadRequest | SpritesNotEnabled | SpritesOpError;
+export type CreateSpriteError = BadRequest | SpritesNotEnabled | Conflict | SpritesOpError;
 /** Create a sprite Create a new sprite with a unique name in your organization */
 export const createSprite: API.OperationMethod<
   CreateSpriteRequest,
@@ -694,7 +711,7 @@ export const createSprite: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(200, __c50, 0) as any as S.Schema<CreateSpriteRequest>,
   output: __S(205, __c51, 1) as any as S.Schema<SpriteResponse>,
-  errors: [BadRequest, SpritesNotEnabled],
+  errors: [BadRequest, SpritesNotEnabled, Conflict],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
 }));
@@ -723,7 +740,7 @@ export const deleteOAuthConnection: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(216, __c54, 0) as any as S.Schema<DeleteOAuthConnectionRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<DeleteOAuthConnectionResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<DeleteOAuthConnectionResponse>,
   errors: [SpritesNotEnabled, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -738,7 +755,7 @@ export const deletePrivilegesPolicy: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c2, 0) as any as S.Schema<DeletePrivilegesPolicyRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<DeletePrivilegesPolicyResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<DeletePrivilegesPolicyResponse>,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -753,7 +770,7 @@ export const deleteResourcesPolicy: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(12, __c3, 0) as any as S.Schema<DeleteResourcesPolicyRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<DeleteResourcesPolicyResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<DeleteResourcesPolicyResponse>,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -768,7 +785,7 @@ export const deleteSprite: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(16, __c4, 0) as any as S.Schema<DeleteSpriteRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<DeleteSpriteResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<DeleteSpriteResponse>,
   errors: [SpritesNotEnabled, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -778,12 +795,12 @@ export type ExecCommandError = BadRequest | NotFound | SpritesOpError;
 /** Execute Command Execute a command via simple HTTP POST (non-TTY only). Simpler alternative for exec for environments that can't handle websockets. */
 export const execCommand: API.OperationMethod<
   ExecCommandRequest,
-  ExecCommandResponse,
+  ExecResult,
   ExecCommandError,
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(20, __c5, 0) as any as S.Schema<ExecCommandRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<ExecCommandResponse>,
+  output: __S(21, __c5, 1) as any as S.Schema<ExecResult>,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -843,7 +860,7 @@ export const getPrivilegesPolicy: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(44, __c11, 0) as any as S.Schema<GetPrivilegesPolicyRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<GetPrivilegesPolicyResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<GetPrivilegesPolicyResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -858,7 +875,7 @@ export const getResourcesPolicy: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c12, 0) as any as S.Schema<GetResourcesPolicyRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<GetResourcesPolicyResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<GetResourcesPolicyResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -888,7 +905,7 @@ export const getServiceLogs: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c16, 0) as any as S.Schema<GetServiceLogsRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<GetServiceLogsResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<GetServiceLogsResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -918,7 +935,7 @@ export const killExecSession: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(72, __c18, 0) as any as S.Schema<KillExecSessionRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<KillExecSessionResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<KillExecSessionResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -963,7 +980,7 @@ export const listExecSessions: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(84, __c21, 0) as any as S.Schema<ListExecSessionsRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<ListExecSessionsResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<ListExecSessionsResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1094,7 +1111,7 @@ export const readFile: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(124, __c31, 0) as any as S.Schema<ReadFileRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<ReadFileResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<ReadFileResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1124,7 +1141,7 @@ export const restartService: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(132, __c33, 0) as any as S.Schema<RestartServiceRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<RestartServiceResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<RestartServiceResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1139,7 +1156,7 @@ export const restoreCheckpoint: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(136, __c34, 0) as any as S.Schema<RestoreCheckpointRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<RestoreCheckpointResponse>,
+  output: __S(158, __c39, 2) as any as S.Schema<RestoreCheckpointResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1154,7 +1171,7 @@ export const setNetworkPolicy: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(140, __c35, 0) as any as S.Schema<SetNetworkPolicyRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<SetNetworkPolicyResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<SetNetworkPolicyResponse>,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1169,7 +1186,7 @@ export const setPrivilegesPolicy: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c36, 0) as any as S.Schema<SetPrivilegesPolicyRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<SetPrivilegesPolicyResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<SetPrivilegesPolicyResponse>,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1184,7 +1201,7 @@ export const setResourcesPolicy: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(148, __c37, 0) as any as S.Schema<SetResourcesPolicyRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<SetResourcesPolicyResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<SetResourcesPolicyResponse>,
   errors: [BadRequest, NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1199,7 +1216,7 @@ export const startService: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c40, 0) as any as S.Schema<StartServiceRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<StartServiceResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<StartServiceResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1214,7 +1231,7 @@ export const stopService: API.OperationMethod<
   SpritesOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(164, __c41, 0) as any as S.Schema<StopServiceRequest>,
-  output: __S(156, __c39, 0) as any as S.Schema<StopServiceResponse>,
+  output: __S(220, __c55, 0) as any as S.Schema<StopServiceResponse>,
   errors: [NotFound],
   protocol: SpritesProtocol,
   retry: Retry.Retry,
@@ -1354,10 +1371,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          cmd: S.String.pipe(T.Query()),
+          cmd: __S(192, __c48, 0).pipe(T.Query()),
           path: S.optional(S.String.pipe(T.Query())),
           stdin: S.optional(S.Boolean.pipe(T.Query())),
-          env: S.optional(S.String.pipe(T.Query())),
+          env: S.optional(__S(192, __c48, 0).pipe(T.Query())),
           dir: S.optional(S.String.pipe(T.Query())),
           body: S.optional(S.String.pipe(T.HttpBody())),
         }).pipe(
@@ -1369,6 +1386,14 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ExecCommandRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          exit_code: S.optional(S.Number),
+          stdout: S.optional(S.String),
+          stderr: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ExecResult" });
   }
 }
 function __c6(j: number): any {
@@ -1771,12 +1796,12 @@ function __c30(j: number): any {
           name: S.String.pipe(T.Label()),
           service_name: S.String.pipe(T.Label()),
           duration: S.optional(S.Number.pipe(T.Query())),
-          args: __S(192, __c48, 0),
+          args: S.optional(__S(192, __c48, 0)),
           cmd: S.String,
           dir: S.optional(S.String),
           env: S.optional(S.Unknown),
           http_port: S.optional(S.NullOr(S.Number)),
-          needs: __S(192, __c48, 0),
+          needs: S.optional(__S(192, __c48, 0)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/sprites/{name}/services/{service_name}", code: 200 }),
         ),
@@ -1889,7 +1914,20 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "CreateCheckpointResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          data: S.optional(S.String),
+          error: S.optional(S.String),
+          time: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "StreamEvent" });
+    case 1:
+      return S.Array(__S(156, __c39, 0));
+    case 2:
+      return S.suspend(() => __S(157, __c39, 1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateCheckpointResponse",
+      });
   }
 }
 function __c40(j: number): any {
@@ -2069,6 +2107,7 @@ function __c50(j: number): any {
         S.Struct({
           name: S.String,
           url_settings: S.optional(__S(208, __c52, 0)),
+          labels: S.optional(__S(192, __c48, 0)),
         }).pipe(T.Http({ method: "POST", uri: "/sprites", code: 200 })),
       ).annotate({ identifier: "CreateSpriteRequest" });
   }
@@ -2141,6 +2180,14 @@ function __c54(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/oauth/connections/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteOAuthConnectionRequest" });
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "DeleteOAuthConnectionResponse",
+      });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

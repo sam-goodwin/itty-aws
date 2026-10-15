@@ -121,7 +121,7 @@ export interface CreateAPITokenResponse {
   name?: string;
   id?: string;
   /** The actual token contents as a JWT. This is used with the `Bearer` header, see [Authentication](/authentication) for more details. **This token is never revealed again.** */
-  token?: string;
+  token?: Redacted.Redacted<string>;
 }
 /** The type of seed to be used to create a new database. Use `database` to copy from an existing database, or `database_upload` to [upload a SQLite database file](/api-reference/databases/upload). */
 export type CreateDatabaseRequestSeedType = "database" | "database_upload";
@@ -198,7 +198,7 @@ export interface CreateDatabaseTokenRequest {
 }
 export interface CreateDatabaseTokenResponse {
   /** The generated authorization token (JWT). */
-  jwt?: string;
+  jwt?: Redacted.Redacted<string>;
 }
 /** Set to `all` to enable all extensions. */
 export type ExtensionsCase0 = "all";
@@ -255,7 +255,7 @@ export interface CreateGroupTokenRequest {
 }
 export interface CreateGroupTokenResponse {
   /** The generated authorization token (JWT). */
-  jwt?: string;
+  jwt?: Redacted.Redacted<string>;
 }
 export interface DeleteDatabaseRequest {
   /** The slug of the organization or user account. */
@@ -338,6 +338,8 @@ export interface Database {
   /** The current status for delete protection. If enabled, the database cannot be deleted. */
   delete_protection?: boolean;
   parent?: DatabaseParent | null;
+  /** Whether other databases may be attached to this database with `ATTACH`. */
+  allow_attach?: boolean;
 }
 export interface GetDatabaseResponse {
   database?: Database;
@@ -1154,7 +1156,7 @@ export const addOrganizationMember: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAPITokenError = TursoOpError;
+export type CreateAPITokenError = BadRequest | NotFound | Conflict | TursoOpError;
 /** Create API Token Returns a new API token belonging to a user. The token can be minted at three levels of restriction, in increasing order of narrowness: - **Organization-scoped** -- pass `organization`. The token can only act on resources inside that organization. - **Group-scoped** -- pass `organization`, `group`, and `scopes`. The token is pinned to a single group inside the organization and only the operations listed in `scopes` are allowed. The caller must be an admin or owner of the organization. - **Unrestricted** *(deprecated)* -- no request body. The token can act on every organization the caller belongs to. **Unrestricted tokens are deprecated and will be removed in a future release.** Always pass `organization` for new tokens and rotate existing unrestricted tokens to scoped tokens. Group-scoped tokens are designed for automations that should be able to provision and manage databases inside a single group without being able to touch the rest of the organization. */
 export const createAPIToken: API.OperationMethod<
   CreateAPITokenRequest,
@@ -1164,7 +1166,7 @@ export const createAPIToken: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(529, __c66, 1) as any as S.Schema<CreateAPITokenRequest>,
   output: __S(530, __c66, 2) as any as S.Schema<CreateAPITokenResponse>,
-  errors: [],
+  errors: [BadRequest, NotFound, Conflict],
   protocol: TursoProtocol,
   retry: Retry.Retry,
 }));
@@ -1784,7 +1786,7 @@ export const revokeAPIToken: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RevokeOrganizationAPITokenError = TursoOpError;
+export type RevokeOrganizationAPITokenError = NotFound | TursoOpError;
 /** Revoke Organization API Token Revokes a token scoped to this organization. The path takes a token **ID**, not a name, because names are unique per user but not across users -- an admin revoking a member's token can't disambiguate by name alone. Authorization is symmetric with the list endpoint: - **Admins and owners** can revoke any token scoped to the organization (org-scoped or group-scoped, regardless of who minted it). - **Members and viewers** can revoke only tokens they minted themselves. A token scoped to a different organization returns `404`, not `403`, so the endpoint does not leak the existence of cross-org token IDs. Unrestricted tokens are also unreachable here and must be revoked via [`DELETE /v1/auth/api-tokens/{tokenName}`](/api-reference/tokens/revoke). */
 export const revokeOrganizationAPIToken: API.OperationMethod<
   RevokeOrganizationAPITokenRequest,
@@ -1794,7 +1796,7 @@ export const revokeOrganizationAPIToken: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c56, 0) as any as S.Schema<RevokeOrganizationAPITokenRequest>,
   output: __S(440, __c55, 0) as any as S.Schema<RevokeOrganizationAPITokenResponse>,
-  errors: [],
+  errors: [NotFound],
   protocol: TursoProtocol,
   retry: Retry.Retry,
 }));
@@ -2077,6 +2079,7 @@ function __c7(j: number): any {
           group: S.optional(S.String),
           delete_protection: S.optional(S.Boolean),
           parent: S.optional(S.NullOr(__S(56, __c7, 0))),
+          allow_attach: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Database" });
   }
@@ -3324,7 +3327,7 @@ function __c66(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           id: S.optional(S.String),
-          token: S.optional(S.String),
+          token: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "CreateAPITokenResponse" });
   }
@@ -3416,7 +3419,7 @@ function __c69(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jwt: S.optional(S.String),
+          jwt: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({ identifier: "CreateDatabaseTokenResponse" });
   }

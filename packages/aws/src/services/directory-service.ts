@@ -328,6 +328,15 @@ export class ShareLimitExceededException
       RequestId: /*@__PURE__*/ S.optional(S.String),
     },
   ) {}
+export class SimpleADClosedToNewCustomers
+  extends /*@__PURE__*/ S.TaggedError<SimpleADClosedToNewCustomers>()(
+    "SimpleADClosedToNewCustomers",
+    { message: S.optional(S.String).pipe(T.ErrorMessage()), RequestId: S.optional(S.String) },
+    T.SyntheticError({
+      from: "ClientException",
+      message: { includes: "Simple AD is no longer open to new customers" },
+    }),
+  ).pipe(C.withAuthError) {}
 export class SnapshotLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<SnapshotLimitExceededException>()(
     "SnapshotLimitExceededException",
@@ -1909,6 +1918,7 @@ export type CreateDirectoryError =
   | DirectoryLimitExceededException
   | InvalidParameterException
   | ServiceException
+  | SimpleADClosedToNewCustomers
   | CommonErrors;
 /**
  * Creates a Simple AD directory. For more information, see Simple Active Directory in the *Directory Service Admin Guide*.
@@ -1930,6 +1940,7 @@ export const createDirectory: API.OperationMethod<
     DirectoryLimitExceededException,
     InvalidParameterException,
     ServiceException,
+    SimpleADClosedToNewCustomers,
   ],
   protocol: AwsProtocol,
   retry: Retry,

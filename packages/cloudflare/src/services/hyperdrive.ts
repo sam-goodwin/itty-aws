@@ -46,7 +46,10 @@ export class HyperdriveOriginUnavailable
       code: S.Number,
       message: S.String,
     }),
-    [{ status: 400, message: { includes: "Failed to connect to upstream database" } }],
+    [
+      { status: 400, message: { includes: "Failed to connect to upstream database" } },
+      { status: 400, message: { includes: "destination_not_found" } },
+    ],
   ) {}
 
 export class InvalidHyperdriveConfig

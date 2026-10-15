@@ -466,7 +466,6 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   serverAlias: "server_alias",
   serverDescription: "server_description",
   serverId: "server_id",
-  serviceAuth_401Redirect: "service_auth_401_redirect",
   serviceModeV2: "service_mode_v2",
   serviceToken: "service_token",
   serviceTokenId: "service_token_id",
@@ -4650,6 +4649,10 @@ export interface AccessApplicationsCreateResultEndUserApplication {
   name?: string | null;
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until November 21, 2025. If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsCreateResultEndUserApplicationSelfHostedDomainsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultSelfHostedApplicationType =
   | "self_hosted"
@@ -5596,6 +5599,10 @@ export interface AccessApplicationsCreateResultSelfHostedApplication {
   tags?: AccessApplicationsCreateResultSelfHostedApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultSaaSApplicationAllowedIdpsList = Array<unknown>;
 export type AccessApplicationsCreateResultSaaSApplicationCustomPagesList = Array<string>;
@@ -6425,6 +6432,14 @@ export interface AccessApplicationsCreateResultSaaSApplication {
   tags?: AccessApplicationsCreateResultSaaSApplicationTagsList | null;
   /** The application type. */
   type?: AccessApplicationsCreateResultSaaSApplicationType | null;
+  /** The SSO endpoint of the application, e.g. `<team>.cloudflareaccess.com/cdn-cgi/access/sso/saml/<aud>`. */
+  domain?: string | null;
+  /** The amount of time that tokens issued for this application will be valid. */
+  sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultBrowserSSHApplicationType =
   | "self_hosted"
@@ -7350,6 +7365,10 @@ export interface AccessApplicationsCreateResultBrowserSSHApplication {
   tags?: AccessApplicationsCreateResultBrowserSSHApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultBrowserVNCApplicationType =
   | "self_hosted"
@@ -8275,6 +8294,10 @@ export interface AccessApplicationsCreateResultBrowserVNCApplication {
   tags?: AccessApplicationsCreateResultBrowserVNCApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultAppLauncherApplicationType =
   | "self_hosted"
@@ -8846,6 +8869,10 @@ export interface AccessApplicationsCreateResultAppLauncherApplication {
   sessionDuration?: string | null;
   /** Determines when to skip the App Launcher landing page. */
   skipAppLauncherLoginPage?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultDeviceEnrollmentPermissionsApplicationType =
   | "self_hosted"
@@ -9391,6 +9418,10 @@ export interface AccessApplicationsCreateResultDeviceEnrollmentPermissionsApplic
   policies?: AccessApplicationsCreateResultDeviceEnrollmentPermissionsApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultBrowserIsolationPermissionsApplicationType =
   | "self_hosted"
@@ -9936,6 +9967,10 @@ export interface AccessApplicationsCreateResultBrowserIsolationPermissionsApplic
   policies?: AccessApplicationsCreateResultBrowserIsolationPermissionsApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultGatewayIdentityProxyEndpointApplicationType =
   | "self_hosted"
@@ -10481,6 +10516,10 @@ export interface AccessApplicationsCreateResultGatewayIdentityProxyEndpointAppli
   policies?: AccessApplicationsCreateResultGatewayIdentityProxyEndpointApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultBookmarkApplicationPoliciesItemApprovalGroupsItemEmailAddressesList =
   Array<string>;
@@ -11017,6 +11056,10 @@ export interface AccessApplicationsCreateResultBookmarkApplication {
   tags?: AccessApplicationsCreateResultBookmarkApplicationTagsList | null;
   /** The application type. */
   type?: AccessApplicationsCreateResultBookmarkApplicationType | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultInfrastructureApplicationTargetCriteriaItemProtocol =
   "SSH";
@@ -11606,6 +11649,10 @@ export interface AccessApplicationsCreateResultInfrastructureApplication {
   /** The name of the application. */
   name?: string | null;
   policies?: AccessApplicationsCreateResultInfrastructureApplicationPoliciesList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultBrowserRDPApplicationTargetCriteriaItemProtocol = "RDP";
 export type AccessApplicationsCreateResultBrowserRDPApplicationTargetCriteriaItemExcludeTagsValueList =
@@ -12611,6 +12658,10 @@ export interface AccessApplicationsCreateResultBrowserRDPApplication {
   tags?: AccessApplicationsCreateResultBrowserRDPApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultMcpServerApplicationType =
   | "self_hosted"
@@ -13461,6 +13512,10 @@ export interface AccessApplicationsCreateResultMcpServerApplication {
   sessionDuration?: string | null;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: AccessApplicationsCreateResultMcpServerApplicationTagsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResultMcpServerPortalApplicationType =
   | "self_hosted"
@@ -14314,6 +14369,10 @@ export interface AccessApplicationsCreateResultMcpServerPortalApplication {
   sessionDuration?: string | null;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: AccessApplicationsCreateResultMcpServerPortalApplicationTagsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsCreateResult =
   | AccessApplicationsCreateResultEndUserApplication
@@ -17290,6 +17349,7 @@ export interface AccessPoliciesCreateRequestConnectionRulesRdp {
 export interface AccessPoliciesCreateRequestConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
   rdp?: AccessPoliciesCreateRequestConnectionRulesRdp;
+  ssh?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh;
 }
 export type AccessPoliciesCreateRequestMfaConfigAllowedAuthenticatorsItem =
   | "totp"
@@ -17363,9 +17423,14 @@ export interface AccessPoliciesCreateResponseConnectionRulesRdp {
   /** Clipboard formats allowed when copying from remote RDP session to local machine. */
   allowedClipboardRemoteToLocalFormats?: AccessPoliciesCreateResponseConnectionRulesRdpAllowedClipboardRemoteToLocalFormatsList | null;
 }
+export interface AccessPoliciesResponseConnectionRulesSsh {
+  usernames?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSshUsernamesList | null;
+  allowEmailAlias?: boolean | null;
+}
 export interface AccessPoliciesCreateResponseConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
   rdp?: AccessPoliciesCreateResponseConnectionRulesRdp | null;
+  ssh?: AccessPoliciesResponseConnectionRulesSsh | null;
 }
 export type AccessPoliciesCreateResponseDecision = "allow" | "deny" | "non_identity" | "bypass";
 export type AccessPoliciesCreateResponseExcludeItemGroupRuleGroup =
@@ -25973,6 +26038,10 @@ export interface AccessApplicationsGetResultEndUserApplication {
   name?: string | null;
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until November 21, 2025. If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsGetResultEndUserApplicationSelfHostedDomainsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultSelfHostedApplicationType =
   | "self_hosted"
@@ -26897,6 +26966,10 @@ export interface AccessApplicationsGetResultSelfHostedApplication {
   tags?: AccessApplicationsGetResultSelfHostedApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultSaaSApplicationAllowedIdpsList = Array<unknown>;
 export type AccessApplicationsGetResultSaaSApplicationCustomPagesList = Array<string>;
@@ -27712,6 +27785,14 @@ export interface AccessApplicationsGetResultSaaSApplication {
   tags?: AccessApplicationsGetResultSaaSApplicationTagsList | null;
   /** The application type. */
   type?: AccessApplicationsGetResultSaaSApplicationType | null;
+  /** The SSO endpoint of the application, e.g. `<team>.cloudflareaccess.com/cdn-cgi/access/sso/saml/<aud>`. */
+  domain?: string | null;
+  /** The amount of time that tokens issued for this application will be valid. */
+  sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultBrowserSSHApplicationType =
   | "self_hosted"
@@ -28636,6 +28717,10 @@ export interface AccessApplicationsGetResultBrowserSSHApplication {
   tags?: AccessApplicationsGetResultBrowserSSHApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultBrowserVNCApplicationType =
   | "self_hosted"
@@ -29560,6 +29645,10 @@ export interface AccessApplicationsGetResultBrowserVNCApplication {
   tags?: AccessApplicationsGetResultBrowserVNCApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultAppLauncherApplicationType =
   | "self_hosted"
@@ -30121,6 +30210,10 @@ export interface AccessApplicationsGetResultAppLauncherApplication {
   sessionDuration?: string | null;
   /** Determines when to skip the App Launcher landing page. */
   skipAppLauncherLoginPage?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultDeviceEnrollmentPermissionsApplicationType =
   | "self_hosted"
@@ -30666,6 +30759,10 @@ export interface AccessApplicationsGetResultDeviceEnrollmentPermissionsApplicati
   policies?: AccessApplicationsGetResultDeviceEnrollmentPermissionsApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultBrowserIsolationPermissionsApplicationType =
   | "self_hosted"
@@ -31211,6 +31308,10 @@ export interface AccessApplicationsGetResultBrowserIsolationPermissionsApplicati
   policies?: AccessApplicationsGetResultBrowserIsolationPermissionsApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultGatewayIdentityProxyEndpointApplicationType =
   | "self_hosted"
@@ -31756,6 +31857,10 @@ export interface AccessApplicationsGetResultGatewayIdentityProxyEndpointApplicat
   policies?: AccessApplicationsGetResultGatewayIdentityProxyEndpointApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultBookmarkApplicationPoliciesItemApprovalGroupsItemEmailAddressesList =
   Array<string>;
@@ -32292,6 +32397,10 @@ export interface AccessApplicationsGetResultBookmarkApplication {
   tags?: AccessApplicationsGetResultBookmarkApplicationTagsList | null;
   /** The application type. */
   type?: AccessApplicationsGetResultBookmarkApplicationType | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultInfrastructureApplicationTargetCriteriaItemProtocol = "SSH";
 export type AccessApplicationsGetResultInfrastructureApplicationTargetCriteriaItemExcludeTagsValueList =
@@ -32877,6 +32986,10 @@ export interface AccessApplicationsGetResultInfrastructureApplication {
   /** The name of the application. */
   name?: string | null;
   policies?: AccessApplicationsGetResultInfrastructureApplicationPoliciesList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultBrowserRDPApplicationTargetCriteriaItemProtocol = "RDP";
 export type AccessApplicationsGetResultBrowserRDPApplicationTargetCriteriaItemExcludeTagsValueList =
@@ -33881,6 +33994,10 @@ export interface AccessApplicationsGetResultBrowserRDPApplication {
   tags?: AccessApplicationsGetResultBrowserRDPApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultMcpServerApplicationType =
   | "self_hosted"
@@ -34731,6 +34848,10 @@ export interface AccessApplicationsGetResultMcpServerApplication {
   sessionDuration?: string | null;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: AccessApplicationsGetResultMcpServerApplicationTagsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResultMcpServerPortalApplicationType =
   | "self_hosted"
@@ -35583,6 +35704,10 @@ export interface AccessApplicationsGetResultMcpServerPortalApplication {
   sessionDuration?: string | null;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: AccessApplicationsGetResultMcpServerPortalApplicationTagsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsGetResult =
   | AccessApplicationsGetResultEndUserApplication
@@ -37236,6 +37361,7 @@ export interface AccessPoliciesGetResponseConnectionRulesRdp {
 export interface AccessPoliciesGetResponseConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
   rdp?: AccessPoliciesGetResponseConnectionRulesRdp | null;
+  ssh?: AccessPoliciesResponseConnectionRulesSsh | null;
 }
 export type AccessPoliciesGetResponseDecision = "allow" | "deny" | "non_identity" | "bypass";
 export type AccessPoliciesGetResponseExcludeItemGroupRuleGroup =
@@ -47126,6 +47252,10 @@ export interface AccessApplicationsListResultItemEndUserApplication {
   name?: string | null;
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until November 21, 2025. If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsListResultItemEndUserApplicationSelfHostedDomainsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemSelfHostedApplicationType =
   | "self_hosted"
@@ -48051,6 +48181,10 @@ export interface AccessApplicationsListResultItemSelfHostedApplication {
   tags?: AccessApplicationsListResultItemSelfHostedApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemSaaSApplicationAllowedIdpsList = Array<unknown>;
 export type AccessApplicationsListResultItemSaaSApplicationCustomPagesList = Array<string>;
@@ -48870,6 +49004,14 @@ export interface AccessApplicationsListResultItemSaaSApplication {
   tags?: AccessApplicationsListResultItemSaaSApplicationTagsList | null;
   /** The application type. */
   type?: AccessApplicationsListResultItemSaaSApplicationType | null;
+  /** The SSO endpoint of the application, e.g. `<team>.cloudflareaccess.com/cdn-cgi/access/sso/saml/<aud>`. */
+  domain?: string | null;
+  /** The amount of time that tokens issued for this application will be valid. */
+  sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemBrowserSSHApplicationType =
   | "self_hosted"
@@ -49795,6 +49937,10 @@ export interface AccessApplicationsListResultItemBrowserSSHApplication {
   tags?: AccessApplicationsListResultItemBrowserSSHApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemBrowserVNCApplicationType =
   | "self_hosted"
@@ -50720,6 +50866,10 @@ export interface AccessApplicationsListResultItemBrowserVNCApplication {
   tags?: AccessApplicationsListResultItemBrowserVNCApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemAppLauncherApplicationType =
   | "self_hosted"
@@ -51281,6 +51431,10 @@ export interface AccessApplicationsListResultItemAppLauncherApplication {
   sessionDuration?: string | null;
   /** Determines when to skip the App Launcher landing page. */
   skipAppLauncherLoginPage?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemDeviceEnrollmentPermissionsApplicationType =
   | "self_hosted"
@@ -51826,6 +51980,10 @@ export interface AccessApplicationsListResultItemDeviceEnrollmentPermissionsAppl
   policies?: AccessApplicationsListResultItemDeviceEnrollmentPermissionsApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemBrowserIsolationPermissionsApplicationType =
   | "self_hosted"
@@ -52371,6 +52529,10 @@ export interface AccessApplicationsListResultItemBrowserIsolationPermissionsAppl
   policies?: AccessApplicationsListResultItemBrowserIsolationPermissionsApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemGatewayIdentityProxyEndpointApplicationType =
   | "self_hosted"
@@ -52916,6 +53078,10 @@ export interface AccessApplicationsListResultItemGatewayIdentityProxyEndpointApp
   policies?: AccessApplicationsListResultItemGatewayIdentityProxyEndpointApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemBookmarkApplicationPoliciesItemApprovalGroupsItemEmailAddressesList =
   Array<string>;
@@ -53452,6 +53618,10 @@ export interface AccessApplicationsListResultItemBookmarkApplication {
   tags?: AccessApplicationsListResultItemBookmarkApplicationTagsList | null;
   /** The application type. */
   type?: AccessApplicationsListResultItemBookmarkApplicationType | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemInfrastructureApplicationTargetCriteriaItemProtocol =
   "SSH";
@@ -54041,6 +54211,10 @@ export interface AccessApplicationsListResultItemInfrastructureApplication {
   /** The name of the application. */
   name?: string | null;
   policies?: AccessApplicationsListResultItemInfrastructureApplicationPoliciesList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemBrowserRDPApplicationTargetCriteriaItemProtocol = "RDP";
 export type AccessApplicationsListResultItemBrowserRDPApplicationTargetCriteriaItemExcludeTagsValueList =
@@ -55049,6 +55223,10 @@ export interface AccessApplicationsListResultItemBrowserRDPApplication {
   tags?: AccessApplicationsListResultItemBrowserRDPApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemMcpServerApplicationType =
   | "self_hosted"
@@ -55899,6 +56077,10 @@ export interface AccessApplicationsListResultItemMcpServerApplication {
   sessionDuration?: string | null;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: AccessApplicationsListResultItemMcpServerApplicationTagsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItemMcpServerPortalApplicationType =
   | "self_hosted"
@@ -56753,6 +56935,10 @@ export interface AccessApplicationsListResultItemMcpServerPortalApplication {
   sessionDuration?: string | null;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: AccessApplicationsListResultItemMcpServerPortalApplicationTagsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsListResultItem =
   | AccessApplicationsListResultItemEndUserApplication
@@ -57688,6 +57874,7 @@ export interface AccessPoliciesListResultItemConnectionRulesRdp {
 export interface AccessPoliciesListResultItemConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
   rdp?: AccessPoliciesListResultItemConnectionRulesRdp | null;
+  ssh?: AccessPoliciesResponseConnectionRulesSsh | null;
 }
 export type AccessPoliciesListResultItemDecision = "allow" | "deny" | "non_identity" | "bypass";
 export type AccessPoliciesListResultItemExcludeItemGroupRuleGroup =
@@ -71296,6 +71483,10 @@ export interface AccessApplicationsUpdateResultEndUserApplication {
   name?: string | null;
   /** List of public domains that Access will secure. This field is deprecated in favor of `destinations` and will be supported until November 21, 2025. If `destinations` are provided, then `self_hosted_domains` will be ignored. */
   selfHostedDomains?: AccessApplicationsUpdateResultEndUserApplicationSelfHostedDomainsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultSelfHostedApplicationType =
   | "self_hosted"
@@ -72221,6 +72412,10 @@ export interface AccessApplicationsUpdateResultSelfHostedApplication {
   tags?: AccessApplicationsUpdateResultSelfHostedApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultSaaSApplicationAllowedIdpsList = Array<unknown>;
 export type AccessApplicationsUpdateResultSaaSApplicationCustomPagesList = Array<string>;
@@ -73040,6 +73235,14 @@ export interface AccessApplicationsUpdateResultSaaSApplication {
   tags?: AccessApplicationsUpdateResultSaaSApplicationTagsList | null;
   /** The application type. */
   type?: AccessApplicationsUpdateResultSaaSApplicationType | null;
+  /** The SSO endpoint of the application, e.g. `<team>.cloudflareaccess.com/cdn-cgi/access/sso/saml/<aud>`. */
+  domain?: string | null;
+  /** The amount of time that tokens issued for this application will be valid. */
+  sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultBrowserSSHApplicationType =
   | "self_hosted"
@@ -73965,6 +74168,10 @@ export interface AccessApplicationsUpdateResultBrowserSSHApplication {
   tags?: AccessApplicationsUpdateResultBrowserSSHApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultBrowserVNCApplicationType =
   | "self_hosted"
@@ -74890,6 +75097,10 @@ export interface AccessApplicationsUpdateResultBrowserVNCApplication {
   tags?: AccessApplicationsUpdateResultBrowserVNCApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultAppLauncherApplicationType =
   | "self_hosted"
@@ -75451,6 +75662,10 @@ export interface AccessApplicationsUpdateResultAppLauncherApplication {
   sessionDuration?: string | null;
   /** Determines when to skip the App Launcher landing page. */
   skipAppLauncherLoginPage?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultDeviceEnrollmentPermissionsApplicationType =
   | "self_hosted"
@@ -75996,6 +76211,10 @@ export interface AccessApplicationsUpdateResultDeviceEnrollmentPermissionsApplic
   policies?: AccessApplicationsUpdateResultDeviceEnrollmentPermissionsApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultBrowserIsolationPermissionsApplicationType =
   | "self_hosted"
@@ -76541,6 +76760,10 @@ export interface AccessApplicationsUpdateResultBrowserIsolationPermissionsApplic
   policies?: AccessApplicationsUpdateResultBrowserIsolationPermissionsApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultGatewayIdentityProxyEndpointApplicationType =
   | "self_hosted"
@@ -77086,6 +77309,10 @@ export interface AccessApplicationsUpdateResultGatewayIdentityProxyEndpointAppli
   policies?: AccessApplicationsUpdateResultGatewayIdentityProxyEndpointApplicationPoliciesList | null;
   /** The amount of time that tokens issued for this application will be valid. Must be in the format `300ms` or `2h45m`. Valid time units are: ns, us (or µs), ms, s, m, h. Note: unsupported for infrastructure type applications. */
   sessionDuration?: string | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultBookmarkApplicationPoliciesItemApprovalGroupsItemEmailAddressesList =
   Array<string>;
@@ -77622,6 +77849,10 @@ export interface AccessApplicationsUpdateResultBookmarkApplication {
   tags?: AccessApplicationsUpdateResultBookmarkApplicationTagsList | null;
   /** The application type. */
   type?: AccessApplicationsUpdateResultBookmarkApplicationType | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultInfrastructureApplicationTargetCriteriaItemProtocol =
   "SSH";
@@ -78211,6 +78442,10 @@ export interface AccessApplicationsUpdateResultInfrastructureApplication {
   /** The name of the application. */
   name?: string | null;
   policies?: AccessApplicationsUpdateResultInfrastructureApplicationPoliciesList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultBrowserRDPApplicationTargetCriteriaItemProtocol = "RDP";
 export type AccessApplicationsUpdateResultBrowserRDPApplicationTargetCriteriaItemExcludeTagsValueList =
@@ -79216,6 +79451,10 @@ export interface AccessApplicationsUpdateResultBrowserRDPApplication {
   tags?: AccessApplicationsUpdateResultBrowserRDPApplicationTagsList | null;
   /** Determines if users can access this application via a clientless browser isolation URL. This allows users to access private domains without connecting to Gateway. The option requires Clientless Browser Isolation to be set up with policies that allow users of this application. */
   useClientlessIsolationAppLauncherUrl?: boolean | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultMcpServerApplicationType =
   | "self_hosted"
@@ -80066,6 +80305,10 @@ export interface AccessApplicationsUpdateResultMcpServerApplication {
   sessionDuration?: string | null;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: AccessApplicationsUpdateResultMcpServerApplicationTagsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResultMcpServerPortalApplicationType =
   | "self_hosted"
@@ -80919,6 +81162,10 @@ export interface AccessApplicationsUpdateResultMcpServerPortalApplication {
   sessionDuration?: string | null;
   /** The tags you want assigned to an application. Tags are used to filter applications in the App Launcher dashboard. */
   tags?: AccessApplicationsUpdateResultMcpServerPortalApplicationTagsList | null;
+  /** When the application was created. */
+  createdAt?: string | null;
+  /** When the application was last updated. */
+  updatedAt?: string | null;
 }
 export type AccessApplicationsUpdateResult =
   | AccessApplicationsUpdateResultEndUserApplication
@@ -83504,6 +83751,7 @@ export interface AccessPoliciesUpdateRequestConnectionRulesRdp {
 export interface AccessPoliciesUpdateRequestConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
   rdp?: AccessPoliciesUpdateRequestConnectionRulesRdp;
+  ssh?: AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh;
 }
 export type AccessPoliciesUpdateRequestMfaConfigAllowedAuthenticatorsItem =
   | "totp"
@@ -83582,6 +83830,7 @@ export interface AccessPoliciesUpdateResponseConnectionRulesRdp {
 export interface AccessPoliciesUpdateResponseConnectionRules {
   /** The RDP-specific rules that define clipboard behavior for RDP connections. */
   rdp?: AccessPoliciesUpdateResponseConnectionRulesRdp | null;
+  ssh?: AccessPoliciesResponseConnectionRulesSsh | null;
 }
 export type AccessPoliciesUpdateResponseDecision = "allow" | "deny" | "non_identity" | "bypass";
 export type AccessPoliciesUpdateResponseExcludeItemGroupRuleGroup =
@@ -102019,6 +102268,8 @@ function __c174(j: number): any {
             "domain",
             "name",
             "selfHostedDomains",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -102055,6 +102306,8 @@ function __c174(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "id",
@@ -102070,6 +102323,10 @@ function __c174(j: number): any {
             "scimConfig",
             "tags",
             "type",
+            "domain",
+            "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -102106,6 +102363,8 @@ function __c174(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -102142,6 +102401,8 @@ function __c174(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -102162,6 +102423,8 @@ function __c174(j: number): any {
             "policies",
             "sessionDuration",
             "skipAppLauncherLoginPage",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -102176,6 +102439,8 @@ function __c174(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -102190,6 +102455,8 @@ function __c174(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -102204,6 +102471,8 @@ function __c174(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "id",
@@ -102215,8 +102484,20 @@ function __c174(j: number): any {
             "policies",
             "tags",
             "type",
+            "createdAt",
+            "updatedAt",
           ],
-          ["targetCriteria", "type", "id", "aud", "mfaConfig", "name", "policies"],
+          [
+            "targetCriteria",
+            "type",
+            "id",
+            "aud",
+            "mfaConfig",
+            "name",
+            "policies",
+            "createdAt",
+            "updatedAt",
+          ],
           [
             "domain",
             "targetCriteria",
@@ -102253,6 +102534,8 @@ function __c174(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -102276,6 +102559,8 @@ function __c174(j: number): any {
             "scimConfig",
             "sessionDuration",
             "tags",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -102300,6 +102585,8 @@ function __c174(j: number): any {
             "scimConfig",
             "sessionDuration",
             "tags",
+            "createdAt",
+            "updatedAt",
           ],
         ]),
       );
@@ -102964,7 +103251,7 @@ function __c193(j: number): any {
           ),
           approvalRequired: S.optional(S.NullOr(S.Boolean).pipe(T.Body("approval_required"))),
           connectionRules: S.optional(
-            S.NullOr(__S(20516, __c641, 4)).pipe(T.Body("connection_rules")),
+            S.NullOr(__S(20517, __c641, 5)).pipe(T.Body("connection_rules")),
           ),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           decision: S.optional(S.NullOr(S.String)),
@@ -107571,6 +107858,8 @@ function __c331(j: number): any {
             "domain",
             "name",
             "selfHostedDomains",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -107607,6 +107896,8 @@ function __c331(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "id",
@@ -107622,6 +107913,10 @@ function __c331(j: number): any {
             "scimConfig",
             "tags",
             "type",
+            "domain",
+            "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -107658,6 +107953,8 @@ function __c331(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -107694,6 +107991,8 @@ function __c331(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -107714,6 +108013,8 @@ function __c331(j: number): any {
             "policies",
             "sessionDuration",
             "skipAppLauncherLoginPage",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -107728,6 +108029,8 @@ function __c331(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -107742,6 +108045,8 @@ function __c331(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -107756,6 +108061,8 @@ function __c331(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "id",
@@ -107767,8 +108074,20 @@ function __c331(j: number): any {
             "policies",
             "tags",
             "type",
+            "createdAt",
+            "updatedAt",
           ],
-          ["targetCriteria", "type", "id", "aud", "mfaConfig", "name", "policies"],
+          [
+            "targetCriteria",
+            "type",
+            "id",
+            "aud",
+            "mfaConfig",
+            "name",
+            "policies",
+            "createdAt",
+            "updatedAt",
+          ],
           [
             "domain",
             "targetCriteria",
@@ -107805,6 +108124,8 @@ function __c331(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -107828,6 +108149,8 @@ function __c331(j: number): any {
             "scimConfig",
             "sessionDuration",
             "tags",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -107852,6 +108175,8 @@ function __c331(j: number): any {
             "scimConfig",
             "sessionDuration",
             "tags",
+            "createdAt",
+            "updatedAt",
           ],
         ]),
       );
@@ -108576,7 +108901,7 @@ function __c349(j: number): any {
           ),
           approvalRequired: S.optional(S.NullOr(S.Boolean).pipe(T.Body("approval_required"))),
           connectionRules: S.optional(
-            S.NullOr(__S(20516, __c641, 4)).pipe(T.Body("connection_rules")),
+            S.NullOr(__S(20517, __c641, 5)).pipe(T.Body("connection_rules")),
           ),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           decision: S.optional(S.NullOr(S.String)),
@@ -115389,6 +115714,8 @@ function __c528(j: number): any {
             "domain",
             "name",
             "selfHostedDomains",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -115425,6 +115752,8 @@ function __c528(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "id",
@@ -115440,6 +115769,10 @@ function __c528(j: number): any {
             "scimConfig",
             "tags",
             "type",
+            "domain",
+            "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -115476,6 +115809,8 @@ function __c528(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -115512,6 +115847,8 @@ function __c528(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -115532,6 +115869,8 @@ function __c528(j: number): any {
             "policies",
             "sessionDuration",
             "skipAppLauncherLoginPage",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -115546,6 +115885,8 @@ function __c528(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -115560,6 +115901,8 @@ function __c528(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -115574,6 +115917,8 @@ function __c528(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "id",
@@ -115585,8 +115930,20 @@ function __c528(j: number): any {
             "policies",
             "tags",
             "type",
+            "createdAt",
+            "updatedAt",
           ],
-          ["targetCriteria", "type", "id", "aud", "mfaConfig", "name", "policies"],
+          [
+            "targetCriteria",
+            "type",
+            "id",
+            "aud",
+            "mfaConfig",
+            "name",
+            "policies",
+            "createdAt",
+            "updatedAt",
+          ],
           [
             "domain",
             "targetCriteria",
@@ -115623,6 +115980,8 @@ function __c528(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -115646,6 +116005,8 @@ function __c528(j: number): any {
             "scimConfig",
             "sessionDuration",
             "tags",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -115670,6 +116031,8 @@ function __c528(j: number): any {
             "scimConfig",
             "sessionDuration",
             "tags",
+            "createdAt",
+            "updatedAt",
           ],
         ]),
       );
@@ -116426,7 +116789,7 @@ function __c543(j: number): any {
           name: S.String,
           approvalGroups: S.optional(__S(19873, __c621, 1).pipe(T.Body("approval_groups"))),
           approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
-          connectionRules: S.optional(__S(20546, __c642, 2).pipe(T.Body("connection_rules"))),
+          connectionRules: S.optional(__S(20547, __c642, 3).pipe(T.Body("connection_rules"))),
           exclude: S.optional(__S(17377, __c543, 1)),
           isolationRequired: S.optional(S.Boolean.pipe(T.Body("isolation_required"))),
           mfaConfig: S.optional(__S(20544, __c642, 0).pipe(T.Body("mfa_config"))),
@@ -116558,7 +116921,7 @@ function __c543(j: number): any {
           ),
           approvalRequired: S.optional(S.NullOr(S.Boolean).pipe(T.Body("approval_required"))),
           connectionRules: S.optional(
-            S.NullOr(__S(20516, __c641, 4)).pipe(T.Body("connection_rules")),
+            S.NullOr(__S(20517, __c641, 5)).pipe(T.Body("connection_rules")),
           ),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           decision: S.optional(S.NullOr(S.String)),
@@ -118885,6 +119248,8 @@ function __c614(j: number): any {
             "domain",
             "name",
             "selfHostedDomains",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -118921,6 +119286,8 @@ function __c614(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "id",
@@ -118936,6 +119303,10 @@ function __c614(j: number): any {
             "scimConfig",
             "tags",
             "type",
+            "domain",
+            "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -118972,6 +119343,8 @@ function __c614(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "domain",
@@ -119008,6 +119381,8 @@ function __c614(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -119028,6 +119403,8 @@ function __c614(j: number): any {
             "policies",
             "sessionDuration",
             "skipAppLauncherLoginPage",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -119042,6 +119419,8 @@ function __c614(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -119056,6 +119435,8 @@ function __c614(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -119070,6 +119451,8 @@ function __c614(j: number): any {
             "name",
             "policies",
             "sessionDuration",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "id",
@@ -119081,8 +119464,20 @@ function __c614(j: number): any {
             "policies",
             "tags",
             "type",
+            "createdAt",
+            "updatedAt",
           ],
-          ["targetCriteria", "type", "id", "aud", "mfaConfig", "name", "policies"],
+          [
+            "targetCriteria",
+            "type",
+            "id",
+            "aud",
+            "mfaConfig",
+            "name",
+            "policies",
+            "createdAt",
+            "updatedAt",
+          ],
           [
             "domain",
             "targetCriteria",
@@ -119119,6 +119514,8 @@ function __c614(j: number): any {
             "skipInterstitial",
             "tags",
             "useClientlessIsolationAppLauncherUrl",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -119142,6 +119539,8 @@ function __c614(j: number): any {
             "scimConfig",
             "sessionDuration",
             "tags",
+            "createdAt",
+            "updatedAt",
           ],
           [
             "type",
@@ -119166,6 +119565,8 @@ function __c614(j: number): any {
             "scimConfig",
             "sessionDuration",
             "tags",
+            "createdAt",
+            "updatedAt",
           ],
         ]),
       );
@@ -120109,7 +120510,7 @@ function __c640(j: number): any {
           name: S.String,
           approvalGroups: S.optional(__S(19873, __c621, 1).pipe(T.Body("approval_groups"))),
           approvalRequired: S.optional(S.Boolean.pipe(T.Body("approval_required"))),
-          connectionRules: S.optional(__S(20546, __c642, 2).pipe(T.Body("connection_rules"))),
+          connectionRules: S.optional(__S(20547, __c642, 3).pipe(T.Body("connection_rules"))),
           exclude: S.optional(__S(20481, __c640, 1)),
           isolationRequired: S.optional(S.Boolean.pipe(T.Body("isolation_required"))),
           mfaConfig: S.optional(__S(20544, __c642, 0).pipe(T.Body("mfa_config"))),
@@ -120237,7 +120638,7 @@ function __c640(j: number): any {
           ),
           approvalRequired: S.optional(S.NullOr(S.Boolean).pipe(T.Body("approval_required"))),
           connectionRules: S.optional(
-            S.NullOr(__S(20516, __c641, 4)).pipe(T.Body("connection_rules")),
+            S.NullOr(__S(20517, __c641, 5)).pipe(T.Body("connection_rules")),
           ),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           decision: S.optional(S.NullOr(S.String)),
@@ -120308,12 +120709,17 @@ function __c641(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rdp: S.optional(S.NullOr(__S(20515, __c641, 3))),
+          usernames: S.optional(S.NullOr(__S(15616, __c488, 0))),
+          allowEmailAlias: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_email_alias"))),
         }),
-      ).annotate({
-        identifier:
-          "AccessApplicationsCreateResultSelfHostedApplicationPoliciesItemConnectionRules",
-      });
+      ).annotate({ identifier: "AccessPoliciesResponseConnectionRulesSsh" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          rdp: S.optional(S.NullOr(__S(20515, __c641, 3))),
+          ssh: S.optional(S.NullOr(__S(20516, __c641, 4))),
+        }),
+      ).annotate({ identifier: "AccessPoliciesCreateResponseConnectionRules" });
   }
 }
 function __c642(j: number): any {
@@ -120345,12 +120751,20 @@ function __c642(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rdp: S.optional(__S(20545, __c642, 1)),
+          usernames: __S(15616, __c488, 0),
+          allowEmailAlias: S.optional(S.Boolean.pipe(T.Body("allow_email_alias"))),
         }),
       ).annotate({
         identifier:
-          "AccessApplicationsCreateRequestPoliciesSelfHostedApplicationItemCase2ConnectionRules",
+          "AccessApplicationsCreateRequestPoliciesInfrastructureApplicationItemConnectionRulesSsh",
       });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          rdp: S.optional(__S(20545, __c642, 1)),
+          ssh: S.optional(__S(20546, __c642, 2)),
+        }),
+      ).annotate({ identifier: "AccessPoliciesCreateRequestConnectionRules" });
   }
 }
 function __c643(j: number): any {

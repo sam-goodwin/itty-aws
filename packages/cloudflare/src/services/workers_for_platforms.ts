@@ -220,6 +220,15 @@ export class VectorizeIndexNotFound
     [{ code: 10159 }],
   ) {}
 
+export class WorkerHasNoVersions
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<WorkerHasNoVersions>()("WorkerHasNoVersions", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 404, message: { includes: "has no versions" } }],
+  ) {}
+
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretTextType =
   "secret_text";
 export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText {
@@ -4891,6 +4900,26 @@ export interface PutDispatchNamespaceScriptMetadataCache {
 }
 export type PutDispatchNamespaceScriptMetadataStreamingTailConsumersList =
   Array<PutDispatchNamespaceScriptTailConsumer>;
+export type PutDispatchNamespaceScriptMetadataExportType = "worker" | "durable-object";
+export type PutDispatchNamespaceScriptMetadataExportState =
+  | "created"
+  | "deleted"
+  | "renamed"
+  | "transferred"
+  | "expecting-transfer";
+export interface PutDispatchNamespaceScriptMetadataExport {
+  type?: PutDispatchNamespaceScriptMetadataExportType | (string & {});
+  cache?: PutDispatchNamespaceScriptMetadataCache;
+  storage?: string;
+  container?: string;
+  state?: PutDispatchNamespaceScriptMetadataExportState | (string & {});
+  renamedTo?: string;
+  transferredTo?: string;
+  transferFrom?: string;
+}
+export type PutDispatchNamespaceScriptMetadataExports = {
+  [key: string]: PutDispatchNamespaceScriptMetadataExport | undefined;
+};
 export interface PutDispatchNamespaceScriptMetadata {
   annotations?: PutDispatchNamespaceScriptMetadataAnnotations;
   assets?: PutDispatchNamespaceScriptMetadataAssets;
@@ -4912,6 +4941,8 @@ export interface PutDispatchNamespaceScriptMetadata {
   usageModel?: PutDispatchNamespaceScriptMetadataUsageModel | (string & {});
   cacheOptions?: PutDispatchNamespaceScriptMetadataCache;
   streamingTailConsumers?: PutDispatchNamespaceScriptMetadataStreamingTailConsumersList | null;
+  /** Per-export settings keyed by the verbatim export name (default for the default export). */
+  exports?: PutDispatchNamespaceScriptMetadataExports;
 }
 export interface PutDispatchNamespaceScriptRequest {
   /** Identifier. */
@@ -5953,6 +5984,7 @@ export type GetDispatchNamespaceScriptSettingError =
   | DispatchNamespaceNotFound
   | DispatchNamespaceScriptNotFound
   | Forbidden
+  | WorkerHasNoVersions
   | CloudflareOpError;
 /** Get settings for a script uploaded to a Workers for Platforms dispatch namespace. */
 export const getDispatchNamespaceScriptSetting: API.OperationMethod<
@@ -5967,6 +5999,7 @@ export const getDispatchNamespaceScriptSetting: API.OperationMethod<
     DispatchNamespaceNotFound,
     DispatchNamespaceScriptNotFound,
     Forbidden,
+    WorkerHasNoVersions,
     CloudflareRateLimited,
     CloudflareError,
   ],
@@ -6070,8 +6103,8 @@ export const putDispatchNamespaceScript: API.OperationMethod<
   PutDispatchNamespaceScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c26, 16) as any as S.Schema<PutDispatchNamespaceScriptRequest>,
-  output: __S(852, __c26, 20) as any as S.Schema<PutDispatchNamespaceScriptResponse>,
+  input: __S(850, __c26, 18) as any as S.Schema<PutDispatchNamespaceScriptRequest>,
+  output: __S(854, __c26, 22) as any as S.Schema<PutDispatchNamespaceScriptResponse>,
   errors: [
     DispatchNamespaceNotFound,
     Forbidden,
@@ -7414,6 +7447,7 @@ function __c24(j: number): any {
               method: "PATCH",
               uri: "/accounts/{account_id}/workers/dispatch/namespaces/{dispatch_namespace}/scripts/{script_name}/settings",
               code: 200,
+              contentType: "multipart",
             }),
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7833,6 +7867,21 @@ function __c26(j: number): any {
     case 15:
       return S.suspend(() =>
         S.Struct({
+          type: S.optional(S.String),
+          cache: S.optional(__S(846, __c26, 14)),
+          storage: S.optional(S.String),
+          container: S.optional(S.String),
+          state: S.optional(S.String),
+          renamedTo: S.optional(S.String.pipe(T.Body("renamed_to"))),
+          transferredTo: S.optional(S.String.pipe(T.Body("transferred_to"))),
+          transferFrom: S.optional(S.String.pipe(T.Body("transfer_from"))),
+        }),
+      ).annotate({ identifier: "PutDispatchNamespaceScriptMetadataExport" });
+    case 16:
+      return S.Record(S.String, __S(847, __c26, 15));
+    case 17:
+      return S.suspend(() =>
+        S.Struct({
           annotations: S.optional(__S(833, __c26, 1)),
           assets: S.optional(__S(836, __c26, 4)),
           bindings: S.optional(__S(838, __c26, 6)),
@@ -7855,16 +7904,17 @@ function __c26(j: number): any {
           streamingTailConsumers: S.optional(
             S.NullOr(__S(802, __c25, 2)).pipe(T.Body("streaming_tail_consumers")),
           ),
+          exports: S.optional(__S(848, __c26, 16).pipe(T.KeyDictionary({}))),
         }),
       ).annotate({ identifier: "PutDispatchNamespaceScriptMetadata" });
-    case 16:
+    case 18:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
           scriptName: S.String.pipe(T.Label("script_name")),
           bindingsInherit: S.optional(S.String.pipe(T.Query("bindings_inherit"))),
-          metadata: __S(847, __c26, 15).pipe(
+          metadata: __S(849, __c26, 17).pipe(
             T.KeyDictionary({
               abrLevel: "abr_level",
               allowedDestinationAddresses: "allowed_destination_addresses",
@@ -7966,6 +8016,9 @@ function __c26(j: number): any {
               workflowName: "workflow_name",
               zoneId: "zone_id",
               zoneName: "zone_name",
+              renamedTo: "renamed_to",
+              transferredTo: "transferred_to",
+              transferFrom: "transfer_from",
             }),
           ),
           files: S.optional(S.Unknown.pipe(T.FormDataFile())),
@@ -7980,7 +8033,7 @@ function __c26(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutDispatchNamespaceScriptRequest" });
-    case 17:
+    case 19:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["type", "cache", "state"],
@@ -7991,9 +8044,9 @@ function __c26(j: number): any {
           ["state", "storage", "transferFrom", "type", "container"],
         ]),
       );
-    case 18:
-      return S.Record(S.String, __S(849, __c26, 17));
-    case 19:
+    case 20:
+      return S.Record(S.String, __S(851, __c26, 19));
+    case 21:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
           ["mode", "lastAnalyzedAt", "status"],
@@ -8006,7 +8059,7 @@ function __c26(j: number): any {
           ["mode", "target", "lastAnalyzedAt", "status"],
         ]),
       );
-    case 20:
+    case 22:
       return S.suspend(() =>
         S.Struct({
           startupTimeMs: S.Number.pipe(T.Body("startup_time_ms")),
@@ -8019,7 +8072,7 @@ function __c26(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           entryPoint: S.optional(S.NullOr(S.String).pipe(T.Body("entry_point"))),
           etag: S.optional(S.NullOr(S.String)),
-          exports: S.optional(S.NullOr(__S(850, __c26, 18))),
+          exports: S.optional(S.NullOr(__S(852, __c26, 20))),
           handlers: S.optional(S.NullOr(__S(128, __c4, 0))),
           hasAssets: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_assets"))),
           hasModules: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_modules"))),
@@ -8029,7 +8082,7 @@ function __c26(j: number): any {
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           namedHandlers: S.optional(S.NullOr(__S(449, __c14, 1)).pipe(T.Body("named_handlers"))),
           observability: S.optional(S.NullOr(__S(420, __c13, 4))),
-          placement: S.optional(S.NullOr(__S(851, __c26, 19))),
+          placement: S.optional(S.NullOr(__S(853, __c26, 21))),
           placementMode: S.optional(S.NullOr(S.String).pipe(T.Body("placement_mode"))),
           placementStatus: S.optional(S.NullOr(S.String).pipe(T.Body("placement_status"))),
           tag: S.optional(S.NullOr(S.String)),
