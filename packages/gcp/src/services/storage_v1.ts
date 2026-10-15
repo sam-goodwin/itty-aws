@@ -108,6 +108,20 @@ export class ObjectOwnerAclRequired
     ],
   ) {}
 
+/** The object's live generation or metageneration does not match the request's ifGenerationMatch / ifMetagenerationMatch precondition (HTTP 412). Another writer changed or replaced the object. */
+export class ObjectPreconditionFailed
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<ObjectPreconditionFailed>()("ObjectPreconditionFailed", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }),
+    [{ status: 412 }],
+  ) {}
+
 /** An AdvanceRelocateBucketOperation request. */
 export interface AdvanceRelocateBucketOperationRequest {
   /** Specifies the duration after which the relocation will revert to the sync stage if the relocation hasn't succeeded. Optional, if not supplied, a default value of 12h will be used. */
@@ -4931,7 +4945,13 @@ export const deleteObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type DeleteObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | ObjectPreconditionFailed
+  | GcpOpError;
 /** Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used. */
 export const deleteObjects: API.OperationMethod<
   DeleteObjectsRequest,
@@ -4941,7 +4961,7 @@ export const deleteObjects: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectsRequest,
   output: DeleteObjectsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  errors: [NotFound, Forbidden, BadRequest, Conflict, ObjectPreconditionFailed, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
@@ -5745,7 +5765,13 @@ export const patchObjectAccessControls: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PatchObjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
+export type PatchObjectsError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | ObjectPreconditionFailed
+  | GcpOpError;
 /** Patches an object's metadata. */
 export const patchObjects: API.OperationMethod<
   PatchObjectsRequest,
@@ -5755,7 +5781,7 @@ export const patchObjects: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PatchObjectsRequest,
   output: Storage_Object,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  errors: [NotFound, Forbidden, BadRequest, Conflict, ObjectPreconditionFailed, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
