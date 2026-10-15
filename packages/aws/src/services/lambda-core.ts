@@ -80,6 +80,18 @@ export class NetworkConnectorLimitExceededException
     { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
+export class OperatorRoleNotAssumable
+  extends /*@__PURE__*/ S.TaggedError<OperatorRoleNotAssumable>()(
+    "OperatorRoleNotAssumable",
+    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.SyntheticError({
+      from: "InvalidParameterValueException",
+      message: {
+        matches:
+          "unable to assume the provided NetworkConnectorOperatorRole|invalid ConnectorOperatorRole permissions",
+      },
+    }),
+  ) {}
 export class ResourceConflictException
   extends /*@__PURE__*/ S.TaggedError<ResourceConflictException>()(
     "ResourceConflictException",
@@ -546,6 +558,7 @@ export type CreateNetworkConnectorError =
   | ResourceConflictException
   | ServiceException
   | TooManyRequestsException
+  | OperatorRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a network connector that enables Lambda compute resources to route outbound traffic through your Amazon VPC. The network connector provisions elastic network interfaces (ENIs) in the subnets you specify, providing a managed network path to private resources such as databases, caches, and internal APIs.
@@ -568,6 +581,7 @@ export const createNetworkConnector: API.OperationMethod<
     ResourceConflictException,
     ServiceException,
     TooManyRequestsException,
+    OperatorRoleNotAssumable,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -713,6 +727,7 @@ export type UpdateNetworkConnectorError =
   | ResourceNotFoundException
   | ServiceException
   | TooManyRequestsException
+  | OperatorRoleNotAssumable
   | CommonErrors;
 /**
  * Updates the VPC configuration or operator role of an existing network connector. You can modify the subnet IDs, security group IDs, network protocol, or operator role. The connector must be in `ACTIVE` state to accept updates.
@@ -736,6 +751,7 @@ export const updateNetworkConnector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
     TooManyRequestsException,
+    OperatorRoleNotAssumable,
   ],
   protocol: AwsProtocol,
   retry: Retry,

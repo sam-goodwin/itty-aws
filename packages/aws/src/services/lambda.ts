@@ -189,6 +189,36 @@ export class ENINotReadyException
     { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(502),
   ).pipe(C.withServerError) {}
+export class ExecutionRoleMissingPermissions
+  extends /*@__PURE__*/ S.TaggedError<ExecutionRoleMissingPermissions>()(
+    "ExecutionRoleMissingPermissions",
+    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.SyntheticError({
+      from: "InvalidParameterValueException",
+      message: {
+        matches:
+          "The function execution role does not have permissions to call|Cannot access stream|Please ensure the role can perform the GetRecords",
+      },
+    }),
+  ) {}
+export class ExecutionRoleMissingVpcPermissions
+  extends /*@__PURE__*/ S.TaggedError<ExecutionRoleMissingVpcPermissions>()(
+    "ExecutionRoleMissingVpcPermissions",
+    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.SyntheticError({
+      from: "InvalidParameterValueException",
+      message: { includes: "does not have permissions to call CreateNetworkInterface" },
+    }),
+  ) {}
+export class ExecutionRoleNotAssumable
+  extends /*@__PURE__*/ S.TaggedError<ExecutionRoleNotAssumable>()(
+    "ExecutionRoleNotAssumable",
+    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.SyntheticError({
+      from: "InvalidParameterValueException",
+      message: { matches: "cannot be assumed by Lambda|Please add Lambda as a Trusted Entity" },
+    }),
+  ) {}
 export class FunctionVersionsPerCapacityProviderLimitExceededException
   extends /*@__PURE__*/ S.TaggedError<FunctionVersionsPerCapacityProviderLimitExceededException>()(
     "FunctionVersionsPerCapacityProviderLimitExceededException",
@@ -249,6 +279,18 @@ export class KMSDisabledException
     { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(502),
   ).pipe(C.withServerError) {}
+export class KmsGrantPrincipalNotReady
+  extends /*@__PURE__*/ S.TaggedError<KmsGrantPrincipalNotReady>()(
+    "KmsGrantPrincipalNotReady",
+    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.SyntheticError({
+      from: "InvalidParameterValueException",
+      message: {
+        matches:
+          "KMS key is invalid for CreateGrant[\\s\\S]*ARN does not refer to a valid principal",
+      },
+    }),
+  ) {}
 export class KMSInvalidStateException
   extends /*@__PURE__*/ S.TaggedError<KMSInvalidStateException>()(
     "KMSInvalidStateException",
@@ -368,6 +410,15 @@ export class S3FilesMountTimeoutException
     { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
     T.HttpError(408),
   ).pipe(C.withTimeoutError) {}
+export class SecurityGroupNotFound
+  extends /*@__PURE__*/ S.TaggedError<SecurityGroupNotFound>()(
+    "SecurityGroupNotFound",
+    { Type: S.optional(S.String), message: S.optional(S.String).pipe(T.ErrorMessage()) },
+    T.SyntheticError({
+      from: "InvalidParameterValueException",
+      message: { includes: "InvalidGroup.NotFound" },
+    }),
+  ) {}
 export class SerializedRequestEntityTooLargeException
   extends /*@__PURE__*/ S.TaggedError<SerializedRequestEntityTooLargeException>()(
     "SerializedRequestEntityTooLargeException",
@@ -1226,6 +1277,13 @@ export type SourceAccessType =
   | "VIRTUAL_HOST"
   | "CLIENT_CERTIFICATE_TLS_AUTH"
   | "SERVER_ROOT_CA_CERTIFICATE"
+  | "OAUTHBEARER_AUTH"
+  | "OAUTHBEARER_SCOPE"
+  | "OAUTHBEARER_AUDIENCE"
+  | "OAUTHBEARER_LOGICAL_CLUSTER"
+  | "OAUTHBEARER_IDENTITY_POOL"
+  | "IAM_AUTH"
+  | "IAM_OAUTHBEARER_AUTH"
   | (string & {});
 export const SourceAccessType = S.String;
 
@@ -1268,6 +1326,7 @@ export type KafkaSchemaRegistryAuthType =
   | "BASIC_AUTH"
   | "CLIENT_CERTIFICATE_TLS_AUTH"
   | "SERVER_ROOT_CA_CERTIFICATE"
+  | "OAUTHBEARER_AUTH"
   | (string & {});
 export const KafkaSchemaRegistryAuthType = S.String;
 
@@ -5560,7 +5619,7 @@ export type CreateAliasError =
   | ParseError
   | CommonErrors;
 /**
- * Creates an alias for a Lambda function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
+ * Creates an alias for a Lambda Event Function version. Use aliases to provide clients with a function identifier that you can update to invoke a different version.
  *
  * You can also map an alias to split invocation requests between two versions. Use the `RoutingConfig` parameter to specify a second version and the percentage of invocation requests that it receives.
  */
@@ -5595,7 +5654,7 @@ export type CreateCapacityProviderError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Creates a capacity provider that manages compute resources for Lambda functions
+ * Creates a capacity provider that manages compute resources for Lambda Event Functions
  */
 export const createCapacityProvider: API.OperationMethod<
   CreateCapacityProviderRequest,
@@ -5646,9 +5705,11 @@ export type CreateEventSourceMappingError =
   | TooManyRequestsException
   | RequestLimitExceeded
   | ResourceInUseException
+  | ExecutionRoleNotAssumable
+  | ExecutionRoleMissingPermissions
   | CommonErrors;
 /**
- * Creates a mapping between an event source and an Lambda function. Lambda reads items from the event source and invokes the function.
+ * Creates a mapping between an event source and an Lambda Event Function. Lambda reads items from the event source and invokes the function.
  *
  * For details about how to configure different event sources, see the following topics.
  *
@@ -5712,6 +5773,8 @@ export const createEventSourceMapping: API.OperationMethod<
     TooManyRequestsException,
     RequestLimitExceeded,
     ResourceInUseException,
+    ExecutionRoleNotAssumable,
+    ExecutionRoleMissingPermissions,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5730,9 +5793,13 @@ export type CreateFunctionError =
   | ServiceException
   | TooManyRequestsException
   | LambdaInternalKmsError
+  | ExecutionRoleNotAssumable
+  | ExecutionRoleMissingVpcPermissions
+  | KmsGrantPrincipalNotReady
+  | SecurityGroupNotFound
   | CommonErrors;
 /**
- * Creates a Lambda function. To create a function, you need a deployment package and an execution role. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
+ * Creates a Lambda Event Function. To create a function, you need a deployment package and an execution role. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
  *
  * If the deployment package is a container image, then you set the package type to `Image`. For a container image, the code property must include the URI of a container image in the Amazon ECR registry. You do not need to specify the handler and runtime properties.
  *
@@ -5770,6 +5837,10 @@ export const createFunction: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
     LambdaInternalKmsError,
+    ExecutionRoleNotAssumable,
+    ExecutionRoleMissingVpcPermissions,
+    KmsGrantPrincipalNotReady,
+    SecurityGroupNotFound,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5819,7 +5890,7 @@ export type DeleteAliasError =
   | RequestLimitExceeded
   | CommonErrors;
 /**
- * Deletes a Lambda function alias.
+ * Deletes a Lambda Event Function alias.
  */
 export const deleteAlias: API.OperationMethod<
   DeleteAliasRequest,
@@ -5946,7 +6017,7 @@ export type DeleteFunctionError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Deletes a Lambda function. To delete a specific function version, use the `Qualifier` parameter. Otherwise, all versions and aliases are deleted. This doesn't require the user to have explicit permissions for DeleteAlias.
+ * Deletes a Lambda Event Function. To delete a specific function version, use the `Qualifier` parameter. Otherwise, all versions and aliases are deleted. This doesn't require the user to have explicit permissions for DeleteAlias.
  *
  * A deleted Lambda function cannot be recovered. Ensure that you specify the correct function name and version before deleting.
  *
@@ -6231,7 +6302,7 @@ export type GetAliasError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Returns details about a Lambda function alias.
+ * Returns details about a Lambda Event Function alias.
  */
 export const getAlias: API.OperationMethod<
   GetAliasRequest,
@@ -6559,7 +6630,7 @@ export type GetFunctionConfigurationError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Returns the version-specific settings of a Lambda function or version. The output includes only options that can vary between versions of a function. To modify these settings, use UpdateFunctionConfiguration.
+ * Returns the version-specific settings of a Lambda Event Function or version. The output includes only options that can vary between versions of a function. To modify these settings, use UpdateFunctionConfiguration.
  *
  * To get all of a function's details, including function-level settings, use GetFunction.
  */
@@ -6962,7 +7033,7 @@ export type InvokeError =
   | ParseError
   | CommonErrors;
 /**
- * Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. By default, Lambda invokes your function synchronously (i.e. the`InvocationType` is `RequestResponse`). To invoke a function asynchronously, set `InvocationType` to `Event`. Lambda passes the `ClientContext` object to your function for synchronous invocations only.
+ * Invokes a Lambda Event Function. You can invoke a function synchronously (and wait for the response), or asynchronously. By default, Lambda invokes your function synchronously (i.e. the`InvocationType` is `RequestResponse`). To invoke a function asynchronously, set `InvocationType` to `Event`. Lambda passes the `ClientContext` object to your function for synchronous invocations only.
  *
  * For synchronous invocations, the maximum payload size is 6 MB. For asynchronous invocations, the maximum payload size is 1 MB.
  *
@@ -7123,6 +7194,9 @@ export const invokeAsync: API.OperationMethod<
 }));
 
 export type InvokeWithResponseStreamError =
+  | CodeArtifactUserDeletedException
+  | CodeArtifactUserFailedException
+  | CodeArtifactUserPendingException
   | EC2AccessDeniedException
   | EC2ThrottledException
   | EC2UnexpectedException
@@ -7162,7 +7236,7 @@ export type InvokeWithResponseStreamError =
   | UnsupportedMediaTypeException
   | CommonErrors;
 /**
- * Configure your Lambda functions to stream response payloads back to clients. For more information, see Configuring a Lambda function to stream responses.
+ * Configure your Lambda Event Functions to stream response payloads back to clients. For more information, see Configuring a Lambda function to stream responses.
  *
  * This operation requires permission for the lambda:InvokeFunction action. For details on how to set up permissions for cross-account invocations, see Granting function access to other accounts.
  */
@@ -7175,6 +7249,9 @@ export const invokeWithResponseStream: API.OperationMethod<
   input: InvokeWithResponseStreamRequest,
   output: InvokeWithResponseStreamResponse,
   errors: [
+    CodeArtifactUserDeletedException,
+    CodeArtifactUserFailedException,
+    CodeArtifactUserPendingException,
     EC2AccessDeniedException,
     EC2ThrottledException,
     EC2UnexpectedException,
@@ -7225,7 +7302,7 @@ export type ListAliasesError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Returns a list of aliases for a Lambda function.
+ * Returns a list of aliases for a Lambda Event Function.
  */
 export const listAliases: API.PaginatedOperationMethod<
   ListAliasesRequest,
@@ -7427,7 +7504,7 @@ export type ListFunctionsError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Returns a list of Lambda functions, with the version-specific configuration of each. Lambda returns up to 50 functions per call.
+ * Returns a list of Lambda Event Functions, with the version-specific configuration of each. Lambda returns up to 50 functions per call.
  *
  * Set `FunctionVersion` to `ALL` to include all published versions of each function in addition to the unpublished version.
  *
@@ -8378,7 +8455,7 @@ export type UpdateAliasError =
   | ParseError
   | CommonErrors;
 /**
- * Updates the configuration of a Lambda function alias.
+ * Updates the configuration of a Lambda Event Function alias.
  */
 export const updateAlias: API.OperationMethod<
   UpdateAliasRequest,
@@ -8464,6 +8541,8 @@ export type UpdateEventSourceMappingError =
   | TooManyRequestsException
   | RequestLimitExceeded
   | ParseError
+  | ExecutionRoleNotAssumable
+  | ExecutionRoleMissingPermissions
   | CommonErrors;
 /**
  * Updates an event source mapping. You can change the function that Lambda invokes, or pause invocation and resume later from the same location.
@@ -8531,6 +8610,8 @@ export const updateEventSourceMapping: API.OperationMethod<
     TooManyRequestsException,
     RequestLimitExceeded,
     ParseError,
+    ExecutionRoleNotAssumable,
+    ExecutionRoleMissingPermissions,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8550,9 +8631,12 @@ export type UpdateFunctionCodeError =
   | TooManyRequestsException
   | RequestLimitExceeded
   | ParseError
+  | ExecutionRoleNotAssumable
+  | ExecutionRoleMissingVpcPermissions
+  | KmsGrantPrincipalNotReady
   | CommonErrors;
 /**
- * Updates a Lambda function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see Configuring code signing for Lambda.
+ * Updates a Lambda Event Function's code. If code signing is enabled for the function, the code package must be signed by a trusted publisher. For more information, see Configuring code signing for Lambda.
  *
  * If the function's package type is `Image`, then you must specify the code package in `ImageUri` as the URI of a container image in the Amazon ECR registry.
  *
@@ -8585,6 +8669,9 @@ export const updateFunctionCode: API.OperationMethod<
     TooManyRequestsException,
     RequestLimitExceeded,
     ParseError,
+    ExecutionRoleNotAssumable,
+    ExecutionRoleMissingVpcPermissions,
+    KmsGrantPrincipalNotReady,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -8603,9 +8690,13 @@ export type UpdateFunctionConfigurationError =
   | TooManyRequestsException
   | RequestLimitExceeded
   | ParseError
+  | ExecutionRoleNotAssumable
+  | ExecutionRoleMissingVpcPermissions
+  | KmsGrantPrincipalNotReady
+  | SecurityGroupNotFound
   | CommonErrors;
 /**
- * Modify the version-specific settings of a Lambda function.
+ * Modifies the version-specific settings of a Lambda Event Function.
  *
  * When you update a function, Lambda provisions an instance of the function and its supporting resources. If your function connects to a VPC, this process can take a minute. During this time, you can't modify the function, but you can still invoke it. The `LastUpdateStatus`, `LastUpdateStatusReason`, and `LastUpdateStatusReasonCode` fields in the response from GetFunctionConfiguration indicate when the update is complete and the function is processing events with the new configuration. For more information, see Lambda function states.
  *
@@ -8633,6 +8724,10 @@ export const updateFunctionConfiguration: API.OperationMethod<
     TooManyRequestsException,
     RequestLimitExceeded,
     ParseError,
+    ExecutionRoleNotAssumable,
+    ExecutionRoleMissingVpcPermissions,
+    KmsGrantPrincipalNotReady,
+    SecurityGroupNotFound,
   ],
   protocol: AwsProtocol,
   retry: Retry,

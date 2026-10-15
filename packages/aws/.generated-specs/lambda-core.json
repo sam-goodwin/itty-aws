@@ -82,6 +82,9 @@
         },
         {
           "target": "com.amazonaws.lambdacore#TooManyRequestsException"
+        },
+        {
+          "target": "aws.synthetic#OperatorRoleNotAssumable"
         }
       ],
       "traits": {
@@ -2538,6 +2541,9 @@
         },
         {
           "target": "com.amazonaws.lambdacore#TooManyRequestsException"
+        },
+        {
+          "target": "aws.synthetic#OperatorRoleNotAssumable"
         }
       ],
       "traits": {
@@ -2680,6 +2686,32 @@
       "traits": {
         "smithy.api#output": {},
         "smithy.api#tags": ["feature:public"]
+      }
+    },
+    "aws.synthetic#OperatorRoleNotAssumable": {
+      "type": "structure",
+      "members": {
+        "Type": {
+          "target": "com.amazonaws.lambdacore#String",
+          "traits": {
+            "smithy.api#documentation": "<p>The exception type.</p>",
+            "smithy.api#tags": ["feature:public"]
+          }
+        },
+        "message": {
+          "target": "com.amazonaws.lambdacore#String",
+          "traits": {
+            "smithy.api#tags": ["feature:public"]
+          }
+        }
+      },
+      "traits": {
+        "aws.codegen#synthetic": {
+          "from": "InvalidParameterValueException",
+          "message": {
+            "matches": "unable to assume the provided NetworkConnectorOperatorRole|invalid ConnectorOperatorRole permissions"
+          }
+        }
       }
     }
   }
