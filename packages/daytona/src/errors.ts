@@ -36,7 +36,7 @@ import type {
   NotFound as CoreNotFound,
   UnprocessableEntity as CoreUnprocessableEntity,
 } from "@distilled.cloud/core/errors";
-import * as Schema from "@distilled.cloud/core/schema-lite";
+import * as Schema from "@distilled.cloud/core/schema-lite-typed";
 
 /**
  * Unknown Daytona error -- returned when a failed response's HTTP status has

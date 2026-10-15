@@ -28,7 +28,7 @@ export {
 export type { DefaultErrors } from "@distilled.cloud/core/errors";
 
 import * as Category from "@distilled.cloud/core/category";
-import * as Schema from "@distilled.cloud/core/schema-lite";
+import * as Schema from "@distilled.cloud/core/schema-lite-typed";
 
 /** Unknown Zendesk error -- returned when nothing else matches the failure. */
 export class UnknownZendeskError

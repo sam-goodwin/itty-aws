@@ -36,7 +36,7 @@ import type {
   NotFound,
   UnprocessableEntity,
 } from "@distilled.cloud/core/errors";
-import * as Schema from "@distilled.cloud/core/schema-lite";
+import * as Schema from "@distilled.cloud/core/schema-lite-typed";
 
 /**
  * Catch-all for EAS GraphQL errors that don't match any other tagged class.

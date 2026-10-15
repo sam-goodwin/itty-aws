@@ -1,4 +1,4 @@
-import * as S from "@distilled.cloud/core/schema-lite";
+import * as S from "@distilled.cloud/core/schema-lite-typed";
 import {
   all,
   annotationMetaSymbol,

@@ -5,7 +5,7 @@
  * The protocol modules import from traits.ts, and traits.ts imports from protocols.
  * By keeping sensitive schemas here, they can be imported without triggering the cycle.
  */
-import * as S from "@distilled.cloud/core/schema-lite";
+import * as S from "@distilled.cloud/core/schema-lite-typed";
 import type * as Redacted from "effect/Redacted";
 import { blob, sensitive } from "./lite.ts";
 

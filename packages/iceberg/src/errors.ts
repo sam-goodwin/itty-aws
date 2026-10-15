@@ -36,7 +36,7 @@ import type {
   NotFound as CoreNotFound,
   UnprocessableEntity as CoreUnprocessableEntity,
 } from "@distilled.cloud/core/errors";
-import * as Schema from "@distilled.cloud/core/schema-lite";
+import * as Schema from "@distilled.cloud/core/schema-lite-typed";
 
 /**
  * HTTP 419 -- `AuthenticationTimeoutException`: the token expired. The spec

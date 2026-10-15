@@ -1,5 +1,5 @@
 import * as Category from "@distilled.cloud/core/category";
-import * as Schema from "@distilled.cloud/core/schema-lite";
+import * as Schema from "@distilled.cloud/core/schema-lite-typed";
 
 export * from "@distilled.cloud/core/errors";
 

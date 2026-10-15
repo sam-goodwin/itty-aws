@@ -30,7 +30,7 @@ import * as Category from "@distilled.cloud/core/category";
 import { withCategory } from "@distilled.cloud/core/error-category";
 import type { DefaultErrors as CoreDefaultErrors } from "@distilled.cloud/core/errors";
 import { DurationSchema, RETRYABLE } from "@distilled.cloud/core/errors";
-import * as Schema from "@distilled.cloud/core/schema-lite";
+import * as Schema from "@distilled.cloud/core/schema-lite-typed";
 
 /**
  * A Slack API error envelope: `ok: false` with a machine-readable slug.

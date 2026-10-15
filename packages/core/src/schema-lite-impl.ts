@@ -269,6 +269,13 @@ const LiteErrorBase = (): any =>
     static pipe(this: unknown) {
       return pipeArguments(this, arguments);
     }
+    /** `new this(props)`, like Effect Schema's `TaggedError.make`. */
+    static make(
+      this: new (props?: Record<string, unknown>) => unknown,
+      props?: Record<string, unknown>,
+    ) {
+      return new this(props);
+    }
   });
 
 /**
