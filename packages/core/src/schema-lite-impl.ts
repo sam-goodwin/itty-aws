@@ -278,6 +278,13 @@ const LiteErrorBase = (): any =>
     ) {
       return new this(props);
     }
+    /**
+     * Whether `u` is an error of this class, by `_tag`. Matching the tag
+     * (not `instanceof`) holds across duplicate copies of a package.
+     */
+    static is(this: unknown, u: unknown): boolean {
+      return typeof u === "object" && u !== null && (u as any)._tag === (this as any)[tagKey];
+    }
   });
 
 /**
@@ -300,6 +307,12 @@ export interface TaggedErrorClass<
     this: C,
     ...args: ConstructorParameters<C>
   ): InstanceType<C>;
+  /**
+   * Whether `u` is an error of this class, by `_tag`, so it holds across
+   * duplicate copies of a package (`instanceof` does not). Errors of another
+   * service with the same tag also match.
+   */
+  is<C extends abstract new (...args: any) => any>(this: C, u: unknown): u is InstanceType<C>;
   readonly fields: Fields;
   readonly identifier: Tag;
   /** The lite struct node (not an Effect Schema AST). */

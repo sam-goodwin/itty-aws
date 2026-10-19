@@ -23,6 +23,20 @@ describe("lite TaggedError", () => {
     expect(() => EffectSchema.is(Oops)(e)).toThrow();
   });
 
+  test("is matches by _tag, so a copy from another package instance matches", () => {
+    class Other extends S.TaggedError<Other>()("Other", {}) {}
+    // A structurally equal error from a duplicate copy of the package.
+    const foreign: unknown = Object.assign(new Error("boom"), { _tag: "Oops", message: "boom" });
+    expect(Oops.is(new Oops({ message: "x" }))).toBe(true);
+    expect(Oops.is(foreign)).toBe(true);
+    expect(Oops.is(new Other())).toBe(false);
+    expect(Oops.is(undefined)).toBe(false);
+    if (Oops.is(foreign)) {
+      const message: string | undefined = foreign.message;
+      void message;
+    }
+  });
+
   test("make keeps only the declared fields", () => {
     const e = Oops.make({ message: "boom", extra: 1 } as never);
     expect(Object.keys(e)).not.toContain("extra");
