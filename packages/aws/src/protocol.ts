@@ -41,7 +41,9 @@ import * as HttpClient from "effect/http/HttpClient";
 import * as HttpClientRequest from "effect/http/HttpClientRequest";
 import type * as HttpClientResponse from "effect/http/HttpClientResponse";
 import * as Layer from "effect/Layer";
+import * as LogLevel from "effect/LogLevel";
 import * as Redacted from "effect/Redacted";
+import * as References from "effect/References";
 import * as Stream from "effect/Stream";
 import type { Operation } from "./client/operation.ts";
 import { loadHandler, type LazyHandler, type ProtocolHandler } from "./client/protocol.ts";
@@ -478,6 +480,22 @@ const planOf = (prepared: Prepared): Effect.Effect<Plan> => {
   });
 };
 
+/**
+ * Debug logs of each call (payload, built request, response status, parsed
+ * response), written only when the fiber's minimum log level admits Debug so
+ * the default path allocates no log effects.
+ */
+const debugEnabled = (context: Context.Context<any>): boolean =>
+  LogLevel.isLessThanOrEqualTo(Context.get(context, References.MinimumLogLevel), "Debug");
+
+const logDebugThen = <A, E, R>(
+  enabled: boolean,
+  message: string,
+  value: unknown,
+  next: Effect.Effect<A, E, R>,
+): Effect.Effect<A, E, R> =>
+  enabled ? Effect.flatMap(Effect.logDebug(message, value), () => next) : next;
+
 /** The signed HTTP request for `input`, on the calling fiber. */
 const encodeWith = <A>(
   prepared: Prepared,
@@ -486,10 +504,20 @@ const encodeWith = <A>(
   input: unknown,
   f: (request: HttpClientRequest.HttpClientRequest) => Effect.Effect<A, any, any>,
 ): Effect.Effect<A, any, any> => {
-  const send = (request: Request) =>
+  const debug = debugEnabled(fiber.context as Context.Context<any>);
+  const sendSigned = (request: Request) =>
     withAwsContext(fiber.context as Context.Context<any>, (credentials, region, custom) =>
       thenSend(toHttpRequest(prepared, input, request, credentials, region, custom, fiber), f),
     );
+  const send = debug
+    ? (request: Request) =>
+        logDebugThen(
+          true,
+          "Payload",
+          input,
+          logDebugThen(true, "Built Request", request, sendSigned(request)),
+        )
+    : sendSigned;
   // Serialize the input (protocol serializer + annotation middleware)
   let request: Request | Effect.Effect<Request, ParseError>;
   try {
@@ -536,10 +564,20 @@ const decodeWith = (
     const decoded = plan.decodeText(context, response as unknown as Response, text);
     return decoded.ok ? Effect.succeed(decoded.value) : Effect.fail(stampRetryAfter(decoded.error));
   };
-  if (prepared.textBody) return empty ? fromText("") : Effect.flatMap(response.text, fromText);
-  return empty
-    ? parse(new ReadableStream<Uint8Array>({ start: (c) => c.close() }))
-    : Effect.flatMap(Stream.toReadableStreamEffect(response.stream), parse);
+  const decoded = prepared.textBody
+    ? empty
+      ? fromText("")
+      : Effect.flatMap(response.text, fromText)
+    : empty
+      ? parse(new ReadableStream<Uint8Array>({ start: (c) => c.close() }))
+      : Effect.flatMap(Stream.toReadableStreamEffect(response.stream), parse);
+  if (!debugEnabled(context)) return decoded;
+  return logDebugThen(
+    true,
+    "Raw Response Status",
+    response.status,
+    Effect.tap(decoded, (parsed) => Effect.logDebug("Parsed Response", parsed)),
+  );
 };
 
 /**
