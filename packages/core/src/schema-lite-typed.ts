@@ -39,5 +39,5 @@ export const Null = L.Null as unknown as typeof S.Null;
 export const Void = L.Void as unknown as typeof S.Void;
 export const Any = L.Any as unknown as typeof S.Any;
 
-export const TaggedError: L.TaggedErrorFactory = L.TaggedError;
+export const TaggedError = L.TaggedError as unknown as L.TaggedErrorFactory;
 export type { TaggedErrorClass, TaggedErrorFactory } from "./schema-lite-impl.ts";

@@ -35,7 +35,7 @@ export const Null: any = L.Null;
 export const Void: any = L.Void;
 export const Any: any = L.Any;
 
-export const TaggedError: L.TaggedErrorFactory = L.TaggedError;
+export const TaggedError = L.TaggedError as unknown as L.TaggedErrorFactory;
 export type { TaggedErrorClass, TaggedErrorFactory } from "./schema-lite-impl.ts";
 
 /** Lite `chunks.at`: generated services name this module `__L`. */
