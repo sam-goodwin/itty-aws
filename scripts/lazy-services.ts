@@ -35,10 +35,11 @@ import {
 } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join, relative, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const ROOT = join(import.meta.dirname, "..");
 const require = createRequire(join(ROOT, "packages", "core", "package.json"));
-const { parseAst } = (await import(require.resolve("rolldown/parseAst"))) as {
+const { parseAst } = (await import(pathToFileURL(require.resolve("rolldown/parseAst")).href)) as {
   parseAst: (code: string, options: object, filename: string) => any;
 };
 
