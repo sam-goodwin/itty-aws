@@ -42,23 +42,26 @@ import {
   writeFileSync,
 } from "node:fs";
 import { createRequire } from "node:module";
-import { dirname, join, relative } from "node:path";
+import { dirname, isAbsolute, join, relative } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const ROOT = join(import.meta.dirname, "..");
 const require = createRequire(join(ROOT, "packages", "core", "package.json"));
-const { rolldown, RUNTIME_MODULE_ID } = (await import(require.resolve("rolldown"))) as {
+const { rolldown, RUNTIME_MODULE_ID } = (await import(
+  pathToFileURL(require.resolve("rolldown")).href
+)) as {
   rolldown: any;
   RUNTIME_MODULE_ID: string;
 };
-const { parseAst } = (await import(require.resolve("rolldown/parseAst"))) as {
+const { parseAst } = (await import(pathToFileURL(require.resolve("rolldown/parseAst")).href)) as {
   parseAst: (code: string, options: object, filename: string) => any;
 };
 const { datafyOperations } = (await import(
-  join(ROOT, "packages", "core", "src", "codegen", "datafy.ts")
+  pathToFileURL(join(ROOT, "packages", "core", "src", "codegen", "datafy.ts")).href
 )) as typeof import("../packages/core/src/codegen/datafy.ts");
 
 const { lazyServices, lazyExports } = (await import(
-  join(ROOT, "scripts", "lazy-services.ts")
+  pathToFileURL(join(ROOT, "scripts", "lazy-services.ts")).href
 )) as typeof import("./lazy-services.ts");
 
 /** Core modules by group, in load order. Modules not listed are entries of their own. */
@@ -127,6 +130,12 @@ const walk = (dir: string, out: string[] = []): string[] => {
 };
 
 const rel = (from: string, to: string) => relative(from, to).split("\\").join("/");
+
+/** Whether `file` lies inside `dir` (either separator, so module ids work on Windows). */
+const inside = (dir: string, file: string) => {
+  const r = relative(dir, file);
+  return r !== "" && !r.startsWith("..") && !isAbsolute(r);
+};
 const noExt = (p: string) => p.replace(/\.(ts|js|json)$/, "");
 const ident = (m: string) => m.replace(/[^A-Za-z0-9_$]/g, "_");
 const exportName = (m: string, e: string) => `${ident(m)}$${e}`;
@@ -346,7 +355,7 @@ const COMMON_INPUT = {
 
 const external = (id: string) =>
   !id.startsWith(".") &&
-  !id.startsWith("/") &&
+  !isAbsolute(id) &&
   !id.startsWith("\0") &&
   !id.startsWith(VIRTUAL) &&
   !id.startsWith("@distilled.cloud/core");
@@ -603,7 +612,7 @@ const buildPackage = async (
       return lines.join("\n");
     },
     transform(code: string, id: string) {
-      if (!id.startsWith(src + "/") || !id.endsWith(".ts")) return;
+      if (!inside(src, id) || !id.endsWith(".ts")) return;
       const m = noExt(rel(src, id));
       // Service modules ship as data operations (see core/codegen/datafy.ts);
       // this is the same rewrite strip-lib-docs applies to tsc's output, done
@@ -697,7 +706,7 @@ const buildPackage = async (
     if (c.sourcemapFileName) written.add(c.sourcemapFileName);
     const own = groupNames.find((g) => c.isEntry && c.name === fileOf(g));
     for (const id of c.moduleIds as string[]) {
-      if (!id.startsWith(src + "/")) continue;
+      if (!inside(src, id)) continue;
       const g = groupOf.get(noExt(rel(src, id)));
       if (g && g !== own)
         problems.push(

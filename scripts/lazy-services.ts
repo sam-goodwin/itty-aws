@@ -34,11 +34,12 @@ import {
   writeFileSync,
 } from "node:fs";
 import { createRequire } from "node:module";
-import { dirname, join, relative, resolve } from "node:path";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 
 const ROOT = join(import.meta.dirname, "..");
 const require = createRequire(join(ROOT, "packages", "core", "package.json"));
-const { parseAst } = (await import(require.resolve("rolldown/parseAst"))) as {
+const { parseAst } = (await import(pathToFileURL(require.resolve("rolldown/parseAst")).href)) as {
   parseAst: (code: string, options: object, filename: string) => any;
 };
 
@@ -714,8 +715,7 @@ export const lazyServices = (
       helperFile,
       [
         ...common.map(
-          (t, i) =>
-            `import*as $${i} from"${t.startsWith("/") ? relSpec(dirname(helperFile), t) : t}";`,
+          (t, i) => `import*as $${i} from"${isAbsolute(t) ? relSpec(dirname(helperFile), t) : t}";`,
         ),
         `import{api$lazyService as L}from"${CORE_BASE}";`,
         `const u=import.meta.url,N=[${common.map((_, i) => `$${i}`).join(",")}];`,
