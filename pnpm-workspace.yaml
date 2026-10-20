@@ -1,9 +1,9 @@
 packages:
   - packages/*
-  # Deployment stacks. Not published, not part of `tsc -b` — but members so
+  # Deployment stacks. Not published, not part of `tsrs -b` — but members so
   # one `pnpm install` covers them and their versions live in one lockfile.
   - stacks/*
-  # Benchmark suites. Not published, not part of `tsc -b`; run with node.
+  # Benchmark suites. Not published, not part of `tsrs -b`; run with node.
   - benches/*
   # Landing page + Alchemy deploy stack. Private, not in the SDK tsconfig
   # graph; CI typechecks it with `pnpm --filter "./website" run typecheck`.
@@ -26,6 +26,8 @@ catalog:
   oxfmt: "^0.72.0"
   oxlint: "^1.87.0"
   rolldown: "1.2.13"
+  tsrs: "0.18.0-ts7.1.0-dev.20260929"
+  # Only benches/sdks: it measures the consumer typecheck with the compiler SDK users run.
   typescript: "^7.0.2"
   vitest: "^5.0.4"
   yaml: "^2.9.1"

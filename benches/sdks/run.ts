@@ -108,9 +108,9 @@ const missingLib = [...sdks, "core"].filter(
 );
 if (opts.build || missingLib.length > 0) {
   log(
-    `build: tsc -b (${missingLib.length ? `lib/ missing for ${missingLib.slice(0, 5).join(", ")}…` : "--build"})`,
+    `build: tsrs -b (${missingLib.length ? `lib/ missing for ${missingLib.slice(0, 5).join(", ")}…` : "--build"})`,
   );
-  const res = await run(join(REPO, "node_modules", ".bin", "tsc"), ["-b"], { cwd: REPO });
+  const res = await run(join(REPO, "node_modules", ".bin", "tsrs"), ["-b"], { cwd: REPO });
   if (res.code !== 0) {
     console.error(res.stdout.slice(-4000), res.stderr.slice(-4000));
     process.exit(1);
