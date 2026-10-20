@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import * as Console from "effect/Console";
 import * as Effect from "effect/Effect";
 import * as FileSystem from "effect/FileSystem";
+import * as HttpBody from "effect/http/HttpBody";
 import * as HttpClient from "effect/http/HttpClient";
 import * as Option from "effect/Option";
 import * as Path from "effect/Path";
@@ -192,6 +193,102 @@ export const makeAuthService = () =>
       });
     });
 
+    /**
+     * Renew an SSO access token that is expired or within
+     * `EXPIRE_WINDOW_MS` of expiring, with the refresh token `aws sso login`
+     * cached next to it (SSO OIDC `CreateToken`, `grant_type=refresh_token`),
+     * and write the result back to the same cache file. Mirrors botocore's
+     * `SSOTokenProvider` and `@aws-sdk/token-providers` `fromSso`.
+     *
+     * A token that has not expired yet outlives a failed refresh. Otherwise
+     * the failure is `ExpiredSSOToken`, with the OIDC error as its cause.
+     */
+    const refreshSsoToken = Effect.fn(function* (options: {
+      profileName: string;
+      ssoRegion: string;
+      ssoToken: SSOToken;
+      ssoTokenFilepath: string;
+    }) {
+      const { profileName, ssoRegion, ssoToken, ssoTokenFilepath } = options;
+      const stillValid = new Date(ssoToken.expiresAt).getTime() > Date.now();
+      const message = `The SSO session token associated with profile=${profileName} was not found or is invalid. ${REFRESH_MESSAGE}`;
+      const giveUp = (cause?: unknown) =>
+        stillValid
+          ? Effect.succeed(ssoToken.accessToken)
+          : Console.log(message).pipe(
+              Effect.andThen(
+                Effect.fail(new ExpiredSSOToken({ message, profile: profileName, cause })),
+              ),
+            );
+
+      const { refreshToken, clientId, clientSecret, registrationExpiresAt } = ssoToken;
+      if (!refreshToken || !clientId || !clientSecret) {
+        return yield* giveUp();
+      }
+      if (registrationExpiresAt && new Date(registrationExpiresAt).getTime() <= Date.now()) {
+        return yield* giveUp(
+          new Error(`The SSO OIDC client registration expired at ${registrationExpiresAt}.`),
+        );
+      }
+
+      const refreshed = yield* client
+        .post(`https://oidc.${ssoRegion}.amazonaws.com/token`, {
+          headers: { "User-Agent": "alchemy.run" },
+          body: HttpBody.jsonUnsafe({
+            clientId,
+            clientSecret,
+            grantType: "refresh_token",
+            refreshToken,
+          }),
+        })
+        .pipe(
+          Effect.flatMap((response) =>
+            Effect.map(
+              response.json,
+              (body) =>
+                ({ status: response.status, body }) as {
+                  status: number;
+                  body: {
+                    accessToken?: string;
+                    expiresIn?: number;
+                    refreshToken?: string;
+                    error?: string;
+                    error_description?: string;
+                  };
+                },
+            ),
+          ),
+          Effect.flatMap(({ status, body }) =>
+            status >= 200 && status < 300 && typeof body.accessToken === "string"
+              ? Effect.succeed({ ...body, accessToken: body.accessToken })
+              : Effect.fail(
+                  new Error(
+                    `SSO OIDC CreateToken failed (status=${status}${body.error ? `, ${body.error}` : ""}${body.error_description ? `: ${body.error_description}` : ""}).`,
+                  ),
+                ),
+          ),
+          Effect.result,
+        );
+      if (refreshed._tag === "Failure") {
+        return yield* giveUp(refreshed.failure);
+      }
+
+      const { accessToken, expiresIn, refreshToken: newRefreshToken } = refreshed.success;
+      const updated: SSOToken = {
+        ...ssoToken,
+        accessToken,
+        // The OIDC default lifetime is one hour.
+        expiresAt: new Date(Date.now() + (expiresIn ?? 3600) * 1000).toISOString(),
+        refreshToken: newRefreshToken ?? refreshToken,
+      };
+      // Other processes (the AWS CLI, other SDKs) read the same file. A
+      // failed write still leaves this process with a valid token.
+      yield* fs
+        .writeFileString(ssoTokenFilepath, JSON.stringify(updated, null, 2))
+        .pipe(Effect.ignore);
+      return accessToken;
+    });
+
     const loadProfileCredentials = Effect.fn(function* (profileName: string) {
       const awsDir = path.join(getHomeDir(), ".aws");
       const cachePath = path.join(awsDir, "sso", "cache");
@@ -311,15 +408,14 @@ export const makeAuthService = () =>
           ),
         );
 
-        if (isExpired(ssoToken.expiresAt)) {
-          yield* Console.log(
-            `The SSO session token associated with profile=${profileName} was not found or is invalid. ${REFRESH_MESSAGE}`,
-          );
-          return yield* new ExpiredSSOToken({
-            message: `The SSO session token associated with profile=${profileName} was not found or is invalid. ${REFRESH_MESSAGE}`,
-            profile: profileName,
-          });
-        }
+        const accessToken = isExpired(ssoToken.expiresAt)
+          ? yield* refreshSsoToken({
+              profileName,
+              ssoRegion: profile.sso_region!,
+              ssoToken,
+              ssoTokenFilepath,
+            })
+          : ssoToken.accessToken;
 
         const response = yield* client.get(
           `https://portal.sso.${profile.sso_region}.amazonaws.com/federation/credentials?account_id=${profile.sso_account_id}&role_name=${profile.sso_role_name}`,
@@ -327,7 +423,7 @@ export const makeAuthService = () =>
             headers: {
               "User-Agent": "alchemy.run",
               "Content-Type": "application/json",
-              "x-amz-sso_bearer_token": ssoToken.accessToken,
+              "x-amz-sso_bearer_token": accessToken,
             },
           },
         );

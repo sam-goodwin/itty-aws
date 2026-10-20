@@ -245,6 +245,8 @@ export class ExpiredSSOToken
   extends /*@__PURE__*/ Data.TaggedError("Alchemy::AWS::ExpiredSSOToken")<{
     message: string;
     profile: string;
+    /** The failed SSO OIDC refresh, when one was attempted. */
+    cause?: unknown;
   }> {}
 
 export class AwsCredentialProviderError
