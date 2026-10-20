@@ -17412,6 +17412,28 @@
         ]
       }
     },
+    "com.cloudflare.ai_search#InstanceDeletionInProgress": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#error": "client",
+        "com.cloudflare.protocols#errorMatchers": [
+          {
+            "status": 409,
+            "message": {
+              "includes": "deletion_in_progress"
+            }
+          }
+        ]
+      }
+    },
     "com.cloudflare.ai_search#ChatCompletionsInstance": {
       "type": "operation",
       "input": {
@@ -18315,6 +18337,9 @@
         },
         {
           "target": "com.cloudflare.ai_search#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.ai_search#InstanceDeletionInProgress"
         }
       ]
     },

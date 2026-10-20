@@ -145,6 +145,15 @@ export class InstanceAlreadyExists
     [{ status: 400, message: { includes: "already_exist" } }],
   ) {}
 
+export class InstanceDeletionInProgress
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<InstanceDeletionInProgress>()("InstanceDeletionInProgress", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 409, message: { includes: "deletion_in_progress" } }],
+  ) {}
+
 export class InvalidRoute
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<InvalidRoute>()("InvalidRoute", {
@@ -13599,6 +13608,7 @@ export type CreateNamespaceInstanceError =
   | WebCrawlerDomainNotOwned
   | MissingSitemap
   | Forbidden
+  | InstanceDeletionInProgress
   | CloudflareOpError;
 /** Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and an existing R2 bucket source infers r2. A missing or blank source without a type creates a managed upload-only instance. Search for Agents instances require the default namespace. */
 export const createNamespaceInstance: API.OperationMethod<
@@ -13619,6 +13629,7 @@ export const createNamespaceInstance: API.OperationMethod<
     WebCrawlerDomainNotOwned,
     MissingSitemap,
     Forbidden,
+    InstanceDeletionInProgress,
     CloudflareRateLimited,
     CloudflareError,
   ],
