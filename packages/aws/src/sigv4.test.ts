@@ -1,4 +1,5 @@
 import { createHash, createHmac } from "node:crypto";
+import * as Signer from "@distilled.cloud/aws4signer";
 import * as CoreCrypto from "@distilled.cloud/core/crypto";
 import * as Cache from "effect/Cache";
 import * as Duration from "effect/Duration";
@@ -20,6 +21,10 @@ const creds = {
   secretAccessKey: Redacted.make("wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"),
 };
 const datetime = "20130524T000000Z";
+
+test("SigV4 re-exports every runtime export of @distilled.cloud/aws4signer", () => {
+  expect(Object.keys(SigV4).sort()).toEqual(Object.keys(Signer).sort());
+});
 
 describe("SigV4.sign", () => {
   test("signs S3 GET with UNSIGNED-PAYLOAD and excludes range (AWS docs example)", async () => {
