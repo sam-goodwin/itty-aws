@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "bench": "node run.ts",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsrs -p tsconfig.json"
   },
   "dependencies": {
     "effect": "catalog:"
@@ -22,6 +22,7 @@
     "@types/node": "catalog:",
     "cloudflare": "7.3.0",
     "rolldown": "catalog:",
+    "tsrs": "catalog:",
     "typescript": "catalog:"
   }
 }

@@ -166,11 +166,11 @@
     }
   },
   "scripts": {
-    "typecheck": "tsc",
-    "build": "tsc -b",
+    "typecheck": "tsrs",
+    "build": "tsrs -b",
     "fmt": "oxfmt --write src",
     "lint": "oxlint --fix src",
-    "check": "tsc && oxlint src && oxfmt --check src",
+    "check": "tsrs && oxlint src && oxfmt --check src",
     "convert": "node --conditions=bun scripts/convert.ts",
     "generate": "node --conditions=bun scripts/generate.ts",
     "specs:fetch": "git submodule update --force --init --depth=1 specs/spec-mirror-aws",
