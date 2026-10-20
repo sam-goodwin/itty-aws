@@ -74,8 +74,8 @@ const spec: SdkSpec = {
     const withoutErrors = code.replace(/import \{\s*\} from "\.\.\/errors\.ts";\n/, "");
     return withoutErrors.includes("Redacted.Redacted<")
       ? withoutErrors.replace(
-          `import * as S from "@distilled.cloud/core/schema";\n`,
-          `import * as S from "@distilled.cloud/core/schema";\nimport * as Redacted from "effect/Redacted";\n`,
+          `import * as S from "@distilled.cloud/core/schema-lite";\n`,
+          `import * as S from "@distilled.cloud/core/schema-lite";\nimport type * as Redacted from "effect/Redacted";\n`,
         )
       : withoutErrors;
   },
