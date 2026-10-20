@@ -1,0 +1,26 @@
+{
+  "description": "Type templates.get's HTTP 400 'Template ... is not visible to the current project.' Integrations answers a nonexistent template id with this 400 instead of 404, so a template deleted out-of-band surfaced as a generic BadRequest during read.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/shapes/com.gcp.integrations_v1#TemplateNotVisible",
+      "value": {
+        "type": "structure",
+        "members": {},
+        "traits": {
+          "smithy.api#error": "client",
+          "smithy.api#httpError": 400,
+          "smithy.api#documentation": "The template does not exist in (or is not shared with) the current project (HTTP 400). Integrations returns this instead of 404 for a missing template id.",
+          "com.gcp.protocols#errorMatchers": [
+            { "status": 400, "message": { "includes": "is not visible to the current project" } }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.gcp.integrations_v1#GetProjectsLocationsTemplates/errors/-",
+      "value": { "target": "com.gcp.integrations_v1#TemplateNotVisible" }
+    }
+  ]
+}
