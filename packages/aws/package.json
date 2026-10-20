@@ -177,6 +177,7 @@
     "specs:update": "git submodule update --remote --force --depth=1 specs/spec-mirror-aws"
   },
   "dependencies": {
+    "@distilled.cloud/aws4signer": "workspace:*",
     "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
