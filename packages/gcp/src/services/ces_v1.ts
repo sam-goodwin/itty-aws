@@ -9,6 +9,20 @@ import * as T from "../traits.ts";
 
 export type { GcpOpError, GcpOpContext };
 
+/** The app version is still referenced by a deployment that is being deleted (HTTP 400 'Invalid argument provided.'). Retryable until the deployment is gone. */
+export class AppVersionInUse
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<AppVersionInUse>()("AppVersionInUse", {
+      code: S.optional(S.Number),
+      message: S.String,
+      status: S.optional(S.String),
+      reason: S.optional(S.String),
+      domain: S.optional(S.String),
+      details: S.optional(S.Array(S.Unknown)),
+    }).pipe(C.withBadRequestError),
+    [{ status: 400, message: { includes: "Invalid argument provided" } }],
+  ) {}
+
 export class BadRequest
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<BadRequest>()("BadRequest", {
@@ -7727,6 +7741,7 @@ export const deleteProjectsLocationsAppsToolsets: API.OperationMethod<
 }));
 
 export type DeleteProjectsLocationsAppsVersionsError =
+  | AppVersionInUse
   | NotFound
   | Forbidden
   | BadRequest
@@ -7741,7 +7756,7 @@ export const deleteProjectsLocationsAppsVersions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsVersionsRequest,
   output: Empty,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  errors: [AppVersionInUse, NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
