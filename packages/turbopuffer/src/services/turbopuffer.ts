@@ -69,6 +69,7 @@ export type Vector = VectorCase0List | string;
 export interface Row {
   id: Id;
   vector?: Vector;
+  [key: string]: unknown;
 }
 /** The true nearest neighbors with their distances and vectors. */
 export type CreateNamespaceDebugRecallResponseGroundTruthItemNearestNeighborsList = Array<Row>;
@@ -578,6 +579,7 @@ export interface Columns {
   /** The IDs of the documents. */
   id: ColumnsIdList;
   vector?: ColumnsVector;
+  [key: string]: unknown;
 }
 export type UpdateNamespaceRequestUpsertRowsList = Array<Row>;
 export type UpdateNamespaceRequestPatchRowsList = Array<Row>;
@@ -973,10 +975,13 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          id: S.Unknown,
-          vector: S.optional(S.Unknown),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            id: S.Unknown,
+            vector: S.optional(S.Unknown),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "Row" });
     case 1:
       return S.Array(__S(16, __c2, 0));
@@ -1023,10 +1028,13 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          id: __S(48, __c6, 0),
-          vector: S.optional(S.Unknown),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            id: __S(48, __c6, 0),
+            vector: S.optional(S.Unknown),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "Columns" });
     case 1:
       return S.suspend(() =>

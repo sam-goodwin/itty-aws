@@ -16,6 +16,7 @@ export type * from "effect/Schema";
 
 export const optional = L.optional as unknown as typeof S.optional;
 export const Struct = L.Struct as unknown as typeof S.Struct;
+export const StructWithRest = L.StructWithRest as unknown as typeof S.StructWithRest;
 export const suspend = L.suspend as unknown as typeof S.suspend;
 export const Array = L.Array as unknown as typeof S.Array;
 export const Record = L.Record as unknown as typeof S.Record;

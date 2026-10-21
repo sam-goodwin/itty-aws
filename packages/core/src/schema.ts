@@ -34,6 +34,7 @@ export type AnyFn = (...args: any[]) => any;
 // Construction surface -- collapse to `any` so generics are never instantiated.
 export const optional: AnyFn = S.optional as AnyFn;
 export const Struct: AnyFn = S.Struct as AnyFn;
+export const StructWithRest: AnyFn = S.StructWithRest as AnyFn;
 export const suspend: AnyFn = (f: () => S.Top) => lazySuspend(f);
 export const Array: AnyFn = (item: S.Top) => lazyArray(item);
 export const Record: AnyFn = (key: S.Top, value: S.Top) => lazyRecord(key, value);

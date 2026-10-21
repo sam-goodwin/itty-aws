@@ -7,6 +7,14 @@
  */
 import { oneLine } from "./naming.ts";
 
+/**
+ * Structure-level marker: the object also carries keys it does not declare
+ * (OpenAPI `additionalProperties` next to `properties`). The generator adds
+ * `[key: string]: unknown` to the interface and an `unknown`-valued index
+ * signature to the schema (`S.StructWithRest`).
+ */
+export const ADDITIONAL_PROPERTIES_TRAIT = "com.distilled.openapi#additionalProperties";
+
 export interface MemberBase {
   /** Original smithy member name. */
   readonly name: string;

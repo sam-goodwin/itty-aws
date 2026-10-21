@@ -42,7 +42,14 @@ const randomSchema = (r: () => number, depth: number): L.Lite => {
     ]);
   if (depth <= 0 || r() < 0.3) return leaf();
   const sub = () => randomSchema(r, depth - 1);
-  switch (Math.floor(r() * 8)) {
+  switch (Math.floor(r() * 9)) {
+    case 6: {
+      const fields: Record<string, L.Lite> = {};
+      for (const k of KEYS) if (r() < 0.35) fields[k] = r() < 0.5 ? L.optional(sub()) : sub();
+      // Generated open objects always rest on `unknown` (see the typed-rest
+      // test for where the checker and Effect differ).
+      return L.StructWithRest(L.Struct(fields), [L.Record(L.String, L.Unknown)]);
+    }
     case 0:
       return L.Array(sub());
     case 1:
@@ -168,6 +175,37 @@ describe("strict checker", () => {
     expect(ok({ id: "ab", n: "1", tags: [] })).toBe(false);
     expect(ok({ id: "ab", tags: ["c"] })).toBe(false);
     expect(ok({ tags: [] })).toBe(false);
+  });
+
+  test("open structs keep declared checks and accept any extra key", () => {
+    const Row = L.suspend(() =>
+      L.StructWithRest(L.Struct({ id: L.String, vector: L.optional(L.Array(L.Number)) }), [
+        L.Record(L.String, L.Unknown),
+      ]),
+    );
+    const ok = accepts(Row);
+    const effect = effectAccepts(Row);
+    for (const v of [
+      { id: "a", title: "x", $dist: 0.1, tags: ["t"], n: null },
+      { id: "a", vector: [1] },
+      { title: "x" },
+      { id: 1, title: "x" },
+      { id: "a", vector: "nope" },
+    ] as ReadonlyArray<unknown>)
+      expect(ok(v)).toBe(effect(v));
+    expect(ok({ id: "a", title: "x", $dist: 0.1 })).toBe(true);
+    expect(ok({ title: "x" })).toBe(false);
+  });
+
+  test("a typed rest checks only undeclared keys (OpenAPI additionalProperties)", () => {
+    // Effect's StructWithRest also checks declared keys against the record;
+    // OpenAPI applies additionalProperties only to the keys `properties`
+    // does not name, and the checker follows OpenAPI.
+    const ok = accepts(
+      L.StructWithRest(L.Struct({ id: L.String }), [L.Record(L.String, L.Array(L.Unknown))]),
+    );
+    expect(ok({ id: "a", title: [1] })).toBe(true);
+    expect(ok({ id: "a", title: "x" })).toBe(false);
   });
 
   test("recursive schemas", () => {

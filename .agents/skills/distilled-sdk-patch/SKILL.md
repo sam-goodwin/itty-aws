@@ -160,6 +160,14 @@ marks names matching its default patterns (`password`, `api_token`,
 `packages/core/src/codegen/openapi.ts`), so check the generated type is not
 already `Redacted` before adding one.
 
+**Object is open, or should not be.** OpenAPI convert marks a structure
+with `com.distilled.openapi#additionalProperties` when the spec sets
+`additionalProperties` (`true` or a schema) next to `properties`; the
+generated interface then gains `[key: string]: unknown` and the schema an
+`unknown` rest. A spec that says so carelessly loses the marker with
+`remove …/shapes/<id>/traits/com.distilled.openapi#additionalProperties`; an
+object the wire extends but the spec closes gains it with `add` and `{}`.
+
 **One operation returns more than the shared shape promises.** Add a copy
 of the shape under a new name, change the copy, and re-point only that
 operation's member or output at it, so the other operations keep the shared
