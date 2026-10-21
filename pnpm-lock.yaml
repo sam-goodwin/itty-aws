@@ -165,8 +165,8 @@ settings:
 catalogs:
   default:
     '@effect/platform-node':
-      specifier: ^4.0.4
-      version: 4.0.4
+      specifier: ^4.0.5
+      version: 4.0.5
     '@oxc-project/types':
       specifier: ^0.153.0
       version: 0.153.0
@@ -180,8 +180,8 @@ catalogs:
       specifier: ^13.16.1
       version: 13.16.1
     effect:
-      specifier: ^4.0.4
-      version: 4.0.4
+      specifier: ^4.0.5
+      version: 4.0.5
     husky:
       specifier: ^9.1.7
       version: 9.1.7
@@ -235,10 +235,10 @@ importers:
     devDependencies:
       '@alchemy.run/pkg':
         specifier: 2.0.0-beta.81
-        version: 2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
+        version: 2.0.0-beta.81(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.4(effect@4.0.4)(redis@6.2.1)
+        version: 4.0.5(effect@4.0.5)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.5
@@ -247,7 +247,7 @@ importers:
         version: 13.16.1
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
       husky:
         specifier: 'catalog:'
         version: 9.1.7
@@ -277,7 +277,7 @@ importers:
         version: link:../../packages/core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@oxc-project/types':
         specifier: 'catalog:'
@@ -311,7 +311,7 @@ importers:
         version: link:../../packages/core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
       mitata:
         specifier: 'catalog:'
         version: 1.0.34
@@ -339,7 +339,7 @@ importers:
         version: link:../../packages/stripe
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
       rolldown:
         specifier: 'catalog:'
         version: 1.2.13
@@ -357,7 +357,7 @@ importers:
     dependencies:
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@aws-sdk/client-dynamodb':
         specifier: 3.1147.0
@@ -412,7 +412,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -425,7 +425,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -438,7 +438,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -451,7 +451,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -464,7 +464,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -477,7 +477,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -493,7 +493,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -513,7 +513,7 @@ importers:
         version: 1.0.20
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
 
   packages/axiom:
     dependencies:
@@ -522,7 +522,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -535,7 +535,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -548,7 +548,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -561,7 +561,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -574,7 +574,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -587,7 +587,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -600,11 +600,11 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.4(effect@4.0.4)(redis@6.2.1)
+        version: 4.0.5(effect@4.0.5)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.5
@@ -616,7 +616,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -632,7 +632,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -642,13 +642,13 @@ importers:
     devDependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.4(effect@4.0.4)(redis@6.2.1)
+        version: 4.0.5(effect@4.0.5)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.5
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
       rolldown:
         specifier: 'catalog:'
         version: 1.2.13
@@ -663,7 +663,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -676,7 +676,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -689,7 +689,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -702,7 +702,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -715,7 +715,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -728,7 +728,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -741,7 +741,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -754,7 +754,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -767,7 +767,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -780,7 +780,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -793,7 +793,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -806,7 +806,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -819,7 +819,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -832,7 +832,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -845,7 +845,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -858,7 +858,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -871,7 +871,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -884,7 +884,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -897,7 +897,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -910,7 +910,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -923,7 +923,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -939,7 +939,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -952,7 +952,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -965,7 +965,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -978,7 +978,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -991,7 +991,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1004,7 +1004,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1017,7 +1017,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1030,7 +1030,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1043,7 +1043,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1056,7 +1056,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1069,7 +1069,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1082,7 +1082,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1095,7 +1095,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1108,7 +1108,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1121,7 +1121,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1134,7 +1134,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1147,7 +1147,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1160,7 +1160,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1173,7 +1173,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1189,7 +1189,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1202,7 +1202,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1215,7 +1215,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1228,7 +1228,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1241,7 +1241,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1254,7 +1254,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1267,7 +1267,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1280,7 +1280,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1293,7 +1293,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1306,7 +1306,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1319,7 +1319,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1332,7 +1332,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1345,11 +1345,11 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.4(effect@4.0.4)(redis@6.2.1)
+        version: 4.0.5(effect@4.0.5)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.5
@@ -1361,7 +1361,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1374,7 +1374,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1387,7 +1387,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1400,7 +1400,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1413,7 +1413,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1426,7 +1426,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1439,7 +1439,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1452,7 +1452,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1465,7 +1465,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1478,7 +1478,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1491,7 +1491,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1507,7 +1507,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1520,7 +1520,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1533,7 +1533,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1546,11 +1546,11 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.4(effect@4.0.4)(redis@6.2.1)
+        version: 4.0.5(effect@4.0.5)(redis@6.2.1)
       '@types/node':
         specifier: 'catalog:'
         version: 26.6.5
@@ -1562,7 +1562,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1578,7 +1578,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1591,7 +1591,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1604,7 +1604,7 @@ importers:
         version: link:../core
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
@@ -1614,13 +1614,13 @@ importers:
     dependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.4(effect@4.0.4)(redis@6.2.1)
+        version: 4.0.5(effect@4.0.5)(redis@6.2.1)
       alchemy:
         specifier: 'catalog:'
-        version: 2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
+        version: 2.0.0-beta.81(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       tsrs:
         specifier: 'catalog:'
@@ -1630,13 +1630,13 @@ importers:
     dependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.4(effect@4.0.4)(redis@6.2.1)
+        version: 4.0.5(effect@4.0.5)(redis@6.2.1)
       alchemy:
         specifier: 'catalog:'
-        version: 2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1))(ws@8.22.0)
+        version: 2.0.0-beta.81(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1))(ws@8.22.0)
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
     devDependencies:
       tsrs:
         specifier: 'catalog:'
@@ -1649,7 +1649,7 @@ importers:
     dependencies:
       '@effect/platform-node':
         specifier: 'catalog:'
-        version: 4.0.4(effect@4.0.4)(redis@6.2.1)
+        version: 4.0.5(effect@4.0.5)(redis@6.2.1)
       '@solidjs/meta':
         specifier: 0.29.4
         version: 0.29.4(solid-js@1.9.17)
@@ -1661,10 +1661,10 @@ importers:
         version: 2.0.6(@solidjs/router@1.0.0(solid-js@1.9.17))(crossws@0.4.12(srvx@1.0.5))(ocache@0.3.0)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))
       alchemy:
         specifier: 'catalog:'
-        version: 2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
+        version: 2.0.0-beta.81(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
       effect:
         specifier: 'catalog:'
-        version: 4.0.4
+        version: 4.0.5
       solid-js:
         specifier: 1.9.17
         version: 1.9.17
@@ -1987,8 +1987,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@cloudflare/workers-types@5.20261003.1':
-    resolution: {integrity: sha512-Uii0J5qUd/R6lIDK/u0Sw8dEi7oI3ljXw7EDybuPntoXg2Yy5Y9H9UeNQ5R87oQ/Q4jq6uEJmYOOFQ3Z7C94lA==}
+  '@cloudflare/workers-types@5.20261019.1':
+    resolution: {integrity: sha512-llvvy7WBVhK+OfykyBkG9A7OgsGvgwHSNyU40XGVkiy/xVFy0t/xflyhEBHT+U59yQECZQbmcZsJtqCNnLpIRg==}
 
   '@distilled.cloud/acme@1.0.0-rc.13':
     resolution: {integrity: sha512-3rmzH125jQxk0zpCvXGNEybSaqpAolyCX+8LWDDrXf+wIKs67GflkJyQLjOOh0lKARe29hdUZGgqEbbvpp0LNA==}
@@ -2075,33 +2075,28 @@ packages:
     peerDependencies:
       effect: ^4.0.0
 
-  '@effect/platform-bun@4.0.0':
-    resolution: {integrity: sha512-g9O41Sub/+JKfLjvBNEoqR1Pg6wtc2bbYzv7Kw8YsMihbt/ypCn7ZoydEXaHvTTUvbVrXOQbVFlfplyo84Clug==}
-    peerDependencies:
-      effect: ^4.0.0
-
-  '@effect/platform-node-shared@4.0.4':
-    resolution: {integrity: sha512-gh2KRmqGWrJ0FVL8GqnI1GpB+fCfCUI7sGiUZkxxBHyHj1t94rm6VDJffCfuVZWe6GpvYXtizifVczUrgOce8A==}
+  '@effect/platform-node-shared@4.0.5':
+    resolution: {integrity: sha512-a8rCdEkfZBGe9C6bsIjxVZuRp73svIyK5IHwHdDAVsvZXjrbkxusfI+rZ8WlX31RP1mKizwI/E72GQTNfdMWHw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      effect: ^4.0.4
+      effect: ^4.0.5
 
-  '@effect/platform-node@4.0.4':
-    resolution: {integrity: sha512-SdoyQMrO5zmqBebb2fxDk0sHYyJjBiw4QmLdV2ZcWf3ATpQPge3B5sTLijZg49PadekOwNeO83o5TfdtiiFEig==}
+  '@effect/platform-node@4.0.5':
+    resolution: {integrity: sha512-v4KD5fWvEUa4QmWFpZFbBsRhmfnTP6ETCME2r9ifyXVDPjhfpxpTZl41prjgQFMqZBHdWWCl7YC5ImbXv5ui5g==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      effect: ^4.0.4
+      effect: ^4.0.5
       redis: '>=5.0.0 <7.0.0'
 
-  '@effect/sql-d1@4.0.0':
-    resolution: {integrity: sha512-pmkzncZCGD6CLyvc89keEBU85h+gHVCu/LKQnThd+ruYSUbG0R9jYA+lnk3R8Djp0wQW6SbsbmHQuhopIYyo3Q==}
+  '@effect/sql-d1@4.0.5':
+    resolution: {integrity: sha512-ERArvCS/qOHx52yKFePc8v5qs0y18Ld+Ha6Xkkm/I1R+zTf+flfWpsuxlxkPKlwQCqB9K+yfU6Kw1gshKGRCPQ==}
     peerDependencies:
-      effect: ^4.0.0
+      effect: ^4.0.5
 
-  '@effect/sql-sqlite-do@4.0.0':
-    resolution: {integrity: sha512-XkRZmQOPblzwjmAJ0RWSOiLlTsKkf1EigZsxUNuIuk4uZ/pnufSqvDpXubCwv8iyRTbOLFMmM+EyOEH5V5XqAw==}
+  '@effect/sql-sqlite-do@4.0.5':
+    resolution: {integrity: sha512-TGlU65ZJJMa81I7EoicQXxhRsJDxDPz6A/PNOPzMYRgmCdLs6EsTTXIkKZ+8apb7pl2o0OKVcrT6i6mGlluyLg==}
     peerDependencies:
-      effect: ^4.0.0
+      effect: ^4.0.5
 
   '@electric-sql/pglite-socket@0.0.20':
     resolution: {integrity: sha512-J5nLGsicnD9wJHnno9r+DGxfcZWh+YJMCe0q/aCgtG6XOm9Z7fKeite8IZSNXgZeGltSigM9U/vAWZQWdgcSFg==}
@@ -3978,8 +3973,8 @@ packages:
   ecdsa-sig-formatter@1.0.11:
     resolution: {integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==}
 
-  effect@4.0.4:
-    resolution: {integrity: sha512-Sr50OeVSC3M5UkoUYUhFf3EULryhGaZZUf6OzDHTvaznOw7HRlxOKdF3/4nvQXHL22StOyMG3Cvo8Bt7xUp+Ng==}
+  effect@4.0.5:
+    resolution: {integrity: sha512-BY4/28NlpOd99yzmV741xbVGmp+1U7tks4oB7F/Png64bTa5tm5eCA6W0RiXsnuLDDoJpjfVSo4Dnq4BZb/89Q==}
 
   electron-to-chromium@1.5.429:
     resolution: {integrity: sha512-/1ENIE3cx4HTIx4IfPZFaOunJmsrSVTnj6coXoRVbiJUbkeTyFkJvBeWGkdgh08OhFbxYLMT1kbkwFVSarq6Ow==}
@@ -5362,14 +5357,14 @@ packages:
 
 snapshots:
 
-  '@alchemy.run/cloudflare-runtime@2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.4))(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1))':
+  '@alchemy.run/cloudflare-runtime@2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.5))(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1))':
     dependencies:
       '@alchemy.run/node-utils': 2.0.0-beta.81
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260918.1)
-      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.4)
+      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.5)
       '@puppeteer/browsers': 3.2.1(yauzl@3.4.0)
       capnp-es: 0.0.16(typescript@7.0.2)
-      effect: 4.0.4
+      effect: 4.0.5
       magic-string: 0.30.21
       mime: 4.1.0
       sharp: 0.35.4(@types/node@26.6.5)
@@ -5377,8 +5372,7 @@ snapshots:
       workerd: 1.20260918.1
       yauzl: 3.4.0
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.4)
-      '@effect/platform-node': 4.0.4(effect@4.0.4)(redis@6.2.1)
+      '@effect/platform-node': 4.0.5(effect@4.0.5)(redis@6.2.1)
       rolldown: 1.2.5
       vite: 8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1)
     transitivePeerDependencies:
@@ -5386,14 +5380,14 @@ snapshots:
       - proxy-agent
       - typescript
 
-  '@alchemy.run/cloudflare-runtime@2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.4))(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(rolldown@1.2.5)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))':
+  '@alchemy.run/cloudflare-runtime@2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.5))(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(rolldown@1.2.5)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))':
     dependencies:
       '@alchemy.run/node-utils': 2.0.0-beta.81
       '@cloudflare/unenv-preset': 2.16.1(unenv@2.0.0-rc.24)(workerd@1.20260918.1)
-      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.4)
+      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.5)
       '@puppeteer/browsers': 3.2.1(yauzl@3.4.0)
       capnp-es: 0.0.16(typescript@7.0.2)
-      effect: 4.0.4
+      effect: 4.0.5
       magic-string: 0.30.21
       mime: 4.1.0
       sharp: 0.35.4(@types/node@26.6.5)
@@ -5401,8 +5395,7 @@ snapshots:
       workerd: 1.20260918.1
       yauzl: 3.4.0
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.4)
-      '@effect/platform-node': 4.0.4(effect@4.0.4)(redis@6.2.1)
+      '@effect/platform-node': 4.0.5(effect@4.0.5)(redis@6.2.1)
       rolldown: 1.2.5
       vite: 8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0)
     transitivePeerDependencies:
@@ -5410,24 +5403,23 @@ snapshots:
       - proxy-agent
       - typescript
 
-  '@alchemy.run/floci@2.0.0-beta.81(effect@4.0.4)':
+  '@alchemy.run/floci@2.0.0-beta.81(effect@4.0.5)':
     dependencies:
-      effect: 4.0.4
+      effect: 4.0.5
 
   '@alchemy.run/node-utils@2.0.0-beta.81':
     dependencies:
       chokidar: 5.0.0
       rolldown: 1.2.5
 
-  '@alchemy.run/pkg@2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)':
+  '@alchemy.run/pkg@2.0.0-beta.81(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)':
     dependencies:
-      '@distilled.cloud/github': 1.0.0-rc.13(effect@4.0.4)
-      alchemy: 2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
-      effect: 4.0.4
+      '@distilled.cloud/github': 1.0.0-rc.13(effect@4.0.5)
+      alchemy: 2.0.0-beta.81(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0)
+      effect: 4.0.5
       modern-tar: 0.8.4
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.4)
-      '@effect/platform-node': 4.0.4(effect@4.0.4)(redis@6.2.1)
+      '@effect/platform-node': 4.0.5(effect@4.0.5)(redis@6.2.1)
     transitivePeerDependencies:
       - '@alchemy.run/frontend-frameworks'
       - '@aws/durable-execution-sdk-js'
@@ -5855,130 +5847,121 @@ snapshots:
   '@cloudflare/workerd-windows-64@1.20260918.1':
     optional: true
 
-  '@cloudflare/workers-types@5.20261003.1': {}
+  '@cloudflare/workers-types@5.20261019.1': {}
 
-  '@distilled.cloud/acme@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/acme@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/aws@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/aws@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
       '@smithy/types': 4.17.2
-      effect: 4.0.4
+      effect: 4.0.5
 
-  '@distilled.cloud/axiom@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/axiom@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/core@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/core@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      effect: 4.0.4
+      effect: 4.0.5
       graphql: 16.11.0
 
-  '@distilled.cloud/doppler@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/doppler@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/fly-io@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/fly-io@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/gcp@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/gcp@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/github@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/github@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/hetzner@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/hetzner@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/infisical@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/infisical@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/neon@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/neon@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/planetscale@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/planetscale@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/prisma@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/prisma@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/railway@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/railway@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/stripe@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/stripe@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@distilled.cloud/zerossl@1.0.0-rc.13(effect@4.0.4)':
+  '@distilled.cloud/zerossl@1.0.0-rc.13(effect@4.0.5)':
     dependencies:
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      effect: 4.0.4
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      effect: 4.0.5
 
-  '@effect/platform-bun@4.0.0(effect@4.0.4)':
-    dependencies:
-      '@effect/platform-node-shared': 4.0.4(effect@4.0.4)
-      effect: 4.0.4
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-    optional: true
-
-  '@effect/platform-node-shared@4.0.4(effect@4.0.4)':
+  '@effect/platform-node-shared@4.0.5(effect@4.0.5)':
     dependencies:
       '@types/ws': 8.18.2
-      effect: 4.0.4
+      effect: 4.0.5
       ws: 8.22.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1)':
+  '@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1)':
     dependencies:
-      '@effect/platform-node-shared': 4.0.4(effect@4.0.4)
-      effect: 4.0.4
+      '@effect/platform-node-shared': 4.0.5(effect@4.0.5)
+      effect: 4.0.5
       redis: 6.2.1
       undici: 8.11.2
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
 
-  '@effect/sql-d1@4.0.0(effect@4.0.4)':
+  '@effect/sql-d1@4.0.5(effect@4.0.5)':
     dependencies:
-      '@cloudflare/workers-types': 5.20261003.1
-      effect: 4.0.4
+      '@cloudflare/workers-types': 5.20261019.1
+      effect: 4.0.5
 
-  '@effect/sql-sqlite-do@4.0.0(effect@4.0.4)':
+  '@effect/sql-sqlite-do@4.0.5(effect@4.0.5)':
     dependencies:
-      effect: 4.0.4
+      effect: 4.0.5
 
   '@electric-sql/pglite-socket@0.0.20(@electric-sql/pglite@0.3.15)':
     dependencies:
@@ -7073,30 +7056,30 @@ snapshots:
 
   agent-base@7.1.4: {}
 
-  alchemy@2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1))(ws@8.22.0):
+  alchemy@2.0.0-beta.81(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(hono@4.11.4)(typescript@7.0.2)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1))(ws@8.22.0):
     dependencies:
-      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.4))(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1))
-      '@alchemy.run/floci': 2.0.0-beta.81(effect@4.0.4)
+      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.5))(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(rolldown@1.2.5)(typescript@7.0.2)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1))
+      '@alchemy.run/floci': 2.0.0-beta.81(effect@4.0.5)
       '@alchemy.run/node-utils': 2.0.0-beta.81
       '@alchemy.run/sigil': 0.1.0-alpha.1
-      '@distilled.cloud/acme': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/aws': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/axiom': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/doppler': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/fly-io': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/gcp': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/hetzner': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/infisical': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/neon': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/planetscale': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/prisma': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/railway': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/stripe': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/zerossl': 1.0.0-rc.13(effect@4.0.4)
-      '@effect/sql-d1': 4.0.0(effect@4.0.4)
-      '@effect/sql-sqlite-do': 4.0.0(effect@4.0.4)
+      '@distilled.cloud/acme': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/aws': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/axiom': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/doppler': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/fly-io': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/gcp': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/hetzner': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/infisical': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/neon': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/planetscale': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/prisma': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/railway': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/stripe': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/zerossl': 1.0.0-rc.13(effect@4.0.5)
+      '@effect/sql-d1': 4.0.5(effect@4.0.5)
+      '@effect/sql-sqlite-do': 4.0.5(effect@4.0.5)
       '@libsql/client': 0.17.4
       '@neon/functions': 0.11.0(hono@4.11.4)
       '@octokit/rest': 22.0.1
@@ -7104,7 +7087,7 @@ snapshots:
       '@prisma/dev': 0.20.0(typescript@7.0.2)
       '@types/aws-lambda': 8.10.162
       capnweb: 0.12.0
-      effect: 4.0.4
+      effect: 4.0.5
       fflate: 0.8.3
       libsodium-wrappers: 0.8.4
       pathe: 2.0.3
@@ -7113,8 +7096,7 @@ snapshots:
       tinyglobby: 0.2.17
       yaml: 2.9.0
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.4)
-      '@effect/platform-node': 4.0.4(effect@4.0.4)(redis@6.2.1)
+      '@effect/platform-node': 4.0.5(effect@4.0.5)(redis@6.2.1)
       vite: 8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.1)
       ws: 8.22.0
     transitivePeerDependencies:
@@ -7127,30 +7109,30 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  alchemy@2.0.0-beta.81(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0):
+  alchemy@2.0.0-beta.81(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(hono@4.11.4)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))(ws@8.22.0):
     dependencies:
-      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.4))(@effect/platform-bun@4.0.0(effect@4.0.4))(@effect/platform-node@4.0.4(effect@4.0.4)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.4)(rolldown@1.2.5)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))
-      '@alchemy.run/floci': 2.0.0-beta.81(effect@4.0.4)
+      '@alchemy.run/cloudflare-runtime': 2.0.0-beta.81(@distilled.cloud/cloudflare@1.0.0-rc.13(effect@4.0.5))(@effect/platform-node@4.0.5(effect@4.0.5)(redis@6.2.1))(@types/node@26.6.5)(effect@4.0.5)(rolldown@1.2.5)(vite@8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0))
+      '@alchemy.run/floci': 2.0.0-beta.81(effect@4.0.5)
       '@alchemy.run/node-utils': 2.0.0-beta.81
       '@alchemy.run/sigil': 0.1.0-alpha.1
-      '@distilled.cloud/acme': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/aws': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/axiom': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/doppler': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/fly-io': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/gcp': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/hetzner': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/infisical': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/neon': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/planetscale': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/prisma': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/railway': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/stripe': 1.0.0-rc.13(effect@4.0.4)
-      '@distilled.cloud/zerossl': 1.0.0-rc.13(effect@4.0.4)
-      '@effect/sql-d1': 4.0.0(effect@4.0.4)
-      '@effect/sql-sqlite-do': 4.0.0(effect@4.0.4)
+      '@distilled.cloud/acme': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/aws': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/axiom': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/cloudflare': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/core': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/doppler': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/fly-io': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/gcp': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/hetzner': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/infisical': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/neon': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/planetscale': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/prisma': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/railway': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/stripe': 1.0.0-rc.13(effect@4.0.5)
+      '@distilled.cloud/zerossl': 1.0.0-rc.13(effect@4.0.5)
+      '@effect/sql-d1': 4.0.5(effect@4.0.5)
+      '@effect/sql-sqlite-do': 4.0.5(effect@4.0.5)
       '@libsql/client': 0.17.4
       '@neon/functions': 0.11.0(hono@4.11.4)
       '@octokit/rest': 22.0.1
@@ -7158,7 +7140,7 @@ snapshots:
       '@prisma/dev': 0.20.0(typescript@7.0.2)
       '@types/aws-lambda': 8.10.162
       capnweb: 0.12.0
-      effect: 4.0.4
+      effect: 4.0.5
       fflate: 0.8.3
       libsodium-wrappers: 0.8.4
       pathe: 2.0.3
@@ -7167,8 +7149,7 @@ snapshots:
       tinyglobby: 0.2.17
       yaml: 2.9.0
     optionalDependencies:
-      '@effect/platform-bun': 4.0.0(effect@4.0.4)
-      '@effect/platform-node': 4.0.4(effect@4.0.4)(redis@6.2.1)
+      '@effect/platform-node': 4.0.5(effect@4.0.5)(redis@6.2.1)
       vite: 8.3.4(@types/node@26.6.5)(jiti@2.7.0)(yaml@2.9.0)
       ws: 8.22.0
     transitivePeerDependencies:
@@ -7446,7 +7427,7 @@ snapshots:
     dependencies:
       safe-buffer: 5.2.1
 
-  effect@4.0.4: {}
+  effect@4.0.5: {}
 
   electron-to-chromium@1.5.429: {}
 

@@ -15,12 +15,12 @@ allowBuilds:
   workerd: true
 
 catalog:
-  "@effect/platform-node": "^4.0.4"
+  "@effect/platform-node": "^4.0.5"
   "@oxc-project/types": "^0.153.0"
   "@types/node": "26.6.5"
   alchemy: "2.0.0-beta.81"
   changelogithub: "^13.16.1"
-  effect: "^4.0.4"
+  effect: "^4.0.5"
   husky: "^9.1.7"
   mitata: "^1.0.34"
   oxfmt: "^0.72.0"
@@ -32,15 +32,15 @@ catalog:
   vitest: "^5.0.4"
   yaml: "^2.9.1"
 minimumReleaseAgeExclude:
-  - "@effect/atom-react@4.0.4"
-  - "@effect/platform-node-shared@4.0.4"
-  - "@effect/platform-node@4.0.4"
-  - "@effect/sql-d1@4.0.4"
-  - "@effect/sql-mysql2@4.0.4"
-  - "@effect/sql-pg@4.0.4"
-  - "@effect/sql-sqlite-do@4.0.4"
-  - "@effect/vitest@4.0.4"
-  - effect@4.0.4
+  - "@effect/atom-react@4.0.5"
+  - "@effect/platform-node-shared@4.0.5"
+  - "@effect/platform-node@4.0.5"
+  - "@effect/sql-d1@4.0.5"
+  - "@effect/sql-mysql2@4.0.5"
+  - "@effect/sql-pg@4.0.5"
+  - "@effect/sql-sqlite-do@4.0.5"
+  - "@effect/vitest@4.0.5"
+  - effect@4.0.5
   - "@aws-sdk/checksums@3.1001.2"
   - "@aws-sdk/client-dynamodb@3.1149.0"
   - "@aws-sdk/client-ec2@3.1149.0"
