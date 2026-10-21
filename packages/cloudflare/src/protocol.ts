@@ -83,6 +83,35 @@ import {
   resultInfoSymbol,
 } from "./traits.ts";
 
+/** Longest slice of a response body carried into an error message. */
+const MAX_ERROR_BODY_LENGTH = 1000;
+
+/**
+ * The message for a failed JSON response. Cloudflare's usual `errors[0].message`
+ * wins; otherwise keep whatever else the body says (a top-level `message`, the
+ * `errors` entries, or the raw text of an unfamiliar shape) so the caller can
+ * see why the request failed. `HTTP <status>` remains only when the body says
+ * nothing.
+ */
+const envelopeErrorMessage = (
+  json: Record<string, unknown>,
+  rawErrors: ReadonlyArray<unknown>,
+  text: string,
+  status: number,
+): string => {
+  const first = rawErrors[0] as { message?: unknown } | undefined;
+  if (typeof first?.message === "string") return first.message;
+  if (typeof json.message === "string" && json.message.length > 0) return json.message;
+  // `errors` entries that carry no message: keep their other fields.
+  const detail =
+    rawErrors.length > 0
+      ? JSON.stringify(rawErrors)
+      : Array.isArray(json.errors) || text.trim().length === 0
+        ? ""
+        : text;
+  return detail.length > 0 ? detail.slice(0, MAX_ERROR_BODY_LENGTH) : `HTTP ${status}`;
+};
+
 /**
  * Error channel shared by every generated Cloudflare operation. Generated
  * service files annotate operations with `API.OperationMethod<I, O,
@@ -467,7 +496,7 @@ const makeProtocol = (options: { readonly resultInfo: boolean }) => {
           // Cloudflare sometimes omits the code entirely (e.g. webhook errors);
           // treat missing code as 0 so `{ code: 0 }` matchers can match.
           const errorCode = first ? (typeof first.code === "number" ? first.code : 0) : undefined;
-          const errorMessage = nonJson ? text : (first?.message ?? `HTTP ${status}`);
+          const errorMessage = nonJson ? text : envelopeErrorMessage(json, rawErrors, text, status);
 
           // Transient auth blips must be tagged retryable on EVERY error path,
           // including per-operation typed errors -- an op-declared class with a
