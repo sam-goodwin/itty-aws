@@ -107,7 +107,7 @@ export const METRICS: Metric[] = [
     get: (p) => p.runtime?.addedP50Us,
     fmt: us,
     rel: 0.3,
-    abs: 3,
+    abs: 5,
     noisy: true,
   },
   {
@@ -156,17 +156,25 @@ const cell = (m: Metric, head: CiProgram | undefined, base: CiProgram | undefine
 
 const short = (sha: string) => sha.slice(0, 9);
 
-/** One bar per changed program: PR as a percentage of main; 100 = unchanged. */
+/**
+ * One horizontal bar per changed program (the 15 largest moves): PR as a
+ * percentage of main, with a line at 100. Horizontal, because program names
+ * on a vertical chart's x-axis overlap.
+ */
 const chart = (m: Metric, rows: Array<[name: string, head: number, base: number]>): string => {
-  const values = rows.map(([, h, b]) => Math.round((h / b) * 1000) / 10);
+  const top = [...rows]
+    .sort((a, b) => Math.abs(b[1] / b[2] - 1) - Math.abs(a[1] / a[2] - 1))
+    .slice(0, 15);
+  const values = top.map(([, h, b]) => Math.round((h / b) * 1000) / 10);
   const lo = Math.floor(Math.min(100, ...values) - 1);
   const hi = Math.ceil(Math.max(100, ...values) + 1);
   return [
     "```mermaid",
-    "xychart-beta",
-    `  title "${m.title}: PR as % of main (bar below the line = smaller)"`,
-    `  x-axis [${rows.map(([n]) => JSON.stringify(n)).join(", ")}]`,
-    `  y-axis "% of main" ${lo} --> ${hi}`,
+    `%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#0969da, #cf222e"}}}}%%`,
+    "xychart-beta horizontal",
+    `  title "${m.title}, PR as % of main"`,
+    `  x-axis [${top.map(([n]) => JSON.stringify(n)).join(", ")}]`,
+    `  y-axis "% of main (red line = main)" ${lo} --> ${hi}`,
     `  bar [${values.join(", ")}]`,
     `  line [${values.map(() => 100).join(", ")}]`,
     "```",
