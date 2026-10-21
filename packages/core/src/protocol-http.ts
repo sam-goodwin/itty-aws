@@ -13,6 +13,7 @@ import * as HttpClientRequest from "effect/http/HttpClientRequest";
  */
 import type * as AST from "effect/SchemaAST";
 import { debugHttp } from "./debug.ts";
+import { isOpaqueValue } from "./plain-values.ts";
 import {
   bodySymbol,
   deepQuerySymbol,
@@ -86,13 +87,7 @@ export const resolveNode = (ast: AST.AST): AST.AST => {
 
 //#region Recursive wire-name mapping
 
-/** Binary/opaque values that must never be treated as key-value objects. */
-export const isOpaqueValue = (v: unknown): boolean =>
-  v instanceof Blob ||
-  v instanceof File ||
-  v instanceof ArrayBuffer ||
-  v instanceof Uint8Array ||
-  v instanceof Date;
+export { isOpaqueValue };
 
 /**
  * Deep-rename keys via a plain dictionary (see `T.KeyDictionary`). An entry
