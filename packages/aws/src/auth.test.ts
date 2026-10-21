@@ -367,3 +367,223 @@ describe("SSO role credentials cache (#565)", () => {
     ).toBe(sha1(`${START_URL}\n111111111111\nAdministratorAccess`));
   });
 });
+
+describe("SSO access token refresh (#886)", () => {
+  let home: string;
+  let originalHome: string | undefined;
+
+  beforeEach(() => {
+    home = mkdtempSync(join(tmpdir(), "distilled-aws-auth-"));
+    mkdirSync(join(home, ".aws"), { recursive: true });
+    writeFileSync(join(home, ".aws", "config"), config);
+    originalHome = process.env.HOME;
+    process.env.HOME = home;
+  });
+
+  afterEach(() => {
+    process.env.HOME = originalHome;
+    rmSync(home, { recursive: true, force: true });
+  });
+
+  const tokenPath = () => join(home, ".aws", "sso", "cache", `${ssoTokenCacheName(SESSION)}.json`);
+
+  const expiredToken = {
+    accessToken: "expired-access-token",
+    expiresAt: new Date(Date.now() - 60 * 1000).toISOString(),
+    refreshToken: "refresh-token-1",
+    clientId: "client-id",
+    clientSecret: "client-secret",
+    registrationExpiresAt: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString(),
+    region: SSO_REGION,
+    startUrl: START_URL,
+  };
+
+  /**
+   * Fake cache plus a fake SSO OIDC `/token` endpoint and SSO portal.
+   * `oidc` answers each `CreateToken` call; `oidcBodies` records the
+   * request bodies and `portalTokens` the bearer token of each portal call.
+   */
+  const setup = (
+    token: object,
+    oidc: () => { status: number; body: object } = () => ({
+      status: 200,
+      body: {
+        accessToken: "fresh-access-token",
+        tokenType: "Bearer",
+        expiresIn: 3600,
+        refreshToken: "refresh-token-2",
+      },
+    }),
+  ) => {
+    const files = new Map<string, string>([
+      [join(home, ".aws", "config"), config],
+      [tokenPath(), JSON.stringify(token)],
+    ]);
+    const oidcBodies: unknown[] = [];
+    const portalTokens: string[] = [];
+
+    const fs = FileSystem.layerNoop({
+      readFileString: (path) =>
+        files.has(path)
+          ? Effect.succeed(files.get(path)!)
+          : Effect.fail(
+              PlatformError.systemError({
+                _tag: "NotFound",
+                module: "FileSystem",
+                method: "readFileString",
+                pathOrDescriptor: path,
+              }),
+            ),
+      writeFileString: (path, data) =>
+        Effect.sync(() => {
+          files.set(path, data);
+        }),
+    });
+
+    const http = Layer.succeed(HttpClient.HttpClient)(
+      HttpClient.make((request, url) =>
+        Effect.sync(() => {
+          if (url.hostname === `oidc.${SSO_REGION}.amazonaws.com`) {
+            expect(request.method).toBe("POST");
+            expect(url.pathname).toBe("/token");
+            const body = request.body as { body: Uint8Array };
+            oidcBodies.push(JSON.parse(new TextDecoder().decode(body.body)));
+            const { status, body: json } = oidc();
+            return HttpClientResponse.fromWeb(request, Response.json(json, { status }));
+          }
+          expect(url.hostname).toBe(`portal.sso.${SSO_REGION}.amazonaws.com`);
+          portalTokens.push(request.headers["x-amz-sso_bearer_token"]!);
+          return HttpClientResponse.fromWeb(
+            request,
+            Response.json({
+              roleCredentials: {
+                accessKeyId: "AKIA-dev",
+                secretAccessKey: "secret-dev",
+                sessionToken: "session-dev",
+                expiration: inOneHour().getTime(),
+              },
+            }),
+          );
+        }),
+      ),
+    );
+
+    const run = () =>
+      Effect.runPromise(
+        Effect.flatMap(makeAuthService(), (auth) => auth.loadProfileCredentials("dev")).pipe(
+          Effect.provide(Layer.mergeAll(fs, http, Path.layer)),
+          Effect.result,
+        ),
+      );
+    const savedToken = () => JSON.parse(files.get(tokenPath())!);
+
+    return { run, oidcBodies, portalTokens, savedToken };
+  };
+
+  test("an expired access token is renewed with the cached refresh token", async () => {
+    const h = setup(expiredToken);
+    const result = await h.run();
+    expect(result._tag).toBe("Success");
+    if (result._tag === "Success") {
+      expect(Redacted.value(result.success.accessKeyId)).toBe("AKIA-dev");
+    }
+
+    expect(h.oidcBodies).toEqual([
+      {
+        clientId: "client-id",
+        clientSecret: "client-secret",
+        grantType: "refresh_token",
+        refreshToken: "refresh-token-1",
+      },
+    ]);
+    expect(h.portalTokens).toEqual(["fresh-access-token"]);
+
+    // The renewed token is written back for other processes.
+    const saved = h.savedToken();
+    expect(saved).toMatchObject({
+      accessToken: "fresh-access-token",
+      refreshToken: "refresh-token-2",
+      clientId: "client-id",
+      clientSecret: "client-secret",
+      registrationExpiresAt: expiredToken.registrationExpiresAt,
+      startUrl: START_URL,
+    });
+    expect(new Date(saved.expiresAt).getTime()).toBeGreaterThan(Date.now() + 50 * 60 * 1000);
+  });
+
+  test("the cached refresh token is kept when CreateToken returns none", async () => {
+    const h = setup(expiredToken, () => ({
+      status: 200,
+      body: { accessToken: "fresh-access-token", expiresIn: 3600 },
+    }));
+    expect((await h.run())._tag).toBe("Success");
+    expect(h.savedToken().refreshToken).toBe("refresh-token-1");
+  });
+
+  test("a token that is still valid makes no CreateToken call", async () => {
+    const h = setup({ ...expiredToken, expiresAt: inOneHour().toISOString() });
+    expect((await h.run())._tag).toBe("Success");
+    expect(h.oidcBodies).toEqual([]);
+    expect(h.portalTokens).toEqual(["expired-access-token"]);
+  });
+
+  test("a token expiring within five minutes is renewed early", async () => {
+    const h = setup({
+      ...expiredToken,
+      expiresAt: new Date(Date.now() + 2 * 60 * 1000).toISOString(),
+    });
+    expect((await h.run())._tag).toBe("Success");
+    expect(h.oidcBodies).toHaveLength(1);
+    expect(h.portalTokens).toEqual(["fresh-access-token"]);
+  });
+
+  test("a failed refresh of a token that has not expired yet keeps the old token", async () => {
+    const h = setup(
+      { ...expiredToken, expiresAt: new Date(Date.now() + 2 * 60 * 1000).toISOString() },
+      () => ({ status: 500, body: { error: "server_error" } }),
+    );
+    expect((await h.run())._tag).toBe("Success");
+    expect(h.portalTokens).toEqual(["expired-access-token"]);
+  });
+
+  test("an expired token without a refresh token fails with ExpiredSSOToken", async () => {
+    const { refreshToken: _, ...noRefresh } = expiredToken;
+    const h = setup(noRefresh);
+    const result = await h.run();
+    expect(result._tag).toBe("Failure");
+    if (result._tag === "Failure") {
+      expect(result.failure._tag).toBe("Alchemy::AWS::ExpiredSSOToken");
+    }
+    expect(h.oidcBodies).toEqual([]);
+    expect(h.portalTokens).toEqual([]);
+  });
+
+  test("an expired client registration fails with ExpiredSSOToken", async () => {
+    const h = setup({
+      ...expiredToken,
+      registrationExpiresAt: new Date(Date.now() - 1000).toISOString(),
+    });
+    const result = await h.run();
+    expect(result._tag).toBe("Failure");
+    if (result._tag === "Failure") {
+      expect(result.failure._tag).toBe("Alchemy::AWS::ExpiredSSOToken");
+    }
+    expect(h.oidcBodies).toEqual([]);
+  });
+
+  test("a rejected refresh token fails with the OIDC error as the cause", async () => {
+    const h = setup(expiredToken, () => ({
+      status: 400,
+      body: { error: "invalid_grant", error_description: "Invalid refresh token provided" },
+    }));
+    const result = await h.run();
+    expect(result._tag).toBe("Failure");
+    if (result._tag === "Failure") {
+      expect(result.failure._tag).toBe("Alchemy::AWS::ExpiredSSOToken");
+      expect(String((result.failure as { cause?: unknown }).cause)).toContain("invalid_grant");
+    }
+    expect(h.portalTokens).toEqual([]);
+    // The cache is left as it was.
+    expect(h.savedToken().accessToken).toBe("expired-access-token");
+  });
+});

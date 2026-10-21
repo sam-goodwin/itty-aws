@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "deploy": "pnpm exec alchemy deploy",
-    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.spec-repos.json"
+    "typecheck": "tsrs -p tsconfig.json && tsrs -p tsconfig.spec-repos.json"
   },
   "dependencies": {
     "@effect/platform-node": "catalog:",
@@ -12,8 +12,7 @@
     "effect": "catalog:"
   },
   "devDependencies": {
-    "graphql": "catalog:",
-    "typescript": "catalog:",
+    "tsrs": "catalog:",
     "yaml": "catalog:"
   }
 }
