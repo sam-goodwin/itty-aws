@@ -82,8 +82,8 @@ const azureSpec: SdkSpec = {
   postProcess: (code) =>
     code.includes("Redacted.Redacted<")
       ? code.replace(
-          `import * as S from "@distilled.cloud/core/schema";\n`,
-          `import * as S from "@distilled.cloud/core/schema";\nimport * as Redacted from "effect/Redacted";\n`,
+          `import * as S from "@distilled.cloud/core/schema-lite";\n`,
+          `import * as S from "@distilled.cloud/core/schema-lite";\nimport * as Redacted from "effect/Redacted";\n`,
         )
       : code,
 };
@@ -106,10 +106,10 @@ const markScopeLabelsGreedy = (model: any): void => {
 runGeneratorCli({
   description: "Generate the Azure Effect SDK from the Smithy models",
   root: `${import.meta.dirname}/..`,
-  // patches/<service>/*.json apply at generate time (package.json
-  // `distilled.patches: "generate"`), before the greedy-label rewrite.
+  // patches/<service>/*.json apply in convert (finalizeConvert), so the
+  // models here are already patched.
   patchesDir: false,
-  transformModel: (model, resource) => {
+  transformModel: (model) => {
     markScopeLabelsGreedy(model);
   },
   spec: () => azureSpec,

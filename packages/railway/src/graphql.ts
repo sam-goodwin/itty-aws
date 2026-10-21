@@ -65,6 +65,17 @@ const RailwayInternalErrorSpec: ErrorSpec<RailwayInternalError> = errorSpec(
   { global: true },
 );
 
+/** The login session does not exist: it was cancelled, consumed, or expired. Stop polling and start a new session. */
+export class RailwayLoginSessionNotFound extends S.TaggedError<RailwayLoginSessionNotFound>()(
+  "RailwayLoginSessionNotFound",
+  errorFields,
+).pipe(Category.withNotFoundError) {}
+const RailwayLoginSessionNotFoundSpec: ErrorSpec<RailwayLoginSessionNotFound> = errorSpec(
+  RailwayLoginSessionNotFound,
+  "RailwayLoginSessionNotFound",
+  [{ code: "BAD_USER_INPUT", messageIncludes: "does not exist" }],
+);
+
 /** The selected resource or a required dependency was not found. */
 export class RailwayNotFound extends S.TaggedError<RailwayNotFound>()(
   "RailwayNotFound",
@@ -293,6 +304,7 @@ export type RailwayError =
   | RailwayCustomDomainCreateFailed
   | RailwayForbidden
   | RailwayInternalError
+  | RailwayLoginSessionNotFound
   | RailwayNotFound
   | RailwayOperationInProgress
   | RailwayPlanLimitExceeded
@@ -3812,7 +3824,7 @@ export interface PitrHaWorkflowProgress {
   readonly workflowId: string;
 }
 
-/** Estimated destination-volume scratch a PITR restore to a target needs: the base backup's data plus every WAL segment replayed from that backup to the target (Postgres holds replayed WAL in pg_wal faster than restartpoints recycle it). A conservative over-estimate for a non-blocking pre-restore warning — not a gate. */
+/** Estimated destination-volume scratch a PITR restore to a target needs: the base backup's data plus every WAL segment replayed from that backup to the target (Postgres holds replayed WAL in pg_wal faster than restartpoints recycle it). A conservative over-estimate for a non-blocking pre-restore warning -- not a gate. */
 export interface PitrRestoreScratchEstimate {
   readonly baseBackupLabel: string;
   readonly dataMB: number;
@@ -4071,7 +4083,7 @@ export interface ProjectHistoryConnection {
   readonly pageInfo: ProjectHistoryPageInfo;
 }
 
-/** One settled change in an environment: a system event or a terminal operation (patch, deploy, …). */
+/** One settled change in an environment: a system event or a terminal operation (patch, deploy, ...). */
 export interface ProjectHistoryEntry {
   readonly action: string;
   readonly activityPayload: unknown | null;
@@ -13002,8 +13014,9 @@ export const Railway = {
     ]),
   loginSessionConsume: (args: {
     readonly code: string;
-  }): Query<string | null, RailwayNotFound | RailwayGlobalError> =>
+  }): Query<string | null, RailwayLoginSessionNotFound | RailwayNotFound | RailwayGlobalError> =>
     rootLeaf("mutation", "loginSessionConsume", false, args, { code: "String!" }, [
+      RailwayLoginSessionNotFoundSpec,
       RailwayNotFoundSpec,
       ...globalErrors,
     ]),

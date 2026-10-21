@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/zerossl",
-  "version": "1.0.0-rc.13",
+  "version": "1.0.0-rc.15",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -59,9 +59,12 @@
     }
   },
   "scripts": {
-    "build": "tsc -b",
+    "build": "tsrs -b",
+    "convert": "node --conditions=bun scripts/convert.ts",
     "generate": "node --conditions=bun scripts/generate.ts",
-    "typecheck": "tsc -p tsconfig.json"
+    "specs:fetch": "git submodule update --force --init --depth=1 specs/spec-mirror-zerossl",
+    "specs:update": "git submodule update --remote --force --depth=1 specs/spec-mirror-zerossl",
+    "typecheck": "tsrs -p tsconfig.json"
   },
   "dependencies": {
     "@distilled.cloud/core": "workspace:*"
@@ -71,5 +74,9 @@
   },
   "peerDependencies": {
     "effect": "catalog:"
+  },
+  "distilled": {
+    "generatedAt": "2026-10-09",
+    "specUpdatedAt": "2026-10-08"
   }
 }
