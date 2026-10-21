@@ -885,6 +885,21 @@ export interface DeleteUserSchemaRequest {
   schemaId: string;
 }
 export interface DeleteUserSchemaResponse {}
+export type EditDiscoveryOperationRequestState = "review" | "ignored";
+export interface EditDiscoveryOperationRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  discoveryId: string;
+  /** Mark state of operation in API Discovery */
+  state?: EditDiscoveryOperationRequestState | (string & {});
+}
+export type EditDiscoveryOperationResponseState = "review" | "saved" | "ignored";
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface EditDiscoveryOperationResponse {
+  /** State of operation in API Discovery */
+  state?: EditDiscoveryOperationResponseState | null;
+}
 export interface GetConfigurationRequest {
   /** Identifier. */
   zoneId: string;
@@ -1957,8 +1972,8 @@ export const bulkCreateLabelUsers: API.PaginatedOperationMethod<
   LabelsUserBulkCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(434, __c54, 2) as any as S.Schema<BulkCreateLabelUsersRequest>,
-    output: __S(448, __c56, 0) as any as S.Schema<BulkCreateLabelUsersResponse>,
+    input: __S(442, __c55, 2) as any as S.Schema<BulkCreateLabelUsersRequest>,
+    output: __S(456, __c57, 0) as any as S.Schema<BulkCreateLabelUsersResponse>,
     errors: [LabelAlreadyExists, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2018,7 +2033,7 @@ export const bulkDeleteLabelUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
     input: __S(40, __c5, 0) as any as S.Schema<BulkDeleteLabelUsersRequest>,
-    output: __S(448, __c56, 0) as any as S.Schema<BulkDeleteLabelUsersResponse>,
+    output: __S(456, __c57, 0) as any as S.Schema<BulkDeleteLabelUsersResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2240,6 +2255,21 @@ export const deleteUserSchema: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type EditDiscoveryOperationError = CloudflareOpError;
+/** Updates the state of a discovered web or API operation. */
+export const editDiscoveryOperation: API.OperationMethod<
+  EditDiscoveryOperationRequest,
+  EditDiscoveryOperationResponse,
+  EditDiscoveryOperationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(184, __c23, 0) as any as S.Schema<EditDiscoveryOperationRequest>,
+  output: __S(185, __c23, 1) as any as S.Schema<EditDiscoveryOperationResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetConfigurationError =
   | InvalidObjectIdentifier
   | NotEntitled
@@ -2252,8 +2282,8 @@ export const getConfiguration: API.OperationMethod<
   GetConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(187, __c23, 3) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(192, __c24, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(195, __c24, 3) as any as S.Schema<GetConfigurationResponse>,
   errors: [InvalidObjectIdentifier, NotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2267,8 +2297,8 @@ export const getDiscovery: API.OperationMethod<
   GetDiscoveryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetDiscoveryRequest>,
-  output: __S(193, __c24, 1) as any as S.Schema<GetDiscoveryResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetDiscoveryRequest>,
+  output: __S(201, __c25, 1) as any as S.Schema<GetDiscoveryResponse>,
   errors: [InvalidObjectIdentifier, NotEntitled, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2282,8 +2312,8 @@ export const getLabelManaged: API.OperationMethod<
   GetLabelManagedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetLabelManagedRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GetLabelManagedResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetLabelManagedRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<GetLabelManagedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2297,8 +2327,8 @@ export const getLabelUser: API.OperationMethod<
   GetLabelUserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetLabelUserRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<GetLabelUserResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<GetLabelUserRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<GetLabelUserResponse>,
   errors: [LabelNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2316,8 +2346,8 @@ export const getOperation: API.OperationMethod<
   GetOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<GetOperationRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<GetOperationResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetOperationRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<GetOperationResponse>,
   errors: [
     InvalidObjectIdentifier,
     OperationNotFound,
@@ -2340,8 +2370,8 @@ export const getOperationSchemaValidation: API.OperationMethod<
   GetOperationSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetOperationSchemaValidationRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<GetOperationSchemaValidationResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetOperationSchemaValidationRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<GetOperationSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, OperationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2355,7 +2385,7 @@ export const getSettingSchemaValidation: API.OperationMethod<
   GetSettingSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<GetSettingSchemaValidationRequest>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetSettingSchemaValidationRequest>,
   output: __S(64, __c8, 0) as any as S.Schema<GetSettingSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -2374,8 +2404,8 @@ export const getUserSchema: API.OperationMethod<
   GetUserSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c34, 0) as any as S.Schema<GetUserSchemaRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<GetUserSchemaResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetUserSchemaRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<GetUserSchemaResponse>,
   errors: [
     InvalidObjectIdentifier,
     SchemaNotFound,
@@ -2397,8 +2427,8 @@ export const listDiscoveryOperations: API.PaginatedOperationMethod<
   DiscoveryOperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(288, __c36, 0) as any as S.Schema<ListDiscoveryOperationsRequest>,
-    output: __S(293, __c36, 5) as any as S.Schema<ListDiscoveryOperationsResponse>,
+    input: __S(296, __c37, 0) as any as S.Schema<ListDiscoveryOperationsRequest>,
+    output: __S(301, __c37, 5) as any as S.Schema<ListDiscoveryOperationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2423,8 +2453,8 @@ export const listLabels: API.PaginatedOperationMethod<
   LabelsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(296, __c37, 0) as any as S.Schema<ListLabelsRequest>,
-    output: __S(299, __c37, 3) as any as S.Schema<ListLabelsResponse>,
+    input: __S(304, __c38, 0) as any as S.Schema<ListLabelsRequest>,
+    output: __S(307, __c38, 3) as any as S.Schema<ListLabelsResponse>,
     errors: [ZonePurged, Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2449,8 +2479,8 @@ export const listOperations: API.PaginatedOperationMethod<
   OperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(304, __c38, 0) as any as S.Schema<ListOperationsRequest>,
-    output: __S(308, __c38, 4) as any as S.Schema<ListOperationsResponse>,
+    input: __S(312, __c39, 0) as any as S.Schema<ListOperationsRequest>,
+    output: __S(316, __c39, 4) as any as S.Schema<ListOperationsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2473,8 +2503,8 @@ export const listSchemas: API.OperationMethod<
   ListSchemasError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(312, __c39, 0) as any as S.Schema<ListSchemasRequest>,
-  output: __S(313, __c39, 1) as any as S.Schema<ListSchemasResponse>,
+  input: __S(320, __c40, 0) as any as S.Schema<ListSchemasRequest>,
+  output: __S(321, __c40, 1) as any as S.Schema<ListSchemasResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2490,8 +2520,8 @@ export const listUserSchemaHosts: API.PaginatedOperationMethod<
   UserSchemasHostsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(320, __c40, 0) as any as S.Schema<ListUserSchemaHostsRequest>,
-    output: __S(323, __c40, 3) as any as S.Schema<ListUserSchemaHostsResponse>,
+    input: __S(328, __c41, 0) as any as S.Schema<ListUserSchemaHostsRequest>,
+    output: __S(331, __c41, 3) as any as S.Schema<ListUserSchemaHostsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2516,8 +2546,8 @@ export const listUserSchemaOperations: API.PaginatedOperationMethod<
   UserSchemasOperationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(328, __c41, 0) as any as S.Schema<ListUserSchemaOperationsRequest>,
-    output: __S(331, __c41, 3) as any as S.Schema<ListUserSchemaOperationsResponse>,
+    input: __S(336, __c42, 0) as any as S.Schema<ListUserSchemaOperationsRequest>,
+    output: __S(339, __c42, 3) as any as S.Schema<ListUserSchemaOperationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2542,8 +2572,8 @@ export const listUserSchemas: API.PaginatedOperationMethod<
   UserSchemasListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(336, __c42, 0) as any as S.Schema<ListUserSchemasRequest>,
-    output: __S(338, __c42, 2) as any as S.Schema<ListUserSchemasResponse>,
+    input: __S(344, __c43, 0) as any as S.Schema<ListUserSchemasRequest>,
+    output: __S(346, __c43, 2) as any as S.Schema<ListUserSchemasResponse>,
     errors: [ZonePurged, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2566,7 +2596,7 @@ export const patchLabelUser: API.OperationMethod<
   PatchLabelUserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(344, __c43, 0) as any as S.Schema<PatchLabelUserRequest>,
+  input: __S(352, __c44, 0) as any as S.Schema<PatchLabelUserRequest>,
   output: __S(152, __c19, 0) as any as S.Schema<PatchLabelUserResponse>,
   errors: [LabelNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -2581,8 +2611,8 @@ export const patchOperationSchemaValidation: API.OperationMethod<
   PatchOperationSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c44, 1) as any as S.Schema<PatchOperationSchemaValidationRequest>,
-  output: __S(354, __c44, 2) as any as S.Schema<PatchOperationSchemaValidationResponse>,
+  input: __S(361, __c45, 1) as any as S.Schema<PatchOperationSchemaValidationRequest>,
+  output: __S(362, __c45, 2) as any as S.Schema<PatchOperationSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2596,7 +2626,7 @@ export const patchSettingSchemaValidation: API.OperationMethod<
   PatchSettingSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(360, __c45, 0) as any as S.Schema<PatchSettingSchemaValidationRequest>,
+  input: __S(368, __c46, 0) as any as S.Schema<PatchSettingSchemaValidationRequest>,
   output: __S(64, __c8, 0) as any as S.Schema<PatchSettingSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -2615,8 +2645,8 @@ export const patchUserSchema: API.OperationMethod<
   PatchUserSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c46, 0) as any as S.Schema<PatchUserSchemaRequest>,
-  output: __S(280, __c35, 0) as any as S.Schema<PatchUserSchemaResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<PatchUserSchemaRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<PatchUserSchemaResponse>,
   errors: [
     InvalidObjectIdentifier,
     SchemaNotFound,
@@ -2640,8 +2670,8 @@ export const putConfiguration: API.OperationMethod<
   PutConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(378, __c47, 2) as any as S.Schema<PutConfigurationRequest>,
-  output: __S(381, __c47, 5) as any as S.Schema<PutConfigurationResponse>,
+  input: __S(386, __c48, 2) as any as S.Schema<PutConfigurationRequest>,
+  output: __S(389, __c48, 5) as any as S.Schema<PutConfigurationResponse>,
   errors: [InvalidObjectIdentifier, NotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2655,8 +2685,8 @@ export const putLabelManagedResourceOperation: API.OperationMethod<
   PutLabelManagedResourceOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c48, 0) as any as S.Schema<PutLabelManagedResourceOperationRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<PutLabelManagedResourceOperationResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<PutLabelManagedResourceOperationRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<PutLabelManagedResourceOperationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2670,7 +2700,7 @@ export const putLabelUser: API.OperationMethod<
   PutLabelUserError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(392, __c49, 0) as any as S.Schema<PutLabelUserRequest>,
+  input: __S(400, __c50, 0) as any as S.Schema<PutLabelUserRequest>,
   output: __S(152, __c19, 0) as any as S.Schema<PutLabelUserResponse>,
   errors: [LabelNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -2685,8 +2715,8 @@ export const putLabelUserResourceOperation: API.OperationMethod<
   PutLabelUserResourceOperationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c50, 0) as any as S.Schema<PutLabelUserResourceOperationRequest>,
-  output: __S(216, __c27, 0) as any as S.Schema<PutLabelUserResourceOperationResponse>,
+  input: __S(408, __c51, 0) as any as S.Schema<PutLabelUserResourceOperationRequest>,
+  output: __S(224, __c28, 0) as any as S.Schema<PutLabelUserResourceOperationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2703,8 +2733,8 @@ export const putOperationSchemaValidation: API.OperationMethod<
   PutOperationSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(408, __c51, 0) as any as S.Schema<PutOperationSchemaValidationRequest>,
-  output: __S(256, __c32, 0) as any as S.Schema<PutOperationSchemaValidationResponse>,
+  input: __S(416, __c52, 0) as any as S.Schema<PutOperationSchemaValidationRequest>,
+  output: __S(264, __c33, 0) as any as S.Schema<PutOperationSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, OperationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2718,7 +2748,7 @@ export const putSettingSchemaValidation: API.OperationMethod<
   PutSettingSchemaValidationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c52, 0) as any as S.Schema<PutSettingSchemaValidationRequest>,
+  input: __S(424, __c53, 0) as any as S.Schema<PutSettingSchemaValidationRequest>,
   output: __S(64, __c8, 0) as any as S.Schema<PutSettingSchemaValidationResponse>,
   errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -2733,7 +2763,7 @@ export const updateOperationLabel: API.OperationMethod<
   UpdateOperationLabelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(424, __c53, 0) as any as S.Schema<UpdateOperationLabelRequest>,
+  input: __S(432, __c54, 0) as any as S.Schema<UpdateOperationLabelRequest>,
   output: __S(120, __c15, 0) as any as S.Schema<UpdateOperationLabelResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -2778,7 +2808,7 @@ function __c1(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          labels: S.optional(S.NullOr(__S(441, __c55, 1))),
+          labels: S.optional(S.NullOr(__S(449, __c56, 1))),
         }),
       ).annotate({ identifier: "OperationsLabelsBulkCreateResultItem" });
     case 1:
@@ -3115,7 +3145,7 @@ function __c15(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          labels: S.optional(S.NullOr(__S(441, __c55, 1))),
+          labels: S.optional(S.NullOr(__S(449, __c56, 1))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateOperationLabelResponse" });
   }
@@ -3280,6 +3310,32 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
+          discoveryId: S.String.pipe(T.Label("discovery_id")),
+          state: S.optional(S.String),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "EditDiscoveryOperationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          state: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "EditDiscoveryOperationResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          zoneId: S.String.pipe(T.Label("zone_id")),
           normalize: S.optional(S.Boolean.pipe(T.Query())),
         })
           .pipe(
@@ -3295,16 +3351,16 @@ function __c23(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(185, __c23, 1));
+      return S.Array(__S(193, __c24, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          authIdCharacteristics: __S(186, __c23, 2).pipe(T.Body("auth_id_characteristics")),
+          authIdCharacteristics: __S(194, __c24, 2).pipe(T.Body("auth_id_characteristics")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConfigurationResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3317,19 +3373,19 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          schemas: __S(200, __c25, 0),
+          schemas: __S(208, __c26, 0),
           timestamp: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDiscoveryResponse" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3351,7 +3407,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetLabelManagedRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3367,7 +3423,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "GetLabelManagedResponse" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3389,14 +3445,14 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetLabelUserRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           operationId: S.String.pipe(T.Label("operation_id")),
-          feature: S.optional(__S(240, __c30, 0).pipe(T.Query())),
+          feature: S.optional(__S(248, __c31, 0).pipe(T.Query())),
           withSchemas: S.optional(S.Boolean.pipe(T.Query("with_schemas"))),
         })
           .pipe(
@@ -3426,19 +3482,19 @@ function __c29(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          features: S.optional(S.NullOr(__S(233, __c29, 1))),
+          features: S.optional(S.NullOr(__S(241, __c30, 1))),
           schemas: S.optional(S.NullOr(__S(107, __c13, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetOperationResponse" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3457,7 +3513,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetOperationSchemaValidationRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3468,7 +3524,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetOperationSchemaValidationResponse" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3486,7 +3542,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "GetSettingSchemaValidationRequest" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3506,7 +3562,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetUserSchemaRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3521,7 +3577,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetUserSchemaResponse" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3558,7 +3614,7 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          trafficStats: S.optional(S.NullOr(__S(289, __c36, 1)).pipe(T.Body("traffic_stats"))),
+          trafficStats: S.optional(S.NullOr(__S(297, __c37, 1)).pipe(T.Body("traffic_stats"))),
         }),
       ).annotate({ identifier: "DiscoveryOperationsListResultItemFeatures" });
     case 3:
@@ -3569,23 +3625,23 @@ function __c36(j: number): any {
           host: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           method: S.String,
-          origin: __S(240, __c30, 0),
+          origin: __S(248, __c31, 0),
           state: S.String,
-          features: S.optional(S.NullOr(__S(290, __c36, 2))),
+          features: S.optional(S.NullOr(__S(298, __c37, 2))),
         }),
       ).annotate({ identifier: "DiscoveryOperationsListResultItem" });
     case 4:
-      return S.Array(__S(291, __c36, 3));
+      return S.Array(__S(299, __c37, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: __S(292, __c36, 4).pipe(T.EnvelopePayload()),
+          result: __S(300, __c37, 4).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDiscoveryOperationsResponse" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3617,17 +3673,17 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "LabelsListResultItem" });
     case 2:
-      return S.Array(__S(297, __c37, 1));
+      return S.Array(__S(305, __c38, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(298, __c37, 2).pipe(T.EnvelopePayload()),
+          result: __S(306, __c38, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLabelsResponse" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3635,7 +3691,7 @@ function __c38(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           direction: S.optional(S.String.pipe(T.Query())),
           endpoint: S.optional(S.String.pipe(T.Query())),
-          feature: S.optional(__S(240, __c30, 0).pipe(T.Query())),
+          feature: S.optional(__S(248, __c31, 0).pipe(T.Query())),
           host: S.optional(__S(16, __c2, 0).pipe(T.Query())),
           method: S.optional(__S(16, __c2, 0).pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
@@ -3665,29 +3721,29 @@ function __c38(j: number): any {
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           method: S.String,
           operationId: S.String.pipe(T.Body("operation_id")),
-          features: S.optional(S.NullOr(__S(305, __c38, 1))),
+          features: S.optional(S.NullOr(__S(313, __c39, 1))),
         }),
       ).annotate({ identifier: "OperationsListResultItem" });
     case 3:
-      return S.Array(__S(306, __c38, 2));
+      return S.Array(__S(314, __c39, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: __S(307, __c38, 3).pipe(T.EnvelopePayload()),
+          result: __S(315, __c39, 3).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          feature: S.optional(__S(240, __c30, 0).pipe(T.Query())),
+          feature: S.optional(__S(248, __c31, 0).pipe(T.Query())),
           host: S.optional(__S(16, __c2, 0).pipe(T.Query())),
-          includeSchemaKind: S.optional(__S(240, __c30, 0).pipe(T.Query("include_schema_kind"))),
+          includeSchemaKind: S.optional(__S(248, __c31, 0).pipe(T.Query("include_schema_kind"))),
         })
           .pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/api_gateway/schemas", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3695,13 +3751,13 @@ function __c39(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          schemas: S.optional(S.NullOr(__S(200, __c25, 0))),
+          schemas: S.optional(S.NullOr(__S(208, __c26, 0))),
           timestamp: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSchemasResponse" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3729,17 +3785,17 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "UserSchemasHostsListResultItem" });
     case 2:
-      return S.Array(__S(321, __c40, 1));
+      return S.Array(__S(329, __c41, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(322, __c40, 2).pipe(T.EnvelopePayload()),
+          result: __S(330, __c41, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListUserSchemaHostsResponse" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3747,7 +3803,7 @@ function __c41(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           schemaId: S.String.pipe(T.Label("schema_id")),
           endpoint: S.optional(S.String.pipe(T.Query())),
-          feature: S.optional(__S(240, __c30, 0).pipe(T.Query())),
+          feature: S.optional(__S(248, __c31, 0).pipe(T.Query())),
           host: S.optional(__S(16, __c2, 0).pipe(T.Query())),
           method: S.optional(__S(16, __c2, 0).pipe(T.Query())),
           operationStatus: S.optional(S.String.pipe(T.Query("operation_status"))),
@@ -3771,17 +3827,17 @@ function __c41(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(329, __c41, 1));
+      return S.Array(__S(337, __c42, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(330, __c41, 2).pipe(T.EnvelopePayload()),
+          result: __S(338, __c42, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListUserSchemaOperationsResponse" });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3802,13 +3858,13 @@ function __c42(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: __S(337, __c42, 1).pipe(T.EnvelopePayload()),
+          result: __S(345, __c43, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListUserSchemasResponse" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3829,7 +3885,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "PatchLabelUserRequest" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3841,7 +3897,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          settingsMultipleRequest: __S(352, __c44, 0).pipe(T.Body("settings_multiple_request")),
+          settingsMultipleRequest: __S(360, __c45, 0).pipe(T.Body("settings_multiple_request")),
         })
           .pipe(
             T.Http({
@@ -3860,7 +3916,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "PatchOperationSchemaValidationResponse" });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3884,7 +3940,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "PatchSettingSchemaValidationRequest" });
   }
 }
-function __c46(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3904,7 +3960,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "PatchUserSchemaRequest" });
   }
 }
-function __c47(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(
@@ -3914,13 +3970,13 @@ function __c47(j: number): any {
         ]),
       );
     case 1:
-      return S.Array(__S(376, __c47, 0));
+      return S.Array(__S(384, __c48, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           normalize: S.optional(S.Boolean.pipe(T.Query())),
-          authIdCharacteristics: __S(377, __c47, 1).pipe(T.Body("auth_id_characteristics")),
+          authIdCharacteristics: __S(385, __c48, 1).pipe(T.Body("auth_id_characteristics")),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/api_gateway/configuration", code: 200 }),
@@ -3935,16 +3991,16 @@ function __c47(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(__S(379, __c47, 3));
+      return S.Array(__S(387, __c48, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authIdCharacteristics: __S(380, __c47, 4).pipe(T.Body("auth_id_characteristics")),
+          authIdCharacteristics: __S(388, __c48, 4).pipe(T.Body("auth_id_characteristics")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutConfigurationResponse" });
   }
 }
-function __c48(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3964,7 +4020,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "PutLabelManagedResourceOperationRequest" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3985,7 +4041,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "PutLabelUserRequest" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4005,7 +4061,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "PutLabelUserResourceOperationRequest" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4025,7 +4081,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "PutOperationSchemaValidationRequest" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4049,7 +4105,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "PutSettingSchemaValidationRequest" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4070,7 +4126,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "UpdateOperationLabelRequest" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4081,12 +4137,12 @@ function __c54(j: number): any {
         }),
       ).annotate({ identifier: "LabelsUserBulkCreateRequestBodyItem" });
     case 1:
-      return S.Array(__S(432, __c54, 0));
+      return S.Array(__S(440, __c55, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          body: __S(433, __c54, 1).pipe(T.HttpBody()),
+          body: __S(441, __c55, 1).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/zones/{zone_id}/api_gateway/labels/user", code: 200 }),
@@ -4095,7 +4151,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "BulkCreateLabelUsersRequest" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4109,15 +4165,15 @@ function __c55(j: number): any {
         }),
       ).annotate({ identifier: "LabelsUserBulkCreateResultItem" });
     case 1:
-      return S.Array(__S(440, __c55, 0));
+      return S.Array(__S(448, __c56, 0));
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: __S(441, __c55, 1).pipe(T.EnvelopePayload()),
+          result: __S(449, __c56, 1).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkCreateLabelUsersResponse" });

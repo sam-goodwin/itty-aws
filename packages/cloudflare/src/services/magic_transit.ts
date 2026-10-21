@@ -472,7 +472,7 @@ export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgp {
   customerEndpoint?: string | null;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. */
   extraPrefixes?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -564,7 +564,7 @@ export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -658,7 +658,7 @@ export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -1093,7 +1093,7 @@ export interface GreTunnelsCreateRequestBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: GreTunnelsCreateRequestBgpExtraPrefixesList;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string;
@@ -1155,7 +1155,7 @@ export interface GreTunnelsCreateResponseBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: GreTunnelsCreateResponseBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -1229,7 +1229,7 @@ export interface IpsecTunnelsCreateRequestBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: IpsecTunnelsCreateRequestBgpExtraPrefixesList;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string;
@@ -1292,7 +1292,7 @@ export interface IpsecTunnelsCreateResponseBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: IpsecTunnelsCreateResponseBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -1940,6 +1940,8 @@ export interface SitesWansCreateRequestStaticAddressing {
   gatewayAddress: string;
   /** A valid CIDR notation representing an IP range. */
   secondaryAddress?: string;
+  /** Gateway address for the secondary connector of a high availability site. */
+  secondaryGatewayAddress?: string;
 }
 export interface CreateSiteWanRequest {
   /** Identifier */
@@ -1952,7 +1954,11 @@ export interface CreateSiteWanRequest {
   loadBalanceInnerFlows?: boolean;
   name?: string;
   priority?: number;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
+  /** Provisioned download rate of the WAN circuit in kilobits per second. */
+  provisionedDownloadKbps?: number;
+  /** Provisioned upload rate of the WAN circuit in kilobits per second. */
+  provisionedUploadKbps?: number;
+  /** Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary_address when the site is in high availability mode. */
   staticAddressing?: SitesWansCreateRequestStaticAddressing;
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number;
@@ -1965,6 +1971,8 @@ export interface SitesWansCreateResultItemStaticAddressing {
   gatewayAddress: string;
   /** A valid CIDR notation representing an IP range. */
   secondaryAddress?: string | null;
+  /** Gateway address for the secondary connector of a high availability site. */
+  secondaryGatewayAddress?: string | null;
 }
 export interface SitesWansCreateResultItem {
   /** Identifier */
@@ -1976,6 +1984,10 @@ export interface SitesWansCreateResultItem {
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
   priority?: number | null;
+  /** Provisioned download rate of the WAN circuit in kilobits per second. */
+  provisionedDownloadKbps?: number | null;
+  /** Provisioned upload rate of the WAN circuit in kilobits per second. */
+  provisionedUploadKbps?: number | null;
   /** Identifier */
   siteId?: string | null;
   /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
@@ -2145,7 +2157,7 @@ export interface GreTunnelsDeleteResponseDeletedGreTunnelBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -2235,7 +2247,7 @@ export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -2591,6 +2603,10 @@ export interface DeleteSiteWanResponse {
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
   priority?: number | null;
+  /** Provisioned download rate of the WAN circuit in kilobits per second. */
+  provisionedDownloadKbps?: number | null;
+  /** Provisioned upload rate of the WAN circuit in kilobits per second. */
+  provisionedUploadKbps?: number | null;
   /** Identifier */
   siteId?: string | null;
   /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
@@ -2787,7 +2803,7 @@ export interface CfInterconnectsGetResponseInterconnectBgp {
   customerEndpoint?: string | null;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. */
   extraPrefixes?: CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -3517,7 +3533,7 @@ export interface GreTunnelsGetResponseGreTunnelBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -3604,7 +3620,7 @@ export interface IpsecTunnelsGetResponseIpsecTunnelBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -4024,6 +4040,10 @@ export interface GetSiteWanResponse {
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
   priority?: number | null;
+  /** Provisioned download rate of the WAN circuit in kilobits per second. */
+  provisionedDownloadKbps?: number | null;
+  /** Provisioned upload rate of the WAN circuit in kilobits per second. */
+  provisionedUploadKbps?: number | null;
   /** Identifier */
   siteId?: string | null;
   /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
@@ -4172,7 +4192,7 @@ export interface CfInterconnectsListResponseInterconnectsItemBgp {
   customerEndpoint?: string | null;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. */
   extraPrefixes?: CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -4828,7 +4848,7 @@ export interface GreTunnelsListResponseGreTunnelsItemBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -4916,7 +4936,7 @@ export interface IpsecTunnelsListResponseIpsecTunnelsItemBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -5359,6 +5379,10 @@ export interface SitesWansListResultItem {
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
   priority?: number | null;
+  /** Provisioned download rate of the WAN circuit in kilobits per second. */
+  provisionedDownloadKbps?: number | null;
+  /** Provisioned upload rate of the WAN circuit in kilobits per second. */
+  provisionedUploadKbps?: number | null;
   /** Identifier */
   siteId?: string | null;
   /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
@@ -5786,7 +5810,16 @@ export interface PatchSiteLanResponse {
   vlanTag?: number | null;
 }
 export type SitesWansEditRequestHealthCheckRate = "low" | "mid" | "high";
-export type SitesWansEditRequestStaticAddressing = SitesWansCreateRequestStaticAddressing;
+export interface SitesWansEditRequestStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address?: string;
+  /** A valid IPv4 address. */
+  gatewayAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** Gateway address for the secondary connector of a high availability site. Set to null to remove it. */
+  secondaryGatewayAddress?: string;
+}
 export interface PatchSiteWanRequest {
   /** Identifier */
   accountId: string;
@@ -5800,8 +5833,12 @@ export interface PatchSiteWanRequest {
   name?: string;
   physport?: number;
   priority?: number;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansCreateRequestStaticAddressing;
+  /** Provisioned download rate of the WAN circuit in kilobits per second. Set to null to remove it. */
+  provisionedDownloadKbps?: number;
+  /** Provisioned upload rate of the WAN circuit in kilobits per second. Set to null to remove it. */
+  provisionedUploadKbps?: number;
+  /** Static addressing configuration. PATCH updates only the fields provided, and PUT replaces the configuration. */
+  staticAddressing?: SitesWansEditRequestStaticAddressing;
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number;
 }
@@ -5818,6 +5855,10 @@ export interface PatchSiteWanResponse {
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
   priority?: number | null;
+  /** Provisioned download rate of the WAN circuit in kilobits per second. */
+  provisionedDownloadKbps?: number | null;
+  /** Provisioned upload rate of the WAN circuit in kilobits per second. */
+  provisionedUploadKbps?: number | null;
   /** Identifier */
   siteId?: string | null;
   /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
@@ -5892,7 +5933,7 @@ export interface CfInterconnectsUpdateRequestBgp {
   customerEndpoint?: string;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. */
   extraPrefixes?: CfInterconnectsUpdateRequestBgpExtraPrefixesList;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string;
@@ -5960,7 +6001,7 @@ export interface CfInterconnectsUpdateResponseModifiedInterconnectBgp {
   customerEndpoint?: string | null;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. */
   extraPrefixes?: CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -6222,7 +6263,7 @@ export interface GreTunnelsUpdateResponseModifiedGreTunnelBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -6305,7 +6346,7 @@ export interface IpsecTunnelsUpdateRequestBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: IpsecTunnelsUpdateRequestBgpExtraPrefixesList;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string;
@@ -6368,7 +6409,7 @@ export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp {
   customerAsn: number;
   /** ID of the BGP filter profile applied to routes advertised to the customer. */
   exportFilterId?: string | null;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`. */
   extraPrefixes?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList | null;
   /** ID of the BGP filter profile applied to routes received from the customer. */
   importFilterId?: string | null;
@@ -6854,7 +6895,7 @@ export type UpdateSitesAppConfigurationResult =
   | UpdateSitesAppConfigurationResultManagedApp;
 export type UpdateSitesAppConfigurationResponse = UpdateSitesAppConfigurationResult;
 export type SitesWansUpdateRequestHealthCheckRate = "low" | "mid" | "high";
-export type SitesWansUpdateRequestStaticAddressing = SitesWansCreateRequestStaticAddressing;
+export type SitesWansUpdateRequestStaticAddressing = SitesWansEditRequestStaticAddressing;
 export interface UpdateSiteWanRequest {
   /** Identifier */
   accountId: string;
@@ -6868,8 +6909,12 @@ export interface UpdateSiteWanRequest {
   name?: string;
   physport?: number;
   priority?: number;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansCreateRequestStaticAddressing;
+  /** Provisioned download rate of the WAN circuit in kilobits per second. Set to null to remove it. */
+  provisionedDownloadKbps?: number;
+  /** Provisioned upload rate of the WAN circuit in kilobits per second. Set to null to remove it. */
+  provisionedUploadKbps?: number;
+  /** Static addressing configuration. PATCH updates only the fields provided, and PUT replaces the configuration. */
+  staticAddressing?: SitesWansEditRequestStaticAddressing;
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number;
 }
@@ -6886,6 +6931,10 @@ export interface UpdateSiteWanResponse {
   physport?: number | null;
   /** Priority of WAN for traffic loadbalancing. */
   priority?: number | null;
+  /** Provisioned download rate of the WAN circuit in kilobits per second. */
+  provisionedDownloadKbps?: number | null;
+  /** Provisioned upload rate of the WAN circuit in kilobits per second. */
+  provisionedUploadKbps?: number | null;
   /** Identifier */
   siteId?: string | null;
   /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
@@ -7271,7 +7320,7 @@ export const createSiteWan: API.PaginatedOperationMethod<
   SitesWansCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(1888, __c59, 0) as any as S.Schema<CreateSiteWanRequest>,
+    input: __S(1889, __c59, 1) as any as S.Schema<CreateSiteWanRequest>,
     output: __S(1954, __c61, 2) as any as S.Schema<CreateSiteWanResponse>,
     errors: [
       MagicWanUnauthorized,
@@ -7300,7 +7349,7 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2016, __c63, 0) as any as S.Schema<DeleteAppRequest>,
+  input: __S(1984, __c62, 0) as any as S.Schema<DeleteAppRequest>,
   output: __S(704, __c22, 0) as any as S.Schema<DeleteAppResponse>,
   errors: [
     AppNotFound,
@@ -7322,7 +7371,7 @@ export const deleteBgpFilterProfile: API.OperationMethod<
   DeleteBgpFilterProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<DeleteBgpFilterProfileRequest>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeleteBgpFilterProfileRequest>,
   output: __S(768, __c24, 0) as any as S.Schema<DeleteBgpFilterProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -7337,8 +7386,8 @@ export const deleteCf1Site: API.OperationMethod<
   DeleteCf1SiteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<DeleteCf1SiteRequest>,
-  output: __S(2112, __c66, 0) as any as S.Schema<DeleteCf1SiteResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<DeleteCf1SiteRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<DeleteCf1SiteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7352,8 +7401,8 @@ export const deleteCf1SiteRamp: API.OperationMethod<
   DeleteCf1SiteRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<DeleteCf1SiteRampRequest>,
-  output: __S(2176, __c68, 0) as any as S.Schema<DeleteCf1SiteRampResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteCf1SiteRampRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DeleteCf1SiteRampResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7367,7 +7416,7 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<DeleteConnectorRequest>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteConnectorRequest>,
   output: __S(1120, __c35, 0) as any as S.Schema<DeleteConnectorResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -7386,8 +7435,8 @@ export const deleteGreTunnel: API.OperationMethod<
   DeleteGreTunnelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<DeleteGreTunnelRequest>,
-  output: __S(2244, __c70, 4) as any as S.Schema<DeleteGreTunnelResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<DeleteGreTunnelRequest>,
+  output: __S(2212, __c69, 4) as any as S.Schema<DeleteGreTunnelResponse>,
   errors: [
     GreTunnelNotFound,
     MagicTransitNotOnboarded,
@@ -7411,8 +7460,8 @@ export const deleteIpsecTunnel: API.OperationMethod<
   DeleteIpsecTunnelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<DeleteIpsecTunnelRequest>,
-  output: __S(2276, __c71, 4) as any as S.Schema<DeleteIpsecTunnelResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<DeleteIpsecTunnelRequest>,
+  output: __S(2244, __c70, 4) as any as S.Schema<DeleteIpsecTunnelResponse>,
   errors: [
     IpsecTunnelNotFound,
     MagicTransitNotOnboarded,
@@ -7432,8 +7481,8 @@ export const deletePcapOwnership: API.OperationMethod<
   DeletePcapOwnershipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<DeletePcapOwnershipRequest>,
-  output: __S(2336, __c73, 0) as any as S.Schema<DeletePcapOwnershipResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<DeletePcapOwnershipRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<DeletePcapOwnershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7451,8 +7500,8 @@ export const deleteRoute: API.OperationMethod<
   DeleteRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<DeleteRouteRequest>,
-  output: __S(2369, __c74, 1) as any as S.Schema<DeleteRouteResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<DeleteRouteRequest>,
+  output: __S(2337, __c73, 1) as any as S.Schema<DeleteRouteResponse>,
   errors: [
     RouteNotFound,
     MagicTransitNotOnboarded,
@@ -7477,7 +7526,7 @@ export const deleteSite: API.OperationMethod<
   DeleteSiteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<DeleteSiteRequest>,
+  input: __S(2368, __c74, 0) as any as S.Schema<DeleteSiteRequest>,
   output: __S(1536, __c48, 0) as any as S.Schema<DeleteSiteResponse>,
   errors: [
     SiteNotFound,
@@ -7504,7 +7553,7 @@ export const deleteSiteAcl: API.OperationMethod<
   DeleteSiteAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<DeleteSiteAclRequest>,
+  input: __S(2400, __c75, 0) as any as S.Schema<DeleteSiteAclRequest>,
   output: __S(1664, __c52, 0) as any as S.Schema<DeleteSiteAclResponse>,
   errors: [
     SiteAclNotFound,
@@ -7531,8 +7580,8 @@ export const deleteSiteLan: API.OperationMethod<
   DeleteSiteLanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<DeleteSiteLanRequest>,
-  output: __S(2496, __c78, 0) as any as S.Schema<DeleteSiteLanResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<DeleteSiteLanRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<DeleteSiteLanResponse>,
   errors: [
     SiteLanNotFound,
     MagicWanUnauthorized,
@@ -7553,8 +7602,8 @@ export const deleteSitesAppConfiguration: API.OperationMethod<
   DeleteSitesAppConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<DeleteSitesAppConfigurationRequest>,
-  output: __S(2530, __c79, 2) as any as S.Schema<DeleteSitesAppConfigurationResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<DeleteSitesAppConfigurationRequest>,
+  output: __S(2498, __c78, 2) as any as S.Schema<DeleteSitesAppConfigurationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7573,8 +7622,8 @@ export const deleteSiteWan: API.OperationMethod<
   DeleteSiteWanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<DeleteSiteWanRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<DeleteSiteWanResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<DeleteSiteWanRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<DeleteSiteWanResponse>,
   errors: [
     SiteWanNotFound,
     MagicWanUnauthorized,
@@ -7595,8 +7644,8 @@ export const editSitesAppConfiguration: API.OperationMethod<
   EditSitesAppConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<EditSitesAppConfigurationRequest>,
-  output: __S(2626, __c82, 2) as any as S.Schema<EditSitesAppConfigurationResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<EditSitesAppConfigurationRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<EditSitesAppConfigurationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7610,8 +7659,8 @@ export const emptyRoute: API.OperationMethod<
   EmptyRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<EmptyRouteRequest>,
-  output: __S(2657, __c83, 1) as any as S.Schema<EmptyRouteResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<EmptyRouteRequest>,
+  output: __S(2625, __c82, 1) as any as S.Schema<EmptyRouteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7625,7 +7674,7 @@ export const getBgpFilterProfile: API.OperationMethod<
   GetBgpFilterProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<GetBgpFilterProfileRequest>,
+  input: __S(2656, __c83, 0) as any as S.Schema<GetBgpFilterProfileRequest>,
   output: __S(768, __c24, 0) as any as S.Schema<GetBgpFilterProfileResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -7640,8 +7689,8 @@ export const getCf1Site: API.OperationMethod<
   GetCf1SiteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<GetCf1SiteRequest>,
-  output: __S(2112, __c66, 0) as any as S.Schema<GetCf1SiteResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetCf1SiteRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GetCf1SiteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7655,8 +7704,8 @@ export const getCf1SiteRamp: API.OperationMethod<
   GetCf1SiteRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<GetCf1SiteRampRequest>,
-  output: __S(2176, __c68, 0) as any as S.Schema<GetCf1SiteRampResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<GetCf1SiteRampRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<GetCf1SiteRampResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7670,8 +7719,8 @@ export const getCfInterconnect: API.OperationMethod<
   GetCfInterconnectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<GetCfInterconnectRequest>,
-  output: __S(2788, __c87, 4) as any as S.Schema<GetCfInterconnectResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetCfInterconnectRequest>,
+  output: __S(2756, __c86, 4) as any as S.Schema<GetCfInterconnectResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7685,7 +7734,7 @@ export const getConnector: API.OperationMethod<
   GetConnectorError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<GetConnectorRequest>,
+  input: __S(2784, __c87, 0) as any as S.Schema<GetConnectorRequest>,
   output: __S(1120, __c35, 0) as any as S.Schema<GetConnectorResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -7700,8 +7749,8 @@ export const getConnectorEvent: API.OperationMethod<
   GetConnectorEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2848, __c89, 0) as any as S.Schema<GetConnectorEventRequest>,
-  output: __S(2849, __c89, 1) as any as S.Schema<GetConnectorEventResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<GetConnectorEventRequest>,
+  output: __S(2817, __c88, 1) as any as S.Schema<GetConnectorEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7715,8 +7764,8 @@ export const getConnectorSnapshot: API.OperationMethod<
   GetConnectorSnapshotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2912, __c91, 0) as any as S.Schema<GetConnectorSnapshotRequest>,
-  output: __S(2913, __c91, 1) as any as S.Schema<GetConnectorSnapshotResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<GetConnectorSnapshotRequest>,
+  output: __S(2881, __c90, 1) as any as S.Schema<GetConnectorSnapshotResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7734,8 +7783,8 @@ export const getGreTunnel: API.OperationMethod<
   GetGreTunnelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<GetGreTunnelRequest>,
-  output: __S(2980, __c93, 4) as any as S.Schema<GetGreTunnelResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetGreTunnelRequest>,
+  output: __S(2948, __c92, 4) as any as S.Schema<GetGreTunnelResponse>,
   errors: [
     GreTunnelNotFound,
     MagicTransitNotOnboarded,
@@ -7759,8 +7808,8 @@ export const getIpsecTunnel: API.OperationMethod<
   GetIpsecTunnelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<GetIpsecTunnelRequest>,
-  output: __S(3012, __c94, 4) as any as S.Schema<GetIpsecTunnelResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<GetIpsecTunnelRequest>,
+  output: __S(2980, __c93, 4) as any as S.Schema<GetIpsecTunnelResponse>,
   errors: [
     IpsecTunnelNotFound,
     MagicTransitNotOnboarded,
@@ -7780,8 +7829,8 @@ export const getPcap: API.OperationMethod<
   GetPcapError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<GetPcapRequest>,
-  output: __S(3042, __c95, 2) as any as S.Schema<GetPcapResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<GetPcapRequest>,
+  output: __S(3010, __c94, 2) as any as S.Schema<GetPcapResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7795,8 +7844,8 @@ export const getPcapDownload: API.OperationMethod<
   GetPcapDownloadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<GetPcapDownloadRequest>,
-  output: __S(2336, __c73, 0) as any as S.Schema<GetPcapDownloadResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetPcapDownloadRequest>,
+  output: __S(2304, __c72, 0) as any as S.Schema<GetPcapDownloadResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -7812,8 +7861,8 @@ export const getPcapOwnership: API.PaginatedOperationMethod<
   PcapsOwnershipGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3104, __c97, 0) as any as S.Schema<GetPcapOwnershipRequest>,
-    output: __S(3107, __c97, 3) as any as S.Schema<GetPcapOwnershipResponse>,
+    input: __S(3072, __c96, 0) as any as S.Schema<GetPcapOwnershipRequest>,
+    output: __S(3075, __c96, 3) as any as S.Schema<GetPcapOwnershipResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -7834,8 +7883,8 @@ export const getRoute: API.OperationMethod<
   GetRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<GetRouteRequest>,
-  output: __S(3137, __c98, 1) as any as S.Schema<GetRouteResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetRouteRequest>,
+  output: __S(3105, __c97, 1) as any as S.Schema<GetRouteResponse>,
   errors: [
     RouteNotFound,
     MagicTransitNotOnboarded,
@@ -7860,7 +7909,7 @@ export const getSite: API.OperationMethod<
   GetSiteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<GetSiteRequest>,
+  input: __S(3136, __c98, 0) as any as S.Schema<GetSiteRequest>,
   output: __S(1536, __c48, 0) as any as S.Schema<GetSiteResponse>,
   errors: [
     SiteNotFound,
@@ -7887,7 +7936,7 @@ export const getSiteAcl: API.OperationMethod<
   GetSiteAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3200, __c100, 0) as any as S.Schema<GetSiteAclRequest>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetSiteAclRequest>,
   output: __S(1664, __c52, 0) as any as S.Schema<GetSiteAclResponse>,
   errors: [
     SiteAclNotFound,
@@ -7914,8 +7963,8 @@ export const getSiteLan: API.OperationMethod<
   GetSiteLanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c101, 0) as any as S.Schema<GetSiteLanRequest>,
-  output: __S(2496, __c78, 0) as any as S.Schema<GetSiteLanResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<GetSiteLanRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<GetSiteLanResponse>,
   errors: [
     SiteLanNotFound,
     MagicWanUnauthorized,
@@ -7941,8 +7990,8 @@ export const getSiteWan: API.OperationMethod<
   GetSiteWanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3264, __c102, 0) as any as S.Schema<GetSiteWanRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<GetSiteWanResponse>,
+  input: __S(3232, __c101, 0) as any as S.Schema<GetSiteWanRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<GetSiteWanResponse>,
   errors: [
     SiteWanNotFound,
     MagicWanUnauthorized,
@@ -7969,8 +8018,8 @@ export const listApps: API.PaginatedOperationMethod<
   AppsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3296, __c103, 0) as any as S.Schema<ListAppsRequest>,
-    output: __S(3299, __c103, 3) as any as S.Schema<ListAppsResponse>,
+    input: __S(3264, __c102, 0) as any as S.Schema<ListAppsRequest>,
+    output: __S(3267, __c102, 3) as any as S.Schema<ListAppsResponse>,
     errors: [
       MagicWanUnauthorized,
       Forbidden,
@@ -7993,8 +8042,8 @@ export const listBgpFilterProfiles: API.OperationMethod<
   ListBgpFilterProfilesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3328, __c104, 0) as any as S.Schema<ListBgpFilterProfilesRequest>,
-  output: __S(3331, __c104, 3) as any as S.Schema<ListBgpFilterProfilesResponse>,
+  input: __S(3296, __c103, 0) as any as S.Schema<ListBgpFilterProfilesRequest>,
+  output: __S(3299, __c103, 3) as any as S.Schema<ListBgpFilterProfilesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8010,7 +8059,7 @@ export const listCf1SiteRamps: API.PaginatedOperationMethod<
   Cf1SitesRampsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3360, __c105, 0) as any as S.Schema<ListCf1SiteRampsRequest>,
+    input: __S(3328, __c104, 0) as any as S.Schema<ListCf1SiteRampsRequest>,
     output: __S(994, __c31, 2) as any as S.Schema<ListCf1SiteRampsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
@@ -8030,7 +8079,7 @@ export const listCf1Sites: API.PaginatedOperationMethod<
   Cf1SitesCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3392, __c106, 0) as any as S.Schema<ListCf1SitesRequest>,
+    input: __S(3360, __c105, 0) as any as S.Schema<ListCf1SitesRequest>,
     output: __S(866, __c27, 2) as any as S.Schema<ListCf1SitesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
@@ -8048,8 +8097,8 @@ export const listCfInterconnects: API.OperationMethod<
   ListCfInterconnectsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<ListCfInterconnectsRequest>,
-  output: __S(3429, __c107, 5) as any as S.Schema<ListCfInterconnectsResponse>,
+  input: __S(3392, __c106, 0) as any as S.Schema<ListCfInterconnectsRequest>,
+  output: __S(3397, __c106, 5) as any as S.Schema<ListCfInterconnectsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8063,8 +8112,8 @@ export const listConnectorEventLatests: API.OperationMethod<
   ListConnectorEventLatestsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<ListConnectorEventLatestsRequest>,
-  output: __S(3459, __c108, 3) as any as S.Schema<ListConnectorEventLatestsResponse>,
+  input: __S(3424, __c107, 0) as any as S.Schema<ListConnectorEventLatestsRequest>,
+  output: __S(3427, __c107, 3) as any as S.Schema<ListConnectorEventLatestsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8078,8 +8127,8 @@ export const listConnectorEvents: API.OperationMethod<
   ListConnectorEventsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3488, __c109, 0) as any as S.Schema<ListConnectorEventsRequest>,
-  output: __S(3491, __c109, 3) as any as S.Schema<ListConnectorEventsResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListConnectorEventsRequest>,
+  output: __S(3459, __c108, 3) as any as S.Schema<ListConnectorEventsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8095,8 +8144,8 @@ export const listConnectors: API.PaginatedOperationMethod<
   ConnectorsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3520, __c110, 0) as any as S.Schema<ListConnectorsRequest>,
-    output: __S(3523, __c110, 3) as any as S.Schema<ListConnectorsResponse>,
+    input: __S(3488, __c109, 0) as any as S.Schema<ListConnectorsRequest>,
+    output: __S(3491, __c109, 3) as any as S.Schema<ListConnectorsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -8113,8 +8162,8 @@ export const listConnectorsInterrupts: API.OperationMethod<
   ListConnectorsInterruptsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3552, __c111, 0) as any as S.Schema<ListConnectorsInterruptsRequest>,
-  output: __S(3555, __c111, 3) as any as S.Schema<ListConnectorsInterruptsResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ListConnectorsInterruptsRequest>,
+  output: __S(3523, __c110, 3) as any as S.Schema<ListConnectorsInterruptsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8128,8 +8177,8 @@ export const listConnectorSnapshotLatests: API.OperationMethod<
   ListConnectorSnapshotLatestsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<ListConnectorSnapshotLatestsRequest>,
-  output: __S(3587, __c112, 3) as any as S.Schema<ListConnectorSnapshotLatestsResponse>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListConnectorSnapshotLatestsRequest>,
+  output: __S(3555, __c111, 3) as any as S.Schema<ListConnectorSnapshotLatestsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8143,8 +8192,8 @@ export const listConnectorSnapshots: API.OperationMethod<
   ListConnectorSnapshotsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3616, __c113, 0) as any as S.Schema<ListConnectorSnapshotsRequest>,
-  output: __S(3619, __c113, 3) as any as S.Schema<ListConnectorSnapshotsResponse>,
+  input: __S(3584, __c112, 0) as any as S.Schema<ListConnectorSnapshotsRequest>,
+  output: __S(3587, __c112, 3) as any as S.Schema<ListConnectorSnapshotsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8158,8 +8207,8 @@ export const listGreTunnels: API.OperationMethod<
   ListGreTunnelsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3648, __c114, 0) as any as S.Schema<ListGreTunnelsRequest>,
-  output: __S(3653, __c114, 5) as any as S.Schema<ListGreTunnelsResponse>,
+  input: __S(3616, __c113, 0) as any as S.Schema<ListGreTunnelsRequest>,
+  output: __S(3621, __c113, 5) as any as S.Schema<ListGreTunnelsResponse>,
   errors: [MagicTransitNotOnboarded, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8173,8 +8222,8 @@ export const listIpsecTunnels: API.OperationMethod<
   ListIpsecTunnelsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<ListIpsecTunnelsRequest>,
-  output: __S(3685, __c115, 5) as any as S.Schema<ListIpsecTunnelsResponse>,
+  input: __S(3648, __c114, 0) as any as S.Schema<ListIpsecTunnelsRequest>,
+  output: __S(3653, __c114, 5) as any as S.Schema<ListIpsecTunnelsResponse>,
   errors: [MagicTransitNotOnboarded, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8190,8 +8239,8 @@ export const listPcaps: API.PaginatedOperationMethod<
   PcapsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3712, __c116, 0) as any as S.Schema<ListPcapsRequest>,
-    output: __S(3715, __c116, 3) as any as S.Schema<ListPcapsResponse>,
+    input: __S(3680, __c115, 0) as any as S.Schema<ListPcapsRequest>,
+    output: __S(3683, __c115, 3) as any as S.Schema<ListPcapsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -8208,8 +8257,8 @@ export const listRoutes: API.OperationMethod<
   ListRoutesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3744, __c117, 0) as any as S.Schema<ListRoutesRequest>,
-  output: __S(3745, __c117, 1) as any as S.Schema<ListRoutesResponse>,
+  input: __S(3712, __c116, 0) as any as S.Schema<ListRoutesRequest>,
+  output: __S(3713, __c116, 1) as any as S.Schema<ListRoutesResponse>,
   errors: [MagicTransitNotOnboarded, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8229,8 +8278,8 @@ export const listSiteAcls: API.PaginatedOperationMethod<
   SitesAclsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3776, __c118, 0) as any as S.Schema<ListSiteAclsRequest>,
-    output: __S(3779, __c118, 3) as any as S.Schema<ListSiteAclsResponse>,
+    input: __S(3744, __c117, 0) as any as S.Schema<ListSiteAclsRequest>,
+    output: __S(3747, __c117, 3) as any as S.Schema<ListSiteAclsResponse>,
     errors: [
       MagicWanUnauthorized,
       Forbidden,
@@ -8259,7 +8308,7 @@ export const listSiteLans: API.PaginatedOperationMethod<
   SitesLansListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3808, __c119, 0) as any as S.Schema<ListSiteLansRequest>,
+    input: __S(3776, __c118, 0) as any as S.Schema<ListSiteLansRequest>,
     output: __S(1794, __c56, 2) as any as S.Schema<ListSiteLansResponse>,
     errors: [
       MagicWanUnauthorized,
@@ -8289,8 +8338,8 @@ export const listSites: API.PaginatedOperationMethod<
   SitesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3840, __c120, 0) as any as S.Schema<ListSitesRequest>,
-    output: __S(3843, __c120, 3) as any as S.Schema<ListSitesResponse>,
+    input: __S(3808, __c119, 0) as any as S.Schema<ListSitesRequest>,
+    output: __S(3811, __c119, 3) as any as S.Schema<ListSitesResponse>,
     errors: [
       MagicWanUnauthorized,
       Forbidden,
@@ -8313,8 +8362,8 @@ export const listSitesAppConfiguration: API.OperationMethod<
   ListSitesAppConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3872, __c121, 0) as any as S.Schema<ListSitesAppConfigurationRequest>,
-  output: __S(3875, __c121, 3) as any as S.Schema<ListSitesAppConfigurationResponse>,
+  input: __S(3840, __c120, 0) as any as S.Schema<ListSitesAppConfigurationRequest>,
+  output: __S(3843, __c120, 3) as any as S.Schema<ListSitesAppConfigurationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8334,7 +8383,7 @@ export const listSiteWans: API.PaginatedOperationMethod<
   SitesWansListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(3904, __c122, 0) as any as S.Schema<ListSiteWansRequest>,
+    input: __S(3872, __c121, 0) as any as S.Schema<ListSiteWansRequest>,
     output: __S(1954, __c61, 2) as any as S.Schema<ListSiteWansResponse>,
     errors: [
       MagicWanUnauthorized,
@@ -8363,7 +8412,7 @@ export const patchApp: API.OperationMethod<
   PatchAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3936, __c123, 0) as any as S.Schema<PatchAppRequest>,
+  input: __S(3904, __c122, 0) as any as S.Schema<PatchAppRequest>,
   output: __S(704, __c22, 0) as any as S.Schema<PatchAppResponse>,
   errors: [
     AppNotFound,
@@ -8385,8 +8434,8 @@ export const patchCf1Site: API.OperationMethod<
   PatchCf1SiteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3968, __c124, 0) as any as S.Schema<PatchCf1SiteRequest>,
-  output: __S(2112, __c66, 0) as any as S.Schema<PatchCf1SiteResponse>,
+  input: __S(3936, __c123, 0) as any as S.Schema<PatchCf1SiteRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<PatchCf1SiteResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8400,7 +8449,7 @@ export const patchConnector: API.OperationMethod<
   PatchConnectorError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4000, __c125, 0) as any as S.Schema<PatchConnectorRequest>,
+  input: __S(3968, __c124, 0) as any as S.Schema<PatchConnectorRequest>,
   output: __S(1120, __c35, 0) as any as S.Schema<PatchConnectorResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -8420,7 +8469,7 @@ export const patchSite: API.OperationMethod<
   PatchSiteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4032, __c126, 0) as any as S.Schema<PatchSiteRequest>,
+  input: __S(4000, __c125, 0) as any as S.Schema<PatchSiteRequest>,
   output: __S(1536, __c48, 0) as any as S.Schema<PatchSiteResponse>,
   errors: [
     SiteNotFound,
@@ -8447,7 +8496,7 @@ export const patchSiteAcl: API.OperationMethod<
   PatchSiteAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4064, __c127, 0) as any as S.Schema<PatchSiteAclRequest>,
+  input: __S(4032, __c126, 0) as any as S.Schema<PatchSiteAclRequest>,
   output: __S(1664, __c52, 0) as any as S.Schema<PatchSiteAclResponse>,
   errors: [
     SiteAclNotFound,
@@ -8474,8 +8523,8 @@ export const patchSiteLan: API.OperationMethod<
   PatchSiteLanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4096, __c128, 0) as any as S.Schema<PatchSiteLanRequest>,
-  output: __S(2496, __c78, 0) as any as S.Schema<PatchSiteLanResponse>,
+  input: __S(4064, __c127, 0) as any as S.Schema<PatchSiteLanRequest>,
+  output: __S(2464, __c77, 0) as any as S.Schema<PatchSiteLanResponse>,
   errors: [
     SiteLanNotFound,
     MagicWanUnauthorized,
@@ -8501,8 +8550,8 @@ export const patchSiteWan: API.OperationMethod<
   PatchSiteWanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4128, __c129, 0) as any as S.Schema<PatchSiteWanRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<PatchSiteWanResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<PatchSiteWanRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<PatchSiteWanResponse>,
   errors: [
     SiteWanNotFound,
     MagicWanUnauthorized,
@@ -8569,7 +8618,7 @@ export const stopPcap: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(4256, __c133, 0) as any as S.Schema<StopPcapRequest>,
-  output: __S(2336, __c73, 0) as any as S.Schema<StopPcapResponse>,
+  output: __S(2304, __c72, 0) as any as S.Schema<StopPcapResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -8775,7 +8824,7 @@ export const updateSiteLan: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c4, 0) as any as S.Schema<UpdateSiteLanRequest>,
-  output: __S(2496, __c78, 0) as any as S.Schema<UpdateSiteLanResponse>,
+  output: __S(2464, __c77, 0) as any as S.Schema<UpdateSiteLanResponse>,
   errors: [
     SiteLanNotFound,
     MagicWanUnauthorized,
@@ -8817,7 +8866,7 @@ export const updateSiteWan: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c6, 0) as any as S.Schema<UpdateSiteWanRequest>,
-  output: __S(2592, __c81, 0) as any as S.Schema<UpdateSiteWanResponse>,
+  output: __S(2560, __c80, 0) as any as S.Schema<UpdateSiteWanResponse>,
   errors: [
     SiteWanNotFound,
     MagicWanUnauthorized,
@@ -9102,7 +9151,9 @@ function __c6(j: number): any {
           name: S.optional(S.String),
           physport: S.optional(S.Number),
           priority: S.optional(S.Number),
-          staticAddressing: S.optional(__S(1984, __c62, 0).pipe(T.Body("static_addressing"))),
+          provisionedDownloadKbps: S.optional(S.Number.pipe(T.Body("provisioned_download_kbps"))),
+          provisionedUploadKbps: S.optional(S.Number.pipe(T.Body("provisioned_upload_kbps"))),
+          staticAddressing: S.optional(__S(4128, __c129, 0).pipe(T.Body("static_addressing"))),
           vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
         })
           .pipe(
@@ -10474,6 +10525,15 @@ function __c59(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          address: S.String,
+          gatewayAddress: S.String.pipe(T.Body("gateway_address")),
+          secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+          secondaryGatewayAddress: S.optional(S.String.pipe(T.Body("secondary_gateway_address"))),
+        }),
+      ).annotate({ identifier: "SitesWansCreateRequestStaticAddressing" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           siteId: S.String.pipe(T.Label("site_id")),
           physport: S.Number,
@@ -10481,7 +10541,9 @@ function __c59(j: number): any {
           loadBalanceInnerFlows: S.optional(S.Boolean.pipe(T.Body("load_balance_inner_flows"))),
           name: S.optional(S.String),
           priority: S.optional(S.Number),
-          staticAddressing: S.optional(__S(1984, __c62, 0).pipe(T.Body("static_addressing"))),
+          provisionedDownloadKbps: S.optional(S.Number.pipe(T.Body("provisioned_download_kbps"))),
+          provisionedUploadKbps: S.optional(S.Number.pipe(T.Body("provisioned_upload_kbps"))),
+          staticAddressing: S.optional(__S(1888, __c59, 0).pipe(T.Body("static_addressing"))),
           vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
         })
           .pipe(
@@ -10503,6 +10565,9 @@ function __c60(j: number): any {
           address: S.String,
           gatewayAddress: S.String.pipe(T.Body("gateway_address")),
           secondaryAddress: S.optional(S.NullOr(S.String).pipe(T.Body("secondary_address"))),
+          secondaryGatewayAddress: S.optional(
+            S.NullOr(S.String).pipe(T.Body("secondary_gateway_address")),
+          ),
         }),
       ).annotate({ identifier: "SitesWansCreateResultItemStaticAddressing" });
   }
@@ -10520,6 +10585,12 @@ function __c61(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           physport: S.optional(S.NullOr(S.Number)),
           priority: S.optional(S.NullOr(S.Number)),
+          provisionedDownloadKbps: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("provisioned_download_kbps")),
+          ),
+          provisionedUploadKbps: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("provisioned_upload_kbps")),
+          ),
           siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
           staticAddressing: S.optional(
             S.NullOr(__S(1920, __c60, 0)).pipe(T.Body("static_addressing")),
@@ -10543,18 +10614,6 @@ function __c62(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          address: S.String,
-          gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-          secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-        }),
-      ).annotate({ identifier: "SitesWansCreateRequestStaticAddressing" });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           accountAppId: S.String.pipe(T.Label("account_app_id")),
         })
@@ -10569,7 +10628,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "DeleteAppRequest" });
   }
 }
-function __c64(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10588,7 +10647,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "DeleteBgpFilterProfileRequest" });
   }
 }
-function __c65(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10607,7 +10666,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "DeleteCf1SiteRequest" });
   }
 }
-function __c66(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10622,7 +10681,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "DeleteCf1SiteResponse" });
   }
 }
-function __c67(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10642,7 +10701,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "DeleteCf1SiteRampRequest" });
   }
 }
-function __c68(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10666,7 +10725,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "DeleteCf1SiteRampResponse" });
   }
 }
-function __c69(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10685,7 +10744,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "DeleteConnectorRequest" });
   }
 }
-function __c70(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10711,7 +10770,7 @@ function __c70(j: number): any {
           direction: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           rate: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(2241, __c70, 1))),
+          target: S.optional(S.NullOr(__S(2209, __c69, 1))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck" });
@@ -10730,7 +10789,7 @@ function __c70(j: number): any {
           bgpStatus: S.optional(S.NullOr(__S(385, __c12, 1)).pipe(T.Body("bgp_status"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
-          healthCheck: S.optional(S.NullOr(__S(2242, __c70, 2)).pipe(T.Body("health_check"))),
+          healthCheck: S.optional(S.NullOr(__S(2210, __c69, 2)).pipe(T.Body("health_check"))),
           interfaceAddress6: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address6"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           mtu: S.optional(S.NullOr(S.Number)),
@@ -10742,13 +10801,13 @@ function __c70(j: number): any {
         S.Struct({
           deleted: S.optional(S.NullOr(S.Boolean)),
           deletedGreTunnel: S.optional(
-            S.NullOr(__S(2243, __c70, 3)).pipe(T.Body("deleted_gre_tunnel")),
+            S.NullOr(__S(2211, __c69, 3)).pipe(T.Body("deleted_gre_tunnel")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteGreTunnelResponse" });
   }
 }
-function __c71(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10774,7 +10833,7 @@ function __c71(j: number): any {
           direction: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           rate: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(2273, __c71, 1))),
+          target: S.optional(S.NullOr(__S(2241, __c70, 1))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck" });
@@ -10797,7 +10856,7 @@ function __c71(j: number): any {
           ),
           customerEndpoint: S.optional(S.NullOr(S.String).pipe(T.Body("customer_endpoint"))),
           description: S.optional(S.NullOr(S.String)),
-          healthCheck: S.optional(S.NullOr(__S(2274, __c71, 2)).pipe(T.Body("health_check"))),
+          healthCheck: S.optional(S.NullOr(__S(2242, __c70, 2)).pipe(T.Body("health_check"))),
           interfaceAddress6: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address6"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           pskMetadata: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("psk_metadata"))),
@@ -10809,13 +10868,13 @@ function __c71(j: number): any {
         S.Struct({
           deleted: S.optional(S.NullOr(S.Boolean)),
           deletedIpsecTunnel: S.optional(
-            S.NullOr(__S(2275, __c71, 3)).pipe(T.Body("deleted_ipsec_tunnel")),
+            S.NullOr(__S(2243, __c70, 3)).pipe(T.Body("deleted_ipsec_tunnel")),
           ),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteIpsecTunnelResponse" });
   }
 }
-function __c72(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10834,7 +10893,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "DeletePcapOwnershipRequest" });
   }
 }
-function __c73(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
@@ -10842,7 +10901,7 @@ function __c73(j: number): any {
       });
   }
 }
-function __c74(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10868,7 +10927,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "DeleteRouteResponse" });
   }
 }
-function __c75(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10887,7 +10946,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "DeleteSiteRequest" });
   }
 }
-function __c76(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10907,7 +10966,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "DeleteSiteAclRequest" });
   }
 }
-function __c77(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10927,7 +10986,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "DeleteSiteLanRequest" });
   }
 }
-function __c78(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10950,7 +11009,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "DeleteSiteLanResponse" });
   }
 }
-function __c79(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10977,11 +11036,11 @@ function __c79(j: number): any {
       );
     case 2:
       return S.suspend(() =>
-        __S(2529, __c79, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(2497, __c78, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteSitesAppConfigurationResponse" });
   }
 }
-function __c80(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11001,7 +11060,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "DeleteSiteWanRequest" });
   }
 }
-function __c81(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11014,6 +11073,12 @@ function __c81(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           physport: S.optional(S.NullOr(S.Number)),
           priority: S.optional(S.NullOr(S.Number)),
+          provisionedDownloadKbps: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("provisioned_download_kbps")),
+          ),
+          provisionedUploadKbps: S.optional(
+            S.NullOr(S.Number).pipe(T.Body("provisioned_upload_kbps")),
+          ),
           siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
           staticAddressing: S.optional(
             S.NullOr(__S(1920, __c60, 0)).pipe(T.Body("static_addressing")),
@@ -11023,7 +11088,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "DeleteSiteWanResponse" });
   }
 }
-function __c82(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11055,11 +11120,11 @@ function __c82(j: number): any {
       );
     case 2:
       return S.suspend(() =>
-        __S(2625, __c82, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(2593, __c81, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "EditSitesAppConfigurationResponse" });
   }
 }
-function __c83(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11078,7 +11143,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "EmptyRouteResponse" });
   }
 }
-function __c84(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11097,7 +11162,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "GetBgpFilterProfileRequest" });
   }
 }
-function __c85(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11116,7 +11181,7 @@ function __c85(j: number): any {
       ).annotate({ identifier: "GetCf1SiteRequest" });
   }
 }
-function __c86(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11136,7 +11201,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "GetCf1SiteRampRequest" });
   }
 }
-function __c87(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11163,7 +11228,7 @@ function __c87(j: number): any {
           enabled: S.optional(S.NullOr(S.Boolean)),
           rate: S.optional(S.NullOr(S.String)),
           source: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(2785, __c87, 1))),
+          target: S.optional(S.NullOr(__S(2753, __c86, 1))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CfInterconnectsGetResponseInterconnectHealthCheck" });
@@ -11179,7 +11244,7 @@ function __c87(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           gre: S.optional(S.NullOr(__S(321, __c10, 1))),
-          healthCheck: S.optional(S.NullOr(__S(2786, __c87, 2)).pipe(T.Body("health_check"))),
+          healthCheck: S.optional(S.NullOr(__S(2754, __c86, 2)).pipe(T.Body("health_check"))),
           interfaceAddress: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address"))),
           interfaceAddress6: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address6"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
@@ -11194,12 +11259,12 @@ function __c87(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          interconnect: S.optional(S.NullOr(__S(2787, __c87, 3))),
+          interconnect: S.optional(S.NullOr(__S(2755, __c86, 3))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetCfInterconnectResponse" });
   }
 }
-function __c88(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11218,7 +11283,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "GetConnectorRequest" });
   }
 }
-function __c89(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11240,7 +11305,7 @@ function __c89(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          e: __S(2880, __c90, 0),
+          e: __S(2848, __c89, 0),
           n: S.Number,
           t: S.Number,
           v: S.optional(S.NullOr(S.String)),
@@ -11248,7 +11313,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "GetConnectorEventResponse" });
   }
 }
-function __c90(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11258,7 +11323,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "ConnectorsEventsGetResponseE" });
   }
 }
-function __c91(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11285,7 +11350,7 @@ function __c91(j: number): any {
           countTransmitFailures: S.Number.pipe(T.Body("count_transmit_failures")),
           t: S.Number,
           v: S.String,
-          bonds: S.optional(S.NullOr(__S(2945, __c92, 1))),
+          bonds: S.optional(S.NullOr(__S(2913, __c91, 1))),
           cpuCount: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_count"))),
           cpu_pressure_10s: S.optional(S.NullOr(S.Number)),
           cpu_pressure_300s: S.optional(S.NullOr(S.Number)),
@@ -11302,12 +11367,12 @@ function __c91(j: number): any {
           cpuTimeSystemMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_time_system_ms"))),
           cpuTimeUserMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_time_user_ms"))),
           delta: S.optional(S.NullOr(S.Number)),
-          dhcpLeases: S.optional(S.NullOr(__S(2947, __c92, 3)).pipe(T.Body("dhcp_leases"))),
-          disks: S.optional(S.NullOr(__S(2949, __c92, 5))),
+          dhcpLeases: S.optional(S.NullOr(__S(2915, __c91, 3)).pipe(T.Body("dhcp_leases"))),
+          disks: S.optional(S.NullOr(__S(2917, __c91, 5))),
           epsilon: S.optional(S.NullOr(S.Number)),
           haState: S.optional(S.NullOr(S.String).pipe(T.Body("ha_state"))),
           haValue: S.optional(S.NullOr(S.Number).pipe(T.Body("ha_value"))),
-          interfaces: S.optional(S.NullOr(__S(2953, __c92, 9))),
+          interfaces: S.optional(S.NullOr(__S(2921, __c91, 9))),
           io_pressure_full_10s: S.optional(S.NullOr(S.Number)),
           io_pressure_full_300s: S.optional(S.NullOr(S.Number)),
           io_pressure_full_60s: S.optional(S.NullOr(S.Number)),
@@ -11448,10 +11513,10 @@ function __c91(j: number): any {
           memoryZSwappedBytes: S.optional(
             S.NullOr(S.Number).pipe(T.Body("memory_z_swapped_bytes")),
           ),
-          mounts: S.optional(S.NullOr(__S(2955, __c92, 11))),
-          netdevs: S.optional(S.NullOr(__S(2957, __c92, 13))),
+          mounts: S.optional(S.NullOr(__S(2923, __c91, 11))),
+          netdevs: S.optional(S.NullOr(__S(2925, __c91, 13))),
           platform: S.optional(S.NullOr(S.String)),
-          routes: S.optional(S.NullOr(__S(2959, __c92, 15))),
+          routes: S.optional(S.NullOr(__S(2927, __c91, 15))),
           siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
           snmpIcmpInAddrMaskReps: S.optional(
             S.NullOr(S.Number).pipe(T.Body("snmp_icmp_in_addr_mask_reps")),
@@ -11572,15 +11637,15 @@ function __c91(j: number): any {
             S.NullOr(S.Number).pipe(T.Body("snmp_udp_out_datagrams")),
           ),
           systemBootTimeS: S.optional(S.NullOr(S.Number).pipe(T.Body("system_boot_time_s"))),
-          thermals: S.optional(S.NullOr(__S(2961, __c92, 17))),
-          tunnels: S.optional(S.NullOr(__S(2963, __c92, 19))),
+          thermals: S.optional(S.NullOr(__S(2929, __c91, 17))),
+          tunnels: S.optional(S.NullOr(__S(2931, __c91, 19))),
           uptimeIdleMs: S.optional(S.NullOr(S.Number).pipe(T.Body("uptime_idle_ms"))),
           uptimeTotalMs: S.optional(S.NullOr(S.Number).pipe(T.Body("uptime_total_ms"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConnectorSnapshotResponse" });
   }
 }
-function __c92(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11590,7 +11655,7 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseBondsItem" });
     case 1:
-      return S.Array(__S(2944, __c92, 0));
+      return S.Array(__S(2912, __c91, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11603,7 +11668,7 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseDhcpLeasesItem" });
     case 3:
-      return S.Array(__S(2946, __c92, 2));
+      return S.Array(__S(2914, __c91, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -11630,7 +11695,7 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseDisksItem" });
     case 5:
-      return S.Array(__S(2948, __c92, 4));
+      return S.Array(__S(2916, __c91, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -11639,7 +11704,7 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseInterfacesItemIpAddressesItem" });
     case 7:
-      return S.Array(__S(2950, __c92, 6));
+      return S.Array(__S(2918, __c91, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -11647,12 +11712,12 @@ function __c92(j: number): any {
           operstate: S.String,
           healthReason: S.optional(S.NullOr(S.String).pipe(T.Body("health_reason"))),
           healthScore: S.optional(S.NullOr(S.Number).pipe(T.Body("health_score"))),
-          ipAddresses: S.optional(S.NullOr(__S(2951, __c92, 7)).pipe(T.Body("ip_addresses"))),
+          ipAddresses: S.optional(S.NullOr(__S(2919, __c91, 7)).pipe(T.Body("ip_addresses"))),
           speed: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseInterfacesItem" });
     case 9:
-      return S.Array(__S(2952, __c92, 8));
+      return S.Array(__S(2920, __c91, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -11669,7 +11734,7 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseMountsItem" });
     case 11:
-      return S.Array(__S(2954, __c92, 10));
+      return S.Array(__S(2922, __c91, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -11693,7 +11758,7 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseNetdevsItem" });
     case 13:
-      return S.Array(__S(2956, __c92, 12));
+      return S.Array(__S(2924, __c91, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
@@ -11706,7 +11771,7 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseRoutesItem" });
     case 15:
-      return S.Array(__S(2958, __c92, 14));
+      return S.Array(__S(2926, __c91, 14));
     case 16:
       return S.suspend(() =>
         S.Struct({
@@ -11717,7 +11782,7 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseThermalsItem" });
     case 17:
-      return S.Array(__S(2960, __c92, 16));
+      return S.Array(__S(2928, __c91, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
@@ -11738,10 +11803,10 @@ function __c92(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsGetResponseTunnelsItem" });
     case 19:
-      return S.Array(__S(2962, __c92, 18));
+      return S.Array(__S(2930, __c91, 18));
   }
 }
-function __c93(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11767,7 +11832,7 @@ function __c93(j: number): any {
           direction: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           rate: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(2977, __c93, 1))),
+          target: S.optional(S.NullOr(__S(2945, __c92, 1))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GreTunnelsGetResponseGreTunnelHealthCheck" });
@@ -11786,7 +11851,7 @@ function __c93(j: number): any {
           bgpStatus: S.optional(S.NullOr(__S(385, __c12, 1)).pipe(T.Body("bgp_status"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
-          healthCheck: S.optional(S.NullOr(__S(2978, __c93, 2)).pipe(T.Body("health_check"))),
+          healthCheck: S.optional(S.NullOr(__S(2946, __c92, 2)).pipe(T.Body("health_check"))),
           interfaceAddress6: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address6"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           mtu: S.optional(S.NullOr(S.Number)),
@@ -11796,12 +11861,12 @@ function __c93(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          greTunnel: S.optional(S.NullOr(__S(2979, __c93, 3)).pipe(T.Body("gre_tunnel"))),
+          greTunnel: S.optional(S.NullOr(__S(2947, __c92, 3)).pipe(T.Body("gre_tunnel"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetGreTunnelResponse" });
   }
 }
-function __c94(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11827,7 +11892,7 @@ function __c94(j: number): any {
           direction: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           rate: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(3009, __c94, 1))),
+          target: S.optional(S.NullOr(__S(2977, __c93, 1))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IpsecTunnelsGetResponseIpsecTunnelHealthCheck" });
@@ -11850,7 +11915,7 @@ function __c94(j: number): any {
           ),
           customerEndpoint: S.optional(S.NullOr(S.String).pipe(T.Body("customer_endpoint"))),
           description: S.optional(S.NullOr(S.String)),
-          healthCheck: S.optional(S.NullOr(__S(3010, __c94, 2)).pipe(T.Body("health_check"))),
+          healthCheck: S.optional(S.NullOr(__S(2978, __c93, 2)).pipe(T.Body("health_check"))),
           interfaceAddress6: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address6"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           pskMetadata: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("psk_metadata"))),
@@ -11860,12 +11925,12 @@ function __c94(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ipsecTunnel: S.optional(S.NullOr(__S(3011, __c94, 3)).pipe(T.Body("ipsec_tunnel"))),
+          ipsecTunnel: S.optional(S.NullOr(__S(2979, __c93, 3)).pipe(T.Body("ipsec_tunnel"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetIpsecTunnelResponse" });
   }
 }
-function __c95(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11899,11 +11964,11 @@ function __c95(j: number): any {
       );
     case 2:
       return S.suspend(() =>
-        __S(3041, __c95, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(3009, __c94, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPcapResponse" });
   }
 }
-function __c96(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11922,7 +11987,7 @@ function __c96(j: number): any {
       ).annotate({ identifier: "GetPcapDownloadRequest" });
   }
 }
-function __c97(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11944,17 +12009,17 @@ function __c97(j: number): any {
         }),
       ).annotate({ identifier: "PcapsOwnershipGetResultItem" });
     case 2:
-      return S.Array(__S(3105, __c97, 1));
+      return S.Array(__S(3073, __c96, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(3106, __c97, 2).pipe(T.EnvelopePayload()),
+          result: __S(3074, __c96, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetPcapOwnershipResponse" });
   }
 }
-function __c98(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11979,7 +12044,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "GetRouteResponse" });
   }
 }
-function __c99(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11999,7 +12064,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "GetSiteRequest" });
   }
 }
-function __c100(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12019,7 +12084,7 @@ function __c100(j: number): any {
       ).annotate({ identifier: "GetSiteAclRequest" });
   }
 }
-function __c101(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12039,7 +12104,7 @@ function __c101(j: number): any {
       ).annotate({ identifier: "GetSiteLanRequest" });
   }
 }
-function __c102(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12059,7 +12124,7 @@ function __c102(j: number): any {
       ).annotate({ identifier: "GetSiteWanRequest" });
   }
 }
-function __c103(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12077,17 +12142,17 @@ function __c103(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(3297, __c103, 1));
+      return S.Array(__S(3265, __c102, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(3298, __c103, 2).pipe(T.EnvelopePayload()),
+          result: __S(3266, __c102, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAppsResponse" });
   }
 }
-function __c104(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12116,14 +12181,14 @@ function __c104(j: number): any {
         }),
       ).annotate({ identifier: "ListBgpFilterProfilesResultItem" });
     case 2:
-      return S.Array(__S(3329, __c104, 1));
+      return S.Array(__S(3297, __c103, 1));
     case 3:
       return S.suspend(() =>
-        __S(3330, __c104, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(3298, __c103, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListBgpFilterProfilesResponse" });
   }
 }
-function __c105(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12142,7 +12207,7 @@ function __c105(j: number): any {
       ).annotate({ identifier: "ListCf1SiteRampsRequest" });
   }
 }
-function __c106(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12154,7 +12219,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "ListCf1SitesRequest" });
   }
 }
-function __c107(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12180,7 +12245,7 @@ function __c107(j: number): any {
           enabled: S.optional(S.NullOr(S.Boolean)),
           rate: S.optional(S.NullOr(S.String)),
           source: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(3425, __c107, 1))),
+          target: S.optional(S.NullOr(__S(3393, __c106, 1))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CfInterconnectsListResponseInterconnectsItemHealthCheck" });
@@ -12196,7 +12261,7 @@ function __c107(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           gre: S.optional(S.NullOr(__S(321, __c10, 1))),
-          healthCheck: S.optional(S.NullOr(__S(3426, __c107, 2)).pipe(T.Body("health_check"))),
+          healthCheck: S.optional(S.NullOr(__S(3394, __c106, 2)).pipe(T.Body("health_check"))),
           interfaceAddress: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address"))),
           interfaceAddress6: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address6"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
@@ -12209,16 +12274,16 @@ function __c107(j: number): any {
         }),
       ).annotate({ identifier: "CfInterconnectsListResponseInterconnectsItem" });
     case 4:
-      return S.Array(__S(3427, __c107, 3));
+      return S.Array(__S(3395, __c106, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          interconnects: S.optional(S.NullOr(__S(3428, __c107, 4))),
+          interconnects: S.optional(S.NullOr(__S(3396, __c106, 4))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListCfInterconnectsResponse" });
   }
 }
-function __c108(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12238,24 +12303,24 @@ function __c108(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          e: __S(2880, __c90, 0),
+          e: __S(2848, __c89, 0),
           n: S.Number,
           t: S.Number,
           v: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ConnectorsEventsLatestListResponseItemsItem" });
     case 2:
-      return S.Array(__S(3457, __c108, 1));
+      return S.Array(__S(3425, __c107, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          items: __S(3458, __c108, 2),
+          items: __S(3426, __c107, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConnectorEventLatestsResponse" });
   }
 }
-function __c109(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12287,18 +12352,18 @@ function __c109(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsEventsListResponseItemsItem" });
     case 2:
-      return S.Array(__S(3489, __c109, 1));
+      return S.Array(__S(3457, __c108, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          items: __S(3490, __c109, 2),
+          items: __S(3458, __c108, 2),
           cursor: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConnectorEventsResponse" });
   }
 }
-function __c110(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12334,17 +12399,17 @@ function __c110(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsListResultItem" });
     case 2:
-      return S.Array(__S(3521, __c110, 1));
+      return S.Array(__S(3489, __c109, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(3522, __c110, 2).pipe(T.EnvelopePayload()),
+          result: __S(3490, __c109, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConnectorsResponse" });
   }
 }
-function __c111(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12372,14 +12437,14 @@ function __c111(j: number): any {
         }),
       ).annotate({ identifier: "ListConnectorsInterruptsResultItem" });
     case 2:
-      return S.Array(__S(3553, __c111, 1));
+      return S.Array(__S(3521, __c110, 1));
     case 3:
       return S.suspend(() =>
-        __S(3554, __c111, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(3522, __c110, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConnectorsInterruptsResponse" });
   }
 }
-function __c112(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12405,7 +12470,7 @@ function __c112(j: number): any {
           countTransmitFailures: S.Number.pipe(T.Body("count_transmit_failures")),
           t: S.Number,
           v: S.String,
-          bonds: S.optional(S.NullOr(__S(2945, __c92, 1))),
+          bonds: S.optional(S.NullOr(__S(2913, __c91, 1))),
           cpuCount: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_count"))),
           cpu_pressure_10s: S.optional(S.NullOr(S.Number)),
           cpu_pressure_300s: S.optional(S.NullOr(S.Number)),
@@ -12422,12 +12487,12 @@ function __c112(j: number): any {
           cpuTimeSystemMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_time_system_ms"))),
           cpuTimeUserMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_time_user_ms"))),
           delta: S.optional(S.NullOr(S.Number)),
-          dhcpLeases: S.optional(S.NullOr(__S(2947, __c92, 3)).pipe(T.Body("dhcp_leases"))),
-          disks: S.optional(S.NullOr(__S(2949, __c92, 5))),
+          dhcpLeases: S.optional(S.NullOr(__S(2915, __c91, 3)).pipe(T.Body("dhcp_leases"))),
+          disks: S.optional(S.NullOr(__S(2917, __c91, 5))),
           epsilon: S.optional(S.NullOr(S.Number)),
           haState: S.optional(S.NullOr(S.String).pipe(T.Body("ha_state"))),
           haValue: S.optional(S.NullOr(S.Number).pipe(T.Body("ha_value"))),
-          interfaces: S.optional(S.NullOr(__S(2953, __c92, 9))),
+          interfaces: S.optional(S.NullOr(__S(2921, __c91, 9))),
           io_pressure_full_10s: S.optional(S.NullOr(S.Number)),
           io_pressure_full_300s: S.optional(S.NullOr(S.Number)),
           io_pressure_full_60s: S.optional(S.NullOr(S.Number)),
@@ -12568,10 +12633,10 @@ function __c112(j: number): any {
           memoryZSwappedBytes: S.optional(
             S.NullOr(S.Number).pipe(T.Body("memory_z_swapped_bytes")),
           ),
-          mounts: S.optional(S.NullOr(__S(2955, __c92, 11))),
-          netdevs: S.optional(S.NullOr(__S(2957, __c92, 13))),
+          mounts: S.optional(S.NullOr(__S(2923, __c91, 11))),
+          netdevs: S.optional(S.NullOr(__S(2925, __c91, 13))),
           platform: S.optional(S.NullOr(S.String)),
-          routes: S.optional(S.NullOr(__S(2959, __c92, 15))),
+          routes: S.optional(S.NullOr(__S(2927, __c91, 15))),
           siteId: S.optional(S.NullOr(S.String).pipe(T.Body("site_id"))),
           snmpIcmpInAddrMaskReps: S.optional(
             S.NullOr(S.Number).pipe(T.Body("snmp_icmp_in_addr_mask_reps")),
@@ -12692,24 +12757,24 @@ function __c112(j: number): any {
             S.NullOr(S.Number).pipe(T.Body("snmp_udp_out_datagrams")),
           ),
           systemBootTimeS: S.optional(S.NullOr(S.Number).pipe(T.Body("system_boot_time_s"))),
-          thermals: S.optional(S.NullOr(__S(2961, __c92, 17))),
-          tunnels: S.optional(S.NullOr(__S(2963, __c92, 19))),
+          thermals: S.optional(S.NullOr(__S(2929, __c91, 17))),
+          tunnels: S.optional(S.NullOr(__S(2931, __c91, 19))),
           uptimeIdleMs: S.optional(S.NullOr(S.Number).pipe(T.Body("uptime_idle_ms"))),
           uptimeTotalMs: S.optional(S.NullOr(S.Number).pipe(T.Body("uptime_total_ms"))),
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsLatestListResponseItemsItem" });
     case 2:
-      return S.Array(__S(3585, __c112, 1));
+      return S.Array(__S(3553, __c111, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          items: __S(3586, __c112, 2),
+          items: __S(3554, __c111, 2),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConnectorSnapshotLatestsResponse" });
   }
 }
-function __c113(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12738,18 +12803,18 @@ function __c113(j: number): any {
         }),
       ).annotate({ identifier: "ConnectorsSnapshotsListResponseItemsItem" });
     case 2:
-      return S.Array(__S(3617, __c113, 1));
+      return S.Array(__S(3585, __c112, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
-          items: __S(3618, __c113, 2),
+          items: __S(3586, __c112, 2),
           cursor: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConnectorSnapshotsResponse" });
   }
 }
-function __c114(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12770,7 +12835,7 @@ function __c114(j: number): any {
           direction: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           rate: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(3649, __c114, 1))),
+          target: S.optional(S.NullOr(__S(3617, __c113, 1))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GreTunnelsListResponseGreTunnelsItemHealthCheck" });
@@ -12789,7 +12854,7 @@ function __c114(j: number): any {
           bgpStatus: S.optional(S.NullOr(__S(385, __c12, 1)).pipe(T.Body("bgp_status"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
-          healthCheck: S.optional(S.NullOr(__S(3650, __c114, 2)).pipe(T.Body("health_check"))),
+          healthCheck: S.optional(S.NullOr(__S(3618, __c113, 2)).pipe(T.Body("health_check"))),
           interfaceAddress6: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address6"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           mtu: S.optional(S.NullOr(S.Number)),
@@ -12797,16 +12862,16 @@ function __c114(j: number): any {
         }),
       ).annotate({ identifier: "GreTunnelsListResponseGreTunnelsItem" });
     case 4:
-      return S.Array(__S(3651, __c114, 3));
+      return S.Array(__S(3619, __c113, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          greTunnels: S.optional(S.NullOr(__S(3652, __c114, 4)).pipe(T.Body("gre_tunnels"))),
+          greTunnels: S.optional(S.NullOr(__S(3620, __c113, 4)).pipe(T.Body("gre_tunnels"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListGreTunnelsResponse" });
   }
 }
-function __c115(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12827,7 +12892,7 @@ function __c115(j: number): any {
           direction: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           rate: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(__S(3681, __c115, 1))),
+          target: S.optional(S.NullOr(__S(3649, __c114, 1))),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IpsecTunnelsListResponseIpsecTunnelsItemHealthCheck" });
@@ -12850,7 +12915,7 @@ function __c115(j: number): any {
           ),
           customerEndpoint: S.optional(S.NullOr(S.String).pipe(T.Body("customer_endpoint"))),
           description: S.optional(S.NullOr(S.String)),
-          healthCheck: S.optional(S.NullOr(__S(3682, __c115, 2)).pipe(T.Body("health_check"))),
+          healthCheck: S.optional(S.NullOr(__S(3650, __c114, 2)).pipe(T.Body("health_check"))),
           interfaceAddress6: S.optional(S.NullOr(S.String).pipe(T.Body("interface_address6"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           pskMetadata: S.optional(S.NullOr(__S(480, __c15, 0)).pipe(T.Body("psk_metadata"))),
@@ -12858,16 +12923,16 @@ function __c115(j: number): any {
         }),
       ).annotate({ identifier: "IpsecTunnelsListResponseIpsecTunnelsItem" });
     case 4:
-      return S.Array(__S(3683, __c115, 3));
+      return S.Array(__S(3651, __c114, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ipsecTunnels: S.optional(S.NullOr(__S(3684, __c115, 4)).pipe(T.Body("ipsec_tunnels"))),
+          ipsecTunnels: S.optional(S.NullOr(__S(3652, __c114, 4)).pipe(T.Body("ipsec_tunnels"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListIpsecTunnelsResponse" });
   }
 }
-function __c116(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12899,17 +12964,17 @@ function __c116(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(3713, __c116, 1));
+      return S.Array(__S(3681, __c115, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(3714, __c116, 2).pipe(T.EnvelopePayload()),
+          result: __S(3682, __c115, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPcapsResponse" });
   }
 }
-function __c117(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12927,7 +12992,7 @@ function __c117(j: number): any {
       ).annotate({ identifier: "ListRoutesResponse" });
   }
 }
-function __c118(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12958,17 +13023,17 @@ function __c118(j: number): any {
         }),
       ).annotate({ identifier: "SitesAclsListResultItem" });
     case 2:
-      return S.Array(__S(3777, __c118, 1));
+      return S.Array(__S(3745, __c117, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(3778, __c118, 2).pipe(T.EnvelopePayload()),
+          result: __S(3746, __c117, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSiteAclsResponse" });
   }
 }
-function __c119(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12987,7 +13052,7 @@ function __c119(j: number): any {
       ).annotate({ identifier: "ListSiteLansRequest" });
   }
 }
-function __c120(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13013,17 +13078,17 @@ function __c120(j: number): any {
         }),
       ).annotate({ identifier: "SitesListResultItem" });
     case 2:
-      return S.Array(__S(3841, __c120, 1));
+      return S.Array(__S(3809, __c119, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(3842, __c120, 2).pipe(T.EnvelopePayload()),
+          result: __S(3810, __c119, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSitesResponse" });
   }
 }
-function __c121(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13048,14 +13113,14 @@ function __c121(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(__S(3873, __c121, 1));
+      return S.Array(__S(3841, __c120, 1));
     case 3:
       return S.suspend(() =>
-        __S(3874, __c121, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(3842, __c120, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSitesAppConfigurationResponse" });
   }
 }
-function __c122(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13074,7 +13139,7 @@ function __c122(j: number): any {
       ).annotate({ identifier: "ListSiteWansRequest" });
   }
 }
-function __c123(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13098,7 +13163,7 @@ function __c123(j: number): any {
       ).annotate({ identifier: "PatchAppRequest" });
   }
 }
-function __c124(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13120,7 +13185,7 @@ function __c124(j: number): any {
       ).annotate({ identifier: "PatchCf1SiteRequest" });
   }
 }
-function __c125(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13155,7 +13220,7 @@ function __c125(j: number): any {
       ).annotate({ identifier: "PatchConnectorRequest" });
   }
 }
-function __c126(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13180,7 +13245,7 @@ function __c126(j: number): any {
       ).annotate({ identifier: "PatchSiteRequest" });
   }
 }
-function __c127(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13207,7 +13272,7 @@ function __c127(j: number): any {
       ).annotate({ identifier: "PatchSiteAclRequest" });
   }
 }
-function __c128(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13237,7 +13302,7 @@ function __c128(j: number): any {
       ).annotate({ identifier: "PatchSiteLanRequest" });
   }
 }
-function __c129(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13250,7 +13315,9 @@ function __c129(j: number): any {
           name: S.optional(S.String),
           physport: S.optional(S.Number),
           priority: S.optional(S.Number),
-          staticAddressing: S.optional(__S(1984, __c62, 0).pipe(T.Body("static_addressing"))),
+          provisionedDownloadKbps: S.optional(S.Number.pipe(T.Body("provisioned_download_kbps"))),
+          provisionedUploadKbps: S.optional(S.Number.pipe(T.Body("provisioned_upload_kbps"))),
+          staticAddressing: S.optional(__S(4128, __c129, 0).pipe(T.Body("static_addressing"))),
           vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
         })
           .pipe(
@@ -13262,6 +13329,19 @@ function __c129(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchSiteWanRequest" });
+  }
+}
+function __c129(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          address: S.optional(S.String),
+          gatewayAddress: S.optional(S.String.pipe(T.Body("gateway_address"))),
+          secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+          secondaryGatewayAddress: S.optional(S.String.pipe(T.Body("secondary_gateway_address"))),
+        }),
+      ).annotate({ identifier: "SitesWansEditRequestStaticAddressing" });
   }
 }
 function __c130(j: number): any {

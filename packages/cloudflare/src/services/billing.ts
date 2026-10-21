@@ -396,8 +396,6 @@ export interface UsageGetResultItem {
   chargePeriodEnd: string;
   /** Inclusive start of the time interval during which the usage was consumed. */
   chargePeriodStart: string;
-  /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
-  consumedQuantity: number;
   /** Unit of measure for the consumed quantity (e.g., "GB", "Requests", "vCPU-Hours"). */
   consumedUnit: string;
   /** Name of the entity providing the underlying infrastructure or platform. */
@@ -422,6 +420,8 @@ export interface UsageGetResultItem {
   billingPeriodStart?: string | null;
   /** Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period. */
   chargeClass?: UsageGetResultItemChargeClass | null;
+  /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
+  consumedQuantity?: number | null;
   /** Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity. */
   contractedCost?: number | null;
   /** The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts. */
@@ -790,8 +790,6 @@ export interface UsageGetAccountUsageV2ResultItem {
   chargePeriodEnd: string;
   /** Inclusive start of the time interval during which the usage was consumed. */
   chargePeriodStart: string;
-  /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
-  consumedQuantity: number;
   /** Unit of measure for the consumed quantity (e.g., "GB", "Requests", "vCPU-Hours"). */
   consumedUnit: string;
   /** Name of the entity providing the underlying infrastructure or platform. */
@@ -816,6 +814,8 @@ export interface UsageGetAccountUsageV2ResultItem {
   billingPeriodStart?: string | null;
   /** Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period. */
   chargeClass?: UsageGetAccountUsageV2ResultItemChargeClass | null;
+  /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
+  consumedQuantity?: number | null;
   /** Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity. */
   contractedCost?: number | null;
   /** The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts. */
@@ -1006,7 +1006,7 @@ export const getUnpaidInvoice: API.OperationMethod<
 }));
 
 export type GetUsageError = CloudflareOpError;
-/** Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
+/** Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** This endpoint serves `usage` records only; cost and pricing fields are absent from responses. To retrieve rated costs, use `POST` on the same path with `Metric: cost`. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
 export const getUsage: API.OperationMethod<
   GetUsageRequest,
   GetUsageResponse,
@@ -1111,7 +1111,7 @@ export const usageGetAccountUsageV1: API.OperationMethod<
 }));
 
 export type UsageGetAccountUsageV2Error = CloudflareOpError;
-/** Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
+/** Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** This endpoint serves `usage` records only; cost and pricing fields are absent from responses. To retrieve rated costs, use `POST` on the same path with `Metric: cost`. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
 export const usageGetAccountUsageV2: API.OperationMethod<
   UsageGetAccountUsageV2Request,
   UsageGetAccountUsageV2Response,
@@ -1461,7 +1461,6 @@ function __c11(j: number): any {
           chargeFrequency: S.String.pipe(T.Body("ChargeFrequency")),
           chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
           chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
-          consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
           consumedUnit: S.String.pipe(T.Body("ConsumedUnit")),
           hostProviderName: S.String.pipe(T.Body("HostProviderName")),
           invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
@@ -1474,6 +1473,7 @@ function __c11(j: number): any {
           billingPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd"))),
           billingPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodStart"))),
           chargeClass: S.optional(S.NullOr(S.String).pipe(T.Body("ChargeClass"))),
+          consumedQuantity: S.optional(S.NullOr(S.Number).pipe(T.Body("ConsumedQuantity"))),
           contractedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedCost"))),
           contractedUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice"))),
           effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),
@@ -1726,7 +1726,6 @@ function __c21(j: number): any {
           chargeFrequency: S.String.pipe(T.Body("ChargeFrequency")),
           chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
           chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
-          consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
           consumedUnit: S.String.pipe(T.Body("ConsumedUnit")),
           hostProviderName: S.String.pipe(T.Body("HostProviderName")),
           invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
@@ -1739,6 +1738,7 @@ function __c21(j: number): any {
           billingPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd"))),
           billingPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodStart"))),
           chargeClass: S.optional(S.NullOr(S.String).pipe(T.Body("ChargeClass"))),
+          consumedQuantity: S.optional(S.NullOr(S.Number).pipe(T.Body("ConsumedQuantity"))),
           contractedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedCost"))),
           contractedUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice"))),
           effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),

@@ -712,6 +712,8 @@ export interface CreateSettingAllowPolicyRequest {
   /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
   verifySender: boolean;
   comments?: string;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Use `is_exempt_recipient` instead. */
   isRecipient?: boolean;
   /** Use `is_trusted_sender` instead. */
@@ -728,6 +730,8 @@ export interface CreateSettingAllowPolicyResponse {
   /** Use `modified_at` instead. */
   lastModified: string;
   comments?: string | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
   /** Bypasses all detections for messages to this recipient. */
@@ -760,6 +764,8 @@ export interface CreateSettingBlockSenderRequest {
   /** Type of pattern matching. */
   patternType: SettingsBlockSendersCreateRequestPatternType | (string & {});
   comments?: string;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
 }
 export type SettingsBlockSendersCreateResponsePatternType = "EMAIL" | "DOMAIN" | "IP" | "UNKNOWN";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -768,6 +774,8 @@ export interface CreateSettingBlockSenderResponse {
   id?: string | null;
   comments?: string | null;
   createdAt?: string | null;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Whether `pattern` is a regular expression instead of a literal value. */
   isRegex?: boolean | null;
   /** Use `modified_at` instead. */
@@ -848,6 +856,8 @@ export interface CreateSettingsContentPolicyRequest {
   pattern: string;
   /** Parts of the email the pattern is matched against. */
   targets: CreateSettingsContentPolicyRequestTargetsList;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Optional note describing the purpose of the policy. */
   notes?: string;
 }
@@ -861,6 +871,8 @@ export interface CreateSettingsContentPolicyResponse {
   createdAt?: string | null;
   /** Whether the policy is active. */
   enabled?: boolean | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   modifiedAt?: string | null;
   /** Human-readable name of the policy. */
   name?: string | null;
@@ -1185,6 +1197,8 @@ export interface EditSettingsContentPolicyRequest {
   policyId: string;
   /** Whether the policy is active. */
   enabled?: boolean;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Human-readable name of the policy. */
   name?: string;
   /** Optional note describing the purpose of the policy. */
@@ -1204,6 +1218,8 @@ export interface EditSettingsContentPolicyResponse {
   createdAt?: string | null;
   /** Whether the policy is active. */
   enabled?: boolean | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   modifiedAt?: string | null;
   /** Human-readable name of the policy. */
   name?: string | null;
@@ -1349,15 +1365,6 @@ export type InvestigateGetResponsePostDeliveryOperationsList =
 export type InvestigateGetResponseThreatCategoriesList = Array<string>;
 export type InvestigateGetResponseToList = Array<string>;
 export type InvestigateGetResponseToNameList = Array<string>;
-export type InvestigateGetResponseValidationDkim = "pass" | "neutral" | "fail" | "error" | "none";
-export type InvestigateGetResponseValidationDmarc = "pass" | "neutral" | "fail" | "error" | "none";
-export type InvestigateGetResponseValidationSpf = "pass" | "neutral" | "fail" | "error" | "none";
-export interface InvestigateGetResponseValidation {
-  comment?: string | null;
-  dkim?: InvestigateGetResponseValidationDkim | null;
-  dmarc?: InvestigateGetResponseValidationDmarc | null;
-  spf?: InvestigateGetResponseValidationSpf | null;
-}
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetInvestigateResponse {
   /** Unique identifier for a message retrieved from investigation. */
@@ -1403,7 +1410,7 @@ export interface GetInvestigateResponse {
   threatCategories?: InvestigateGetResponseThreatCategoriesList | null;
   to?: InvestigateGetResponseToList | null;
   toName?: InvestigateGetResponseToNameList | null;
-  validation?: InvestigateGetResponseValidation | null;
+  validation?: unknown | null;
   xOriginatingIp?: string | null;
 }
 export interface GetInvestigateBulkRequest {
@@ -1746,6 +1753,8 @@ export interface GetSettingAllowPolicyResponse {
   /** Use `modified_at` instead. */
   lastModified: string;
   comments?: string | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
   /** Bypasses all detections for messages to this recipient. */
@@ -1780,6 +1789,8 @@ export interface GetSettingBlockSenderResponse {
   id?: string | null;
   comments?: string | null;
   createdAt?: string | null;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Whether `pattern` is a regular expression instead of a literal value. */
   isRegex?: boolean | null;
   /** Use `modified_at` instead. */
@@ -1907,6 +1918,8 @@ export interface GetSettingsContentPolicyResponse {
   createdAt?: string | null;
   /** Whether the policy is active. */
   enabled?: boolean | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   modifiedAt?: string | null;
   /** Human-readable name of the policy. */
   name?: string | null;
@@ -2167,30 +2180,6 @@ export type InvestigateBulkMessagesListResultItemMessagePostDeliveryOperationsLi
 export type InvestigateBulkMessagesListResultItemMessageThreatCategoriesList = Array<string>;
 export type InvestigateBulkMessagesListResultItemMessageToList = Array<string>;
 export type InvestigateBulkMessagesListResultItemMessageToNameList = Array<string>;
-export type InvestigateBulkMessagesListResultItemMessageValidationDkim =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export type InvestigateBulkMessagesListResultItemMessageValidationDmarc =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export type InvestigateBulkMessagesListResultItemMessageValidationSpf =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export interface InvestigateBulkMessagesListResultItemMessageValidation {
-  comment?: string | null;
-  dkim?: InvestigateBulkMessagesListResultItemMessageValidationDkim | null;
-  dmarc?: InvestigateBulkMessagesListResultItemMessageValidationDmarc | null;
-  spf?: InvestigateBulkMessagesListResultItemMessageValidationSpf | null;
-}
 export interface InvestigateBulkMessagesListResultItemMessage {
   /** Unique identifier for a message retrieved from investigation. */
   id: string;
@@ -2235,7 +2224,7 @@ export interface InvestigateBulkMessagesListResultItemMessage {
   threatCategories?: InvestigateBulkMessagesListResultItemMessageThreatCategoriesList | null;
   to?: InvestigateBulkMessagesListResultItemMessageToList | null;
   toName?: InvestigateBulkMessagesListResultItemMessageToNameList | null;
-  validation?: InvestigateBulkMessagesListResultItemMessageValidation | null;
+  validation?: unknown | null;
   xOriginatingIp?: string | null;
 }
 export interface InvestigateBulkMessagesListResultItem {
@@ -2592,25 +2581,6 @@ export type InvestigateListResultItemPostDeliveryOperationsList =
 export type InvestigateListResultItemThreatCategoriesList = Array<string>;
 export type InvestigateListResultItemToList = Array<string>;
 export type InvestigateListResultItemToNameList = Array<string>;
-export type InvestigateListResultItemValidationDkim =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export type InvestigateListResultItemValidationDmarc =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | "error"
-  | "none";
-export type InvestigateListResultItemValidationSpf = "pass" | "neutral" | "fail" | "error" | "none";
-export interface InvestigateListResultItemValidation {
-  comment?: string | null;
-  dkim?: InvestigateListResultItemValidationDkim | null;
-  dmarc?: InvestigateListResultItemValidationDmarc | null;
-  spf?: InvestigateListResultItemValidationSpf | null;
-}
 export interface InvestigateListResultItem {
   /** Unique identifier for a message retrieved from investigation. */
   id: string;
@@ -2655,7 +2625,7 @@ export interface InvestigateListResultItem {
   threatCategories?: InvestigateListResultItemThreatCategoriesList | null;
   to?: InvestigateListResultItemToList | null;
   toName?: InvestigateListResultItemToNameList | null;
-  validation?: InvestigateListResultItemValidation | null;
+  validation?: unknown | null;
   xOriginatingIp?: string | null;
 }
 export type InvestigateListResultList = Array<InvestigateListResultItem>;
@@ -2736,6 +2706,8 @@ export interface ListSettingAllowPoliciesRequest {
   accountId: string;
   /** The sorting direction. */
   direction?: SettingsAllowPoliciesListRequestDirection | (string & {});
+  /** Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both. */
+  expired?: boolean;
   /** Filter to show only policies where messages from the sender are exempted from Spam, Spoof, and Bulk dispositions (not Malicious or Suspicious). */
   isAcceptableSender?: boolean;
   /** Filter to show only policies where messages to the recipient bypass all detections. */
@@ -2765,6 +2737,8 @@ export interface SettingsAllowPoliciesListResultItem {
   /** Use `modified_at` instead. */
   lastModified: string;
   comments?: string | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
   /** Bypasses all detections for messages to this recipient. */
@@ -2801,6 +2775,8 @@ export interface ListSettingBlockSendersRequest {
   accountId: string;
   /** The sorting direction. */
   direction?: SettingsBlockSendersListRequestDirection | (string & {});
+  /** Filter to return only expired patterns (`true`) or only patterns that still apply (`false`). Omit to return both. */
+  expired?: boolean;
   /** Field to sort by. */
   order?: SettingsBlockSendersListRequestOrder | (string & {});
   /** Current page within paginated list of results. */
@@ -2820,6 +2796,8 @@ export interface SettingsBlockSendersListResultItem {
   id?: string | null;
   comments?: string | null;
   createdAt?: string | null;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Whether `pattern` is a regular expression instead of a literal value. */
   isRegex?: boolean | null;
   /** Use `modified_at` instead. */
@@ -3017,6 +2995,8 @@ export interface ListSettingsContentPoliciesRequest {
   direction?: ListSettingsContentPoliciesRequestDirection | (string & {});
   /** Filter by enabled status. */
   enabled?: boolean;
+  /** Filter to return only expired policies (`true`) or only policies that still apply (`false`). Omit to return both. */
+  expired?: boolean;
   /** Filter by exact policy name. */
   name?: string;
   /** Field to sort by. */
@@ -3037,6 +3017,8 @@ export interface ListSettingsContentPoliciesResultItem {
   createdAt?: string | null;
   /** Whether the policy is active. */
   enabled?: boolean | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   modifiedAt?: string | null;
   /** Human-readable name of the policy. */
   name?: string | null;
@@ -3302,6 +3284,8 @@ export interface PatchSettingAllowPolicyRequest {
   /** Allow policy identifier. */
   policyId: string;
   comments?: string;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean;
   /** Bypasses all detections for messages to this recipient. */
@@ -3331,6 +3315,8 @@ export interface PatchSettingAllowPolicyResponse {
   /** Use `modified_at` instead. */
   lastModified: string;
   comments?: string | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
   /** Bypasses all detections for messages to this recipient. */
@@ -3359,6 +3345,8 @@ export interface PatchSettingBlockSenderRequest {
   /** Blocked sender pattern identifier. */
   patternId: string;
   comments?: string;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Whether `pattern` is a regular expression instead of a literal value. */
   isRegex?: boolean;
   /** The pattern value to match. The format depends on `pattern_type`: a valid email address for EMAIL (e.g. `user@example.com`), a valid domain name for DOMAIN (e.g. `example.com`), or a plain IPv4 or IPv6 address or CIDR block for IP (e.g. `1.2.3.4`, `1.2.3.0/24`, `2606:4700:4700::1111`, or `2606:4700:4700::/48`); the API rejects private or unique-local, loopback, link-local, unspecified, and IPv4 broadcast addresses, including their IPv4-mapped IPv6 equivalents. */
@@ -3373,6 +3361,8 @@ export interface PatchSettingBlockSenderResponse {
   id?: string | null;
   comments?: string | null;
   createdAt?: string | null;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Whether `pattern` is a regular expression instead of a literal value. */
   isRegex?: boolean | null;
   /** Use `modified_at` instead. */
@@ -3656,6 +3646,8 @@ export interface SettingsAllowPoliciesBatchRequestPatchesItem {
   /** Use `modified_at` instead. */
   lastModified: string;
   comments?: string;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean;
   /** Bypasses all detections for messages to this recipient. */
@@ -3702,6 +3694,8 @@ export interface SettingsAllowPoliciesBatchRequestPostsItem {
   id?: string;
   comments?: string;
   createdAt?: string;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Use `is_exempt_recipient` instead. */
   isRecipient?: boolean;
   /** Use `is_trusted_sender` instead. */
@@ -3726,6 +3720,8 @@ export interface SettingsAllowPoliciesBatchRequestPutsItem {
   /** Use `modified_at` instead. */
   lastModified: string;
   comments?: string;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean;
   /** Bypasses all detections for messages to this recipient. */
@@ -3777,6 +3773,8 @@ export interface SettingsAllowPoliciesBatchResponsePatchesItem {
   /** Use `modified_at` instead. */
   lastModified: string;
   comments?: string | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
   /** Bypasses all detections for messages to this recipient. */
@@ -3812,6 +3810,8 @@ export interface SettingsAllowPoliciesBatchResponsePostsItem {
   /** Use `modified_at` instead. */
   lastModified: string;
   comments?: string | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
   /** Bypasses all detections for messages to this recipient. */
@@ -3847,6 +3847,8 @@ export interface SettingsAllowPoliciesBatchResponsePutsItem {
   /** Use `modified_at` instead. */
   lastModified: string;
   comments?: string | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Exempts messages from this sender from Spam, Spoof and Bulk dispositions only; Malicious and Suspicious dispositions still apply. */
   isAcceptableSender?: boolean | null;
   /** Bypasses all detections for messages to this recipient. */
@@ -3893,6 +3895,8 @@ export interface SettingsBlockSendersBatchRequestPatchesItem {
   id: string;
   comments?: string;
   createdAt?: string;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Whether `pattern` is a regular expression instead of a literal value. */
   isRegex?: boolean;
   /** Use `modified_at` instead. */
@@ -3921,6 +3925,8 @@ export interface SettingsBlockSendersBatchRequestPostsItem {
   id?: string;
   comments?: string;
   createdAt?: string;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Use `modified_at` instead. */
   lastModified?: string;
   modifiedAt?: string;
@@ -3943,6 +3949,8 @@ export interface SettingsBlockSendersBatchRequestPutsItem {
   patternType: SettingsBlockSendersBatchRequestPutsItemPatternType | (string & {});
   comments?: string;
   createdAt?: string;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   /** Use `modified_at` instead. */
   lastModified?: string;
   modifiedAt?: string;
@@ -3975,6 +3983,8 @@ export interface SettingsBlockSendersBatchResponsePatchesItem {
   id?: string | null;
   comments?: string | null;
   createdAt?: string | null;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Whether `pattern` is a regular expression instead of a literal value. */
   isRegex?: boolean | null;
   /** Use `modified_at` instead. */
@@ -3997,6 +4007,8 @@ export interface SettingsBlockSendersBatchResponsePostsItem {
   id?: string | null;
   comments?: string | null;
   createdAt?: string | null;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Whether `pattern` is a regular expression instead of a literal value. */
   isRegex?: boolean | null;
   /** Use `modified_at` instead. */
@@ -4019,6 +4031,8 @@ export interface SettingsBlockSendersBatchResponsePutsItem {
   id?: string | null;
   comments?: string | null;
   createdAt?: string | null;
+  /** Timestamp at which the pattern expires. After this time, Email Security ignores the pattern. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   /** Whether `pattern` is a regular expression instead of a literal value. */
   isRegex?: boolean | null;
   /** Use `modified_at` instead. */
@@ -4054,6 +4068,8 @@ export interface SettingsContentPoliciesBatchRequestPatchesItem {
   createdAt?: string;
   /** Whether the policy is active. */
   enabled?: boolean;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   modifiedAt?: string;
   /** Human-readable name of the policy. */
   name?: string;
@@ -4082,6 +4098,8 @@ export interface SettingsContentPoliciesBatchRequestPostsItem {
   /** Content policy identifier. */
   id?: string;
   createdAt?: string;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   modifiedAt?: string;
   /** Optional note describing the purpose of the policy. */
   notes?: string;
@@ -4104,6 +4122,8 @@ export interface SettingsContentPoliciesBatchRequestPutsItem {
   /** Parts of the email the pattern is matched against. */
   targets: SettingsContentPoliciesBatchRequestPutsItemTargetsList;
   createdAt?: string;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string;
   modifiedAt?: string;
   /** Optional note describing the purpose of the policy. */
   notes?: string;
@@ -4135,6 +4155,8 @@ export interface SettingsContentPoliciesBatchResponsePatchesItem {
   createdAt?: string | null;
   /** Whether the policy is active. */
   enabled?: boolean | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   modifiedAt?: string | null;
   /** Human-readable name of the policy. */
   name?: string | null;
@@ -4156,6 +4178,8 @@ export interface SettingsContentPoliciesBatchResponsePostsItem {
   createdAt?: string | null;
   /** Whether the policy is active. */
   enabled?: boolean | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   modifiedAt?: string | null;
   /** Human-readable name of the policy. */
   name?: string | null;
@@ -4177,6 +4201,8 @@ export interface SettingsContentPoliciesBatchResponsePutsItem {
   createdAt?: string | null;
   /** Whether the policy is active. */
   enabled?: boolean | null;
+  /** Timestamp at which the policy expires. After this time, Email Security ignores the policy. The value must lie in the future. Send `null` to clear the expiration. */
+  expiresAt?: string | null;
   modifiedAt?: string | null;
   /** Human-readable name of the policy. */
   name?: string | null;
@@ -5322,7 +5348,7 @@ export const getInvestigateDetection: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(608, __c38, 0) as any as S.Schema<GetInvestigateDetectionRequest>,
-  output: __S(618, __c38, 10) as any as S.Schema<GetInvestigateDetectionResponse>,
+  output: __S(619, __c38, 11) as any as S.Schema<GetInvestigateDetectionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6271,6 +6297,7 @@ function __c5(j: number): any {
           patternType: S.String.pipe(T.Body("pattern_type")),
           verifySender: S.Boolean.pipe(T.Body("verify_sender")),
           comments: S.optional(S.String),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
           isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
           isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
@@ -6295,6 +6322,7 @@ function __c6(j: number): any {
           createdAt: S.String.pipe(T.Body("created_at")),
           lastModified: S.String.pipe(T.Body("last_modified")),
           comments: S.optional(S.NullOr(S.String)),
+          expiresAt: S.optional(S.NullOr(S.String).pipe(T.Body("expires_at"))),
           isAcceptableSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender"))),
           isExemptRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient"))),
           isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
@@ -6320,6 +6348,7 @@ function __c7(j: number): any {
           pattern: S.String,
           patternType: S.String.pipe(T.Body("pattern_type")),
           comments: S.optional(S.String),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
         })
           .pipe(
             T.Http({
@@ -6340,6 +6369,7 @@ function __c8(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           comments: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          expiresAt: S.optional(S.NullOr(S.String).pipe(T.Body("expires_at"))),
           isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
@@ -6408,6 +6438,7 @@ function __c11(j: number): any {
           name: S.String,
           pattern: S.String,
           targets: __S(192, __c12, 0),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           notes: S.optional(S.String),
         })
           .pipe(
@@ -6435,6 +6466,7 @@ function __c13(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
+          expiresAt: S.optional(S.NullOr(S.String).pipe(T.Body("expires_at"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           name: S.optional(S.NullOr(S.String)),
           notes: S.optional(S.NullOr(S.String)),
@@ -6832,6 +6864,7 @@ function __c33(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           policyId: S.String.pipe(T.Label("policy_id")),
           enabled: S.optional(S.Boolean),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           name: S.optional(S.String),
           notes: S.optional(S.String),
           pattern: S.optional(S.String),
@@ -6908,7 +6941,7 @@ function __c34(j: number): any {
           ),
           to: S.optional(S.NullOr(__S(1328, __c83, 0))),
           toName: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("to_name"))),
-          validation: S.optional(S.NullOr(__S(562, __c35, 2))),
+          validation: S.optional(S.NullOr(S.Unknown)),
           xOriginatingIp: S.optional(S.NullOr(S.String).pipe(T.Body("x_originating_ip"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetInvestigateResponse" });
@@ -6932,15 +6965,6 @@ function __c35(j: number): any {
       ).annotate({ identifier: "InvestigateGetResponseFindingsItem" });
     case 1:
       return S.Array(__S(560, __c35, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          comment: S.optional(S.NullOr(S.String)),
-          dkim: S.optional(S.NullOr(S.String)),
-          dmarc: S.optional(S.NullOr(S.String)),
-          spf: S.optional(S.NullOr(S.String)),
-        }),
-      ).annotate({ identifier: "InvestigateGetResponseValidation" });
   }
 }
 function __c36(j: number): any {
@@ -7101,6 +7125,15 @@ function __c38(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({
+          comment: S.optional(S.NullOr(S.String)),
+          dkim: S.optional(S.NullOr(S.String)),
+          dmarc: S.optional(S.NullOr(S.String)),
+          spf: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "InvestigateDetectionsGetResponseValidation" });
+    case 11:
+      return S.suspend(() =>
+        S.Struct({
           action: S.String,
           attachments: __S(610, __c38, 2),
           findings: __S(561, __c35, 1),
@@ -7108,7 +7141,7 @@ function __c38(j: number): any {
           links: __S(614, __c38, 6),
           senderInfo: __S(615, __c38, 7).pipe(T.Body("sender_info")),
           threatCategories: __S(617, __c38, 9).pipe(T.Body("threat_categories")),
-          validation: __S(562, __c35, 2),
+          validation: __S(618, __c38, 10),
           finalDisposition: S.optional(S.NullOr(S.String).pipe(T.Body("final_disposition"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetInvestigateDetectionResponse" });
@@ -7457,7 +7490,7 @@ function __c51(j: number): any {
           ),
           to: S.optional(S.NullOr(__S(1328, __c83, 0))),
           toName: S.optional(S.NullOr(__S(1328, __c83, 0)).pipe(T.Body("to_name"))),
-          validation: S.optional(S.NullOr(__S(562, __c35, 2))),
+          validation: S.optional(S.NullOr(S.Unknown)),
           xOriginatingIp: S.optional(S.NullOr(S.String).pipe(T.Body("x_originating_ip"))),
         }),
       ).annotate({ identifier: "InvestigateBulkMessagesListResultItemMessage" });
@@ -7641,6 +7674,7 @@ function __c55(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           direction: S.optional(S.String.pipe(T.Query())),
+          expired: S.optional(S.Boolean.pipe(T.Query())),
           isAcceptableSender: S.optional(S.Boolean.pipe(T.Query("is_acceptable_sender"))),
           isExemptRecipient: S.optional(S.Boolean.pipe(T.Query("is_exempt_recipient"))),
           isTrustedSender: S.optional(S.Boolean.pipe(T.Query("is_trusted_sender"))),
@@ -7679,6 +7713,7 @@ function __c56(j: number): any {
           createdAt: S.String.pipe(T.Body("created_at")),
           lastModified: S.String.pipe(T.Body("last_modified")),
           comments: S.optional(S.NullOr(S.String)),
+          expiresAt: S.optional(S.NullOr(S.String).pipe(T.Body("expires_at"))),
           isAcceptableSender: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_acceptable_sender"))),
           isExemptRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_exempt_recipient"))),
           isRecipient: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_recipient"))),
@@ -7703,6 +7738,7 @@ function __c57(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           direction: S.optional(S.String.pipe(T.Query())),
+          expired: S.optional(S.Boolean.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           pattern: S.optional(S.String.pipe(T.Query())),
@@ -7736,6 +7772,7 @@ function __c58(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           comments: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
+          expiresAt: S.optional(S.NullOr(S.String).pipe(T.Body("expires_at"))),
           isRegex: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_regex"))),
           lastModified: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
@@ -7881,6 +7918,7 @@ function __c62(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           direction: S.optional(S.String.pipe(T.Query())),
           enabled: S.optional(S.Boolean.pipe(T.Query())),
+          expired: S.optional(S.Boolean.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -7910,6 +7948,7 @@ function __c63(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
           enabled: S.optional(S.NullOr(S.Boolean)),
+          expiresAt: S.optional(S.NullOr(S.String).pipe(T.Body("expires_at"))),
           modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
           name: S.optional(S.NullOr(S.String)),
           notes: S.optional(S.NullOr(S.String)),
@@ -8134,6 +8173,7 @@ function __c69(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           policyId: S.String.pipe(T.Label("policy_id")),
           comments: S.optional(S.String),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           isAcceptableSender: S.optional(S.Boolean.pipe(T.Body("is_acceptable_sender"))),
           isExemptRecipient: S.optional(S.Boolean.pipe(T.Body("is_exempt_recipient"))),
           isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
@@ -8164,6 +8204,7 @@ function __c70(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           patternId: S.String.pipe(T.Label("pattern_id")),
           comments: S.optional(S.String),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
           pattern: S.optional(S.String),
           patternType: S.optional(S.String.pipe(T.Body("pattern_type"))),
@@ -8313,6 +8354,7 @@ function __c76(j: number): any {
           createdAt: S.String.pipe(T.Body("created_at")),
           lastModified: S.String.pipe(T.Body("last_modified")),
           comments: S.optional(S.String),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           isAcceptableSender: S.optional(S.Boolean.pipe(T.Body("is_acceptable_sender"))),
           isExemptRecipient: S.optional(S.Boolean.pipe(T.Body("is_exempt_recipient"))),
           isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
@@ -8341,6 +8383,7 @@ function __c76(j: number): any {
           id: S.optional(S.String),
           comments: S.optional(S.String),
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
           isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
           isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
@@ -8399,6 +8442,7 @@ function __c78(j: number): any {
           id: S.String,
           comments: S.optional(S.String),
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
           lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
           modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
@@ -8417,6 +8461,7 @@ function __c78(j: number): any {
           id: S.optional(S.String),
           comments: S.optional(S.String),
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
           modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
         }),
@@ -8432,6 +8477,7 @@ function __c78(j: number): any {
           patternType: S.String.pipe(T.Body("pattern_type")),
           comments: S.optional(S.String),
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
           modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
         }),
@@ -8475,6 +8521,7 @@ function __c79(j: number): any {
           id: S.String,
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
           enabled: S.optional(S.Boolean),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
           name: S.optional(S.String),
           notes: S.optional(S.String),
@@ -8493,6 +8540,7 @@ function __c79(j: number): any {
           targets: __S(192, __c12, 0),
           id: S.optional(S.String),
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
           notes: S.optional(S.String),
         }),
@@ -8508,6 +8556,7 @@ function __c79(j: number): any {
           pattern: S.String,
           targets: __S(192, __c12, 0),
           createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+          expiresAt: S.optional(S.String.pipe(T.Body("expires_at"))),
           modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
           notes: S.optional(S.String),
         }),

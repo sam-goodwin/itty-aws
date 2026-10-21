@@ -1595,6 +1595,17 @@ export interface SettingsGetResultZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
+export type SettingsGetResultZonesWebmcpMcpURLId = "webmcp_mcp_url";
+export interface SettingsGetResultZonesWebmcpMcpURL {
+  /** ID of the zone setting. */
+  id: SettingsGetResultZonesWebmcpMcpURLId;
+  /** Current value of the zone setting. */
+  value: string;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: boolean | null;
+  /** last time this setting was modified. */
+  modifiedOn?: string | null;
+}
 export type SettingsGetResultZonesWebmcpPacksId = "webmcp_packs";
 export interface SettingsGetResultZonesWebmcpPacks {
   /** ID of the zone setting. */
@@ -1694,6 +1705,7 @@ export type SettingsGetResult =
   | SettingsGetResultZonesTrueClientIPHeader2
   | SettingsGetResultZonesWAF2
   | SettingsGetResultZonesWebmcpEnabled
+  | SettingsGetResultZonesWebmcpMcpURL
   | SettingsGetResultZonesWebmcpPacks
   | SettingsGetResultWebP
   | SettingsGetResultWebsocket;
@@ -2781,6 +2793,17 @@ export interface ListSettingsResultItemZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
+export type ListSettingsResultItemZonesWebmcpMcpURLId = "webmcp_mcp_url";
+export interface ListSettingsResultItemZonesWebmcpMcpURL {
+  /** ID of the zone setting. */
+  id: ListSettingsResultItemZonesWebmcpMcpURLId;
+  /** Current value of the zone setting. */
+  value: string;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: boolean | null;
+  /** last time this setting was modified. */
+  modifiedOn?: string | null;
+}
 export type ListSettingsResultItemZonesWebmcpPacksId = "webmcp_packs";
 export interface ListSettingsResultItemZonesWebmcpPacks {
   /** ID of the zone setting. */
@@ -2879,6 +2902,7 @@ export type ListSettingsResultItem =
   | ListSettingsResultItemZonesTrueClientIPHeader2
   | ListSettingsResultItemZonesWAF2
   | ListSettingsResultItemZonesWebmcpEnabled
+  | ListSettingsResultItemZonesWebmcpMcpURL
   | ListSettingsResultItemZonesWebmcpPacks
   | ListSettingsResultItemWebP
   | ListSettingsResultItemWebsocket;
@@ -3871,6 +3895,17 @@ export interface SettingsEditResultZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
+export type SettingsEditResultZonesWebmcpMcpURLId = "webmcp_mcp_url";
+export interface SettingsEditResultZonesWebmcpMcpURL {
+  /** ID of the zone setting. */
+  id: SettingsEditResultZonesWebmcpMcpURLId;
+  /** Current value of the zone setting. */
+  value: string;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: boolean | null;
+  /** last time this setting was modified. */
+  modifiedOn?: string | null;
+}
 export type SettingsEditResultZonesWebmcpPacksId = "webmcp_packs";
 export interface SettingsEditResultZonesWebmcpPacks {
   /** ID of the zone setting. */
@@ -3970,6 +4005,7 @@ export type SettingsEditResult =
   | SettingsEditResultZonesTrueClientIPHeader2
   | SettingsEditResultZonesWAF2
   | SettingsEditResultZonesWebmcpEnabled
+  | SettingsEditResultZonesWebmcpMcpURL
   | SettingsEditResultZonesWebmcpPacks
   | SettingsEditResultWebP
   | SettingsEditResultWebsocket;
@@ -4904,6 +4940,17 @@ export interface SettingsBulkEditRequestBodyItemZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string;
 }
+export type SettingsBulkEditRequestBodyItemZonesWebmcpMcpURLId = "webmcp_mcp_url";
+export interface SettingsBulkEditRequestBodyItemZonesWebmcpMcpURL {
+  /** ID of the zone setting. */
+  id: SettingsBulkEditRequestBodyItemZonesWebmcpMcpURLId;
+  /** Current value of the zone setting. */
+  value: string;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: boolean;
+  /** last time this setting was modified. */
+  modifiedOn?: string;
+}
 export type SettingsBulkEditRequestBodyItemZonesWebmcpPacksId = "webmcp_packs";
 export interface SettingsBulkEditRequestBodyItemZonesWebmcpPacks {
   /** ID of the zone setting. */
@@ -5000,6 +5047,7 @@ export type SettingsBulkEditRequestBodyItem =
   | SettingsBulkEditRequestBodyItemZonesTrueClientIPHeader2
   | SettingsBulkEditRequestBodyItemZonesWAF2
   | SettingsBulkEditRequestBodyItemZonesWebmcpEnabled
+  | SettingsBulkEditRequestBodyItemZonesWebmcpMcpURL
   | SettingsBulkEditRequestBodyItemZonesWebmcpPacks
   | SettingsBulkEditRequestBodyItemWebP
   | SettingsBulkEditRequestBodyItemWebsocket;
@@ -5830,6 +5878,17 @@ export interface SettingsBulkEditResultItemZonesWebmcpEnabled {
   /** last time this setting was modified. */
   modifiedOn?: string | null;
 }
+export type SettingsBulkEditResultItemZonesWebmcpMcpURLId = "webmcp_mcp_url";
+export interface SettingsBulkEditResultItemZonesWebmcpMcpURL {
+  /** ID of the zone setting. */
+  id: SettingsBulkEditResultItemZonesWebmcpMcpURLId;
+  /** Current value of the zone setting. */
+  value: string;
+  /** Whether or not this setting can be modified for this zone (based on your Cloudflare plan level). */
+  editable?: boolean | null;
+  /** last time this setting was modified. */
+  modifiedOn?: string | null;
+}
 export type SettingsBulkEditResultItemZonesWebmcpPacksId = "webmcp_packs";
 export interface SettingsBulkEditResultItemZonesWebmcpPacks {
   /** ID of the zone setting. */
@@ -5928,6 +5987,7 @@ export type SettingsBulkEditResultItem =
   | SettingsBulkEditResultItemZonesTrueClientIPHeader2
   | SettingsBulkEditResultItemZonesWAF2
   | SettingsBulkEditResultItemZonesWebmcpEnabled
+  | SettingsBulkEditResultItemZonesWebmcpMcpURL
   | SettingsBulkEditResultItemZonesWebmcpPacks
   | SettingsBulkEditResultItemWebP
   | SettingsBulkEditResultItemWebsocket;
@@ -7591,6 +7651,7 @@ function __c33(j: number): any {
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
+            ["id", "value", "editable", "modifiedOn"],
           ],
           {
             key: "id",
@@ -7658,6 +7719,7 @@ function __c33(j: number): any {
               "true_client_ip_header",
               "waf",
               "webmcp_enabled",
+              "webmcp_mcp_url",
               "webmcp_packs",
               "webp",
               "websockets",
@@ -7904,6 +7966,7 @@ function __c41(j: number): any {
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
+            ["id", "value", "editable", "modifiedOn"],
           ],
           {
             key: "id",
@@ -7970,6 +8033,7 @@ function __c41(j: number): any {
               "true_client_ip_header",
               "waf",
               "webmcp_enabled",
+              "webmcp_mcp_url",
               "webmcp_packs",
               "webp",
               "websockets",
@@ -8179,6 +8243,7 @@ function __c46(j: number): any {
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
+            ["id", "value", "editable", "modifiedOn"],
           ],
           {
             key: "id",
@@ -8246,6 +8311,7 @@ function __c46(j: number): any {
               "true_client_ip_header",
               "waf",
               "webmcp_enabled",
+              "webmcp_mcp_url",
               "webmcp_packs",
               "webp",
               "websockets",
@@ -8383,6 +8449,7 @@ function __c50(j: number): any {
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
+            ["id", "value", "editable", "modifiedOn"],
           ],
           {
             key: "id",
@@ -8447,6 +8514,7 @@ function __c50(j: number): any {
               "true_client_ip_header",
               "waf",
               "webmcp_enabled",
+              "webmcp_mcp_url",
               "webmcp_packs",
               "webp",
               "websockets",
@@ -8534,6 +8602,7 @@ function __c50(j: number): any {
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
             ["id", "value", "editable", "modifiedOn"],
+            ["id", "value", "editable", "modifiedOn"],
           ],
           {
             key: "id",
@@ -8600,6 +8669,7 @@ function __c50(j: number): any {
               "true_client_ip_header",
               "waf",
               "webmcp_enabled",
+              "webmcp_mcp_url",
               "webmcp_packs",
               "webp",
               "websockets",

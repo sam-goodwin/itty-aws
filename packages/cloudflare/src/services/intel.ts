@@ -854,6 +854,7 @@ export type AttackSurfaceReportIssuesListResponseIssuesItemSeverity =
   | "Low"
   | "Moderate"
   | "Critical";
+export type AttackSurfaceReportIssuesListResponseIssuesItemSource = "cloudflare" | "riskrecon";
 export type AttackSurfaceReportIssuesListResponseIssuesItemStatus = "active" | "resolved";
 export type AttackSurfaceReportIssuesListResponseIssuesItemUserClassification =
   | "false_positive"
@@ -871,6 +872,8 @@ export interface AttackSurfaceReportIssuesListResponseIssuesItem {
   resolveText?: string | null;
   severity?: AttackSurfaceReportIssuesListResponseIssuesItemSeverity | null;
   since?: string | null;
+  /** Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner. */
+  source?: AttackSurfaceReportIssuesListResponseIssuesItemSource | null;
   /** The current status of the insight. */
   status?: AttackSurfaceReportIssuesListResponseIssuesItemStatus | null;
   subject?: string | null;
@@ -2376,6 +2379,7 @@ function __c20(j: number): any {
           resolveText: S.optional(S.NullOr(S.String).pipe(T.Body("resolve_text"))),
           severity: S.optional(S.NullOr(S.String)),
           since: S.optional(S.NullOr(S.String)),
+          source: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           subject: S.optional(S.NullOr(S.String)),
           timestamp: S.optional(S.NullOr(S.String)),

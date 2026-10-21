@@ -429,6 +429,7 @@ export interface CreateAiGatewayRequest {
   /** Maximum number of retry attempts for failed requests (1-5) */
   retryMaxAttempts?: number;
   spendLimits?: CreateRequestSpendLimits;
+  /** Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it. */
   storeId?: string;
   stripe?: CreateRequestStripe;
   /** Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway. */
@@ -607,6 +608,7 @@ export interface CreateAiGatewayResponse {
   /** Maximum number of retry attempts for failed requests (1-5) */
   retryMaxAttempts?: number | null;
   spendLimits?: CreateResponseSpendLimits | null;
+  /** Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it. */
   storeId?: string | null;
   stripe?: CreateResponseStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway. */
@@ -629,16 +631,16 @@ export interface CreateBillingTopupRequest {
   accountId: string;
   /** Top-up amount in cents (min 1000). */
   amount: number;
-  /** Stripe PaymentMethod to charge instead of the customer's default payment method. */
+  /** Payment method to charge instead of the customer's default payment method. */
   paymentMethodId?: string;
 }
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateBillingTopupResponse {
-  /** Stripe PaymentIntent client secret. */
+  /** Client secret used to complete payment authentication. */
   clientSecret: string;
   /** Whether the user was already onboarded. */
   onboarding: boolean;
-  /** Stripe invoice ID. */
+  /** Top-up payment identifier. */
   paymentIntentId: string;
   /** Card brand (visa, mastercard, etc.). */
   brand?: string | null;
@@ -651,12 +653,38 @@ export interface CreateBillingTopupConfigRequest {
   amount: number;
   /** Balance threshold in cents that triggers auto top-up (min 500). */
   threshold: number;
+  /** Version of the off-session auto-top-up consent accepted by the user. */
+  consentVersion?: string;
+  /** Card to authenticate for future automatic top-ups. */
+  paymentMethodId?: string;
+  /** Client-generated UUID that makes payment-method setup safe to retry. */
+  setupIdempotencyKey?: string;
+  /** Successfully confirmed payment-method setup identifier. */
+  setupIntentId?: string;
 }
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateBillingTopupConfigResponse {
+export interface BillingTopupConfigCreateResultCase0 {
   amount: number;
   threshold: number;
 }
+export type BillingTopupConfigCreateResultCase1Status = "configured";
+export interface BillingTopupConfigCreateResultCase1 {
+  amount: number;
+  status: BillingTopupConfigCreateResultCase1Status;
+  threshold: number;
+}
+export type BillingTopupConfigCreateResultCase2Status = "requires_action";
+export interface BillingTopupConfigCreateResultCase2 {
+  amount: number;
+  clientSecret: string;
+  setupIntentId: string;
+  status: BillingTopupConfigCreateResultCase2Status;
+  threshold: number;
+}
+export type BillingTopupConfigCreateResult =
+  | BillingTopupConfigCreateResultCase0
+  | BillingTopupConfigCreateResultCase1
+  | BillingTopupConfigCreateResultCase2;
+export type CreateBillingTopupConfigResponse = BillingTopupConfigCreateResult;
 export interface CreateCustomProviderRequest {
   accountId: string;
   baseUrl: string;
@@ -1575,6 +1603,7 @@ export interface DeleteAiGatewayResponse {
   /** Maximum number of retry attempts for failed requests (1-5) */
   retryMaxAttempts?: number | null;
   spendLimits?: DeleteResponseSpendLimits | null;
+  /** Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it. */
   storeId?: string | null;
   stripe?: DeleteResponseStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway. */
@@ -2024,6 +2053,7 @@ export interface GetAiGatewayResponse {
   /** Maximum number of retry attempts for failed requests (1-5) */
   retryMaxAttempts?: number | null;
   spendLimits?: GetResponseSpendLimits | null;
+  /** Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it. */
   storeId?: string | null;
   stripe?: GetResponseStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway. */
@@ -2695,6 +2725,7 @@ export interface ListResultItem {
   /** Maximum number of retry attempts for failed requests (1-5) */
   retryMaxAttempts?: number | null;
   spendLimits?: ListResultItemSpendLimits | null;
+  /** Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it. */
   storeId?: string | null;
   stripe?: ListResultItemStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway. */
@@ -3319,7 +3350,7 @@ export interface ResponseLogRequest {
 export interface ResponseLogResponse {}
 export interface StatusBillingTopupRequest {
   accountId: string;
-  /** Stripe invoice ID to check status for. */
+  /** Top-up identifier to check status for. */
   paymentIntentId: string;
 }
 export type BillingTopupStatusResponseStatus = "completed" | "pending";
@@ -3497,6 +3528,7 @@ export interface UpdateAiGatewayRequest {
   /** Maximum number of retry attempts for failed requests (1-5) */
   retryMaxAttempts?: number;
   spendLimits?: UpdateRequestSpendLimits;
+  /** Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it. */
   storeId?: string;
   stripe?: UpdateRequestStripe;
   /** Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway. */
@@ -3674,6 +3706,7 @@ export interface UpdateAiGatewayResponse {
   /** Maximum number of retry attempts for failed requests (1-5) */
   retryMaxAttempts?: number | null;
   spendLimits?: UpdateResponseSpendLimits | null;
+  /** Secrets Store used by this gateway. Omit on update to keep the current store. Cannot be cleared while stored keys or secret references depend on it. */
   storeId?: string | null;
   stripe?: UpdateResponseStripe | null;
   /** Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway. */
@@ -3760,6 +3793,7 @@ export interface UsageHistoryBillingRequest {
 }
 export interface BillingUsageHistoryResponseHistoryItem {
   id: string;
+  /** AI Gateway usage cost in the window, in US dollars. */
   aggregatedValue: number;
   endTime: number;
   startTime: number;
@@ -3803,7 +3837,7 @@ export const createBillingSpendingLimit: API.OperationMethod<
 }));
 
 export type CreateBillingTopupError = CloudflareOpError;
-/** Create a credit top-up for the given account, charged to the account's default payment method. */
+/** Create a credit top-up for the given account, charged to the account's default payment method. Requires a dashboard session; API token, OAuth, and service credentials receive 403. */
 export const createBillingTopup: API.OperationMethod<
   CreateBillingTopupRequest,
   CreateBillingTopupResponse,
@@ -3818,7 +3852,7 @@ export const createBillingTopup: API.OperationMethod<
 }));
 
 export type CreateBillingTopupConfigError = CloudflareOpError;
-/** Configure auto top-up with a balance threshold and top-up amount. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403. */
+/** Configure auto top-up with a balance threshold and top-up amount. Requests that add a payment method first return authentication details. The configuration is saved only after the authenticated setup is submitted. Dashboard sessions only: API token, OAuth, and service credentials are rejected with 403. */
 export const createBillingTopupConfig: API.OperationMethod<
   CreateBillingTopupConfigRequest,
   CreateBillingTopupConfigResponse,
@@ -3826,7 +3860,7 @@ export const createBillingTopupConfig: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<CreateBillingTopupConfigRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<CreateBillingTopupConfigResponse>,
+  output: __S(114, __c7, 2) as any as S.Schema<CreateBillingTopupConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -4567,7 +4601,7 @@ export const responseLog: API.OperationMethod<
 }));
 
 export type StatusBillingTopupError = CloudflareOpError;
-/** Get the payment processing status of a top-up by its invoice ID. */
+/** Get the payment processing status of a top-up by its top-up identifier. */
 export const statusBillingTopup: API.OperationMethod<
   StatusBillingTopupRequest,
   StatusBillingTopupResponse,
@@ -4612,7 +4646,7 @@ export const updateDataset: API.OperationMethod<
 }));
 
 export type UsageHistoryBillingError = CloudflareOpError;
-/** Retrieve aggregated usage meter event summaries for the given time range. */
+/** Retrieve AI Gateway usage cost, in US dollars, aggregated by hour or day for the given time range. */
 export const usageHistoryBilling: API.OperationMethod<
   UsageHistoryBillingRequest,
   UsageHistoryBillingResponse,
@@ -4959,6 +4993,10 @@ function __c7(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           amount: S.Number,
           threshold: S.Number,
+          consentVersion: S.optional(S.String.pipe(T.Body("consent_version"))),
+          paymentMethodId: S.optional(S.String.pipe(T.Body("payment_method_id"))),
+          setupIdempotencyKey: S.optional(S.String.pipe(T.Body("setup_idempotency_key"))),
+          setupIntentId: S.optional(S.String.pipe(T.Body("setup_intent_id"))),
         })
           .pipe(
             T.Http({
@@ -4970,11 +5008,16 @@ function __c7(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateBillingTopupConfigRequest" });
     case 1:
+      return S.Unknown.pipe(
+        /*@__PURE__*/ T.UnionCases([
+          ["amount", "threshold"],
+          ["amount", "status", "threshold"],
+          ["amount", "clientSecret", "setupIntentId", "status", "threshold"],
+        ]),
+      );
+    case 2:
       return S.suspend(() =>
-        S.Struct({
-          amount: S.Number,
-          threshold: S.Number,
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+        __S(113, __c7, 1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateBillingTopupConfigResponse" });
   }
 }

@@ -81,9 +81,11 @@ export interface DeleteZoneTagResponse {}
 export type AccountTagsGetRequestResourceType =
   | "access_application"
   | "access_group"
+  | "access_service_token"
   | "account"
   | "account_ruleset"
   | "ai_gateway"
+  | "ai_search_instance"
   | "alerting_policy"
   | "alerting_webhook"
   | "cloudflared_tunnel"
@@ -101,6 +103,7 @@ export type AccountTagsGetRequestResourceType =
   | "kv_namespace"
   | "load_balancer_monitor"
   | "load_balancer_pool"
+  | "namespace_worker"
   | "pages_project"
   | "queue"
   | "r2_bucket"
@@ -171,6 +174,21 @@ export interface AccountTagsGetResultAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type AccountTagsGetResultAccessServiceTokenTagsMap = { [key: string]: string | undefined };
+export type AccountTagsGetResultAccessServiceTokenType = "access_service_token";
+export interface AccountTagsGetResultAccessServiceToken {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: AccountTagsGetResultAccessServiceTokenTagsMap;
+  type: AccountTagsGetResultAccessServiceTokenType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type AccountTagsGetResultAccountTagsMap = { [key: string]: string | undefined };
 export type AccountTagsGetResultAccountType = "account";
 export interface AccountTagsGetResultAccount {
@@ -213,6 +231,21 @@ export interface AccountTagsGetResultAIGateway {
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
   tags: AccountTagsGetResultAIGatewayTagsMap;
   type: AccountTagsGetResultAIGatewayType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
+export type AccountTagsGetResultAISearchInstanceTagsMap = { [key: string]: string | undefined };
+export type AccountTagsGetResultAISearchInstanceType = "ai_search_instance";
+export interface AccountTagsGetResultAISearchInstance {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: AccountTagsGetResultAISearchInstanceTagsMap;
+  type: AccountTagsGetResultAISearchInstanceType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -312,9 +345,9 @@ export interface AccountTagsGetResultCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type AccountTagsGetResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export type AccountTagsGetResultCwsDeploymentType = "cws_deployment";
-export interface AccountTagsGetResultCwsDeployment {
+export type AccountTagsGetResultCWSDeploymentTagsMap = { [key: string]: string | undefined };
+export type AccountTagsGetResultCWSDeploymentType = "cws_deployment";
+export interface AccountTagsGetResultCWSDeployment {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -322,14 +355,14 @@ export interface AccountTagsGetResultCwsDeployment {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: AccountTagsGetResultCwsDeploymentTagsMap;
-  type: AccountTagsGetResultCwsDeploymentType;
+  tags: AccountTagsGetResultCWSDeploymentTagsMap;
+  type: AccountTagsGetResultCWSDeploymentType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type AccountTagsGetResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export type AccountTagsGetResultCwsPolicyType = "cws_policy";
-export interface AccountTagsGetResultCwsPolicy {
+export type AccountTagsGetResultCWSPolicyTagsMap = { [key: string]: string | undefined };
+export type AccountTagsGetResultCWSPolicyType = "cws_policy";
+export interface AccountTagsGetResultCWSPolicy {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -337,14 +370,14 @@ export interface AccountTagsGetResultCwsPolicy {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: AccountTagsGetResultCwsPolicyTagsMap;
-  type: AccountTagsGetResultCwsPolicyType;
+  tags: AccountTagsGetResultCWSPolicyTagsMap;
+  type: AccountTagsGetResultCWSPolicyType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type AccountTagsGetResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export type AccountTagsGetResultCwsPolicySetType = "cws_policy_set";
-export interface AccountTagsGetResultCwsPolicySet {
+export type AccountTagsGetResultCWSPolicySetTagsMap = { [key: string]: string | undefined };
+export type AccountTagsGetResultCWSPolicySetType = "cws_policy_set";
+export interface AccountTagsGetResultCWSPolicySet {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -352,14 +385,14 @@ export interface AccountTagsGetResultCwsPolicySet {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: AccountTagsGetResultCwsPolicySetTagsMap;
-  type: AccountTagsGetResultCwsPolicySetType;
+  tags: AccountTagsGetResultCWSPolicySetTagsMap;
+  type: AccountTagsGetResultCWSPolicySetType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type AccountTagsGetResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export type AccountTagsGetResultCwsWorkloadType = "cws_workload";
-export interface AccountTagsGetResultCwsWorkload {
+export type AccountTagsGetResultCWSWorkloadTagsMap = { [key: string]: string | undefined };
+export type AccountTagsGetResultCWSWorkloadType = "cws_workload";
+export interface AccountTagsGetResultCWSWorkload {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -367,8 +400,8 @@ export interface AccountTagsGetResultCwsWorkload {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: AccountTagsGetResultCwsWorkloadTagsMap;
-  type: AccountTagsGetResultCwsWorkloadType;
+  tags: AccountTagsGetResultCWSWorkloadTagsMap;
+  type: AccountTagsGetResultCWSWorkloadType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -594,6 +627,28 @@ export interface AccountTagsGetResultManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type AccountTagsGetResultNamespaceWorkerTagsMap = { [key: string]: string | undefined };
+export type AccountTagsGetResultNamespaceWorkerType = "namespace_worker";
+export interface AccountTagsGetResultNamespaceWorkerNavigation {
+  namespaceId: string;
+  namespaceName: string;
+  scriptName: string;
+}
+export interface AccountTagsGetResultNamespaceWorker {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: AccountTagsGetResultNamespaceWorkerTagsMap;
+  type: AccountTagsGetResultNamespaceWorkerType;
+  /** Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data. */
+  navigation?: AccountTagsGetResultNamespaceWorkerNavigation | null;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type AccountTagsGetResultPagesProjectTagsMap = { [key: string]: string | undefined };
 export type AccountTagsGetResultPagesProjectType = "pages_project";
 export interface AccountTagsGetResultPagesProject {
@@ -786,19 +841,21 @@ export type AccountTagsGetResult =
   | AccountTagsGetResultAccessApplication
   | AccountTagsGetResultAccessApplicationPolicy
   | AccountTagsGetResultAccessGroup
+  | AccountTagsGetResultAccessServiceToken
   | AccountTagsGetResultAccount
   | AccountTagsGetResultAccountRuleset
   | AccountTagsGetResultAIGateway
+  | AccountTagsGetResultAISearchInstance
   | AccountTagsGetResultAlertingPolicy
   | AccountTagsGetResultAlertingWebhook
   | AccountTagsGetResultAPIGatewayOperation
   | AccountTagsGetResultCloudflaredTunnel
   | AccountTagsGetResultCustomCertificate
   | AccountTagsGetResultCustomHostname
-  | AccountTagsGetResultCwsDeployment
-  | AccountTagsGetResultCwsPolicy
-  | AccountTagsGetResultCwsPolicySet
-  | AccountTagsGetResultCwsWorkload
+  | AccountTagsGetResultCWSDeployment
+  | AccountTagsGetResultCWSPolicy
+  | AccountTagsGetResultCWSPolicySet
+  | AccountTagsGetResultCWSWorkload
   | AccountTagsGetResultD1Database
   | AccountTagsGetResultDevice
   | AccountTagsGetResultDNSRecord
@@ -813,6 +870,7 @@ export type AccountTagsGetResult =
   | AccountTagsGetResultLoadBalancerMonitor
   | AccountTagsGetResultLoadBalancerPool
   | AccountTagsGetResultManagedClientCertificate
+  | AccountTagsGetResultNamespaceWorker
   | AccountTagsGetResultPagesProject
   | AccountTagsGetResultQueue
   | AccountTagsGetResultR2Bucket
@@ -912,6 +970,21 @@ export interface ZoneTagsGetResultAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type ZoneTagsGetResultAccessServiceTokenTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsGetResultAccessServiceTokenType = "access_service_token";
+export interface ZoneTagsGetResultAccessServiceToken {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: ZoneTagsGetResultAccessServiceTokenTagsMap;
+  type: ZoneTagsGetResultAccessServiceTokenType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type ZoneTagsGetResultAccountTagsMap = { [key: string]: string | undefined };
 export type ZoneTagsGetResultAccountType = "account";
 export interface ZoneTagsGetResultAccount {
@@ -954,6 +1027,21 @@ export interface ZoneTagsGetResultAIGateway {
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
   tags: ZoneTagsGetResultAIGatewayTagsMap;
   type: ZoneTagsGetResultAIGatewayType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
+export type ZoneTagsGetResultAISearchInstanceTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsGetResultAISearchInstanceType = "ai_search_instance";
+export interface ZoneTagsGetResultAISearchInstance {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: ZoneTagsGetResultAISearchInstanceTagsMap;
+  type: ZoneTagsGetResultAISearchInstanceType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -1053,9 +1141,9 @@ export interface ZoneTagsGetResultCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ZoneTagsGetResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export type ZoneTagsGetResultCwsDeploymentType = "cws_deployment";
-export interface ZoneTagsGetResultCwsDeployment {
+export type ZoneTagsGetResultCWSDeploymentTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsGetResultCWSDeploymentType = "cws_deployment";
+export interface ZoneTagsGetResultCWSDeployment {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -1063,14 +1151,14 @@ export interface ZoneTagsGetResultCwsDeployment {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ZoneTagsGetResultCwsDeploymentTagsMap;
-  type: ZoneTagsGetResultCwsDeploymentType;
+  tags: ZoneTagsGetResultCWSDeploymentTagsMap;
+  type: ZoneTagsGetResultCWSDeploymentType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ZoneTagsGetResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export type ZoneTagsGetResultCwsPolicyType = "cws_policy";
-export interface ZoneTagsGetResultCwsPolicy {
+export type ZoneTagsGetResultCWSPolicyTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsGetResultCWSPolicyType = "cws_policy";
+export interface ZoneTagsGetResultCWSPolicy {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -1078,14 +1166,14 @@ export interface ZoneTagsGetResultCwsPolicy {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ZoneTagsGetResultCwsPolicyTagsMap;
-  type: ZoneTagsGetResultCwsPolicyType;
+  tags: ZoneTagsGetResultCWSPolicyTagsMap;
+  type: ZoneTagsGetResultCWSPolicyType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ZoneTagsGetResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export type ZoneTagsGetResultCwsPolicySetType = "cws_policy_set";
-export interface ZoneTagsGetResultCwsPolicySet {
+export type ZoneTagsGetResultCWSPolicySetTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsGetResultCWSPolicySetType = "cws_policy_set";
+export interface ZoneTagsGetResultCWSPolicySet {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -1093,14 +1181,14 @@ export interface ZoneTagsGetResultCwsPolicySet {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ZoneTagsGetResultCwsPolicySetTagsMap;
-  type: ZoneTagsGetResultCwsPolicySetType;
+  tags: ZoneTagsGetResultCWSPolicySetTagsMap;
+  type: ZoneTagsGetResultCWSPolicySetType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ZoneTagsGetResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export type ZoneTagsGetResultCwsWorkloadType = "cws_workload";
-export interface ZoneTagsGetResultCwsWorkload {
+export type ZoneTagsGetResultCWSWorkloadTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsGetResultCWSWorkloadType = "cws_workload";
+export interface ZoneTagsGetResultCWSWorkload {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -1108,8 +1196,8 @@ export interface ZoneTagsGetResultCwsWorkload {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ZoneTagsGetResultCwsWorkloadTagsMap;
-  type: ZoneTagsGetResultCwsWorkloadType;
+  tags: ZoneTagsGetResultCWSWorkloadTagsMap;
+  type: ZoneTagsGetResultCWSWorkloadType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -1333,6 +1421,25 @@ export interface ZoneTagsGetResultManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type ZoneTagsGetResultNamespaceWorkerTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsGetResultNamespaceWorkerType = "namespace_worker";
+export type ZoneTagsGetResultNamespaceWorkerNavigation =
+  AccountTagsGetResultNamespaceWorkerNavigation;
+export interface ZoneTagsGetResultNamespaceWorker {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: ZoneTagsGetResultNamespaceWorkerTagsMap;
+  type: ZoneTagsGetResultNamespaceWorkerType;
+  /** Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data. */
+  navigation?: AccountTagsGetResultNamespaceWorkerNavigation | null;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type ZoneTagsGetResultPagesProjectTagsMap = { [key: string]: string | undefined };
 export type ZoneTagsGetResultPagesProjectType = "pages_project";
 export interface ZoneTagsGetResultPagesProject {
@@ -1525,19 +1632,21 @@ export type ZoneTagsGetResult =
   | ZoneTagsGetResultAccessApplication
   | ZoneTagsGetResultAccessApplicationPolicy
   | ZoneTagsGetResultAccessGroup
+  | ZoneTagsGetResultAccessServiceToken
   | ZoneTagsGetResultAccount
   | ZoneTagsGetResultAccountRuleset
   | ZoneTagsGetResultAIGateway
+  | ZoneTagsGetResultAISearchInstance
   | ZoneTagsGetResultAlertingPolicy
   | ZoneTagsGetResultAlertingWebhook
   | ZoneTagsGetResultAPIGatewayOperation
   | ZoneTagsGetResultCloudflaredTunnel
   | ZoneTagsGetResultCustomCertificate
   | ZoneTagsGetResultCustomHostname
-  | ZoneTagsGetResultCwsDeployment
-  | ZoneTagsGetResultCwsPolicy
-  | ZoneTagsGetResultCwsPolicySet
-  | ZoneTagsGetResultCwsWorkload
+  | ZoneTagsGetResultCWSDeployment
+  | ZoneTagsGetResultCWSPolicy
+  | ZoneTagsGetResultCWSPolicySet
+  | ZoneTagsGetResultCWSWorkload
   | ZoneTagsGetResultD1Database
   | ZoneTagsGetResultDevice
   | ZoneTagsGetResultDNSRecord
@@ -1552,6 +1661,7 @@ export type ZoneTagsGetResult =
   | ZoneTagsGetResultLoadBalancerMonitor
   | ZoneTagsGetResultLoadBalancerPool
   | ZoneTagsGetResultManagedClientCertificate
+  | ZoneTagsGetResultNamespaceWorker
   | ZoneTagsGetResultPagesProject
   | ZoneTagsGetResultQueue
   | ZoneTagsGetResultR2Bucket
@@ -1584,9 +1694,11 @@ export type ListRequestType =
   | "access_application"
   | "access_application_policy"
   | "access_group"
+  | "access_service_token"
   | "account"
   | "account_ruleset"
   | "ai_gateway"
+  | "ai_search_instance"
   | "alerting_policy"
   | "alerting_webhook"
   | "api_gateway_operation"
@@ -1611,6 +1723,7 @@ export type ListRequestType =
   | "load_balancer_monitor"
   | "load_balancer_pool"
   | "managed_client_certificate"
+  | "namespace_worker"
   | "pages_project"
   | "queue"
   | "r2_bucket"
@@ -1633,6 +1746,8 @@ export interface ListResourceTaggingsRequest {
   caseInsensitive?: boolean;
   /** Cursor for pagination. */
   cursor?: string;
+  /** Resolve current namespace Worker navigation by immutable child tag. Optional read-only navigation is omitted for deleted or unresolved children. Lookups are limited to this page, at most five concurrently, with a shared two-second budget. Tag identity, ETag, filters and pagination are unchanged; name filtering still uses the stored resource name. Defaults to false. */
+  includeNavigation?: boolean;
   /** Filter by resource name. Performs a case-insensitive substring match. Example: ?name=my-zone */
   name?: string;
   /** Filter resources by tag criteria. This parameter can be repeated multiple times, with AND logic between parameters. */
@@ -1689,6 +1804,21 @@ export interface ListResultItemAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type ListResultItemAccessServiceTokenTagsMap = { [key: string]: string | undefined };
+export type ListResultItemAccessServiceTokenType = "access_service_token";
+export interface ListResultItemAccessServiceToken {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: ListResultItemAccessServiceTokenTagsMap;
+  type: ListResultItemAccessServiceTokenType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type ListResultItemAccountTagsMap = { [key: string]: string | undefined };
 export type ListResultItemAccountType = "account";
 export interface ListResultItemAccount {
@@ -1731,6 +1861,21 @@ export interface ListResultItemAIGateway {
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
   tags: ListResultItemAIGatewayTagsMap;
   type: ListResultItemAIGatewayType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
+export type ListResultItemAISearchInstanceTagsMap = { [key: string]: string | undefined };
+export type ListResultItemAISearchInstanceType = "ai_search_instance";
+export interface ListResultItemAISearchInstance {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: ListResultItemAISearchInstanceTagsMap;
+  type: ListResultItemAISearchInstanceType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -1830,9 +1975,9 @@ export interface ListResultItemCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ListResultItemCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export type ListResultItemCwsDeploymentType = "cws_deployment";
-export interface ListResultItemCwsDeployment {
+export type ListResultItemCWSDeploymentTagsMap = { [key: string]: string | undefined };
+export type ListResultItemCWSDeploymentType = "cws_deployment";
+export interface ListResultItemCWSDeployment {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -1840,14 +1985,14 @@ export interface ListResultItemCwsDeployment {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ListResultItemCwsDeploymentTagsMap;
-  type: ListResultItemCwsDeploymentType;
+  tags: ListResultItemCWSDeploymentTagsMap;
+  type: ListResultItemCWSDeploymentType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ListResultItemCwsPolicyTagsMap = { [key: string]: string | undefined };
-export type ListResultItemCwsPolicyType = "cws_policy";
-export interface ListResultItemCwsPolicy {
+export type ListResultItemCWSPolicyTagsMap = { [key: string]: string | undefined };
+export type ListResultItemCWSPolicyType = "cws_policy";
+export interface ListResultItemCWSPolicy {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -1855,14 +2000,14 @@ export interface ListResultItemCwsPolicy {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ListResultItemCwsPolicyTagsMap;
-  type: ListResultItemCwsPolicyType;
+  tags: ListResultItemCWSPolicyTagsMap;
+  type: ListResultItemCWSPolicyType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ListResultItemCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export type ListResultItemCwsPolicySetType = "cws_policy_set";
-export interface ListResultItemCwsPolicySet {
+export type ListResultItemCWSPolicySetTagsMap = { [key: string]: string | undefined };
+export type ListResultItemCWSPolicySetType = "cws_policy_set";
+export interface ListResultItemCWSPolicySet {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -1870,14 +2015,14 @@ export interface ListResultItemCwsPolicySet {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ListResultItemCwsPolicySetTagsMap;
-  type: ListResultItemCwsPolicySetType;
+  tags: ListResultItemCWSPolicySetTagsMap;
+  type: ListResultItemCWSPolicySetType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ListResultItemCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export type ListResultItemCwsWorkloadType = "cws_workload";
-export interface ListResultItemCwsWorkload {
+export type ListResultItemCWSWorkloadTagsMap = { [key: string]: string | undefined };
+export type ListResultItemCWSWorkloadType = "cws_workload";
+export interface ListResultItemCWSWorkload {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -1885,8 +2030,8 @@ export interface ListResultItemCwsWorkload {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ListResultItemCwsWorkloadTagsMap;
-  type: ListResultItemCwsWorkloadType;
+  tags: ListResultItemCWSWorkloadTagsMap;
+  type: ListResultItemCWSWorkloadType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -2108,6 +2253,24 @@ export interface ListResultItemManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type ListResultItemNamespaceWorkerTagsMap = { [key: string]: string | undefined };
+export type ListResultItemNamespaceWorkerType = "namespace_worker";
+export type ListResultItemNamespaceWorkerNavigation = AccountTagsGetResultNamespaceWorkerNavigation;
+export interface ListResultItemNamespaceWorker {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: ListResultItemNamespaceWorkerTagsMap;
+  type: ListResultItemNamespaceWorkerType;
+  /** Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data. */
+  navigation?: AccountTagsGetResultNamespaceWorkerNavigation | null;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type ListResultItemPagesProjectTagsMap = { [key: string]: string | undefined };
 export type ListResultItemPagesProjectType = "pages_project";
 export interface ListResultItemPagesProject {
@@ -2300,19 +2463,21 @@ export type ListResultItem =
   | ListResultItemAccessApplication
   | ListResultItemAccessApplicationPolicy
   | ListResultItemAccessGroup
+  | ListResultItemAccessServiceToken
   | ListResultItemAccount
   | ListResultItemAccountRuleset
   | ListResultItemAIGateway
+  | ListResultItemAISearchInstance
   | ListResultItemAlertingPolicy
   | ListResultItemAlertingWebhook
   | ListResultItemAPIGatewayOperation
   | ListResultItemCloudflaredTunnel
   | ListResultItemCustomCertificate
   | ListResultItemCustomHostname
-  | ListResultItemCwsDeployment
-  | ListResultItemCwsPolicy
-  | ListResultItemCwsPolicySet
-  | ListResultItemCwsWorkload
+  | ListResultItemCWSDeployment
+  | ListResultItemCWSPolicy
+  | ListResultItemCWSPolicySet
+  | ListResultItemCWSWorkload
   | ListResultItemD1Database
   | ListResultItemDevice
   | ListResultItemDNSRecord
@@ -2327,6 +2492,7 @@ export type ListResultItem =
   | ListResultItemLoadBalancerMonitor
   | ListResultItemLoadBalancerPool
   | ListResultItemManagedClientCertificate
+  | ListResultItemNamespaceWorker
   | ListResultItemPagesProject
   | ListResultItemQueue
   | ListResultItemR2Bucket
@@ -2350,9 +2516,11 @@ export type ValuesListRequestType =
   | "access_application"
   | "access_application_policy"
   | "access_group"
+  | "access_service_token"
   | "account"
   | "account_ruleset"
   | "ai_gateway"
+  | "ai_search_instance"
   | "alerting_policy"
   | "alerting_webhook"
   | "api_gateway_operation"
@@ -2377,6 +2545,7 @@ export type ValuesListRequestType =
   | "load_balancer_monitor"
   | "load_balancer_pool"
   | "managed_client_certificate"
+  | "namespace_worker"
   | "pages_project"
   | "queue"
   | "r2_bucket"
@@ -2409,9 +2578,11 @@ export type AccountTagsUpdateRequestResourceType =
   | "worker_version"
   | "access_application"
   | "access_group"
+  | "access_service_token"
   | "account"
   | "account_ruleset"
   | "ai_gateway"
+  | "ai_search_instance"
   | "alerting_policy"
   | "alerting_webhook"
   | "cloudflared_tunnel"
@@ -2429,6 +2600,7 @@ export type AccountTagsUpdateRequestResourceType =
   | "kv_namespace"
   | "load_balancer_monitor"
   | "load_balancer_pool"
+  | "namespace_worker"
   | "pages_project"
   | "queue"
   | "r2_bucket"
@@ -2502,6 +2674,23 @@ export interface AccountTagsUpdateResultAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type AccountTagsUpdateResultAccessServiceTokenTagsMap = {
+  [key: string]: string | undefined;
+};
+export type AccountTagsUpdateResultAccessServiceTokenType = "access_service_token";
+export interface AccountTagsUpdateResultAccessServiceToken {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: AccountTagsUpdateResultAccessServiceTokenTagsMap;
+  type: AccountTagsUpdateResultAccessServiceTokenType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type AccountTagsUpdateResultAccountTagsMap = { [key: string]: string | undefined };
 export type AccountTagsUpdateResultAccountType = "account";
 export interface AccountTagsUpdateResultAccount {
@@ -2544,6 +2733,21 @@ export interface AccountTagsUpdateResultAIGateway {
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
   tags: AccountTagsUpdateResultAIGatewayTagsMap;
   type: AccountTagsUpdateResultAIGatewayType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
+export type AccountTagsUpdateResultAISearchInstanceTagsMap = { [key: string]: string | undefined };
+export type AccountTagsUpdateResultAISearchInstanceType = "ai_search_instance";
+export interface AccountTagsUpdateResultAISearchInstance {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: AccountTagsUpdateResultAISearchInstanceTagsMap;
+  type: AccountTagsUpdateResultAISearchInstanceType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -2645,9 +2849,9 @@ export interface AccountTagsUpdateResultCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type AccountTagsUpdateResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export type AccountTagsUpdateResultCwsDeploymentType = "cws_deployment";
-export interface AccountTagsUpdateResultCwsDeployment {
+export type AccountTagsUpdateResultCWSDeploymentTagsMap = { [key: string]: string | undefined };
+export type AccountTagsUpdateResultCWSDeploymentType = "cws_deployment";
+export interface AccountTagsUpdateResultCWSDeployment {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -2655,14 +2859,14 @@ export interface AccountTagsUpdateResultCwsDeployment {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: AccountTagsUpdateResultCwsDeploymentTagsMap;
-  type: AccountTagsUpdateResultCwsDeploymentType;
+  tags: AccountTagsUpdateResultCWSDeploymentTagsMap;
+  type: AccountTagsUpdateResultCWSDeploymentType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type AccountTagsUpdateResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export type AccountTagsUpdateResultCwsPolicyType = "cws_policy";
-export interface AccountTagsUpdateResultCwsPolicy {
+export type AccountTagsUpdateResultCWSPolicyTagsMap = { [key: string]: string | undefined };
+export type AccountTagsUpdateResultCWSPolicyType = "cws_policy";
+export interface AccountTagsUpdateResultCWSPolicy {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -2670,14 +2874,14 @@ export interface AccountTagsUpdateResultCwsPolicy {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: AccountTagsUpdateResultCwsPolicyTagsMap;
-  type: AccountTagsUpdateResultCwsPolicyType;
+  tags: AccountTagsUpdateResultCWSPolicyTagsMap;
+  type: AccountTagsUpdateResultCWSPolicyType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type AccountTagsUpdateResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export type AccountTagsUpdateResultCwsPolicySetType = "cws_policy_set";
-export interface AccountTagsUpdateResultCwsPolicySet {
+export type AccountTagsUpdateResultCWSPolicySetTagsMap = { [key: string]: string | undefined };
+export type AccountTagsUpdateResultCWSPolicySetType = "cws_policy_set";
+export interface AccountTagsUpdateResultCWSPolicySet {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -2685,14 +2889,14 @@ export interface AccountTagsUpdateResultCwsPolicySet {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: AccountTagsUpdateResultCwsPolicySetTagsMap;
-  type: AccountTagsUpdateResultCwsPolicySetType;
+  tags: AccountTagsUpdateResultCWSPolicySetTagsMap;
+  type: AccountTagsUpdateResultCWSPolicySetType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type AccountTagsUpdateResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export type AccountTagsUpdateResultCwsWorkloadType = "cws_workload";
-export interface AccountTagsUpdateResultCwsWorkload {
+export type AccountTagsUpdateResultCWSWorkloadTagsMap = { [key: string]: string | undefined };
+export type AccountTagsUpdateResultCWSWorkloadType = "cws_workload";
+export interface AccountTagsUpdateResultCWSWorkload {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -2700,8 +2904,8 @@ export interface AccountTagsUpdateResultCwsWorkload {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: AccountTagsUpdateResultCwsWorkloadTagsMap;
-  type: AccountTagsUpdateResultCwsWorkloadType;
+  tags: AccountTagsUpdateResultCWSWorkloadTagsMap;
+  type: AccountTagsUpdateResultCWSWorkloadType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -2931,6 +3135,25 @@ export interface AccountTagsUpdateResultManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type AccountTagsUpdateResultNamespaceWorkerTagsMap = { [key: string]: string | undefined };
+export type AccountTagsUpdateResultNamespaceWorkerType = "namespace_worker";
+export type AccountTagsUpdateResultNamespaceWorkerNavigation =
+  AccountTagsGetResultNamespaceWorkerNavigation;
+export interface AccountTagsUpdateResultNamespaceWorker {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: AccountTagsUpdateResultNamespaceWorkerTagsMap;
+  type: AccountTagsUpdateResultNamespaceWorkerType;
+  /** Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data. */
+  navigation?: AccountTagsGetResultNamespaceWorkerNavigation | null;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type AccountTagsUpdateResultPagesProjectTagsMap = { [key: string]: string | undefined };
 export type AccountTagsUpdateResultPagesProjectType = "pages_project";
 export interface AccountTagsUpdateResultPagesProject {
@@ -3123,19 +3346,21 @@ export type AccountTagsUpdateResult =
   | AccountTagsUpdateResultAccessApplication
   | AccountTagsUpdateResultAccessApplicationPolicy
   | AccountTagsUpdateResultAccessGroup
+  | AccountTagsUpdateResultAccessServiceToken
   | AccountTagsUpdateResultAccount
   | AccountTagsUpdateResultAccountRuleset
   | AccountTagsUpdateResultAIGateway
+  | AccountTagsUpdateResultAISearchInstance
   | AccountTagsUpdateResultAlertingPolicy
   | AccountTagsUpdateResultAlertingWebhook
   | AccountTagsUpdateResultAPIGatewayOperation
   | AccountTagsUpdateResultCloudflaredTunnel
   | AccountTagsUpdateResultCustomCertificate
   | AccountTagsUpdateResultCustomHostname
-  | AccountTagsUpdateResultCwsDeployment
-  | AccountTagsUpdateResultCwsPolicy
-  | AccountTagsUpdateResultCwsPolicySet
-  | AccountTagsUpdateResultCwsWorkload
+  | AccountTagsUpdateResultCWSDeployment
+  | AccountTagsUpdateResultCWSPolicy
+  | AccountTagsUpdateResultCWSPolicySet
+  | AccountTagsUpdateResultCWSWorkload
   | AccountTagsUpdateResultD1Database
   | AccountTagsUpdateResultDevice
   | AccountTagsUpdateResultDNSRecord
@@ -3150,6 +3375,7 @@ export type AccountTagsUpdateResult =
   | AccountTagsUpdateResultLoadBalancerMonitor
   | AccountTagsUpdateResultLoadBalancerPool
   | AccountTagsUpdateResultManagedClientCertificate
+  | AccountTagsUpdateResultNamespaceWorker
   | AccountTagsUpdateResultPagesProject
   | AccountTagsUpdateResultQueue
   | AccountTagsUpdateResultR2Bucket
@@ -3240,6 +3466,21 @@ export interface ZoneTagsUpdateResultAccessGroup {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type ZoneTagsUpdateResultAccessServiceTokenTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsUpdateResultAccessServiceTokenType = "access_service_token";
+export interface ZoneTagsUpdateResultAccessServiceToken {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: ZoneTagsUpdateResultAccessServiceTokenTagsMap;
+  type: ZoneTagsUpdateResultAccessServiceTokenType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type ZoneTagsUpdateResultAccountTagsMap = { [key: string]: string | undefined };
 export type ZoneTagsUpdateResultAccountType = "account";
 export interface ZoneTagsUpdateResultAccount {
@@ -3282,6 +3523,21 @@ export interface ZoneTagsUpdateResultAIGateway {
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
   tags: ZoneTagsUpdateResultAIGatewayTagsMap;
   type: ZoneTagsUpdateResultAIGatewayType;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
+export type ZoneTagsUpdateResultAISearchInstanceTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsUpdateResultAISearchInstanceType = "ai_search_instance";
+export interface ZoneTagsUpdateResultAISearchInstance {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: ZoneTagsUpdateResultAISearchInstanceTagsMap;
+  type: ZoneTagsUpdateResultAISearchInstanceType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -3381,9 +3637,9 @@ export interface ZoneTagsUpdateResultCustomHostname {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ZoneTagsUpdateResultCwsDeploymentTagsMap = { [key: string]: string | undefined };
-export type ZoneTagsUpdateResultCwsDeploymentType = "cws_deployment";
-export interface ZoneTagsUpdateResultCwsDeployment {
+export type ZoneTagsUpdateResultCWSDeploymentTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsUpdateResultCWSDeploymentType = "cws_deployment";
+export interface ZoneTagsUpdateResultCWSDeployment {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -3391,14 +3647,14 @@ export interface ZoneTagsUpdateResultCwsDeployment {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ZoneTagsUpdateResultCwsDeploymentTagsMap;
-  type: ZoneTagsUpdateResultCwsDeploymentType;
+  tags: ZoneTagsUpdateResultCWSDeploymentTagsMap;
+  type: ZoneTagsUpdateResultCWSDeploymentType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ZoneTagsUpdateResultCwsPolicyTagsMap = { [key: string]: string | undefined };
-export type ZoneTagsUpdateResultCwsPolicyType = "cws_policy";
-export interface ZoneTagsUpdateResultCwsPolicy {
+export type ZoneTagsUpdateResultCWSPolicyTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsUpdateResultCWSPolicyType = "cws_policy";
+export interface ZoneTagsUpdateResultCWSPolicy {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -3406,14 +3662,14 @@ export interface ZoneTagsUpdateResultCwsPolicy {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ZoneTagsUpdateResultCwsPolicyTagsMap;
-  type: ZoneTagsUpdateResultCwsPolicyType;
+  tags: ZoneTagsUpdateResultCWSPolicyTagsMap;
+  type: ZoneTagsUpdateResultCWSPolicyType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ZoneTagsUpdateResultCwsPolicySetTagsMap = { [key: string]: string | undefined };
-export type ZoneTagsUpdateResultCwsPolicySetType = "cws_policy_set";
-export interface ZoneTagsUpdateResultCwsPolicySet {
+export type ZoneTagsUpdateResultCWSPolicySetTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsUpdateResultCWSPolicySetType = "cws_policy_set";
+export interface ZoneTagsUpdateResultCWSPolicySet {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -3421,14 +3677,14 @@ export interface ZoneTagsUpdateResultCwsPolicySet {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ZoneTagsUpdateResultCwsPolicySetTagsMap;
-  type: ZoneTagsUpdateResultCwsPolicySetType;
+  tags: ZoneTagsUpdateResultCWSPolicySetTagsMap;
+  type: ZoneTagsUpdateResultCWSPolicySetType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
-export type ZoneTagsUpdateResultCwsWorkloadTagsMap = { [key: string]: string | undefined };
-export type ZoneTagsUpdateResultCwsWorkloadType = "cws_workload";
-export interface ZoneTagsUpdateResultCwsWorkload {
+export type ZoneTagsUpdateResultCWSWorkloadTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsUpdateResultCWSWorkloadType = "cws_workload";
+export interface ZoneTagsUpdateResultCWSWorkload {
   /** Identifies the unique resource. */
   id: string;
   /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
@@ -3436,8 +3692,8 @@ export interface ZoneTagsUpdateResultCwsWorkload {
   /** Human-readable name of the resource. */
   name: string;
   /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
-  tags: ZoneTagsUpdateResultCwsWorkloadTagsMap;
-  type: ZoneTagsUpdateResultCwsWorkloadType;
+  tags: ZoneTagsUpdateResultCWSWorkloadTagsMap;
+  type: ZoneTagsUpdateResultCWSWorkloadType;
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
@@ -3663,6 +3919,25 @@ export interface ZoneTagsUpdateResultManagedClientCertificate {
   /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
   tagsUpdatedAt?: string | null;
 }
+export type ZoneTagsUpdateResultNamespaceWorkerTagsMap = { [key: string]: string | undefined };
+export type ZoneTagsUpdateResultNamespaceWorkerType = "namespace_worker";
+export type ZoneTagsUpdateResultNamespaceWorkerNavigation =
+  AccountTagsGetResultNamespaceWorkerNavigation;
+export interface ZoneTagsUpdateResultNamespaceWorker {
+  /** Identifies the unique resource. */
+  id: string;
+  /** ETag identifier for optimistic concurrency control. Formatted as "v1:" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations. */
+  etag: string;
+  /** Human-readable name of the resource. */
+  name: string;
+  /** Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags. */
+  tags: ZoneTagsUpdateResultNamespaceWorkerTagsMap;
+  type: ZoneTagsUpdateResultNamespaceWorkerType;
+  /** Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data. */
+  navigation?: AccountTagsGetResultNamespaceWorkerNavigation | null;
+  /** Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version. */
+  tagsUpdatedAt?: string | null;
+}
 export type ZoneTagsUpdateResultPagesProjectTagsMap = { [key: string]: string | undefined };
 export type ZoneTagsUpdateResultPagesProjectType = "pages_project";
 export interface ZoneTagsUpdateResultPagesProject {
@@ -3855,19 +4130,21 @@ export type ZoneTagsUpdateResult =
   | ZoneTagsUpdateResultAccessApplication
   | ZoneTagsUpdateResultAccessApplicationPolicy
   | ZoneTagsUpdateResultAccessGroup
+  | ZoneTagsUpdateResultAccessServiceToken
   | ZoneTagsUpdateResultAccount
   | ZoneTagsUpdateResultAccountRuleset
   | ZoneTagsUpdateResultAIGateway
+  | ZoneTagsUpdateResultAISearchInstance
   | ZoneTagsUpdateResultAlertingPolicy
   | ZoneTagsUpdateResultAlertingWebhook
   | ZoneTagsUpdateResultAPIGatewayOperation
   | ZoneTagsUpdateResultCloudflaredTunnel
   | ZoneTagsUpdateResultCustomCertificate
   | ZoneTagsUpdateResultCustomHostname
-  | ZoneTagsUpdateResultCwsDeployment
-  | ZoneTagsUpdateResultCwsPolicy
-  | ZoneTagsUpdateResultCwsPolicySet
-  | ZoneTagsUpdateResultCwsWorkload
+  | ZoneTagsUpdateResultCWSDeployment
+  | ZoneTagsUpdateResultCWSPolicy
+  | ZoneTagsUpdateResultCWSPolicySet
+  | ZoneTagsUpdateResultCWSWorkload
   | ZoneTagsUpdateResultD1Database
   | ZoneTagsUpdateResultDevice
   | ZoneTagsUpdateResultDNSRecord
@@ -3882,6 +4159,7 @@ export type ZoneTagsUpdateResult =
   | ZoneTagsUpdateResultLoadBalancerMonitor
   | ZoneTagsUpdateResultLoadBalancerPool
   | ZoneTagsUpdateResultManagedClientCertificate
+  | ZoneTagsUpdateResultNamespaceWorker
   | ZoneTagsUpdateResultPagesProject
   | ZoneTagsUpdateResultQueue
   | ZoneTagsUpdateResultR2Bucket
@@ -4143,28 +4421,31 @@ function __c1(j: number): any {
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "navigation", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -4184,9 +4465,11 @@ function __c1(j: number): any {
               "access_application",
               "access_application_policy",
               "access_group",
+              "access_service_token",
               "account",
               "account_ruleset",
               "ai_gateway",
+              "ai_search_instance",
               "alerting_policy",
               "alerting_webhook",
               "api_gateway_operation",
@@ -4211,6 +4494,7 @@ function __c1(j: number): any {
               "load_balancer_monitor",
               "load_balancer_pool",
               "managed_client_certificate",
+              "namespace_worker",
               "pages_project",
               "queue",
               "r2_bucket",
@@ -4275,28 +4559,31 @@ function __c3(j: number): any {
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "navigation", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -4316,9 +4603,11 @@ function __c3(j: number): any {
               "access_application",
               "access_application_policy",
               "access_group",
+              "access_service_token",
               "account",
               "account_ruleset",
               "ai_gateway",
+              "ai_search_instance",
               "alerting_policy",
               "alerting_webhook",
               "api_gateway_operation",
@@ -4343,6 +4632,7 @@ function __c3(j: number): any {
               "load_balancer_monitor",
               "load_balancer_pool",
               "managed_client_certificate",
+              "namespace_worker",
               "pages_project",
               "queue",
               "r2_bucket",
@@ -4439,28 +4729,31 @@ function __c7(j: number): any {
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "navigation", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -4480,9 +4773,11 @@ function __c7(j: number): any {
               "access_application",
               "access_application_policy",
               "access_group",
+              "access_service_token",
               "account",
               "account_ruleset",
               "ai_gateway",
+              "ai_search_instance",
               "alerting_policy",
               "alerting_webhook",
               "api_gateway_operation",
@@ -4507,6 +4802,7 @@ function __c7(j: number): any {
               "load_balancer_monitor",
               "load_balancer_pool",
               "managed_client_certificate",
+              "namespace_worker",
               "pages_project",
               "queue",
               "r2_bucket",
@@ -4595,28 +4891,31 @@ function __c10(j: number): any {
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "navigation", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -4636,9 +4935,11 @@ function __c10(j: number): any {
               "access_application",
               "access_application_policy",
               "access_group",
+              "access_service_token",
               "account",
               "account_ruleset",
               "ai_gateway",
+              "ai_search_instance",
               "alerting_policy",
               "alerting_webhook",
               "api_gateway_operation",
@@ -4663,6 +4964,7 @@ function __c10(j: number): any {
               "load_balancer_monitor",
               "load_balancer_pool",
               "managed_client_certificate",
+              "namespace_worker",
               "pages_project",
               "queue",
               "r2_bucket",
@@ -4720,6 +5022,7 @@ function __c13(j: number): any {
           id: S.optional(__S(72, __c9, 0).pipe(T.Query())),
           caseInsensitive: S.optional(S.Boolean.pipe(T.Query("case_insensitive"))),
           cursor: S.optional(S.String.pipe(T.Query())),
+          includeNavigation: S.optional(S.Boolean.pipe(T.Query("include_navigation"))),
           name: S.optional(S.String.pipe(T.Query())),
           tag: S.optional(__S(72, __c9, 0).pipe(T.Query())),
           type: S.optional(__S(104, __c13, 0).pipe(T.Query())),
@@ -4748,28 +5051,31 @@ function __c13(j: number): any {
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
-            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "zoneId", "tagsUpdatedAt"],
+            ["id", "etag", "name", "tags", "type", "navigation", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
             ["id", "etag", "name", "tags", "type", "tagsUpdatedAt"],
@@ -4789,9 +5095,11 @@ function __c13(j: number): any {
               "access_application",
               "access_application_policy",
               "access_group",
+              "access_service_token",
               "account",
               "account_ruleset",
               "ai_gateway",
+              "ai_search_instance",
               "alerting_policy",
               "alerting_webhook",
               "api_gateway_operation",
@@ -4816,6 +5124,7 @@ function __c13(j: number): any {
               "load_balancer_monitor",
               "load_balancer_pool",
               "managed_client_certificate",
+              "namespace_worker",
               "pages_project",
               "queue",
               "r2_bucket",

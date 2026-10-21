@@ -1181,6 +1181,7 @@ export type RulesCreateResultRulesetPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -3117,7 +3118,7 @@ export interface RulesCreateResultRulesetRulesItemSetConfigurationRuleActionPara
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: RulesCreateResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type RulesCreateResultRulesetRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -3191,6 +3192,7 @@ export type RulesCreateResultRulesetRulesItemSkipRuleActionParametersPhasesItem 
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -3408,6 +3410,7 @@ export type CreateRequestPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -5339,7 +5342,7 @@ export interface CreateRequestRulesItemSetConfigRuleActionParameters {
   sxg?: boolean;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: CreateRequestRulesItemSetConfigRuleActionParametersWebmcpPacksList;
 }
 export type CreateRequestRulesItemSetConfigRuleCategoriesList = Array<string>;
@@ -5409,6 +5412,7 @@ export type CreateRequestRulesItemSkipRuleActionParametersPhasesItem =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -5604,6 +5608,7 @@ export type CreateResultRulesetPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -7443,7 +7448,7 @@ export interface CreateResultRulesetRulesItemSetConfigurationRuleActionParameter
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: CreateResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type CreateResultRulesetRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -7517,6 +7522,7 @@ export type CreateResultRulesetRulesItemSkipRuleActionParametersPhasesItem =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -7747,6 +7753,7 @@ export type RulesDeleteResultRulesetPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -9595,7 +9602,7 @@ export interface RulesDeleteResultRulesetRulesItemSetConfigurationRuleActionPara
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: RulesDeleteResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type RulesDeleteResultRulesetRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -9669,6 +9676,7 @@ export type RulesDeleteResultRulesetRulesItemSkipRuleActionParametersPhasesItem 
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -9933,6 +9941,7 @@ export type PhasesGetResponsePhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -11771,7 +11780,7 @@ export interface PhasesGetResponseRulesItemSetConfigurationRuleActionParameters 
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: PhasesGetResponseRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type PhasesGetResponseRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -11845,6 +11854,7 @@ export type PhasesGetResponseRulesItemSkipRuleActionParametersPhasesItem =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -12063,6 +12073,7 @@ export type PhasesVersionsGetResponsePhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -13912,7 +13923,7 @@ export interface PhasesVersionsGetResponseRulesItemSetConfigurationRuleActionPar
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: PhasesVersionsGetResponseRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type PhasesVersionsGetResponseRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -13986,6 +13997,7 @@ export type PhasesVersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -14209,6 +14221,7 @@ export type GetResponsePhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -16039,7 +16052,7 @@ export interface GetResponseRulesItemSetConfigurationRuleActionParameters {
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: GetResponseRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type GetResponseRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -16112,6 +16125,7 @@ export type GetResponseRulesItemSkipRuleActionParametersPhasesItem =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -16330,6 +16344,7 @@ export type VersionsGetResponsePhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -18169,7 +18184,7 @@ export interface VersionsGetResponseRulesItemSetConfigurationRuleActionParameter
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: VersionsGetResponseRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type VersionsGetResponseRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -18243,6 +18258,7 @@ export type VersionsGetResponseRulesItemSkipRuleActionParametersPhasesItem =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -18461,6 +18477,7 @@ export type PhasesVersionsListResultItemPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -18524,6 +18541,7 @@ export type ListResultItemPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -18587,6 +18605,7 @@ export type VersionsListResultItemPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -19657,6 +19676,7 @@ export type RulesEditResultRulesetPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -21500,7 +21520,7 @@ export interface RulesEditResultRulesetRulesItemSetConfigurationRuleActionParame
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: RulesEditResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type RulesEditResultRulesetRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -21574,6 +21594,7 @@ export type RulesEditResultRulesetRulesItemSkipRuleActionParametersPhasesItem =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -23647,7 +23668,7 @@ export interface PhasesUpdateRequestRulesItemSetConfigRuleActionParameters {
   sxg?: boolean;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: PhasesUpdateRequestRulesItemSetConfigRuleActionParametersWebmcpPacksList;
 }
 export type PhasesUpdateRequestRulesItemSetConfigRuleCategoriesList = Array<string>;
@@ -23718,6 +23739,7 @@ export type PhasesUpdateRequestRulesItemSkipRuleActionParametersPhasesItem =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -23913,6 +23935,7 @@ export type PhasesUpdateResultRulesetPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -25762,7 +25785,7 @@ export interface PhasesUpdateResultRulesetRulesItemSetConfigurationRuleActionPar
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: PhasesUpdateResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type PhasesUpdateResultRulesetRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -25836,6 +25859,7 @@ export type PhasesUpdateResultRulesetRulesItemSkipRuleActionParametersPhasesItem
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -26059,6 +26083,7 @@ export type UpdateRequestPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -27924,7 +27949,7 @@ export interface UpdateRequestRulesItemSetConfigRuleActionParameters {
   sxg?: boolean;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: UpdateRequestRulesItemSetConfigRuleActionParametersWebmcpPacksList;
 }
 export type UpdateRequestRulesItemSetConfigRuleCategoriesList = Array<string>;
@@ -27994,6 +28019,7 @@ export type UpdateRequestRulesItemSkipRuleActionParametersPhasesItem =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -28191,6 +28217,7 @@ export type UpdateResultRulesetPhase =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"
@@ -30030,7 +30057,7 @@ export interface UpdateResultRulesetRulesItemSetConfigurationRuleActionParameter
   sxg?: boolean | null;
   /** Whether to serve the WebMCP bridge script, which exposes the page's tools to browser AI agents. */
   webmcpEnabled?: boolean | null;
-  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. Non-empty selections require the WebMCP Configuration Rules entitlement. */
+  /** Bundled WebMCP tool packs to activate for matching requests. An empty array disables all packs. Omitting this parameter leaves the pack selection unchanged. Does not enable the WebMCP bridge itself. */
   webmcpPacks?: UpdateResultRulesetRulesItemSetConfigurationRuleActionParametersWebmcpPacksList | null;
 }
 export type UpdateResultRulesetRulesItemSetConfigurationRuleCategoriesList = Array<string>;
@@ -30104,6 +30131,7 @@ export type UpdateResultRulesetRulesItemSkipRuleActionParametersPhasesItem =
   | "http_request_transform"
   | "http_response_cache_settings"
   | "http_response_compression"
+  | "http_response_firewall_custom"
   | "http_response_firewall_managed"
   | "http_response_headers_transform"
   | "magic_transit"

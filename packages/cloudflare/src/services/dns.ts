@@ -4429,7 +4429,7 @@ export interface CreateSettingsAccountNameserverSetRequest {
   nameservers: CreateSettingsAccountNameserverSetRequestNameserversList;
   /** Whether to allocate the nameservers from distinct Advanced anycast groups. */
   advanced?: boolean;
-  /** Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
+  /** Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
   ipSet?: number;
 }
 export type CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponseNameserversItemIpv4List =
@@ -4453,7 +4453,7 @@ export interface CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSe
   advanced: boolean;
   /** When the nameserver set was created. */
   createdOn: string;
-  /** Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
+  /** Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
   ipSet: number;
   nameservers: CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponseNameserversList;
 }
@@ -4494,7 +4494,7 @@ export interface CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSe
   advanced: boolean;
   /** When the nameserver set was created. */
   createdOn: string;
-  /** Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
+  /** Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
   ipSet: number;
   nameservers: CreateSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversList;
 }
@@ -5832,7 +5832,7 @@ export interface GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetSt
   advanced: boolean;
   /** When the nameserver set was created. */
   createdOn: string;
-  /** Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
+  /** Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
   ipSet: number;
   nameservers: GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetStandardResponseNameserversList;
 }
@@ -5873,7 +5873,7 @@ export interface GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAd
   advanced: boolean;
   /** When the nameserver set was created. */
   createdOn: string;
-  /** Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
+  /** Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
   ipSet: number;
   nameservers: GetSettingsAccountNameserverSetResultDNSSettingsNameserverSetAdvancedResponseNameserversList;
 }
@@ -7176,7 +7176,7 @@ export interface ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserve
   advanced: boolean;
   /** When the nameserver set was created. */
   createdOn: string;
-  /** Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
+  /** Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
   ipSet: number;
   nameservers: ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetStandardResponseNameserversList;
 }
@@ -7217,7 +7217,7 @@ export interface ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserve
   advanced: boolean;
   /** When the nameserver set was created. */
   createdOn: string;
-  /** Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
+  /** Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups. */
   ipSet: number;
   nameservers: ListSettingsAccountNameserverSetsResultItemDNSSettingsNameserverSetAdvancedResponseNameserversList;
 }

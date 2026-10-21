@@ -59,6 +59,12 @@
             "smithy.api#enumValue": "access_group"
           }
         },
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        },
         "ACCOUNT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -75,6 +81,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ai_gateway"
+          }
+        },
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
           }
         },
         "ALERTING_POLICY": {
@@ -219,6 +231,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "managed_client_certificate"
+          }
+        },
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
           }
         },
         "PAGES_PROJECT": {
@@ -510,6 +528,71 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#ListResultItemAccessServiceTokenTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#ListResultItemAccessServiceTokenType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ListResultItemAccessServiceToken": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemAccessServiceTokenTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemAccessServiceTokenType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#ListResultItemAccountTagsMap": {
       "type": "map",
       "key": {
@@ -693,6 +776,71 @@
         },
         "type": {
           "target": "com.cloudflare.resource_tagging#ListResultItemAIGatewayType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ListResultItemAISearchInstanceTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#ListResultItemAISearchInstanceType": {
+      "type": "enum",
+      "members": {
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ListResultItemAISearchInstance": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemAISearchInstanceTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemAISearchInstanceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -1116,7 +1264,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsDeploymentTagsMap": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSDeploymentTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1125,7 +1273,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsDeploymentType": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSDeploymentType": {
       "type": "enum",
       "members": {
         "CWS_DEPLOYMENT": {
@@ -1136,7 +1284,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsDeployment": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSDeployment": {
       "type": "structure",
       "members": {
         "id": {
@@ -1161,14 +1309,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsDeploymentTagsMap",
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSDeploymentTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsDeploymentType",
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSDeploymentType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -1181,7 +1329,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsPolicyTagsMap": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSPolicyTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1190,7 +1338,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsPolicyType": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSPolicyType": {
       "type": "enum",
       "members": {
         "CWS_POLICY": {
@@ -1201,7 +1349,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsPolicy": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSPolicy": {
       "type": "structure",
       "members": {
         "id": {
@@ -1226,14 +1374,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsPolicyTagsMap",
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSPolicyTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsPolicyType",
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSPolicyType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -1246,7 +1394,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsPolicySetTagsMap": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSPolicySetTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1255,7 +1403,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsPolicySetType": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSPolicySetType": {
       "type": "enum",
       "members": {
         "CWS_POLICY_SET": {
@@ -1266,7 +1414,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsPolicySet": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSPolicySet": {
       "type": "structure",
       "members": {
         "id": {
@@ -1291,14 +1439,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsPolicySetTagsMap",
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSPolicySetTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsPolicySetType",
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSPolicySetType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -1311,7 +1459,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsWorkloadTagsMap": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSWorkloadTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -1320,7 +1468,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsWorkloadType": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSWorkloadType": {
       "type": "enum",
       "members": {
         "CWS_WORKLOAD": {
@@ -1331,7 +1479,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ListResultItemCwsWorkload": {
+    "com.cloudflare.resource_tagging#ListResultItemCWSWorkload": {
       "type": "structure",
       "members": {
         "id": {
@@ -1356,14 +1504,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsWorkloadTagsMap",
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSWorkloadTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsWorkloadType",
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSWorkloadType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -2314,6 +2462,100 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#ListResultItemNamespaceWorkerTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#ListResultItemNamespaceWorkerType": {
+      "type": "enum",
+      "members": {
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ListResultItemNamespaceWorkerNavigation": {
+      "type": "structure",
+      "members": {
+        "namespace_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "namespace_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ListResultItemNamespaceWorker": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemNamespaceWorkerTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemNamespaceWorkerType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "navigation": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemNamespaceWorkerNavigation",
+          "traits": {
+            "smithy.api#documentation": "Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data."
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#ListResultItemPagesProjectTagsMap": {
       "type": "map",
       "key": {
@@ -3134,6 +3376,9 @@
         "AccessGroup": {
           "target": "com.cloudflare.resource_tagging#ListResultItemAccessGroup"
         },
+        "AccessServiceToken": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemAccessServiceToken"
+        },
         "Account": {
           "target": "com.cloudflare.resource_tagging#ListResultItemAccount"
         },
@@ -3142,6 +3387,9 @@
         },
         "AIGateway": {
           "target": "com.cloudflare.resource_tagging#ListResultItemAIGateway"
+        },
+        "AISearchInstance": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemAISearchInstance"
         },
         "AlertingPolicy": {
           "target": "com.cloudflare.resource_tagging#ListResultItemAlertingPolicy"
@@ -3161,17 +3409,17 @@
         "CustomHostname": {
           "target": "com.cloudflare.resource_tagging#ListResultItemCustomHostname"
         },
-        "CwsDeployment": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsDeployment"
+        "CWSDeployment": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSDeployment"
         },
-        "CwsPolicy": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsPolicy"
+        "CWSPolicy": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSPolicy"
         },
-        "CwsPolicySet": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsPolicySet"
+        "CWSPolicySet": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSPolicySet"
         },
-        "CwsWorkload": {
-          "target": "com.cloudflare.resource_tagging#ListResultItemCwsWorkload"
+        "CWSWorkload": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemCWSWorkload"
         },
         "D1Database": {
           "target": "com.cloudflare.resource_tagging#ListResultItemD1Database"
@@ -3214,6 +3462,9 @@
         },
         "ManagedClientCertificate": {
           "target": "com.cloudflare.resource_tagging#ListResultItemManagedClientCertificate"
+        },
+        "NamespaceWorker": {
+          "target": "com.cloudflare.resource_tagging#ListResultItemNamespaceWorker"
         },
         "PagesProject": {
           "target": "com.cloudflare.resource_tagging#ListResultItemPagesProject"
@@ -3274,6 +3525,12 @@
             "smithy.api#enumValue": "access_group"
           }
         },
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        },
         "ACCOUNT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -3290,6 +3547,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ai_gateway"
+          }
+        },
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
           }
         },
         "ALERTING_POLICY": {
@@ -3392,6 +3655,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "load_balancer_pool"
+          }
+        },
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
           }
         },
         "PAGES_PROJECT": {
@@ -3659,6 +3928,71 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultAccessServiceTokenTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultAccessServiceTokenType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultAccessServiceToken": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAccessServiceTokenTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAccessServiceTokenType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#AccountTagsGetResultAccountTagsMap": {
       "type": "map",
       "key": {
@@ -3842,6 +4176,71 @@
         },
         "type": {
           "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAIGatewayType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultAISearchInstanceTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultAISearchInstanceType": {
+      "type": "enum",
+      "members": {
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultAISearchInstance": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAISearchInstanceTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAISearchInstanceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -4265,7 +4664,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsDeploymentTagsMap": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSDeploymentTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4274,7 +4673,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsDeploymentType": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSDeploymentType": {
       "type": "enum",
       "members": {
         "CWS_DEPLOYMENT": {
@@ -4285,7 +4684,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsDeployment": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSDeployment": {
       "type": "structure",
       "members": {
         "id": {
@@ -4310,14 +4709,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsDeploymentTagsMap",
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSDeploymentTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsDeploymentType",
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSDeploymentType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -4330,7 +4729,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicyTagsMap": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicyTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4339,7 +4738,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicyType": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicyType": {
       "type": "enum",
       "members": {
         "CWS_POLICY": {
@@ -4350,7 +4749,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicy": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicy": {
       "type": "structure",
       "members": {
         "id": {
@@ -4375,14 +4774,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicyTagsMap",
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicyTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicyType",
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicyType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -4395,7 +4794,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicySetTagsMap": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicySetTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4404,7 +4803,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicySetType": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicySetType": {
       "type": "enum",
       "members": {
         "CWS_POLICY_SET": {
@@ -4415,7 +4814,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicySet": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicySet": {
       "type": "structure",
       "members": {
         "id": {
@@ -4440,14 +4839,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicySetTagsMap",
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicySetTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicySetType",
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicySetType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -4460,7 +4859,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsWorkloadTagsMap": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSWorkloadTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -4469,7 +4868,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsWorkloadType": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSWorkloadType": {
       "type": "enum",
       "members": {
         "CWS_WORKLOAD": {
@@ -4480,7 +4879,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsGetResultCwsWorkload": {
+    "com.cloudflare.resource_tagging#AccountTagsGetResultCWSWorkload": {
       "type": "structure",
       "members": {
         "id": {
@@ -4505,14 +4904,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsWorkloadTagsMap",
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSWorkloadTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsWorkloadType",
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSWorkloadType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -5463,6 +5862,100 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultNamespaceWorkerTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultNamespaceWorkerType": {
+      "type": "enum",
+      "members": {
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultNamespaceWorkerNavigation": {
+      "type": "structure",
+      "members": {
+        "namespace_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "namespace_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsGetResultNamespaceWorker": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultNamespaceWorkerTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultNamespaceWorkerType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "navigation": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultNamespaceWorkerNavigation",
+          "traits": {
+            "smithy.api#documentation": "Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data."
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#AccountTagsGetResultPagesProjectTagsMap": {
       "type": "map",
       "key": {
@@ -6283,6 +6776,9 @@
         "AccessGroup": {
           "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAccessGroup"
         },
+        "AccessServiceToken": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAccessServiceToken"
+        },
         "Account": {
           "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAccount"
         },
@@ -6291,6 +6787,9 @@
         },
         "AIGateway": {
           "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAIGateway"
+        },
+        "AISearchInstance": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAISearchInstance"
         },
         "AlertingPolicy": {
           "target": "com.cloudflare.resource_tagging#AccountTagsGetResultAlertingPolicy"
@@ -6310,17 +6809,17 @@
         "CustomHostname": {
           "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCustomHostname"
         },
-        "CwsDeployment": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsDeployment"
+        "CWSDeployment": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSDeployment"
         },
-        "CwsPolicy": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicy"
+        "CWSPolicy": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicy"
         },
-        "CwsPolicySet": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsPolicySet"
+        "CWSPolicySet": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSPolicySet"
         },
-        "CwsWorkload": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCwsWorkload"
+        "CWSWorkload": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultCWSWorkload"
         },
         "D1Database": {
           "target": "com.cloudflare.resource_tagging#AccountTagsGetResultD1Database"
@@ -6363,6 +6862,9 @@
         },
         "ManagedClientCertificate": {
           "target": "com.cloudflare.resource_tagging#AccountTagsGetResultManagedClientCertificate"
+        },
+        "NamespaceWorker": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsGetResultNamespaceWorker"
         },
         "PagesProject": {
           "target": "com.cloudflare.resource_tagging#AccountTagsGetResultPagesProject"
@@ -6417,6 +6919,12 @@
             "smithy.api#enumValue": "access_group"
           }
         },
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        },
         "ACCOUNT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -6433,6 +6941,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ai_gateway"
+          }
+        },
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
           }
         },
         "ALERTING_POLICY": {
@@ -6535,6 +7049,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "load_balancer_pool"
+          }
+        },
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
           }
         },
         "PAGES_PROJECT": {
@@ -6619,6 +7139,12 @@
             "smithy.api#enumValue": "access_group"
           }
         },
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        },
         "ACCOUNT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -6635,6 +7161,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ai_gateway"
+          }
+        },
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
           }
         },
         "ALERTING_POLICY": {
@@ -6737,6 +7269,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "load_balancer_pool"
+          }
+        },
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
           }
         },
         "PAGES_PROJECT": {
@@ -7007,6 +7545,71 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultAccessServiceTokenTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultAccessServiceTokenType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultAccessServiceToken": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAccessServiceTokenTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAccessServiceTokenType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#AccountTagsUpdateResultAccountTagsMap": {
       "type": "map",
       "key": {
@@ -7190,6 +7793,71 @@
         },
         "type": {
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAIGatewayType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultAISearchInstanceTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultAISearchInstanceType": {
+      "type": "enum",
+      "members": {
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultAISearchInstance": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAISearchInstanceTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAISearchInstanceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7613,7 +8281,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsDeploymentTagsMap": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSDeploymentTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7622,7 +8290,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsDeploymentType": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSDeploymentType": {
       "type": "enum",
       "members": {
         "CWS_DEPLOYMENT": {
@@ -7633,7 +8301,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsDeployment": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSDeployment": {
       "type": "structure",
       "members": {
         "id": {
@@ -7658,14 +8326,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsDeploymentTagsMap",
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSDeploymentTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsDeploymentType",
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSDeploymentType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7678,7 +8346,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicyTagsMap": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicyTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7687,7 +8355,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicyType": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicyType": {
       "type": "enum",
       "members": {
         "CWS_POLICY": {
@@ -7698,7 +8366,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicy": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicy": {
       "type": "structure",
       "members": {
         "id": {
@@ -7723,14 +8391,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicyTagsMap",
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicyTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicyType",
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicyType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7743,7 +8411,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicySetTagsMap": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicySetTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7752,7 +8420,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicySetType": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicySetType": {
       "type": "enum",
       "members": {
         "CWS_POLICY_SET": {
@@ -7763,7 +8431,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicySet": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicySet": {
       "type": "structure",
       "members": {
         "id": {
@@ -7788,14 +8456,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicySetTagsMap",
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicySetTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicySetType",
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicySetType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7808,7 +8476,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsWorkloadTagsMap": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSWorkloadTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -7817,7 +8485,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsWorkloadType": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSWorkloadType": {
       "type": "enum",
       "members": {
         "CWS_WORKLOAD": {
@@ -7828,7 +8496,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsWorkload": {
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSWorkload": {
       "type": "structure",
       "members": {
         "id": {
@@ -7853,14 +8521,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsWorkloadTagsMap",
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSWorkloadTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsWorkloadType",
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSWorkloadType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8811,6 +9479,100 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultNamespaceWorkerTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultNamespaceWorkerType": {
+      "type": "enum",
+      "members": {
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultNamespaceWorkerNavigation": {
+      "type": "structure",
+      "members": {
+        "namespace_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "namespace_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#AccountTagsUpdateResultNamespaceWorker": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultNamespaceWorkerTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultNamespaceWorkerType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "navigation": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultNamespaceWorkerNavigation",
+          "traits": {
+            "smithy.api#documentation": "Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data."
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#AccountTagsUpdateResultPagesProjectTagsMap": {
       "type": "map",
       "key": {
@@ -9631,6 +10393,9 @@
         "AccessGroup": {
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAccessGroup"
         },
+        "AccessServiceToken": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAccessServiceToken"
+        },
         "Account": {
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAccount"
         },
@@ -9639,6 +10404,9 @@
         },
         "AIGateway": {
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAIGateway"
+        },
+        "AISearchInstance": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAISearchInstance"
         },
         "AlertingPolicy": {
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultAlertingPolicy"
@@ -9658,17 +10426,17 @@
         "CustomHostname": {
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCustomHostname"
         },
-        "CwsDeployment": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsDeployment"
+        "CWSDeployment": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSDeployment"
         },
-        "CwsPolicy": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicy"
+        "CWSPolicy": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicy"
         },
-        "CwsPolicySet": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsPolicySet"
+        "CWSPolicySet": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSPolicySet"
         },
-        "CwsWorkload": {
-          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCwsWorkload"
+        "CWSWorkload": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultCWSWorkload"
         },
         "D1Database": {
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultD1Database"
@@ -9711,6 +10479,9 @@
         },
         "ManagedClientCertificate": {
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultManagedClientCertificate"
+        },
+        "NamespaceWorker": {
+          "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultNamespaceWorker"
         },
         "PagesProject": {
           "target": "com.cloudflare.resource_tagging#AccountTagsUpdateResultPagesProject"
@@ -9864,6 +10635,12 @@
             "smithy.api#enumValue": "access_group"
           }
         },
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        },
         "ACCOUNT": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -9880,6 +10657,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "ai_gateway"
+          }
+        },
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
           }
         },
         "ALERTING_POLICY": {
@@ -10024,6 +10807,12 @@
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "managed_client_certificate"
+          }
+        },
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
           }
         },
         "PAGES_PROJECT": {
@@ -10386,6 +11175,71 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultAccessServiceTokenTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultAccessServiceTokenType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultAccessServiceToken": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAccessServiceTokenTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAccessServiceTokenType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#ZoneTagsGetResultAccountTagsMap": {
       "type": "map",
       "key": {
@@ -10569,6 +11423,71 @@
         },
         "type": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAIGatewayType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultAISearchInstanceTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultAISearchInstanceType": {
+      "type": "enum",
+      "members": {
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultAISearchInstance": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAISearchInstanceTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAISearchInstanceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -10992,7 +11911,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsDeploymentTagsMap": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSDeploymentTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -11001,7 +11920,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsDeploymentType": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSDeploymentType": {
       "type": "enum",
       "members": {
         "CWS_DEPLOYMENT": {
@@ -11012,7 +11931,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsDeployment": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSDeployment": {
       "type": "structure",
       "members": {
         "id": {
@@ -11037,14 +11956,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsDeploymentTagsMap",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSDeploymentTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsDeploymentType",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSDeploymentType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -11057,7 +11976,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicyTagsMap": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicyTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -11066,7 +11985,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicyType": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicyType": {
       "type": "enum",
       "members": {
         "CWS_POLICY": {
@@ -11077,7 +11996,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicy": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicy": {
       "type": "structure",
       "members": {
         "id": {
@@ -11102,14 +12021,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicyTagsMap",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicyTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicyType",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicyType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -11122,7 +12041,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicySetTagsMap": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicySetTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -11131,7 +12050,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicySetType": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicySetType": {
       "type": "enum",
       "members": {
         "CWS_POLICY_SET": {
@@ -11142,7 +12061,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicySet": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicySet": {
       "type": "structure",
       "members": {
         "id": {
@@ -11167,14 +12086,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicySetTagsMap",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicySetTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicySetType",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicySetType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -11187,7 +12106,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsWorkloadTagsMap": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSWorkloadTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -11196,7 +12115,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsWorkloadType": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSWorkloadType": {
       "type": "enum",
       "members": {
         "CWS_WORKLOAD": {
@@ -11207,7 +12126,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsWorkload": {
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSWorkload": {
       "type": "structure",
       "members": {
         "id": {
@@ -11232,14 +12151,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsWorkloadTagsMap",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSWorkloadTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsWorkloadType",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSWorkloadType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -12190,6 +13109,100 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultNamespaceWorkerTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultNamespaceWorkerType": {
+      "type": "enum",
+      "members": {
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultNamespaceWorkerNavigation": {
+      "type": "structure",
+      "members": {
+        "namespace_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "namespace_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsGetResultNamespaceWorker": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultNamespaceWorkerTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultNamespaceWorkerType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "navigation": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultNamespaceWorkerNavigation",
+          "traits": {
+            "smithy.api#documentation": "Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data."
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#ZoneTagsGetResultPagesProjectTagsMap": {
       "type": "map",
       "key": {
@@ -13010,6 +14023,9 @@
         "AccessGroup": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAccessGroup"
         },
+        "AccessServiceToken": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAccessServiceToken"
+        },
         "Account": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAccount"
         },
@@ -13018,6 +14034,9 @@
         },
         "AIGateway": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAIGateway"
+        },
+        "AISearchInstance": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAISearchInstance"
         },
         "AlertingPolicy": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultAlertingPolicy"
@@ -13037,17 +14056,17 @@
         "CustomHostname": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCustomHostname"
         },
-        "CwsDeployment": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsDeployment"
+        "CWSDeployment": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSDeployment"
         },
-        "CwsPolicy": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicy"
+        "CWSPolicy": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicy"
         },
-        "CwsPolicySet": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsPolicySet"
+        "CWSPolicySet": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSPolicySet"
         },
-        "CwsWorkload": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCwsWorkload"
+        "CWSWorkload": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultCWSWorkload"
         },
         "D1Database": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultD1Database"
@@ -13090,6 +14109,9 @@
         },
         "ManagedClientCertificate": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultManagedClientCertificate"
+        },
+        "NamespaceWorker": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultNamespaceWorker"
         },
         "PagesProject": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsGetResultPagesProject"
@@ -13494,6 +14516,71 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAccessServiceTokenTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAccessServiceTokenType": {
+      "type": "enum",
+      "members": {
+        "ACCESS_SERVICE_TOKEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "access_service_token"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAccessServiceToken": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAccessServiceTokenTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAccessServiceTokenType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAccountTagsMap": {
       "type": "map",
       "key": {
@@ -13677,6 +14764,71 @@
         },
         "type": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAIGatewayType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAISearchInstanceTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAISearchInstanceType": {
+      "type": "enum",
+      "members": {
+        "AI_SEARCH_INSTANCE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_search_instance"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAISearchInstance": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAISearchInstanceTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAISearchInstanceType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -14100,7 +15252,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsDeploymentTagsMap": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSDeploymentTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -14109,7 +15261,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsDeploymentType": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSDeploymentType": {
       "type": "enum",
       "members": {
         "CWS_DEPLOYMENT": {
@@ -14120,7 +15272,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsDeployment": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSDeployment": {
       "type": "structure",
       "members": {
         "id": {
@@ -14145,14 +15297,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsDeploymentTagsMap",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSDeploymentTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsDeploymentType",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSDeploymentType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -14165,7 +15317,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicyTagsMap": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicyTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -14174,7 +15326,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicyType": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicyType": {
       "type": "enum",
       "members": {
         "CWS_POLICY": {
@@ -14185,7 +15337,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicy": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicy": {
       "type": "structure",
       "members": {
         "id": {
@@ -14210,14 +15362,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicyTagsMap",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicyTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicyType",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicyType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -14230,7 +15382,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicySetTagsMap": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicySetTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -14239,7 +15391,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicySetType": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicySetType": {
       "type": "enum",
       "members": {
         "CWS_POLICY_SET": {
@@ -14250,7 +15402,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicySet": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicySet": {
       "type": "structure",
       "members": {
         "id": {
@@ -14275,14 +15427,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicySetTagsMap",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicySetTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicySetType",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicySetType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -14295,7 +15447,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsWorkloadTagsMap": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSWorkloadTagsMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -14304,7 +15456,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsWorkloadType": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSWorkloadType": {
       "type": "enum",
       "members": {
         "CWS_WORKLOAD": {
@@ -14315,7 +15467,7 @@
         }
       }
     },
-    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsWorkload": {
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSWorkload": {
       "type": "structure",
       "members": {
         "id": {
@@ -14340,14 +15492,14 @@
           }
         },
         "tags": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsWorkloadTagsMap",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSWorkloadTagsMap",
           "traits": {
             "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
             "smithy.api#required": {}
           }
         },
         "type": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsWorkloadType",
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSWorkloadType",
           "traits": {
             "smithy.api#required": {}
           }
@@ -15298,6 +16450,100 @@
         }
       }
     },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultNamespaceWorkerTagsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultNamespaceWorkerType": {
+      "type": "enum",
+      "members": {
+        "NAMESPACE_WORKER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "namespace_worker"
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultNamespaceWorkerNavigation": {
+      "type": "structure",
+      "members": {
+        "namespace_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "namespace_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.resource_tagging#ZoneTagsUpdateResultNamespaceWorker": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the unique resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "etag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ETag identifier for optimistic concurrency control. Formatted as \"v1:\" where the hash is the base64url-encoded SHA-256 (truncated to 128 bits) of the tags map canonicalized using RFC 8785 (JSON Canonicalization Scheme). Clients should treat ETags as opaque strings and pass them back via the If-Match header on write operations.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name of the resource.",
+            "smithy.api#required": {}
+          }
+        },
+        "tags": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultNamespaceWorkerTagsMap",
+          "traits": {
+            "smithy.api#documentation": "Contains key-value pairs of tags. Keys may contain at most 256 characters. Values may contain at most 1024 characters and may be empty for key-only tags.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultNamespaceWorkerType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "navigation": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultNamespaceWorkerNavigation",
+          "traits": {
+            "smithy.api#documentation": "Read-only routing metadata resolved from EWC using the account and immutable namespace Worker ID. Returned only by tagged-resource lists requested with include_navigation=true. Omitted when lookup is unavailable or the child has been deleted. Never supplied on tag writes or stored as extra_data."
+          }
+        },
+        "tags_updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Monotonic version of the resource's tags: the timestamp assigned when the tags were last written. Returned by read endpoints, by 2PC prepare (the version that will be assigned on commit, unless a concurrent write lands first, in which case a newer version is assigned), and by 2PC commit (the authoritative committed version). Omitted for untagged resources and delete commits: a deleted resource has no current version, and deletions are ordered by event order rather than by version."
+          }
+        }
+      }
+    },
     "com.cloudflare.resource_tagging#ZoneTagsUpdateResultPagesProjectTagsMap": {
       "type": "map",
       "key": {
@@ -16118,6 +17364,9 @@
         "AccessGroup": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAccessGroup"
         },
+        "AccessServiceToken": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAccessServiceToken"
+        },
         "Account": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAccount"
         },
@@ -16126,6 +17375,9 @@
         },
         "AIGateway": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAIGateway"
+        },
+        "AISearchInstance": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAISearchInstance"
         },
         "AlertingPolicy": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultAlertingPolicy"
@@ -16145,17 +17397,17 @@
         "CustomHostname": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCustomHostname"
         },
-        "CwsDeployment": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsDeployment"
+        "CWSDeployment": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSDeployment"
         },
-        "CwsPolicy": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicy"
+        "CWSPolicy": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicy"
         },
-        "CwsPolicySet": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsPolicySet"
+        "CWSPolicySet": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSPolicySet"
         },
-        "CwsWorkload": {
-          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCwsWorkload"
+        "CWSWorkload": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultCWSWorkload"
         },
         "D1Database": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultD1Database"
@@ -16198,6 +17450,9 @@
         },
         "ManagedClientCertificate": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultManagedClientCertificate"
+        },
+        "NamespaceWorker": {
+          "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultNamespaceWorker"
         },
         "PagesProject": {
           "target": "com.cloudflare.resource_tagging#ZoneTagsUpdateResultPagesProject"
@@ -16740,6 +17995,13 @@
           "traits": {
             "smithy.api#documentation": "Cursor for pagination.",
             "smithy.api#httpQuery": "cursor"
+          }
+        },
+        "include_navigation": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Resolve current namespace Worker navigation by immutable child tag. Optional read-only navigation is omitted for deleted or unresolved children. Lookups are limited to this page, at most five concurrently, with a shared two-second budget. Tag identity, ETag, filters and pagination are unchanged; name filtering still uses the stored resource name. Defaults to false.",
+            "smithy.api#httpQuery": "include_navigation"
           }
         },
         "name": {

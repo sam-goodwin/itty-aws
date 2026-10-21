@@ -2051,6 +2051,23 @@
         }
       }
     },
+    "com.cloudflare.security_center#InsightsListResponseIssuesItemSource": {
+      "type": "enum",
+      "members": {
+        "CLOUDFLARE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare"
+          }
+        },
+        "RISKRECON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "riskrecon"
+          }
+        }
+      }
+    },
     "com.cloudflare.security_center#InsightsListResponseIssuesItemSeverity": {
       "type": "enum",
       "members": {
@@ -2395,6 +2412,12 @@
         },
         "since": {
           "target": "smithy.api#String"
+        },
+        "source": {
+          "target": "com.cloudflare.security_center#InsightsListResponseIssuesItemSource",
+          "traits": {
+            "smithy.api#documentation": "Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner."
+          }
         },
         "status": {
           "target": "com.cloudflare.security_center#InsightsListResponseIssuesItemStatus",

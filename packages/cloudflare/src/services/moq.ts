@@ -78,6 +78,7 @@ export interface RelaysCreateResponseIssuersItem {
 export type RelaysCreateResponseIssuersList = Array<RelaysCreateResponseIssuersItem>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRelayResponse {
+  /** Relay configuration. All sub-objects use whole-object replacement when present; omitted sub-objects preserve the existing value. */
   config: RelaysCreateResponseConfig;
   created: string;
   /** Token collection (discriminated union on `type`). On create this holds the auto-created default pair, each including its one-time secret. */
@@ -169,6 +170,7 @@ export interface RelaysGetResponseConfig {
 export type RelaysGetResponseStatus = "connected";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRelayResponse {
+  /** Relay configuration. All sub-objects use whole-object replacement when present; omitted sub-objects preserve the existing value. */
   config: RelaysGetResponseConfig;
   created: string;
   modified: string;
@@ -272,6 +274,7 @@ export interface UpdateRelayRequest {
   /** Cloudflare account identifier. */
   accountId: string;
   relayId: string;
+  /** Relay configuration. All sub-objects use whole-object replacement when present; omitted sub-objects preserve the existing value. */
   config?: RelaysUpdateRequestConfig;
   name?: string;
 }
@@ -291,6 +294,7 @@ export interface RelaysUpdateResponseConfig {
 export type RelaysUpdateResponseStatus = "connected";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRelayResponse {
+  /** Relay configuration. All sub-objects use whole-object replacement when present; omitted sub-objects preserve the existing value. */
   config: RelaysUpdateResponseConfig;
   created: string;
   modified: string;

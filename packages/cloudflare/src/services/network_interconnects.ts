@@ -46,7 +46,7 @@ export type CnisCreateRequestBgpExtraPrefixesList = Array<string>;
 export interface CnisCreateRequestBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
-  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  /** Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed. */
   extraPrefixes: CnisCreateRequestBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
   md5Key?: string;
@@ -65,7 +65,7 @@ export type CnisCreateResponseBgpExtraPrefixesList = Array<string>;
 export interface CnisCreateResponseBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
-  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  /** Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed. */
   extraPrefixes: CnisCreateResponseBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
@@ -136,7 +136,7 @@ export type CnisGetResponseBgpExtraPrefixesList = Array<string>;
 export interface CnisGetResponseBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
-  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  /** Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed. */
   extraPrefixes: CnisGetResponseBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
@@ -210,7 +210,7 @@ export type CnisListResponseItemsItemBgpExtraPrefixesList = Array<string>;
 export interface CnisListResponseItemsItemBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
-  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  /** Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed. */
   extraPrefixes: CnisListResponseItemsItemBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;
@@ -363,7 +363,7 @@ export type CnisUpdateRequestBgpExtraPrefixesList = Array<string>;
 export interface CnisUpdateRequestBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
-  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  /** Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed. */
   extraPrefixes: CnisUpdateRequestBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
   md5Key?: string;
@@ -392,7 +392,7 @@ export type CnisUpdateResponseBgpExtraPrefixesList = Array<string>;
 export interface CnisUpdateResponseBgp {
   /** ASN used on the customer end of the BGP session */
   customerAsn: number;
-  /** Extra set of static prefixes to advertise to the customer's end of the session */
+  /** Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed. */
   extraPrefixes: CnisUpdateResponseBgpExtraPrefixesList;
   /** MD5 key to use for session authentication. */
   md5Key?: string | null;

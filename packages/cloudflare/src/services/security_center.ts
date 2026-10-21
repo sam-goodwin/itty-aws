@@ -389,6 +389,7 @@ export interface InsightsListResponseIssuesItemPayload {
   zoneTag?: string | null;
 }
 export type InsightsListResponseIssuesItemSeverity = "Low" | "Moderate" | "Critical";
+export type InsightsListResponseIssuesItemSource = "cloudflare" | "riskrecon";
 export type InsightsListResponseIssuesItemStatus = "active" | "resolved";
 export type InsightsListResponseIssuesItemUserClassification =
   | "false_positive"
@@ -406,6 +407,8 @@ export interface InsightsListResponseIssuesItem {
   resolveText?: string | null;
   severity?: InsightsListResponseIssuesItemSeverity | null;
   since?: string | null;
+  /** Who generated the insight. `cloudflare` for Cloudflare-generated insights, otherwise the partner. */
+  source?: InsightsListResponseIssuesItemSource | null;
   /** The current status of the insight. */
   status?: InsightsListResponseIssuesItemStatus | null;
   subject?: string | null;
@@ -946,6 +949,7 @@ function __c7(j: number): any {
           resolveText: S.optional(S.NullOr(S.String).pipe(T.Body("resolve_text"))),
           severity: S.optional(S.NullOr(S.String)),
           since: S.optional(S.NullOr(S.String)),
+          source: S.optional(S.NullOr(S.String)),
           status: S.optional(S.NullOr(S.String)),
           subject: S.optional(S.NullOr(S.String)),
           timestamp: S.optional(S.NullOr(S.String)),

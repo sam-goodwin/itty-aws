@@ -7476,6 +7476,48 @@
         }
       }
     },
+    "com.cloudflare.zones#SettingsBulkEditRequestBodyItemZonesWebmcpMcpURLId": {
+      "type": "enum",
+      "members": {
+        "WEBMCP_MCP_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webmcp_mcp_url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditRequestBodyItemZonesWebmcpMcpURL": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyItemZonesWebmcpMcpURLId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "editable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        }
+      }
+    },
     "com.cloudflare.zones#SettingsBulkEditRequestBodyItemZonesWebmcpPacksId": {
       "type": "enum",
       "members": {
@@ -7818,6 +7860,9 @@
         },
         "ZonesWebmcpEnabled": {
           "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyItemZonesWebmcpEnabled"
+        },
+        "ZonesWebmcpMcpURL": {
+          "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyItemZonesWebmcpMcpURL"
         },
         "ZonesWebmcpPacks": {
           "target": "com.cloudflare.zones#SettingsBulkEditRequestBodyItemZonesWebmcpPacks"
@@ -11868,6 +11913,48 @@
         }
       }
     },
+    "com.cloudflare.zones#SettingsBulkEditResultItemZonesWebmcpMcpURLId": {
+      "type": "enum",
+      "members": {
+        "WEBMCP_MCP_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webmcp_mcp_url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsBulkEditResultItemZonesWebmcpMcpURL": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SettingsBulkEditResultItemZonesWebmcpMcpURLId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "editable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        }
+      }
+    },
     "com.cloudflare.zones#SettingsBulkEditResultItemZonesWebmcpPacksId": {
       "type": "enum",
       "members": {
@@ -12216,6 +12303,9 @@
         },
         "ZonesWebmcpEnabled": {
           "target": "com.cloudflare.zones#SettingsBulkEditResultItemZonesWebmcpEnabled"
+        },
+        "ZonesWebmcpMcpURL": {
+          "target": "com.cloudflare.zones#SettingsBulkEditResultItemZonesWebmcpMcpURL"
         },
         "ZonesWebmcpPacks": {
           "target": "com.cloudflare.zones#SettingsBulkEditResultItemZonesWebmcpPacks"
@@ -16464,6 +16554,48 @@
         }
       }
     },
+    "com.cloudflare.zones#SettingsEditResultZonesWebmcpMcpURLId": {
+      "type": "enum",
+      "members": {
+        "WEBMCP_MCP_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webmcp_mcp_url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsEditResultZonesWebmcpMcpURL": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SettingsEditResultZonesWebmcpMcpURLId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "editable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        }
+      }
+    },
     "com.cloudflare.zones#SettingsEditResultZonesWebmcpPacksId": {
       "type": "enum",
       "members": {
@@ -16815,6 +16947,9 @@
         },
         "ZonesWebmcpEnabled": {
           "target": "com.cloudflare.zones#SettingsEditResultZonesWebmcpEnabled"
+        },
+        "ZonesWebmcpMcpURL": {
+          "target": "com.cloudflare.zones#SettingsEditResultZonesWebmcpMcpURL"
         },
         "ZonesWebmcpPacks": {
           "target": "com.cloudflare.zones#SettingsEditResultZonesWebmcpPacks"
@@ -20895,6 +21030,48 @@
         }
       }
     },
+    "com.cloudflare.zones#SettingsGetResultZonesWebmcpMcpURLId": {
+      "type": "enum",
+      "members": {
+        "WEBMCP_MCP_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webmcp_mcp_url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#SettingsGetResultZonesWebmcpMcpURL": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#SettingsGetResultZonesWebmcpMcpURLId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "editable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        }
+      }
+    },
     "com.cloudflare.zones#SettingsGetResultZonesWebmcpPacksId": {
       "type": "enum",
       "members": {
@@ -21246,6 +21423,9 @@
         },
         "ZonesWebmcpEnabled": {
           "target": "com.cloudflare.zones#SettingsGetResultZonesWebmcpEnabled"
+        },
+        "ZonesWebmcpMcpURL": {
+          "target": "com.cloudflare.zones#SettingsGetResultZonesWebmcpMcpURL"
         },
         "ZonesWebmcpPacks": {
           "target": "com.cloudflare.zones#SettingsGetResultZonesWebmcpPacks"
@@ -25283,6 +25463,48 @@
         }
       }
     },
+    "com.cloudflare.zones#ListSettingsResultItemZonesWebmcpMcpURLId": {
+      "type": "enum",
+      "members": {
+        "WEBMCP_MCP_URL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "webmcp_mcp_url"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zones#ListSettingsResultItemZonesWebmcpMcpURL": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "com.cloudflare.zones#ListSettingsResultItemZonesWebmcpMcpURLId",
+          "traits": {
+            "smithy.api#documentation": "ID of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Current value of the zone setting.",
+            "smithy.api#required": {}
+          }
+        },
+        "editable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether or not this setting can be modified for this zone (based on your Cloudflare plan level)."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "last time this setting was modified."
+          }
+        }
+      }
+    },
     "com.cloudflare.zones#ListSettingsResultItemZonesWebmcpPacksId": {
       "type": "enum",
       "members": {
@@ -25631,6 +25853,9 @@
         },
         "ZonesWebmcpEnabled": {
           "target": "com.cloudflare.zones#ListSettingsResultItemZonesWebmcpEnabled"
+        },
+        "ZonesWebmcpMcpURL": {
+          "target": "com.cloudflare.zones#ListSettingsResultItemZonesWebmcpMcpURL"
         },
         "ZonesWebmcpPacks": {
           "target": "com.cloudflare.zones#ListSettingsResultItemZonesWebmcpPacks"
