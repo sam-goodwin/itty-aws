@@ -121,10 +121,19 @@ describe("makeRestProtocol with sensitive output members", () => {
     expect(Result.isFailure(strict) && strict.failure).toBeInstanceOf(TestParseError);
     expect(strict).toMatchObject({ failure: { body: "[REDACTED]" } });
     expect(Result.isFailure(strict) && strict.failure).toMatchObject({
-      cause: expect.any(Schema.SchemaError),
+      cause: expect.objectContaining({ name: "SchemaError" }),
     });
     expect(exposesSecret(lenient)).toBe(false);
     expect(exposesSecret(strict)).toBe(false);
+  });
+
+  test("a strict mismatch at the sensitive member keeps its value out of the cause", async () => {
+    const body = JSON.stringify({ id: "a", keys: [{ token: [SECRET] }] });
+    const result = await run(decode(body, Secret.ast), ResponseValidation.strict);
+    expect(result).toMatchObject({
+      failure: { body: "[REDACTED]", cause: { path: ["keys", 0, "token"], actual: "[REDACTED]" } },
+    });
+    expect(exposesSecret(result)).toBe(false);
   });
 
   describe("inside a map", () => {
