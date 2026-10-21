@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/gcp",
-  "version": "1.0.0-rc.13",
+  "version": "1.0.0-rc.15",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -61,7 +61,9 @@
       "types": "./lib/unstable-services/*.d.ts",
       "bun": "./src/unstable-services/*.ts",
       "worker": "./src/unstable-services/*.ts",
-      "default": "./lib/unstable-services/*.js"
+      "module": "./lib/unstable-services.full/*.js",
+      "module-sync": "./lib/unstable-services/*.js",
+      "default": "./lib/unstable-services.full/*.js"
     },
     ".": {
       "types": "./lib/index.d.ts",
@@ -74,15 +76,17 @@
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "module": "./lib/services.full/*.js",
+      "module-sync": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     }
   },
   "scripts": {
-    "build": "tsc -b",
+    "build": "tsrs -b",
     "convert": "node --conditions=bun scripts/convert.ts",
     "generate": "node --conditions=bun scripts/generate.ts && node --conditions=bun scripts/generate.ts --smithy .generated-specs/unstable --out src/unstable-services",
-    "typecheck": "tsc -p tsconfig.json",
-    "typecheck:strict": "tsc -p tsconfig.strict.json",
+    "typecheck": "tsrs -p tsconfig.json",
+    "typecheck:strict": "tsrs -p tsconfig.strict.json",
     "specs:fetch": "git submodule update --force --init --depth=1 specs/spec-mirror-gcp",
     "specs:update": "git submodule update --remote --force --depth=1 specs/spec-mirror-gcp"
   },
@@ -96,7 +100,7 @@
     "effect": "catalog:"
   },
   "distilled": {
-    "generatedAt": "2026-10-09",
+    "generatedAt": "2026-10-20",
     "specUpdatedAt": "2026-10-08"
   }
 }
