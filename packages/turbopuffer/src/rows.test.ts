@@ -49,19 +49,22 @@ const query = createNamespaceQuery({ namespace: "docs" }).pipe(
 );
 
 describe("turbopuffer rows (#706)", () => {
-  test("query rows keep custom attributes and $dist in both validation modes", async () => {
-    const { lenient, strict } = await runValidationModes(query, { body: queryResponse([row]) });
-    for (const result of [lenient, strict]) {
+  test("query rows keep custom attributes and $dist in every validation mode", async () => {
+    // `Row` is open, so even strict mode, which rejects unmodeled keys,
+    // accepts the attributes.
+    const results = await runValidationModes(query, { body: queryResponse([row]) });
+    for (const result of Object.values(results)) {
       expect(result._tag).toBe("Success");
       if (result._tag === "Success") expect(result.success.rows).toEqual([row]);
     }
   });
 
-  test("strict validation still rejects a row without id", async () => {
-    const { lenient, strict } = await runValidationModes(query, {
+  test("the validating modes still reject a row without id", async () => {
+    const { lenient, additionalProperties, strict } = await runValidationModes(query, {
       body: queryResponse([{ title: "no id" }]),
     });
     expect(lenient._tag).toBe("Success");
+    expect(additionalProperties._tag).toBe("Failure");
     expect(strict._tag).toBe("Failure");
   });
 

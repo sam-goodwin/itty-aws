@@ -10,9 +10,15 @@
  *                      body) still succeeds, except that core's REST
  *                      protocol, Stripe and Fly.io fail a non-JSON body for
  *                      an output with sensitive members in every mode.
- *   strict:            the response is decoded against the output schema,
- *                      and a mismatch fails the call with the SDK's
- *                      `<Sdk>ParseError` (AWS: `ParseError`).
+ *   additionalProperties: the response is checked against the output
+ *                      schema, and a mismatch fails the call with the SDK's
+ *                      `<Sdk>ParseError` (AWS: `ParseError`). Keys the
+ *                      schema does not model are allowed and kept.
+ *   strict:            as `additionalProperties`, and a key the schema does
+ *                      not model also fails the call, at any depth. Open
+ *                      objects (an index signature, e.g. OpenAPI
+ *                      `additionalProperties`) and empty structs (opaque
+ *                      outputs) still accept any key.
  *
  * The mode is one {@link ResponseValidation} reference keyed by a string, so
  * a single `Layer` switches every distilled SDK in a program -- AWS,
@@ -38,24 +44,25 @@ import { type Decode, decoderFor, type SchemaMismatch } from "./response-validat
 
 export { SchemaMismatch, withholdActual } from "./response-validation-strict.ts";
 
-export type Mode = "lenient" | "strict";
+export type Mode = "lenient" | "additionalProperties" | "strict";
 
 /**
  * The active validation mode. Read by protocols at call time on the calling
- * fiber; `lenient` unless a {@link strict} layer is provided.
+ * fiber; `lenient` unless an {@link additionalProperties} or {@link strict}
+ * layer is provided.
  */
 export const ResponseValidation = /*@__PURE__*/ Context.Reference<Mode>(
   "@distilled.cloud/core/ResponseValidation",
   { defaultValue: () => "lenient" },
 );
 
-/** Decode every 2xx response against its output schema; fail on mismatch. */
 /**
- * The checker strict mode uses. The `strict` layer provides it, so the
- * checker is bundled only with programs that use `strict`.
+ * The checker the validating modes use (`exact`: reject unmodeled keys). The
+ * `additionalProperties` and `strict` layers provide it, so the checker is
+ * bundled only with programs that validate.
  */
 export const StrictDecoder = /*@__PURE__*/ Context.Reference<
-  ((ast: AST.AST) => Decode) | undefined
+  ((ast: AST.AST, exact: boolean) => Decode) | undefined
 >("@distilled.cloud/core/ResponseValidation/StrictDecoder", { defaultValue: () => undefined });
 
 /**
@@ -76,9 +83,25 @@ const layerOfContext = (context: Context.Context<never>): Layer.Layer<never> => 
   return both;
 };
 
+/**
+ * Check every 2xx response against its output schema and fail on a
+ * mismatch, including any key the schema does not model.
+ */
 export const strict: Layer.Layer<never> = /*@__PURE__*/ layerOfContext(
   /*@__PURE__*/ Context.add(
     /*@__PURE__*/ Context.make(ResponseValidation, "strict"),
+    StrictDecoder,
+    decoderFor,
+  ),
+);
+
+/**
+ * Check every 2xx response against its output schema and fail on a
+ * mismatch; keys the schema does not model are allowed.
+ */
+export const additionalProperties: Layer.Layer<never> = /*@__PURE__*/ layerOfContext(
+  /*@__PURE__*/ Context.add(
+    /*@__PURE__*/ Context.make(ResponseValidation, "additionalProperties"),
     StrictDecoder,
     decoderFor,
   ),
@@ -89,38 +112,39 @@ export const lenient: Layer.Layer<never> = /*@__PURE__*/ layerOfContext(
   /*@__PURE__*/ Context.make(ResponseValidation, "lenient"),
 );
 
-/** Whether the calling fiber is in strict mode. */
-export const isStrict: Effect.Effect<boolean> = /*@__PURE__*/ Effect.map(
+/** Whether the calling fiber validates responses (any mode but lenient). */
+export const isValidating: Effect.Effect<boolean> = /*@__PURE__*/ Effect.map(
   ResponseValidation,
-  (mode) => mode === "strict",
+  (mode) => mode !== "lenient",
 );
 
 /**
  * For a 2xx body the protocol could not read into the shape it transforms
- * (e.g. invalid JSON): fail with `error` in strict mode, succeed with
+ * (e.g. invalid JSON): fail with `error` when validating, succeed with
  * `asRead` (usually the body text) in lenient mode.
  */
-export const failIfStrict = <A, E>(error: E, asRead: A): Effect.Effect<A, E> =>
+export const failUnlessLenient = <A, E>(error: E, asRead: A): Effect.Effect<A, E> =>
   Effect.flatMap(ResponseValidation, (mode) =>
-    mode === "strict" ? Effect.fail(error) : Effect.succeed(asRead),
+    mode === "lenient" ? Effect.succeed(asRead) : Effect.fail(error),
   );
 
 /**
- * The schema error for `value` against `outputAst` in strict mode, `undefined`
- * when it matches or the mode is lenient. Synchronous, for protocols that
- * already hold the calling fiber's context.
+ * The schema error for `value` against `outputAst` when validating,
+ * `undefined` when it matches or the mode is lenient. Synchronous, for
+ * protocols that already hold the calling fiber's context.
  */
 export const checkResponse = (
   context: Context.Context<any>,
   outputAst: AST.AST,
   value: unknown,
 ): SchemaMismatch | undefined => {
-  if (Context.get(context, ResponseValidation) === "lenient") return undefined;
+  const mode = Context.get(context, ResponseValidation);
+  if (mode === "lenient") return undefined;
   const decoderOf = Context.get(context, StrictDecoder);
   if (!decoderOf) {
-    throw new Error("strict response validation needs the ResponseValidation.strict layer");
+    throw new Error(`${mode} response validation needs the ResponseValidation.${mode} layer`);
   }
-  return decoderOf(outputAst)(value);
+  return decoderOf(outputAst, mode === "strict")(value);
 };
 
 export const validateResponse = <E>(

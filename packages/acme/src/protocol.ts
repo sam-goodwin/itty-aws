@@ -32,7 +32,11 @@ import { unwrapRedactedDeep } from "@distilled.cloud/core/protocol-rest";
  * RFC 7807 problem documents matched on their `type` URN against the
  * operation's typed error classes; an unmatched URN is `UnknownAcmeError`.
  */
-import { isStrict, validateResponse } from "@distilled.cloud/core/response-validation";
+import {
+  failUnlessLenient,
+  isValidating,
+  validateResponse,
+} from "@distilled.cloud/core/response-validation";
 import { parseRetryAfter, parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 import { getErrorMatchers, httpSymbol, labelSymbol } from "@distilled.cloud/core/trait";
 import * as Effect from "effect/Effect";
@@ -403,14 +407,12 @@ const decode = ({
         isNewNonce || (isCertificate && status < 400)
           ? undefined
           : yield* parseJson(text).pipe(
-              // A non-JSON 2xx fails only in strict mode; lenient returns
+              // A non-JSON 2xx fails unless lenient; lenient returns
               // the text as read.
               Effect.catchTag("AcmeParseError", (error) =>
                 status >= 400
                   ? Effect.succeed(undefined)
-                  : Effect.flatMap(isStrict, (strict) =>
-                      strict ? Effect.fail(error) : Effect.succeed<unknown>(text),
-                    ),
+                  : failUnlessLenient<unknown, typeof error>(error, text),
               ),
             );
       const problem = status >= 400 && isProblem(json) ? json : undefined;
@@ -484,14 +486,17 @@ const decode = ({
         };
       } else if (isObject(json)) {
         body = json;
+        // Only outputs that declare `location` get it; elsewhere strict mode
+        // would reject it as an unmodeled key.
         const location = headers["location"];
-        if (location) body = { ...body, location };
+        if (location && getProps(outputAst).some((p) => p.name === "location"))
+          body = { ...body, location };
       } else {
         // Lenient mode returns a non-object body as read.
-        if (!(yield* isStrict)) return json;
+        if (!(yield* isValidating)) return json;
         return yield* fail(parseError("Expected a JSON object"));
       }
-      // Strict mode (core/response-validation) checks the output schema.
+      // Validating modes (core/response-validation) check the output schema.
       return yield* validateResponse(outputAst, mapKeys(outputAst, body, "decode"), () =>
         parseError("Response does not match the output schema"),
       );

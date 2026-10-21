@@ -2,7 +2,7 @@ import * as API from "@distilled.cloud/core/api";
 import { debugHttp } from "@distilled.cloud/core/debug";
 import { HTTP_STATUS_MAP } from "@distilled.cloud/core/errors";
 import { getAnn } from "@distilled.cloud/core/protocol-http";
-import { failIfStrict, validateResponse } from "@distilled.cloud/core/response-validation";
+import { failUnlessLenient, validateResponse } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 /**
  * ExpoGraphqlProtocol -- hand-written.
@@ -285,7 +285,7 @@ const decode = ({
         return yield* matchError(status, text, headers);
       }
       // Lenient mode returns the body as read.
-      return yield* failIfStrict(
+      return yield* failUnlessLenient(
         new EasParseError({
           body: text,
           cause: "response body is not valid JSON",

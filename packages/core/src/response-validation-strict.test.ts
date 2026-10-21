@@ -4,12 +4,13 @@ import { decoderFor } from "./response-validation-strict.ts";
 import * as L from "./schema-lite-impl.ts";
 
 /** What strict mode accepted before the checker: Effect Schema's decoder on `toEffect`. */
-const effectAccepts = (lite: L.Lite) => {
+const effectAccepts = (lite: L.Lite, exact = false) => {
   const decode = Schema.decodeUnknownExit(L.toEffect(Schema as any, lite.ast) as any);
-  return (u: unknown) => decode(u)._tag === "Success";
+  const options = exact ? ({ onExcessProperty: "error" } as const) : undefined;
+  return (u: unknown) => decode(u, options)._tag === "Success";
 };
-const accepts = (s: { readonly ast: unknown }) => {
-  const decode = decoderFor(s.ast as any);
+const accepts = (s: { readonly ast: unknown }, exact = false) => {
+  const decode = decoderFor(s.ast as any, exact);
   return (u: unknown) => decode(u) === undefined;
 };
 
@@ -21,7 +22,12 @@ const rng = (seed: number) => () => {
 
 const KEYS = ["a", "b", "c", "id", "__proto__", "constructor", "toString"];
 
-const randomSchema = (r: () => number, depth: number): L.Lite => {
+/**
+ * `nonEmpty` gives every struct a member: an empty struct accepts any object
+ * in the checker's exact mode (generated opaque outputs), where Effect's
+ * `onExcessProperty: "error"` rejects its keys.
+ */
+const randomSchema = (r: () => number, depth: number, nonEmpty = false): L.Lite => {
   const pick = <A>(xs: ReadonlyArray<A>): A => xs[Math.floor(r() * xs.length)]!;
   const leaf = (): L.Lite =>
     pick([
@@ -41,15 +47,18 @@ const randomSchema = (r: () => number, depth: number): L.Lite => {
       L.fromNode({ _tag: "Declaration", check: (u) => typeof u === "string" && u.length > 1 }),
     ]);
   if (depth <= 0 || r() < 0.3) return leaf();
-  const sub = () => randomSchema(r, depth - 1);
+  const sub = () => randomSchema(r, depth - 1, nonEmpty);
+  const structFields = () => {
+    const fields: Record<string, L.Lite> = {};
+    for (const k of KEYS) if (r() < 0.35) fields[k] = r() < 0.5 ? L.optional(sub()) : sub();
+    if (nonEmpty && Object.keys(fields).length === 0) fields.a = sub();
+    return fields;
+  };
   switch (Math.floor(r() * 9)) {
-    case 6: {
-      const fields: Record<string, L.Lite> = {};
-      for (const k of KEYS) if (r() < 0.35) fields[k] = r() < 0.5 ? L.optional(sub()) : sub();
+    case 6:
       // Generated open objects always rest on `unknown` (see the typed-rest
       // test for where the checker and Effect differ).
-      return L.StructWithRest(L.Struct(fields), [L.Record(L.String, L.Unknown)]);
-    }
+      return L.StructWithRest(L.Struct(structFields()), [L.Record(L.String, L.Unknown)]);
     case 0:
       return L.Array(sub());
     case 1:
@@ -64,11 +73,8 @@ const randomSchema = (r: () => number, depth: number): L.Lite => {
       const inner = sub();
       return L.suspend(() => inner);
     }
-    default: {
-      const fields: Record<string, L.Lite> = {};
-      for (const k of KEYS) if (r() < 0.35) fields[k] = r() < 0.5 ? L.optional(sub()) : sub();
-      return L.Struct(fields);
-    }
+    default:
+      return L.Struct(structFields());
   }
 };
 
@@ -153,6 +159,49 @@ describe("strict checker", () => {
     // Both outcomes are exercised.
     expect(rejected).toBeGreaterThan(5000);
     expect(compared - rejected).toBeGreaterThan(5000);
+  });
+
+  test("exact mode rejects what Effect rejects with onExcessProperty: error", () => {
+    const r = rng(7);
+    let compared = 0;
+    let rejected = 0;
+    for (let i = 0; i < 1500; i++) {
+      const schema = randomSchema(r, 4, true);
+      const effect = effectAccepts(schema, true);
+      const ours = accepts(schema, true);
+      for (let j = 0; j < 20; j++) {
+        const v = randomValue(r, schema.ast, 0);
+        const expected = effect(v);
+        if (ours(v) !== expected) {
+          throw new Error(
+            `exact mismatch (Effect ${expected ? "accepts" : "rejects"}) for ${JSON.stringify(v)} against ${show(schema.ast)}`,
+          );
+        }
+        compared++;
+        if (!expected) rejected++;
+      }
+    }
+    expect(compared).toBe(30000);
+    expect(rejected).toBeGreaterThan(5000);
+    expect(compared - rejected).toBeGreaterThan(5000);
+  });
+
+  test("exact mode: unmodeled keys fail at their path; open objects and {} accept them", () => {
+    const decode = decoderFor(
+      L.Struct({ items: L.Array(L.Struct({ id: L.String })) }).ast as any,
+      true,
+    );
+    expect(decode({ items: [{ id: "a" }, { id: "b", extra: 1 }] })?.path).toEqual([
+      "items",
+      1,
+      "extra",
+    ]);
+    expect(decode({ items: [] })).toBeUndefined();
+    expect(decoderFor(L.Struct({}).ast as any, true)({ anything: 1 })).toBeUndefined();
+    const open = L.StructWithRest(L.Struct({ id: L.String }), [L.Record(L.String, L.Unknown)]);
+    expect(decoderFor(open.ast as any, true)({ id: "a", title: "x" })).toBeUndefined();
+    // The two modes cache separately.
+    expect(decoderFor(open.ast as any, false)).not.toBe(decoderFor(open.ast as any, true));
   });
 
   test("reports the path and the expected type", () => {

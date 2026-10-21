@@ -1,4 +1,5 @@
 import { InternalServerError, NotFound } from "@distilled.cloud/core/errors";
+import * as ResponseValidation from "@distilled.cloud/core/response-validation";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import * as HttpClient from "effect/http/HttpClient";
@@ -17,6 +18,7 @@ import {
   AcmeMalformed,
   AcmeRateLimited,
   downloadCertificate,
+  getAuthorization,
   getDirectory,
   getOrder,
   newAccount,
@@ -285,6 +287,28 @@ describe("JWS request signing", () => {
     });
     expect(payload).toEqual({ identifiers: [{ type: "dns", value: "example.test" }] });
     expect(await verify(jws, publicOf(ecJwk), "ES256")).toBe(true);
+  });
+
+  test("Location is added only to outputs that model it, so strict mode passes", async () => {
+    const ca = makeCa();
+    const authz = `${ca.urls.order}/authz`;
+    ca.handlers.set(`POST ${authz}`, () =>
+      json(
+        {
+          identifier: { type: "dns", value: "example.test" },
+          status: "pending",
+          challenges: [],
+        },
+        { headers: { Location: authz } },
+      ),
+    );
+    const result = await run(
+      ca,
+      { accountKey: ecKey, accountUrl: ca.urls.account },
+      getAuthorization({ url: authz }).pipe(Effect.provide(ResponseValidation.strict)),
+    );
+    expect(result).not.toHaveProperty("location");
+    expect(result.status).toBe("pending");
   });
 
   test("newAccount embeds the JWK even when an account URL is configured", async () => {

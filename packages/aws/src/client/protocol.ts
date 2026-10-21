@@ -1,4 +1,4 @@
-import { failIfStrict } from "@distilled.cloud/core/response-validation";
+import { failUnlessLenient } from "@distilled.cloud/core/response-validation";
 import * as Effect from "effect/Effect";
 import { ParseError } from "../errors.ts";
 import { readStreamAsText } from "../util/stream.ts";
@@ -113,7 +113,7 @@ export const deserialize = (
   const fromText = (body: string): Effect.Effect<unknown, ParseError> => {
     const result = protocol.deserializeText({ ...response, body });
     return result instanceof Unreadable
-      ? failIfStrict(result.error, result.asRead)
+      ? failUnlessLenient(result.error, result.asRead)
       : Effect.succeed(result);
   };
   const body = response.body;

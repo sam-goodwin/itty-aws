@@ -8,6 +8,12 @@
  * the two on random schemas and values). Each AST node compiles once to a
  * closure, so a check walks the value only.
  *
+ * Two modes: `additionalProperties` lets keys an object does not model
+ * through (Effect's default), `strict` (`exact`) rejects them (Effect's
+ * `onExcessProperty: "error"`). In both, an index signature covers only the
+ * keys the object does not declare (OpenAPI `additionalProperties`), and an
+ * empty struct accepts any object (generated code's opaque output).
+ *
  * Hand-written protocols may pass real Effect ASTs. Their structure is
  * checked the same way; refinement `checks` run, but a real `Declaration`
  * with type parameters and `TemplateLiteral` contents are not checked.
@@ -68,7 +74,7 @@ const MISSING: unique symbol = Symbol("missing");
  * The node compiler, built on the first strict check: importing this module
  * (every REST program does, through the protocol) allocates almost nothing.
  */
-const makeCompile = (): ((n: Node) => Check) => {
+const makeCompile = (exact: boolean): ((n: Node) => Check) => {
   const fail = (expected: string, actual: unknown): Fail => ({ path: [], expected, actual });
   const ok: Check = () => undefined;
   const typeOf =
@@ -254,6 +260,8 @@ const makeCompile = (): ((n: Node) => Check) => {
     );
     const known = new Set(props.map((p) => p[0]));
     // Effect's empty struct is TypeScript's `{}`: any value but null and undefined.
+    // Exact mode leaves it open too: generated code emits `{}` for outputs
+    // it does not model.
     if (props.length === 0 && index.length === 0) {
       return (u) => (u === null || u === undefined ? fail("{}", u) : undefined);
     }
@@ -269,13 +277,18 @@ const makeCompile = (): ((n: Node) => Check) => {
         const f = check(o[name]);
         if (f) return at(f, name);
       }
-      if (index.length) {
+      if (index.length || exact) {
         for (const key of Object.keys(o)) {
           if (known.has(key)) continue;
+          let covered = false;
           for (const [param, check] of index) {
             if (param(key) !== undefined) continue;
+            covered = true;
             const f = check(o[key]);
             if (f) return at(f, key);
+          }
+          if (exact && !covered) {
+            return at(fail("no value (the schema does not model this key)", o[key]), key);
           }
         }
       }
@@ -286,12 +299,20 @@ const makeCompile = (): ((n: Node) => Check) => {
   return compile;
 };
 let compileNode: ((n: Node) => Check) | undefined;
+let compileExact: ((n: Node) => Check) | undefined;
 
-/** The checker for an output AST: compiled once per node, then reused. */
-export const decoderFor = (ast: AST.AST): Decode => {
+/**
+ * The checker for an output AST: compiled once per node and mode, then
+ * reused. `exact` also rejects keys an object does not model (the `strict`
+ * mode); without it they pass (`additionalProperties`).
+ */
+export const decoderFor = (ast: AST.AST, exact = false): Decode => {
+  const decoders = exact ? exactDecoders : openDecoders;
   let decode = decoders.get(ast);
   if (decode === undefined) {
-    const check = (compileNode ??= makeCompile())(ast as unknown as Node);
+    const check = exact
+      ? (compileExact ??= makeCompile(true))(ast as unknown as Node)
+      : (compileNode ??= makeCompile(false))(ast as unknown as Node);
     decode = (input) => {
       const f = check(input);
       return f === undefined
@@ -302,4 +323,5 @@ export const decoderFor = (ast: AST.AST): Decode => {
   }
   return decode;
 };
-const decoders = /*@__PURE__*/ new WeakMap<AST.AST, Decode>();
+const openDecoders = /*@__PURE__*/ new WeakMap<AST.AST, Decode>();
+const exactDecoders = /*@__PURE__*/ new WeakMap<AST.AST, Decode>();
