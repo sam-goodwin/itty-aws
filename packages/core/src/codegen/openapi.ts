@@ -1436,7 +1436,9 @@ const convertOnce = (spec: unknown, options: OpenApiConvertOptions): SmithyModel
         bodySchema = bodyParam?.schema;
         bodyRequired = bodyParam?.required === true;
       } else if (op.requestBody) {
-        const rb = op.requestBody.$ref ? resolvePointer(doc, op.requestBody.$ref) : op.requestBody;
+        // A components/requestBodies entry can itself be a $ref to another
+        // (1Password Events: AuditEventsRequest → CursorRequest).
+        const rb = deref(ctx, op.requestBody);
         bodyRequired = rb?.required === true;
         const content = rb?.content ?? {};
         if (content["application/json"]) {
