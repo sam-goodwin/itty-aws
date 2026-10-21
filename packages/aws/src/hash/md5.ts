@@ -2,7 +2,7 @@
  * MD5 checksum implementation using Node.js crypto module.
  */
 
-import * as crypto from "crypto";
+import * as crypto from "node:crypto";
 import type { Checksum } from "./checksum.ts";
 
 class NodeMd5 implements Checksum {

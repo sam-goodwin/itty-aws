@@ -21,6 +21,9 @@
       "path": "./packages/cloudflare/tsconfig.scripts.json"
     },
     {
+      "path": "./packages/aws4signer/tsconfig.json"
+    },
+    {
       "path": "./packages/aws/tsconfig.json"
     },
     {
