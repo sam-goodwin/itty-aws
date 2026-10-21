@@ -416,7 +416,7 @@ say so in the PR when this environment is not.
 
 ```sh
 pnpm specs:check     # mirror manifest ↔ spec-repos/ ↔ .gitmodules ↔ packages/
-pnpm typecheck       # tsc -b
+pnpm typecheck       # tsrs -b
 pnpm format          # generated output is committed formatted
 ```
 
@@ -441,7 +441,7 @@ Body, in order:
    `CredentialsFromEnv`, `<Pkg>Protocol`, a real call, `Effect.runPromise`.
    A PR whose only snippet is `listX({})` is incomplete; paste the README
    quick start.
-4. `Checks: pnpm specs:check` green, `tsc -b packages/<pkg> --noCheck false`
+4. `Checks: pnpm specs:check` green, `tsrs -b packages/<pkg> --noCheck false`
    green, `DISTILLED_SPECS_LOCAL=1 pnpm generate <pkg>` reproduces output,
    and the error-construction check from step 4 finds both classes.
 
