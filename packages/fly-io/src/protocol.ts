@@ -16,10 +16,14 @@ import {
   unwrapRedactedDeep,
   wrapSensitive,
 } from "@distilled.cloud/core/protocol-rest";
-import { failIfStrict, validateResponse } from "@distilled.cloud/core/response-validation";
+import {
+  failIfStrict,
+  validateResponse,
+  withholdActual,
+} from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 /**
- * Fly.io protocols — Machines REST, UI-EX REST (MPG), GraphQL add-ons, and
+ * Fly.io protocols -- Machines REST, UI-EX REST (MPG), GraphQL add-ons, and
  * Sprites REST.
  *
  * Machines (`FlyIoProtocol`) is a plain bearer-token JSON API at
@@ -117,7 +121,7 @@ const spritesErrorEnvelope = (body: unknown) => {
   return { message, code };
 };
 
-const resolveFlyCreds = Effect.gen(function* () {
+const resolveFlyCreds = /*@__PURE__*/ Effect.gen(function* () {
   const resolve = yield* Credentials;
   return yield* resolve;
 });
@@ -128,11 +132,10 @@ const resolveFlyCreds = Effect.gen(function* () {
  * GetSecret in the same process; this service only changes headers:
  * omit `Authorization`, send `Connection: close`.
  */
-export class MachineIdentity extends Context.Service<MachineIdentity, true>()(
-  "FlyIoMachineIdentity",
-) {}
+export class MachineIdentity
+  extends /*@__PURE__*/ Context.Service<MachineIdentity, true>()("FlyIoMachineIdentity") {}
 
-const FlyIoProtocolRest: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+const FlyIoProtocolRest: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   credentials: resolveFlyCreds,
   baseUrl: (creds) => creds.apiBaseUrl,
   headers: (creds) => ({
@@ -143,9 +146,9 @@ const FlyIoProtocolRest: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
   parseError: ({ body, cause }) => new FlyIoParseError({ body, cause }),
 });
 
-export const FlyIoProtocol: Layer.Layer<API.Protocol> = Layer.effect(
+export const FlyIoProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.effect(
   API.Protocol,
-  Effect.gen(function* () {
+  /*@__PURE__*/ Effect.gen(function* () {
     const rest = yield* API.Protocol;
     return API.Protocol.of({
       encode: (args) =>
@@ -161,10 +164,10 @@ export const FlyIoProtocol: Layer.Layer<API.Protocol> = Layer.effect(
       decode: rest.decode,
     });
   }),
-).pipe(Layer.provide(FlyIoProtocolRest));
+).pipe(/*@__PURE__*/ Layer.provide(FlyIoProtocolRest));
 
 /** MPG UI-EX REST at `https://api.fly.io` with the Machines bearer token. */
-export const FlyApiProtocol: Layer.Layer<API.Protocol> = makeRestProtocol<Config>({
+export const FlyApiProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ makeRestProtocol<Config>({
   credentials: resolveFlyCreds,
   baseUrl: () => DEFAULT_FLY_API_BASE_URL,
   headers: (creds) => ({
@@ -414,8 +417,11 @@ const mintOnce = (fly: Config) =>
   });
 
 // Keyed by the Fly token itself: `Redacted` hashes and compares by value.
-const mintedTokens = MutableHashMap.empty<Redacted.Redacted<string>, Redacted.Redacted<string>>();
-const mintInFlight = MutableHashMap.empty<
+const mintedTokens = /*@__PURE__*/ MutableHashMap.empty<
+  Redacted.Redacted<string>,
+  Redacted.Redacted<string>
+>();
+const mintInFlight = /*@__PURE__*/ MutableHashMap.empty<
   Redacted.Redacted<string>,
   Deferred.Deferred<Redacted.Redacted<string>, Effect.Error<ReturnType<typeof mintOnce>>>
 >();
@@ -571,15 +577,16 @@ const decodeSpritesResponse = ({
     const mapped = yield* validateResponse(
       outputAst,
       mapKeys(outputAst, body, "decode"),
-      (cause) => new FlyIoParseError({ body: reported, cause }),
+      (cause) =>
+        new FlyIoParseError({ body: reported, cause: sensitive ? withholdActual(cause) : cause }),
     ).pipe(Effect.catch(fail));
     return wrapSensitive(outputAst, mapped);
   });
 
 /** Sprites REST at `https://api.sprites.dev/v1`, minted from `FLY_API_TOKEN`. */
-export const SpritesProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const SpritesProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     encode: (args) =>
       encodeSpritesRequest(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode: (args) => decodeSpritesResponse(args) as Effect.Effect<unknown>,
@@ -587,25 +594,25 @@ export const SpritesProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
 );
 
 // =============================================================================
-// GraphQL add-ons (Tigris, Redis) — POST https://api.fly.io/graphql
+// GraphQL add-ons (Tigris, Redis) -- POST https://api.fly.io/graphql
 // =============================================================================
 
-const GraphQLError = Schema.Struct({
+const GraphQLError = /*@__PURE__*/ Schema.Struct({
   message: Schema.String,
-  path: Schema.optional(Schema.Array(Schema.Unknown)),
-  extensions: Schema.optional(
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
+  path: /*@__PURE__*/ Schema.optional(/*@__PURE__*/ Schema.Array(Schema.Unknown)),
+  extensions: /*@__PURE__*/ Schema.optional(
+    /*@__PURE__*/ Schema.Struct({
+      code: /*@__PURE__*/ Schema.optional(Schema.String),
     }),
   ),
 });
 
-const GraphQLEnvelope = Schema.Struct({
-  data: Schema.optional(Schema.NullOr(Schema.Unknown)),
-  errors: Schema.optional(Schema.Array(GraphQLError)),
+const GraphQLEnvelope = /*@__PURE__*/ Schema.Struct({
+  data: /*@__PURE__*/ Schema.optional(/*@__PURE__*/ Schema.NullOr(Schema.Unknown)),
+  errors: /*@__PURE__*/ Schema.optional(/*@__PURE__*/ Schema.Array(GraphQLError)),
 });
 
-const decodeEnvelope = Schema.decodeUnknownOption(GraphQLEnvelope);
+const decodeEnvelope = /*@__PURE__*/ Schema.decodeUnknownOption(GraphQLEnvelope);
 
 const matchGraphqlError = (
   status: number,
@@ -774,13 +781,17 @@ const graphqlDecode = ({
     return yield* validateResponse(
       outputAst,
       payload === undefined ? null : payload,
-      (cause) => new FlyIoParseError({ body: sensitive ? "[REDACTED]" : json, cause }),
+      (cause) =>
+        new FlyIoParseError({
+          body: sensitive ? "[REDACTED]" : json,
+          cause: sensitive ? withholdActual(cause) : cause,
+        }),
     ).pipe(Effect.catch(fail));
   });
 
-export const FlyGraphqlProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+export const FlyGraphqlProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
   API.Protocol,
-  API.Protocol.of({
+  /*@__PURE__*/ API.Protocol.of({
     encode: (args) => graphqlEncode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
     decode: graphqlDecode,
   }),
