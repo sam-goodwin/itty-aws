@@ -58,7 +58,7 @@ import * as Redacted from "effect/Redacted";
 import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
 import * as Stream from "effect/Stream";
-import { unwrapRedactedDeep } from "./protocol-rest.ts";
+import { unwrapRedactedDeep } from "./plain-values.ts";
 
 export const QuerySymbol = /*@__PURE__*/ Symbol.for("@distilled.cloud/graphql/Query");
 const inspect = /*@__PURE__*/ Symbol.for("nodejs.util.inspect.custom");
