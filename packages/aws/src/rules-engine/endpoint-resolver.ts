@@ -181,16 +181,8 @@ export const makeEndpointResolver = (operation: Operation) => {
           headers: result.endpoint.headers,
         };
       }
-      let hostname: string | undefined;
-      let pathname = "";
-      try {
-        const url = new URL(endpoint.url);
-        hostname = url.hostname;
-        pathname = url.pathname;
-      } catch {
-        hostname = undefined;
-      }
-      resolved = { endpoint, hostname, pathname };
+      const url = URL.parse(endpoint.url);
+      resolved = { endpoint, hostname: url?.hostname, pathname: url?.pathname ?? "" };
       if (key !== undefined) {
         if (cache.size >= 64) cache.clear();
         cache.set(key, resolved);
@@ -264,37 +256,30 @@ function adjustRequestPath(
   contextParamMappings: Map<string, ContextParamInfo>,
   input: Record<string, unknown>,
 ): Request {
-  try {
-    // Check each context param that is also an HTTP label
-    for (const [propName, info] of contextParamMappings) {
-      if (!info.isHttpLabel) continue;
+  // Check each context param that is also an HTTP label
+  for (const [propName, info] of contextParamMappings) {
+    if (!info.isHttpLabel) continue;
 
-      const value = input[propName];
-      if (typeof value !== "string") continue;
+    const value = input[propName];
+    if (typeof value !== "string") continue;
 
-      // The HTTP label would have been serialized as "/{value}" in the path
-      const pathPrefix = `/${encodeLabel(value)}`;
+    // The HTTP label would have been serialized as "/{value}" in the path
+    const pathPrefix = `/${encodeLabel(value)}`;
 
-      // The endpoint already carries the value either in the hostname
-      // (virtual-hosted, e.g. "mybucket.s3.us-east-1.amazonaws.com") or at
-      // the end of its path (path-style, which the rules pick for names that
-      // cannot be virtual-hosted, e.g. "s3.us-east-1.amazonaws.com/my.bucket").
-      if (
-        hostname.startsWith(`${value}.`) ||
-        endpointPath.replace(/\/$/, "").endsWith(pathPrefix)
-      ) {
-        if (request.path.startsWith(pathPrefix)) {
-          let adjustedPath = request.path.slice(pathPrefix.length);
-          // Normalize empty path
-          if (adjustedPath === "" || adjustedPath === "/") {
-            adjustedPath = "";
-          }
-          return { ...request, path: adjustedPath };
+    // The endpoint already carries the value either in the hostname
+    // (virtual-hosted, e.g. "mybucket.s3.us-east-1.amazonaws.com") or at
+    // the end of its path (path-style, which the rules pick for names that
+    // cannot be virtual-hosted, e.g. "s3.us-east-1.amazonaws.com/my.bucket").
+    if (hostname.startsWith(`${value}.`) || endpointPath.replace(/\/$/, "").endsWith(pathPrefix)) {
+      if (request.path.startsWith(pathPrefix)) {
+        let adjustedPath = request.path.slice(pathPrefix.length);
+        // Normalize empty path
+        if (adjustedPath === "" || adjustedPath === "/") {
+          adjustedPath = "";
         }
+        return { ...request, path: adjustedPath };
       }
     }
-  } catch {
-    // Encoding the label failed, return original request
   }
 
   return request;
