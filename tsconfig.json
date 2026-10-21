@@ -21,6 +21,9 @@
       "path": "./packages/cloudflare/tsconfig.scripts.json"
     },
     {
+      "path": "./packages/aws4signer/tsconfig.json"
+    },
+    {
       "path": "./packages/aws/tsconfig.json"
     },
     {
@@ -85,6 +88,12 @@
     },
     {
       "path": "./packages/huggingface/tsconfig.scripts.json"
+    },
+    {
+      "path": "./packages/iceberg/tsconfig.json"
+    },
+    {
+      "path": "./packages/iceberg/tsconfig.scripts.json"
     },
     {
       "path": "./packages/kubernetes/tsconfig.json"
@@ -511,6 +520,12 @@
     },
     {
       "path": "./packages/boat-dev/tsconfig.scripts.json"
+    },
+    {
+      "path": "./packages/notion/tsconfig.json"
+    },
+    {
+      "path": "./packages/notion/tsconfig.scripts.json"
     }
   ]
 }

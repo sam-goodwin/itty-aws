@@ -53,14 +53,15 @@ enforces it.
 ## Everyday commands
 
 ```sh
-pnpm typecheck              # tsc -b — fast, does NOT check generated code (see below)
-pnpm typecheck:ci           # tsc -b --noCheck false — what CI runs
+pnpm typecheck              # tsrs -b — fast, does NOT check generated code (see below)
+pnpm typecheck:ci           # tsrs -b --noCheck false — what CI runs
 pnpm --filter "./stacks/*" run typecheck
 pnpm specs:check            # spec-mirror coherence; also a CI gate
 pnpm format                 # oxfmt, not prettier
 pnpm lint                   # oxlint
 pnpm generate [<pkg>…]      # convert + generate + format; all packages if no args
 pnpm patches:audit <pkg>    # which of packages/<pkg>/patches/ the spec no longer needs
+pnpm patches:names <pkg>    # final ← upstream shape ids (patches use upstream ids)
 ```
 
 Package manager is pnpm 12 (`packageManager` pins it), Node 24
@@ -68,7 +69,7 @@ Package manager is pnpm 12 (`packageManager` pins it), Node 24
 `packages/*/scripts/` directly (native TypeScript type stripping). A script
 that imports a workspace package (`@distilled.cloud/*`) runs with
 `node --conditions=bun`, which resolves it to `src/*.ts` through the `bun`
-export condition; without the flag Node picks the tsc-built `lib/`. Keep the
+export condition; without the flag Node picks the tsrs-built `lib/`. Keep the
 flag off scripts that don't need it and out of workspace-wide `NODE_OPTIONS`:
 third-party packages (srvx, h3, alchemy, …) ship Bun-only builds under the
 same condition. Tests use vitest: `pnpm vitest run
@@ -76,18 +77,25 @@ same condition. Tests use vitest: `pnpm vitest run
 
 ## Things that will surprise you
 
-- **`tsconfig.base.json` sets `noCheck: true`.** Day-to-day `tsc -b` emits the
+- **`tsconfig.base.json` sets `noCheck: true`.** Day-to-day `tsrs -b` emits the
   generated SDKs without checking them, because checking 20 generated SDKs
   costs minutes and gigabytes. If you changed a generator, run
   `pnpm typecheck:ci` — that is the gate that catches generator bugs.
 - **Never diff a regeneration before formatting.** Generated output is
   committed formatted; `pnpm generate` formats at the end for this reason. Diff
   before that and every file looks changed.
-- **Patch the spec, not the generated TypeScript.** Edits under
+- **Every successful generate stamps `distilled.generatedAt` and
+  `distilled.specUpdatedAt`** (UTC `YYYY-MM-DD`) in the package's
+  `package.json`: when the SDK was generated, and when its spec last changed
+  in the mirror. Commit them with the regenerated code. The spec date needs
+  the mirror checked out; the generator deepens the shallow submodule (no
+  file content) to find it.
+- **Patch the model, not the generated TypeScript.** Edits under
   `packages/*/src/services/` are erased by the next `pnpm generate`. Patches
-  live in `packages/<pkg>/patches/` as RFC-6902 `*.patch.json`.
+  live in `packages/<pkg>/patches/` as RFC-6902 ops on the converted Smithy
+  model, under the names the spec gives (`pnpm patches:names <pkg>`).
 - **`stacks/*` are workspace members but are not in the root tsconfig's
-  project references,** so `tsc -b` never sees them. They have their own
+  project references,** so `tsrs -b` never sees them. They have their own
   `typecheck` scripts and their own CI job.
 - **Other agents may share this checkout.** `git status` can show hundreds of
   files you did not touch. Stage explicit paths — never `git add -A`.

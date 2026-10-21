@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/whop",
-  "version": "1.0.0-rc.13",
+  "version": "1.0.0-rc.15",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -19,7 +19,9 @@
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
-      "default": "./lib/index.js"
+      "module": "./lib/index.full.js",
+      "module-sync": "./lib/index.js",
+      "default": "./lib/index.full.js"
     },
     "./Credentials": {
       "types": "./lib/credentials.d.ts",
@@ -61,7 +63,9 @@
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "module": "./lib/services.full/*.js",
+      "module-sync": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     },
     "./ApiVersion": {
       "types": "./lib/api-version.d.ts",
@@ -71,12 +75,10 @@
     }
   },
   "scripts": {
-    "build": "tsc -b",
+    "build": "tsrs -b",
     "convert": "node --conditions=bun scripts/convert.ts",
     "generate": "node --conditions=bun scripts/generate.ts",
-    "typecheck": "tsc -p tsconfig.json",
-    "spec:download": "node scripts/download-spec.ts",
-    "docs:download": "node scripts/download-api-docs.ts"
+    "typecheck": "tsrs -p tsconfig.json"
   },
   "dependencies": {
     "@distilled.cloud/core": "workspace:*"
@@ -87,5 +89,9 @@
   },
   "peerDependencies": {
     "effect": "catalog:"
+  },
+  "distilled": {
+    "generatedAt": "2026-10-09",
+    "specUpdatedAt": "2026-09-28"
   }
 }

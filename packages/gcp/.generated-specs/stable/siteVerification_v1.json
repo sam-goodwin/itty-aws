@@ -25,6 +25,40 @@
         }
       }
     },
+    "com.gcp.siteVerification_v1#SiteVerificationWebResourceGettokenRequest": {
+      "type": "structure",
+      "members": {
+        "verificationMethod": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used."
+          }
+        },
+        "site": {
+          "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceGettokenRequestSite",
+          "traits": {
+            "smithy.api#documentation": "The site for which a verification token will be generated."
+          }
+        }
+      }
+    },
+    "com.gcp.siteVerification_v1#SiteVerificationWebResourceGettokenRequestSite": {
+      "type": "structure",
+      "members": {
+        "identifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name)."
+          }
+        }
+      }
+    },
     "com.gcp.siteVerification_v1#SiteVerificationWebResourceResource": {
       "type": "structure",
       "members": {
@@ -57,16 +91,16 @@
     "com.gcp.siteVerification_v1#SiteVerificationWebResourceResourceSite": {
       "type": "structure",
       "members": {
-        "identifier": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."
-          }
-        },
         "type": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The site type. Can be SITE or INET_DOMAIN (domain name)."
+          }
+        },
+        "identifier": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."
           }
         }
       }
@@ -88,51 +122,9 @@
         "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceResource"
       }
     },
-    "com.gcp.siteVerification_v1#SiteVerificationWebResourceGettokenRequest": {
+    "com.gcp.siteVerification_v1#ListWebResourceRequest": {
       "type": "structure",
-      "members": {
-        "site": {
-          "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceGettokenRequestSite",
-          "traits": {
-            "smithy.api#documentation": "The site for which a verification token will be generated."
-          }
-        },
-        "verificationMethod": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The verification method that will be used to verify this site. For sites, 'FILE' or 'META' methods may be used. For domains, only 'DNS' may be used."
-          }
-        }
-      }
-    },
-    "com.gcp.siteVerification_v1#SiteVerificationWebResourceGettokenRequestSite": {
-      "type": "structure",
-      "members": {
-        "identifier": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The site identifier. If the type is set to SITE, the identifier is a URL. If the type is set to INET_DOMAIN, the site identifier is a domain name."
-          }
-        },
-        "type": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The type of resource to be verified. Can be SITE or INET_DOMAIN (domain name)."
-          }
-        }
-      }
-    },
-    "com.gcp.siteVerification_v1#GetTokenWebResourceRequest": {
-      "type": "structure",
-      "members": {
-        "body": {
-          "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceGettokenRequest",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
+      "members": {}
     },
     "com.gcp.siteVerification_v1#NotFound": {
       "type": "structure",
@@ -160,6 +152,53 @@
         ]
       }
     },
+    "com.gcp.siteVerification_v1#ListWebResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.siteVerification_v1#ListWebResourceRequest"
+      },
+      "output": {
+        "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceListResponse"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.siteVerification_v1#NotFound"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#Forbidden"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#InsufficientAuthenticationScopes"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "webResource"
+        },
+        "smithy.api#documentation": "Get the list of your verified websites and domains."
+      }
+    },
+    "com.gcp.siteVerification_v1#UpdateWebResourceRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of a verified site or domain.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceResource",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
     "com.gcp.siteVerification_v1#BadRequest": {
       "type": "structure",
       "members": {},
@@ -184,6 +223,51 @@
             "status": 409
           }
         ]
+      }
+    },
+    "com.gcp.siteVerification_v1#UpdateWebResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.siteVerification_v1#UpdateWebResourceRequest"
+      },
+      "output": {
+        "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceResource"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.siteVerification_v1#NotFound"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#Forbidden"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#BadRequest"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#Conflict"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#InsufficientAuthenticationScopes"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "webResource/{id}"
+        },
+        "smithy.api#documentation": "Modify the list of owners for your website or domain."
+      }
+    },
+    "com.gcp.siteVerification_v1#GetTokenWebResourceRequest": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceGettokenRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
       }
     },
     "com.gcp.siteVerification_v1#GetTokenWebResource": {
@@ -312,133 +396,6 @@
         "smithy.api#documentation": "Get the most current data for a website or domain."
       }
     },
-    "com.gcp.siteVerification_v1#DeleteWebResourceRequest": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The id of a verified site or domain.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      }
-    },
-    "com.gcp.siteVerification_v1#DeleteWebResource": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.siteVerification_v1#DeleteWebResourceRequest"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.siteVerification_v1#NotFound"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#Forbidden"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#BadRequest"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#Conflict"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#InsufficientAuthenticationScopes"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "DELETE",
-          "uri": "webResource/{id}"
-        },
-        "smithy.api#documentation": "Relinquish ownership of a website or domain."
-      }
-    },
-    "com.gcp.siteVerification_v1#UpdateWebResourceRequest": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The id of a verified site or domain.",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceResource",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.siteVerification_v1#UpdateWebResource": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.siteVerification_v1#UpdateWebResourceRequest"
-      },
-      "output": {
-        "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceResource"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.siteVerification_v1#NotFound"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#Forbidden"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#BadRequest"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#Conflict"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#InsufficientAuthenticationScopes"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "PUT",
-          "uri": "webResource/{id}"
-        },
-        "smithy.api#documentation": "Modify the list of owners for your website or domain."
-      }
-    },
-    "com.gcp.siteVerification_v1#ListWebResourceRequest": {
-      "type": "structure",
-      "members": {}
-    },
-    "com.gcp.siteVerification_v1#ListWebResource": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.siteVerification_v1#ListWebResourceRequest"
-      },
-      "output": {
-        "target": "com.gcp.siteVerification_v1#SiteVerificationWebResourceListResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.siteVerification_v1#NotFound"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#Forbidden"
-        },
-        {
-          "target": "com.gcp.siteVerification_v1#InsufficientAuthenticationScopes"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "webResource"
-        },
-        "smithy.api#documentation": "Get the list of your verified websites and domains."
-      }
-    },
     "com.gcp.siteVerification_v1#PatchWebResourceRequest": {
       "type": "structure",
       "members": {
@@ -490,6 +447,49 @@
           "uri": "webResource/{id}"
         },
         "smithy.api#documentation": "Modify the list of owners for your website or domain. This method supports patch semantics."
+      }
+    },
+    "com.gcp.siteVerification_v1#DeleteWebResourceRequest": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The id of a verified site or domain.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.siteVerification_v1#DeleteWebResource": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.siteVerification_v1#DeleteWebResourceRequest"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.siteVerification_v1#NotFound"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#Forbidden"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#BadRequest"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#Conflict"
+        },
+        {
+          "target": "com.gcp.siteVerification_v1#InsufficientAuthenticationScopes"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "webResource/{id}"
+        },
+        "smithy.api#documentation": "Relinquish ownership of a website or domain."
       }
     },
     "com.gcp.siteVerification_v1#InsufficientAuthenticationScopes": {

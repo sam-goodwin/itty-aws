@@ -8,598 +8,39 @@
     "distilled.finalized": true
   },
   "shapes": {
-    "com.gcp.paymentsresellersubscription_v1#YoutubePayload": {
-      "type": "structure",
-      "members": {
-        "partnerPlanType": {
-          "target": "com.gcp.paymentsresellersubscription_v1#YoutubePayloadPartnerPlanTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Optional. Specifies the plan type offered to the end user by the partner."
-          }
-        },
-        "accessEndTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The access expiration time for this line item."
-          }
-        },
-        "partnerEligibilityIds": {
-          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
-          "traits": {
-            "smithy.api#documentation": "The list of eligibility_ids which are applicable for the line item."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Payload specific to Youtube products."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#YoutubePayloadPartnerPlanTypeEnum": {
-      "type": "enum",
-      "members": {
-        "PARTNER_PLAN_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PARTNER_PLAN_TYPE_UNSPECIFIED"
-          }
-        },
-        "PARTNER_PLAN_TYPE_STANDALONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PARTNER_PLAN_TYPE_STANDALONE"
-          }
-        },
-        "PARTNER_PLAN_TYPE_HARD_BUNDLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PARTNER_PLAN_TYPE_HARD_BUNDLE"
-          }
-        },
-        "PARTNER_PLAN_TYPE_SOFT_BUNDLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PARTNER_PLAN_TYPE_SOFT_BUNDLE"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#StringList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItem": {
-      "type": "structure",
-      "members": {
-        "state": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemStateEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The state of the line item."
-          }
-        },
-        "product": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Product resource name that identifies the product associated with this line item. The format is 'partners/{partner_id}/products/{product_id}'."
-          }
-        },
-        "lineItemIndex": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Output only. A unique index of the subscription line item."
-          }
-        },
-        "lineItemFreeTrialEndTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The free trial end time will be populated after the line item is successfully processed. End time of the line item free trial period, in ISO 8061 format. For example, \"2019-08-31T17:28:54.564Z\". It will be set the same as createTime if no free trial promotion is specified."
-          }
-        },
-        "oneTimeRecurrenceDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemOneTimeRecurrenceDetails",
-          "traits": {
-            "smithy.api#documentation": "Output only. Details only set for a ONE_TIME recurrence line item."
-          }
-        },
-        "recurrenceType": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemRecurrenceTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The recurrence type of the line item."
-          }
-        },
-        "finiteBillingCycleDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#FiniteBillingCycleDetails",
-          "traits": {
-            "smithy.api#documentation": "Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be charged indefinitely. Used only with LINE_ITEM_RECURRENCE_TYPE_PERIODIC."
-          }
-        },
-        "description": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. Description of this line item."
-          }
-        },
-        "lineItemPromotionSpecs": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpecList",
-          "traits": {
-            "smithy.api#documentation": "Optional. The promotions applied on the line item. It can be: - an introductory pricing promotion. - a free trial promotion. This feature is not enabled. If used, the request will be rejected. When used as input in Create or Provision API, specify its resource name only."
-          }
-        },
-        "bundleDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetails",
-          "traits": {
-            "smithy.api#documentation": "Output only. The bundle details for the line item. Only populated if the line item corresponds to a hard bundle."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier. Resource name of the line item. Format: partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}"
-          }
-        },
-        "amount": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Amount",
-          "traits": {
-            "smithy.api#documentation": "Output only. The price of the product/service in this line item. The amount could be the wholesale price, or it can include a cost of sale based on the contract."
-          }
-        },
-        "productPayload": {
-          "target": "com.gcp.paymentsresellersubscription_v1#ProductPayload",
-          "traits": {
-            "smithy.api#documentation": "Optional. Product specific payload for this line item."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Individual line item definition of a subscription."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemStateEnum": {
-      "type": "enum",
-      "members": {
-        "LINE_ITEM_STATE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_STATE_UNSPECIFIED"
-          }
-        },
-        "LINE_ITEM_STATE_ACTIVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_STATE_ACTIVE"
-          }
-        },
-        "LINE_ITEM_STATE_INACTIVE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_STATE_INACTIVE"
-          }
-        },
-        "LINE_ITEM_STATE_NEW": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_STATE_NEW"
-          }
-        },
-        "LINE_ITEM_STATE_ACTIVATING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_STATE_ACTIVATING"
-          }
-        },
-        "LINE_ITEM_STATE_DEACTIVATING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_STATE_DEACTIVATING"
-          }
-        },
-        "LINE_ITEM_STATE_WAITING_TO_DEACTIVATE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_STATE_WAITING_TO_DEACTIVATE"
-          }
-        },
-        "LINE_ITEM_STATE_OFF_CYCLE_CHARGING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_STATE_OFF_CYCLE_CHARGING"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemRecurrenceTypeEnum": {
-      "type": "enum",
-      "members": {
-        "LINE_ITEM_RECURRENCE_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_RECURRENCE_TYPE_UNSPECIFIED"
-          }
-        },
-        "LINE_ITEM_RECURRENCE_TYPE_PERIODIC": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_RECURRENCE_TYPE_PERIODIC"
-          }
-        },
-        "LINE_ITEM_RECURRENCE_TYPE_ONE_TIME": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "LINE_ITEM_RECURRENCE_TYPE_ONE_TIME"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpecList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpec"
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#Location": {
-      "type": "structure",
-      "members": {
-        "postalCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The postal code this location refers to. Ex. \"94043\""
-          }
-        },
-        "regionCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "2-letter ISO region code for current content region. Ex. “US” Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Describes a location of an end user."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsBundleElement": {
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetailsBundleElementDetails": {
       "type": "structure",
       "members": {
         "product": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. Output only. Product resource name that identifies the bundle element. The format is 'partners/{partner_id}/products/{product_id}'."
+            "smithy.api#documentation": "Output only. Product resource name that identifies the bundle element. The format is 'partners/{partner_id}/products/{product_id}'."
           }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The individual product that is included in the bundle."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#UndoCancelSubscriptionRequest": {
-      "type": "structure",
-      "members": {},
-      "traits": {
-        "smithy.api#documentation": "Request to revoke a cancellation request."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionIntent": {
-      "type": "structure",
-      "members": {
-        "name": {
+        },
+        "userAccountLinkedTime": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The name of the subscription resource that is entitled to the current end user. It is in the format of \"partners/{partner_id}/subscriptions/{subscriptionId}\"."
+            "smithy.api#documentation": "Output only. The time when this product is linked to an end user."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Intent for entitling the previously provisioned subscription to an end user."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#Promotion": {
-      "type": "structure",
-      "members": {
-        "applicableProducts": {
-          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
-          "traits": {
-            "smithy.api#documentation": "Output only. The product ids this promotion can be applied to."
-          }
-        },
-        "promotionType": {
-          "target": "com.gcp.paymentsresellersubscription_v1#PromotionPromotionTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. Specifies the type of the promotion."
-          }
-        },
-        "startTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Specifies the start time (inclusive) of the period that the promotion is available in."
-          }
-        },
-        "freeTrialDuration": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
-          "traits": {
-            "smithy.api#documentation": "Optional. Specifies the duration of the free trial of the subscription when promotion_type is PROMOTION_TYPE_FREE_TRIAL"
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier. Response only. Resource name of the subscription promotion. It will have the format of \"partners/{partner_id}/promotion/{promotion_id}\""
-          }
-        },
-        "endTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Specifies the end time (exclusive) of the period that the promotion is available in. If unset, the promotion is available indefinitely."
-          }
-        },
-        "titles": {
-          "target": "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedTextList",
-          "traits": {
-            "smithy.api#documentation": "Output only. Localized human readable name of the promotion."
-          }
-        },
-        "introductoryPricingDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetails",
-          "traits": {
-            "smithy.api#documentation": "Optional. Specifies the introductory pricing details when the promotion_type is PROMOTION_TYPE_INTRODUCTORY_PRICING."
-          }
-        },
-        "regionCodes": {
-          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
-          "traits": {
-            "smithy.api#documentation": "Output only. 2-letter ISO region code where the promotion is available in. Ex. \"US\" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A Promotion resource that defines a promotion for a subscription that can be resold."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#PromotionPromotionTypeEnum": {
-      "type": "enum",
-      "members": {
-        "PROMOTION_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PROMOTION_TYPE_UNSPECIFIED"
-          }
-        },
-        "PROMOTION_TYPE_FREE_TRIAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PROMOTION_TYPE_FREE_TRIAL"
-          }
-        },
-        "PROMOTION_TYPE_INTRODUCTORY_PRICING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PROMOTION_TYPE_INTRODUCTORY_PRICING"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedTextList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedText"
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequestLineItemEntitlementDetails": {
-      "type": "structure",
-      "members": {
-        "products": {
-          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
-          "traits": {
-            "smithy.api#documentation": "Optional. Only applicable if the line item corresponds to a hard bundle. Product resource names that identify the bundle elements to be entitled in the line item. If unspecified, all bundle elements will be entitled. The format is 'partners/{partner_id}/products/{product_id}'."
-          }
-        },
-        "lineItemIndex": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Required. The index of the line item to be entitled."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The details of the line item to be entitled."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ProductBundleDetails": {
-      "type": "structure",
-      "members": {
-        "bundleElements": {
-          "target": "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsBundleElementList",
-          "traits": {
-            "smithy.api#documentation": "The individual products that are included in the bundle."
-          }
-        },
-        "entitlementMode": {
-          "target": "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsEntitlementModeEnum",
-          "traits": {
-            "smithy.api#documentation": "The entitlement mode of the bundle product."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Details for a bundle product."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsBundleElementList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsBundleElement"
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsEntitlementModeEnum": {
-      "type": "enum",
-      "members": {
-        "ENTITLEMENT_MODE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ENTITLEMENT_MODE_UNSPECIFIED"
-          }
-        },
-        "ENTITLEMENT_MODE_FULL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ENTITLEMENT_MODE_FULL"
-          }
-        },
-        "ENTITLEMENT_MODE_INCREMENTAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ENTITLEMENT_MODE_INCREMENTAL"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpec": {
-      "type": "structure",
-      "members": {
-        "promotion": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Promotion resource name that identifies a promotion. The format is 'partners/{partner_id}/promotions/{promotion_id}'."
-          }
-        },
-        "freeTrialDuration": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
-          "traits": {
-            "smithy.api#documentation": "Output only. The duration of the free trial if the promotion is of type FREE_TRIAL."
-          }
-        },
-        "introductoryPricingDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetails",
-          "traits": {
-            "smithy.api#documentation": "Output only. The details of the introductory pricing spec if the promotion is of type INTRODUCTORY_PRICING."
-          }
-        },
-        "type": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpecTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. The type of the promotion for the spec."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Describes the spec for one promotion."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpecTypeEnum": {
-      "type": "enum",
-      "members": {
-        "PROMOTION_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PROMOTION_TYPE_UNSPECIFIED"
-          }
-        },
-        "PROMOTION_TYPE_FREE_TRIAL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PROMOTION_TYPE_FREE_TRIAL"
-          }
-        },
-        "PROMOTION_TYPE_INTRODUCTORY_PRICING": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PROMOTION_TYPE_INTRODUCTORY_PRICING"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetails": {
-      "type": "structure",
-      "members": {
-        "introductoryPricingSpecs": {
-          "target": "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList",
-          "traits": {
-            "smithy.api#documentation": "Output only. Specifies the introductory pricing periods."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The details of a introductory pricing promotion."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetailsIntroductoryPricingSpec"
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#IntentPayloadIntentOptions": {
-      "type": "structure",
-      "members": {
-        "enableOfferOverride": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Optional. If true, Google may use a different product and promotion id from the ones in the `create_intent` based on the user's eligibility. Only applicable for certain YouTube free trial offers."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The options for the intent."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#CreateSubscriptionIntent": {
-      "type": "structure",
-      "members": {
-        "subscription": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Subscription",
-          "traits": {
-            "smithy.api#documentation": "Required. The Subscription to be created."
-          }
-        },
-        "cycleOptions": {
-          "target": "com.gcp.paymentsresellersubscription_v1#CycleOptions",
-          "traits": {
-            "smithy.api#documentation": "Optional. The cycle options for the subscription."
-          }
-        },
-        "subscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one."
-          }
-        },
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Deprecated: Use the `parent` field in `GenerateUserSessionRequest` instead. The parent resource name, which is the identifier of the partner."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Intent message for creating a Subscription resource."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SuspendSubscriptionResponse": {
-      "type": "structure",
-      "members": {
-        "subscription": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Subscription",
-          "traits": {
-            "smithy.api#documentation": "The suspended subscription resource."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Response that contains the suspended subscription."
+        "smithy.api#documentation": "The details for an element in the hard bundle."
       }
     },
     "com.gcp.paymentsresellersubscription_v1#CancelSubscriptionRequest": {
       "type": "structure",
       "members": {
-        "cancellationReason": {
-          "target": "com.gcp.paymentsresellersubscription_v1#CancelSubscriptionRequestCancellationReasonEnum",
-          "traits": {
-            "smithy.api#documentation": "Specifies the reason for the cancellation."
-          }
-        },
         "cancelImmediately": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Optional. If true, Google will cancel the subscription immediately, and may or may not (based on the contract) issue a prorated refund for the remainder of the billing cycle. Otherwise, Google defers the cancellation at renewal_time, and will not issue a refund. - YouTube subscriptions must use this option currently. However, the user will still have access to the subscription until the end of the billing cycle."
+          }
+        },
+        "cancellationReason": {
+          "target": "com.gcp.paymentsresellersubscription_v1#CancelSubscriptionRequestCancellationReasonEnum",
+          "traits": {
+            "smithy.api#documentation": "Specifies the reason for the cancellation."
           }
         }
       },
@@ -684,50 +125,84 @@
         }
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetailsBundleElementDetails": {
+    "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedText": {
       "type": "structure",
       "members": {
-        "product": {
+        "languageCode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. Product resource name that identifies the bundle element. The format is 'partners/{partner_id}/products/{product_id}'."
+            "smithy.api#documentation": "The text's BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier."
           }
         },
-        "userAccountLinkedTime": {
+        "text": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. The time when this product is linked to an end user."
+            "smithy.api#documentation": "Localized string in the language corresponding to language_code below."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "The details for an element in the hard bundle."
+        "smithy.api#documentation": "Localized variant of a text in a particular language."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#ProductPayload": {
+    "com.gcp.paymentsresellersubscription_v1#GenerateUserSessionResponse": {
       "type": "structure",
       "members": {
-        "googleOnePayload": {
-          "target": "com.gcp.paymentsresellersubscription_v1#GoogleOnePayload",
+        "userSession": {
+          "target": "com.gcp.paymentsresellersubscription_v1#UserSession",
           "traits": {
-            "smithy.api#documentation": "Product-specific payloads. Payload specific to Google One products."
-          }
-        },
-        "googleHomePayload": {
-          "target": "com.gcp.paymentsresellersubscription_v1#GoogleHomePayload",
-          "traits": {
-            "smithy.api#documentation": "Payload specific to Google Home products."
-          }
-        },
-        "youtubePayload": {
-          "target": "com.gcp.paymentsresellersubscription_v1#YoutubePayload",
-          "traits": {
-            "smithy.api#documentation": "Payload specific to Youtube products."
+            "smithy.api#documentation": "The generated user session. The token size is proportional to the size of the intent payload."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Specifies product specific payload."
+        "smithy.api#documentation": "Response that contains the details for generated user session."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetails": {
+      "type": "structure",
+      "members": {
+        "introductoryPricingSpecs": {
+          "target": "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList",
+          "traits": {
+            "smithy.api#documentation": "Output only. Specifies the introductory pricing periods."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The details of a introductory pricing promotion."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetailsIntroductoryPricingSpecList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetailsIntroductoryPricingSpec"
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequestLineItemEntitlementDetails": {
+      "type": "structure",
+      "members": {
+        "lineItemIndex": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Required. The index of the line item to be entitled."
+          }
+        },
+        "products": {
+          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
+          "traits": {
+            "smithy.api#documentation": "Optional. Only applicable if the line item corresponds to a hard bundle. Product resource names that identify the bundle elements to be entitled in the line item. If unspecified, all bundle elements will be entitled. The format is 'partners/{partner_id}/products/{product_id}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The details of the line item to be entitled."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#StringList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.gcp.paymentsresellersubscription_v1#ResumeSubscriptionResponse": {
@@ -744,33 +219,13 @@
         "smithy.api#documentation": "Response that contains the resumed subscription."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#Amount": {
+    "com.gcp.paymentsresellersubscription_v1#ListProductsResponse": {
       "type": "structure",
       "members": {
-        "currencyCode": {
-          "target": "smithy.api#String",
+        "products": {
+          "target": "com.gcp.paymentsresellersubscription_v1#ProductList",
           "traits": {
-            "smithy.api#documentation": "Required. Currency codes in accordance with [ISO-4217 Currency Codes] (https://en.wikipedia.org/wiki/ISO_4217). For example, USD."
-          }
-        },
-        "amountMicros": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Amount in micros (1_000_000 micros = 1 currency unit)"
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Describes the amount unit including the currency code."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ListPromotionsResponse": {
-      "type": "structure",
-      "members": {
-        "promotions": {
-          "target": "com.gcp.paymentsresellersubscription_v1#PromotionList",
-          "traits": {
-            "smithy.api#documentation": "The promotions for the specified partner."
+            "smithy.api#documentation": "The products for the specified partner."
           }
         },
         "nextPageToken": {
@@ -781,7 +236,33 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Response that contains the promotions."
+        "smithy.api#documentation": "Response that contains the products."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#ProductList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.paymentsresellersubscription_v1#Product"
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#FindEligiblePromotionsResponse": {
+      "type": "structure",
+      "members": {
+        "promotions": {
+          "target": "com.gcp.paymentsresellersubscription_v1#PromotionList",
+          "traits": {
+            "smithy.api#documentation": "The promotions for the current user."
+          }
+        },
+        "nextPageToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response containing the found promotions for the current user."
       }
     },
     "com.gcp.paymentsresellersubscription_v1#PromotionList": {
@@ -790,24 +271,330 @@
         "target": "com.gcp.paymentsresellersubscription_v1#Promotion"
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedText": {
+    "com.gcp.paymentsresellersubscription_v1#IntentPayloadIntentOptions": {
       "type": "structure",
       "members": {
-        "text": {
-          "target": "smithy.api#String",
+        "enableOfferOverride": {
+          "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Localized string in the language corresponding to language_code below."
-          }
-        },
-        "languageCode": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The text's BCP-47 language code, such as \"en-US\" or \"sr-Latn\". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier."
+            "smithy.api#documentation": "Optional. If true, Google may use a different product and promotion id from the ones in the `create_intent` based on the user's eligibility. Only applicable for certain YouTube free trial offers."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Localized variant of a text in a particular language."
+        "smithy.api#documentation": "The options for the intent."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#ServicePeriod": {
+      "type": "structure",
+      "members": {
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The end time of the service period. Time is exclusive."
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The start time of the service period. Time is inclusive."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A description of what time period or moment in time the product or service is being delivered over."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#CreateSubscriptionIntent": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Deprecated: Use the `parent` field in `GenerateUserSessionRequest` instead. The parent resource name, which is the identifier of the partner."
+          }
+        },
+        "cycleOptions": {
+          "target": "com.gcp.paymentsresellersubscription_v1#CycleOptions",
+          "traits": {
+            "smithy.api#documentation": "Optional. The cycle options for the subscription."
+          }
+        },
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one."
+          }
+        },
+        "subscription": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Subscription",
+          "traits": {
+            "smithy.api#documentation": "Required. The Subscription to be created."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Intent message for creating a Subscription resource."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#GenerateUserSessionRequest": {
+      "type": "structure",
+      "members": {
+        "intentPayload": {
+          "target": "com.gcp.paymentsresellersubscription_v1#IntentPayload",
+          "traits": {
+            "smithy.api#documentation": "The user intent to generate the user session."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request to generate a user session."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#ProductPriceConfig": {
+      "type": "structure",
+      "members": {
+        "amount": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Amount",
+          "traits": {
+            "smithy.api#documentation": "Output only. The price in the region."
+          }
+        },
+        "regionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. 2-letter ISO region code where the product is available in. Ex. \"US\"."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Configs the prices in an available region."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#Promotion": {
+      "type": "structure",
+      "members": {
+        "endTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Specifies the end time (exclusive) of the period that the promotion is available in. If unset, the promotion is available indefinitely."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier. Response only. Resource name of the subscription promotion. It will have the format of \"partners/{partner_id}/promotion/{promotion_id}\""
+          }
+        },
+        "startTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Specifies the start time (inclusive) of the period that the promotion is available in."
+          }
+        },
+        "regionCodes": {
+          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
+          "traits": {
+            "smithy.api#documentation": "Output only. 2-letter ISO region code where the promotion is available in. Ex. \"US\" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1"
+          }
+        },
+        "titles": {
+          "target": "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedTextList",
+          "traits": {
+            "smithy.api#documentation": "Output only. Localized human readable name of the promotion."
+          }
+        },
+        "applicableProducts": {
+          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
+          "traits": {
+            "smithy.api#documentation": "Output only. The product ids this promotion can be applied to."
+          }
+        },
+        "introductoryPricingDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetails",
+          "traits": {
+            "smithy.api#documentation": "Optional. Specifies the introductory pricing details when the promotion_type is PROMOTION_TYPE_INTRODUCTORY_PRICING."
+          }
+        },
+        "promotionType": {
+          "target": "com.gcp.paymentsresellersubscription_v1#PromotionPromotionTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. Specifies the type of the promotion."
+          }
+        },
+        "freeTrialDuration": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
+          "traits": {
+            "smithy.api#documentation": "Optional. Specifies the duration of the free trial of the subscription when promotion_type is PROMOTION_TYPE_FREE_TRIAL"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "A Promotion resource that defines a promotion for a subscription that can be resold."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedTextList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedText"
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#PromotionPromotionTypeEnum": {
+      "type": "enum",
+      "members": {
+        "PROMOTION_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROMOTION_TYPE_UNSPECIFIED"
+          }
+        },
+        "PROMOTION_TYPE_FREE_TRIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROMOTION_TYPE_FREE_TRIAL"
+          }
+        },
+        "PROMOTION_TYPE_INTRODUCTORY_PRICING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROMOTION_TYPE_INTRODUCTORY_PRICING"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionMigrationDetails": {
+      "type": "structure",
+      "members": {
+        "migratedSubscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The migrated subscription id in the legacy system."
+          }
+        },
+        "legacyCreationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The creation time of the migrated subscription in the legacy system."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the details of the migrated subscription."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpec": {
+      "type": "structure",
+      "members": {
+        "freeTrialDuration": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
+          "traits": {
+            "smithy.api#documentation": "Output only. The duration of the free trial if the promotion is of type FREE_TRIAL."
+          }
+        },
+        "type": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpecTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The type of the promotion for the spec."
+          }
+        },
+        "promotion": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Promotion resource name that identifies a promotion. The format is 'partners/{partner_id}/promotions/{promotion_id}'."
+          }
+        },
+        "introductoryPricingDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetails",
+          "traits": {
+            "smithy.api#documentation": "Output only. The details of the introductory pricing spec if the promotion is of type INTRODUCTORY_PRICING."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the spec for one promotion."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpecTypeEnum": {
+      "type": "enum",
+      "members": {
+        "PROMOTION_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROMOTION_TYPE_UNSPECIFIED"
+          }
+        },
+        "PROMOTION_TYPE_FREE_TRIAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROMOTION_TYPE_FREE_TRIAL"
+          }
+        },
+        "PROMOTION_TYPE_INTRODUCTORY_PRICING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROMOTION_TYPE_INTRODUCTORY_PRICING"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#GoogleHomePayload": {
+      "type": "structure",
+      "members": {
+        "attachedToGoogleStructure": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Output only. This identifies whether the subscription is attached to a Google Home structure."
+          }
+        },
+        "partnerStructureId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. This identifies the structure ID on partner side that the subscription should be applied to. Only required when the partner requires structure mapping."
+          }
+        },
+        "googleStructureId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Structure identifier on Google side."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Payload specific for Google Home products."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#Extension": {
+      "type": "structure",
+      "members": {
+        "duration": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
+          "traits": {
+            "smithy.api#documentation": "Required. Specifies the period of access the subscription should grant."
+          }
+        },
+        "partnerUserToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Identifier of the end-user in partner’s system."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the details of an extension request."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SuspendSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "subscription": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Subscription",
+          "traits": {
+            "smithy.api#documentation": "The suspended subscription resource."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Response that contains the suspended subscription."
       }
     },
     "com.gcp.paymentsresellersubscription_v1#SubscriptionCancellationDetails": {
@@ -901,24 +688,24 @@
         }
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequest": {
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetails": {
       "type": "structure",
       "members": {
-        "lineItemEntitlementDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequestLineItemEntitlementDetailsList",
+        "bundleElementDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetailsBundleElementDetailsList",
           "traits": {
-            "smithy.api#documentation": "Optional. The line items to be entitled. If unspecified, all line items will be entitled."
+            "smithy.api#documentation": "Output only. The details for each element in the hard bundle."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Partner request for entitling the previously provisioned subscription to an end user. The end user identity is inferred from the request OAuth context."
+        "smithy.api#documentation": "The bundle details for a line item corresponding to a hard bundle."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequestLineItemEntitlementDetailsList": {
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetailsBundleElementDetailsList": {
       "type": "list",
       "member": {
-        "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequestLineItemEntitlementDetails"
+        "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetailsBundleElementDetails"
       }
     },
     "com.gcp.paymentsresellersubscription_v1#ResumeSubscriptionRequest": {
@@ -970,50 +757,421 @@
         }
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#FindEligiblePromotionsRequest": {
+    "com.gcp.paymentsresellersubscription_v1#Product": {
       "type": "structure",
       "members": {
-        "filter": {
-          "target": "smithy.api#String",
+        "titles": {
+          "target": "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedTextList",
           "traits": {
-            "smithy.api#documentation": "Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`"
+            "smithy.api#documentation": "Output only. Localized human readable name of the product."
           }
         },
-        "pageSize": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000."
-          }
-        },
-        "pageToken": {
+        "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional. A page token, received from a previous `FindEligiblePromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FindEligiblePromotions` must match the call that provided the page token."
+            "smithy.api#documentation": "Identifier. Response only. Resource name of the product. It will have the format of \"partners/{partner_id}/products/{product_id}\""
+          }
+        },
+        "regionCodes": {
+          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
+          "traits": {
+            "smithy.api#documentation": "Output only. 2-letter ISO region code where the product is available in. Ex. \"US\" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1"
+          }
+        },
+        "productType": {
+          "target": "com.gcp.paymentsresellersubscription_v1#ProductProductTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. Specifies the type of the product."
+          }
+        },
+        "priceConfigs": {
+          "target": "com.gcp.paymentsresellersubscription_v1#ProductPriceConfigList",
+          "traits": {
+            "smithy.api#documentation": "Output only. Price configs for the product in the available regions."
+          }
+        },
+        "subscriptionBillingCycleDuration": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
+          "traits": {
+            "smithy.api#documentation": "Output only. Specifies the length of the billing cycle of the subscription."
+          }
+        },
+        "bundleDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#ProductBundleDetails",
+          "traits": {
+            "smithy.api#documentation": "Output only. Specifies the details for a bundle product."
+          }
+        },
+        "finiteBillingCycleDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#FiniteBillingCycleDetails",
+          "traits": {
+            "smithy.api#documentation": "Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be charged indefinitely."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Request to find eligible promotions for the current user."
+        "smithy.api#documentation": "A Product resource that defines a subscription service that can be resold."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetails": {
-      "type": "structure",
+    "com.gcp.paymentsresellersubscription_v1#ProductProductTypeEnum": {
+      "type": "enum",
       "members": {
-        "bundleElementDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetailsBundleElementDetailsList",
+        "PRODUCT_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#documentation": "Output only. The details for each element in the hard bundle."
+            "smithy.api#enumValue": "PRODUCT_TYPE_UNSPECIFIED"
+          }
+        },
+        "PRODUCT_TYPE_SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PRODUCT_TYPE_SUBSCRIPTION"
+          }
+        },
+        "PRODUCT_TYPE_BUNDLE_SUBSCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PRODUCT_TYPE_BUNDLE_SUBSCRIPTION"
           }
         }
-      },
-      "traits": {
-        "smithy.api#documentation": "The bundle details for a line item corresponding to a hard bundle."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetailsBundleElementDetailsList": {
+    "com.gcp.paymentsresellersubscription_v1#ProductPriceConfigList": {
       "type": "list",
       "member": {
-        "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetailsBundleElementDetails"
+        "target": "com.gcp.paymentsresellersubscription_v1#ProductPriceConfig"
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#UndoCancelSubscriptionRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#documentation": "Request to revoke a cancellation request."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#CycleOptions": {
+      "type": "structure",
+      "members": {
+        "initialCycleDuration": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
+          "traits": {
+            "smithy.api#documentation": "Optional. The duration of the initial cycle. Only `DAY` is supported. If set, Google will start the subscription with this initial cycle duration starting at the request time (see available methods below). A prorated charge will be applied. This option is available to the following methods: - partners.subscriptions.provision - partners.subscriptions.resume - partners.userSessions.generate "
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The cycle options when starting and resuming a subscription."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#IntentPayload": {
+      "type": "structure",
+      "members": {
+        "intentOptions": {
+          "target": "com.gcp.paymentsresellersubscription_v1#IntentPayloadIntentOptions",
+          "traits": {
+            "smithy.api#documentation": "Optional. The additional features for the intent."
+          }
+        },
+        "createIntent": {
+          "target": "com.gcp.paymentsresellersubscription_v1#CreateSubscriptionIntent",
+          "traits": {
+            "smithy.api#documentation": "The request to create a subscription."
+          }
+        },
+        "entitleIntent": {
+          "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionIntent",
+          "traits": {
+            "smithy.api#documentation": "The request to entitle a subscription."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The payload that describes the user intent."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#Amount": {
+      "type": "structure",
+      "members": {
+        "currencyCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Currency codes in accordance with [ISO-4217 Currency Codes] (https://en.wikipedia.org/wiki/ISO_4217). For example, USD."
+          }
+        },
+        "amountMicros": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Amount in micros (1_000_000 micros = 1 currency unit)"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes the amount unit including the currency code."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier. Resource name of the line item. Format: partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}"
+          }
+        },
+        "lineItemPromotionSpecs": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpecList",
+          "traits": {
+            "smithy.api#documentation": "Optional. The promotions applied on the line item. It can be: - an introductory pricing promotion. - a free trial promotion. This feature is not enabled. If used, the request will be rejected. When used as input in Create or Provision API, specify its resource name only."
+          }
+        },
+        "state": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemStateEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The state of the line item."
+          }
+        },
+        "oneTimeRecurrenceDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemOneTimeRecurrenceDetails",
+          "traits": {
+            "smithy.api#documentation": "Output only. Details only set for a ONE_TIME recurrence line item."
+          }
+        },
+        "amount": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Amount",
+          "traits": {
+            "smithy.api#documentation": "Output only. The price of the product/service in this line item. The amount could be the wholesale price, or it can include a cost of sale based on the contract."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. Description of this line item."
+          }
+        },
+        "planType": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemPlanTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Optional. Output only. The plan type of the line item."
+          }
+        },
+        "productPayload": {
+          "target": "com.gcp.paymentsresellersubscription_v1#ProductPayload",
+          "traits": {
+            "smithy.api#documentation": "Optional. Product specific payload for this line item."
+          }
+        },
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Product resource name that identifies the product associated with this line item. The format is 'partners/{partner_id}/products/{product_id}'."
+          }
+        },
+        "recurrenceType": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemRecurrenceTypeEnum",
+          "traits": {
+            "smithy.api#documentation": "Output only. The recurrence type of the line item."
+          }
+        },
+        "lineItemIndex": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "Output only. A unique index of the subscription line item."
+          }
+        },
+        "bundleDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemBundleDetails",
+          "traits": {
+            "smithy.api#documentation": "Output only. The bundle details for the line item. Only populated if the line item corresponds to a hard bundle."
+          }
+        },
+        "finiteBillingCycleDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#FiniteBillingCycleDetails",
+          "traits": {
+            "smithy.api#documentation": "Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be charged indefinitely. Used only with LINE_ITEM_RECURRENCE_TYPE_PERIODIC."
+          }
+        },
+        "lineItemFreeTrialEndTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The free trial end time will be populated after the line item is successfully processed. End time of the line item free trial period, in ISO 8061 format. For example, \"2019-08-31T17:28:54.564Z\". It will be set the same as createTime if no free trial promotion is specified."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Individual line item definition of a subscription."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpecList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpec"
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemStateEnum": {
+      "type": "enum",
+      "members": {
+        "LINE_ITEM_STATE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_STATE_UNSPECIFIED"
+          }
+        },
+        "LINE_ITEM_STATE_ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_STATE_ACTIVE"
+          }
+        },
+        "LINE_ITEM_STATE_INACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_STATE_INACTIVE"
+          }
+        },
+        "LINE_ITEM_STATE_NEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_STATE_NEW"
+          }
+        },
+        "LINE_ITEM_STATE_ACTIVATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_STATE_ACTIVATING"
+          }
+        },
+        "LINE_ITEM_STATE_DEACTIVATING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_STATE_DEACTIVATING"
+          }
+        },
+        "LINE_ITEM_STATE_WAITING_TO_DEACTIVATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_STATE_WAITING_TO_DEACTIVATE"
+          }
+        },
+        "LINE_ITEM_STATE_OFF_CYCLE_CHARGING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_STATE_OFF_CYCLE_CHARGING"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemPlanTypeEnum": {
+      "type": "enum",
+      "members": {
+        "LINE_ITEM_PLAN_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_PLAN_TYPE_UNSPECIFIED"
+          }
+        },
+        "LINE_ITEM_PLAN_TYPE_BASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_PLAN_TYPE_BASE"
+          }
+        },
+        "LINE_ITEM_PLAN_TYPE_ADDON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_PLAN_TYPE_ADDON"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemRecurrenceTypeEnum": {
+      "type": "enum",
+      "members": {
+        "LINE_ITEM_RECURRENCE_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_RECURRENCE_TYPE_UNSPECIFIED"
+          }
+        },
+        "LINE_ITEM_RECURRENCE_TYPE_PERIODIC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_RECURRENCE_TYPE_PERIODIC"
+          }
+        },
+        "LINE_ITEM_RECURRENCE_TYPE_ONE_TIME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "LINE_ITEM_RECURRENCE_TYPE_ONE_TIME"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#Location": {
+      "type": "structure",
+      "members": {
+        "postalCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The postal code this location refers to. Ex. \"94043\""
+          }
+        },
+        "regionCode": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "2-letter ISO region code for current content region. Ex. “US” Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Describes a location of an end user."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#FiniteBillingCycleDetails": {
+      "type": "structure",
+      "members": {
+        "billingCycleCountLimit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The number of a subscription line item billing cycles after which billing will stop automatically."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Details for a subscription line item with finite billing cycles."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequest": {
+      "type": "structure",
+      "members": {
+        "lineItemEntitlementDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequestLineItemEntitlementDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Optional. The line items to be entitled. If unspecified, all line items will be entitled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Partner request for entitling the previously provisioned subscription to an end user. The end user identity is inferred from the request OAuth context."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequestLineItemEntitlementDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequestLineItemEntitlementDetails"
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsBundleElement": {
+      "type": "structure",
+      "members": {
+        "product": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Output only. Product resource name that identifies the bundle element. The format is 'partners/{partner_id}/products/{product_id}'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "The individual product that is included in the bundle."
       }
     },
     "com.gcp.paymentsresellersubscription_v1#SubscriptionUpgradeDowngradeDetails": {
@@ -1065,317 +1223,301 @@
         }
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#Product": {
+    "com.gcp.paymentsresellersubscription_v1#GoogleOnePayload": {
       "type": "structure",
       "members": {
-        "finiteBillingCycleDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#FiniteBillingCycleDetails",
+        "salesChannel": {
+          "target": "com.gcp.paymentsresellersubscription_v1#GoogleOnePayloadSalesChannelEnum",
           "traits": {
-            "smithy.api#documentation": "Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be charged indefinitely."
+            "smithy.api#documentation": "The type of sales channel through which the subscription was sold."
           }
         },
-        "priceConfigs": {
-          "target": "com.gcp.paymentsresellersubscription_v1#ProductPriceConfigList",
-          "traits": {
-            "smithy.api#documentation": "Output only. Price configs for the product in the available regions."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier. Response only. Resource name of the product. It will have the format of \"partners/{partner_id}/products/{product_id}\""
-          }
-        },
-        "subscriptionBillingCycleDuration": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
-          "traits": {
-            "smithy.api#documentation": "Output only. Specifies the length of the billing cycle of the subscription."
-          }
-        },
-        "regionCodes": {
+        "campaigns": {
           "target": "com.gcp.paymentsresellersubscription_v1#StringList",
           "traits": {
-            "smithy.api#documentation": "Output only. 2-letter ISO region code where the product is available in. Ex. \"US\" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1"
+            "smithy.api#documentation": "Campaign attributed to sales of this subscription."
           }
         },
-        "titles": {
-          "target": "com.gcp.paymentsresellersubscription_v1#GoogleTypeLocalizedTextList",
+        "offering": {
+          "target": "com.gcp.paymentsresellersubscription_v1#GoogleOnePayloadOfferingEnum",
           "traits": {
-            "smithy.api#documentation": "Output only. Localized human readable name of the product."
+            "smithy.api#documentation": "The type of offering the subscription was sold by the partner. e.g. VAS."
           }
         },
-        "productType": {
-          "target": "com.gcp.paymentsresellersubscription_v1#ProductProductTypeEnum",
-          "traits": {
-            "smithy.api#documentation": "Output only. Specifies the type of the product."
-          }
-        },
-        "bundleDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#ProductBundleDetails",
-          "traits": {
-            "smithy.api#documentation": "Output only. Specifies the details for a bundle product."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "A Product resource that defines a subscription service that can be resold."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ProductPriceConfigList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.paymentsresellersubscription_v1#ProductPriceConfig"
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ProductProductTypeEnum": {
-      "type": "enum",
-      "members": {
-        "PRODUCT_TYPE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PRODUCT_TYPE_UNSPECIFIED"
-          }
-        },
-        "PRODUCT_TYPE_SUBSCRIPTION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PRODUCT_TYPE_SUBSCRIPTION"
-          }
-        },
-        "PRODUCT_TYPE_BUNDLE_SUBSCRIPTION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "PRODUCT_TYPE_BUNDLE_SUBSCRIPTION"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ProductPriceConfig": {
-      "type": "structure",
-      "members": {
-        "amount": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Amount",
-          "traits": {
-            "smithy.api#documentation": "Output only. The price in the region."
-          }
-        },
-        "regionCode": {
+        "storeId": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. 2-letter ISO region code where the product is available in. Ex. \"US\"."
+            "smithy.api#documentation": "The identifier for the partner store where the subscription was sold."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Configs the prices in an available region."
+        "smithy.api#documentation": "Payload specific to Google One products."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#CancelSubscriptionResponse": {
+    "com.gcp.paymentsresellersubscription_v1#GoogleOnePayloadSalesChannelEnum": {
+      "type": "enum",
+      "members": {
+        "CHANNEL_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHANNEL_UNSPECIFIED"
+          }
+        },
+        "CHANNEL_RETAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHANNEL_RETAIL"
+          }
+        },
+        "CHANNEL_ONLINE_WEB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHANNEL_ONLINE_WEB"
+          }
+        },
+        "CHANNEL_ONLINE_ANDROID_APP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHANNEL_ONLINE_ANDROID_APP"
+          }
+        },
+        "CHANNEL_ONLINE_IOS_APP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHANNEL_ONLINE_IOS_APP"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#GoogleOnePayloadOfferingEnum": {
+      "type": "enum",
+      "members": {
+        "OFFERING_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OFFERING_UNSPECIFIED"
+          }
+        },
+        "OFFERING_VAS_BUNDLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OFFERING_VAS_BUNDLE"
+          }
+        },
+        "OFFERING_VAS_STANDALONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OFFERING_VAS_STANDALONE"
+          }
+        },
+        "OFFERING_HARD_BUNDLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OFFERING_HARD_BUNDLE"
+          }
+        },
+        "OFFERING_SOFT_BUNDLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "OFFERING_SOFT_BUNDLE"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#UndoCancelSubscriptionResponse": {
       "type": "structure",
       "members": {
         "subscription": {
           "target": "com.gcp.paymentsresellersubscription_v1#Subscription",
           "traits": {
-            "smithy.api#documentation": "The cancelled subscription resource."
+            "smithy.api#documentation": "The updated subscription resource."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Response that contains the cancelled subscription resource."
+        "smithy.api#documentation": "Response that contains the updated subscription resource."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#FiniteBillingCycleDetails": {
+    "com.gcp.paymentsresellersubscription_v1#YoutubePayload": {
       "type": "structure",
       "members": {
-        "billingCycleCountLimit": {
+        "accessEndTime": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The number of a subscription line item billing cycles after which billing will stop automatically."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Details for a subscription line item with finite billing cycles."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SubscriptionMigrationDetails": {
-      "type": "structure",
-      "members": {
-        "migratedSubscriptionId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The migrated subscription id in the legacy system."
+            "smithy.api#documentation": "Output only. The access expiration time for this line item."
           }
         },
-        "legacyCreationTime": {
-          "target": "smithy.api#String",
+        "partnerEligibilityIds": {
+          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
           "traits": {
-            "smithy.api#documentation": "Output only. The creation time of the migrated subscription in the legacy system."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Describes the details of the migrated subscription."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#CycleOptions": {
-      "type": "structure",
-      "members": {
-        "initialCycleDuration": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
-          "traits": {
-            "smithy.api#documentation": "Optional. The duration of the initial cycle. Only `DAY` is supported. If set, Google will start the subscription with this initial cycle duration starting at the request time (see available methods below). A prorated charge will be applied. This option is available to the following methods: - partners.subscriptions.provision - partners.subscriptions.resume - partners.userSessions.generate "
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "The cycle options when starting and resuming a subscription."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GenerateUserSessionResponse": {
-      "type": "structure",
-      "members": {
-        "userSession": {
-          "target": "com.gcp.paymentsresellersubscription_v1#UserSession",
-          "traits": {
-            "smithy.api#documentation": "The generated user session. The token size is proportional to the size of the intent payload."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Response that contains the details for generated user session."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GenerateUserSessionRequest": {
-      "type": "structure",
-      "members": {
-        "intentPayload": {
-          "target": "com.gcp.paymentsresellersubscription_v1#IntentPayload",
-          "traits": {
-            "smithy.api#documentation": "The user intent to generate the user session."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Request to generate a user session."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ExtendSubscriptionResponse": {
-      "type": "structure",
-      "members": {
-        "cycleEndTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "The time at which the subscription is expected to be extended, in ISO 8061 format. UTC timezone. Example, \"cycleEndTime\":\"2019-08-31T17:28:54.564Z\""
+            "smithy.api#documentation": "The list of eligibility_ids which are applicable for the line item."
           }
         },
-        "freeTrialEndTime": {
-          "target": "smithy.api#String",
+        "partnerPlanType": {
+          "target": "com.gcp.paymentsresellersubscription_v1#YoutubePayloadPartnerPlanTypeEnum",
           "traits": {
-            "smithy.api#documentation": "End of the free trial period, in ISO 8061 format. UTC timezone. Example, \"freeTrialEndTime\":\"2019-08-31T17:28:54.564Z\" This time will be set the same as initial subscription creation time if no free trial period is offered to the partner."
-          }
-        },
-        "renewalTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be incurred and the service entitlement will be renewed. A non-immediate cancellation will take place at this time too, before which, the service entitlement for the end user will remain valid. UTC timezone in ISO 8061 format. For example: \"2019-08-31T17:28:54.564Z\""
+            "smithy.api#documentation": "Optional. Specifies the plan type offered to the end user by the partner."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Response that contains the timestamps after the extension."
+        "smithy.api#documentation": "Payload specific to Youtube products."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#UserSession": {
+    "com.gcp.paymentsresellersubscription_v1#YoutubePayloadPartnerPlanTypeEnum": {
+      "type": "enum",
+      "members": {
+        "PARTNER_PLAN_TYPE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTNER_PLAN_TYPE_UNSPECIFIED"
+          }
+        },
+        "PARTNER_PLAN_TYPE_STANDALONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTNER_PLAN_TYPE_STANDALONE"
+          }
+        },
+        "PARTNER_PLAN_TYPE_HARD_BUNDLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTNER_PLAN_TYPE_HARD_BUNDLE"
+          }
+        },
+        "PARTNER_PLAN_TYPE_SOFT_BUNDLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PARTNER_PLAN_TYPE_SOFT_BUNDLE"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#SuspendSubscriptionRequest": {
       "type": "structure",
       "members": {
-        "expireTime": {
-          "target": "smithy.api#String",
+        "suspendMode": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SuspendSubscriptionRequestSuspendModeEnum",
           "traits": {
-            "smithy.api#documentation": "Output only. The time at which the user session expires."
-          }
-        },
-        "token": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The encrypted token of the user session, including the information of the user's intent and request. This token should be provided when redirecting the user to Google."
+            "smithy.api#documentation": "Optional. The mode to suspend the subscription. It's required for partners to specify the suspend mode, whether suspend immediately and indefinitely, or cancel the subscription after grace_period_millis or auto_cancel_duration_millis if it's not resumed."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Contains a short-lived token containing information required to interact with the Google Payments Reseller Platform via web endpoints. - Generate a user session token dynamically for an authenticated user. Do not share a token directly with a user in an unauthenticated context, such as SMS or email. - You can regenerate new session tokens repeatedly for the same `generate` request if necessary, regardless of whether previous tokens have expired. Multiple sessions will not result in duplicate fulfillments because the `subscription ID` guarantees uniqueness. For more integration details, see the [Google Managed Signup](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup) documentation."
+        "smithy.api#documentation": "Request to suspend a subscription."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#ListProductsResponse": {
+    "com.gcp.paymentsresellersubscription_v1#SuspendSubscriptionRequestSuspendModeEnum": {
+      "type": "enum",
+      "members": {
+        "SUSPEND_MODE_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPEND_MODE_UNSPECIFIED"
+          }
+        },
+        "SUSPEND_MODE_CANCEL_AFTER_GRACE_PERIOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPEND_MODE_CANCEL_AFTER_GRACE_PERIOD"
+          }
+        },
+        "SUSPEND_MODE_CANCEL_AFTER_RETENTION_PERIOD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPEND_MODE_CANCEL_AFTER_RETENTION_PERIOD"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#Duration": {
       "type": "structure",
       "members": {
-        "products": {
-          "target": "com.gcp.paymentsresellersubscription_v1#ProductList",
+        "unit": {
+          "target": "com.gcp.paymentsresellersubscription_v1#DurationUnitEnum",
           "traits": {
-            "smithy.api#documentation": "The products for the specified partner."
+            "smithy.api#documentation": "The unit used for the duration"
           }
         },
-        "nextPageToken": {
-          "target": "smithy.api#String",
+        "count": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no subsequent pages."
+            "smithy.api#documentation": "number of duration units to be included."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Response that contains the products."
+        "smithy.api#documentation": "Describes the length of a period of a time."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#ProductList": {
-      "type": "list",
-      "member": {
-        "target": "com.gcp.paymentsresellersubscription_v1#Product"
+    "com.gcp.paymentsresellersubscription_v1#DurationUnitEnum": {
+      "type": "enum",
+      "members": {
+        "UNIT_UNSPECIFIED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "UNIT_UNSPECIFIED"
+          }
+        },
+        "MONTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MONTH"
+          }
+        },
+        "DAY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DAY"
+          }
+        },
+        "HOUR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "HOUR"
+          }
+        }
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#Extension": {
+    "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionIntent": {
       "type": "structure",
       "members": {
-        "duration": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Duration",
-          "traits": {
-            "smithy.api#documentation": "Required. Specifies the period of access the subscription should grant."
-          }
-        },
-        "partnerUserToken": {
+        "name": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. Identifier of the end-user in partner’s system."
+            "smithy.api#documentation": "Required. The name of the subscription resource that is entitled to the current end user. It is in the format of \"partners/{partner_id}/subscriptions/{subscriptionId}\"."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Describes the details of an extension request."
+        "smithy.api#documentation": "Intent for entitling the previously provisioned subscription to an end user."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#IntentPayload": {
+    "com.gcp.paymentsresellersubscription_v1#FindEligiblePromotionsRequest": {
       "type": "structure",
       "members": {
-        "intentOptions": {
-          "target": "com.gcp.paymentsresellersubscription_v1#IntentPayloadIntentOptions",
+        "pageToken": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional. The additional features for the intent."
+            "smithy.api#documentation": "Optional. A page token, received from a previous `FindEligiblePromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FindEligiblePromotions` must match the call that provided the page token."
           }
         },
-        "createIntent": {
-          "target": "com.gcp.paymentsresellersubscription_v1#CreateSubscriptionIntent",
+        "pageSize": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "The request to create a subscription."
+            "smithy.api#documentation": "Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000."
           }
         },
-        "entitleIntent": {
-          "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionIntent",
+        "filter": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The request to entitle a subscription."
+            "smithy.api#documentation": "Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`"
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "The payload that describes the user intent."
+        "smithy.api#documentation": "Request to find eligible promotions for the current user."
       }
     },
     "com.gcp.paymentsresellersubscription_v1#Subscription": {
@@ -1385,6 +1527,30 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Output only. System generated timestamp when the subscription is most recently updated. UTC timezone."
+          }
+        },
+        "purchaseTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. The timestamp when the user transaction was made with the Partner. Specify for the case of \"bundle with choice\", and it must be before the provision_time (when the user makes a selection)."
+          }
+        },
+        "partnerUserToken": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Identifier of the end-user in partner’s system. The value is restricted to 63 ASCII characters at the maximum."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier. Resource name of the subscription. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\". This is available for authorizeAddon, but otherwise is response only."
+          }
+        },
+        "upgradeDowngradeDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionUpgradeDowngradeDetails",
+          "traits": {
+            "smithy.api#documentation": "Optional. Details about the previous subscription that this new subscription upgrades/downgrades from. Only populated if this subscription is an upgrade/downgrade from another subscription."
           }
         },
         "promotions": {
@@ -1399,70 +1565,10 @@
             "smithy.api#documentation": "Required. The location that the service is provided as indicated by the partner."
           }
         },
-        "products": {
-          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
-          "traits": {
-            "smithy.api#documentation": "Optional. Deprecated: consider using `line_items` as the input. Required. Resource name that identifies the purchased products. The format will be 'partners/{partner_id}/products/{product_id}'."
-          }
-        },
-        "createTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. System generated timestamp when the subscription is created. UTC timezone."
-          }
-        },
-        "endUserEntitled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Output only. Indicates if the subscription is entitled to the end user."
-          }
-        },
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Identifier. Resource name of the subscription. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\". This is available for authorizeAddon, but otherwise is response only."
-          }
-        },
-        "partnerUserToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. Identifier of the end-user in partner’s system. The value is restricted to 63 ASCII characters at the maximum."
-          }
-        },
-        "freeTrialEndTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. End of the free trial period, in ISO 8061 format. For example, \"2019-08-31T17:28:54.564Z\". It will be set the same as createTime if no free trial promotion is specified."
-          }
-        },
-        "renewalTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be incurred and the service entitlement will be renewed. A non-immediate cancellation will take place at this time too, before which, the service entitlement for the end user will remain valid. UTC timezone in ISO 8061 format. For example: \"2019-08-31T17:28:54.564Z\""
-          }
-        },
-        "upgradeDowngradeDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionUpgradeDowngradeDetails",
-          "traits": {
-            "smithy.api#documentation": "Optional. Details about the previous subscription that this new subscription upgrades/downgrades from. Only populated if this subscription is an upgrade/downgrade from another subscription."
-          }
-        },
         "migrationDetails": {
           "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionMigrationDetails",
           "traits": {
             "smithy.api#documentation": "Output only. Describes the details of the migrated subscription. Only populated if this subscription is migrated from another system."
-          }
-        },
-        "cancellationDetails": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionCancellationDetails",
-          "traits": {
-            "smithy.api#documentation": "Output only. Describes the details of a cancelled subscription. Only applicable to subscription of state `STATE_CANCELLED`."
-          }
-        },
-        "cycleEndTime": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Output only. The time at which the subscription is expected to be extended, in ISO 8061 format. UTC timezone. For example: \"2019-08-31T17:28:54.564Z\""
           }
         },
         "lineItems": {
@@ -1483,22 +1589,58 @@
             "smithy.api#documentation": "Output only. Describes the state of the subscription. See more details at [the lifecycle of a subscription](/payments/reseller/subscription/reference/index/Receive.Notifications#payments-subscription-lifecycle)."
           }
         },
-        "redirectUri": {
-          "target": "smithy.api#String",
+        "cancellationDetails": {
+          "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionCancellationDetails",
           "traits": {
-            "smithy.api#documentation": "Output only. The place where partners should redirect the end-user to after creation. This field might also be populated when creation failed. However, Partners should always prepare a default URL to redirect the user in case this field is empty."
+            "smithy.api#documentation": "Output only. Describes the details of a cancelled subscription. Only applicable to subscription of state `STATE_CANCELLED`."
           }
         },
-        "purchaseTime": {
+        "endUserEntitled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Output only. Indicates if the subscription is entitled to the end user."
+          }
+        },
+        "freeTrialEndTime": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional. The timestamp when the user transaction was made with the Partner. Specify for the case of \"bundle with choice\", and it must be before the provision_time (when the user makes a selection)."
+            "smithy.api#documentation": "Output only. End of the free trial period, in ISO 8061 format. For example, \"2019-08-31T17:28:54.564Z\". It will be set the same as createTime if no free trial promotion is specified."
+          }
+        },
+        "products": {
+          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
+          "traits": {
+            "smithy.api#documentation": "Optional. Deprecated: consider using `line_items` as the input. Required. Resource name that identifies the purchased products. The format will be 'partners/{partner_id}/products/{product_id}'."
           }
         },
         "promotionSpecs": {
           "target": "com.gcp.paymentsresellersubscription_v1#SubscriptionPromotionSpecList",
           "traits": {
             "smithy.api#documentation": "Optional. Subscription-level promotions. Only free trial is supported on this level. It determines the first renewal time of the subscription to be the end of the free trial period. Specify the promotion resource name only when used as input."
+          }
+        },
+        "redirectUri": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The place where partners should redirect the end-user to after creation. This field might also be populated when creation failed. However, Partners should always prepare a default URL to redirect the user in case this field is empty."
+          }
+        },
+        "cycleEndTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The time at which the subscription is expected to be extended, in ISO 8061 format. UTC timezone. For example: \"2019-08-31T17:28:54.564Z\""
+          }
+        },
+        "renewalTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be incurred and the service entitlement will be renewed. A non-immediate cancellation will take place at this time too, before which, the service entitlement for the end user will remain valid. UTC timezone in ISO 8061 format. For example: \"2019-08-31T17:28:54.564Z\""
+          }
+        },
+        "createTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Output only. System generated timestamp when the subscription is created. UTC timezone."
           }
         }
       },
@@ -1594,183 +1736,82 @@
         }
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#UndoCancelSubscriptionResponse": {
+    "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetailsIntroductoryPricingSpec": {
       "type": "structure",
       "members": {
-        "subscription": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Subscription",
+        "recurrenceCount": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "The updated subscription resource."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Response that contains the updated subscription resource."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GoogleOnePayload": {
-      "type": "structure",
-      "members": {
-        "campaigns": {
-          "target": "com.gcp.paymentsresellersubscription_v1#StringList",
-          "traits": {
-            "smithy.api#documentation": "Campaign attributed to sales of this subscription."
+            "smithy.api#documentation": "Output only. The duration of an introductory offer in billing cycles."
           }
         },
-        "storeId": {
+        "regionCode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "The identifier for the partner store where the subscription was sold."
+            "smithy.api#documentation": "Output only. 2-letter ISO region code where the product is available in. Ex. \"US\"."
           }
         },
-        "offering": {
-          "target": "com.gcp.paymentsresellersubscription_v1#GoogleOnePayloadOfferingEnum",
+        "discountAmount": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Amount",
           "traits": {
-            "smithy.api#documentation": "The type of offering the subscription was sold by the partner. e.g. VAS."
+            "smithy.api#documentation": "Output only. The discount amount. The value is positive."
           }
         },
-        "salesChannel": {
-          "target": "com.gcp.paymentsresellersubscription_v1#GoogleOnePayloadSalesChannelEnum",
-          "traits": {
-            "smithy.api#documentation": "The type of sales channel through which the subscription was sold."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Payload specific to Google One products."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GoogleOnePayloadOfferingEnum": {
-      "type": "enum",
-      "members": {
-        "OFFERING_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OFFERING_UNSPECIFIED"
-          }
-        },
-        "OFFERING_VAS_BUNDLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OFFERING_VAS_BUNDLE"
-          }
-        },
-        "OFFERING_VAS_STANDALONE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OFFERING_VAS_STANDALONE"
-          }
-        },
-        "OFFERING_HARD_BUNDLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OFFERING_HARD_BUNDLE"
-          }
-        },
-        "OFFERING_SOFT_BUNDLE": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "OFFERING_SOFT_BUNDLE"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GoogleOnePayloadSalesChannelEnum": {
-      "type": "enum",
-      "members": {
-        "CHANNEL_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CHANNEL_UNSPECIFIED"
-          }
-        },
-        "CHANNEL_RETAIL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CHANNEL_RETAIL"
-          }
-        },
-        "CHANNEL_ONLINE_WEB": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CHANNEL_ONLINE_WEB"
-          }
-        },
-        "CHANNEL_ONLINE_ANDROID_APP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CHANNEL_ONLINE_ANDROID_APP"
-          }
-        },
-        "CHANNEL_ONLINE_IOS_APP": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "CHANNEL_ONLINE_IOS_APP"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SuspendSubscriptionRequest": {
-      "type": "structure",
-      "members": {
-        "suspendMode": {
-          "target": "com.gcp.paymentsresellersubscription_v1#SuspendSubscriptionRequestSuspendModeEnum",
-          "traits": {
-            "smithy.api#documentation": "Optional. The mode to suspend the subscription. It's required for partners to specify the suspend mode, whether suspend immediately and indefinitely, or cancel the subscription after grace_period_millis or auto_cancel_duration_millis if it's not resumed."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#documentation": "Request to suspend a subscription."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#SuspendSubscriptionRequestSuspendModeEnum": {
-      "type": "enum",
-      "members": {
-        "SUSPEND_MODE_UNSPECIFIED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SUSPEND_MODE_UNSPECIFIED"
-          }
-        },
-        "SUSPEND_MODE_CANCEL_AFTER_GRACE_PERIOD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SUSPEND_MODE_CANCEL_AFTER_GRACE_PERIOD"
-          }
-        },
-        "SUSPEND_MODE_CANCEL_AFTER_RETENTION_PERIOD": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "SUSPEND_MODE_CANCEL_AFTER_RETENTION_PERIOD"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GoogleHomePayload": {
-      "type": "structure",
-      "members": {
-        "attachedToGoogleStructure": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Output only. This identifies whether the subscription is attached to a Google Home structure."
-          }
-        },
-        "googleStructureId": {
+        "discountRatioMicros": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional. Structure identifier on Google side."
-          }
-        },
-        "partnerStructureId": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. This identifies the structure ID on partner side that the subscription should be applied to. Only required when the partner requires structure mapping."
+            "smithy.api#documentation": "Output only. The discount percentage in micros. For example, 50,000 represents 5%."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Payload specific for Google Home products."
+        "smithy.api#documentation": "The duration of an introductory pricing promotion."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#ExtendSubscriptionRequest": {
+      "type": "structure",
+      "members": {
+        "extension": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Extension",
+          "traits": {
+            "smithy.api#documentation": "Required. Specifies details of the extension. Currently, the duration of the extension must be exactly one billing cycle of the original subscription."
+          }
+        },
+        "requestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Restricted to 36 ASCII characters. A random UUID is recommended. The idempotency key for the request. The ID generation logic is controlled by the partner. request_id should be the same as on retries of the same request. A different request_id must be used for a extension of a different cycle."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Request message for extending a Subscription resource. A new recurrence will be made based on the subscription schedule defined by the original product."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#ProductPayload": {
+      "type": "structure",
+      "members": {
+        "googleOnePayload": {
+          "target": "com.gcp.paymentsresellersubscription_v1#GoogleOnePayload",
+          "traits": {
+            "smithy.api#documentation": "Product-specific payloads. Payload specific to Google One products."
+          }
+        },
+        "youtubePayload": {
+          "target": "com.gcp.paymentsresellersubscription_v1#YoutubePayload",
+          "traits": {
+            "smithy.api#documentation": "Payload specific to Youtube products."
+          }
+        },
+        "googleHomePayload": {
+          "target": "com.gcp.paymentsresellersubscription_v1#GoogleHomePayload",
+          "traits": {
+            "smithy.api#documentation": "Payload specific to Google Home products."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Specifies product specific payload."
       }
     },
     "com.gcp.paymentsresellersubscription_v1#SubscriptionLineItemOneTimeRecurrenceDetails": {
@@ -1787,13 +1828,13 @@
         "smithy.api#documentation": "Details for a ONE_TIME recurrence line item."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#FindEligiblePromotionsResponse": {
+    "com.gcp.paymentsresellersubscription_v1#ListPromotionsResponse": {
       "type": "structure",
       "members": {
         "promotions": {
           "target": "com.gcp.paymentsresellersubscription_v1#PromotionList",
           "traits": {
-            "smithy.api#documentation": "The promotions for the current user."
+            "smithy.api#documentation": "The promotions for the specified partner."
           }
         },
         "nextPageToken": {
@@ -1804,54 +1845,54 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Response containing the found promotions for the current user."
+        "smithy.api#documentation": "Response that contains the promotions."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#Duration": {
+    "com.gcp.paymentsresellersubscription_v1#ProductBundleDetails": {
       "type": "structure",
       "members": {
-        "unit": {
-          "target": "com.gcp.paymentsresellersubscription_v1#DurationUnitEnum",
+        "bundleElements": {
+          "target": "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsBundleElementList",
           "traits": {
-            "smithy.api#documentation": "The unit used for the duration"
+            "smithy.api#documentation": "The individual products that are included in the bundle."
           }
         },
-        "count": {
-          "target": "smithy.api#Integer",
+        "entitlementMode": {
+          "target": "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsEntitlementModeEnum",
           "traits": {
-            "smithy.api#documentation": "number of duration units to be included."
+            "smithy.api#documentation": "The entitlement mode of the bundle product."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Describes the length of a period of a time."
+        "smithy.api#documentation": "Details for a bundle product."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#DurationUnitEnum": {
+    "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsBundleElementList": {
+      "type": "list",
+      "member": {
+        "target": "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsBundleElement"
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#ProductBundleDetailsEntitlementModeEnum": {
       "type": "enum",
       "members": {
-        "UNIT_UNSPECIFIED": {
+        "ENTITLEMENT_MODE_UNSPECIFIED": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "UNIT_UNSPECIFIED"
+            "smithy.api#enumValue": "ENTITLEMENT_MODE_UNSPECIFIED"
           }
         },
-        "MONTH": {
+        "ENTITLEMENT_MODE_FULL": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "MONTH"
+            "smithy.api#enumValue": "ENTITLEMENT_MODE_FULL"
           }
         },
-        "DAY": {
+        "ENTITLEMENT_MODE_INCREMENTAL": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "DAY"
-          }
-        },
-        "HOUR": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "HOUR"
+            "smithy.api#enumValue": "ENTITLEMENT_MODE_INCREMENTAL"
           }
         }
       }
@@ -1870,76 +1911,64 @@
         "smithy.api#documentation": "Response that contains the entitled subscription resource."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#ExtendSubscriptionRequest": {
+    "com.gcp.paymentsresellersubscription_v1#CancelSubscriptionResponse": {
       "type": "structure",
       "members": {
-        "requestId": {
-          "target": "smithy.api#String",
+        "subscription": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Subscription",
           "traits": {
-            "smithy.api#documentation": "Required. Restricted to 36 ASCII characters. A random UUID is recommended. The idempotency key for the request. The ID generation logic is controlled by the partner. request_id should be the same as on retries of the same request. A different request_id must be used for a extension of a different cycle."
-          }
-        },
-        "extension": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Extension",
-          "traits": {
-            "smithy.api#documentation": "Required. Specifies details of the extension. Currently, the duration of the extension must be exactly one billing cycle of the original subscription."
+            "smithy.api#documentation": "The cancelled subscription resource."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Request message for extending a Subscription resource. A new recurrence will be made based on the subscription schedule defined by the original product."
+        "smithy.api#documentation": "Response that contains the cancelled subscription resource."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#ServicePeriod": {
+    "com.gcp.paymentsresellersubscription_v1#UserSession": {
       "type": "structure",
       "members": {
-        "endTime": {
+        "token": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Optional. The end time of the service period. Time is exclusive."
+            "smithy.api#documentation": "Output only. The encrypted token of the user session, including the information of the user's intent and request. This token should be provided when redirecting the user to Google."
           }
         },
-        "startTime": {
+        "expireTime": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The start time of the service period. Time is inclusive."
+            "smithy.api#documentation": "Output only. The time at which the user session expires."
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "A description of what time period or moment in time the product or service is being delivered over."
+        "smithy.api#documentation": "Contains a short-lived token containing information required to interact with the Google Payments Reseller Platform via web endpoints. - Generate a user session token dynamically for an authenticated user. Do not share a token directly with a user in an unauthenticated context, such as SMS or email. - You can regenerate new session tokens repeatedly for the same `generate` request if necessary, regardless of whether previous tokens have expired. Multiple sessions will not result in duplicate fulfillments because the `subscription ID` guarantees uniqueness. For more integration details, see the [Google Managed Signup](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup) documentation."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#PromotionIntroductoryPricingDetailsIntroductoryPricingSpec": {
+    "com.gcp.paymentsresellersubscription_v1#ExtendSubscriptionResponse": {
       "type": "structure",
       "members": {
-        "regionCode": {
+        "freeTrialEndTime": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. 2-letter ISO region code where the product is available in. Ex. \"US\"."
+            "smithy.api#documentation": "End of the free trial period, in ISO 8061 format. UTC timezone. Example, \"freeTrialEndTime\":\"2019-08-31T17:28:54.564Z\" This time will be set the same as initial subscription creation time if no free trial period is offered to the partner."
           }
         },
-        "discountAmount": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Amount",
-          "traits": {
-            "smithy.api#documentation": "Output only. The discount amount. The value is positive."
-          }
-        },
-        "discountRatioMicros": {
+        "cycleEndTime": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. The discount percentage in micros. For example, 50,000 represents 5%."
+            "smithy.api#documentation": "The time at which the subscription is expected to be extended, in ISO 8061 format. UTC timezone. Example, \"cycleEndTime\":\"2019-08-31T17:28:54.564Z\""
           }
         },
-        "recurrenceCount": {
-          "target": "smithy.api#Integer",
+        "renewalTime": {
+          "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Output only. The duration of an introductory offer in billing cycles."
+            "smithy.api#documentation": "Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be incurred and the service entitlement will be renewed. A non-immediate cancellation will take place at this time too, before which, the service entitlement for the end user will remain valid. UTC timezone in ISO 8061 format. For example: \"2019-08-31T17:28:54.564Z\""
           }
         }
       },
       "traits": {
-        "smithy.api#documentation": "The duration of an introductory pricing promotion."
+        "smithy.api#documentation": "Response that contains the timestamps after the extension."
       }
     },
     "com.gcp.paymentsresellersubscription_v1#ListPartnersProductsRequest": {
@@ -1950,6 +1979,13 @@
           "traits": {
             "smithy.api#documentation": "Optional. A page token, received from a previous `ListProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProducts` must match the call that provided the page token.",
             "smithy.api#httpQuery": "pageToken"
+          }
+        },
+        "filter": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. Specifies the filters for the product results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
+            "smithy.api#httpQuery": "filter"
           }
         },
         "pageSize": {
@@ -1965,13 +2001,6 @@
             "smithy.api#documentation": "Required. The parent, the partner that can resell. Format: partners/{partner}",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
-          }
-        },
-        "filter": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Specifies the filters for the product results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
-            "smithy.api#httpQuery": "filter"
           }
         }
       }
@@ -2030,19 +2059,19 @@
         }
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#ExtendPartnersSubscriptionsRequest": {
+    "com.gcp.paymentsresellersubscription_v1#GeneratePartnersUserSessionsRequest": {
       "type": "structure",
       "members": {
-        "name": {
+        "parent": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The name of the subscription resource to be extended. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\".",
+            "smithy.api#documentation": "Required. The parent, the partner that can resell. Format: partners/{partner}",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
         },
         "body": {
-          "target": "com.gcp.paymentsresellersubscription_v1#ExtendSubscriptionRequest",
+          "target": "com.gcp.paymentsresellersubscription_v1#GenerateUserSessionRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -2076,13 +2105,13 @@
         ]
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#ExtendPartnersSubscriptions": {
+    "com.gcp.paymentsresellersubscription_v1#GeneratePartnersUserSessions": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.paymentsresellersubscription_v1#ExtendPartnersSubscriptionsRequest"
+        "target": "com.gcp.paymentsresellersubscription_v1#GeneratePartnersUserSessionsRequest"
       },
       "output": {
-        "target": "com.gcp.paymentsresellersubscription_v1#ExtendSubscriptionResponse"
+        "target": "com.gcp.paymentsresellersubscription_v1#GenerateUserSessionResponse"
       },
       "errors": [
         {
@@ -2101,138 +2130,52 @@
       "traits": {
         "smithy.api#http": {
           "method": "POST",
-          "uri": "v1/{+name}:extend"
+          "uri": "v1/{+parent}/userSessions:generate"
         },
-        "smithy.api#documentation": "[Opt-in only] Most partners should be on auto-extend by default. Extends a subscription service for their customers on an ongoing basis for the subscription to remain active and renewable. It should be called directly by the partner using service accounts."
+        "smithy.api#documentation": "This API replaces user authorized OAuth consent based APIs (Create, Entitle). Issues a timed session token for the given user intent. You can use the session token to redirect the user to Google to finish the signup flow. You can re-generate new session token repeatedly for the same request if necessary, regardless of the previous tokens being expired or not. By default, the session token is valid for 1 hour."
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#EntitlePartnersSubscriptionsRequest": {
-      "type": "structure",
-      "members": {
-        "name": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The name of the subscription resource that is entitled to the current end user. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\"",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequest",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#EntitlePartnersSubscriptions": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.paymentsresellersubscription_v1#EntitlePartnersSubscriptionsRequest"
-      },
-      "output": {
-        "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#BadRequest"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1/{+name}:entitle"
-        },
-        "smithy.api#documentation": "Entitles a previously provisioned subscription to the current end user. The end user identity is inferred from the authorized credential of the request. This API must be authorized by the end user using OAuth."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#CreatePartnersSubscriptionsRequest": {
+    "com.gcp.paymentsresellersubscription_v1#ListPartnersPromotionsRequest": {
       "type": "structure",
       "members": {
         "parent": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The parent resource name, which is the identifier of the partner. It will have the format of \"partners/{partner_id}\".",
+            "smithy.api#documentation": "Required. The parent, the partner that can resell. Format: partners/{partner}",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
         },
-        "subscriptionId": {
+        "filter": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription with the same ID already exists, the creation fails with an `ALREADY_EXISTS` error.",
-            "smithy.api#httpQuery": "subscriptionId"
+            "smithy.api#documentation": "Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
+            "smithy.api#httpQuery": "filter"
           }
         },
-        "body": {
-          "target": "com.gcp.paymentsresellersubscription_v1#Subscription",
+        "pageSize": {
+          "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
+            "smithy.api#documentation": "Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+            "smithy.api#httpQuery": "pageSize"
           }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#CreatePartnersSubscriptions": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.paymentsresellersubscription_v1#CreatePartnersSubscriptionsRequest"
-      },
-      "output": {
-        "target": "com.gcp.paymentsresellersubscription_v1#Subscription"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
         },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#BadRequest"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1/{+parent}/subscriptions"
-        },
-        "smithy.api#documentation": "Used by partners to create a subscription for their customers. The created subscription is associated with the end user inferred from the end user credentials. This API must be authorized by the end user using OAuth."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GetPartnersSubscriptionsRequest": {
-      "type": "structure",
-      "members": {
-        "name": {
+        "pageToken": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Required. The name of the subscription resource to retrieve. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\"",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token.",
+            "smithy.api#httpQuery": "pageToken"
           }
         }
       }
     },
-    "com.gcp.paymentsresellersubscription_v1#GetPartnersSubscriptions": {
+    "com.gcp.paymentsresellersubscription_v1#ListPartnersPromotions": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.paymentsresellersubscription_v1#GetPartnersSubscriptionsRequest"
+        "target": "com.gcp.paymentsresellersubscription_v1#ListPartnersPromotionsRequest"
       },
       "output": {
-        "target": "com.gcp.paymentsresellersubscription_v1#Subscription"
+        "target": "com.gcp.paymentsresellersubscription_v1#ListPromotionsResponse"
       },
       "errors": [
         {
@@ -2245,9 +2188,63 @@
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "v1/{+name}"
+          "uri": "v1/{+parent}/promotions"
         },
-        "smithy.api#documentation": "Gets a subscription by id. It should be called directly by the partner using service accounts."
+        "smithy.api#documentation": "Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that can be used by the partner. It should be authenticated with a service account.",
+        "smithy.api#paginated": {
+          "inputToken": "pageToken",
+          "outputToken": "nextPageToken"
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#FindEligiblePartnersPromotionsRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The parent, the partner that can resell. Format: partners/{partner}",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.paymentsresellersubscription_v1#FindEligiblePromotionsRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#FindEligiblePartnersPromotions": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.paymentsresellersubscription_v1#FindEligiblePartnersPromotionsRequest"
+      },
+      "output": {
+        "target": "com.gcp.paymentsresellersubscription_v1#FindEligiblePromotionsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#BadRequest"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1/{+parent}/promotions:findEligible"
+        },
+        "smithy.api#documentation": "Currently, it is only enabled for **YouTube**. Finds eligible promotions for the current user. The API requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will skip the consent screen."
       }
     },
     "com.gcp.paymentsresellersubscription_v1#UndoCancelPartnersSubscriptionsRequest": {
@@ -2350,6 +2347,113 @@
         "smithy.api#documentation": "Suspends a subscription. Contract terms may dictate if a prorated refund will be issued upon suspension. It should be called directly by the partner using service accounts."
       }
     },
+    "com.gcp.paymentsresellersubscription_v1#CreatePartnersSubscriptionsRequest": {
+      "type": "structure",
+      "members": {
+        "parent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The parent resource name, which is the identifier of the partner. It will have the format of \"partners/{partner_id}\".",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "subscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription with the same ID already exists, the creation fails with an `ALREADY_EXISTS` error.",
+            "smithy.api#httpQuery": "subscriptionId"
+          }
+        },
+        "body": {
+          "target": "com.gcp.paymentsresellersubscription_v1#Subscription",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#CreatePartnersSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.paymentsresellersubscription_v1#CreatePartnersSubscriptionsRequest"
+      },
+      "output": {
+        "target": "com.gcp.paymentsresellersubscription_v1#Subscription"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#BadRequest"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1/{+parent}/subscriptions"
+        },
+        "smithy.api#documentation": "Used by partners to create a subscription for their customers. The created subscription is associated with the end user inferred from the end user credentials. This API must be authorized by the end user using OAuth."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#EntitlePartnersSubscriptionsRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the subscription resource that is entitled to the current end user. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\"",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#EntitlePartnersSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.paymentsresellersubscription_v1#EntitlePartnersSubscriptionsRequest"
+      },
+      "output": {
+        "target": "com.gcp.paymentsresellersubscription_v1#EntitleSubscriptionResponse"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#BadRequest"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1/{+name}:entitle"
+        },
+        "smithy.api#documentation": "Entitles a previously provisioned subscription to the current end user. The end user identity is inferred from the authorized credential of the request. This API must be authorized by the end user using OAuth."
+      }
+    },
     "com.gcp.paymentsresellersubscription_v1#ResumePartnersSubscriptionsRequest": {
       "type": "structure",
       "members": {
@@ -2398,6 +2502,56 @@
           "uri": "v1/{+name}:resume"
         },
         "smithy.api#documentation": "Resumes a suspended subscription. The new billing cycle will start at the time of the request. It should be called directly by the partner using service accounts."
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#ExtendPartnersSubscriptionsRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the subscription resource to be extended. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\".",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.gcp.paymentsresellersubscription_v1#ExtendSubscriptionRequest",
+          "traits": {
+            "smithy.api#httpPayload": {},
+            "smithy.api#documentation": "Request body"
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#ExtendPartnersSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.paymentsresellersubscription_v1#ExtendPartnersSubscriptionsRequest"
+      },
+      "output": {
+        "target": "com.gcp.paymentsresellersubscription_v1#ExtendSubscriptionResponse"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#BadRequest"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#Conflict"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "v1/{+name}:extend"
+        },
+        "smithy.api#documentation": "[Opt-in only] Most partners should be on auto-extend by default. Extends a subscription service for their customers on an ongoing basis for the subscription to remain active and renewable. It should be called directly by the partner using service accounts."
       }
     },
     "com.gcp.paymentsresellersubscription_v1#CancelPartnersSubscriptionsRequest": {
@@ -2482,18 +2636,18 @@
     "com.gcp.paymentsresellersubscription_v1#ProvisionPartnersSubscriptionsRequest": {
       "type": "structure",
       "members": {
-        "cycleOptions.initialCycleDuration.count": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "number of duration units to be included.",
-            "smithy.api#httpQuery": "cycleOptions.initialCycleDuration.count"
-          }
-        },
         "subscriptionId": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription with the same ID already exists, the creation fails with an `ALREADY_EXISTS` error.",
             "smithy.api#httpQuery": "subscriptionId"
+          }
+        },
+        "cycleOptions.initialCycleDuration.count": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#documentation": "number of duration units to be included.",
+            "smithy.api#httpQuery": "cycleOptions.initialCycleDuration.count"
           }
         },
         "parent": {
@@ -2550,9 +2704,53 @@
         "smithy.api#documentation": "Used by partners to provision a subscription for their customers. This creates a subscription without associating it with the end user account. EntitleSubscription must be called separately using OAuth in order for the end user account to be associated with the subscription. It should be called directly by the partner using service accounts."
       }
     },
+    "com.gcp.paymentsresellersubscription_v1#GetPartnersSubscriptionsRequest": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Required. The name of the subscription resource to retrieve. It will have the format of \"partners/{partner_id}/subscriptions/{subscription_id}\"",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.gcp.paymentsresellersubscription_v1#GetPartnersSubscriptions": {
+      "type": "operation",
+      "input": {
+        "target": "com.gcp.paymentsresellersubscription_v1#GetPartnersSubscriptionsRequest"
+      },
+      "output": {
+        "target": "com.gcp.paymentsresellersubscription_v1#Subscription"
+      },
+      "errors": [
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
+        },
+        {
+          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "v1/{+name}"
+        },
+        "smithy.api#documentation": "Gets a subscription by id. It should be called directly by the partner using service accounts."
+      }
+    },
     "com.gcp.paymentsresellersubscription_v1#PatchPartnersSubscriptionsLineItemsRequest": {
       "type": "structure",
       "members": {
+        "requestId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional. An idempotency ID for the request. A random UUID is recommended. Restricted to 36 ASCII characters.",
+            "smithy.api#httpQuery": "requestId"
+          }
+        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -2605,168 +2803,6 @@
           "uri": "v1/{+name}"
         },
         "smithy.api#documentation": "Updates a line item of a subscription. It should be authenticated with a service account."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#FindEligiblePartnersPromotionsRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The parent, the partner that can resell. Format: partners/{partner}",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.paymentsresellersubscription_v1#FindEligiblePromotionsRequest",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#FindEligiblePartnersPromotions": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.paymentsresellersubscription_v1#FindEligiblePartnersPromotionsRequest"
-      },
-      "output": {
-        "target": "com.gcp.paymentsresellersubscription_v1#FindEligiblePromotionsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#BadRequest"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1/{+parent}/promotions:findEligible"
-        },
-        "smithy.api#documentation": "Currently, it is only enabled for **YouTube**. Finds eligible promotions for the current user. The API requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will skip the consent screen."
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ListPartnersPromotionsRequest": {
-      "type": "structure",
-      "members": {
-        "pageToken": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token.",
-            "smithy.api#httpQuery": "pageToken"
-          }
-        },
-        "filter": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`",
-            "smithy.api#httpQuery": "filter"
-          }
-        },
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The parent, the partner that can resell. Format: partners/{partner}",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "pageSize": {
-          "target": "smithy.api#Integer",
-          "traits": {
-            "smithy.api#documentation": "Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
-            "smithy.api#httpQuery": "pageSize"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#ListPartnersPromotions": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.paymentsresellersubscription_v1#ListPartnersPromotionsRequest"
-      },
-      "output": {
-        "target": "com.gcp.paymentsresellersubscription_v1#ListPromotionsResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "v1/{+parent}/promotions"
-        },
-        "smithy.api#documentation": "Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that can be used by the partner. It should be authenticated with a service account.",
-        "smithy.api#paginated": {
-          "inputToken": "pageToken",
-          "outputToken": "nextPageToken"
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GeneratePartnersUserSessionsRequest": {
-      "type": "structure",
-      "members": {
-        "parent": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Required. The parent, the partner that can resell. Format: partners/{partner}",
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "body": {
-          "target": "com.gcp.paymentsresellersubscription_v1#GenerateUserSessionRequest",
-          "traits": {
-            "smithy.api#httpPayload": {},
-            "smithy.api#documentation": "Request body"
-          }
-        }
-      }
-    },
-    "com.gcp.paymentsresellersubscription_v1#GeneratePartnersUserSessions": {
-      "type": "operation",
-      "input": {
-        "target": "com.gcp.paymentsresellersubscription_v1#GeneratePartnersUserSessionsRequest"
-      },
-      "output": {
-        "target": "com.gcp.paymentsresellersubscription_v1#GenerateUserSessionResponse"
-      },
-      "errors": [
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#NotFound"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#Forbidden"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#BadRequest"
-        },
-        {
-          "target": "com.gcp.paymentsresellersubscription_v1#Conflict"
-        }
-      ],
-      "traits": {
-        "smithy.api#http": {
-          "method": "POST",
-          "uri": "v1/{+parent}/userSessions:generate"
-        },
-        "smithy.api#documentation": "This API replaces user authorized OAuth consent based APIs (Create, Entitle). Issues a timed session token for the given user intent. You can use the session token to redirect the user to Google to finish the signup flow. You can re-generate new session token repeatedly for the same request if necessary, regardless of the previous tokens being expired or not. By default, the session token is valid for 1 hour."
       }
     }
   }

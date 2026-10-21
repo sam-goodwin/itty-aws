@@ -5,10 +5,9 @@
  *
  * Input:  specs/spec-mirror-kubernetes/specs/swagger.json  (spec submodule —
  *         the single aggregated Swagger 2.0 document, ~1069 operations)
- *         patches/*.patch.json  (RFC-6902 patches to the Swagger document —
- *         ported verbatim from distilled v0; they add the 404/409/422 error
- *         responses the upstream spec omits, which feed the per-op typed
- *         error unions)
+ *         patches/<group>/*.patch.json  (Smithy ops on upstream names,
+ *         applied by finalizeConvert; they add the 404/409/422 errors the
+ *         upstream spec omits to the per-op typed error unions)
  * Output: .generated-specs/<group>.json  (23 models: core, apps, batch, …)
  *
  * The OpenAPI→Smithy converter lives in
@@ -21,9 +20,6 @@
  *    rule: strip the verb prefix from the operationId
  *    (`listCoreV1NamespacedPod` → `CoreV1NamespacedPod`) and
  *    longest-prefix-match the PascalCase API group (fallback group: core).
- *    Patch application therefore also lives here (same semantics as
- *    `runOpenApiConvert`: sorted `*.patch.json`, stale targets warn+skip,
- *    malformed patches fail the run).
  *
  * 2. the document is upgraded Swagger 2.0 → OpenAPI 3.0 in place before
  *    conversion: the shared converter's Swagger 2.0 parameter normalization
@@ -38,15 +34,9 @@ import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { convertOpenApiToSmithy } from "@distilled.cloud/core/codegen/openapi";
 import { finalizeConvert } from "@distilled.cloud/core/codegen/patches";
-import {
-  applyOperation,
-  isStaleTargetError,
-  type PatchFile,
-} from "@distilled.cloud/core/json-patch";
 
 const root = path.resolve(import.meta.dirname, "..");
 const specPath = path.join(root, "specs/spec-mirror-kubernetes/specs/swagger.json");
-const patchesDir = path.join(root, "patches");
 const outDir = path.join(root, ".generated-specs");
 
 // ============================================================================
@@ -130,40 +120,6 @@ console.log(`   Spec:   ${specPath}`);
 console.log(`   Output: ${outDir}`);
 
 const spec: any = JSON.parse(await fs.readFile(specPath, "utf8"));
-
-// ---- RFC-6902 patch chain (applies to the Swagger document) ----
-let patchFileCount = 0;
-let staleOps = 0;
-const badPatches: string[] = [];
-const patchFiles = (await fs.readdir(patchesDir))
-  .filter((f) => f.endsWith(".patch.json"))
-  .sort((a, b) => a.localeCompare(b));
-for (const pf of patchFiles) {
-  const parsed = JSON.parse(await fs.readFile(path.join(patchesDir, pf), "utf8")) as PatchFile;
-  for (const patchOp of parsed.patches ?? []) {
-    try {
-      applyOperation(spec, patchOp);
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      if (isStaleTargetError(msg)) {
-        // Spec drift — the patch target no longer exists upstream.
-        staleOps++;
-        console.warn(`   ⚠️  stale: ${pf} [${patchOp.op} ${patchOp.path}]`);
-      } else {
-        badPatches.push(`${pf} [${patchOp.op} ${patchOp.path}]: ${msg}`);
-      }
-    }
-  }
-  patchFileCount++;
-}
-if (badPatches.length) {
-  for (const b of badPatches) console.error(`❌ bad patch: ${b}`);
-  throw new Error(`${badPatches.length} malformed patch operation(s) — fix or remove them`);
-}
-console.log(
-  `   Patches: ${patchFileCount} file(s) applied` +
-    (staleOps ? `, ${staleOps} stale op(s) skipped` : ""),
-);
 
 // ---- Upgrade Swagger 2.0 → OpenAPI 3.0 (in place; see module doc) ----
 
@@ -277,6 +233,7 @@ for (const group of [...groupPaths.keys()].sort()) {
     paths: groupPaths.get(group)!,
   };
   const model = convertOpenApiToSmithy(groupSpec, {
+    deferNaming: true,
     namespace: `com.kubernetes.${group}`,
     serviceName: pascalGroup(group),
     // v0 parity: includeOperationErrors with the default status→class map

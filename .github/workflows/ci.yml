@@ -2,15 +2,15 @@ name: CI
 
 # Typecheck gate for PRs and pushes to main.
 #
-# `tsconfig.base.json` sets `noCheck: true` so day-to-day `tsc -b` (and
+# `tsconfig.base.json` sets `noCheck: true` so day-to-day `tsrs -b` (and
 # every editor/intellisense engine) only EMITS the generated SDKs instead
 # of checking them — checking 20 generated SDKs costs minutes and GBs.
 # CI is where that cost is worth paying: `typecheck:ci` re-enables
-# checking (`tsc -b --noCheck false`) across every package, so a
+# checking (`tsrs -b --noCheck false`) across every package, so a
 # generator or patch bug can't reach npm.
 #
 # `stacks/*` are workspace members but are NOT in the root tsconfig's project
-# references, so `tsc -b` never sees them. They get their own job.
+# references, so `tsrs -b` never sees them. They get their own job.
 
 on:
   push:
@@ -116,7 +116,7 @@ jobs:
         run: pnpm install --frozen-lockfile --filter "./website..."
 
       # website/ is a workspace member but is not under stacks/* and is not
-      # in the root tsconfig project references (so `tsc -b` never sees it).
+      # in the root tsconfig project references (so `tsrs -b` never sees it).
       - name: Typecheck
         run: pnpm --filter "./website" run typecheck
 
@@ -149,3 +149,6 @@ jobs:
 
       - name: Check formatting
         run: pnpm format:check
+
+      - name: Check package versions
+        run: pnpm validate:publish-packages
