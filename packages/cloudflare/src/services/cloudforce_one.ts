@@ -434,17 +434,17 @@ export interface CreateThreatEventsGraphqlResponse {
 export interface CreateThreatEventsQueryRequest {
   /** Account ID. */
   accountId: string;
-  /** Enable alerts for this query */
-  alertEnabled: boolean;
-  /** Enable alert rollup for this query */
-  alertRollupEnabled: boolean;
   /** Unique name for the saved query */
   name: string;
   /** JSON string containing the query parameters */
   queryJson: string;
-  /** Enable rule for this query */
-  ruleEnabled: boolean;
-  /** Scope for the rule */
+  /** Deprecated and ignored: saved-query alerting and rules were removed. */
+  alertEnabled?: boolean;
+  /** Deprecated and ignored: saved-query alerting and rules were removed. */
+  alertRollupEnabled?: boolean;
+  /** Deprecated and ignored: saved-query alerting and rules were removed. */
+  ruleEnabled?: boolean;
+  /** Deprecated and ignored: saved-query alerting and rules were removed. */
   ruleScope?: string;
 }
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -453,9 +453,9 @@ export interface CreateThreatEventsQueryResponse {
   id: number;
   /** Account ID */
   accountId: number;
-  /** Whether alerts are enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   alertEnabled: boolean;
-  /** Whether alert rollup is enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   alertRollupEnabled: boolean;
   /** Creation timestamp */
   createdAt: string;
@@ -463,17 +463,17 @@ export interface CreateThreatEventsQueryResponse {
   name: string;
   /** JSON string containing the query parameters */
   queryJson: string;
-  /** Whether rule is enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   ruleEnabled: boolean;
   /** Last update timestamp */
   updatedAt: string;
   /** Email of the user who created the query */
   userEmail: string;
-  /** Intel Indicator Feed ID (numeric) */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   customThreatFeedId?: number | null;
-  /** WAF rules list ID for blocking */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   ruleListId?: string | null;
-  /** Scope for the rule */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   ruleScope?: string | null;
 }
 export type CreateThreatEventsTagsCategoryRequestSchemaItemKind =
@@ -1014,7 +1014,9 @@ export interface CreateThreatEventTagResponse {
 }
 export interface CreateThreatSignalsArticlesTagRequest {
   accountId: string;
+  /** Threat Signals article UUID */
   articleId: string;
+  /** UUID of a tag from the account's catalog to apply to the article. */
   tagId: string;
 }
 export type CreateThreatSignalsArticlesTagResponseAppliedBy = "ai" | "analyst" | "system";
@@ -1038,11 +1040,17 @@ export interface CreateThreatSignalsFeedRequest {
   accountId: string;
   /** One of the predefined Threat Signals feed categories; see GET /:account_id/v2/threat-signals/categories. */
   categoryId?: CreateThreatSignalsFeedRequestCategoryId | (string & {});
+  /** UUID of a curated feed to subscribe to. Provide exactly one of url or curated_feed_id. The account must have feed creation entitlement and not exceed feed allowance. */
   curatedFeedId?: string;
+  /** Override the feed's display name. Null clears it; omit to keep existing or derived value. */
   displayName?: string;
+  /** Whether to actively poll the feed. Default true. */
   enabled?: boolean;
+  /** Polling interval in seconds (60-86400). Default 300s (5 minutes). */
   pollIntervalS?: number;
+  /** Override the feed's title. Null clears it; omit to keep existing or derived value. */
   title?: string;
+  /** HTTPS RSS feed URL. Provide exactly one of url or curated_feed_id. The account must have feed creation entitlement and not exceed feed allowance. */
   url?: string;
 }
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1071,10 +1079,14 @@ export interface CreateThreatSignalsFeedResponse {
 export type CreateThreatSignalsSkillRequestType = "summary" | "tags";
 export interface CreateThreatSignalsSkillRequest {
   accountId: string;
+  /** Custom Skill name (1-100 characters). */
   name: string;
+  /** JSON Schema serialized as a string (max 4096 characters). */
   outputSchema: string;
+  /** AI prompt (1-4000 characters) defining the skill's instructions. */
   prompt: string;
-  type: CreateThreatSignalsSkillRequestType | (string & {});
+  /** Optional label; does not affect execution. Defaults to "summary". */
+  type?: CreateThreatSignalsSkillRequestType | (string & {});
 }
 export type CreateThreatSignalsSkillResponseSource = "default" | "custom";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1202,7 +1214,9 @@ export interface DeleteThreatEventsTagsCategoryResponse {
 }
 export interface DeleteThreatSignalsArticlesTagRequest {
   accountId: string;
+  /** Threat Signals article UUID */
   articleId: string;
+  /** UUID of a tag from the account's catalog */
   tagId: string;
 }
 export type DeleteThreatSignalsArticlesTagResponseAppliedBy = "ai" | "analyst" | "system";
@@ -1215,6 +1229,7 @@ export interface DeleteThreatSignalsArticlesTagResponse {
 }
 export interface DeleteThreatSignalsFeedRequest {
   accountId: string;
+  /** UUID of the Threat Signals feed */
   feedId: string;
 }
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1242,6 +1257,7 @@ export interface DeleteThreatSignalsFeedResponse {
 }
 export interface DeleteThreatSignalsSkillRequest {
   accountId: string;
+  /** Custom Skill UUID or a Managed Default Skill ID */
   skillId: string;
 }
 export type DeleteThreatSignalsSkillResponseSource = "default" | "custom";
@@ -1267,17 +1283,17 @@ export interface EditThreatEventsQueryRequest {
   accountId: string;
   /** Event query ID */
   queryId: number;
-  /** Enable alerts for this query */
+  /** Deprecated and ignored: saved-query alerting and rules were removed. */
   alertEnabled?: boolean;
-  /** Enable alert rollup for this query */
+  /** Deprecated and ignored: saved-query alerting and rules were removed. */
   alertRollupEnabled?: boolean;
   /** Unique name for the saved query */
   name?: string;
   /** JSON string containing the query parameters */
   queryJson?: string;
-  /** Enable rule for this query */
+  /** Deprecated and ignored: saved-query alerting and rules were removed. */
   ruleEnabled?: boolean;
-  /** Scope for the rule */
+  /** Deprecated and ignored: saved-query alerting and rules were removed. */
   ruleScope?: string;
 }
 /** Raw response payload (operation does not use the standard v4 result envelope). */
@@ -1286,9 +1302,9 @@ export interface EditThreatEventsQueryResponse {
   id: number;
   /** Account ID */
   accountId: number;
-  /** Whether alerts are enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   alertEnabled: boolean;
-  /** Whether alert rollup is enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   alertRollupEnabled: boolean;
   /** Creation timestamp */
   createdAt: string;
@@ -1296,17 +1312,17 @@ export interface EditThreatEventsQueryResponse {
   name: string;
   /** JSON string containing the query parameters */
   queryJson: string;
-  /** Whether rule is enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   ruleEnabled: boolean;
   /** Last update timestamp */
   updatedAt: string;
   /** Email of the user who created the query */
   userEmail: string;
-  /** Intel Indicator Feed ID (numeric) */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   customThreatFeedId?: number | null;
-  /** WAF rules list ID for blocking */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   ruleListId?: string | null;
-  /** Scope for the rule */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   ruleScope?: string | null;
 }
 export type EditThreatEventsTagRequestActiveDurationCase1Tlp =
@@ -1833,7 +1849,9 @@ export interface EditThreatEventsTagsCategoryResponse {
 }
 export interface EditThreatSignalsArticleRequest {
   accountId: string;
+  /** Threat Signals article UUID */
   articleId: string;
+  /** True to mark the article read, false to mark unread. */
   read: boolean;
 }
 export interface EditThreatSignalsArticleResponseBulletPoints {
@@ -1891,12 +1909,17 @@ export type EditThreatSignalsFeedRequestCategoryId =
   | "ab02a976-0a20-5c76-a553-7f6325afacfe";
 export interface EditThreatSignalsFeedRequest {
   accountId: string;
+  /** UUID of the Threat Signals feed */
   feedId: string;
   /** One of the predefined Threat Signals feed categories; see GET /:account_id/v2/threat-signals/categories. */
   categoryId?: EditThreatSignalsFeedRequestCategoryId | (string & {});
+  /** Override the feed's display name. Null clears it; omit to keep existing or derived value. */
   displayName?: string;
+  /** Whether to actively poll the feed. Omit to keep current value. */
   enabled?: boolean;
+  /** New polling interval in seconds (60-86400). Omit to keep current value. */
   pollIntervalS?: number;
+  /** Override the feed's title. Null clears it; omit to keep existing or derived value. */
   title?: string;
 }
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1924,11 +1947,17 @@ export interface EditThreatSignalsFeedResponse {
 }
 export interface EditThreatSignalsSkillRequest {
   accountId: string;
+  /** Custom Skill UUID or a Managed Default Skill ID */
   skillId: string;
+  /** Optional skill configuration (stored but not currently interpreted). */
   config?: string;
+  /** Whether the skill is active and eligible for feed assignment. */
   isActive?: boolean;
+  /** Custom Skill name (1-100 characters). */
   name?: string;
+  /** JSON Schema serialized as a string (max 4096 characters). */
   outputSchema?: string;
+  /** AI prompt (1-4000 characters) defining the skill's instructions. */
   prompt?: string;
 }
 export type EditThreatSignalsSkillResponseSource = "default" | "custom";
@@ -1951,6 +1980,7 @@ export interface EditThreatSignalsSkillResponse {
 }
 export interface GenerateThreatSignalsArticlesTagRequest {
   accountId: string;
+  /** Threat Signals article UUID */
   articleId: string;
 }
 export type GenerateThreatSignalsArticlesTagResponseTagsItemAppliedBy = "ai" | "analyst" | "system";
@@ -2313,9 +2343,9 @@ export interface GetThreatEventsQueryResponse {
   id: number;
   /** Account ID */
   accountId: number;
-  /** Whether alerts are enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   alertEnabled: boolean;
-  /** Whether alert rollup is enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   alertRollupEnabled: boolean;
   /** Creation timestamp */
   createdAt: string;
@@ -2323,21 +2353,22 @@ export interface GetThreatEventsQueryResponse {
   name: string;
   /** JSON string containing the query parameters */
   queryJson: string;
-  /** Whether rule is enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   ruleEnabled: boolean;
   /** Last update timestamp */
   updatedAt: string;
   /** Email of the user who created the query */
   userEmail: string;
-  /** Intel Indicator Feed ID (numeric) */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   customThreatFeedId?: number | null;
-  /** WAF rules list ID for blocking */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   ruleListId?: string | null;
-  /** Scope for the rule */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   ruleScope?: string | null;
 }
 export interface GetThreatSignalsArticleRequest {
   accountId: string;
+  /** Threat Signals article UUID */
   articleId: string;
 }
 export type GetThreatSignalsArticleResponseBulletPoints =
@@ -2384,34 +2415,75 @@ export interface GetThreatSignalsArticleResponse {
 export type GetThreatSignalsArticlesContentRequestFormat = "text" | "html";
 export interface GetThreatSignalsArticlesContentRequest {
   accountId: string;
+  /** Threat Signals article UUID */
   articleId: string;
+  /** Response Content-Type: text (the default) for text/plain or html for text/html. Neither value converts the content. html is deprecated; use text. */
   format?: GetThreatSignalsArticlesContentRequestFormat | (string & {});
 }
 export interface GetThreatSignalsArticlesContentResponse {}
 export interface GetThreatSignalsArticlesSkillOutputRequest {
   accountId: string;
+  /** Threat Signals article UUID */
   articleId: string;
+  /** Custom Skill UUID or a Managed Default Skill ID (IOC-context: default-ioc-context-skill) */
   skillId: string;
 }
+export type GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase3Map = {
+  [key: string]: unknown | undefined;
+};
+export type GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4ItemCase3Map = {
+  [key: string]: unknown | undefined;
+};
+export type GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4Item =
+  | string
+  | number
+  | boolean
+  | GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4ItemCase3Map;
+export type GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4List =
+  Array<GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4Item>;
+export type GetThreatSignalsArticlesSkillOutputResponseCustomOutput =
+  | string
+  | number
+  | boolean
+  | GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase3Map
+  | GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4List;
+export type GetThreatSignalsArticlesSkillOutputResponseCustomOutputParseStatus =
+  | "parsed"
+  | "invalid_json";
+export type GetThreatSignalsArticlesSkillOutputResponseCustomOutputValidationStatus =
+  | "valid"
+  | "invalid_json"
+  | "schema_invalid"
+  | "unknown";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetThreatSignalsArticlesSkillOutputResponse {
+  /** Article UUID that received the skill output. */
   articleId: string;
+  /** Untrusted model output: parsed JSON when the stored completion text is valid JSON, otherwise raw text. Consumers must safely render or escape it. */
+  customOutput: GetThreatSignalsArticlesSkillOutputResponseCustomOutput;
+  /** Whether custom_output was parsed from the stored completion text. */
+  customOutputParseStatus: GetThreatSignalsArticlesSkillOutputResponseCustomOutputParseStatus;
+  /** Non-blocking validation classification for untrusted model output. `unknown` is retained only for historical rows. */
+  customOutputValidationStatus: GetThreatSignalsArticlesSkillOutputResponseCustomOutputValidationStatus;
+  /** Custom Skill version that produced the output. Null when historical metadata is unavailable. */
   customSkillVersion: string;
-  /** JSON-encoded output schema of the skill. Null when the skill no longer exists. */
+  /** JSON-encoded output schema. Null when historical skill metadata is unavailable. */
   outputSchema: string;
+  /** Custom Skill UUID that produced the output. */
   skillId: string;
-  /** Skill output. Parsed JSON when the stored output is valid JSON, otherwise the raw string. */
-  customOutput?: unknown | null;
 }
 export type GetThreatSignalsFeedsRawRequestFormat = "xml";
 export interface GetThreatSignalsFeedsRawRequest {
   accountId: string;
+  /** UUID of the Threat Signals feed */
   feedId: string;
+  /** Response format. Use xml for application/xml; omit it for the default text/plain response. */
   format?: GetThreatSignalsFeedsRawRequestFormat | (string & {});
 }
 export interface GetThreatSignalsFeedsRawResponse {}
 export interface GetThreatSignalsFeedsSkillRequest {
   accountId: string;
+  /** UUID of the Threat Signals feed */
   feedId: string;
 }
 export type GetThreatSignalsFeedsSkillResponseSkillsItemSource = "default" | "custom";
@@ -2440,6 +2512,7 @@ export interface GetThreatSignalsFeedsSkillResponse {
 }
 export interface GetThreatSignalsSkillRequest {
   accountId: string;
+  /** Custom Skill UUID or a Managed Default Skill ID */
   skillId: string;
 }
 export type GetThreatSignalsSkillResponseSource = "default" | "custom";
@@ -2463,6 +2536,7 @@ export interface GetThreatSignalsSkillResponse {
 export type GetThreatSignalsSkillsTagCategoryRequestSkillId = "default-tagging-skill";
 export interface GetThreatSignalsSkillsTagCategoryRequest {
   accountId: string;
+  /** Must be default-tagging-skill; configures the managed default tagging skill */
   skillId: GetThreatSignalsSkillsTagCategoryRequestSkillId | (string & {});
 }
 export type GetThreatSignalsSkillsTagCategoryResponseCategoryUuidsList = Array<string>;
@@ -2651,7 +2725,7 @@ export interface ListThreatEventsRequest {
   cache?: ThreatEventsListRequestCache | (string & {});
   /** Cursor for pagination. When provided, filters are embedded in the cursor so you only need to pass cursor and pageSize. Returned in the previous response's result_info.cursor field. Use cursor-based pagination for deep pagination (beyond 100,000 records) or for optimal performance. */
   cursor?: string;
-  /** Dataset UUIDs to query, or one standalone scope value: 'all'/'*' for the legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset. */
+  /** Dataset UUIDs to query, or one standalone scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Scope values query at most 50 datasets. If not provided, uses the default dataset. */
   datasetId?: ThreatEventsListRequestDatasetIdList;
   forceRefresh?: boolean;
   format?: ThreatEventsListRequestFormat | (string & {});
@@ -2710,7 +2784,7 @@ export interface ListThreatEventsAggregateRequest {
   accountId: string;
   /** Column(s) to aggregate by - single column or comma-separated list (e.g., 'attacker', 'targetIndustry', 'attacker,targetIndustry') */
   aggregateBy: string;
-  /** Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible non-analytics event datasets (analytics datasets are silently excluded), 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset. */
+  /** Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Scope values query at most 50 datasets. If not provided, uses the default dataset. */
   datasetId?: ListThreatEventsAggregateRequestDatasetIdList;
   /** End date for filtering (ISO 8601 format, e.g., '2024-12-31') */
   endDate?: string;
@@ -2768,7 +2842,7 @@ export interface ListThreatEventsGraphRequest {
   accountId: string;
   /** Opaque pagination token. Only valid when seeds has exactly 1 entry; 400 otherwise. */
   cursor?: string;
-  /** Comma-separated dataset UUIDs to restrict neighbor scope, or one standalone scope value: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. Intersected with access grants. */
+  /** Comma-separated dataset UUIDs to restrict neighbor scope, or one standalone scope value: 'operational' for readable intelligence datasets (isAnalytics=false), 'analytics' for readable analytics datasets (isAnalytics=true), or 'all'/'*' for every readable dataset including analytics datasets (the graph reads analytics relationships from R2). Intersected with access grants. */
   datasetIds?: ListThreatEventsGraphRequestDatasetIdsList;
   /** Edge direction relative to each seed: out (seed->neighbors), in (neighbors->seed), both (default). */
   direction?: string;
@@ -2828,7 +2902,7 @@ export interface ListThreatEventsIndicatorsRequest {
   createdBefore?: string;
   /** Opaque cursor from a previous response's `pagination.cursor`. When provided, all filters, datasetIds, page, `pageSize`, `includeTags` and `relatedEventsLimit` come from the cursor -- do not resend them. Sending any filter, `page`, `pageSize`, `includeTags`, `relatedEventsLimit`, `includeTotalCount=true`, or `cache=from-graph` alongside a cursor yields a 400 `CursorFilterConflictError`. A cursor issued for a different entity, an unsupported version, or a dataset that has since been reconfigured as analytics-only yields a 400 `InvalidCursorError`. */
   cursor?: string;
-  /** Dataset UUIDs to query, or one standalone scope value: 'all'/'*' for legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset. */
+  /** Dataset UUIDs to query, or one standalone scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). If not provided, uses the default dataset. */
   datasetIds?: ListThreatEventsIndicatorsRequestDatasetIdsList;
   /** Output format for indicator data. 'json' returns the default format, 'stix2' returns STIX 2.1 Indicator SDOs, 'taxii' returns a TAXII 2.1 Envelope with Content-Type application/taxii+json;version=2.1. */
   format?: ListThreatEventsIndicatorsRequestFormat | (string & {});
@@ -2986,7 +3060,7 @@ export interface ListThreatEventsIndicatorsAggregateRequest {
   createdAfter?: string;
   /** Filter indicators created before this date/datetime (ISO 8601, e.g., '2024-12-31' or '2024-12-31T23:59:59Z') */
   createdBefore?: string;
-  /** Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible datasets, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, aggregates across all accessible datasets. */
+  /** Dataset UUIDs to filter by, or one standalone scope value: 'operational' for readable intelligence datasets (isAnalytics=false), 'analytics' for readable analytics datasets (isAnalytics=true), or 'all'/'*' for every readable dataset including analytics datasets. If not provided, aggregates across all accessible datasets, including analytics datasets. */
   datasetIds?: ListThreatEventsIndicatorsAggregateRequestDatasetIdsList;
   /** For measure=relationships: only count indicator->event links whose relationship was created/observed on or after this date (ISO 8601). Bounds the activity view to recently-observed links. Note: this filters by the relationship's createdAt (link-observation time), not the underlying event's business date. */
   eventDateAfter?: string;
@@ -3093,7 +3167,7 @@ export type ListThreatEventsIndicatorsTypesRequestDatasetIdsList = Array<string>
 export interface ListThreatEventsIndicatorsTypesRequest {
   /** Account ID. */
   accountId: string;
-  /** Dataset UUIDs to query, or one standalone scope value: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, queries all accessible datasets. */
+  /** Dataset UUIDs to query, or one standalone scope value: 'operational' for readable intelligence datasets (isAnalytics=false), 'analytics' for readable analytics datasets (isAnalytics=true), or 'all'/'*' for every readable dataset including analytics datasets. If not provided, queries all accessible datasets, including analytics datasets. */
   datasetIds?: ListThreatEventsIndicatorsTypesRequestDatasetIdsList;
 }
 export type ListThreatEventsIndicatorsTypesResponseItems = ThreatEventsAttackersListResponseItems;
@@ -3112,9 +3186,9 @@ export interface ListThreatEventsQueriesResponse {
   id: number;
   /** Account ID */
   accountId: number;
-  /** Whether alerts are enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   alertEnabled: boolean;
-  /** Whether alert rollup is enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   alertRollupEnabled: boolean;
   /** Creation timestamp */
   createdAt: string;
@@ -3122,17 +3196,17 @@ export interface ListThreatEventsQueriesResponse {
   name: string;
   /** JSON string containing the query parameters */
   queryJson: string;
-  /** Whether rule is enabled */
+  /** Deprecated: saved-query alerting and rules were removed. Always false. */
   ruleEnabled: boolean;
   /** Last update timestamp */
   updatedAt: string;
   /** Email of the user who created the query */
   userEmail: string;
-  /** Intel Indicator Feed ID (numeric) */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   customThreatFeedId?: number | null;
-  /** WAF rules list ID for blocking */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   ruleListId?: string | null;
-  /** Scope for the rule */
+  /** Deprecated: saved-query alerting and rules were removed. Always null. */
   ruleScope?: string | null;
 }
 export type ListThreatEventsRelationshipsRequestDirection = "ancestors" | "descendants" | "both";
@@ -3506,7 +3580,7 @@ export interface ListThreatEventsTagsIndicatorsRequest {
   accountId: string;
   /** Tag UUID. */
   tagUuid: string;
-  /** Dataset UUIDs to scope to (repeat the param for multiple), or one standalone scope: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. Analytics datasets do not expose tag associations, so 'analytics' returns an empty result. Omit to search all readable datasets. */
+  /** Dataset UUIDs to scope to (repeat the param for multiple), or one standalone scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Analytics datasets do not expose tag associations, so 'analytics' returns an empty result. Omit for 'all'. */
   datasetIds?: ListThreatEventsTagsIndicatorsRequestDatasetIdsList;
   indicatorType?: string;
   page?: number;
@@ -3647,17 +3721,29 @@ export interface ListThreatSignalsArticlesRequest {
   articleId?: ListThreatSignalsArticlesRequestArticleIdList;
   /** Opaque cursor from a previous response's `next_cursor`. When provided, pagination, ordering, totals, and article filters come from the cursor. Sending `per_page`, `sort`, `include_total`, or any article filter alongside it returns a 400 `CursorFilterConflictError`. */
   cursor?: string;
+  /** Exact feed-category filter after trimming. Omit to include every category. */
   feedCategory?: string;
+  /** Feed UUID filter. Omit to include articles from every account feed. */
   feedId?: string;
+  /** Include articles fetched at or after this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC. */
   fetchedAfter?: string;
+  /** Include articles fetched at or before this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC. */
   fetchedBefore?: string;
+  /** When true on the first page, count matching articles and return an exact total. Defaults to false; cursor pages do not recalculate totals. */
   includeTotal?: boolean;
+  /** Number of articles per cursor page, from 1 to 100. Defaults to 20. */
   perPage?: number;
+  /** Include articles published at or after this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC. */
   publishedAfter?: string;
+  /** Include articles published at or before this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC. */
   publishedBefore?: string;
+  /** Filter by read state. Accepts true, false, 1, or 0; omit to include read and unread articles. */
   read?: boolean;
+  /** NFC-normalized, trimmed literal substring filter on article titles; ASCII case-insensitive, from 1 to 500 characters. */
   search?: string;
+  /** Sort by fetched_at, published_at, or title. Prefix the field with - for descending order; defaults to -fetched_at. */
   sort?: string;
+  /** Filter by curated or custom feed source. Omit to include both source types. */
   sourceType?: ListThreatSignalsArticlesRequestSourceType | (string & {});
   /** Legacy human-readable tag-value filter. Ignored when tag_id is supplied; prefer tag_id. */
   tag?: string;
@@ -3730,13 +3816,21 @@ export interface ListThreatSignalsCategoriesResponse {
 export type ListThreatSignalsFeedsRequestSourceType = "curated" | "custom";
 export interface ListThreatSignalsFeedsRequest {
   accountId: string;
+  /** Exact feed-category filter, up to 100 characters. Omit to include all categories. */
   category?: string;
+  /** Filter by enabled state. Accepts true, false, 1, or 0; omit to include enabled and disabled feeds. */
   enabled?: boolean;
+  /** Optional 1-100 alias for per_page. When provided, limit takes precedence. */
   limit?: number;
+  /** 1-based page number. Minimum 1; defaults to 1. */
   page?: number;
+  /** Number of feeds per page, from 1 to 100. Defaults to 20. */
   perPage?: number;
+  /** Sort by created_at, title, category, or url. Prefix the field with - for descending order; defaults to -created_at. */
   sort?: string;
+  /** Filter by curated or custom feed source. Omit to include both source types. */
   sourceType?: ListThreatSignalsFeedsRequestSourceType | (string & {});
+  /** Exact stored polling-status filter, such as active or error. Omit to include every status. */
   status?: string;
 }
 export interface ListThreatSignalsFeedsResponseFeedsItem {
@@ -3767,6 +3861,10 @@ export type ListThreatSignalsFeedsResponseFeedsList =
 export interface ListThreatSignalsFeedsResponse {
   /** Number of feeds on this page. */
   count: number;
+  /** The current count of custom feeds for the account. */
+  customFeedCount: number;
+  /** The resolved custom feed limit for the account. */
+  customFeedLimit: number;
   feeds: ListThreatSignalsFeedsResponseFeedsList;
   page: number;
   perPage: number;
@@ -3774,13 +3872,19 @@ export interface ListThreatSignalsFeedsResponse {
 }
 export interface ListThreatSignalsIndicatorsRequest {
   accountId: string;
+  /** Article UUID filter. Omit to include indicators from every article. */
   articleId?: string;
+  /** Opaque cursor from the previous response's `pagination.cursor`. When provided, page size, ordering, and filters come from the cursor. Sending `per_page`, `sort`, `include_total`, `feed_id`, `article_id`, or `search` alongside it returns a 400 `CursorFilterConflictError`. */
   cursor?: string;
+  /** Feed UUID filter. Omit to include indicators from every account feed. */
   feedId?: string;
+  /** When true on the first page, count matching indicators and return an exact total. Defaults to false; cursor pages do not recalculate totals. */
   includeTotal?: boolean;
+  /** Number of indicators per cursor page, from 1 to 100. Defaults to 20. */
   perPage?: number;
   /** NFC-normalized and trimmed, case-insensitive literal substring search of indicator values. Requires 3-500 Unicode code points; the upper code-point bound is described here because OpenAPI string length cannot precisely express it without imposing UTF-16 semantics. */
   search?: string;
+  /** Sort by id. Use id for ascending or -id for descending order; defaults to id. */
   sort?: string;
 }
 export interface ListThreatSignalsIndicatorsResponseIndicatorsItem {
@@ -3813,7 +3917,9 @@ export interface ListThreatSignalsIndicatorsResponse {
 }
 export interface ListThreatSignalsSkillsRequest {
   accountId: string;
+  /** Page number (>= 1, default 1). */
   page?: number;
+  /** Results per page (1-100, default 20). */
   perPage?: number;
 }
 export type ListThreatSignalsSkillsResponseSkillsItemSource = "default" | "custom";
@@ -3839,7 +3945,7 @@ export type ListThreatSignalsSkillsResponseSkillsList =
 export interface ListThreatSignalsSkillsResponse {
   /** Number of skills on this page. */
   count: number;
-  /** Whether the authenticated account may access custom-skill capabilities under Stakeout's Threat Signals access-mode policy. This is a policy availability indicator, not a row-existence indicator. False for threat_signals_only mode; true for entitled, allowlisted, cfone_internal, and service modes. */
+  /** Whether Custom Skills are available to the account. False for Free Threat Signals accounts, which receive managed default skills only. */
   customSkillsAvailable: boolean;
   page: number;
   perPage: number;
@@ -3999,6 +4105,7 @@ export interface PatchThreatEventRawResponse {
 }
 export interface PollThreatSignalsFeedRequest {
   accountId: string;
+  /** UUID of a specific feed to poll, or "all" to poll all feeds. Omit or pass "all" for all feeds. */
   feedId?: string;
 }
 export type PollThreatSignalsFeedResponseFeedsItemStatus = "workflow_created" | "error";
@@ -4165,7 +4272,9 @@ export interface ThreatEventsBulkCreateRelationshipsResponse {
 export type ThreatSignalsArticlesBulkEditRequestArticleIdsList = Array<string>;
 export interface ThreatSignalsArticlesBulkEditRequest {
   accountId: string;
+  /** Array of article UUIDs to mark (1-50). */
   articleIds: ThreatSignalsArticlesBulkEditRequestArticleIdsList;
+  /** True to mark read, false to mark unread. */
   read: boolean;
 }
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -4182,8 +4291,11 @@ export interface ThreatSignalsHealthResponse {
 }
 export interface ThreatSignalsSearchSearchRequest {
   accountId: string;
+  /** Keyword and semantic article-search text, from 1 to 1000 characters. */
   query: string;
+  /** Optional feed UUID that restricts results to articles from that feed. */
   feedId?: string;
+  /** Maximum search matches to request, an integer from 1 to 50. Defaults to 20 when omitted or empty; multiple matches from one article can produce fewer returned articles. */
   maxResults?: string;
 }
 export type ThreatSignalsSearchSearchResponseResultsItem = SearchThreatSignalResponseResultsItem;
@@ -4349,7 +4461,9 @@ export interface UpdateRequestPriorityResponse {
 export type UpdateThreatSignalsFeedsSkillRequestSkillIdsList = Array<string>;
 export interface UpdateThreatSignalsFeedsSkillRequest {
   accountId: string;
+  /** UUID of the Threat Signals feed */
   feedId: string;
+  /** Ordered array of Custom Skill UUIDs (max 20). Replaces the feed's custom skill assignments. Free accounts cannot assign custom skills. Managed default skills are unaffected. */
   skillIds: UpdateThreatSignalsFeedsSkillRequestSkillIdsList;
 }
 export interface UpdateThreatSignalsFeedsSkillResponseSkillsItem {
@@ -4368,7 +4482,9 @@ export type UpdateThreatSignalsSkillsTagCategoryRequestSkillId = "default-taggin
 export type UpdateThreatSignalsSkillsTagCategoryRequestCategoryUuidsList = Array<string>;
 export interface UpdateThreatSignalsSkillsTagCategoryRequest {
   accountId: string;
+  /** Must be default-tagging-skill; configures the managed default tagging skill */
   skillId: UpdateThreatSignalsSkillsTagCategoryRequestSkillId | (string & {});
+  /** Up to 100 unique tag category UUIDs that the managed default tagging skill may select tags from. */
   categoryUuids: UpdateThreatSignalsSkillsTagCategoryRequestCategoryUuidsList;
 }
 export type UpdateThreatSignalsSkillsTagCategoryResponseCategoryUuidsList = Array<string>;
@@ -4624,7 +4740,7 @@ export const createThreatSignalsArticlesTag: API.OperationMethod<
 }));
 
 export type CreateThreatSignalsFeedError = CloudflareOpError;
-/** Subscribes the account to a custom or curated Threat Signals feed. */
+/** Subscribes the account to a custom or curated Threat Signals feed. Adding a custom feed when the account is at its custom-feed limit returns 403 with `errors[0].reason` `threat_signals_feed_limit`, and `errors[0].custom_feed_limit` and `errors[0].custom_feed_count` give the limit and current count. Curated feeds are not subject to this limit. */
 export const createThreatSignalsFeed: API.OperationMethod<
   CreateThreatSignalsFeedRequest,
   CreateThreatSignalsFeedResponse,
@@ -4639,7 +4755,7 @@ export const createThreatSignalsFeed: API.OperationMethod<
 }));
 
 export type CreateThreatSignalsSkillError = CloudflareOpError;
-/** Creates a custom AI skill for the account. */
+/** Creates a Custom Skill for the account. Free Threat Signals accounts cannot create Custom Skills. */
 export const createThreatSignalsSkill: API.OperationMethod<
   CreateThreatSignalsSkillRequest,
   CreateThreatSignalsSkillResponse,
@@ -4864,7 +4980,7 @@ export const deleteThreatSignalsFeed: API.OperationMethod<
 }));
 
 export type DeleteThreatSignalsSkillError = CloudflareOpError;
-/** Deletes a custom skill. Default skills cannot be deleted. */
+/** Deletes a Custom Skill. The skill's stored outputs on articles are deleted with it. Managed Default Skills cannot be deleted. Free Threat Signals accounts cannot delete Custom Skills. */
 export const deleteThreatSignalsSkill: API.OperationMethod<
   DeleteThreatSignalsSkillRequest,
   DeleteThreatSignalsSkillResponse,
@@ -4954,7 +5070,7 @@ export const editThreatSignalsFeed: API.OperationMethod<
 }));
 
 export type EditThreatSignalsSkillError = CloudflareOpError;
-/** Updates a custom skill. Default skills are read-only. */
+/** Updates a Custom Skill. Managed Default Skills cannot be updated. Free Threat Signals accounts cannot update Custom Skills. */
 export const editThreatSignalsSkill: API.OperationMethod<
   EditThreatSignalsSkillRequest,
   EditThreatSignalsSkillResponse,
@@ -5199,7 +5315,7 @@ export const getThreatSignalsArticle: API.OperationMethod<
 }));
 
 export type GetThreatSignalsArticlesContentError = CloudflareOpError;
-/** Retrieves the stored body of a Threat Signals article as plain text or HTML. */
+/** Retrieves the stored content of a Threat Signals article, unchanged. Depending on how the article was captured from its source, the content is HTML, Markdown, or plain text. The format parameter sets only the response Content-Type; it does not convert the content. */
 export const getThreatSignalsArticlesContent: API.OperationMethod<
   GetThreatSignalsArticlesContentRequest,
   GetThreatSignalsArticlesContentResponse,
@@ -5214,7 +5330,7 @@ export const getThreatSignalsArticlesContent: API.OperationMethod<
 }));
 
 export type GetThreatSignalsArticlesSkillOutputError = CloudflareOpError;
-/** Retrieves the stored output of a skill for a Threat Signals article. */
+/** Retrieves the stored output of a skill for a Threat Signals article. The custom_output field is parsed JSON when the stored output is valid JSON, otherwise the raw string. */
 export const getThreatSignalsArticlesSkillOutput: API.OperationMethod<
   GetThreatSignalsArticlesSkillOutputRequest,
   GetThreatSignalsArticlesSkillOutputResponse,
@@ -5222,14 +5338,14 @@ export const getThreatSignalsArticlesSkillOutput: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1392, __c87, 0) as any as S.Schema<GetThreatSignalsArticlesSkillOutputRequest>,
-  output: __S(1393, __c87, 1) as any as S.Schema<GetThreatSignalsArticlesSkillOutputResponse>,
+  output: __S(1394, __c87, 2) as any as S.Schema<GetThreatSignalsArticlesSkillOutputResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
 export type GetThreatSignalsFeedsRawError = CloudflareOpError;
-/** Retrieves the feed document fetched by the most recent poll. */
+/** Retrieves the feed document fetched by the most recent poll as text/plain by default or application/xml when format is xml. */
 export const getThreatSignalsFeedsRaw: API.OperationMethod<
   GetThreatSignalsFeedsRawRequest,
   GetThreatSignalsFeedsRawResponse,
@@ -5244,7 +5360,7 @@ export const getThreatSignalsFeedsRaw: API.OperationMethod<
 }));
 
 export type GetThreatSignalsFeedsSkillError = CloudflareOpError;
-/** Retrieves the effective skill pipeline for a Threat Signals feed. */
+/** Retrieves active non-IOC-context Managed Default Skills followed by active Custom Skills assigned to the feed, with each entry's source. Free Threat Signals accounts receive only those Managed Default Skills. */
 export const getThreatSignalsFeedsSkill: API.OperationMethod<
   GetThreatSignalsFeedsSkillRequest,
   GetThreatSignalsFeedsSkillResponse,
@@ -5259,7 +5375,7 @@ export const getThreatSignalsFeedsSkill: API.OperationMethod<
 }));
 
 export type GetThreatSignalsSkillError = CloudflareOpError;
-/** Retrieves a default or custom skill by ID. */
+/** Retrieves a Managed Default Skill or Custom Skill. Managed catalog definitions are readable. Free Threat Signals accounts cannot read Custom Skills. */
 export const getThreatSignalsSkill: API.OperationMethod<
   GetThreatSignalsSkillRequest,
   GetThreatSignalsSkillResponse,
@@ -5274,7 +5390,7 @@ export const getThreatSignalsSkill: API.OperationMethod<
 }));
 
 export type GetThreatSignalsSkillsTagCategoryError = CloudflareOpError;
-/** Retrieves the tag categories the default tagging skill may choose tags from. */
+/** Retrieves the Tag Categories the managed default tagging skill may select tags from. This configures the managed default tagging skill, not Custom Skills. */
 export const getThreatSignalsSkillsTagCategory: API.OperationMethod<
   GetThreatSignalsSkillsTagCategoryRequest,
   GetThreatSignalsSkillsTagCategoryResponse,
@@ -5399,7 +5515,7 @@ export const listThreatEventIndicatorTypes: API.OperationMethod<
 }));
 
 export type ListThreatEventsError = CloudflareOpError;
-/** Use `datasetId=all` or `datasetId=*` for the legacy all-datasets scope, `datasetId=analytics` for datasets with `isAnalytics=true`, or `datasetId=operational` for datasets with `isAnalytics=false` (limited to 50). Scope values must be used alone. When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint. */
+/** Use one standalone `datasetId` scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Scope values query at most 50 datasets and must be used alone. When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint. */
 export const listThreatEvents: API.OperationMethod<
   ListThreatEventsRequest,
   ListThreatEventsResponse,
@@ -5459,7 +5575,7 @@ export const listThreatEventsGraph: API.OperationMethod<
 }));
 
 export type ListThreatEventsIndicatorsError = CloudflareOpError;
-/** Retrieves indicators across specified datasets, ordered by createdAt descending then UUID, dataset ID, and shard ID ascending. Use the standalone datasetIds value 'all'/'*' for legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If no datasetIds are provided, uses the default dataset. */
+/** Retrieves indicators across specified datasets, ordered by createdAt descending then UUID, dataset ID, and shard ID ascending. Use one standalone datasetIds scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). If no datasetIds are provided, uses the default dataset. */
 export const listThreatEventsIndicators: API.OperationMethod<
   ListThreatEventsIndicatorsRequest,
   ListThreatEventsIndicatorsResponse,
@@ -5594,7 +5710,7 @@ export const listThreatEventsTagsCategories: API.OperationMethod<
 }));
 
 export type ListThreatEventsTagsIndicatorsError = CloudflareOpError;
-/** Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every indicator dataset the account can read; pass datasetIds to scope to UUIDs, analytics datasets, or operational datasets. Analytics datasets do not expose tag associations, so the analytics scope returns an empty result. */
+/** Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every intelligence (isAnalytics=false) indicator dataset the account can read; pass datasetIds to scope to dataset UUIDs or a scope value. Analytics datasets do not expose tag associations, so the analytics scope returns an empty result. */
 export const listThreatEventsTagsIndicators: API.OperationMethod<
   ListThreatEventsTagsIndicatorsRequest,
   ListThreatEventsTagsIndicatorsResponse,
@@ -5729,7 +5845,7 @@ export const listThreatSignalsIndicators: API.OperationMethod<
 }));
 
 export type ListThreatSignalsSkillsError = CloudflareOpError;
-/** Lists the default and custom skills available to the account. */
+/** Lists active Managed Default Skills and Custom Skills. Free Threat Signals accounts see active managed defaults only, with custom_skills_available: false. */
 export const listThreatSignalsSkills: API.OperationMethod<
   ListThreatSignalsSkillsRequest,
   ListThreatSignalsSkillsResponse,
@@ -6044,7 +6160,7 @@ export const updateRequestPriority: API.OperationMethod<
 }));
 
 export type UpdateThreatSignalsFeedsSkillError = CloudflareOpError;
-/** Replaces the ordered custom skills assigned to a Threat Signals feed. */
+/** Replaces the ordered custom skills assigned to a Threat Signals feed. Requires a paid Threat Signals subscription. */
 export const updateThreatSignalsFeedsSkill: API.OperationMethod<
   UpdateThreatSignalsFeedsSkillRequest,
   UpdateThreatSignalsFeedsSkillResponse,
@@ -6059,7 +6175,7 @@ export const updateThreatSignalsFeedsSkill: API.OperationMethod<
 }));
 
 export type UpdateThreatSignalsSkillsTagCategoryError = CloudflareOpError;
-/** Replaces the tag categories the default tagging skill may choose tags from. */
+/** Replaces the Tag Categories the managed default tagging skill may select tags from. This configures the managed default tagging skill, not Custom Skills. */
 export const updateThreatSignalsSkillsTagCategory: API.OperationMethod<
   UpdateThreatSignalsSkillsTagCategoryRequest,
   UpdateThreatSignalsSkillsTagCategoryResponse,
@@ -6609,11 +6725,11 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          alertEnabled: S.Boolean.pipe(T.Body("alert_enabled")),
-          alertRollupEnabled: S.Boolean.pipe(T.Body("alert_rollup_enabled")),
           name: S.String,
           queryJson: S.String.pipe(T.Body("query_json")),
-          ruleEnabled: S.Boolean.pipe(T.Body("rule_enabled")),
+          alertEnabled: S.optional(S.Boolean.pipe(T.Body("alert_enabled"))),
+          alertRollupEnabled: S.optional(S.Boolean.pipe(T.Body("alert_rollup_enabled"))),
+          ruleEnabled: S.optional(S.Boolean.pipe(T.Body("rule_enabled"))),
           ruleScope: S.optional(S.String.pipe(T.Body("rule_scope"))),
         })
           .pipe(
@@ -7033,7 +7149,7 @@ function __c36(j: number): any {
           name: S.String,
           outputSchema: S.String.pipe(T.Body("output_schema")),
           prompt: S.String,
-          type: S.String,
+          type: S.optional(S.String),
         })
           .pipe(
             T.Http({
@@ -8190,13 +8306,17 @@ function __c87(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetThreatSignalsArticlesSkillOutputRequest" });
     case 1:
+      return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], [], [], []]));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           articleId: S.String.pipe(T.Body("article_id")),
+          customOutput: __S(1393, __c87, 1).pipe(T.Body("custom_output")),
+          customOutputParseStatus: S.String.pipe(T.Body("custom_output_parse_status")),
+          customOutputValidationStatus: S.String.pipe(T.Body("custom_output_validation_status")),
           customSkillVersion: S.String.pipe(T.Body("custom_skill_version")),
           outputSchema: S.String.pipe(T.Body("output_schema")),
           skillId: S.String.pipe(T.Body("skill_id")),
-          customOutput: S.optional(S.NullOr(S.Unknown).pipe(T.Body("custom_output"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetThreatSignalsArticlesSkillOutputResponse" });
   }
@@ -9621,6 +9741,8 @@ function __c131(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
+          customFeedCount: S.Number.pipe(T.Body("custom_feed_count")),
+          customFeedLimit: S.Number.pipe(T.Body("custom_feed_limit")),
           feeds: __S(2098, __c131, 2),
           page: S.Number,
           perPage: S.Number.pipe(T.Body("per_page")),

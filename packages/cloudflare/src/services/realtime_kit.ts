@@ -311,7 +311,7 @@ export type MeetingsCreateRequestAiConfigTranscriptionLanguage =
 export interface MeetingsCreateRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsCreateRequestAiConfigTranscriptionKeywordsList;
-  /** Specifies the language code for transcription to ensure accurate results. */
+  /** Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription. */
   language?: MeetingsCreateRequestAiConfigTranscriptionLanguage | (string & {});
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean;
@@ -566,7 +566,7 @@ export type MeetingsCreateResponseDataAiConfigTranscriptionLanguage =
 export interface MeetingsCreateResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsCreateResponseDataAiConfigTranscriptionKeywordsList | null;
-  /** Specifies the language code for transcription to ensure accurate results. */
+  /** Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription. */
   language?: MeetingsCreateResponseDataAiConfigTranscriptionLanguage | null;
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean | null;
@@ -2375,7 +2375,7 @@ export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
 export interface MeetingsGetMeetingByIdResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList | null;
-  /** Specifies the language code for transcription to ensure accurate results. */
+  /** Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription. */
   language?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage | null;
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean | null;
@@ -5355,7 +5355,7 @@ export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
 export interface MeetingsReplaceMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList;
-  /** Specifies the language code for transcription to ensure accurate results. */
+  /** Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription. */
   language?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage | (string & {});
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean;
@@ -5623,7 +5623,7 @@ export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage 
 export interface MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList | null;
-  /** Specifies the language code for transcription to ensure accurate results. */
+  /** Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription. */
   language?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage | null;
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean | null;
@@ -6859,7 +6859,7 @@ export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
 export interface MeetingsUpdateMeetingByIdRequestAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList;
-  /** Specifies the language code for transcription to ensure accurate results. */
+  /** Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription. */
   language?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage | (string & {});
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean;
@@ -7130,7 +7130,7 @@ export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
 export interface MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription {
   /** Adds specific terms to improve accurate detection during transcription. */
   keywords?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList | null;
-  /** Specifies the language code for transcription to ensure accurate results. */
+  /** Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription. */
   language?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage | null;
   /** Control the inclusion of offensive language in transcriptions. */
   profanityFilter?: boolean | null;

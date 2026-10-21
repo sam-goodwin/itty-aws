@@ -8039,7 +8039,7 @@
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057."
           }
         }
       }
@@ -11062,7 +11062,7 @@
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057."
           }
         }
       }
@@ -14775,7 +14775,7 @@
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057."
           }
         }
       }
@@ -18477,7 +18477,7 @@
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057."
           }
         }
       }
@@ -21601,6 +21601,94 @@
         "target": "com.cloudflare.workers#BetaWorkersVersionsListResultItem"
       }
     },
+    "com.cloudflare.workers#BetaWorkersVersionsProfileRequestProfileType": {
+      "type": "enum",
+      "members": {
+        "CPU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpu"
+          }
+        },
+        "HEAP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "heap"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsProfileRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "worker_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the Worker by ID or name.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "version_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the version by UUID or UUID prefix with a minimum length of eight characters. Use \"latest\" to select the most recently created version, which may not be deployed. Use \"latest-deployed\" to profile a version in the active deployment. Versions are tried in order of traffic share until one has a loaded isolate.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "duration_ms": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Profile duration in milliseconds.",
+            "smithy.api#required": {}
+          }
+        },
+        "actor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the exact Durable Object actor to profile. Must be specified together with namespace_id. The actor must currently be active and running the requested Worker version."
+          }
+        },
+        "namespace_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifies the Durable Object namespace containing the actor to profile. Must be specified together with actor_id."
+          }
+        },
+        "profile_type": {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsProfileRequestProfileType"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workers#BetaWorkersVersionsProfile": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workers#BetaWorkersVersionsProfileRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/workers/workers/{worker_id}/versions/{version_id}/profile",
+          "code": 200
+        },
+        "smithy.api#documentation": "Captures a CPU or heap profile from a recently active isolate running the specified Worker version. This endpoint requires the Worker profiling feature to be enabled for the account."
+      }
+    },
     "com.cloudflare.workers#DomainsListResultItem": {
       "type": "structure",
       "members": {
@@ -21618,6 +21706,13 @@
             "smithy.api#required": {}
           }
         },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.",
+            "smithy.api#required": {}
+          }
+        },
         "environment": {
           "target": "smithy.api#String",
           "traits": {
@@ -21630,6 +21725,12 @@
           "traits": {
             "smithy.api#documentation": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
             "smithy.api#required": {}
+          }
+        },
+        "previews_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Worker Previews are served on this custom domain."
           }
         },
         "service": {
@@ -21651,12 +21752,6 @@
           "traits": {
             "smithy.api#documentation": "Name of the zone containing the domain hostname.",
             "smithy.api#required": {}
-          }
-        },
-        "previews_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether Worker Previews are served on this custom domain."
           }
         }
       }
@@ -21739,6 +21834,38 @@
         }
       }
     },
+    "com.cloudflare.workers#ObservabilityDestinationsCreateResponseConfigurationHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers#ObservabilityDestinationsCreateResponseConfigurationJobStatus": {
+      "type": "structure",
+      "members": {
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_complete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.workers#ObservabilityDestinationsCreateResponseConfigurationLogpushDataset": {
       "type": "enum",
       "members": {
@@ -21776,20 +21903,20 @@
     "com.cloudflare.workers#ObservabilityDestinationsCreateResponseConfiguration": {
       "type": "structure",
       "members": {
-        "destination_conf": {
-          "target": "smithy.api#String",
+        "headers": {
+          "target": "com.cloudflare.workers#ObservabilityDestinationsCreateResponseConfigurationHeadersMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "jobStatus": {
+          "target": "com.cloudflare.workers#ObservabilityDestinationsCreateResponseConfigurationJobStatus",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "logpushDataset": {
           "target": "com.cloudflare.workers#ObservabilityDestinationsCreateResponseConfigurationLogpushDataset",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "logpushJob": {
-          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#required": {}
           }
@@ -21812,6 +21939,38 @@
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers#ObservabilityDestinationsDeleteResponseConfigurationHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers#ObservabilityDestinationsDeleteResponseConfigurationJobStatus": {
+      "type": "structure",
+      "members": {
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_complete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.workers#ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset": {
@@ -21851,20 +22010,20 @@
     "com.cloudflare.workers#ObservabilityDestinationsDeleteResponseConfiguration": {
       "type": "structure",
       "members": {
-        "destination_conf": {
-          "target": "smithy.api#String",
+        "headers": {
+          "target": "com.cloudflare.workers#ObservabilityDestinationsDeleteResponseConfigurationHeadersMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "jobStatus": {
+          "target": "com.cloudflare.workers#ObservabilityDestinationsDeleteResponseConfigurationJobStatus",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "logpushDataset": {
           "target": "com.cloudflare.workers#ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "logpushJob": {
-          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#required": {}
           }
@@ -21992,12 +22151,6 @@
     "com.cloudflare.workers#ObservabilityDestinationsListResultItemConfiguration": {
       "type": "structure",
       "members": {
-        "destination_conf": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "headers": {
           "target": "com.cloudflare.workers#ObservabilityDestinationsListResultItemConfigurationHeadersMap",
           "traits": {
@@ -22117,6 +22270,41 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "replaceHeaders": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.workers#ObservabilityDestinationsUpdateResponseConfigurationHeadersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers#ObservabilityDestinationsUpdateResponseConfigurationJobStatus": {
+      "type": "structure",
+      "members": {
+        "error_message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_complete": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "last_error": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       }
     },
@@ -22157,20 +22345,20 @@
     "com.cloudflare.workers#ObservabilityDestinationsUpdateResponseConfiguration": {
       "type": "structure",
       "members": {
-        "destination_conf": {
-          "target": "smithy.api#String",
+        "headers": {
+          "target": "com.cloudflare.workers#ObservabilityDestinationsUpdateResponseConfigurationHeadersMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "jobStatus": {
+          "target": "com.cloudflare.workers#ObservabilityDestinationsUpdateResponseConfigurationJobStatus",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "logpushDataset": {
           "target": "com.cloudflare.workers#ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "logpushJob": {
-          "target": "smithy.api#Double",
           "traits": {
             "smithy.api#required": {}
           }
@@ -28665,6 +28853,12 @@
             "smithy.api#documentation": "Templatized version of the error message used for grouping similar errors."
           }
         },
+        "eventSize": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Size of the stored telemetry event in bytes."
+          }
+        },
         "fingerprint": {
           "target": "smithy.api#String",
           "traits": {
@@ -29560,6 +29754,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Templatized version of the error message used for grouping similar errors."
+          }
+        },
+        "eventSize": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Size of the stored telemetry event in bytes."
           }
         },
         "fingerprint": {
@@ -35308,6 +35508,12 @@
             "smithy.api#documentation": "Templatized version of the error message used for grouping similar errors."
           }
         },
+        "eventSize": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Size of the stored telemetry event in bytes."
+          }
+        },
         "fingerprint": {
           "target": "smithy.api#String",
           "traits": {
@@ -36203,6 +36409,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Templatized version of the error message used for grouping similar errors."
+          }
+        },
+        "eventSize": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Size of the stored telemetry event in bytes."
           }
         },
         "fingerprint": {
@@ -40102,7 +40314,7 @@
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057."
           }
         }
       }
@@ -47102,7 +47314,7 @@
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057."
           }
         }
       }
@@ -50877,7 +51089,7 @@
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057."
           }
         }
       }
@@ -54557,7 +54769,7 @@
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057."
           }
         }
       }
@@ -59985,7 +60197,7 @@
         "version_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Identifier for the version to inherit the binding from, which can be the version ID or the literal \"latest\" to inherit from the latest version. Defaults to inheriting the binding from the latest version."
+            "smithy.api#documentation": "Identifier for the version to inherit the binding from. This can be a version ID, or the literal \"latest\" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to \"latest\". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only \"latest\" and reject a version ID with error 10057."
           }
         }
       }
@@ -63902,6 +64114,9 @@
       "version": "4.0",
       "operations": [
         {
+          "target": "com.cloudflare.workers#BetaWorkersVersionsProfile"
+        },
+        {
           "target": "com.cloudflare.workers#BulkUpdateScriptSecrets"
         },
         {
@@ -66335,7 +66550,7 @@
         "bindings_inherit": {
           "target": "com.cloudflare.workers#ScriptsVersionsCreateRequestBindingsInherit",
           "traits": {
-            "smithy.api#documentation": "When set to \"strict\", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.",
+            "smithy.api#documentation": "When set to \"strict\", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.",
             "smithy.api#httpQuery": "bindings_inherit"
           }
         },
@@ -67687,6 +67902,13 @@
             "smithy.api#required": {}
           }
         },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.",
+            "smithy.api#required": {}
+          }
+        },
         "environment": {
           "target": "smithy.api#String",
           "traits": {
@@ -67699,6 +67921,12 @@
           "traits": {
             "smithy.api#documentation": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
             "smithy.api#required": {}
+          }
+        },
+        "previews_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Worker Previews are served on this custom domain."
           }
         },
         "service": {
@@ -67720,12 +67948,6 @@
           "traits": {
             "smithy.api#documentation": "Name of the zone containing the domain hostname.",
             "smithy.api#required": {}
-          }
-        },
-        "previews_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether Worker Previews are served on this custom domain."
           }
         }
       },
@@ -69103,6 +69325,13 @@
             "smithy.api#required": {}
           }
         },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the configured hostname is routable for the domain.",
+            "smithy.api#httpQuery": "enabled"
+          }
+        },
         "environment": {
           "target": "smithy.api#String",
           "traits": {
@@ -69115,6 +69344,13 @@
           "traits": {
             "smithy.api#documentation": "Hostname of the domain.",
             "smithy.api#httpQuery": "hostname"
+          }
+        },
+        "previews_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether previews are routable for the domain.",
+            "smithy.api#httpQuery": "previews_enabled"
           }
         },
         "service": {
@@ -70028,17 +70264,14 @@
             "smithy.api#required": {}
           }
         },
-        "configuration": {
-          "target": "com.cloudflare.workers#ObservabilityDestinationsUpdateRequestConfiguration",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "configuration": {
+          "target": "com.cloudflare.workers#ObservabilityDestinationsUpdateRequestConfiguration"
         }
       },
       "traits": {
@@ -70459,6 +70692,18 @@
             "smithy.api#required": {}
           }
         },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable."
+          }
+        },
+        "previews_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Serve Worker Previews on this custom domain as `<preview-name>.<hostname>`."
+          }
+        },
         "zone_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -70469,12 +70714,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Name of the zone containing the domain hostname."
-          }
-        },
-        "previews_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Serve Worker Previews on this custom domain as `<preview-name>.<hostname>`."
           }
         }
       },
@@ -70499,6 +70738,13 @@
             "smithy.api#required": {}
           }
         },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the configured hostname is routable for the domain. If disabled, then requests to the configured hostname will not be routed to the configured Worker. If disabled, then preview routing must be enabled, and only subdomains of the configured hostname will be routable.",
+            "smithy.api#required": {}
+          }
+        },
         "environment": {
           "target": "smithy.api#String",
           "traits": {
@@ -70511,6 +70757,12 @@
           "traits": {
             "smithy.api#documentation": "Hostname of the domain. Can be either the zone apex or a subdomain of the zone. Requests to this hostname will be routed to the configured Worker.",
             "smithy.api#required": {}
+          }
+        },
+        "previews_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Worker Previews are served on this custom domain."
           }
         },
         "service": {
@@ -70532,12 +70784,6 @@
           "traits": {
             "smithy.api#documentation": "Name of the zone containing the domain hostname.",
             "smithy.api#required": {}
-          }
-        },
-        "previews_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether Worker Previews are served on this custom domain."
           }
         }
       },
@@ -70640,7 +70886,7 @@
         "bindings_inherit": {
           "target": "com.cloudflare.workers#ScriptsUpdateRequestBindingsInherit",
           "traits": {
-            "smithy.api#documentation": "When set to \"strict\", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the Worker. Without this, unresolvable inherit bindings are silently dropped.",
+            "smithy.api#documentation": "When set to \"strict\", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the Worker, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped.",
             "smithy.api#httpQuery": "bindings_inherit"
           }
         },

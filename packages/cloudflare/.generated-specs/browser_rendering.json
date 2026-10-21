@@ -2452,10 +2452,128 @@
             "smithy.api#required": {}
           }
         },
+        "lastModified": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Value of the Last-Modified response header, when provided by the origin."
+          }
+        },
+        "og_description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Open Graph description of the crawled page.",
+            "smithy.api#jsonName": "og:description"
+          }
+        },
+        "og_image": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Open Graph image of the crawled page.",
+            "smithy.api#jsonName": "og:image"
+          }
+        },
+        "og_site_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Open Graph site name of the crawled page.",
+            "smithy.api#jsonName": "og:site_name"
+          }
+        },
+        "og_title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Open Graph title of the crawled page.",
+            "smithy.api#jsonName": "og:title"
+          }
+        },
+        "og_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Open Graph type of the crawled page.",
+            "smithy.api#jsonName": "og:type"
+          }
+        },
         "title": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Title of the crawled page."
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlGetResponseRecordsItemOutcome": {
+      "type": "enum",
+      "members": {
+        "SUCCESS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "success"
+          }
+        },
+        "ROBOTS_DISALLOWED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "robots_disallowed"
+          }
+        },
+        "CRAWL_PURPOSE_DISALLOWED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "crawl_purpose_disallowed"
+          }
+        },
+        "CONTENT_USE_DISALLOWED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "content_use_disallowed"
+          }
+        },
+        "CONNECTION_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "connection_error"
+          }
+        },
+        "TIMEOUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "timeout"
+          }
+        },
+        "BROWSER_UNAVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "browser_unavailable"
+          }
+        },
+        "FORMAT_GENERATION_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "format_generation_error"
+          }
+        },
+        "UNSUPPORTED_CONTENT_TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unsupported_content_type"
+          }
+        },
+        "UNCLASSIFIED_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unclassified_error"
+          }
+        },
+        "PAGE_ERROR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "page_error"
+          }
+        },
+        "TOO_LARGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "too_large"
           }
         }
       }
@@ -2500,6 +2618,12 @@
           "traits": {
             "smithy.api#documentation": "Absent for urls that never reached a fetch."
           }
+        },
+        "outcome": {
+          "target": "com.cloudflare.browser_rendering#CrawlGetResponseRecordsItemOutcome",
+          "traits": {
+            "smithy.api#documentation": "Result of processing the URL. Absent for older records."
+          }
         }
       }
     },
@@ -2507,6 +2631,60 @@
       "type": "list",
       "member": {
         "target": "com.cloudflare.browser_rendering#CrawlGetResponseRecordsItem"
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlGetResponseRobotsItemState": {
+      "type": "enum",
+      "members": {
+        "AVAILABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "available"
+          }
+        },
+        "ABSENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "absent"
+          }
+        },
+        "FETCH_FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fetch_failed"
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlGetResponseRobotsItem": {
+      "type": "structure",
+      "members": {
+        "origin": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Origin whose robots.txt was checked.",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.browser_rendering#CrawlGetResponseRobotsItemState",
+          "traits": {
+            "smithy.api#documentation": "Whether usable robots.txt rules were available.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "HTTP status that established the current robots.txt state. Absent when no HTTP response was received."
+          }
+        }
+      }
+    },
+    "com.cloudflare.browser_rendering#CrawlGetResponseRobotsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.browser_rendering#CrawlGetResponseRobotsItem"
       }
     },
     "com.cloudflare.browser_rendering#DevtoolsBrowserCreateRequestGuardrailsAllowedDomainsList": {
@@ -10156,6 +10334,13 @@
           "target": "com.cloudflare.browser_rendering#CrawlGetResponseRecordsList",
           "traits": {
             "smithy.api#documentation": "List of crawl job records.",
+            "smithy.api#required": {}
+          }
+        },
+        "robots": {
+          "target": "com.cloudflare.browser_rendering#CrawlGetResponseRobotsList",
+          "traits": {
+            "smithy.api#documentation": "Robots.txt state for the first 50 origins encountered by the crawl.",
             "smithy.api#required": {}
           }
         },

@@ -122,7 +122,7 @@ export interface CreateConfigRequest {
   /** Combines database connection fields with exactly one supported network location. */
   origin?: unknown;
   caching?: ConfigsCreateRequestCaching;
-  /** Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. */
+  /** Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations. */
   integration?: unknown;
   /** mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service. */
   mtls?: ConfigsCreateRequestMtls;
@@ -221,7 +221,7 @@ export interface CreateConfigResponse {
   origin: ConfigsCreateResponseOrigin;
   /** Defines the creation time of the Hyperdrive configuration. */
   createdOn?: string | null;
-  /** Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. */
+  /** Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations. */
   integration?: ConfigsCreateResponseIntegration | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
@@ -323,7 +323,7 @@ export interface GetConfigResponse {
   origin: ConfigsGetResponseOrigin;
   /** Defines the creation time of the Hyperdrive configuration. */
   createdOn?: string | null;
-  /** Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. */
+  /** Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations. */
   integration?: ConfigsGetResponseIntegration | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
@@ -419,7 +419,7 @@ export interface ConfigsListResultItem {
   origin: ConfigsListResultItemOrigin;
   /** Defines the creation time of the Hyperdrive configuration. */
   createdOn?: string | null;
-  /** Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. */
+  /** Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations. */
   integration?: ConfigsListResultItemIntegration | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
@@ -583,7 +583,7 @@ export interface PatchConfigResponse {
   origin: ConfigsEditResponseOrigin;
   /** Defines the creation time of the Hyperdrive configuration. */
   createdOn?: string | null;
-  /** Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. */
+  /** Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations. */
   integration?: ConfigsEditResponseIntegration | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
@@ -684,7 +684,7 @@ export interface RestartConfigResponse {
   origin: RestartConfigResponseOrigin;
   /** Defines the creation time of the Hyperdrive configuration. */
   createdOn?: string | null;
-  /** Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. */
+  /** Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations. */
   integration?: RestartConfigResponseIntegration | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
@@ -853,7 +853,7 @@ export interface UpdateConfigResponse {
   origin: ConfigsUpdateResponseOrigin;
   /** Defines the creation time of the Hyperdrive configuration. */
   createdOn?: string | null;
-  /** Connects to a PlanetScale database using credentials managed by Cloudflare. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. */
+  /** Selects a PlanetScale database and provisions credentials managed by Cloudflare when creating a Hyperdrive configuration. The Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. The selection is returned as read-only metadata and cannot be changed with replace or update operations. */
   integration?: ConfigsUpdateResponseIntegration | null;
   /** Defines the last modified time of the Hyperdrive configuration. */
   modifiedOn?: string | null;
@@ -975,7 +975,7 @@ export type PatchConfigError =
   | MethodNotAllowed
   | HyperdriveOriginUnavailable
   | CloudflareOpError;
-/** Updates and returns the specified fields of the Hyperdrive configuration. Custom caching settings are not kept if caching is disabled. */
+/** Updates and returns the specified fields of the Hyperdrive configuration. Custom caching settings are not kept if caching is disabled. For an integration-backed configuration, the integration association is preserved but cannot be changed; omit the integration field. */
 export const patchConfig: API.OperationMethod<
   PatchConfigRequest,
   PatchConfigResponse,
@@ -1019,7 +1019,7 @@ export type UpdateConfigError =
   | MethodNotAllowed
   | HyperdriveOriginUnavailable
   | CloudflareOpError;
-/** Replaces and returns the specified Hyperdrive configuration. The request must include the name and complete origin connection details. Omitted caching settings are reset to their defaults, while omitted mTLS settings and origin connection limits are preserved. Use the update operation to modify only selected fields. */
+/** Replaces and returns the specified Hyperdrive configuration. The request must include the name and complete origin connection details. Omitted caching settings are reset to their defaults, while omitted mTLS settings and origin connection limits are preserved. The integration association is set only during creation and cannot be changed; omit the integration field even when replacing an integration-backed configuration. Use the update operation to modify only selected fields. */
 export const updateConfig: API.OperationMethod<
   UpdateConfigRequest,
   UpdateConfigResponse,

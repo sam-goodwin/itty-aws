@@ -149,13 +149,13 @@ export interface CreateAbuseReportRequest {
   email: string;
   /** Should match the value provided in `email` */
   email2: string;
-  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  /** Notification type based on the abuse type. For delegated reports, the report--including contact information and comments--will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
   hostNotification?: CreateRequestHostNotification | (string & {});
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   name: string;
   /** Text not exceeding 255 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   originalWork?: string;
-  /** Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
+  /** Notification type based on the abuse type. For delegated reports, the report--including contact information and comments--will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous. */
   ownerNotification: CreateRequestOwnerNotification | (string & {});
   /** Required for DMCA reports, should be same as Name. An affirmation that all information in the report is true and accurate while agreeing to the policies of Cloudflare's abuse reports */
   signature?: string;
@@ -163,7 +163,7 @@ export interface CreateAbuseReportRequest {
   state?: string;
   /** A list of valid URLs separated by '\n' (new line character). The list of the URLs should not exceed 250 URLs. All URLs should have the same hostname. Each URL should be unique. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   urls: string;
-  /** Any additional comments about the infringement not exceeding 2000 characters */
+  /** Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full. */
   comments?: string;
   /** Text not exceeding 100 characters. This field may be released by Cloudflare to third parties such as the Lumen Database (https://lumendatabase.org/). */
   company?: string;
@@ -419,6 +419,8 @@ export interface ListAbuseReportsRequest {
   page?: number;
   /** How many abuse reports per page to list */
   perPage?: number;
+  /** Free-text search. Returns reports whose report ID starts with the term or whose domain contains the term, both case-insensitively. Surrounding whitespace is ignored, and an empty value is treated as absent. Combined with the other filters using AND. */
+  search?: string;
   /** A property to sort by, followed by the order (id, cdate, domain, type, status) */
   sort?: string;
   /** Filter by the status of the report. */
@@ -710,7 +712,7 @@ export interface ReviewMitigationResponse {
   resultInfo?: ResultInfo | null;
 }
 export type CreateAbuseReportError = InvalidRequest | CloudflareOpError;
-/** Submit an abuse report of a particular type. Requires the abuse-reports entitlement on the account (Enterprise accounts have it by default; other accounts must request access) and an API token with the `Trust and Safety Write` permission. If the account is not entitled, the request is rejected with an HTTP `401` response (see below). */
+/** Submit an abuse report of a particular type. Requires the abuse-reports entitlement on the account (Enterprise accounts have it by default; other accounts must request access) and an API token with the `Trust and Safety Write` permission. If the account is not entitled, the request is rejected with an HTTP `401` response (see below). Delegated reports: In limited circumstances, Cloudflare works with select customers who have established abuse-handling programs. For these customers, Cloudflare may forward abuse reports directly and in full--including reporter contact information, comments, and supporting evidence--without redaction or preprocessing by Cloudflare. This allows the customer to investigate and respond using their own policies and processes. For delegated reports, the report--including contact information and comments--will be forwarded to the customer in full regardless of the `host_notification` and `owner_notification` values. */
 export const createAbuseReport: API.OperationMethod<
   CreateAbuseReportRequest,
   CreateAbuseReportResponse,
@@ -1064,6 +1066,7 @@ function __c7(j: number): any {
           mitigationStatus: S.optional(S.String.pipe(T.Query("mitigation_status"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+          search: S.optional(S.String.pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
           status: S.optional(S.String.pipe(T.Query())),
           type: S.optional(S.String.pipe(T.Query())),

@@ -370,11 +370,13 @@ export interface InstancesChatCompletionsRequestAiSearchOptionsRetrieval {
   fusionMethod?:
     | InstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod
     | (string & {});
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | InstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode
     | (string & {});
+  /** Minimum similarity score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4. */
   matchThreshold?: number;
+  /** Maximum number of results to return. When omitted, falls back to the instance-level max_num_results, then to 10. */
   maxNumResults?: number;
   retrievalType?:
     | InstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType
@@ -383,7 +385,7 @@ export interface InstancesChatCompletionsRequestAiSearchOptionsRetrieval {
 }
 export interface InstancesChatCompletionsRequestAiSearchOptions {
   cache?: InstancesChatCompletionsRequestAiSearchOptionsCache;
-  /** Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved. */
+  /** Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'. */
   customMetadata?: InstancesChatCompletionsRequestAiSearchOptionsCustomMetadataMap;
   queryRewrite?: InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite;
   reranking?: InstancesChatCompletionsRequestAiSearchOptionsReranking;
@@ -464,13 +466,20 @@ export interface InstancesChatCompletionsResponseChunksItemScoringDetails {
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
+export type InstancesChatCompletionsResponseChunksItemSourceMediaType = "audio" | "video";
 export interface InstancesChatCompletionsResponseChunksItem {
   id: string;
   score: number;
   text: string;
   type: string;
   item?: InstancesChatCompletionsResponseChunksItemItem | null;
+  /** Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaEndMs?: number | null;
+  /** Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaStartMs?: number | null;
   scoringDetails?: InstancesChatCompletionsResponseChunksItemScoringDetails | null;
+  /** Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks. */
+  sourceMediaType?: InstancesChatCompletionsResponseChunksItemSourceMediaType | null;
 }
 export type InstancesChatCompletionsResponseChunksList =
   Array<InstancesChatCompletionsResponseChunksItem>;
@@ -537,11 +546,13 @@ export interface NamespacesChatCompletionsRequestAiSearchOptionsRetrieval {
   fusionMethod?:
     | NamespacesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod
     | (string & {});
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | NamespacesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode
     | (string & {});
+  /** Minimum score a chunk must reach to be returned. When omitted, each instance's chunks are filtered by that instance's score_threshold, capped at the lower of the first instance's score_threshold and 0.4. */
   matchThreshold?: number;
+  /** Maximum number of merged results to return. When omitted, defaults to the first instance's max_num_results, then 10. */
   maxNumResults?: number;
   retrievalType?:
     | NamespacesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType
@@ -551,7 +562,7 @@ export interface NamespacesChatCompletionsRequestAiSearchOptionsRetrieval {
 export interface NamespacesChatCompletionsRequestAiSearchOptions {
   instanceIds: NamespacesChatCompletionsRequestAiSearchOptionsInstanceIdsList;
   cache?: NamespacesChatCompletionsRequestAiSearchOptionsCache;
-  /** Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved. */
+  /** Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'. */
   customMetadata?: NamespacesChatCompletionsRequestAiSearchOptionsCustomMetadataMap;
   queryRewrite?: InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite;
   reranking?: InstancesChatCompletionsRequestAiSearchOptionsReranking;
@@ -668,6 +679,7 @@ export interface NamespacesChatCompletionsResponseChunksItemScoringDetails {
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
+export type NamespacesChatCompletionsResponseChunksItemSourceMediaType = "audio" | "video";
 export interface NamespacesChatCompletionsResponseChunksItem {
   id: string;
   instanceId: string;
@@ -675,7 +687,13 @@ export interface NamespacesChatCompletionsResponseChunksItem {
   text: string;
   type: string;
   item?: NamespacesChatCompletionsResponseChunksItemItem | null;
+  /** Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaEndMs?: number | null;
+  /** Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaStartMs?: number | null;
   scoringDetails?: NamespacesChatCompletionsResponseChunksItemScoringDetails | null;
+  /** Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks. */
+  sourceMediaType?: NamespacesChatCompletionsResponseChunksItemSourceMediaType | null;
 }
 export type NamespacesChatCompletionsResponseChunksList =
   Array<NamespacesChatCompletionsResponseChunksItem>;
@@ -788,11 +806,13 @@ export interface NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetriev
   fusionMethod?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalFusionMethod
     | (string & {});
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode
     | (string & {});
+  /** Minimum similarity score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4. */
   matchThreshold?: number;
+  /** Maximum number of results to return. When omitted, falls back to the instance-level max_num_results, then to 10. */
   maxNumResults?: number;
   retrievalType?:
     | NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalRetrievalType
@@ -801,7 +821,7 @@ export interface NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetriev
 }
 export interface NamespacesInstancesChatCompletionsRequestAiSearchOptions {
   cache?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsCache;
-  /** Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved. */
+  /** Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'. */
   customMetadata?: NamespacesInstancesChatCompletionsRequestAiSearchOptionsCustomMetadataMap;
   queryRewrite?: InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite;
   reranking?: InstancesChatCompletionsRequestAiSearchOptionsReranking;
@@ -809,7 +829,7 @@ export interface NamespacesInstancesChatCompletionsRequestAiSearchOptions {
 }
 export interface ChatCompletionsNamespaceInstanceRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   messages: NamespacesInstancesChatCompletionsRequestMessagesList;
@@ -884,13 +904,20 @@ export interface NamespacesInstancesChatCompletionsResponseChunksItemScoringDeta
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
+export type NamespacesInstancesChatCompletionsResponseChunksItemSourceMediaType = "audio" | "video";
 export interface NamespacesInstancesChatCompletionsResponseChunksItem {
   id: string;
   score: number;
   text: string;
   type: string;
   item?: NamespacesInstancesChatCompletionsResponseChunksItemItem | null;
+  /** Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaEndMs?: number | null;
+  /** Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaStartMs?: number | null;
   scoringDetails?: NamespacesInstancesChatCompletionsResponseChunksItemScoringDetails | null;
+  /** Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks. */
+  sourceMediaType?: NamespacesInstancesChatCompletionsResponseChunksItemSourceMediaType | null;
 }
 export type NamespacesInstancesChatCompletionsResponseChunksList =
   Array<NamespacesInstancesChatCompletionsResponseChunksItem>;
@@ -904,7 +931,7 @@ export interface ChatCompletionsNamespaceInstanceResponse {
 }
 export interface ChunksNamespaceInstanceItemRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   itemId: string;
@@ -970,19 +997,25 @@ export interface InstancesCreateRequestIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean;
 }
+export type InstancesCreateRequestMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface InstancesCreateRequestMetadataCreatedFromEmdashPlugin {
+  type: InstancesCreateRequestMetadataCreatedFromEmdashPluginType | (string & {});
+  version: string;
+}
 export interface InstancesCreateRequestMetadata {
   createdFromAisearchWizard?: boolean;
+  createdFromEmdashPlugin?: InstancesCreateRequestMetadataCreatedFromEmdashPlugin;
   workerDomain?: string;
 }
 export type InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
 export interface InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
+  /** Disable chat completions endpoint for this public endpoint. */
   disabled?: boolean;
 }
 export type InstancesCreateRequestPublicEndpointParamsCustomDomainsList = Array<string>;
 export interface InstancesCreateRequestPublicEndpointParamsMcp {
   description?: string;
-  /** Disable MCP endpoint for this public endpoint */
+  /** Disable MCP endpoint for this public endpoint. */
   disabled?: boolean;
 }
 export type InstancesCreateRequestPublicEndpointParamsRateLimitTechnique = "fixed" | "sliding";
@@ -992,7 +1025,7 @@ export interface InstancesCreateRequestPublicEndpointParamsRateLimit {
   technique?: InstancesCreateRequestPublicEndpointParamsRateLimitTechnique | (string & {});
 }
 export interface InstancesCreateRequestPublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
+  /** Disable search endpoint for this public endpoint. */
   disabled?: boolean;
 }
 export interface InstancesCreateRequestPublicEndpointParams {
@@ -1024,7 +1057,7 @@ export type InstancesCreateRequestRetrievalOptionsKeywordMatchMode = "and" | "or
 export interface InstancesCreateRequestRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: InstancesCreateRequestRetrievalOptionsBoostByList;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesCreateRequestRetrievalOptionsKeywordMatchMode | (string & {});
 }
 export type InstancesCreateRequestSourceParamsExcludeItemsList = Array<string>;
@@ -1036,7 +1069,7 @@ export type InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptionsSource =
 export interface InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean;
@@ -1050,7 +1083,7 @@ export interface InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions {
 export interface InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   /** Glob pattern to match against the page URL path. Uses standard glob syntax: * matches within a segment, ** crosses directories. */
   path: string;
-  /** CSS selector to extract content from pages matching the path pattern. Must not contain disallowed characters (;, `, $, {, }, ). Must target a single element; if multiple elements match, the selector is ignored and the full page is used. */
+  /** CSS selector to extract content from pages matching the path pattern. Disallowed characters: ;, `, $, {, }, . Must target a single element; if multiple elements match, the crawler ignores the selector and uses the full page. */
   selector: string;
 }
 export type InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList =
@@ -1061,9 +1094,9 @@ export type InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeade
 export type InstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface InstancesCreateRequestSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: InstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
   includeImages?: boolean;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -1082,18 +1115,18 @@ export interface WebCrawlerCrawlOptions {
   source?: WebCrawlerCrawlOptionsSource | (string & {}) | null;
 }
 export interface InstancesCreateRequestSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: InstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions;
   parseOptions?: InstancesCreateRequestSourceParamsWebCrawlerParseOptions;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: InstancesCreateRequestSourceParamsWebCrawlerParseType | (string & {});
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions;
 }
 export interface InstancesCreateRequestSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: InstancesCreateRequestSourceParamsExcludeItemsList;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: InstancesCreateRequestSourceParamsIncludeItemsList;
   prefix?: string;
   r2Jurisdiction?: string;
@@ -1128,7 +1161,7 @@ export interface CreateInstanceRequest {
   fusionMethod?: InstancesCreateRequestFusionMethod | (string & {});
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod;
   indexingOptions?: InstancesCreateRequestIndexingOptions;
   maxNumResults?: number;
@@ -1140,10 +1173,11 @@ export interface CreateInstanceRequest {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string;
   rewriteQuery?: boolean;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number;
   source?: string;
   sourceParams?: InstancesCreateRequestSourceParams;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: InstancesCreateRequestSyncInterval | (number & {});
   tokenId?: string;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -1185,19 +1219,25 @@ export interface InstancesCreateResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
+export type InstancesCreateResponseMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface InstancesCreateResponseMetadataCreatedFromEmdashPlugin {
+  type: InstancesCreateResponseMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
 export interface InstancesCreateResponseMetadata {
   createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: InstancesCreateResponseMetadataCreatedFromEmdashPlugin | null;
   workerDomain?: string | null;
 }
 export type InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
 export interface InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint {
-  /** Disable chat completions endpoint for this public endpoint */
+  /** Disable chat completions endpoint for this public endpoint. */
   disabled?: boolean | null;
 }
 export type InstancesCreateResponsePublicEndpointParamsCustomDomainsList = Array<string>;
 export interface InstancesCreateResponsePublicEndpointParamsMcp {
   description?: string | null;
-  /** Disable MCP endpoint for this public endpoint */
+  /** Disable MCP endpoint for this public endpoint. */
   disabled?: boolean | null;
 }
 export type InstancesCreateResponsePublicEndpointParamsRateLimitTechnique = "fixed" | "sliding";
@@ -1207,7 +1247,7 @@ export interface InstancesCreateResponsePublicEndpointParamsRateLimit {
   technique?: InstancesCreateResponsePublicEndpointParamsRateLimitTechnique | null;
 }
 export interface InstancesCreateResponsePublicEndpointParamsSearchEndpoint {
-  /** Disable search endpoint for this public endpoint */
+  /** Disable search endpoint for this public endpoint. */
   disabled?: boolean | null;
 }
 export interface InstancesCreateResponsePublicEndpointParams {
@@ -1239,7 +1279,7 @@ export type InstancesCreateResponseRetrievalOptionsKeywordMatchMode = "and" | "o
 export interface InstancesCreateResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: InstancesCreateResponseRetrievalOptionsBoostByList | null;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesCreateResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export type InstancesCreateResponseSourceParamsExcludeItemsList = Array<string>;
@@ -1251,7 +1291,7 @@ export type InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptionsSource =
 export interface InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
@@ -1272,9 +1312,9 @@ export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHead
 export type InstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface InstancesCreateResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: InstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
   includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -1283,18 +1323,18 @@ export interface InstancesCreateResponseSourceParamsWebCrawlerParseOptions {
 }
 export type InstancesCreateResponseSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export interface InstancesCreateResponseSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions | null;
   parseOptions?: InstancesCreateResponseSourceParamsWebCrawlerParseOptions | null;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: InstancesCreateResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export interface InstancesCreateResponseSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: InstancesCreateResponseSourceParamsExcludeItemsList | null;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: InstancesCreateResponseSourceParamsIncludeItemsList | null;
   prefix?: string | null;
   r2Jurisdiction?: string | null;
@@ -1333,7 +1373,7 @@ export interface CreateInstanceResponse {
   fusionMethod?: InstancesCreateResponseFusionMethod | null;
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: InstancesCreateResponseIndexingOptions | null;
   lastActivity?: string | null;
@@ -1350,11 +1390,12 @@ export interface CreateInstanceResponse {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string | null;
   rewriteQuery?: boolean | null;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number | null;
   source?: string | null;
   sourceParams?: InstancesCreateResponseSourceParams | null;
   status?: string | null;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: InstancesCreateResponseSyncInterval | null;
   tokenId?: string | null;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -1400,7 +1441,7 @@ export interface NamespacesCreateRequestPublicEndpointParams {
   /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean;
   enabled?: boolean;
-  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
+  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit. */
   instancesAllowed?: NamespacesCreateRequestPublicEndpointParamsInstancesAllowedList;
   mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
   rateLimit?: NamespacesCreateRequestPublicEndpointParamsRateLimit;
@@ -1436,7 +1477,7 @@ export interface NamespacesCreateResponsePublicEndpointParams {
   /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
-  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
+  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit. */
   instancesAllowed?: NamespacesCreateResponsePublicEndpointParamsInstancesAllowedList | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: NamespacesCreateResponsePublicEndpointParamsRateLimit | null;
@@ -1489,7 +1530,16 @@ export interface NamespacesInstancesCreateRequestIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean;
 }
-export type NamespacesInstancesCreateRequestMetadata = InstancesCreateRequestMetadata;
+export type NamespacesInstancesCreateRequestMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface NamespacesInstancesCreateRequestMetadataCreatedFromEmdashPlugin {
+  type: NamespacesInstancesCreateRequestMetadataCreatedFromEmdashPluginType | (string & {});
+  version: string;
+}
+export interface NamespacesInstancesCreateRequestMetadata {
+  createdFromAisearchWizard?: boolean;
+  createdFromEmdashPlugin?: NamespacesInstancesCreateRequestMetadataCreatedFromEmdashPlugin;
+  workerDomain?: string;
+}
 export type NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
 export type NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
@@ -1537,7 +1587,7 @@ export type NamespacesInstancesCreateRequestRetrievalOptionsKeywordMatchMode = "
 export interface NamespacesInstancesCreateRequestRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: NamespacesInstancesCreateRequestRetrievalOptionsBoostByList;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?:
     | NamespacesInstancesCreateRequestRetrievalOptionsKeywordMatchMode
     | (string & {});
@@ -1551,7 +1601,7 @@ export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerDiscoverOption
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean;
@@ -1574,9 +1624,9 @@ export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIn
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
   includeImages?: boolean;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -1587,18 +1637,18 @@ export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
   | "discover";
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerDiscoverOptions;
   parseOptions?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType | (string & {});
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions;
 }
 export interface NamespacesInstancesCreateRequestSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: NamespacesInstancesCreateRequestSourceParamsExcludeItemsList;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: NamespacesInstancesCreateRequestSourceParamsIncludeItemsList;
   prefix?: string;
   r2Jurisdiction?: string;
@@ -1616,7 +1666,7 @@ export type NamespacesInstancesCreateRequestSyncInterval =
 export type NamespacesInstancesCreateRequestType = "r2" | "web-crawler";
 export interface CreateNamespaceInstanceRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   aiGatewayId?: string;
@@ -1634,11 +1684,11 @@ export interface CreateNamespaceInstanceRequest {
   fusionMethod?: NamespacesInstancesCreateRequestFusionMethod | (string & {});
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod;
   indexingOptions?: NamespacesInstancesCreateRequestIndexingOptions;
   maxNumResults?: number;
-  metadata?: InstancesCreateRequestMetadata;
+  metadata?: NamespacesInstancesCreateRequestMetadata;
   publicEndpointParams?: NamespacesInstancesCreateRequestPublicEndpointParams;
   reranking?: boolean;
   rerankingModel?: string;
@@ -1646,10 +1696,11 @@ export interface CreateNamespaceInstanceRequest {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string;
   rewriteQuery?: boolean;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number;
   source?: string;
   sourceParams?: NamespacesInstancesCreateRequestSourceParams;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: NamespacesInstancesCreateRequestSyncInterval | (number & {});
   tokenId?: string;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -1691,7 +1742,18 @@ export interface NamespacesInstancesCreateResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export type NamespacesInstancesCreateResponseMetadata = InstancesCreateResponseMetadata;
+export type NamespacesInstancesCreateResponseMetadataCreatedFromEmdashPluginType =
+  | "native"
+  | "rest";
+export interface NamespacesInstancesCreateResponseMetadataCreatedFromEmdashPlugin {
+  type: NamespacesInstancesCreateResponseMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
+export interface NamespacesInstancesCreateResponseMetadata {
+  createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: NamespacesInstancesCreateResponseMetadataCreatedFromEmdashPlugin | null;
+  workerDomain?: string | null;
+}
 export type NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
 export type NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint =
@@ -1738,7 +1800,7 @@ export type NamespacesInstancesCreateResponseRetrievalOptionsKeywordMatchMode = 
 export interface NamespacesInstancesCreateResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: NamespacesInstancesCreateResponseRetrievalOptionsBoostByList | null;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: NamespacesInstancesCreateResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export type NamespacesInstancesCreateResponseSourceParamsExcludeItemsList = Array<string>;
@@ -1750,7 +1812,7 @@ export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptio
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
@@ -1771,9 +1833,9 @@ export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsI
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
   includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -1784,18 +1846,18 @@ export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
   | "discover";
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions | null;
   parseOptions?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions | null;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export interface NamespacesInstancesCreateResponseSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: NamespacesInstancesCreateResponseSourceParamsExcludeItemsList | null;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: NamespacesInstancesCreateResponseSourceParamsIncludeItemsList | null;
   prefix?: string | null;
   r2Jurisdiction?: string | null;
@@ -1834,12 +1896,12 @@ export interface CreateNamespaceInstanceResponse {
   fusionMethod?: NamespacesInstancesCreateResponseFusionMethod | null;
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: NamespacesInstancesCreateResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesCreateResponseMetadata | null;
+  metadata?: NamespacesInstancesCreateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -1851,11 +1913,12 @@ export interface CreateNamespaceInstanceResponse {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string | null;
   rewriteQuery?: boolean | null;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number | null;
   source?: string | null;
   sourceParams?: NamespacesInstancesCreateResponseSourceParams | null;
   status?: string | null;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: NamespacesInstancesCreateResponseSyncInterval | null;
   tokenId?: string | null;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -1863,7 +1926,7 @@ export interface CreateNamespaceInstanceResponse {
 }
 export interface CreateNamespaceInstanceJobRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   description?: string;
@@ -1882,13 +1945,13 @@ export interface CreateNamespaceInstanceJobResponse {
 export type NamespacesInstancesItemsCreateOrUpdateRequestNextAction = "INDEX";
 export interface CreateOrUpdateNamespaceInstanceItemRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   /** Item key / filename. Must not exceed 128 characters. */
   key: string;
   nextAction: NamespacesInstancesItemsCreateOrUpdateRequestNextAction | (string & {});
-  /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false. */
+  /** Wait for indexing before responding. After processing, vector-indexed instances use any time remaining in a 25s wait budget to confirm Vectorize ingestion. Processing itself continues uninterrupted and can exceed that budget. If confirmation times out, the response returns the current item state and background indexing continues. Defaults to false. */
   waitForCompletion?: boolean;
 }
 export type NamespacesInstancesItemsCreateOrUpdateResponseMetadataValue = string | number | boolean;
@@ -1980,7 +2043,16 @@ export interface InstancesDeleteResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export type InstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
+export type InstancesDeleteResponseMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface InstancesDeleteResponseMetadataCreatedFromEmdashPlugin {
+  type: InstancesDeleteResponseMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
+export interface InstancesDeleteResponseMetadata {
+  createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: InstancesDeleteResponseMetadataCreatedFromEmdashPlugin | null;
+  workerDomain?: string | null;
+}
 export type InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
 export type InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -2024,7 +2096,7 @@ export type InstancesDeleteResponseRetrievalOptionsKeywordMatchMode = "and" | "o
 export interface InstancesDeleteResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: InstancesDeleteResponseRetrievalOptionsBoostByList | null;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesDeleteResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export type InstancesDeleteResponseSourceParamsExcludeItemsList = Array<string>;
@@ -2036,7 +2108,7 @@ export type InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptionsSource =
 export interface InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
@@ -2057,9 +2129,9 @@ export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHead
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface InstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
   includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -2068,18 +2140,18 @@ export interface InstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
 }
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export interface InstancesDeleteResponseSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: InstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions | null;
   parseOptions?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptions | null;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: InstancesDeleteResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export interface InstancesDeleteResponseSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: InstancesDeleteResponseSourceParamsExcludeItemsList | null;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: InstancesDeleteResponseSourceParamsIncludeItemsList | null;
   prefix?: string | null;
   r2Jurisdiction?: string | null;
@@ -2118,12 +2190,12 @@ export interface DeleteInstanceResponse {
   fusionMethod?: InstancesDeleteResponseFusionMethod | null;
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: InstancesDeleteResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesCreateResponseMetadata | null;
+  metadata?: InstancesDeleteResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -2135,11 +2207,12 @@ export interface DeleteInstanceResponse {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string | null;
   rewriteQuery?: boolean | null;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number | null;
   source?: string | null;
   sourceParams?: InstancesDeleteResponseSourceParams | null;
   status?: string | null;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: InstancesDeleteResponseSyncInterval | null;
   tokenId?: string | null;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -2152,7 +2225,7 @@ export interface DeleteNamespaceRequest {
 export type DeleteNamespaceResponse = unknown;
 export interface DeleteNamespaceInstanceRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   id: string;
 }
 export type NamespacesInstancesDeleteResponseCacheThreshold =
@@ -2191,7 +2264,18 @@ export interface NamespacesInstancesDeleteResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export type NamespacesInstancesDeleteResponseMetadata = InstancesCreateResponseMetadata;
+export type NamespacesInstancesDeleteResponseMetadataCreatedFromEmdashPluginType =
+  | "native"
+  | "rest";
+export interface NamespacesInstancesDeleteResponseMetadataCreatedFromEmdashPlugin {
+  type: NamespacesInstancesDeleteResponseMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
+export interface NamespacesInstancesDeleteResponseMetadata {
+  createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: NamespacesInstancesDeleteResponseMetadataCreatedFromEmdashPlugin | null;
+  workerDomain?: string | null;
+}
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
 export type NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint =
@@ -2238,7 +2322,7 @@ export type NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode = 
 export interface NamespacesInstancesDeleteResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: NamespacesInstancesDeleteResponseRetrievalOptionsBoostByList | null;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: NamespacesInstancesDeleteResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export type NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList = Array<string>;
@@ -2250,7 +2334,7 @@ export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptio
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
@@ -2271,9 +2355,9 @@ export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsI
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
   includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -2284,18 +2368,18 @@ export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
   | "discover";
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerDiscoverOptions | null;
   parseOptions?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions | null;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export interface NamespacesInstancesDeleteResponseSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: NamespacesInstancesDeleteResponseSourceParamsExcludeItemsList | null;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList | null;
   prefix?: string | null;
   r2Jurisdiction?: string | null;
@@ -2334,12 +2418,12 @@ export interface DeleteNamespaceInstanceResponse {
   fusionMethod?: NamespacesInstancesDeleteResponseFusionMethod | null;
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: NamespacesInstancesDeleteResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesCreateResponseMetadata | null;
+  metadata?: NamespacesInstancesDeleteResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -2351,11 +2435,12 @@ export interface DeleteNamespaceInstanceResponse {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string | null;
   rewriteQuery?: boolean | null;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number | null;
   source?: string | null;
   sourceParams?: NamespacesInstancesDeleteResponseSourceParams | null;
   status?: string | null;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: NamespacesInstancesDeleteResponseSyncInterval | null;
   tokenId?: string | null;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -2363,7 +2448,7 @@ export interface DeleteNamespaceInstanceResponse {
 }
 export interface DeleteNamespaceInstanceItemRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   itemId: string;
@@ -2379,7 +2464,7 @@ export interface DeleteTokenRequest {
 export type DeleteTokenResponse = unknown;
 export interface DownloadNamespaceInstanceItemRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   itemId: string;
@@ -2404,7 +2489,7 @@ export interface GetInstanceJobResponse {
 }
 export interface GetNamespaceInstanceItemRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   itemId: string;
@@ -2441,7 +2526,7 @@ export interface GetNamespaceInstanceItemResponse {
 }
 export interface GetNamespaceInstanceJobRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   jobId: string;
@@ -2485,9 +2570,9 @@ export type InstancesListRequestOrderBy = "created_at";
 export type InstancesListRequestOrderByDirection = "asc" | "desc";
 export interface ListInstancesRequest {
   accountId: string;
-  /** Filter by exact Search for Agents hostname (case-insensitive). */
+  /** Return only instances with this exact Search for Agents hostname (case-insensitive). */
   hostname?: string;
-  /** Filter by namespace. */
+  /** Return only instances in this namespace. */
   namespace?: string;
   /** Field to order results by. */
   orderBy?: InstancesListRequestOrderBy | (string & {});
@@ -2537,7 +2622,16 @@ export interface InstancesListResultItemIndexingOptions {
   keywordTokenizer?: InstancesListResultItemIndexingOptionsKeywordTokenizer | null;
   useOcr?: boolean | null;
 }
-export type InstancesListResultItemMetadata = InstancesCreateResponseMetadata;
+export type InstancesListResultItemMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface InstancesListResultItemMetadataCreatedFromEmdashPlugin {
+  type: InstancesListResultItemMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
+export interface InstancesListResultItemMetadata {
+  createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: InstancesListResultItemMetadataCreatedFromEmdashPlugin | null;
+  workerDomain?: string | null;
+}
 export type InstancesListResultItemPublicEndpointParamsAuthorizedHostsList = Array<string>;
 export interface InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint {
   disabled?: boolean | null;
@@ -2597,7 +2691,7 @@ export interface InstancesListResultItemSourceParamsWebCrawlerDiscoverOptions {
   depth?: number | null;
   includeExternalLinks?: boolean | null;
   includeSubdomains?: boolean | null;
-  /** Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time. */
+  /** Maximum number of pages to crawl. New values have a maximum of 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time. */
   limit?: number | null;
   maxAge?: number | null;
   source?: InstancesListResultItemSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -2667,7 +2761,7 @@ export interface InstancesListResultItem {
   indexingOptions: InstancesListResultItemIndexingOptions;
   lastActivity: string;
   maxNumResults: number;
-  metadata: InstancesCreateResponseMetadata;
+  metadata: InstancesListResultItemMetadata;
   modifiedAt: string;
   modifiedBy: string;
   namespace: string;
@@ -2709,21 +2803,21 @@ export type NamespacesInstancesItemsListRequestStatus =
   | "outdated";
 export interface ListNamespaceInstanceItemsRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
-  /** Filter items by their unique ID. Returns at most one item. */
+  /** Return only the item with this unique ID. Returns at most one item. */
   itemId?: string;
-  /** Filter items by their exact key (object key / filename). Keys are unique per source, so combine with `source` to disambiguate across data sources. */
+  /** Return only items with this exact key (object key / filename). Each key is unique within a source, so combine with `source` to disambiguate across data sources. */
   key?: string;
-  /** JSON-encoded metadata filter using Vectorize filter syntax. Examples: {"folder":"reports/"}, {"timestamp":{"$gte":1700000000000}}, {"folder":{"$in":["docs/","reports/"]}} */
+  /** JSON-encoded metadata filter using Vectorize filter syntax. Examples: {"folder":"reports/"}, {"timestamp":{"$gte":1700000000000}}, {"folder":{"$in":["docs/","reports/"]}}. */
   metadataFilter?: string;
   page?: number;
   perPage?: number;
   search?: string;
-  /** Sort order for items. "status" (default) sorts by status priority then last_seen_at. "modified_at" sorts by file modification time (most recent first), falling back to created_at. */
+  /** Sort order for items. "status" (default) sorts items according to status priority, then last_seen_at. "modified_at" sorts items according to file modification time (most recent first), falling back to created_at. */
   sortBy?: NamespacesInstancesItemsListRequestSortBy | (string & {});
-  /** Filter items by source_id. Use "builtin" for uploaded files, or a source identifier like "web-crawler: https://example.com". */
+  /** Return only items with this source_id. Use "builtin" for uploaded files, or a source identifier like "web-crawler: https://example.com". */
   source?: string;
   status?: NamespacesInstancesItemsListRequestStatus | (string & {});
 }
@@ -2765,7 +2859,7 @@ export interface ListNamespaceInstanceItemsResponse {
 }
 export interface ListNamespaceInstanceJobsRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   page?: number;
@@ -2792,11 +2886,9 @@ export type NamespacesInstancesListRequestOrderBy = "created_at";
 export type NamespacesInstancesListRequestOrderByDirection = "asc" | "desc";
 export interface ListNamespaceInstancesRequest {
   accountId: string;
-  name: string;
-  /** Filter by exact Search for Agents hostname (case-insensitive). */
+  namespace: string;
+  /** Return only instances with this exact Search for Agents hostname (case-insensitive). */
   hostname?: string;
-  /** Filter by namespace. */
-  namespace?: string;
   /** Field to order results by. */
   orderBy?: NamespacesInstancesListRequestOrderBy | (string & {});
   /** Order direction. */
@@ -2842,7 +2934,18 @@ export interface NamespacesInstancesListResultItemIndexingOptions {
   keywordTokenizer?: NamespacesInstancesListResultItemIndexingOptionsKeywordTokenizer | null;
   useOcr?: boolean | null;
 }
-export type NamespacesInstancesListResultItemMetadata = InstancesCreateResponseMetadata;
+export type NamespacesInstancesListResultItemMetadataCreatedFromEmdashPluginType =
+  | "native"
+  | "rest";
+export interface NamespacesInstancesListResultItemMetadataCreatedFromEmdashPlugin {
+  type: NamespacesInstancesListResultItemMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
+export interface NamespacesInstancesListResultItemMetadata {
+  createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: NamespacesInstancesListResultItemMetadataCreatedFromEmdashPlugin | null;
+  workerDomain?: string | null;
+}
 export type NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList =
   Array<string>;
 export type NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint =
@@ -2902,7 +3005,7 @@ export interface NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscover
   depth?: number | null;
   includeExternalLinks?: boolean | null;
   includeSubdomains?: boolean | null;
-  /** Maximum number of pages to crawl. New values are capped at 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time. */
+  /** Maximum number of pages to crawl. New values have a maximum of 100000; instances configured before that cap may report a higher stored value, which the crawler clamps at run time. */
   limit?: number | null;
   maxAge?: number | null;
   source?: NamespacesInstancesListResultItemSourceParamsWebCrawlerDiscoverOptionsSource | null;
@@ -2972,7 +3075,7 @@ export interface NamespacesInstancesListResultItem {
   indexingOptions: NamespacesInstancesListResultItemIndexingOptions;
   lastActivity: string;
   maxNumResults: number;
-  metadata: InstancesCreateResponseMetadata;
+  metadata: NamespacesInstancesListResultItemMetadata;
   modifiedAt: string;
   modifiedBy: string;
   namespace: string;
@@ -3036,7 +3139,7 @@ export interface NamespacesListResultItemPublicEndpointParams {
   /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
-  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
+  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit. */
   instancesAllowed?: NamespacesListResultItemPublicEndpointParamsInstancesAllowedList | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: NamespacesListResultItemPublicEndpointParamsRateLimit | null;
@@ -3102,7 +3205,7 @@ export type InstancesJobsLogsResultList = Array<InstancesJobsLogsResultItem>;
 export type LogsInstanceJobResponse = InstancesJobsLogsResultList;
 export interface LogsNamespaceInstanceItemRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   itemId: string;
@@ -3122,7 +3225,7 @@ export type NamespacesInstancesItemsLogsResultList = Array<NamespacesInstancesIt
 export type LogsNamespaceInstanceItemResponse = NamespacesInstancesItemsLogsResultList;
 export interface LogsNamespaceInstanceJobRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   jobId: string;
@@ -3132,10 +3235,20 @@ export interface LogsNamespaceInstanceJobRequest {
 export type NamespacesInstancesJobsLogsResultItem = InstancesJobsLogsResultItem;
 export type NamespacesInstancesJobsLogsResultList = Array<InstancesJobsLogsResultItem>;
 export type LogsNamespaceInstanceJobResponse = NamespacesInstancesJobsLogsResultList;
+export interface MoveNamespacesInstanceRequest {
+  accountId: string;
+  /** Current namespace of the instance. */
+  namespace: string;
+  /** Instance id. */
+  id: string;
+  /** Target namespace to move the instance into. */
+  newNamespace: string;
+}
+export type MoveNamespacesInstanceResponse = unknown;
 export type NamespacesInstancesJobsUpdateRequestAction = "cancel";
 export interface PatchNamespaceInstanceJobRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   jobId: string;
@@ -3192,7 +3305,16 @@ export interface InstancesReadResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export type InstancesReadResponseMetadata = InstancesCreateResponseMetadata;
+export type InstancesReadResponseMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface InstancesReadResponseMetadataCreatedFromEmdashPlugin {
+  type: InstancesReadResponseMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
+export interface InstancesReadResponseMetadata {
+  createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: InstancesReadResponseMetadataCreatedFromEmdashPlugin | null;
+  workerDomain?: string | null;
+}
 export type InstancesReadResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
 export type InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -3236,7 +3358,7 @@ export type InstancesReadResponseRetrievalOptionsKeywordMatchMode = "and" | "or"
 export interface InstancesReadResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: InstancesReadResponseRetrievalOptionsBoostByList | null;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesReadResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export type InstancesReadResponseSourceParamsExcludeItemsList = Array<string>;
@@ -3248,7 +3370,7 @@ export type InstancesReadResponseSourceParamsWebCrawlerDiscoverOptionsSource =
 export interface InstancesReadResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
@@ -3269,9 +3391,9 @@ export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeader
 export type InstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface InstancesReadResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: InstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
   includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -3280,18 +3402,18 @@ export interface InstancesReadResponseSourceParamsWebCrawlerParseOptions {
 }
 export type InstancesReadResponseSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export interface InstancesReadResponseSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: InstancesReadResponseSourceParamsWebCrawlerDiscoverOptions | null;
   parseOptions?: InstancesReadResponseSourceParamsWebCrawlerParseOptions | null;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: InstancesReadResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export interface InstancesReadResponseSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: InstancesReadResponseSourceParamsExcludeItemsList | null;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: InstancesReadResponseSourceParamsIncludeItemsList | null;
   prefix?: string | null;
   r2Jurisdiction?: string | null;
@@ -3330,12 +3452,12 @@ export interface ReadInstanceResponse {
   fusionMethod?: InstancesReadResponseFusionMethod | null;
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: InstancesReadResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesCreateResponseMetadata | null;
+  metadata?: InstancesReadResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -3347,11 +3469,12 @@ export interface ReadInstanceResponse {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string | null;
   rewriteQuery?: boolean | null;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number | null;
   source?: string | null;
   sourceParams?: InstancesReadResponseSourceParams | null;
   status?: string | null;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: InstancesReadResponseSyncInterval | null;
   tokenId?: string | null;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -3384,7 +3507,7 @@ export interface NamespacesReadResponsePublicEndpointParams {
   /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
-  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
+  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit. */
   instancesAllowed?: NamespacesReadResponsePublicEndpointParamsInstancesAllowedList | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: NamespacesReadResponsePublicEndpointParamsRateLimit | null;
@@ -3401,7 +3524,7 @@ export interface ReadNamespaceResponse {
 }
 export interface ReadNamespaceInstanceRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   id: string;
 }
 export type NamespacesInstancesReadResponseCacheThreshold =
@@ -3440,7 +3563,16 @@ export interface NamespacesInstancesReadResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export type NamespacesInstancesReadResponseMetadata = InstancesCreateResponseMetadata;
+export type NamespacesInstancesReadResponseMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface NamespacesInstancesReadResponseMetadataCreatedFromEmdashPlugin {
+  type: NamespacesInstancesReadResponseMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
+export interface NamespacesInstancesReadResponseMetadata {
+  createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: NamespacesInstancesReadResponseMetadataCreatedFromEmdashPlugin | null;
+  workerDomain?: string | null;
+}
 export type NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
 export type NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -3486,7 +3618,7 @@ export type NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode = "a
 export interface NamespacesInstancesReadResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: NamespacesInstancesReadResponseRetrievalOptionsBoostByList | null;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: NamespacesInstancesReadResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export type NamespacesInstancesReadResponseSourceParamsExcludeItemsList = Array<string>;
@@ -3498,7 +3630,7 @@ export type NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptions
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
@@ -3519,9 +3651,9 @@ export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsInc
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
   includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -3530,18 +3662,18 @@ export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptio
 }
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: NamespacesInstancesReadResponseSourceParamsWebCrawlerDiscoverOptions | null;
   parseOptions?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions | null;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export interface NamespacesInstancesReadResponseSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: NamespacesInstancesReadResponseSourceParamsExcludeItemsList | null;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: NamespacesInstancesReadResponseSourceParamsIncludeItemsList | null;
   prefix?: string | null;
   r2Jurisdiction?: string | null;
@@ -3580,12 +3712,12 @@ export interface ReadNamespaceInstanceResponse {
   fusionMethod?: NamespacesInstancesReadResponseFusionMethod | null;
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: NamespacesInstancesReadResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesCreateResponseMetadata | null;
+  metadata?: NamespacesInstancesReadResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -3597,11 +3729,12 @@ export interface ReadNamespaceInstanceResponse {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string | null;
   rewriteQuery?: boolean | null;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number | null;
   source?: string | null;
   sourceParams?: NamespacesInstancesReadResponseSourceParams | null;
   status?: string | null;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: NamespacesInstancesReadResponseSyncInterval | null;
   tokenId?: string | null;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -3668,16 +3801,18 @@ export interface InstancesSearchRequestAiSearchOptionsRetrieval {
   contextExpansion?: number;
   filters?: InstancesSearchRequestAiSearchOptionsRetrievalFiltersMap;
   fusionMethod?: InstancesSearchRequestAiSearchOptionsRetrievalFusionMethod | (string & {});
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?: InstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode | (string & {});
+  /** Minimum similarity score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4. */
   matchThreshold?: number;
+  /** Maximum number of results to return. When omitted, falls back to the instance-level max_num_results, then to 10. */
   maxNumResults?: number;
   retrievalType?: InstancesSearchRequestAiSearchOptionsRetrievalRetrievalType | (string & {});
   returnOnFailure?: boolean;
 }
 export interface InstancesSearchRequestAiSearchOptions {
   cache?: InstancesSearchRequestAiSearchOptionsCache;
-  /** Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved. */
+  /** Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'. */
   customMetadata?: InstancesSearchRequestAiSearchOptionsCustomMetadataMap;
   queryRewrite?: InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite;
   reranking?: InstancesChatCompletionsRequestAiSearchOptionsReranking;
@@ -3749,13 +3884,20 @@ export interface InstancesSearchResponseChunksItemScoringDetails {
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
+export type InstancesSearchResponseChunksItemSourceMediaType = "audio" | "video";
 export interface InstancesSearchResponseChunksItem {
   id: string;
   score: number;
   text: string;
   type: string;
   item?: InstancesSearchResponseChunksItemItem | null;
+  /** Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaEndMs?: number | null;
+  /** Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaStartMs?: number | null;
   scoringDetails?: InstancesSearchResponseChunksItemScoringDetails | null;
+  /** Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks. */
+  sourceMediaType?: InstancesSearchResponseChunksItemSourceMediaType | null;
 }
 export type InstancesSearchResponseChunksList = Array<InstancesSearchResponseChunksItem>;
 export type InstancesSearchResponseQueryKind = "text" | "image" | "multimodal";
@@ -3811,11 +3953,13 @@ export interface NamespacesSearchRequestAiSearchOptionsRetrieval {
   contextExpansion?: number;
   filters?: NamespacesSearchRequestAiSearchOptionsRetrievalFiltersMap;
   fusionMethod?: NamespacesSearchRequestAiSearchOptionsRetrievalFusionMethod | (string & {});
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | NamespacesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode
     | (string & {});
+  /** Minimum score a chunk must reach to be returned. When omitted, each instance's chunks are filtered by that instance's score_threshold, capped at 0.4. */
   matchThreshold?: number;
+  /** Maximum number of merged results to return. When omitted, defaults to the sum of the searched instances' max_num_results (each falling back to 10), up to 50. */
   maxNumResults?: number;
   retrievalType?: NamespacesSearchRequestAiSearchOptionsRetrievalRetrievalType | (string & {});
   returnOnFailure?: boolean;
@@ -3823,7 +3967,7 @@ export interface NamespacesSearchRequestAiSearchOptionsRetrieval {
 export interface NamespacesSearchRequestAiSearchOptions {
   instanceIds: NamespacesSearchRequestAiSearchOptionsInstanceIdsList;
   cache?: NamespacesSearchRequestAiSearchOptionsCache;
-  /** Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved. */
+  /** Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'. */
   customMetadata?: NamespacesSearchRequestAiSearchOptionsCustomMetadataMap;
   queryRewrite?: InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite;
   reranking?: InstancesChatCompletionsRequestAiSearchOptionsReranking;
@@ -3894,6 +4038,7 @@ export interface NamespacesSearchResponseChunksItemScoringDetails {
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
+export type NamespacesSearchResponseChunksItemSourceMediaType = "audio" | "video";
 export interface NamespacesSearchResponseChunksItem {
   id: string;
   instanceId: string;
@@ -3901,7 +4046,13 @@ export interface NamespacesSearchResponseChunksItem {
   text: string;
   type: string;
   item?: NamespacesSearchResponseChunksItemItem | null;
+  /** Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaEndMs?: number | null;
+  /** Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaStartMs?: number | null;
   scoringDetails?: NamespacesSearchResponseChunksItemScoringDetails | null;
+  /** Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks. */
+  sourceMediaType?: NamespacesSearchResponseChunksItemSourceMediaType | null;
 }
 export type NamespacesSearchResponseChunksList = Array<NamespacesSearchResponseChunksItem>;
 export type NamespacesSearchResponseQueryKind = "text" | "image" | "multimodal";
@@ -3971,11 +4122,13 @@ export interface NamespacesInstancesSearchRequestAiSearchOptionsRetrieval {
   fusionMethod?:
     | NamespacesInstancesSearchRequestAiSearchOptionsRetrievalFusionMethod
     | (string & {});
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'. */
   keywordMatchMode?:
     | NamespacesInstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode
     | (string & {});
+  /** Minimum similarity score a chunk must reach to be returned. When omitted, falls back to the instance-level score_threshold, then to 0.4. */
   matchThreshold?: number;
+  /** Maximum number of results to return. When omitted, falls back to the instance-level max_num_results, then to 10. */
   maxNumResults?: number;
   retrievalType?:
     | NamespacesInstancesSearchRequestAiSearchOptionsRetrievalRetrievalType
@@ -3984,7 +4137,7 @@ export interface NamespacesInstancesSearchRequestAiSearchOptionsRetrieval {
 }
 export interface NamespacesInstancesSearchRequestAiSearchOptions {
   cache?: NamespacesInstancesSearchRequestAiSearchOptionsCache;
-  /** Metadata added to AI Gateway logs for requests triggered by this operation. Accepts up to 2 string, number, or boolean entries. Keys 'ai-search', 'task', 'origin', and keys beginning with 'cf.' are reserved. */
+  /** Metadata added to AI Gateway logs for requests this operation triggers. Accepts up to 2 string, number, or boolean entries. Reserved keys: 'ai-search', 'task', 'origin', and any key beginning with 'cf.'. */
   customMetadata?: NamespacesInstancesSearchRequestAiSearchOptionsCustomMetadataMap;
   queryRewrite?: InstancesChatCompletionsRequestAiSearchOptionsQueryRewrite;
   reranking?: InstancesChatCompletionsRequestAiSearchOptionsReranking;
@@ -4032,7 +4185,7 @@ export type NamespacesInstancesSearchRequestMessagesList =
   Array<NamespacesInstancesSearchRequestMessagesItem>;
 export interface SearchNamespaceInstanceRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   aiSearchOptions?: NamespacesInstancesSearchRequestAiSearchOptions;
@@ -4058,13 +4211,20 @@ export interface NamespacesInstancesSearchResponseChunksItemScoringDetails {
   vectorRank?: number | null;
   vectorScore?: number | null;
 }
+export type NamespacesInstancesSearchResponseChunksItemSourceMediaType = "audio" | "video";
 export interface NamespacesInstancesSearchResponseChunksItem {
   id: string;
   score: number;
   text: string;
   type: string;
   item?: NamespacesInstancesSearchResponseChunksItemItem | null;
+  /** Audio/video transcript chunks only: end, in milliseconds from the start of the media (whole seconds), of the last transcript section the matched chunk covers. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaEndMs?: number | null;
+  /** Audio/video transcript chunks only: start, in milliseconds from the start of the media (whole seconds), of the transcript section the matched chunk begins in. Describes the matched chunk before any context expansion, not the expanded `text`. */
+  mediaStartMs?: number | null;
   scoringDetails?: NamespacesInstancesSearchResponseChunksItemScoringDetails | null;
+  /** Audio/video transcript chunks only: type of the source media file. Omitted for all other chunks. */
+  sourceMediaType?: NamespacesInstancesSearchResponseChunksItemSourceMediaType | null;
 }
 export type NamespacesInstancesSearchResponseChunksList =
   Array<NamespacesInstancesSearchResponseChunksItem>;
@@ -4100,7 +4260,7 @@ export type InstancesStatsResponseIndexSourceErrorsMap = { [key: string]: unknow
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StatsInstanceResponse {
   completed?: number | null;
-  /** True when status counts are unavailable (e.g. legacy stats query exceeded D1 statement-size limit). Counts are omitted in this case. */
+  /** True when the API cannot compute status counts (e.g. the legacy stats query exceeded the D1 statement-size limit). The response omits counts in this case. */
   degraded?: boolean | null;
   /** Engine-specific metadata. Present only for managed (v3) instances. */
   engine?: InstancesStatsResponseEngine | null;
@@ -4115,7 +4275,7 @@ export interface StatsInstanceResponse {
 }
 export interface StatsNamespaceInstanceRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
 }
@@ -4131,7 +4291,7 @@ export type NamespacesInstancesStatsResponseIndexSourceErrorsMap = {
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StatsNamespaceInstanceResponse {
   completed?: number | null;
-  /** True when status counts are unavailable (e.g. legacy stats query exceeded D1 statement-size limit). Counts are omitted in this case. */
+  /** True when the API cannot compute status counts (e.g. the legacy stats query exceeded the D1 statement-size limit). The response omits counts in this case. */
   degraded?: boolean | null;
   /** Engine-specific metadata. Present only for managed (v3) instances. */
   engine?: InstancesStatsResponseEngine | null;
@@ -4147,12 +4307,12 @@ export interface StatsNamespaceInstanceResponse {
 export type NamespacesInstancesItemsSyncRequestNextAction = "INDEX";
 export interface SyncNamespaceInstanceItemRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   itemId: string;
   nextAction: NamespacesInstancesItemsSyncRequestNextAction | (string & {});
-  /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false. */
+  /** Wait for indexing before responding. After processing, vector-indexed instances use any time remaining in a 25s wait budget to confirm Vectorize ingestion. Processing itself continues uninterrupted and can exceed that budget. If confirmation times out, the response returns the current item state and background indexing continues. Defaults to false. */
   waitForCompletion?: boolean;
 }
 export type NamespacesInstancesItemsSyncResponseMetadataValue = string | number | boolean;
@@ -4221,7 +4381,16 @@ export interface InstancesUpdateRequestIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean;
 }
-export type InstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
+export type InstancesUpdateRequestMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface InstancesUpdateRequestMetadataCreatedFromEmdashPlugin {
+  type: InstancesUpdateRequestMetadataCreatedFromEmdashPluginType | (string & {});
+  version: string;
+}
+export interface InstancesUpdateRequestMetadata {
+  createdFromAisearchWizard?: boolean;
+  createdFromEmdashPlugin?: InstancesUpdateRequestMetadataCreatedFromEmdashPlugin;
+  workerDomain?: string;
+}
 export type InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
 export type InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
@@ -4265,7 +4434,7 @@ export type InstancesUpdateRequestRetrievalOptionsKeywordMatchMode = "and" | "or
 export interface InstancesUpdateRequestRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: InstancesUpdateRequestRetrievalOptionsBoostByList;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesUpdateRequestRetrievalOptionsKeywordMatchMode | (string & {});
 }
 export type InstancesUpdateRequestSourceParamsExcludeItemsList = Array<string>;
@@ -4277,7 +4446,7 @@ export type InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptionsSource =
 export interface InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean;
@@ -4298,9 +4467,9 @@ export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeade
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface InstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
   includeImages?: boolean;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -4309,18 +4478,18 @@ export interface InstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
 }
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export interface InstancesUpdateRequestSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: InstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions;
   parseOptions?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptions;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: InstancesUpdateRequestSourceParamsWebCrawlerParseType | (string & {});
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions;
 }
 export interface InstancesUpdateRequestSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: InstancesUpdateRequestSourceParamsExcludeItemsList;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: InstancesUpdateRequestSourceParamsIncludeItemsList;
   prefix?: string;
   r2Jurisdiction?: string;
@@ -4351,11 +4520,11 @@ export interface UpdateInstanceRequest {
   customMetadata?: InstancesUpdateRequestCustomMetadataList;
   embeddingModel?: string;
   fusionMethod?: InstancesUpdateRequestFusionMethod | (string & {});
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod;
   indexingOptions?: InstancesUpdateRequestIndexingOptions;
   maxNumResults?: number;
-  metadata?: InstancesCreateRequestMetadata;
+  metadata?: InstancesUpdateRequestMetadata;
   paused?: boolean;
   publicEndpointParams?: InstancesUpdateRequestPublicEndpointParams;
   reranking?: boolean;
@@ -4364,12 +4533,13 @@ export interface UpdateInstanceRequest {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string;
   rewriteQuery?: boolean;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number;
   source?: string;
   sourceParams?: InstancesUpdateRequestSourceParams;
   summarization?: boolean;
   summarizationModel?: string;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: InstancesUpdateRequestSyncInterval | (number & {});
   systemPromptAiSearch?: string;
   systemPromptIndexSummarization?: string;
@@ -4412,7 +4582,16 @@ export interface InstancesUpdateResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export type InstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
+export type InstancesUpdateResponseMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface InstancesUpdateResponseMetadataCreatedFromEmdashPlugin {
+  type: InstancesUpdateResponseMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
+export interface InstancesUpdateResponseMetadata {
+  createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: InstancesUpdateResponseMetadataCreatedFromEmdashPlugin | null;
+  workerDomain?: string | null;
+}
 export type InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList = Array<string>;
 export type InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
@@ -4456,7 +4635,7 @@ export type InstancesUpdateResponseRetrievalOptionsKeywordMatchMode = "and" | "o
 export interface InstancesUpdateResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: InstancesUpdateResponseRetrievalOptionsBoostByList | null;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: InstancesUpdateResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export type InstancesUpdateResponseSourceParamsExcludeItemsList = Array<string>;
@@ -4468,7 +4647,7 @@ export type InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptionsSource =
 export interface InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
@@ -4489,9 +4668,9 @@ export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHead
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface InstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
   includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -4500,18 +4679,18 @@ export interface InstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
 }
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseType = "sitemap" | "discover";
 export interface InstancesUpdateResponseSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: InstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions | null;
   parseOptions?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptions | null;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: InstancesUpdateResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export interface InstancesUpdateResponseSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: InstancesUpdateResponseSourceParamsExcludeItemsList | null;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: InstancesUpdateResponseSourceParamsIncludeItemsList | null;
   prefix?: string | null;
   r2Jurisdiction?: string | null;
@@ -4550,12 +4729,12 @@ export interface UpdateInstanceResponse {
   fusionMethod?: InstancesUpdateResponseFusionMethod | null;
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: InstancesUpdateResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesCreateResponseMetadata | null;
+  metadata?: InstancesUpdateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -4567,11 +4746,12 @@ export interface UpdateInstanceResponse {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string | null;
   rewriteQuery?: boolean | null;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number | null;
   source?: string | null;
   sourceParams?: InstancesUpdateResponseSourceParams | null;
   status?: string | null;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: InstancesUpdateResponseSyncInterval | null;
   tokenId?: string | null;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -4600,7 +4780,7 @@ export interface NamespacesUpdateRequestPublicEndpointParams {
   /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean;
   enabled?: boolean;
-  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
+  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit. */
   instancesAllowed?: NamespacesUpdateRequestPublicEndpointParamsInstancesAllowedList;
   mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
   rateLimit?: NamespacesUpdateRequestPublicEndpointParamsRateLimit;
@@ -4636,7 +4816,7 @@ export interface NamespacesUpdateResponsePublicEndpointParams {
   /** When false, the instance is reachable only via a registered custom domain and the default &lt;public_endpoint_id&gt;.search.ai.cloudflare.com host returns 404. Requires at least one custom domain. Defaults to true. public_endpoint_params is replaced wholesale on update, so resend default_domain_enabled on every update to keep the default host off -- omitting it resets to true. */
   defaultDomainEnabled?: boolean | null;
   enabled?: boolean | null;
-  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must be an existing instance in this namespace, and the list cannot exceed the account's multi-instance search limit. */
+  /** Instance IDs exposed through the namespace public endpoint. Empty means nothing is searchable. Every ID must reference an existing instance in this namespace, and the list must stay within the account's multi-instance search limit. */
   instancesAllowed?: NamespacesUpdateResponsePublicEndpointParamsInstancesAllowedList | null;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp | null;
   rateLimit?: NamespacesUpdateResponsePublicEndpointParamsRateLimit | null;
@@ -4689,7 +4869,16 @@ export interface NamespacesInstancesUpdateRequestIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean;
 }
-export type NamespacesInstancesUpdateRequestMetadata = InstancesCreateRequestMetadata;
+export type NamespacesInstancesUpdateRequestMetadataCreatedFromEmdashPluginType = "native" | "rest";
+export interface NamespacesInstancesUpdateRequestMetadataCreatedFromEmdashPlugin {
+  type: NamespacesInstancesUpdateRequestMetadataCreatedFromEmdashPluginType | (string & {});
+  version: string;
+}
+export interface NamespacesInstancesUpdateRequestMetadata {
+  createdFromAisearchWizard?: boolean;
+  createdFromEmdashPlugin?: NamespacesInstancesUpdateRequestMetadataCreatedFromEmdashPlugin;
+  workerDomain?: string;
+}
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList = Array<string>;
 export type NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
   InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
@@ -4737,7 +4926,7 @@ export type NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode = "
 export interface NamespacesInstancesUpdateRequestRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: NamespacesInstancesUpdateRequestRetrievalOptionsBoostByList;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?:
     | NamespacesInstancesUpdateRequestRetrievalOptionsKeywordMatchMode
     | (string & {});
@@ -4751,7 +4940,7 @@ export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOption
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean;
@@ -4774,9 +4963,9 @@ export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIn
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorList;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsIncludeHeadersMap;
   includeImages?: boolean;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -4787,18 +4976,18 @@ export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
   | "discover";
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerDiscoverOptions;
   parseOptions?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType | (string & {});
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions;
 }
 export interface NamespacesInstancesUpdateRequestSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: NamespacesInstancesUpdateRequestSourceParamsExcludeItemsList;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList;
   prefix?: string;
   r2Jurisdiction?: string;
@@ -4815,7 +5004,7 @@ export type NamespacesInstancesUpdateRequestSyncInterval =
   | 86400;
 export interface UpdateNamespaceInstanceRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   id: string;
   aiGatewayId?: string;
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
@@ -4830,11 +5019,11 @@ export interface UpdateNamespaceInstanceRequest {
   customMetadata?: NamespacesInstancesUpdateRequestCustomMetadataList;
   embeddingModel?: string;
   fusionMethod?: NamespacesInstancesUpdateRequestFusionMethod | (string & {});
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod;
   indexingOptions?: NamespacesInstancesUpdateRequestIndexingOptions;
   maxNumResults?: number;
-  metadata?: InstancesCreateRequestMetadata;
+  metadata?: NamespacesInstancesUpdateRequestMetadata;
   paused?: boolean;
   publicEndpointParams?: NamespacesInstancesUpdateRequestPublicEndpointParams;
   reranking?: boolean;
@@ -4843,12 +5032,13 @@ export interface UpdateNamespaceInstanceRequest {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string;
   rewriteQuery?: boolean;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number;
   source?: string;
   sourceParams?: NamespacesInstancesUpdateRequestSourceParams;
   summarization?: boolean;
   summarizationModel?: string;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: NamespacesInstancesUpdateRequestSyncInterval | (number & {});
   systemPromptAiSearch?: string;
   systemPromptIndexSummarization?: string;
@@ -4891,7 +5081,18 @@ export interface NamespacesInstancesUpdateResponseIndexingOptions {
   /** Enables OCR ingestion for PDFs and images. Changing this triggers a full re-index. Defaults to false. */
   useOcr?: boolean | null;
 }
-export type NamespacesInstancesUpdateResponseMetadata = InstancesCreateResponseMetadata;
+export type NamespacesInstancesUpdateResponseMetadataCreatedFromEmdashPluginType =
+  | "native"
+  | "rest";
+export interface NamespacesInstancesUpdateResponseMetadataCreatedFromEmdashPlugin {
+  type: NamespacesInstancesUpdateResponseMetadataCreatedFromEmdashPluginType;
+  version: string;
+}
+export interface NamespacesInstancesUpdateResponseMetadata {
+  createdFromAisearchWizard?: boolean | null;
+  createdFromEmdashPlugin?: NamespacesInstancesUpdateResponseMetadataCreatedFromEmdashPlugin | null;
+  workerDomain?: string | null;
+}
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList =
   Array<string>;
 export type NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint =
@@ -4938,7 +5139,7 @@ export type NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode = 
 export interface NamespacesInstancesUpdateResponseRetrievalOptions {
   /** Metadata fields to boost search results by. Each entry specifies a metadata field and an optional direction. Direction defaults to 'asc' for numeric/datetime fields and 'exists' for text/boolean fields. Fields must match 'timestamp' or a defined custom_metadata field. */
   boostBy?: NamespacesInstancesUpdateResponseRetrievalOptionsBoostByList | null;
-  /** Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted on an update, the existing stored value is preserved; when never set, search falls back to 'and'. */
+  /** Controls which documents become candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term and ranks results according to BM25 relevance. When omitted on an update, the existing stored value stays unchanged; when never set, search falls back to 'and'. */
   keywordMatchMode?: NamespacesInstancesUpdateResponseRetrievalOptionsKeywordMatchMode | null;
 }
 export type NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList = Array<string>;
@@ -4950,7 +5151,7 @@ export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptio
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions {
   /** Maximum link-follow depth from the seed URL. */
   depth?: number | null;
-  /** Follow links that point outside the source domain. Must stay `false` -- discover crawls are restricted to the zone you own. */
+  /** Follow links that point outside the source domain. Must stay `false` because discover crawls only cover the zone you own. */
   includeExternalLinks?: boolean | null;
   /** Follow links to subdomains of the source host. */
   includeSubdomains?: boolean | null;
@@ -4971,9 +5172,9 @@ export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsI
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsSpecificSitemapsList =
   Array<string>;
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions {
-  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. Only the matched HTML fragment is stored and indexed. Omit the field to disable content selection -- empty arrays are rejected. */
+  /** List of path-to-selector mappings for extracting specific content from crawled pages. Each entry pairs a URL glob pattern with a CSS selector. The first matching path wins. The crawler stores and indexes only the matched HTML fragment. Omit the field to disable content selection; the API rejects empty arrays. */
   contentSelector?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorList | null;
-  /** Up to 5 custom HTTP headers sent with each crawl request. Names must be RFC-7230 token characters (no spaces, colons, or control characters); values must be HTAB + printable ASCII (no CR/LF). */
+  /** Up to 5 custom HTTP headers sent with each crawl request. Names must use RFC-7230 token characters, excluding spaces, colons, and control characters. Values must use HTAB and printable ASCII only, excluding CR and LF. */
   includeHeaders?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsIncludeHeadersMap | null;
   includeImages?: boolean | null;
   /** List of specific sitemap URLs to use for crawling. Only valid when parse_type is 'sitemap'. */
@@ -4984,18 +5185,18 @@ export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
   | "discover";
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawler {
-  /** Options for parse_type 'discover', where Browser Run discovers URLs by link following and sitemaps. Ignored for 'sitemap'. */
+  /** Options for parse_type 'discover', where Browser Run discovers URLs through link following and sitemaps. Ignored for 'sitemap'. */
   discoverOptions?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerDiscoverOptions | null;
   parseOptions?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions | null;
-  /** How URLs are discovered. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to be a Verified zone on this account. */
+  /** How the crawler finds URLs. 'sitemap' reads XML sitemaps; 'discover' follows links recursively and requires the source to belong to a Verified zone on this account. */
   parseType?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType | null;
   /** Options controlling crawl discovery (e.g. { source: "links" }). */
   crawlOptions?: WebCrawlerCrawlOptions | null;
 }
 export interface NamespacesInstancesUpdateResponseSourceParams {
-  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to exclude. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /admin/** matches /admin/users and /admin/settings/advanced). Most accounts have a limit of 10 rules; contact support to raise it. */
   excludeItems?: NamespacesInstancesUpdateResponseSourceParamsExcludeItemsList | null;
-  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts are limited to 10 rules; contact support to raise it. */
+  /** List of path patterns to include. Uses micromatch glob syntax: * matches within a path segment, ** matches across path segments (e.g., /blog/** matches /blog/post and /blog/2024/post). Most accounts have a limit of 10 rules; contact support to raise it. */
   includeItems?: NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList | null;
   prefix?: string | null;
   r2Jurisdiction?: string | null;
@@ -5034,12 +5235,12 @@ export interface UpdateNamespaceInstanceResponse {
   fusionMethod?: NamespacesInstancesUpdateResponseFusionMethod | null;
   /** Deprecated -- use index_method instead. Defaults to true for new instances; set false to create a vector-only instance. */
   hybridSearchEnabled?: boolean | null;
-  /** Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances. */
+  /** Controls which storage backends indexing uses. Defaults to vector and keyword indexing for new instances. When set, both vector and keyword are required. */
   indexMethod?: InstancesCreateRequestIndexMethod | null;
   indexingOptions?: NamespacesInstancesUpdateResponseIndexingOptions | null;
   lastActivity?: string | null;
   maxNumResults?: number | null;
-  metadata?: InstancesCreateResponseMetadata | null;
+  metadata?: NamespacesInstancesUpdateResponseMetadata | null;
   modifiedBy?: string | null;
   namespace?: string | null;
   paused?: boolean | null;
@@ -5051,11 +5252,12 @@ export interface UpdateNamespaceInstanceResponse {
   /** A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model. */
   rewriteModel?: string | null;
   rewriteQuery?: boolean | null;
+  /** Minimum similarity score a chunk must reach to be returned. Defaults to 0.4. */
   scoreThreshold?: number | null;
   source?: string | null;
   sourceParams?: NamespacesInstancesUpdateResponseSourceParams | null;
   status?: string | null;
-  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). */
+  /** Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h). Defaults to 21600 (6h); instances crawling a domain outside the account may be set to 86400. */
   syncInterval?: NamespacesInstancesUpdateResponseSyncInterval | null;
   tokenId?: string | null;
   /** Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage. */
@@ -5086,12 +5288,12 @@ export interface NamespacesInstancesItemsUploadRequestFile {
   file: string;
   /** JSON string of custom metadata key-value pairs. */
   metadata?: string;
-  /** Wait for indexing to fully complete before responding. On RAGs with vector indexing enabled, this additionally waits for Vectorize ingestion confirmation (up to 40s) so the returned item reflects a queryable state. On timeout the item is returned in `running` state and the background alarm continues polling. Defaults to false. */
+  /** Wait for indexing before responding. After processing, vector-indexed instances use any time remaining in a 25s wait budget to confirm Vectorize ingestion. Processing itself continues uninterrupted and can exceed that budget. If confirmation times out, the response returns the current item state and background indexing continues. Defaults to false. */
   waitForCompletion?: boolean;
 }
 export interface UploadNamespaceInstanceItemRequest {
   accountId: string;
-  name: string;
+  namespace: string;
   /** AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores. */
   id: string;
   file: NamespacesInstancesItemsUploadRequestFile;
@@ -5151,7 +5353,7 @@ export interface UploadNamespaceInstanceItemResponse {
   warnings?: NamespacesInstancesItemsUploadResponseWarningsList | null;
 }
 export type ChatCompletionsInstanceError = CloudflareOpError;
-/** Performs a chat completion request against an AI Search instance, using indexed content as context for generating responses. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Performs a chat completion request against an AI Search instance, using indexed content as context for generating responses. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const chatCompletionsInstance: API.OperationMethod<
   ChatCompletionsInstanceRequest,
   ChatCompletionsInstanceResponse,
@@ -5218,7 +5420,7 @@ export type CreateInstanceError =
   | InvalidTokenCredentials
   | Forbidden
   | CloudflareOpError;
-/** Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and an existing R2 bucket source infers r2. A missing or blank source without a type creates a managed upload-only instance. Search for Agents instances require the default namespace. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and any other source infers r2; r2 sources must name an existing bucket. A missing or blank source without a type creates a managed upload-only instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const createInstance: API.OperationMethod<
   CreateInstanceRequest,
   CreateInstanceResponse,
@@ -5248,7 +5450,7 @@ export type CreateInstanceJobError =
   | UnableToConnect
   | SyncInCooldown
   | CloudflareOpError;
-/** Creates a new indexing job for an AI Search instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Creates a new indexing job for an AI Search instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const createInstanceJob: API.OperationMethod<
   CreateInstanceJobRequest,
   CreateInstanceJobResponse,
@@ -5297,7 +5499,7 @@ export type CreateNamespaceInstanceError =
   | Forbidden
   | InstanceDeletionInProgress
   | CloudflareOpError;
-/** Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and an existing R2 bucket source infers r2. A missing or blank source without a type creates a managed upload-only instance. Search for Agents instances require the default namespace. */
+/** Create a new AI Search instance with the given configuration. If type is omitted or null, a non-blank HTTP(S) source infers web-crawler and any other source infers r2; r2 sources must name an existing bucket. A missing or blank source without a type creates a managed upload-only instance. */
 export const createNamespaceInstance: API.OperationMethod<
   CreateNamespaceInstanceRequest,
   CreateNamespaceInstanceResponse,
@@ -5389,7 +5591,7 @@ export type DeleteInstanceError =
   | InvalidRoute
   | Forbidden
   | CloudflareOpError;
-/** Permanently delete an AI Search instance and all its indexed data. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Deletes an AI Search instance and all its indexed data permanently. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const deleteInstance: API.OperationMethod<
   DeleteInstanceRequest,
   DeleteInstanceResponse,
@@ -5411,7 +5613,7 @@ export const deleteInstance: API.OperationMethod<
 }));
 
 export type DeleteNamespaceError = NamespaceNotFound | Forbidden | CloudflareOpError;
-/** Permanently delete a namespace. The namespace must be empty (no instances), and the default namespace cannot be deleted. */
+/** Deletes a namespace permanently. The namespace must not contain any instances (instances whose deletion is still in progress do not count), and the default namespace cannot be deleted. */
 export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceRequest,
   DeleteNamespaceResponse,
@@ -5432,7 +5634,7 @@ export type DeleteNamespaceInstanceError =
   | InvalidRoute
   | Forbidden
   | CloudflareOpError;
-/** Permanently delete an AI Search instance and all its indexed data. */
+/** Deletes an AI Search instance and all its indexed data permanently. */
 export const deleteNamespaceInstance: API.OperationMethod<
   DeleteNamespaceInstanceRequest,
   DeleteNamespaceInstanceResponse,
@@ -5477,7 +5679,7 @@ export type DeleteTokenError =
   | TokenInUseByInstances
   | Forbidden
   | CloudflareOpError;
-/** Permanently delete a stored AI Search credential. Credentials in use by an instance cannot be deleted. */
+/** Deletes a stored AI Search credential permanently. Credentials in use by an instance cannot be deleted. */
 export const deleteToken: API.OperationMethod<
   DeleteTokenRequest,
   DeleteTokenResponse,
@@ -5516,7 +5718,7 @@ export const downloadNamespaceInstanceItem: API.OperationMethod<
 }));
 
 export type GetInstanceJobError = ValidationError | NotFound | InvalidRoute | CloudflareOpError;
-/** Retrieves details for a specific AI Search indexing job. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Retrieves details for a specific AI Search indexing job. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const getInstanceJob: API.OperationMethod<
   GetInstanceJobRequest,
   GetInstanceJobResponse,
@@ -5561,7 +5763,7 @@ export const getNamespaceInstanceJob: API.OperationMethod<
 }));
 
 export type ListInstanceJobsError = CloudflareOpError;
-/** Lists indexing jobs for an AI Search instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Lists indexing jobs for an AI Search instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const listInstanceJobs: API.PaginatedOperationMethod<
   ListInstanceJobsRequest,
   ListInstanceJobsResponse,
@@ -5587,7 +5789,7 @@ export const listInstanceJobs: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListInstancesError = InvalidRoute | Forbidden | CloudflareOpError;
-/** List all AI Search instances in the account. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Lists all AI Search instances in the account. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const listInstances: API.PaginatedOperationMethod<
   ListInstancesRequest,
   ListInstancesResponse,
@@ -5669,7 +5871,7 @@ export type ListNamespaceInstancesError =
   | InvalidRoute
   | Forbidden
   | CloudflareOpError;
-/** List all AI Search instances in the account. */
+/** Lists all AI Search instances in the account. */
 export const listNamespaceInstances: API.PaginatedOperationMethod<
   ListNamespaceInstancesRequest,
   ListNamespaceInstancesResponse,
@@ -5695,7 +5897,7 @@ export const listNamespaceInstances: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListNamespacesError = CloudflareOpError;
-/** List namespaces in the account, including their descriptions and creation times. */
+/** Lists namespaces in the account, including their descriptions and creation times. */
 export const listNamespaces: API.PaginatedOperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
@@ -5721,7 +5923,7 @@ export const listNamespaces: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListTokensError = InvalidRoute | Forbidden | CloudflareOpError;
-/** List stored AI Search credentials in the account without exposing their secrets. */
+/** Lists stored AI Search credentials in the account without exposing their secrets. */
 export const listTokens: API.PaginatedOperationMethod<
   ListTokensRequest,
   ListTokensResponse,
@@ -5747,7 +5949,7 @@ export const listTokens: API.PaginatedOperationMethod<
 ) as any;
 
 export type LogsInstanceJobError = ValidationError | NotFound | InvalidRoute | CloudflareOpError;
-/** Lists log entries for an AI Search indexing job. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Lists log entries for an AI Search indexing job. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const logsInstanceJob: API.OperationMethod<
   LogsInstanceJobRequest,
   LogsInstanceJobResponse,
@@ -5791,15 +5993,30 @@ export const logsNamespaceInstanceJob: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type MoveNamespacesInstanceError = CloudflareOpError;
+/** Moves an instance from its current namespace to the specified target namespace. Use 'default' with --destination-namespace to move the instance back to the default namespace. Fails with 400 if the target namespace already has an instance with the same id (ids must be unique within a namespace -- the same id can exist in different namespaces). */
+export const moveNamespacesInstance: API.OperationMethod<
+  MoveNamespacesInstanceRequest,
+  MoveNamespacesInstanceResponse,
+  MoveNamespacesInstanceError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(816, __c51, 0) as any as S.Schema<MoveNamespacesInstanceRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<MoveNamespacesInstanceResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type PatchNamespaceInstanceJobError = CloudflareOpError;
-/** Cancel an in-progress indexing job for an AI Search instance. */
+/** Cancels an in-progress indexing job for an AI Search instance. */
 export const patchNamespaceInstanceJob: API.OperationMethod<
   PatchNamespaceInstanceJobRequest,
   PatchNamespaceInstanceJobResponse,
   PatchNamespaceInstanceJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<PatchNamespaceInstanceJobRequest>,
+  input: __S(832, __c52, 0) as any as S.Schema<PatchNamespaceInstanceJobRequest>,
   output: __S(288, __c18, 0) as any as S.Schema<PatchNamespaceInstanceJobResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -5812,14 +6029,14 @@ export type ReadInstanceError =
   | InvalidRoute
   | Forbidden
   | CloudflareOpError;
-/** Retrieve the configuration and status of an AI Search instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Retrieve the configuration and status of an AI Search instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const readInstance: API.OperationMethod<
   ReadInstanceRequest,
   ReadInstanceResponse,
   ReadInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<ReadInstanceRequest>,
+  input: __S(848, __c53, 0) as any as S.Schema<ReadInstanceRequest>,
   output: __S(243, __c15, 3) as any as S.Schema<ReadInstanceResponse>,
   errors: [
     ValidationError,
@@ -5841,7 +6058,7 @@ export const readNamespace: API.OperationMethod<
   ReadNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<ReadNamespaceRequest>,
+  input: __S(864, __c54, 0) as any as S.Schema<ReadNamespaceRequest>,
   output: __S(336, __c21, 0) as any as S.Schema<ReadNamespaceResponse>,
   errors: [NamespaceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -5862,7 +6079,7 @@ export const readNamespaceInstance: API.OperationMethod<
   ReadNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<ReadNamespaceInstanceRequest>,
+  input: __S(880, __c55, 0) as any as S.Schema<ReadNamespaceInstanceRequest>,
   output: __S(243, __c15, 3) as any as S.Schema<ReadNamespaceInstanceResponse>,
   errors: [
     ValidationError,
@@ -5891,7 +6108,7 @@ export const readToken: API.OperationMethod<
   ReadTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<ReadTokenRequest>,
+  input: __S(896, __c56, 0) as any as S.Schema<ReadTokenRequest>,
   output: __S(432, __c27, 0) as any as S.Schema<ReadTokenResponse>,
   errors: [
     ValidationError,
@@ -5907,15 +6124,15 @@ export const readToken: API.OperationMethod<
 }));
 
 export type SearchInstanceError = CloudflareOpError;
-/** Executes a semantic search query against an AI Search instance to find relevant indexed content. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Executes a semantic search query against an AI Search instance to find relevant indexed content. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const searchInstance: API.OperationMethod<
   SearchInstanceRequest,
   SearchInstanceResponse,
   SearchInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(902, __c56, 6) as any as S.Schema<SearchInstanceRequest>,
-  output: __S(912, __c57, 0) as any as S.Schema<SearchInstanceResponse>,
+  input: __S(918, __c57, 6) as any as S.Schema<SearchInstanceRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<SearchInstanceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5929,8 +6146,8 @@ export const searchNamespace: API.OperationMethod<
   SearchNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(934, __c58, 6) as any as S.Schema<SearchNamespaceRequest>,
-  output: __S(937, __c58, 9) as any as S.Schema<SearchNamespaceResponse>,
+  input: __S(950, __c59, 6) as any as S.Schema<SearchNamespaceRequest>,
+  output: __S(953, __c59, 9) as any as S.Schema<SearchNamespaceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5944,23 +6161,23 @@ export const searchNamespaceInstance: API.OperationMethod<
   SearchNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(950, __c59, 6) as any as S.Schema<SearchNamespaceInstanceRequest>,
-  output: __S(912, __c57, 0) as any as S.Schema<SearchNamespaceInstanceResponse>,
+  input: __S(966, __c60, 6) as any as S.Schema<SearchNamespaceInstanceRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<SearchNamespaceInstanceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
 export type StatsInstanceError = ValidationError | NotFound | InvalidRoute | CloudflareOpError;
-/** Retrieve usage and indexing statistics for an AI Search instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Retrieve usage and indexing statistics for an AI Search instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const statsInstance: API.OperationMethod<
   StatsInstanceRequest,
   StatsInstanceResponse,
   StatsInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<StatsInstanceRequest>,
-  output: __S(979, __c61, 3) as any as S.Schema<StatsInstanceResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<StatsInstanceRequest>,
+  output: __S(995, __c62, 3) as any as S.Schema<StatsInstanceResponse>,
   errors: [ValidationError, NotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5974,23 +6191,23 @@ export const statsNamespaceInstance: API.OperationMethod<
   StatsNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<StatsNamespaceInstanceRequest>,
-  output: __S(979, __c61, 3) as any as S.Schema<StatsNamespaceInstanceResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<StatsNamespaceInstanceRequest>,
+  output: __S(995, __c62, 3) as any as S.Schema<StatsNamespaceInstanceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
 export type SyncNamespaceInstanceItemError = CloudflareOpError;
-/** Syncs an item to an AI Search instance index. */
+/** Synchronizes an item to an AI Search instance index. */
 export const syncNamespaceInstanceItem: API.OperationMethod<
   SyncNamespaceInstanceItemRequest,
   SyncNamespaceInstanceItemResponse,
   SyncNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<SyncNamespaceInstanceItemRequest>,
-  output: __S(1011, __c63, 3) as any as S.Schema<SyncNamespaceInstanceItemResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<SyncNamespaceInstanceItemRequest>,
+  output: __S(1027, __c64, 3) as any as S.Schema<SyncNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6003,14 +6220,14 @@ export type UpdateInstanceError =
   | InvalidTokenCredentials
   | Forbidden
   | CloudflareOpError;
-/** Update an AI Search instance. Submitting Search for Agents metadata requires the default namespace; omitting or removing it is allowed elsewhere. Submit Search for Agents metadata and restrictive or unknown public endpoint changes or custom domains in separate PUT requests, even when resubmitting unchanged metadata. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{name}/instances (and descendant paths) instead. */
+/** Updates the configuration of an AI Search instance. Deprecated: use /accounts/{account_id}/ai-search/namespaces/{namespace}/instances (and descendant paths) instead. */
 export const updateInstance: API.OperationMethod<
   UpdateInstanceRequest,
   UpdateInstanceResponse,
   UpdateInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<UpdateInstanceRequest>,
+  input: __S(1040, __c65, 0) as any as S.Schema<UpdateInstanceRequest>,
   output: __S(243, __c15, 3) as any as S.Schema<UpdateInstanceResponse>,
   errors: [
     ValidationError,
@@ -6026,14 +6243,14 @@ export const updateInstance: API.OperationMethod<
 }));
 
 export type UpdateNamespaceError = NamespaceNotFound | Forbidden | CloudflareOpError;
-/** Update the description and/or the public endpoint configuration of an existing namespace. The default namespace's description cannot be modified, but its public endpoint can. */
+/** Updates the description and/or the public endpoint configuration of an existing namespace. The default namespace's description cannot be modified, but its public endpoint can. */
 export const updateNamespace: API.OperationMethod<
   UpdateNamespaceRequest,
   UpdateNamespaceResponse,
   UpdateNamespaceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<UpdateNamespaceRequest>,
+  input: __S(1056, __c66, 0) as any as S.Schema<UpdateNamespaceRequest>,
   output: __S(336, __c21, 0) as any as S.Schema<UpdateNamespaceResponse>,
   errors: [NamespaceNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -6049,14 +6266,14 @@ export type UpdateNamespaceInstanceError =
   | WebCrawlerDomainNotOwned
   | Forbidden
   | CloudflareOpError;
-/** Update an AI Search instance. Submitting Search for Agents metadata requires the default namespace; omitting or removing it is allowed elsewhere. Submit Search for Agents metadata and restrictive or unknown public endpoint changes or custom domains in separate PUT requests, even when resubmitting unchanged metadata. */
+/** Updates the configuration of an AI Search instance. */
 export const updateNamespaceInstance: API.OperationMethod<
   UpdateNamespaceInstanceRequest,
   UpdateNamespaceInstanceResponse,
   UpdateNamespaceInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<UpdateNamespaceInstanceRequest>,
+  input: __S(1072, __c67, 0) as any as S.Schema<UpdateNamespaceInstanceRequest>,
   output: __S(243, __c15, 3) as any as S.Schema<UpdateNamespaceInstanceResponse>,
   errors: [
     ValidationError,
@@ -6088,7 +6305,7 @@ export const updateToken: API.OperationMethod<
   UpdateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<UpdateTokenRequest>,
+  input: __S(1088, __c68, 0) as any as S.Schema<UpdateTokenRequest>,
   output: __S(432, __c27, 0) as any as S.Schema<UpdateTokenResponse>,
   errors: [
     ValidationError,
@@ -6112,8 +6329,8 @@ export const uploadNamespaceInstanceItem: API.OperationMethod<
   UploadNamespaceInstanceItemError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1089, __c68, 1) as any as S.Schema<UploadNamespaceInstanceItemRequest>,
-  output: __S(1094, __c68, 6) as any as S.Schema<UploadNamespaceInstanceItemResponse>,
+  input: __S(1105, __c69, 1) as any as S.Schema<UploadNamespaceInstanceItemRequest>,
+  output: __S(1110, __c69, 6) as any as S.Schema<UploadNamespaceInstanceItemResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6291,7 +6508,10 @@ function __c5(j: number): any {
           text: S.String,
           type: S.String,
           item: S.optional(S.NullOr(__S(16, __c1, 0))),
+          mediaEndMs: S.optional(S.NullOr(S.Number).pipe(T.Body("media_end_ms"))),
+          mediaStartMs: S.optional(S.NullOr(S.Number).pipe(T.Body("media_start_ms"))),
           scoringDetails: S.optional(S.NullOr(__S(68, __c4, 4)).pipe(T.Body("scoring_details"))),
+          sourceMediaType: S.optional(S.NullOr(S.String).pipe(T.Body("source_media_type"))),
         }),
       ).annotate({ identifier: "InstancesChatCompletionsResponseChunksItem" });
     case 1:
@@ -6392,7 +6612,10 @@ function __c8(j: number): any {
           text: S.String,
           type: S.String,
           item: S.optional(S.NullOr(__S(16, __c1, 0))),
+          mediaEndMs: S.optional(S.NullOr(S.Number).pipe(T.Body("media_end_ms"))),
+          mediaStartMs: S.optional(S.NullOr(S.Number).pipe(T.Body("media_start_ms"))),
           scoringDetails: S.optional(S.NullOr(__S(68, __c4, 4)).pipe(T.Body("scoring_details"))),
+          sourceMediaType: S.optional(S.NullOr(S.String).pipe(T.Body("source_media_type"))),
         }),
       ).annotate({ identifier: "NamespacesChatCompletionsResponseChunksItem" });
     case 1:
@@ -6430,7 +6653,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           messages: __S(146, __c9, 2),
           aiSearchOptions: S.optional(__S(149, __c9, 5).pipe(T.Body("ai_search_options"))),
@@ -6440,7 +6663,7 @@ function __c9(j: number): any {
           .pipe(
             T.Http({
               method: "POST",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/chat/completions",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/chat/completions",
               code: 200,
             }),
           )
@@ -6482,7 +6705,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label("item_id")),
           limit: S.optional(S.Number.pipe(T.Query())),
@@ -6491,7 +6714,7 @@ function __c10(j: number): any {
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/chunks",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/items/{item_id}/chunks",
               code: 200,
             }),
           )
@@ -6639,17 +6862,24 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
+          type: S.String,
+          version: S.String,
+        }),
+      ).annotate({ identifier: "InstancesCreateRequestMetadataCreatedFromEmdashPlugin" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
           path: S.String,
           selector: S.String,
         }),
       ).annotate({
         identifier: "InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem",
       });
-    case 4:
-      return S.Array(__S(227, __c14, 3));
     case 5:
-      return S.Record(S.String, S.String);
+      return S.Array(__S(228, __c14, 4));
     case 6:
+      return S.Record(S.String, S.String);
+    case 7:
       return S.suspend(() =>
         S.Struct({
           depth: S.optional(S.NullOr(S.Number)),
@@ -6661,23 +6891,26 @@ function __c14(j: number): any {
           source: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "WebCrawlerCrawlOptions" });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           keywordTokenizer: S.optional(S.NullOr(S.String).pipe(T.Body("keyword_tokenizer"))),
           useOcr: S.optional(S.NullOr(S.Boolean).pipe(T.Body("use_ocr"))),
         }),
       ).annotate({ identifier: "InstancesCreateResponseIndexingOptions" });
-    case 8:
+    case 9:
       return S.suspend(() =>
         S.Struct({
           createdFromAisearchWizard: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("created_from_aisearch_wizard")),
           ),
+          createdFromEmdashPlugin: S.optional(
+            S.NullOr(__S(227, __c14, 3)).pipe(T.Body("created_from_emdash_plugin")),
+          ),
           workerDomain: S.optional(S.NullOr(S.String).pipe(T.Body("worker_domain"))),
         }),
       ).annotate({ identifier: "InstancesCreateResponseMetadata" });
-    case 9:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           authorizedHosts: S.optional(S.NullOr(__S(112, __c7, 0)).pipe(T.Body("authorized_hosts"))),
@@ -6694,7 +6927,7 @@ function __c14(j: number): any {
           searchEndpoint: S.optional(S.NullOr(__S(192, __c12, 0)).pipe(T.Body("search_endpoint"))),
         }),
       ).annotate({ identifier: "InstancesCreateResponsePublicEndpointParams" });
-    case 10:
+    case 11:
       return S.suspend(() =>
         S.Struct({
           depth: S.optional(S.NullOr(S.Number)),
@@ -6707,13 +6940,13 @@ function __c14(j: number): any {
           source: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "InstancesCreateResponseSourceParamsWebCrawlerDiscoverOptions" });
-    case 11:
+    case 12:
       return S.suspend(() =>
         S.Struct({
           contentSelector: S.optional(
-            S.NullOr(__S(228, __c14, 4)).pipe(T.Body("content_selector")),
+            S.NullOr(__S(229, __c14, 5)).pipe(T.Body("content_selector")),
           ),
-          includeHeaders: S.optional(S.NullOr(__S(229, __c14, 5)).pipe(T.Body("include_headers"))),
+          includeHeaders: S.optional(S.NullOr(__S(230, __c14, 6)).pipe(T.Body("include_headers"))),
           includeImages: S.optional(S.NullOr(S.Boolean).pipe(T.Body("include_images"))),
           specificSitemaps: S.optional(
             S.NullOr(__S(112, __c7, 0)).pipe(T.Body("specific_sitemaps")),
@@ -6723,25 +6956,25 @@ function __c14(j: number): any {
           ),
         }),
       ).annotate({ identifier: "InstancesCreateResponseSourceParamsWebCrawlerParseOptions" });
-    case 12:
+    case 13:
       return S.suspend(() =>
         S.Struct({
           discoverOptions: S.optional(
-            S.NullOr(__S(234, __c14, 10)).pipe(T.Body("discover_options")),
+            S.NullOr(__S(235, __c14, 11)).pipe(T.Body("discover_options")),
           ),
-          parseOptions: S.optional(S.NullOr(__S(235, __c14, 11)).pipe(T.Body("parse_options"))),
+          parseOptions: S.optional(S.NullOr(__S(236, __c14, 12)).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.NullOr(S.String).pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(S.NullOr(__S(230, __c14, 6)).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(S.NullOr(__S(231, __c14, 7)).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({ identifier: "InstancesCreateResponseSourceParamsWebCrawler" });
-    case 13:
+    case 14:
       return S.suspend(() =>
         S.Struct({
           excludeItems: S.optional(S.NullOr(__S(112, __c7, 0)).pipe(T.Body("exclude_items"))),
           includeItems: S.optional(S.NullOr(__S(112, __c7, 0)).pipe(T.Body("include_items"))),
           prefix: S.optional(S.NullOr(S.String)),
           r2Jurisdiction: S.optional(S.NullOr(S.String).pipe(T.Body("r2_jurisdiction"))),
-          webCrawler: S.optional(S.NullOr(__S(236, __c14, 12)).pipe(T.Body("web_crawler"))),
+          webCrawler: S.optional(S.NullOr(__S(237, __c14, 13)).pipe(T.Body("web_crawler"))),
         }),
       ).annotate({ identifier: "InstancesCreateResponseSourceParams" });
   }
@@ -6788,17 +7021,17 @@ function __c15(j: number): any {
           ),
           indexMethod: S.optional(S.NullOr(__S(226, __c14, 2)).pipe(T.Body("index_method"))),
           indexingOptions: S.optional(
-            S.NullOr(__S(231, __c14, 7)).pipe(T.Body("indexing_options")),
+            S.NullOr(__S(232, __c14, 8)).pipe(T.Body("indexing_options")),
           ),
           lastActivity: S.optional(S.NullOr(S.String).pipe(T.Body("last_activity"))),
           maxNumResults: S.optional(S.NullOr(S.Number).pipe(T.Body("max_num_results"))),
-          metadata: S.optional(S.NullOr(__S(232, __c14, 8))),
+          metadata: S.optional(S.NullOr(__S(233, __c14, 9))),
           modifiedBy: S.optional(S.NullOr(S.String).pipe(T.Body("modified_by"))),
           namespace: S.optional(S.NullOr(S.String)),
           paused: S.optional(S.NullOr(S.Boolean)),
           publicEndpointId: S.optional(S.NullOr(S.String).pipe(T.Body("public_endpoint_id"))),
           publicEndpointParams: S.optional(
-            S.NullOr(__S(233, __c14, 9)).pipe(T.Body("public_endpoint_params")),
+            S.NullOr(__S(234, __c14, 10)).pipe(T.Body("public_endpoint_params")),
           ),
           reranking: S.optional(S.NullOr(S.Boolean)),
           rerankingModel: S.optional(S.NullOr(S.String).pipe(T.Body("reranking_model"))),
@@ -6809,7 +7042,7 @@ function __c15(j: number): any {
           rewriteQuery: S.optional(S.NullOr(S.Boolean).pipe(T.Body("rewrite_query"))),
           scoreThreshold: S.optional(S.NullOr(S.Number).pipe(T.Body("score_threshold"))),
           source: S.optional(S.NullOr(S.String)),
-          sourceParams: S.optional(S.NullOr(__S(237, __c14, 13)).pipe(T.Body("source_params"))),
+          sourceParams: S.optional(S.NullOr(__S(238, __c14, 14)).pipe(T.Body("source_params"))),
           status: S.optional(S.NullOr(S.String)),
           syncInterval: S.optional(S.NullOr(S.Number).pipe(T.Body("sync_interval"))),
           tokenId: S.optional(S.NullOr(S.String).pipe(T.Body("token_id"))),
@@ -6832,6 +7065,9 @@ function __c16(j: number): any {
         S.Struct({
           createdFromAisearchWizard: S.optional(
             S.Boolean.pipe(T.Body("created_from_aisearch_wizard")),
+          ),
+          createdFromEmdashPlugin: S.optional(
+            __S(227, __c14, 3).pipe(T.Body("created_from_emdash_plugin")),
           ),
           workerDomain: S.optional(S.String.pipe(T.Body("worker_domain"))),
         }),
@@ -6872,8 +7108,8 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          contentSelector: S.optional(__S(228, __c14, 4).pipe(T.Body("content_selector"))),
-          includeHeaders: S.optional(__S(229, __c14, 5).pipe(T.Body("include_headers"))),
+          contentSelector: S.optional(__S(229, __c14, 5).pipe(T.Body("content_selector"))),
+          includeHeaders: S.optional(__S(230, __c14, 6).pipe(T.Body("include_headers"))),
           includeImages: S.optional(S.Boolean.pipe(T.Body("include_images"))),
           specificSitemaps: S.optional(__S(112, __c7, 0).pipe(T.Body("specific_sitemaps"))),
           useBrowserRendering: S.optional(S.Boolean.pipe(T.Body("use_browser_rendering"))),
@@ -6885,7 +7121,7 @@ function __c16(j: number): any {
           discoverOptions: S.optional(__S(260, __c16, 4).pipe(T.Body("discover_options"))),
           parseOptions: S.optional(__S(261, __c16, 5).pipe(T.Body("parse_options"))),
           parseType: S.optional(S.String.pipe(T.Body("parse_type"))),
-          crawlOptions: S.optional(__S(230, __c14, 6).pipe(T.Body("crawl_options"))),
+          crawlOptions: S.optional(__S(231, __c14, 7).pipe(T.Body("crawl_options"))),
         }),
       ).annotate({ identifier: "InstancesCreateRequestSourceParamsWebCrawler" });
     case 7:
@@ -7025,7 +7261,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String,
           aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
           aiSearchModel: S.optional(S.String.pipe(T.Body("ai_search_model"))),
@@ -7061,7 +7297,7 @@ function __c23(j: number): any {
           .pipe(
             T.Http({
               method: "POST",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances",
               code: 200,
             }),
           )
@@ -7075,14 +7311,14 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           description: S.optional(S.String),
         })
           .pipe(
             T.Http({
               method: "POST",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs",
               code: 200,
             }),
           )
@@ -7096,7 +7332,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           key: S.String,
           nextAction: S.String.pipe(T.Body("next_action")),
@@ -7105,7 +7341,7 @@ function __c25(j: number): any {
           .pipe(
             T.Http({
               method: "PUT",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/items",
               code: 200,
             }),
           )
@@ -7223,13 +7459,13 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
         })
           .pipe(
             T.Http({
               method: "DELETE",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}",
               code: 200,
             }),
           )
@@ -7243,14 +7479,14 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label("item_id")),
         })
           .pipe(
             T.Http({
               method: "DELETE",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/items/{item_id}",
               code: 200,
             }),
           )
@@ -7289,14 +7525,14 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label("item_id")),
         })
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/download",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/items/{item_id}/download",
               code: 200,
             }),
           )
@@ -7334,14 +7570,14 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label("item_id")),
         })
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/items/{item_id}",
               code: 200,
             }),
           )
@@ -7377,14 +7613,14 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label("job_id")),
         })
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs/{job_id}",
               code: 200,
             }),
           )
@@ -7499,16 +7735,16 @@ function __c41(j: number): any {
           fusionMethod: S.String.pipe(T.Body("fusion_method")),
           hybridSearchEnabled: S.Boolean.pipe(T.Body("hybrid_search_enabled")),
           indexMethod: __S(226, __c14, 2).pipe(T.Body("index_method")),
-          indexingOptions: __S(231, __c14, 7).pipe(T.Body("indexing_options")),
+          indexingOptions: __S(232, __c14, 8).pipe(T.Body("indexing_options")),
           lastActivity: S.String.pipe(T.Body("last_activity")),
           maxNumResults: S.Number.pipe(T.Body("max_num_results")),
-          metadata: __S(232, __c14, 8),
+          metadata: __S(233, __c14, 9),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           modifiedBy: S.String.pipe(T.Body("modified_by")),
           namespace: S.String,
           paused: S.Boolean,
           publicEndpointId: S.String.pipe(T.Body("public_endpoint_id")),
-          publicEndpointParams: __S(233, __c14, 9).pipe(T.Body("public_endpoint_params")),
+          publicEndpointParams: __S(234, __c14, 10).pipe(T.Body("public_endpoint_params")),
           reranking: S.Boolean,
           rerankingModel: S.String.pipe(T.Body("reranking_model")),
           retrievalOptions: __S(658, __c41, 2).pipe(T.Body("retrieval_options")),
@@ -7516,7 +7752,7 @@ function __c41(j: number): any {
           rewriteQuery: S.Boolean.pipe(T.Body("rewrite_query")),
           scoreThreshold: S.Number.pipe(T.Body("score_threshold")),
           source: S.String,
-          sourceParams: __S(237, __c14, 13).pipe(T.Body("source_params")),
+          sourceParams: __S(238, __c14, 14).pipe(T.Body("source_params")),
           status: S.String,
           summarization: S.Boolean,
           summarizationModel: S.String.pipe(T.Body("summarization_model")),
@@ -7547,7 +7783,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           itemId: S.optional(S.String.pipe(T.Query("item_id"))),
           key: S.optional(S.String.pipe(T.Query())),
@@ -7562,7 +7798,7 @@ function __c42(j: number): any {
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/items",
               code: 200,
             }),
           )
@@ -7607,7 +7843,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
@@ -7615,7 +7851,7 @@ function __c43(j: number): any {
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs",
               code: 200,
             }),
           )
@@ -7629,9 +7865,8 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           hostname: S.optional(S.String.pipe(T.Query())),
-          namespace: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
           orderByDirection: S.optional(S.String.pipe(T.Query("order_by_direction"))),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -7641,7 +7876,7 @@ function __c44(j: number): any {
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances",
               code: 200,
             }),
           )
@@ -7778,7 +8013,7 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label("item_id")),
           cursor: S.optional(S.String.pipe(T.Query())),
@@ -7787,7 +8022,7 @@ function __c49(j: number): any {
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}/logs",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/items/{item_id}/logs",
               code: 200,
             }),
           )
@@ -7819,7 +8054,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label("job_id")),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -7828,7 +8063,7 @@ function __c50(j: number): any {
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}/logs",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs/{job_id}/logs",
               code: 200,
             }),
           )
@@ -7842,7 +8077,28 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
+          id: S.String.pipe(T.Label()),
+          newNamespace: S.String.pipe(T.Body("new_namespace")),
+        })
+          .pipe(
+            T.Http({
+              method: "PATCH",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "MoveNamespacesInstanceRequest" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           jobId: S.String.pipe(T.Label("job_id")),
           action: S.String,
@@ -7850,7 +8106,7 @@ function __c51(j: number): any {
           .pipe(
             T.Http({
               method: "PATCH",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/jobs/{job_id}",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/jobs/{job_id}",
               code: 200,
             }),
           )
@@ -7858,7 +8114,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "PatchNamespaceInstanceJobRequest" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7877,7 +8133,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ReadInstanceRequest" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7896,19 +8152,19 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ReadNamespaceRequest" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
         })
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}",
               code: 200,
             }),
           )
@@ -7916,7 +8172,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ReadNamespaceInstanceRequest" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7935,17 +8191,17 @@ function __c55(j: number): any {
       ).annotate({ identifier: "ReadTokenRequest" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Record(S.String, __S(896, __c56, 0));
+      return S.Record(S.String, __S(912, __c57, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           cache: S.optional(__S(64, __c4, 0)),
-          customMetadata: S.optional(__S(897, __c56, 1).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(__S(913, __c57, 1).pipe(T.Body("custom_metadata"))),
           queryRewrite: S.optional(__S(65, __c4, 1).pipe(T.Body("query_rewrite"))),
           reranking: S.optional(__S(66, __c4, 2)),
           retrieval: S.optional(__S(67, __c4, 3)),
@@ -7956,19 +8212,19 @@ function __c56(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          content: __S(899, __c56, 3),
+          content: __S(915, __c57, 3),
           role: S.String,
         }),
       ).annotate({ identifier: "InstancesSearchRequestMessagesItem" });
     case 5:
-      return S.Array(__S(900, __c56, 4));
+      return S.Array(__S(916, __c57, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           id: S.String.pipe(T.Label()),
-          aiSearchOptions: S.optional(__S(898, __c56, 2).pipe(T.Body("ai_search_options"))),
-          messages: S.optional(__S(901, __c56, 5)),
+          aiSearchOptions: S.optional(__S(914, __c57, 2).pipe(T.Body("ai_search_options"))),
+          messages: S.optional(__S(917, __c57, 5)),
           query: S.optional(S.String),
         })
           .pipe(
@@ -7982,7 +8238,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "SearchInstanceRequest" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7994,18 +8250,18 @@ function __c57(j: number): any {
       ).annotate({ identifier: "SearchInstanceResponse" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Record(S.String, __S(928, __c58, 0));
+      return S.Record(S.String, __S(944, __c59, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           instanceIds: __S(112, __c7, 0).pipe(T.Body("instance_ids")),
           cache: S.optional(__S(64, __c4, 0)),
-          customMetadata: S.optional(__S(929, __c58, 1).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(__S(945, __c59, 1).pipe(T.Body("custom_metadata"))),
           queryRewrite: S.optional(__S(65, __c4, 1).pipe(T.Body("query_rewrite"))),
           reranking: S.optional(__S(66, __c4, 2)),
           retrieval: S.optional(__S(67, __c4, 3)),
@@ -8016,19 +8272,19 @@ function __c58(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          content: __S(931, __c58, 3),
+          content: __S(947, __c59, 3),
           role: S.String,
         }),
       ).annotate({ identifier: "NamespacesSearchRequestMessagesItem" });
     case 5:
-      return S.Array(__S(932, __c58, 4));
+      return S.Array(__S(948, __c59, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           name: S.String.pipe(T.Label()),
-          aiSearchOptions: __S(930, __c58, 2).pipe(T.Body("ai_search_options")),
-          messages: S.optional(__S(933, __c58, 5)),
+          aiSearchOptions: __S(946, __c59, 2).pipe(T.Body("ai_search_options")),
+          messages: S.optional(__S(949, __c59, 5)),
           query: S.optional(S.String),
         })
           .pipe(
@@ -8048,29 +8304,29 @@ function __c58(j: number): any {
         }),
       ).annotate({ identifier: "NamespacesSearchResponseErrorsItem" });
     case 8:
-      return S.Array(__S(935, __c58, 7));
+      return S.Array(__S(951, __c59, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           chunks: __S(129, __c8, 1),
           queryKind: S.String.pipe(T.Body("query_kind")),
-          errors: S.optional(S.NullOr(__S(936, __c58, 8))),
+          errors: S.optional(S.NullOr(__S(952, __c59, 8))),
           searchQuery: S.optional(S.NullOr(S.String).pipe(T.Body("search_query"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SearchNamespaceResponse" });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Record(S.String, __S(944, __c59, 0));
+      return S.Record(S.String, __S(960, __c60, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           cache: S.optional(__S(64, __c4, 0)),
-          customMetadata: S.optional(__S(945, __c59, 1).pipe(T.Body("custom_metadata"))),
+          customMetadata: S.optional(__S(961, __c60, 1).pipe(T.Body("custom_metadata"))),
           queryRewrite: S.optional(__S(65, __c4, 1).pipe(T.Body("query_rewrite"))),
           reranking: S.optional(__S(66, __c4, 2)),
           retrieval: S.optional(__S(67, __c4, 3)),
@@ -8081,26 +8337,26 @@ function __c59(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          content: __S(947, __c59, 3),
+          content: __S(963, __c60, 3),
           role: S.String,
         }),
       ).annotate({ identifier: "NamespacesInstancesSearchRequestMessagesItem" });
     case 5:
-      return S.Array(__S(948, __c59, 4));
+      return S.Array(__S(964, __c60, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          aiSearchOptions: S.optional(__S(946, __c59, 2).pipe(T.Body("ai_search_options"))),
-          messages: S.optional(__S(949, __c59, 5)),
+          aiSearchOptions: S.optional(__S(962, __c60, 2).pipe(T.Body("ai_search_options"))),
+          messages: S.optional(__S(965, __c60, 5)),
           query: S.optional(S.String),
         })
           .pipe(
             T.Http({
               method: "POST",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/search",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/search",
               code: 200,
             }),
           )
@@ -8108,7 +8364,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "SearchNamespaceInstanceRequest" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8127,7 +8383,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "StatsInstanceRequest" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8147,8 +8403,8 @@ function __c61(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          r2: S.optional(S.NullOr(__S(976, __c61, 0))),
-          vectorize: S.optional(S.NullOr(__S(977, __c61, 1))),
+          r2: S.optional(S.NullOr(__S(992, __c62, 0))),
+          vectorize: S.optional(S.NullOr(__S(993, __c62, 1))),
         }),
       ).annotate({ identifier: "InstancesStatsResponseEngine" });
     case 3:
@@ -8156,7 +8412,7 @@ function __c61(j: number): any {
         S.Struct({
           completed: S.optional(S.NullOr(S.Number)),
           degraded: S.optional(S.NullOr(S.Boolean)),
-          engine: S.optional(S.NullOr(__S(978, __c61, 2))),
+          engine: S.optional(S.NullOr(__S(994, __c62, 2))),
           error: S.optional(S.NullOr(S.Number)),
           fileEmbedErrors: S.optional(S.NullOr(__S(32, __c2, 0)).pipe(T.Body("file_embed_errors"))),
           indexSourceErrors: S.optional(
@@ -8171,19 +8427,19 @@ function __c61(j: number): any {
       ).annotate({ identifier: "StatsInstanceResponse" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
         })
           .pipe(
             T.Http({
               method: "GET",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/stats",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/stats",
               code: 200,
             }),
           )
@@ -8191,13 +8447,13 @@ function __c62(j: number): any {
       ).annotate({ identifier: "StatsNamespaceInstanceRequest" });
   }
 }
-function __c63(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           itemId: S.String.pipe(T.Label("item_id")),
           nextAction: S.String.pipe(T.Body("next_action")),
@@ -8206,7 +8462,7 @@ function __c63(j: number): any {
           .pipe(
             T.Http({
               method: "PATCH",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items/{item_id}",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/items/{item_id}",
               code: 200,
             }),
           )
@@ -8215,7 +8471,7 @@ function __c63(j: number): any {
     case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 2:
-      return S.Record(S.String, __S(1009, __c63, 1));
+      return S.Record(S.String, __S(1025, __c64, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8226,7 +8482,7 @@ function __c63(j: number): any {
           fileSize: S.Number.pipe(T.Body("file_size")),
           key: S.String,
           lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-          metadata: __S(1010, __c63, 2),
+          metadata: __S(1026, __c64, 2),
           namespace: S.String,
           nextAction: S.String.pipe(T.Body("next_action")),
           sourceId: S.String.pipe(T.Body("source_id")),
@@ -8236,7 +8492,7 @@ function __c63(j: number): any {
       ).annotate({ identifier: "SyncNamespaceInstanceItemResponse" });
   }
 }
-function __c64(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8293,7 +8549,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "UpdateInstanceRequest" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8316,13 +8572,13 @@ function __c65(j: number): any {
       ).annotate({ identifier: "UpdateNamespaceRequest" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           aiGatewayId: S.optional(S.String.pipe(T.Body("ai_gateway_id"))),
           aiSearchModel: S.optional(S.String.pipe(T.Body("ai_search_model"))),
@@ -8366,7 +8622,7 @@ function __c66(j: number): any {
           .pipe(
             T.Http({
               method: "PUT",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}",
               code: 200,
             }),
           )
@@ -8374,7 +8630,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "UpdateNamespaceInstanceRequest" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8397,7 +8653,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "UpdateTokenRequest" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8411,14 +8667,14 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          name: S.String.pipe(T.Label()),
+          namespace: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          file: __S(1088, __c68, 0),
+          file: __S(1104, __c69, 0),
         })
           .pipe(
             T.Http({
               method: "POST",
-              uri: "/accounts/{account_id}/ai-search/namespaces/{name}/instances/{id}/items",
+              uri: "/accounts/{account_id}/ai-search/namespaces/{namespace}/instances/{id}/items",
               code: 200,
             }),
           )
@@ -8427,7 +8683,7 @@ function __c68(j: number): any {
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 3:
-      return S.Record(S.String, __S(1090, __c68, 2));
+      return S.Record(S.String, __S(1106, __c69, 2));
     case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -8442,7 +8698,7 @@ function __c68(j: number): any {
         ),
       );
     case 5:
-      return S.Array(__S(1092, __c68, 4));
+      return S.Array(__S(1108, __c69, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8453,13 +8709,13 @@ function __c68(j: number): any {
           fileSize: S.Number.pipe(T.Body("file_size")),
           key: S.String,
           lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-          metadata: __S(1091, __c68, 3),
+          metadata: __S(1107, __c69, 3),
           namespace: S.String,
           nextAction: S.String.pipe(T.Body("next_action")),
           sourceId: S.String.pipe(T.Body("source_id")),
           status: S.String,
           error: S.optional(S.NullOr(S.String)),
-          warnings: S.optional(S.NullOr(__S(1093, __c68, 5))),
+          warnings: S.optional(S.NullOr(__S(1109, __c69, 5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UploadNamespaceInstanceItemResponse" });
   }

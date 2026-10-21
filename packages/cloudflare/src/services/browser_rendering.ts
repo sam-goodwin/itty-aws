@@ -2001,9 +2001,34 @@ export interface CrawlGetResponseRecordsItemMetadata {
   status: number;
   /** Final URL of the crawled page. */
   url: string;
+  /** Value of the Last-Modified response header, when provided by the origin. */
+  lastModified?: string | null;
+  /** Open Graph description of the crawled page. */
+  ogDescription?: string | null;
+  /** Open Graph image of the crawled page. */
+  ogImage?: string | null;
+  /** Open Graph site name of the crawled page. */
+  ogSiteName?: string | null;
+  /** Open Graph title of the crawled page. */
+  ogTitle?: string | null;
+  /** Open Graph type of the crawled page. */
+  ogType?: string | null;
   /** Title of the crawled page. */
   title?: string | null;
 }
+export type CrawlGetResponseRecordsItemOutcome =
+  | "success"
+  | "robots_disallowed"
+  | "crawl_purpose_disallowed"
+  | "content_use_disallowed"
+  | "connection_error"
+  | "timeout"
+  | "browser_unavailable"
+  | "format_generation_error"
+  | "unsupported_content_type"
+  | "unclassified_error"
+  | "page_error"
+  | "too_large";
 export interface CrawlGetResponseRecordsItem {
   /** Current status of the crawled URL. */
   status: CrawlGetResponseRecordsItemStatus;
@@ -2017,8 +2042,20 @@ export interface CrawlGetResponseRecordsItem {
   markdown?: string | null;
   /** Absent for urls that never reached a fetch. */
   metadata?: CrawlGetResponseRecordsItemMetadata | null;
+  /** Result of processing the URL. Absent for older records. */
+  outcome?: CrawlGetResponseRecordsItemOutcome | null;
 }
 export type CrawlGetResponseRecordsList = Array<CrawlGetResponseRecordsItem>;
+export type CrawlGetResponseRobotsItemState = "available" | "absent" | "fetch_failed";
+export interface CrawlGetResponseRobotsItem {
+  /** Origin whose robots.txt was checked. */
+  origin: string;
+  /** Whether usable robots.txt rules were available. */
+  state: CrawlGetResponseRobotsItemState;
+  /** HTTP status that established the current robots.txt state. Absent when no HTTP response was received. */
+  status?: number | null;
+}
+export type CrawlGetResponseRobotsList = Array<CrawlGetResponseRobotsItem>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCrawlResponse {
   /** Crawl job ID. */
@@ -2029,6 +2066,8 @@ export interface GetCrawlResponse {
   finished: number;
   /** List of crawl job records. */
   records: CrawlGetResponseRecordsList;
+  /** Robots.txt state for the first 50 origins encountered by the crawl. */
+  robots: CrawlGetResponseRobotsList;
   /** Total number of URLs that were skipped due to include/exclude/subdomain filters. Skipped URLs are included in records but are not counted toward total/finished. */
   skipped: number;
   /** Current crawl job status. */
@@ -2524,7 +2563,7 @@ export const getCrawl: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<GetCrawlRequest>,
-  output: __S(196, __c12, 4) as any as S.Schema<GetCrawlResponse>,
+  output: __S(198, __c12, 6) as any as S.Schema<GetCrawlResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3268,6 +3307,12 @@ function __c12(j: number): any {
         S.Struct({
           status: S.Number,
           url: S.String,
+          lastModified: S.optional(S.NullOr(S.String)),
+          ogDescription: S.optional(S.NullOr(S.String).pipe(T.Body("og:description"))),
+          ogImage: S.optional(S.NullOr(S.String).pipe(T.Body("og:image"))),
+          ogSiteName: S.optional(S.NullOr(S.String).pipe(T.Body("og:site_name"))),
+          ogTitle: S.optional(S.NullOr(S.String).pipe(T.Body("og:title"))),
+          ogType: S.optional(S.NullOr(S.String).pipe(T.Body("og:type"))),
           title: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CrawlGetResponseRecordsItemMetadata" });
@@ -3280,6 +3325,7 @@ function __c12(j: number): any {
           json: S.optional(S.NullOr(__S(512, __c32, 0))),
           markdown: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.NullOr(__S(193, __c12, 1))),
+          outcome: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CrawlGetResponseRecordsItem" });
     case 3:
@@ -3287,10 +3333,21 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
+          origin: S.String,
+          state: S.String,
+          status: S.optional(S.NullOr(S.Number)),
+        }),
+      ).annotate({ identifier: "CrawlGetResponseRobotsItem" });
+    case 5:
+      return S.Array(__S(196, __c12, 4));
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
           id: S.String,
           browserSecondsUsed: S.Number,
           finished: S.Number,
           records: __S(195, __c12, 3),
+          robots: __S(197, __c12, 5),
           skipped: S.Number,
           status: S.String,
           total: S.Number,

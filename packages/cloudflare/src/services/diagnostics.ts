@@ -209,11 +209,10 @@ export interface ListEndpointHealthchecksRequest {
   /** Identifier */
   accountId: string;
 }
-export type EndpointHealthchecksListResponseCheckType = "icmp";
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListEndpointHealthchecksItem {
+export type EndpointHealthchecksListResultItemCheckType = "icmp";
+export interface EndpointHealthchecksListResultItem {
   /** type of check to perform */
-  checkType: EndpointHealthchecksListResponseCheckType;
+  checkType: EndpointHealthchecksListResultItemCheckType;
   /** the IP address of the host to perform checks against */
   endpoint: string;
   /** UUID. */
@@ -221,6 +220,8 @@ export interface ListEndpointHealthchecksItem {
   /** Optional name associated with this check */
   name?: string | null;
 }
+export type EndpointHealthchecksListResultList = Array<EndpointHealthchecksListResultItem>;
+export type ListEndpointHealthchecksItem = EndpointHealthchecksListResultList;
 export type ListEndpointHealthchecksItemsList = Array<ListEndpointHealthchecksItem>;
 export type ListEndpointHealthchecksResponse = ListEndpointHealthchecksItemsList;
 export type EndpointHealthchecksUpdateRequestCheckType = "icmp";
@@ -331,7 +332,7 @@ export const listEndpointHealthchecks: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<ListEndpointHealthchecksRequest>,
-  output: __S(83, __c5, 3) as any as S.Schema<ListEndpointHealthchecksResponse>,
+  output: __S(85, __c5, 5) as any as S.Schema<ListEndpointHealthchecksResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -342,7 +343,7 @@ export type UpdateEndpointHealthcheckError =
   | InvalidHealthcheckEndpoint
   | Forbidden
   | CloudflareOpError;
-/** Update a Endpoint Health Check. */
+/** Update an Endpoint Health Check. */
 export const updateEndpointHealthcheck: API.OperationMethod<
   UpdateEndpointHealthcheckRequest,
   UpdateEndpointHealthcheckResponse,
@@ -558,12 +559,18 @@ function __c5(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }),
-      ).annotate({ identifier: "ListEndpointHealthchecksItem" });
+      ).annotate({ identifier: "EndpointHealthchecksListResultItem" });
     case 2:
       return S.Array(__S(81, __c5, 1));
     case 3:
+      return S.suspend(() => __S(82, __c5, 2).pipe(T.EnvelopePayloadRoot())).annotate({
+        identifier: "ListEndpointHealthchecksItem",
+      });
+    case 4:
+      return S.Array(__S(83, __c5, 3));
+    case 5:
       return S.suspend(() =>
-        __S(82, __c5, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(84, __c5, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEndpointHealthchecksResponse" });
   }
 }

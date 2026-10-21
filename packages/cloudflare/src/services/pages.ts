@@ -278,7 +278,7 @@ export interface ProjectsCreateRequestDeploymentConfigsPreview {
   analyticsEngineDatasets?: ProjectsCreateRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap;
   /** Browser bindings used for Pages Functions. */
   browsers?: ProjectsCreateRequestDeploymentConfigsPreviewBrowsersMap;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected. */
   buildImageMajorVersion?: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate?: string;
@@ -389,7 +389,7 @@ export interface ProjectsCreateRequestDeploymentConfigsProduction {
   analyticsEngineDatasets?: ProjectsCreateRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap;
   /** Browser bindings used for Pages Functions. */
   browsers?: ProjectsCreateRequestDeploymentConfigsProductionBrowsersMap;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected. */
   buildImageMajorVersion?: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate?: string;
@@ -735,7 +735,7 @@ export type ProjectsCreateResponseDeploymentConfigsPreviewVectorizeBindingsMap =
 export interface ProjectsCreateResponseDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project. */
   buildImageMajorVersion: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate: string;
@@ -846,7 +846,7 @@ export type ProjectsCreateResponseDeploymentConfigsProductionVectorizeBindingsMa
 export interface ProjectsCreateResponseDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project. */
   buildImageMajorVersion: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate: string;
@@ -1069,6 +1069,12 @@ export interface ProjectsCreateResponseLatestDeployment {
 }
 export type ProjectsCreateResponseBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
+export interface ProjectsCreateResponseBuildImageAutoUpgrade {
+  /** The retired build image major version the project is set to. */
+  fromVersion: number;
+  /** The build image major version the project's builds run on. */
+  toVersion: number;
+}
 export type ProjectsCreateResponseDomainsList = Array<string>;
 export type ProjectsCreateResponseSourceConfigPathExcludesList = Array<string>;
 export type ProjectsCreateResponseSourceConfigPathIncludesList = Array<string>;
@@ -1137,6 +1143,8 @@ export interface CreateProjectResponse {
   usesFunctions: boolean;
   /** Configs for the project build process. */
   buildConfig?: ProjectsCreateResponseCanonicalDeploymentBuildConfig | null;
+  /** Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on. */
+  buildImageAutoUpgrade?: ProjectsCreateResponseBuildImageAutoUpgrade | null;
   /** A list of associated custom domains for the project. */
   domains?: ProjectsCreateResponseDomainsList | null;
   /** Configs for the project source control. */
@@ -1670,7 +1678,7 @@ export type ProjectsGetResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
 export interface ProjectsGetResponseDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project. */
   buildImageMajorVersion: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate: string;
@@ -1781,7 +1789,7 @@ export type ProjectsGetResponseDeploymentConfigsProductionVectorizeBindingsMap =
 export interface ProjectsGetResponseDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project. */
   buildImageMajorVersion: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate: string;
@@ -2003,6 +2011,7 @@ export interface ProjectsGetResponseLatestDeployment {
   usesFunctions?: boolean | null;
 }
 export type ProjectsGetResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
+export type ProjectsGetResponseBuildImageAutoUpgrade = ProjectsCreateResponseBuildImageAutoUpgrade;
 export type ProjectsGetResponseDomainsList = Array<string>;
 export type ProjectsGetResponseSourceConfigPathExcludesList = Array<string>;
 export type ProjectsGetResponseSourceConfigPathIncludesList = Array<string>;
@@ -2071,6 +2080,8 @@ export interface GetProjectResponse {
   usesFunctions: boolean;
   /** Configs for the project build process. */
   buildConfig?: ProjectsCreateResponseCanonicalDeploymentBuildConfig | null;
+  /** Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on. */
+  buildImageAutoUpgrade?: ProjectsCreateResponseBuildImageAutoUpgrade | null;
   /** A list of associated custom domains for the project. */
   domains?: ProjectsGetResponseDomainsList | null;
   /** Configs for the project source control. */
@@ -2771,7 +2782,7 @@ export type ProjectsListResultItemDeploymentConfigsPreviewVectorizeBindingsMap =
 export interface ProjectsListResultItemDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project. */
   buildImageMajorVersion: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate: string;
@@ -2882,7 +2893,7 @@ export type ProjectsListResultItemDeploymentConfigsProductionVectorizeBindingsMa
 export interface ProjectsListResultItemDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project. */
   buildImageMajorVersion: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate: string;
@@ -3105,6 +3116,8 @@ export interface ProjectsListResultItemLatestDeployment {
 }
 export type ProjectsListResultItemBuildConfig =
   ProjectsCreateResponseCanonicalDeploymentBuildConfig;
+export type ProjectsListResultItemBuildImageAutoUpgrade =
+  ProjectsCreateResponseBuildImageAutoUpgrade;
 export type ProjectsListResultItemDomainsList = Array<string>;
 export type ProjectsListResultItemSourceConfigPathExcludesList = Array<string>;
 export type ProjectsListResultItemSourceConfigPathIncludesList = Array<string>;
@@ -3172,6 +3185,8 @@ export interface ProjectsListResultItem {
   usesFunctions: boolean;
   /** Configs for the project build process. */
   buildConfig?: ProjectsCreateResponseCanonicalDeploymentBuildConfig | null;
+  /** Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on. */
+  buildImageAutoUpgrade?: ProjectsCreateResponseBuildImageAutoUpgrade | null;
   /** A list of associated custom domains for the project. */
   domains?: ProjectsListResultItemDomainsList | null;
   /** Configs for the project source control. */
@@ -3261,7 +3276,7 @@ export interface ProjectsEditRequestDeploymentConfigsPreview {
   analyticsEngineDatasets?: ProjectsEditRequestDeploymentConfigsPreviewAnalyticsEngineDatasetsMap;
   /** Browser bindings used for Pages Functions. */
   browsers?: ProjectsEditRequestDeploymentConfigsPreviewBrowsersMap;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected. */
   buildImageMajorVersion?: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate?: string;
@@ -3372,7 +3387,7 @@ export interface ProjectsEditRequestDeploymentConfigsProduction {
   analyticsEngineDatasets?: ProjectsEditRequestDeploymentConfigsProductionAnalyticsEngineDatasetsMap;
   /** Browser bindings used for Pages Functions. */
   browsers?: ProjectsEditRequestDeploymentConfigsProductionBrowsersMap;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected. */
   buildImageMajorVersion?: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate?: string;
@@ -3694,7 +3709,7 @@ export type ProjectsEditResponseDeploymentConfigsPreviewVectorizeBindingsMap = {
 export interface ProjectsEditResponseDeploymentConfigsPreview {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project. */
   buildImageMajorVersion: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate: string;
@@ -3805,7 +3820,7 @@ export type ProjectsEditResponseDeploymentConfigsProductionVectorizeBindingsMap 
 export interface ProjectsEditResponseDeploymentConfigsProduction {
   /** Whether to always use the latest compatibility date for Pages Functions. */
   alwaysUseLatestCompatibilityDate: boolean;
-  /** The major version of the build image to use for Pages Functions. */
+  /** The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project. */
   buildImageMajorVersion: number;
   /** Compatibility date used for Pages Functions. */
   compatibilityDate: string;
@@ -4027,6 +4042,7 @@ export interface ProjectsEditResponseLatestDeployment {
   usesFunctions?: boolean | null;
 }
 export type ProjectsEditResponseBuildConfig = ProjectsCreateResponseCanonicalDeploymentBuildConfig;
+export type ProjectsEditResponseBuildImageAutoUpgrade = ProjectsCreateResponseBuildImageAutoUpgrade;
 export type ProjectsEditResponseDomainsList = Array<string>;
 export type ProjectsEditResponseSourceConfigPathExcludesList = Array<string>;
 export type ProjectsEditResponseSourceConfigPathIncludesList = Array<string>;
@@ -4095,6 +4111,8 @@ export interface PatchProjectResponse {
   usesFunctions: boolean;
   /** Configs for the project build process. */
   buildConfig?: ProjectsCreateResponseCanonicalDeploymentBuildConfig | null;
+  /** Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on. */
+  buildImageAutoUpgrade?: ProjectsCreateResponseBuildImageAutoUpgrade | null;
   /** A list of associated custom domains for the project. */
   domains?: ProjectsEditResponseDomainsList | null;
   /** Configs for the project source control. */
@@ -5249,6 +5267,9 @@ function __c11(j: number): any {
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
           buildConfig: S.optional(S.NullOr(__S(992, __c31, 0)).pipe(T.Body("build_config"))),
+          buildImageAutoUpgrade: S.optional(
+            S.NullOr(__S(1076, __c33, 20)).pipe(T.Body("build_image_auto_upgrade")),
+          ),
           domains: S.optional(S.NullOr(__S(832, __c26, 0))),
           source: S.optional(S.NullOr(__S(997, __c31, 5))),
           subdomain: S.optional(S.NullOr(S.String)),
@@ -5469,6 +5490,9 @@ function __c17(j: number): any {
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
           buildConfig: S.optional(S.NullOr(__S(992, __c31, 0)).pipe(T.Body("build_config"))),
+          buildImageAutoUpgrade: S.optional(
+            S.NullOr(__S(1076, __c33, 20)).pipe(T.Body("build_image_auto_upgrade")),
+          ),
           domains: S.optional(S.NullOr(__S(832, __c26, 0))),
           source: S.optional(S.NullOr(__S(997, __c31, 5))),
           subdomain: S.optional(S.NullOr(S.String)),
@@ -5558,6 +5582,9 @@ function __c18(j: number): any {
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
           buildConfig: S.optional(S.NullOr(__S(992, __c31, 0)).pipe(T.Body("build_config"))),
+          buildImageAutoUpgrade: S.optional(
+            S.NullOr(__S(1076, __c33, 20)).pipe(T.Body("build_image_auto_upgrade")),
+          ),
           domains: S.optional(S.NullOr(__S(832, __c26, 0))),
           source: S.optional(S.NullOr(__S(997, __c31, 5))),
           subdomain: S.optional(S.NullOr(S.String)),
@@ -5806,6 +5833,9 @@ function __c29(j: number): any {
           productionScriptName: S.String.pipe(T.Body("production_script_name")),
           usesFunctions: S.Boolean.pipe(T.Body("uses_functions")),
           buildConfig: S.optional(S.NullOr(__S(992, __c31, 0)).pipe(T.Body("build_config"))),
+          buildImageAutoUpgrade: S.optional(
+            S.NullOr(__S(1076, __c33, 20)).pipe(T.Body("build_image_auto_upgrade")),
+          ),
           domains: S.optional(S.NullOr(__S(832, __c26, 0))),
           source: S.optional(S.NullOr(__S(997, __c31, 5))),
           subdomain: S.optional(S.NullOr(S.String)),
@@ -6055,6 +6085,13 @@ function __c33(j: number): any {
           production: __S(1074, __c33, 18),
         }),
       ).annotate({ identifier: "ProjectsCreateResponseDeploymentConfigs" });
+    case 20:
+      return S.suspend(() =>
+        S.Struct({
+          fromVersion: S.Number.pipe(T.Body("from_version")),
+          toVersion: S.Number.pipe(T.Body("to_version")),
+        }),
+      ).annotate({ identifier: "ProjectsCreateResponseBuildImageAutoUpgrade" });
   }
 }
 function __c34(j: number): any {

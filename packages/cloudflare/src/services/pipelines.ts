@@ -1731,11 +1731,17 @@ export interface ListPipelinesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+export type SinksListRequestDirection = "asc" | "desc";
+export type SinksListRequestOrderBy = "name" | "created_at";
 export interface ListSinksRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
+  /** Sort direction. */
+  direction?: SinksListRequestDirection | (string & {});
   /** Filters sinks by name (case-insensitive substring). */
   name?: string;
+  /** Sorts sinks by this field. Defaults to `created_at`. */
+  orderBy?: SinksListRequestOrderBy | (string & {});
   page?: number;
   perPage?: number;
   pipelineId?: string;
@@ -1942,11 +1948,17 @@ export interface ListSinksResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
+export type StreamsListRequestDirection = "asc" | "desc";
+export type StreamsListRequestOrderBy = "name" | "created_at";
 export interface ListStreamsRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
+  /** Sort direction. */
+  direction?: StreamsListRequestDirection | (string & {});
   /** Filters streams by name (case-insensitive substring). */
   name?: string;
+  /** Sorts streams by this field. Defaults to `created_at`. */
+  orderBy?: StreamsListRequestOrderBy | (string & {});
   page?: number;
   perPage?: number;
   /** Specifies the public ID of the pipeline. */
@@ -3802,7 +3814,9 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
+          direction: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           pipelineId: S.optional(S.String.pipe(T.Query("pipeline_id"))),
@@ -3910,7 +3924,9 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
+          direction: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           pipelineId: S.optional(S.String.pipe(T.Query("pipeline_id"))),

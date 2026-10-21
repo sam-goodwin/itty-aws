@@ -71,7 +71,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.network_interconnects#CnisCreateRequestBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session",
+            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed.",
             "smithy.api#required": {}
           }
         },
@@ -125,7 +125,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.network_interconnects#CnisCreateResponseBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session",
+            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed.",
             "smithy.api#required": {}
           }
         },
@@ -196,7 +196,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.network_interconnects#CnisGetResponseBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session",
+            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed.",
             "smithy.api#required": {}
           }
         },
@@ -267,7 +267,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.network_interconnects#CnisListResponseItemsItemBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session",
+            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed.",
             "smithy.api#required": {}
           }
         },
@@ -398,7 +398,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.network_interconnects#CnisUpdateRequestBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session",
+            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed.",
             "smithy.api#required": {}
           }
         },
@@ -469,7 +469,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.network_interconnects#CnisUpdateResponseBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session",
+            "smithy.api#documentation": "Extra set of static prefixes to advertise to the customer's end of the session Prefixes containing host bits will be normalized to contain network bits only. Duplicates are not allowed.",
             "smithy.api#required": {}
           }
         },

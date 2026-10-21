@@ -1017,7 +1017,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemInherit {
   type: DispatchNamespacesScriptsBindingsGetResultItemInheritType;
   /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
   oldName?: string | null;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
+  /** Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057. */
   versionId?: string | null;
 }
 export type DispatchNamespacesScriptsBindingsGetResultItemImagesType = "images";
@@ -1567,7 +1567,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType;
   /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
   oldName?: string | null;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
+  /** Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057. */
   versionId?: string | null;
 }
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType = "images";
@@ -2627,7 +2627,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInheritType;
   /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
   oldName?: string;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
+  /** Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057. */
   versionId?: string;
 }
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImagesType = "images";
@@ -3626,7 +3626,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheri
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType;
   /** The old name of the inherited binding. If set, the binding will be renamed from `old_name` to `name` in the new version. If not set, the binding will keep the same name between versions. */
   oldName?: string | null;
-  /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
+  /** Identifier for the version to inherit the binding from. This can be a version ID, or the literal "latest" to inherit from the most recently uploaded version, which may not be the deployed version. Defaults to "latest". Only the Workers API version endpoints under `/accounts/{account_id}/workers/workers/{worker_id}/versions` accept a version ID. Other endpoints, including script upload and script version upload, accept only "latest" and reject a version ID with error 10057. */
   versionId?: string | null;
 }
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType = "images";
@@ -4951,7 +4951,7 @@ export interface PutDispatchNamespaceScriptRequest {
   dispatchNamespace: string;
   /** Name of the script. */
   scriptName: string;
-  /** When set to "strict", the upload will fail if any `inherit` type bindings cannot be resolved against the previous version of the script. Without this, unresolvable inherit bindings are silently dropped. */
+  /** When set to "strict", the upload will fail with error 10057 if any `inherit` type bindings cannot be resolved against the latest uploaded version of the script, which may not be the deployed version. Without this, unresolvable inherit bindings are silently dropped. */
   bindingsInherit?: DispatchNamespacesScriptsUpdateRequestBindingsInherit | (string & {});
   metadata: PutDispatchNamespaceScriptMetadata;
   /** Module / asset file parts, appended under their own filenames. */

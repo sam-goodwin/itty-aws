@@ -4492,7 +4492,7 @@ export const getLoadBalancer: API.OperationMethod<
 }));
 
 export type GetMonitorError = MonitorNotFound | Forbidden | CloudflareOpError;
-/** List a single configured monitor for an account. */
+/** Fetch a single configured monitor for an account. */
 export const getMonitor: API.OperationMethod<
   GetMonitorRequest,
   GetMonitorResponse,

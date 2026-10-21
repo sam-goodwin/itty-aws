@@ -207,7 +207,16 @@ export interface GetByIdsIndexRequest {
   /** A list of vector identifiers to retrieve from the index indicated by the path. */
   ids?: IndexesGetByIdsRequestIdsList;
 }
-export type GetByIdsIndexResponse = unknown;
+export type IndexesGetByIdsResultItemValuesList = Array<number>;
+export interface IndexesGetByIdsResultItem {
+  /** Identifier for a Vector */
+  id?: string | null;
+  metadata?: unknown | null;
+  namespace?: string | null;
+  values?: IndexesGetByIdsResultItemValuesList | null;
+}
+export type IndexesGetByIdsResultList = Array<IndexesGetByIdsResultItem>;
+export type GetByIdsIndexResponse = IndexesGetByIdsResultList;
 export interface GetIndexRequest {
   /** Identifier */
   accountId: string;
@@ -419,8 +428,8 @@ export const createIndex: API.OperationMethod<
   CreateIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(113, __c14, 1) as any as S.Schema<CreateIndexRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<CreateIndexResponse>,
+  input: __S(57, __c14, 1) as any as S.Schema<CreateIndexRequest>,
+  output: __S(60, __c15, 0) as any as S.Schema<CreateIndexResponse>,
   errors: [
     IndexAlreadyExists,
     IndexInvalidName,
@@ -444,8 +453,8 @@ export const createIndexMetadataIndex: API.OperationMethod<
   CreateIndexMetadataIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<CreateIndexMetadataIndexRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<CreateIndexMetadataIndexResponse>,
+  input: __S(68, __c17, 0) as any as S.Schema<CreateIndexMetadataIndexRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<CreateIndexMetadataIndexResponse>,
   errors: [
     NotFound,
     MetadataIndexAlreadyExists,
@@ -466,7 +475,7 @@ export const deleteByIdsIndex: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<DeleteByIdsIndexRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DeleteByIdsIndexResponse>,
+  output: __S(72, __c18, 0) as any as S.Schema<DeleteByIdsIndexResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -480,8 +489,8 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c2, 0) as any as S.Schema<DeleteIndexRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteIndexResponse>,
+  input: __S(8, __c2, 0) as any as S.Schema<DeleteIndexRequest>,
+  output: __S(9, __c2, 1) as any as S.Schema<DeleteIndexResponse>,
   errors: [NotFound, Gone, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -499,8 +508,8 @@ export const deleteIndexMetadataIndex: API.OperationMethod<
   DeleteIndexMetadataIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c4, 0) as any as S.Schema<DeleteIndexMetadataIndexRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DeleteIndexMetadataIndexResponse>,
+  input: __S(12, __c3, 0) as any as S.Schema<DeleteIndexMetadataIndexRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<DeleteIndexMetadataIndexResponse>,
   errors: [NotFound, Gone, MetadataIndexNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -514,8 +523,8 @@ export const getByIdsIndex: API.OperationMethod<
   GetByIdsIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetByIdsIndexRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<GetByIdsIndexResponse>,
+  input: __S(16, __c4, 0) as any as S.Schema<GetByIdsIndexRequest>,
+  output: __S(19, __c4, 3) as any as S.Schema<GetByIdsIndexResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -529,8 +538,8 @@ export const getIndex: API.OperationMethod<
   GetIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetIndexRequest>,
-  output: __S(120, __c15, 0) as any as S.Schema<GetIndexResponse>,
+  input: __S(24, __c6, 0) as any as S.Schema<GetIndexRequest>,
+  output: __S(60, __c15, 0) as any as S.Schema<GetIndexResponse>,
   errors: [NotFound, Gone, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -544,8 +553,8 @@ export const getIndexInfo: API.OperationMethod<
   GetIndexInfoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<GetIndexInfoRequest>,
-  output: __S(57, __c7, 1) as any as S.Schema<GetIndexInfoResponse>,
+  input: __S(28, __c7, 0) as any as S.Schema<GetIndexInfoRequest>,
+  output: __S(29, __c7, 1) as any as S.Schema<GetIndexInfoResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -559,8 +568,8 @@ export const insertIndex: API.OperationMethod<
   InsertIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<InsertIndexRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<InsertIndexResponse>,
+  input: __S(32, __c8, 0) as any as S.Schema<InsertIndexRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<InsertIndexResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -576,8 +585,8 @@ export const listIndexes: API.PaginatedOperationMethod<
   IndexesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(72, __c9, 0) as any as S.Schema<ListIndexesRequest>,
-    output: __S(75, __c9, 3) as any as S.Schema<ListIndexesResponse>,
+    input: __S(36, __c9, 0) as any as S.Schema<ListIndexesRequest>,
+    output: __S(39, __c9, 3) as any as S.Schema<ListIndexesResponse>,
     errors: [NotFound, Gone, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -594,8 +603,8 @@ export const listIndexMetadataIndexes: API.OperationMethod<
   ListIndexMetadataIndexesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListIndexMetadataIndexesRequest>,
-  output: __S(83, __c10, 3) as any as S.Schema<ListIndexMetadataIndexesResponse>,
+  input: __S(40, __c10, 0) as any as S.Schema<ListIndexMetadataIndexesRequest>,
+  output: __S(43, __c10, 3) as any as S.Schema<ListIndexMetadataIndexesResponse>,
   errors: [NotFound, Gone, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -609,8 +618,8 @@ export const listVectorsIndex: API.OperationMethod<
   ListVectorsIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListVectorsIndexRequest>,
-  output: __S(91, __c11, 3) as any as S.Schema<ListVectorsIndexResponse>,
+  input: __S(44, __c11, 0) as any as S.Schema<ListVectorsIndexRequest>,
+  output: __S(47, __c11, 3) as any as S.Schema<ListVectorsIndexResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -624,8 +633,8 @@ export const queryIndex: API.OperationMethod<
   QueryIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c12, 1) as any as S.Schema<QueryIndexRequest>,
-  output: __S(100, __c12, 4) as any as S.Schema<QueryIndexResponse>,
+  input: __S(48, __c12, 0) as any as S.Schema<QueryIndexRequest>,
+  output: __S(51, __c12, 3) as any as S.Schema<QueryIndexResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -639,8 +648,8 @@ export const upsertIndex: API.OperationMethod<
   UpsertIndexError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<UpsertIndexRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<UpsertIndexResponse>,
+  input: __S(52, __c13, 0) as any as S.Schema<UpsertIndexRequest>,
+  output: __S(72, __c18, 0) as any as S.Schema<UpsertIndexResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -654,7 +663,7 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           indexName: S.String.pipe(T.Label("index_name")),
-          ids: S.optional(__S(8, __c1, 0)),
+          ids: S.optional(__S(4, __c1, 0)),
         })
           .pipe(
             T.Http({
@@ -690,17 +699,13 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteIndexRequest" });
-  }
-}
-function __c3(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteIndexResponse" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -720,14 +725,14 @@ function __c4(j: number): any {
       ).annotate({ identifier: "DeleteIndexMetadataIndexRequest" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           indexName: S.String.pipe(T.Label("index_name")),
-          ids: S.optional(__S(8, __c1, 0)),
+          ids: S.optional(__S(4, __c1, 0)),
         })
           .pipe(
             T.Http({
@@ -738,6 +743,27 @@ function __c5(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetByIdsIndexRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.NullOr(S.String)),
+          metadata: S.optional(S.NullOr(S.Unknown)),
+          namespace: S.optional(S.NullOr(S.String)),
+          values: S.optional(S.NullOr(__S(20, __c5, 0))),
+        }),
+      ).annotate({ identifier: "IndexesGetByIdsResultItem" });
+    case 2:
+      return S.Array(__S(17, __c4, 1));
+    case 3:
+      return S.suspend(() =>
+        __S(18, __c4, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "GetByIdsIndexResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.Number);
   }
 }
 function __c6(j: number): any {
@@ -828,7 +854,7 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(__S(128, __c16, 0))),
+          config: S.optional(S.NullOr(__S(64, __c16, 0))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
@@ -836,11 +862,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "IndexesListResultItem" });
     case 2:
-      return S.Array(__S(73, __c9, 1));
+      return S.Array(__S(37, __c9, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(74, __c9, 2).pipe(T.EnvelopePayload()),
+          result: __S(38, __c9, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListIndexesResponse" });
@@ -871,11 +897,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "IndexesMetadataIndexListResponseMetadataIndexesItem" });
     case 2:
-      return S.Array(__S(81, __c10, 1));
+      return S.Array(__S(41, __c10, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadataIndexes: S.optional(S.NullOr(__S(82, __c10, 2))),
+          metadataIndexes: S.optional(S.NullOr(__S(42, __c10, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListIndexMetadataIndexesResponse" });
   }
@@ -906,14 +932,14 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "IndexesListVectorsResponseVectorsItem" });
     case 2:
-      return S.Array(__S(89, __c11, 1));
+      return S.Array(__S(45, __c11, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           isTruncated: S.Boolean,
           totalCount: S.Number,
-          vectors: __S(90, __c11, 2),
+          vectors: __S(46, __c11, 2),
           cursorExpirationTimestamp: S.optional(S.NullOr(S.String)),
           nextCursor: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -923,13 +949,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.Number);
-    case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           indexName: S.String.pipe(T.Label("index_name")),
-          vector: __S(96, __c12, 0),
+          vector: __S(20, __c5, 0),
           filter: S.optional(S.Unknown),
           returnMetadata: S.optional(S.String),
           returnValues: S.optional(S.Boolean),
@@ -944,23 +968,23 @@ function __c12(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "QueryIndexRequest" });
-    case 2:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           metadata: S.optional(S.NullOr(S.Unknown)),
           namespace: S.optional(S.NullOr(S.String)),
           score: S.optional(S.NullOr(S.Number)),
-          values: S.optional(S.NullOr(__S(96, __c12, 0))),
+          values: S.optional(S.NullOr(__S(20, __c5, 0))),
         }),
       ).annotate({ identifier: "IndexesQueryResponseMatchesItem" });
+    case 2:
+      return S.Array(__S(49, __c12, 1));
     case 3:
-      return S.Array(__S(98, __c12, 2));
-    case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.NullOr(S.Number)),
-          matches: S.optional(S.NullOr(__S(99, __c12, 3))),
+          matches: S.optional(S.NullOr(__S(50, __c12, 2))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "QueryIndexResponse" });
   }
@@ -995,7 +1019,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          config: __S(112, __c14, 0),
+          config: __S(56, __c14, 0),
           name: S.String,
           description: S.optional(S.String),
         })
@@ -1015,7 +1039,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(__S(128, __c16, 0))),
+          config: S.optional(S.NullOr(__S(64, __c16, 0))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),

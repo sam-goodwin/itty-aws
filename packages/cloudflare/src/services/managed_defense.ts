@@ -38,6 +38,7 @@ export interface CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImpo
 export interface CreateVulnerabilityDiscoveryRepositoryResultCase0Repository {
   id: string;
   name: string;
+  /** Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified. */
   readiness: CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryReadiness;
   source: CreateVulnerabilityDiscoveryRepositoryResultCase0RepositorySource;
   importError?: CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportError | null;
@@ -71,6 +72,7 @@ export interface CreateVulnerabilityDiscoveryRepositoryResultRepositoryRepositor
 export interface CreateVulnerabilityDiscoveryRepositoryResultRepositoryRepository {
   id: string;
   name: string;
+  /** Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified. */
   readiness: CreateVulnerabilityDiscoveryRepositoryResultRepositoryRepositoryReadiness;
   source: CreateVulnerabilityDiscoveryRepositoryResultRepositoryRepositorySource;
   importError?: CreateVulnerabilityDiscoveryRepositoryResultRepositoryRepositoryImportError | null;
@@ -83,11 +85,16 @@ export type CreateVulnerabilityDiscoveryRepositoryResult =
   | CreateVulnerabilityDiscoveryRepositoryResultRepository;
 export type CreateVulnerabilityDiscoveryRepositoryResponse =
   CreateVulnerabilityDiscoveryRepositoryResult;
-export type CreateVulnerabilityDiscoveryScanRequestReposList = Array<string>;
-export type CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList = Array<string>;
-export type CreateVulnerabilityDiscoveryScanRequestRepoHostsMap = {
-  [key: string]: CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList | undefined;
-};
+export type CreateVulnerabilityDiscoveryScanRequestReposItemHostsList = Array<string>;
+export interface CreateVulnerabilityDiscoveryScanRequestReposItem {
+  name: string;
+  /** Branch to scan. Defaults to the repository's default branch. */
+  branch?: string;
+  /** Explicit hostname scopes. Every hostname must be authorized for this repository before review admission; rejected scopes return 422 and do not persist a scan request. */
+  hosts?: CreateVulnerabilityDiscoveryScanRequestReposItemHostsList;
+}
+export type CreateVulnerabilityDiscoveryScanRequestReposList =
+  Array<CreateVulnerabilityDiscoveryScanRequestReposItem>;
 export interface CreateVulnerabilityDiscoveryScanRequestTelemetryWindow {
   end: string;
   start: string;
@@ -95,9 +102,8 @@ export interface CreateVulnerabilityDiscoveryScanRequestTelemetryWindow {
 export interface CreateVulnerabilityDiscoveryScanRequest {
   accountId: string;
   idempotencyKey?: string;
+  /** Repository names must be unique within a request. */
   repos: CreateVulnerabilityDiscoveryScanRequestReposList;
-  /** Explicit hostname scopes. Every hostname must be authorized for its repository before review admission; rejected scopes return 422 and do not persist a scan request. */
-  repoHosts?: CreateVulnerabilityDiscoveryScanRequestRepoHostsMap;
   /** UTC ISO-8601 interval. Start is inclusive, end is exclusive, and the interval must be positive and at most seven days. */
   telemetryWindow?: CreateVulnerabilityDiscoveryScanRequestTelemetryWindow;
 }
@@ -261,6 +267,7 @@ export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemExtern
 }
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem>;
+export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemImpactIdsList = Array<string>;
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofMethod =
   | "structural"
   | "experimental"
@@ -273,6 +280,7 @@ export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofState 
   | "pending_public"
   | "pending_experiment"
   | "pending_team";
+export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemThreatIdsList = Array<string>;
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItem {
   id: string;
   conditions: GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList;
@@ -292,12 +300,16 @@ export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItem {
   /** Least-privileged position required to trigger the finding. Optional on legacy report revisions. */
   attackerPosition?: GetVulnerabilityDiscoveryReportResponseReportFindingsItemAttackerPosition | null;
   externalLinks?: GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList | null;
+  /** Accepted settled impact-charter premises cited by the finding. Optional on legacy report revisions. */
+  impactIds?: GetVulnerabilityDiscoveryReportResponseReportFindingsItemImpactIdsList | null;
   /** One bounded unresolved proof question. Optional on legacy report revisions. */
   openQuestion?: string | null;
   /** Method used or needed to close the proof. Optional on legacy report revisions. */
   proofMethod?: GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofMethod | null;
   /** Current proof lifecycle state. Optional on legacy report revisions. */
   proofState?: GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofState | null;
+  /** Accepted settled threat-model premises cited by the finding. Optional on legacy report revisions. */
+  threatIds?: GetVulnerabilityDiscoveryReportResponseReportFindingsItemThreatIdsList | null;
 }
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItem>;
@@ -459,6 +471,7 @@ export interface GetVulnerabilityDiscoveryRepositoryResponseRepository {
   id: string;
   createdAt: string;
   name: string;
+  /** Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified. */
   readiness: GetVulnerabilityDiscoveryRepositoryResponseRepositoryReadiness;
   source: GetVulnerabilityDiscoveryRepositoryResponseRepositorySource;
   importError?: GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportError | null;
@@ -610,6 +623,7 @@ export interface ListVulnerabilityDiscoveryRepositoriesResultItem {
   id: string;
   createdAt: string;
   name: string;
+  /** Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified. */
   readiness: ListVulnerabilityDiscoveryRepositoriesResultItemReadiness;
   source: ListVulnerabilityDiscoveryRepositoriesResultItemSource;
   importError?: ListVulnerabilityDiscoveryRepositoriesResultItemImportError | null;
@@ -800,6 +814,8 @@ export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFi
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem>;
+export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemImpactIdsList =
+  Array<string>;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofMethod =
   | "structural"
   | "experimental"
@@ -812,6 +828,8 @@ export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFi
   | "pending_public"
   | "pending_experiment"
   | "pending_team";
+export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemThreatIdsList =
+  Array<string>;
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItem {
   id: string;
   conditions: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList;
@@ -831,12 +849,16 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesI
   /** Least-privileged position required to trigger the finding. Optional on legacy report revisions. */
   attackerPosition?: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemAttackerPosition | null;
   externalLinks?: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList | null;
+  /** Accepted settled impact-charter premises cited by the finding. Optional on legacy report revisions. */
+  impactIds?: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemImpactIdsList | null;
   /** One bounded unresolved proof question. Optional on legacy report revisions. */
   openQuestion?: string | null;
   /** Method used or needed to close the proof. Optional on legacy report revisions. */
   proofMethod?: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofMethod | null;
   /** Current proof lifecycle state. Optional on legacy report revisions. */
   proofState?: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofState | null;
+  /** Accepted settled threat-model premises cited by the finding. Optional on legacy report revisions. */
+  threatIds?: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemThreatIdsList | null;
 }
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsList =
   Array<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItem>;
@@ -981,7 +1003,7 @@ export interface VulnerabilityDiscoveryScansGetReportResponse {
   scanId: string;
 }
 export type CreateVulnerabilityDiscoveryRepositoryError = CloudflareOpError;
-/** Creates an upload repository or reserves an asynchronous deployed Worker import by name. Worker imports require Idempotency-Key. */
+/** Creates an upload repository or reserves an asynchronous deployed Worker import by name. Worker imports require Idempotency-Key. Push upload source to `main` or specify the `branch` to scan in the scan request. */
 export const createVulnerabilityDiscoveryRepository: API.OperationMethod<
   CreateVulnerabilityDiscoveryRepositoryRequest,
   CreateVulnerabilityDiscoveryRepositoryResponse,
@@ -996,14 +1018,14 @@ export const createVulnerabilityDiscoveryRepository: API.OperationMethod<
 }));
 
 export type CreateVulnerabilityDiscoveryScanError = CloudflareOpError;
-/** Submits repository intent for operator review. This endpoint does not immediately start execution. Worker-imported repositories must be ready; explicit `repo_hosts` must be authorized before the request is persisted. */
+/** Submits repository intent for operator review. This endpoint does not immediately start execution. Worker-imported repositories must be ready; explicit repository host scopes must be authorized and explicit branch selections must exist before the request is persisted. */
 export const createVulnerabilityDiscoveryScan: API.OperationMethod<
   CreateVulnerabilityDiscoveryScanRequest,
   CreateVulnerabilityDiscoveryScanResponse,
   CreateVulnerabilityDiscoveryScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(33, __c1, 1) as any as S.Schema<CreateVulnerabilityDiscoveryScanRequest>,
+  input: __S(34, __c1, 2) as any as S.Schema<CreateVulnerabilityDiscoveryScanRequest>,
   output: __S(130, __c4, 2) as any as S.Schema<CreateVulnerabilityDiscoveryScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
@@ -1129,14 +1151,21 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(96, __c3, 0));
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          branch: S.optional(S.String),
+          hosts: S.optional(__S(96, __c3, 0)),
+        }),
+      ).annotate({ identifier: "CreateVulnerabilityDiscoveryScanRequestReposItem" });
     case 1:
+      return S.Array(__S(32, __c1, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          repos: __S(96, __c3, 0),
-          repoHosts: S.optional(__S(32, __c1, 0).pipe(T.Body("repo_hosts"))),
+          repos: __S(33, __c1, 1),
           telemetryWindow: S.optional(__S(64, __c2, 0).pipe(T.Body("telemetry_window"))),
         }).pipe(
           T.Http({
@@ -1339,9 +1368,11 @@ function __c6(j: number): any {
           wafRules: __S(201, __c6, 9).pipe(T.Body("waf_rules")),
           attackerPosition: S.optional(S.NullOr(S.String).pipe(T.Body("attacker_position"))),
           externalLinks: S.optional(S.NullOr(__S(203, __c6, 11)).pipe(T.Body("external_links"))),
+          impactIds: S.optional(S.NullOr(__S(96, __c3, 0)).pipe(T.Body("impact_ids"))),
           openQuestion: S.optional(S.NullOr(S.String).pipe(T.Body("open_question"))),
           proofMethod: S.optional(S.NullOr(S.String).pipe(T.Body("proof_method"))),
           proofState: S.optional(S.NullOr(S.String).pipe(T.Body("proof_state"))),
+          threatIds: S.optional(S.NullOr(__S(96, __c3, 0)).pipe(T.Body("threat_ids"))),
         }),
       ).annotate({ identifier: "GetVulnerabilityDiscoveryReportResponseReportFindingsItem" });
     case 13:

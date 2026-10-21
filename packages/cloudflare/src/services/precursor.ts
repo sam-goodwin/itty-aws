@@ -15,17 +15,18 @@ const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
+export type GetRequestCloudflareVersion = "1.0";
 export interface GetRequest {
   /** Identifier. */
   zoneId: string;
+  cloudflareVersion: GetRequestCloudflareVersion | (string & {});
 }
-export type GetResponseDefaultMode = "off" | "min-friction" | "max-security";
-export type GetResponseEnforcementRulesItemMode = "min-friction" | "max-security";
-export interface GetResponseEnforcementRulesItem {
+export type GetResponseMode = "off" | "monitor" | "arm";
+export interface GetResponseRulesItem {
   /** The filter expression that determines which requests the rule matches. */
   expression: string;
-  /** The override mode Precursor applies to requests matching an enforcement rule. Unlike `default_mode`, this cannot be `off`. */
-  mode: GetResponseEnforcementRulesItemMode;
+  /** Whether Precursor shows an interstitial when it takes action on a request. */
+  showInterstitial: boolean;
   /** The read-only identifier that Cloudflare assigns to the rule. */
   id?: string | null;
   /** An informative description of the rule. */
@@ -33,21 +34,23 @@ export interface GetResponseEnforcementRulesItem {
   /** Whether the rule is active. */
   enabled?: boolean | null;
 }
-export type GetResponseEnforcementRulesList = Array<GetResponseEnforcementRulesItem>;
+export type GetResponseRulesList = Array<GetResponseRulesItem>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
-  /** The zone-level Precursor enforcement mode applied to requests that do not match a more specific enforcement rule. */
-  defaultMode?: GetResponseDefaultMode | null;
-  /** The ordered list of enforcement rules for the zone. */
-  enforcementRules?: GetResponseEnforcementRulesList | null;
+  /** Controls Precursor detection for the zone. `off` disables detection, `monitor` records detections without affecting bot scores, and `arm` allows detections to affect bot scores. */
+  mode?: GetResponseMode | null;
+  /** The ordered list of Precursor rules for the zone. */
+  rules?: GetResponseRulesList | null;
+  /** Whether Precursor shows an interstitial when it takes action on a request. */
+  showInterstitial?: boolean | null;
 }
-export type UpdateRequestDefaultMode = "off" | "min-friction" | "max-security";
-export type UpdateRequestEnforcementRulesItemMode = "min-friction" | "max-security";
-export interface UpdateRequestEnforcementRulesItem {
+export type UpdateRequestCloudflareVersion = "1.0";
+export type UpdateRequestMode = "off" | "monitor" | "arm";
+export interface UpdateRequestRulesItem {
   /** The filter expression that determines which requests the rule matches. */
   expression: string;
-  /** The override mode Precursor applies to requests matching an enforcement rule. Unlike `default_mode`, this cannot be `off`. */
-  mode: UpdateRequestEnforcementRulesItemMode | (string & {});
+  /** Whether Precursor shows an interstitial when it takes action on a request. */
+  showInterstitial: boolean;
   /** The read-only identifier that Cloudflare assigns to the rule. */
   id?: string;
   /** An informative description of the rule. */
@@ -55,39 +58,32 @@ export interface UpdateRequestEnforcementRulesItem {
   /** Whether the rule is active. */
   enabled?: boolean;
 }
-export type UpdateRequestEnforcementRulesList = Array<UpdateRequestEnforcementRulesItem>;
+export type UpdateRequestRulesList = Array<UpdateRequestRulesItem>;
 export interface UpdateRequest {
   /** Identifier. */
   zoneId: string;
-  /** The zone-level Precursor enforcement mode applied to requests that do not match a more specific enforcement rule. */
-  defaultMode?: UpdateRequestDefaultMode | (string & {});
-  /** The ordered list of enforcement rules for the zone. */
-  enforcementRules?: UpdateRequestEnforcementRulesList;
+  cloudflareVersion: UpdateRequestCloudflareVersion | (string & {});
+  /** Controls Precursor detection for the zone. `off` disables detection, `monitor` records detections without affecting bot scores, and `arm` allows detections to affect bot scores. */
+  mode?: UpdateRequestMode | (string & {});
+  /** The ordered list of Precursor rules for the zone. */
+  rules?: UpdateRequestRulesList;
+  /** Whether Precursor shows an interstitial when it takes action on a request. */
+  showInterstitial?: boolean;
 }
-export type UpdateResponseDefaultMode = "off" | "min-friction" | "max-security";
-export type UpdateResponseEnforcementRulesItemMode = "min-friction" | "max-security";
-export interface UpdateResponseEnforcementRulesItem {
-  /** The filter expression that determines which requests the rule matches. */
-  expression: string;
-  /** The override mode Precursor applies to requests matching an enforcement rule. Unlike `default_mode`, this cannot be `off`. */
-  mode: UpdateResponseEnforcementRulesItemMode;
-  /** The read-only identifier that Cloudflare assigns to the rule. */
-  id?: string | null;
-  /** An informative description of the rule. */
-  description?: string | null;
-  /** Whether the rule is active. */
-  enabled?: boolean | null;
-}
-export type UpdateResponseEnforcementRulesList = Array<UpdateResponseEnforcementRulesItem>;
+export type UpdateResponseMode = "off" | "monitor" | "arm";
+export type UpdateResponseRulesItem = GetResponseRulesItem;
+export type UpdateResponseRulesList = Array<GetResponseRulesItem>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
-  /** The zone-level Precursor enforcement mode applied to requests that do not match a more specific enforcement rule. */
-  defaultMode?: UpdateResponseDefaultMode | null;
-  /** The ordered list of enforcement rules for the zone. */
-  enforcementRules?: UpdateResponseEnforcementRulesList | null;
+  /** Controls Precursor detection for the zone. `off` disables detection, `monitor` records detections without affecting bot scores, and `arm` allows detections to affect bot scores. */
+  mode?: UpdateResponseMode | null;
+  /** The ordered list of Precursor rules for the zone. */
+  rules?: UpdateResponseRulesList | null;
+  /** Whether Precursor shows an interstitial when it takes action on a request. */
+  showInterstitial?: boolean | null;
 }
 export type GetError = CloudflareOpError;
-/** Retrieve a zone's Precursor configuration: the zone-level `default_mode` and the ordered list of `enforcement_rules`. */
+/** Retrieve a zone's Precursor configuration: the detection `mode`, whether to `show_interstitial`, and the ordered list of `rules`. */
 export const get: API.OperationMethod<GetRequest, GetResponse, GetError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
     input: __S(0, __c0, 0) as any as S.Schema<GetRequest>,
@@ -98,7 +94,7 @@ export const get: API.OperationMethod<GetRequest, GetResponse, GetError, Cloudfl
   }));
 
 export type UpdateError = CloudflareOpError;
-/** Updates the Precursor configuration for a zone. `default_mode` sets the zone-level enforcement mode. `enforcement_rules` is the ordered list of rules that override enforcement for matching requests. This is a partial update: only the fields present in the request body are changed. - Sending an empty array ( `[]`) clears all enforcement rules. - At least one of `default_mode` or `enforcement_rules` must be present; an empty body ( `{}`) is rejected with `400`. - Rule `id` is read-only (assigned by Cloudflare) and ignored on input. - Rule `mode` must be `min-friction` or `max-security` ( `off` is not a valid rule mode; use `default_mode` to disable enforcement). - Rule `expression` is limited to 4000 characters. The limit applies to each rule individually, not to the combined size of all rules. */
+/** Updates the Precursor configuration for a zone. `mode` controls whether Precursor detection is off, monitoring, or armed. `show_interstitial` controls the zone-level response when armed. `rules` is the ordered list of overrides for matching requests. This is a partial update: only the fields present in the request body are changed. - Sending an empty array ( `[]`) clears all rules. - At least one of `mode`, `show_interstitial`, or `rules` must be present; an empty body ( `{}`) is rejected with `400`. - Rule `id` is read-only (assigned by Cloudflare) and ignored on input. - Rule `show_interstitial` is required and controls the response for requests that match that rule. - Rule `expression` is limited to 4000 characters. The limit applies to each rule individually, not to the combined size of all rules. */
 export const update: API.OperationMethod<
   UpdateRequest,
   UpdateResponse,
@@ -119,6 +115,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
+          cloudflareVersion: S.String.pipe(T.Header("Cloudflare-Version")),
         }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/precursor", code: 200 })),
       ).annotate({ identifier: "GetRequest" });
   }
@@ -129,19 +126,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
-          mode: S.String,
+          showInterstitial: S.Boolean.pipe(T.Body("show_interstitial")),
           id: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
         }),
-      ).annotate({ identifier: "GetResponseEnforcementRulesItem" });
+      ).annotate({ identifier: "GetResponseRulesItem" });
     case 1:
       return S.Array(__S(4, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          defaultMode: S.optional(S.NullOr(S.String).pipe(T.Body("default_mode"))),
-          enforcementRules: S.optional(S.NullOr(__S(5, __c1, 1)).pipe(T.Body("enforcement_rules"))),
+          mode: S.optional(S.NullOr(S.String)),
+          rules: S.optional(S.NullOr(__S(5, __c1, 1))),
+          showInterstitial: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show_interstitial"))),
         }),
       ).annotate({ identifier: "GetResponse" });
   }
@@ -152,20 +150,22 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
-          mode: S.String,
+          showInterstitial: S.Boolean.pipe(T.Body("show_interstitial")),
           id: S.optional(S.String),
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }),
-      ).annotate({ identifier: "UpdateRequestEnforcementRulesItem" });
+      ).annotate({ identifier: "UpdateRequestRulesItem" });
     case 1:
       return S.Array(__S(8, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          defaultMode: S.optional(S.String.pipe(T.Body("default_mode"))),
-          enforcementRules: S.optional(__S(9, __c2, 1).pipe(T.Body("enforcement_rules"))),
+          cloudflareVersion: S.String.pipe(T.Header("Cloudflare-Version")),
+          mode: S.optional(S.String),
+          rules: S.optional(__S(9, __c2, 1)),
+          showInterstitial: S.optional(S.Boolean.pipe(T.Body("show_interstitial"))),
         }).pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/precursor", code: 200 })),
       ).annotate({ identifier: "UpdateRequest" });
   }

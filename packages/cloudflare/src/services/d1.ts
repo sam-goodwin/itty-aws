@@ -580,6 +580,38 @@ export interface RestoreDatabaseTimeTravelResponse {
   /** The bookmark representing the state of the database before the restore operation. Can be used to undo the restore if needed. */
   previousBookmark?: string | null;
 }
+export interface UndeleteDatabaseRequest {
+  /** Account identifier tag. */
+  accountId: string;
+  /** D1 database identifier (UUID). */
+  databaseId: string;
+  /** Restore the database with this name instead of the name it had when it was deleted. Required if another database in the account already uses that name. */
+  newName?: string;
+}
+export type UndeleteDatabaseResponseJurisdiction = "eu" | "fedramp" | "us";
+export type UndeleteDatabaseResponseReadReplicationMode = "auto" | "disabled";
+export interface UndeleteDatabaseResponseReadReplication {
+  /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
+  mode: UndeleteDatabaseResponseReadReplicationMode;
+}
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UndeleteDatabaseResponse {
+  /** Specifies the timestamp the resource was created as an ISO8601 string. */
+  createdAt?: string | null;
+  /** The D1 database's size, in bytes. */
+  fileSize?: number | null;
+  /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
+  jurisdiction?: UndeleteDatabaseResponseJurisdiction | null;
+  /** D1 database name. */
+  name?: string | null;
+  /** The number of tables in the D1 database. This count is no longer accurate and should not be relied upon. */
+  numTables?: number | null;
+  /** Configuration for D1 read replication. */
+  readReplication?: UndeleteDatabaseResponseReadReplication | null;
+  /** D1 database identifier (UUID). */
+  uuid?: string | null;
+  version?: string | null;
+}
 export type DatabaseUpdateRequestReadReplicationMode = "auto" | "disabled";
 export interface DatabaseUpdateRequestReadReplication {
   /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
@@ -629,8 +661,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<CreateDatabaseRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<CreateDatabaseResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<CreateDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     InvalidProperty,
@@ -732,7 +764,7 @@ export const getDatabase: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(33, __c4, 1) as any as S.Schema<GetDatabaseRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<GetDatabaseResponse>,
+  output: __S(129, __c16, 1) as any as S.Schema<GetDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     DatabaseNotFound,
@@ -798,7 +830,7 @@ export const patchDatabase: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c8, 0) as any as S.Schema<PatchDatabaseRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<PatchDatabaseResponse>,
+  output: __S(129, __c16, 1) as any as S.Schema<PatchDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     InternalError,
@@ -877,6 +909,21 @@ export const restoreDatabaseTimeTravel: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type UndeleteDatabaseError = CloudflareOpError;
+/** Restore a deleted D1 database. The database is restored with the name it had when it was deleted, unless `new_name` is provided. The restored database counts against the account's limits. Undeleting a database that is not deleted succeeds without changes, unless `new_name` differs from its current name which errors. Once a database is undeleted, Time Travel (point-in-time recovery) cannot restore it to a bookmark or timestamp at or before the undeletion. Only states after the undeletion can be restored. */
+export const undeleteDatabase: API.OperationMethod<
+  UndeleteDatabaseRequest,
+  UndeleteDatabaseResponse,
+  UndeleteDatabaseError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(104, __c13, 0) as any as S.Schema<UndeleteDatabaseRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<UndeleteDatabaseResponse>,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type UpdateDatabaseError =
   | InvalidObjectIdentifier
   | InternalError
@@ -889,8 +936,8 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<UpdateDatabaseRequest>,
-  output: __S(121, __c15, 1) as any as S.Schema<UpdateDatabaseResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<UpdateDatabaseRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<UpdateDatabaseResponse>,
   errors: [
     InvalidObjectIdentifier,
     InternalError,
@@ -1141,7 +1188,7 @@ function __c8(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           databaseId: S.String.pipe(T.Label("database_id")),
-          readReplication: S.optional(__S(120, __c15, 0).pipe(T.Body("read_replication"))),
+          readReplication: S.optional(__S(128, __c16, 0).pipe(T.Body("read_replication"))),
         })
           .pipe(
             T.Http({
@@ -1290,7 +1337,27 @@ function __c13(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           databaseId: S.String.pipe(T.Label("database_id")),
-          readReplication: __S(120, __c15, 0).pipe(T.Body("read_replication")),
+          newName: S.optional(S.String.pipe(T.Body("new_name"))),
+        })
+          .pipe(
+            T.Http({
+              method: "POST",
+              uri: "/accounts/{account_id}/d1/database/{database_id}/undelete",
+              code: 200,
+            }),
+          )
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "UndeleteDatabaseRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+          databaseId: S.String.pipe(T.Label("database_id")),
+          readReplication: __S(128, __c16, 0).pipe(T.Body("read_replication")),
         })
           .pipe(
             T.Http({
@@ -1303,7 +1370,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "UpdateDatabaseRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1312,14 +1379,14 @@ function __c14(j: number): any {
           name: S.String,
           jurisdiction: S.optional(S.String),
           primaryLocationHint: S.optional(S.String.pipe(T.Body("primary_location_hint"))),
-          readReplication: S.optional(__S(120, __c15, 0).pipe(T.Body("read_replication"))),
+          readReplication: S.optional(__S(128, __c16, 0).pipe(T.Body("read_replication"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/d1/database", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateDatabaseRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1336,7 +1403,7 @@ function __c15(j: number): any {
           name: S.optional(S.NullOr(S.String)),
           numTables: S.optional(S.NullOr(S.Number).pipe(T.Body("num_tables"))),
           readReplication: S.optional(
-            S.NullOr(__S(120, __c15, 0)).pipe(T.Body("read_replication")),
+            S.NullOr(__S(128, __c16, 0)).pipe(T.Body("read_replication")),
           ),
           uuid: S.optional(S.NullOr(S.String)),
           version: S.optional(S.NullOr(S.String)),

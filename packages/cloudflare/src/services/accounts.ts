@@ -3047,7 +3047,7 @@ export const createAccount: API.OperationMethod<
 }));
 
 export type CreateAccountOrganizationError = CloudflareOpError;
-/** Move an account into a destination organization, either assigning a standalone account to an organization or moving it between organizations in the same hierarchy. Availability depends on the organization's capabilities. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Move an account into a destination organization, either assigning a standalone account to an organization or moving it between organizations in the same hierarchy. Availability depends on the organization's capabilities. */
 export const createAccountOrganization: API.OperationMethod<
   CreateAccountOrganizationRequest,
   CreateAccountOrganizationResponse,
@@ -3797,7 +3797,7 @@ export const updateAccount: API.OperationMethod<
 }));
 
 export type UpdateAccountProfileError = CloudflareOpError;
-/** Updates the business profile (name, email, phone, address, and external metadata) associated with this account's parent organization customer record. Changes apply to every account and organization sharing that profile. Omitted or empty fields are left unchanged. Only available to members of an organization that contains the account. Requires Account Settings Write permission. */
+/** Updates the business profile (name, email, phone, address, and external metadata) associated with this account's parent organization customer record. Changes apply to every account and organization sharing that profile. Omitted or empty fields are left unchanged. Only available to members of an organization that contains the account. */
 export const updateAccountProfile: API.OperationMethod<
   UpdateAccountProfileRequest,
   UpdateAccountProfileResponse,

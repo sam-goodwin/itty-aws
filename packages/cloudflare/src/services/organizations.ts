@@ -209,8 +209,6 @@ export interface BillingUsageGetResultItem {
   chargePeriodEnd: string;
   /** Inclusive start of the time interval during which the usage was consumed. */
   chargePeriodStart: string;
-  /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
-  consumedQuantity: number;
   /** Unit of measure for the consumed quantity (e.g., "GB", "Requests", "vCPU-Hours"). */
   consumedUnit: string;
   /** Name of the entity providing the underlying infrastructure or platform. */
@@ -235,6 +233,8 @@ export interface BillingUsageGetResultItem {
   billingPeriodStart?: string | null;
   /** Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period. */
   chargeClass?: BillingUsageGetResultItemChargeClass | null;
+  /** Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations. */
+  consumedQuantity?: number | null;
   /** Cost calculated by multiplying ContractedUnitPrice and the corresponding PricingQuantity. */
   contractedCost?: number | null;
   /** The agreed-upon unit price for a single PricingUnit of the associated billable metric, inclusive of negotiated discounts, if present, while excluding any other discounts. */
@@ -800,7 +800,7 @@ export interface UpdateOrganizationResponse {
   profile?: CreateRequestProfile | null;
 }
 export type CreateMemberError = CloudflareOpError;
-/** Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Create a membership that grants access to a specific Organization. */
 export const createMember: API.OperationMethod<
   CreateMemberRequest,
   CreateMemberResponse,
@@ -815,7 +815,7 @@ export const createMember: API.OperationMethod<
 }));
 
 export type CreateOrganizationError = Forbidden | CloudflareOpError;
-/** Create a new organization for a user. Sub-organization creation availability depends on the organization's capabilities. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Create a new organization for a user. Sub-organization creation availability depends on the organization's capabilities. */
 export const createOrganization: API.OperationMethod<
   CreateOrganizationRequest,
   CreateOrganizationResponse,
@@ -830,7 +830,7 @@ export const createOrganization: API.OperationMethod<
 }));
 
 export type DeleteMemberError = CloudflareOpError;
-/** Delete a membership to a particular Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Delete a membership to a particular Organization. */
 export const deleteMember: API.OperationMethod<
   DeleteMemberRequest,
   DeleteMemberResponse,
@@ -845,7 +845,7 @@ export const deleteMember: API.OperationMethod<
 }));
 
 export type DeleteOrganizationError = OrganizationNotFound | Forbidden | CloudflareOpError;
-/** Delete an organization. The organization MUST be empty before deleting. It must not contain any sub-organizations, accounts, members or users. Sub-organization deletion availability depends on the organization's capabilities. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) **Access Control:** Restricted to enterprise organizations. */
+/** Delete an organization. The organization MUST be empty before deleting. It must not contain any sub-organizations, accounts, members or users. Sub-organization deletion availability depends on the organization's capabilities. **Access Control:** Restricted to enterprise organizations. */
 export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationRequest,
   DeleteOrganizationResponse,
@@ -860,7 +860,7 @@ export const deleteOrganization: API.OperationMethod<
 }));
 
 export type GetBillingUsageError = CloudflareOpError;
-/** Returns cost and usage data for all accounts within an organization, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. The response includes usage for every account belonging to the specified organization. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. An organization with no accounts, or an organization ID that does not exist, returns a successful response with an empty result set rather than an error. */
+/** Returns cost and usage data for all accounts within an organization, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. The response includes usage for every account belonging to the specified organization. **Note:** This endpoint serves `usage` records only; cost and pricing fields are absent from responses. Rated costs are available per account via `POST /accounts/{account_id}/billable/usage` with `Metric: cost`. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. An organization with no accounts, or an organization ID that does not exist, returns a successful response with an empty result set rather than an error. */
 export const getBillingUsage: API.OperationMethod<
   GetBillingUsageRequest,
   GetBillingUsageResponse,
@@ -875,7 +875,7 @@ export const getBillingUsage: API.OperationMethod<
 }));
 
 export type GetMemberError = CloudflareOpError;
-/** Retrieve a single membership from an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Retrieve a single membership from an Organization. */
 export const getMember: API.OperationMethod<
   GetMemberRequest,
   GetMemberResponse,
@@ -890,7 +890,7 @@ export const getMember: API.OperationMethod<
 }));
 
 export type GetOrganizationError = OrganizationNotFound | Forbidden | CloudflareOpError;
-/** Retrieve the details of a certain organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Retrieve the details of a certain organization. */
 export const getOrganization: API.OperationMethod<
   GetOrganizationRequest,
   GetOrganizationResponse,
@@ -905,7 +905,7 @@ export const getOrganization: API.OperationMethod<
 }));
 
 export type GetOrganizationAccountError = CloudflareOpError;
-/** Retrieve the accounts immediately attached to a specific organization. Accounts attached to sub-organizations are not included. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Retrieve the accounts immediately attached to a specific organization. Accounts attached to sub-organizations are not included. */
 export const getOrganizationAccount: API.OperationMethod<
   GetOrganizationAccountRequest,
   GetOrganizationAccountResponse,
@@ -920,7 +920,7 @@ export const getOrganizationAccount: API.OperationMethod<
 }));
 
 export type GetOrganizationProfileError = OrganizationNotFound | Forbidden | CloudflareOpError;
-/** Get an organizations profile if it exists. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Get an organizations profile if it exists. */
 export const getOrganizationProfile: API.OperationMethod<
   GetOrganizationProfileRequest,
   GetOrganizationProfileResponse,
@@ -960,7 +960,7 @@ export const listLogAudits: API.PaginatedOperationMethod<
 ) as any;
 
 export type ListMembersError = CloudflareOpError;
-/** List memberships for an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** List memberships for an Organization. */
 export const listMembers: API.OperationMethod<
   ListMembersRequest,
   ListMembersResponse,
@@ -975,7 +975,7 @@ export const listMembers: API.OperationMethod<
 }));
 
 export type ListOrganizationsError = Forbidden | CloudflareOpError;
-/** Retrieve a list of organizations a particular user has access to. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Retrieve a list of organizations a particular user has access to. */
 export const listOrganizations: API.PaginatedOperationMethod<
   ListOrganizationsRequest,
   ListOrganizationsResponse,
@@ -1010,7 +1010,7 @@ export const logsAuditHistory: API.OperationMethod<
 }));
 
 export type PutOrganizationProfileError = OrganizationNotFound | Forbidden | CloudflareOpError;
-/** Modify organization profile. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Modify organization profile. */
 export const putOrganizationProfile: API.OperationMethod<
   PutOrganizationProfileRequest,
   PutOrganizationProfileResponse,
@@ -1025,7 +1025,7 @@ export const putOrganizationProfile: API.OperationMethod<
 }));
 
 export type UpdateOrganizationError = OrganizationNotFound | Forbidden | CloudflareOpError;
-/** Update an organization's name. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+/** Update an organization's name. */
 export const updateOrganization: API.OperationMethod<
   UpdateOrganizationRequest,
   UpdateOrganizationResponse,
@@ -1613,7 +1613,6 @@ function __c20(j: number): any {
           chargeFrequency: S.String.pipe(T.Body("ChargeFrequency")),
           chargePeriodEnd: S.String.pipe(T.Body("ChargePeriodEnd")),
           chargePeriodStart: S.String.pipe(T.Body("ChargePeriodStart")),
-          consumedQuantity: S.Number.pipe(T.Body("ConsumedQuantity")),
           consumedUnit: S.String.pipe(T.Body("ConsumedUnit")),
           hostProviderName: S.String.pipe(T.Body("HostProviderName")),
           invoiceIssuerName: S.String.pipe(T.Body("InvoiceIssuerName")),
@@ -1626,6 +1625,7 @@ function __c20(j: number): any {
           billingPeriodEnd: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodEnd"))),
           billingPeriodStart: S.optional(S.NullOr(S.String).pipe(T.Body("BillingPeriodStart"))),
           chargeClass: S.optional(S.NullOr(S.String).pipe(T.Body("ChargeClass"))),
+          consumedQuantity: S.optional(S.NullOr(S.Number).pipe(T.Body("ConsumedQuantity"))),
           contractedCost: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedCost"))),
           contractedUnitPrice: S.optional(S.NullOr(S.Number).pipe(T.Body("ContractedUnitPrice"))),
           effectiveCost: S.optional(S.NullOr(S.Number).pipe(T.Body("EffectiveCost"))),

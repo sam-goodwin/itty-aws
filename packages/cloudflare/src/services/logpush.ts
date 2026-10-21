@@ -151,7 +151,7 @@ export interface JobsCreateRequestOutputOptions {
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
   fieldNames?: JobsCreateRequestOutputOptionsFieldNamesList;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs. */
+  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
   outputType?: JobsCreateRequestOutputOptionsOutputType | (string & {});
@@ -259,7 +259,7 @@ export interface JobsCreateResponseOutputOptions {
   fieldDelimiter?: string | null;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
   fieldNames?: JobsCreateResponseOutputOptionsFieldNamesList | null;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs. */
+  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean | null;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
   outputType?: JobsCreateResponseOutputOptionsOutputType | null;
@@ -617,7 +617,7 @@ export interface DatasetsJobsGetResultItemOutputOptions {
   fieldDelimiter?: string | null;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
   fieldNames?: DatasetsJobsGetResultItemOutputOptionsFieldNamesList | null;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs. */
+  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean | null;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
   outputType?: DatasetsJobsGetResultItemOutputOptionsOutputType | null;
@@ -769,7 +769,7 @@ export interface JobsGetResponseOutputOptions {
   fieldDelimiter?: string | null;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
   fieldNames?: JobsGetResponseOutputOptionsFieldNamesList | null;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs. */
+  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean | null;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
   outputType?: JobsGetResponseOutputOptionsOutputType | null;
@@ -939,7 +939,7 @@ export interface JobsListResultItemOutputOptions {
   fieldDelimiter?: string | null;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
   fieldNames?: JobsListResultItemOutputOptionsFieldNamesList | null;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs. */
+  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean | null;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
   outputType?: JobsListResultItemOutputOptionsOutputType | null;
@@ -1104,7 +1104,7 @@ export interface JobsUpdateRequestOutputOptions {
   fieldDelimiter?: string;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
   fieldNames?: JobsUpdateRequestOutputOptionsFieldNamesList;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs. */
+  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
   outputType?: JobsUpdateRequestOutputOptionsOutputType | (string & {});
@@ -1212,7 +1212,7 @@ export interface JobsUpdateResponseOutputOptions {
   fieldDelimiter?: string | null;
   /** List of field names to be included in the Logpush output. For the moment, there is no option to add all fields at once, so you must specify all the fields names you are interested in. */
   fieldNames?: JobsUpdateResponseOutputOptionsFieldNamesList | null;
-  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. Not supported for account-scoped jobs. */
+  /** If set to true, subrequests will be merged into the parent request. Only supported for the `http_requests` dataset. */
   mergeSubrequests?: boolean | null;
   /** Specifies the output type, such as `ndjson` or `csv`. This sets default values for the rest of the settings, depending on the chosen output type. Some formatting rules, like string quoting, are different between output types. */
   outputType?: JobsUpdateResponseOutputOptionsOutputType | null;
