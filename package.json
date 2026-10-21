@@ -5,14 +5,15 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
-    "build": "tsc -b",
+    "build": "tsrs -b && node scripts/bundle-lib.ts && node scripts/strip-lib-docs.ts",
     "generate": "node scripts/generate-all.ts",
     "specs:sync": "git submodule sync && git submodule update --force --init --depth=1",
     "specs:local": "node scripts/specs.ts local",
     "specs:link": "node scripts/specs.ts link",
     "specs:check": "node scripts/specs.ts check",
     "patches:audit": "node scripts/patches.ts audit",
-    "typecheck": "tsc -b",
+    "patches:names": "node scripts/patches.ts names",
+    "typecheck": "tsrs -b",
     "bench": "pnpm bench:runtime && pnpm bench:bundle && pnpm bench:typecheck",
     "bench:runtime": "node --conditions=bun benches/runtime/run.ts",
     "bench:runtime:record": "node --conditions=bun benches/runtime/run.ts --record",
@@ -23,7 +24,7 @@
     "format:check": "oxfmt --check",
     "lint": "oxlint -c oxlint.config.ts",
     "prepare": "husky",
-    "typecheck:ci": "tsc -b --noCheck false",
+    "typecheck:ci": "tsrs -b --noCheck false",
     "validate:publish-packages": "node scripts/validate-publish-packages.ts"
   },
   "devDependencies": {
@@ -35,7 +36,7 @@
     "husky": "catalog:",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",
-    "typescript": "catalog:",
+    "tsrs": "catalog:",
     "vitest": "catalog:"
   },
   "devEngines": {

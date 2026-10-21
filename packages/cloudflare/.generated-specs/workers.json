@@ -69175,8 +69175,9 @@
         "smithy.api#documentation": "List your Workers Observability Telemetry Destinations.",
         "smithy.api#readonly": {},
         "smithy.api#paginated": {
-          "mode": "single",
-          "items": "result"
+          "mode": "page",
+          "items": "result",
+          "inputToken": "page"
         }
       },
       "errors": [
@@ -74881,6 +74882,13 @@
         },
         "containers": {
           "target": "com.cloudflare.workers#CreatePreviewDeploymentMetadataContainersList"
+        },
+        "exports": {
+          "target": "com.cloudflare.workers#PutScriptMetadataExports",
+          "traits": {
+            "com.cloudflare.protocols#keyDictionary": {},
+            "smithy.api#documentation": "Per-export settings keyed by the verbatim export name (default for the default export)."
+          }
         }
       }
     },
