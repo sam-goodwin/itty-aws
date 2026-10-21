@@ -21932,6 +21932,13 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "destinationConf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {},
+            "smithy.api#documentation": "The underlying Logpush destination string: the URL with the configured headers encoded as query parameters, so it can carry credentials. Optional: the 2026-10-21 spec omits it."
+          }
         }
       }
     },
@@ -22038,6 +22045,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
+          }
+        },
+        "destinationConf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {},
+            "smithy.api#documentation": "The underlying Logpush destination string: the URL with the configured headers encoded as query parameters, so it can carry credentials. Optional: the 2026-10-21 spec omits it."
           }
         }
       }
@@ -22179,6 +22193,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
+          }
+        },
+        "destinationConf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {},
+            "smithy.api#documentation": "The underlying Logpush destination string: the URL with the configured headers encoded as query parameters, so it can carry credentials. Optional: the 2026-10-21 spec omits it."
           }
         }
       }
@@ -22373,6 +22394,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#required": {}
+          }
+        },
+        "destinationConf": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#sensitive": {},
+            "smithy.api#documentation": "The underlying Logpush destination string: the URL with the configured headers encoded as query parameters, so it can carry credentials. Optional: the 2026-10-21 spec omits it."
           }
         }
       }

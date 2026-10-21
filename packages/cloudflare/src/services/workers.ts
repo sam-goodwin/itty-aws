@@ -3024,6 +3024,8 @@ export interface ObservabilityDestinationsCreateResponseConfiguration {
   logpushDataset: ObservabilityDestinationsCreateResponseConfigurationLogpushDataset;
   type: ObservabilityDestinationsCreateResponseConfigurationType;
   url: string;
+  /** The underlying Logpush destination string: the URL with the configured headers encoded as query parameters, so it can carry credentials. Optional: the 2026-10-21 spec omits it. */
+  destinationConf?: string | null;
 }
 export type ObservabilityDestinationsCreateResponseScriptsList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -5438,6 +5440,8 @@ export interface ObservabilityDestinationsDeleteResponseConfiguration {
   logpushDataset: ObservabilityDestinationsDeleteResponseConfigurationLogpushDataset;
   type: ObservabilityDestinationsDeleteResponseConfigurationType;
   url: string;
+  /** The underlying Logpush destination string: the URL with the configured headers encoded as query parameters, so it can carry credentials. Optional: the 2026-10-21 spec omits it. */
+  destinationConf?: string | null;
 }
 export type ObservabilityDestinationsDeleteResponseScriptsList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -10467,6 +10471,8 @@ export interface ObservabilityDestinationsListResultItemConfiguration {
   logpushDataset: ObservabilityDestinationsListResultItemConfigurationLogpushDataset;
   type: ObservabilityDestinationsListResultItemConfigurationType;
   url: string;
+  /** The underlying Logpush destination string: the URL with the configured headers encoded as query parameters, so it can carry credentials. Optional: the 2026-10-21 spec omits it. */
+  destinationConf?: string | null;
 }
 export type ObservabilityDestinationsListResultItemScriptsList = Array<string>;
 export interface ObservabilityDestinationsListResultItem {
@@ -11877,6 +11883,8 @@ export interface ObservabilityDestinationsUpdateResponseConfiguration {
   logpushDataset: ObservabilityDestinationsUpdateResponseConfigurationLogpushDataset;
   type: ObservabilityDestinationsUpdateResponseConfigurationType;
   url: string;
+  /** The underlying Logpush destination string: the URL with the configured headers encoded as query parameters, so it can carry credentials. Optional: the 2026-10-21 spec omits it. */
+  destinationConf?: string | null;
 }
 export type ObservabilityDestinationsUpdateResponseScriptsList = Array<string>;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -19883,6 +19891,7 @@ function __c52(j: number): any {
           logpushDataset: S.String,
           type: S.String,
           url: S.String,
+          destinationConf: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ObservabilityDestinationsCreateResponseConfiguration" });
   }
