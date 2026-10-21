@@ -567,7 +567,9 @@ export const makeRequest = (
  * walk the input value.
  *
  * Throws when the input schema is missing the `Http()` trait -- a codegen
- * bug, surfaced as a defect by the calling protocol's Effect context.
+ * bug -- and, before anything is sent, when a label is `.` or `..` (for a
+ * greedy `{name+}` label, when any of its segments is). Each surfaces as a
+ * defect by the calling protocol's Effect context.
  */
 export const buildRequest = ({
   input,
@@ -599,6 +601,17 @@ export const buildRequest = ({
     if (value === undefined) continue;
     switch (m.bind) {
       case "label": {
+        // The URL parser resolves a `.` or `..` segment, percent-encoded or
+        // not, so no encoding can carry one: it would address another path
+        // (`/projects/p1/branches/..` -> `/projects/p1/`). A greedy label keeps
+        // its `/`, so each of its segments counts.
+        if (
+          (m.greedy ? String(value).split("/") : [String(value)]).some(
+            (s) => s === "." || s === "..",
+          )
+        ) {
+          throw new Error(`invalid value for input HTTP label: ${m.key}`);
+        }
         const encoded = encodeURIComponent(String(value));
         const preserve = m.preserve;
         const label =
