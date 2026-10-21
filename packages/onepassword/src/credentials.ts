@@ -4,81 +4,81 @@ import { ConfigError } from "@distilled.cloud/core/errors";
  * 1Password credentials -- hand-written. One credentials service per API,
  * because each authenticates differently:
  *
- *   Connect      `Credentials`            Connect token, self-hosted server
+ *   Connect      `ConnectCredentials`     Connect token, self-hosted server
  *   Events       `EventsCredentials`      Events Reporting bearer token
  *   Users        `UsersCredentials`       OAuth 2.0 access token (client credentials grant)
  *   OAuth        `OAuthCredentials`       OAuth application client ID + secret (Basic)
  *   Partnership  `PartnershipCredentials` partner bearer token
  *
- * Connect credentials:
- *
- * The `Credentials` service holds an *effect* that resolves the current
- * credentials on every request (the protocol layer resolves it per request
- * on the calling fiber). Auth is a Connect access token sent as
- * `Authorization: Bearer <token>`. Self-hosted Connect servers override the
- * default base URL (`http://localhost:8080/v1`).
+ * Each service holds an *effect* that resolves the current credentials; the
+ * protocol layer resolves it per request on the calling fiber.
  */
 import * as Context from "effect/Context";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 
-export const DEFAULT_API_BASE_URL = "http://localhost:8080/v1";
+// ---------------------------------------------------------------------------
+// Connect -- access token for a self-hosted Connect server
+// ---------------------------------------------------------------------------
 
-export interface Config {
-  readonly apiKey: Redacted.Redacted<string>;
+/** Base URL of a Connect server running locally on its default port. */
+export const DEFAULT_CONNECT_API_BASE_URL = "http://localhost:8080/v1";
+
+export interface ConnectConfig {
+  readonly token: Redacted.Redacted<string>;
+  /** The Connect server's API root, including `/v1`. */
   readonly apiBaseUrl: string;
 }
 
-export class Credentials
-  extends /*@__PURE__*/ Context.Service<Credentials, Effect.Effect<Config>>()(
-    "OnepasswordCredentials",
+export class ConnectCredentials
+  extends /*@__PURE__*/ Context.Service<ConnectCredentials, Effect.Effect<ConnectConfig>>()(
+    "OnepasswordConnectCredentials",
   ) {}
 
-/** Layer from a Connect token + optional base URL. */
-export const fromApiKey = (config: {
-  readonly apiKey: Redacted.Redacted<string>;
-  readonly apiBaseUrl?: string;
-}): Layer.Layer<Credentials> =>
-  Layer.succeed(
-    Credentials,
-    Effect.succeed({
-      apiKey: config.apiKey,
-      apiBaseUrl: config.apiBaseUrl ?? DEFAULT_API_BASE_URL,
-    }),
-  );
-
+/** `OP_CONNECT_HOST` is the server root without `/v1`; append it when missing. */
 const connectHostToBaseUrl = (host: string): string => {
   const trimmed = host.replace(/\/+$/, "");
   return /\/v1$/i.test(trimmed) ? trimmed : `${trimmed}/v1`;
 };
 
+/** Layer from a Connect token + optional API root (including `/v1`). */
+export const connectCredentials = (config: {
+  readonly token: Redacted.Redacted<string>;
+  readonly apiBaseUrl?: string;
+}): Layer.Layer<ConnectCredentials> =>
+  Layer.succeed(
+    ConnectCredentials,
+    Effect.succeed({
+      token: config.token,
+      apiBaseUrl: config.apiBaseUrl ?? DEFAULT_CONNECT_API_BASE_URL,
+    }),
+  );
+
 /**
  * Reads OP_CONNECT_TOKEN (required) and OP_CONNECT_API_BASE_URL or
  * OP_CONNECT_HOST (optional). `OP_CONNECT_HOST` is the official Connect
- * host (no `/v1` suffix); `/v1` is appended when missing.
+ * variable (no `/v1` suffix); `/v1` is appended when missing.
  */
-export const CredentialsFromEnv: Layer.Layer<Credentials> = /*@__PURE__*/ Layer.succeed(
-  Credentials,
-  /*@__PURE__*/ Effect.gen(function* () {
-    const apiKey = process.env.OP_CONNECT_TOKEN;
-
-    if (!apiKey) {
-      return yield* new ConfigError({
-        message: "OP_CONNECT_TOKEN environment variable is required",
-      });
-    }
-
-    const explicitBase = process.env.OP_CONNECT_API_BASE_URL;
-    const host = process.env.OP_CONNECT_HOST;
-
-    return {
-      apiKey: Redacted.make(apiKey),
-      apiBaseUrl:
-        explicitBase ?? (host !== undefined ? connectHostToBaseUrl(host) : DEFAULT_API_BASE_URL),
-    };
-  }).pipe(Effect.orDie),
-);
+export const ConnectCredentialsFromEnv: Layer.Layer<ConnectCredentials> =
+  /*@__PURE__*/ Layer.succeed(
+    ConnectCredentials,
+    /*@__PURE__*/ EffectConfig.all({
+      token: /*@__PURE__*/ EffectConfig.Redacted("OP_CONNECT_TOKEN"),
+      // OP_CONNECT_API_BASE_URL is used as-is; OP_CONNECT_HOST gains `/v1`.
+      apiBaseUrl: /*@__PURE__*/ EffectConfig.String("OP_CONNECT_API_BASE_URL").pipe(
+        /*@__PURE__*/ EffectConfig.orElse(() =>
+          EffectConfig.String("OP_CONNECT_HOST").pipe(EffectConfig.map(connectHostToBaseUrl)),
+        ),
+        /*@__PURE__*/ EffectConfig.withDefault(DEFAULT_CONNECT_API_BASE_URL),
+      ),
+    }).pipe(
+      /*@__PURE__*/ Effect.mapError(
+        () => new ConfigError({ message: "OP_CONNECT_TOKEN environment variable is required" }),
+      ),
+      Effect.orDie,
+    ),
+  );
 
 // ---------------------------------------------------------------------------
 // Events API -- bearer token from an Events Reporting integration

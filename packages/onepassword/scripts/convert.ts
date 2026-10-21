@@ -3,8 +3,8 @@
  * convert — turn 1Password's OpenAPI specs into Smithy 2.0 JSON models, one
  * per API:
  *
- *   onepassword  specs/spec-mirror-onepassword/specs/openapi.json  (Connect)
- *                → .generated-specs/onepassword.json
+ *   connect      specs/spec-mirror-onepassword/specs/openapi.json
+ *                → .generated-specs/connect.json
  *   events       specs/spec-mirror-onepassword/specs/events.json
  *                → .generated-specs/events.json
  *   users        specs/spec-mirror-onepassword/specs/users.json
@@ -13,9 +13,6 @@
  *                → .generated-specs/oauth.json
  *   partnership  specs/spec-mirror-onepassword/specs/partnership.json
  *                → .generated-specs/partnership.json
- *
- * Connect keeps the `onepassword` model name (and so the
- * `src/services/onepassword.ts` module) it shipped with.
  *
  * Patches: patches/<name>/*.patch.json (Smithy ops on upstream names),
  * applied by finalizeConvert. The OpenAPI→Smithy converter lives in
@@ -29,11 +26,11 @@ await runOpenApiConvert({
   root: path.resolve(import.meta.dirname, ".."),
   specs: [
     {
-      name: "onepassword",
+      name: "connect",
       specPath: "specs/spec-mirror-onepassword/specs/openapi.json",
       options: {
         namespace: "com.onepassword.connect",
-        serviceName: "Onepassword",
+        serviceName: "OnepasswordConnect",
       },
     },
     {

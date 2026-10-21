@@ -1,5 +1,5 @@
 /**
- * 1Password Connect-specific error types.
+ * 1Password-specific error types.
  *
  * Re-exports the common HTTP errors from core and adds the 1Password
  * fallback errors. Note the generated service module additionally defines

@@ -1,3 +1,4 @@
+import * as ConfigProvider from "effect/ConfigProvider";
 import * as Effect from "effect/Effect";
 import * as HttpClient from "effect/http/HttpClient";
 import type * as HttpClientRequest from "effect/http/HttpClientRequest";
@@ -8,6 +9,8 @@ import * as Redacted from "effect/Redacted";
 import * as Stream from "effect/Stream";
 import { describe, expect, test } from "vitest";
 import {
+  ConnectCredentialsFromEnv,
+  connectCredentials,
   eventsCredentials,
   oauthCredentials,
   partnershipCredentials,
@@ -16,6 +19,7 @@ import {
 } from "./credentials.ts";
 import { UnknownOnepasswordError } from "./errors.ts";
 import * as Retry from "./retry.ts";
+import { getVaults } from "./services/connect.ts";
 import { getAuditEventsV2 } from "./services/events.ts";
 import { requestAccessToken } from "./services/oauth.ts";
 import { Gone, getAccount } from "./services/partnership.ts";
@@ -71,6 +75,43 @@ const recordingClient = (
 
 const run = <A, E, R>(effect: Effect.Effect<A, E, R>, layer: Layer.Layer<any>) =>
   Effect.runPromise(effect.pipe(Retry.none, Effect.provide(layer)) as Effect.Effect<A, E, never>);
+
+describe("ConnectProtocol", () => {
+  test("sends the Connect token to the configured server", async () => {
+    const { seen, layer } = recordingClient(() => ({ status: 200, body: [] }));
+    await run(
+      getVaults({}),
+      Layer.merge(
+        layer,
+        connectCredentials({
+          token: Redacted.make("connect-token"),
+          apiBaseUrl: "https://connect.example.com/v1",
+        }),
+      ),
+    );
+    expect(seen[0]!.url).toBe("https://connect.example.com/v1/vaults");
+    expect(seen[0]!.headers.authorization).toBe("Bearer connect-token");
+  });
+
+  test("ConnectCredentialsFromEnv appends /v1 to OP_CONNECT_HOST", async () => {
+    const { seen, layer } = recordingClient(() => ({ status: 200, body: [] }));
+    await run(
+      getVaults({}).pipe(
+        Effect.provide(
+          ConfigProvider.layer(
+            ConfigProvider.fromUnknown({
+              OP_CONNECT_TOKEN: "env-token",
+              OP_CONNECT_HOST: "https://connect.example.com/",
+            }),
+          ),
+        ),
+      ),
+      Layer.merge(layer, ConnectCredentialsFromEnv),
+    );
+    expect(seen[0]!.url).toBe("https://connect.example.com/v1/vaults");
+    expect(seen[0]!.headers.authorization).toBe("Bearer env-token");
+  });
+});
 
 describe("EventsProtocol", () => {
   const creds = eventsCredentials({

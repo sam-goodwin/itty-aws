@@ -3462,7 +3462,7 @@
         ]
       }
     },
-    "com.onepassword.connect#Onepassword": {
+    "com.onepassword.connect#OnepasswordConnect": {
       "type": "service",
       "version": "1.7.1",
       "operations": [

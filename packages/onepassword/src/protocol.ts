@@ -10,13 +10,13 @@ import {
  * REST, so each protocol is one `makeRestProtocol` call from
  * `core/protocol-rest`. They differ in credentials, host and error body:
  *
- *   OnepasswordProtocol  Connect      Credentials             Bearer   `{ status?, message }`
+ *   ConnectProtocol      Connect      ConnectCredentials      Bearer   `{ status?, message }`
  *   EventsProtocol       Events       EventsCredentials       Bearer   `{ Error: { Message } }`
  *   UsersProtocol        Users        UsersCredentials        Bearer   `{ code, message }`
  *   OAuthProtocol        OAuth        OAuthCredentials        Basic    `{ error, error_description }`
  *   PartnershipProtocol  Partnership  PartnershipCredentials  Bearer   `{ code, error, description }`
  *
- * OnepasswordProtocol (Connect):
+ * ConnectProtocol:
  *
  *   request:  credentials -> `Authorization: Bearer <token>` + base URL
  *             (default http://localhost:8080/v1), resolved from the
@@ -27,18 +27,17 @@ import {
  *             operation's typed error classes by status, then the shared
  *             HTTP-status classes, then {@link UnknownOnepasswordError}.
  */
-import * as Effect from "effect/Effect";
 import type * as HttpClient from "effect/http/HttpClient";
 import type * as HttpClientError from "effect/http/HttpClientError";
 import type * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 import {
-  Credentials,
+  ConnectCredentials,
   EventsCredentials,
   OAuthCredentials,
   PartnershipCredentials,
   UsersCredentials,
-  type Config,
+  type ConnectConfig,
   type EventsConfig,
   type OAuthConfig,
   type PartnershipConfig,
@@ -60,7 +59,7 @@ export type OnepasswordOpError =
   | OnepasswordParseError;
 
 /** Context (requirements) of every generated Connect operation. */
-export type OnepasswordOpContext = Credentials | HttpClient.HttpClient;
+export type ConnectOpContext = ConnectCredentials | HttpClient.HttpClient;
 /** Context (requirements) of every generated Events API operation. */
 export type EventsOpContext = EventsCredentials | HttpClient.HttpClient;
 /** Context (requirements) of every generated Users API operation. */
@@ -69,26 +68,6 @@ export type UsersOpContext = UsersCredentials | HttpClient.HttpClient;
 export type OAuthOpContext = OAuthCredentials | HttpClient.HttpClient;
 /** Context (requirements) of every generated Partnership API operation. */
 export type PartnershipOpContext = PartnershipCredentials | HttpClient.HttpClient;
-
-export const OnepasswordProtocol: Layer.Layer<API.Protocol> =
-  /*@__PURE__*/ makeRestProtocol<Config>({
-    // The Credentials service holds an effect -- resolving it here (per
-    // request, on the calling fiber) picks up context-provided credentials.
-    credentials: /*@__PURE__*/ Effect.flatMap(Credentials, (resolve) => resolve),
-    baseUrl: (creds) => creds.apiBaseUrl,
-    headers: (creds) => ({
-      Authorization: `Bearer ${Redacted.value(creds.apiKey)}`,
-    }),
-    // Connect's error body is `{ status?: number, message: string }` -- the
-    // factory's default lenient envelope covers `message`.
-    unknownError: ({ code, message, body }) =>
-      new UnknownOnepasswordError({
-        code: typeof code === "string" ? code : code !== undefined ? String(code) : undefined,
-        message,
-        body,
-      }),
-    parseError: ({ body, cause }) => new OnepasswordParseError({ body, cause }),
-  });
 
 const unknownError = ({ code, message, body }: RestErrorInfo) =>
   new UnknownOnepasswordError({
@@ -104,6 +83,20 @@ const record = (body: unknown): Record<string, unknown> | undefined =>
   body !== null && typeof body === "object" ? (body as Record<string, unknown>) : undefined;
 
 const trimBase = (url: string) => url.replace(/\/+$/, "");
+
+/** Connect server API (default `http://localhost:8080/v1`). */
+export const ConnectProtocol: Layer.Layer<API.Protocol> =
+  /*@__PURE__*/ makeRestProtocol<ConnectConfig>({
+    credentials: ConnectCredentials,
+    baseUrl: (creds) => trimBase(creds.apiBaseUrl),
+    headers: (creds) => ({
+      Authorization: `Bearer ${Redacted.value(creds.token)}`,
+    }),
+    // `{ status?: number, message: string }` -- the factory's default
+    // lenient envelope covers `message`.
+    unknownError,
+    parseError,
+  });
 
 /** Events API at `https://events.1password.com` (or the account's regional host). */
 export const EventsProtocol: Layer.Layer<API.Protocol> =

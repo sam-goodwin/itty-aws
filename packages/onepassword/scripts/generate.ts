@@ -4,7 +4,7 @@ import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
  * generate — turn the Smithy JSON models in .generated-specs into the
  * 1Password Effect SDK, one service module per API:
  *
- *   onepassword.json  → src/services/onepassword.ts  OnepasswordProtocol  (Connect)
+ *   connect.json      → src/services/connect.ts      ConnectProtocol
  *   events.json       → src/services/events.ts       EventsProtocol
  *   users.json        → src/services/users.ts        UsersProtocol
  *   oauth.json        → src/services/oauth.ts        OAuthProtocol
@@ -35,9 +35,9 @@ interface Api {
 
 const APIS: Record<string, Api> = {
   "com.onepassword.connect": {
-    protocol: "OnepasswordProtocol",
-    contextType: "OnepasswordOpContext",
-    sourceNote: ".generated-specs (specs/spec-mirror-onepassword)",
+    protocol: "ConnectProtocol",
+    contextType: "ConnectOpContext",
+    sourceNote: ".generated-specs (specs/spec-mirror-onepassword, Connect API)",
   },
   "com.onepassword.events": {
     protocol: "EventsProtocol",

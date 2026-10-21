@@ -15,11 +15,11 @@ npm install @distilled.cloud/onepassword effect
 
 ## APIs
 
-Each API authenticates differently, so each has its own credentials layer and protocol.
+Each API is a service namespace with its own credentials layer and protocol. A service is also importable on its own, e.g. `@distilled.cloud/onepassword/connect`.
 
 | API         | Operations                                    | Credentials                             | Protocol              |
 | ----------- | --------------------------------------------- | --------------------------------------- | --------------------- |
-| Connect     | package root (`Onepassword.getVaults`)        | `CredentialsFromEnv`                    | `OnepasswordProtocol` |
+| Connect     | `Onepassword.connect.getVaults`, …        | `ConnectCredentialsFromEnv`                  | `ConnectProtocol` |
 | Events      | `Onepassword.events.getAuditEventsV2`, …      | `EventsCredentialsFromEnv`              | `EventsProtocol`      |
 | Users       | `Onepassword.users.listUsers`, …              | `UsersCredentialsFromEnv`               | `UsersProtocol`       |
 | OAuth       | `Onepassword.oauth.requestAccessToken`, …     | `OAuthCredentialsFromEnv`               | `OAuthProtocol`       |
@@ -35,14 +35,14 @@ import * as FetchHttpClient from "effect/http/FetchHttpClient";
 import * as Onepassword from "@distilled.cloud/onepassword";
 
 const program = Effect.gen(function* () {
-  const vaults = yield* Onepassword.getVaults({});
+  const vaults = yield* Onepassword.connect.getVaults({});
   return vaults;
 });
 
 const Live = Layer.mergeAll(
   FetchHttpClient.layer,
-  Onepassword.CredentialsFromEnv,
-  Onepassword.OnepasswordProtocol,
+  Onepassword.ConnectCredentialsFromEnv,
+  Onepassword.ConnectProtocol,
 );
 
 program.pipe(Effect.provide(Live), Effect.runPromise);
@@ -110,7 +110,7 @@ regional host: `*.1password.ca`, `*.1password.eu` or `*.ent.1password.com`.
 
 The Users credentials exchange the OAuth application's client ID and secret
 for a 15-minute access token at `POST /v1/oauth/token`, cache it, and request a
-new one shortly before it expires. To pass values directly, use
-`usersCredentials({ clientId, clientSecret })` or
-`usersCredentialsFromAccessToken({ accessToken })`; secrets are
-`Redacted<string>`.
+new one shortly before it expires. To pass values directly, use `connectCredentials({ token })`,
+`eventsCredentials({ token })`, `usersCredentials({ clientId, clientSecret })`,
+`usersCredentialsFromAccessToken({ accessToken })`, `oauthCredentials(...)` or
+`partnershipCredentials({ token })`; secrets are `Redacted<string>`.
