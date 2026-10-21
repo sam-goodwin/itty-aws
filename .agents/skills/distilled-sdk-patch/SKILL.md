@@ -203,7 +203,7 @@ a different question — which patches the spec has absorbed — once the spec
 has moved underneath them. That is the `distilled-sdk-update` skill's job.
 
 Then check the generated TypeScript reads the way a caller needs, run
-`pnpm exec tsc -b packages/<pkg> --noCheck false`, and commit the patch
+`pnpm exec tsrs -b packages/<pkg> --noCheck false`, and commit the patch
 with the `.generated-specs/` and `src/services/` it produced, as
 `fix(<pkg>): …` naming what callers gain ("type 422s observed on the live
 API").
