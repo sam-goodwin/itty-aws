@@ -13,7 +13,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>You do not have sufficient permissions to perform this operation.</p>",
+        "smithy.api#documentation": "<p>You don't have permission to perform this operation. Check the IAM policies for your identity and any resource-based policy on the web function.</p>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 403
       }
@@ -72,7 +72,7 @@
         "functionCount": {
           "target": "smithy.api#Integer",
           "traits": {
-            "smithy.api#documentation": "<p>The number of web functions in your account in the current AWS Region.</p>",
+            "smithy.api#documentation": "<p>The number of web functions in your account in the current AWS Region. This count includes web functions in all states, not only functions in the <code>Active</code> state.</p>",
             "smithy.api#range": {
               "min": 0
             },
@@ -125,7 +125,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The log level for application logs. Possible values: <code>TRACE</code>, <code>DEBUG</code>, <code>INFO</code>, <code>WARN</code>, <code>ERROR</code>, <code>FATAL</code>.</p>"
+        "smithy.api#documentation": "<p>The log level for application logs. Lambda sends logs at the selected level and at all more severe levels. Possible values, from least to most severe:</p> <ul> <li> <p> <code>TRACE</code> – The most detailed information, for tracing code paths.</p> </li> <li> <p> <code>DEBUG</code> – Detailed information for debugging.</p> </li> <li> <p> <code>INFO</code> – General information about application progress.</p> </li> <li> <p> <code>WARN</code> – Potential issues that don't prevent the application from running.</p> </li> <li> <p> <code>ERROR</code> – Errors that prevent an operation from completing.</p> </li> <li> <p> <code>FATAL</code> – Severe errors that cause the application to stop.</p> </li> </ul>"
       }
     },
     "com.amazonaws.lambdaweb#AuthType": {
@@ -145,7 +145,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The authorization type for a web function endpoint. Possible values: <code>ApplicationManaged</code> (the function handles authorization), <code>IamAuth</code> (Lambda authorizes requests with AWS SigV4 and IAM).</p>"
+        "smithy.api#documentation": "<p>The authorization type for a web function endpoint.</p> <p>Valid values:</p> <ul> <li> <p> <code>ApplicationManaged</code> – Your application handles authorization.</p> </li> <li> <p> <code>IamAuth</code> – Lambda uses IAM to authorize requests, which must be signed with Signature Version 4 (SigV4).</p> </li> </ul>"
       }
     },
     "com.amazonaws.lambdaweb#AutoDeploymentMode": {
@@ -165,7 +165,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The auto-deployment mode for a web function endpoint. Possible values: <code>LatestRevision</code> (endpoint automatically serves the newest revision), <code>Disabled</code> (revision routing is fixed until explicitly changed).</p>"
+        "smithy.api#documentation": "<p>The auto-deployment mode for a web function endpoint.</p> <p>Valid values:</p> <ul> <li> <p> <code>LatestRevision</code> – The endpoint automatically serves the newest revision.</p> </li> <li> <p> <code>Disabled</code> – Revision routing stays fixed until you change it.</p> </li> </ul>"
       }
     },
     "com.amazonaws.lambdaweb#BuildConfig": {
@@ -229,7 +229,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request conflicts with the current state of the resource. Resolve the conflict and try again.</p>",
+        "smithy.api#documentation": "<p>The request conflicts with the current state of the resource. For example, the resource is being modified by another request, you tried to delete a revision that is serving traffic on an endpoint, or the policy revision ID that you specified doesn't match the current policy. Resolve the conflict and try again.</p>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 409
       }
@@ -263,6 +263,9 @@
         },
         {
           "target": "com.amazonaws.lambdaweb#ValidationException"
+        },
+        {
+          "target": "aws.synthetic#ExecutionRoleNotAssumable"
         }
       ],
       "traits": {
@@ -281,7 +284,7 @@
           },
           "createsResources": ["webFunction"]
         },
-        "smithy.api#documentation": "<p>Creates a web function with an initial revision and endpoint. To create a web function, you provide the function name, revision configuration (code and service settings), and endpoint configuration.</p> <p>To use this operation, you must have the <code>CreateWebFunction</code> permission on the web function. You don't need separate permissions for the initial revision or endpoint.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Creates a web function with an initial revision and endpoint. To create a web function, you provide the function name, revision configuration (code and service settings), and endpoint configuration.</p> <p>To use this operation, you must have the <code>CreateWebFunction</code> permission on the web function. You don't need separate permissions for the initial revision or endpoint.</p>",
         "smithy.api#http": {
           "method": "PUT",
           "uri": "/2025-03-07/web-functions",
@@ -332,7 +335,7 @@
           },
           "createsResources": ["webFunctionEndpoint"]
         },
-        "smithy.api#documentation": "<p>Creates an endpoint for a web function. An endpoint exposes the web function over HTTPS and routes traffic to one or more revisions.</p> <p>To use this operation, you must have the <code>CreateWebFunctionEndpoint</code> permission on the web function, not on the endpoint being created.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Creates an endpoint for a web function. An endpoint exposes the web function over HTTPS and routes traffic to one or more revisions.</p> <p>To use this operation, you must have the <code>CreateWebFunctionEndpoint</code> permission on the web function, not on the endpoint being created.</p>",
         "smithy.api#http": {
           "method": "PUT",
           "uri": "/2025-03-07/web-functions/{functionName}/endpoints",
@@ -347,7 +350,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function to create the endpoint for. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function to create the endpoint for.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -355,7 +358,7 @@
         "endpointName": {
           "target": "com.amazonaws.lambdaweb#EndpointName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the endpoint to create. The name can contain letters, numbers, hyphens (-), and underscores (_), and can't begin or end with a hyphen or an underscore. The length constraint applies only to the full ARN. If you specify only the endpoint name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The name of the endpoint to create. The name can contain letters, numbers, hyphens (-), and underscores (_), and can't begin or end with a hyphen or an underscore. The name is limited to 64 characters in length.</p>",
             "smithy.api#required": {}
           }
         },
@@ -368,27 +371,27 @@
         "endpointType": {
           "target": "com.amazonaws.lambdaweb#EndpointType",
           "traits": {
-            "smithy.api#documentation": "<p>The type of endpoint to create. Determines how traffic is served and routed across Regions.</p>",
+            "smithy.api#documentation": "<p>The type of endpoint to create. Determines how traffic is served and routed across Regions.</p> <p>Valid values:</p> <ul> <li> <p> <code>HomeRegion</code> – Serves traffic from the Region where you created the web function.</p> </li> <li> <p> <code>MultiRegion</code> – Replicates across the Regions that you choose and routes each request to the nearest one.</p> </li> <li> <p> <code>PerRegion</code> – Creates a separate endpoint in each Region that you choose.</p> </li> </ul>",
             "smithy.api#required": {}
           }
         },
         "authType": {
           "target": "com.amazonaws.lambdaweb#AuthType",
           "traits": {
-            "smithy.api#documentation": "<p>The authorization type for the endpoint.</p>",
+            "smithy.api#documentation": "<p>The authorization type for the endpoint.</p> <p>Valid values:</p> <ul> <li> <p> <code>ApplicationManaged</code> – Your application handles authorization.</p> </li> <li> <p> <code>IamAuth</code> – Lambda uses IAM to authorize requests, which must be signed with Signature Version 4 (SigV4).</p> </li> </ul>",
             "smithy.api#required": {}
           }
         },
         "autoDeploymentMode": {
           "target": "com.amazonaws.lambdaweb#AutoDeploymentMode",
           "traits": {
-            "smithy.api#documentation": "<p>The auto-deployment mode for the endpoint. Controls whether the endpoint automatically serves the newest revision. If you don't specify a value, the default is <code>Disabled</code>, and this default is returned in the response.</p>"
+            "smithy.api#documentation": "<p>The auto-deployment mode for the endpoint. Controls whether the endpoint automatically serves the newest revision. If you don't specify a value, the default is <code>Disabled</code>, and this default is returned in the response.</p> <p>Valid values:</p> <ul> <li> <p> <code>LatestRevision</code> – The endpoint automatically serves the newest revision.</p> </li> <li> <p> <code>Disabled</code> – Revision routing stays fixed until you change it.</p> </li> </ul>"
           }
         },
         "revisionWeights": {
           "target": "com.amazonaws.lambdaweb#RevisionWeightList",
           "traits": {
-            "smithy.api#documentation": "<p>A list of revision weights that determine how traffic is distributed across revisions. Up to two revisions can be specified for canary or blue-green deployments.</p>"
+            "smithy.api#documentation": "<p>A list of revision weights that determine how traffic is distributed across revisions. You can specify up to two revisions for canary or blue-green deployments.</p>"
           }
         },
         "regions": {
@@ -546,7 +549,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function. The name can contain letters, numbers, hyphens (-), and underscores (_), and can't begin or end with a hyphen or an underscore. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The name of the web function. The name can contain letters, numbers, hyphens (-), and underscores (_), and can't begin or end with a hyphen or an underscore. The name is limited to 64 characters in length.</p>",
             "smithy.api#required": {}
           }
         },
@@ -678,6 +681,9 @@
         },
         {
           "target": "com.amazonaws.lambdaweb#ValidationException"
+        },
+        {
+          "target": "aws.synthetic#ExecutionRoleNotAssumable"
         }
       ],
       "traits": {
@@ -691,7 +697,7 @@
           },
           "createsResources": ["webFunctionRevision"]
         },
-        "smithy.api#documentation": "<p>Creates an immutable revision for a web function. A revision represents a specific version of the function code and configuration.</p> <p>To use this operation, you must have the <code>CreateWebFunctionRevision</code> permission on the web function, not on the revision being created.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Creates an immutable revision for a web function. A revision represents a specific version of the function code and configuration.</p> <p>To use this operation, you must have the <code>CreateWebFunctionRevision</code> permission on the web function, not on the revision being created.</p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/2025-03-07/web-functions/{functionName}/revisions",
@@ -705,7 +711,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -865,7 +871,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Removes the resource-based policy from a web function.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Removes the resource-based policy from a web function.</p>",
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/2025-03-07/resource-policy/{resourceArn}",
@@ -935,7 +941,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Deletes a web function and all of its associated revisions and endpoints.</p> <p>To use this operation, you must have the <code>DeleteWebFunction</code> permission on the web function. You don't need the <code>DeleteWebFunctionRevision</code> or <code>DeleteWebFunctionEndpoint</code> permission.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Deletes a web function and all of its associated revisions and endpoints.</p> <p>To use this operation, you must have the <code>DeleteWebFunction</code> permission on the web function. You don't need the <code>DeleteWebFunctionRevision</code> or <code>DeleteWebFunctionEndpoint</code> permission.</p>",
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/2025-03-07/web-functions/{functionName}",
@@ -982,7 +988,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Deletes a web function endpoint.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Deletes a web function endpoint.</p>",
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/2025-03-07/web-functions/{functionName}/endpoints/{endpointName}",
@@ -997,7 +1003,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1005,7 +1011,7 @@
         "endpointName": {
           "target": "com.amazonaws.lambdaweb#EndpointName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the endpoint to delete. You can specify the endpoint name or the endpoint ARN. The length constraint applies only to the full ARN. If you specify only the endpoint name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The endpoint to delete.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The endpoint name, for example <code>my-endpoint</code>.</p> </li> <li> <p>The endpoint ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the endpoint name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1022,7 +1028,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function to delete. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function to delete.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1070,7 +1076,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Deletes a web function revision. You cannot delete a revision that is currently serving traffic on an endpoint.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Deletes a web function revision. You cannot delete a revision that is currently serving traffic on an endpoint.</p>",
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/2025-03-07/web-functions/{functionName}/revisions/{revisionId}",
@@ -1085,7 +1091,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1093,7 +1099,7 @@
         "revisionId": {
           "target": "com.amazonaws.lambdaweb#RevisionId",
           "traits": {
-            "smithy.api#documentation": "<p>The identifier of the revision to delete. You can specify the revision identifier or the revision ARN. The length constraint applies only to the full ARN.</p>",
+            "smithy.api#documentation": "<p>The revision to delete.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The revision identifier.</p> </li> <li> <p>The revision ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -1138,7 +1144,7 @@
         "endpointName": {
           "target": "com.amazonaws.lambdaweb#EndpointName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the endpoint. The name can contain letters, numbers, hyphens (-), and underscores (_), and can't begin or end with a hyphen or an underscore. The length constraint applies only to the full ARN. If you specify only the endpoint name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The name of the endpoint. The name can contain letters, numbers, hyphens (-), and underscores (_), and can't begin or end with a hyphen or an underscore. The name is limited to 64 characters in length.</p>",
             "smithy.api#required": {}
           }
         },
@@ -1151,21 +1157,21 @@
         "endpointType": {
           "target": "com.amazonaws.lambdaweb#EndpointType",
           "traits": {
-            "smithy.api#documentation": "<p>The type of endpoint. Determines how traffic is served and routed across Regions.</p>",
+            "smithy.api#documentation": "<p>The type of endpoint. Determines how traffic is served and routed across Regions.</p> <p>Valid values:</p> <ul> <li> <p> <code>HomeRegion</code> – Serves traffic from the Region where you created the web function.</p> </li> <li> <p> <code>MultiRegion</code> – Replicates across the Regions that you choose and routes each request to the nearest one.</p> </li> <li> <p> <code>PerRegion</code> – Creates a separate endpoint in each Region that you choose.</p> </li> </ul>",
             "smithy.api#required": {}
           }
         },
         "authType": {
           "target": "com.amazonaws.lambdaweb#AuthType",
           "traits": {
-            "smithy.api#documentation": "<p>The authorization type for the endpoint.</p>",
+            "smithy.api#documentation": "<p>The authorization type for the endpoint.</p> <p>Valid values:</p> <ul> <li> <p> <code>ApplicationManaged</code> – Your application handles authorization.</p> </li> <li> <p> <code>IamAuth</code> – Lambda uses IAM to authorize requests, which must be signed with Signature Version 4 (SigV4).</p> </li> </ul>",
             "smithy.api#required": {}
           }
         },
         "autoDeploymentMode": {
           "target": "com.amazonaws.lambdaweb#AutoDeploymentMode",
           "traits": {
-            "smithy.api#documentation": "<p>The auto-deployment mode for the endpoint. If you don't specify a value, the default is <code>Disabled</code>, and this default is returned in the response.</p>"
+            "smithy.api#documentation": "<p>The auto-deployment mode for the endpoint. If you don't specify a value, the default is <code>Disabled</code>, and this default is returned in the response.</p> <p>Valid values:</p> <ul> <li> <p> <code>LatestRevision</code> – The endpoint automatically serves the newest revision.</p> </li> <li> <p> <code>Disabled</code> – Revision routing stays fixed until you change it.</p> </li> </ul>"
           }
         },
         "regions": {
@@ -1229,7 +1235,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The state of a web function endpoint. Possible values: <code>Pending</code> (endpoint is being created), <code>Active</code> (endpoint is ready to receive traffic), <code>Failed</code> (endpoint creation or update failed), <code>Deleting</code> (endpoint is being deleted).</p>"
+        "smithy.api#documentation": "<p>The state of a web function endpoint. Possible values:</p> <ul> <li> <p> <code>Pending</code> – The endpoint is being created.</p> </li> <li> <p> <code>Active</code> – The endpoint is ready to receive traffic.</p> </li> <li> <p> <code>Failed</code> – Endpoint creation or update failed.</p> </li> <li> <p> <code>Deleting</code> – The endpoint is being deleted.</p> </li> </ul>"
       }
     },
     "com.amazonaws.lambdaweb#EndpointType": {
@@ -1255,7 +1261,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The type of a web function endpoint. Possible values: <code>HomeRegion</code> (serves from the Region where the function was created), <code>MultiRegion</code> (replicates across chosen Regions and routes to the nearest), <code>PerRegion</code> (separate endpoint per Region).</p>"
+        "smithy.api#documentation": "<p>The type of a web function endpoint.</p> <p>Valid values:</p> <ul> <li> <p> <code>HomeRegion</code> – Serves traffic from the Region where you created the web function.</p> </li> <li> <p> <code>MultiRegion</code> – Replicates across the Regions that you choose and routes each request to the nearest one.</p> </li> <li> <p> <code>PerRegion</code> – Creates a separate endpoint in each Region that you choose.</p> </li> </ul>"
       }
     },
     "com.amazonaws.lambdaweb#EndpointUpdateStatus": {
@@ -1281,7 +1287,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The status of the most recent update to an endpoint. Possible values: <code>InProgress</code> (update is in progress), <code>Successful</code> (update completed successfully), <code>Failed</code> (update failed).</p>"
+        "smithy.api#documentation": "<p>The status of the most recent update to an endpoint. Possible values:</p> <ul> <li> <p> <code>InProgress</code> – The update is in progress.</p> </li> <li> <p> <code>Successful</code> – The update completed successfully.</p> </li> <li> <p> <code>Failed</code> – The update failed.</p> </li> </ul>"
       }
     },
     "com.amazonaws.lambdaweb#EnvironmentVariables": {
@@ -1603,7 +1609,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The state of a web function. Possible values: <code>Pending</code> (function is being created), <code>Active</code> (function is ready to use), <code>Failed</code> (function creation or update failed), <code>Deleting</code> (function is being deleted).</p>"
+        "smithy.api#documentation": "<p>The state of a web function. Possible values:</p> <ul> <li> <p> <code>Pending</code> – The function is being created.</p> </li> <li> <p> <code>Active</code> – The function is ready to use.</p> </li> <li> <p> <code>Failed</code> – Function creation or update failed.</p> </li> <li> <p> <code>Deleting</code> – The function is being deleted.</p> </li> </ul>"
       }
     },
     "com.amazonaws.lambdaweb#FunctionSummary": {
@@ -1698,7 +1704,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Retrieves the resource-based policy attached to a web function.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Retrieves the resource-based policy attached to a web function.</p>",
         "smithy.api#http": {
           "method": "GET",
           "uri": "/2025-03-07/resource-policy/{resourceArn}"
@@ -1771,7 +1777,7 @@
         "aws.iam#iamAction": {
           "documentation": "Grants permission to view the account settings"
         },
-        "smithy.api#documentation": "<p>Retrieves details about your AWS Lambda Web Functions account settings for the current AWS Region, including the quotas that apply to web functions and your current usage.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Retrieves details about your AWS Lambda Web Functions account settings for the current AWS Region, including the quotas that apply to web functions and your current usage.</p>",
         "smithy.api#http": {
           "method": "GET",
           "uri": "/2025-03-07/web-account-settings"
@@ -1843,7 +1849,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Retrieves details about a web function, including its current state and configuration.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Retrieves details about a web function, including its current state and configuration.</p>",
         "smithy.api#http": {
           "method": "GET",
           "uri": "/2025-03-07/web-functions/{functionName}"
@@ -1958,7 +1964,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Retrieves details about a web function endpoint, including its current state, configuration, and domain name.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Retrieves details about a web function endpoint, including its current state, configuration, and domain name.</p>",
         "smithy.api#http": {
           "method": "GET",
           "uri": "/2025-03-07/web-functions/{functionName}/endpoints/{endpointName}"
@@ -2081,7 +2087,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -2089,7 +2095,7 @@
         "endpointName": {
           "target": "com.amazonaws.lambdaweb#EndpointName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the endpoint to retrieve. You can specify the endpoint name or the endpoint ARN. The length constraint applies only to the full ARN. If you specify only the endpoint name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The endpoint to retrieve.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The endpoint name, for example <code>my-endpoint</code>.</p> </li> <li> <p>The endpoint ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the endpoint name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -2231,7 +2237,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function to retrieve. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function to retrieve.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -2327,7 +2333,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Retrieves details about a web function revision, including its state and configuration.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Retrieves details about a web function revision, including its state and configuration.</p>",
         "smithy.api#http": {
           "method": "GET",
           "uri": "/2025-03-07/web-functions/{functionName}/revisions/{revisionId}"
@@ -2380,7 +2386,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -2388,7 +2394,7 @@
         "revisionId": {
           "target": "com.amazonaws.lambdaweb#RevisionId",
           "traits": {
-            "smithy.api#documentation": "<p>The identifier of the revision to retrieve. You can specify the revision identifier or the revision ARN. The length constraint applies only to the full ARN.</p>",
+            "smithy.api#documentation": "<p>The revision to retrieve.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The revision identifier.</p> </li> <li> <p>The revision ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -2491,7 +2497,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>An internal server error occurred. Try again later.</p>",
+        "smithy.api#documentation": "<p>The request failed because of an internal error in the service. Retry the request. If the error persists, open a support case.</p>",
         "smithy.api#error": "server",
         "smithy.api#httpError": 500,
         "smithy.api#retryable": {}
@@ -2544,13 +2550,6 @@
           "arnNamespace": "lambda",
           "endpointPrefix": "lambda"
         },
-        "aws.api#tagEnabled": {
-          "apiConfig": {
-            "tagApi": "com.amazonaws.lambdaweb#TagResource",
-            "untagApi": "com.amazonaws.lambdaweb#UntagResource",
-            "listTagsApi": "com.amazonaws.lambdaweb#ListTags"
-          }
-        },
         "aws.auth#sigv4": {
           "name": "lambda"
         },
@@ -2583,7 +2582,7 @@
         "aws.iam#supportedPrincipalTypes": ["Root", "IAMUser", "IAMRole", "FederatedUser"],
         "aws.protocols#restJson1": {},
         "smithy.api#cors": {},
-        "smithy.api#documentation": "<note> <p>The AWS Lambda Web Functions APIs (<code>LambdaWeb</code> namespace) are experimental and for internal AWS use only. They are not yet available to external customers.</p> </note> <p>AWS Lambda Web Functions let you run web applications and APIs as HTTP servers on Lambda. A web function has one or more immutable revisions (code and configuration) and one or more endpoints that expose it over HTTPS.</p>",
+        "smithy.api#documentation": "<p>AWS Lambda Web Functions is a capability of AWS Lambda that you can use to run web applications and API backends as serverless HTTP servers. Your code listens on a network port and handles requests directly. You can use familiar Node.js web frameworks such as Express, Hono, or React Router with no Lambda-specific adapters or wrappers. You develop and run your server locally like any other Node.js web app.</p> <p>Lambda creates an HTTPS endpoint, manages the execution environments, and scales your application with traffic, including to zero when it's idle. To reduce latency for globally distributed users, you can deploy across multiple AWS Regions behind a single endpoint.</p> <p>A Web Function has one or more immutable revisions (code and configuration) and one or more endpoints that expose it over HTTPS.</p> <p>Use Web Functions for workloads that receive and respond to HTTP traffic directly. Common use cases include:</p> <ul> <li> <p>Web applications – Deploy full-stack or front-end applications that serve HTML, assets, and API routes from a single deployment.</p> </li> <li> <p>REST and GraphQL APIs – Build API backends that serve high request volumes.</p> </li> <li> <p>Microservices – Run HTTP services that scale independently with traffic, including to zero when idle.</p> </li> <li> <p>Server-side rendering (SSR) – Serve pages that are rendered on the server at request time rather than pre-built. A Web Function runs your framework's production server directly. This suits applications that render personalized or frequently changing content on each request.</p> </li> <li> <p>Streaming responses – Stream output to the client as it is produced, such as responses from a large language model.</p> </li> </ul> <p>For event-driven processing, such as handling queue messages or file uploads, use <a href=\"https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions-chapter.html\">Lambda Event Functions</a> instead. For more information about Web Functions, see <a href=\"https://docs.aws.amazon.com/lambda/latest/dg/web-functions.html\">Lambda Web Functions</a> in the <i>AWS Lambda Developer Guide</i>.</p>",
         "smithy.api#title": "Lambda Web",
         "smithy.rules#endpointBdd": {
           "version": "1.1",
@@ -3428,7 +3427,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Returns a list of tags applied to a web function.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Returns a list of tags applied to a web function.</p>",
         "smithy.api#http": {
           "method": "GET",
           "uri": "/2025-03-07/tags/{resource}"
@@ -3503,7 +3502,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Lists endpoints for a web function. We recommend using pagination to ensure that the operation returns quickly and successfully.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Lists endpoints for a web function. Use pagination to ensure that the operation returns quickly and successfully.</p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/2025-03-07/web-functions/{functionName}/list-endpoints"
@@ -3523,7 +3522,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -3531,7 +3530,7 @@
         "filters": {
           "target": "com.amazonaws.lambdaweb#FilterList",
           "traits": {
-            "smithy.api#documentation": "<p>A list of filters to apply to the results. Supported filter names: <code>authType</code>, <code>autoDeploymentMode</code>, <code>endpointType</code>, <code>state</code>, and <code>updateStatus</code>.</p>"
+            "smithy.api#documentation": "<p>A list of filters to apply to the results. Supported filter names: <code>authType</code>, <code>autoDeploymentMode</code>, <code>endpointType</code>, <code>state</code>, and <code>updateStatus</code>. If you don't specify a filter, the operation returns all endpoints for the web function.</p>"
           }
         },
         "maxResults": {
@@ -3566,7 +3565,7 @@
         "nextToken": {
           "target": "com.amazonaws.lambdaweb#NextToken",
           "traits": {
-            "smithy.api#documentation": "<p>The pagination token that's included if more results are available.</p>"
+            "smithy.api#documentation": "<p>The pagination token that's included if more results are available. Use this value as the <code>nextToken</code> request parameter in a subsequent call to retrieve the next page of results.</p>"
           }
         }
       },
@@ -3609,7 +3608,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Lists revisions for a web function. We recommend using pagination to ensure that the operation returns quickly and successfully.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Lists revisions for a web function. Use pagination to ensure that the operation returns quickly and successfully.</p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/2025-03-07/web-functions/{functionName}/list-revisions"
@@ -3629,7 +3628,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -3637,7 +3636,7 @@
         "filters": {
           "target": "com.amazonaws.lambdaweb#FilterList",
           "traits": {
-            "smithy.api#documentation": "<p>A list of filters to apply to the results. The only supported filter name is <code>state</code>.</p>"
+            "smithy.api#documentation": "<p>A list of filters to apply to the results. The only supported filter name is <code>state</code>. If you don't specify a filter, the operation returns all revisions for the web function.</p>"
           }
         },
         "maxResults": {
@@ -3672,7 +3671,7 @@
         "nextToken": {
           "target": "com.amazonaws.lambdaweb#NextToken",
           "traits": {
-            "smithy.api#documentation": "<p>The pagination token that's included if more results are available.</p>"
+            "smithy.api#documentation": "<p>The pagination token that's included if more results are available. Use this value as the <code>nextToken</code> request parameter in a subsequent call to retrieve the next page of results.</p>"
           }
         }
       },
@@ -3707,7 +3706,7 @@
         "aws.iam#iamAction": {
           "documentation": "Grants permission to retrieve a list of Lambda web functions"
         },
-        "smithy.api#documentation": "<p>Lists web functions in your account. We recommend using pagination to ensure that the operation returns quickly and successfully.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Lists web functions in your account. Use pagination to ensure that the operation returns quickly and successfully.</p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/2025-03-07/web-functions"
@@ -3727,7 +3726,7 @@
         "filters": {
           "target": "com.amazonaws.lambdaweb#FilterList",
           "traits": {
-            "smithy.api#documentation": "<p>A list of filters to apply to the results. The only supported filter name is <code>state</code>.</p>"
+            "smithy.api#documentation": "<p>A list of filters to apply to the results. The only supported filter name is <code>state</code>. If you don't specify a filter, the operation returns all web functions.</p>"
           }
         },
         "maxResults": {
@@ -3762,7 +3761,7 @@
         "nextToken": {
           "target": "com.amazonaws.lambdaweb#NextToken",
           "traits": {
-            "smithy.api#documentation": "<p>The pagination token that's included if more results are available.</p>"
+            "smithy.api#documentation": "<p>The pagination token that's included if more results are available. Use this value as the <code>nextToken</code> request parameter in a subsequent call to retrieve the next page of results.</p>"
           }
         }
       },
@@ -3863,7 +3862,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Adds or updates a resource-based policy on a web function. A resource-based policy grants permissions to other AWS accounts or services to perform actions on the web function.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Adds or updates a resource-based policy on a web function. A resource-based policy grants permissions to other AWS accounts or services to perform actions on the web function.</p>",
         "smithy.api#http": {
           "method": "PUT",
           "uri": "/2025-03-07/resource-policy/{resourceArn}"
@@ -4060,7 +4059,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The specified resource was not found. Verify the resource identifier and try again.</p>",
+        "smithy.api#documentation": "<p>The specified web function, revision, endpoint, or resource-based policy doesn't exist. Verify the resource identifier and try again.</p>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 404
       }
@@ -4123,7 +4122,7 @@
         "attribute": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the revision attribute that the error applies to. Must be between 1 and 64 characters.</p>",
+            "smithy.api#documentation": "<p>The name of the revision attribute that the error applies to.</p>",
             "smithy.api#length": {
               "min": 1,
               "max": 64
@@ -4134,7 +4133,7 @@
         "errorCode": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>A short, machine-readable code that identifies the error. Must be between 1 and 64 characters.</p>",
+            "smithy.api#documentation": "<p>A short, machine-readable code that identifies the error.</p>",
             "smithy.api#length": {
               "min": 1,
               "max": 64
@@ -4145,7 +4144,7 @@
         "errorMessage": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>A human-readable message describing the error. Must be between 1 and 2048 characters.</p>",
+            "smithy.api#documentation": "<p>A human-readable message describing the error.</p>",
             "smithy.api#length": {
               "min": 1,
               "max": 2048
@@ -4202,7 +4201,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The state of a web function revision. Possible values: <code>Pending</code> (revision is being built), <code>Active</code> (revision is ready to serve traffic), <code>Failed</code> (revision build failed).</p>"
+        "smithy.api#documentation": "<p>The state of a web function revision. Possible values:</p> <ul> <li> <p> <code>Pending</code> – The revision is being built.</p> </li> <li> <p> <code>Active</code> – The revision is ready to serve traffic.</p> </li> <li> <p> <code>Failed</code> – The revision build failed.</p> </li> </ul>"
       }
     },
     "com.amazonaws.lambdaweb#RevisionWeight": {
@@ -4228,7 +4227,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>Specifies a revision and its traffic weight for an endpoint. Up to two revisions can be assigned weights to split traffic for canary or blue-green deployments.</p>"
+        "smithy.api#documentation": "<p>Specifies a revision and its traffic weight for an endpoint. You can assign weights to up to two revisions to split traffic for canary or blue-green deployments.</p>"
       }
     },
     "com.amazonaws.lambdaweb#RevisionWeightList": {
@@ -4280,7 +4279,7 @@
         "bucket": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the Amazon S3 bucket. Must be between 3 and 63 characters.</p>",
+            "smithy.api#documentation": "<p>The name of the Amazon S3 bucket.</p>",
             "smithy.api#length": {
               "min": 3,
               "max": 63
@@ -4292,7 +4291,7 @@
         "key": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "<p>The Amazon S3 object key. Must be between 1 and 1024 characters.</p>",
+            "smithy.api#documentation": "<p>The Amazon S3 object key.</p>",
             "smithy.api#length": {
               "min": 1,
               "max": 1024
@@ -4354,6 +4353,17 @@
             }
           }
         },
+        "egressNetworkConnectorArn": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>The Amazon Resource Name (ARN) of the Lambda network connector that gives the web function access to resources in your VPC. You must specify the fully qualified ARN, including the connector version, which pins the revision to that version. If the network connector is deleted, invocations of revisions that reference it fail. Revisions that specify a network connector support only <code>HomeRegion</code> endpoints, not <code>MultiRegion</code> or <code>PerRegion</code>.</p>",
+            "smithy.api#length": {
+              "min": 1,
+              "max": 2048
+            },
+            "smithy.api#pattern": "^arn:(aws[a-z-]*):lambda:[a-z0-9-]+:[0-9]{12}:network-connector:[a-zA-Z0-9_-]+:[0-9]+$"
+          }
+        },
         "maxConcurrencyPerEnvironment": {
           "target": "smithy.api#Integer",
           "traits": {
@@ -4379,7 +4389,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The service configuration for a web function revision, including execution role, timeout, concurrency, and telemetry settings.</p>"
+        "smithy.api#documentation": "<p>The service configuration for a web function revision, including execution role, timeout, VPC network access, concurrency, and telemetry settings.</p>"
       }
     },
     "com.amazonaws.lambdaweb#ServiceQuotaExceededException": {
@@ -4418,7 +4428,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>A service quota was exceeded. Request a quota increase or reduce usage and try again.</p>",
+        "smithy.api#documentation": "<p>The request would exceed a service quota, such as the maximum number of web functions in your account or the maximum number of revisions or endpoints per web function. Request a quota increase or reduce usage and try again.</p>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 402
       }
@@ -4446,7 +4456,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The log level for system logs from the Lambda runtime. Possible values: <code>DEBUG</code>, <code>INFO</code>, <code>WARN</code>.</p>"
+        "smithy.api#documentation": "<p>The log level for system logs from the Lambda runtime. Lambda sends logs at the selected level and at all more severe levels. Possible values, from least to most severe:</p> <ul> <li> <p> <code>DEBUG</code> – Detailed information about the runtime, for debugging.</p> </li> <li> <p> <code>INFO</code> – General information about the runtime, such as the start and end of execution.</p> </li> <li> <p> <code>WARN</code> – Potential issues detected by the runtime.</p> </li> </ul>"
       }
     },
     "com.amazonaws.lambdaweb#TagKey": {
@@ -4511,7 +4521,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Adds tags to a web function. If a tag key already exists, the existing value is overwritten with the new value.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Adds tags to a web function. If a tag key already exists, the existing value is overwritten with the new value.</p>",
         "smithy.api#http": {
           "method": "POST",
           "uri": "/2025-03-07/tags/{resource}",
@@ -4629,7 +4639,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request was throttled. Reduce the frequency of requests and try again.</p>",
+        "smithy.api#documentation": "<p>The request was denied because it exceeded the request rate that Lambda allows for your account. Reduce the frequency of requests and retry with exponential backoff.</p>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 429,
         "smithy.api#retryable": {
@@ -4673,7 +4683,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Removes tags from a web function.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Removes tags from a web function.</p>",
         "smithy.api#http": {
           "method": "DELETE",
           "uri": "/2025-03-07/tags/{resource}",
@@ -4751,7 +4761,7 @@
             }
           }
         },
-        "smithy.api#documentation": "<p>Updates the configuration of a web function endpoint. You can modify the authorization type, auto-deployment mode, revision weights, scaling, and throttling settings.</p> <note> <p>This API is experimental and for internal AWS use only. It is not yet available to external customers.</p> </note>",
+        "smithy.api#documentation": "<p>Updates the configuration of a web function endpoint. You can modify the authorization type, auto-deployment mode, revision weights, scaling, and throttling settings.</p>",
         "smithy.api#http": {
           "method": "PATCH",
           "uri": "/2025-03-07/web-functions/{functionName}/endpoints/{endpointName}",
@@ -4766,7 +4776,7 @@
         "functionName": {
           "target": "com.amazonaws.lambdaweb#FunctionName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the web function. You can specify the function name or the function ARN. The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The web function.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The function name, for example <code>my-function</code>.</p> </li> <li> <p>The function ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the function name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -4774,7 +4784,7 @@
         "endpointName": {
           "target": "com.amazonaws.lambdaweb#EndpointName",
           "traits": {
-            "smithy.api#documentation": "<p>The name of the endpoint to update. You can specify the endpoint name or the endpoint ARN. The length constraint applies only to the full ARN. If you specify only the endpoint name, it is limited to 64 characters in length.</p>",
+            "smithy.api#documentation": "<p>The endpoint to update.</p> <p>You can specify either of the following:</p> <ul> <li> <p>The endpoint name, for example <code>my-endpoint</code>.</p> </li> <li> <p>The endpoint ARN.</p> </li> </ul> <p>The length constraint applies only to the full ARN. If you specify only the endpoint name, it is limited to 64 characters in length.</p>",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -4782,19 +4792,19 @@
         "description": {
           "target": "com.amazonaws.lambdaweb#Description",
           "traits": {
-            "smithy.api#documentation": "<p>A description of the endpoint.</p>"
+            "smithy.api#documentation": "<p>A description of the endpoint. Omit this field to keep the current description.</p>"
           }
         },
         "authType": {
           "target": "com.amazonaws.lambdaweb#AuthType",
           "traits": {
-            "smithy.api#documentation": "<p>The authorization type for the endpoint.</p>"
+            "smithy.api#documentation": "<p>The authorization type for the endpoint. Omit this field to keep the current authorization type.</p> <p>Valid values:</p> <ul> <li> <p> <code>ApplicationManaged</code> – Your application handles authorization.</p> </li> <li> <p> <code>IamAuth</code> – Lambda uses IAM to authorize requests, which must be signed with Signature Version 4 (SigV4).</p> </li> </ul>"
           }
         },
         "autoDeploymentMode": {
           "target": "com.amazonaws.lambdaweb#AutoDeploymentMode",
           "traits": {
-            "smithy.api#documentation": "<p>The auto-deployment mode for the endpoint.</p>"
+            "smithy.api#documentation": "<p>The auto-deployment mode for the endpoint. Omit this field to keep the current auto-deployment mode.</p> <p>Valid values:</p> <ul> <li> <p> <code>LatestRevision</code> – The endpoint automatically serves the newest revision.</p> </li> <li> <p> <code>Disabled</code> – Revision routing stays fixed until you change it.</p> </li> </ul>"
           }
         },
         "revisionWeights": {
@@ -4958,7 +4968,7 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "<p>The request failed validation. Check the request parameters and try again.</p>",
+        "smithy.api#documentation": "<p>The request failed validation because a parameter was missing, malformed, or outside the allowed range. Check the request parameters and try again.</p>",
         "smithy.api#error": "client",
         "smithy.api#httpError": 400
       }
@@ -5010,9 +5020,6 @@
       "traits": {
         "aws.api#arn": {
           "template": "web-function/{functionName}"
-        },
-        "aws.api#taggable": {
-          "property": "tags"
         },
         "aws.iam#conditionKeys": ["aws:ResourceTag/${TagKey}"],
         "aws.iam#iamResource": {
@@ -5181,6 +5188,26 @@
           "name": "webFunctionRevision"
         },
         "smithy.api#suppress": ["IamResourceTrait"]
+      }
+    },
+    "aws.synthetic#ExecutionRoleNotAssumable": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "<p>A message describing the validation error.</p>",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "aws.codegen#synthetic": {
+          "from": "ValidationException",
+          "message": {
+            "includes": "cannot be assumed by lambda.amazonaws.com"
+          }
+        }
       }
     }
   }

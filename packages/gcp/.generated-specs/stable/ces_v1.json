@@ -12811,6 +12811,9 @@
       },
       "errors": [
         {
+          "target": "com.gcp.ces_v1#AppVersionInUse"
+        },
+        {
           "target": "com.gcp.ces_v1#NotFound"
         },
         {
@@ -14323,6 +14326,23 @@
           "uri": "v1/{+parent}/agents"
         },
         "smithy.api#documentation": "Creates a new agent in the given app."
+      }
+    },
+    "com.gcp.ces_v1#AppVersionInUse": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "smithy.api#documentation": "The app version is still referenced by a deployment that is being deleted (HTTP 400 'Invalid argument provided.'). Retryable until the deployment is gone.",
+        "com.gcp.protocols#errorMatchers": [
+          {
+            "status": 400,
+            "message": {
+              "includes": "Invalid argument provided"
+            }
+          }
+        ]
       }
     }
   }
