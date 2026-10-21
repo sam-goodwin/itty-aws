@@ -4741,7 +4741,12 @@ export const deleteBucketSippy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteObjectsError = NoSuchBucket | InvalidRoute | NoRoute | CloudflareOpError;
+export type DeleteObjectsError =
+  | NoSuchBucket
+  | InvalidRoute
+  | NoRoute
+  | NoSuchKey
+  | CloudflareOpError;
 export const deleteObjects: API.OperationMethod<
   DeleteObjectsRequest,
   DeleteObjectsResponse,
@@ -4750,7 +4755,7 @@ export const deleteObjects: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteObjectsRequest,
   output: DeleteObjectsResponse,
-  errors: [NoSuchBucket, InvalidRoute, NoRoute, CloudflareRateLimited, CloudflareError],
+  errors: [NoSuchBucket, InvalidRoute, NoRoute, NoSuchKey, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
