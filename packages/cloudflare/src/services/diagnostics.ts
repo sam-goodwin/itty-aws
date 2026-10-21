@@ -221,9 +221,7 @@ export interface EndpointHealthchecksListResultItem {
   name?: string | null;
 }
 export type EndpointHealthchecksListResultList = Array<EndpointHealthchecksListResultItem>;
-export type ListEndpointHealthchecksItem = EndpointHealthchecksListResultList;
-export type ListEndpointHealthchecksItemsList = Array<ListEndpointHealthchecksItem>;
-export type ListEndpointHealthchecksResponse = ListEndpointHealthchecksItemsList;
+export type ListEndpointHealthchecksResponse = EndpointHealthchecksListResultList;
 export type EndpointHealthchecksUpdateRequestCheckType = "icmp";
 export interface UpdateEndpointHealthcheckRequest {
   /** Identifier */
@@ -332,7 +330,7 @@ export const listEndpointHealthchecks: API.OperationMethod<
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<ListEndpointHealthchecksRequest>,
-  output: __S(85, __c5, 5) as any as S.Schema<ListEndpointHealthchecksResponse>,
+  output: __S(83, __c5, 3) as any as S.Schema<ListEndpointHealthchecksResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -563,14 +561,8 @@ function __c5(j: number): any {
     case 2:
       return S.Array(__S(81, __c5, 1));
     case 3:
-      return S.suspend(() => __S(82, __c5, 2).pipe(T.EnvelopePayloadRoot())).annotate({
-        identifier: "ListEndpointHealthchecksItem",
-      });
-    case 4:
-      return S.Array(__S(83, __c5, 3));
-    case 5:
       return S.suspend(() =>
-        __S(84, __c5, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(82, __c5, 2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEndpointHealthchecksResponse" });
   }
 }
