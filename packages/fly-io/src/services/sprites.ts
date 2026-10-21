@@ -453,7 +453,7 @@ export interface SpriteListResponse {
   /** Organization slug. */
   name: string;
   /** Token for fetching the next page of results */
-  next_continuation_token?: string;
+  next_continuation_token?: string | null;
   /** Number of returned sprites currently running. */
   running: number;
   /** Organization-wide active sprite limit. */
@@ -1706,7 +1706,7 @@ function __c24(j: number): any {
           cold: S.Number,
           has_more: S.Boolean,
           name: S.String,
-          next_continuation_token: S.optional(S.String),
+          next_continuation_token: S.optional(S.NullOr(S.String)),
           running: S.Number,
           running_limit: S.optional(S.Number),
           sprites: __S(97, __c24, 1),
