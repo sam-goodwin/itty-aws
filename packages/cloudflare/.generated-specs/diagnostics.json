@@ -857,6 +857,21 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.diagnostics#ListEndpointHealthchecksResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.diagnostics#EndpointHealthchecksListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
     "com.cloudflare.diagnostics#UpdateEndpointHealthcheck": {
       "type": "operation",
       "input": {
@@ -963,42 +978,6 @@
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
-      }
-    },
-    "com.cloudflare.diagnostics#ListEndpointHealthchecksItem": {
-      "type": "structure",
-      "members": {
-        "result": {
-          "target": "com.cloudflare.diagnostics#EndpointHealthchecksListResultList",
-          "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
-      }
-    },
-    "com.cloudflare.diagnostics#ListEndpointHealthchecksItemsList": {
-      "type": "list",
-      "member": {
-        "target": "com.cloudflare.diagnostics#ListEndpointHealthchecksItem"
-      }
-    },
-    "com.cloudflare.diagnostics#ListEndpointHealthchecksResponse": {
-      "type": "structure",
-      "members": {
-        "result": {
-          "target": "com.cloudflare.diagnostics#ListEndpointHealthchecksItemsList",
-          "traits": {
-            "com.cloudflare.protocols#envelopePayload": {},
-            "smithy.api#documentation": "The endpoint healthchecks for the account."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {}
       }
     }
   }
