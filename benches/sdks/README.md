@@ -92,3 +92,27 @@ what `npm install` downloads from distilled for one provider.
 
 Latency numbers are microseconds on a shared machine; treat ±10% as noise.
 Sizes are deterministic.
+
+## CI
+
+`.github/workflows/bench.yml` runs `ci.ts` on every PR and comments the
+comparison with main (charts, per-program table, download size). It is the
+same measurement, cut down to finish within the other CI jobs:
+
+- **Programs:** the panel in `ci.json` plus every SDK the PR changes.
+  `bundle` SDKs are only bundled from `src/`; `runtime` SDKs are also built
+  (`tsrs -b`, `bundle-lib.ts`, `strip-lib-docs.ts` for just those packages)
+  and probed. A changed SDK whose `src/` is over `runtimeMaxSrcMB` is only
+  bundled: its `bundle-lib.ts` build alone exceeds the budget.
+- **Cut:** no strict variants, no imports or typecheck suites, no official
+  SDKs, latency sampled for 400 ms (`--budget`), each runtime probe run twice
+  (`--repeats`) keeping the minimum.
+- **Main's numbers:** each push to main runs `ci.ts run --wide` (every SDK)
+  and caches the result as `bench-ci-main-<sha>`. A PR restores its base's
+  entry or the newest one; on a miss it benchmarks the base commit in the
+  same job.
+
+```sh
+node benches/sdks/ci.ts run --out /tmp/pr.json --changed-since origin/main
+node benches/sdks/ci.ts report --head /tmp/pr.json --base /tmp/main.json
+```

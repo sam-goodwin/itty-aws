@@ -1,0 +1,302 @@
+/**
+ * The fast benchmark the `Benchmarks` CI job runs on every PR and every push
+ * to main. Offline, like run.ts, but sized to finish before the other CI jobs:
+ * a fixed panel of SDKs (ci.json) plus the SDKs the change touches, one
+ * process per measurement, no official SDKs, no strict variants.
+ *
+ *   node benches/sdks/ci.ts run --out pr.json [--changed-since <rev>] [--extra a,b] [--wide]
+ *   node benches/sdks/ci.ts report --head pr.json [--base main.json] --out comment.md
+ *
+ * `--wide` (push to main) bundles every SDK and probes every SDK under the
+ * runtime size limit, so a PR that changes any of them has a main number to
+ * compare with. See README.md "CI".
+ */
+import { execFileSync } from "node:child_process";
+import { existsSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { cpus } from "node:os";
+import { join, resolve } from "node:path";
+import { BASELINES, bundle, fixtureSource } from "./src/bundle.ts";
+import { report, type CiRun, type CiProgram } from "./src/ci-report.ts";
+import type { ProbeRequest } from "./src/probe.ts";
+import { packSize } from "./src/size.ts";
+import { loadTargets, resolveImports, type Target } from "./src/targets.ts";
+import {
+  BENCH_DIR,
+  fmtBytes,
+  fmtMs,
+  lastJsonLine,
+  listSdks,
+  log,
+  PACKAGES,
+  pool,
+  readJson,
+  REPO,
+  run,
+} from "./src/util.ts";
+
+const [command, ...rest] = process.argv.slice(2);
+const flags = new Map<string, string | true>();
+for (let i = 0; i < rest.length; i++) {
+  const a = rest[i]!;
+  if (!a.startsWith("--")) throw new Error(`unexpected argument ${a}`);
+  const next = rest[i + 1];
+  if (next === undefined || next.startsWith("--")) flags.set(a.slice(2), true);
+  else flags.set(a.slice(2), (i++, next));
+}
+const flag = (name: string): string | undefined => {
+  const v = flags.get(name);
+  return typeof v === "string" ? v : undefined;
+};
+
+if (command === "report") {
+  const head = readJson<CiRun>(resolve(flag("head")!));
+  const basePath = flag("base");
+  const base = basePath && existsSync(basePath) ? readJson<CiRun>(resolve(basePath)) : undefined;
+  const md = report(head, base, { runUrl: process.env.BENCH_RUN_URL });
+  const out = flag("out");
+  if (out) writeFileSync(out, md);
+  else process.stdout.write(md);
+  process.exit(0);
+}
+if (command !== "run") {
+  console.error(
+    "usage: ci.ts run --out file [--changed-since rev] [--wide] | report --head file [--base file] [--out file]",
+  );
+  process.exit(2);
+}
+
+const t0 = performance.now();
+const outFile = resolve(flag("out") ?? join(BENCH_DIR, ".out", "ci.json"));
+const wide = flags.has("wide");
+const config = readJson<{ runtime: string[]; bundle: string[]; runtimeMaxSrcMB: number }>(
+  join(BENCH_DIR, "ci.json"),
+);
+const git = (...args: string[]) =>
+  execFileSync("git", args, { cwd: REPO, encoding: "utf8" }).trim();
+
+const allSdks = listSdks();
+const srcMB = (pkg: string) => {
+  let bytes = 0;
+  const walk = (dir: string) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const p = join(dir, e.name);
+      if (e.isDirectory()) walk(p);
+      else bytes += statSync(p).size;
+    }
+  };
+  if (existsSync(join(PACKAGES, pkg, "src"))) walk(join(PACKAGES, pkg, "src"));
+  return bytes / 1024 ** 2;
+};
+const smallEnough = (pkg: string) => srcMB(pkg) <= config.runtimeMaxSrcMB;
+
+/** SDK packages with a changed file under packages/<pkg>/ since `rev`. */
+const changedSdks = (rev: string | undefined): string[] => {
+  if (!rev) return [];
+  const files = git("diff", "--name-only", rev, "HEAD", "--", "packages/").split("\n");
+  const pkgs = new Set(files.map((f) => f.split("/")[1]).filter((p): p is string => !!p));
+  return allSdks.filter((p) => pkgs.has(p));
+};
+
+// `--extra a,b` adds SDKs as if changed: the base run of a PR uses the PR's list.
+const changed = [
+  ...new Set([...changedSdks(flag("changed-since")), ...(flag("extra")?.split(",") ?? [])]),
+].filter((p) => allSdks.includes(p));
+const bundleSdks = wide
+  ? allSdks
+  : [...new Set([...config.runtime, ...config.bundle, ...changed])].filter((p) =>
+      allSdks.includes(p),
+    );
+const runtimeSdks = [
+  ...new Set([
+    ...config.runtime,
+    ...(wide ? allSdks.filter(smallEnough) : changed.filter(smallEnough)),
+  ]),
+].filter((p) => allSdks.includes(p));
+
+const targets = loadTargets();
+interface Program {
+  readonly name: string;
+  readonly pkg: string;
+  readonly target: Target;
+}
+const programsOf = (pkgs: string[]): Program[] =>
+  pkgs.flatMap((pkg) =>
+    Object.values(targets[pkg] ?? {}).map((target) => ({
+      name: target.primary ? pkg : `${pkg}~${target.protocol}`,
+      pkg,
+      target,
+    })),
+  );
+const untargeted = [...new Set([...bundleSdks, ...runtimeSdks])].filter((p) => !targets[p]);
+
+const timings: Record<string, number> = {};
+const phase = async (name: string, fn: () => Promise<void>) => {
+  const t = performance.now();
+  log(`== ${name}`);
+  await fn();
+  timings[name] = performance.now() - t;
+  log(`== ${name}: ${fmtMs(timings[name])}`);
+};
+
+const programs: Record<string, CiProgram> = {};
+const entry = (p: Program) =>
+  (programs[p.name] ??= { pkg: p.pkg, protocol: p.target.protocol, label: p.target.label });
+const errors: string[] = [];
+const cores = cpus().length;
+
+//#region bundle (src/, no build)
+
+const bundleBaselines: CiRun["baselines"]["bundle"] = {};
+await phase("bundle", async () => {
+  for (const [name, b] of Object.entries(BASELINES)) {
+    const r = await bundle(`_${name}`, b.source);
+    bundleBaselines[name] = { gzip: r.gzip, bytes: r.bytes };
+  }
+  await pool(programsOf(bundleSdks), Math.max(2, cores - 1), async (p) => {
+    try {
+      const r = await bundle(`ci~${p.name}`, fixtureSource(p.target), p.pkg);
+      entry(p).bundle = {
+        gzip: r.gzip,
+        bytes: r.bytes,
+        modules: r.modules,
+        composition: r.composition,
+      };
+      log(`  ${p.name}: ${fmtBytes(r.gzip)} gzip`);
+    } catch (e) {
+      errors.push(`bundle ${p.name}: ${String(e).slice(0, 300)}`);
+    }
+  });
+});
+
+//#endregion
+
+//#region build (only what the runtime probes import)
+
+await phase("build", async () => {
+  const dirs = ["packages/core", ...runtimeSdks.map((p) => `packages/${p}`)];
+  // The same steps as `pnpm build`, limited to these packages.
+  const steps: Array<[string, string, string[]]> = [
+    ["tsrs", join(REPO, "node_modules", ".bin", "tsrs"), ["-b", ...dirs]],
+    ["bundle-lib", "node", [join(REPO, "scripts", "bundle-lib.ts"), ...dirs.slice(1)]],
+    ["strip-lib-docs", "node", [join(REPO, "scripts", "strip-lib-docs.ts"), ...dirs]],
+  ];
+  for (const [name, cmd, args] of steps) {
+    const t = performance.now();
+    const r = await run(cmd, args, { cwd: REPO });
+    timings[`build: ${name}`] = performance.now() - t;
+    if (r.code !== 0) {
+      console.error(r.stdout.slice(-4000), r.stderr.slice(-4000));
+      throw new Error(`build step failed: ${cmd} ${args.join(" ")}`);
+    }
+  }
+});
+
+//#endregion
+
+//#region size (npm pack of what was built)
+
+const sizes: CiRun["sizes"] = {};
+await phase("size", async () => {
+  await pool(["core", ...runtimeSdks], Math.max(2, cores / 2), async (pkg) => {
+    try {
+      const s = await packSize(join(PACKAGES, pkg));
+      sizes[pkg] = { tarball: s.tarball, unpacked: s.unpacked, files: s.files };
+    } catch (e) {
+      errors.push(`size ${pkg}: ${String(e).slice(0, 300)}`);
+    }
+  });
+});
+
+//#endregion
+
+//#region runtime (lib/, one fresh process per measurement)
+
+const PROBE = join(BENCH_DIR, "src", "probe.ts");
+const probe = async (req: ProbeRequest): Promise<any> => {
+  const res = await run("node", ["--expose-gc", PROBE, JSON.stringify(req)], {
+    timeoutMs: 120_000,
+  });
+  return (
+    lastJsonLine<any>(res.stdout) ?? {
+      fatal: `probe crashed (exit ${res.code}): ${res.stderr.trim().split("\n").slice(-2).join(" | ").slice(0, 300)}`,
+    }
+  );
+};
+const BUDGET_MS = Number(flag("budget") ?? 400);
+const REPEATS = Number(flag("repeats") ?? 2);
+let runtimeBaseline: CiRun["baselines"]["runtime"];
+
+await phase("runtime", async () => {
+  const b = await probe({ mode: "baseline", imports: [], budgetMs: BUDGET_MS });
+  runtimeBaseline = {
+    effectImportMs: b.effectImportMs,
+    effectHeap: b.effectHeap?.heapUsed,
+    mockRoundtripP50Us: b.mockRoundtrip?.p50Us,
+  };
+  // Parallel probes inflate cold-start timings, so keep a few cores idle.
+  await pool(programsOf(runtimeSdks), Math.max(1, Math.floor(cores / 3)), async (p) => {
+    const req: ProbeRequest = {
+      mode: "op",
+      imports: resolveImports(p.target),
+      auth: p.target.auth,
+      call: p.target.call,
+      env: p.target.env,
+      response: p.target.response,
+      budgetMs: BUDGET_MS,
+    };
+    const runs: any[] = [];
+    for (let i = 0; i < REPEATS; i++) runs.push(await probe(req));
+    const ok = runs.filter((r) => !r.fatal && !r.error);
+    if (ok.length === 0) {
+      errors.push(`runtime ${p.name}: ${runs[0].fatal ?? runs[0].error}`);
+      return;
+    }
+    const min = (f: (r: any) => number) => Math.min(...ok.map(f));
+    const counted = await probe({ ...req, objects: true });
+    entry(p).runtime = {
+      importMs: min((r) => r.importMs),
+      importHeap: min((r) => r.importHeap.heapUsed),
+      importObjects: counted.importObjects,
+      firstCallMs: min((r) => r.firstCallMs),
+      firstCallHeap: min((r) => r.firstCallHeap.heapUsed),
+      addedP50Us: min((r) => r.addedP50Us),
+      p50Us: min((r) => r.latency.p50Us),
+      gcPer1k: min((r) => r.gcPer1k),
+      maxRss: min((r) => r.maxRss),
+    };
+    const r = entry(p).runtime!;
+    log(
+      `  ${p.name}: +${r.addedP50Us.toFixed(1)} µs, import ${fmtMs(r.importMs)}, heap ${fmtBytes(r.importHeap)}`,
+    );
+  });
+});
+
+//#endregion
+
+const sha = (() => {
+  // On a PR, actions/checkout checks out the merge commit; its second parent is the PR head.
+  const head = process.env.BENCH_HEAD_SHA;
+  return head || git("rev-parse", "HEAD");
+})();
+
+const result: CiRun = {
+  version: 1,
+  sha,
+  ref: process.env.GITHUB_REF ?? git("rev-parse", "--abbrev-ref", "HEAD"),
+  createdAt: new Date().toISOString(),
+  ...(process.env.BENCH_SOURCE ? { source: process.env.BENCH_SOURCE } : {}),
+  durationMs: performance.now() - t0,
+  timings,
+  env: { node: process.version, cpus: cores, cpu: cpus()[0]?.model ?? "?" },
+  scope: { wide, changed, bundle: bundleSdks, runtime: runtimeSdks, untargeted },
+  baselines: { bundle: bundleBaselines, runtime: runtimeBaseline! },
+  sizes,
+  programs,
+  errors,
+};
+writeFileSync(outFile, `${JSON.stringify(result, null, 2)}\n`);
+log(
+  `wrote ${outFile} in ${fmtMs(result.durationMs)}${errors.length ? `, ${errors.length} error(s)` : ""}`,
+);
+// Errors go in the report; the job itself only fails when a step above throws.
+for (const e of errors) log(`  ${e}`);
