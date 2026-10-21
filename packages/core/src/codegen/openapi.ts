@@ -44,6 +44,7 @@
  *     (with the non-standard `mode` member the core runtime dispatches on)
  */
 
+import { ADDITIONAL_PROPERTIES_TRAIT } from "./members.ts";
 import {
   isMechanicalOperationId,
   isVerbatimRouteId,
@@ -781,7 +782,10 @@ const convertSchema = (
     }
     const members = buildMembers(ctx, flat.properties, flat.required, hint, depth + 1, dir);
     return {
-      target: emit({ type: "structure", members, traits: docTraits }, hint),
+      target: emit(
+        { type: "structure", members, traits: structTraits(docTraits, flat.additionalProperties) },
+        hint,
+      ),
       nullable,
     };
   }
@@ -862,7 +866,14 @@ const convertSchema = (
       const required = new Set<string>(Array.isArray(def.required) ? def.required : []);
       const members = buildMembers(ctx, def.properties, required, hint, depth + 1, dir);
       return {
-        target: emit({ type: "structure", members, traits: docTraits }, hint),
+        target: emit(
+          {
+            type: "structure",
+            members,
+            traits: structTraits(docTraits, def.additionalProperties),
+          },
+          hint,
+        ),
         nullable,
       };
     }
@@ -910,6 +921,17 @@ const convertSchema = (
       return inline(PRELUDE.Document, nullable);
   }
 };
+
+/**
+ * A structure's traits: its docs, plus the open-object marker when the spec
+ * explicitly allows keys beyond `properties` (`additionalProperties: true`
+ * or a schema). An absent `additionalProperties` stays closed: most specs
+ * omit it without meaning "any key".
+ */
+const structTraits = (docTraits: Record<string, unknown>, ap: unknown): Record<string, unknown> =>
+  ap !== undefined && ap !== false
+    ? { ...docTraits, [ADDITIONAL_PROPERTIES_TRAIT]: {} }
+    : docTraits;
 
 /** Whether a property is a sensitive string (x-sensitive or name pattern). */
 const isSensitiveProperty = (ctx: Ctx, name: string, def: any): boolean => {

@@ -10,7 +10,7 @@ import {
   suspendConst,
 } from "./emit.ts";
 import { orderIndex, reachableFrom, shapeDeps, topoOrder, type ShapeMap } from "./graph.ts";
-import { memberBases, smithyWireName } from "./members.ts";
+import { ADDITIONAL_PROPERTIES_TRAIT, memberBases, smithyWireName } from "./members.ts";
 /**
  * The generic smithy→SDK service generator (dev-time only).
  *
@@ -878,7 +878,13 @@ export const generateService = (model: any, spec: SdkSpec): GeneratedService => 
         fields.push(...inject.interfaceLines);
         members.push(inject.structLine);
       }
-      const struct = members.length ? `S.Struct({\n${members.join("\n")}\n})` : `S.Struct({})`;
+      const closed = members.length ? `S.Struct({\n${members.join("\n")}\n})` : `S.Struct({})`;
+      // Open object: keys beyond the declared members are typed `unknown`.
+      // A typed value (OpenAPI `additionalProperties: {schema}`) would have
+      // to accept every declared member's type too, so it stays `unknown`.
+      const open = ADDITIONAL_PROPERTIES_TRAIT in (d.traits ?? {});
+      if (open) fields.push(`  [key: string]: unknown;`);
+      const struct = open ? `S.StructWithRest(${closed}, [S.Record(S.String, S.Unknown)])` : closed;
       const structCtx = {
         id,
         isOpIo: opIoShapes.has(id),

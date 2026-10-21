@@ -172,6 +172,30 @@ export const Struct = (fields: Readonly<Record<string, Lite>>): Lite => {
   return s;
 };
 
+/**
+ * A struct that also allows keys it does not declare (OpenAPI
+ * `additionalProperties` next to `properties`): the struct's property
+ * signatures plus each record's index signature, as Effect's
+ * `StructWithRest` builds them.
+ */
+export const StructWithRest = (struct: Lite, records: ReadonlyArray<Lite>): Lite => {
+  const base = resolveObjects(astOf(struct));
+  const s = make(
+    node({
+      _tag: "Objects",
+      propertySignatures: base.propertySignatures ?? [],
+      indexSignatures: [
+        ...(base.indexSignatures ?? []),
+        ...records.flatMap((r) => resolveObjects(astOf(r)).indexSignatures ?? []),
+      ],
+    }),
+  );
+  (s as any).fields = (struct as any).fields;
+  return s;
+};
+
+const resolveObjects = (n: Node): Node => (n._tag === "Suspend" ? resolveObjects(n.thunk!()) : n);
+
 /** A lazily resolved schema; `.ast` is a Suspend node whose thunk resolves the target. */
 export const suspend = (f: () => Lite): Lite => {
   let resolved: Node | undefined;
@@ -412,6 +436,7 @@ export type EffectSchemaApi = Pick<
   | "Record"
   | "String"
   | "Struct"
+  | "StructWithRest"
   | "Tuple"
   | "Undefined"
   | "Union"
@@ -488,11 +513,19 @@ export const toEffect = (S: EffectSchemaApi, ast: Node): unknown => {
       case "Arrays":
         out = n.rest!.length ? S.Array(build(n.rest![0]!)) : S.Tuple(n.elements!.map(build));
         break;
-      case "Objects":
-        out = n.indexSignatures?.length
-          ? S.Record(build(n.indexSignatures[0]!.parameter), build(n.indexSignatures[0]!.type))
-          : S.Struct(Object.fromEntries(n.propertySignatures!.map((p) => [p.name, build(p.type)])));
+      case "Objects": {
+        const props = n.propertySignatures ?? [];
+        const records = (n.indexSignatures ?? []).map((i) =>
+          S.Record(build(i.parameter), build(i.type)),
+        );
+        if (props.length === 0 && records.length === 1) {
+          out = records[0];
+          break;
+        }
+        const struct = S.Struct(Object.fromEntries(props.map((p) => [p.name, build(p.type)])));
+        out = records.length ? S.StructWithRest(struct, records as any) : struct;
         break;
+      }
       case "Suspend": {
         const thunk = n.thunk!;
         out = S.suspend(() => build(thunk()));
