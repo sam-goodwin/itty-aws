@@ -1,6 +1,7 @@
 {
   "name": "@distilled.cloud/aws4signer",
   "version": "1.0.0-rc.15",
+  "description": "Effect-native AWS Signature Version 4: sign and presign requests, or sign every request an HttpClient sends. For AWS and every S3-compatible or SigV4-signed API.",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
@@ -19,6 +20,12 @@
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
       "default": "./lib/index.js"
+    },
+    "./AwsClient": {
+      "types": "./lib/client.d.ts",
+      "bun": "./src/client.ts",
+      "worker": "./src/client.ts",
+      "default": "./lib/client.js"
     }
   },
   "scripts": {
@@ -29,7 +36,9 @@
     "@distilled.cloud/core": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "catalog:"
+    "@types/node": "catalog:",
+    "aws4fetch": "1.0.20",
+    "effect": "catalog:"
   },
   "peerDependencies": {
     "effect": "catalog:"
