@@ -14,5 +14,5 @@
     "rewriteRelativeImportExtensions": false,
     "customConditions": ["bun"]
   },
-  "references": [{ "path": "../core" }, { "path": "./tsconfig.json" }]
+  "references": [{ "path": "../core" }, { "path": "../aws4signer" }, { "path": "./tsconfig.json" }]
 }

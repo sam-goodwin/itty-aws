@@ -16,7 +16,7 @@
     "deploy": "pnpm exec alchemy deploy",
     "dev": "pnpm exec alchemy dev",
     "destroy": "pnpm exec alchemy destroy",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsrs -p tsconfig.json"
   },
   "dependencies": {
     "@effect/platform-node": "catalog:",
@@ -34,7 +34,7 @@
     "@types/node": "catalog:",
     "nitro": "3.0.260903-beta",
     "tailwindcss": "4.3.3",
-    "typescript": "catalog:",
+    "tsrs": "catalog:",
     "vite": "8.3.4"
   },
   "engines": {
