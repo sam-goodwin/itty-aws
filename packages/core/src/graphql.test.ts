@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
@@ -228,4 +230,9 @@ describe("Redacted arguments", () => {
       { variables: { S3_SECRET: "second-secret" } },
     ]);
   });
+});
+
+test("the GraphQL client does not load the REST or HTTP protocol modules", () => {
+  const source = readFileSync(join(import.meta.dirname, "graphql.ts"), "utf8");
+  expect(source).not.toMatch(/from "\.\/protocol-(rest|http)\.ts"/);
 });

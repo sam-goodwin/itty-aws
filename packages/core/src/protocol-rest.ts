@@ -36,12 +36,12 @@ import type * as AST from "effect/SchemaAST";
 import * as API from "./api.ts";
 import { debugHttp } from "./debug.ts";
 import { HTTP_STATUS_MAP, InternalServerError } from "./errors.ts";
+import { isOpaqueValue, unwrapRedactedDeep } from "./plain-values.ts";
 import {
   buildRequest,
   getAnn,
   getPropAnn,
   getProps,
-  isOpaqueValue,
   mapKeys,
   mapsVerbatim,
   matchTypedError,
@@ -96,32 +96,7 @@ export const BinaryResponse = () => makeAnnotation(binaryResponseSymbol, true);
 // Value helpers
 // =============================================================================
 
-const isPlainObject = (v: unknown): v is Record<string, unknown> =>
-  v !== null &&
-  typeof v === "object" &&
-  !Array.isArray(v) &&
-  !isOpaqueValue(v) &&
-  (Object.getPrototypeOf(v) === Object.prototype || Object.getPrototypeOf(v) === null);
-
-/**
- * Deep-unwrap `Redacted` values in an input (plain objects/arrays only --
- * class instances, files, and binary payloads pass through untouched).
- * Sensitive input members accept `string | Redacted<string>`; the wire wants
- * the raw string.
- */
-export const unwrapRedactedDeep = (value: unknown): unknown => {
-  if (Redacted.isRedacted(value)) return Redacted.value(value);
-  if (Array.isArray(value)) return value.map(unwrapRedactedDeep);
-  if (isPlainObject(value)) {
-    const out: Record<string, unknown> = {};
-    for (const [k, v] of Object.entries(value)) {
-      if (v === undefined) continue;
-      out[k] = unwrapRedactedDeep(v);
-    }
-    return out;
-  }
-  return value;
-};
+export { unwrapRedactedDeep };
 
 /**
  * Walk a decoded (TS-named) value alongside its schema AST, wrapping members
