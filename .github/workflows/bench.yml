@@ -111,6 +111,7 @@ jobs:
         with:
           name: benchmarks
           path: .bench-ci/
+          include-hidden-files: true
           retention-days: 30
 
       # Same bot as the website preview comment. Fork PRs get no secrets, so

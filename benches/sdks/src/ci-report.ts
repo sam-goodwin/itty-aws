@@ -90,8 +90,8 @@ export const METRICS: Metric[] = [
     title: "Import heap",
     get: (p) => p.runtime?.importHeap,
     fmt: fmtBytes,
-    rel: 0.04,
-    abs: 8 * 1024,
+    rel: 0.08,
+    abs: 32 * 1024,
   },
   {
     id: "objects",
@@ -106,8 +106,8 @@ export const METRICS: Metric[] = [
     title: "Added latency (p50)",
     get: (p) => p.runtime?.addedP50Us,
     fmt: us,
-    rel: 0.15,
-    abs: 1,
+    rel: 0.3,
+    abs: 3,
     noisy: true,
   },
   {

@@ -27,6 +27,7 @@ import {
   lastJsonLine,
   listSdks,
   log,
+  median,
   PACKAGES,
   pool,
   readJson,
@@ -223,7 +224,7 @@ const probe = async (req: ProbeRequest): Promise<any> => {
   );
 };
 const BUDGET_MS = Number(flag("budget") ?? 400);
-const REPEATS = Number(flag("repeats") ?? 2);
+const REPEATS = Number(flag("repeats") ?? 3);
 let runtimeBaseline: CiRun["baselines"]["runtime"];
 
 await phase("runtime", async () => {
@@ -251,18 +252,21 @@ await phase("runtime", async () => {
       errors.push(`runtime ${p.name}: ${runs[0].fatal ?? runs[0].error}`);
       return;
     }
+    // Timings: the fastest run is the least disturbed one. Heap: the median,
+    // because a run where V8 flushed bytecode early reads far lower.
     const min = (f: (r: any) => number) => Math.min(...ok.map(f));
+    const mid = (f: (r: any) => number) => median(ok.map(f));
     const counted = await probe({ ...req, objects: true });
     entry(p).runtime = {
       importMs: min((r) => r.importMs),
-      importHeap: min((r) => r.importHeap.heapUsed),
+      importHeap: mid((r) => r.importHeap.heapUsed),
       importObjects: counted.importObjects,
       firstCallMs: min((r) => r.firstCallMs),
-      firstCallHeap: min((r) => r.firstCallHeap.heapUsed),
+      firstCallHeap: mid((r) => r.firstCallHeap.heapUsed),
       addedP50Us: min((r) => r.addedP50Us),
       p50Us: min((r) => r.latency.p50Us),
       gcPer1k: min((r) => r.gcPer1k),
-      maxRss: min((r) => r.maxRss),
+      maxRss: mid((r) => r.maxRss),
     };
     const r = entry(p).runtime!;
     log(

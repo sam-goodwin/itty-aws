@@ -105,8 +105,8 @@ same measurement, cut down to finish within the other CI jobs:
   and probed. A changed SDK whose `src/` is over `runtimeMaxSrcMB` is only
   bundled: its `bundle-lib.ts` build alone exceeds the budget.
 - **Cut:** no strict variants, no imports or typecheck suites, no official
-  SDKs, latency sampled for 400 ms (`--budget`), each runtime probe run twice
-  (`--repeats`) keeping the minimum.
+  SDKs, latency sampled for 400 ms (`--budget`). Each runtime probe runs 3
+  times (`--repeats`): timings keep the fastest run, heap the median.
 - **Main's numbers:** each push to main runs `ci.ts run --wide` (every SDK)
   and caches the result as `bench-ci-main-<sha>`. A PR restores its base's
   entry or the newest one; on a miss it benchmarks the base commit in the
