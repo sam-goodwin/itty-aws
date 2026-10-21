@@ -778,7 +778,7 @@ const graphqlDecode = ({
     }
     // Strict mode checks the payload at the response path against the
     // output schema.
-    return yield* validateResponse(
+    const validated = yield* validateResponse(
       outputAst,
       payload === undefined ? null : payload,
       (cause) =>
@@ -787,6 +787,7 @@ const graphqlDecode = ({
           cause: sensitive ? withholdActual(cause) : cause,
         }),
     ).pipe(Effect.catch(fail));
+    return wrapSensitive(outputAst, validated);
   });
 
 export const FlyGraphqlProtocol: Layer.Layer<API.Protocol> = /*@__PURE__*/ Layer.succeed(
