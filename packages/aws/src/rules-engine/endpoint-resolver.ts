@@ -182,12 +182,15 @@ export const makeEndpointResolver = (operation: Operation) => {
         };
       }
       let hostname: string | undefined;
+      let pathname = "";
       try {
-        hostname = new URL(endpoint.url).hostname;
+        const url = new URL(endpoint.url);
+        hostname = url.hostname;
+        pathname = url.pathname;
       } catch {
         hostname = undefined;
       }
-      resolved = { endpoint, hostname };
+      resolved = { endpoint, hostname, pathname };
       if (key !== undefined) {
         if (cache.size >= 64) cache.clear();
         cache.set(key, resolved);
@@ -199,16 +202,23 @@ export const makeEndpointResolver = (operation: Operation) => {
     const adjustedRequest =
       resolved.hostname === undefined
         ? request
-        : adjustRequestPath(request, resolved.hostname, contextParamMappings, payloadObj);
+        : adjustRequestPath(
+            request,
+            resolved.hostname,
+            resolved.pathname,
+            contextParamMappings,
+            payloadObj,
+          );
 
     return { endpoint: resolved.endpoint, request: adjustedRequest };
   };
 };
 
-/** A resolved endpoint and its URL's hostname (undefined when the URL does not parse). */
+/** A resolved endpoint and its URL's hostname (undefined when the URL does not parse) and path. */
 interface Resolved {
   readonly endpoint: ResolvedEndpoint;
   readonly hostname: string | undefined;
+  readonly pathname: string;
 }
 
 interface ContextParamInfo {
@@ -250,6 +260,7 @@ function extractContextParamMappings(ast: AST.AST): Map<string, ContextParamInfo
 function adjustRequestPath(
   request: Request,
   hostname: string,
+  endpointPath: string,
   contextParamMappings: Map<string, ContextParamInfo>,
   input: Record<string, unknown>,
 ): Request {
@@ -261,12 +272,17 @@ function adjustRequestPath(
       const value = input[propName];
       if (typeof value !== "string") continue;
 
-      // Check if the hostname starts with this value (virtual-hosted style)
-      // e.g., "mybucket.s3.us-east-1.amazonaws.com" starts with "mybucket."
-      if (hostname.startsWith(`${value}.`)) {
-        // The HTTP label would have been serialized as "/{value}" in the path
-        const pathPrefix = `/${encodeLabel(value)}`;
+      // The HTTP label would have been serialized as "/{value}" in the path
+      const pathPrefix = `/${encodeLabel(value)}`;
 
+      // The endpoint already carries the value either in the hostname
+      // (virtual-hosted, e.g. "mybucket.s3.us-east-1.amazonaws.com") or at
+      // the end of its path (path-style, which the rules pick for names that
+      // cannot be virtual-hosted, e.g. "s3.us-east-1.amazonaws.com/my.bucket").
+      if (
+        hostname.startsWith(`${value}.`) ||
+        endpointPath.replace(/\/$/, "").endsWith(pathPrefix)
+      ) {
         if (request.path.startsWith(pathPrefix)) {
           let adjustedPath = request.path.slice(pathPrefix.length);
           // Normalize empty path
