@@ -32,3 +32,4 @@ program.pipe(Effect.provide(Live), Effect.runPromise);
 ## Auth
 
 Required: `PORKBUN_API_KEY`, `PORKBUN_SECRET_API_KEY`. Optional: `PORKBUN_API_BASE_URL`.
+
