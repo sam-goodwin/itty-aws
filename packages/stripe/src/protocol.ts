@@ -25,10 +25,11 @@ import {
 } from "@distilled.cloud/core/protocol-http";
 import {
   hasSensitive,
+  hasSensitiveMember,
   unwrapRedactedDeep,
   wrapSensitive,
 } from "@distilled.cloud/core/protocol-rest";
-import { checkResponse } from "@distilled.cloud/core/response-validation";
+import { checkResponse, withholdActual } from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 /**
  * StripeProtocol -- hand-written.
@@ -621,11 +622,22 @@ const decodeResponse = (
       // 2xx: the response body IS the payload (no envelope). Wire->TS key
       // mapping is schema-driven; sensitive members come back Redacted.
       // Strict mode checks the mapped body against the output schema first.
+      // For an output with sensitive members, a non-JSON body fails in every
+      // mode and parse errors withhold the body.
+      const withholdBody = hasSensitiveMember(outputAst);
+      if (nonJson && withholdBody) {
+        return fail(new StripeParseError({ body: "[REDACTED]", cause: "Invalid JSON response" }));
+      }
       const body: unknown = nonJson ? text : (json ?? {});
       const mapped = mapsVerbatim(outputAst, "decode") ? body : mapKeys(outputAst, body, "decode");
       const cause = checkResponse(context, outputAst, mapped);
       if (cause !== undefined) {
-        return fail(new StripeParseError({ body: nonJson ? text : json, cause }));
+        return fail(
+          new StripeParseError({
+            body: withholdBody ? "[REDACTED]" : nonJson ? text : json,
+            cause: withholdBody ? withholdActual(cause) : cause,
+          }),
+        );
       }
       return Effect.succeed(hasSensitive(outputAst) ? wrapSensitive(outputAst, mapped) : mapped);
     },

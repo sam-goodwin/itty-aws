@@ -11,11 +11,16 @@ import {
   matchTypedError,
 } from "@distilled.cloud/core/protocol-http";
 import {
+  hasSensitiveMember,
   makeRestProtocol,
   unwrapRedactedDeep,
   wrapSensitive,
 } from "@distilled.cloud/core/protocol-rest";
-import { failIfStrict, validateResponse } from "@distilled.cloud/core/response-validation";
+import {
+  failIfStrict,
+  validateResponse,
+  withholdActual,
+} from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus } from "@distilled.cloud/core/retry-after";
 /**
  * Fly.io protocols -- Machines REST, UI-EX REST (MPG), GraphQL add-ons, and
@@ -403,7 +408,7 @@ const mintOnce = (fly: Config) =>
     if (typeof token !== "string" || token.length === 0) {
       return yield* fail(
         new FlyIoParseError({
-          body: json ?? text,
+          body: "[REDACTED]",
           cause: "mint response missing token",
         }),
       );
@@ -556,16 +561,24 @@ const decodeSpritesResponse = ({
     }
 
     // Strict mode checks the mapped body (or parsed exec frames) against the
-    // output schema.
+    // output schema. For an output with sensitive members, a non-JSON body
+    // fails in every mode and parse errors withhold the body.
+    const sensitive = hasSensitiveMember(outputAst);
+    const reported = sensitive ? "[REDACTED]" : (execFrames ?? (nonJson ? text : json));
+    if (nonJson && sensitive) {
+      return yield* fail(
+        new FlyIoParseError({
+          body: "[REDACTED]",
+          cause: "Invalid JSON response",
+        }),
+      );
+    }
     const body: unknown = execFrames ?? parseMaybeNdjson(nonJson ? text : (json ?? {}));
     const mapped = yield* validateResponse(
       outputAst,
       mapKeys(outputAst, body, "decode"),
       (cause) =>
-        new FlyIoParseError({
-          body: execFrames ?? (nonJson ? text : json),
-          cause,
-        }),
+        new FlyIoParseError({ body: reported, cause: sensitive ? withholdActual(cause) : cause }),
     ).pipe(Effect.catch(fail));
     return wrapSensitive(outputAst, mapped);
   });
@@ -717,9 +730,20 @@ const graphqlDecode = ({
       }
     }
 
+    // For an output with sensitive members, a non-JSON body fails in every
+    // mode and parse errors withhold the body.
+    const sensitive = hasSensitiveMember(outputAst);
     if (!parsed) {
       if (status >= 400) {
         return yield* matchGraphqlError(status, text, headers, errors);
+      }
+      if (sensitive) {
+        return yield* fail(
+          new FlyIoParseError({
+            body: "[REDACTED]",
+            cause: "response body is not valid JSON",
+          }),
+        );
       }
       // Lenient mode returns the body as read.
       return yield* failIfStrict(
@@ -757,7 +781,11 @@ const graphqlDecode = ({
     return yield* validateResponse(
       outputAst,
       payload === undefined ? null : payload,
-      (cause) => new FlyIoParseError({ body: json, cause }),
+      (cause) =>
+        new FlyIoParseError({
+          body: sensitive ? "[REDACTED]" : json,
+          cause: sensitive ? withholdActual(cause) : cause,
+        }),
     ).pipe(Effect.catch(fail));
   });
 

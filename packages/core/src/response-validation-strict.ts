@@ -34,6 +34,13 @@ export class SchemaMismatch extends Error {
 }
 
 /**
+ * `mismatch` with its offending value replaced by `"[REDACTED]"`, for a parse
+ * error that withholds the body (the value may be a secret).
+ */
+export const withholdActual = (mismatch: SchemaMismatch): SchemaMismatch =>
+  new SchemaMismatch(mismatch.path, mismatch.expected, "[REDACTED]");
+
+/**
  * Validate `input` synchronously: `undefined` when it matches, else the
  * mismatch.
  */
