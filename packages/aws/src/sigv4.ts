@@ -8,13 +8,17 @@
  */
 export {
   CryptoError,
+  guessScope,
+  guessServiceRegion,
   InvalidSigningHeaders,
   InvalidSigningUrl,
+  presign,
   SigningKeyCache,
   sign,
   signSync,
 } from "@distilled.cloud/aws4signer";
 export type {
+  PresignOptions,
   SignableBody,
   SignedRequest,
   SigningError,
@@ -22,4 +26,5 @@ export type {
   SigningKeyScope,
   SigningKeyStore,
   SignOptions,
+  WithoutScope,
 } from "@distilled.cloud/aws4signer";

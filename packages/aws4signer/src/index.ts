@@ -1,12 +1,11 @@
 /**
  * SigV4 request signing (header `Authorization` and query-string presigning).
  *
- * Effect-native port of the signing core of `aws4fetch`'s `AwsV4Signer`,
+ * Effect-native port of `aws4fetch`'s `AwsV4Signer` (MIT, Michael Hart),
  * preserving its canonicalisation rules byte for byte: header/path/query
- * encoding, the unsignable-header set, S3's UNSIGNED-PAYLOAD defaults and
- * duplicate-query-key handling, and the derived-key cache. Service and
- * region are always supplied by the callers here, so host-based guessing is
- * intentionally absent.
+ * encoding, the unsignable-header set, S3's UNSIGNED-PAYLOAD defaults,
+ * duplicate-query-key handling, the derived-key cache, and service/region
+ * guessing from the host when they are not given.
  */
 import * as CoreCrypto from "@distilled.cloud/core/crypto";
 import * as Context from "effect/Context";
@@ -48,9 +47,9 @@ export interface SignOptions {
   readonly accessKeyId: string;
   readonly secretAccessKey: Redacted.Redacted<string>;
   readonly sessionToken?: Redacted.Redacted<string> | undefined;
-  /** SigV4 signing name (e.g. `s3`, `execute-api`). */
+  /** SigV4 signing name (e.g. `s3`, `execute-api`). {@link guessScope} fills it from the host. */
   readonly service: string;
-  /** SigV4 signing region. */
+  /** SigV4 signing region. {@link guessScope} fills it from the host. */
   readonly region: string;
   /** Fixed `YYYYMMDDTHHMMSSZ` signing time; defaults to now. */
   readonly datetime?: string;
@@ -63,6 +62,16 @@ export interface SignOptions {
    * signing as `s3` do not default to UNSIGNED-PAYLOAD.
    */
   readonly hashPayload?: boolean;
+  /**
+   * Add the session token to the query after signing, outside the signature.
+   * Always on for `iotdevicegateway`.
+   */
+  readonly appendSessionToken?: boolean;
+  /**
+   * Encode the path once. By default non-S3 paths are encoded twice, as SigV4
+   * requires for every AWS service except S3.
+   */
+  readonly singleEncode?: boolean;
 }
 
 /** `options` with the body's hash as `X-Amz-Content-Sha256`, given `hashPayload`. */
@@ -253,7 +262,7 @@ const canonicalize = (options: SignOptions): Canonical => {
   const headers = headerRecord(options.headers);
   delete headers.host;
   const datetime = options.datetime ?? new Date().toISOString().replace(/[:-]|\.\d{3}/g, "");
-  const appendSessionToken = service === "iotdevicegateway";
+  const appendSessionToken = options.appendSessionToken || service === "iotdevicegateway";
 
   if (service === "s3" && !signQuery && headers["x-amz-content-sha256"] === undefined) {
     headers["x-amz-content-sha256"] = "UNSIGNED-PAYLOAD";
@@ -301,7 +310,8 @@ const canonicalize = (options: SignOptions): Canonical => {
   } else {
     encodedPath = url.pathname.replace(/\/+/g, "/");
   }
-  encodedPath = encodeRfc3986(encodeURIComponent(encodedPath).replace(/%2F/g, "/"));
+  if (!options.singleEncode) encodedPath = encodeURIComponent(encodedPath).replace(/%2F/g, "/");
+  encodedPath = encodeRfc3986(encodedPath);
 
   const seenKeys = new Set<string>();
   // `searchParams` parses the query; skip it when there is none.
@@ -407,7 +417,7 @@ const syncSigningKey = (
  * context); use {@link sign} then. Throws a {@link SigningError}.
  */
 export const signSync = (
-  options: SignOptions,
+  input: SignOptions,
   fiber: { readonly context: Context.Context<never>; getRef<A>(ref: Context.Reference<A>): A },
 ): SignedRequest | undefined => {
   const impl = fiber.getRef(CoreCrypto.Crypto);
@@ -417,6 +427,7 @@ export const signSync = (
   }
   const sha256Hex =
     sync.sha256Hex ?? ((data: CoreCrypto.Bytes) => CoreCrypto.hex(sync.sha256(data)));
+  let options = input;
   if (options.hashPayload) {
     let hash: string;
     try {
@@ -501,3 +512,152 @@ const signAsync: (options: SignOptions) => Effect.Effect<SignedRequest, SigningE
     );
     return canonical.finish(signature);
   });
+
+//#region presign
+
+export interface PresignOptions extends Omit<
+  WithoutScope<SignOptions>,
+  "signQuery" | "body" | "hashPayload"
+> {
+  /** Seconds the URL stays valid (`X-Amz-Expires`). S3 defaults to 86400; AWS allows at most 604800. */
+  readonly expiresIn?: number;
+}
+
+/**
+ * A presigned URL: the signature is in the query string, so anyone holding
+ * the URL can send the request until it expires.
+ *
+ * ```ts
+ * const url = yield* Signer.presign({
+ *   url: "https://my-bucket.s3.us-east-1.amazonaws.com/report.pdf",
+ *   accessKeyId,
+ *   secretAccessKey,
+ *   expiresIn: 3600,
+ * });
+ * ```
+ */
+export const presign = (options: PresignOptions): Effect.Effect<string, SigningError> => {
+  let url = options.url;
+  if (options.expiresIn !== undefined) {
+    try {
+      const u = new URL(url);
+      u.searchParams.set("X-Amz-Expires", String(Math.floor(options.expiresIn)));
+      url = u.toString();
+    } catch (cause) {
+      return Effect.fail(new InvalidSigningUrl({ url, cause }));
+    }
+  }
+  return Effect.map(sign(guessScope({ ...options, url, signQuery: true })), (signed) => signed.url);
+};
+
+//#endregion
+
+//#region service and region from the host
+
+/** `O` with `service` and `region` optional: {@link guessScope} fills them in. */
+export type WithoutScope<O extends { readonly service: string; readonly region: string }> = Omit<
+  O,
+  "service" | "region"
+> & {
+  readonly service?: string | undefined;
+  readonly region?: string | undefined;
+};
+
+/**
+ * `options` with a missing `service` or `region` taken from the URL's host
+ * ({@link guessServiceRegion}); the region falls back to `us-east-1`. A URL
+ * that does not parse is left for {@link sign} to reject.
+ *
+ * Kept apart from {@link sign}, so programs that always pass both (the AWS
+ * SDK) do not bundle the host rules.
+ */
+export const guessScope = <O extends SignOptions>(options: WithoutScope<O>): O => {
+  if (options.service && options.region) return options as unknown as O;
+  let guessed: readonly [string, string] = ["", ""];
+  try {
+    guessed = guessServiceRegion(new URL(options.url), options.headers);
+  } catch {}
+  return {
+    ...options,
+    service: options.service || guessed[0],
+    region: options.region || guessed[1] || "us-east-1",
+  } as unknown as O;
+};
+
+/** Hosts whose first label differs from the signing name. */
+const HOST_SERVICES: Readonly<Record<string, string>> = {
+  appstream2: "appstream",
+  cloudhsmv2: "cloudhsm",
+  email: "ses",
+  marketplace: "aws-marketplace",
+  mobile: "AWSMobileHubService",
+  pinpoint: "mobiletargeting",
+  queue: "sqs",
+  "git-codecommit": "codecommit",
+  "mturk-requester-sandbox": "mturk-requester",
+  "personalize-runtime": "personalize",
+};
+
+const headerValue = (headers: Record<string, string> | undefined, name: string) => {
+  if (headers === undefined) return undefined;
+  for (const key of Object.keys(headers)) if (key.toLowerCase() === name) return headers[key];
+  return undefined;
+};
+
+/**
+ * The signing `[service, region]` a URL implies, as `aws4fetch` guesses it:
+ * `*.amazonaws.com` hosts (with their S3, IoT, FIPS and dual-stack forms),
+ * Lambda function URLs, Cloudflare R2 (`s3`, `auto`) and Backblaze B2. Either
+ * part is `""` when the host does not say.
+ *
+ * ```ts
+ * guessServiceRegion(new URL("https://sqs.eu-west-1.amazonaws.com/"));       // ["sqs", "eu-west-1"]
+ * guessServiceRegion(new URL("https://acct.r2.cloudflarestorage.com/bucket")); // ["s3", "auto"]
+ * ```
+ */
+export const guessServiceRegion = (
+  url: URL,
+  headers?: Record<string, string>,
+): readonly [service: string, region: string] => {
+  const { hostname, pathname } = url;
+  if (hostname.endsWith(".on.aws")) {
+    const match = hostname.match(/^[^.]{1,63}\.lambda-url\.([^.]{1,63})\.on\.aws$/);
+    return match != null ? ["lambda", match[1] || ""] : ["", ""];
+  }
+  if (hostname.endsWith(".r2.cloudflarestorage.com")) return ["s3", "auto"];
+  if (hostname.endsWith(".backblazeb2.com")) {
+    const match = hostname.match(/^(?:[^.]{1,63}\.)?s3\.([^.]{1,63})\.backblazeb2\.com$/);
+    return match != null ? ["s3", match[1] || ""] : ["", ""];
+  }
+  const match = hostname
+    .replace("dualstack.", "")
+    .match(/([^.]{1,63})\.(?:([^.]{0,63})\.)?amazonaws\.com(?:\.cn)?$/);
+  let service = match?.[1] || "";
+  let region = match?.[2];
+  if (region === "us-gov") {
+    region = "us-gov-west-1";
+  } else if (region === "s3" || region === "s3-accelerate") {
+    region = "us-east-1";
+    service = "s3";
+  } else if (service === "iot") {
+    if (hostname.startsWith("iot.")) service = "execute-api";
+    else if (hostname.startsWith("data.jobs.iot.")) service = "iot-jobs-data";
+    else service = pathname === "/mqtt" ? "iotdevicegateway" : "iotdata";
+  } else if (service === "autoscaling") {
+    const targetPrefix = (headerValue(headers, "x-amz-target") || "").split(".")[0];
+    if (targetPrefix === "AnyScaleFrontendService") service = "application-autoscaling";
+    else if (targetPrefix === "AnyScaleScalingPlannerFrontendService") {
+      service = "autoscaling-plans";
+    }
+  } else if (region == null && service.startsWith("s3-")) {
+    region = service.slice(3).replace(/^fips-|^external-1/, "");
+    service = "s3";
+  } else if (service.endsWith("-fips")) {
+    service = service.slice(0, -5);
+  } else if (region && /-\d$/.test(service) && !/-\d$/.test(region)) {
+    [service, region] = [region, service];
+  }
+  return [HOST_SERVICES[service] || service, region || ""];
+};
+
+//#endregion
