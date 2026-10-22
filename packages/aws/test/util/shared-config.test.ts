@@ -1,6 +1,7 @@
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import * as Effect from "effect/Effect";
 import { afterEach, beforeEach, describe, expect, test } from "vitest";
 import {
   getConfigFilepath,
@@ -20,6 +21,10 @@ const ENV_KEYS = [
 ] as const;
 
 let home: string;
+
+const load = () => Effect.runPromise(loadSharedConfigFiles);
+const known = () => Effect.runPromise(parseKnownFiles);
+const loadError = () => Effect.runPromise(Effect.flip(loadSharedConfigFiles));
 const saved: Record<string, string | undefined> = {};
 
 const write = (name: "config" | "credentials", contents: string) => {
@@ -71,7 +76,7 @@ describe("paths", () => {
 
 describe("loadSharedConfigFiles", () => {
   test("files that are not there read as empty", async () => {
-    expect(await loadSharedConfigFiles()).toEqual({
+    expect(await load()).toEqual({
       configFile: {},
       credentialsFile: {},
     });
@@ -97,7 +102,7 @@ s3 =
 region = eu-west-1
 `,
     );
-    const { configFile } = await loadSharedConfigFiles();
+    const { configFile } = await load();
     expect(configFile).toEqual({
       default: { region: "us-east-1" },
       dev: { region: "us-west-2" },
@@ -114,7 +119,7 @@ aws_access_key_id = AKID
 aws_secret_access_key = SECRET
 `,
     );
-    const { credentialsFile } = await loadSharedConfigFiles();
+    const { credentialsFile } = await load();
     expect(credentialsFile).toEqual({
       default: { aws_access_key_id: "AKID", aws_secret_access_key: "SECRET" },
     });
@@ -137,7 +142,7 @@ aws_access_key_id = FROM_CREDENTIALS
 aws_secret_access_key = SECRET
 `,
     );
-    expect(await parseKnownFiles()).toEqual({
+    expect(await known()).toEqual({
       dev: {
         region: "us-west-2",
         aws_access_key_id: "FROM_CREDENTIALS",
@@ -148,8 +153,39 @@ aws_secret_access_key = SECRET
 
   test("a rewritten file is read again rather than served from a cache", async () => {
     write("credentials", "[default]\naws_access_key_id = FIRST\n");
-    expect((await parseKnownFiles()).default?.aws_access_key_id).toBe("FIRST");
+    expect((await known()).default?.aws_access_key_id).toBe("FIRST");
     write("credentials", "[default]\naws_access_key_id = SECOND\n");
-    expect((await parseKnownFiles()).default?.aws_access_key_id).toBe("SECOND");
+    expect((await known()).default?.aws_access_key_id).toBe("SECOND");
+  });
+});
+
+describe("files that cannot be read", () => {
+  test("an unreadable file fails with SharedConfigError", async () => {
+    write("config", "[default]\nregion = us-east-1\n");
+    chmodSync(join(home, ".aws", "config"), 0o000);
+    const error = await loadError();
+    expect(error._tag).toBe("Alchemy::AWS::SharedConfigError");
+    expect(error.path).toBe(join(home, ".aws", "config"));
+  });
+
+  test("a directory where the file should be fails with SharedConfigError", async () => {
+    mkdirSync(join(home, ".aws", "credentials"), { recursive: true });
+    const error = await loadError();
+    expect(error._tag).toBe("Alchemy::AWS::SharedConfigError");
+    expect(error.path).toBe(join(home, ".aws", "credentials"));
+  });
+
+  test("an invalid profile name fails with SharedConfigError", async () => {
+    write("config", "[profile __proto__]\nregion = us-east-1\n");
+    const error = await loadError();
+    expect(error._tag).toBe("Alchemy::AWS::SharedConfigError");
+    expect(error.message).toContain('invalid profile name "profile __proto__"');
+  });
+
+  test("a leading ~/ in AWS_CONFIG_FILE is the home directory", async () => {
+    mkdirSync(join(home, "custom"), { recursive: true });
+    writeFileSync(join(home, "custom", "config"), "[profile dev]\nregion = us-west-2\n");
+    process.env.AWS_CONFIG_FILE = "~/custom/config";
+    expect((await load()).configFile).toEqual({ dev: { region: "us-west-2" } });
   });
 });

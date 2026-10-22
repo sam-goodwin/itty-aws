@@ -6,7 +6,12 @@
  * uses, so both agree on which files and which profile name apply.
  */
 import * as Effect from "effect/Effect";
-import { type CredentialsError, MissingRegion, regionFromEnv } from "../credentials-service.ts";
+import {
+  type CredentialsError,
+  MissingRegion,
+  regionFromEnv,
+  type SharedConfigError,
+} from "../credentials-service.ts";
 import type * as Region from "../region.ts";
 import { loadSharedConfigFiles, parseKnownFiles } from "../util/shared-config.ts";
 import { CredentialSourceError, env } from "./credential-source.ts";
@@ -22,25 +27,23 @@ const DEFAULT_PROFILE = "default";
 export const getProfileName = (profile?: string): string =>
   profile || env(ENV_PROFILE) || DEFAULT_PROFILE;
 
+const sourceError = (error: SharedConfigError) =>
+  new CredentialSourceError({ message: error.message, cause: error });
+
 export const loadProfiles = (): Effect.Effect<Profiles, CredentialSourceError> =>
-  Effect.tryPromise({
-    try: () => parseKnownFiles() as Promise<Profiles>,
-    catch: (cause) =>
-      new CredentialSourceError({
-        message: `Could not read the shared config and credentials files: ${String(cause)}`,
-        cause,
-      }),
-  });
+  Effect.mapError(parseKnownFiles as Effect.Effect<Profiles, SharedConfigError>, sourceError);
 
 /**
  * The `[profile <name>]` section of `~/.aws/config` alone (no credentials
  * file), for settings that the config file owns such as `region` and the
  * IMDS options.
  */
-export const loadConfigProfile = (profile?: string): Effect.Effect<Profile | undefined> =>
-  Effect.promise(() => loadSharedConfigFiles()).pipe(
-    Effect.map((files) => files.configFile?.[getProfileName(profile)] as Profile | undefined),
-    Effect.orElseSucceed(() => undefined),
+export const loadConfigProfile = (
+  profile?: string,
+): Effect.Effect<Profile | undefined, CredentialSourceError> =>
+  loadSharedConfigFiles.pipe(
+    Effect.map((files) => files.configFile[getProfileName(profile)] as Profile | undefined),
+    Effect.mapError(sourceError),
   );
 
 /**
@@ -51,7 +54,7 @@ export const loadConfigProfile = (profile?: string): Effect.Effect<Profile | und
 export const profileStsRegion = (
   profileRegion: string | undefined,
   profile?: string,
-): Effect.Effect<Region.RegionName> =>
+): Effect.Effect<Region.RegionName, CredentialSourceError> =>
   stsRegion(
     profileRegion,
     Effect.map(loadConfigProfile(profile), (config) => config?.region),
@@ -71,27 +74,21 @@ export const profileRegion = (
     ? Effect.succeed(region as Region.RegionName)
     : regionFromEnv.pipe(
         Effect.catchTag("Alchemy::AWS::MissingRegion", (missing) =>
-          Effect.flatMap(
-            Effect.tryPromise({
-              try: () => loadSharedConfigFiles(),
-              catch: () => missing,
-            }),
-            (files) => {
-              const profileName =
-                profile ?? env(ENV_PROFILE) ?? env("AWS_DEFAULT_PROFILE") ?? DEFAULT_PROFILE;
-              const configured = files.configFile?.[profileName]?.region;
-              return configured === undefined
-                ? Effect.fail(
-                    new MissingRegion({
-                      message: missing.message,
-                      hints: [
-                        ...(missing.hints ?? []),
-                        `Or set \`region\` on the [profile ${profileName}] section of ~/.aws/config.`,
-                      ],
-                    }),
-                  )
-                : Effect.succeed(configured as Region.RegionName);
-            },
-          ),
+          Effect.flatMap(loadSharedConfigFiles, (files) => {
+            const profileName =
+              profile ?? env(ENV_PROFILE) ?? env("AWS_DEFAULT_PROFILE") ?? DEFAULT_PROFILE;
+            const configured = files.configFile[profileName]?.region;
+            return configured === undefined
+              ? Effect.fail(
+                  new MissingRegion({
+                    message: missing.message,
+                    hints: [
+                      ...(missing.hints ?? []),
+                      `Or set \`region\` on the [profile ${profileName}] section of ~/.aws/config.`,
+                    ],
+                  }),
+                )
+              : Effect.succeed(configured as Region.RegionName);
+          }),
         ),
       );
