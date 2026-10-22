@@ -12,12 +12,12 @@ import { spawn } from "node:child_process";
 import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { delimiter, join } from "node:path";
-import { barChart, lineChart } from "../../dashboard/src/charts.js";
+import { lineChart } from "../../dashboard/src/charts.js";
 import type { CiProgram, CiRun } from "./ci-report.ts";
 import { median, REPO } from "./util.ts";
 
 const DASH = join(REPO, "benches", "dashboard");
-const WIDTH = 1240;
+const WIDTH = 820;
 const SCALE = 2;
 
 // Formatting and noise exactly as the dashboard's METRICS (src/main.js).
@@ -116,26 +116,13 @@ const change = (run: CiRun, before: CiRun | undefined, m: Metric, keys: string[]
   } satisfies Change;
 };
 
-const deltaHtml = (c: Change | undefined, m: Metric, big = false) => {
-  if (!c) return `<span class="delta">—</span>`;
-  const cls = c.noise ? "flat" : c.diff < 0 ? "good" : "bad";
-  const sign = c.diff > 0 ? "+" : c.diff < 0 ? "−" : "±";
-  const arrow = c.noise ? "≈" : c.diff < 0 ? "▼" : "▲";
-  return `<span class="delta ${cls}${big ? " big" : ""}">${arrow} ${sign}${Math.abs(c.pct).toFixed(1)}%<small>${sign}${m.format(Math.abs(c.diff))}</small></span>`;
-};
-
 export interface ImageMeta {
   readonly pr?: string;
   readonly title?: string;
 }
 
-export const imageHtml = (
-  head: CiRun,
-  base: CiRun | undefined,
-  history: CiRun[],
-  meta: ImageMeta = {},
-): string => {
-  // Main's runs oldest first, ending at the base this PR is compared with.
+/** Main's runs oldest first, ending at the base this PR is compared with, then the PR. */
+const timeline = (head: CiRun, base: CiRun | undefined, history: CiRun[]) => {
   const mains = [...history, ...(base ? [base] : [])].filter(
     (r, i, all) => all.findIndex((x) => x.sha === r.sha) === i,
   );
@@ -146,25 +133,123 @@ export const imageHtml = (
         1,
       )[0]!,
     );
-  const runs = [...mains.slice(-30), head];
-  // Every point is the median over the programs this PR measured, so the line
+  return [...mains.slice(-30), head];
+};
+
+/**
+ * The headline cards as markdown lines: value, change since main.
+ * Every number is the median over the programs this PR measured.
+ */
+export const summaryMarkdown = (head: CiRun, base: CiRun | undefined): string[] => {
+  const keys = Object.keys(head.programs);
+  return METRICS.map((m) => {
+    const v = m.format(valueOf(head, m, keys));
+    const c = change(head, base, m, keys);
+    if (!c) return `- **${m.label}** ${v}`;
+    const sign = c.diff > 0 ? "+" : c.diff < 0 ? "−" : "±";
+    const mark = c.noise ? "⚪" : c.diff < 0 ? "🟢" : "🔴";
+    const word = c.noise ? "same as main" : c.diff < 0 ? "smaller than main" : "bigger than main";
+    return `- ${mark} **${m.label}** ${v}: ${sign}${Math.abs(c.pct).toFixed(1)}% (${sign}${m.format(Math.abs(c.diff))}), ${word}`;
+  });
+};
+
+/** One chart per page; the names are the PNG file names. */
+export const CHARTS = [
+  "bundle-programs",
+  "memory-programs",
+  "bundle",
+  "speed",
+  "memory",
+  "objects",
+] as const;
+
+const page = (
+  css: string,
+  body: string,
+) => `<!doctype html><html data-theme="light"><head><meta charset="utf-8"><style>${css}
+html,body{width:${WIDTH}px;overflow:hidden;background:var(--bg)}
+body{background-image:none}
+/* The font Ubuntu runners have, so a local render matches CI. */
+:root{--mono:"DejaVu Sans Mono",monospace}
+#shot{padding:14px}
+#shot .panel{margin:0}
+.rows{display:grid;grid-template-columns:auto 1fr auto auto;column-gap:14px;row-gap:6px;align-items:center;margin-top:12px}
+.rows .name{font-family:var(--mono);font-size:13px;color:var(--fg-2);text-align:right;white-space:nowrap}
+.rows .track{position:relative;height:14px}
+.rows .track i{position:absolute;left:0;top:0;bottom:0;border-radius:3px}
+.rows .track .main{background:color-mix(in oklab,var(--fg-3) 28%,transparent);border-right:2px solid var(--fg-3)}
+.rows .track .pr{top:3px;bottom:3px;background:var(--line-2)}
+.rows .track .pr.bad{background:var(--rose)}
+.rows .track .pr.good{background:var(--teal)}
+.rows .size{font-family:var(--mono);font-size:13px;color:var(--fg);text-align:right;white-space:nowrap}
+.rows .diff{font-family:var(--mono);font-size:13px;font-weight:700;white-space:nowrap;color:var(--fg-3)}
+.rows .diff.bad{color:var(--rose)}
+.rows .diff.good{color:var(--teal)}
+.rows .colhead{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3)}
+</style></head><body><div id="shot">${body}</div>
+<script>document.title = "h=" + Math.ceil(document.querySelector("#shot").getBoundingClientRect().bottom + scrollY)</script>
+</body></html>`;
+
+/** Every chart as its own HTML page, in the order of `CHARTS`. */
+export const imagePages = (
+  head: CiRun,
+  base: CiRun | undefined,
+  history: CiRun[],
+  meta: ImageMeta = {},
+): Array<{ name: (typeof CHARTS)[number]; html: string }> => {
+  const runs = timeline(head, base, history);
+  // Line points are medians over the programs this PR measured, so the line
   // compares like with like even though main measures every SDK.
   const keys = Object.keys(head.programs);
   const branch = meta.pr ? `PR #${meta.pr}` : "this PR";
-  // The PR is one column wide: keep the zone label short.
-  const zone = "PR";
+  const css = readFileSync(join(DASH, "src", "style.css"), "utf8").replaceAll(
+    'url("/fonts/',
+    `url("file://${join(DASH, "public", "fonts")}/`,
+  );
+  const byId = (id: string) => METRICS.find((m) => m.id === id)!;
 
-  const cards = METRICS.map((m) => {
-    const v = valueOf(head, m, keys);
-    return `<div class="card">
-      <div class="label">${esc(m.label)}</div>
-      <div class="value">${esc(m.format(v))}</div>
-      <div class="sub">median per program</div>
-      ${base ? `<div class="vs"><span>since main</span>${deltaHtml(change(head, base, m, keys), m, true)}</div>` : `<div class="vs"><span>no main run to compare yet</span></div>`}
-    </div>`;
-  }).join("");
+  // Per program: main as a faint bar with an edge, the PR on top, and next to
+  // it the PR's size and its change from main.
+  const programs = (m: Metric) => {
+    const rows = keys
+      .flatMap((k) => {
+        const h = m.read(head.programs[k]!);
+        if (h === undefined) return [];
+        const b = base?.programs[k] && m.read(base.programs[k]!);
+        return [{ k, h, b }];
+      })
+      .sort((x, y) => y.h - x.h);
+    const max = Math.max(...rows.flatMap((r) => [r.h, r.b ?? 0]));
+    const w = (n: number) => `${((n / max) * 100).toFixed(2)}%`;
+    let changed = 0;
+    const html = rows
+      .map(({ k, h, b }) => {
+        let cls = "";
+        let diff = "new";
+        if (!base) diff = "";
+        else if (b !== undefined) {
+          const d = h - b;
+          const sign = d > 0 ? "+" : d < 0 ? "−" : "±";
+          const noise = Math.abs(d) < m.noise(b);
+          if (!noise) changed++;
+          cls = noise ? "" : d > 0 ? "bad" : "good";
+          diff = `${sign}${m.format(Math.abs(d))} (${sign}${Math.abs(b ? (d / b) * 100 : 0).toFixed(1)}%)`;
+        }
+        return `<span class="name">${esc(k)}</span>
+<span class="track">${b !== undefined ? `<i class="main" style="width:${w(b)}"></i>` : ""}<i class="pr ${cls}" style="width:${w(h)}"></i></span>
+<span class="size">${esc(m.format(h))}</span><span class="diff ${cls}">${esc(diff)}</span>`;
+      })
+      .join("\n");
+    const note = !base ? "" : changed ? ` · ${changed} changed vs main` : " · none changed vs main";
+    return `<section class="panel chart-panel">
+  <div class="chart-head"><h3>${esc(m.label)} <span class="muted">· per program${note}</span></h3>
+  <div class="how">Grey bar with an edge = main. Bar on top = this PR (red bigger, teal smaller, grey within noise). Then the PR's ${m.id === "bundle" ? "size" : "heap"} and its change from main.</div></div>
+  <div class="rows"><span></span><span></span><span class="colhead">this PR</span><span class="colhead">vs main</span>
+${html}</div>
+</section>`;
+  };
 
-  const charts = METRICS.map((m) => {
+  const line = (m: Metric) => {
     const points = runs.map((r, i) => {
       const c = change(r, runs[i - 1], m, keys);
       return {
@@ -177,96 +262,23 @@ export const imageHtml = (
       };
     });
     return `<section class="panel chart-panel">
-      <div class="chart-head">
-        <h3>${esc(m.label)} <span class="muted">· median per program · lower is better</span></h3>
-        <div class="how">${esc(m.how)}</div>
-      </div>
-      <div class="chart">${lineChart(points, { format: m.format, branchLabel: zone })}</div>
-    </section>`;
-  }).join("");
+  <div class="chart-head"><h3>${esc(m.label)} <span class="muted">· median per program · lower is better</span></h3>
+  <div class="how">${esc(m.how)}</div></div>
+  <div class="chart">${lineChart(points, { format: m.format, branchLabel: "PR" })}</div>
+</section>`;
+  };
 
-  // Per program, as the dashboard's bar panels: what moved vs main, or every
-  // program's size when nothing did.
-  const bars = METRICS.filter((m) => m.id === "bundle" || m.id === "memory")
-    .map((m) => {
-      let changed = 0;
-      const rows = keys
-        .filter((k) => m.read(head.programs[k]!) !== undefined)
-        .map((k) => {
-          const h = m.read(head.programs[k]!)!;
-          const b = base?.programs[k] && m.read(base.programs[k]!);
-          if (!base) return { label: k, value: h, sub: "", color: "var(--line-2)" };
-          if (b === undefined) return { label: k, value: h, sub: "new", color: "var(--violet)" };
-          const d = h - b;
-          const pct = b ? (d / b) * 100 : 0;
-          const sign = d > 0 ? "+" : d < 0 ? "−" : "±";
-          const noise = Math.abs(d) < m.noise(b);
-          if (!noise) changed++;
-          const arrow = noise ? "≈" : d > 0 ? "▲" : "▼";
-          return {
-            label: k,
-            value: h,
-            sub:
-              d === 0
-                ? "= same"
-                : `${arrow} ${sign}${m.format(Math.abs(d))} ${sign}${Math.abs(pct).toFixed(1)}%`,
-            color: noise ? "var(--line-2)" : d > 0 ? "var(--rose)" : "var(--teal)",
-          };
-        })
-        .sort((x, y) => y.value - x.value);
-      const note = !base
-        ? "per program"
-        : changed
-          ? `per program · ${changed} changed vs main`
-          : "per program · none changed vs main";
-      return `<section class="panel chart-panel">
-      <div class="chart-head"><h3>${m.label} <span class="muted">· ${note}</span></h3><div class="how">Bar = this PR. Next to it: change vs main (= same, ≈ within noise, ▲ bigger, ▼ smaller).</div></div>
-      <div class="chart bars">${
-        // barChart colours the label with the bar; unchanged names keep the normal text colour.
-        barChart(rows, { format: m.format }).replaceAll(
-          'class="bar-label" style="fill:var(--line-2)"',
-          'class="bar-label"',
-        )
-      }</div>
-    </section>`;
-    })
-    .join("");
-
-  const css = readFileSync(join(DASH, "src", "style.css"), "utf8").replaceAll(
-    'url("/fonts/',
-    `url("file://${join(DASH, "public", "fonts")}/`,
-  );
-
-  return `<!doctype html><html data-theme="light"><head><meta charset="utf-8"><style>${css}
-html,body{width:${WIDTH}px;overflow:hidden}
-header{position:static}
-/* The font Ubuntu runners have, so a local render matches CI. */
-:root{--mono:"DejaVu Sans Mono",monospace}
-/* barChart sizes its columns for ~7.3 px per character; DejaVu is wider at 12px. */
-.charts .chart.bars text{font-size:10.5px}
-.charts{grid-template-columns:1fr 1fr}
-.latest{grid-template-columns:230px 1fr}
-.card .vs{flex-direction:column;align-items:flex-start;gap:3px}
-.card .vs > span:first-child{white-space:nowrap}
-.foot{font-family:var(--font-mono,ui-monospace,monospace);font-size:11px;color:var(--fg-3);padding:4px 28px 20px}
-</style></head><body>
-<header><div class="bar"><span class="brand"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"> <path d="M 6.00 6.00 L 12.60 6.00 L 12.60 3.50 L 10.10 3.50 L 10.10 1.00 L 21.90 1.00 L 21.90 3.50 L 19.40 3.50 L 19.40 6.00 L 26.00 6.00 L 26.00 12.60 L 28.50 12.60 L 28.50 10.10 L 31.00 10.10 L 31.00 21.90 L 28.50 21.90 L 28.50 19.40 L 26.00 19.40 L 26.00 26.00 L 19.40 26.00 L 19.40 28.50 L 21.90 28.50 L 21.90 31.00 L 10.10 31.00 L 10.10 28.50 L 12.60 28.50 L 12.60 26.00 L 6.00 26.00 L 6.00 19.40 L 3.50 19.40 L 3.50 21.90 L 1.00 21.90 L 1.00 10.10 L 3.50 10.10 L 3.50 12.60 L 6.00 12.60 Z" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linejoin="miter" /> <circle cx="16" cy="16" r="1.9" fill="var(--accent)" /> </svg><span class="word">Distilled</span><span class="eyebrow">benchmarks · ${esc(branch)} vs main</span></span></div></header>
-<main id="app">
-  <section class="latest">
-    <div class="latest-run">
-      <div class="eyebrow">${esc(branch)}</div>
-      <div class="commit"><span class="sha">${esc(short(head.sha))}</span><span class="tag branch">${esc(branch)}</span></div>
-      <div class="subject">${esc(meta.title ?? head.ref)}</div>
-      <div class="when">vs main <code>${esc(base ? short(base.sha) : "—")}</code> · ${keys.length} programs · ${mains.length} main run${mains.length === 1 ? "" : "s"} on the chart · offline, canned responses</div>
-    </div>
-    <div class="cards">${cards}</div>
-  </section>
-  <div class="charts">${charts}</div>
-  <div class="charts bars-grid">${bars}</div>
-</main>
-<div class="foot">${esc(`node ${head.env.node} · ${head.env.cpus} vCPU · ${head.createdAt.slice(0, 10)} · measured in ${(head.durationMs / 1000).toFixed(0)} s`)}</div>
-<script>document.title = "h=" + Math.ceil(document.querySelector(".foot").getBoundingClientRect().bottom + scrollY)</script>
-</body></html>`;
+  return CHARTS.map((name) => ({
+    name,
+    html: page(
+      css,
+      name === "bundle-programs"
+        ? programs(byId("bundle"))
+        : name === "memory-programs"
+          ? programs(byId("memory"))
+          : line(byId(name)),
+    ),
+  }));
 };
 
 const findChrome = (): string => {
@@ -298,16 +310,15 @@ const chrome = (args: string[]) =>
     );
   });
 
-export const renderImage = async (
+/** Writes `<outDir>/<chart>.png` for every chart in `CHARTS`. */
+export const renderImages = async (
   head: CiRun,
   base: CiRun | undefined,
   history: CiRun[],
-  out: string,
+  outDir: string,
   meta: ImageMeta = {},
 ) => {
   const dir = mkdtempSync(join(tmpdir(), "bench-img-"));
-  const src = join(dir, "index.html");
-  writeFileSync(src, imageHtml(head, base, history, meta));
   const common = [
     "--headless=new",
     "--no-sandbox",
@@ -319,20 +330,25 @@ export const renderImage = async (
     "--virtual-time-budget=2000",
     `--user-data-dir=${join(dir, "profile")}`,
   ];
-  const dom = await chrome([
-    ...common,
-    `--window-size=${WIDTH},2000`,
-    "--dump-dom",
-    `file://${src}`,
-  ]);
-  const height = Number(/<title>h=(\d+)<\/title>/.exec(dom)?.[1] ?? 2000);
-  await chrome([
-    ...common,
-    `--force-device-scale-factor=${SCALE}`,
-    `--window-size=${WIDTH},${height}`,
-    `--screenshot=${out}`,
-    `file://${src}`,
-  ]);
+  for (const { name, html } of imagePages(head, base, history, meta)) {
+    const src = join(dir, `${name}.html`);
+    const out = join(outDir, `${name}.png`);
+    writeFileSync(src, html);
+    const dom = await chrome([
+      ...common,
+      `--window-size=${WIDTH},3000`,
+      "--dump-dom",
+      `file://${src}`,
+    ]);
+    const height = Number(/<title>h=(\d+)<\/title>/.exec(dom)?.[1] ?? 1200);
+    await chrome([
+      ...common,
+      `--force-device-scale-factor=${SCALE}`,
+      `--window-size=${WIDTH},${height}`,
+      `--screenshot=${out}`,
+      `file://${src}`,
+    ]);
+    if (!existsSync(out)) throw new Error(`chrome wrote no screenshot to ${out}`);
+  }
   rmSync(dir, { recursive: true, force: true });
-  if (!existsSync(out)) throw new Error(`chrome wrote no screenshot to ${out}`);
 };

@@ -142,9 +142,10 @@ jobs:
           app-id: ${{ secrets.ALCHEMY_VERSION_BOT_ID }}
           private-key: ${{ secrets.ALCHEMY_VERSION_BOT_PRIVATE_KEY }}
 
-      # The comment is one PNG in distilled.cloud/bench's style, drawn with the
-      # runner's Chrome. A PR comment can only show an image from a URL, so it
-      # is committed to the orphan `bench-images` branch (one file per PR head).
+      # The comment is the headline numbers as text plus one PNG per chart, in
+      # the bench dashboard's style, drawn with the runner's Chrome. A PR
+      # comment can only show an image from a URL, so they are committed to the
+      # orphan `bench-images` branch (pr-<number>/<head sha>/<chart>.png).
       - name: Publish the benchmark image
         id: image
         if: steps.bot-token.outcome == 'success'
@@ -156,7 +157,7 @@ jobs:
         run: |
           base=""; [ -f .bench-ci/main.json ] && base="--base .bench-ci/main.json"
           node benches/sdks/ci.ts image --head .bench-ci/head.json $base \
-            --history .bench-ci/history.json --pr "$PR" --title "$TITLE" --out .bench-ci/bench.png
+            --history .bench-ci/history.json --pr "$PR" --title "$TITLE" --out-dir .bench-ci/images
           remote="https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
           dir="$RUNNER_TEMP/bench-images"
           if git ls-remote --exit-code "$remote" refs/heads/bench-images > /dev/null; then
@@ -164,7 +165,7 @@ jobs:
           else
             git init -q -b bench-images "$dir" && git -C "$dir" remote add origin "$remote"
           fi
-          mkdir -p "$dir/pr-$PR" && cp .bench-ci/bench.png "$dir/pr-$PR/$SHA.png"
+          mkdir -p "$dir/pr-$PR/$SHA" && cp .bench-ci/images/*.png "$dir/pr-$PR/$SHA/"
           git -C "$dir" add -A
           git -C "$dir" -c user.name="alchemy-version-bot[bot]" -c user.email="alchemy-version-bot[bot]@users.noreply.github.com" \
             commit -q -m "bench: PR #$PR at $SHA"
@@ -173,7 +174,7 @@ jobs:
             git -C "$dir" push -q origin bench-images && break
             git -C "$dir" pull -q --rebase origin bench-images
           done
-          echo "url=https://raw.githubusercontent.com/$GITHUB_REPOSITORY/bench-images/pr-$PR/$SHA.png" >> "$GITHUB_OUTPUT"
+          echo "url=https://raw.githubusercontent.com/$GITHUB_REPOSITORY/bench-images/pr-$PR/$SHA" >> "$GITHUB_OUTPUT"
 
       - name: Write report
         env:
@@ -184,7 +185,7 @@ jobs:
           if [ "${{ github.event_name }}" = pull_request ] && [ -f .bench-ci/main.json ]; then
             base="--base .bench-ci/main.json"
           fi
-          node benches/sdks/ci.ts report --head .bench-ci/head.json $base ${IMAGE_URL:+--image-url "$IMAGE_URL"} --out .bench-ci/comment.md
+          node benches/sdks/ci.ts report --head .bench-ci/head.json $base ${IMAGE_URL:+--image-base "$IMAGE_URL"} --out .bench-ci/comment.md
           cat .bench-ci/comment.md >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload results

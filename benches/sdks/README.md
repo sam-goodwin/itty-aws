@@ -96,10 +96,10 @@ Sizes are deterministic.
 ## CI
 
 `.github/workflows/bench.yml` runs `ci.ts` on every PR and comments the
-comparison with main: one PNG of the bench dashboard's cards and charts
-(`src/ci-image.ts` reuses `benches/dashboard`'s `charts.js` and `style.css`;
-drawn with headless Chrome and committed to the orphan `bench-images`
-branch), with the numbers folded below it. It is the
+comparison with main: the headline numbers as text, then one PNG per chart in
+the bench dashboard's style (`src/ci-image.ts` reuses `benches/dashboard`'s
+`charts.js` and `style.css`; drawn with headless Chrome and committed to the
+orphan `bench-images` branch), with the full numbers folded below. It is the
 same measurement, cut down to finish within the other CI jobs:
 
 - **Programs:** the panel in `ci.json` plus every SDK the PR changes.
@@ -119,5 +119,5 @@ same measurement, cut down to finish within the other CI jobs:
 ```sh
 node benches/sdks/ci.ts run --out /tmp/pr.json --changed-since origin/main
 node benches/sdks/ci.ts report --head /tmp/pr.json --base /tmp/main.json
-node benches/sdks/ci.ts image --head /tmp/pr.json --base /tmp/main.json --out /tmp/pr.png
+node benches/sdks/ci.ts image --head /tmp/pr.json --base /tmp/main.json --out-dir /tmp/pr-images
 ```

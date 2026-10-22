@@ -3,6 +3,7 @@
  * compared with. GitHub renders the Mermaid `xychart-beta` blocks as charts in
  * PR comments and job summaries.
  */
+import { summaryMarkdown } from "./ci-image.ts";
 import { fmtBytes, fmtMs } from "./util.ts";
 
 export const MARKER = "<!-- distilled-bench -->";
@@ -159,7 +160,7 @@ const short = (sha: string) => sha.slice(0, 9);
 export const report = (
   head: CiRun,
   base: CiRun | undefined,
-  opts: { runUrl?: string; imageUrl?: string } = {},
+  opts: { runUrl?: string; imageBase?: string } = {},
 ) => {
   const names = Object.keys(head.programs).sort();
   const out: string[] = [MARKER];
@@ -202,10 +203,24 @@ export const report = (
     if (!worse && !better) verdictLines.push("### 🟢 Same size as main", "");
   } else verdictLines.push("### No main run to compare with yet", "");
 
-  // The image says it all; without one (fork PRs), the verdict line stands in.
-  const verdictText = verdictLines.filter(Boolean).join(" ").replaceAll("### ", "");
-  if (opts.imageUrl) out.push(`![${verdictText.replaceAll(/[[\]]/g, "")}](${opts.imageUrl})`, "");
-  else out.push("## Benchmarks", "", ...verdictLines);
+  // The numbers as text, then one image per chart (bench dashboard style).
+  if (opts.imageBase) {
+    const img = (name: string, width = "100%") =>
+      `<img src="${opts.imageBase}/${name}.png" width="${width}" alt="${name}">`;
+    out.push(
+      `### Benchmarks: PR \`${short(head.sha)}\` vs main \`${base ? short(base.sha) : "none yet"}\``,
+      "",
+      ...summaryMarkdown(head, base),
+      "",
+      img("bundle-programs"),
+      "",
+      img("memory-programs"),
+      "",
+      `${img("bundle", "49%")} ${img("memory", "49%")}`,
+      `${img("speed", "49%")} ${img("objects", "49%")}`,
+      "",
+    );
+  } else out.push("## Benchmarks", "", ...verdictLines);
 
   out.push("<details><summary>Numbers</summary>", "");
   if (noisyLine) out.push(`🟡 Timings moved, may be runner noise: ${noisyLine}`, "");

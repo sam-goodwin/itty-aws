@@ -5,8 +5,8 @@
  * process per measurement, no official SDKs, no strict variants.
  *
  *   node benches/sdks/ci.ts run --out pr.json [--changed-since <rev>] [--extra a,b] [--wide]
- *   node benches/sdks/ci.ts report --head pr.json [--base main.json] [--image-url url] --out comment.md
- *   node benches/sdks/ci.ts image --head pr.json [--base main.json] [--history h.json] [--pr N] [--title t] --out bench.png
+ *   node benches/sdks/ci.ts report --head pr.json [--base main.json] [--image-base url] --out comment.md
+ *   node benches/sdks/ci.ts image --head pr.json [--base main.json] [--history h.json] [--pr N] [--title t] --out-dir dir
  *   node benches/sdks/ci.ts history --history h.json --add main.json [--keep 40]
  *
  * `--wide` (push to main) bundles every SDK and probes every SDK under the
@@ -14,11 +14,11 @@
  * compare with. See README.md "CI".
  */
 import { execFileSync } from "node:child_process";
-import { existsSync, readdirSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { cpus } from "node:os";
 import { join, resolve } from "node:path";
 import { BASELINES, bundle, fixtureSource } from "./src/bundle.ts";
-import { renderImage } from "./src/ci-image.ts";
+import { renderImages } from "./src/ci-image.ts";
 import { report, type CiRun, type CiProgram } from "./src/ci-report.ts";
 import type { ProbeRequest } from "./src/probe.ts";
 import { packSize } from "./src/size.ts";
@@ -56,7 +56,10 @@ if (command === "report") {
   const head = readJson<CiRun>(resolve(flag("head")!));
   const basePath = flag("base");
   const base = basePath && existsSync(basePath) ? readJson<CiRun>(resolve(basePath)) : undefined;
-  const md = report(head, base, { runUrl: process.env.BENCH_RUN_URL, imageUrl: flag("image-url") });
+  const md = report(head, base, {
+    runUrl: process.env.BENCH_RUN_URL,
+    imageBase: flag("image-base"),
+  });
   const out = flag("out");
   if (out) writeFileSync(out, md);
   else process.stdout.write(md);
@@ -69,7 +72,9 @@ if (command === "image") {
   const historyPath = flag("history");
   const history =
     historyPath && existsSync(historyPath) ? readJson<CiRun[]>(resolve(historyPath)) : [];
-  await renderImage(head, base, history, resolve(flag("out") ?? "bench.png"), {
+  const outDir = resolve(flag("out-dir") ?? ".");
+  mkdirSync(outDir, { recursive: true });
+  await renderImages(head, base, history, outDir, {
     pr: flag("pr"),
     title: flag("title"),
   });
@@ -107,7 +112,7 @@ if (command === "history") {
 }
 if (command !== "run") {
   console.error(
-    "usage: ci.ts run --out file [--changed-since rev] [--wide] | report --head file [--base file] [--image-url url] [--out file] | image --head file [--base file] --out file.png",
+    "usage: ci.ts run --out file [--changed-since rev] [--wide] | report --head file [--base file] [--image-base url] [--out file] | image --head file [--base file] [--history file] --out-dir dir",
   );
   process.exit(2);
 }
