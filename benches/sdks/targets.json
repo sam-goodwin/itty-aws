@@ -1686,13 +1686,13 @@
     }
   },
   "onepassword": {
-    "OnepasswordProtocol": {
+    "ConnectProtocol": {
       "pkg": "onepassword",
       "imports": {
         "Credentials": "pkg:credentials",
-        "Op": "pkg:services/onepassword"
+        "Op": "pkg:services/connect"
       },
-      "auth": "Credentials.CredentialsFromEnv",
+      "auth": "Credentials.ConnectCredentialsFromEnv",
       "call": "Op.getVaults({})",
       "label": "onepassword.getVaults",
       "env": {
@@ -1706,7 +1706,7 @@
         },
         "body": "{}"
       },
-      "protocol": "OnepasswordProtocol",
+      "protocol": "ConnectProtocol",
       "primary": true,
       "strictResponse": {
         "status": 200,

@@ -1,6 +1,6 @@
 import { type Policy, throttlingFactory, transientFactory } from "@distilled.cloud/core/retry";
 /**
- * 1Password Connect retry configuration.
+ * 1Password retry configuration.
  *
  * Defines the per-SDK `Retry` Context.Service tag that generated operations
  * wire into `API.make`. Callers can install a blanket retry policy at the
