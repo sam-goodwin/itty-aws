@@ -219,7 +219,7 @@ a new enum member, and in `strict` an undocumented field) as a
 default.
 
 Do not add tests to a generated SDK. Generated code is tested once, through
-the generator and the protocols in `packages/core`. `packages/core/src/sdks.test.ts`
+the generator and the protocols in `packages/core`. `packages/core/test/sdks.test.ts`
 runs against every package and checks the glue a new SDK hand-writes: its
 `<Pkg>OpError` union reaches `<Pkg>ParseError` (so `catchTag` on a strict
 call typechecks), something outside `src/services/` constructs it, and
@@ -291,7 +291,7 @@ leaves anything already verb-first or ambiguous (`WatchPodList`,
 `AppGetOrCreate`, `accountById`) unchanged. Irregulars go in
 `operationNames` (lookup by `"METHOD path"`, then operationId) — PUT vs
 PATCH that share an upstream id need the path key. Cases live in
-`packages/core/src/codegen/rewrite-operation-ids.test.ts` (`pnpm vitest run`); add
+`packages/core/test/codegen/rewrite-operation-ids.test.ts` (`pnpm vitest run`); add
 one before changing the heuristic. Do not rename operations with a patch.
 Patch the model, not the generated TypeScript. Writing and checking a
 patch is the `distilled-sdk-patch` skill

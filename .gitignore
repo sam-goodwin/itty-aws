@@ -31,3 +31,6 @@ packages/.audit-*/
 
 # pkg pack output (CI artifact hand-off)
 .pkg
+
+# Declaration output of packages/*/tsconfig.test.json (type-check only).
+.test-types/
