@@ -47,15 +47,32 @@ for (let i = 0; i < rest.length; i++) {
   if (next === undefined || next.startsWith("--")) flags.set(a.slice(2), true);
   else flags.set(a.slice(2), (i++, next));
 }
+/**
+ * Results from a fork PR's job are untrusted data: the comment workflow renders
+ * them with secrets in scope. `--untrusted` keeps only plain characters in every
+ * string and key, so no markdown, HTML or @mention can come through.
+ */
+const clean = (v: unknown): unknown => {
+  const text = (s: string) => s.replace(/[^\w .:~+\-\/(),=#%]/g, "").slice(0, 300);
+  if (typeof v === "string") return text(v);
+  if (Array.isArray(v)) return v.map(clean);
+  if (v && typeof v === "object")
+    return Object.fromEntries(Object.entries(v).map(([k, x]) => [text(k), clean(x)]));
+  return typeof v === "number" || typeof v === "boolean" || v === null ? v : undefined;
+};
+const load = <T>(path: string): T => {
+  const data = readJson<T>(resolve(path));
+  return (flags.has("untrusted") ? clean(data) : data) as T;
+};
 const flag = (name: string): string | undefined => {
   const v = flags.get(name);
   return typeof v === "string" ? v : undefined;
 };
 
 if (command === "report") {
-  const head = readJson<CiRun>(resolve(flag("head")!));
+  const head = load<CiRun>(flag("head")!);
   const basePath = flag("base");
-  const base = basePath && existsSync(basePath) ? readJson<CiRun>(resolve(basePath)) : undefined;
+  const base = basePath && existsSync(basePath) ? load<CiRun>(basePath) : undefined;
   const md = report(head, base, {
     runUrl: process.env.BENCH_RUN_URL,
     imageBase: flag("image-base"),
@@ -66,17 +83,16 @@ if (command === "report") {
   process.exit(0);
 }
 if (command === "image") {
-  const head = readJson<CiRun>(resolve(flag("head")!));
+  const head = load<CiRun>(flag("head")!);
   const basePath = flag("base");
-  const base = basePath && existsSync(basePath) ? readJson<CiRun>(resolve(basePath)) : undefined;
+  const base = basePath && existsSync(basePath) ? load<CiRun>(basePath) : undefined;
   const historyPath = flag("history");
-  const history =
-    historyPath && existsSync(historyPath) ? readJson<CiRun[]>(resolve(historyPath)) : [];
+  const history = historyPath && existsSync(historyPath) ? load<CiRun[]>(historyPath) : [];
   const outDir = resolve(flag("out-dir") ?? ".");
   mkdirSync(outDir, { recursive: true });
   await renderImages(head, base, history, outDir, {
     pr: flag("pr"),
-    title: flag("title"),
+    title: flags.has("untrusted") ? (clean(flag("title") ?? "") as string) : flag("title"),
   });
   process.exit(0);
 }

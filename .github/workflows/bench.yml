@@ -1,6 +1,7 @@
 name: Benchmarks
 
-# Benchmarks a PR against main and comments the comparison on the PR.
+# Benchmarks a PR against main. bench-comment.yml then posts the comparison on
+# the PR; this job runs the PR's code and has no secrets, so fork PRs work too.
 #
 # `benches/sdks/ci.ts` measures a fixed panel of SDKs (benches/sdks/ci.json)
 # plus the SDKs the PR changes: 1-auth + 1-operation bundle size for every
@@ -40,7 +41,6 @@ jobs:
     runs-on: blacksmith-8vcpu-ubuntu-2404
     permissions:
       contents: read
-      pull-requests: write
     steps:
       # Depth 2: on a PR the checkout is the merge commit, and its first
       # parent is main, which is how ci.ts finds the SDKs the PR changes.
@@ -130,63 +130,27 @@ jobs:
             .bench-ci/history.json
           key: bench-ci-main-${{ github.sha }}-${{ github.run_id }}
 
-      # Same bot as the website preview comment. Fork PRs get no secrets, so
-      # they get the job summary only, with the text verdict.
-      - name: Generate bot token
-        id: bot-token
-        if: >-
-          github.event_name == 'pull_request' &&
-          github.event.pull_request.head.repo.full_name == github.repository
-        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
-        with:
-          app-id: ${{ secrets.ALCHEMY_VERSION_BOT_ID }}
-          private-key: ${{ secrets.ALCHEMY_VERSION_BOT_PRIVATE_KEY }}
-
-      # The comment is the headline numbers as text plus one PNG per chart, in
-      # the bench dashboard's style, drawn with the runner's Chrome. A PR
-      # comment can only show an image from a URL, so they are committed to the
-      # orphan `bench-images` branch (pr-<number>/<head sha>/<chart>.png).
-      - name: Publish the benchmark image
-        id: image
-        if: steps.bot-token.outcome == 'success'
-        env:
-          GH_TOKEN: ${{ steps.bot-token.outputs.token }}
-          PR: ${{ github.event.pull_request.number }}
-          SHA: ${{ github.event.pull_request.head.sha }}
-          TITLE: ${{ github.event.pull_request.title }}
-        run: |
-          base=""; [ -f .bench-ci/main.json ] && base="--base .bench-ci/main.json"
-          node benches/sdks/ci.ts image --head .bench-ci/head.json $base \
-            --history .bench-ci/history.json --pr "$PR" --title "$TITLE" --out-dir .bench-ci/images
-          remote="https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-          dir="$RUNNER_TEMP/bench-images"
-          if git ls-remote --exit-code "$remote" refs/heads/bench-images > /dev/null; then
-            git clone -q --depth 1 --branch bench-images "$remote" "$dir"
-          else
-            git init -q -b bench-images "$dir" && git -C "$dir" remote add origin "$remote"
-          fi
-          mkdir -p "$dir/pr-$PR/$SHA" && cp .bench-ci/images/*.png "$dir/pr-$PR/$SHA/"
-          git -C "$dir" add -A
-          git -C "$dir" -c user.name="alchemy-version-bot[bot]" -c user.email="alchemy-version-bot[bot]@users.noreply.github.com" \
-            commit -q -m "bench: PR #$PR at $SHA"
-          # Other PRs push here too: rebase and retry on a race.
-          for attempt in 1 2 3; do
-            git -C "$dir" push -q origin bench-images && break
-            git -C "$dir" pull -q --rebase origin bench-images
-          done
-          echo "url=https://raw.githubusercontent.com/$GITHUB_REPOSITORY/bench-images/pr-$PR/$SHA" >> "$GITHUB_OUTPUT"
-
       - name: Write report
         env:
           BENCH_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          IMAGE_URL: ${{ steps.image.outputs.url }}
         run: |
           base=""
           if [ "${{ github.event_name }}" = pull_request ] && [ -f .bench-ci/main.json ]; then
             base="--base .bench-ci/main.json"
           fi
-          node benches/sdks/ci.ts report --head .bench-ci/head.json $base ${IMAGE_URL:+--image-base "$IMAGE_URL"} --out .bench-ci/comment.md
+          node benches/sdks/ci.ts report --head .bench-ci/head.json $base --out .bench-ci/comment.md
           cat .bench-ci/comment.md >> "$GITHUB_STEP_SUMMARY"
+
+      # bench-comment.yml reads this, runs with secrets, and comments on the PR.
+      # This job runs the PR's code, so it gets no secrets, even from a fork.
+      - name: Record the PR
+        if: github.event_name == 'pull_request'
+        env:
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          node -e 'require("fs").writeFileSync(".bench-ci/pr.json", JSON.stringify({ number: +process.env.PR, sha: process.env.SHA, title: process.env.TITLE }))'
 
       - name: Upload results
         if: always()
@@ -196,18 +160,3 @@ jobs:
           path: .bench-ci/
           include-hidden-files: true
           retention-days: 30
-
-      # One comment per PR, edited on every push.
-      - name: Comment on the PR
-        if: steps.bot-token.outcome == 'success'
-        env:
-          GH_TOKEN: ${{ steps.bot-token.outputs.token }}
-          PR: ${{ github.event.pull_request.number }}
-        run: |
-          id=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
-            --jq '.[] | select(.body | startswith("<!-- distilled-bench -->")) | .id' | head -n 1)
-          if [ -n "$id" ]; then
-            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -F body=@.bench-ci/comment.md > /dev/null
-          else
-            gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" -F body=@.bench-ci/comment.md > /dev/null
-          fi
