@@ -29,8 +29,13 @@ import {
   SsoStartUrl,
   type ResolvedCredentials,
 } from "./credentials-service.ts";
-import { parseIni, parseSSOSessionData } from "./util/parse-ini.ts";
-import { getHomeDir, parseKnownFiles } from "./util/shared-config.ts";
+import { parseSSOSessionData } from "./util/parse-ini.ts";
+import {
+  getConfigFilepath,
+  getHomeDir,
+  loadSharedConfigFiles,
+  mergeKnownFiles,
+} from "./util/shared-config.ts";
 
 export * from "./auth.browser.ts";
 
@@ -105,9 +110,12 @@ export const makeAuthService = () =>
     const client = yield* HttpClient.HttpClient;
 
     const loadProfile = Effect.fn(function* (profileName: string) {
+      // One read of both files: profiles come from the merged map, and
+      // `[sso-session]` sections from the config file alone, as in the AWS CLI.
+      const files = yield* Effect.promise(loadSharedConfigFiles);
       const profiles: {
         [profileName: string]: AwsProfileConfig;
-      } = yield* Effect.promise(parseKnownFiles);
+      } = mergeKnownFiles(files);
 
       const profile = profiles[profileName];
 
@@ -117,9 +125,6 @@ export const makeAuthService = () =>
           profile: profileName,
         });
       }
-
-      const awsDir = path.join(getHomeDir(), ".aws");
-      const configPath = path.join(awsDir, "config");
 
       // A profile is an SSO profile in one of two config formats:
       //   - modern: `sso_session = <name>` referencing an `[sso-session <name>]`
@@ -138,11 +143,17 @@ export const makeAuthService = () =>
             () => profile.sso_start_url,
           );
 
-          const ssoSessions = yield* fs.readFileString(configPath).pipe(
-            Effect.flatMap((config) => Effect.promise(async () => parseIni(config))),
-            Effect.map(parseSSOSessionData),
-          );
-          const session = ssoSessions[profile.sso_session];
+          const session = parseSSOSessionData(files.configFile)[profile.sso_session];
+          if (!session) {
+            return yield* new InvalidSSOProfile({
+              profile: profileName,
+              missingFields: [`sso-session ${profile.sso_session}`],
+              message:
+                `Profile ${profileName} sets sso_session = ${profile.sso_session}, but ` +
+                `${getConfigFilepath()} has no [sso-session ${profile.sso_session}] section.` +
+                `\nReference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html`,
+            });
+          }
           if (ssoRegion && ssoRegion !== session.sso_region) {
             return yield* new ConflictingSSORegion({
               message: `Conflicting SSO region`,

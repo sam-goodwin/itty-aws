@@ -19,8 +19,8 @@ const SESSION = "my-sso";
 const START_URL = "https://d-1234567890.awsapps.com/start";
 const SSO_REGION = "us-east-1";
 
-// The smithy ini loader reads `$HOME/.aws/config` from the real disk and
-// memoises the file contents per path, so each test gets a fresh HOME.
+// The shared config loader reads `$HOME/.aws/config` from the real disk, so
+// each test gets a fresh HOME.
 const config = `
 [sso-session ${SESSION}]
 sso_start_url = ${START_URL}
@@ -59,10 +59,8 @@ const harness = (home: string) => {
   const files = new Map<string, string>();
   const portalCalls: string[] = [];
 
-  // `loadProfile` re-reads the config through the Effect FileSystem to
-  // resolve the `[sso-session]` section; the smithy loader reads the real
-  // file written in `beforeEach`.
-  files.set(join(home, ".aws", "config"), config);
+  // The shared config loader reads the real file written in `beforeEach`;
+  // this map holds only the SSO cache.
   files.set(
     join(cacheDir, `${ssoTokenCacheName(SESSION)}.json`),
     JSON.stringify({
@@ -415,10 +413,7 @@ describe("SSO access token refresh (#886)", () => {
       },
     }),
   ) => {
-    const files = new Map<string, string>([
-      [join(home, ".aws", "config"), config],
-      [tokenPath(), JSON.stringify(token)],
-    ]);
+    const files = new Map<string, string>([[tokenPath(), JSON.stringify(token)]]);
     const oidcBodies: unknown[] = [];
     const portalTokens: string[] = [];
 
@@ -585,5 +580,88 @@ describe("SSO access token refresh (#886)", () => {
     expect(h.portalTokens).toEqual([]);
     // The cache is left as it was.
     expect(h.savedToken().accessToken).toBe("expired-access-token");
+  });
+});
+
+describe("AWS_CONFIG_FILE", () => {
+  let home: string;
+  let originalHome: string | undefined;
+  let originalConfigFile: string | undefined;
+  let originalCredentialsFile: string | undefined;
+
+  beforeEach(() => {
+    home = mkdtempSync(join(tmpdir(), "distilled-aws-auth-"));
+    originalHome = process.env.HOME;
+    originalConfigFile = process.env.AWS_CONFIG_FILE;
+    originalCredentialsFile = process.env.AWS_SHARED_CREDENTIALS_FILE;
+    process.env.HOME = home;
+    delete process.env.AWS_SHARED_CREDENTIALS_FILE;
+  });
+
+  afterEach(() => {
+    process.env.HOME = originalHome;
+    if (originalConfigFile === undefined) delete process.env.AWS_CONFIG_FILE;
+    else process.env.AWS_CONFIG_FILE = originalConfigFile;
+    if (originalCredentialsFile === undefined) delete process.env.AWS_SHARED_CREDENTIALS_FILE;
+    else process.env.AWS_SHARED_CREDENTIALS_FILE = originalCredentialsFile;
+    rmSync(home, { recursive: true, force: true });
+  });
+
+  /** Writes `contents` to `$HOME/<relative>`, creating parent directories. */
+  const write = (relative: string, contents: string) => {
+    const file = join(home, relative);
+    mkdirSync(join(file, ".."), { recursive: true });
+    writeFileSync(file, contents);
+    return file;
+  };
+
+  const noHttp = Layer.succeed(HttpClient.HttpClient)(
+    HttpClient.make(() => Effect.die("unexpected HTTP request")),
+  );
+
+  const loadFailure = (profile: string) =>
+    Effect.runPromise(
+      Effect.flatMap(makeAuthService(), (auth) => auth.loadProfile(profile)).pipe(
+        Effect.provide(Layer.mergeAll(FileSystem.layerNoop({}), Path.layer, noHttp)),
+        Effect.flip,
+      ),
+    );
+
+  test("resolves sso-session sections from AWS_CONFIG_FILE", async () => {
+    process.env.AWS_CONFIG_FILE = write("project/aws-config", config);
+
+    const dev = await harness(home).load("dev");
+    expect(Redacted.value(dev.accessKeyId)).toBe("AKIA-111111111111-AdministratorAccess");
+  });
+
+  test("expands a leading ~/ in AWS_CONFIG_FILE", async () => {
+    write("project/aws-config", config);
+    process.env.AWS_CONFIG_FILE = "~/project/aws-config";
+
+    const dev = await harness(home).load("dev");
+    expect(Redacted.value(dev.accessKeyId)).toBe("AKIA-111111111111-AdministratorAccess");
+  });
+
+  test("a missing [sso-session] section fails with InvalidSSOProfile", async () => {
+    process.env.AWS_CONFIG_FILE = write(
+      "project/aws-config",
+      config.replace(`[sso-session ${SESSION}]`, "[sso-session other]"),
+    );
+
+    const error = await loadFailure("dev");
+    expect(error._tag).toBe("Alchemy::AWS::InvalidSSOProfile");
+    expect(error).toMatchObject({ missingFields: [`sso-session ${SESSION}`] });
+  });
+
+  test("ignores [sso-session] sections in the credentials file", async () => {
+    const [sessionSection, profiles] = [
+      config.slice(0, config.indexOf("[profile dev]")),
+      config.slice(config.indexOf("[profile dev]")),
+    ];
+    process.env.AWS_CONFIG_FILE = write("project/aws-config", profiles);
+    write(".aws/credentials", sessionSection);
+
+    const error = await loadFailure("dev");
+    expect(error._tag).toBe("Alchemy::AWS::InvalidSSOProfile");
   });
 });

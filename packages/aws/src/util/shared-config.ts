@@ -72,11 +72,16 @@ export const loadSharedConfigFiles = async (): Promise<SharedConfigFiles> => {
 };
 
 /** Both files as one profile map, with the credentials file winning. */
-export const parseKnownFiles = async (): Promise<ParsedIniData> => {
-  const { configFile, credentialsFile } = await loadSharedConfigFiles();
+export const mergeKnownFiles = ({
+  configFile,
+  credentialsFile,
+}: SharedConfigFiles): ParsedIniData => {
   const merged: ParsedIniData = { ...configFile };
   for (const [profile, values] of Object.entries(credentialsFile)) {
     merged[profile] = { ...merged[profile], ...values };
   }
   return merged;
 };
+
+export const parseKnownFiles = async (): Promise<ParsedIniData> =>
+  mergeKnownFiles(await loadSharedConfigFiles());
