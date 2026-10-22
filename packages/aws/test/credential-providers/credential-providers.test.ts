@@ -658,6 +658,15 @@ aws_secret_access_key = secret-file
     );
   });
 
+  test("a config file that cannot be parsed stops the chain", async () => {
+    writeConfig("[profile __proto__]\nregion = us-east-1\n");
+    process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI = "/creds";
+    const http = fakeHttp(() => imdsCreds("AKIA-ecs"));
+    const error = await runFail(nodeProviderChainSource().pipe(Effect.provide(http)));
+    expect(error.tryNextLink).toBe(false);
+    expect(error.message).toContain('invalid profile name "profile __proto__"');
+  });
+
   test("with IMDS disabled and nothing else, fails with the final message", async () => {
     writeCredentials("");
     process.env.AWS_EC2_METADATA_DISABLED = "true";

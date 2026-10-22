@@ -112,7 +112,7 @@ export const makeAuthService = () =>
     const loadProfile = Effect.fn(function* (profileName: string) {
       // One read of both files: profiles come from the merged map, and
       // `[sso-session]` sections from the config file alone, as in the AWS CLI.
-      const files = yield* Effect.promise(loadSharedConfigFiles);
+      const files = yield* loadSharedConfigFiles;
       const profiles: {
         [profileName: string]: AwsProfileConfig;
       } = mergeKnownFiles(files);

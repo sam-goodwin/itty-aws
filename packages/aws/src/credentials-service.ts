@@ -64,6 +64,7 @@ export type CredentialsError =
   | AwsCredentialProviderError
   | MissingRegion
   | ProfileNotFound
+  | SharedConfigError
   | InvalidSSOProfile
   | InvalidSSOToken
   | ExpiredSSOToken
@@ -212,6 +213,14 @@ export class ProfileNotFound
   extends /*@__PURE__*/ Data.TaggedError("Alchemy::AWS::ProfileNotFound")<{
     message: string;
     profile: string;
+  }> {}
+
+/** A shared config or credentials file exists but cannot be read or parsed. */
+export class SharedConfigError
+  extends /*@__PURE__*/ Data.TaggedError("Alchemy::AWS::SharedConfigError")<{
+    message: string;
+    path: string;
+    cause?: unknown;
   }> {}
 
 export class ConflictingSSORegion

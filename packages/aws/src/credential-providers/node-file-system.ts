@@ -7,16 +7,36 @@ import * as Effect from "effect/Effect";
 import * as FileSystem from "effect/FileSystem";
 import * as PlatformError from "effect/PlatformError";
 
+const systemErrorTag = (code: string | undefined): PlatformError.SystemErrorTag => {
+  switch (code) {
+    case "ENOENT":
+    case "ENOTDIR":
+      return "NotFound";
+    case "EACCES":
+    case "EPERM":
+      return "PermissionDenied";
+    case "EEXIST":
+      return "AlreadyExists";
+    case "EISDIR":
+      return "BadResource";
+    default:
+      return "Unknown";
+  }
+};
+
 const systemError =
   (method: string, path: string) =>
-  (cause: unknown): PlatformError.PlatformError =>
-    PlatformError.systemError({
-      _tag: "Unknown",
+  (cause: unknown): PlatformError.PlatformError => {
+    const { code, syscall } = (cause ?? {}) as NodeJS.ErrnoException;
+    return PlatformError.systemError({
+      _tag: systemErrorTag(code),
       module: "FileSystem",
       method,
+      syscall,
       pathOrDescriptor: path,
       cause,
     });
+  };
 
 export const nodeFileSystem = /*@__PURE__*/ FileSystem.makeNoop({
   readFileString: (path) =>

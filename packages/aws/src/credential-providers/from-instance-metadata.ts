@@ -28,7 +28,10 @@ export interface FromInstanceMetadataOptions {
    * `ec2_metadata_v1_disabled`). The Node entry point reads them; the
    * environment always wins.
    */
-  readonly profileConfig?: Effect.Effect<Readonly<Record<string, string | undefined>> | undefined>;
+  readonly profileConfig?: Effect.Effect<
+    Readonly<Record<string, string | undefined>> | undefined,
+    CredentialSourceError
+  >;
 }
 
 const instanceMetadataEndpoint = (
