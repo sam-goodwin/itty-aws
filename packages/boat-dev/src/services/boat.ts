@@ -50,8 +50,72 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
+/** One AI credential in a credential profile. The `*-api-key` ids are API keys you can set with `PUT /credential-profiles/{profile}/keys/{credential}`. The sign-ins (`*-subscription`) and Bedrock (`*-bedrock`) are connected on the dashboard Agents & Proxying page, with the profile picked at the top; you can remove them here. */
+export type AddCredentialAccountRequestCredential =
+  | "anthropic-api-key"
+  | "openai-api-key"
+  | "openrouter-api-key"
+  | "llmgateway-api-key"
+  | "deepseek-api-key"
+  | "moonshot-api-key"
+  | "mistral-api-key"
+  | "claude-subscription"
+  | "chatgpt-subscription"
+  | "kimi-subscription"
+  | "mistral-vibe-subscription"
+  | "claude-bedrock"
+  | "codex-bedrock";
+export interface AddCredentialAccountRequest {
+  /** Profile id or name. */
+  profile: string;
+  credential: AddCredentialAccountRequestCredential | (string & {});
+  /** The API key. Boat encrypts it at rest. */
+  value: string;
+  /** Keep the key this one replaces as another account of the credential, ready to switch back to. */
+  keepCurrent?: boolean;
+}
+/** One AI credential in a credential profile. The `*-api-key` ids are API keys you can set with `PUT /credential-profiles/{profile}/keys/{credential}`. The sign-ins (`*-subscription`) and Bedrock (`*-bedrock`) are connected on the dashboard Agents & Proxying page, with the profile picked at the top; you can remove them here. */
+export type CredentialId =
+  | "anthropic-api-key"
+  | "openai-api-key"
+  | "openrouter-api-key"
+  | "llmgateway-api-key"
+  | "deepseek-api-key"
+  | "moonshot-api-key"
+  | "mistral-api-key"
+  | "claude-subscription"
+  | "chatgpt-subscription"
+  | "kimi-subscription"
+  | "mistral-vibe-subscription"
+  | "claude-bedrock"
+  | "codex-bedrock";
+/** One account of a credential. Never a secret. */
+export interface CredentialAccount {
+  /** The account's id. It stays the same across switches. */
+  id: string;
+  /** The account's email for a sign-in, or the key's last characters (...1234). */
+  label: string;
+  /** True for the account every sandbox on the profile uses. */
+  active: boolean;
+  /** When the account was set aside (accounts not in use). */
+  addedAt?: string;
+}
+/** In the order the accounts were added, so their numbers stay the same across switches. The one in use is marked `active`. */
+export type AddCredentialAccountResponseAccountsList = Array<CredentialAccount>;
+export interface AddCredentialAccountResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profileId: string;
+  credential: CredentialId;
+  /** In the order the accounts were added, so their numbers stay the same across switches. The one in use is marked `active`. */
+  accounts: AddCredentialAccountResponseAccountsList;
+}
 export interface AddEnvironmentRepoRequest {
   environmentId: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
   /** The repository `databaseId` from `GET /repos`. */
   repositoryId: string;
   baseBranch?: string;
@@ -62,6 +126,99 @@ export interface EnvironmentItemChangeResponse {
   /** Id of the newly minted environment version. This is a version id, not the environment's own id: the environment id you passed in the path is unchanged. */
   versionId?: string;
   versionNumber?: number;
+}
+export interface AttachCommandRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  /** Process id returned by a detached command start. */
+  processId: number;
+  /** Start stdout at this byte offset. 0 sends the whole log. */
+  stdoutOffset?: number;
+  /** Start stderr at this byte offset. 0 sends the whole log. */
+  stderrOffset?: number;
+}
+export interface AttachCommandResponse {}
+export interface CommandHistoryRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  /** Only these modes, comma-separated: sync, stream, detached, process, or `commands` for the first three. Default: all. */
+  mode?: string;
+  /** Only commands whose command line contains this text, in any case. */
+  q?: string;
+  limit?: number;
+  /** The `nextCursor` of the previous page. */
+  cursor?: string;
+}
+/** sync: the request waited for the result. stream: the output was streamed. detached: started in the background. process: any other process of the sandbox, recorded from what it wrote to its stdout/stderr. */
+export type CommandRecordMode = "sync" | "stream" | "detached" | "process";
+/** failed: the command could not start or its result never arrived. killed: ended by a signal or by DELETE /commands/{processId}. lost: the sandbox stopped or its agent restarted while the command ran. */
+export type CommandRecordStatus = "running" | "exited" | "timed_out" | "failed" | "killed" | "lost";
+/** One command run through the commands endpoint (kept 90 days), or one process of the sandbox with mode `process` (kept 72 hours). Readable while the sandbox is stopped. */
+export interface CommandRecord {
+  /** Id of the record in the command history. */
+  commandId: string;
+  sandboxId: string;
+  /** The command text as sent (first 64 KiB). */
+  command: string;
+  cwd?: string | null;
+  /** sync: the request waited for the result. stream: the output was streamed. detached: started in the background. process: any other process of the sandbox, recorded from what it wrote to its stdout/stderr. */
+  mode: CommandRecordMode;
+  /** detached: the process id on the sandbox. */
+  processId?: number | null;
+  /** failed: the command could not start or its result never arrived. killed: ended by a signal or by DELETE /commands/{processId}. lost: the sandbox stopped or its agent restarted while the command ran. */
+  status: CommandRecordStatus;
+  exitCode?: number | null;
+  signal?: string | null;
+  /** Bytes of stdout written so far. */
+  stdoutBytes: number;
+  /** Bytes of stderr written so far. */
+  stderrBytes: number;
+  /** True when part of the output is not kept: the sandbox cut the output of a waiting command at 8 MiB, or the account wrote more than 10 MiB (compressed) of command output, or of process output, in one hour. */
+  outputTruncated: boolean;
+  startedAt: string;
+  finishedAt?: string | null;
+}
+/** Newest first. */
+export type CommandHistoryResponseCommandsList = Array<CommandRecord>;
+export interface CommandHistoryResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  /** Newest first. */
+  commands: CommandHistoryResponseCommandsList;
+  /** Pass as `cursor` to get the next page. Null on the last page. */
+  nextCursor: string | null;
+}
+export type CommandLogsRequestStream = "stdout" | "stderr";
+export type CommandLogsRequestEncoding = "utf8" | "base64";
+export interface CommandLogsRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  commandId: string;
+  stream?: CommandLogsRequestStream | (string & {});
+  offset?: number;
+  limit?: number;
+  /** base64 returns the exact bytes. utf8 can split a character at the edge of a read. */
+  encoding?: CommandLogsRequestEncoding | (string & {});
+}
+export type CommandLogsResponseStream = "stdout" | "stderr";
+export type CommandLogsResponseEncoding = "utf8" | "base64";
+export interface CommandLogsResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  commandId: string;
+  stream: CommandLogsResponseStream;
+  /** Byte position of the first byte in `data`. Greater than the requested offset only when output was not kept (see outputTruncated). */
+  offset: number;
+  /** Pass as `offset` to read on. */
+  nextOffset: number;
+  /** Bytes the stream has so far. */
+  size: number;
+  encoding: CommandLogsResponseEncoding;
+  data: string;
+  /** True when the command ended and this read reached the end of the stream. */
+  done: boolean;
 }
 export interface ConfigureSshKeyRequest {
   /** Public Sandbox id returned by create/list/get sandbox calls. */
@@ -81,7 +238,82 @@ export interface ConfigureSshKeyResponse {
   /** The sandbox SSH server's public host key. Pin it in `known_hosts`. */
   hostKey?: string;
 }
+export interface CreateCredentialProfileRequest {
+  /** Unique among the owner's profiles. */
+  name: string;
+  /** Organization id or name. The profile then belongs to that organization. Omit for a personal profile. */
+  org?: string;
+  /** Id or name of a profile you manage. The new profile starts with a copy of its credentials. */
+  copyFrom?: string;
+}
+export type CredentialProfileOwnerKind = "personal" | "org";
+export interface CredentialProfileOwner {
+  /** The account that owns the profile, a person or an organization. */
+  id: string;
+  kind: CredentialProfileOwnerKind;
+  name: string;
+  /** True when the owner has the AI credentials proxy on. */
+  aiProxyEnabled: boolean;
+}
+/** The credentials the profile holds. */
+export type CredentialProfileConnectedList = Array<CredentialId>;
+export type CredentialProfileAccountsValueList = Array<CredentialAccount>;
+/** Credentials with several accounts, keyed by credential id. Each lists every account (labels only), the one in use marked `active`. Empty when you cannot manage the profile. */
+export type CredentialProfileAccountsMap = {
+  [key: string]: CredentialProfileAccountsValueList | undefined;
+};
+/** The names of the profile's custom APIs. Values are never returned. */
+export type CredentialProfileCustomApisList = Array<string>;
+/** A named set of AI credentials. Secret values are never returned. */
+export interface CredentialProfile {
+  id: string;
+  name: string;
+  /** True for the one profile of its owner that sandboxes get when nothing names a profile. The dashboard Agents page edits this profile. */
+  isDefault: boolean;
+  owner: CredentialProfileOwner;
+  /** True when you can change the profile. Org members use an org profile; org owners manage it. */
+  canManage: boolean;
+  /** The credentials the profile holds. */
+  connected: CredentialProfileConnectedList;
+  /** Credentials with several accounts, keyed by credential id. Each lists every account (labels only), the one in use marked `active`. Empty when you cannot manage the profile. */
+  accounts?: CredentialProfileAccountsMap;
+  /** The names of the profile's custom APIs. Values are never returned. */
+  customApis: CredentialProfileCustomApisList;
+  createdAt: string;
+  updatedAt: string;
+}
+export interface CreateCredentialProfileResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profile: CredentialProfile;
+}
+export interface CreateDownloadUrlRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  /** Absolute path, or path relative to the sandbox work directory (/home/user). It must resolve under /home/user or /tmp. */
+  path: string;
+  /** How long the URL stays valid. */
+  ttlSeconds?: number;
+}
+/** GET downloads the file. PUT uploads the request body as the file. */
+export type CreateDownloadUrlResponseMethod = "GET" | "PUT";
+export interface CreateDownloadUrlResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  /** The signed URL. Send the request straight to it; it needs no Authorization header. */
+  url: string;
+  /** GET downloads the file. PUT uploads the request body as the file. */
+  method: CreateDownloadUrlResponseMethod;
+  /** The canonical path the URL is bound to. */
+  path: string;
+  expiresAt: string;
+}
 export interface CreateEnvironmentRequest {
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
   /** Unique environment name. Letters, numbers, dot, dash, underscore; max 64 chars. */
   name: string;
 }
@@ -109,6 +341,7 @@ export interface SelectedRepository {
   setupRoutineId?: string | null;
   setupScript?: string;
   setupBlocking?: boolean;
+  [key: string]: unknown;
 }
 /** Repositories attached to the latest version, with base branch and setup script. */
 export type SandboxEnvironmentSelectedRepositoriesList = Array<SelectedRepository>;
@@ -133,7 +366,7 @@ export interface SandboxEnvironment {
   latestVersionNumber?: number;
   /** When the owner last answered whether this environment is safe for third parties, or null if never asked. */
   safetyAnsweredAt?: string | null;
-  /** When true the environment passes nothing to a sandbox (repos, secrets, and all credentials withheld), overriding the fine-grained flags below. Use for sandboxes handed to third parties. */
+  /** When true the environment passes nothing to a sandbox (repos, secrets, and all credentials withheld), overriding the fine-grained flags below. Use for sandboxes handed to third parties. The one exception is `proxyAiCredentials`. */
   safeForThirdParties: boolean;
   /** Attach the environment's GitHub repositories and the GitHub token (so `gh` and pushes work). Ignored when `safeForThirdParties` is true. */
   passGithub: boolean;
@@ -143,6 +376,10 @@ export interface SandboxEnvironment {
   passSandboxCredentials: boolean;
   /** Attach agent-provider credentials configured on the Agents page. Ignored when `safeForThirdParties` is true. */
   passAgentsCredentials: boolean;
+  /** The AI credential profile the environment's sandboxes get. Null means the sandbox owner's default profile. */
+  credentialProfileId?: string | null;
+  /** Only with `safeForThirdParties` true. The sandboxes still get AI credentials, as AI credentials proxy placeholders. Real keys never enter them. */
+  proxyAiCredentials?: boolean;
   /** The latest version's .env-style content. Treat as sensitive. */
   envContents: string;
   secretFiles: SandboxEnvironmentSecretFilesList;
@@ -156,18 +393,18 @@ export interface SandboxEnvironmentListResponse {
   type?: string;
   environments: SandboxEnvironmentListResponseEnvironmentsList;
 }
-/** Machine size. `small` consumes machine time at half rate and `large` at twice the default rate (see the Billing guide). A fork inherits the source sandbox's type unless the fork request passes its own, and resume and fork can move a sandbox between sizes. */
-export type CreateSandboxRequestType = "small" | "default" | "large";
+/** Machine size. `small` consumes machine time at half rate and `large` at twice the default rate (see the Billing guide). `xlarge` needs the $100/month plan or higher, or an account access grant from an administrator. Otherwise, create, resume and fork return 403 `machine_class_plan_required`. A fork inherits the source sandbox's type unless the fork request passes its own, and resume and fork can move a sandbox between sizes. */
+export type CreateSandboxRequestType = "small" | "default" | "large" | "xlarge";
 /** Per-sandbox environment variables injected into the sandbox's tool environment, on top of the account environment's variables (per-sandbox values win on conflicts). Keys must match `[A-Za-z_][A-Za-z0-9_]{0,127}`; at most 100 variables and 64KB total. Reserved names (`ASCII_TOKEN`, `ASCII_API_URL`, `AGENT_ID`, `PRODUCT_MODE`, `ENVIRONMENT_ID`, `BOAT_ID`, `SERVICE_PREVIEW_TOKEN`, `BOAT_CLI_TOKEN`) are rejected with `invalid_env`. Forked sandboxes inherit the source sandbox's env unless the fork request supplies its own `env`. */
 export type CreateSandboxRequestEnvMap = { [key: string]: string | undefined };
 export interface CreateSandboxRequest {
-  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes, snapshots, and environments stay creator-private. */
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
   org?: string;
   /** Optional exactly-once key for creating a sandbox. Send your own opaque, account-unique value (a UUID) to make `POST /sandboxes` safe to retry when the response is lost (network timeout, 5xx): the first request creates the sandbox and binds it to the key; every later request with the **same account, key, and request body** returns that same sandbox instead of creating a second, billable one. Behavior: keys are retained for **24 hours**; a concurrent or early retry while the first sandbox is still being minted returns `409` `idempotency_in_progress` (retry shortly, same key); reusing a key with a **different body** returns `409` `idempotency_key_reused`; timeouts and 5xx are safe to retry with the same key; a create that fails before the sandbox exists releases the key within ~2 minutes so a retry can create the sandbox. Omit the header to keep the default (non-idempotent) behavior. */
   idempotencyKey?: string;
   /** Same as the `org` query parameter. Query wins when both are set. */
   xBoatOrg?: string;
-  /** Machine size. `small` consumes machine time at half rate and `large` at twice the default rate (see the Billing guide). A fork inherits the source sandbox's type unless the fork request passes its own, and resume and fork can move a sandbox between sizes. */
+  /** Machine size. `small` consumes machine time at half rate and `large` at twice the default rate (see the Billing guide). `xlarge` needs the $100/month plan or higher, or an account access grant from an administrator. Otherwise, create, resume and fork return 403 `machine_class_plan_required`. A fork inherits the source sandbox's type unless the fork request passes its own, and resume and fork can move a sandbox between sizes. */
   type?: CreateSandboxRequestType | (string & {});
   /** Number of seconds before automatic archival. `null` disables auto-stop. The backend also accepts the string `infinite` for legacy compatibility; new clients should send null. */
   ttlSeconds?: number | null;
@@ -179,13 +416,17 @@ export interface CreateSandboxRequest {
   noEnv?: boolean;
   /** Pass `false` to never snapshot this sandbox. Nothing is captured in the background, so it pays no CPU or memory for it, and stopping it erases its disk the way zero data retention does. It cannot be resumed, forked, or saved as a named snapshot, and if its machine fails there is no backup to rebuild it from. */
   snapshots?: boolean;
+  /** Pass `false` for monitoring off. Boat keeps no command or process output, process list or CPU/RAM samples for this sandbox, and its history, processes and metrics calls answer 409 `monitoring_off`. Live output of a running command still works. While the account default is on, `true` is refused with 409 `monitoring_off_for_account`. */
+  monitoring?: boolean;
   /** Pass `true` to get a sandbox only if a machine of this type is ready right now. The call answers within about 1.5 s: either the usual `202` with the sandbox, or `503` `no_ready_machine` with nothing created, billed, or counted against your start limits, so you can retry or fall back at once. Without it, a create waits for a machine to be built when none is ready. Works with `from`; fork and resume take it too. */
   failFast?: boolean;
-  /** Shell script that runs on the sandbox after it is ready. Ready means "ready to accept the user", not "setup done": the script starts in the background once provisioning completes and never blocks the sandbox becoming usable. It runs as the sandbox user via `bash`, with the sandbox's environment applied, and its output goes to a log file on the sandbox. Observe the outcome as `setupStatus` (pending/running/done/failed) and `setupError` on the sandbox. Rejected with a 400 `invalid_setup_script` error when it is not a string or exceeds 64KB. */
+  /** With `from`: create this many sandboxes from the named snapshot in one request. Boat creates them together, which is faster than separate creates when you need many sandboxes at once. Start limits and the active-sandbox limit count every sandbox of the batch; if the batch does not fit, nothing is created. The answer lists all of them in `sandboxes` (and the first one in `sandbox`). Refused with 400 `count_requires_from` without `from`, and with 400 `count_with_fail_fast` together with `failFast`. */
+  count?: number;
+  /** Shell script that runs on the sandbox after it is ready. Ready means "ready to accept the user", not "setup done": the script starts in the background once provisioning completes and never blocks the sandbox becoming usable. It runs as the sandbox user (`user`, not root; `sudo` needs no password) via `bash`, with the sandbox's environment applied, and its output goes to a log file on the sandbox. Observe the outcome as `setupStatus` (pending/running/done/failed) and `setupError` on the sandbox. Rejected with a 400 `invalid_setup_script` error when it is not a string or exceeds 64KB. */
   setupScript?: string;
   /** Legacy alias for `org`. Ignored when `org` is also set. */
   teamId?: string;
-  /** Create the sandbox from a named snapshot (saved with `POST /named-snapshots`, or `boat snapshot <id> <name>` in the CLI). The sandbox starts from that exact frozen state. Omitting `type` inherits the type the snapshot was saved from; env and no-env inherit from the snapshot's source sandbox unless the request passes its own, with the same rules as forking. */
+  /** Create the sandbox from a named snapshot (saved with `POST /named-snapshots`, or `boat snapshot <id> <name>` in the CLI). The sandbox starts from that exact frozen state. Omitting `type` inherits the type the snapshot was saved from; env and no-env inherit from the snapshot's source sandbox unless the request passes its own, with the same rules as forking. Also accepts a share code (`bsh_...`) that another account made with `POST /named-snapshots/{name}/shares`. The new sandbox lives in and is billed to your account. It does not get the owner's per-sandbox env; your own environment applies normally. A wrong or revoked code returns `404 snapshot_not_found`. */
   from?: string;
 }
 /** `ready` only when an idempotent retry finds a sandbox that is already past provisioning. */
@@ -205,8 +446,18 @@ export type SandboxState =
   | "cancelled";
 /** `degraded` when the machine is alive but Boat cannot fully reach it (for example a firewall rule inside the sandbox blocks the tunnel). The sandbox keeps running. */
 export type SandboxHealth = "ok" | "degraded";
+export interface SandboxHydration {
+  /** Restore step: `dvol` (docker volumes), `sysdelta` (system files), `images` (saved docker images), `hydrating` (the home directory), `reconciling` (the last check). `degraded` and `stuck` mean a step failed and is retried. */
+  phase: string;
+  /** Files, directories and links copied in so far. */
+  entriesDone: number;
+  /** Files, directories and links this restore copies in. Null for the first seconds, until the system files are counted. */
+  entriesTotal: number | null;
+  /** entriesDone of entriesTotal, 0-99. Files you change during the restore are yours, not copied, so it can stop short of 99; `hydrated` is the end signal. */
+  percent: number | null;
+}
 /** Current machine size: what the sandbox was created with, or the size it was last resumed or forked onto. */
-export type SandboxType = "small" | "default" | "large";
+export type SandboxType = "small" | "default" | "large" | "xlarge";
 /** Machine provider of the machine the sandbox is on, or null when it has no machine. */
 export type SandboxMachineProvider = "hetzner" | "baremetal";
 /** The organization billed for this sandbox, or null when the owner is billed. */
@@ -214,8 +465,19 @@ export interface SandboxTeam {
   id: string;
   name: string;
 }
-/** What you may do with this sandbox. `owner`: you created it. `use`: a teammate's organization sandbox that is `noEnv` (created with it, or shared and restarted), so you can open, run commands in, prompt, resume and stop it. `view`: a teammate's organization sandbox that still holds their personal logins, so you can see it and stop it until they share it (`POST /sandboxes/{sandboxId}/share`). */
+/** What you may do with this sandbox. `owner`: you created it. `use`: a teammate's organization sandbox that is `shared` (see `visibility`), so you can open, run commands in, prompt, resume and stop it. `view`: a teammate's organization sandbox that is `private`, so you can see it and stop it until they share it (`POST /sandboxes/{sandboxId}/share`). */
 export type SandboxAccess = "owner" | "use" | "view";
+/** Organization sandboxes only; null for a personal sandbox. `shared`: every member can use it. It holds none of its creator's personal logins (`noEnv`, shared and restarted, or created on an environment that passes nothing) and its creator did not make it private. `private`: only its creator can use it. It holds their logins, or its creator made it private (`POST /sandboxes/{sandboxId}/unshare`, or the organization's `newSandboxesPrivate` default). */
+export type SandboxVisibility = "shared" | "private";
+/** Only with `include=cost` on `GET /sandboxes`. Machine time this sandbox used this calendar month (UTC), at list price. Same meter as `GET /sandboxes/{sandboxId}/usage`. */
+export interface SandboxCost {
+  /** The 1st of this month, 00:00 UTC. */
+  since: string;
+  /** Billable machine-seconds, size multiplier applied. */
+  seconds: number;
+  /** seconds / secondsPerDollar, at list price. */
+  dollars: number;
+}
 /** Status of the most recent snapshot attempt, or null if none. A value other than completed while snapshotCompletedAt stays stale indicates failing snapshots. */
 export type SandboxLastSnapshotStatus =
   | "queued"
@@ -223,8 +485,30 @@ export type SandboxLastSnapshotStatus =
   | "completed"
   | "failed"
   | "cancelled";
+export type SandboxLastRebootReason = "crash" | "clean" | "unknown";
+/** The last time the sandbox's kernel restarted on its machine, or null if it never did. Every process running at that time ended. `crash` means the system log ended with no shutdown, for example after a kernel panic. */
+export interface SandboxLastReboot {
+  at?: string;
+  reason?: SandboxLastRebootReason;
+}
 /** Outcome of the create-time `setupScript`: `pending` (stored, not yet started), `running` (executing on the sandbox in the background), `done` (exit code 0) or `failed` (non-zero exit, or the sandbox lost track of the process). Null when the sandbox was created without a setup script. */
 export type SandboxSetupStatus = "pending" | "running" | "done" | "failed";
+/** `pending`: accepted, the sandbox is archiving. `failing`: the last attempt failed (see `error`); it is retried automatically until the sandbox archives. Running commands or prompts does not cancel it. `completed`: the sandbox is archived. `superseded`: a resume ended it before it completed. */
+export type StopOperationStatus = "pending" | "failing" | "completed" | "superseded";
+export interface StopOperation {
+  /** Stable id of this stop. Calling stop again while it is pending returns the same id. */
+  id: string;
+  /** `pending`: accepted, the sandbox is archiving. `failing`: the last attempt failed (see `error`); it is retried automatically until the sandbox archives. Running commands or prompts does not cancel it. `completed`: the sandbox is archived. `superseded`: a resume ended it before it completed. */
+  status: StopOperationStatus;
+  /** When the stop was accepted. On the sandbox, null once it has ended. Read by id (`GET /sandboxes/{sandboxId}/stops/{stopId}`), it is kept. */
+  requestedAt: string | null;
+  /** When the last archival attempt ended. */
+  lastAttemptAt: string | null;
+  /** Why the last attempt failed, while `status` is `failing`. Otherwise null. */
+  error: string | null;
+  /** When the stop completed or was superseded. */
+  endedAt: string | null;
+}
 export interface Sandbox {
   id: string;
   name: string;
@@ -232,19 +516,27 @@ export interface Sandbox {
   state: SandboxState;
   /** Why the sandbox is stopped, failed or cancelled, or null. */
   error?: string | null;
+  /** When Boat deleted the snapshot data of this stopped sandbox, 14 days after it stopped. Resume and fork then fail with `409 snapshot_data_expired`. Null while the data is kept. */
+  dataExpiredAt?: string | null;
   /** `degraded` when the machine is alive but Boat cannot fully reach it (for example a firewall rule inside the sandbox blocks the tunnel). The sandbox keeps running. */
   health?: SandboxHealth;
   /** Why the sandbox is degraded, or null. */
   healthReason?: string | null;
   /** When the sandbox became degraded, or null. */
   degradedSince?: string | null;
+  /** True once every file of the sandbox's snapshot is on its disk. A resumed or forked sandbox is usable before that: its files keep copying in the background, and its docker volumes move onto the real disk near the end. Its docker containers start earlier; at that point their volume mounts move onto the real disk in place, without a restart. The `sandbox.hydrated` webhook fires at the same moment this turns true. A sandbox that restored nothing is hydrated from the start. */
+  hydrated?: boolean;
+  /** When the last resume or fork finished copying files in, or null. */
+  hydratedAt?: string | null;
+  /** Restore progress while `hydrated` is false, on GET /sandboxes/{id} only. Null in lists, after hydration, or when the sandbox does not answer within 1.5 s. */
+  hydration?: SandboxHydration | null;
   /** Current machine size: what the sandbox was created with, or the size it was last resumed or forked onto. */
   type?: SandboxType;
   /** vCPUs guaranteed by this sandbox's type. */
   vcpu?: number;
   /** RAM in GB guaranteed by this sandbox's type. */
   memoryGB?: number;
-  /** Rate at which this sandbox consumes machine time. 0.5 for `small`, 1 for `default`, and 2 for `large`. */
+  /** Rate at which this sandbox consumes machine time. 0.5 for `small`, 1 for `default`, 2 for `large`, and 50/9 (about 5.56) for `xlarge`. */
   billingMultiplier?: number;
   /** Machine provider of the machine the sandbox is on, or null when it has no machine. */
   machineProvider?: SandboxMachineProvider | null;
@@ -256,13 +548,17 @@ export interface Sandbox {
   sshEndpoint?: string | null;
   createdAt?: string | null;
   updatedAt?: string | null;
-  /** Automatic archival time, or null when auto-stop is disabled. */
+  /** When the sandbox stops by itself (the stop starts within about 5 seconds), or null when auto-stop is disabled. A sandbox whose agent is working gets a fresh full TTL, and this time moves forward. */
   archiveAfter?: string | null;
+  /** The auto-stop length as last set on create, resume, fork or PATCH, or null when auto-stop is disabled. */
+  ttlSeconds?: number | null;
   desktopAvailable: boolean;
   /** Secret-bearing desktop stream URL when available. Redact from logs. */
   desktopUrl?: string | null;
   /** False when the sandbox was created with snapshots off. */
   snapshots?: boolean;
+  /** False when the sandbox was created with monitoring off. */
+  monitoring?: boolean;
   snapshotAvailable: boolean;
   /** Timestamp of the most recent successfully completed snapshot, or null. */
   snapshotCompletedAt?: string | null;
@@ -274,10 +570,14 @@ export interface Sandbox {
   createdBy?: string | null;
   /** Account id of the person who created the sandbox. */
   createdById?: string | null;
-  /** What you may do with this sandbox. `owner`: you created it. `use`: a teammate's organization sandbox that is `noEnv` (created with it, or shared and restarted), so you can open, run commands in, prompt, resume and stop it. `view`: a teammate's organization sandbox that still holds their personal logins, so you can see it and stop it until they share it (`POST /sandboxes/{sandboxId}/share`). */
+  /** What you may do with this sandbox. `owner`: you created it. `use`: a teammate's organization sandbox that is `shared` (see `visibility`), so you can open, run commands in, prompt, resume and stop it. `view`: a teammate's organization sandbox that is `private`, so you can see it and stop it until they share it (`POST /sandboxes/{sandboxId}/share`). */
   access?: SandboxAccess;
   /** True while the sandbox still holds its creator's personal logins (GitHub token, model logins, secrets). Other members can only see such a sandbox. */
   holdsCreatorLogins?: boolean;
+  /** Organization sandboxes only; null for a personal sandbox. `shared`: every member can use it. It holds none of its creator's personal logins (`noEnv`, shared and restarted, or created on an environment that passes nothing) and its creator did not make it private. `private`: only its creator can use it. It holds their logins, or its creator made it private (`POST /sandboxes/{sandboxId}/unshare`, or the organization's `newSandboxesPrivate` default). */
+  visibility?: SandboxVisibility | null;
+  /** Only with `include=cost` on `GET /sandboxes`. Machine time this sandbox used this calendar month (UTC), at list price. Same meter as `GET /sandboxes/{sandboxId}/usage`. */
+  cost?: SandboxCost;
   /** True once the sandbox is shared but not restarted yet. Its creator's logins are wiped at its next start, and the organization can use it from then on. */
   wipePendingUntilRestart?: boolean;
   /** The sandbox's stable three-word subdomain slug (e.g. "frazil-pneuma-rallye"), or null before one is assigned. */
@@ -286,6 +586,8 @@ export interface Sandbox {
   lastSnapshotAttemptAt?: string | null;
   /** Status of the most recent snapshot attempt, or null if none. A value other than completed while snapshotCompletedAt stays stale indicates failing snapshots. */
   lastSnapshotStatus?: SandboxLastSnapshotStatus | null;
+  /** The last time the sandbox's kernel restarted on its machine, or null if it never did. Every process running at that time ended. `crash` means the system log ended with no shutdown, for example after a kernel panic. */
+  lastReboot?: SandboxLastReboot | null;
   /** Outcome of the create-time `setupScript`: `pending` (stored, not yet started), `running` (executing on the sandbox in the background), `done` (exit code 0) or `failed` (non-zero exit, or the sandbox lost track of the process). Null when the sandbox was created without a setup script. */
   setupStatus?: SandboxSetupStatus | null;
   /** Short failure detail (exit code plus a stderr tail) when `setupStatus` is `failed`; while `pending`, may carry the last start/upload error from a retry in progress. Otherwise null. */
@@ -294,7 +596,11 @@ export interface Sandbox {
   environment?: string | null;
   /** Version number of `environment` that this sandbox is pinned to. Compare it against the environment's latest version to see whether an upgrade is pending: a sandbox below the latest is still running the older configuration until someone calls `POST /environments/{environmentId}/upgrade`. */
   environmentVersion?: number | null;
+  /** The last stop you requested (`POST /sandboxes/{sandboxId}/stop`), or null if you never stopped this sandbox. */
+  stop?: StopOperation | null;
 }
+/** Present when the request set `count` above 1. Every sandbox of the batch, in creation order. */
+export type CreateSandboxResponseSandboxesList = Array<Sandbox>;
 export interface CreateSandboxResponse {
   ok: boolean;
   /** Stable success envelope discriminator added by v1. */
@@ -303,6 +609,8 @@ export interface CreateSandboxResponse {
   status: CreateSandboxResponseStatus;
   ttlSeconds: number | null;
   sandbox: Sandbox;
+  /** Present when the request set `count` above 1. Every sandbox of the batch, in creation order. */
+  sandboxes?: CreateSandboxResponseSandboxesList;
   /** Present when a fair-use cap on a gifted account shortened the requested auto-stop time. */
   giftLimitNotice?: string;
 }
@@ -312,7 +620,7 @@ export type CreateScopedApiKeyRequestSandboxIdsList = Array<string>;
 export type CreateScopedApiKeyRequestEnvironmentIdsList = Array<string>;
 export interface CreateScopedApiKeyRequest {
   name?: string;
-  /** Duration such as 90d, 24h, or seconds. Max 365d. */
+  /** Duration such as 90d, 24h, or seconds, up to 365d; or `never` for a key that works until revoked. Default 90d. */
   ttl?: string;
   preset?: CreateScopedApiKeyRequestPreset | (string & {});
   actions?: CreateScopedApiKeyRequestActionsList;
@@ -375,6 +683,57 @@ export interface CreateScopedApiKeyResponse {
   secret: string | Redacted.Redacted<string>;
   apiKeys: CreateScopedApiKeyResponseApiKeysList;
 }
+export interface CreateSnapshotShareRequest {
+  name: string;
+}
+export type NamedSnapshotShareStatus = "active" | "revoked";
+/** A share code for a named snapshot. Any Boat account that holds the code can create a sandbox from the snapshot. Boat stores only a hash of the code. The full code is in the create response only. */
+export interface NamedSnapshotShare {
+  /** Share id, for example `shr_...`. Pass it to revoke the code. */
+  id: string;
+  /** The first characters of the code, for example `bsh_xxxxxxxx`. Use it to tell codes apart. */
+  codePrefix: string;
+  status: NamedSnapshotShareStatus;
+  /** Number of sandboxes created with this code. */
+  useCount: number;
+  /** When a sandbox was last created with this code. null if never. */
+  lastUsedAt: string | null;
+  /** When the code was revoked. null while active. */
+  revokedAt: string | null;
+  createdAt: string;
+}
+export interface CreateSnapshotShareResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  /** The named snapshot the code deploys. */
+  name: string;
+  /** The share code, for example `bsh_...`. Boat shows it only in this response. Store it now; you cannot get it again. */
+  shareCode: string;
+  share: NamedSnapshotShare;
+}
+export interface CreateUploadUrlRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  /** Absolute path, or path relative to the sandbox work directory (/home/user). It must resolve under /home/user or /tmp. */
+  path: string;
+  /** How long the URL stays valid. */
+  ttlSeconds?: number;
+}
+/** GET downloads the file. PUT uploads the request body as the file. */
+export type CreateUploadUrlResponseMethod = "GET" | "PUT";
+export interface CreateUploadUrlResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  /** The signed URL. Send the request straight to it; it needs no Authorization header. */
+  url: string;
+  /** GET downloads the file. PUT uploads the request body as the file. */
+  method: CreateUploadUrlResponseMethod;
+  /** The canonical path the URL is bound to. */
+  path: string;
+  expiresAt: string;
+}
 export type WebhookEventType =
   | "sandbox.ready"
   | "sandbox.error"
@@ -406,9 +765,95 @@ export interface CreateWebhookResponse {
   /** Signing secret returned only when created or rotated. */
   secret: string | Redacted.Redacted<string>;
 }
+/** One AI credential in a credential profile. The `*-api-key` ids are API keys you can set with `PUT /credential-profiles/{profile}/keys/{credential}`. The sign-ins (`*-subscription`) and Bedrock (`*-bedrock`) are connected on the dashboard Agents & Proxying page, with the profile picked at the top; you can remove them here. */
+export type DeleteCredentialAccountRequestCredential =
+  | "anthropic-api-key"
+  | "openai-api-key"
+  | "openrouter-api-key"
+  | "llmgateway-api-key"
+  | "deepseek-api-key"
+  | "moonshot-api-key"
+  | "mistral-api-key"
+  | "claude-subscription"
+  | "chatgpt-subscription"
+  | "kimi-subscription"
+  | "mistral-vibe-subscription"
+  | "claude-bedrock"
+  | "codex-bedrock";
+export interface DeleteCredentialAccountRequest {
+  /** Profile id or name. */
+  profile: string;
+  credential: DeleteCredentialAccountRequestCredential | (string & {});
+  /** The account id from the list. */
+  account: string;
+}
+/** In the order the accounts were added, so their numbers stay the same across switches. The one in use is marked `active`. */
+export type DeleteCredentialAccountResponseAccountsList = Array<CredentialAccount>;
+export interface DeleteCredentialAccountResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profileId: string;
+  credential: CredentialId;
+  /** In the order the accounts were added, so their numbers stay the same across switches. The one in use is marked `active`. */
+  accounts: DeleteCredentialAccountResponseAccountsList;
+}
+export interface DeleteCredentialProfileRequest {
+  /** Profile id or name. */
+  profile: string;
+}
+export interface DeleteCredentialProfileResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+}
+export interface DeleteCredentialProfileCustomApiRequest {
+  /** Profile id or name. */
+  profile: string;
+  /** Environment variable name of the custom API, for example `STRIPE_KEY`. Provider names (`ANTHROPIC_*`, `OPENAI_*`, and so on) and names that end in `_BASE_URL` are reserved. */
+  name: string;
+}
+export interface DeleteCredentialProfileCustomApiResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profile: CredentialProfile;
+}
+/** One AI credential in a credential profile. The `*-api-key` ids are API keys you can set with `PUT /credential-profiles/{profile}/keys/{credential}`. The sign-ins (`*-subscription`) and Bedrock (`*-bedrock`) are connected on the dashboard Agents & Proxying page, with the profile picked at the top; you can remove them here. */
+export type DeleteCredentialProfileKeyRequestCredential =
+  | "anthropic-api-key"
+  | "openai-api-key"
+  | "openrouter-api-key"
+  | "llmgateway-api-key"
+  | "deepseek-api-key"
+  | "moonshot-api-key"
+  | "mistral-api-key"
+  | "claude-subscription"
+  | "chatgpt-subscription"
+  | "kimi-subscription"
+  | "mistral-vibe-subscription"
+  | "claude-bedrock"
+  | "codex-bedrock";
+export interface DeleteCredentialProfileKeyRequest {
+  /** Profile id or name. */
+  profile: string;
+  credential: DeleteCredentialProfileKeyRequestCredential | (string & {});
+}
+export interface DeleteCredentialProfileKeyResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profile: CredentialProfile;
+}
 export interface DeleteEnvironmentRequest {
   /** Environment id returned by `GET /environments`. */
   environmentId: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
 }
 export interface SandboxEnvironmentResponse {
   success: boolean;
@@ -418,15 +863,21 @@ export interface DeleteEnvironmentRepoRequest {
   environmentId: string;
   /** The repository `databaseId`. */
   repositoryId: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
 }
 export interface DeleteEnvironmentSecretFileRequest {
   environmentId: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
   path: string;
 }
 export interface DeleteEnvironmentVarRequest {
   environmentId: string;
   /** Environment variable name. */
   key: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
 }
 export interface DeleteNamedSnapshotRequest {
   name: string;
@@ -447,21 +898,15 @@ export interface DeleteSandboxRequest {
 export type DeletionOperationKind = "sandbox" | "snapshot";
 export type DeletionOperationReason = "explicit" | "zdr" | "account";
 export type DeletionOperationStatus = "pending" | "processing" | "blocked" | "completed";
-/** What the background purge is doing. The target is already gone from every list, restore and fork once the operation exists. `waiting_for_uploads`: stored data is erased once the last upload URL issued for it expires (`expectedBy`). `kept_for_newer_snapshots`: a newer snapshot you kept is built on this one; its data goes when they go. `waiting_for_restore`: a sandbox is still restoring from it. `retrying`: a transient fault, retried automatically. */
-export type DeletionOperationStage =
-  | "removing"
-  | "waiting_for_uploads"
-  | "kept_for_newer_snapshots"
-  | "waiting_for_restore"
-  | "retrying"
-  | "completed";
+/** What the background purge is doing. The target is already gone from every list, restore and fork once the operation exists. `waiting_for_uploads`: stored data is erased once the last upload URL issued for it expires (`expectedBy`). `retrying`: a transient fault, retried automatically. `completed`: a newer snapshot, a fork or a named snapshot made from it keeps the data it reads, until that is deleted too. */
+export type DeletionOperationStage = "removing" | "waiting_for_uploads" | "retrying" | "completed";
 export interface DeletionOperation {
   id: string;
   kind: DeletionOperationKind;
   targetId: string;
   reason: DeletionOperationReason;
   status: DeletionOperationStatus;
-  /** What the background purge is doing. The target is already gone from every list, restore and fork once the operation exists. `waiting_for_uploads`: stored data is erased once the last upload URL issued for it expires (`expectedBy`). `kept_for_newer_snapshots`: a newer snapshot you kept is built on this one; its data goes when they go. `waiting_for_restore`: a sandbox is still restoring from it. `retrying`: a transient fault, retried automatically. */
+  /** What the background purge is doing. The target is already gone from every list, restore and fork once the operation exists. `waiting_for_uploads`: stored data is erased once the last upload URL issued for it expires (`expectedBy`). `retrying`: a transient fault, retried automatically. `completed`: a newer snapshot, a fork or a named snapshot made from it keeps the data it reads, until that is deleted too. */
   stage?: DeletionOperationStage;
   /** When `waiting_for_uploads` ends. */
   expectedBy?: string | null;
@@ -500,6 +945,32 @@ export interface DeleteSnapshotResponse {
   type: string;
   operation: DeletionOperation;
 }
+export interface DeleteTelemetryRequest {}
+/** The names of the saved headers. The values are never returned. */
+export type TelemetryConfigHeadersList = Array<string>;
+export interface TelemetryConfigLastError {
+  message: string;
+  /** HTTP status, or null for a network error. */
+  status: number | null;
+  at: string;
+}
+export interface TelemetryConfig {
+  /** The OTLP/HTTP base URL. Boat posts to `<endpoint>/v1/metrics` and `<endpoint>/v1/logs`. */
+  endpoint: string;
+  /** The names of the saved headers. The values are never returned. */
+  headers: TelemetryConfigHeadersList;
+  /** The time of the last metrics export that the collector accepted. */
+  lastExportAt: string | null;
+  /** The most recent error from the collector, for metrics or events. */
+  lastError: TelemetryConfigLastError | null;
+  createdAt: string;
+}
+export interface DeleteTelemetryResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  telemetry: TelemetryConfig | null;
+}
 export interface DeleteWebhookRequest {
   webhookId: string;
 }
@@ -533,6 +1004,8 @@ export interface CommandResponse {
   /** Stable success envelope discriminator added by v1. */
   type: string;
   success: boolean;
+  /** The command's record in the command history. */
+  commandId?: string;
   exitCode: number | null;
   signal?: string | null;
   /** True when the memory ceiling killed the command or one of its processes and the command failed. */
@@ -551,6 +1024,8 @@ export interface CommandStartedResponse {
   /** Stable success envelope discriminator added by v1. */
   type: string;
   success: boolean;
+  /** The command's record in the command history. Its output is copied there every 30 s. */
+  commandId?: string;
   /** Process id to poll with the command status endpoint. */
   processId: number;
   pid: number;
@@ -566,8 +1041,8 @@ export type ExecuteSandboxCommandResponseBody = CommandResponse | CommandStarted
 export type ExecuteSandboxCommandResponse = ExecuteSandboxCommandResponseBody;
 /** Replaces the env the fork would otherwise inherit from the source sandbox. Same validation rules as `CreateSandboxRequest.env`. */
 export type ForkSandboxRequestEnvMap = { [key: string]: string | undefined };
-/** Machine size for the fork. Omit to inherit the source sandbox's type. The source sandbox is never modified. Shrinking is rejected with `type_too_small` when the source's data would not fit the smaller disk. */
-export type ForkSandboxRequestType = "small" | "default" | "large";
+/** Machine size for the fork. Omit to inherit the source sandbox's type. `xlarge` needs the $100/month plan or higher (403 `machine_class_plan_required`). The source sandbox is never modified. Shrinking is rejected with `type_too_small` when the source's data would not fit the smaller disk. */
+export type ForkSandboxRequestType = "small" | "default" | "large" | "xlarge";
 export interface ForkSandboxRequest {
   /** Public Sandbox id returned by create/list/get sandbox calls. */
   sandboxId: string;
@@ -575,13 +1050,15 @@ export interface ForkSandboxRequest {
   idempotencyKey?: string;
   /** Pass `true` to fork only if a machine is ready right now. Within about 1.5 s you get the usual `202`, or `503` `no_ready_machine` with no fork created and nothing counted against your start limits. */
   failFast?: boolean;
+  /** `false` creates the fork with monitoring off: Boat keeps no command or process output, process list or CPU/RAM samples for it. Omitted, the fork keeps the source sandbox's setting. `true` turns it on for the fork, unless the account has monitoring off by default (`409` `monitoring_off_for_account`). */
+  monitoring?: boolean;
   /** Replaces the env the fork would otherwise inherit from the source sandbox. Same validation rules as `CreateSandboxRequest.env`. */
   env?: ForkSandboxRequestEnvMap;
   /** Optionally pin the fork to a different named sandbox environment. Omit to inherit the source sandbox's environment. Unknown names are rejected with `unknown_environment`. */
   environment?: string;
   /** Make the fork no-env (see `CreateSandboxRequest.noEnv`). A fork of a no-env sandbox is always no-env regardless of this field. */
   noEnv?: boolean;
-  /** Machine size for the fork. Omit to inherit the source sandbox's type. The source sandbox is never modified. Shrinking is rejected with `type_too_small` when the source's data would not fit the smaller disk. */
+  /** Machine size for the fork. Omit to inherit the source sandbox's type. `xlarge` needs the $100/month plan or higher (403 `machine_class_plan_required`). The source sandbox is never modified. Shrinking is rejected with `type_too_small` when the source's data would not fit the smaller disk. */
   type?: ForkSandboxRequestType | (string & {});
   /** Auto-stop for the fork, in seconds. Omit for the 1 hour default; the fork does NOT inherit the source sandbox's TTL, so forking a sandbox that has auto-stop disabled still gives you a fork that stops itself. `null` disables auto-stop, which means nothing will ever stop this sandbox for you. */
   ttlSeconds?: number | null;
@@ -597,6 +1074,95 @@ export interface ForkSandboxResponse {
   giftLimitNotice?: string;
   /** On interrupt, the conversation whose turn was interrupted. */
   conversationId?: string;
+}
+export interface GetAiProxyRequest {
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
+  /** Same as the `org` query parameter. Query wins when both are set. */
+  xBoatOrg?: string;
+}
+export interface GetAiProxyResponsePricing {
+  /** Charged to the account for each UTC day the proxy is on. */
+  dailyDollars: number;
+  /** Charged per 1,000 proxied requests. */
+  dollarsPer1000Requests: number;
+}
+export interface GetAiProxyResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  /** The account the switch belongs to, a person or an organization. */
+  accountId: string;
+  /** True when `accountId` is an organization. */
+  org: boolean;
+  enabled: boolean;
+  enabledAt: string | null;
+  pricing: GetAiProxyResponsePricing;
+  /** The base URL sandboxes call instead of the providers. */
+  proxyUrl: string;
+}
+export interface GetAiUsageRequest {
+  /** Days of history, today included. */
+  days?: number;
+  /** A credential profile id. Counts that profile's requests instead of a wallet's. */
+  profile?: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
+  /** Same as the `org` query parameter. Query wins when both are set. */
+  xBoatOrg?: string;
+}
+export interface AiUsageRow {
+  /** UTC day. */
+  day: string;
+  /** The credential used: a `CredentialId`, or `custom:<NAME>` for a custom API. */
+  credential: string;
+  /** The model the provider reported, or empty. */
+  model: string;
+  requests: number;
+  /** Requests the provider answered with an HTTP error, or did not answer. */
+  errors: number;
+  inputTokens: number;
+  outputTokens: number;
+  cacheReadTokens: number;
+  cacheWriteTokens: number;
+}
+export type SandboxAiUsageUsageList = Array<AiUsageRow>;
+/** Token counts are the numbers the provider reports in its replies. */
+export interface AiUsageTotals {
+  requests: number;
+  /** Requests the provider answered with an HTTP error, or did not answer. */
+  errors: number;
+  inputTokens: number;
+  outputTokens: number;
+  cacheReadTokens: number;
+  cacheWriteTokens: number;
+}
+export interface SandboxAiUsage {
+  sandboxId: string | null;
+  name: string | null;
+  blocked: boolean;
+  usage: SandboxAiUsageUsageList;
+  totals: AiUsageTotals;
+  /** Request charge for the period, at the price per 1,000 requests. */
+  dollars: number;
+}
+export type GetAiUsageResponseSandboxesList = Array<SandboxAiUsage>;
+export type GetAiUsageResponseUsageList = Array<AiUsageRow>;
+export interface GetAiUsageResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  /** The wallet the usage is charged to. Null with `profile`. */
+  accountId: string | null;
+  /** The credential profile whose requests are counted. Null without `profile`. */
+  profileId: string | null;
+  /** First UTC day included. */
+  since: string;
+  sandboxes: GetAiUsageResponseSandboxesList;
+  usage: GetAiUsageResponseUsageList;
+  totals: AiUsageTotals;
+  dollars: number;
 }
 export interface GetApiKeyUsageRequest {
   /** API key ID returned by `GET /api-keys`. */
@@ -653,13 +1219,28 @@ export interface GetApiKeyUsageResponse {
   scope?: GetApiKeyUsageResponseScope;
   createdResources: GetApiKeyUsageResponseCreatedResourcesList;
 }
+export interface GetCommandRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  commandId: string;
+}
+export interface GetCommandResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  command: CommandRecord;
+}
 export interface GetCommandStatusRequest {
   /** Public Sandbox id returned by create/list/get sandbox calls. */
   sandboxId: string;
   /** Process id returned by a detached command start. */
   processId: number;
-  /** Cap each returned log to its last N bytes. Defaults to 8388608 (8 MiB). */
+  /** Cap each returned log to its last N bytes. Defaults to 8388608 (8 MiB). Ignored with offsets. */
   tailBytes?: number;
+  /** Return only stdout written from this byte offset. Use `stdoutNextOffset` of the previous answer. */
+  stdoutOffset?: number;
+  /** Return only stderr written from this byte offset. Use `stderrNextOffset` of the previous answer. */
+  stderrOffset?: number;
 }
 /** lost: the sandbox agent restarted and forgot the process; running/exitCode are then a best-effort probe and the logs come from the on-disk files. */
 export type GetCommandStatusResponseStatus = "running" | "exited" | "lost";
@@ -683,18 +1264,33 @@ export interface GetCommandStatusResponse {
   cwd?: string | null;
   startedAt?: string | null;
   finishedAt?: string | null;
-  /** Tail of the stdout log file. */
+  /** Tail of the stdout log file. With `stdoutOffset`: the stdout written since that offset. */
   stdout: string;
-  /** Tail of the stderr log file. */
+  /** Tail of the stderr log file. With `stderrOffset`: the stderr written since that offset. */
   stderr: string;
   stdoutTruncated?: boolean;
   stderrTruncated?: boolean;
   logPath?: string;
   errLogPath?: string;
+  /** Byte offset where `stdout` starts: the offset you asked for, or 0 when the log was replaced. */
+  stdoutOffset?: number;
+  /** Byte offset where `stderr` starts: the offset you asked for, or 0 when the log was replaced. */
+  stderrOffset?: number;
+  /** The `stdoutOffset` for the next read. */
+  stdoutNextOffset?: number;
+  /** The `stderrOffset` for the next read. */
+  stderrNextOffset?: number;
+  /** True when more output is already written. Read again at once. */
+  more?: boolean;
 }
 export interface GetCurrentUserRequest {}
 /** The login method the account was created with. */
-export type GetCurrentUserResponseUserConnectionMethod = "github" | "google" | "email" | "service";
+export type GetCurrentUserResponseUserConnectionMethod =
+  | "github"
+  | "google"
+  | "email"
+  | "agentid"
+  | "service";
 /** Every login method linked to the account. */
 export type GetCurrentUserResponseUserConnectionMethodsList = Array<string>;
 export type GetCurrentUserResponseUserAccountStatus = "active" | "suspended" | "closed";
@@ -746,6 +1342,9 @@ export interface GetDataRetentionResponse {
   /** When true, every new sandbox of this account is created with snapshots off. */
   snapshotsOff?: boolean;
   snapshotsOffAt?: string | null;
+  /** When true, every new sandbox of this account is created with monitoring off. */
+  monitoringOff?: boolean;
+  monitoringOffAt?: string | null;
 }
 export interface GetDeletionOperationRequest {
   /** Deletion operation id returned by an accepted delete request. */
@@ -789,6 +1388,8 @@ export interface GetLatestSandboxSnapshotRequest {
 export type SnapshotSummaryStatus = "completed";
 /** `base` (full) or `incremental` (delta on a base). `null` for legacy snapshots. */
 export type SnapshotSummaryKind = "base" | "incremental";
+/** `template` = this Sandbox has snapshots off, so Boat never captures it: the row is a copy of the template, named snapshot or Sandbox it was created from. `captured` = this Sandbox has snapshots on: its own captures, plus the copies Boat makes when the Sandbox is created from a source, forked or resumed. */
+export type SnapshotSummaryOrigin = "captured" | "template";
 export interface SnapshotSummary {
   id: string;
   /** Public Sandbox id this snapshot belongs to. */
@@ -809,6 +1410,8 @@ export interface SnapshotSummary {
   contentSizeBytes?: number | null;
   /** Number of your files restored by this snapshot (base image excluded). `null` on legacy snapshots. */
   contentFileCount?: number | null;
+  /** `template` = this Sandbox has snapshots off, so Boat never captures it: the row is a copy of the template, named snapshot or Sandbox it was created from. `captured` = this Sandbox has snapshots on: its own captures, plus the copies Boat makes when the Sandbox is created from a source, forked or resumed. */
+  origin?: SnapshotSummaryOrigin;
 }
 export interface GetLatestSandboxSnapshotResponse {
   ok: boolean;
@@ -817,7 +1420,7 @@ export interface GetLatestSandboxSnapshotResponse {
   snapshot: SnapshotSummary | null;
 }
 export interface GetLimitsRequest {
-  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes, snapshots, and environments stay creator-private. */
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
   org?: string;
   /** Legacy alias for `org`. Takes precedence over `org` / `X-Boat-Org` when set. */
   teamId?: string;
@@ -829,6 +1432,7 @@ export interface GetLimitsResponseCurrentLimits {
   creationRatePerMinute?: number;
   creationRequestsPerHour?: number | null;
   creationRequestsPerDay?: number | null;
+  [key: string]: unknown;
 }
 export type GetLimitsResponseStandardLimits = GetLimitsResponseCurrentLimits;
 export type GetLimitsResponseTrialLimits = GetLimitsResponseCurrentLimits;
@@ -869,6 +1473,15 @@ export interface GetLimitsResponseSandboxPlanTiersItem {
 }
 /** Every plan tier and its limits. */
 export type GetLimitsResponseSandboxPlanTiersList = Array<GetLimitsResponseSandboxPlanTiersItem>;
+export type GetLimitsResponseMachineTypesItemType = "small" | "default" | "large" | "xlarge";
+export interface GetLimitsResponseMachineTypesItem {
+  type: GetLimitsResponseMachineTypesItemType;
+  available: boolean;
+  /** Why the type is blocked, for example `not during the free trial; the first payment unlocks it`. Null when available. */
+  reason: string | null;
+}
+/** Each sandbox type, and whether this account can create it now. A blocked type carries the reason. */
+export type GetLimitsResponseMachineTypesList = Array<GetLimitsResponseMachineTypesItem>;
 /** Fair-use caps on a gifted account, or null when there are none. */
 export interface GetLimitsResponseGiftLimit {
   maxActiveSandboxes?: number | null;
@@ -935,10 +1548,12 @@ export interface GetLimitsResponse {
   hasSeatPlan?: boolean;
   /** Machine time used in the last 24 hours, in seconds. Useful to estimate how long the balance lasts. */
   last24hUsageSeconds?: number;
-  /** Lifetime machine-time allowance for a trial that never paid. Null once the account has paid or has a plan. */
+  /** Lifetime Boat-time allowance for new sandboxes while the account has not paid, a plan trial included. Every charge on the wallet counts. Null once the account has paid. */
   trialComputeCapSeconds?: number | null;
   /** The trial limits in one readable line. Null on paid accounts. */
   trialLine?: string | null;
+  /** Each sandbox type, and whether this account can create it now. A blocked type carries the reason. */
+  machineTypes?: GetLimitsResponseMachineTypesList;
   /** Fair-use caps on a gifted account, or null when there are none. */
   giftLimit?: GetLimitsResponseGiftLimit | null;
   /** Account access state returned by the current backend. Billing endpoints are not part of v1. */
@@ -1028,6 +1643,29 @@ export interface GetSandboxResponse {
   /** Present when a fair-use cap on a gifted account shortened the requested auto-stop time. */
   giftLimitNotice?: string;
 }
+export interface GetSandboxAiUsageRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  /** Days of history, today included. */
+  days?: number;
+}
+export type GetSandboxAiUsageResponseUsageList = Array<AiUsageRow>;
+export interface GetSandboxAiUsageResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  sandboxId: string;
+  /** True when the proxy refuses this sandbox's placeholders. */
+  blocked: boolean;
+  /** True when the sandbox holds placeholders, not real keys. */
+  proxied: boolean;
+  /** The profile the sandbox uses. Null means its owner's default. */
+  credentialProfileId: string | null;
+  since: string;
+  usage: GetSandboxAiUsageResponseUsageList;
+  totals: AiUsageTotals;
+  dollars: number;
+}
 export interface GetSandboxUsageRequest {
   /** Public Sandbox id returned by create/list/get sandbox calls. */
   sandboxId: string;
@@ -1037,7 +1675,7 @@ export interface GetSandboxUsageRequest {
   until?: string;
 }
 /** The sandbox's current machine size, which sets `billingMultiplier`. */
-export type GetSandboxUsageResponseSandboxType = "small" | "default" | "large";
+export type GetSandboxUsageResponseSandboxType = "small" | "default" | "large" | "xlarge";
 export interface GetSandboxUsageResponse {
   ok: boolean;
   /** Stable success envelope discriminator added by v1. */
@@ -1045,7 +1683,7 @@ export interface GetSandboxUsageResponse {
   sandboxId: string;
   /** The sandbox's current machine size, which sets `billingMultiplier`. */
   sandboxType: GetSandboxUsageResponseSandboxType;
-  /** Rate at which this sandbox consumes machine time. 0.5 for `small`, 1 for `default`, and 2 for `large`. */
+  /** Rate at which this sandbox consumes machine time. 0.5 for `small`, 1 for `default`, 2 for `large`, and 50/9 (about 5.56) for `xlarge`. */
   billingMultiplier: number;
   /** Start of the window the figures cover. The sandbox's creation time when the request did not pass `since`. */
   since: string;
@@ -1155,6 +1793,25 @@ export interface GetSnapshotTreeResponse {
   /** Why the tree is unavailable, when `treeAvailable` is `false`. */
   reason?: string;
 }
+export interface GetStopRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  stopId: string;
+}
+export interface GetStopResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  id: string;
+  stop: StopOperation;
+}
+export interface GetTelemetryRequest {}
+export interface GetTelemetryResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  telemetry: TelemetryConfig | null;
+}
 export interface GetWebhookRequest {
   webhookId: string;
 }
@@ -1171,6 +1828,8 @@ export interface HostPortRequest {
   port: number;
   /** Return an ungated URL instead of one that requires the `_token` query parameter. */
   public?: boolean;
+  /** Set when the service listens on localhost (`127.0.0.1` or `::1`) only. The sandbox relays the URL to it. Leave unset for a service bound to `0.0.0.0`. Each call sets the value again. */
+  localhost?: boolean;
   /** Display title for the hosted port. */
   title?: string;
 }
@@ -1185,6 +1844,8 @@ export interface HostPortResponse {
   url?: string;
   isProtected?: boolean;
   access?: HostPortResponseAccess;
+  /** The sandbox relays the URL to a service that listens on localhost only. */
+  localhost?: boolean;
 }
 export interface InterruptSandboxRequest {
   /** Public Sandbox id returned by create/list/get sandbox calls. */
@@ -1239,7 +1900,50 @@ export interface ListApiKeysResponse {
   apiKeys: ListApiKeysResponseApiKeysList;
   catalog: ApiKeyCatalog;
 }
-export interface ListEnvironmentsRequest {}
+/** One AI credential in a credential profile. The `*-api-key` ids are API keys you can set with `PUT /credential-profiles/{profile}/keys/{credential}`. The sign-ins (`*-subscription`) and Bedrock (`*-bedrock`) are connected on the dashboard Agents & Proxying page, with the profile picked at the top; you can remove them here. */
+export type ListCredentialAccountsRequestCredential =
+  | "anthropic-api-key"
+  | "openai-api-key"
+  | "openrouter-api-key"
+  | "llmgateway-api-key"
+  | "deepseek-api-key"
+  | "moonshot-api-key"
+  | "mistral-api-key"
+  | "claude-subscription"
+  | "chatgpt-subscription"
+  | "kimi-subscription"
+  | "mistral-vibe-subscription"
+  | "claude-bedrock"
+  | "codex-bedrock";
+export interface ListCredentialAccountsRequest {
+  /** Profile id or name. */
+  profile: string;
+  credential: ListCredentialAccountsRequestCredential | (string & {});
+}
+/** In the order the accounts were added, so their numbers stay the same across switches. The one in use is marked `active`. */
+export type ListCredentialAccountsResponseAccountsList = Array<CredentialAccount>;
+export interface ListCredentialAccountsResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profileId: string;
+  credential: CredentialId;
+  /** In the order the accounts were added, so their numbers stay the same across switches. The one in use is marked `active`. */
+  accounts: ListCredentialAccountsResponseAccountsList;
+}
+export interface ListCredentialProfilesRequest {}
+export type ListCredentialProfilesResponseProfilesList = Array<CredentialProfile>;
+export interface ListCredentialProfilesResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  profiles: ListCredentialProfilesResponseProfilesList;
+}
+export interface ListEnvironmentsRequest {
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
+}
 export interface ListNamedSnapshotsRequest {}
 export type ListNamedSnapshotsResponseSnapshotsList = Array<NamedSnapshot>;
 /** What the request's wallet (your active organization, `?org=`, or personal) pays for named snapshots. 10 are free per wallet; each one above costs $1.70 a month, charged daily from usage. An organization's count includes every member's names billed to it. */
@@ -1322,6 +2026,7 @@ export interface Repository {
   pushedAt?: string | null;
   /** Reserved; always null. */
   lastUserCommitAt?: string | null;
+  [key: string]: unknown;
 }
 export type RepositoryInstallationRepositoriesList = Array<Repository>;
 export interface RepositoryInstallation {
@@ -1363,7 +2068,7 @@ export interface Conversation {
   prompts: number;
   /** `true` while a turn is queued or running in this conversation. */
   running: boolean;
-  /** Harness the most recent prompt ran on (`claude`, `codex`, `pi`, `opencode`, `prime-agent`, `kimi`). */
+  /** Harness the most recent prompt ran on (`claude`, `codex`, `pi`, `opencode`, `prime-agent`, `kimi`, `mistral`). */
   lastHarness: string | null;
   /** Model id of the most recent prompt that chose one, or `null` when every prompt used the harness default. */
   lastModel: string | null;
@@ -1382,8 +2087,9 @@ export interface ListSandboxConversationsResponse {
   conversations: ListSandboxConversationsResponseConversationsList;
 }
 export type ListSandboxesRequestSort = "asc" | "desc";
+export type ListSandboxesRequestInclude = "cost";
 export interface ListSandboxesRequest {
-  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes, snapshots, and environments stay creator-private. */
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
   org?: string;
   /** Maximum items to return. */
   limit?: number;
@@ -1393,6 +2099,8 @@ export interface ListSandboxesRequest {
   sort?: ListSandboxesRequestSort | (string & {});
   /** Comma-separated sandbox state filter, for example `ready,idle,running`. */
   state?: string;
+  /** `cost` adds each sandbox's `cost` this calendar month (UTC), at list price. */
+  include?: ListSandboxesRequestInclude | (string & {});
   /** Same as the `org` query parameter. Query wins when both are set. */
   xBoatOrg?: string;
 }
@@ -1428,6 +2136,7 @@ export interface SandboxEvent {
   /** The conversation this event belongs to. Filter the stream with `?conversation=<id>`. See [Integrated agents](/integrated-agents). */
   conversationId?: string | null;
   data?: SandboxEventDataMap;
+  [key: string]: unknown;
 }
 /** Sandbox work and lifecycle event objects. Event shapes are intentionally extensible; branch on each event `type` when present. */
 export type ListSandboxEventsResponseEventsList = Array<SandboxEvent>;
@@ -1439,6 +2148,38 @@ export interface ListSandboxEventsResponse {
   /** Sandbox work and lifecycle event objects. Event shapes are intentionally extensible; branch on each event `type` when present. */
   events: ListSandboxEventsResponseEventsList;
   pageInfo?: PageInfo;
+}
+export interface ListSandboxProcessesRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+}
+export interface SandboxProcess {
+  pid: number;
+  /** Live list only. */
+  parentPid?: number;
+  /** Live list only. */
+  user?: string;
+  cpuPercent?: number;
+  /** Resident memory. */
+  memoryMB?: number;
+  /** Live list only. */
+  startedAt?: string;
+  /** The full command line (first 1000 characters; 120 in a stored sample). */
+  command: string;
+  /** Live list: the history record holding this process's output, when it has one. */
+  commandId?: string | null;
+}
+export type ListSandboxProcessesResponseProcessesList = Array<SandboxProcess>;
+export interface ListSandboxProcessesResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  /** True: read from the running sandbox now. False: the sandbox is stopped (or its agent is not upgraded yet), and this is the last sample kept (top 12 processes, every 30 s, 7 days). */
+  live: boolean;
+  sampledAt: string | null;
+  /** Processes on the sandbox. The list holds at most 500, busiest first. */
+  total: number;
+  processes: ListSandboxProcessesResponseProcessesList;
 }
 export type ListSandboxSnapshotsRequestSort = "asc" | "desc";
 export interface ListSandboxSnapshotsRequest {
@@ -1476,6 +2217,17 @@ export interface ListSnapshotsResponse {
   snapshots: ListSnapshotsResponseSnapshotsList;
   pageInfo?: PageInfo;
 }
+export interface ListSnapshotSharesRequest {
+  name: string;
+}
+export type ListSnapshotSharesResponseSharesList = Array<NamedSnapshotShare>;
+export interface ListSnapshotSharesResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  name: string;
+  shares: ListSnapshotSharesResponseSharesList;
+}
 export interface ListWebhooksRequest {}
 export type ListWebhooksResponseWebhooksList = Array<Webhook>;
 export interface ListWebhooksResponse {
@@ -1493,7 +2245,8 @@ export type PromptSandboxRequestProvider =
   | "prime-agent"
   | "prime"
   | "kimi"
-  | "kimi-code";
+  | "kimi-code"
+  | "mistral";
 export interface PromptSandboxRequest {
   /** Public Sandbox id returned by create/list/get sandbox calls. */
   sandboxId: string;
@@ -1547,8 +2300,19 @@ export interface ReadSandboxFileResponse {
   size: number;
   content: string;
 }
-/** Resume onto a different machine size. Omit to keep the sandbox's current type. A resume already restores onto a fresh machine, so changing size costs nothing extra. Shrinking is rejected with `type_too_small` when the sandbox's data would not fit the smaller disk. */
-export type ResumeSandboxRequestType = "small" | "default" | "large";
+export interface RecoverSandboxRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+}
+export type RecoverSandboxResponseStatus = "recovering";
+export interface RecoverSandboxResponse {
+  ok?: boolean;
+  type?: string;
+  status?: RecoverSandboxResponseStatus;
+  message?: string;
+}
+/** Resume onto a different machine size. Omit to keep the sandbox's current type. `xlarge` needs the $100/month plan or higher, or an account access grant from an administrator (403 `machine_class_plan_required` otherwise). A resume already restores onto a fresh machine, so changing size costs nothing extra. Shrinking is rejected with `type_too_small` when the sandbox's data would not fit the smaller disk. */
+export type ResumeSandboxRequestType = "small" | "default" | "large" | "xlarge";
 /** Replaces the sandbox's per-sandbox environment variables. Omit to keep the sandbox's current env. Same validation rules as `CreateSandboxRequest.env`. */
 export type ResumeSandboxRequestEnvMap = { [key: string]: string | undefined };
 export interface ResumeSandboxRequest {
@@ -1556,7 +2320,7 @@ export interface ResumeSandboxRequest {
   sandboxId: string;
   /** Pass `true` to resume only if a machine is ready right now. Within about 1.5 s you get the usual `202`, or `503` `no_ready_machine` with the sandbox left stopped and nothing counted against your start limits. */
   failFast?: boolean;
-  /** Resume onto a different machine size. Omit to keep the sandbox's current type. A resume already restores onto a fresh machine, so changing size costs nothing extra. Shrinking is rejected with `type_too_small` when the sandbox's data would not fit the smaller disk. */
+  /** Resume onto a different machine size. Omit to keep the sandbox's current type. `xlarge` needs the $100/month plan or higher, or an account access grant from an administrator (403 `machine_class_plan_required` otherwise). A resume already restores onto a fresh machine, so changing size costs nothing extra. Shrinking is rejected with `type_too_small` when the sandbox's data would not fit the smaller disk. */
   type?: ResumeSandboxRequestType | (string & {});
   /** Replaces the sandbox's per-sandbox environment variables. Omit to keep the sandbox's current env. Same validation rules as `CreateSandboxRequest.env`. */
   env?: ResumeSandboxRequestEnvMap;
@@ -1588,6 +2352,18 @@ export interface RevokeApiKeyResponse {
   /** Stable success envelope discriminator added by v1. */
   type: string;
   apiKeys: RevokeApiKeyResponseApiKeysList;
+}
+export interface RevokeSnapshotShareRequest {
+  name: string;
+  /** Share id, for example `shr_...`. */
+  shareId: string;
+}
+export interface RevokeSnapshotShareResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  name: string;
+  share: NamedSnapshotShare;
 }
 export interface RotateApiKeyRequest {
   apiKeyId: string;
@@ -1658,8 +2434,58 @@ export interface SetActiveOrganizationResponse {
   type: string;
   active: SetActiveOrganizationResponseActive;
 }
+export interface SetCredentialProfileCustomApiRequest {
+  /** Profile id or name. */
+  profile: string;
+  /** Environment variable name of the custom API, for example `STRIPE_KEY`. Provider names (`ANTHROPIC_*`, `OPENAI_*`, and so on) and names that end in `_BASE_URL` are reserved. */
+  name: string;
+  /** The secret. The sandbox gets it as the variable named in the path. */
+  value: string;
+  /** Public HTTPS base URL of the API, on the default port, with a DNS name. The sandbox gets it as `<NAME>_BASE_URL`. */
+  baseUrl: string;
+}
+export interface SetCredentialProfileCustomApiResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profile: CredentialProfile;
+}
+/** One AI credential in a credential profile. The `*-api-key` ids are API keys you can set with `PUT /credential-profiles/{profile}/keys/{credential}`. The sign-ins (`*-subscription`) and Bedrock (`*-bedrock`) are connected on the dashboard Agents & Proxying page, with the profile picked at the top; you can remove them here. */
+export type SetCredentialProfileKeyRequestCredential =
+  | "anthropic-api-key"
+  | "openai-api-key"
+  | "openrouter-api-key"
+  | "llmgateway-api-key"
+  | "deepseek-api-key"
+  | "moonshot-api-key"
+  | "mistral-api-key"
+  | "claude-subscription"
+  | "chatgpt-subscription"
+  | "kimi-subscription"
+  | "mistral-vibe-subscription"
+  | "claude-bedrock"
+  | "codex-bedrock";
+export interface SetCredentialProfileKeyRequest {
+  /** Profile id or name. */
+  profile: string;
+  credential: SetCredentialProfileKeyRequestCredential | (string & {});
+  /** The API key. Boat encrypts it at rest. */
+  value: string;
+  /** Keep the key this one replaces as another account of the credential, ready to switch back to. */
+  keepCurrent?: boolean;
+}
+export interface SetCredentialProfileKeyResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profile: CredentialProfile;
+}
 export interface SetEnvironmentSecretFileRequest {
   environmentId: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
   /** In-sandbox path relative to the workspace, e.g. `.env` or `repo/.env`. */
   path: string;
   contents: string;
@@ -1668,7 +2494,44 @@ export interface SetEnvironmentVarRequest {
   environmentId: string;
   /** Environment variable name. */
   key: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
   value: string;
+}
+export interface SetSandboxAiAccessRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  blocked: boolean;
+}
+export interface SetSandboxAiAccessResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  sandboxId: string;
+  blocked: boolean;
+}
+/** Headers sent with every export, for example the vendor API key. Boat encrypts them at rest. */
+export type SetTelemetryRequestHeadersMap = { [key: string]: string | undefined };
+export interface SetTelemetryRequest {
+  /** HTTPS URL on port 443 or 4318. Boat removes a trailing `/v1/metrics` or `/v1/logs`. */
+  endpoint: string;
+  /** Headers sent with every export, for example the vendor API key. Boat encrypts them at rest. */
+  headers?: SetTelemetryRequestHeadersMap;
+}
+export interface TelemetryTestResult {
+  /** True when the collector accepted the test export. */
+  ok: boolean;
+  status: number | null;
+  /** The collector error or partial-success message. */
+  message: string | null;
+}
+export interface SetTelemetryResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  telemetry: TelemetryConfig | null;
+  test: TelemetryTestResult;
 }
 export interface ShareSandboxRequest {
   /** Public Sandbox id returned by create/list/get sandbox calls. */
@@ -1707,10 +2570,28 @@ export interface SteerSandboxResponse {
   mode?: SteerSandboxResponseMode;
   status: SteerSandboxResponseStatus;
 }
+export interface StopCommandRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+  /** Process id returned by a detached command start. */
+  processId: number;
+}
+export interface StopCommandResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  processId: number;
+  /** Always false after a stop. */
+  running: boolean;
+  /** False when the process had already ended. */
+  signaled: boolean;
+  /** The history record of the command, with its final state. */
+  command: CommandRecord | null;
+}
 export interface StopSandboxRequest {
   /** Public Sandbox id returned by create/list/get sandbox calls. */
   sandboxId: string;
-  /** Stop the sandbox even if its disk cannot be snapshotted. Everything written since the last successful snapshot is permanently LOST. Without this, a sandbox whose snapshot pipeline is failing is left running rather than discarding your work, and you are not billed for that time. Only use this after a stop has already been refused. */
+  /** Stop the sandbox even if its disk cannot be snapshotted. It keeps its last successful snapshot and everything written since then is permanently LOST. Without this, a sandbox whose snapshot pipeline is failing is left running rather than discarding your work, and you are not billed for that time. Only use this after a stop has already been refused. */
   force?: boolean;
 }
 export interface StopSandboxResponse {
@@ -1725,10 +2606,92 @@ export interface StopSandboxResponse {
   /** On interrupt, the conversation whose turn was interrupted. */
   conversationId?: string;
 }
+/** One AI credential in a credential profile. The `*-api-key` ids are API keys you can set with `PUT /credential-profiles/{profile}/keys/{credential}`. The sign-ins (`*-subscription`) and Bedrock (`*-bedrock`) are connected on the dashboard Agents & Proxying page, with the profile picked at the top; you can remove them here. */
+export type SwitchCredentialAccountRequestCredential =
+  | "anthropic-api-key"
+  | "openai-api-key"
+  | "openrouter-api-key"
+  | "llmgateway-api-key"
+  | "deepseek-api-key"
+  | "moonshot-api-key"
+  | "mistral-api-key"
+  | "claude-subscription"
+  | "chatgpt-subscription"
+  | "kimi-subscription"
+  | "mistral-vibe-subscription"
+  | "claude-bedrock"
+  | "codex-bedrock";
+export interface SwitchCredentialAccountRequest {
+  /** Profile id or name. */
+  profile: string;
+  credential: SwitchCredentialAccountRequestCredential | (string & {});
+  /** The account id from the list. */
+  account: string;
+}
+/** In the order the accounts were added, so their numbers stay the same across switches. The one in use is marked `active`. */
+export type SwitchCredentialAccountResponseAccountsList = Array<CredentialAccount>;
+export interface SwitchCredentialAccountResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profileId: string;
+  credential: CredentialId;
+  /** In the order the accounts were added, so their numbers stay the same across switches. The one in use is marked `active`. */
+  accounts: SwitchCredentialAccountResponseAccountsList;
+}
+export interface UnshareSandboxRequest {
+  /** Public Sandbox id returned by create/list/get sandbox calls. */
+  sandboxId: string;
+}
+export interface UnshareSandboxResponse {
+  sandbox?: Sandbox;
+  message?: string;
+}
+export interface UpdateAiProxyRequest {
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
+  /** Same as the `org` query parameter. Query wins when both are set. */
+  xBoatOrg?: string;
+  enabled: boolean;
+}
+export type UpdateAiProxyResponsePricing = GetAiProxyResponsePricing;
+export interface UpdateAiProxyResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  /** The account the switch belongs to, a person or an organization. */
+  accountId: string;
+  /** True when `accountId` is an organization. */
+  org: boolean;
+  enabled: boolean;
+  enabledAt: string | null;
+  pricing: GetAiProxyResponsePricing;
+  /** The base URL sandboxes call instead of the providers. */
+  proxyUrl: string;
+}
+export interface UpdateCredentialProfileRequest {
+  /** Profile id or name. */
+  profile: string;
+  /** New profile name. */
+  name?: string;
+  /** Send true to make this profile its owner's default. The previous default loses the flag. False is ignored; make another profile the default instead. */
+  isDefault?: boolean;
+}
+export interface UpdateCredentialProfileResponse {
+  ok: boolean;
+  /** Stable success envelope discriminator added by v1. */
+  type: string;
+  success: boolean;
+  profile: CredentialProfile;
+}
 export interface UpdateDataRetentionRequest {
   enabled?: boolean;
   /** Turn snapshots off for every sandbox created from now on. Existing sandboxes keep their setting. While on, a create or fork that passes `snapshots: true` is refused with 409 `snapshots_off_for_account`. */
   snapshotsOff?: boolean;
+  /** Turn monitoring off for every sandbox created from now on. Existing sandboxes keep their setting. While on, a create or fork that passes `monitoring: true` is refused with 409 `monitoring_off_for_account`. */
+  monitoringOff?: boolean;
   /** Required when enabling and must exactly equal `delete archived sandbox data`. */
   confirmation?: string;
 }
@@ -1745,6 +2708,9 @@ export interface UpdateDataRetentionResponse {
   /** When true, every new sandbox of this account is created with snapshots off. */
   snapshotsOff?: boolean;
   snapshotsOffAt?: string | null;
+  /** When true, every new sandbox of this account is created with monitoring off. */
+  monitoringOff?: boolean;
+  monitoringOffAt?: string | null;
 }
 export type UpdateEnvironmentRequestSecretFilesList = Array<SecretFile>;
 export interface UpdateEnvironmentRequestRepositoriesItem {
@@ -1760,6 +2726,8 @@ export type UpdateEnvironmentRequestRepositoriesList =
 export interface UpdateEnvironmentRequest {
   /** Environment id returned by `GET /environments`. */
   environmentId: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
   /** New environment name. */
   name?: string;
   /** Set to true to make this the default environment (clears the flag on the previous default). */
@@ -1769,18 +2737,34 @@ export interface UpdateEnvironmentRequest {
   passSecrets?: boolean;
   passSandboxCredentials?: boolean;
   passAgentsCredentials?: boolean;
+  /** Id or name of a credential profile you can use, or null for the sandbox owner's default profile. Unknown profiles return `404 credential_profile_not_found`. */
+  credentialProfileId?: string | null;
+  /** With `safeForThirdParties` true, pass AI credentials as proxy placeholders. Setting true needs the AI credentials proxy on for the profile owner, else `400 ai_proxy_off`. */
+  proxyAiCredentials?: boolean;
   /** Full .env-style content for the new version. */
   envContents?: string;
   secretFiles?: UpdateEnvironmentRequestSecretFilesList;
   /** Full replacement of the version's repository selection. Each item selects one repository by its internal `databaseId` (from `GET /repos`). */
   repositories?: UpdateEnvironmentRequestRepositoriesList;
 }
+export interface UpdateOrganizationRequest {
+  /** Organization id or name. */
+  org: string;
+  /** True = new sandboxes start private. False = they start shared. */
+  newSandboxesPrivate: boolean;
+}
+export interface UpdateOrganizationResponse {
+  ok?: boolean;
+  type?: string;
+  success?: boolean;
+  newSandboxesPrivate?: boolean;
+}
 export interface UpdateSandboxRequest {
   /** Public Sandbox id returned by create/list/get sandbox calls. */
   sandboxId: string;
   /** New display name. Empty strings are rejected; longer names are truncated to 120 chars by the backend. */
   name?: string;
-  /** New archival TTL. `null` disables auto-stop. */
+  /** New auto-stop TTL. The deadline becomes now + `ttlSeconds`, so calling this again extends a running sandbox's life. `null` disables auto-stop. */
   ttlSeconds?: number | null;
   /** Rename the sandbox's stable subdomain (the `<subdomain>.on.boat.dev` label). Lowercase letters, digits and hyphens; no leading/trailing/double hyphens; cannot end in `-desktop` or `-<number>` (reserved for the desktop and hosted-port URLs). Must be globally unique. The base URL, desktop URL and every live `host <port>` URL are re-pointed to the new name with no downtime and their access tokens preserved; the old URLs stop resolving. On a transient routing error the rename is saved but returns 502 `gateway_error` - retry with the same value to finish activating routes. */
   subdomain?: string;
@@ -1834,6 +2818,8 @@ export interface UpdateWebhookResponse {
 export type UpgradeEnvironmentRequestAgentIdsList = Array<string>;
 export interface UpgradeEnvironmentRequest {
   environmentId: string;
+  /** Billing wallet for this request: an organization you belong to, by id (`team_...`) or by name as `GET /orgs` lists it (case-insensitive), or `personal`. Omitted, the account's active wallet applies (`PATCH /orgs/active`; personal until set). Two organizations sharing the name answer `409 ambiguous_org` and need the id. Sandboxes and snapshots stay creator-private. On `/environments` routes, only this query parameter selects the organization's shared environments; the `X-Boat-Org` header and the active wallet do not apply there. Members read them, owners and admins change them. */
+  org?: string;
   /** Restrict the upgrade to these sandbox (agent) ids. Omit to upgrade all of the caller's active sandboxes that are on an older version of this environment. */
   agentIds?: UpgradeEnvironmentRequestAgentIdsList;
 }
@@ -1867,6 +2853,21 @@ export interface WriteSandboxFileResponse {
   encoding: WriteSandboxFileResponseEncoding;
   size: number;
 }
+export type AddCredentialAccountError = BadRequest | Forbidden | NotFound | BoatOpError;
+/** Add another API key to a credential Adds an API key as another account of the credential, ready to switch to. The first key of a credential becomes the one in use. A sign-in returns `400 not_an_api_key`; add another sign-in with "Add another account" on the dashboard. Needs an API key with `account.admin`. */
+export const addCredentialAccount: API.OperationMethod<
+  AddCredentialAccountRequest,
+  AddCredentialAccountResponse,
+  AddCredentialAccountError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1040, __c65, 0) as any as S.Schema<AddCredentialAccountRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<AddCredentialAccountResponse>,
+  errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
 export type AddEnvironmentRepoError = BadRequest | NotFound | BoatOpError;
 /** Add a repository to an environment Adds a repository (or updates its base branch) by database id from the repository list. Mints a new immutable version. */
 export const addEnvironmentRepo: API.OperationMethod<
@@ -1875,8 +2876,53 @@ export const addEnvironmentRepo: API.OperationMethod<
   AddEnvironmentRepoError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<AddEnvironmentRepoRequest>,
-  output: __S(704, __c44, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
+  input: __S(1344, __c84, 0) as any as S.Schema<AddEnvironmentRepoRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
+  errors: [BadRequest, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type AttachCommandError = BadRequest | NotFound | Conflict | BoatOpError;
+/** Attach to a detached command The output of a detached command as it is written, one JSON object per line, until the command ends. After 10 minutes the stream ends with a `reconnect` line: open it again with its offsets to continue with no gap. One open stream replaces polling. Needs the `exec` key scope. */
+export const attachCommand: API.OperationMethod<
+  AttachCommandRequest,
+  AttachCommandResponse,
+  AttachCommandError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1568, __c98, 0) as any as S.Schema<AttachCommandRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<AttachCommandResponse>,
+  errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CommandHistoryError = BadRequest | NotFound | BoatOpError;
+/** List the command and process history Every command run through `POST /sandboxes/{sandboxId}/commands` in the last 90 days, and every other process that wrote to its stdout/stderr in the last 72 hours (mode `process`), newest first. Works while the sandbox is stopped. */
+export const commandHistory: API.OperationMethod<
+  CommandHistoryRequest,
+  CommandHistoryResponse,
+  CommandHistoryError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1776, __c111, 0) as any as S.Schema<CommandHistoryRequest>,
+  output: __S(1778, __c111, 2) as any as S.Schema<CommandHistoryResponse>,
+  errors: [BadRequest, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CommandLogsError = BadRequest | NotFound | BoatOpError;
+/** Read a command's stored output Reads stdout or stderr from a byte offset, at most 1 MiB per call. Read on with `nextOffset` until `done`. A running detached command gains output every 30 s; a streamed one every 2 s. Works while the sandbox is stopped. */
+export const commandLogs: API.OperationMethod<
+  CommandLogsRequest,
+  CommandLogsResponse,
+  CommandLogsError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1984, __c124, 0) as any as S.Schema<CommandLogsRequest>,
+  output: __S(1985, __c124, 1) as any as S.Schema<CommandLogsResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -1890,9 +2936,39 @@ export const configureSshKey: API.OperationMethod<
   ConfigureSshKeyError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<ConfigureSshKeyRequest>,
-  output: __S(913, __c57, 1) as any as S.Schema<ConfigureSshKeyResponse>,
+  input: __S(2160, __c135, 0) as any as S.Schema<ConfigureSshKeyRequest>,
+  output: __S(2161, __c135, 1) as any as S.Schema<ConfigureSshKeyResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCredentialProfileError = BadRequest | Forbidden | Conflict | BoatOpError;
+/** Create a credential profile Creates an empty profile, or a copy of `copyFrom`. With `org`, the profile belongs to that organization and only its owners can create it. Needs an API key with `account.admin`. */
+export const createCredentialProfile: API.OperationMethod<
+  CreateCredentialProfileRequest,
+  CreateCredentialProfileResponse,
+  CreateCredentialProfileError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(0, __c0, 0) as any as S.Schema<CreateCredentialProfileRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<CreateCredentialProfileResponse>,
+  errors: [BadRequest, Forbidden, Conflict, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateDownloadUrlError = BadRequest | NotFound | Conflict | BoatOpError;
+/** Get a download URL for a sandbox file Returns a short-lived URL that the sandbox serves itself. GET it to download the file as raw bytes, with no size limit and no Authorization header. The URL is bound to this path and expires after `ttlSeconds` (default 15 minutes, at most 1 hour). Needs `file.read`. Treat the URL as a secret until it expires. */
+export const createDownloadUrl: API.OperationMethod<
+  CreateDownloadUrlRequest,
+  CreateDownloadUrlResponse,
+  CreateDownloadUrlError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(208, __c13, 0) as any as S.Schema<CreateDownloadUrlRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<CreateDownloadUrlResponse>,
+  errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -1905,8 +2981,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<CreateEnvironmentRequest>,
-  output: __S(1153, __c72, 1) as any as S.Schema<SandboxEnvironmentListResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreateEnvironmentRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<SandboxEnvironmentListResponse>,
   errors: [BadRequest, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -1920,8 +2996,8 @@ export const createSandbox: API.OperationMethod<
   CreateSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c83, 0) as any as S.Schema<CreateSandboxRequest>,
-  output: __S(1329, __c83, 1) as any as S.Schema<CreateSandboxResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CreateSandboxRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<CreateSandboxResponse>,
   errors: [Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -1935,9 +3011,39 @@ export const createScopedApiKey: API.OperationMethod<
   CreateScopedApiKeyError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<CreateScopedApiKeyRequest>,
-  output: __S(1488, __c93, 0) as any as S.Schema<CreateScopedApiKeyResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<CreateScopedApiKeyRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<CreateScopedApiKeyResponse>,
   errors: [BadRequest, Forbidden, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSnapshotShareError = NotFound | BoatOpError;
+/** Share a named snapshot Make a secret code that lets any Boat account create a sandbox from this named snapshot (`boat snapshot share <name>` in the CLI). The response shows the code once; Boat stores only a hash. Re-saving the name changes what the code deploys. Removing the name removes its codes. Everything on the disk is shared, so do not keep secrets in files on it. Needs `snapshot.write`. */
+export const createSnapshotShare: API.OperationMethod<
+  CreateSnapshotShareRequest,
+  CreateSnapshotShareResponse,
+  CreateSnapshotShareError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(464, __c29, 0) as any as S.Schema<CreateSnapshotShareRequest>,
+  output: __S(465, __c29, 1) as any as S.Schema<CreateSnapshotShareResponse>,
+  errors: [NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateUploadUrlError = BadRequest | NotFound | Conflict | BoatOpError;
+/** Get an upload URL for a sandbox file Returns a short-lived URL that the sandbox serves itself. PUT the file as the raw request body to write it, with no size limit and no Authorization header. Missing directories are created; an existing file is replaced only once the upload completes. The URL is bound to this path and expires after `ttlSeconds` (default 15 minutes, at most 1 hour). Needs `file.write`. Treat the URL as a secret until it expires. */
+export const createUploadUrl: API.OperationMethod<
+  CreateUploadUrlRequest,
+  CreateUploadUrlResponse,
+  CreateUploadUrlError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(496, __c31, 0) as any as S.Schema<CreateUploadUrlRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<CreateUploadUrlResponse>,
+  errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -1950,9 +3056,69 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<CreateWebhookRequest>,
-  output: __S(1536, __c96, 0) as any as S.Schema<CreateWebhookResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<CreateWebhookResponse>,
   errors: [BadRequest, Conflict, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCredentialAccountError = BadRequest | Forbidden | NotFound | BoatOpError;
+/** Forget an account of a credential Deletes an account. For the account in use, the credential switches to another account first, or is removed when it was the last one. Needs an API key with `account.admin`. */
+export const deleteCredentialAccount: API.OperationMethod<
+  DeleteCredentialAccountRequest,
+  DeleteCredentialAccountResponse,
+  DeleteCredentialAccountError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(560, __c35, 0) as any as S.Schema<DeleteCredentialAccountRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<DeleteCredentialAccountResponse>,
+  errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCredentialProfileError = Forbidden | NotFound | Conflict | BoatOpError;
+/** Delete a credential profile Deletes the profile. A default profile returns `409 is_default`. A profile that an environment names returns `409 in_use`. Needs an API key with `account.admin`. */
+export const deleteCredentialProfile: API.OperationMethod<
+  DeleteCredentialProfileRequest,
+  DeleteCredentialProfileResponse,
+  DeleteCredentialProfileError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(576, __c36, 0) as any as S.Schema<DeleteCredentialProfileRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<DeleteCredentialProfileResponse>,
+  errors: [Forbidden, NotFound, Conflict, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCredentialProfileCustomApiError = Forbidden | NotFound | BoatOpError;
+/** Remove a custom API Removes one custom API from the profile. Needs an API key with `account.admin`. */
+export const deleteCredentialProfileCustomApi: API.OperationMethod<
+  DeleteCredentialProfileCustomApiRequest,
+  DeleteCredentialProfileCustomApiResponse,
+  DeleteCredentialProfileCustomApiError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteCredentialProfileCustomApiRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteCredentialProfileCustomApiResponse>,
+  errors: [Forbidden, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCredentialProfileKeyError = BadRequest | Forbidden | NotFound | BoatOpError;
+/** Remove a credential profile credential Removes one credential, an API key or a sign-in. Needs an API key with `account.admin`. */
+export const deleteCredentialProfileKey: API.OperationMethod<
+  DeleteCredentialProfileKeyRequest,
+  DeleteCredentialProfileKeyResponse,
+  DeleteCredentialProfileKeyError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(608, __c38, 0) as any as S.Schema<DeleteCredentialProfileKeyRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<DeleteCredentialProfileKeyResponse>,
+  errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -1965,8 +3131,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<DeleteEnvironmentRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<SandboxEnvironmentResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DeleteEnvironmentRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<SandboxEnvironmentResponse>,
   errors: [NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -1980,8 +3146,8 @@ export const deleteEnvironmentRepo: API.OperationMethod<
   DeleteEnvironmentRepoError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c2, 0) as any as S.Schema<DeleteEnvironmentRepoRequest>,
-  output: __S(704, __c44, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<DeleteEnvironmentRepoRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -1995,8 +3161,8 @@ export const deleteEnvironmentSecretFile: API.OperationMethod<
   DeleteEnvironmentSecretFileError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c3, 0) as any as S.Schema<DeleteEnvironmentSecretFileRequest>,
-  output: __S(704, __c44, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<DeleteEnvironmentSecretFileRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2010,8 +3176,8 @@ export const deleteEnvironmentVar: API.OperationMethod<
   DeleteEnvironmentVarError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c4, 0) as any as S.Schema<DeleteEnvironmentVarRequest>,
-  output: __S(704, __c44, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DeleteEnvironmentVarRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2025,8 +3191,8 @@ export const deleteNamedSnapshot: API.OperationMethod<
   DeleteNamedSnapshotError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<DeleteNamedSnapshotRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<DeleteNamedSnapshotResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<DeleteNamedSnapshotRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<DeleteNamedSnapshotResponse>,
   errors: [NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2040,8 +3206,8 @@ export const deleteSandbox: API.OperationMethod<
   DeleteSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<DeleteSandboxRequest>,
-  output: __S(128, __c8, 0) as any as S.Schema<DeleteSandboxResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<DeleteSandboxRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteSandboxResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2055,8 +3221,8 @@ export const deleteSandboxSnapshots: API.OperationMethod<
   DeleteSandboxSnapshotsError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<DeleteSandboxSnapshotsRequest>,
-  output: __S(146, __c9, 2) as any as S.Schema<DeleteSandboxSnapshotsResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DeleteSandboxSnapshotsRequest>,
+  output: __S(770, __c48, 2) as any as S.Schema<DeleteSandboxSnapshotsResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2070,9 +3236,24 @@ export const deleteSnapshot: API.OperationMethod<
   DeleteSnapshotError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<DeleteSnapshotRequest>,
-  output: __S(128, __c8, 0) as any as S.Schema<DeleteSnapshotResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<DeleteSnapshotRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<DeleteSnapshotResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteTelemetryError = NotFound | BoatOpError;
+/** Remove OpenTelemetry export Removes the export and its queued deliveries. Needs an API key with `account.admin`. */
+export const deleteTelemetry: API.OperationMethod<
+  DeleteTelemetryRequest,
+  DeleteTelemetryResponse,
+  DeleteTelemetryError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(800, __c50, 0) as any as S.Schema<DeleteTelemetryRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<DeleteTelemetryResponse>,
+  errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2085,38 +3266,38 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<DeleteWebhookRequest>,
-  output: __S(177, __c11, 1) as any as S.Schema<DeleteWebhookResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<DeleteWebhookResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
 
 export type DownloadSandboxArtifactError = BoatOpError;
-/** Download a sandbox artifact */
+/** Download a sandbox artifact Downloads one file of up to 50 MiB, under /home/user or /tmp, as raw bytes. */
 export const downloadSandboxArtifact: API.OperationMethod<
   DownloadSandboxArtifactRequest,
   DownloadSandboxArtifactResponse,
   DownloadSandboxArtifactError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<DownloadSandboxArtifactRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<DownloadSandboxArtifactResponse>,
+  input: __S(864, __c54, 0) as any as S.Schema<DownloadSandboxArtifactRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<DownloadSandboxArtifactResponse>,
   errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
 
 export type ExecuteSandboxCommandError = BadRequest | NotFound | Conflict | BoatOpError;
-/** Execute a command in a sandbox Runs the command synchronously by default (timeout configurable via `timeoutSeconds`, 600s cap). With `detached: true` the command starts in the background and a process id is returned immediately; poll `/sandboxes/{sandboxId}/commands/{processId}` for status and logs. With `stream: true` the output arrives as the command writes it, as newline-delimited JSON (`application/x-ndjson`): `{"type":"started"}`, then `{"type":"stdout"|"stderr","data":"..."}` per chunk, and last `{"type":"exit",...}` (the synchronous result without stdout/stderr) or `{"type":"error","error":"...","message":"..."}`. Returns 400 invalid_timeout when `timeoutSeconds` is not an integer in 1-600. A command sent while the sandbox is still starting (right after a resume) waits up to 60s for it to be ready instead of failing; 409 boat_starting (retryable) is returned only if it is still not ready by then. A sandbox that is not starting (`error`, `stopped`) returns 409 sandbox_not_ready with `retryable: false` and its `state` at once: resume or recover it first. Command execution is never retried automatically: a 502 boat_direct_failed means the command may already be running on the sandbox. */
+/** Execute a command in a sandbox Runs the command synchronously by default (timeout configurable via `timeoutSeconds`, 600s cap). With `detached: true` the command starts in the background and a process id is returned immediately; poll `/sandboxes/{sandboxId}/commands/{processId}` for status and logs. With `stream: true` the output arrives as the command writes it, as newline-delimited JSON (`application/x-ndjson`): `{"type":"started"}`, then `{"type":"stdout"|"stderr","data":"..."}` per chunk, and last `{"type":"exit",...}` (the synchronous result without stdout/stderr) or `{"type":"error","error":"...","message":"..."}`. Returns 400 invalid_timeout when `timeoutSeconds` is not an integer in 1-600. A command sent while the sandbox is still starting (right after a resume) waits up to 60s for it to be ready instead of failing; 409 boat_starting (retryable) is returned only if it is still not ready by then. A sandbox that is not starting (`error`, `stopped`) returns 409 sandbox_not_ready with `retryable: false` and its `state` at once: resume or recover it first. Command execution is never retried automatically: a 502 boat_direct_failed means the command may already be running on the sandbox. Every command and its output are kept 90 days in the command history (`/sandboxes/{sandboxId}/command-history`), readable while the sandbox is stopped. */
 export const executeSandboxCommand: API.OperationMethod<
   ExecuteSandboxCommandRequest,
   ExecuteSandboxCommandResponse,
   ExecuteSandboxCommandError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<ExecuteSandboxCommandRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<ExecuteSandboxCommandResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<ExecuteSandboxCommandRequest>,
+  output: __S(881, __c55, 1) as any as S.Schema<ExecuteSandboxCommandResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2130,9 +3311,39 @@ export const forkSandbox: API.OperationMethod<
   ForkSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<ForkSandboxRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<ForkSandboxResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ForkSandboxRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<ForkSandboxResponse>,
   errors: [NotFound, Conflict, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAiProxyError = BoatOpError;
+/** Get AI credentials proxy Returns the AI credentials proxy switch of the account in scope, a person or an organization, with its price. Needs an API key with `account.admin`. */
+export const getAiProxy: API.OperationMethod<
+  GetAiProxyRequest,
+  GetAiProxyResponse,
+  GetAiProxyError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(928, __c58, 0) as any as S.Schema<GetAiProxyRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<GetAiProxyResponse>,
+  errors: [UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAiUsageError = BoatOpError;
+/** Get AI usage Proxied AI usage, per sandbox and in total, per UTC day, credential and model. Without `profile`, the usage charged to the wallet in scope. With `profile`, the requests made with that profile's credentials, whoever pays; only its managers can read it. Needs an API key with `account.read`. */
+export const getAiUsage: API.OperationMethod<
+  GetAiUsageRequest,
+  GetAiUsageResponse,
+  GetAiUsageError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(960, __c60, 0) as any as S.Schema<GetAiUsageRequest>,
+  output: __S(963, __c60, 3) as any as S.Schema<GetAiUsageResponse>,
+  errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2145,24 +3356,39 @@ export const getApiKeyUsage: API.OperationMethod<
   GetApiKeyUsageError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<GetApiKeyUsageRequest>,
-  output: __S(276, __c17, 4) as any as S.Schema<GetApiKeyUsageResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<GetApiKeyUsageRequest>,
+  output: __S(996, __c62, 4) as any as S.Schema<GetApiKeyUsageResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetCommandStatusError = BadRequest | NotFound | BoatOpError;
-/** Get detached command status and logs */
+export type GetCommandError = NotFound | BoatOpError;
+/** Get one command from the history */
+export const getCommand: API.OperationMethod<
+  GetCommandRequest,
+  GetCommandResponse,
+  GetCommandError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1008, __c63, 0) as any as S.Schema<GetCommandRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<GetCommandResponse>,
+  errors: [NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetCommandStatusError = BadRequest | NotFound | Conflict | BoatOpError;
+/** Get detached command status and logs Without offsets, the answer holds the end of each log. With `stdoutOffset` or `stderrOffset`, it holds only the output written since those byte offsets, so each poll returns only new output. A sandbox agent too old for offsets answers 409 `agent_outdated`. */
 export const getCommandStatus: API.OperationMethod<
   GetCommandStatusRequest,
   GetCommandStatusResponse,
   GetCommandStatusError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<GetCommandStatusRequest>,
-  output: __S(289, __c18, 1) as any as S.Schema<GetCommandStatusResponse>,
-  errors: [BadRequest, NotFound, UnknownBoatError],
+  input: __S(1024, __c64, 0) as any as S.Schema<GetCommandStatusRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<GetCommandStatusResponse>,
+  errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2175,8 +3401,8 @@ export const getCurrentUser: API.OperationMethod<
   GetCurrentUserError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetCurrentUserRequest>,
-  output: __S(306, __c19, 2) as any as S.Schema<GetCurrentUserResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<GetCurrentUserRequest>,
+  output: __S(1090, __c68, 2) as any as S.Schema<GetCurrentUserResponse>,
   errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2190,8 +3416,8 @@ export const getDataRetention: API.OperationMethod<
   GetDataRetentionError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetDataRetentionRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<GetDataRetentionResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<GetDataRetentionRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<GetDataRetentionResponse>,
   errors: [Forbidden, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2205,8 +3431,8 @@ export const getDeletionOperation: API.OperationMethod<
   GetDeletionOperationError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetDeletionOperationRequest>,
-  output: __S(128, __c8, 0) as any as S.Schema<GetDeletionOperationResponse>,
+  input: __S(1136, __c71, 0) as any as S.Schema<GetDeletionOperationRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetDeletionOperationResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2220,8 +3446,8 @@ export const getDesktopStreamingUrl: API.OperationMethod<
   GetDesktopStreamingUrlError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<GetDesktopStreamingUrlRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<GetDesktopStreamingUrlResponse>,
+  input: __S(1152, __c72, 0) as any as S.Schema<GetDesktopStreamingUrlRequest>,
+  output: __S(1153, __c72, 1) as any as S.Schema<GetDesktopStreamingUrlResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2235,8 +3461,8 @@ export const getLatestSandboxSnapshot: API.OperationMethod<
   GetLatestSandboxSnapshotError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetLatestSandboxSnapshotRequest>,
-  output: __S(385, __c24, 1) as any as S.Schema<GetLatestSandboxSnapshotResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<GetLatestSandboxSnapshotRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<GetLatestSandboxSnapshotResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2250,8 +3476,8 @@ export const getLimits: API.OperationMethod<
   GetLimitsError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetLimitsRequest>,
-  output: __S(424, __c26, 8) as any as S.Schema<GetLimitsResponse>,
+  input: __S(1200, __c75, 0) as any as S.Schema<GetLimitsRequest>,
+  output: __S(1210, __c75, 10) as any as S.Schema<GetLimitsResponse>,
   errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2265,8 +3491,8 @@ export const getNamedSnapshot: API.OperationMethod<
   GetNamedSnapshotError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetNamedSnapshotRequest>,
-  output: __S(449, __c28, 1) as any as S.Schema<GetNamedSnapshotResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<GetNamedSnapshotRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<GetNamedSnapshotResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2280,8 +3506,8 @@ export const getPromptRunStatus: API.OperationMethod<
   GetPromptRunStatusError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetPromptRunStatusRequest>,
-  output: __S(481, __c30, 1) as any as S.Schema<GetPromptRunStatusResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<GetPromptRunStatusRequest>,
+  output: __S(1265, __c79, 1) as any as S.Schema<GetPromptRunStatusResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2295,8 +3521,23 @@ export const getSandbox: API.OperationMethod<
   GetSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<GetSandboxRequest>,
-  output: __S(528, __c33, 0) as any as S.Schema<GetSandboxResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<GetSandboxRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<GetSandboxResponse>,
+  errors: [NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSandboxAiUsageError = NotFound | BoatOpError;
+/** Get sandbox AI usage One sandbox's proxied AI usage per UTC day, credential and model, and whether it is blocked. Needs an API key with `sandbox.read` on the sandbox. */
+export const getSandboxAiUsage: API.OperationMethod<
+  GetSandboxAiUsageRequest,
+  GetSandboxAiUsageResponse,
+  GetSandboxAiUsageError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1328, __c83, 0) as any as S.Schema<GetSandboxAiUsageRequest>,
+  output: __S(1329, __c83, 1) as any as S.Schema<GetSandboxAiUsageResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2310,8 +3551,8 @@ export const getSandboxUsage: API.OperationMethod<
   GetSandboxUsageError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<GetSandboxUsageRequest>,
-  output: __S(545, __c34, 1) as any as S.Schema<GetSandboxUsageResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<GetSandboxUsageRequest>,
+  output: __S(1377, __c86, 1) as any as S.Schema<GetSandboxUsageResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2325,8 +3566,8 @@ export const getSecrets: API.OperationMethod<
   GetSecretsError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<GetSecretsRequest>,
-  output: __S(576, __c36, 0) as any as S.Schema<GetSecretsResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<GetSecretsRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<GetSecretsResponse>,
   errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2340,23 +3581,23 @@ export const getSnapshotDownload: API.OperationMethod<
   GetSnapshotDownloadError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<GetSnapshotDownloadRequest>,
-  output: __S(596, __c37, 4) as any as S.Schema<GetSnapshotDownloadResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<GetSnapshotDownloadRequest>,
+  output: __S(1428, __c89, 4) as any as S.Schema<GetSnapshotDownloadResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
 
 export type GetSnapshotFileError = NotFound | Conflict | BoatOpError;
-/** Download a file or folder from a snapshot Stream a single file's bytes, or a folder subtree as a tar archive, directly out of a snapshot, the sandbox can be stopped or archived; the machine is never contacted. Use `GET /snapshots/{snapshotId}/tree` to list paths, then pass one here. Paths are relative to the snapshot root (same space as `tree` entries; docker volumes under `__dockervol__/`). An empty or `/` path downloads the whole snapshot as a tar. Folder responses set `X-Snapshot-File-Count`, `X-Snapshot-Total-Size-Bytes` and `X-Snapshot-Skipped-Base-Image-Files` headers; both response shapes set `X-Snapshot-Entry-Kind` (`file` or `dir`). */
+/** Download a file or folder from a snapshot Stream a single file's bytes, or a folder subtree as a tar archive, directly out of a snapshot, the sandbox can be stopped or archived; the machine is never contacted. Use `GET /snapshots/{snapshotId}/tree` to list paths, then pass one here. Paths are relative to the snapshot root (same space as `tree` entries; docker volumes under `__dockervol__/`). An empty or `/` path downloads the whole snapshot as a tar. Folder responses set `X-Snapshot-File-Count`, `X-Snapshot-Total-Size-Bytes` and `X-Snapshot-Skipped-Base-Image-Files` headers; both response shapes set `X-Snapshot-Entry-Kind` (`file` or `dir`). File responses accept a single `Range: bytes=` header and answer 206 with `Content-Range`, so large files can be downloaded in parts and resumed. */
 export const getSnapshotFile: API.OperationMethod<
   GetSnapshotFileRequest,
   GetSnapshotFileResponse,
   GetSnapshotFileError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<GetSnapshotFileRequest>,
-  output: __S(208, __c13, 0) as any as S.Schema<GetSnapshotFileResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<GetSnapshotFileRequest>,
+  output: __S(1584, __c99, 0) as any as S.Schema<GetSnapshotFileResponse>,
   errors: [NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2370,9 +3611,39 @@ export const getSnapshotTree: API.OperationMethod<
   GetSnapshotTreeError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<GetSnapshotTreeRequest>,
-  output: __S(627, __c39, 3) as any as S.Schema<GetSnapshotTreeResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<GetSnapshotTreeRequest>,
+  output: __S(1459, __c91, 3) as any as S.Schema<GetSnapshotTreeResponse>,
   errors: [NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetStopError = NotFound | BoatOpError;
+/** Get a stop by id Returns one stop of this sandbox by the id that `POST /sandboxes/{sandboxId}/stop` returned. Old stops stay readable after a resume or a later stop. Returns 404 when the id is unknown or belongs to another sandbox. */
+export const getStop: API.OperationMethod<
+  GetStopRequest,
+  GetStopResponse,
+  GetStopError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1472, __c92, 0) as any as S.Schema<GetStopRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<GetStopResponse>,
+  errors: [NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetTelemetryError = BoatOpError;
+/** Get OpenTelemetry export Returns the account's OpenTelemetry export, or `telemetry` null when none is set. Header values are never included. Needs an API key with `account.admin`. */
+export const getTelemetry: API.OperationMethod<
+  GetTelemetryRequest,
+  GetTelemetryResponse,
+  GetTelemetryError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1488, __c93, 0) as any as S.Schema<GetTelemetryRequest>,
+  output: __S(816, __c51, 0) as any as S.Schema<GetTelemetryResponse>,
+  errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2385,8 +3656,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<GetWebhookRequest>,
-  output: __S(656, __c41, 0) as any as S.Schema<GetWebhookResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<GetWebhookRequest>,
+  output: __S(1520, __c95, 0) as any as S.Schema<GetWebhookResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2400,8 +3671,8 @@ export const hostPort: API.OperationMethod<
   HostPortError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<HostPortRequest>,
-  output: __S(673, __c42, 1) as any as S.Schema<HostPortResponse>,
+  input: __S(1536, __c96, 0) as any as S.Schema<HostPortRequest>,
+  output: __S(1537, __c96, 1) as any as S.Schema<HostPortResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2415,8 +3686,8 @@ export const interruptSandbox: API.OperationMethod<
   InterruptSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<InterruptSandboxRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<InterruptSandboxResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<InterruptSandboxRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<InterruptSandboxResponse>,
   errors: [NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2430,9 +3701,39 @@ export const listApiKeys: API.OperationMethod<
   ListApiKeysError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<ListApiKeysRequest>,
-  output: __S(742, __c46, 6) as any as S.Schema<ListApiKeysResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<ListApiKeysRequest>,
+  output: __S(1606, __c100, 6) as any as S.Schema<ListApiKeysResponse>,
   errors: [Forbidden, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCredentialAccountsError = BadRequest | Forbidden | NotFound | BoatOpError;
+/** List the accounts of a credential Every account of one credential (several ChatGPT sign-ins, several OpenAI keys), in the order they were added, the one in use marked. Labels only, never a secret. Needs an API key with `account.admin`, on a profile you manage: an org member who only uses an org profile gets `403`. */
+export const listCredentialAccounts: API.OperationMethod<
+  ListCredentialAccountsRequest,
+  ListCredentialAccountsResponse,
+  ListCredentialAccountsError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1616, __c101, 0) as any as S.Schema<ListCredentialAccountsRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<ListCredentialAccountsResponse>,
+  errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCredentialProfilesError = BoatOpError;
+/** List credential profiles Returns every AI credential profile you can use, yours and your organizations'. Secret values are never returned. Needs an API key with `account.admin`. */
+export const listCredentialProfiles: API.OperationMethod<
+  ListCredentialProfilesRequest,
+  ListCredentialProfilesResponse,
+  ListCredentialProfilesError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1632, __c102, 0) as any as S.Schema<ListCredentialProfilesRequest>,
+  output: __S(1634, __c102, 2) as any as S.Schema<ListCredentialProfilesResponse>,
+  errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2445,8 +3746,8 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<ListEnvironmentsRequest>,
-  output: __S(1153, __c72, 1) as any as S.Schema<SandboxEnvironmentListResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(305, __c19, 1) as any as S.Schema<SandboxEnvironmentListResponse>,
   errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2460,8 +3761,8 @@ export const listNamedSnapshots: API.OperationMethod<
   ListNamedSnapshotsError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<ListNamedSnapshotsRequest>,
-  output: __S(771, __c48, 3) as any as S.Schema<ListNamedSnapshotsResponse>,
+  input: __S(1664, __c104, 0) as any as S.Schema<ListNamedSnapshotsRequest>,
+  output: __S(1667, __c104, 3) as any as S.Schema<ListNamedSnapshotsResponse>,
   errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2475,8 +3776,8 @@ export const listOrganizations: API.OperationMethod<
   ListOrganizationsError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<ListOrganizationsRequest>,
-  output: __S(787, __c49, 3) as any as S.Schema<ListOrganizationsResponse>,
+  input: __S(1680, __c105, 0) as any as S.Schema<ListOrganizationsRequest>,
+  output: __S(1683, __c105, 3) as any as S.Schema<ListOrganizationsResponse>,
   errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2492,8 +3793,8 @@ export const listRepos: API.PaginatedOperationMethod<
   RepositoryInstallation
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(800, __c50, 0) as any as S.Schema<ListReposRequest>,
-    output: __S(805, __c50, 5) as any as S.Schema<ListReposResponse>,
+    input: __S(1696, __c106, 0) as any as S.Schema<ListReposRequest>,
+    output: __S(1701, __c106, 5) as any as S.Schema<ListReposResponse>,
     errors: [Conflict, UnknownBoatError],
     protocol: BoatProtocol,
     retry: Retry.Retry,
@@ -2517,8 +3818,8 @@ export const listSandboxConversations: API.OperationMethod<
   ListSandboxConversationsError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<ListSandboxConversationsRequest>,
-  output: __S(835, __c52, 3) as any as S.Schema<ListSandboxConversationsResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<ListSandboxConversationsRequest>,
+  output: __S(1731, __c108, 3) as any as S.Schema<ListSandboxConversationsResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2534,8 +3835,8 @@ export const listSandboxes: API.PaginatedOperationMethod<
   Sandbox
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(848, __c53, 0) as any as S.Schema<ListSandboxesRequest>,
-    output: __S(850, __c53, 2) as any as S.Schema<ListSandboxesResponse>,
+    input: __S(1744, __c109, 0) as any as S.Schema<ListSandboxesRequest>,
+    output: __S(1745, __c109, 1) as any as S.Schema<ListSandboxesResponse>,
     errors: [UnknownBoatError],
     protocol: BoatProtocol,
     retry: Retry.Retry,
@@ -2561,8 +3862,8 @@ export const listSandboxEvents: API.PaginatedOperationMethod<
   SandboxEvent
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(864, __c54, 0) as any as S.Schema<ListSandboxEventsRequest>,
-    output: __S(867, __c54, 3) as any as S.Schema<ListSandboxEventsResponse>,
+    input: __S(1760, __c110, 0) as any as S.Schema<ListSandboxEventsRequest>,
+    output: __S(1763, __c110, 3) as any as S.Schema<ListSandboxEventsResponse>,
     errors: [NotFound, UnknownBoatError],
     protocol: BoatProtocol,
     retry: Retry.Retry,
@@ -2578,6 +3879,21 @@ export const listSandboxEvents: API.PaginatedOperationMethod<
   paginateCursor,
 ) as any;
 
+export type ListSandboxProcessesError = NotFound | BoatOpError;
+/** List the processes in a sandbox A running sandbox: every user-space process, read now, busiest first. A stopped sandbox: the last sample kept (`live: false`). */
+export const listSandboxProcesses: API.OperationMethod<
+  ListSandboxProcessesRequest,
+  ListSandboxProcessesResponse,
+  ListSandboxProcessesError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1808, __c113, 0) as any as S.Schema<ListSandboxProcessesRequest>,
+  output: __S(1811, __c113, 3) as any as S.Schema<ListSandboxProcessesResponse>,
+  errors: [NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListSandboxSnapshotsError = BadRequest | NotFound | BoatOpError;
 /** List boat snapshots List visible completed snapshots for one sandbox with uncapped cursor pagination. */
 export const listSandboxSnapshots: API.PaginatedOperationMethod<
@@ -2588,8 +3904,8 @@ export const listSandboxSnapshots: API.PaginatedOperationMethod<
   SnapshotSummary
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(880, __c55, 0) as any as S.Schema<ListSandboxSnapshotsRequest>,
-    output: __S(897, __c56, 1) as any as S.Schema<ListSandboxSnapshotsResponse>,
+    input: __S(1824, __c114, 0) as any as S.Schema<ListSandboxSnapshotsRequest>,
+    output: __S(1841, __c115, 1) as any as S.Schema<ListSandboxSnapshotsResponse>,
     errors: [BadRequest, NotFound, UnknownBoatError],
     protocol: BoatProtocol,
     retry: Retry.Retry,
@@ -2615,8 +3931,8 @@ export const listSnapshots: API.PaginatedOperationMethod<
   SnapshotSummary
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(928, __c58, 0) as any as S.Schema<ListSnapshotsRequest>,
-    output: __S(897, __c56, 1) as any as S.Schema<ListSnapshotsResponse>,
+    input: __S(1856, __c116, 0) as any as S.Schema<ListSnapshotsRequest>,
+    output: __S(1841, __c115, 1) as any as S.Schema<ListSnapshotsResponse>,
     errors: [BadRequest, UnknownBoatError],
     protocol: BoatProtocol,
     retry: Retry.Retry,
@@ -2632,6 +3948,21 @@ export const listSnapshots: API.PaginatedOperationMethod<
   paginateCursor,
 ) as any;
 
+export type ListSnapshotSharesError = NotFound | BoatOpError;
+/** List share codes of a named snapshot List the share codes of a named snapshot, active and revoked (`boat snapshot shares <name>` in the CLI). The full codes are not returned. Needs `snapshot.read`. */
+export const listSnapshotShares: API.OperationMethod<
+  ListSnapshotSharesRequest,
+  ListSnapshotSharesResponse,
+  ListSnapshotSharesError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1872, __c117, 0) as any as S.Schema<ListSnapshotSharesRequest>,
+  output: __S(1874, __c117, 2) as any as S.Schema<ListSnapshotSharesResponse>,
+  errors: [NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListWebhooksError = BoatOpError;
 /** List webhooks Lists account-wide sandbox lifecycle webhook endpoints. Signing secrets are never included. */
 export const listWebhooks: API.OperationMethod<
@@ -2640,8 +3971,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<ListWebhooksRequest>,
-  output: __S(946, __c59, 2) as any as S.Schema<ListWebhooksResponse>,
+  input: __S(1888, __c118, 0) as any as S.Schema<ListWebhooksRequest>,
+  output: __S(1890, __c118, 2) as any as S.Schema<ListWebhooksResponse>,
   errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2655,24 +3986,39 @@ export const promptSandbox: API.OperationMethod<
   PromptSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<PromptSandboxRequest>,
-  output: __S(961, __c60, 1) as any as S.Schema<PromptSandboxResponse>,
+  input: __S(1904, __c119, 0) as any as S.Schema<PromptSandboxRequest>,
+  output: __S(1905, __c119, 1) as any as S.Schema<PromptSandboxResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
 
 export type ReadSandboxFileError = BadRequest | BoatOpError;
-/** Read a file from a sandbox */
+/** Read a file from a sandbox Files up to 5 MiB. For a larger file, use `POST /sandboxes/{sandboxId}/files/download-url`. */
 export const readSandboxFile: API.OperationMethod<
   ReadSandboxFileRequest,
   ReadSandboxFileResponse,
   ReadSandboxFileError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<ReadSandboxFileRequest>,
-  output: __S(977, __c61, 1) as any as S.Schema<ReadSandboxFileResponse>,
+  input: __S(1920, __c120, 0) as any as S.Schema<ReadSandboxFileRequest>,
+  output: __S(1921, __c120, 1) as any as S.Schema<ReadSandboxFileResponse>,
   errors: [BadRequest, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RecoverSandboxError = NotFound | Conflict | BoatOpError;
+/** Recover a sandbox that stopped responding Power-cycle the machine of a sandbox that stopped answering. The disk is not touched. The sandbox usually answers again within 1-2 minutes and then saves your work by itself; `sandbox.recovered` fires when it does. Refused with `409`: - `sandbox_is_reachable`: the sandbox answers normally. - `too_soon`: a recover started less than 10 minutes ago. - `no_machine`: the sandbox has no machine. Resume it instead. - `recover_unsupported`: its machine cannot be power-cycled. Wait for it to answer, or stop it with `{"force": true}` and resume it from its last good snapshot. With no snapshot, a forced stop loses everything. - `reset_failed`: the power-cycle failed. Reply to the incident email. */
+export const recoverSandbox: API.OperationMethod<
+  RecoverSandboxRequest,
+  RecoverSandboxResponse,
+  RecoverSandboxError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(1936, __c121, 0) as any as S.Schema<RecoverSandboxRequest>,
+  output: __S(1937, __c121, 1) as any as S.Schema<RecoverSandboxResponse>,
+  errors: [NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2685,8 +4031,8 @@ export const resumeSandbox: API.OperationMethod<
   ResumeSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<ResumeSandboxRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<ResumeSandboxResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<ResumeSandboxRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<ResumeSandboxResponse>,
   errors: [NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2700,9 +4046,24 @@ export const revokeApiKey: API.OperationMethod<
   RevokeApiKeyError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<RevokeApiKeyRequest>,
-  output: __S(1009, __c63, 1) as any as S.Schema<RevokeApiKeyResponse>,
+  input: __S(1968, __c123, 0) as any as S.Schema<RevokeApiKeyRequest>,
+  output: __S(1969, __c123, 1) as any as S.Schema<RevokeApiKeyResponse>,
   errors: [Forbidden, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RevokeSnapshotShareError = NotFound | BoatOpError;
+/** Revoke a share code Revoke a share code (`boat snapshot unshare <name> <share-id>` in the CLI). The code stops creating new sandboxes. Sandboxes already created from it keep their own copy. Needs `snapshot.write`. */
+export const revokeSnapshotShare: API.OperationMethod<
+  RevokeSnapshotShareRequest,
+  RevokeSnapshotShareResponse,
+  RevokeSnapshotShareError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2000, __c125, 0) as any as S.Schema<RevokeSnapshotShareRequest>,
+  output: __S(2001, __c125, 1) as any as S.Schema<RevokeSnapshotShareResponse>,
+  errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2715,8 +4076,8 @@ export const rotateApiKey: API.OperationMethod<
   RotateApiKeyError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<RotateApiKeyRequest>,
-  output: __S(1488, __c93, 0) as any as S.Schema<RotateApiKeyResponse>,
+  input: __S(2016, __c126, 0) as any as S.Schema<RotateApiKeyRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<RotateApiKeyResponse>,
   errors: [Forbidden, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2730,8 +4091,8 @@ export const rotateWebhookSigningSecret: API.OperationMethod<
   RotateWebhookSigningSecretError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<RotateWebhookSigningSecretRequest>,
-  output: __S(1536, __c96, 0) as any as S.Schema<RotateWebhookSigningSecretResponse>,
+  input: __S(2032, __c127, 0) as any as S.Schema<RotateWebhookSigningSecretRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<RotateWebhookSigningSecretResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2745,8 +4106,8 @@ export const saveNamedSnapshot: API.OperationMethod<
   SaveNamedSnapshotError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<SaveNamedSnapshotRequest>,
-  output: __S(1057, __c66, 1) as any as S.Schema<SaveNamedSnapshotResponse>,
+  input: __S(2048, __c128, 0) as any as S.Schema<SaveNamedSnapshotRequest>,
+  output: __S(2049, __c128, 1) as any as S.Schema<SaveNamedSnapshotResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2760,8 +4121,8 @@ export const selectRepo: API.OperationMethod<
   SelectRepoError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<SelectRepoRequest>,
-  output: __S(1073, __c67, 1) as any as S.Schema<SelectRepoResponse>,
+  input: __S(2064, __c129, 0) as any as S.Schema<SelectRepoRequest>,
+  output: __S(2065, __c129, 1) as any as S.Schema<SelectRepoResponse>,
   errors: [BadRequest, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2775,9 +4136,39 @@ export const setActiveOrganization: API.OperationMethod<
   SetActiveOrganizationError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c73, 0) as any as S.Schema<SetActiveOrganizationRequest>,
-  output: __S(1170, __c73, 2) as any as S.Schema<SetActiveOrganizationResponse>,
+  input: __S(2080, __c130, 0) as any as S.Schema<SetActiveOrganizationRequest>,
+  output: __S(2082, __c130, 2) as any as S.Schema<SetActiveOrganizationResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetCredentialProfileCustomApiError = BadRequest | Forbidden | NotFound | BoatOpError;
+/** Set a custom API Adds or replaces one custom API. The sandbox gets `<NAME>` and `<NAME>_BASE_URL`. Needs an API key with `account.admin`. */
+export const setCredentialProfileCustomApi: API.OperationMethod<
+  SetCredentialProfileCustomApiRequest,
+  SetCredentialProfileCustomApiResponse,
+  SetCredentialProfileCustomApiError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2096, __c131, 0) as any as S.Schema<SetCredentialProfileCustomApiRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<SetCredentialProfileCustomApiResponse>,
+  errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetCredentialProfileKeyError = BadRequest | Forbidden | NotFound | BoatOpError;
+/** Set a credential profile API key Sets one API key. A sign-in id returns `400 not_an_api_key`; connect sign-ins on the dashboard Agents page. Running sandboxes that use the profile get the new key. Needs an API key with `account.admin`. */
+export const setCredentialProfileKey: API.OperationMethod<
+  SetCredentialProfileKeyRequest,
+  SetCredentialProfileKeyResponse,
+  SetCredentialProfileKeyError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2112, __c132, 0) as any as S.Schema<SetCredentialProfileKeyRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<SetCredentialProfileKeyResponse>,
+  errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2790,8 +4181,8 @@ export const setEnvironmentSecretFile: API.OperationMethod<
   SetEnvironmentSecretFileError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<SetEnvironmentSecretFileRequest>,
-  output: __S(704, __c44, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
+  input: __S(2128, __c133, 0) as any as S.Schema<SetEnvironmentSecretFileRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2805,54 +4196,164 @@ export const setEnvironmentVar: API.OperationMethod<
   SetEnvironmentVarError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c75, 0) as any as S.Schema<SetEnvironmentVarRequest>,
-  output: __S(704, __c44, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
+  input: __S(2144, __c134, 0) as any as S.Schema<SetEnvironmentVarRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<EnvironmentItemChangeResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
 
+export type SetSandboxAiAccessError = BadRequest | Forbidden | NotFound | BoatOpError;
+/** Block or unblock sandbox AI access Blocks or unblocks the sandbox's AI placeholders, running or stopped. The proxy refuses a blocked sandbox's requests with `403`. It has no effect on a sandbox that holds real keys. The sandbox creator, or a manager of its credential profile, can call it. Needs an API key with `account.admin`. */
+export const setSandboxAiAccess: API.OperationMethod<
+  SetSandboxAiAccessRequest,
+  SetSandboxAiAccessResponse,
+  SetSandboxAiAccessError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2176, __c136, 0) as any as S.Schema<SetSandboxAiAccessRequest>,
+  output: __S(2177, __c136, 1) as any as S.Schema<SetSandboxAiAccessResponse>,
+  errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetTelemetryError = BadRequest | BoatOpError;
+/** Set OpenTelemetry export Sets the account's one OTLP/HTTP destination, or replaces it. Boat then sends one metrics export at once and returns the collector's answer in `test`. Every 60 seconds Boat sends the sandbox and account gauges to `<endpoint>/v1/metrics`. Each sandbox lifecycle event goes to `<endpoint>/v1/logs`. The endpoint must use HTTPS on port 443 or 4318 and resolve only to public addresses. Needs an API key with `account.admin`. */
+export const setTelemetry: API.OperationMethod<
+  SetTelemetryRequest,
+  SetTelemetryResponse,
+  SetTelemetryError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2192, __c137, 0) as any as S.Schema<SetTelemetryRequest>,
+  output: __S(2194, __c137, 2) as any as S.Schema<SetTelemetryResponse>,
+  errors: [BadRequest, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ShareSandboxError = BadRequest | Forbidden | NotFound | BoatOpError;
-/** Share sandbox with the organization Let every member of the organization that pays for this sandbox use it. Your personal logins (GitHub token, Claude and Codex logins, environment secrets, the sandbox's own CLI key) are never pushed to it again and are wiped off its disk at its next start, so a teammate never acts as you. Files you wrote stay. One-way: the sandbox stays like a `noEnv` sandbox from then on. A running sandbox stays `view` for the organization until you stop and resume it (`restartRequired`). Only the person who created the sandbox can share it, and only a sandbox billed to an organization. Sharing an already shared sandbox is a no-op. */
+/** Share sandbox with the organization Let every member of the organization that pays for this sandbox use it. A sandbox that holds none of your personal logins is shared at once. A sandbox that holds them: your personal logins (GitHub token, Claude and Codex logins, environment secrets, the sandbox's own CLI key) are never pushed to it again and are wiped off its disk at its next start, so a teammate never acts as you. Files you wrote stay. The wipe is one-way: the sandbox stays like a `noEnv` sandbox from then on. A running sandbox stays `view` for the organization until you stop and resume it (`restartRequired`): its running programs hold your logins in memory. Teammates never read history recorded before the share. Only the person who created the sandbox can share it, and only a sandbox billed to an organization. Sharing an already shared sandbox is a no-op. Undo with `POST /sandboxes/{sandboxId}/unshare`. */
 export const shareSandbox: API.OperationMethod<
   ShareSandboxRequest,
   ShareSandboxResponse,
   ShareSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<ShareSandboxRequest>,
-  output: __S(1217, __c76, 1) as any as S.Schema<ShareSandboxResponse>,
+  input: __S(2208, __c138, 0) as any as S.Schema<ShareSandboxRequest>,
+  output: __S(2209, __c138, 1) as any as S.Schema<ShareSandboxResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
 
 export type SteerSandboxError = BadRequest | NotFound | Conflict | BoatOpError;
-/** Steer a running turn Send a new message to a turn that is already running, without losing what the agent is doing. This is what typing into a coding agent while it works does: the instruction is taken into account and the work continues. Where the harness has a native mid-turn primitive (Claude Code, Codex, pi, Prime Agent) nothing is interrupted and the response has `native: true`. Where it does not (OpenCode), Boat interrupts that turn and immediately continues the SAME conversation with the instruction, keeping the session and its memory, and the response has `native: false`. Refused with **409 `no_running_turn`** when the conversation has nothing in flight; queue work with `POST /prompt` instead. The steer shows up in `GET /events` as a `steer` event. See [Integrated agents](/integrated-agents). */
+/** Steer a running turn Send a new message to a turn that is already running, without losing what the agent is doing. This is what typing into a coding agent while it works does: the instruction is taken into account and the work continues. Where the harness has a native mid-turn primitive (Claude Code, Codex, pi, Prime Agent) nothing is interrupted and the response has `native: true`. Where it does not (OpenCode), Boat interrupts that turn and immediately continues the SAME conversation with the instruction, keeping the session and its memory, and the response has `native: false`. Refused with **409 `no_running_turn`** when the conversation has nothing in flight; queue work with `POST /prompt` instead. `error.details.reason` says why: `turn_ended` (with `error.details.lastTurn.status` and `.error` of the newest turn), `turn_not_started` (the turn is starting; retry in a moment), `no_turn`, `not_running` (the sandbox is not running) or `delivery_failed` (the sandbox did not accept the steer; check the turn before sending more work). The steer shows up in `GET /events` as a `steer` event. See [Integrated agents](/integrated-agents). */
 export const steerSandbox: API.OperationMethod<
   SteerSandboxRequest,
   SteerSandboxResponse,
   SteerSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<SteerSandboxRequest>,
-  output: __S(1233, __c77, 1) as any as S.Schema<SteerSandboxResponse>,
+  input: __S(2224, __c139, 0) as any as S.Schema<SteerSandboxRequest>,
+  output: __S(2225, __c139, 1) as any as S.Schema<SteerSandboxResponse>,
+  errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type StopCommandError = BadRequest | NotFound | Conflict | BoatOpError;
+/** Stop a detached command Sends SIGTERM to the command and every process it started, then SIGKILL to what is left after 5 s. Only a process started with `detached` can be stopped. The response carries the command's history record with its final state and output. */
+export const stopCommand: API.OperationMethod<
+  StopCommandRequest,
+  StopCommandResponse,
+  StopCommandError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2240, __c140, 0) as any as S.Schema<StopCommandRequest>,
+  output: __S(2241, __c140, 1) as any as S.Schema<StopCommandResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
 
 export type StopSandboxError = BadRequest | NotFound | BoatOpError;
-/** Stop and archive sandbox Stop active work and archive/snapshot the sandbox for later resume or fork. A stop always saves the sandbox's disk first. If that save is failing, the stop is refused and the sandbox keeps running so your work is not discarded, we retry automatically and email you. You are not billed for time spent in that state. Set `force: true` to stop anyway, accepting the loss of everything written since the last successful snapshot. This is irreversible; only reach for it after a stop has already failed. */
+/** Stop and archive sandbox Stop active work and archive/snapshot the sandbox for later resume or fork. A stop always saves the sandbox's disk first. If that save is failing, the stop is refused and the sandbox keeps running so your work is not discarded, we retry automatically and email you. You are not billed for time spent in that state. The stop is an operation: the response and the sandbox carry it as `stop`, with an `id` and a `status`. Poll `GET /sandboxes/{sandboxId}` until `stop.status` is `completed`. A failed attempt shows `failing` with its `error` and is retried until the sandbox archives; commands and prompts you send meanwhile do not cancel it. Only a resume ends it early (`superseded`). Calling stop again while one is pending returns the same `id`. Set `force: true` to stop anyway, keeping the last successful snapshot and losing everything written since then. This is irreversible; only reach for it after a stop has already failed. A force on a stop that is already pending escalates that stop. */
 export const stopSandbox: API.OperationMethod<
   StopSandboxRequest,
   StopSandboxResponse,
   StopSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c78, 0) as any as S.Schema<StopSandboxRequest>,
-  output: __S(256, __c16, 0) as any as S.Schema<StopSandboxResponse>,
+  input: __S(2256, __c141, 0) as any as S.Schema<StopSandboxRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<StopSandboxResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SwitchCredentialAccountError = BadRequest | Forbidden | NotFound | BoatOpError;
+/** Switch a credential to another account Makes this account the one in use; the previous one stays as another account. Switching to the account already in use changes nothing. Every sandbox that uses the profile gets it at once, running ones included, with no restart. Use it when one account runs out of credits. Needs an API key with `account.admin`. */
+export const switchCredentialAccount: API.OperationMethod<
+  SwitchCredentialAccountRequest,
+  SwitchCredentialAccountResponse,
+  SwitchCredentialAccountError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2272, __c142, 0) as any as S.Schema<SwitchCredentialAccountRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<SwitchCredentialAccountResponse>,
+  errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UnshareSandboxError = BadRequest | Forbidden | NotFound | BoatOpError;
+/** Make an organization sandbox private Make a shared organization sandbox private again, at once. Only you can then use it. Teammates still see it in their list and can stop it. Their SSH keys are removed from the running machine. Nothing on the sandbox changes: files, installs and its environment stay. Undo with `POST /sandboxes/{sandboxId}/share`. Only the person who created the sandbox can make it private, and only a sandbox billed to an organization. Making a private sandbox private is a no-op. */
+export const unshareSandbox: API.OperationMethod<
+  UnshareSandboxRequest,
+  UnshareSandboxResponse,
+  UnshareSandboxError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2288, __c143, 0) as any as S.Schema<UnshareSandboxRequest>,
+  output: __S(2289, __c143, 1) as any as S.Schema<UnshareSandboxResponse>,
+  errors: [BadRequest, Forbidden, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateAiProxyError = BadRequest | Forbidden | BoatOpError;
+/** Turn the AI credentials proxy on or off With the proxy on, sandboxes get placeholder keys and base URLs that point at Boat. Boat swaps in the real key on each request. Real keys never enter the sandbox. Running sandboxes switch at their next start. While on, the account pays $1 of Boat time for each UTC day, plus $1 per 1,000 proxied requests, charged to the wallet each sandbox bills. For an organization, only its owner can change the switch. Needs an API key with `account.admin`. */
+export const updateAiProxy: API.OperationMethod<
+  UpdateAiProxyRequest,
+  UpdateAiProxyResponse,
+  UpdateAiProxyError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2304, __c144, 0) as any as S.Schema<UpdateAiProxyRequest>,
+  output: __S(945, __c59, 1) as any as S.Schema<UpdateAiProxyResponse>,
+  errors: [BadRequest, Forbidden, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateCredentialProfileError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | Conflict
+  | BoatOpError;
+/** Update a credential profile Renames the profile, or makes it its owner's default. Sandboxes that use the owner's default switch to the new default at their next start. Needs an API key with `account.admin`. */
+export const updateCredentialProfile: API.OperationMethod<
+  UpdateCredentialProfileRequest,
+  UpdateCredentialProfileResponse,
+  UpdateCredentialProfileError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(2320, __c145, 0) as any as S.Schema<UpdateCredentialProfileRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<UpdateCredentialProfileResponse>,
+  errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2865,8 +4366,8 @@ export const updateDataRetention: API.OperationMethod<
   UpdateDataRetentionError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1264, __c79, 0) as any as S.Schema<UpdateDataRetentionRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<UpdateDataRetentionResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<UpdateDataRetentionRequest>,
+  output: __S(1120, __c70, 0) as any as S.Schema<UpdateDataRetentionResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2880,9 +4381,24 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1282, __c80, 2) as any as S.Schema<UpdateEnvironmentRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<SandboxEnvironmentResponse>,
+  input: __S(98, __c6, 2) as any as S.Schema<UpdateEnvironmentRequest>,
+  output: __S(640, __c40, 0) as any as S.Schema<SandboxEnvironmentResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
+  protocol: BoatProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateOrganizationError = BadRequest | Forbidden | BoatOpError;
+/** Update organization settings Owners and admins set whether new sandboxes of the organization start private (only their creator can use them) or shared (every member can use those that hold none of their creator's logins). The default is shared. Existing sandboxes keep their setting; their creators change it with `POST /sandboxes/{sandboxId}/share` and `POST /sandboxes/{sandboxId}/unshare`. A fork of a private sandbox is private. */
+export const updateOrganization: API.OperationMethod<
+  UpdateOrganizationRequest,
+  UpdateOrganizationResponse,
+  UpdateOrganizationError,
+  BoatOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: __S(112, __c7, 0) as any as S.Schema<UpdateOrganizationRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<UpdateOrganizationResponse>,
+  errors: [BadRequest, Forbidden, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
@@ -2895,8 +4411,8 @@ export const updateSandbox: API.OperationMethod<
   UpdateSandboxError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<UpdateSandboxRequest>,
-  output: __S(528, __c33, 0) as any as S.Schema<UpdateSandboxResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<UpdateSandboxRequest>,
+  output: __S(1312, __c82, 0) as any as S.Schema<UpdateSandboxResponse>,
   errors: [BadRequest, NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2910,8 +4426,8 @@ export const updateSecrets: API.OperationMethod<
   UpdateSecretsError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c82, 0) as any as S.Schema<UpdateSecretsRequest>,
-  output: __S(576, __c36, 0) as any as S.Schema<UpdateSecretsResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<UpdateSecretsRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<UpdateSecretsResponse>,
   errors: [UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2925,8 +4441,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<UpdateWebhookRequest>,
-  output: __S(656, __c41, 0) as any as S.Schema<UpdateWebhookResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(1520, __c95, 0) as any as S.Schema<UpdateWebhookResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2940,23 +4456,23 @@ export const upgradeEnvironment: API.OperationMethod<
   UpgradeEnvironmentError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c87, 0) as any as S.Schema<UpgradeEnvironmentRequest>,
-  output: __S(1393, __c87, 1) as any as S.Schema<UpgradeSandboxEnvironmentResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<UpgradeEnvironmentRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<UpgradeSandboxEnvironmentResponse>,
   errors: [NotFound, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
 }));
 
 export type WriteSandboxFileError = BadRequest | BoatOpError;
-/** Write a file in a sandbox */
+/** Write a file in a sandbox Files up to 5 MiB after decoding. For a larger file, use `POST /sandboxes/{sandboxId}/files/upload-url`. */
 export const writeSandboxFile: API.OperationMethod<
   WriteSandboxFileRequest,
   WriteSandboxFileResponse,
   WriteSandboxFileError,
   BoatOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<WriteSandboxFileRequest>,
-  output: __S(1409, __c88, 1) as any as S.Schema<WriteSandboxFileResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<WriteSandboxFileRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<WriteSandboxFileResponse>,
   errors: [BadRequest, UnknownBoatError],
   protocol: BoatProtocol,
   retry: Retry.Retry,
@@ -2968,29 +4484,776 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          environmentId: S.String.pipe(T.Label()),
-        }).pipe(T.Http({ method: "DELETE", uri: "/environments/{environmentId}", code: 200 })),
-      ).annotate({ identifier: "DeleteEnvironmentRequest" });
+          name: S.String,
+          org: S.optional(S.String),
+          copyFrom: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/credential-profiles", code: 200 })),
+      ).annotate({ identifier: "CreateCredentialProfileRequest" });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
+      return S.Array(S.String);
+  }
+}
+function __c2(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          kind: S.String,
+          name: S.String,
+          aiProxyEnabled: S.Boolean,
+        }),
+      ).annotate({ identifier: "CredentialProfileOwner" });
+    case 1:
+      return S.Record(S.String, __S(1057, __c66, 1));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          isDefault: S.Boolean,
+          owner: __S(48, __c3, 0),
+          canManage: S.Boolean,
+          connected: __S(32, __c2, 0),
+          accounts: S.optional(__S(49, __c3, 1)),
+          customApis: __S(16, __c1, 0),
+          createdAt: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({ identifier: "CredentialProfile" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          success: S.Boolean,
+          profile: __S(50, __c3, 2),
+        }),
+      ).annotate({ identifier: "CreateCredentialProfileResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          enabled: S.optional(S.Boolean),
+          snapshotsOff: S.optional(S.Boolean),
+          monitoringOff: S.optional(S.Boolean),
+          confirmation: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/account/data-retention", code: 200 })),
+      ).annotate({ identifier: "UpdateDataRetentionRequest" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          repositoryId: S.String,
+          baseBranch: S.optional(S.String),
+          setupScript: S.optional(S.String),
+          setupBlocking: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UpdateEnvironmentRequestRepositoriesItem" });
+    case 1:
+      return S.Array(__S(96, __c6, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.Label()),
+          org: S.optional(S.String.pipe(T.Query())),
+          name: S.optional(S.String),
+          isDefault: S.optional(S.Boolean),
+          safeForThirdParties: S.optional(S.Boolean),
+          passGithub: S.optional(S.Boolean),
+          passSecrets: S.optional(S.Boolean),
+          passSandboxCredentials: S.optional(S.Boolean),
+          passAgentsCredentials: S.optional(S.Boolean),
+          credentialProfileId: S.optional(S.NullOr(S.String)),
+          proxyAiCredentials: S.optional(S.Boolean),
+          envContents: S.optional(S.String),
+          secretFiles: S.optional(__S(257, __c16, 1)),
+          repositories: S.optional(__S(97, __c6, 1)),
+        }).pipe(T.Http({ method: "PUT", uri: "/environments/{environmentId}", code: 200 })),
+      ).annotate({ identifier: "UpdateEnvironmentRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.String.pipe(T.Label()),
+          newSandboxesPrivate: S.Boolean,
+        }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}", code: 200 })),
+      ).annotate({ identifier: "UpdateOrganizationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          success: S.optional(S.Boolean),
+          newSandboxesPrivate: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "UpdateOrganizationResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          name: S.optional(S.String),
+          ttlSeconds: S.optional(S.NullOr(S.Number)),
+          subdomain: S.optional(S.String),
+        }).pipe(T.Http({ method: "PATCH", uri: "/sandboxes/{sandboxId}", code: 200 })),
+      ).annotate({ identifier: "UpdateSandboxRequest" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          envContents: S.optional(S.String),
+          secretFiles: S.optional(__S(257, __c16, 1)),
+        }).pipe(T.Http({ method: "POST", uri: "/secrets", code: 200 })),
+      ).annotate({ identifier: "UpdateSecretsRequest" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          webhookId: S.String.pipe(T.Label()),
+          name: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.String),
+          events: S.optional(__S(32, __c2, 0)),
+        }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{webhookId}", code: 200 })),
+      ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.Label()),
+          org: S.optional(S.String.pipe(T.Query())),
+          agentIds: S.optional(__S(16, __c1, 0)),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/environments/{environmentId}/upgrade", code: 200 }),
+        ),
+      ).annotate({ identifier: "UpgradeEnvironmentRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          environment: S.optional(S.NullOr(__S(1138, __c71, 2))),
+          upgraded: S.Number,
+          upgradedLive: S.optional(S.Number),
+          upgradedStopped: S.optional(S.Number),
+          failed: S.Number,
+          latestVersionId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UpgradeSandboxEnvironmentResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          path: S.String,
+          content: S.String,
+          encoding: S.optional(S.String),
+        }).pipe(T.Http({ method: "PUT", uri: "/sandboxes/{sandboxId}/files", code: 200 })),
+      ).annotate({ identifier: "WriteSandboxFileRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          success: S.Boolean,
+          path: S.String,
+          encoding: S.String,
+          size: S.Number,
+        }),
+      ).annotate({ identifier: "WriteSandboxFileResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          path: S.String,
+          ttlSeconds: S.optional(S.Number),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/sandboxes/{sandboxId}/files/download-url", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateDownloadUrlRequest" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          url: S.String,
+          method: S.String,
+          path: S.String,
+          expiresAt: S.String,
+        }),
+      ).annotate({ identifier: "CreateDownloadUrlResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.optional(S.String.pipe(T.Query())),
+          name: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/environments", code: 200 })),
+      ).annotate({ identifier: "CreateEnvironmentRequest" });
+  }
+}
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          path: S.String,
+          contents: S.String,
+        }),
+      ).annotate({ identifier: "SecretFile" });
+    case 1:
+      return S.Array(__S(256, __c16, 0));
+  }
+}
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          versionNumber: S.Number,
+          sandboxCount: S.Number,
+          createdAt: S.String,
+        }),
+      ).annotate({ identifier: "SandboxEnvironmentVersionSummary" });
+    case 1:
+      return S.Array(__S(272, __c17, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          isDefault: S.Boolean,
+          latestVersionId: S.NullOr(S.String),
+          latestVersionNumber: S.optional(S.Number),
+          safetyAnsweredAt: S.optional(S.NullOr(S.String)),
+          safeForThirdParties: S.Boolean,
+          passGithub: S.Boolean,
+          passSecrets: S.Boolean,
+          passSandboxCredentials: S.Boolean,
+          passAgentsCredentials: S.Boolean,
+          credentialProfileId: S.optional(S.NullOr(S.String)),
+          proxyAiCredentials: S.optional(S.Boolean),
+          envContents: S.String,
+          secretFiles: __S(257, __c16, 1),
+          selectedRepositories: S.optional(__S(289, __c18, 1)),
+          versions: __S(273, __c17, 1),
+        }),
+      ).annotate({ identifier: "SandboxEnvironment" });
+  }
+}
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.StructWithRest(
+          S.Struct({
+            id: S.optional(S.Number),
+            databaseId: S.optional(S.String),
+            name: S.optional(S.String),
+            fullName: S.optional(S.String),
+            description: S.optional(S.NullOr(S.String)),
+            url: S.optional(S.String),
+            private: S.optional(S.Boolean),
+            permissions: S.optional(S.String),
+            pushedAt: S.optional(S.NullOr(S.String)),
+            lastUserCommitAt: S.optional(S.NullOr(S.String)),
+            baseBranch: S.optional(S.String),
+            setupRoutineId: S.optional(S.NullOr(S.String)),
+            setupScript: S.optional(S.String),
+            setupBlocking: S.optional(S.Boolean),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
+      ).annotate({ identifier: "SelectedRepository" });
+    case 1:
+      return S.Array(__S(288, __c18, 0));
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(274, __c17, 2));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          environments: __S(304, __c19, 0),
+        }),
+      ).annotate({ identifier: "SandboxEnvironmentListResponse" });
+  }
+}
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.optional(S.String.pipe(T.Query())),
+          idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
+          xBoatOrg: S.optional(S.String.pipe(T.Header("X-Boat-Org"))),
+          type: S.optional(S.String),
+          ttlSeconds: S.optional(S.NullOr(S.Number)),
+          env: S.optional(__S(368, __c23, 0)),
+          environment: S.optional(S.String),
+          noEnv: S.optional(S.Boolean),
+          snapshots: S.optional(S.Boolean),
+          monitoring: S.optional(S.Boolean),
+          failFast: S.optional(S.Boolean),
+          count: S.optional(S.Number),
+          setupScript: S.optional(S.String),
+          teamId: S.optional(S.String),
+          from: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/sandboxes", code: 200 })),
+      ).annotate({ identifier: "CreateSandboxRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          status: S.String,
+          ttlSeconds: S.NullOr(S.Number),
+          sandbox: __S(356, __c22, 4),
+          sandboxes: S.optional(__S(384, __c24, 0)),
+          giftLimitNotice: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CreateSandboxResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          status: S.String,
+          requestedAt: S.NullOr(S.String),
+          lastAttemptAt: S.NullOr(S.String),
+          error: S.NullOr(S.String),
+          endedAt: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "StopOperation" });
+  }
+}
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          phase: S.String,
+          entriesDone: S.Number,
+          entriesTotal: S.NullOr(S.Number),
+          percent: S.NullOr(S.Number),
+        }),
+      ).annotate({ identifier: "SandboxHydration" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+        }),
+      ).annotate({ identifier: "SandboxTeam" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          since: S.String,
+          seconds: S.Number,
+          dollars: S.Number,
+        }),
+      ).annotate({ identifier: "SandboxCost" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          at: S.optional(S.String),
+          reason: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "SandboxLastReboot" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          state: S.String,
+          error: S.optional(S.NullOr(S.String)),
+          dataExpiredAt: S.optional(S.NullOr(S.String)),
+          health: S.optional(S.String),
+          healthReason: S.optional(S.NullOr(S.String)),
+          degradedSince: S.optional(S.NullOr(S.String)),
+          hydrated: S.optional(S.Boolean),
+          hydratedAt: S.optional(S.NullOr(S.String)),
+          hydration: S.optional(S.NullOr(__S(352, __c22, 0))),
+          type: S.optional(S.String),
+          vcpu: S.optional(S.Number),
+          memoryGB: S.optional(S.Number),
+          billingMultiplier: S.optional(S.Number),
+          machineProvider: S.optional(S.NullOr(S.String)),
+          url: S.optional(S.NullOr(S.String)),
+          ip: S.optional(S.NullOr(S.String)),
+          sshEndpoint: S.optional(S.NullOr(S.String)),
+          createdAt: S.optional(S.NullOr(S.String)),
+          updatedAt: S.optional(S.NullOr(S.String)),
+          archiveAfter: S.optional(S.NullOr(S.String)),
+          ttlSeconds: S.optional(S.NullOr(S.Number)),
+          desktopAvailable: S.Boolean,
+          desktopUrl: S.optional(S.NullOr(S.String)),
+          snapshots: S.optional(S.Boolean),
+          monitoring: S.optional(S.Boolean),
+          snapshotAvailable: S.Boolean,
+          snapshotCompletedAt: S.optional(S.NullOr(S.String)),
+          snapshotVerifiedAt: S.optional(S.NullOr(S.String)),
+          team: S.optional(S.NullOr(__S(353, __c22, 1))),
+          createdBy: S.optional(S.NullOr(S.String)),
+          createdById: S.optional(S.NullOr(S.String)),
+          access: S.optional(S.String),
+          holdsCreatorLogins: S.optional(S.Boolean),
+          visibility: S.optional(S.NullOr(S.String)),
+          cost: S.optional(__S(354, __c22, 2)),
+          wipePendingUntilRestart: S.optional(S.Boolean),
+          subdomain: S.optional(S.NullOr(S.String)),
+          lastSnapshotAttemptAt: S.optional(S.NullOr(S.String)),
+          lastSnapshotStatus: S.optional(S.NullOr(S.String)),
+          lastReboot: S.optional(S.NullOr(__S(355, __c22, 3))),
+          setupStatus: S.optional(S.NullOr(S.String)),
+          setupError: S.optional(S.NullOr(S.String)),
+          environment: S.optional(S.NullOr(S.String)),
+          environmentVersion: S.optional(S.NullOr(S.Number)),
+          stop: S.optional(S.NullOr(__S(336, __c21, 0))),
+        }),
+      ).annotate({ identifier: "Sandbox" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(356, __c22, 4));
+  }
+}
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.String),
+          ttl: S.optional(S.String),
+          preset: S.optional(S.String),
+          actions: S.optional(__S(16, __c1, 0)),
+          sandboxIds: S.optional(__S(16, __c1, 0)),
+          environmentIds: S.optional(__S(16, __c1, 0)),
+        }).pipe(T.Http({ method: "POST", uri: "/api-keys/scoped", code: 200 })),
+      ).annotate({ identifier: "CreateScopedApiKeyRequest" });
+  }
+}
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.Number,
+          windowDays: S.Number,
+        }),
+      ).annotate({ identifier: "ApiKeyRequestUsage" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          total: S.Number,
+          sandboxes: S.Number,
+          agents: S.Number,
+        }),
+      ).annotate({ identifier: "ApiKeyResourceTotals" });
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          expiresAt: S.optional(S.NullOr(S.String)),
+          actions: S.optional(__S(16, __c1, 0)),
+          sandboxes: S.optional(S.Unknown),
+          environments: S.optional(S.Unknown),
+          grandfathered: S.optional(S.Boolean),
+        }),
+      ).annotate({ identifier: "ApiKeyScope" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.String,
+          credentialLane: S.String,
+          keyPrefix: S.String,
+          keyLastFour: S.String,
+          sandboxId: S.NullOr(S.String),
+          createdAt: S.String,
+          lastUsedAt: S.NullOr(S.String),
+          usage: __S(416, __c26, 0),
+          resources: __S(417, __c26, 1),
+          expiresAt: S.optional(S.NullOr(S.String)),
+          expired: S.optional(S.Boolean),
+          expiringSoon: S.optional(S.Boolean),
+          scope: S.optional(__S(432, __c27, 0)),
+        }),
+      ).annotate({ identifier: "ApiKey" });
+    case 2:
+      return S.Array(__S(433, __c27, 1));
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          apiKey: __S(433, __c27, 1),
+          secret: S.String.pipe(T.SensitiveValue({})),
+          apiKeys: __S(434, __c27, 2),
+        }),
+      ).annotate({ identifier: "CreateScopedApiKeyResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/named-snapshots/{name}/shares", code: 200 })),
+      ).annotate({ identifier: "CreateSnapshotShareRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          name: S.String,
+          shareCode: S.String,
+          share: __S(480, __c30, 0),
+        }),
+      ).annotate({ identifier: "CreateSnapshotShareResponse" });
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          codePrefix: S.String,
+          status: S.String,
+          useCount: S.Number,
+          lastUsedAt: S.NullOr(S.String),
+          revokedAt: S.NullOr(S.String),
+          createdAt: S.String,
+        }),
+      ).annotate({ identifier: "NamedSnapshotShare" });
+  }
+}
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          path: S.String,
+          ttlSeconds: S.optional(S.Number),
+        }).pipe(
+          T.Http({ method: "POST", uri: "/sandboxes/{sandboxId}/files/upload-url", code: 200 }),
+        ),
+      ).annotate({ identifier: "CreateUploadUrlRequest" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.optional(S.NullOr(S.String)),
+          url: S.String,
+          events: __S(32, __c2, 0),
+        }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
+      ).annotate({ identifier: "CreateWebhookRequest" });
+  }
+}
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          name: S.NullOr(S.String),
+          url: S.String,
+          events: __S(32, __c2, 0),
+          createdAt: S.String,
+          updatedAt: S.String,
+        }),
+      ).annotate({ identifier: "Webhook" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          webhook: __S(528, __c33, 0),
+          secret: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "CreateWebhookResponse" });
+  }
+}
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profile: S.String.pipe(T.Label()),
+          credential: S.String.pipe(T.Label()),
+          account: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/credential-profiles/{profile}/accounts/{credential}/{account}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCredentialAccountRequest" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profile: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "DELETE", uri: "/credential-profiles/{profile}", code: 200 })),
+      ).annotate({ identifier: "DeleteCredentialProfileRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          success: S.Boolean,
+        }),
+      ).annotate({ identifier: "DeleteCredentialProfileResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profile: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/credential-profiles/{profile}/custom-apis/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCredentialProfileCustomApiRequest" });
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profile: S.String.pipe(T.Label()),
+          credential: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/credential-profiles/{profile}/keys/{credential}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "DeleteCredentialProfileKeyRequest" });
+  }
+}
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.Label()),
+          org: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "DELETE", uri: "/environments/{environmentId}", code: 200 })),
+      ).annotate({ identifier: "DeleteEnvironmentRequest" });
+  }
+}
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+          environment: S.optional(S.NullOr(__S(274, __c17, 2))),
         }),
       ).annotate({ identifier: "SandboxEnvironmentResponse" });
   }
 }
-function __c2(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.Label()),
           repositoryId: S.String.pipe(T.Label()),
+          org: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -3001,12 +5264,13 @@ function __c2(j: number): any {
       ).annotate({ identifier: "DeleteEnvironmentRepoRequest" });
   }
 }
-function __c3(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.Label()),
+          org: S.optional(S.String.pipe(T.Query())),
           path: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
@@ -3018,20 +5282,21 @@ function __c3(j: number): any {
       ).annotate({ identifier: "DeleteEnvironmentSecretFileRequest" });
   }
 }
-function __c4(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.Label()),
           key: S.String.pipe(T.Label()),
+          org: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/environments/{environmentId}/vars/{key}", code: 200 }),
         ),
       ).annotate({ identifier: "DeleteEnvironmentVarRequest" });
   }
 }
-function __c5(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3050,7 +5315,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "DeleteNamedSnapshotResponse" });
   }
 }
-function __c6(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3061,7 +5326,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "DeleteSandboxRequest" });
   }
 }
-function __c7(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3080,19 +5345,19 @@ function __c7(j: number): any {
       ).annotate({ identifier: "DeletionOperation" });
   }
 }
-function __c8(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          operation: __S(112, __c7, 0),
+          operation: __S(736, __c46, 0),
         }),
       ).annotate({ identifier: "DeleteSandboxResponse" });
   }
 }
-function __c9(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3102,18 +5367,18 @@ function __c9(j: number): any {
         }).pipe(T.Http({ method: "DELETE", uri: "/sandboxes/{sandboxId}/snapshots", code: 200 })),
       ).annotate({ identifier: "DeleteSandboxSnapshotsRequest" });
     case 1:
-      return S.Array(__S(112, __c7, 0));
+      return S.Array(__S(736, __c46, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          operations: __S(145, __c9, 1),
+          operations: __S(769, __c48, 1),
         }),
       ).annotate({ identifier: "DeleteSandboxSnapshotsResponse" });
   }
 }
-function __c10(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3124,7 +5389,49 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeleteSnapshotRequest" });
   }
 }
-function __c11(j: number): any {
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/telemetry", code: 200 })),
+      ).annotate({ identifier: "DeleteTelemetryRequest" });
+  }
+}
+function __c51(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          telemetry: S.NullOr(__S(833, __c52, 1)),
+        }),
+      ).annotate({ identifier: "DeleteTelemetryResponse" });
+  }
+}
+function __c52(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          message: S.String,
+          status: S.NullOr(S.Number),
+          at: S.String,
+        }),
+      ).annotate({ identifier: "TelemetryConfigLastError" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.String,
+          headers: __S(16, __c1, 0),
+          lastExportAt: S.NullOr(S.String),
+          lastError: S.NullOr(__S(832, __c52, 0)),
+          createdAt: S.String,
+        }),
+      ).annotate({ identifier: "TelemetryConfig" });
+  }
+}
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3142,7 +5449,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DeleteWebhookResponse" });
   }
 }
-function __c12(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3153,15 +5460,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "DownloadSandboxArtifactRequest" });
   }
 }
-function __c13(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DownloadSandboxArtifactResponse",
-      });
-  }
-}
-function __c14(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3180,7 +5479,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3188,7 +5487,8 @@ function __c15(j: number): any {
           sandboxId: S.String.pipe(T.Label()),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
           failFast: S.optional(S.Boolean),
-          env: S.optional(__S(1360, __c85, 0)),
+          monitoring: S.optional(S.Boolean),
+          env: S.optional(__S(368, __c23, 0)),
           environment: S.optional(S.String),
           noEnv: S.optional(S.Boolean),
           type: S.optional(S.String),
@@ -3197,7 +5497,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "ForkSandboxRequest" });
   }
 }
-function __c16(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3206,14 +5506,121 @@ function __c16(j: number): any {
           type: S.String,
           id: S.String,
           status: S.String,
-          sandbox: S.optional(S.NullOr(__S(1345, __c84, 1))),
+          sandbox: S.optional(S.NullOr(__S(356, __c22, 4))),
           giftLimitNotice: S.optional(S.String),
           conversationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ForkSandboxResponse" });
   }
 }
-function __c17(j: number): any {
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.optional(S.String.pipe(T.Query())),
+          xBoatOrg: S.optional(S.String.pipe(T.Header("X-Boat-Org"))),
+        }).pipe(T.Http({ method: "GET", uri: "/ai-proxy", code: 200 })),
+      ).annotate({ identifier: "GetAiProxyRequest" });
+  }
+}
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          dailyDollars: S.Number,
+          dollarsPer1000Requests: S.Number,
+        }),
+      ).annotate({ identifier: "GetAiProxyResponsePricing" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          success: S.Boolean,
+          accountId: S.String,
+          org: S.Boolean,
+          enabled: S.Boolean,
+          enabledAt: S.NullOr(S.String),
+          pricing: __S(944, __c59, 0),
+          proxyUrl: S.String,
+        }),
+      ).annotate({ identifier: "GetAiProxyResponse" });
+  }
+}
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          days: S.optional(S.Number.pipe(T.Query())),
+          profile: S.optional(S.String.pipe(T.Query())),
+          org: S.optional(S.String.pipe(T.Query())),
+          xBoatOrg: S.optional(S.String.pipe(T.Header("X-Boat-Org"))),
+        }).pipe(T.Http({ method: "GET", uri: "/ai-usage", code: 200 })),
+      ).annotate({ identifier: "GetAiUsageRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.NullOr(S.String),
+          name: S.NullOr(S.String),
+          blocked: S.Boolean,
+          usage: __S(977, __c61, 1),
+          totals: __S(978, __c61, 2),
+          dollars: S.Number,
+        }),
+      ).annotate({ identifier: "SandboxAiUsage" });
+    case 2:
+      return S.Array(__S(961, __c60, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          accountId: S.NullOr(S.String),
+          profileId: S.NullOr(S.String),
+          since: S.String,
+          sandboxes: __S(962, __c60, 2),
+          usage: __S(977, __c61, 1),
+          totals: __S(978, __c61, 2),
+          dollars: S.Number,
+        }),
+      ).annotate({ identifier: "GetAiUsageResponse" });
+  }
+}
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          day: S.String,
+          credential: S.String,
+          model: S.String,
+          requests: S.Number,
+          errors: S.Number,
+          inputTokens: S.Number,
+          outputTokens: S.Number,
+          cacheReadTokens: S.Number,
+          cacheWriteTokens: S.Number,
+        }),
+      ).annotate({ identifier: "AiUsageRow" });
+    case 1:
+      return S.Array(__S(976, __c61, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          requests: S.Number,
+          errors: S.Number,
+          inputTokens: S.Number,
+          outputTokens: S.Number,
+          cacheReadTokens: S.Number,
+          cacheWriteTokens: S.Number,
+        }),
+      ).annotate({ identifier: "AiUsageTotals" });
+  }
+}
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3225,7 +5632,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expiresAt: S.optional(S.NullOr(S.String)),
-          actions: S.optional(__S(1440, __c90, 0)),
+          actions: S.optional(__S(16, __c1, 0)),
           sandboxes: S.optional(S.Unknown),
           environments: S.optional(S.Unknown),
           grandfathered: S.optional(S.Boolean),
@@ -3242,7 +5649,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "ApiKeyCreatedResource" });
     case 3:
-      return S.Array(__S(274, __c17, 2));
+      return S.Array(__S(994, __c62, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3256,18 +5663,43 @@ function __c17(j: number): any {
           sandboxId: S.NullOr(S.String),
           createdAt: S.String,
           lastUsedAt: S.NullOr(S.String),
-          usage: __S(1456, __c91, 0),
-          resources: __S(1457, __c91, 1),
+          usage: __S(416, __c26, 0),
+          resources: __S(417, __c26, 1),
           expiresAt: S.optional(S.NullOr(S.String)),
           expired: S.optional(S.Boolean),
           expiringSoon: S.optional(S.Boolean),
-          scope: S.optional(__S(273, __c17, 1)),
-          createdResources: __S(275, __c17, 3),
+          scope: S.optional(__S(993, __c62, 1)),
+          createdResources: __S(995, __c62, 3),
         }),
       ).annotate({ identifier: "GetApiKeyUsageResponse" });
   }
 }
-function __c18(j: number): any {
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          commandId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/sandboxes/{sandboxId}/command-history/{commandId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "GetCommandRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          command: __S(1792, __c112, 0),
+        }),
+      ).annotate({ identifier: "GetCommandResponse" });
+  }
+}
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3275,6 +5707,8 @@ function __c18(j: number): any {
           sandboxId: S.String.pipe(T.Label()),
           processId: S.Number.pipe(T.Label()),
           tailBytes: S.optional(S.Number.pipe(T.Query())),
+          stdoutOffset: S.optional(S.Number.pipe(T.Query())),
+          stderrOffset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/sandboxes/{sandboxId}/commands/{processId}", code: 200 }),
         ),
@@ -3303,11 +5737,65 @@ function __c18(j: number): any {
           stderrTruncated: S.optional(S.Boolean),
           logPath: S.optional(S.String),
           errLogPath: S.optional(S.String),
+          stdoutOffset: S.optional(S.Number),
+          stderrOffset: S.optional(S.Number),
+          stdoutNextOffset: S.optional(S.Number),
+          stderrNextOffset: S.optional(S.Number),
+          more: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GetCommandStatusResponse" });
   }
 }
-function __c19(j: number): any {
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profile: S.String.pipe(T.Label()),
+          credential: S.String.pipe(T.Label()),
+          value: S.String,
+          keepCurrent: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "POST",
+            uri: "/credential-profiles/{profile}/accounts/{credential}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "AddCredentialAccountRequest" });
+  }
+}
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          label: S.String,
+          active: S.Boolean,
+          addedAt: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "CredentialAccount" });
+    case 1:
+      return S.Array(__S(1056, __c66, 0));
+  }
+}
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          success: S.Boolean,
+          profileId: S.String,
+          credential: S.String,
+          accounts: __S(1057, __c66, 1),
+        }),
+      ).annotate({ identifier: "AddCredentialAccountResponse" });
+  }
+}
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3321,7 +5809,7 @@ function __c19(j: number): any {
           email: S.optional(S.NullOr(S.String)),
           displayName: S.optional(S.String),
           connectionMethod: S.optional(S.String),
-          connectionMethods: S.optional(__S(1440, __c90, 0)),
+          connectionMethods: S.optional(__S(16, __c1, 0)),
           accountPlan: S.optional(S.String),
           serviceAccount: S.optional(S.Boolean),
           accountStatus: S.optional(S.String),
@@ -3342,12 +5830,12 @@ function __c19(j: number): any {
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          user: __S(305, __c19, 1),
+          user: __S(1089, __c68, 1),
         }),
       ).annotate({ identifier: "GetCurrentUserResponse" });
   }
 }
-function __c20(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3355,7 +5843,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetDataRetentionRequest" });
   }
 }
-function __c21(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3368,11 +5856,13 @@ function __c21(j: number): any {
           acceptedDeletionOperationsIrreversible: S.optional(S.Boolean),
           snapshotsOff: S.optional(S.Boolean),
           snapshotsOffAt: S.optional(S.NullOr(S.String)),
+          monitoringOff: S.optional(S.Boolean),
+          monitoringOffAt: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GetDataRetentionResponse" });
   }
 }
-function __c22(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3382,7 +5872,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetDeletionOperationRequest" });
   }
 }
-function __c23(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3408,7 +5898,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetDesktopStreamingUrlResponse" });
   }
 }
-function __c24(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3423,12 +5913,12 @@ function __c24(j: number): any {
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          snapshot: S.NullOr(__S(400, __c25, 0)),
+          snapshot: S.NullOr(__S(1184, __c74, 0)),
         }),
       ).annotate({ identifier: "GetLatestSandboxSnapshotResponse" });
   }
 }
-function __c25(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3445,11 +5935,12 @@ function __c25(j: number): any {
           fileCount: S.NullOr(S.Number),
           contentSizeBytes: S.optional(S.NullOr(S.Number)),
           contentFileCount: S.optional(S.NullOr(S.Number)),
+          origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotSummary" });
   }
 }
-function __c26(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3461,12 +5952,15 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetLimitsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          activeSandboxes: S.optional(S.Number),
-          creationRatePerMinute: S.optional(S.Number),
-          creationRequestsPerHour: S.optional(S.NullOr(S.Number)),
-          creationRequestsPerDay: S.optional(S.NullOr(S.Number)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            activeSandboxes: S.optional(S.Number),
+            creationRatePerMinute: S.optional(S.Number),
+            creationRequestsPerHour: S.optional(S.NullOr(S.Number)),
+            creationRequestsPerDay: S.optional(S.NullOr(S.Number)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "GetLimitsResponseCurrentLimits" });
     case 2:
       return S.suspend(() =>
@@ -3488,9 +5982,9 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           unlimited: S.optional(S.Boolean),
-          minute: S.optional(S.NullOr(__S(419, __c26, 3))),
-          hour: S.optional(S.NullOr(__S(419, __c26, 3))),
-          day: S.optional(S.NullOr(__S(419, __c26, 3))),
+          minute: S.optional(S.NullOr(__S(1203, __c75, 3))),
+          hour: S.optional(S.NullOr(__S(1203, __c75, 3))),
+          day: S.optional(S.NullOr(__S(1203, __c75, 3))),
         }),
       ).annotate({ identifier: "GetLimitsResponseStarts" });
     case 5:
@@ -3508,8 +6002,18 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "GetLimitsResponseSandboxPlanTiersItem" });
     case 6:
-      return S.Array(__S(421, __c26, 5));
+      return S.Array(__S(1205, __c75, 5));
     case 7:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          available: S.Boolean,
+          reason: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "GetLimitsResponseMachineTypesItem" });
+    case 8:
+      return S.Array(__S(1207, __c75, 7));
+    case 9:
       return S.suspend(() =>
         S.Struct({
           maxActiveSandboxes: S.optional(S.NullOr(S.Number)),
@@ -3518,33 +6022,33 @@ function __c26(j: number): any {
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetLimitsResponseGiftLimit" });
-    case 8:
+    case 10:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
           accessTier: S.optional(S.String),
           blockedReason: S.optional(S.NullOr(S.String)),
-          currentLimits: S.optional(__S(417, __c26, 1)),
-          standardLimits: S.optional(__S(417, __c26, 1)),
-          trialLimits: S.optional(__S(417, __c26, 1)),
-          upgradeEffects: S.optional(__S(432, __c27, 0)),
+          currentLimits: S.optional(__S(1201, __c75, 1)),
+          standardLimits: S.optional(__S(1201, __c75, 1)),
+          trialLimits: S.optional(__S(1201, __c75, 1)),
+          upgradeEffects: S.optional(__S(1216, __c76, 0)),
           canStart: S.Boolean,
           checkoutRequired: S.optional(S.Boolean),
           startBlockedReason: S.optional(S.NullOr(S.String)),
           contactMessage: S.optional(S.NullOr(S.String)),
           activeSandboxes: S.Number,
-          activeStates: S.optional(__S(1440, __c90, 0)),
+          activeStates: S.optional(__S(16, __c1, 0)),
           maxActiveSandboxes: S.Number,
           maxCreationRequestsPerMinute: S.optional(S.Number),
           maxCreationRequestsPerDay: S.optional(S.NullOr(S.Number)),
-          startLimits: S.optional(S.NullOr(__S(418, __c26, 2))),
-          starts: S.optional(__S(420, __c26, 4)),
+          startLimits: S.optional(S.NullOr(__S(1202, __c75, 2))),
+          starts: S.optional(__S(1204, __c75, 4)),
           creditBalanceHours: S.optional(S.NullOr(S.Number)),
           packBalanceHours: S.optional(S.Number),
           packBalanceDollars: S.optional(S.Number),
           hasPaymentHistory: S.optional(S.Boolean),
-          package: S.optional(__S(432, __c27, 0)),
+          package: S.optional(__S(1216, __c76, 0)),
           subscriptionQuotaSeconds: S.optional(S.Number),
           subscriptionRemainingSeconds: S.optional(S.Number),
           packBalanceSeconds: S.optional(S.Number),
@@ -3554,7 +6058,7 @@ function __c26(j: number): any {
           creditSecondsPerDollar: S.optional(S.Number),
           sandboxPlanKey: S.optional(S.String),
           sandboxPlanDollars: S.optional(S.Number),
-          sandboxPlanTiers: S.optional(__S(422, __c26, 6)),
+          sandboxPlanTiers: S.optional(__S(1206, __c75, 6)),
           accountPlan: S.optional(S.String),
           plan: S.optional(S.NullOr(S.String)),
           planName: S.optional(S.NullOr(S.String)),
@@ -3564,7 +6068,8 @@ function __c26(j: number): any {
           last24hUsageSeconds: S.optional(S.Number),
           trialComputeCapSeconds: S.optional(S.NullOr(S.Number)),
           trialLine: S.optional(S.NullOr(S.String)),
-          giftLimit: S.optional(S.NullOr(__S(423, __c26, 7))),
+          machineTypes: S.optional(__S(1208, __c75, 8)),
+          giftLimit: S.optional(S.NullOr(__S(1209, __c75, 9))),
           billingStatus: S.String,
           subscriptionStatus: S.optional(S.NullOr(S.String)),
           subscriptionCancelAtPeriodEnd: S.optional(S.Boolean),
@@ -3578,13 +6083,13 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetLimitsResponse" });
   }
 }
-function __c27(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.Unknown);
   }
 }
-function __c28(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3597,12 +6102,12 @@ function __c28(j: number): any {
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          snapshot: __S(464, __c29, 0),
+          snapshot: __S(1248, __c78, 0),
         }),
       ).annotate({ identifier: "GetNamedSnapshotResponse" });
   }
 }
-function __c29(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3619,7 +6124,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "NamedSnapshot" });
   }
 }
-function __c30(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3636,12 +6141,12 @@ function __c30(j: number): any {
           ok: S.Boolean,
           type: S.String,
           id: S.String,
-          promptRun: __S(496, __c31, 0),
+          promptRun: __S(1280, __c80, 0),
         }),
       ).annotate({ identifier: "GetPromptRunStatusResponse" });
   }
 }
-function __c31(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3660,7 +6165,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "PromptRun" });
   }
 }
-function __c32(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3670,20 +6175,71 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetSandboxRequest" });
   }
 }
-function __c33(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          sandbox: __S(1345, __c84, 1),
+          sandbox: __S(356, __c22, 4),
           giftLimitNotice: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSandboxResponse" });
   }
 }
-function __c34(j: number): any {
+function __c83(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          days: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/sandboxes/{sandboxId}/ai-usage", code: 200 })),
+      ).annotate({ identifier: "GetSandboxAiUsageRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          sandboxId: S.String,
+          blocked: S.Boolean,
+          proxied: S.Boolean,
+          credentialProfileId: S.NullOr(S.String),
+          since: S.String,
+          usage: __S(977, __c61, 1),
+          totals: __S(978, __c61, 2),
+          dollars: S.Number,
+        }),
+      ).annotate({ identifier: "GetSandboxAiUsageResponse" });
+  }
+}
+function __c84(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          environmentId: S.String.pipe(T.Label()),
+          org: S.optional(S.String.pipe(T.Query())),
+          repositoryId: S.String,
+          baseBranch: S.optional(S.String),
+        }).pipe(T.Http({ method: "POST", uri: "/environments/{environmentId}/repos", code: 200 })),
+      ).annotate({ identifier: "AddEnvironmentRepoRequest" });
+  }
+}
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          success: S.Boolean,
+          versionId: S.optional(S.String),
+          versionNumber: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "EnvironmentItemChangeResponse" });
+  }
+}
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3711,7 +6267,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetSandboxUsageResponse" });
   }
 }
-function __c35(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3719,7 +6275,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetSecretsRequest" });
   }
 }
-function __c36(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3730,13 +6286,13 @@ function __c36(j: number): any {
           environmentId: S.String,
           subenvironmentId: S.optional(S.String),
           envContents: S.String,
-          secretFiles: __S(1105, __c69, 1),
-          pushed: S.optional(__S(432, __c27, 0)),
+          secretFiles: __S(257, __c16, 1),
+          pushed: S.optional(__S(1216, __c76, 0)),
         }),
       ).annotate({ identifier: "GetSecretsResponse" });
   }
 }
-function __c37(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3764,7 +6320,7 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "SnapshotChunk" });
     case 3:
-      return S.Array(__S(594, __c37, 2));
+      return S.Array(__S(1426, __c89, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3776,13 +6332,13 @@ function __c37(j: number): any {
           generation: S.Number,
           expiresInSeconds: S.Number,
           reconstruct: S.String,
-          inventory: S.optional(S.NullOr(__S(593, __c37, 1))),
-          chunks: __S(595, __c37, 3),
+          inventory: S.optional(S.NullOr(__S(1425, __c89, 1))),
+          chunks: __S(1427, __c89, 3),
         }),
       ).annotate({ identifier: "GetSnapshotDownloadResponse" });
   }
 }
-function __c38(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3793,7 +6349,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetSnapshotFileRequest" });
   }
 }
-function __c39(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3810,7 +6366,7 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "SnapshotTreeEntry" });
     case 2:
-      return S.Array(__S(625, __c39, 1));
+      return S.Array(__S(1457, __c91, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3823,13 +6379,41 @@ function __c39(j: number): any {
           truncated: S.Boolean,
           fileCount: S.Number,
           totalSizeBytes: S.Number,
-          entries: __S(626, __c39, 2),
+          entries: __S(1458, __c91, 2),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSnapshotTreeResponse" });
   }
 }
-function __c40(j: number): any {
+function __c92(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          stopId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/sandboxes/{sandboxId}/stops/{stopId}", code: 200 })),
+      ).annotate({ identifier: "GetStopRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          id: S.String,
+          stop: __S(336, __c21, 0),
+        }),
+      ).annotate({ identifier: "GetStopResponse" });
+  }
+}
+function __c93(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/telemetry", code: 200 })),
+      ).annotate({ identifier: "GetTelemetryRequest" });
+  }
+}
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3839,19 +6423,19 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetWebhookRequest" });
   }
 }
-function __c41(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          webhook: __S(1521, __c95, 1),
+          webhook: __S(528, __c33, 0),
         }),
       ).annotate({ identifier: "GetWebhookResponse" });
   }
 }
-function __c42(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3859,6 +6443,7 @@ function __c42(j: number): any {
           sandboxId: S.String.pipe(T.Label()),
           port: S.Number,
           public: S.optional(S.Boolean),
+          localhost: S.optional(S.Boolean),
           title: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/sandboxes/{sandboxId}/host", code: 200 })),
       ).annotate({ identifier: "HostPortRequest" });
@@ -3872,35 +6457,12 @@ function __c42(j: number): any {
           url: S.optional(S.String),
           isProtected: S.optional(S.Boolean),
           access: S.optional(S.String),
+          localhost: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "HostPortResponse" });
   }
 }
-function __c43(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String.pipe(T.Label()),
-          repositoryId: S.String,
-          baseBranch: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/environments/{environmentId}/repos", code: 200 })),
-      ).annotate({ identifier: "AddEnvironmentRepoRequest" });
-  }
-}
-function __c44(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-          versionId: S.optional(S.String),
-          versionNumber: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "EnvironmentItemChangeResponse" });
-  }
-}
-function __c45(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3911,14 +6473,39 @@ function __c45(j: number): any {
       ).annotate({ identifier: "InterruptSandboxRequest" });
   }
 }
-function __c46(j: number): any {
+function __c98(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          processId: S.Number.pipe(T.Label()),
+          stdoutOffset: S.optional(S.Number.pipe(T.Query())),
+          stderrOffset: S.optional(S.Number.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/sandboxes/{sandboxId}/commands/{processId}/stream",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "AttachCommandRequest" });
+  }
+}
+function __c99(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "AttachCommandResponse" });
+  }
+}
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api-keys", code: 200 })),
       ).annotate({ identifier: "ListApiKeysRequest" });
     case 1:
-      return S.Record(S.String, __S(1440, __c90, 0));
+      return S.Record(S.String, __S(16, __c1, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3929,23 +6516,23 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "ApiKeyScopeResource" });
     case 3:
-      return S.Array(__S(738, __c46, 2));
+      return S.Array(__S(1602, __c100, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sandboxes: __S(739, __c46, 3),
-          environments: __S(739, __c46, 3),
+          sandboxes: __S(1603, __c100, 3),
+          environments: __S(1603, __c100, 3),
         }),
       ).annotate({ identifier: "ApiKeyCatalogScopeResources" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          actions: __S(1440, __c90, 0),
-          presets: __S(737, __c46, 1),
+          actions: __S(16, __c1, 0),
+          presets: __S(1601, __c100, 1),
           defaultTtl: S.String,
           maxTtl: S.String,
           scopedCreationEnabled: S.Boolean,
-          scopeResources: S.optional(__S(740, __c46, 4)),
+          scopeResources: S.optional(__S(1604, __c100, 4)),
         }),
       ).annotate({ identifier: "ApiKeyCatalog" });
     case 6:
@@ -3953,28 +6540,65 @@ function __c46(j: number): any {
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          apiKeys: __S(1474, __c92, 2),
-          catalog: __S(741, __c46, 5),
+          apiKeys: __S(434, __c27, 2),
+          catalog: __S(1605, __c100, 5),
         }),
       ).annotate({ identifier: "ListApiKeysResponse" });
   }
 }
-function __c47(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/environments", code: 200 })),
+        S.Struct({
+          profile: S.String.pipe(T.Label()),
+          credential: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/credential-profiles/{profile}/accounts/{credential}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "ListCredentialAccountsRequest" });
+  }
+}
+function __c102(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({}).pipe(T.Http({ method: "GET", uri: "/credential-profiles", code: 200 })),
+      ).annotate({ identifier: "ListCredentialProfilesRequest" });
+    case 1:
+      return S.Array(__S(50, __c3, 2));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          profiles: __S(1633, __c102, 1),
+        }),
+      ).annotate({ identifier: "ListCredentialProfilesResponse" });
+  }
+}
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          org: S.optional(S.String.pipe(T.Query())),
+        }).pipe(T.Http({ method: "GET", uri: "/environments", code: 200 })),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
   }
 }
-function __c48(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/named-snapshots", code: 200 })),
       ).annotate({ identifier: "ListNamedSnapshotsRequest" });
     case 1:
-      return S.Array(__S(464, __c29, 0));
+      return S.Array(__S(1248, __c78, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3993,13 +6617,13 @@ function __c48(j: number): any {
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          snapshots: __S(769, __c48, 1),
-          allowance: S.optional(__S(770, __c48, 2)),
+          snapshots: __S(1665, __c104, 1),
+          allowance: S.optional(__S(1666, __c104, 2)),
         }),
       ).annotate({ identifier: "ListNamedSnapshotsResponse" });
   }
 }
-function __c49(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4018,19 +6642,19 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "Org" });
     case 2:
-      return S.Array(__S(785, __c49, 1));
+      return S.Array(__S(1681, __c105, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
           activeWalletChosen: S.Boolean,
-          orgs: __S(786, __c49, 2),
+          orgs: __S(1682, __c105, 2),
         }),
       ).annotate({ identifier: "ListOrganizationsResponse" });
   }
 }
-function __c50(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4045,47 +6669,50 @@ function __c50(j: number): any {
       ).annotate({ identifier: "ListReposRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          databaseId: S.optional(S.String),
-          name: S.optional(S.String),
-          fullName: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.String),
-          private: S.optional(S.Boolean),
-          permissions: S.optional(S.String),
-          pushedAt: S.optional(S.NullOr(S.String)),
-          lastUserCommitAt: S.optional(S.NullOr(S.String)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            id: S.optional(S.Number),
+            databaseId: S.optional(S.String),
+            name: S.optional(S.String),
+            fullName: S.optional(S.String),
+            description: S.optional(S.NullOr(S.String)),
+            url: S.optional(S.String),
+            private: S.optional(S.Boolean),
+            permissions: S.optional(S.String),
+            pushedAt: S.optional(S.NullOr(S.String)),
+            lastUserCommitAt: S.optional(S.NullOr(S.String)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "Repository" });
     case 2:
-      return S.Array(__S(801, __c50, 1));
+      return S.Array(__S(1697, __c106, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
           accountLogin: S.optional(S.String),
           accountAvatarUrl: S.optional(S.NullOr(S.String)),
-          repositories: S.optional(__S(802, __c50, 2)),
+          repositories: S.optional(__S(1698, __c106, 2)),
         }),
       ).annotate({ identifier: "RepositoryInstallation" });
     case 4:
-      return S.Array(__S(803, __c50, 3));
+      return S.Array(__S(1699, __c106, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          installations: __S(804, __c50, 4),
+          installations: __S(1700, __c106, 4),
           environmentId: S.String,
           subenvironmentId: S.optional(S.NullOr(S.String)),
-          selectedRepositories: __S(1121, __c70, 1),
-          pageInfo: S.optional(__S(816, __c51, 0)),
+          selectedRepositories: __S(289, __c18, 1),
+          pageInfo: S.optional(__S(1712, __c107, 0)),
         }),
       ).annotate({ identifier: "ListReposResponse" });
   }
 }
-function __c51(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4097,7 +6724,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "PageInfo" });
   }
 }
-function __c52(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4120,19 +6747,19 @@ function __c52(j: number): any {
         }),
       ).annotate({ identifier: "Conversation" });
     case 2:
-      return S.Array(__S(833, __c52, 1));
+      return S.Array(__S(1729, __c108, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
           id: S.String,
-          conversations: __S(834, __c52, 2),
+          conversations: __S(1730, __c108, 2),
         }),
       ).annotate({ identifier: "ListSandboxConversationsResponse" });
   }
 }
-function __c53(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4142,23 +6769,22 @@ function __c53(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
           sort: S.optional(S.String.pipe(T.Query())),
           state: S.optional(S.String.pipe(T.Query())),
+          include: S.optional(S.String.pipe(T.Query())),
           xBoatOrg: S.optional(S.String.pipe(T.Header("X-Boat-Org"))),
         }).pipe(T.Http({ method: "GET", uri: "/sandboxes", code: 200 })),
       ).annotate({ identifier: "ListSandboxesRequest" });
     case 1:
-      return S.Array(__S(1345, __c84, 1));
-    case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          sandboxes: __S(849, __c53, 1),
-          pageInfo: S.optional(__S(816, __c51, 0)),
+          sandboxes: __S(384, __c24, 0),
+          pageInfo: S.optional(__S(1712, __c107, 0)),
         }),
       ).annotate({ identifier: "ListSandboxesResponse" });
   }
 }
-function __c54(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4173,30 +6799,119 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListSandboxEventsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.String,
-          timestamp: S.optional(S.Number),
-          taskId: S.optional(S.NullOr(S.String)),
-          conversationId: S.optional(S.NullOr(S.String)),
-          data: S.optional(__S(432, __c27, 0)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            id: S.optional(S.String),
+            type: S.String,
+            timestamp: S.optional(S.Number),
+            taskId: S.optional(S.NullOr(S.String)),
+            conversationId: S.optional(S.NullOr(S.String)),
+            data: S.optional(__S(1216, __c76, 0)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "SandboxEvent" });
     case 2:
-      return S.Array(__S(865, __c54, 1));
+      return S.Array(__S(1761, __c110, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
           id: S.String,
-          events: __S(866, __c54, 2),
-          pageInfo: S.optional(__S(816, __c51, 0)),
+          events: __S(1762, __c110, 2),
+          pageInfo: S.optional(__S(1712, __c107, 0)),
         }),
       ).annotate({ identifier: "ListSandboxEventsResponse" });
   }
 }
-function __c55(j: number): any {
+function __c111(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          mode: S.optional(S.String.pipe(T.Query())),
+          q: S.optional(S.String.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          cursor: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({ method: "GET", uri: "/sandboxes/{sandboxId}/command-history", code: 200 }),
+        ),
+      ).annotate({ identifier: "CommandHistoryRequest" });
+    case 1:
+      return S.Array(__S(1792, __c112, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          commands: __S(1777, __c111, 1),
+          nextCursor: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "CommandHistoryResponse" });
+  }
+}
+function __c112(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          commandId: S.String,
+          sandboxId: S.String,
+          command: S.String,
+          cwd: S.optional(S.NullOr(S.String)),
+          mode: S.String,
+          processId: S.optional(S.NullOr(S.Number)),
+          status: S.String,
+          exitCode: S.optional(S.NullOr(S.Number)),
+          signal: S.optional(S.NullOr(S.String)),
+          stdoutBytes: S.Number,
+          stderrBytes: S.Number,
+          outputTruncated: S.Boolean,
+          startedAt: S.String,
+          finishedAt: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "CommandRecord" });
+  }
+}
+function __c113(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/sandboxes/{sandboxId}/processes", code: 200 })),
+      ).annotate({ identifier: "ListSandboxProcessesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          pid: S.Number,
+          parentPid: S.optional(S.Number),
+          user: S.optional(S.String),
+          cpuPercent: S.optional(S.Number),
+          memoryMB: S.optional(S.Number),
+          startedAt: S.optional(S.String),
+          command: S.String,
+          commandId: S.optional(S.NullOr(S.String)),
+        }),
+      ).annotate({ identifier: "SandboxProcess" });
+    case 2:
+      return S.Array(__S(1809, __c113, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          live: S.Boolean,
+          sampledAt: S.NullOr(S.String),
+          total: S.Number,
+          processes: __S(1810, __c113, 2),
+        }),
+      ).annotate({ identifier: "ListSandboxProcessesResponse" });
+  }
+}
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4209,45 +6924,22 @@ function __c55(j: number): any {
       ).annotate({ identifier: "ListSandboxSnapshotsRequest" });
   }
 }
-function __c56(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(400, __c25, 0));
+      return S.Array(__S(1184, __c74, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          snapshots: __S(896, __c56, 0),
-          pageInfo: S.optional(__S(816, __c51, 0)),
+          snapshots: __S(1840, __c115, 0),
+          pageInfo: S.optional(__S(1712, __c107, 0)),
         }),
       ).annotate({ identifier: "ListSandboxSnapshotsResponse" });
   }
 }
-function __c57(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sandboxId: S.String.pipe(T.Label()),
-          key: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/sandboxes/{sandboxId}/sshkey", code: 200 })),
-      ).annotate({ identifier: "ConfigureSshKeyRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          type: S.String,
-          success: S.optional(S.Boolean),
-          machineIp: S.optional(S.NullOr(S.String)),
-          sshUser: S.optional(S.String),
-          sshEndpoint: S.optional(S.NullOr(S.String)),
-          hostKey: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigureSshKeyResponse" });
-  }
-}
-function __c58(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4259,25 +6951,46 @@ function __c58(j: number): any {
       ).annotate({ identifier: "ListSnapshotsRequest" });
   }
 }
-function __c59(j: number): any {
+function __c117(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "GET", uri: "/named-snapshots/{name}/shares", code: 200 })),
+      ).annotate({ identifier: "ListSnapshotSharesRequest" });
+    case 1:
+      return S.Array(__S(480, __c30, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          name: S.String,
+          shares: __S(1873, __c117, 1),
+        }),
+      ).annotate({ identifier: "ListSnapshotSharesResponse" });
+  }
+}
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/webhooks", code: 200 })),
       ).annotate({ identifier: "ListWebhooksRequest" });
     case 1:
-      return S.Array(__S(1521, __c95, 1));
+      return S.Array(__S(528, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          webhooks: __S(945, __c59, 1),
+          webhooks: __S(1889, __c118, 1),
         }),
       ).annotate({ identifier: "ListWebhooksResponse" });
   }
 }
-function __c60(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4300,7 +7013,7 @@ function __c60(j: number): any {
           id: S.String,
           promptId: S.String,
           conversationId: S.optional(S.NullOr(S.String)),
-          promptRun: __S(496, __c31, 0),
+          promptRun: __S(1280, __c80, 0),
           status: S.String,
           provider: S.String,
           model: S.optional(S.NullOr(S.String)),
@@ -4310,7 +7023,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "PromptSandboxResponse" });
   }
 }
-function __c61(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4334,7 +7047,26 @@ function __c61(j: number): any {
       ).annotate({ identifier: "ReadSandboxFileResponse" });
   }
 }
-function __c62(j: number): any {
+function __c121(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+        }).pipe(T.Http({ method: "POST", uri: "/sandboxes/{sandboxId}/recover", code: 200 })),
+      ).annotate({ identifier: "RecoverSandboxRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.optional(S.Boolean),
+          type: S.optional(S.String),
+          status: S.optional(S.String),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "RecoverSandboxResponse" });
+  }
+}
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4342,7 +7074,7 @@ function __c62(j: number): any {
           sandboxId: S.String.pipe(T.Label()),
           failFast: S.optional(S.Boolean),
           type: S.optional(S.String),
-          env: S.optional(__S(1360, __c85, 0)),
+          env: S.optional(__S(368, __c23, 0)),
           environment: S.optional(S.String),
           noEnv: S.optional(S.Boolean),
           ttlSeconds: S.optional(S.NullOr(S.Number)),
@@ -4350,7 +7082,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "ResumeSandboxRequest" });
   }
 }
-function __c63(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4363,12 +7095,70 @@ function __c63(j: number): any {
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          apiKeys: __S(1474, __c92, 2),
+          apiKeys: __S(434, __c27, 2),
         }),
       ).annotate({ identifier: "RevokeApiKeyResponse" });
   }
 }
-function __c64(j: number): any {
+function __c124(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          commandId: S.String.pipe(T.Label()),
+          stream: S.optional(S.String.pipe(T.Query())),
+          offset: S.optional(S.Number.pipe(T.Query())),
+          limit: S.optional(S.Number.pipe(T.Query())),
+          encoding: S.optional(S.String.pipe(T.Query())),
+        }).pipe(
+          T.Http({
+            method: "GET",
+            uri: "/sandboxes/{sandboxId}/command-history/{commandId}/logs",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "CommandLogsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          commandId: S.String,
+          stream: S.String,
+          offset: S.Number,
+          nextOffset: S.Number,
+          size: S.Number,
+          encoding: S.String,
+          data: S.String,
+          done: S.Boolean,
+        }),
+      ).annotate({ identifier: "CommandLogsResponse" });
+  }
+}
+function __c125(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String.pipe(T.Label()),
+          shareId: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({ method: "DELETE", uri: "/named-snapshots/{name}/shares/{shareId}", code: 200 }),
+        ),
+      ).annotate({ identifier: "RevokeSnapshotShareRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          name: S.String,
+          share: __S(480, __c30, 0),
+        }),
+      ).annotate({ identifier: "RevokeSnapshotShareResponse" });
+  }
+}
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4378,7 +7168,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "RotateApiKeyRequest" });
   }
 }
-function __c65(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4388,7 +7178,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "RotateWebhookSigningSecretRequest" });
   }
 }
-function __c66(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4403,12 +7193,12 @@ function __c66(j: number): any {
           ok: S.Boolean,
           type: S.String,
           status: S.String,
-          snapshot: __S(464, __c29, 0),
+          snapshot: __S(1248, __c78, 0),
         }),
       ).annotate({ identifier: "SaveNamedSnapshotResponse" });
   }
 }
-function __c67(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4425,109 +7215,12 @@ function __c67(j: number): any {
           success: S.Boolean,
           environmentId: S.String,
           subenvironmentId: S.optional(S.NullOr(S.String)),
-          selectedRepositories: __S(1121, __c70, 1),
+          selectedRepositories: __S(289, __c18, 1),
         }),
       ).annotate({ identifier: "SelectRepoResponse" });
   }
 }
-function __c68(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-        }).pipe(T.Http({ method: "POST", uri: "/environments", code: 200 })),
-      ).annotate({ identifier: "CreateEnvironmentRequest" });
-  }
-}
-function __c69(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          path: S.String,
-          contents: S.String,
-        }),
-      ).annotate({ identifier: "SecretFile" });
-    case 1:
-      return S.Array(__S(1104, __c69, 0));
-  }
-}
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.Number),
-          databaseId: S.optional(S.String),
-          name: S.optional(S.String),
-          fullName: S.optional(S.String),
-          description: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.String),
-          private: S.optional(S.Boolean),
-          permissions: S.optional(S.String),
-          pushedAt: S.optional(S.NullOr(S.String)),
-          lastUserCommitAt: S.optional(S.NullOr(S.String)),
-          baseBranch: S.optional(S.String),
-          setupRoutineId: S.optional(S.NullOr(S.String)),
-          setupScript: S.optional(S.String),
-          setupBlocking: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "SelectedRepository" });
-    case 1:
-      return S.Array(__S(1120, __c70, 0));
-  }
-}
-function __c71(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          versionNumber: S.Number,
-          sandboxCount: S.Number,
-          createdAt: S.String,
-        }),
-      ).annotate({ identifier: "SandboxEnvironmentVersionSummary" });
-    case 1:
-      return S.Array(__S(1136, __c71, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          isDefault: S.Boolean,
-          latestVersionId: S.NullOr(S.String),
-          latestVersionNumber: S.optional(S.Number),
-          safetyAnsweredAt: S.optional(S.NullOr(S.String)),
-          safeForThirdParties: S.Boolean,
-          passGithub: S.Boolean,
-          passSecrets: S.Boolean,
-          passSandboxCredentials: S.Boolean,
-          passAgentsCredentials: S.Boolean,
-          envContents: S.String,
-          secretFiles: __S(1105, __c69, 1),
-          selectedRepositories: S.optional(__S(1121, __c70, 1)),
-          versions: __S(1137, __c71, 1),
-        }),
-      ).annotate({ identifier: "SandboxEnvironment" });
-  }
-}
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(1138, __c71, 2));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.optional(S.Boolean),
-          type: S.optional(S.String),
-          environments: __S(1152, __c72, 0),
-        }),
-      ).annotate({ identifier: "SandboxEnvironmentListResponse" });
-  }
-}
-function __c73(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4548,17 +7241,56 @@ function __c73(j: number): any {
         S.Struct({
           ok: S.Boolean,
           type: S.String,
-          active: __S(1169, __c73, 1),
+          active: __S(2081, __c130, 1),
         }),
       ).annotate({ identifier: "SetActiveOrganizationResponse" });
   }
 }
-function __c74(j: number): any {
+function __c131(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profile: S.String.pipe(T.Label()),
+          name: S.String.pipe(T.Label()),
+          value: S.String,
+          baseUrl: S.String,
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/credential-profiles/{profile}/custom-apis/{name}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "SetCredentialProfileCustomApiRequest" });
+  }
+}
+function __c132(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          profile: S.String.pipe(T.Label()),
+          credential: S.String.pipe(T.Label()),
+          value: S.String,
+          keepCurrent: S.optional(S.Boolean),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/credential-profiles/{profile}/keys/{credential}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "SetCredentialProfileKeyRequest" });
+  }
+}
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.Label()),
+          org: S.optional(S.String.pipe(T.Query())),
           path: S.String,
           contents: S.String,
         }).pipe(
@@ -4567,13 +7299,14 @@ function __c74(j: number): any {
       ).annotate({ identifier: "SetEnvironmentSecretFileRequest" });
   }
 }
-function __c75(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           environmentId: S.String.pipe(T.Label()),
           key: S.String.pipe(T.Label()),
+          org: S.optional(S.String.pipe(T.Query())),
           value: S.String,
         }).pipe(
           T.Http({ method: "PUT", uri: "/environments/{environmentId}/vars/{key}", code: 200 }),
@@ -4581,7 +7314,79 @@ function __c75(j: number): any {
       ).annotate({ identifier: "SetEnvironmentVarRequest" });
   }
 }
-function __c76(j: number): any {
+function __c135(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          key: S.String,
+        }).pipe(T.Http({ method: "POST", uri: "/sandboxes/{sandboxId}/sshkey", code: 200 })),
+      ).annotate({ identifier: "ConfigureSshKeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          success: S.optional(S.Boolean),
+          machineIp: S.optional(S.NullOr(S.String)),
+          sshUser: S.optional(S.String),
+          sshEndpoint: S.optional(S.NullOr(S.String)),
+          hostKey: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ConfigureSshKeyResponse" });
+  }
+}
+function __c136(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          blocked: S.Boolean,
+        }).pipe(T.Http({ method: "PUT", uri: "/sandboxes/{sandboxId}/ai-access", code: 200 })),
+      ).annotate({ identifier: "SetSandboxAiAccessRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          success: S.Boolean,
+          sandboxId: S.String,
+          blocked: S.Boolean,
+        }),
+      ).annotate({ identifier: "SetSandboxAiAccessResponse" });
+  }
+}
+function __c137(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          endpoint: S.String,
+          headers: S.optional(__S(368, __c23, 0)),
+        }).pipe(T.Http({ method: "PUT", uri: "/telemetry", code: 200 })),
+      ).annotate({ identifier: "SetTelemetryRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          status: S.NullOr(S.Number),
+          message: S.NullOr(S.String),
+        }),
+      ).annotate({ identifier: "TelemetryTestResult" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          telemetry: S.NullOr(__S(833, __c52, 1)),
+          test: __S(2193, __c137, 1),
+        }),
+      ).annotate({ identifier: "SetTelemetryResponse" });
+  }
+}
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4592,14 +7397,14 @@ function __c76(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sandbox: S.optional(__S(1345, __c84, 1)),
+          sandbox: S.optional(__S(356, __c22, 4)),
           restartRequired: S.optional(S.Boolean),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShareSandboxResponse" });
   }
 }
-function __c77(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4624,7 +7429,35 @@ function __c77(j: number): any {
       ).annotate({ identifier: "SteerSandboxResponse" });
   }
 }
-function __c78(j: number): any {
+function __c140(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          sandboxId: S.String.pipe(T.Label()),
+          processId: S.Number.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "DELETE",
+            uri: "/sandboxes/{sandboxId}/commands/{processId}",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "StopCommandRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          ok: S.Boolean,
+          type: S.String,
+          processId: S.Number,
+          running: S.Boolean,
+          signaled: S.Boolean,
+          command: S.NullOr(__S(1792, __c112, 0)),
+        }),
+      ).annotate({ identifier: "StopCommandResponse" });
+  }
+}
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4635,355 +7468,63 @@ function __c78(j: number): any {
       ).annotate({ identifier: "StopSandboxRequest" });
   }
 }
-function __c79(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          enabled: S.optional(S.Boolean),
-          snapshotsOff: S.optional(S.Boolean),
-          confirmation: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/account/data-retention", code: 200 })),
-      ).annotate({ identifier: "UpdateDataRetentionRequest" });
+          profile: S.String.pipe(T.Label()),
+          credential: S.String.pipe(T.Label()),
+          account: S.String.pipe(T.Label()),
+        }).pipe(
+          T.Http({
+            method: "PUT",
+            uri: "/credential-profiles/{profile}/accounts/{credential}/{account}/active",
+            code: 200,
+          }),
+        ),
+      ).annotate({ identifier: "SwitchCredentialAccountRequest" });
   }
 }
-function __c80(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          repositoryId: S.String,
-          baseBranch: S.optional(S.String),
-          setupScript: S.optional(S.String),
-          setupBlocking: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "UpdateEnvironmentRequestRepositoriesItem" });
-    case 1:
-      return S.Array(__S(1280, __c80, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          isDefault: S.optional(S.Boolean),
-          safeForThirdParties: S.optional(S.Boolean),
-          passGithub: S.optional(S.Boolean),
-          passSecrets: S.optional(S.Boolean),
-          passSandboxCredentials: S.optional(S.Boolean),
-          passAgentsCredentials: S.optional(S.Boolean),
-          envContents: S.optional(S.String),
-          secretFiles: S.optional(__S(1105, __c69, 1)),
-          repositories: S.optional(__S(1281, __c80, 1)),
-        }).pipe(T.Http({ method: "PUT", uri: "/environments/{environmentId}", code: 200 })),
-      ).annotate({ identifier: "UpdateEnvironmentRequest" });
-  }
-}
-function __c81(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           sandboxId: S.String.pipe(T.Label()),
-          name: S.optional(S.String),
-          ttlSeconds: S.optional(S.NullOr(S.Number)),
-          subdomain: S.optional(S.String),
-        }).pipe(T.Http({ method: "PATCH", uri: "/sandboxes/{sandboxId}", code: 200 })),
-      ).annotate({ identifier: "UpdateSandboxRequest" });
-  }
-}
-function __c82(j: number): any {
-  switch (j) {
-    case 0:
+        }).pipe(T.Http({ method: "POST", uri: "/sandboxes/{sandboxId}/unshare", code: 200 })),
+      ).annotate({ identifier: "UnshareSandboxRequest" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          envContents: S.optional(S.String),
-          secretFiles: S.optional(__S(1105, __c69, 1)),
-        }).pipe(T.Http({ method: "POST", uri: "/secrets", code: 200 })),
-      ).annotate({ identifier: "UpdateSecretsRequest" });
+          sandbox: S.optional(__S(356, __c22, 4)),
+          message: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "UnshareSandboxResponse" });
   }
 }
-function __c83(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           org: S.optional(S.String.pipe(T.Query())),
-          idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
           xBoatOrg: S.optional(S.String.pipe(T.Header("X-Boat-Org"))),
-          type: S.optional(S.String),
-          ttlSeconds: S.optional(S.NullOr(S.Number)),
-          env: S.optional(__S(1360, __c85, 0)),
-          environment: S.optional(S.String),
-          noEnv: S.optional(S.Boolean),
-          snapshots: S.optional(S.Boolean),
-          failFast: S.optional(S.Boolean),
-          setupScript: S.optional(S.String),
-          teamId: S.optional(S.String),
-          from: S.optional(S.String),
-        }).pipe(T.Http({ method: "POST", uri: "/sandboxes", code: 200 })),
-      ).annotate({ identifier: "CreateSandboxRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          type: S.String,
-          status: S.String,
-          ttlSeconds: S.NullOr(S.Number),
-          sandbox: __S(1345, __c84, 1),
-          giftLimitNotice: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateSandboxResponse" });
+          enabled: S.Boolean,
+        }).pipe(T.Http({ method: "PUT", uri: "/ai-proxy", code: 200 })),
+      ).annotate({ identifier: "UpdateAiProxyRequest" });
   }
 }
-function __c84(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.String,
-          name: S.String,
-        }),
-      ).annotate({ identifier: "SandboxTeam" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          state: S.String,
-          error: S.optional(S.NullOr(S.String)),
-          health: S.optional(S.String),
-          healthReason: S.optional(S.NullOr(S.String)),
-          degradedSince: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.String),
-          vcpu: S.optional(S.Number),
-          memoryGB: S.optional(S.Number),
-          billingMultiplier: S.optional(S.Number),
-          machineProvider: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.NullOr(S.String)),
-          ip: S.optional(S.NullOr(S.String)),
-          sshEndpoint: S.optional(S.NullOr(S.String)),
-          createdAt: S.optional(S.NullOr(S.String)),
-          updatedAt: S.optional(S.NullOr(S.String)),
-          archiveAfter: S.optional(S.NullOr(S.String)),
-          desktopAvailable: S.Boolean,
-          desktopUrl: S.optional(S.NullOr(S.String)),
-          snapshots: S.optional(S.Boolean),
-          snapshotAvailable: S.Boolean,
-          snapshotCompletedAt: S.optional(S.NullOr(S.String)),
-          snapshotVerifiedAt: S.optional(S.NullOr(S.String)),
-          team: S.optional(S.NullOr(__S(1344, __c84, 0))),
-          createdBy: S.optional(S.NullOr(S.String)),
-          createdById: S.optional(S.NullOr(S.String)),
-          access: S.optional(S.String),
-          holdsCreatorLogins: S.optional(S.Boolean),
-          wipePendingUntilRestart: S.optional(S.Boolean),
-          subdomain: S.optional(S.NullOr(S.String)),
-          lastSnapshotAttemptAt: S.optional(S.NullOr(S.String)),
-          lastSnapshotStatus: S.optional(S.NullOr(S.String)),
-          setupStatus: S.optional(S.NullOr(S.String)),
-          setupError: S.optional(S.NullOr(S.String)),
-          environment: S.optional(S.NullOr(S.String)),
-          environmentVersion: S.optional(S.NullOr(S.Number)),
-        }),
-      ).annotate({ identifier: "Sandbox" });
-  }
-}
-function __c85(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, S.String);
-  }
-}
-function __c86(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          webhookId: S.String.pipe(T.Label()),
-          name: S.optional(S.NullOr(S.String)),
-          url: S.optional(S.String),
-          events: S.optional(__S(1520, __c95, 0)),
-        }).pipe(T.Http({ method: "PATCH", uri: "/webhooks/{webhookId}", code: 200 })),
-      ).annotate({ identifier: "UpdateWebhookRequest" });
-  }
-}
-function __c87(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          environmentId: S.String.pipe(T.Label()),
-          agentIds: S.optional(__S(1440, __c90, 0)),
-        }).pipe(
-          T.Http({ method: "POST", uri: "/environments/{environmentId}/upgrade", code: 200 }),
-        ),
-      ).annotate({ identifier: "UpgradeEnvironmentRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          success: S.Boolean,
-          upgraded: S.Number,
-          upgradedLive: S.optional(S.Number),
-          upgradedStopped: S.optional(S.Number),
-          failed: S.Number,
-          latestVersionId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "UpgradeSandboxEnvironmentResponse" });
-  }
-}
-function __c88(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          sandboxId: S.String.pipe(T.Label()),
-          path: S.String,
-          content: S.String,
-          encoding: S.optional(S.String),
-        }).pipe(T.Http({ method: "PUT", uri: "/sandboxes/{sandboxId}/files", code: 200 })),
-      ).annotate({ identifier: "WriteSandboxFileRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          type: S.String,
-          success: S.Boolean,
-          path: S.String,
-          encoding: S.String,
-          size: S.Number,
-        }),
-      ).annotate({ identifier: "WriteSandboxFileResponse" });
-  }
-}
-function __c89(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
+          profile: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          ttl: S.optional(S.String),
-          preset: S.optional(S.String),
-          actions: S.optional(__S(1440, __c90, 0)),
-          sandboxIds: S.optional(__S(1440, __c90, 0)),
-          environmentIds: S.optional(__S(1440, __c90, 0)),
-        }).pipe(T.Http({ method: "POST", uri: "/api-keys/scoped", code: 200 })),
-      ).annotate({ identifier: "CreateScopedApiKeyRequest" });
-  }
-}
-function __c90(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-  }
-}
-function __c91(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          requests: S.Number,
-          windowDays: S.Number,
-        }),
-      ).annotate({ identifier: "ApiKeyRequestUsage" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          total: S.Number,
-          sandboxes: S.Number,
-          agents: S.Number,
-        }),
-      ).annotate({ identifier: "ApiKeyResourceTotals" });
-  }
-}
-function __c92(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          expiresAt: S.optional(S.NullOr(S.String)),
-          actions: S.optional(__S(1440, __c90, 0)),
-          sandboxes: S.optional(S.Unknown),
-          environments: S.optional(S.Unknown),
-          grandfathered: S.optional(S.Boolean),
-        }),
-      ).annotate({ identifier: "ApiKeyScope" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.String,
-          credentialLane: S.String,
-          keyPrefix: S.String,
-          keyLastFour: S.String,
-          sandboxId: S.NullOr(S.String),
-          createdAt: S.String,
-          lastUsedAt: S.NullOr(S.String),
-          usage: __S(1456, __c91, 0),
-          resources: __S(1457, __c91, 1),
-          expiresAt: S.optional(S.NullOr(S.String)),
-          expired: S.optional(S.Boolean),
-          expiringSoon: S.optional(S.Boolean),
-          scope: S.optional(__S(1472, __c92, 0)),
-        }),
-      ).annotate({ identifier: "ApiKey" });
-    case 2:
-      return S.Array(__S(1473, __c92, 1));
-  }
-}
-function __c93(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          type: S.String,
-          apiKey: __S(1473, __c92, 1),
-          secret: S.String.pipe(T.SensitiveValue({})),
-          apiKeys: __S(1474, __c92, 2),
-        }),
-      ).annotate({ identifier: "CreateScopedApiKeyResponse" });
-  }
-}
-function __c94(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.optional(S.NullOr(S.String)),
-          url: S.String,
-          events: __S(1520, __c95, 0),
-        }).pipe(T.Http({ method: "POST", uri: "/webhooks", code: 200 })),
-      ).annotate({ identifier: "CreateWebhookRequest" });
-  }
-}
-function __c95(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          name: S.NullOr(S.String),
-          url: S.String,
-          events: __S(1520, __c95, 0),
-          createdAt: S.String,
-          updatedAt: S.String,
-        }),
-      ).annotate({ identifier: "Webhook" });
-  }
-}
-function __c96(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ok: S.Boolean,
-          type: S.String,
-          webhook: __S(1521, __c95, 1),
-          secret: S.String.pipe(T.SensitiveValue({})),
-        }),
-      ).annotate({ identifier: "CreateWebhookResponse" });
+          isDefault: S.optional(S.Boolean),
+        }).pipe(T.Http({ method: "PUT", uri: "/credential-profiles/{profile}", code: 200 })),
+      ).annotate({ identifier: "UpdateCredentialProfileRequest" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

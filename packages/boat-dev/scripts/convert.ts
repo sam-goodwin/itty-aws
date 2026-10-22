@@ -52,6 +52,8 @@ await runOpenApiConvert({
       "PATCH /sandboxes/{sandboxId}": "updateSandbox",
       "POST /sandboxes/{sandboxId}/stop": "stopSandbox",
       "POST /sandboxes/{sandboxId}/share": "shareSandbox",
+      "POST /sandboxes/{sandboxId}/unshare": "unshareSandbox",
+      "POST /sandboxes/{sandboxId}/recover": "recoverSandbox",
       "POST /sandboxes/{sandboxId}/resume": "resumeSandbox",
       "POST /sandboxes/{sandboxId}/fork": "forkSandbox",
       "POST /sandboxes/{sandboxId}/prompt": "promptSandbox",
@@ -68,6 +70,7 @@ await runOpenApiConvert({
       "POST /sandboxes/{sandboxId}/desktop": "getDesktopStreamingUrl",
       "POST /sandboxes/{sandboxId}/sshkey": "configureSshKey",
       "GET /sandboxes/{sandboxId}/usage": "getSandboxUsage",
+      "GET /sandboxes/{sandboxId}/processes": "listSandboxProcesses",
     },
   },
 });
