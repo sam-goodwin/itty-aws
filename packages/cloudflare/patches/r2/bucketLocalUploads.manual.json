@@ -123,8 +123,7 @@
           "enabled": {
             "target": "smithy.api#Boolean",
             "traits": {
-              "smithy.api#documentation": "Whether Local Uploads is enabled for the bucket.",
-              "smithy.api#required": {}
+              "smithy.api#documentation": "Whether Local Uploads is enabled for the bucket. The live API omits it from the PUT response (observed 2026-10-22); read it back with getBucketLocalUploads."
             }
           }
         },
