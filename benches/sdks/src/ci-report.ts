@@ -181,47 +181,81 @@ const chart = (m: Metric, rows: Array<[name: string, head: number, base: number]
   ].join("\n");
 };
 
+/** Every program's absolute size, so a comment with no change still shows the cost. */
+const overview = (m: Metric, names: string[], head: CiRun): string => {
+  const kb = names.map((n) => Math.round((m.get(head.programs[n]!) ?? 0) / 102.4) / 10);
+  return [
+    "```mermaid",
+    `%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#0969da"}}}}%%`,
+    "xychart-beta horizontal",
+    `  title "${m.title} per program, KB"`,
+    `  x-axis [${names.map((n) => JSON.stringify(n)).join(", ")}]`,
+    `  y-axis "KB" 0 --> ${Math.ceil(Math.max(...kb) * 1.05)}`,
+    `  bar [${kb.join(", ")}]`,
+    "```",
+  ].join("\n");
+};
+
 export const report = (head: CiRun, base: CiRun | undefined, opts: { runUrl?: string } = {}) => {
   const names = Object.keys(head.programs).sort();
   const out: string[] = [MARKER, "## Benchmarks", ""];
-  const took = `${(head.durationMs / 1000).toFixed(0)} s on ${head.env.cpus} vCPU`;
-  out.push(
-    base
-      ? `PR \`${short(head.sha)}\` against main \`${short(base.sha)}\` (${base.source === "same-job" ? "measured in this job, on the same runner" : `main's cached run from ${base.createdAt.slice(0, 16).replace("T", " ")} UTC`}). ${names.length} programs, measured in ${took}.`
-      : `PR \`${short(head.sha)}\`. No main run is cached yet, so there is nothing to compare with. ${names.length} programs, measured in ${took}.`,
-    "",
-  );
-
-  // Headline: per metric, how many programs moved.
-  const charts: string[] = [];
-  if (base) {
-    const lines: string[] = [];
-    for (const m of METRICS) {
-      const rows: Array<[string, number, number]> = [];
-      let better = 0;
-      let worse = 0;
-      let compared = 0;
-      for (const n of names) {
-        const h = m.get(head.programs[n]!);
-        const b = base.programs[n] && m.get(base.programs[n]!);
-        if (h === undefined || b === undefined) continue;
-        compared++;
-        const v = verdict(m, h, b);
-        if (v === "same") continue;
-        if (v === "better") better++;
-        else worse++;
-        rows.push([n, h, b]);
-      }
-      if (compared === 0) continue;
-      const moved = better + worse;
-      lines.push(
-        `| ${m.title}${m.noisy ? " ¹" : ""} | ${moved === 0 ? "no change" : `${better ? `${better} better` : ""}${better && worse ? ", " : ""}${worse ? `${worse} worse` : ""}`} | ${compared} |`,
-      );
-      if (moved > 0 && !m.noisy) charts.push(chart(m, rows));
+  // Per metric: the programs that moved past the noise threshold.
+  const moves = METRICS.map((m) => {
+    const rows: Array<[string, number, number]> = [];
+    let compared = 0;
+    for (const n of names) {
+      const h = m.get(head.programs[n]!);
+      const b = base?.programs[n] && m.get(base.programs[n]!);
+      if (h === undefined || b === undefined) continue;
+      compared++;
+      if (verdict(m, h, b) !== "same") rows.push([n, h, b]);
     }
-    out.push("| Metric | Change vs main | Programs |", "| --- | --- | ---: |", ...lines, "");
+    return { m, rows, compared };
+  });
+
+  // One verdict line a reader can stop at.
+  if (base) {
+    const say = (dir: "worse" | "better", noisy: boolean) =>
+      moves
+        .filter(({ m }) => !!m.noisy === noisy)
+        .map(({ m, rows }) => {
+          const hit = rows.filter(([, h, b]) => verdict(m, h, b) === dir);
+          if (!hit.length) return undefined;
+          const worst = hit.reduce((x, y) =>
+            Math.abs(y[1] / y[2] - 1) > Math.abs(x[1] / x[2] - 1) ? y : x,
+          );
+          return `${m.title.toLowerCase()} on ${hit.length} (up to ${signed(pct(worst[1], worst[2]))}%, ${worst[0]})`;
+        })
+        .filter(Boolean)
+        .join("; ");
+    const worse = say("worse", false);
+    const better = say("better", false);
+    const noisy = [say("worse", true), say("better", true)].filter(Boolean).join("; ");
+    if (worse) out.push(`### 🔴 Bigger than main: ${worse}`, "");
+    if (better) out.push(`### 🟢 Smaller than main: ${better}`, "");
+    if (!worse && !better) out.push("### 🟢 Same size as main", "");
+    if (noisy) out.push(`🟡 Timings moved, may be runner noise: ${noisy}`, "");
+  } else out.push("### No main run to compare with yet", "");
+
+  // Charts: what changed (PR as % of main), then every bundle size.
+  for (const { m, rows } of moves) if (rows.length && !m.noisy) out.push(chart(m, rows), "");
+  const bundleMetric = METRICS.find((x) => x.id === "bundle")!;
+  const bundled = names.filter((n) => bundleMetric.get(head.programs[n]!) !== undefined);
+  if (bundled.length) out.push(overview(bundleMetric, bundled, head), "");
+
+  out.push("<details><summary>Numbers</summary>", "");
+  if (base) {
+    out.push("| Metric | Change vs main | Programs |", "| --- | --- | ---: |");
+    for (const { m, rows, compared } of moves) {
+      if (!compared) continue;
+      const better = rows.filter(([, h, b]) => verdict(m, h, b) === "better").length;
+      const worse = rows.length - better;
+      out.push(
+        `| ${m.title}${m.noisy ? " ¹" : ""} | ${rows.length === 0 ? "no change" : [better && `${better} better`, worse && `${worse} worse`].filter(Boolean).join(", ")} | ${compared} |`,
+      );
+    }
+    out.push("");
   }
-  out.push(...charts.flatMap((c) => [c, ""]));
 
   // Per-program table.
   const cols = METRICS.filter((m) => names.some((n) => m.get(head.programs[n]!) !== undefined));
@@ -247,8 +281,11 @@ export const report = (head: CiRun, base: CiRun | undefined, opts: { runUrl?: st
       return `| ${pkg} | ${d(h.tarball, b?.tarball)} | ${d(h.unpacked, b?.unpacked)} | ${h.files} |`;
     });
   const bl = head.baselines;
+  const took = `${(head.durationMs / 1000).toFixed(0)} s on ${head.env.cpus} vCPU`;
   out.push(
-    "<details><summary>Download size, baselines, scope</summary>",
+    base
+      ? `PR \`${short(head.sha)}\` against main \`${short(base.sha)}\` (${base.source === "same-job" ? "measured in this job, on the same runner" : `main's cached run from ${base.createdAt.slice(0, 16).replace("T", " ")} UTC`}). ${names.length} programs, measured in ${took}.`
+      : `PR \`${short(head.sha)}\`. No main run is cached yet. ${names.length} programs, measured in ${took}.`,
     "",
     "| Package | Tarball | Unpacked | Files |",
     "| --- | ---: | ---: | ---: |",
@@ -262,6 +299,8 @@ export const report = (head: CiRun, base: CiRun | undefined, opts: { runUrl?: st
       .map(([k, v]) => `${k} ${(v / 1000).toFixed(1)} s`)
       .join(", ")}.`,
     "",
+    `¹ Timings run on a different runner than main's, so 🟡 marks a large move that may still be noise. Sizes, heap and object counts are stable. Offline: every call hits a canned in-memory response. Full suite: \`node benches/sdks/run.ts\`.${opts.runUrl ? ` [Job log](${opts.runUrl})` : ""}`,
+    "",
     "</details>",
     "",
   );
@@ -274,8 +313,5 @@ export const report = (head: CiRun, base: CiRun | undefined, opts: { runUrl?: st
       "</details>",
       "",
     );
-  out.push(
-    `¹ Timings run on a different runner than main's, so 🟡 marks a large move that may still be noise. Sizes, heap and object counts are stable. Offline: every call hits a canned in-memory response. Full suite: \`node benches/sdks/run.ts\`.${opts.runUrl ? ` [Job log](${opts.runUrl})` : ""}`,
-  );
   return `${out.join("\n")}\n`;
 };
