@@ -335,14 +335,16 @@ describe("success decoding", () => {
     expect(await run(GetResourceGroup(rg), layer)).toEqual(group);
   });
 
-  test("202 Accepted and 204 No Content with empty bodies decode to {}", async () => {
+  test("empty 202 / 204 / 200 bodies decode to the declared headers, or {}", async () => {
     for (const [status, body] of [
       [202, ""],
       [204, null],
       [200, ""],
     ] as const) {
       const { layer } = fakeArm(status, body, status === 202 ? { location: "https://poll" } : {});
-      expect(await run(DeleteResourceGroup(rg), layer)).toEqual({});
+      expect(await run(DeleteResourceGroup(rg), layer)).toEqual(
+        status === 202 ? { location: "https://poll" } : {},
+      );
     }
   });
 

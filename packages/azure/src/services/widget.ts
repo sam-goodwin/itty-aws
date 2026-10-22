@@ -19,7 +19,12 @@ export interface DeleteEmployeeRequest {
   /** The name of the Employee */
   employeeName: string;
 }
-export interface DeleteEmployeeResponse {}
+export interface DeleteEmployeeResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type EmployeesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Employee properties */
@@ -101,6 +106,10 @@ export interface EmployeesCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: EmployeeProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetEmployeeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -259,7 +268,7 @@ export const EmployeesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(8, __c1, 0) as any as S.Schema<EmployeesCreateOrUpdateRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<EmployeesCreateOrUpdateResponse>,
+  output: __S(9, __c1, 1) as any as S.Schema<EmployeesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -274,7 +283,7 @@ export const GetEmployee: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<GetEmployeeRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<GetEmployeeResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetEmployeeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -288,8 +297,8 @@ export const ListEmployeeByResourceGroup: API.OperationMethod<
   ListEmployeeByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<ListEmployeeByResourceGroupRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<EmployeeListResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<ListEmployeeByResourceGroupRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<EmployeeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -303,8 +312,8 @@ export const ListEmployeeBySubscription: API.OperationMethod<
   ListEmployeeBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListEmployeeBySubscriptionRequest>,
-  output: __S(49, __c6, 1) as any as S.Schema<EmployeeListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListEmployeeBySubscriptionRequest>,
+  output: __S(57, __c7, 1) as any as S.Schema<EmployeeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -318,8 +327,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(68, __c8, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(76, __c9, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -333,8 +342,8 @@ export const UpdateEmployee: API.OperationMethod<
   UpdateEmployeeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<UpdateEmployeeRequest>,
-  output: __S(19, __c2, 3) as any as S.Schema<UpdateEmployeeResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<UpdateEmployeeRequest>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateEmployeeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -359,7 +368,12 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "DeleteEmployeeRequest" });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteEmployeeResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteEmployeeResponse" });
   }
 }
 function __c1(j: number): any {
@@ -382,6 +396,20 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "EmployeesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(16, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(18, __c2, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "EmployeesCreateOrUpdateResponse" });
   }
 }
 function __c2(j: number): any {
@@ -408,18 +436,6 @@ function __c2(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmployeeProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c2, 1)),
-          tags: S.optional(__S(16, __c2, 0)),
-          location: S.String,
-          properties: S.optional(__S(18, __c2, 2)),
-        }),
-      ).annotate({ identifier: "EmployeesCreateOrUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -458,6 +474,22 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(17, __c2, 1)),
+          tags: S.optional(__S(16, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(18, __c2, 2)),
+        }),
+      ).annotate({ identifier: "GetEmployeeResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
         }).pipe(
@@ -471,20 +503,20 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ListEmployeeByResourceGroupRequest" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(19, __c2, 3));
+      return S.Array(__S(40, __c5, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(48, __c6, 0),
+          value: __S(56, __c7, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmployeeListResult" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -501,7 +533,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "ListEmployeeBySubscriptionRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -528,23 +560,23 @@ function __c8(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(65, __c8, 1)),
+          display: S.optional(__S(73, __c9, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(66, __c8, 2));
+      return S.Array(__S(74, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(67, __c8, 3)),
+          value: S.optional(__S(75, __c9, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

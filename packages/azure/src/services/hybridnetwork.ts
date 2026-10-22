@@ -32,7 +32,10 @@ export interface AddArtifactStoreNetworkFabricControllerEndPointsRequest {
   /** list of network fabric controllers. */
   networkFabricControllerIds?: AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList;
 }
-export interface AddArtifactStoreNetworkFabricControllerEndPointsResponse {}
+export interface AddArtifactStoreNetworkFabricControllerEndPointsResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** Reference to another resource. */
 export type ApproveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsItem =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
@@ -51,7 +54,10 @@ export interface ApproveArtifactStorePrivateEndPointsRequest {
   /** list of private endpoints. */
   manualPrivateEndPointConnections?: ApproveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList;
 }
-export interface ApproveArtifactStorePrivateEndPointsResponse {}
+export interface ApproveArtifactStorePrivateEndPointsResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** Resource tags. */
 export type ArtifactManifestsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** The artifact type. */
@@ -442,7 +448,10 @@ export interface DeleteArtifactManifestRequest {
   /** The name of the artifact manifest. */
   artifactManifestName: string;
 }
-export interface DeleteArtifactManifestResponse {}
+export interface DeleteArtifactManifestResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteArtifactStoreRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -453,7 +462,10 @@ export interface DeleteArtifactStoreRequest {
   /** The name of the artifact store. */
   artifactStoreName: string;
 }
-export interface DeleteArtifactStoreResponse {}
+export interface DeleteArtifactStoreResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** Reference to another resource. */
 export type DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem =
   AddArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsItem;
@@ -472,7 +484,10 @@ export interface DeleteArtifactStoreNetworkFabricControllerEndPointsRequest {
   /** list of network fabric controllers. */
   networkFabricControllerIds?: DeleteArtifactStoreNetworkFabricControllerEndPointsRequestNetworkFabricControllerIdsList;
 }
-export interface DeleteArtifactStoreNetworkFabricControllerEndPointsResponse {}
+export interface DeleteArtifactStoreNetworkFabricControllerEndPointsResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteConfigurationGroupSchemaRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -483,7 +498,10 @@ export interface DeleteConfigurationGroupSchemaRequest {
   /** The name of the configuration group schema. */
   configurationGroupSchemaName: string;
 }
-export interface DeleteConfigurationGroupSchemaResponse {}
+export interface DeleteConfigurationGroupSchemaResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteConfigurationGroupValueRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -492,7 +510,10 @@ export interface DeleteConfigurationGroupValueRequest {
   /** The name of the configuration group value. */
   configurationGroupValueName: string;
 }
-export interface DeleteConfigurationGroupValueResponse {}
+export interface DeleteConfigurationGroupValueResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteNetworkFunctionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -501,7 +522,10 @@ export interface DeleteNetworkFunctionRequest {
   /** The name of the network function. */
   networkFunctionName: string;
 }
-export interface DeleteNetworkFunctionResponse {}
+export interface DeleteNetworkFunctionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteNetworkFunctionDefinitionGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -512,7 +536,10 @@ export interface DeleteNetworkFunctionDefinitionGroupRequest {
   /** The name of the network function definition group. */
   networkFunctionDefinitionGroupName: string;
 }
-export interface DeleteNetworkFunctionDefinitionGroupResponse {}
+export interface DeleteNetworkFunctionDefinitionGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteNetworkFunctionDefinitionVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -525,7 +552,10 @@ export interface DeleteNetworkFunctionDefinitionVersionRequest {
   /** The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkFunctionDefinitionVersionName: string;
 }
-export interface DeleteNetworkFunctionDefinitionVersionResponse {}
+export interface DeleteNetworkFunctionDefinitionVersionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteNetworkServiceDesignGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -536,7 +566,10 @@ export interface DeleteNetworkServiceDesignGroupRequest {
   /** The name of the network service design group. */
   networkServiceDesignGroupName: string;
 }
-export interface DeleteNetworkServiceDesignGroupResponse {}
+export interface DeleteNetworkServiceDesignGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteNetworkServiceDesignVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -549,7 +582,10 @@ export interface DeleteNetworkServiceDesignVersionRequest {
   /** The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html. */
   networkServiceDesignVersionName: string;
 }
-export interface DeleteNetworkServiceDesignVersionResponse {}
+export interface DeleteNetworkServiceDesignVersionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeletePublisherRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -558,7 +594,10 @@ export interface DeletePublisherRequest {
   /** The name of the publisher. */
   publisherName: string;
 }
-export interface DeletePublisherResponse {}
+export interface DeletePublisherResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteSiteRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -567,7 +606,10 @@ export interface DeleteSiteRequest {
   /** The name of the network service site. */
   siteName: string;
 }
-export interface DeleteSiteResponse {}
+export interface DeleteSiteResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface DeleteSiteNetworkServiceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -576,7 +618,10 @@ export interface DeleteSiteNetworkServiceRequest {
   /** The name of the site network service. */
   siteNetworkServiceName: string;
 }
-export interface DeleteSiteNetworkServiceResponse {}
+export interface DeleteSiteNetworkServiceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** The http method of the request. */
 export type RequestMetadataHttpMethod = "Unknown" | "Post" | "Put" | "Get" | "Patch" | "Delete";
 /** Request metadata of execute request post call payload. */
@@ -602,7 +647,10 @@ export interface ExecuteNetworkFunctionRequestRequest {
   /** The request metadata. */
   requestMetadata: RequestMetadata;
 }
-export interface ExecuteNetworkFunctionRequestResponse {}
+export interface ExecuteNetworkFunctionRequestResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 export interface GetArtifactManifestRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1717,6 +1765,8 @@ export interface ArtifactStoreNetworkFabricControllerEndPointsList {
   value?: ArtifactStoreNetworkFabricControllerEndPointsListValueList;
   /** The URI to get the next set of results. */
   nextLink?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface ListArtifactStorePrivateEndPointsRequest {
   /** The ID of the target subscription. */
@@ -1748,6 +1798,8 @@ export interface ArtifactStorePrivateEndPointsListResult {
   value?: ArtifactStorePrivateEndPointsListResultValueList;
   /** The URI to get the next set of results. */
   nextLink?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface ListComponentByNetworkFunctionRequest {
   /** The ID of the target subscription. */
@@ -2620,7 +2672,10 @@ export interface RemoveArtifactStorePrivateEndPointsRequest {
   /** list of private endpoints. */
   manualPrivateEndPointConnections?: RemoveArtifactStorePrivateEndPointsRequestManualPrivateEndPointConnectionsList;
 }
-export interface RemoveArtifactStorePrivateEndPointsResponse {}
+export interface RemoveArtifactStorePrivateEndPointsResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** Resource tags. */
 export type SiteNetworkServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Managed resource group configuration. */
@@ -2804,6 +2859,8 @@ export interface UpdateArtifactManifestStateRequest {
 export interface ArtifactManifestUpdateState {
   /** The artifact manifest state. */
   artifactManifestState?: ArtifactManifestState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Resource tags. */
 export type UpdateArtifactStoreRequestTagsMap = { [key: string]: string | undefined };
@@ -2885,6 +2942,8 @@ export interface UpdateConfigurationGroupSchemaStateRequest {
 export interface ConfigurationGroupSchemaVersionUpdateState {
   /** The configuration group schema state. */
   versionState?: ConfigurationGroupSchemaVersionState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Resource tags. */
 export type UpdateConfigurationGroupValueTagsRequestTagsMap = { [key: string]: string | undefined };
@@ -3010,6 +3069,8 @@ export interface UpdateNetworkFunctionDefinitionVersionStateRequest {
 export interface NetworkFunctionDefinitionVersionUpdateState {
   /** The network function definition version state. Only the 'Active' and 'Deprecated' states are allowed for updates. Other states are used for internal state transitioning. */
   versionState?: VersionState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Resource tags. */
 export type UpdateNetworkFunctionTagsRequestTagsMap = { [key: string]: string | undefined };
@@ -3133,6 +3194,8 @@ export interface UpdateNetworkServiceDesignVersionStateRequest {
 export interface NetworkServiceDesignVersionUpdateState {
   /** The network service design version state. */
   versionState?: NSDVersionState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** The artifact update state properties. */
 export interface ArtifactChangeStateProperties {
@@ -3166,6 +3229,8 @@ export interface UpdateProxyArtifactStateResponse {
   systemData?: SystemData;
   /** Proxy Artifact overview properties. */
   properties?: ProxyArtifactOverviewPropertiesValue;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Resource tags. */
 export type UpdatePublisherRequestTagsMap = { [key: string]: string | undefined };
@@ -3742,7 +3807,7 @@ export const GetProxyArtifact: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(640, __c40, 0) as any as S.Schema<GetProxyArtifactRequest>,
-  output: __S(642, __c40, 2) as any as S.Schema<ProxyArtifactVersionsOverviewListResult>,
+  output: __S(643, __c40, 3) as any as S.Schema<ProxyArtifactVersionsOverviewListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4514,7 +4579,7 @@ export const UpdateProxyArtifactState: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1745, __c109, 1) as any as S.Schema<UpdateProxyArtifactStateRequest>,
-  output: __S(657, __c41, 1) as any as S.Schema<UpdateProxyArtifactStateResponse>,
+  output: __S(1746, __c109, 2) as any as S.Schema<UpdateProxyArtifactStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4590,9 +4655,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AddArtifactStoreNetworkFabricControllerEndPointsResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "AddArtifactStoreNetworkFabricControllerEndPointsResponse" });
   }
 }
 function __c2(j: number): any {
@@ -5514,11 +5581,21 @@ function __c40(j: number): any {
         ),
       ).annotate({ identifier: "GetProxyArtifactRequest" });
     case 1:
-      return S.Array(__S(657, __c41, 1));
-    case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(641, __c40, 1)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(272, __c17, 0)),
+          properties: S.optional(__S(656, __c41, 0)),
+        }),
+      ).annotate({ identifier: "ProxyArtifactVersionsListOverview" });
+    case 2:
+      return S.Array(__S(641, __c40, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          value: S.optional(__S(642, __c40, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProxyArtifactVersionsOverviewListResult" });
@@ -5534,16 +5611,6 @@ function __c41(j: number): any {
           artifactState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProxyArtifactOverviewPropertiesValue" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(272, __c17, 0)),
-          properties: S.optional(__S(656, __c41, 0)),
-        }),
-      ).annotate({ identifier: "ProxyArtifactVersionsListOverview" });
   }
 }
 function __c42(j: number): any {
@@ -5836,6 +5903,7 @@ function __c51(j: number): any {
         S.Struct({
           value: S.optional(__S(818, __c51, 2)),
           nextLink: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "ArtifactStoreNetworkFabricControllerEndPointsList" });
   }
@@ -5871,6 +5939,7 @@ function __c52(j: number): any {
         S.Struct({
           value: S.optional(__S(834, __c52, 2)),
           nextLink: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "ArtifactStorePrivateEndPointsListResult" });
   }
@@ -6591,7 +6660,7 @@ function __c85(j: number): any {
           location: S.String,
           properties: S.optional(__S(1360, __c85, 0)),
           etag: S.optional(S.String),
-          identity: S.optional(__S(1377, __c86, 1)),
+          identity: S.optional(__S(1378, __c86, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6606,12 +6675,14 @@ function __c85(j: number): any {
 function __c86(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(16, __c1, 0));
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
     case 1:
+      return S.Record(S.String, __S(1376, __c86, 0));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(1376, __c86, 0))),
+          userAssignedIdentities: S.optional(S.NullOr(__S(1377, __c86, 1))),
         }),
       ).annotate({ identifier: "NetworkFunctionsCreateOrUpdateRequestIdentity" });
   }
@@ -6710,7 +6781,7 @@ function __c90(j: number): any {
           tags: S.optional(__S(288, __c18, 0)),
           location: S.String,
           properties: S.optional(__S(1440, __c90, 0)),
-          identity: S.optional(__S(1377, __c86, 1)),
+          identity: S.optional(__S(1378, __c86, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6770,7 +6841,7 @@ function __c92(j: number): any {
           tags: S.optional(__S(288, __c18, 0)),
           location: S.String,
           properties: S.optional(__S(1472, __c92, 0)),
-          identity: S.optional(__S(1377, __c86, 1)),
+          identity: S.optional(__S(1378, __c86, 2)),
           sku: S.optional(__S(1473, __c92, 1)),
         }).pipe(
           T.Http({
@@ -6857,6 +6928,7 @@ function __c95(j: number): any {
       return S.suspend(() =>
         S.Struct({
           artifactManifestState: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "ArtifactManifestUpdateState" });
   }
@@ -6950,6 +7022,7 @@ function __c100(j: number): any {
       return S.suspend(() =>
         S.Struct({
           versionState: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "ConfigurationGroupSchemaVersionUpdateState" });
   }
@@ -7151,6 +7224,17 @@ function __c109(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProxyArtifactStateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(272, __c17, 0)),
+          properties: S.optional(__S(656, __c41, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateProxyArtifactStateResponse" });
   }
 }
 function __c110(j: number): any {

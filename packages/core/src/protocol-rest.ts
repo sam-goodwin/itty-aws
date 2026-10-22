@@ -46,6 +46,9 @@ import {
   mapsVerbatim,
   matchTypedError,
   resolveNode,
+  responseHeaderMembers,
+  withResponseHeaders,
+  type ResponseHeaderMember,
 } from "./protocol-http.ts";
 import { checkResponse, withholdActual } from "./response-validation.ts";
 import { parseRetryAfterForStatus } from "./retry-after.ts";
@@ -314,6 +317,8 @@ interface DecodePlan {
   readonly sensitive: boolean;
   /** Parse errors withhold the body (see {@link hasSensitiveMember}). */
   readonly withholdBody: boolean;
+  /** Members read from response headers (`T.Header`). */
+  readonly headers: ReadonlyArray<ResponseHeaderMember>;
 }
 
 const decodePlans = /*@__PURE__*/ new WeakMap<AST.AST, DecodePlan>();
@@ -325,6 +330,7 @@ const decodePlanFor = (outputAst: AST.AST): DecodePlan => {
       verbatim: mapsVerbatim(outputAst, "decode"),
       sensitive: hasSensitive(outputAst),
       withholdBody: hasSensitiveMember(outputAst),
+      headers: responseHeaderMembers(outputAst),
     };
     decodePlans.set(outputAst, plan);
   }
@@ -488,7 +494,11 @@ export const makeRestProtocol = <C>(options: RestProtocolOptions<C>): Layer.Laye
     }
     let body: unknown = nonJson ? text : (json ?? {});
     if (options.transformResponse) body = options.transformResponse(body);
-    const mapped = plan.verbatim ? body : mapKeys(outputAst, body, "decode");
+    const mapped = withResponseHeaders(
+      plan.headers,
+      plan.verbatim ? body : mapKeys(outputAst, body, "decode"),
+      headers,
+    );
     const invalid = checkResponse(context, outputAst, mapped);
     if (invalid !== undefined) {
       return {

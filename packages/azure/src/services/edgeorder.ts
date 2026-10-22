@@ -142,6 +142,10 @@ export interface CreateAddressResponse {
   location: string;
   /** Properties of an address. */
   properties: AddressProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateOrderItemRequestTagsMap = { [key: string]: string | undefined };
@@ -669,6 +673,10 @@ export interface CreateOrderItemResponse {
   properties: OrderItemProperties;
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAddressRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -678,7 +686,12 @@ export interface DeleteAddressRequest {
   /** The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only. */
   addressName: string;
 }
-export interface DeleteAddressResponse {}
+export interface DeleteAddressResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteOrderItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -687,7 +700,12 @@ export interface DeleteOrderItemRequest {
   /** The name of the order item. */
   orderItemName: string;
 }
-export interface DeleteOrderItemResponse {}
+export interface DeleteOrderItemResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAddressRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1481,7 +1499,12 @@ export interface OrderItemsReturnRequest {
   /** Shipping Box required. */
   shippingBoxRequired?: boolean;
 }
-export interface OrderItemsReturnResponse {}
+export interface OrderItemsReturnResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Address Update Properties. */
 export interface AddressUpdateProperties {
   /** Shipping details for the address. */
@@ -1520,6 +1543,10 @@ export interface UpdateAddressResponse {
   location: string;
   /** Properties of an address. */
   properties: AddressProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Additional notification email list. */
 export type OrderItemUpdatePropertiesInputNotificationEmailListList = Array<string>;
@@ -1581,6 +1608,10 @@ export interface UpdateOrderItemResponse {
   properties: OrderItemProperties;
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CancelOrderItemError = AzureOpError;
 /** Cancel order item. */
@@ -1606,7 +1637,7 @@ export const CreateAddress: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c2, 0) as any as S.Schema<CreateAddressRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<CreateAddressResponse>,
+  output: __S(96, __c3, 0) as any as S.Schema<CreateAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1621,7 +1652,7 @@ export const CreateOrderItem: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(775, __c24, 7) as any as S.Schema<CreateOrderItemRequest>,
-  output: __S(962, __c30, 2) as any as S.Schema<CreateOrderItemResponse>,
+  output: __S(803, __c25, 3) as any as S.Schema<CreateOrderItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1636,7 +1667,7 @@ export const DeleteAddress: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1024, __c32, 0) as any as S.Schema<DeleteAddressRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAddressResponse>,
+  output: __S(1056, __c33, 0) as any as S.Schema<DeleteAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1650,8 +1681,8 @@ export const DeleteOrderItem: API.OperationMethod<
   DeleteOrderItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<DeleteOrderItemRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteOrderItemResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteOrderItemRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<DeleteOrderItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1665,8 +1696,8 @@ export const GetAddress: API.OperationMethod<
   GetAddressError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<GetAddressRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<GetAddressResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetAddressRequest>,
+  output: __S(1152, __c36, 0) as any as S.Schema<GetAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1680,8 +1711,8 @@ export const GetOrder: API.OperationMethod<
   GetOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<GetOrderRequest>,
-  output: __S(1153, __c36, 1) as any as S.Schema<GetOrderResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetOrderRequest>,
+  output: __S(1217, __c38, 1) as any as S.Schema<GetOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1695,8 +1726,8 @@ export const GetOrderItem: API.OperationMethod<
   GetOrderItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<GetOrderItemRequest>,
-  output: __S(962, __c30, 2) as any as S.Schema<GetOrderItemResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetOrderItemRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<GetOrderItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1710,8 +1741,8 @@ export const ListAddressByResourceGroup: API.OperationMethod<
   ListAddressByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c38, 0) as any as S.Schema<ListAddressByResourceGroupRequest>,
-  output: __S(1249, __c39, 1) as any as S.Schema<AddressResourceList>,
+  input: __S(1312, __c41, 0) as any as S.Schema<ListAddressByResourceGroupRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<AddressResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1725,8 +1756,8 @@ export const ListAddressBySubscription: API.OperationMethod<
   ListAddressBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<ListAddressBySubscriptionRequest>,
-  output: __S(1249, __c39, 1) as any as S.Schema<AddressResourceList>,
+  input: __S(1376, __c43, 0) as any as S.Schema<ListAddressBySubscriptionRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<AddressResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1865,7 +1896,7 @@ export const OrderItemsReturn: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(704, __c22, 0) as any as S.Schema<OrderItemsReturnRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<OrderItemsReturnResponse>,
+  output: __S(1056, __c33, 0) as any as S.Schema<OrderItemsReturnResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1880,7 +1911,7 @@ export const UpdateAddress: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(737, __c23, 1) as any as S.Schema<UpdateAddressRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<UpdateAddressResponse>,
+  output: __S(96, __c3, 0) as any as S.Schema<UpdateAddressResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1895,7 +1926,7 @@ export const UpdateOrderItem: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(995, __c31, 3) as any as S.Schema<UpdateOrderItemRequest>,
-  output: __S(962, __c30, 2) as any as S.Schema<UpdateOrderItemResponse>,
+  output: __S(803, __c25, 3) as any as S.Schema<UpdateOrderItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1936,9 +1967,9 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           addressName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
-          properties: __S(96, __c3, 0),
+          properties: __S(128, __c4, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1955,20 +1986,38 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          addressClassification: S.optional(S.String),
-          shippingAddress: S.optional(__S(192, __c6, 0)),
-          contactDetails: S.optional(__S(193, __c6, 1)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c6, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: __S(257, __c8, 1),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
-      ).annotate({ identifier: "AddressPropertiesInput" });
+      ).annotate({ identifier: "CreateAddressResponse" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          addressClassification: S.optional(S.String),
+          shippingAddress: S.optional(__S(224, __c7, 0)),
+          contactDetails: S.optional(__S(225, __c7, 1)),
+        }),
+      ).annotate({ identifier: "AddressPropertiesInput" });
   }
 }
 function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1983,7 +2032,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2007,12 +2056,12 @@ function __c6(j: number): any {
           phone: S.optional(S.String),
           phoneExtension: S.optional(S.String),
           mobile: S.optional(S.String),
-          emailList: S.optional(__S(128, __c4, 0)),
+          emailList: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "ContactDetails" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -2020,28 +2069,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           addressClassification: S.optional(S.String),
-          shippingAddress: S.optional(__S(192, __c6, 0)),
-          contactDetails: S.optional(__S(193, __c6, 1)),
+          shippingAddress: S.optional(__S(224, __c7, 0)),
+          contactDetails: S.optional(__S(225, __c7, 1)),
           addressValidationStatus: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddressProperties" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          tags: S.optional(__S(224, __c7, 0)),
-          location: S.String,
-          properties: __S(225, __c7, 1),
-        }),
-      ).annotate({ identifier: "CreateAddressResponse" });
   }
 }
 function __c9(j: number): any {
@@ -2110,7 +2143,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1153, __c36, 1));
+      return S.Array(__S(1217, __c38, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2164,7 +2197,7 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(962, __c30, 2));
+      return S.Array(__S(1280, __c40, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2266,7 +2299,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          supportedValues: __S(128, __c4, 0),
+          supportedValues: __S(160, __c5, 0),
         }),
       ).annotate({ identifier: "FilterableProperty" });
     case 1:
@@ -2288,8 +2321,8 @@ function __c18(j: number): any {
           descriptionType: S.optional(S.String),
           shortDescription: S.optional(S.String),
           longDescription: S.optional(S.String),
-          keywords: S.optional(__S(128, __c4, 0)),
-          attributes: S.optional(__S(128, __c4, 0)),
+          keywords: S.optional(__S(160, __c5, 0)),
+          attributes: S.optional(__S(160, __c5, 0)),
           links: S.optional(__S(580, __c18, 4)),
         }),
       ).annotate({ identifier: "Description" });
@@ -2388,7 +2421,7 @@ function __c18(j: number): any {
           provisioningSupport: S.optional(S.String),
           childConfigurationTypes: S.optional(__S(578, __c18, 2)),
           groupedChildConfigurations: S.optional(__S(594, __c18, 18)),
-          supportedTermCommitmentDurations: S.optional(__S(128, __c4, 0)),
+          supportedTermCommitmentDurations: S.optional(__S(160, __c5, 0)),
           filterableProperties: S.optional(__S(577, __c18, 1)),
           displayName: S.optional(S.String),
           description: S.optional(__S(581, __c18, 5)),
@@ -2432,7 +2465,7 @@ function __c18(j: number): any {
           provisioningSupport: S.optional(S.String),
           childConfigurationTypes: S.optional(__S(578, __c18, 2)),
           groupedChildConfigurations: S.optional(__S(599, __c18, 23)),
-          supportedTermCommitmentDurations: S.optional(__S(128, __c4, 0)),
+          supportedTermCommitmentDurations: S.optional(__S(160, __c5, 0)),
         }),
       ).annotate({ identifier: "ConfigurationProperties" });
     case 25:
@@ -2572,7 +2605,7 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           orderItemName: S.String.pipe(T.Label()),
-          returnAddress: S.optional(__S(96, __c3, 0)),
+          returnAddress: S.optional(__S(128, __c4, 0)),
           returnReason: S.String,
           serviceTag: S.optional(S.String),
           shippingBoxRequired: S.optional(S.Boolean),
@@ -2592,8 +2625,8 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          shippingAddress: S.optional(__S(192, __c6, 0)),
-          contactDetails: S.optional(__S(193, __c6, 1)),
+          shippingAddress: S.optional(__S(224, __c7, 0)),
+          contactDetails: S.optional(__S(225, __c7, 1)),
         }),
       ).annotate({ identifier: "AddressUpdateProperties" });
     case 1:
@@ -2603,7 +2636,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           addressName: S.String.pipe(T.Label()),
           properties: S.optional(__S(736, __c23, 0)),
-          tags: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2646,14 +2679,14 @@ function __c24(j: number): any {
           orderItemMode: S.optional(S.String),
           siteDetails: S.optional(__S(928, __c29, 0)),
           preferences: S.optional(__S(935, __c29, 7)),
-          notificationEmailList: S.optional(__S(128, __c4, 0)),
+          notificationEmailList: S.optional(__S(160, __c5, 0)),
           error: S.optional(__S(32, __c1, 0)),
         }),
       ).annotate({ identifier: "OrderItemDetailsInput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          forwardAddress: __S(96, __c3, 0),
+          forwardAddress: __S(128, __c4, 0),
         }),
       ).annotate({ identifier: "AddressDetailsInput" });
     case 6:
@@ -2670,7 +2703,7 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           orderItemName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           location: S.String,
           properties: __S(774, __c24, 6),
           identity: S.optional(__S(802, __c25, 2)),
@@ -2710,6 +2743,21 @@ function __c25(j: number): any {
           userAssignedIdentities: S.optional(__S(801, __c25, 1)),
         }),
       ).annotate({ identifier: "ResourceIdentityInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c6, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: __S(958, __c29, 30),
+          identity: S.optional(__S(961, __c30, 1)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateOrderItemResponse" });
   }
 }
 function __c26(j: number): any {
@@ -2958,7 +3006,7 @@ function __c29(j: number): any {
           preferences: S.optional(__S(935, __c29, 7)),
           forwardShippingDetails: S.optional(__S(948, __c29, 20)),
           reverseShippingDetails: S.optional(__S(949, __c29, 21)),
-          notificationEmailList: S.optional(__S(128, __c4, 0)),
+          notificationEmailList: S.optional(__S(160, __c5, 0)),
           cancellationReason: S.optional(S.String),
           cancellationStatus: S.optional(S.String),
           deletionStatus: S.optional(S.String),
@@ -2971,8 +3019,8 @@ function __c29(j: number): any {
     case 29:
       return S.suspend(() =>
         S.Struct({
-          forwardAddress: __S(225, __c7, 1),
-          returnAddress: S.optional(__S(225, __c7, 1)),
+          forwardAddress: __S(257, __c8, 1),
+          returnAddress: S.optional(__S(257, __c8, 1)),
         }),
       ).annotate({ identifier: "AddressDetails" });
     case 30:
@@ -3007,19 +3055,6 @@ function __c30(j: number): any {
           userAssignedIdentities: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({ identifier: "ResourceIdentity" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          tags: S.optional(__S(224, __c7, 0)),
-          location: S.String,
-          properties: __S(958, __c29, 30),
-          identity: S.optional(__S(961, __c30, 1)),
-        }),
-      ).annotate({ identifier: "CreateOrderItemResponse" });
   }
 }
 function __c31(j: number): any {
@@ -3040,9 +3075,9 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          forwardAddress: S.optional(__S(96, __c3, 0)),
+          forwardAddress: S.optional(__S(128, __c4, 0)),
           preferences: S.optional(__S(935, __c29, 7)),
-          notificationEmailList: S.optional(__S(128, __c4, 0)),
+          notificationEmailList: S.optional(__S(160, __c5, 0)),
           orderItemDetails: S.optional(__S(993, __c31, 1)),
         }),
       ).annotate({ identifier: "OrderItemUpdatePropertiesInput" });
@@ -3053,7 +3088,7 @@ function __c31(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           orderItemName: S.String.pipe(T.Label()),
           properties: S.optional(__S(994, __c31, 2)),
-          tags: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
           identity: S.optional(__S(802, __c25, 2)),
         }).pipe(
           T.Http({
@@ -3090,6 +3125,17 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAddressResponse" });
+  }
+}
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           orderItemName: S.String.pipe(T.Label()),
@@ -3104,7 +3150,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "DeleteOrderItemRequest" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3123,7 +3169,23 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetAddressRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c6, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: __S(257, __c8, 1),
+        }),
+      ).annotate({ identifier: "GetAddressResponse" });
+  }
+}
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3143,12 +3205,12 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetOrderRequest" });
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          orderItemIds: S.optional(__S(128, __c4, 0)),
+          orderItemIds: S.optional(__S(160, __c5, 0)),
           currentStage: S.optional(__S(832, __c26, 0)),
           orderStageHistory: S.optional(__S(833, __c26, 1)),
           orderMode: S.optional(S.String),
@@ -3160,13 +3222,13 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(160, __c5, 0)),
-          properties: __S(1152, __c36, 0),
+          systemData: S.optional(__S(192, __c6, 0)),
+          properties: __S(1216, __c38, 0),
         }),
       ).annotate({ identifier: "GetOrderResponse" });
   }
 }
-function __c37(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3186,7 +3248,24 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetOrderItemRequest" });
   }
 }
-function __c38(j: number): any {
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c6, 0)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: __S(958, __c29, 30),
+          identity: S.optional(__S(961, __c30, 1)),
+        }),
+      ).annotate({ identifier: "GetOrderItemResponse" });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3207,20 +3286,20 @@ function __c38(j: number): any {
       ).annotate({ identifier: "ListAddressByResourceGroupRequest" });
   }
 }
-function __c39(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(256, __c8, 0));
+      return S.Array(__S(1152, __c36, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1248, __c39, 0),
+          value: __S(1344, __c42, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddressResourceList" });
   }
 }
-function __c40(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

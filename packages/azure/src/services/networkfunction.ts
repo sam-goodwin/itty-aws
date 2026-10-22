@@ -95,6 +95,10 @@ export interface AzureTrafficCollectorsCreateOrUpdateResponse {
   tags?: AzureTrafficCollectorsCreateOrUpdateResponseTagsMap;
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The ingestion type. */
 export type IngestionType = "IPFIX";
@@ -185,6 +189,10 @@ export interface CollectorPoliciesCreateOrUpdateResponse {
   tags?: CollectorPoliciesCreateOrUpdateResponseTagsMap;
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAzureTrafficCollectorRequest {
   /** The ID of the target subscription. */
@@ -194,7 +202,12 @@ export interface DeleteAzureTrafficCollectorRequest {
   /** Azure Traffic Collector name */
   azureTrafficCollectorName: string;
 }
-export interface DeleteAzureTrafficCollectorResponse {}
+export interface DeleteAzureTrafficCollectorResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCollectorPolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -205,7 +218,12 @@ export interface DeleteCollectorPolicyRequest {
   /** Collector Policy Name */
   collectorPolicyName: string;
 }
-export interface DeleteCollectorPolicyResponse {}
+export interface DeleteCollectorPolicyResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAzureTrafficCollectorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -449,7 +467,7 @@ export const AzureTrafficCollectorsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<AzureTrafficCollectorsCreateOrUpdateRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<AzureTrafficCollectorsCreateOrUpdateResponse>,
+  output: __S(2, __c0, 2) as any as S.Schema<AzureTrafficCollectorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -463,8 +481,8 @@ export const CollectorPoliciesCreateOrUpdate: API.OperationMethod<
   CollectorPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c3, 0) as any as S.Schema<CollectorPoliciesCreateOrUpdateRequest>,
-  output: __S(72, __c4, 8) as any as S.Schema<CollectorPoliciesCreateOrUpdateResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<CollectorPoliciesCreateOrUpdateRequest>,
+  output: __S(25, __c3, 1) as any as S.Schema<CollectorPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -478,8 +496,8 @@ export const DeleteAzureTrafficCollector: API.OperationMethod<
   DeleteAzureTrafficCollectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c7, 0) as any as S.Schema<DeleteAzureTrafficCollectorRequest>,
-  output: __S(128, __c8, 0) as any as S.Schema<DeleteAzureTrafficCollectorResponse>,
+  input: __S(56, __c7, 0) as any as S.Schema<DeleteAzureTrafficCollectorRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<DeleteAzureTrafficCollectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -493,8 +511,8 @@ export const DeleteCollectorPolicy: API.OperationMethod<
   DeleteCollectorPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<DeleteCollectorPolicyRequest>,
-  output: __S(128, __c8, 0) as any as S.Schema<DeleteCollectorPolicyResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<DeleteCollectorPolicyRequest>,
+  output: __S(64, __c8, 0) as any as S.Schema<DeleteCollectorPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -508,8 +526,8 @@ export const GetAzureTrafficCollector: API.OperationMethod<
   GetAzureTrafficCollectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<GetAzureTrafficCollectorRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<GetAzureTrafficCollectorResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<GetAzureTrafficCollectorRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<GetAzureTrafficCollectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -523,8 +541,8 @@ export const GetCollectorPolicy: API.OperationMethod<
   GetCollectorPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<GetCollectorPolicyRequest>,
-  output: __S(72, __c4, 8) as any as S.Schema<GetCollectorPolicyResponse>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetCollectorPolicyRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetCollectorPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -538,8 +556,8 @@ export const ListAzureTrafficCollectorsByResourceGroup: API.OperationMethod<
   ListAzureTrafficCollectorsByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<ListAzureTrafficCollectorsByResourceGroupRequest>,
-  output: __S(209, __c13, 1) as any as S.Schema<AzureTrafficCollectorListResult>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListAzureTrafficCollectorsByResourceGroupRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<AzureTrafficCollectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -553,8 +571,8 @@ export const ListAzureTrafficCollectorsBySubscription: API.OperationMethod<
   ListAzureTrafficCollectorsBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<ListAzureTrafficCollectorsBySubscriptionRequest>,
-  output: __S(209, __c13, 1) as any as S.Schema<AzureTrafficCollectorListResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListAzureTrafficCollectorsBySubscriptionRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<AzureTrafficCollectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -568,8 +586,8 @@ export const ListCollectorPolicies: API.OperationMethod<
   ListCollectorPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<ListCollectorPoliciesRequest>,
-  output: __S(242, __c15, 2) as any as S.Schema<CollectorPolicyListResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListCollectorPoliciesRequest>,
+  output: __S(138, __c17, 2) as any as S.Schema<CollectorPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -583,8 +601,8 @@ export const ListNetworkFunctionOperations: API.OperationMethod<
   ListNetworkFunctionOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<ListNetworkFunctionOperationsRequest>,
-  output: __S(260, __c16, 4) as any as S.Schema<OperationListResult>,
+  input: __S(144, __c18, 0) as any as S.Schema<ListNetworkFunctionOperationsRequest>,
+  output: __S(148, __c18, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -598,8 +616,8 @@ export const UpdateAzureTrafficCollectorTags: API.OperationMethod<
   UpdateAzureTrafficCollectorTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<UpdateAzureTrafficCollectorTagsRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<UpdateAzureTrafficCollectorTagsResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<UpdateAzureTrafficCollectorTagsRequest>,
+  output: __S(88, __c11, 0) as any as S.Schema<UpdateAzureTrafficCollectorTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -613,8 +631,8 @@ export const UpdateCollectorPolicyTags: API.OperationMethod<
   UpdateCollectorPolicyTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<UpdateCollectorPolicyTagsRequest>,
-  output: __S(72, __c4, 8) as any as S.Schema<UpdateCollectorPolicyTagsResponse>,
+  input: __S(48, __c6, 0) as any as S.Schema<UpdateCollectorPolicyTagsRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<UpdateCollectorPolicyTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -626,7 +644,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          virtualHub: S.optional(__S(32, __c2, 0)),
+          virtualHub: S.optional(__S(16, __c2, 0)),
         }),
       ).annotate({ identifier: "AzureTrafficCollectorPropertiesFormatInput" });
     case 1:
@@ -637,7 +655,7 @@ function __c0(j: number): any {
           azureTrafficCollectorName: S.String.pipe(T.Label()),
           properties: S.optional(__S(0, __c0, 0)),
           location: S.String,
-          tags: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -647,6 +665,21 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AzureTrafficCollectorsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(18, __c2, 2)),
+          location: S.String,
+          tags: S.optional(__S(8, __c1, 0)),
+          etag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AzureTrafficCollectorsCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -675,28 +708,15 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ResourceReferenceInput" });
     case 1:
-      return S.Array(__S(32, __c2, 0));
+      return S.Array(__S(16, __c2, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          collectorPolicies: S.optional(__S(33, __c2, 1)),
-          virtualHub: S.optional(__S(32, __c2, 0)),
+          collectorPolicies: S.optional(__S(17, __c2, 1)),
+          virtualHub: S.optional(__S(16, __c2, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureTrafficCollectorPropertiesFormat" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c1, 1)),
-          properties: S.optional(__S(34, __c2, 2)),
-          location: S.String,
-          tags: S.optional(__S(16, __c1, 0)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AzureTrafficCollectorsCreateOrUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -708,9 +728,9 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           azureTrafficCollectorName: S.String.pipe(T.Label()),
           collectorPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(71, __c4, 7)),
+          properties: S.optional(__S(39, __c4, 7)),
           location: S.String,
-          tags: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -720,6 +740,21 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CollectorPoliciesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(39, __c4, 7)),
+          location: S.String,
+          tags: S.optional(__S(8, __c1, 0)),
+          etag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CollectorPoliciesCreateOrUpdateResponse" });
   }
 }
 function __c4(j: number): any {
@@ -732,12 +767,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "IngestionSourcesPropertiesFormat" });
     case 1:
-      return S.Array(__S(64, __c4, 0));
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ingestionType: S.optional(S.String),
-          ingestionSources: S.optional(__S(65, __c4, 1)),
+          ingestionSources: S.optional(__S(33, __c4, 1)),
         }),
       ).annotate({ identifier: "IngestionPolicyPropertiesFormat" });
     case 3:
@@ -747,37 +782,24 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "EmissionPolicyDestination" });
     case 4:
-      return S.Array(__S(67, __c4, 3));
+      return S.Array(__S(35, __c4, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           emissionType: S.optional(S.String),
-          emissionDestinations: S.optional(__S(68, __c4, 4)),
+          emissionDestinations: S.optional(__S(36, __c4, 4)),
         }),
       ).annotate({ identifier: "EmissionPoliciesPropertiesFormat" });
     case 6:
-      return S.Array(__S(69, __c4, 5));
+      return S.Array(__S(37, __c4, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ingestionPolicy: S.optional(__S(66, __c4, 2)),
-          emissionPolicies: S.optional(__S(70, __c4, 6)),
+          ingestionPolicy: S.optional(__S(34, __c4, 2)),
+          emissionPolicies: S.optional(__S(38, __c4, 6)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CollectorPolicyPropertiesFormat" });
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(17, __c1, 1)),
-          properties: S.optional(__S(71, __c4, 7)),
-          location: S.String,
-          tags: S.optional(__S(16, __c1, 0)),
-          etag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CollectorPoliciesCreateOrUpdateResponse" });
   }
 }
 function __c5(j: number): any {
@@ -788,7 +810,7 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           azureTrafficCollectorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -809,7 +831,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           azureTrafficCollectorName: S.String.pipe(T.Label()),
           collectorPolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(8, __c1, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -843,9 +865,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteAzureTrafficCollectorResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAzureTrafficCollectorResponse" });
   }
 }
 function __c9(j: number): any {
@@ -892,6 +917,23 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(18, __c2, 2)),
+          location: S.String,
+          tags: S.optional(__S(8, __c1, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetAzureTrafficCollectorResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           azureTrafficCollectorName: S.String.pipe(T.Label()),
@@ -907,7 +949,24 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetCollectorPolicyRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(9, __c1, 1)),
+          properties: S.optional(__S(39, __c4, 7)),
+          location: S.String,
+          tags: S.optional(__S(8, __c1, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetCollectorPolicyResponse" });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -925,20 +984,20 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListAzureTrafficCollectorsByResourceGroupRequest" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(35, __c2, 3));
+      return S.Array(__S(88, __c11, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(208, __c13, 0),
+          value: __S(120, __c15, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureTrafficCollectorListResult" });
   }
 }
-function __c14(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -955,7 +1014,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "ListAzureTrafficCollectorsBySubscriptionRequest" });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -973,17 +1032,17 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListCollectorPoliciesRequest" });
     case 1:
-      return S.Array(__S(72, __c4, 8));
+      return S.Array(__S(104, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(241, __c15, 1),
+          value: __S(137, __c17, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CollectorPolicyListResult" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1010,16 +1069,16 @@ function __c16(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(257, __c16, 1)),
+          display: S.optional(__S(145, __c18, 1)),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(258, __c16, 2));
+      return S.Array(__S(146, __c18, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(259, __c16, 3),
+          value: __S(147, __c18, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });

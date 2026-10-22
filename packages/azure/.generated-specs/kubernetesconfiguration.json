@@ -290,7 +290,7 @@
         "target": "com.azure.kubernetesconfiguration#DeleteExtensionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.kubernetesconfiguration#DeleteExtensionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -301,6 +301,28 @@
         },
         "smithy.api#documentation": "Delete a Kubernetes Cluster Extension. This will cause the Agent to Uninstall the extension from the cluster.",
         "com.distilled.openapi#apiVersion": "2025-03-01"
+      }
+    },
+    "com.azure.kubernetesconfiguration#DeleteExtensionResponse": {
+      "type": "structure",
+      "members": {
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.kubernetesconfiguration#DeleteExtensionRequest": {
@@ -434,6 +456,20 @@
           "target": "com.azure.kubernetesconfiguration#UpdateExtensionResponsePlan",
           "traits": {
             "smithy.api#documentation": "Plan for the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -1433,6 +1469,20 @@
           "traits": {
             "smithy.api#documentation": "Plan for the resource."
           }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -2431,7 +2481,7 @@
         "target": "com.azure.kubernetesconfiguration#DeleteFluxConfigurationRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.kubernetesconfiguration#DeleteFluxConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2442,6 +2492,28 @@
         },
         "smithy.api#documentation": "This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.",
         "com.distilled.openapi#apiVersion": "2025-04-01"
+      }
+    },
+    "com.azure.kubernetesconfiguration#DeleteFluxConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.kubernetesconfiguration#DeleteFluxConfigurationRequest": {
@@ -2557,6 +2629,20 @@
           "target": "com.azure.kubernetesconfiguration#FluxConfigurationProperties",
           "traits": {
             "smithy.api#documentation": "Properties to create a Flux Configuration resource"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -4607,6 +4693,20 @@
           "target": "com.azure.kubernetesconfiguration#FluxConfigurationProperties",
           "traits": {
             "smithy.api#documentation": "Properties to create a Flux Configuration resource"
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },

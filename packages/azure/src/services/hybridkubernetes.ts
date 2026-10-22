@@ -327,6 +327,10 @@ export interface ConnectedClusterCreateOrReplaceResponse {
   identity: ConnectedClusterIdentity;
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteConnectedClusterRequest {
   /** The ID of the target subscription. */
@@ -336,7 +340,12 @@ export interface DeleteConnectedClusterRequest {
   /** The name of the Kubernetes cluster on which get is called. */
   clusterName: string;
 }
-export interface DeleteConnectedClusterResponse {}
+export interface DeleteConnectedClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetConnectedClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -540,6 +549,10 @@ export interface UpdateConnectedClusterResponse {
   identity: ConnectedClusterIdentity;
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type ConnectedClusterCreateOrReplaceError = AzureOpError;
 /** Register a new Kubernetes cluster with Azure Resource Manager. API to register a new Kubernetes cluster and create or replace a connected cluster tracked resource in Azure Resource Manager (ARM). */
@@ -549,8 +562,8 @@ export const ConnectedClusterCreateOrReplace: API.OperationMethod<
   ConnectedClusterCreateOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7, __c0, 7) as any as S.Schema<ConnectedClusterCreateOrReplaceRequest>,
-  output: __S(80, __c2, 16) as any as S.Schema<ConnectedClusterCreateOrReplaceResponse>,
+  input: __S(8, __c0, 8) as any as S.Schema<ConnectedClusterCreateOrReplaceRequest>,
+  output: __S(9, __c0, 9) as any as S.Schema<ConnectedClusterCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -564,8 +577,8 @@ export const DeleteConnectedCluster: API.OperationMethod<
   DeleteConnectedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c3, 0) as any as S.Schema<DeleteConnectedClusterRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteConnectedClusterResponse>,
+  input: __S(32, __c2, 0) as any as S.Schema<DeleteConnectedClusterRequest>,
+  output: __S(33, __c2, 1) as any as S.Schema<DeleteConnectedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -579,8 +592,8 @@ export const GetConnectedCluster: API.OperationMethod<
   GetConnectedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c4, 0) as any as S.Schema<GetConnectedClusterRequest>,
-  output: __S(80, __c2, 16) as any as S.Schema<GetConnectedClusterResponse>,
+  input: __S(48, __c3, 0) as any as S.Schema<GetConnectedClusterRequest>,
+  output: __S(64, __c4, 0) as any as S.Schema<GetConnectedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -594,8 +607,8 @@ export const GetOperation: API.OperationMethod<
   GetOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c5, 0) as any as S.Schema<GetOperationRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<OperationList>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetOperationRequest>,
+  output: __S(84, __c5, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -609,8 +622,8 @@ export const ListConnectedClusterByResourceGroup: API.OperationMethod<
   ListConnectedClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c6, 0) as any as S.Schema<ListConnectedClusterByResourceGroupRequest>,
-  output: __S(225, __c7, 1) as any as S.Schema<ConnectedClusterList>,
+  input: __S(96, __c6, 0) as any as S.Schema<ListConnectedClusterByResourceGroupRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<ConnectedClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -624,8 +637,8 @@ export const ListConnectedClusterBySubscription: API.OperationMethod<
   ListConnectedClusterBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c8, 0) as any as S.Schema<ListConnectedClusterBySubscriptionRequest>,
-  output: __S(225, __c7, 1) as any as S.Schema<ConnectedClusterList>,
+  input: __S(128, __c8, 0) as any as S.Schema<ListConnectedClusterBySubscriptionRequest>,
+  output: __S(113, __c7, 1) as any as S.Schema<ConnectedClusterList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -639,8 +652,8 @@ export const ListConnectedClusterClusterUserCredential: API.OperationMethod<
   ListConnectedClusterClusterUserCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<ListConnectedClusterClusterUserCredentialRequest>,
-  output: __S(292, __c9, 4) as any as S.Schema<CredentialResults>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListConnectedClusterClusterUserCredentialRequest>,
+  output: __S(148, __c9, 4) as any as S.Schema<CredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -654,8 +667,8 @@ export const UpdateConnectedCluster: API.OperationMethod<
   UpdateConnectedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(321, __c10, 1) as any as S.Schema<UpdateConnectedClusterRequest>,
-  output: __S(80, __c2, 16) as any as S.Schema<UpdateConnectedClusterResponse>,
+  input: __S(161, __c10, 1) as any as S.Schema<UpdateConnectedClusterRequest>,
+  output: __S(162, __c10, 2) as any as S.Schema<UpdateConnectedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -675,24 +688,26 @@ function __c0(j: number): any {
     case 1:
       return S.Array(__S(0, __c0, 0));
     case 2:
-      return S.Array(__S(32, __c1, 0));
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "AgentErrorInput" });
     case 3:
+      return S.Array(__S(2, __c0, 2));
+    case 4:
       return S.suspend(() =>
         S.Struct({
           desiredAgentVersion: S.optional(S.String),
           agentAutoUpgrade: S.optional(S.String),
           systemComponents: S.optional(__S(1, __c0, 1)),
-          agentErrors: S.optional(__S(2, __c0, 2)),
+          agentErrors: S.optional(__S(3, __c0, 3)),
         }),
       ).annotate({ identifier: "ArcAgentProfileInput" });
-    case 4:
+    case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           selfHostedIssuerUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "OidcIssuerProfileInput" });
-    case 5:
+    case 6:
       return S.suspend(() =>
         S.Struct({
           agentPublicKeyCertificate: S.String,
@@ -703,30 +718,30 @@ function __c0(j: number): any {
           privateLinkState: S.optional(S.String),
           privateLinkScopeResourceId: S.optional(S.String),
           azureHybridBenefit: S.optional(S.String),
-          aadProfile: S.optional(__S(66, __c2, 2)),
-          arcAgentProfile: S.optional(__S(3, __c0, 3)),
-          securityProfile: S.optional(__S(68, __c2, 4)),
-          oidcIssuerProfile: S.optional(__S(4, __c0, 4)),
-          gateway: S.optional(S.NullOr(__S(67, __c2, 3))),
-          arcAgentryConfigurations: S.optional(S.NullOr(__S(70, __c2, 6))),
+          aadProfile: S.optional(__S(18, __c1, 2)),
+          arcAgentProfile: S.optional(__S(4, __c0, 4)),
+          securityProfile: S.optional(__S(20, __c1, 4)),
+          oidcIssuerProfile: S.optional(__S(5, __c0, 5)),
+          gateway: S.optional(S.NullOr(__S(19, __c1, 3))),
+          arcAgentryConfigurations: S.optional(S.NullOr(__S(22, __c1, 6))),
         }),
       ).annotate({ identifier: "ConnectedClusterPropertiesInput" });
-    case 6:
+    case 7:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
         }),
       ).annotate({ identifier: "ConnectedClusterIdentityInput" });
-    case 7:
+    case 8:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(64, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: __S(5, __c0, 5),
-          identity: __S(6, __c0, 6),
+          properties: __S(6, __c0, 6),
+          identity: __S(7, __c0, 7),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -737,15 +752,25 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ConnectedClusterCreateOrReplaceRequest" });
+    case 9:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(23, __c1, 7)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: __S(30, __c1, 14),
+          identity: __S(31, __c1, 15),
+          kind: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ConnectedClusterCreateOrReplaceResponse" });
   }
 }
 function __c1(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "AgentErrorInput" });
-  }
-}
-function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -755,7 +780,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enableAzureRBAC: S.optional(S.Boolean),
-          adminGroupObjectIDs: S.optional(__S(65, __c2, 1)),
+          adminGroupObjectIDs: S.optional(__S(17, __c1, 1)),
           tenantID: S.optional(S.String),
         }),
       ).annotate({ identifier: "AadProfile" });
@@ -768,19 +793,19 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workloadIdentity: S.optional(__S(67, __c2, 3)),
+          workloadIdentity: S.optional(__S(19, __c1, 3)),
         }),
       ).annotate({ identifier: "SecurityProfile" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           feature: S.optional(S.String),
-          settings: S.optional(S.NullOr(__S(64, __c2, 0))),
-          protectedSettings: S.optional(S.NullOr(__S(64, __c2, 0))),
+          settings: S.optional(S.NullOr(__S(16, __c1, 0))),
+          protectedSettings: S.optional(S.NullOr(__S(16, __c1, 0))),
         }),
       ).annotate({ identifier: "ArcAgentryConfigurations" });
     case 6:
-      return S.Array(__S(69, __c2, 5));
+      return S.Array(__S(21, __c1, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -802,7 +827,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SystemComponent" });
     case 9:
-      return S.Array(__S(72, __c2, 8));
+      return S.Array(__S(24, __c1, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -813,14 +838,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AgentError" });
     case 11:
-      return S.Array(__S(74, __c2, 10));
+      return S.Array(__S(26, __c1, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
           desiredAgentVersion: S.optional(S.String),
           agentAutoUpgrade: S.optional(S.String),
-          systemComponents: S.optional(__S(73, __c2, 9)),
-          agentErrors: S.optional(__S(75, __c2, 11)),
+          systemComponents: S.optional(__S(25, __c1, 9)),
+          agentErrors: S.optional(__S(27, __c1, 11)),
           agentState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArcAgentProfile" });
@@ -851,13 +876,13 @@ function __c2(j: number): any {
           privateLinkState: S.optional(S.String),
           privateLinkScopeResourceId: S.optional(S.String),
           azureHybridBenefit: S.optional(S.String),
-          aadProfile: S.optional(__S(66, __c2, 2)),
-          arcAgentProfile: S.optional(__S(76, __c2, 12)),
-          securityProfile: S.optional(__S(68, __c2, 4)),
-          oidcIssuerProfile: S.optional(__S(77, __c2, 13)),
-          gateway: S.optional(S.NullOr(__S(67, __c2, 3))),
-          arcAgentryConfigurations: S.optional(S.NullOr(__S(70, __c2, 6))),
-          miscellaneousProperties: S.optional(__S(64, __c2, 0)),
+          aadProfile: S.optional(__S(18, __c1, 2)),
+          arcAgentProfile: S.optional(__S(28, __c1, 12)),
+          securityProfile: S.optional(__S(20, __c1, 4)),
+          oidcIssuerProfile: S.optional(__S(29, __c1, 13)),
+          gateway: S.optional(S.NullOr(__S(19, __c1, 3))),
+          arcAgentryConfigurations: S.optional(S.NullOr(__S(22, __c1, 6))),
+          miscellaneousProperties: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "ConnectedClusterProperties" });
     case 15:
@@ -868,23 +893,9 @@ function __c2(j: number): any {
           type: S.String,
         }),
       ).annotate({ identifier: "ConnectedClusterIdentity" });
-    case 16:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(71, __c2, 7)),
-          tags: S.optional(__S(64, __c2, 0)),
-          location: S.String,
-          properties: __S(78, __c2, 14),
-          identity: __S(79, __c2, 15),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConnectedClusterCreateOrReplaceResponse" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -901,9 +912,16 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteConnectedClusterRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteConnectedClusterResponse" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -920,6 +938,24 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetConnectedClusterRequest" });
+  }
+}
+function __c4(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(23, __c1, 7)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: __S(30, __c1, 14),
+          identity: __S(31, __c1, 15),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetConnectedClusterResponse" });
   }
 }
 function __c5(j: number): any {
@@ -949,17 +985,17 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(161, __c5, 1)),
+          display: S.optional(__S(81, __c5, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListValueItem" });
     case 3:
-      return S.Array(__S(162, __c5, 2));
+      return S.Array(__S(82, __c5, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(163, __c5, 3),
+          value: __S(83, __c5, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
@@ -986,11 +1022,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(80, __c2, 16));
+      return S.Array(__S(64, __c4, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(224, __c7, 0),
+          value: __S(112, __c7, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectedClusterList" });
@@ -1051,12 +1087,12 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "CredentialResult" });
     case 3:
-      return S.Array(__S(290, __c9, 2));
+      return S.Array(__S(146, __c9, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          hybridConnectionConfig: S.optional(__S(289, __c9, 1)),
-          kubeconfigs: S.optional(__S(291, __c9, 3)),
+          hybridConnectionConfig: S.optional(__S(145, __c9, 1)),
+          kubeconfigs: S.optional(__S(147, __c9, 3)),
         }),
       ).annotate({ identifier: "CredentialResults" });
   }
@@ -1069,7 +1105,7 @@ function __c10(j: number): any {
           distribution: S.optional(S.String),
           distributionVersion: S.optional(S.String),
           azureHybridBenefit: S.optional(S.String),
-          gateway: S.optional(__S(67, __c2, 3)),
+          gateway: S.optional(__S(19, __c1, 3)),
         }),
       ).annotate({ identifier: "ConnectedClusterPatchProperties" });
     case 1:
@@ -1078,8 +1114,8 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(64, __c2, 0)),
-          properties: S.optional(__S(320, __c10, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(160, __c10, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1089,6 +1125,22 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateConnectedClusterRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(23, __c1, 7)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: __S(30, __c1, 14),
+          identity: __S(31, __c1, 15),
+          kind: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateConnectedClusterResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

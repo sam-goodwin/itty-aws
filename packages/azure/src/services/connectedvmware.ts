@@ -1083,7 +1083,9 @@ export interface DeleteClusterRequest {
   /** Whether force delete was specified. */
   force?: boolean;
 }
-export interface DeleteClusterResponse {}
+export interface DeleteClusterResponse {
+  location?: string;
+}
 export interface DeleteDatastoreRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -1094,7 +1096,9 @@ export interface DeleteDatastoreRequest {
   /** Whether force delete was specified. */
   force?: boolean;
 }
-export interface DeleteDatastoreResponse {}
+export interface DeleteDatastoreResponse {
+  location?: string;
+}
 export interface DeleteHostRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -1105,7 +1109,9 @@ export interface DeleteHostRequest {
   /** Whether force delete was specified. */
   force?: boolean;
 }
-export interface DeleteHostResponse {}
+export interface DeleteHostResponse {
+  location?: string;
+}
 export interface DeleteInventoryItemRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -1127,7 +1133,9 @@ export interface DeleteResourcePoolRequest {
   /** Whether force delete was specified. */
   force?: boolean;
 }
-export interface DeleteResourcePoolResponse {}
+export interface DeleteResourcePoolResponse {
+  location?: string;
+}
 export interface DeleteVCenterRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -1138,7 +1146,9 @@ export interface DeleteVCenterRequest {
   /** Whether force delete was specified. */
   force?: boolean;
 }
-export interface DeleteVCenterResponse {}
+export interface DeleteVCenterResponse {
+  location?: string;
+}
 export interface DeleteVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
@@ -1147,7 +1157,9 @@ export interface DeleteVirtualMachineInstanceRequest {
   /** Whether force delete was specified. */
   force?: boolean;
 }
-export interface DeleteVirtualMachineInstanceResponse {}
+export interface DeleteVirtualMachineInstanceResponse {
+  location?: string;
+}
 export interface DeleteVirtualMachineTemplateRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -1158,7 +1170,9 @@ export interface DeleteVirtualMachineTemplateRequest {
   /** Whether force delete was specified. */
   force?: boolean;
 }
-export interface DeleteVirtualMachineTemplateResponse {}
+export interface DeleteVirtualMachineTemplateResponse {
+  location?: string;
+}
 export interface DeleteVirtualNetworkRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -1169,12 +1183,16 @@ export interface DeleteVirtualNetworkRequest {
   /** Whether force delete was specified. */
   force?: boolean;
 }
-export interface DeleteVirtualNetworkResponse {}
+export interface DeleteVirtualNetworkResponse {
+  location?: string;
+}
 export interface DeleteVMInstanceGuestAgentRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export interface DeleteVMInstanceGuestAgentResponse {}
+export interface DeleteVMInstanceGuestAgentResponse {
+  location?: string;
+}
 export interface GetClusterRequest {
   /** The Subscription ID. */
   subscriptionId: string;
@@ -1764,19 +1782,25 @@ export interface RestartVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export interface RestartVirtualMachineInstanceResponse {}
+export interface RestartVirtualMachineInstanceResponse {
+  location?: string;
+}
 export interface StartVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
 }
-export interface StartVirtualMachineInstanceResponse {}
+export interface StartVirtualMachineInstanceResponse {
+  location?: string;
+}
 export interface StopVirtualMachineInstanceRequest {
   /** The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended. */
   resourceUri: string;
   /** Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false. */
   skipShutdown?: boolean;
 }
-export interface StopVirtualMachineInstanceResponse {}
+export interface StopVirtualMachineInstanceResponse {
+  location?: string;
+}
 /** Resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
 export interface UpdateClusterRequest {
@@ -1917,6 +1941,7 @@ export interface UpdateVirtualMachineInstanceResponse {
   properties: VirtualMachineInstanceProperties;
   /** Gets or sets the extended location. */
   extendedLocation?: ExtendedLocation;
+  location?: string;
 }
 /** Resource tags. */
 export type UpdateVirtualMachineTemplateRequestTagsMap = { [key: string]: string | undefined };
@@ -2110,8 +2135,8 @@ export const CreateInventoryItem: API.OperationMethod<
   CreateInventoryItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<CreateInventoryItemRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<CreateInventoryItemResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<CreateInventoryItemRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<CreateInventoryItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2125,8 +2150,8 @@ export const CreateResourcePool: API.OperationMethod<
   CreateResourcePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<CreateResourcePoolRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<ResourcePool>,
+  input: __S(816, __c51, 0) as any as S.Schema<CreateResourcePoolRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<ResourcePool>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2140,8 +2165,8 @@ export const CreateVCenter: API.OperationMethod<
   CreateVCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1041, __c65, 1) as any as S.Schema<CreateVCenterRequest>,
-  output: __S(1058, __c66, 2) as any as S.Schema<VCenter>,
+  input: __S(1057, __c66, 1) as any as S.Schema<CreateVCenterRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<VCenter>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2155,8 +2180,8 @@ export const CreateVirtualMachineTemplate: API.OperationMethod<
   CreateVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c78, 0) as any as S.Schema<CreateVirtualMachineTemplateRequest>,
-  output: __S(1281, __c80, 1) as any as S.Schema<VirtualMachineTemplate>,
+  input: __S(1264, __c79, 0) as any as S.Schema<CreateVirtualMachineTemplateRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<VirtualMachineTemplate>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2170,8 +2195,8 @@ export const CreateVirtualNetwork: API.OperationMethod<
   CreateVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c82, 0) as any as S.Schema<CreateVirtualNetworkRequest>,
-  output: __S(1329, __c83, 1) as any as S.Schema<VirtualNetwork>,
+  input: __S(1328, __c83, 0) as any as S.Schema<CreateVirtualNetworkRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<VirtualNetwork>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2185,8 +2210,8 @@ export const CreateVMInstanceGuestAgent: API.OperationMethod<
   CreateVMInstanceGuestAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1345, __c84, 1) as any as S.Schema<CreateVMInstanceGuestAgentRequest>,
-  output: __S(1363, __c85, 3) as any as S.Schema<CreateVMInstanceGuestAgentResponse>,
+  input: __S(1361, __c85, 1) as any as S.Schema<CreateVMInstanceGuestAgentRequest>,
+  output: __S(1379, __c86, 3) as any as S.Schema<CreateVMInstanceGuestAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2200,8 +2225,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2216,7 +2241,7 @@ export const DeleteDatastore: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DeleteDatastoreRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteDatastoreResponse>,
+  output: __S(1408, __c88, 0) as any as S.Schema<DeleteDatastoreResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2231,7 +2256,7 @@ export const DeleteHost: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<DeleteHostRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteHostResponse>,
+  output: __S(1408, __c88, 0) as any as S.Schema<DeleteHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2246,7 +2271,7 @@ export const DeleteInventoryItem: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<DeleteInventoryItemRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteInventoryItemResponse>,
+  output: __S(193, __c12, 1) as any as S.Schema<DeleteInventoryItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2261,7 +2286,7 @@ export const DeleteResourcePool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<DeleteResourcePoolRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteResourcePoolResponse>,
+  output: __S(1408, __c88, 0) as any as S.Schema<DeleteResourcePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2276,7 +2301,7 @@ export const DeleteVCenter: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<DeleteVCenterRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteVCenterResponse>,
+  output: __S(1408, __c88, 0) as any as S.Schema<DeleteVCenterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2291,7 +2316,7 @@ export const DeleteVirtualMachineInstance: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(240, __c15, 0) as any as S.Schema<DeleteVirtualMachineInstanceRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteVirtualMachineInstanceResponse>,
+  output: __S(1408, __c88, 0) as any as S.Schema<DeleteVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2306,7 +2331,7 @@ export const DeleteVirtualMachineTemplate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c16, 0) as any as S.Schema<DeleteVirtualMachineTemplateRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteVirtualMachineTemplateResponse>,
+  output: __S(1408, __c88, 0) as any as S.Schema<DeleteVirtualMachineTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2321,7 +2346,7 @@ export const DeleteVirtualNetwork: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<DeleteVirtualNetworkRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteVirtualNetworkResponse>,
+  output: __S(1408, __c88, 0) as any as S.Schema<DeleteVirtualNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2336,7 +2361,7 @@ export const DeleteVMInstanceGuestAgent: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<DeleteVMInstanceGuestAgentRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<DeleteVMInstanceGuestAgentResponse>,
+  output: __S(1408, __c88, 0) as any as S.Schema<DeleteVMInstanceGuestAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2392,7 +2417,7 @@ export const GetInventoryItem: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<GetInventoryItemRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<GetInventoryItemResponse>,
+  output: __S(577, __c36, 1) as any as S.Schema<GetInventoryItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2407,7 +2432,7 @@ export const GetResourcePool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(400, __c25, 0) as any as S.Schema<GetResourcePoolRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<ResourcePool>,
+  output: __S(833, __c52, 1) as any as S.Schema<ResourcePool>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2422,7 +2447,7 @@ export const GetVCenter: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c26, 0) as any as S.Schema<GetVCenterRequest>,
-  output: __S(1058, __c66, 2) as any as S.Schema<VCenter>,
+  output: __S(1074, __c67, 2) as any as S.Schema<VCenter>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2437,7 +2462,7 @@ export const GetVirtualMachineInstance: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<GetVirtualMachineInstanceRequest>,
-  output: __S(460, __c28, 12) as any as S.Schema<GetVirtualMachineInstanceResponse>,
+  output: __S(464, __c29, 0) as any as S.Schema<GetVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2451,8 +2476,8 @@ export const GetVirtualMachineTemplate: API.OperationMethod<
   GetVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<GetVirtualMachineTemplateRequest>,
-  output: __S(1281, __c80, 1) as any as S.Schema<VirtualMachineTemplate>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetVirtualMachineTemplateRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<VirtualMachineTemplate>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2466,8 +2491,8 @@ export const GetVirtualNetwork: API.OperationMethod<
   GetVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetVirtualNetworkRequest>,
-  output: __S(1329, __c83, 1) as any as S.Schema<VirtualNetwork>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetVirtualNetworkRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<VirtualNetwork>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2481,8 +2506,8 @@ export const GetVMInstanceGuestAgent: API.OperationMethod<
   GetVMInstanceGuestAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<GetVMInstanceGuestAgentRequest>,
-  output: __S(1363, __c85, 3) as any as S.Schema<GetVMInstanceGuestAgentResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetVMInstanceGuestAgentRequest>,
+  output: __S(1379, __c86, 3) as any as S.Schema<GetVMInstanceGuestAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2496,8 +2521,8 @@ export const GetVmInstanceHybridIdentityMetadata: API.OperationMethod<
   GetVmInstanceHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<GetVmInstanceHybridIdentityMetadataRequest>,
-  output: __S(529, __c33, 1) as any as S.Schema<GetVmInstanceHybridIdentityMetadataResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetVmInstanceHybridIdentityMetadataRequest>,
+  output: __S(545, __c34, 1) as any as S.Schema<GetVmInstanceHybridIdentityMetadataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2511,8 +2536,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
-  output: __S(593, __c37, 1) as any as S.Schema<ClustersList>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<ClustersList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2526,8 +2551,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<ListClustersRequest>,
-  output: __S(593, __c37, 1) as any as S.Schema<ClustersList>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(609, __c38, 1) as any as S.Schema<ClustersList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2541,8 +2566,8 @@ export const ListDatastoreByResourceGroup: API.OperationMethod<
   ListDatastoreByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<ListDatastoreByResourceGroupRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<DatastoresList>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListDatastoreByResourceGroupRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<DatastoresList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2556,8 +2581,8 @@ export const ListDatastores: API.OperationMethod<
   ListDatastoresError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListDatastoresRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<DatastoresList>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListDatastoresRequest>,
+  output: __S(657, __c41, 1) as any as S.Schema<DatastoresList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2571,8 +2596,8 @@ export const ListHostByResourceGroup: API.OperationMethod<
   ListHostByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<ListHostByResourceGroupRequest>,
-  output: __S(689, __c43, 1) as any as S.Schema<HostsList>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListHostByResourceGroupRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<HostsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2586,8 +2611,8 @@ export const ListHosts: API.OperationMethod<
   ListHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<ListHostsRequest>,
-  output: __S(689, __c43, 1) as any as S.Schema<HostsList>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListHostsRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<HostsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2601,8 +2626,8 @@ export const ListInventoryItemByVCenter: API.OperationMethod<
   ListInventoryItemByVCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<ListInventoryItemByVCenterRequest>,
-  output: __S(722, __c45, 2) as any as S.Schema<InventoryItemsList>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListInventoryItemByVCenterRequest>,
+  output: __S(738, __c46, 2) as any as S.Schema<InventoryItemsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2616,8 +2641,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(740, __c46, 4) as any as S.Schema<OperationsList>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(756, __c47, 4) as any as S.Schema<OperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2631,8 +2656,8 @@ export const ListResourcePoolByResourceGroup: API.OperationMethod<
   ListResourcePoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<ListResourcePoolByResourceGroupRequest>,
-  output: __S(769, __c48, 1) as any as S.Schema<ResourcePoolsList>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListResourcePoolByResourceGroupRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<ResourcePoolsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2646,8 +2671,8 @@ export const ListResourcePools: API.OperationMethod<
   ListResourcePoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<ListResourcePoolsRequest>,
-  output: __S(769, __c48, 1) as any as S.Schema<ResourcePoolsList>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListResourcePoolsRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<ResourcePoolsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2661,8 +2686,8 @@ export const ListVCenterByResourceGroup: API.OperationMethod<
   ListVCenterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<ListVCenterByResourceGroupRequest>,
-  output: __S(849, __c53, 1) as any as S.Schema<VCentersList>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListVCenterByResourceGroupRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<VCentersList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2676,8 +2701,8 @@ export const ListVCenters: API.OperationMethod<
   ListVCentersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<ListVCentersRequest>,
-  output: __S(849, __c53, 1) as any as S.Schema<VCentersList>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListVCentersRequest>,
+  output: __S(865, __c54, 1) as any as S.Schema<VCentersList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2691,8 +2716,8 @@ export const ListVirtualMachineInstances: API.OperationMethod<
   ListVirtualMachineInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<ListVirtualMachineInstancesRequest>,
-  output: __S(882, __c55, 2) as any as S.Schema<VirtualMachineInstancesList>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListVirtualMachineInstancesRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<VirtualMachineInstancesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2706,8 +2731,8 @@ export const ListVirtualMachineTemplateByResourceGroup: API.OperationMethod<
   ListVirtualMachineTemplateByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<ListVirtualMachineTemplateByResourceGroupRequest>,
-  output: __S(913, __c57, 1) as any as S.Schema<VirtualMachineTemplatesList>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListVirtualMachineTemplateByResourceGroupRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<VirtualMachineTemplatesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2721,8 +2746,8 @@ export const ListVirtualMachineTemplates: API.OperationMethod<
   ListVirtualMachineTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<ListVirtualMachineTemplatesRequest>,
-  output: __S(913, __c57, 1) as any as S.Schema<VirtualMachineTemplatesList>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListVirtualMachineTemplatesRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<VirtualMachineTemplatesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2736,8 +2761,8 @@ export const ListVirtualNetworkByResourceGroup: API.OperationMethod<
   ListVirtualNetworkByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>,
-  output: __S(961, __c60, 1) as any as S.Schema<VirtualNetworksList>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListVirtualNetworkByResourceGroupRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<VirtualNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2751,8 +2776,8 @@ export const ListVirtualNetworks: API.OperationMethod<
   ListVirtualNetworksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<ListVirtualNetworksRequest>,
-  output: __S(961, __c60, 1) as any as S.Schema<VirtualNetworksList>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListVirtualNetworksRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<VirtualNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2766,8 +2791,8 @@ export const ListVMInstanceGuestAgents: API.OperationMethod<
   ListVMInstanceGuestAgentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<ListVMInstanceGuestAgentsRequest>,
-  output: __S(994, __c62, 2) as any as S.Schema<GuestAgentList>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListVMInstanceGuestAgentsRequest>,
+  output: __S(1010, __c63, 2) as any as S.Schema<GuestAgentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2781,8 +2806,8 @@ export const ListVmInstanceHybridIdentityMetadata: API.OperationMethod<
   ListVmInstanceHybridIdentityMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<ListVmInstanceHybridIdentityMetadataRequest>,
-  output: __S(1010, __c63, 2) as any as S.Schema<VmInstanceHybridIdentityMetadataList>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListVmInstanceHybridIdentityMetadataRequest>,
+  output: __S(1026, __c64, 2) as any as S.Schema<VmInstanceHybridIdentityMetadataList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2796,8 +2821,8 @@ export const RestartVirtualMachineInstance: API.OperationMethod<
   RestartVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<RestartVirtualMachineInstanceRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<RestartVirtualMachineInstanceResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<RestartVirtualMachineInstanceRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<RestartVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2811,8 +2836,8 @@ export const StartVirtualMachineInstance: API.OperationMethod<
   StartVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<StartVirtualMachineInstanceRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<StartVirtualMachineInstanceResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<StartVirtualMachineInstanceRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<StartVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2826,8 +2851,8 @@ export const StopVirtualMachineInstance: API.OperationMethod<
   StopVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<StopVirtualMachineInstanceRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<StopVirtualMachineInstanceResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<StopVirtualMachineInstanceRequest>,
+  output: __S(1408, __c88, 0) as any as S.Schema<StopVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2841,7 +2866,7 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<UpdateClusterRequest>,
+  input: __S(1120, __c70, 0) as any as S.Schema<UpdateClusterRequest>,
   output: __S(97, __c6, 1) as any as S.Schema<Cluster>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2856,7 +2881,7 @@ export const UpdateDatastore: API.OperationMethod<
   UpdateDatastoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c70, 0) as any as S.Schema<UpdateDatastoreRequest>,
+  input: __S(1136, __c71, 0) as any as S.Schema<UpdateDatastoreRequest>,
   output: __S(145, __c9, 1) as any as S.Schema<Datastore>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2871,7 +2896,7 @@ export const UpdateHost: API.OperationMethod<
   UpdateHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<UpdateHostRequest>,
+  input: __S(1152, __c72, 0) as any as S.Schema<UpdateHostRequest>,
   output: __S(337, __c21, 1) as any as S.Schema<Host>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2886,8 +2911,8 @@ export const UpdateResourcePool: API.OperationMethod<
   UpdateResourcePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c72, 0) as any as S.Schema<UpdateResourcePoolRequest>,
-  output: __S(817, __c51, 1) as any as S.Schema<ResourcePool>,
+  input: __S(1168, __c73, 0) as any as S.Schema<UpdateResourcePoolRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<ResourcePool>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2901,8 +2926,8 @@ export const UpdateVCenter: API.OperationMethod<
   UpdateVCenterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c73, 0) as any as S.Schema<UpdateVCenterRequest>,
-  output: __S(1058, __c66, 2) as any as S.Schema<VCenter>,
+  input: __S(1184, __c74, 0) as any as S.Schema<UpdateVCenterRequest>,
+  output: __S(1074, __c67, 2) as any as S.Schema<VCenter>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2916,8 +2941,8 @@ export const UpdateVirtualMachineInstance: API.OperationMethod<
   UpdateVirtualMachineInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1188, __c74, 4) as any as S.Schema<UpdateVirtualMachineInstanceRequest>,
-  output: __S(460, __c28, 12) as any as S.Schema<UpdateVirtualMachineInstanceResponse>,
+  input: __S(1204, __c75, 4) as any as S.Schema<UpdateVirtualMachineInstanceRequest>,
+  output: __S(1205, __c75, 5) as any as S.Schema<UpdateVirtualMachineInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2931,8 +2956,8 @@ export const UpdateVirtualMachineTemplate: API.OperationMethod<
   UpdateVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<UpdateVirtualMachineTemplateRequest>,
-  output: __S(1281, __c80, 1) as any as S.Schema<VirtualMachineTemplate>,
+  input: __S(1232, __c77, 0) as any as S.Schema<UpdateVirtualMachineTemplateRequest>,
+  output: __S(1297, __c81, 1) as any as S.Schema<VirtualMachineTemplate>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2946,8 +2971,8 @@ export const UpdateVirtualNetwork: API.OperationMethod<
   UpdateVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<UpdateVirtualNetworkRequest>,
-  output: __S(1329, __c83, 1) as any as S.Schema<VirtualNetwork>,
+  input: __S(1248, __c78, 0) as any as S.Schema<UpdateVirtualNetworkRequest>,
+  output: __S(1345, __c84, 1) as any as S.Schema<VirtualNetwork>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2961,8 +2986,8 @@ export const VirtualMachineInstancesCreateOrUpdate: API.OperationMethod<
   VirtualMachineInstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1303, __c81, 7) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequest>,
-  output: __S(460, __c28, 12) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>,
+  input: __S(1319, __c82, 7) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<VirtualMachineInstancesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3212,6 +3237,8 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteInventoryItemRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteInventoryItemResponse" });
   }
 }
 function __c13(j: number): any {
@@ -3579,7 +3606,7 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(1268, __c79, 4)),
+          networkInterfaces: S.optional(__S(1284, __c80, 4)),
         }),
       ).annotate({ identifier: "NetworkProfile" });
     case 5:
@@ -3597,7 +3624,7 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(1270, __c79, 6)),
+          disks: S.optional(__S(1286, __c80, 6)),
           scsiControllers: S.optional(__S(454, __c28, 6)),
         }),
       ).annotate({ identifier: "StorageProfile" });
@@ -3644,7 +3671,11 @@ function __c28(j: number): any {
           resourceUid: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineInstanceProperties" });
-    case 12:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -3657,7 +3688,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetVirtualMachineInstanceResponse" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3676,7 +3707,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetVirtualMachineTemplateRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3695,7 +3726,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetVirtualNetworkRequest" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3712,7 +3743,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetVMInstanceGuestAgentRequest" });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3729,7 +3760,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetVmInstanceHybridIdentityMetadataRequest" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3746,12 +3777,12 @@ function __c33(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(528, __c33, 0),
+          properties: __S(544, __c34, 0),
         }),
       ).annotate({ identifier: "GetVmInstanceHybridIdentityMetadataResponse" });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3760,7 +3791,7 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vcenterName: S.String.pipe(T.Label()),
           inventoryItemName: S.String.pipe(T.Label()),
-          properties: __S(560, __c35, 0),
+          properties: __S(576, __c36, 0),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -3773,7 +3804,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "CreateInventoryItemRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3792,13 +3823,13 @@ function __c35(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(560, __c35, 0),
+          properties: __S(576, __c36, 0),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateInventoryItemResponse" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3816,7 +3847,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "ListClusterByResourceGroupRequest" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(97, __c6, 1));
@@ -3824,12 +3855,12 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(592, __c37, 0),
+          value: __S(608, __c38, 0),
         }),
       ).annotate({ identifier: "ClustersList" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3846,7 +3877,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "ListClustersRequest" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3864,7 +3895,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "ListDatastoreByResourceGroupRequest" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(145, __c9, 1));
@@ -3872,12 +3903,12 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(640, __c40, 0),
+          value: __S(656, __c41, 0),
         }),
       ).annotate({ identifier: "DatastoresList" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3894,7 +3925,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "ListDatastoresRequest" });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3912,7 +3943,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "ListHostByResourceGroupRequest" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(337, __c21, 1));
@@ -3920,12 +3951,12 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(688, __c43, 0),
+          value: __S(704, __c44, 0),
         }),
       ).annotate({ identifier: "HostsList" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3942,7 +3973,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "ListHostsRequest" });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3960,17 +3991,17 @@ function __c45(j: number): any {
         ),
       ).annotate({ identifier: "ListInventoryItemByVCenterRequest" });
     case 1:
-      return S.Array(__S(561, __c35, 1));
+      return S.Array(__S(577, __c36, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(721, __c45, 1),
+          value: __S(737, __c46, 1),
         }),
       ).annotate({ identifier: "InventoryItemsList" });
   }
 }
-function __c46(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3997,21 +4028,21 @@ function __c46(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(737, __c46, 1)),
+          display: S.optional(__S(753, __c47, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(738, __c46, 2));
+      return S.Array(__S(754, __c47, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(739, __c46, 3),
+          value: __S(755, __c47, 3),
         }),
       ).annotate({ identifier: "OperationsList" });
   }
 }
-function __c47(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4029,20 +4060,20 @@ function __c47(j: number): any {
       ).annotate({ identifier: "ListResourcePoolByResourceGroupRequest" });
   }
 }
-function __c48(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(817, __c51, 1));
+      return S.Array(__S(833, __c52, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(768, __c48, 0),
+          value: __S(784, __c49, 0),
         }),
       ).annotate({ identifier: "ResourcePoolsList" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4059,7 +4090,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "ListResourcePoolsRequest" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4083,7 +4114,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "CreateResourcePoolRequest" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4113,7 +4144,7 @@ function __c51(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(816, __c51, 0),
+          properties: __S(832, __c52, 0),
           location: S.String,
           extendedLocation: S.optional(__S(32, __c2, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
@@ -4126,7 +4157,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ResourcePool" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4144,20 +4175,20 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ListVCenterByResourceGroupRequest" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1058, __c66, 2));
+      return S.Array(__S(1074, __c67, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(848, __c53, 0),
+          value: __S(864, __c54, 0),
         }),
       ).annotate({ identifier: "VCentersList" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4174,7 +4205,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListVCentersRequest" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4190,17 +4221,17 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "ListVirtualMachineInstancesRequest" });
     case 1:
-      return S.Array(__S(460, __c28, 12));
+      return S.Array(__S(464, __c29, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(881, __c55, 1),
+          value: __S(897, __c56, 1),
         }),
       ).annotate({ identifier: "VirtualMachineInstancesList" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4218,20 +4249,20 @@ function __c56(j: number): any {
       ).annotate({ identifier: "ListVirtualMachineTemplateByResourceGroupRequest" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1281, __c80, 1));
+      return S.Array(__S(1297, __c81, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(912, __c57, 0),
+          value: __S(928, __c58, 0),
         }),
       ).annotate({ identifier: "VirtualMachineTemplatesList" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4248,7 +4279,7 @@ function __c58(j: number): any {
       ).annotate({ identifier: "ListVirtualMachineTemplatesRequest" });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4266,20 +4297,20 @@ function __c59(j: number): any {
       ).annotate({ identifier: "ListVirtualNetworkByResourceGroupRequest" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1329, __c83, 1));
+      return S.Array(__S(1345, __c84, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(960, __c60, 0),
+          value: __S(976, __c61, 0),
         }),
       ).annotate({ identifier: "VirtualNetworksList" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4296,7 +4327,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "ListVirtualNetworksRequest" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4312,17 +4343,17 @@ function __c62(j: number): any {
         ),
       ).annotate({ identifier: "ListVMInstanceGuestAgentsRequest" });
     case 1:
-      return S.Array(__S(1363, __c85, 3));
+      return S.Array(__S(1379, __c86, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(993, __c62, 1),
+          value: __S(1009, __c63, 1),
         }),
       ).annotate({ identifier: "GuestAgentList" });
   }
 }
-function __c63(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4338,17 +4369,17 @@ function __c63(j: number): any {
         ),
       ).annotate({ identifier: "ListVmInstanceHybridIdentityMetadataRequest" });
     case 1:
-      return S.Array(__S(529, __c33, 1));
+      return S.Array(__S(545, __c34, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: __S(1009, __c63, 1),
+          value: __S(1025, __c64, 1),
         }),
       ).annotate({ identifier: "VmInstanceHybridIdentityMetadataList" });
   }
 }
-function __c64(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4365,14 +4396,14 @@ function __c64(j: number): any {
       ).annotate({ identifier: "RestartVirtualMachineInstanceRequest" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           fqdn: S.String,
           port: S.optional(S.Number),
-          credentials: S.optional(__S(1056, __c66, 0)),
+          credentials: S.optional(__S(1072, __c67, 0)),
         }),
       ).annotate({ identifier: "VCenterPropertiesInput" });
     case 1:
@@ -4381,7 +4412,7 @@ function __c65(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vcenterName: S.String.pipe(T.Label()),
-          properties: __S(1040, __c65, 0),
+          properties: __S(1056, __c66, 0),
           location: S.String,
           extendedLocation: S.optional(__S(32, __c2, 0)),
           tags: S.optional(__S(48, __c3, 0)),
@@ -4397,7 +4428,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "CreateVCenterRequest" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4416,7 +4447,7 @@ function __c66(j: number): any {
           instanceUuid: S.optional(S.String),
           connectionStatus: S.optional(S.String),
           customResourceName: S.optional(S.String),
-          credentials: S.optional(__S(1056, __c66, 0)),
+          credentials: S.optional(__S(1072, __c67, 0)),
           statuses: S.optional(__S(65, __c4, 1)),
           provisioningState: S.optional(S.String),
         }),
@@ -4424,7 +4455,7 @@ function __c66(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(1057, __c66, 1),
+          properties: __S(1073, __c67, 1),
           location: S.String,
           extendedLocation: S.optional(__S(32, __c2, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
@@ -4437,7 +4468,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "VCenter" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4454,7 +4485,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "StartVirtualMachineInstanceRequest" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4472,7 +4503,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "StopVirtualMachineInstanceRequest" });
   }
 }
-function __c69(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4492,7 +4523,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "UpdateClusterRequest" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4512,7 +4543,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "UpdateDatastoreRequest" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4532,7 +4563,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "UpdateHostRequest" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4552,7 +4583,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "UpdateResourcePoolRequest" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4572,7 +4603,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "UpdateVCenterRequest" });
   }
 }
-function __c74(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4585,26 +4616,26 @@ function __c74(j: number): any {
         }),
       ).annotate({ identifier: "NetworkInterfaceUpdate" });
     case 1:
-      return S.Array(__S(1184, __c74, 0));
+      return S.Array(__S(1200, __c75, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(1185, __c74, 1)),
+          networkInterfaces: S.optional(__S(1201, __c75, 1)),
         }),
       ).annotate({ identifier: "NetworkProfileUpdate" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          hardwareProfile: S.optional(__S(1200, __c75, 0)),
-          storageProfile: S.optional(__S(1203, __c75, 3)),
-          networkProfile: S.optional(__S(1186, __c74, 2)),
+          hardwareProfile: S.optional(__S(1216, __c76, 0)),
+          storageProfile: S.optional(__S(1219, __c76, 3)),
+          networkProfile: S.optional(__S(1202, __c75, 2)),
         }),
       ).annotate({ identifier: "VirtualMachineInstanceUpdatePropertiesInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1187, __c74, 3)),
+          properties: S.optional(__S(1203, __c75, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4614,9 +4645,21 @@ function __c74(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateVirtualMachineInstanceRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(459, __c28, 11),
+          extendedLocation: S.optional(__S(32, __c2, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateVirtualMachineInstanceResponse" });
   }
 }
-function __c75(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4640,16 +4683,16 @@ function __c75(j: number): any {
         }),
       ).annotate({ identifier: "VirtualDiskUpdate" });
     case 2:
-      return S.Array(__S(1201, __c75, 1));
+      return S.Array(__S(1217, __c76, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(__S(1202, __c75, 2)),
+          disks: S.optional(__S(1218, __c76, 2)),
         }),
       ).annotate({ identifier: "StorageProfileUpdate" });
   }
 }
-function __c76(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4669,7 +4712,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "UpdateVirtualMachineTemplateRequest" });
   }
 }
-function __c77(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4689,7 +4732,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "UpdateVirtualNetworkRequest" });
   }
 }
-function __c78(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4713,7 +4756,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "CreateVirtualMachineTemplateRequest" });
   }
 }
-function __c79(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4724,7 +4767,7 @@ function __c79(j: number): any {
         }),
       ).annotate({ identifier: "NicIPAddressSettings" });
     case 1:
-      return S.Array(__S(1264, __c79, 0));
+      return S.Array(__S(1280, __c80, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4735,7 +4778,7 @@ function __c79(j: number): any {
           subnetMask: S.optional(S.String),
           primaryWinsServer: S.optional(S.String),
           secondaryWinsServer: S.optional(S.String),
-          ipAddressInfo: S.optional(__S(1265, __c79, 1)),
+          ipAddressInfo: S.optional(__S(1281, __c80, 1)),
         }),
       ).annotate({ identifier: "NicIPSettings" });
     case 3:
@@ -4751,11 +4794,11 @@ function __c79(j: number): any {
           networkMoRefId: S.optional(S.String),
           networkMoName: S.optional(S.String),
           deviceKey: S.optional(S.Number),
-          ipSettings: S.optional(__S(1266, __c79, 2)),
+          ipSettings: S.optional(__S(1282, __c80, 2)),
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 4:
-      return S.Array(__S(1267, __c79, 3));
+      return S.Array(__S(1283, __c80, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -4772,10 +4815,10 @@ function __c79(j: number): any {
         }),
       ).annotate({ identifier: "VirtualDisk" });
     case 6:
-      return S.Array(__S(1269, __c79, 5));
+      return S.Array(__S(1285, __c80, 5));
   }
 }
-function __c80(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4791,8 +4834,8 @@ function __c80(j: number): any {
           osType: S.optional(S.String),
           osName: S.optional(S.String),
           folderPath: S.optional(S.String),
-          networkInterfaces: S.optional(__S(1268, __c79, 4)),
-          disks: S.optional(__S(1270, __c79, 6)),
+          networkInterfaces: S.optional(__S(1284, __c80, 4)),
+          disks: S.optional(__S(1286, __c80, 6)),
           customResourceName: S.optional(S.String),
           toolsVersionStatus: S.optional(S.String),
           toolsVersion: S.optional(S.String),
@@ -4804,7 +4847,7 @@ function __c80(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(1280, __c80, 0),
+          properties: __S(1296, __c81, 0),
           location: S.String,
           extendedLocation: S.optional(__S(32, __c2, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
@@ -4817,7 +4860,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "VirtualMachineTemplate" });
   }
 }
-function __c81(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4848,15 +4891,15 @@ function __c81(j: number): any {
           nicType: S.optional(S.String),
           powerOnBoot: S.optional(S.String),
           deviceKey: S.optional(S.Number),
-          ipSettings: S.optional(__S(1297, __c81, 1)),
+          ipSettings: S.optional(__S(1313, __c82, 1)),
         }),
       ).annotate({ identifier: "NetworkInterfaceInput" });
     case 3:
-      return S.Array(__S(1298, __c81, 2));
+      return S.Array(__S(1314, __c82, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(__S(1299, __c81, 3)),
+          networkInterfaces: S.optional(__S(1315, __c82, 3)),
         }),
       ).annotate({ identifier: "NetworkProfileInput" });
     case 5:
@@ -4873,19 +4916,19 @@ function __c81(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placementProfile: S.optional(__S(448, __c28, 0)),
-          osProfile: S.optional(__S(1296, __c81, 0)),
-          hardwareProfile: S.optional(__S(1200, __c75, 0)),
-          networkProfile: S.optional(__S(1300, __c81, 4)),
-          storageProfile: S.optional(__S(1203, __c75, 3)),
+          osProfile: S.optional(__S(1312, __c82, 0)),
+          hardwareProfile: S.optional(__S(1216, __c76, 0)),
+          networkProfile: S.optional(__S(1316, __c82, 4)),
+          storageProfile: S.optional(__S(1219, __c76, 3)),
           securityProfile: S.optional(__S(457, __c28, 9)),
-          infrastructureProfile: S.optional(__S(1301, __c81, 5)),
+          infrastructureProfile: S.optional(__S(1317, __c82, 5)),
         }),
       ).annotate({ identifier: "VirtualMachineInstancePropertiesInput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: __S(1302, __c81, 6),
+          properties: __S(1318, __c82, 6),
           extendedLocation: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
@@ -4898,7 +4941,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "VirtualMachineInstancesCreateOrUpdateRequest" });
   }
 }
-function __c82(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4922,7 +4965,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "CreateVirtualNetworkRequest" });
   }
 }
-function __c83(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4940,7 +4983,7 @@ function __c83(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(1328, __c83, 0),
+          properties: __S(1344, __c84, 0),
           location: S.String,
           extendedLocation: S.optional(__S(32, __c2, 0)),
           systemData: S.optional(__S(16, __c1, 0)),
@@ -4953,14 +4996,14 @@ function __c83(j: number): any {
       ).annotate({ identifier: "VirtualNetwork" });
   }
 }
-function __c84(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          credentials: S.optional(__S(1360, __c85, 0)),
+          credentials: S.optional(__S(1376, __c86, 0)),
           privateLinkScopeResourceId: S.optional(S.String),
-          httpProxyConfig: S.optional(__S(1361, __c85, 1)),
+          httpProxyConfig: S.optional(__S(1377, __c86, 1)),
           provisioningAction: S.optional(S.String),
         }),
       ).annotate({ identifier: "GuestAgentPropertiesInput" });
@@ -4968,7 +5011,7 @@ function __c84(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: __S(1344, __c84, 0),
+          properties: __S(1360, __c85, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4980,7 +5023,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "CreateVMInstanceGuestAgentRequest" });
   }
 }
-function __c85(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5000,9 +5043,9 @@ function __c85(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.optional(S.String),
-          credentials: S.optional(__S(1360, __c85, 0)),
+          credentials: S.optional(__S(1376, __c86, 0)),
           privateLinkScopeResourceId: S.optional(S.String),
-          httpProxyConfig: S.optional(__S(1361, __c85, 1)),
+          httpProxyConfig: S.optional(__S(1377, __c86, 1)),
           provisioningAction: S.optional(S.String),
           status: S.optional(S.String),
           customResourceName: S.optional(S.String),
@@ -5017,12 +5060,12 @@ function __c85(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(1362, __c85, 2),
+          properties: __S(1378, __c86, 2),
         }),
       ).annotate({ identifier: "CreateVMInstanceGuestAgentResponse" });
   }
 }
-function __c86(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5042,10 +5085,14 @@ function __c86(j: number): any {
       ).annotate({ identifier: "DeleteClusterRequest" });
   }
 }
-function __c87(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteClusterResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteClusterResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

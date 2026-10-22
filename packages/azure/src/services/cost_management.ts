@@ -451,6 +451,10 @@ export interface CostDetailsOperationResults {
   validTill?: string;
   /** The details of the error. */
   error?: ErrorDetails;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** The type of the detailed report. By default ActualCost is provided */
 export type GenerateDetailedCostReportMetricType = "ActualCost" | "AmortizedCost";
@@ -490,6 +494,10 @@ export interface CreateGenerateDetailedCostReportOperationResponse {
   systemData?: SystemData;
   /** The properties of the resource generated. */
   properties?: DownloadURL;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface DeleteBudgetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -822,6 +830,8 @@ export interface OperationStatus {
   status?: OperationStatusType;
   /** The properties of the resource generated. */
   properties?: ReportURL;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface DownloadPriceSheetByBillingProfileRequest {
   /** BillingAccount ID */
@@ -892,6 +902,8 @@ export interface PricesheetDownloadProperties {
   downloadUrl?: string;
   /** The properties in downloaded file */
   downloadFileProperties?: MCAPriceSheetProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface DownloadPriceSheetByInvoiceRequest {
   /** BillingAccount ID */
@@ -900,6 +912,17 @@ export interface DownloadPriceSheetByInvoiceRequest {
   billingProfileName: string;
   /** The ID that uniquely identifies an invoice. */
   invoiceName: string;
+}
+/** The URL to download the generated report. */
+export interface DownloadPriceSheetByInvoiceResponse {
+  /** The time at which report URL becomes invalid/expires in UTC e.g. 2020-12-08T05:55:59.4394737Z. */
+  expiryTime?: string;
+  /** The time at which report URL becomes invalid/expires in UTC e.g. 2020-12-08T05:55:59.4394737Z. */
+  validTill?: string;
+  /** The URL to download the generated report. */
+  downloadUrl?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 1 calendar month. */
 export interface ExportTimePeriod {
@@ -1455,6 +1478,8 @@ export interface BenefitUtilizationSummariesOperationStatus {
   status?: OperationStatusType;
   /** Contains sas url to the async benefit utilization summaries report and a date that the url is valid until. These values will be empty if the report is in a Running or Failed state */
   properties?: AsyncOperationStatusProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface GenerateGenerateBenefitUtilizationSummariesReportByBillingProfileRequest {
   /** BillingAccount ID */
@@ -1691,6 +1716,8 @@ export interface GetGenerateDetailedCostReportOperationResultResponse {
   systemData?: SystemData;
   /** The properties of the resource generated. */
   properties?: DownloadURL;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetGenerateDetailedCostReportOperationStatusRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -3034,7 +3061,7 @@ export const CreateGenerateDetailedCostReportOperation: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1360, __c85, 0) as any as S.Schema<CreateGenerateDetailedCostReportOperationRequest>,
-  output: __S(1392, __c87, 0) as any as S.Schema<CreateGenerateDetailedCostReportOperationResponse>,
+  output: __S(1361, __c85, 1) as any as S.Schema<CreateGenerateDetailedCostReportOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3048,8 +3075,8 @@ export const DeleteBudget: API.OperationMethod<
   DeleteBudgetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1616, __c101, 0) as any as S.Schema<DeleteBudgetRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<DeleteBudgetResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<DeleteBudgetRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteBudgetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3063,8 +3090,8 @@ export const DeleteCostAllocationRule: API.OperationMethod<
   DeleteCostAllocationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1744, __c109, 0) as any as S.Schema<DeleteCostAllocationRuleRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<DeleteCostAllocationRuleResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<DeleteCostAllocationRuleRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteCostAllocationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3078,8 +3105,8 @@ export const DeleteExport: API.OperationMethod<
   DeleteExportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c110, 0) as any as S.Schema<DeleteExportRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<DeleteExportResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<DeleteExportRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteExportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3094,7 +3121,7 @@ export const DeleteMarkupRule: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<DeleteMarkupRuleRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<DeleteMarkupRuleResponse>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteMarkupRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3109,7 +3136,7 @@ export const DeleteScheduledAction: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<DeleteScheduledActionRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<DeleteScheduledActionResponse>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteScheduledActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3124,7 +3151,7 @@ export const DeleteScheduledActionByScope: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<DeleteScheduledActionByScopeRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<DeleteScheduledActionByScopeResponse>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteScheduledActionByScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3139,7 +3166,7 @@ export const DeleteSettingsByScope: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DeleteSettingsByScopeRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<DeleteSettingsByScopeResponse>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteSettingsByScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3154,7 +3181,7 @@ export const DeleteView: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<DeleteViewRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<DeleteViewResponse>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteViewResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3169,7 +3196,7 @@ export const DeleteViewByScope: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<DeleteViewByScopeRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<DeleteViewByScopeResponse>,
+  output: __S(1616, __c101, 0) as any as S.Schema<DeleteViewByScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3239,12 +3266,12 @@ export type DownloadPriceSheetByInvoiceError = AzureOpError;
 /** Gets a URL to download the pricesheet for an invoice. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement or Microsoft Customer Agreement. */
 export const DownloadPriceSheetByInvoice: API.OperationMethod<
   DownloadPriceSheetByInvoiceRequest,
-  DownloadURL,
+  DownloadPriceSheetByInvoiceResponse,
   DownloadPriceSheetByInvoiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(368, __c23, 0) as any as S.Schema<DownloadPriceSheetByInvoiceRequest>,
-  output: __S(1376, __c86, 0) as any as S.Schema<DownloadURL>,
+  output: __S(369, __c23, 1) as any as S.Schema<DownloadPriceSheetByInvoiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3259,7 +3286,7 @@ export const ExecuteExport: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c24, 0) as any as S.Schema<ExecuteExportRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<ExecuteExportResponse>,
+  output: __S(1616, __c101, 0) as any as S.Schema<ExecuteExportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3564,9 +3591,9 @@ export const GetGenerateDetailedCostReportOperationResult: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(800, __c50, 0) as any as S.Schema<GetGenerateDetailedCostReportOperationResultRequest>,
   output: __S(
-    1392,
-    __c87,
-    0,
+    801,
+    __c50,
+    1,
   ) as any as S.Schema<GetGenerateDetailedCostReportOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3901,8 +3928,8 @@ export const ListScheduledActionByScope: API.OperationMethod<
   ListScheduledActionByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<ListScheduledActionByScopeRequest>,
-  output: __S(1425, __c89, 1) as any as S.Schema<ScheduledActionListResult>,
+  input: __S(1392, __c87, 0) as any as S.Schema<ListScheduledActionByScopeRequest>,
+  output: __S(1409, __c88, 1) as any as S.Schema<ScheduledActionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3916,8 +3943,8 @@ export const ListScheduledActions: API.OperationMethod<
   ListScheduledActionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<ListScheduledActionsRequest>,
-  output: __S(1425, __c89, 1) as any as S.Schema<ScheduledActionListResult>,
+  input: __S(1424, __c89, 0) as any as S.Schema<ListScheduledActionsRequest>,
+  output: __S(1409, __c88, 1) as any as S.Schema<ScheduledActionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3931,8 +3958,8 @@ export const ListSettings: API.OperationMethod<
   ListSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<ListSettingsRequest>,
-  output: __S(1457, __c91, 1) as any as S.Schema<SettingsListResult>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListSettingsRequest>,
+  output: __S(1441, __c90, 1) as any as S.Schema<SettingsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3946,8 +3973,8 @@ export const ListViewByScope: API.OperationMethod<
   ListViewByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c92, 0) as any as S.Schema<ListViewByScopeRequest>,
-  output: __S(1489, __c93, 1) as any as S.Schema<ViewListResult>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListViewByScopeRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<ViewListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3961,8 +3988,8 @@ export const ListViews: API.OperationMethod<
   ListViewsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<ListViewsRequest>,
-  output: __S(1489, __c93, 1) as any as S.Schema<ViewListResult>,
+  input: __S(1488, __c93, 0) as any as S.Schema<ListViewsRequest>,
+  output: __S(1473, __c92, 1) as any as S.Schema<ViewListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3976,7 +4003,7 @@ export const MarkupRulesCreateOrUpdate: API.OperationMethod<
   MarkupRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c95, 0) as any as S.Schema<MarkupRulesCreateOrUpdateRequest>,
+  input: __S(1504, __c94, 0) as any as S.Schema<MarkupRulesCreateOrUpdateRequest>,
   output: __S(882, __c55, 2) as any as S.Schema<MarkupRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3991,7 +4018,7 @@ export const QueryUsage: API.OperationMethod<
   QueryUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c96, 0) as any as S.Schema<QueryUsageRequest>,
+  input: __S(1520, __c95, 0) as any as S.Schema<QueryUsageRequest>,
   output: __S(516, __c32, 4) as any as S.Schema<QueryUsageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4006,7 +4033,7 @@ export const QueryUsageByExternalCloudProviderType: API.OperationMethod<
   QueryUsageByExternalCloudProviderTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c98, 0) as any as S.Schema<QueryUsageByExternalCloudProviderTypeRequest>,
+  input: __S(1552, __c97, 0) as any as S.Schema<QueryUsageByExternalCloudProviderTypeRequest>,
   output: __S(516, __c32, 4) as any as S.Schema<QueryUsageByExternalCloudProviderTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4021,8 +4048,8 @@ export const RunScheduledAction: API.OperationMethod<
   RunScheduledActionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<RunScheduledActionRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<RunScheduledActionResponse>,
+  input: __S(1568, __c98, 0) as any as S.Schema<RunScheduledActionRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<RunScheduledActionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4036,8 +4063,8 @@ export const RunScheduledActionByScope: API.OperationMethod<
   RunScheduledActionByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c100, 0) as any as S.Schema<RunScheduledActionByScopeRequest>,
-  output: __S(1632, __c102, 0) as any as S.Schema<RunScheduledActionByScopeResponse>,
+  input: __S(1584, __c99, 0) as any as S.Schema<RunScheduledActionByScopeRequest>,
+  output: __S(1616, __c101, 0) as any as S.Schema<RunScheduledActionByScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4051,7 +4078,7 @@ export const ScheduledActionsCreateOrUpdate: API.OperationMethod<
   ScheduledActionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1648, __c103, 0) as any as S.Schema<ScheduledActionsCreateOrUpdateRequest>,
+  input: __S(1632, __c102, 0) as any as S.Schema<ScheduledActionsCreateOrUpdateRequest>,
   output: __S(917, __c57, 5) as any as S.Schema<ScheduledActionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4066,7 +4093,7 @@ export const ScheduledActionsCreateOrUpdateByScope: API.OperationMethod<
   ScheduledActionsCreateOrUpdateByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c104, 0) as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeRequest>,
+  input: __S(1648, __c103, 0) as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeRequest>,
   output: __S(917, __c57, 5) as any as S.Schema<ScheduledActionsCreateOrUpdateByScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4081,7 +4108,7 @@ export const SettingsCreateOrUpdateByScope: API.OperationMethod<
   SettingsCreateOrUpdateByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1680, __c105, 0) as any as S.Schema<SettingsCreateOrUpdateByScopeRequest>,
+  input: __S(1664, __c104, 0) as any as S.Schema<SettingsCreateOrUpdateByScopeRequest>,
   output: __S(960, __c60, 0) as any as S.Schema<SettingsCreateOrUpdateByScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4096,7 +4123,7 @@ export const ViewsCreateOrUpdate: API.OperationMethod<
   ViewsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c106, 0) as any as S.Schema<ViewsCreateOrUpdateRequest>,
+  input: __S(1680, __c105, 0) as any as S.Schema<ViewsCreateOrUpdateRequest>,
   output: __S(1019, __c63, 11) as any as S.Schema<ViewsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4111,7 +4138,7 @@ export const ViewsCreateOrUpdateByScope: API.OperationMethod<
   ViewsCreateOrUpdateByScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c108, 0) as any as S.Schema<ViewsCreateOrUpdateByScopeRequest>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ViewsCreateOrUpdateByScopeRequest>,
   output: __S(1019, __c63, 11) as any as S.Schema<ViewsCreateOrUpdateByScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4587,6 +4614,7 @@ function __c20(j: number): any {
         S.Struct({
           status: S.optional(S.String),
           properties: S.optional(__S(320, __c20, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "OperationStatus" });
   }
@@ -4644,6 +4672,7 @@ function __c21(j: number): any {
           expiryTime: S.optional(S.String),
           downloadUrl: S.optional(S.String),
           downloadFileProperties: S.optional(__S(337, __c21, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "PricesheetDownloadProperties" });
   }
@@ -4683,6 +4712,15 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DownloadPriceSheetByInvoiceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          expiryTime: S.optional(S.String),
+          validTill: S.optional(S.String),
+          downloadUrl: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DownloadPriceSheetByInvoiceResponse" });
   }
 }
 function __c24(j: number): any {
@@ -4723,7 +4761,7 @@ function __c26(j: number): any {
           format: S.optional(S.String),
           deliveryInfo: __S(433, __c27, 1),
           definition: __S(438, __c27, 6),
-          runHistory: S.optional(__S(1632, __c102, 0)),
+          runHistory: S.optional(__S(1616, __c101, 0)),
           partitionData: S.optional(S.Boolean),
           dataOverwriteBehavior: S.optional(S.String),
           compressionMode: S.optional(S.String),
@@ -5108,6 +5146,7 @@ function __c35(j: number): any {
           input: S.optional(__S(560, __c35, 0)),
           status: S.optional(S.String),
           properties: S.optional(__S(561, __c35, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "BenefitUtilizationSummariesOperationStatus" });
   }
@@ -5431,6 +5470,17 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetGenerateDetailedCostReportOperationResultRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c4, 0)),
+          properties: S.optional(__S(1376, __c86, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "GetGenerateDetailedCostReportOperationResultResponse" });
   }
 }
 function __c51(j: number): any {
@@ -6103,6 +6153,8 @@ function __c71(j: number): any {
           manifest: S.optional(__S(1140, __c71, 4)),
           validTill: S.optional(S.String),
           error: S.optional(__S(1120, __c70, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "CostDetailsOperationResults" });
   }
@@ -6404,6 +6456,18 @@ function __c85(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateGenerateDetailedCostReportOperationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(64, __c4, 0)),
+          properties: S.optional(__S(1376, __c86, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateGenerateDetailedCostReportOperationResponse" });
   }
 }
 function __c86(j: number): any {
@@ -6423,20 +6487,6 @@ function __c87(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(64, __c4, 0)),
-          properties: S.optional(__S(1376, __c86, 0)),
-        }),
-      ).annotate({ identifier: "CreateGenerateDetailedCostReportOperationResponse" });
-  }
-}
-function __c88(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
           scope: S.String.pipe(T.Label()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
         }).pipe(
@@ -6450,20 +6500,20 @@ function __c88(j: number): any {
       ).annotate({ identifier: "ListScheduledActionByScopeRequest" });
   }
 }
-function __c89(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(917, __c57, 5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1424, __c89, 0)),
+          value: S.optional(__S(1408, __c88, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduledActionListResult" });
   }
 }
-function __c90(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6480,7 +6530,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "ListScheduledActionsRequest" });
   }
 }
-function __c91(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6503,7 +6553,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "SettingsListResult" });
   }
 }
-function __c92(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6520,20 +6570,20 @@ function __c92(j: number): any {
       ).annotate({ identifier: "ListViewByScopeRequest" });
   }
 }
-function __c93(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(1019, __c63, 11));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1488, __c93, 0)),
+          value: S.optional(__S(1472, __c92, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViewListResult" });
   }
 }
-function __c94(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6548,7 +6598,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "ListViewsRequest" });
   }
 }
-function __c95(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6568,7 +6618,7 @@ function __c95(j: number): any {
       ).annotate({ identifier: "MarkupRulesCreateOrUpdateRequest" });
   }
 }
-function __c96(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6577,7 +6627,7 @@ function __c96(j: number): any {
           type: S.String,
           timeframe: S.String,
           timePeriod: S.optional(__S(400, __c25, 0)),
-          dataset: __S(1554, __c97, 2),
+          dataset: __S(1538, __c96, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6589,15 +6639,15 @@ function __c96(j: number): any {
       ).annotate({ identifier: "QueryUsageRequest" });
   }
 }
-function __c97(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1553, __c97, 1)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1537, __c96, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          and: S.optional(__S(1552, __c97, 0)),
-          or: S.optional(__S(1552, __c97, 0)),
+          and: S.optional(__S(1536, __c96, 0)),
+          or: S.optional(__S(1536, __c96, 0)),
           dimensions: S.optional(__S(16, __c1, 0)),
           tags: S.optional(__S(16, __c1, 0)),
         }),
@@ -6609,12 +6659,12 @@ function __c97(j: number): any {
           configuration: S.optional(__S(496, __c31, 0)),
           aggregation: S.optional(__S(993, __c62, 1)),
           grouping: S.optional(__S(995, __c62, 3)),
-          filter: S.optional(__S(1553, __c97, 1)),
+          filter: S.optional(__S(1537, __c96, 1)),
         }),
       ).annotate({ identifier: "QueryDataset" });
   }
 }
-function __c98(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6624,7 +6674,7 @@ function __c98(j: number): any {
           type: S.String,
           timeframe: S.String,
           timePeriod: S.optional(__S(400, __c25, 0)),
-          dataset: __S(1554, __c97, 2),
+          dataset: __S(1538, __c96, 2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6636,7 +6686,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "QueryUsageByExternalCloudProviderTypeRequest" });
   }
 }
-function __c99(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6653,7 +6703,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "RunScheduledActionRequest" });
   }
 }
-function __c100(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6671,7 +6721,7 @@ function __c100(j: number): any {
       ).annotate({ identifier: "RunScheduledActionByScopeRequest" });
   }
 }
-function __c101(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6689,13 +6739,13 @@ function __c101(j: number): any {
       ).annotate({ identifier: "DeleteBudgetRequest" });
   }
 }
-function __c102(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteBudgetResponse" });
   }
 }
-function __c103(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6715,7 +6765,7 @@ function __c103(j: number): any {
       ).annotate({ identifier: "ScheduledActionsCreateOrUpdateRequest" });
   }
 }
-function __c104(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6736,7 +6786,7 @@ function __c104(j: number): any {
       ).annotate({ identifier: "ScheduledActionsCreateOrUpdateByScopeRequest" });
   }
 }
-function __c105(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6755,13 +6805,13 @@ function __c105(j: number): any {
       ).annotate({ identifier: "SettingsCreateOrUpdateByScopeRequest" });
   }
 }
-function __c106(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           viewName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1712, __c107, 0)),
+          properties: S.optional(__S(1696, __c106, 0)),
           eTag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6774,7 +6824,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "ViewsCreateOrUpdateRequest" });
   }
 }
-function __c107(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6793,14 +6843,14 @@ function __c107(j: number): any {
       ).annotate({ identifier: "ViewPropertiesInput" });
   }
 }
-function __c108(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           scope: S.String.pipe(T.Label()),
           viewName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1712, __c107, 0)),
+          properties: S.optional(__S(1696, __c106, 0)),
           eTag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6813,7 +6863,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "ViewsCreateOrUpdateByScopeRequest" });
   }
 }
-function __c109(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6831,7 +6881,7 @@ function __c109(j: number): any {
       ).annotate({ identifier: "DeleteCostAllocationRuleRequest" });
   }
 }
-function __c110(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

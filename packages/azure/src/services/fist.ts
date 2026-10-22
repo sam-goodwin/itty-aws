@@ -206,7 +206,12 @@ export interface DeleteWorkspaceRequest {
   /** The name of the firmware analysis workspace. */
   workspaceName: string;
 }
-export interface DeleteWorkspaceResponse {}
+export interface DeleteWorkspaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetFirmwareRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1093,7 +1098,7 @@ export const DeleteWorkspace: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c22, 0) as any as S.Schema<DeleteWorkspaceRequest>,
-  output: __S(80, __c5, 0) as any as S.Schema<DeleteWorkspaceResponse>,
+  output: __S(353, __c22, 1) as any as S.Schema<DeleteWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2072,6 +2077,13 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteWorkspaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteWorkspaceResponse" });
   }
 }
 function __c23(j: number): any {

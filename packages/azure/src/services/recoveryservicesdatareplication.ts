@@ -204,6 +204,10 @@ export interface CreateFabricResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: FabricModelProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Identity model. */
 export interface IdentityModel {
@@ -281,6 +285,10 @@ export interface CreateFabricAgentResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: FabricAgentModelProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Policy model properties. */
 export interface PolicyModelPropertiesInput {
@@ -317,6 +325,10 @@ export interface CreatePolicyResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: PolicyModelProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Protected item model properties. */
 export interface ProtectedItemModelPropertiesInput {
@@ -503,6 +515,10 @@ export interface CreateProtectedItemResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ProtectedItemModelProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Replication extension model properties. */
 export interface ReplicationExtensionModelPropertiesInput {
@@ -539,6 +555,10 @@ export interface CreateReplicationExtensionResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ReplicationExtensionModelProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateVaultRequestTagsMap = { [key: string]: string | undefined };
@@ -690,6 +710,10 @@ export interface CreateVaultResponse {
   properties?: VaultModelProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateVaultResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -699,7 +723,12 @@ export interface DeleteFabricRequest {
   /** The fabric name. */
   fabricName: string;
 }
-export interface DeleteFabricResponse {}
+export interface DeleteFabricResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFabricAgentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -710,7 +739,12 @@ export interface DeleteFabricAgentRequest {
   /** The fabric agent name. */
   fabricAgentName: string;
 }
-export interface DeleteFabricAgentResponse {}
+export interface DeleteFabricAgentResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -721,7 +755,12 @@ export interface DeletePolicyRequest {
   /** The policy name. */
   policyName: string;
 }
-export interface DeletePolicyResponse {}
+export interface DeletePolicyResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -732,7 +771,12 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The private endpoint connection name. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteProtectedItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -745,7 +789,12 @@ export interface DeleteProtectedItemRequest {
   /** A flag indicating whether to do force delete or not. */
   forceDelete?: boolean;
 }
-export interface DeleteProtectedItemResponse {}
+export interface DeleteProtectedItemResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteReplicationExtensionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -756,7 +805,12 @@ export interface DeleteReplicationExtensionRequest {
   /** The replication extension name. */
   replicationExtensionName: string;
 }
-export interface DeleteReplicationExtensionResponse {}
+export interface DeleteReplicationExtensionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -765,7 +819,12 @@ export interface DeleteVaultRequest {
   /** The vault name. */
   vaultName: string;
 }
-export interface DeleteVaultResponse {}
+export interface DeleteVaultResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetEmailConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1792,6 +1851,10 @@ export interface ProtectedItemPlannedFailoverRequest {
 export interface PlannedFailoverModel {
   /** Planned failover model properties. */
   properties: PlannedFailoverModelProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Gets or sets the resource tags. */
 export type UpdateFabricRequestTagsMap = { [key: string]: string | undefined };
@@ -1824,6 +1887,10 @@ export interface UpdateFabricResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: FabricModelProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Represents Private endpoint connection response properties. */
 export interface PrivateEndpointConnectionResponsePropertiesInput {
@@ -1884,6 +1951,10 @@ export interface UpdateProtectedItemResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: ProtectedItemModelProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Gets or sets the resource tags. */
 export type UpdateVaultRequestTagsMap = { [key: string]: string | undefined };
@@ -1941,6 +2012,10 @@ export interface UpdateVaultResponse {
   properties?: VaultModelProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdateVaultResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CreateEmailConfigurationError = AzureOpError;
 /** Creates an alert configuration setting for the given vault. */
@@ -1966,7 +2041,7 @@ export const CreateFabric: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c4, 0) as any as S.Schema<CreateFabricRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<CreateFabricResponse>,
+  output: __S(65, __c4, 1) as any as S.Schema<CreateFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1980,8 +2055,8 @@ export const CreateFabricAgent: API.OperationMethod<
   CreateFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c23, 1) as any as S.Schema<CreateFabricAgentRequest>,
-  output: __S(386, __c24, 2) as any as S.Schema<CreateFabricAgentResponse>,
+  input: __S(401, __c25, 1) as any as S.Schema<CreateFabricAgentRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<CreateFabricAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1995,8 +2070,8 @@ export const CreatePolicy: API.OperationMethod<
   CreatePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<CreatePolicyRequest>,
-  output: __S(609, __c38, 1) as any as S.Schema<CreatePolicyResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<CreatePolicyRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<CreatePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2010,8 +2085,8 @@ export const CreateProtectedItem: API.OperationMethod<
   CreateProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(817, __c51, 1) as any as S.Schema<CreateProtectedItemRequest>,
-  output: __S(834, __c52, 2) as any as S.Schema<CreateProtectedItemResponse>,
+  input: __S(913, __c57, 1) as any as S.Schema<CreateProtectedItemRequest>,
+  output: __S(914, __c57, 2) as any as S.Schema<CreateProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2025,8 +2100,8 @@ export const CreateReplicationExtension: API.OperationMethod<
   CreateReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<CreateReplicationExtensionRequest>,
-  output: __S(609, __c38, 1) as any as S.Schema<CreateReplicationExtensionResponse>,
+  input: __S(1120, __c70, 0) as any as S.Schema<CreateReplicationExtensionRequest>,
+  output: __S(688, __c43, 0) as any as S.Schema<CreateReplicationExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2040,8 +2115,8 @@ export const CreateVault: API.OperationMethod<
   CreateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1042, __c65, 2) as any as S.Schema<CreateVaultRequest>,
-  output: __S(1092, __c68, 4) as any as S.Schema<CreateVaultResponse>,
+  input: __S(1139, __c71, 3) as any as S.Schema<CreateVaultRequest>,
+  output: __S(1140, __c71, 4) as any as S.Schema<CreateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2055,8 +2130,8 @@ export const DeleteFabric: API.OperationMethod<
   DeleteFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<DeleteFabricRequest>,
-  output: __S(1120, __c70, 0) as any as S.Schema<DeleteFabricResponse>,
+  input: __S(1216, __c76, 0) as any as S.Schema<DeleteFabricRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<DeleteFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2070,8 +2145,8 @@ export const DeleteFabricAgent: API.OperationMethod<
   DeleteFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c72, 0) as any as S.Schema<DeleteFabricAgentRequest>,
-  output: __S(1120, __c70, 0) as any as S.Schema<DeleteFabricAgentResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<DeleteFabricAgentRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<DeleteFabricAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2085,8 +2160,8 @@ export const DeletePolicy: API.OperationMethod<
   DeletePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c73, 0) as any as S.Schema<DeletePolicyRequest>,
-  output: __S(1120, __c70, 0) as any as S.Schema<DeletePolicyResponse>,
+  input: __S(1264, __c79, 0) as any as S.Schema<DeletePolicyRequest>,
+  output: __S(1232, __c77, 0) as any as S.Schema<DeletePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2101,7 +2176,7 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(1120, __c70, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  output: __S(1232, __c77, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2116,7 +2191,7 @@ export const DeleteProtectedItem: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DeleteProtectedItemRequest>,
-  output: __S(1120, __c70, 0) as any as S.Schema<DeleteProtectedItemResponse>,
+  output: __S(1232, __c77, 0) as any as S.Schema<DeleteProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2131,7 +2206,7 @@ export const DeleteReplicationExtension: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<DeleteReplicationExtensionRequest>,
-  output: __S(1120, __c70, 0) as any as S.Schema<DeleteReplicationExtensionResponse>,
+  output: __S(1232, __c77, 0) as any as S.Schema<DeleteReplicationExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2146,7 +2221,7 @@ export const DeleteVault: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<DeleteVaultRequest>,
-  output: __S(1120, __c70, 0) as any as S.Schema<DeleteVaultResponse>,
+  output: __S(1232, __c77, 0) as any as S.Schema<DeleteVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2191,7 +2266,7 @@ export const GetFabric: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(272, __c17, 0) as any as S.Schema<GetFabricRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<GetFabricResponse>,
+  output: __S(288, __c18, 0) as any as S.Schema<GetFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2205,8 +2280,8 @@ export const GetFabricAgent: API.OperationMethod<
   GetFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<GetFabricAgentRequest>,
-  output: __S(386, __c24, 2) as any as S.Schema<GetFabricAgentResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetFabricAgentRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetFabricAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2220,8 +2295,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetJobRequest>,
-  output: __S(305, __c19, 1) as any as S.Schema<GetJobResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(337, __c21, 1) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2235,8 +2310,8 @@ export const GetLocationBasedOperationResult: API.OperationMethod<
   GetLocationBasedOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetLocationBasedOperationResultRequest>,
-  output: __S(352, __c22, 0) as any as S.Schema<OperationStatus>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetLocationBasedOperationResultRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2250,8 +2325,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<GetOperationResultRequest>,
-  output: __S(352, __c22, 0) as any as S.Schema<OperationStatus>,
+  input: __S(432, __c27, 0) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2265,8 +2340,8 @@ export const GetPolicy: API.OperationMethod<
   GetPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetPolicyRequest>,
-  output: __S(609, __c38, 1) as any as S.Schema<GetPolicyResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetPolicyRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<GetPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2280,8 +2355,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(1059, __c66, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(1155, __c72, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2295,8 +2370,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(465, __c29, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(513, __c32, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2310,8 +2385,8 @@ export const GetProtectedItem: API.OperationMethod<
   GetProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetProtectedItemRequest>,
-  output: __S(834, __c52, 2) as any as S.Schema<GetProtectedItemResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetProtectedItemRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<GetProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2325,8 +2400,8 @@ export const GetRecoveryPoint: API.OperationMethod<
   GetRecoveryPointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<GetRecoveryPointRequest>,
-  output: __S(513, __c32, 1) as any as S.Schema<GetRecoveryPointResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetRecoveryPointRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<GetRecoveryPointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2340,8 +2415,8 @@ export const GetReplicationExtension: API.OperationMethod<
   GetReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<GetReplicationExtensionRequest>,
-  output: __S(609, __c38, 1) as any as S.Schema<GetReplicationExtensionResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<GetReplicationExtensionRequest>,
+  output: __S(464, __c29, 0) as any as S.Schema<GetReplicationExtensionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2355,8 +2430,8 @@ export const GetVault: API.OperationMethod<
   GetVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<GetVaultRequest>,
-  output: __S(1092, __c68, 4) as any as S.Schema<GetVaultResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetVaultRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<GetVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2370,8 +2445,8 @@ export const ListEmailConfiguration: API.OperationMethod<
   ListEmailConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<ListEmailConfigurationRequest>,
-  output: __S(562, __c35, 2) as any as S.Schema<EmailConfigurationModelListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListEmailConfigurationRequest>,
+  output: __S(642, __c40, 2) as any as S.Schema<EmailConfigurationModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2385,8 +2460,8 @@ export const ListEvent: API.OperationMethod<
   ListEventError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListEventRequest>,
-  output: __S(578, __c36, 2) as any as S.Schema<EventModelListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListEventRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<EventModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2400,8 +2475,8 @@ export const ListFabric: API.OperationMethod<
   ListFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<ListFabricRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<FabricModelListResult>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListFabricRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<FabricModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2415,8 +2490,8 @@ export const ListFabricAgent: API.OperationMethod<
   ListFabricAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListFabricAgentRequest>,
-  output: __S(658, __c41, 2) as any as S.Schema<FabricAgentModelListResult>,
+  input: __S(752, __c47, 0) as any as S.Schema<ListFabricAgentRequest>,
+  output: __S(754, __c47, 2) as any as S.Schema<FabricAgentModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2430,8 +2505,8 @@ export const ListFabricBySubscription: API.OperationMethod<
   ListFabricBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<ListFabricBySubscriptionRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<FabricModelListResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListFabricBySubscriptionRequest>,
+  output: __S(737, __c46, 1) as any as S.Schema<FabricModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2445,8 +2520,8 @@ export const ListJob: API.OperationMethod<
   ListJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<ListJobRequest>,
-  output: __S(689, __c43, 1) as any as S.Schema<JobModelListResult>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListJobRequest>,
+  output: __S(785, __c49, 1) as any as S.Schema<JobModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2460,8 +2535,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(708, __c44, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(804, __c50, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2475,8 +2550,8 @@ export const ListPolicy: API.OperationMethod<
   ListPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<ListPolicyRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<PolicyModelListResult>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListPolicyRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<PolicyModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2490,8 +2565,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(753, __c47, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(849, __c53, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2505,8 +2580,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(770, __c48, 2) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(866, __c54, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2520,8 +2595,8 @@ export const ListProtectedItem: API.OperationMethod<
   ListProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<ListProtectedItemRequest>,
-  output: __S(786, __c49, 2) as any as S.Schema<ProtectedItemModelListResult>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListProtectedItemRequest>,
+  output: __S(882, __c55, 2) as any as S.Schema<ProtectedItemModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2535,8 +2610,8 @@ export const ListRecoveryPoint: API.OperationMethod<
   ListRecoveryPointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<ListRecoveryPointRequest>,
-  output: __S(802, __c50, 2) as any as S.Schema<RecoveryPointModelListResult>,
+  input: __S(896, __c56, 0) as any as S.Schema<ListRecoveryPointRequest>,
+  output: __S(898, __c56, 2) as any as S.Schema<RecoveryPointModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2550,8 +2625,8 @@ export const ListReplicationExtension: API.OperationMethod<
   ListReplicationExtensionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<ListReplicationExtensionRequest>,
-  output: __S(737, __c46, 1) as any as S.Schema<ReplicationExtensionModelListResult>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListReplicationExtensionRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<ReplicationExtensionModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2565,8 +2640,8 @@ export const ListVault: API.OperationMethod<
   ListVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<ListVaultRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<VaultModelListResult>,
+  input: __S(960, __c60, 0) as any as S.Schema<ListVaultRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<VaultModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2580,8 +2655,8 @@ export const ListVaultBySubscription: API.OperationMethod<
   ListVaultBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<ListVaultBySubscriptionRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<VaultModelListResult>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListVaultBySubscriptionRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<VaultModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2595,8 +2670,8 @@ export const PostCheckNameAvailability: API.OperationMethod<
   PostCheckNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<PostCheckNameAvailabilityRequest>,
-  output: __S(913, __c57, 1) as any as S.Schema<CheckNameAvailabilityResponseModel>,
+  input: __S(1008, __c63, 0) as any as S.Schema<PostCheckNameAvailabilityRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<CheckNameAvailabilityResponseModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2610,8 +2685,8 @@ export const PostDeploymentPreflight: API.OperationMethod<
   PostDeploymentPreflightError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(930, __c58, 2) as any as S.Schema<PostDeploymentPreflightRequest>,
-  output: __S(931, __c58, 3) as any as S.Schema<DeploymentPreflightModel>,
+  input: __S(1026, __c64, 2) as any as S.Schema<PostDeploymentPreflightRequest>,
+  output: __S(1027, __c64, 3) as any as S.Schema<DeploymentPreflightModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2625,8 +2700,8 @@ export const ProtectedItemPlannedFailover: API.OperationMethod<
   ProtectedItemPlannedFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(945, __c59, 1) as any as S.Schema<ProtectedItemPlannedFailoverRequest>,
-  output: __S(946, __c59, 2) as any as S.Schema<PlannedFailoverModel>,
+  input: __S(1041, __c65, 1) as any as S.Schema<ProtectedItemPlannedFailoverRequest>,
+  output: __S(1042, __c65, 2) as any as S.Schema<PlannedFailoverModel>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2640,8 +2715,8 @@ export const UpdateFabric: API.OperationMethod<
   UpdateFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<UpdateFabricRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<UpdateFabricResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<UpdateFabricRequest>,
+  output: __S(1057, __c66, 1) as any as S.Schema<UpdateFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2655,8 +2730,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(977, __c61, 1) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
-  output: __S(1059, __c66, 3) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
+  input: __S(1073, __c67, 1) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(1155, __c72, 3) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2745,8 @@ export const UpdateProtectedItem: API.OperationMethod<
   UpdateProtectedItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(993, __c62, 1) as any as S.Schema<UpdateProtectedItemRequest>,
-  output: __S(834, __c52, 2) as any as S.Schema<UpdateProtectedItemResponse>,
+  input: __S(1089, __c68, 1) as any as S.Schema<UpdateProtectedItemRequest>,
+  output: __S(1090, __c68, 2) as any as S.Schema<UpdateProtectedItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2685,8 +2760,8 @@ export const UpdateVault: API.OperationMethod<
   UpdateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1009, __c63, 1) as any as S.Schema<UpdateVaultRequest>,
-  output: __S(1092, __c68, 4) as any as S.Schema<UpdateVaultResponse>,
+  input: __S(1105, __c69, 1) as any as S.Schema<UpdateVaultRequest>,
+  output: __S(1106, __c69, 2) as any as S.Schema<UpdateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2786,6 +2861,20 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFabricRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(128, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(80, __c5, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateFabricResponse" });
   }
 }
 function __c5(j: number): any {
@@ -2801,18 +2890,6 @@ function __c5(j: number): any {
           customProperties: S.Unknown,
         }),
       ).annotate({ identifier: "FabricModelProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(128, __c8, 0)),
-          location: S.String,
-          properties: S.optional(__S(80, __c5, 0)),
-        }),
-      ).annotate({ identifier: "CreateFabricResponse" });
   }
 }
 function __c6(j: number): any {
@@ -3058,6 +3135,22 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(128, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(80, __c5, 0)),
+        }),
+      ).annotate({ identifier: "GetFabricResponse" });
+  }
+}
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
@@ -3073,7 +3166,21 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetFabricAgentRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(417, __c26, 1)),
+        }),
+      ).annotate({ identifier: "GetFabricAgentResponse" });
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3098,12 +3205,12 @@ function __c19(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(328, __c20, 8)),
+          properties: S.optional(__S(360, __c22, 8)),
         }),
       ).annotate({ identifier: "GetJobResponse" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3112,11 +3219,11 @@ function __c20(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(S.suspend(() => __S(328, __c20, 8))),
+          properties: S.optional(S.suspend(() => __S(360, __c22, 8))),
         }),
       ).annotate({ identifier: "JobModel" });
     case 1:
-      return S.Array(__S(320, __c20, 0));
+      return S.Array(__S(352, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3125,11 +3232,11 @@ function __c20(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           customProperties: S.optional(__S(240, __c15, 0)),
-          childrenJobs: S.optional(__S(321, __c20, 1)),
+          childrenJobs: S.optional(__S(353, __c22, 1)),
         }),
       ).annotate({ identifier: "TaskModel" });
     case 3:
-      return S.Array(__S(322, __c20, 2));
+      return S.Array(__S(354, __c22, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3143,7 +3250,7 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ErrorModel" });
     case 5:
-      return S.Array(__S(324, __c20, 4));
+      return S.Array(__S(356, __c22, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3155,7 +3262,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           instanceType: S.String,
-          affectedObjectDetails: S.optional(__S(326, __c20, 6)),
+          affectedObjectDetails: S.optional(__S(358, __c22, 6)),
         }),
       ).annotate({ identifier: "JobModelCustomProperties" });
     case 8:
@@ -3175,15 +3282,15 @@ function __c20(j: number): any {
           targetFabricProviderId: S.optional(S.String),
           allowedActions: S.optional(__S(32, __c2, 0)),
           activityId: S.optional(S.String),
-          tasks: S.optional(__S(323, __c20, 3)),
-          errors: S.optional(__S(325, __c20, 5)),
-          customProperties: __S(327, __c20, 7),
+          tasks: S.optional(__S(355, __c22, 3)),
+          errors: S.optional(__S(357, __c22, 5)),
+          customProperties: __S(359, __c22, 7),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobModelProperties" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3203,7 +3310,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetLocationBasedOperationResultRequest" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3217,15 +3324,15 @@ function __c22(j: number): any {
       ).annotate({ identifier: "OperationStatus" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           machineId: S.String,
           machineName: S.String,
-          authenticationIdentity: __S(384, __c24, 0),
-          resourceAccessIdentity: __S(384, __c24, 0),
+          authenticationIdentity: __S(416, __c26, 0),
+          resourceAccessIdentity: __S(416, __c26, 0),
           customProperties: S.Unknown,
         }),
       ).annotate({ identifier: "FabricAgentModelPropertiesInput" });
@@ -3236,7 +3343,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fabricName: S.String.pipe(T.Label()),
           fabricAgentName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(368, __c23, 0)),
+          properties: S.optional(__S(400, __c25, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3246,9 +3353,21 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFabricAgentRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(417, __c26, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateFabricAgentResponse" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3266,8 +3385,8 @@ function __c24(j: number): any {
           correlationId: S.optional(S.String),
           machineId: S.String,
           machineName: S.String,
-          authenticationIdentity: __S(384, __c24, 0),
-          resourceAccessIdentity: __S(384, __c24, 0),
+          authenticationIdentity: __S(416, __c26, 0),
+          resourceAccessIdentity: __S(416, __c26, 0),
           isResponsive: S.optional(S.Boolean),
           lastHeartbeat: S.optional(S.String),
           versionNumber: S.optional(S.String),
@@ -3276,19 +3395,9 @@ function __c24(j: number): any {
           customProperties: S.Unknown,
         }),
       ).annotate({ identifier: "FabricAgentModelProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(385, __c24, 1)),
-        }),
-      ).annotate({ identifier: "CreateFabricAgentResponse" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3307,7 +3416,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetOperationResultRequest" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3327,7 +3436,21 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetPolicyRequest" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(704, __c44, 0)),
+        }),
+      ).annotate({ identifier: "GetPolicyResponse" });
+  }
+}
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3347,7 +3470,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3367,7 +3490,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkResourceRequest" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3385,12 +3508,12 @@ function __c29(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(464, __c29, 0)),
+          properties: S.optional(__S(512, __c32, 0)),
         }),
       ).annotate({ identifier: "GetPrivateLinkResourceResponse" });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3410,7 +3533,21 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetProtectedItemRequest" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(929, __c58, 1)),
+        }),
+      ).annotate({ identifier: "GetProtectedItemResponse" });
+  }
+}
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3431,7 +3568,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetRecoveryPointRequest" });
   }
 }
-function __c32(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3449,12 +3586,12 @@ function __c32(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(512, __c32, 0)),
+          properties: S.optional(__S(576, __c36, 0)),
         }),
       ).annotate({ identifier: "GetRecoveryPointResponse" });
   }
 }
-function __c33(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3474,7 +3611,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "GetReplicationExtensionRequest" });
   }
 }
-function __c34(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3493,7 +3630,24 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetVaultRequest" });
   }
 }
-function __c35(j: number): any {
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(128, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1187, __c74, 3)),
+        }),
+      ).annotate({ identifier: "GetVaultResponse" });
+  }
+}
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3515,13 +3669,13 @@ function __c35(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(561, __c35, 1),
+          value: __S(641, __c40, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailConfigurationModelListResult" });
   }
 }
-function __c36(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3546,13 +3700,13 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(577, __c36, 1),
+          value: __S(657, __c41, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventModelListResult" });
   }
 }
-function __c37(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3573,7 +3727,23 @@ function __c37(j: number): any {
       ).annotate({ identifier: "CreatePolicyRequest" });
   }
 }
-function __c38(j: number): any {
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(704, __c44, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreatePolicyResponse" });
+  }
+}
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3582,19 +3752,9 @@ function __c38(j: number): any {
           customProperties: S.Unknown,
         }),
       ).annotate({ identifier: "PolicyModelProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(608, __c38, 0)),
-        }),
-      ).annotate({ identifier: "CreatePolicyResponse" });
   }
 }
-function __c39(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3613,20 +3773,20 @@ function __c39(j: number): any {
       ).annotate({ identifier: "ListFabricRequest" });
   }
 }
-function __c40(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(81, __c5, 1));
+      return S.Array(__S(288, __c18, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(640, __c40, 0),
+          value: __S(736, __c46, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FabricModelListResult" });
   }
 }
-function __c41(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3644,17 +3804,17 @@ function __c41(j: number): any {
         ),
       ).annotate({ identifier: "ListFabricAgentRequest" });
     case 1:
-      return S.Array(__S(386, __c24, 2));
+      return S.Array(__S(320, __c20, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(657, __c41, 1),
+          value: __S(753, __c47, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FabricAgentModelListResult" });
   }
 }
-function __c42(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3671,7 +3831,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "ListFabricBySubscriptionRequest" });
   }
 }
-function __c43(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3694,13 +3854,13 @@ function __c43(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(321, __c20, 1),
+          value: __S(353, __c22, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobModelListResult" });
   }
 }
-function __c44(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3727,23 +3887,23 @@ function __c44(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(705, __c44, 1)),
+          display: S.optional(__S(801, __c50, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(706, __c44, 2));
+      return S.Array(__S(802, __c50, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(707, __c44, 3)),
+          value: S.optional(__S(803, __c50, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c45(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3762,20 +3922,20 @@ function __c45(j: number): any {
       ).annotate({ identifier: "ListPolicyRequest" });
   }
 }
-function __c46(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(609, __c38, 1));
+      return S.Array(__S(464, __c29, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(736, __c46, 0),
+          value: __S(832, __c52, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyModelListResult" });
   }
 }
-function __c47(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3795,13 +3955,13 @@ function __c47(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1072, __c67, 0),
+          value: __S(1168, __c73, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c48(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3819,17 +3979,17 @@ function __c48(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateLinkResourcesRequest" });
     case 1:
-      return S.Array(__S(465, __c29, 1));
+      return S.Array(__S(513, __c32, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(769, __c48, 1),
+          value: __S(865, __c54, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c49(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3850,17 +4010,17 @@ function __c49(j: number): any {
         ),
       ).annotate({ identifier: "ListProtectedItemRequest" });
     case 1:
-      return S.Array(__S(834, __c52, 2));
+      return S.Array(__S(544, __c34, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(785, __c49, 1),
+          value: __S(881, __c55, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProtectedItemModelListResult" });
   }
 }
-function __c50(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3879,17 +4039,17 @@ function __c50(j: number): any {
         ),
       ).annotate({ identifier: "ListRecoveryPointRequest" });
     case 1:
-      return S.Array(__S(513, __c32, 1));
+      return S.Array(__S(577, __c36, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(801, __c50, 1),
+          value: __S(897, __c56, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecoveryPointModelListResult" });
   }
 }
-function __c51(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3906,7 +4066,7 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           protectedItemName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(816, __c51, 0)),
+          properties: S.optional(__S(912, __c57, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3916,9 +4076,21 @@ function __c51(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateProtectedItemRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(929, __c58, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateProtectedItemResponse" });
   }
 }
-function __c52(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3956,29 +4128,19 @@ function __c52(j: number): any {
           lastSuccessfulPlannedFailoverTime: S.optional(S.String),
           lastSuccessfulUnplannedFailoverTime: S.optional(S.String),
           lastSuccessfulTestFailoverTime: S.optional(S.String),
-          currentJob: S.optional(__S(832, __c52, 0)),
+          currentJob: S.optional(__S(928, __c58, 0)),
           allowedJobs: S.optional(__S(32, __c2, 0)),
-          lastFailedEnableProtectionJob: S.optional(__S(832, __c52, 0)),
-          lastFailedPlannedFailoverJob: S.optional(__S(832, __c52, 0)),
-          lastTestFailoverJob: S.optional(__S(832, __c52, 0)),
+          lastFailedEnableProtectionJob: S.optional(__S(928, __c58, 0)),
+          lastFailedPlannedFailoverJob: S.optional(__S(928, __c58, 0)),
+          lastTestFailoverJob: S.optional(__S(928, __c58, 0)),
           replicationHealth: S.optional(S.String),
           healthErrors: S.optional(__S(99, __c6, 3)),
           customProperties: S.Unknown,
         }),
       ).annotate({ identifier: "ProtectedItemModelProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(833, __c52, 1)),
-        }),
-      ).annotate({ identifier: "CreateProtectedItemResponse" });
   }
 }
-function __c53(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3997,7 +4159,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ListReplicationExtensionRequest" });
   }
 }
-function __c54(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4016,20 +4178,20 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListVaultRequest" });
   }
 }
-function __c55(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1092, __c68, 4));
+      return S.Array(__S(624, __c39, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(880, __c55, 0),
+          value: __S(976, __c61, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultModelListResult" });
   }
 }
-function __c56(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4046,7 +4208,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "ListVaultBySubscriptionRequest" });
   }
 }
-function __c57(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4074,7 +4236,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "CheckNameAvailabilityResponseModel" });
   }
 }
-function __c58(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4087,14 +4249,14 @@ function __c58(j: number): any {
         }),
       ).annotate({ identifier: "DeploymentPreflightResource" });
     case 1:
-      return S.Array(__S(928, __c58, 0));
+      return S.Array(__S(1024, __c64, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deploymentId: S.String.pipe(T.Label()),
-          resources: S.optional(__S(929, __c58, 1)),
+          resources: S.optional(__S(1025, __c64, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4107,12 +4269,12 @@ function __c58(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(__S(929, __c58, 1)),
+          resources: S.optional(__S(1025, __c64, 1)),
         }),
       ).annotate({ identifier: "DeploymentPreflightModel" });
   }
 }
-function __c59(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4127,7 +4289,7 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           protectedItemName: S.String.pipe(T.Label()),
-          properties: __S(944, __c59, 0),
+          properties: __S(1040, __c65, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4140,12 +4302,14 @@ function __c59(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(944, __c59, 0),
+          properties: __S(1040, __c65, 0),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "PlannedFailoverModel" });
   }
 }
-function __c60(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4164,15 +4328,29 @@ function __c60(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFabricRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(128, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(80, __c5, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFabricResponse" });
   }
 }
-function __c61(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1056, __c66, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(1057, __c66, 1)),
+          privateEndpoint: S.optional(__S(1152, __c72, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1153, __c72, 1)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionResponsePropertiesInput" });
     case 1:
@@ -4182,7 +4360,7 @@ function __c61(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(976, __c61, 0)),
+          properties: S.optional(__S(1072, __c67, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4194,7 +4372,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "UpdatePrivateEndpointConnectionRequest" });
   }
 }
-function __c62(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4209,7 +4387,7 @@ function __c62(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           protectedItemName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(992, __c62, 0)),
+          properties: S.optional(__S(1088, __c68, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4219,9 +4397,21 @@ function __c62(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateProtectedItemRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(929, __c58, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateProtectedItemResponse" });
   }
 }
-function __c63(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4236,8 +4426,8 @@ function __c63(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           tags: S.optional(__S(128, __c8, 0)),
-          properties: S.optional(__S(1104, __c69, 0)),
-          identity: S.optional(__S(1008, __c63, 0)),
+          properties: S.optional(__S(1200, __c75, 0)),
+          identity: S.optional(__S(1104, __c69, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4247,9 +4437,24 @@ function __c63(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateVaultRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(128, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1187, __c74, 3)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateVaultResponse" });
   }
 }
-function __c64(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4270,18 +4475,20 @@ function __c64(j: number): any {
       ).annotate({ identifier: "CreateReplicationExtensionRequest" });
   }
 }
-function __c65(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1120, __c70, 0)));
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
     case 1:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1136, __c71, 0)));
+    case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1040, __c65, 0)),
+          userAssignedIdentities: S.optional(__S(1137, __c71, 1)),
         }),
       ).annotate({ identifier: "CreateVaultRequestIdentity" });
-    case 2:
+    case 3:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
@@ -4289,8 +4496,8 @@ function __c65(j: number): any {
           vaultName: S.String.pipe(T.Label()),
           tags: S.optional(__S(128, __c8, 0)),
           location: S.String,
-          properties: S.optional(__S(1104, __c69, 0)),
-          identity: S.optional(__S(1041, __c65, 1)),
+          properties: S.optional(__S(1200, __c75, 0)),
+          identity: S.optional(__S(1138, __c71, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4300,9 +4507,24 @@ function __c65(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateVaultRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(128, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1187, __c74, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateVaultResponse" });
   }
 }
-function __c66(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4322,8 +4544,8 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(1056, __c66, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(1057, __c66, 1)),
+          privateEndpoint: S.optional(__S(1152, __c72, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1153, __c72, 1)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionResponseProperties" });
     case 3:
@@ -4333,18 +4555,18 @@ function __c66(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1058, __c66, 2)),
+          properties: S.optional(__S(1154, __c72, 2)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnection" });
   }
 }
-function __c67(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1059, __c66, 3));
+      return S.Array(__S(1155, __c72, 3));
   }
 }
-function __c68(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4354,7 +4576,7 @@ function __c68(j: number): any {
           vaultType: S.optional(S.String),
           privateEndpointState: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(1072, __c67, 0)),
+          privateEndpointConnections: S.optional(__S(1168, __c73, 0)),
         }),
       ).annotate({ identifier: "VaultModelProperties" });
     case 1:
@@ -4365,32 +4587,19 @@ function __c68(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1089, __c68, 1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1185, __c74, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1090, __c68, 2)),
+          userAssignedIdentities: S.optional(__S(1186, __c74, 2)),
         }),
       ).annotate({ identifier: "CreateVaultResponseIdentity" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(128, __c8, 0)),
-          location: S.String,
-          properties: S.optional(__S(1088, __c68, 0)),
-          identity: S.optional(__S(1091, __c68, 3)),
-        }),
-      ).annotate({ identifier: "CreateVaultResponse" });
   }
 }
-function __c69(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4401,13 +4610,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "VaultModelPropertiesInput" });
   }
 }
-function __c70(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
-  }
-}
-function __c71(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4426,7 +4629,18 @@ function __c71(j: number): any {
       ).annotate({ identifier: "DeleteFabricRequest" });
   }
 }
-function __c72(j: number): any {
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteFabricResponse" });
+  }
+}
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4446,7 +4660,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "DeleteFabricAgentRequest" });
   }
 }
-function __c73(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

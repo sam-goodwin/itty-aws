@@ -344,7 +344,10 @@ export interface DeleteAccountRequest {
   /** Account name. */
   accountName: string;
 }
-export interface DeleteAccountResponse {}
+export interface DeleteAccountResponse {
+  /** Operation Status Location URI */
+  location?: string;
+}
 export interface DeleteInstanceRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -355,7 +358,10 @@ export interface DeleteInstanceRequest {
   /** Instance name. */
   instanceName: string;
 }
-export interface DeleteInstanceResponse {}
+export interface DeleteInstanceResponse {
+  /** Operation Status Location URI */
+  location?: string;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -366,7 +372,10 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** Operation Status Location URI */
+  location?: string;
+}
 export interface DeletePrivateEndpointConnectionProxyRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -377,7 +386,10 @@ export interface DeletePrivateEndpointConnectionProxyRequest {
   /** The ID of the private endpoint connection proxy object. */
   privateEndpointConnectionProxyId: string;
 }
-export interface DeletePrivateEndpointConnectionProxyResponse {}
+export interface DeletePrivateEndpointConnectionProxyResponse {
+  /** Operation Status Location URI */
+  location?: string;
+}
 export interface GetAccountRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
@@ -1309,7 +1321,7 @@ export const DeleteAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(560, __c35, 0) as any as S.Schema<DeleteAccountRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<DeleteAccountResponse>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1323,8 +1335,8 @@ export const DeleteInstance: API.OperationMethod<
   DeleteInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<DeleteInstanceRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<DeleteInstanceResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1338,8 +1350,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1353,8 +1365,8 @@ export const DeletePrivateEndpointConnectionProxy: API.OperationMethod<
   DeletePrivateEndpointConnectionProxyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<DeletePrivateEndpointConnectionProxyRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<DeletePrivateEndpointConnectionProxyResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<DeletePrivateEndpointConnectionProxyRequest>,
+  output: __S(576, __c36, 0) as any as S.Schema<DeletePrivateEndpointConnectionProxyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1368,7 +1380,7 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<GetAccountRequest>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetAccountRequest>,
   output: __S(135, __c8, 7) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1383,7 +1395,7 @@ export const GetInstance: API.OperationMethod<
   GetInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<GetInstanceRequest>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetInstanceRequest>,
   output: __S(468, __c29, 4) as any as S.Schema<GetInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1398,7 +1410,7 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  input: __S(672, __c42, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
   output: __S(193, __c12, 1) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1622,8 +1634,8 @@ export const UpdatePrivateEndpointConnectionProxyPrivateEndpointProperties: API.
     0,
   ) as any as S.Schema<UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesRequest>,
   output: __S(
-    96,
-    __c6,
+    32,
+    __c2,
     0,
   ) as any as S.Schema<UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertiesResponse>,
   errors: [UnknownAzureError],
@@ -1640,7 +1652,7 @@ export const ValidatePrivateEndpointConnectionProxy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(544, __c34, 0) as any as S.Schema<ValidatePrivateEndpointConnectionProxyRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<ValidatePrivateEndpointConnectionProxyResponse>,
+  output: __S(32, __c2, 0) as any as S.Schema<ValidatePrivateEndpointConnectionProxyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1679,7 +1691,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: __S(64, __c4, 0),
+          properties: __S(80, __c5, 0),
         }),
       ).annotate({ identifier: "CreateAccountRequestPropertiesPrivateEndpointConnectionsItem" });
     case 1:
@@ -1699,10 +1711,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
           properties: S.optional(__S(18, __c1, 2)),
-          identity: S.optional(__S(81, __c5, 1)),
+          identity: S.optional(__S(97, __c6, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1717,10 +1729,16 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, S.String);
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "PrivateEndpointInput" });
   }
 }
 function __c3(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Record(S.String, S.String);
+  }
+}
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1735,35 +1753,29 @@ function __c3(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(96, __c6, 0)),
+          privateEndpoint: S.optional(__S(32, __c2, 0)),
           privateLinkServiceConnectionState: __S(176, __c11, 0),
           groupIds: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(96, __c6, 0));
+      return S.Record(S.String, __S(32, __c2, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(S.NullOr(__S(80, __c5, 0))),
+          userAssignedIdentities: S.optional(S.NullOr(__S(96, __c6, 0))),
         }),
       ).annotate({ identifier: "CreateAccountRequestIdentity" });
-  }
-}
-function __c6(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "PrivateEndpointInput" });
   }
 }
 function __c7(j: number): any {
@@ -1826,8 +1838,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(32, __c2, 0)),
+          systemData: S.optional(__S(64, __c4, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
           properties: S.optional(__S(131, __c8, 3)),
           identity: S.optional(__S(134, __c8, 6)),
@@ -1880,7 +1892,7 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(64, __c4, 0)),
           properties: __S(192, __c12, 0),
         }),
       ).annotate({ identifier: "CreateAccountResponsePropertiesPrivateEndpointConnectionsItem" });
@@ -1970,7 +1982,7 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(64, __c4, 0)),
           eTag: S.optional(S.String),
           remotePrivateEndpoint: S.optional(__S(230, __c14, 6)),
           status: S.optional(S.String),
@@ -2030,7 +2042,7 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
+          systemData: S.optional(__S(64, __c4, 0)),
           properties: __S(272, __c17, 0),
         }),
       ).annotate({ identifier: "GetPrivateLinkResourceResponse" });
@@ -2247,7 +2259,7 @@ function __c26(j: number): any {
           privateEndpointConnectionProxyId: S.String.pipe(T.Label()),
           remotePrivateEndpoint: S.optional(__S(437, __c27, 5)),
           status: S.optional(S.String),
-          properties: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2276,14 +2288,14 @@ function __c27(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           remotePrivateLinkServiceConnectionState: S.optional(__S(176, __c11, 0)),
-          remotePrivateEndpointConnection: S.optional(__S(96, __c6, 0)),
+          remotePrivateEndpointConnection: S.optional(__S(32, __c2, 0)),
           groupConnectivityInformation: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkServiceProxyInput" });
     case 3:
       return S.Array(__S(434, __c27, 2));
     case 4:
-      return S.Array(__S(96, __c6, 0));
+      return S.Array(__S(32, __c2, 0));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2317,7 +2329,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
           properties: __S(448, __c28, 0),
         }).pipe(
@@ -2365,8 +2377,8 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(32, __c2, 0)),
+          systemData: S.optional(__S(64, __c4, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
           location: S.String,
           properties: __S(467, __c29, 3),
         }),
@@ -2382,7 +2394,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: __S(64, __c4, 0),
+          properties: __S(80, __c5, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2402,8 +2414,8 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(32, __c2, 0)),
-          identity: S.optional(__S(81, __c5, 1)),
+          tags: S.optional(__S(48, __c3, 0)),
+          identity: S.optional(__S(97, __c6, 1)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2425,7 +2437,7 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(48, __c3, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2475,7 +2487,7 @@ function __c34(j: number): any {
           privateEndpointConnectionProxyId: S.String.pipe(T.Label()),
           remotePrivateEndpoint: S.optional(__S(437, __c27, 5)),
           status: S.optional(S.String),
-          properties: S.optional(__S(96, __c6, 0)),
+          properties: S.optional(__S(32, __c2, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2511,6 +2523,16 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeleteAccountResponse" });
+  }
+}
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
@@ -2526,7 +2548,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "DeleteInstanceRequest" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2546,7 +2568,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2566,7 +2588,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionProxyRequest" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2585,7 +2607,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "GetAccountRequest" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2605,7 +2627,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "GetInstanceRequest" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

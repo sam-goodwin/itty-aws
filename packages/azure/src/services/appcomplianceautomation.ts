@@ -38,7 +38,12 @@ export interface DeleteReportRequest {
   /** Report Name. */
   reportName: string;
 }
-export interface DeleteReportResponse {}
+export interface DeleteReportResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteScopingConfigurationRequest {
   /** Report Name. */
   reportName: string;
@@ -159,6 +164,10 @@ export interface DownloadResponse {
   compliancePdfReport?: DownloadResponseCompliancePdfReport;
   /** The detailed compliance pdf report */
   complianceDetailedPdfReport?: DownloadResponseComplianceDetailedPdfReport;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Evidence type */
 export type EvidenceType = "File" | "AutoCollectedEvidence" | "Data";
@@ -1027,6 +1036,10 @@ export type OnboardResponseSubscriptionIdsList = Array<string>;
 export interface OnboardResponse {
   /** List of subscription ids that are onboarded */
   subscriptionIds?: OnboardResponseSubscriptionIdsList;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** List of resource data. */
 export type ReportPropertiesInputResourcesList = Array<ResourceMetadata>;
@@ -1060,6 +1073,8 @@ export interface ReportCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Report property. */
   properties: ReportProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ReportFixRequest {
   /** Report Name. */
@@ -1073,6 +1088,10 @@ export interface ReportFixResult {
   result?: Result;
   /** If the report fix action failed, to indicate the detailed failed reason. */
   reason?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ReportNestedResourceCheckNameAvailabilityRequest {
   /** Report Name. */
@@ -1129,6 +1148,10 @@ export interface SyncReportCertRecordRequest {
 export interface SyncCertRecordResponse {
   /** certification record synchronized. */
   certRecord?: CertSyncRecord;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** List of resource ids to be evaluated */
 export type TriggerProviderActionEvaluationRequestResourceIdsList = Array<string>;
@@ -1172,6 +1195,10 @@ export interface TriggerEvaluationProperty {
 export interface TriggerEvaluationResponse {
   /** trigger evaluation property. */
   properties?: TriggerEvaluationProperty;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** List of resource data. */
 export type ReportPatchPropertiesInputResourcesList = Array<ResourceMetadata>;
@@ -1205,6 +1232,10 @@ export interface UpdateReportResponse {
   systemData?: SystemData;
   /** Report property. */
   properties: ReportProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** under which event notification should be sent. */
 export type WebhookPropertiesInputEventsList = Array<NotificationEvent | (string & {})>;
@@ -1257,6 +1288,10 @@ export interface ReportVerificationResult {
   result?: Result;
   /** If the report verification action failed, to indicate the detailed failed reason. */
   reason?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface WebhookCreateOrUpdateRequest {
   /** Report Name. */
@@ -1317,7 +1352,7 @@ export const DeleteReport: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(736, __c23, 0) as any as S.Schema<DeleteReportRequest>,
-  output: __S(96, __c3, 0) as any as S.Schema<DeleteReportResponse>,
+  output: __S(737, __c23, 1) as any as S.Schema<DeleteReportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1647,7 +1682,7 @@ export const ReportCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(897, __c28, 1) as any as S.Schema<ReportCreateOrUpdateRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<ReportCreateOrUpdateResponse>,
+  output: __S(898, __c28, 2) as any as S.Schema<ReportCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1737,7 +1772,7 @@ export const UpdateReport: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1153, __c36, 1) as any as S.Schema<UpdateReportRequest>,
-  output: __S(320, __c10, 0) as any as S.Schema<UpdateReportResponse>,
+  output: __S(1154, __c36, 2) as any as S.Schema<UpdateReportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2429,6 +2464,13 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteReportRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteReportResponse" });
   }
 }
 function __c24(j: number): any {
@@ -2542,6 +2584,8 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionIds: S.optional(__S(192, __c6, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "OnboardResponse" });
   }
@@ -2572,6 +2616,17 @@ function __c28(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ReportCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1440, __c45, 0)),
+          properties: __S(293, __c9, 5),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ReportCreateOrUpdateResponse" });
   }
 }
 function __c29(j: number): any {
@@ -2598,6 +2653,8 @@ function __c30(j: number): any {
         S.Struct({
           result: S.optional(S.String),
           reason: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ReportFixResult" });
   }
@@ -2666,6 +2723,8 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           certRecord: S.optional(__S(258, __c8, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "SyncCertRecordResponse" });
   }
@@ -2712,6 +2771,8 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           properties: S.optional(__S(1091, __c34, 3)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "TriggerEvaluationResponse" });
   }
@@ -2760,6 +2821,18 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateReportRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1440, __c45, 0)),
+          properties: __S(293, __c9, 5),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateReportResponse" });
   }
 }
 function __c37(j: number): any {
@@ -2946,6 +3019,8 @@ function __c43(j: number): any {
           complianceReport: S.optional(__S(1380, __c43, 4)),
           compliancePdfReport: S.optional(__S(1381, __c43, 5)),
           complianceDetailedPdfReport: S.optional(__S(1381, __c43, 5)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "DownloadResponse" });
   }

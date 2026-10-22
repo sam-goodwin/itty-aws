@@ -336,6 +336,10 @@ export interface AmlFilesystemsCreateOrUpdateResponse {
   sku?: SkuName;
   /** The availability zones. */
   zones?: AmlFilesystemsCreateOrUpdateResponseZonesList;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ArchiveAmlFilesystemRequest {
   /** The ID of the target subscription. */
@@ -457,6 +461,10 @@ export interface AutoExportJobsCreateOrUpdateResponse {
   location: string;
   /** Properties of the auto export job. */
   properties?: AutoExportJobProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type AutoImportJobsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -625,6 +633,10 @@ export interface AutoImportJobsCreateOrUpdateResponse {
   location: string;
   /** Properties of the auto import job. */
   properties?: AutoImportJobProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Cache Upgrade Settings. */
 export interface CacheUpgradeSettings {
@@ -1010,6 +1022,10 @@ export interface CachesCreateOrUpdateResponse {
   identity?: CacheIdentity;
   /** SKU for the cache. */
   sku?: CacheSku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CachesDebugInfoRequest {
   /** The ID of the target subscription. */
@@ -1019,7 +1035,14 @@ export interface CachesDebugInfoRequest {
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
 }
-export interface CachesDebugInfoResponse {}
+export interface CachesDebugInfoResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type CachesSpaceAllocationRequestBodyList = Array<StorageTargetSpaceAllocation>;
 export interface CachesSpaceAllocationRequest {
   /** The ID of the target subscription. */
@@ -1030,7 +1053,14 @@ export interface CachesSpaceAllocationRequest {
   cacheName: string;
   body?: CachesSpaceAllocationRequestBodyList;
 }
-export interface CachesSpaceAllocationResponse {}
+export interface CachesSpaceAllocationResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CachesUpgradeFirmwareRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1039,7 +1069,14 @@ export interface CachesUpgradeFirmwareRequest {
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
 }
-export interface CachesUpgradeFirmwareResponse {}
+export interface CachesUpgradeFirmwareResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CheckAmlFSSubnetsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1061,7 +1098,14 @@ export interface DeleteAmlFilesystemRequest {
   /** Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   amlFilesystemName: string;
 }
-export interface DeleteAmlFilesystemResponse {}
+export interface DeleteAmlFilesystemResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAutoExportJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1072,7 +1116,14 @@ export interface DeleteAutoExportJobRequest {
   /** Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   autoExportJobName: string;
 }
-export interface DeleteAutoExportJobResponse {}
+export interface DeleteAutoExportJobResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAutoImportJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1083,7 +1134,14 @@ export interface DeleteAutoImportJobRequest {
   /** Name for the auto import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   autoImportJobName: string;
 }
-export interface DeleteAutoImportJobResponse {}
+export interface DeleteAutoImportJobResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCachRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1092,7 +1150,14 @@ export interface DeleteCachRequest {
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
 }
-export interface DeleteCachResponse {}
+export interface DeleteCachResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteExpansionJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1103,7 +1168,14 @@ export interface DeleteExpansionJobRequest {
   /** Name for the expansion job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   expansionJobName: string;
 }
-export interface DeleteExpansionJobResponse {}
+export interface DeleteExpansionJobResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteImportJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1114,7 +1186,14 @@ export interface DeleteImportJobRequest {
   /** Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   importJobName: string;
 }
-export interface DeleteImportJobResponse {}
+export interface DeleteImportJobResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteRebalanceJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1125,7 +1204,14 @@ export interface DeleteRebalanceJobRequest {
   /** Name for the rebalance job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric. */
   rebalanceJobName: string;
 }
-export interface DeleteRebalanceJobResponse {}
+export interface DeleteRebalanceJobResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteStorageTargetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1138,7 +1224,14 @@ export interface DeleteStorageTargetRequest {
   /** Boolean value requesting the force delete operation for a storage target. Force delete discards unwritten-data in the cache instead of flushing it to back-end storage. */
   force?: string;
 }
-export interface DeleteStorageTargetResponse {}
+export interface DeleteStorageTargetResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type ExpansionJobsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Properties of the expansion job. */
@@ -1224,6 +1317,12 @@ export interface ExpansionJobsCreateOrUpdateResponse {
   location: string;
   /** Properties of the expansion job. */
   properties?: ExpansionJobProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface FlushCachRequest {
   /** The ID of the target subscription. */
@@ -1233,7 +1332,14 @@ export interface FlushCachRequest {
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
 }
-export interface FlushCachResponse {}
+export interface FlushCachResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface FlushStorageTargetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1244,7 +1350,14 @@ export interface FlushStorageTargetRequest {
   /** Name of Storage Target. */
   storageTargetName: string;
 }
-export interface FlushStorageTargetResponse {}
+export interface FlushStorageTargetResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAmlFilesystemRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1786,6 +1899,10 @@ export interface ImportJobsCreateOrUpdateResponse {
   location: string;
   /** Properties of the import job. */
   properties?: ImportJobProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface InvalidateStorageTargetRequest {
   /** The ID of the target subscription. */
@@ -1797,7 +1914,14 @@ export interface InvalidateStorageTargetRequest {
   /** Name of Storage Target. */
   storageTargetName: string;
 }
-export interface InvalidateStorageTargetResponse {}
+export interface InvalidateStorageTargetResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ListAmlFilesystemByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2329,7 +2453,14 @@ export interface PauseCachPrimingJobRequest {
   /** The unique identifier of the priming job. */
   primingJobId: string;
 }
-export interface PauseCachPrimingJobResponse {}
+export interface PauseCachPrimingJobResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RefreshStorageTargetsDnsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2340,7 +2471,14 @@ export interface RefreshStorageTargetsDnsRequest {
   /** Name of Storage Target. */
   storageTargetName: string;
 }
-export interface RefreshStorageTargetsDnsResponse {}
+export interface RefreshStorageTargetsDnsResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RestoreStorageTargetDefaultsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2351,7 +2489,14 @@ export interface RestoreStorageTargetDefaultsRequest {
   /** Name of Storage Target. */
   storageTargetName: string;
 }
-export interface RestoreStorageTargetDefaultsResponse {}
+export interface RestoreStorageTargetDefaultsResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ResumeCachPrimingJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2362,7 +2507,14 @@ export interface ResumeCachPrimingJobRequest {
   /** The unique identifier of the priming job. */
   primingJobId: string;
 }
-export interface ResumeCachPrimingJobResponse {}
+export interface ResumeCachPrimingJobResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ResumeStorageTargetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2373,7 +2525,14 @@ export interface ResumeStorageTargetRequest {
   /** Name of Storage Target. */
   storageTargetName: string;
 }
-export interface ResumeStorageTargetResponse {}
+export interface ResumeStorageTargetResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StartCachRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2382,7 +2541,14 @@ export interface StartCachRequest {
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
 }
-export interface StartCachResponse {}
+export interface StartCachResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StartCachPrimingJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2395,7 +2561,14 @@ export interface StartCachPrimingJobRequest {
   /** The URL for the priming manifest file to download. This file must be readable from the HPC Cache. When the file is in Azure blob storage the URL should include a Shared Access Signature (SAS) granting read permissions on the blob. */
   primingManifestUrl: string;
 }
-export interface StartCachPrimingJobResponse {}
+export interface StartCachPrimingJobResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StopCachRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2404,7 +2577,14 @@ export interface StopCachRequest {
   /** Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class. */
   cacheName: string;
 }
-export interface StopCachResponse {}
+export interface StopCachResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StopCachPrimingJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2415,7 +2595,14 @@ export interface StopCachPrimingJobRequest {
   /** The unique identifier of the priming job. */
   primingJobId: string;
 }
-export interface StopCachPrimingJobResponse {}
+export interface StopCachPrimingJobResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** List of cache namespace junctions to target for namespace associations. */
 export type StorageTargetPropertiesInputJunctionsList = Array<NamespaceJunction>;
 /** Properties of the Storage Target. */
@@ -2460,6 +2647,10 @@ export interface StorageTargetsCreateOrUpdateResponse {
   properties?: StorageTargetProperties;
   /** Region name string. */
   location?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SuspendStorageTargetRequest {
   /** The ID of the target subscription. */
@@ -2471,7 +2662,14 @@ export interface SuspendStorageTargetRequest {
   /** Name of Storage Target. */
   storageTargetName: string;
 }
-export interface SuspendStorageTargetResponse {}
+export interface SuspendStorageTargetResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type UpdateAmlFilesystemRequestTagsMap = { [key: string]: string | undefined };
 /** Start time of a 30-minute weekly maintenance window. */
@@ -2523,6 +2721,12 @@ export interface UpdateAmlFilesystemResponse {
   sku?: SkuName;
   /** The availability zones. */
   zones?: UpdateAmlFilesystemResponseZonesList;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateAutoExportJobRequestTagsMap = { [key: string]: string | undefined };
@@ -2563,6 +2767,12 @@ export interface UpdateAutoExportJobResponse {
   location: string;
   /** Properties of the auto export job. */
   properties?: AutoExportJobProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateAutoImportJobRequestTagsMap = { [key: string]: string | undefined };
@@ -2603,6 +2813,12 @@ export interface UpdateAutoImportJobResponse {
   location: string;
   /** Properties of the auto import job. */
   properties?: AutoImportJobProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateCachRequestTagsMap = { [key: string]: string | undefined };
@@ -2645,6 +2861,12 @@ export interface UpdateCachResponse {
   identity?: CacheIdentity;
   /** SKU for the cache. */
   sku?: CacheSku;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateExpansionJobRequestTagsMap = { [key: string]: string | undefined };
@@ -2677,6 +2899,12 @@ export interface UpdateExpansionJobResponse {
   location: string;
   /** Properties of the expansion job. */
   properties?: ExpansionJobProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateImportJobRequestTagsMap = { [key: string]: string | undefined };
@@ -2717,6 +2945,12 @@ export interface UpdateImportJobResponse {
   location: string;
   /** Properties of the import job. */
   properties?: ImportJobProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Properties for updating a rebalance job. */
 export interface RebalanceJobUpdateProperties {
@@ -2746,6 +2980,12 @@ export interface UpdateRebalanceJobResponse {
   systemData?: SystemData;
   /** Properties of the rebalance job. */
   properties?: RebalanceJobProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AmlFilesystemsCancelArchiveError = AzureOpError;
 /** Cancel archiving data from the AML file system. */
@@ -2771,7 +3011,7 @@ export const AmlFilesystemsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(66, __c2, 2) as any as S.Schema<AmlFilesystemsCreateOrUpdateRequest>,
-  output: __S(108, __c3, 12) as any as S.Schema<AmlFilesystemsCreateOrUpdateResponse>,
+  output: __S(67, __c2, 3) as any as S.Schema<AmlFilesystemsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2785,7 +3025,7 @@ export const ArchiveAmlFilesystem: API.OperationMethod<
   ArchiveAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<ArchiveAmlFilesystemRequest>,
+  input: __S(736, __c23, 0) as any as S.Schema<ArchiveAmlFilesystemRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<ArchiveAmlFilesystemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2800,8 +3040,8 @@ export const AutoExportJobsCreateOrUpdate: API.OperationMethod<
   AutoExportJobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1121, __c35, 1) as any as S.Schema<AutoExportJobsCreateOrUpdateRequest>,
-  output: __S(1154, __c36, 2) as any as S.Schema<AutoExportJobsCreateOrUpdateResponse>,
+  input: __S(1377, __c43, 1) as any as S.Schema<AutoExportJobsCreateOrUpdateRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<AutoExportJobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2815,8 +3055,8 @@ export const AutoImportJobsCreateOrUpdate: API.OperationMethod<
   AutoImportJobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1601, __c50, 1) as any as S.Schema<AutoImportJobsCreateOrUpdateRequest>,
-  output: __S(1635, __c51, 3) as any as S.Schema<AutoImportJobsCreateOrUpdateResponse>,
+  input: __S(1889, __c59, 1) as any as S.Schema<AutoImportJobsCreateOrUpdateRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<AutoImportJobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2830,8 +3070,8 @@ export const CachesCreateOrUpdate: API.OperationMethod<
   CachesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<CachesCreateOrUpdateRequest>,
-  output: __S(2036, __c63, 20) as any as S.Schema<CachesCreateOrUpdateResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<CachesCreateOrUpdateRequest>,
+  output: __S(2273, __c71, 1) as any as S.Schema<CachesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2845,8 +3085,8 @@ export const CachesDebugInfo: API.OperationMethod<
   CachesDebugInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<CachesDebugInfoRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<CachesDebugInfoResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<CachesDebugInfoRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<CachesDebugInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2860,8 +3100,8 @@ export const CachesSpaceAllocation: API.OperationMethod<
   CachesSpaceAllocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<CachesSpaceAllocationRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<CachesSpaceAllocationResponse>,
+  input: __S(2976, __c93, 0) as any as S.Schema<CachesSpaceAllocationRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<CachesSpaceAllocationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2875,8 +3115,8 @@ export const CachesUpgradeFirmware: API.OperationMethod<
   CachesUpgradeFirmwareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<CachesUpgradeFirmwareRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<CachesUpgradeFirmwareResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<CachesUpgradeFirmwareRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<CachesUpgradeFirmwareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2890,7 +3130,7 @@ export const CheckAmlFSSubnets: API.OperationMethod<
   CheckAmlFSSubnetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2720, __c85, 0) as any as S.Schema<CheckAmlFSSubnetsRequest>,
+  input: __S(3040, __c95, 0) as any as S.Schema<CheckAmlFSSubnetsRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<CheckAmlFSSubnetsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2906,7 +3146,7 @@ export const DeleteAmlFilesystem: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(352, __c11, 0) as any as S.Schema<DeleteAmlFilesystemRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAmlFilesystemResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<DeleteAmlFilesystemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2921,7 +3161,7 @@ export const DeleteAutoExportJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(384, __c12, 0) as any as S.Schema<DeleteAutoExportJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAutoExportJobResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<DeleteAutoExportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2936,7 +3176,7 @@ export const DeleteAutoImportJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<DeleteAutoImportJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAutoImportJobResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<DeleteAutoImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2951,7 +3191,7 @@ export const DeleteCach: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(448, __c14, 0) as any as S.Schema<DeleteCachRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteCachResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<DeleteCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2966,7 +3206,7 @@ export const DeleteExpansionJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(480, __c15, 0) as any as S.Schema<DeleteExpansionJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteExpansionJobResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<DeleteExpansionJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2981,7 +3221,7 @@ export const DeleteImportJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(512, __c16, 0) as any as S.Schema<DeleteImportJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteImportJobResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<DeleteImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2996,7 +3236,7 @@ export const DeleteRebalanceJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(544, __c17, 0) as any as S.Schema<DeleteRebalanceJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteRebalanceJobResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<DeleteRebalanceJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3011,7 +3251,7 @@ export const DeleteStorageTarget: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(576, __c18, 0) as any as S.Schema<DeleteStorageTargetRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteStorageTargetResponse>,
+  output: __S(2784, __c87, 0) as any as S.Schema<DeleteStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3026,7 +3266,7 @@ export const ExpansionJobsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(609, __c19, 1) as any as S.Schema<ExpansionJobsCreateOrUpdateRequest>,
-  output: __S(642, __c20, 2) as any as S.Schema<ExpansionJobsCreateOrUpdateResponse>,
+  output: __S(672, __c21, 0) as any as S.Schema<ExpansionJobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3040,8 +3280,8 @@ export const FlushCach: API.OperationMethod<
   FlushCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<FlushCachRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<FlushCachResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<FlushCachRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<FlushCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3055,8 +3295,8 @@ export const FlushStorageTarget: API.OperationMethod<
   FlushStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<FlushStorageTargetRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<FlushStorageTargetResponse>,
+  input: __S(768, __c24, 0) as any as S.Schema<FlushStorageTargetRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<FlushStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3070,8 +3310,8 @@ export const GetAmlFilesystem: API.OperationMethod<
   GetAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<GetAmlFilesystemRequest>,
-  output: __S(108, __c3, 12) as any as S.Schema<GetAmlFilesystemResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetAmlFilesystemRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<GetAmlFilesystemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3085,8 +3325,8 @@ export const GetAscOperation: API.OperationMethod<
   GetAscOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<GetAscOperationRequest>,
-  output: __S(804, __c25, 4) as any as S.Schema<AscOperation>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetAscOperationRequest>,
+  output: __S(868, __c27, 4) as any as S.Schema<AscOperation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3100,8 +3340,8 @@ export const GetAutoExportJob: API.OperationMethod<
   GetAutoExportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<GetAutoExportJobRequest>,
-  output: __S(1154, __c36, 2) as any as S.Schema<GetAutoExportJobResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetAutoExportJobRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<GetAutoExportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3115,8 +3355,8 @@ export const GetAutoImportJob: API.OperationMethod<
   GetAutoImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<GetAutoImportJobRequest>,
-  output: __S(1635, __c51, 3) as any as S.Schema<GetAutoImportJobResponse>,
+  input: __S(960, __c30, 0) as any as S.Schema<GetAutoImportJobRequest>,
+  output: __S(992, __c31, 0) as any as S.Schema<GetAutoImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3130,8 +3370,8 @@ export const GetCach: API.OperationMethod<
   GetCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<GetCachRequest>,
-  output: __S(2036, __c63, 20) as any as S.Schema<GetCachResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<GetCachRequest>,
+  output: __S(1056, __c33, 0) as any as S.Schema<GetCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3145,8 +3385,8 @@ export const GetExpansionJob: API.OperationMethod<
   GetExpansionJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<GetExpansionJobRequest>,
-  output: __S(642, __c20, 2) as any as S.Schema<GetExpansionJobResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetExpansionJobRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<GetExpansionJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3160,8 +3400,8 @@ export const GetImportJob: API.OperationMethod<
   GetImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<GetImportJobRequest>,
-  output: __S(994, __c31, 2) as any as S.Schema<GetImportJobResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<GetImportJobRequest>,
+  output: __S(1216, __c38, 0) as any as S.Schema<GetImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3175,8 +3415,8 @@ export const GetRebalanceJob: API.OperationMethod<
   GetRebalanceJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<GetRebalanceJobRequest>,
-  output: __S(1058, __c33, 2) as any as S.Schema<GetRebalanceJobResponse>,
+  input: __S(1248, __c39, 0) as any as S.Schema<GetRebalanceJobRequest>,
+  output: __S(1280, __c40, 0) as any as S.Schema<GetRebalanceJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3190,8 +3430,8 @@ export const GetRequiredAmlFSSubnetsSize: API.OperationMethod<
   GetRequiredAmlFSSubnetsSizeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<GetRequiredAmlFSSubnetsSizeRequest>,
-  output: __S(1089, __c34, 1) as any as S.Schema<RequiredAmlFilesystemSubnetsSize>,
+  input: __S(1344, __c42, 0) as any as S.Schema<GetRequiredAmlFSSubnetsSizeRequest>,
+  output: __S(1345, __c42, 1) as any as S.Schema<RequiredAmlFilesystemSubnetsSize>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3205,8 +3445,8 @@ export const GetStorageTarget: API.OperationMethod<
   GetStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<GetStorageTargetRequest>,
-  output: __S(1222, __c38, 6) as any as S.Schema<GetStorageTargetResponse>,
+  input: __S(1440, __c45, 0) as any as S.Schema<GetStorageTargetRequest>,
+  output: __S(1472, __c46, 0) as any as S.Schema<GetStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3220,8 +3460,8 @@ export const ImportJobsCreateOrUpdate: API.OperationMethod<
   ImportJobsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1249, __c39, 1) as any as S.Schema<ImportJobsCreateOrUpdateRequest>,
-  output: __S(994, __c31, 2) as any as S.Schema<ImportJobsCreateOrUpdateResponse>,
+  input: __S(1537, __c48, 1) as any as S.Schema<ImportJobsCreateOrUpdateRequest>,
+  output: __S(1538, __c48, 2) as any as S.Schema<ImportJobsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3235,8 +3475,8 @@ export const InvalidateStorageTarget: API.OperationMethod<
   InvalidateStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<InvalidateStorageTargetRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<InvalidateStorageTargetResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<InvalidateStorageTargetRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<InvalidateStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3250,8 +3490,8 @@ export const ListAmlFilesystemByResourceGroup: API.OperationMethod<
   ListAmlFilesystemByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c41, 0) as any as S.Schema<ListAmlFilesystemByResourceGroupRequest>,
-  output: __S(1345, __c42, 1) as any as S.Schema<AmlFilesystemsListResult>,
+  input: __S(1600, __c50, 0) as any as S.Schema<ListAmlFilesystemByResourceGroupRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<AmlFilesystemsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3265,8 +3505,8 @@ export const ListAmlFilesystems: API.OperationMethod<
   ListAmlFilesystemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c43, 0) as any as S.Schema<ListAmlFilesystemsRequest>,
-  output: __S(1345, __c42, 1) as any as S.Schema<AmlFilesystemsListResult>,
+  input: __S(1664, __c52, 0) as any as S.Schema<ListAmlFilesystemsRequest>,
+  output: __S(1633, __c51, 1) as any as S.Schema<AmlFilesystemsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3280,8 +3520,8 @@ export const ListAscUsages: API.OperationMethod<
   ListAscUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<ListAscUsagesRequest>,
-  output: __S(1412, __c44, 4) as any as S.Schema<ResourceUsagesListResult>,
+  input: __S(1696, __c53, 0) as any as S.Schema<ListAscUsagesRequest>,
+  output: __S(1700, __c53, 4) as any as S.Schema<ResourceUsagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3295,8 +3535,8 @@ export const ListAutoExportJobByAmlFilesystem: API.OperationMethod<
   ListAutoExportJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<ListAutoExportJobByAmlFilesystemRequest>,
-  output: __S(1442, __c45, 2) as any as S.Schema<AutoExportJobsListResult>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListAutoExportJobByAmlFilesystemRequest>,
+  output: __S(1730, __c54, 2) as any as S.Schema<AutoExportJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3310,8 +3550,8 @@ export const ListAutoImportJobByAmlFilesystem: API.OperationMethod<
   ListAutoImportJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<ListAutoImportJobByAmlFilesystemRequest>,
-  output: __S(1474, __c46, 2) as any as S.Schema<AutoImportJobsListResult>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListAutoImportJobByAmlFilesystemRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<AutoImportJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3325,8 +3565,8 @@ export const ListCachByResourceGroup: API.OperationMethod<
   ListCachByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<ListCachByResourceGroupRequest>,
-  output: __S(1537, __c48, 1) as any as S.Schema<CachesListResult>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListCachByResourceGroupRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<CachesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3340,8 +3580,8 @@ export const ListCaches: API.OperationMethod<
   ListCachesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<ListCachesRequest>,
-  output: __S(1537, __c48, 1) as any as S.Schema<CachesListResult>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListCachesRequest>,
+  output: __S(1825, __c57, 1) as any as S.Schema<CachesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3355,8 +3595,8 @@ export const ListExpansionJobByAmlFilesystem: API.OperationMethod<
   ListExpansionJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<ListExpansionJobByAmlFilesystemRequest>,
-  output: __S(1666, __c52, 2) as any as S.Schema<ExpansionJobsListResult>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListExpansionJobByAmlFilesystemRequest>,
+  output: __S(1954, __c61, 2) as any as S.Schema<ExpansionJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3370,8 +3610,8 @@ export const ListImportJobByAmlFilesystem: API.OperationMethod<
   ListImportJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<ListImportJobByAmlFilesystemRequest>,
-  output: __S(1698, __c53, 2) as any as S.Schema<ImportJobsListResult>,
+  input: __S(1984, __c62, 0) as any as S.Schema<ListImportJobByAmlFilesystemRequest>,
+  output: __S(1986, __c62, 2) as any as S.Schema<ImportJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3385,8 +3625,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1741, __c54, 13) as any as S.Schema<ApiOperationListResult>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(2029, __c63, 13) as any as S.Schema<ApiOperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3400,8 +3640,8 @@ export const ListRebalanceJobByAmlFilesystem: API.OperationMethod<
   ListRebalanceJobByAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<ListRebalanceJobByAmlFilesystemRequest>,
-  output: __S(1762, __c55, 2) as any as S.Schema<RebalanceJobsListResult>,
+  input: __S(2048, __c64, 0) as any as S.Schema<ListRebalanceJobByAmlFilesystemRequest>,
+  output: __S(2050, __c64, 2) as any as S.Schema<RebalanceJobsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3415,8 +3655,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<ListSkusRequest>,
-  output: __S(1801, __c56, 9) as any as S.Schema<ResourceSkusResult>,
+  input: __S(2080, __c65, 0) as any as S.Schema<ListSkusRequest>,
+  output: __S(2089, __c65, 9) as any as S.Schema<ResourceSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3430,8 +3670,8 @@ export const ListStorageTargetByCache: API.OperationMethod<
   ListStorageTargetByCacheError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<ListStorageTargetByCacheRequest>,
-  output: __S(1826, __c57, 2) as any as S.Schema<StorageTargetsResult>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListStorageTargetByCacheRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<StorageTargetsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3445,8 +3685,8 @@ export const ListUsageModels: API.OperationMethod<
   ListUsageModelsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<ListUsageModelsRequest>,
-  output: __S(1860, __c58, 4) as any as S.Schema<UsageModelsResult>,
+  input: __S(2144, __c67, 0) as any as S.Schema<ListUsageModelsRequest>,
+  output: __S(2148, __c67, 4) as any as S.Schema<UsageModelsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3460,8 +3700,8 @@ export const PauseCachPrimingJob: API.OperationMethod<
   PauseCachPrimingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<PauseCachPrimingJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<PauseCachPrimingJobResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<PauseCachPrimingJobRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<PauseCachPrimingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3475,8 +3715,8 @@ export const RefreshStorageTargetsDns: API.OperationMethod<
   RefreshStorageTargetsDnsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<RefreshStorageTargetsDnsRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<RefreshStorageTargetsDnsResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<RefreshStorageTargetsDnsRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<RefreshStorageTargetsDnsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3490,8 +3730,8 @@ export const RestoreStorageTargetDefaults: API.OperationMethod<
   RestoreStorageTargetDefaultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<RestoreStorageTargetDefaultsRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<RestoreStorageTargetDefaultsResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<RestoreStorageTargetDefaultsRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<RestoreStorageTargetDefaultsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3505,8 +3745,8 @@ export const ResumeCachPrimingJob: API.OperationMethod<
   ResumeCachPrimingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2112, __c66, 0) as any as S.Schema<ResumeCachPrimingJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<ResumeCachPrimingJobResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<ResumeCachPrimingJobRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<ResumeCachPrimingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3520,8 +3760,8 @@ export const ResumeStorageTarget: API.OperationMethod<
   ResumeStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<ResumeStorageTargetRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<ResumeStorageTargetResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ResumeStorageTargetRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<ResumeStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3535,8 +3775,8 @@ export const StartCach: API.OperationMethod<
   StartCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<StartCachRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<StartCachResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<StartCachRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<StartCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3550,8 +3790,8 @@ export const StartCachPrimingJob: API.OperationMethod<
   StartCachPrimingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<StartCachPrimingJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<StartCachPrimingJobResponse>,
+  input: __S(2496, __c78, 0) as any as S.Schema<StartCachPrimingJobRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<StartCachPrimingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3565,8 +3805,8 @@ export const StopCach: API.OperationMethod<
   StopCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<StopCachRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<StopCachResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<StopCachRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<StopCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3580,8 +3820,8 @@ export const StopCachPrimingJob: API.OperationMethod<
   StopCachPrimingJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<StopCachPrimingJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<StopCachPrimingJobResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<StopCachPrimingJobRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<StopCachPrimingJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3595,8 +3835,8 @@ export const StorageTargetsCreateOrUpdate: API.OperationMethod<
   StorageTargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2305, __c72, 1) as any as S.Schema<StorageTargetsCreateOrUpdateRequest>,
-  output: __S(1222, __c38, 6) as any as S.Schema<StorageTargetsCreateOrUpdateResponse>,
+  input: __S(2593, __c81, 1) as any as S.Schema<StorageTargetsCreateOrUpdateRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<StorageTargetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3610,8 +3850,8 @@ export const SuspendStorageTarget: API.OperationMethod<
   SuspendStorageTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<SuspendStorageTargetRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<SuspendStorageTargetResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<SuspendStorageTargetRequest>,
+  output: __S(2784, __c87, 0) as any as S.Schema<SuspendStorageTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3625,8 +3865,8 @@ export const UpdateAmlFilesystem: API.OperationMethod<
   UpdateAmlFilesystemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2369, __c74, 1) as any as S.Schema<UpdateAmlFilesystemRequest>,
-  output: __S(108, __c3, 12) as any as S.Schema<UpdateAmlFilesystemResponse>,
+  input: __S(2657, __c83, 1) as any as S.Schema<UpdateAmlFilesystemRequest>,
+  output: __S(2658, __c83, 2) as any as S.Schema<UpdateAmlFilesystemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3640,8 +3880,8 @@ export const UpdateAutoExportJob: API.OperationMethod<
   UpdateAutoExportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<UpdateAutoExportJobRequest>,
-  output: __S(1154, __c36, 2) as any as S.Schema<UpdateAutoExportJobResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<UpdateAutoExportJobRequest>,
+  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAutoExportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3655,8 +3895,8 @@ export const UpdateAutoImportJob: API.OperationMethod<
   UpdateAutoImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<UpdateAutoImportJobRequest>,
-  output: __S(1635, __c51, 3) as any as S.Schema<UpdateAutoImportJobResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<UpdateAutoImportJobRequest>,
+  output: __S(2817, __c88, 1) as any as S.Schema<UpdateAutoImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3670,8 +3910,8 @@ export const UpdateCach: API.OperationMethod<
   UpdateCachError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<UpdateCachRequest>,
-  output: __S(2036, __c63, 20) as any as S.Schema<UpdateCachResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<UpdateCachRequest>,
+  output: __S(2849, __c89, 1) as any as S.Schema<UpdateCachResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3685,8 +3925,8 @@ export const UpdateExpansionJob: API.OperationMethod<
   UpdateExpansionJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<UpdateExpansionJobRequest>,
-  output: __S(642, __c20, 2) as any as S.Schema<UpdateExpansionJobResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<UpdateExpansionJobRequest>,
+  output: __S(672, __c21, 0) as any as S.Schema<UpdateExpansionJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3700,8 +3940,8 @@ export const UpdateImportJob: API.OperationMethod<
   UpdateImportJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<UpdateImportJobRequest>,
-  output: __S(994, __c31, 2) as any as S.Schema<UpdateImportJobResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<UpdateImportJobRequest>,
+  output: __S(2913, __c91, 1) as any as S.Schema<UpdateImportJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3715,8 +3955,8 @@ export const UpdateRebalanceJob: API.OperationMethod<
   UpdateRebalanceJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<UpdateRebalanceJobRequest>,
-  output: __S(1058, __c33, 2) as any as S.Schema<UpdateRebalanceJobResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<UpdateRebalanceJobRequest>,
+  output: __S(2945, __c92, 1) as any as S.Schema<UpdateRebalanceJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3790,6 +4030,23 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AmlFilesystemsCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(107, __c3, 11)),
+          identity: S.optional(__S(228, __c7, 4)),
+          sku: S.optional(__S(288, __c9, 0)),
+          zones: S.optional(__S(192, __c6, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AmlFilesystemsCreateOrUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -3895,21 +4152,6 @@ function __c3(j: number): any {
           rootSquashSettings: S.optional(__S(106, __c3, 10)),
         }),
       ).annotate({ identifier: "AmlFilesystemProperties" });
-    case 12:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(128, __c4, 0)),
-          tags: S.optional(__S(160, __c5, 0)),
-          location: S.String,
-          properties: S.optional(__S(107, __c3, 11)),
-          identity: S.optional(__S(228, __c7, 4)),
-          sku: S.optional(__S(288, __c9, 0)),
-          zones: S.optional(__S(192, __c6, 0)),
-        }),
-      ).annotate({ identifier: "AmlFilesystemsCreateOrUpdateResponse" });
   }
 }
 function __c4(j: number): any {
@@ -4222,7 +4464,11 @@ function __c20(j: number): any {
           rebalanceJobId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpansionJobProperties" });
-    case 2:
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4232,11 +4478,14 @@ function __c20(j: number): any {
           tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
           properties: S.optional(__S(641, __c20, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ExpansionJobsCreateOrUpdateResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4255,7 +4504,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "FlushCachRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4275,7 +4524,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ArchiveAmlFilesystemRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4295,7 +4544,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "FlushStorageTargetRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4314,7 +4563,26 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetAmlFilesystemRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(107, __c3, 11)),
+          identity: S.optional(__S(228, __c7, 4)),
+          sku: S.optional(__S(288, __c9, 0)),
+          zones: S.optional(__S(192, __c6, 0)),
+        }),
+      ).annotate({ identifier: "GetAmlFilesystemResponse" });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4343,7 +4611,7 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          output: S.optional(__S(802, __c25, 2)),
+          output: S.optional(__S(866, __c27, 2)),
         }),
       ).annotate({ identifier: "AscOperationProperties" });
     case 4:
@@ -4354,13 +4622,13 @@ function __c25(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(__S(801, __c25, 1)),
-          properties: S.optional(__S(803, __c25, 3)),
+          error: S.optional(__S(865, __c27, 1)),
+          properties: S.optional(__S(867, __c27, 3)),
         }),
       ).annotate({ identifier: "AscOperation" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4380,7 +4648,23 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetAutoExportJobRequest" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1409, __c44, 1)),
+        }),
+      ).annotate({ identifier: "GetAutoExportJobResponse" });
+  }
+}
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4400,7 +4684,23 @@ function __c27(j: number): any {
       ).annotate({ identifier: "GetAutoImportJobRequest" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1922, __c60, 2)),
+        }),
+      ).annotate({ identifier: "GetAutoImportJobResponse" });
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4419,7 +4719,25 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetCachRequest" });
   }
 }
-function __c29(j: number): any {
+function __c33(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(2323, __c72, 19)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.optional(S.String),
+          identity: S.optional(__S(228, __c7, 4)),
+          sku: S.optional(__S(288, __c9, 0)),
+        }),
+      ).annotate({ identifier: "GetCachResponse" });
+  }
+}
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4439,7 +4757,23 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetExpansionJobRequest" });
   }
 }
-function __c30(j: number): any {
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(641, __c20, 1)),
+        }),
+      ).annotate({ identifier: "GetExpansionJobResponse" });
+  }
+}
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4459,7 +4793,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetImportJobRequest" });
   }
 }
-function __c31(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4490,10 +4824,14 @@ function __c31(j: number): any {
           importPrefixes: S.optional(__S(192, __c6, 0)),
           conflictResolutionMode: S.optional(S.String),
           maximumErrors: S.optional(S.Number),
-          status: S.optional(__S(992, __c31, 0)),
+          status: S.optional(__S(1184, __c37, 0)),
         }),
       ).annotate({ identifier: "ImportJobProperties" });
-    case 2:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -4502,12 +4840,12 @@ function __c31(j: number): any {
           systemData: S.optional(__S(128, __c4, 0)),
           tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(993, __c31, 1)),
+          properties: S.optional(__S(1185, __c37, 1)),
         }),
       ).annotate({ identifier: "GetImportJobResponse" });
   }
 }
-function __c32(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4527,7 +4865,21 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetRebalanceJobRequest" });
   }
 }
-function __c33(j: number): any {
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(1313, __c41, 1)),
+        }),
+      ).annotate({ identifier: "GetRebalanceJobResponse" });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4555,22 +4907,12 @@ function __c33(j: number): any {
           provisioningState: S.optional(S.String),
           adminStatus: S.optional(S.String),
           expansionJobId: S.optional(S.String),
-          status: S.optional(__S(1056, __c33, 0)),
+          status: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "RebalanceJobProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(128, __c4, 0)),
-          properties: S.optional(__S(1057, __c33, 1)),
-        }),
-      ).annotate({ identifier: "GetRebalanceJobResponse" });
   }
 }
-function __c34(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4595,7 +4937,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "RequiredAmlFilesystemSubnetsSize" });
   }
 }
-function __c35(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4613,7 +4955,7 @@ function __c35(j: number): any {
           autoExportJobName: S.String.pipe(T.Label()),
           tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(1120, __c35, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4623,9 +4965,23 @@ function __c35(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AutoExportJobsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1409, __c44, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AutoExportJobsCreateOrUpdateResponse" });
   }
 }
-function __c36(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4653,24 +5009,12 @@ function __c36(j: number): any {
           provisioningState: S.optional(S.String),
           adminStatus: S.optional(S.String),
           autoExportPrefixes: S.optional(__S(192, __c6, 0)),
-          status: S.optional(__S(1152, __c36, 0)),
+          status: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "AutoExportJobProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(128, __c4, 0)),
-          tags: S.optional(__S(160, __c5, 0)),
-          location: S.String,
-          properties: S.optional(__S(1153, __c36, 1)),
-        }),
-      ).annotate({ identifier: "AutoExportJobsCreateOrUpdateResponse" });
   }
 }
-function __c37(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4690,7 +5034,22 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetStorageTargetRequest" });
   }
 }
-function __c38(j: number): any {
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(1509, __c47, 5)),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetStorageTargetResponse" });
+  }
+}
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4702,7 +5061,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "NamespaceJunction" });
     case 1:
-      return S.Array(__S(1216, __c38, 0));
+      return S.Array(__S(1504, __c47, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4727,31 +5086,20 @@ function __c38(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          junctions: S.optional(__S(1217, __c38, 1)),
+          junctions: S.optional(__S(1505, __c47, 1)),
           targetType: S.String,
           provisioningState: S.optional(S.String),
           state: S.optional(S.String),
-          nfs3: S.optional(__S(1218, __c38, 2)),
-          clfs: S.optional(__S(1219, __c38, 3)),
-          unknown: S.optional(__S(1220, __c38, 4)),
-          blobNfs: S.optional(__S(1218, __c38, 2)),
+          nfs3: S.optional(__S(1506, __c47, 2)),
+          clfs: S.optional(__S(1507, __c47, 3)),
+          unknown: S.optional(__S(1508, __c47, 4)),
+          blobNfs: S.optional(__S(1506, __c47, 2)),
           allocationPercentage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StorageTargetProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(128, __c4, 0)),
-          properties: S.optional(__S(1221, __c38, 5)),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetStorageTargetResponse" });
   }
 }
-function __c39(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4771,7 +5119,7 @@ function __c39(j: number): any {
           importJobName: S.String.pipe(T.Label()),
           tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(1248, __c39, 0)),
+          properties: S.optional(__S(1536, __c48, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4781,9 +5129,23 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ImportJobsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1185, __c37, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ImportJobsCreateOrUpdateResponse" });
   }
 }
-function __c40(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4803,7 +5165,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "InvalidateStorageTargetRequest" });
   }
 }
-function __c41(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4821,20 +5183,20 @@ function __c41(j: number): any {
       ).annotate({ identifier: "ListAmlFilesystemByResourceGroupRequest" });
   }
 }
-function __c42(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(108, __c3, 12));
+      return S.Array(__S(832, __c26, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1344, __c42, 0)),
+          value: S.optional(__S(1632, __c51, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AmlFilesystemsListResult" });
   }
 }
-function __c43(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4851,7 +5213,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "ListAmlFilesystemsRequest" });
   }
 }
-function __c44(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4880,21 +5242,21 @@ function __c44(j: number): any {
           limit: S.optional(S.Number),
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
-          name: S.optional(__S(1409, __c44, 1)),
+          name: S.optional(__S(1697, __c53, 1)),
         }),
       ).annotate({ identifier: "ResourceUsage" });
     case 3:
-      return S.Array(__S(1410, __c44, 2));
+      return S.Array(__S(1698, __c53, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1411, __c44, 3)),
+          value: S.optional(__S(1699, __c53, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceUsagesListResult" });
   }
 }
-function __c45(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4912,17 +5274,17 @@ function __c45(j: number): any {
         ),
       ).annotate({ identifier: "ListAutoExportJobByAmlFilesystemRequest" });
     case 1:
-      return S.Array(__S(1154, __c36, 2));
+      return S.Array(__S(928, __c29, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1441, __c45, 1)),
+          value: S.optional(__S(1729, __c54, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoExportJobsListResult" });
   }
 }
-function __c46(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4940,17 +5302,17 @@ function __c46(j: number): any {
         ),
       ).annotate({ identifier: "ListAutoImportJobByAmlFilesystemRequest" });
     case 1:
-      return S.Array(__S(1635, __c51, 3));
+      return S.Array(__S(992, __c31, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1473, __c46, 1)),
+          value: S.optional(__S(1761, __c55, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoImportJobsListResult" });
   }
 }
-function __c47(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4968,20 +5330,20 @@ function __c47(j: number): any {
       ).annotate({ identifier: "ListCachByResourceGroupRequest" });
   }
 }
-function __c48(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2036, __c63, 20));
+      return S.Array(__S(1056, __c33, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1536, __c48, 0)),
+          value: S.optional(__S(1824, __c57, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CachesListResult" });
   }
 }
-function __c49(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4998,7 +5360,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "ListCachesRequest" });
   }
 }
-function __c50(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5019,7 +5381,7 @@ function __c50(j: number): any {
           autoImportJobName: S.String.pipe(T.Label()),
           tags: S.optional(__S(160, __c5, 0)),
           location: S.String,
-          properties: S.optional(__S(1600, __c50, 0)),
+          properties: S.optional(__S(1888, __c59, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5029,9 +5391,23 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AutoImportJobsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1922, __c60, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AutoImportJobsCreateOrUpdateResponse" });
   }
 }
-function __c51(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5071,7 +5447,7 @@ function __c51(j: number): any {
           preexistingSymlinks: S.optional(S.Number),
           totalErrors: S.optional(S.Number),
           totalConflicts: S.optional(S.Number),
-          blobSyncEvents: S.optional(__S(1632, __c51, 0)),
+          blobSyncEvents: S.optional(__S(1920, __c60, 0)),
           lastStartedTimeUTC: S.optional(S.String),
           lastCompletionTimeUTC: S.optional(S.String),
         }),
@@ -5085,24 +5461,12 @@ function __c51(j: number): any {
           conflictResolutionMode: S.optional(S.String),
           enableDeletions: S.optional(S.Boolean),
           maximumErrors: S.optional(S.Number),
-          status: S.optional(__S(1633, __c51, 1)),
+          status: S.optional(__S(1921, __c60, 1)),
         }),
       ).annotate({ identifier: "AutoImportJobProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(128, __c4, 0)),
-          tags: S.optional(__S(160, __c5, 0)),
-          location: S.String,
-          properties: S.optional(__S(1634, __c51, 2)),
-        }),
-      ).annotate({ identifier: "AutoImportJobsCreateOrUpdateResponse" });
   }
 }
-function __c52(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5120,17 +5484,17 @@ function __c52(j: number): any {
         ),
       ).annotate({ identifier: "ListExpansionJobByAmlFilesystemRequest" });
     case 1:
-      return S.Array(__S(642, __c20, 2));
+      return S.Array(__S(1120, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1665, __c52, 1)),
+          value: S.optional(__S(1953, __c61, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExpansionJobsListResult" });
   }
 }
-function __c53(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5148,17 +5512,17 @@ function __c53(j: number): any {
         ),
       ).annotate({ identifier: "ListImportJobByAmlFilesystemRequest" });
     case 1:
-      return S.Array(__S(994, __c31, 2));
+      return S.Array(__S(1216, __c38, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1697, __c53, 1)),
+          value: S.optional(__S(1985, __c62, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImportJobsListResult" });
   }
 }
-function __c54(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5192,7 +5556,7 @@ function __c54(j: number): any {
         }),
       ).annotate({ identifier: "MetricDimension" });
     case 4:
-      return S.Array(__S(1731, __c54, 3));
+      return S.Array(__S(2019, __c63, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5201,13 +5565,13 @@ function __c54(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(1730, __c54, 2)),
+          supportedAggregationTypes: S.optional(__S(2018, __c63, 2)),
           metricClass: S.optional(S.String),
-          dimensions: S.optional(__S(1732, __c54, 4)),
+          dimensions: S.optional(__S(2020, __c63, 4)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 6:
-      return S.Array(__S(1733, __c54, 5));
+      return S.Array(__S(2021, __c63, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5216,42 +5580,42 @@ function __c54(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 8:
-      return S.Array(__S(1735, __c54, 7));
+      return S.Array(__S(2023, __c63, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(1734, __c54, 6)),
-          logSpecifications: S.optional(__S(1736, __c54, 8)),
+          metricSpecifications: S.optional(__S(2022, __c63, 6)),
+          logSpecifications: S.optional(__S(2024, __c63, 8)),
         }),
       ).annotate({ identifier: "ApiOperationPropertiesServiceSpecification" });
     case 10:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(1737, __c54, 9)),
+          serviceSpecification: S.optional(__S(2025, __c63, 9)),
         }),
       ).annotate({ identifier: "ApiOperationProperties" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(1729, __c54, 1)),
+          display: S.optional(__S(2017, __c63, 1)),
           origin: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
           name: S.optional(S.String),
-          properties: S.optional(__S(1738, __c54, 10)),
+          properties: S.optional(__S(2026, __c63, 10)),
         }),
       ).annotate({ identifier: "ApiOperation" });
     case 12:
-      return S.Array(__S(1739, __c54, 11));
+      return S.Array(__S(2027, __c63, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1740, __c54, 12)),
+          value: S.optional(__S(2028, __c63, 12)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiOperationListResult" });
   }
 }
-function __c55(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5269,17 +5633,17 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "ListRebalanceJobByAmlFilesystemRequest" });
     case 1:
-      return S.Array(__S(1058, __c33, 2));
+      return S.Array(__S(1280, __c40, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1761, __c55, 1)),
+          value: S.optional(__S(2049, __c64, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RebalanceJobsListResult" });
   }
 }
-function __c56(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5302,7 +5666,7 @@ function __c56(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSkuCapabilities" });
     case 2:
-      return S.Array(__S(1793, __c56, 1));
+      return S.Array(__S(2081, __c65, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5311,7 +5675,7 @@ function __c56(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSkuLocationInfo" });
     case 4:
-      return S.Array(__S(1795, __c56, 3));
+      return S.Array(__S(2083, __c65, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5321,30 +5685,30 @@ function __c56(j: number): any {
         }),
       ).annotate({ identifier: "Restriction" });
     case 6:
-      return S.Array(__S(1797, __c56, 5));
+      return S.Array(__S(2085, __c65, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          capabilities: S.optional(__S(1794, __c56, 2)),
+          capabilities: S.optional(__S(2082, __c65, 2)),
           locations: S.optional(__S(192, __c6, 0)),
-          locationInfo: S.optional(__S(1796, __c56, 4)),
+          locationInfo: S.optional(__S(2084, __c65, 4)),
           name: S.optional(S.String),
-          restrictions: S.optional(__S(1798, __c56, 6)),
+          restrictions: S.optional(__S(2086, __c65, 6)),
         }),
       ).annotate({ identifier: "ResourceSku" });
     case 8:
-      return S.Array(__S(1799, __c56, 7));
+      return S.Array(__S(2087, __c65, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1800, __c56, 8)),
+          value: S.optional(__S(2088, __c65, 8)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkusResult" });
   }
 }
-function __c57(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5362,17 +5726,17 @@ function __c57(j: number): any {
         ),
       ).annotate({ identifier: "ListStorageTargetByCacheRequest" });
     case 1:
-      return S.Array(__S(1222, __c38, 6));
+      return S.Array(__S(1472, __c46, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1825, __c57, 1)),
+          value: S.optional(__S(2113, __c66, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageTargetsResult" });
   }
 }
-function __c58(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5396,23 +5760,23 @@ function __c58(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(1857, __c58, 1)),
+          display: S.optional(__S(2145, __c67, 1)),
           modelName: S.optional(S.String),
           targetType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageModel" });
     case 3:
-      return S.Array(__S(1858, __c58, 2));
+      return S.Array(__S(2146, __c67, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1859, __c58, 3)),
+          value: S.optional(__S(2147, __c67, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageModelsResult" });
   }
 }
-function __c59(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5432,7 +5796,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "PauseCachPrimingJobRequest" });
   }
 }
-function __c60(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5452,7 +5816,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "RefreshStorageTargetsDnsRequest" });
   }
 }
-function __c61(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5472,7 +5836,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "RestoreStorageTargetDefaultsRequest" });
   }
 }
-function __c62(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5480,7 +5844,7 @@ function __c62(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2051, __c64, 3)),
+          properties: S.optional(__S(2339, __c73, 3)),
           tags: S.optional(__S(160, __c5, 0)),
           location: S.optional(S.String),
           identity: S.optional(__S(257, __c8, 1)),
@@ -5494,9 +5858,25 @@ function __c62(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CachesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(2323, __c72, 19)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.optional(S.String),
+          identity: S.optional(__S(228, __c7, 4)),
+          sku: S.optional(__S(288, __c9, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CachesCreateOrUpdateResponse" });
   }
 }
-function __c63(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5526,20 +5906,20 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "NfsAccessRule" });
     case 3:
-      return S.Array(__S(2018, __c63, 2));
+      return S.Array(__S(2306, __c72, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          accessRules: __S(2019, __c63, 3),
+          accessRules: __S(2307, __c72, 3),
         }),
       ).annotate({ identifier: "NfsAccessPolicy" });
     case 5:
-      return S.Array(__S(2020, __c63, 4));
+      return S.Array(__S(2308, __c72, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accessPolicies: S.optional(__S(2021, __c63, 5)),
+          accessPolicies: S.optional(__S(2309, __c72, 5)),
         }),
       ).annotate({ identifier: "CacheSecuritySettings" });
     case 7:
@@ -5558,7 +5938,7 @@ function __c63(j: number): any {
           domainNetBiosName: S.String,
           cacheNetBiosName: S.String,
           domainJoined: S.optional(S.String),
-          credentials: S.optional(__S(2023, __c63, 7)),
+          credentials: S.optional(__S(2311, __c72, 7)),
         }),
       ).annotate({ identifier: "CacheActiveDirectorySettings" });
     case 9:
@@ -5582,14 +5962,14 @@ function __c63(j: number): any {
           autoDownloadCertificate: S.optional(S.Boolean),
           caCertificateURI: S.optional(S.String),
           usernameDownloaded: S.optional(S.String),
-          credentials: S.optional(__S(2025, __c63, 9)),
+          credentials: S.optional(__S(2313, __c72, 9)),
         }),
       ).annotate({ identifier: "CacheUsernameDownloadSettings" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          activeDirectory: S.optional(__S(2024, __c63, 8)),
-          usernameDownload: S.optional(__S(2026, __c63, 10)),
+          activeDirectory: S.optional(__S(2312, __c72, 8)),
+          usernameDownload: S.optional(__S(2314, __c72, 10)),
         }),
       ).annotate({ identifier: "CacheDirectorySettings" });
     case 12:
@@ -5600,13 +5980,13 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "Condition" });
     case 13:
-      return S.Array(__S(2028, __c63, 12));
+      return S.Array(__S(2316, __c72, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
           state: S.optional(S.String),
           statusDescription: S.optional(S.String),
-          conditions: S.optional(__S(2029, __c63, 13)),
+          conditions: S.optional(__S(2317, __c72, 13)),
         }),
       ).annotate({ identifier: "CacheHealth" });
     case 15:
@@ -5642,43 +6022,29 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "PrimingJob" });
     case 18:
-      return S.Array(__S(2033, __c63, 17));
+      return S.Array(__S(2321, __c72, 17));
     case 19:
       return S.suspend(() =>
         S.Struct({
           cacheSizeGB: S.optional(S.Number),
-          health: S.optional(__S(2030, __c63, 14)),
+          health: S.optional(__S(2318, __c72, 14)),
           mountAddresses: S.optional(__S(192, __c6, 0)),
           provisioningState: S.optional(S.String),
           subnet: S.optional(S.String),
-          upgradeStatus: S.optional(__S(2031, __c63, 15)),
-          upgradeSettings: S.optional(__S(2016, __c63, 0)),
-          networkSettings: S.optional(__S(2032, __c63, 16)),
-          encryptionSettings: S.optional(__S(2017, __c63, 1)),
-          securitySettings: S.optional(__S(2022, __c63, 6)),
-          directoryServicesSettings: S.optional(__S(2027, __c63, 11)),
+          upgradeStatus: S.optional(__S(2319, __c72, 15)),
+          upgradeSettings: S.optional(__S(2304, __c72, 0)),
+          networkSettings: S.optional(__S(2320, __c72, 16)),
+          encryptionSettings: S.optional(__S(2305, __c72, 1)),
+          securitySettings: S.optional(__S(2310, __c72, 6)),
+          directoryServicesSettings: S.optional(__S(2315, __c72, 11)),
           zones: S.optional(__S(192, __c6, 0)),
-          primingJobs: S.optional(__S(2034, __c63, 18)),
-          spaceAllocation: S.optional(__S(2081, __c65, 1)),
+          primingJobs: S.optional(__S(2322, __c72, 18)),
+          spaceAllocation: S.optional(__S(2369, __c74, 1)),
         }),
       ).annotate({ identifier: "CacheProperties" });
-    case 20:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(128, __c4, 0)),
-          properties: S.optional(__S(2035, __c63, 19)),
-          tags: S.optional(__S(160, __c5, 0)),
-          location: S.optional(S.String),
-          identity: S.optional(__S(228, __c7, 4)),
-          sku: S.optional(__S(288, __c9, 0)),
-        }),
-      ).annotate({ identifier: "CachesCreateOrUpdateResponse" });
   }
 }
-function __c64(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5697,24 +6063,24 @@ function __c64(j: number): any {
         }),
       ).annotate({ identifier: "PrimingJobInput" });
     case 2:
-      return S.Array(__S(2049, __c64, 1));
+      return S.Array(__S(2337, __c73, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           cacheSizeGB: S.optional(S.Number),
           subnet: S.optional(S.String),
-          upgradeSettings: S.optional(__S(2016, __c63, 0)),
-          networkSettings: S.optional(__S(2048, __c64, 0)),
-          encryptionSettings: S.optional(__S(2017, __c63, 1)),
-          securitySettings: S.optional(__S(2022, __c63, 6)),
-          directoryServicesSettings: S.optional(__S(2027, __c63, 11)),
+          upgradeSettings: S.optional(__S(2304, __c72, 0)),
+          networkSettings: S.optional(__S(2336, __c73, 0)),
+          encryptionSettings: S.optional(__S(2305, __c72, 1)),
+          securitySettings: S.optional(__S(2310, __c72, 6)),
+          directoryServicesSettings: S.optional(__S(2315, __c72, 11)),
           zones: S.optional(__S(192, __c6, 0)),
-          primingJobs: S.optional(__S(2050, __c64, 2)),
+          primingJobs: S.optional(__S(2338, __c73, 2)),
         }),
       ).annotate({ identifier: "CachePropertiesInput" });
   }
 }
-function __c65(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5724,10 +6090,10 @@ function __c65(j: number): any {
         }),
       ).annotate({ identifier: "StorageTargetSpaceAllocation" });
     case 1:
-      return S.Array(__S(2080, __c65, 0));
+      return S.Array(__S(2368, __c74, 0));
   }
 }
-function __c66(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5747,7 +6113,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ResumeCachPrimingJobRequest" });
   }
 }
-function __c67(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5767,7 +6133,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "ResumeStorageTargetRequest" });
   }
 }
-function __c68(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5786,7 +6152,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "StartCachRequest" });
   }
 }
-function __c69(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5807,7 +6173,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "StartCachPrimingJobRequest" });
   }
 }
-function __c70(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5826,7 +6192,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "StopCachRequest" });
   }
 }
-function __c71(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5846,18 +6212,18 @@ function __c71(j: number): any {
       ).annotate({ identifier: "StopCachPrimingJobRequest" });
   }
 }
-function __c72(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          junctions: S.optional(__S(1217, __c38, 1)),
+          junctions: S.optional(__S(1505, __c47, 1)),
           targetType: S.String,
           state: S.optional(S.String),
-          nfs3: S.optional(__S(1218, __c38, 2)),
-          clfs: S.optional(__S(1219, __c38, 3)),
-          unknown: S.optional(__S(1220, __c38, 4)),
-          blobNfs: S.optional(__S(1218, __c38, 2)),
+          nfs3: S.optional(__S(1506, __c47, 2)),
+          clfs: S.optional(__S(1507, __c47, 3)),
+          unknown: S.optional(__S(1508, __c47, 4)),
+          blobNfs: S.optional(__S(1506, __c47, 2)),
         }),
       ).annotate({ identifier: "StorageTargetPropertiesInput" });
     case 1:
@@ -5867,7 +6233,7 @@ function __c72(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
           storageTargetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2304, __c72, 0)),
+          properties: S.optional(__S(2592, __c81, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5877,9 +6243,22 @@ function __c72(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StorageTargetsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(1509, __c47, 5)),
+          location: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StorageTargetsCreateOrUpdateResponse" });
   }
 }
-function __c73(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5899,7 +6278,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "SuspendStorageTargetRequest" });
   }
 }
-function __c74(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5916,7 +6295,7 @@ function __c74(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
           tags: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(2368, __c74, 0)),
+          properties: S.optional(__S(2656, __c83, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5926,9 +6305,27 @@ function __c74(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAmlFilesystemRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(107, __c3, 11)),
+          identity: S.optional(__S(228, __c7, 4)),
+          sku: S.optional(__S(288, __c9, 0)),
+          zones: S.optional(__S(192, __c6, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateAmlFilesystemResponse" });
   }
 }
-function __c75(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5938,7 +6335,7 @@ function __c75(j: number): any {
           amlFilesystemName: S.String.pipe(T.Label()),
           autoExportJobName: S.String.pipe(T.Label()),
           tags: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(2432, __c76, 0)),
+          properties: S.optional(__S(2720, __c85, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5948,9 +6345,24 @@ function __c75(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAutoExportJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1409, __c44, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateAutoExportJobResponse" });
   }
 }
-function __c76(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5960,7 +6372,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "AutoExportJobUpdateProperties" });
   }
 }
-function __c77(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5979,7 +6391,19 @@ function __c77(j: number): any {
       ).annotate({ identifier: "CachesDebugInfoRequest" });
   }
 }
-function __c78(j: number): any {
+function __c87(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CachesDebugInfoResponse" });
+  }
+}
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5989,7 +6413,7 @@ function __c78(j: number): any {
           amlFilesystemName: S.String.pipe(T.Label()),
           autoImportJobName: S.String.pipe(T.Label()),
           tags: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(2432, __c76, 0)),
+          properties: S.optional(__S(2720, __c85, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5999,9 +6423,24 @@ function __c78(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAutoImportJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1922, __c60, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateAutoImportJobResponse" });
   }
 }
-function __c79(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6009,7 +6448,7 @@ function __c79(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2051, __c64, 3)),
+          properties: S.optional(__S(2339, __c73, 3)),
           tags: S.optional(__S(160, __c5, 0)),
           location: S.optional(S.String),
           identity: S.optional(__S(257, __c8, 1)),
@@ -6023,9 +6462,26 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCachRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(2323, __c72, 19)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.optional(S.String),
+          identity: S.optional(__S(228, __c7, 4)),
+          sku: S.optional(__S(288, __c9, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateCachResponse" });
   }
 }
-function __c80(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6046,7 +6502,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "UpdateExpansionJobRequest" });
   }
 }
-function __c81(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6056,7 +6512,7 @@ function __c81(j: number): any {
           amlFilesystemName: S.String.pipe(T.Label()),
           importJobName: S.String.pipe(T.Label()),
           tags: S.optional(__S(160, __c5, 0)),
-          properties: S.optional(__S(2432, __c76, 0)),
+          properties: S.optional(__S(2720, __c85, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6066,9 +6522,24 @@ function __c81(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateImportJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          tags: S.optional(__S(160, __c5, 0)),
+          location: S.String,
+          properties: S.optional(__S(1185, __c37, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateImportJobResponse" });
   }
 }
-function __c82(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6077,7 +6548,7 @@ function __c82(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           amlFilesystemName: S.String.pipe(T.Label()),
           rebalanceJobName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2432, __c76, 0)),
+          properties: S.optional(__S(2720, __c85, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6087,9 +6558,22 @@ function __c82(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRebalanceJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(1313, __c41, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateRebalanceJobResponse" });
   }
 }
-function __c83(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6097,7 +6581,7 @@ function __c83(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
-          body: S.optional(__S(2081, __c65, 1).pipe(T.HttpBody())),
+          body: S.optional(__S(2369, __c74, 1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6109,7 +6593,7 @@ function __c83(j: number): any {
       ).annotate({ identifier: "CachesSpaceAllocationRequest" });
   }
 }
-function __c84(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6128,7 +6612,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "CachesUpgradeFirmwareRequest" });
   }
 }
-function __c85(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

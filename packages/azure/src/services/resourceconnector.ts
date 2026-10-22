@@ -155,6 +155,10 @@ export interface AppliancesCreateOrUpdateResponse {
   properties?: ApplianceProperties;
   /** Identity for the resource. */
   identity?: Identity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteApplianceRequest {
   /** The ID of the target subscription. */
@@ -164,7 +168,12 @@ export interface DeleteApplianceRequest {
   /** Appliances name. */
   resourceName: string;
 }
-export interface DeleteApplianceResponse {}
+export interface DeleteApplianceResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetApplianceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -457,7 +466,7 @@ export const AppliancesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(2, __c0, 2) as any as S.Schema<AppliancesCreateOrUpdateRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<AppliancesCreateOrUpdateResponse>,
+  output: __S(3, __c0, 3) as any as S.Schema<AppliancesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -487,7 +496,7 @@ export const GetAppliance: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c4, 0) as any as S.Schema<GetApplianceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<GetApplianceResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<GetApplianceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -501,8 +510,8 @@ export const GetApplianceTelemetryConfig: API.OperationMethod<
   GetApplianceTelemetryConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(40, __c5, 0) as any as S.Schema<GetApplianceTelemetryConfigRequest>,
-  output: __S(41, __c5, 1) as any as S.Schema<ApplianceGetTelemetryConfigResult>,
+  input: __S(48, __c6, 0) as any as S.Schema<GetApplianceTelemetryConfigRequest>,
+  output: __S(49, __c6, 1) as any as S.Schema<ApplianceGetTelemetryConfigResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -516,8 +525,8 @@ export const GetApplianceUpgradeGraph: API.OperationMethod<
   GetApplianceUpgradeGraphError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c6, 0) as any as S.Schema<GetApplianceUpgradeGraphRequest>,
-  output: __S(55, __c6, 7) as any as S.Schema<UpgradeGraph>,
+  input: __S(56, __c7, 0) as any as S.Schema<GetApplianceUpgradeGraphRequest>,
+  output: __S(63, __c7, 7) as any as S.Schema<UpgradeGraph>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -531,8 +540,8 @@ export const ListApplianceByResourceGroup: API.OperationMethod<
   ListApplianceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListApplianceByResourceGroupRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ApplianceListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListApplianceByResourceGroupRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<ApplianceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -546,8 +555,8 @@ export const ListApplianceBySubscription: API.OperationMethod<
   ListApplianceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListApplianceBySubscriptionRequest>,
-  output: __S(65, __c8, 1) as any as S.Schema<ApplianceListResult>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListApplianceBySubscriptionRequest>,
+  output: __S(73, __c9, 1) as any as S.Schema<ApplianceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -561,8 +570,8 @@ export const ListApplianceClusterUserCredential: API.OperationMethod<
   ListApplianceClusterUserCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListApplianceClusterUserCredentialRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<ApplianceListCredentialResults>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListApplianceClusterUserCredentialRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<ApplianceListCredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -576,8 +585,8 @@ export const ListApplianceKeys: API.OperationMethod<
   ListApplianceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListApplianceKeysRequest>,
-  output: __S(101, __c12, 5) as any as S.Schema<ApplianceListKeysResults>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListApplianceKeysRequest>,
+  output: __S(109, __c13, 5) as any as S.Schema<ApplianceListKeysResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -591,8 +600,8 @@ export const ListApplianceOperations: API.OperationMethod<
   ListApplianceOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<ListApplianceOperationsRequest>,
-  output: __S(108, __c13, 4) as any as S.Schema<ApplianceOperationsList>,
+  input: __S(112, __c14, 0) as any as S.Schema<ListApplianceOperationsRequest>,
+  output: __S(116, __c14, 4) as any as S.Schema<ApplianceOperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -607,7 +616,7 @@ export const UpdateAppliance: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<UpdateApplianceRequest>,
-  output: __S(13, __c1, 5) as any as S.Schema<UpdateApplianceResponse>,
+  output: __S(40, __c5, 0) as any as S.Schema<UpdateApplianceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -650,6 +659,21 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AppliancesCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(10, __c1, 2)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(11, __c1, 3)),
+          identity: S.optional(__S(12, __c1, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AppliancesCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -692,19 +716,6 @@ function __c1(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Identity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(10, __c1, 2)),
-          tags: S.optional(__S(8, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(11, __c1, 3)),
-          identity: S.optional(__S(12, __c1, 4)),
-        }),
-      ).annotate({ identifier: "AppliancesCreateOrUpdateResponse" });
   }
 }
 function __c2(j: number): any {
@@ -725,7 +736,12 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "DeleteApplianceRequest" });
     case 1:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteApplianceResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteApplianceResponse" });
   }
 }
 function __c3(j: number): any {
@@ -772,6 +788,23 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(10, __c1, 2)),
+          tags: S.optional(__S(8, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(11, __c1, 3)),
+          identity: S.optional(__S(12, __c1, 4)),
+        }),
+      ).annotate({ identifier: "GetApplianceResponse" });
+  }
+}
+function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -790,7 +823,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ApplianceGetTelemetryConfigResult" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -820,7 +853,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(__S(49, __c6, 1)),
+          data: S.optional(__S(57, __c7, 1)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
         }),
@@ -828,23 +861,23 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          catalogVersion: S.optional(__S(50, __c6, 2)),
+          catalogVersion: S.optional(__S(58, __c7, 2)),
         }),
       ).annotate({ identifier: "SupportedVersionMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(51, __c6, 3)),
+          metadata: S.optional(__S(59, __c7, 3)),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "SupportedVersion" });
     case 5:
-      return S.Array(__S(52, __c6, 4));
+      return S.Array(__S(60, __c7, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           applianceVersion: S.optional(S.String),
-          supportedVersions: S.optional(__S(53, __c6, 5)),
+          supportedVersions: S.optional(__S(61, __c7, 5)),
         }),
       ).annotate({ identifier: "UpgradeGraphProperties" });
     case 7:
@@ -852,12 +885,12 @@ function __c6(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(54, __c6, 6)),
+          properties: S.optional(__S(62, __c7, 6)),
         }),
       ).annotate({ identifier: "UpgradeGraph" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -875,20 +908,20 @@ function __c7(j: number): any {
       ).annotate({ identifier: "ListApplianceByResourceGroupRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(13, __c1, 5));
+      return S.Array(__S(40, __c5, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(64, __c8, 0),
+          value: __S(72, __c9, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplianceListResult" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -905,7 +938,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ListApplianceBySubscriptionRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -934,13 +967,13 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          hybridConnectionConfig: S.optional(__S(81, __c10, 1)),
-          kubeconfigs: S.optional(__S(89, __c11, 1)),
+          hybridConnectionConfig: S.optional(__S(89, __c11, 1)),
+          kubeconfigs: S.optional(__S(97, __c12, 1)),
         }),
       ).annotate({ identifier: "ApplianceListCredentialResults" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -950,10 +983,10 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ApplianceCredentialKubeconfig" });
     case 1:
-      return S.Array(__S(88, __c11, 0));
+      return S.Array(__S(96, __c12, 0));
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -978,7 +1011,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "ArtifactProfile" });
     case 2:
-      return S.Record(S.String, __S(97, __c12, 1));
+      return S.Record(S.String, __S(105, __c13, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -990,18 +1023,18 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "SSHKey" });
     case 4:
-      return S.Record(S.String, __S(99, __c12, 3));
+      return S.Record(S.String, __S(107, __c13, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          artifactProfiles: S.optional(__S(98, __c12, 2)),
-          kubeconfigs: S.optional(__S(89, __c11, 1)),
-          sshKeys: S.optional(__S(100, __c12, 4)),
+          artifactProfiles: S.optional(__S(106, __c13, 2)),
+          kubeconfigs: S.optional(__S(97, __c12, 1)),
+          sshKeys: S.optional(__S(108, __c13, 4)),
         }),
       ).annotate({ identifier: "ApplianceListKeysResults" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1026,18 +1059,18 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(__S(105, __c13, 1)),
+          display: S.optional(__S(113, __c14, 1)),
           isDataAction: S.optional(S.Boolean),
           name: S.optional(S.String),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplianceOperation" });
     case 3:
-      return S.Array(__S(106, __c13, 2));
+      return S.Array(__S(114, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(107, __c13, 3),
+          value: __S(115, __c14, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplianceOperationsList" });

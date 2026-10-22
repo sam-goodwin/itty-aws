@@ -180,6 +180,23 @@ export interface OpenApiConvertOptions {
    */
   readonly successStatuses?: readonly string[];
   /**
+   * Response headers (matched case-insensitively) to add to an operation's
+   * output as optional `smithy.api#httpHeader` members wherever one of its
+   * 2xx responses declares them -- bodiless ones such as `202 Accepted`
+   * included. An allowlist for the same reason as {@link headerParams}:
+   * specs declare noise headers (request ids, ETags) on most responses.
+   * Azure lists its long-running-operation status monitor
+   * (`Azure-AsyncOperation`, `Location`, `Retry-After`), which callers need
+   * to follow the operation themselves.
+   *
+   * An operation whose output reuses a named component gets its own output
+   * structure (the component's members plus the headers), so the headers
+   * never leak into other operations sharing that component. A header whose
+   * member name a body member already uses is suffixed `Header`
+   * (`Location` → `locationHeader` next to ARM's `location` region).
+   */
+  readonly responseHeaders?: readonly string[];
+  /**
    * Azure-style fixed `api-version`: drops `api-version` query params and
    * stamps {@link API_VERSION_TRAIT} on every operation.
    */
@@ -1103,6 +1120,58 @@ const opDoc = (op: any): string | undefined => {
 // Responses
 // ============================================================================
 
+/**
+ * The allowed headers any 2xx response declares, in status order; the first
+ * declaration of a header (case-insensitively) wins. Swagger 2.0 headers are
+ * schemas themselves; OpenAPI 3 headers carry a `schema`.
+ */
+const successHeaders = (
+  ctx: Ctx,
+  responses: any,
+  allowed: ReadonlySet<string>,
+): Array<{ name: string; schema: any; description?: string }> => {
+  const out: Array<{ name: string; schema: any; description?: string }> = [];
+  const seen = new Set<string>();
+  for (const code of Object.keys(responses ?? {}).sort()) {
+    if (!/^2\d\d$/.test(code)) continue;
+    const raw = responses[code];
+    const resp = raw?.$ref ? resolvePointer(ctx.spec, raw.$ref) : raw;
+    for (const [name, rawHeader] of Object.entries<any>(resp?.headers ?? {})) {
+      const lower = name.toLowerCase();
+      if (!allowed.has(lower) || seen.has(lower)) continue;
+      seen.add(lower);
+      const header = rawHeader?.$ref ? resolvePointer(ctx.spec, rawHeader.$ref) : rawHeader;
+      if (!header || typeof header !== "object") continue;
+      out.push({
+        name,
+        schema: ctx.version === "2.0" ? header : (header.schema ?? {}),
+        ...(typeof header.description === "string" ? { description: header.description } : {}),
+      });
+    }
+  }
+  return out;
+};
+
+/** How many times each shape id is the `target` of a member or op input/output. */
+const targetCounts = (shapes: Record<string, any>): Map<string, number> => {
+  const counts = new Map<string, number>();
+  const visit = (node: any): void => {
+    if (node === null || typeof node !== "object") return;
+    if (Array.isArray(node)) {
+      for (const item of node) visit(item);
+      return;
+    }
+    if (typeof node.target === "string") {
+      counts.set(node.target, (counts.get(node.target) ?? 0) + 1);
+    }
+    for (const [key, value] of Object.entries(node)) {
+      if (key !== "traits") visit(value);
+    }
+  };
+  for (const shape of Object.values(shapes)) visit(shape);
+  return counts;
+};
+
 /** First declared status wins; resolve response refs and preserve JSON or binary bodies. */
 const successSchema = (
   ctx: Ctx,
@@ -1328,6 +1397,14 @@ const convertOnce = (spec: unknown, options: OpenApiConvertOptions): SmithyModel
 
   const usedErrors = new Map<string, number>(); // class name → first status
   const serviceOps: Array<{ target: string }> = [];
+  const componentHeaders: Array<{
+    readonly opId: string;
+    readonly opName: string;
+    readonly members: Record<string, any>;
+  }> = [];
+  const allowedResponseHeaders = new Set(
+    (options.responseHeaders ?? []).map((name) => name.toLowerCase()),
+  );
 
   for (const [rawPath, pathItem] of Object.entries(doc.paths ?? {})) {
     if (!pathItem || typeof pathItem !== "object") continue;
@@ -1581,6 +1658,58 @@ const convertOnce = (spec: unknown, options: OpenApiConvertOptions): SmithyModel
         }
       }
 
+      // ---- Response headers (opt-in) ----
+      let pendingHeaders: Record<string, any> | undefined;
+      if (allowedResponseHeaders.size > 0 && method !== "head") {
+        const headers = successHeaders(ctx, op.responses, allowedResponseHeaders);
+        const current = outputTarget === PRELUDE.Unit ? undefined : ctx.shapes[outputTarget];
+        // A raw-root wrapper collapses to its payload, so it has nowhere to
+        // carry headers.
+        const rawRoot = Object.values<any>(current?.members ?? {}).some(
+          (m) => m?.traits?.[RAW_RESPONSE_TRAIT] !== undefined,
+        );
+        if (
+          headers.length > 0 &&
+          (current === undefined || current.type === "structure") &&
+          !rawRoot
+        ) {
+          const taken = new Set(Object.keys(current?.members ?? {}));
+          const members: Record<string, any> = {};
+          for (const header of headers) {
+            let name = headerMemberName(header.name);
+            if (taken.has(name)) name = `${name}Header`;
+            if (taken.has(name)) continue;
+            taken.add(name);
+            members[name] = {
+              target: convertSchema(
+                ctx,
+                header.schema,
+                `${opName}Response${pascal(header.name)}`,
+                0,
+                "out",
+              ).target,
+              traits: {
+                "smithy.api#httpHeader": header.name,
+                ...(header.description ? { "smithy.api#documentation": header.description } : {}),
+              },
+            };
+          }
+          if (current === undefined) {
+            outputTarget = addShape(ctx, `${opName}Response`, {
+              type: "structure",
+              members,
+              traits: { "smithy.api#output": {} },
+            });
+          } else if (current.traits?.["smithy.api#output"] !== undefined) {
+            current.members = { ...current.members, ...members };
+          } else {
+            // A named component: whether it can take the headers itself
+            // depends on what else uses it, known once every op is converted.
+            pendingHeaders = members;
+          }
+        }
+      }
+
       // ---- Errors ----
       const errors: Array<{ target: string }> = [];
       for (const status of Object.keys(op.responses ?? {})) {
@@ -1620,6 +1749,44 @@ const convertOnce = (spec: unknown, options: OpenApiConvertOptions): SmithyModel
         traits,
       });
       serviceOps.push({ target: opId });
+      if (pendingHeaders !== undefined) {
+        componentHeaders.push({ opId, opName, members: pendingHeaders });
+      }
+    }
+  }
+
+  // ---- Response headers on named components ----
+  // A component returned only by ops that declare headers takes them itself
+  // (all optional) and keeps its name. A component that other shapes, or ops
+  // without those headers, also use is copied into an op-specific output, so
+  // the headers never leak into them.
+  if (componentHeaders.length > 0) {
+    const uses = targetCounts(ctx.shapes);
+    const outputs = new Map<string, number>();
+    for (const { opId } of componentHeaders) {
+      const id: string = ctx.shapes[opId].output.target;
+      outputs.set(id, (outputs.get(id) ?? 0) + 1);
+    }
+    for (const { opId, opName, members } of componentHeaders) {
+      const opShape = ctx.shapes[opId];
+      const componentId: string = opShape.output.target;
+      const component = ctx.shapes[componentId];
+      if (uses.get(componentId) === outputs.get(componentId)) {
+        component.members = { ...component.members, ...members };
+      } else {
+        opShape.output.target = addShape(ctx, `${opName}Response`, {
+          type: "structure",
+          members: { ...component.members, ...members },
+          traits: {
+            ...(component.traits?.["smithy.api#documentation"]
+              ? {
+                  "smithy.api#documentation": component.traits["smithy.api#documentation"],
+                }
+              : {}),
+            "smithy.api#output": {},
+          },
+        });
+      }
     }
   }
 

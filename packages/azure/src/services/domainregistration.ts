@@ -282,6 +282,8 @@ export interface DomainsCreateOrUpdateResponse {
   properties?: DomainProperties;
   /** Kind of resource */
   kind?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** DomainOwnershipIdentifier resource specific properties */
 export interface DomainOwnershipIdentifierProperties {
@@ -835,7 +837,7 @@ export const DomainsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c14, 0) as any as S.Schema<DomainsCreateOrUpdateRequest>,
-  output: __S(296, __c18, 8) as any as S.Schema<DomainsCreateOrUpdateResponse>,
+  output: __S(225, __c14, 1) as any as S.Schema<DomainsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -865,7 +867,7 @@ export const GetDomain: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(336, __c21, 0) as any as S.Schema<GetDomainRequest>,
-  output: __S(296, __c18, 8) as any as S.Schema<GetDomainResponse>,
+  output: __S(352, __c22, 0) as any as S.Schema<GetDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -879,8 +881,8 @@ export const GetDomainControlCenterSsoRequest: API.OperationMethod<
   GetDomainControlCenterSsoRequestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetDomainControlCenterSsoRequestRequest>,
-  output: __S(353, __c22, 1) as any as S.Schema<DomainControlCenterSsoRequest>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetDomainControlCenterSsoRequestRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<DomainControlCenterSsoRequest>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -894,7 +896,7 @@ export const GetDomainOwnershipIdentifier: API.OperationMethod<
   GetDomainOwnershipIdentifierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<GetDomainOwnershipIdentifierRequest>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetDomainOwnershipIdentifierRequest>,
   output: __S(321, __c20, 1) as any as S.Schema<GetDomainOwnershipIdentifierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -909,8 +911,8 @@ export const GetTopLevelDomain: API.OperationMethod<
   GetTopLevelDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetTopLevelDomainRequest>,
-  output: __S(401, __c25, 1) as any as S.Schema<GetTopLevelDomainResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetTopLevelDomainRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<GetTopLevelDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -924,8 +926,8 @@ export const ListDomainByResourceGroup: API.OperationMethod<
   ListDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<ListDomainByResourceGroupRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<DomainCollection>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListDomainByResourceGroupRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<DomainCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -985,7 +987,7 @@ export const ListDomains: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<ListDomainsRequest>,
-  output: __S(433, __c27, 1) as any as S.Schema<DomainCollection>,
+  output: __S(449, __c28, 1) as any as S.Schema<DomainCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1045,7 +1047,7 @@ export const TransferDomainOut: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<TransferDomainOutRequest>,
-  output: __S(296, __c18, 8) as any as S.Schema<TransferDomainOutResponse>,
+  output: __S(352, __c22, 0) as any as S.Schema<TransferDomainOutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1060,7 +1062,7 @@ export const UpdateDomain: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<UpdateDomainRequest>,
-  output: __S(296, __c18, 8) as any as S.Schema<UpdateDomainResponse>,
+  output: __S(352, __c22, 0) as any as S.Schema<UpdateDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1378,7 +1380,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListTopLevelDomainsRequest" });
     case 1:
-      return S.Array(__S(401, __c25, 1));
+      return S.Array(__S(417, __c26, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1510,6 +1512,20 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DomainsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(256, __c16, 0)),
+          tags: S.optional(__S(288, __c18, 0)),
+          location: S.String,
+          properties: S.optional(__S(295, __c18, 7)),
+          kind: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DomainsCreateOrUpdateResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1630,19 +1646,6 @@ function __c18(j: number): any {
           authCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainProperties" });
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(256, __c16, 0)),
-          tags: S.optional(__S(288, __c18, 0)),
-          location: S.String,
-          properties: S.optional(__S(295, __c18, 7)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DomainsCreateOrUpdateResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1712,6 +1715,23 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(256, __c16, 0)),
+          tags: S.optional(__S(288, __c18, 0)),
+          location: S.String,
+          properties: S.optional(__S(295, __c18, 7)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDomainResponse" });
+  }
+}
+function __c23(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1732,7 +1752,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "DomainControlCenterSsoRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1752,7 +1772,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetDomainOwnershipIdentifierRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1770,7 +1790,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetTopLevelDomainRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1785,13 +1805,13 @@ function __c25(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(256, __c16, 0)),
-          properties: S.optional(__S(400, __c25, 0)),
+          properties: S.optional(__S(416, __c26, 0)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTopLevelDomainResponse" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1809,14 +1829,14 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ListDomainByResourceGroupRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(296, __c18, 8));
+      return S.Array(__S(352, __c22, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(432, __c27, 0),
+          value: __S(448, __c28, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainCollection" });

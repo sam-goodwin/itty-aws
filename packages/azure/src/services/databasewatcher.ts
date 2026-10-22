@@ -138,6 +138,8 @@ export interface CreateSharedPrivateLinkResourceResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SharedPrivateLinkResourceProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAlertRuleResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -160,7 +162,12 @@ export interface DeleteSharedPrivateLinkResourceRequest {
   /** The Shared Private Link resource name. */
   sharedPrivateLinkResourceName: string;
 }
-export interface DeleteSharedPrivateLinkResourceResponse {}
+export interface DeleteSharedPrivateLinkResourceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -180,7 +187,12 @@ export interface DeleteWatcherRequest {
   /** The database watcher name. */
   watcherName: string;
 }
-export interface DeleteWatcherResponse {}
+export interface DeleteWatcherResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAlertRuleResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -651,6 +663,10 @@ export interface StartHealthValidationValidationResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: HealthValidationProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StartWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -681,6 +697,12 @@ export interface StartWatcherResponse {
   properties?: WatcherProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StopWatcherRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -711,6 +733,12 @@ export interface StopWatcherResponse {
   properties?: WatcherProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The generic properties of a target. */
 export interface TargetPropertiesInput {
@@ -829,6 +857,10 @@ export interface UpdateWatcherResponse {
   properties?: WatcherProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type WatchersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -878,6 +910,8 @@ export interface WatchersCreateOrUpdateResponse {
   properties?: WatcherProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetWatcherResponseIdentity;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AlertRuleResourcesCreateOrUpdateError = AzureOpError;
 /** Create a AlertRuleResource */
@@ -903,7 +937,7 @@ export const CreateSharedPrivateLinkResource: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(25, __c3, 1) as any as S.Schema<CreateSharedPrivateLinkResourceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<CreateSharedPrivateLinkResourceResponse>,
+  output: __S(26, __c3, 2) as any as S.Schema<CreateSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -917,8 +951,8 @@ export const DeleteAlertRuleResource: API.OperationMethod<
   DeleteAlertRuleResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<DeleteAlertRuleResourceRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DeleteAlertRuleResourceResponse>,
+  input: __S(152, __c19, 0) as any as S.Schema<DeleteAlertRuleResourceRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteAlertRuleResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -932,8 +966,8 @@ export const DeleteSharedPrivateLinkResource: API.OperationMethod<
   DeleteSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<DeleteSharedPrivateLinkResourceRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DeleteSharedPrivateLinkResourceResponse>,
+  input: __S(208, __c26, 0) as any as S.Schema<DeleteSharedPrivateLinkResourceRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<DeleteSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -947,8 +981,8 @@ export const DeleteTarget: API.OperationMethod<
   DeleteTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(200, __c25, 0) as any as S.Schema<DeleteTargetRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DeleteTargetResponse>,
+  input: __S(224, __c28, 0) as any as S.Schema<DeleteTargetRequest>,
+  output: __S(160, __c20, 0) as any as S.Schema<DeleteTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -962,8 +996,8 @@ export const DeleteWatcher: API.OperationMethod<
   DeleteWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<DeleteWatcherRequest>,
-  output: __S(144, __c18, 0) as any as S.Schema<DeleteWatcherResponse>,
+  input: __S(232, __c29, 0) as any as S.Schema<DeleteWatcherRequest>,
+  output: __S(216, __c27, 0) as any as S.Schema<DeleteWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -977,7 +1011,7 @@ export const GetAlertRuleResource: API.OperationMethod<
   GetAlertRuleResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(216, __c27, 0) as any as S.Schema<GetAlertRuleResourceRequest>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetAlertRuleResourceRequest>,
   output: __S(17, __c2, 1) as any as S.Schema<GetAlertRuleResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -992,8 +1026,8 @@ export const GetHealthValidation: API.OperationMethod<
   GetHealthValidationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetHealthValidationRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<GetHealthValidationResponse>,
+  input: __S(248, __c31, 0) as any as S.Schema<GetHealthValidationRequest>,
+  output: __S(256, __c32, 0) as any as S.Schema<GetHealthValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1007,8 +1041,8 @@ export const GetSharedPrivateLinkResource: API.OperationMethod<
   GetSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetSharedPrivateLinkResourceRequest>,
-  output: __S(33, __c4, 1) as any as S.Schema<GetSharedPrivateLinkResourceResponse>,
+  input: __S(272, __c34, 0) as any as S.Schema<GetSharedPrivateLinkResourceRequest>,
+  output: __S(280, __c35, 0) as any as S.Schema<GetSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1022,8 +1056,8 @@ export const GetTarget: API.OperationMethod<
   GetTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetTargetRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<GetTargetResponse>,
+  input: __S(288, __c36, 0) as any as S.Schema<GetTargetRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<GetTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1038,7 +1072,7 @@ export const GetWatcher: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<GetWatcherRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<GetWatcherResponse>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1052,8 +1086,8 @@ export const ListAlertRuleResourceByParent: API.OperationMethod<
   ListAlertRuleResourceByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(56, __c7, 0) as any as S.Schema<ListAlertRuleResourceByParentRequest>,
-  output: __S(58, __c7, 2) as any as S.Schema<AlertRuleResourceListResult>,
+  input: __S(64, __c8, 0) as any as S.Schema<ListAlertRuleResourceByParentRequest>,
+  output: __S(66, __c8, 2) as any as S.Schema<AlertRuleResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1067,8 +1101,8 @@ export const ListHealthValidationByParent: API.OperationMethod<
   ListHealthValidationByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(64, __c8, 0) as any as S.Schema<ListHealthValidationByParentRequest>,
-  output: __S(66, __c8, 2) as any as S.Schema<HealthValidationListResult>,
+  input: __S(72, __c9, 0) as any as S.Schema<ListHealthValidationByParentRequest>,
+  output: __S(74, __c9, 2) as any as S.Schema<HealthValidationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1082,8 +1116,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(72, __c9, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(76, __c9, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(80, __c10, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(84, __c10, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1097,8 +1131,8 @@ export const ListSharedPrivateLinkResourceByWatcher: API.OperationMethod<
   ListSharedPrivateLinkResourceByWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c10, 0) as any as S.Schema<ListSharedPrivateLinkResourceByWatcherRequest>,
-  output: __S(82, __c10, 2) as any as S.Schema<SharedPrivateLinkResourceListResult>,
+  input: __S(88, __c11, 0) as any as S.Schema<ListSharedPrivateLinkResourceByWatcherRequest>,
+  output: __S(90, __c11, 2) as any as S.Schema<SharedPrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1112,8 +1146,8 @@ export const ListTargetByWatcher: API.OperationMethod<
   ListTargetByWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(88, __c11, 0) as any as S.Schema<ListTargetByWatcherRequest>,
-  output: __S(90, __c11, 2) as any as S.Schema<TargetListResult>,
+  input: __S(96, __c12, 0) as any as S.Schema<ListTargetByWatcherRequest>,
+  output: __S(98, __c12, 2) as any as S.Schema<TargetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1127,8 +1161,8 @@ export const ListWatcherByResourceGroup: API.OperationMethod<
   ListWatcherByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<ListWatcherByResourceGroupRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<WatcherListResult>,
+  input: __S(104, __c13, 0) as any as S.Schema<ListWatcherByResourceGroupRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<WatcherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1142,8 +1176,8 @@ export const ListWatcherBySubscription: API.OperationMethod<
   ListWatcherBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListWatcherBySubscriptionRequest>,
-  output: __S(105, __c13, 1) as any as S.Schema<WatcherListResult>,
+  input: __S(120, __c15, 0) as any as S.Schema<ListWatcherBySubscriptionRequest>,
+  output: __S(113, __c14, 1) as any as S.Schema<WatcherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1157,8 +1191,8 @@ export const StartHealthValidationValidation: API.OperationMethod<
   StartHealthValidationValidationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<StartHealthValidationValidationRequest>,
-  output: __S(235, __c29, 3) as any as S.Schema<StartHealthValidationValidationResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<StartHealthValidationValidationRequest>,
+  output: __S(129, __c16, 1) as any as S.Schema<StartHealthValidationValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1172,8 +1206,8 @@ export const StartWatcher: API.OperationMethod<
   StartWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<StartWatcherRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<StartWatcherResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<StartWatcherRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<StartWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1187,8 +1221,8 @@ export const StopWatcher: API.OperationMethod<
   StopWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<StopWatcherRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<StopWatcherResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<StopWatcherRequest>,
+  output: __S(144, __c18, 0) as any as S.Schema<StopWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1202,8 +1236,8 @@ export const TargetsCreateOrUpdate: API.OperationMethod<
   TargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c20, 1) as any as S.Schema<TargetsCreateOrUpdateRequest>,
-  output: __S(258, __c32, 2) as any as S.Schema<TargetsCreateOrUpdateResponse>,
+  input: __S(177, __c22, 1) as any as S.Schema<TargetsCreateOrUpdateRequest>,
+  output: __S(298, __c37, 2) as any as S.Schema<TargetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1217,8 +1251,8 @@ export const UpdateWatcher: API.OperationMethod<
   UpdateWatcherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(170, __c21, 2) as any as S.Schema<UpdateWatcherRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<UpdateWatcherResponse>,
+  input: __S(186, __c23, 2) as any as S.Schema<UpdateWatcherRequest>,
+  output: __S(187, __c23, 3) as any as S.Schema<UpdateWatcherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1232,8 +1266,8 @@ export const WatchersCreateOrUpdate: API.OperationMethod<
   WatchersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(185, __c23, 1) as any as S.Schema<WatchersCreateOrUpdateRequest>,
-  output: __S(54, __c6, 6) as any as S.Schema<WatchersCreateOrUpdateResponse>,
+  input: __S(201, __c25, 1) as any as S.Schema<WatchersCreateOrUpdateRequest>,
+  output: __S(202, __c25, 2) as any as S.Schema<WatchersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1339,6 +1373,17 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSharedPrivateLinkResourceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(32, __c4, 0)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateSharedPrivateLinkResourceResponse" });
   }
 }
 function __c4(j: number): any {
@@ -1354,16 +1399,6 @@ function __c4(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharedPrivateLinkResourceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(32, __c4, 0)),
-        }),
-      ).annotate({ identifier: "CreateSharedPrivateLinkResourceResponse" });
   }
 }
 function __c5(j: number): any {
@@ -1388,6 +1423,23 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          location: S.String,
+          properties: S.optional(__S(58, __c7, 2)),
+          identity: S.optional(__S(61, __c7, 5)),
+        }),
+      ).annotate({ identifier: "GetWatcherResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
@@ -1404,7 +1456,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          datastore: S.optional(__S(49, __c6, 1)),
+          datastore: S.optional(__S(57, __c7, 1)),
           status: S.optional(S.String),
           provisioningState: S.optional(S.String),
           defaultAlertRuleIdentityResourceId: S.optional(S.String),
@@ -1418,32 +1470,19 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 4:
-      return S.Record(S.String, __S(51, __c6, 3));
+      return S.Record(S.String, __S(59, __c7, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(52, __c6, 4)),
+          userAssignedIdentities: S.optional(__S(60, __c7, 4)),
         }),
       ).annotate({ identifier: "GetWatcherResponseIdentity" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          tags: S.optional(__S(48, __c6, 0)),
-          location: S.String,
-          properties: S.optional(__S(50, __c6, 2)),
-          identity: S.optional(__S(53, __c6, 5)),
-        }),
-      ).annotate({ identifier: "GetWatcherResponse" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1465,13 +1504,13 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(57, __c7, 1),
+          value: __S(65, __c8, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertRuleResourceListResult" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1489,17 +1528,17 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListHealthValidationByParentRequest" });
     case 1:
-      return S.Array(__S(235, __c29, 3));
+      return S.Array(__S(256, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(65, __c8, 1),
+          value: __S(73, __c9, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthValidationListResult" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1526,23 +1565,23 @@ function __c9(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(73, __c9, 1)),
+          display: S.optional(__S(81, __c10, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(74, __c9, 2));
+      return S.Array(__S(82, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(75, __c9, 3)),
+          value: S.optional(__S(83, __c10, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1560,17 +1599,17 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListSharedPrivateLinkResourceByWatcherRequest" });
     case 1:
-      return S.Array(__S(33, __c4, 1));
+      return S.Array(__S(280, __c35, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(81, __c10, 1),
+          value: __S(89, __c11, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharedPrivateLinkResourceListResult" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1588,17 +1627,17 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListTargetByWatcherRequest" });
     case 1:
-      return S.Array(__S(258, __c32, 2));
+      return S.Array(__S(298, __c37, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(89, __c11, 1),
+          value: __S(97, __c12, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetListResult" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1616,20 +1655,20 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListWatcherByResourceGroupRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(54, __c6, 6));
+      return S.Array(__S(48, __c6, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(104, __c13, 0),
+          value: __S(112, __c14, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatcherListResult" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1646,7 +1685,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "ListWatcherBySubscriptionRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1664,9 +1703,21 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StartHealthValidationValidationRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(266, __c33, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StartHealthValidationValidationResponse" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1685,7 +1736,27 @@ function __c16(j: number): any {
       ).annotate({ identifier: "StartWatcherRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          location: S.String,
+          properties: S.optional(__S(58, __c7, 2)),
+          identity: S.optional(__S(61, __c7, 5)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StartWatcherResponse" });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1705,7 +1776,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeleteAlertRuleResourceRequest" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -1713,7 +1784,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1732,14 +1803,14 @@ function __c19(j: number): any {
       ).annotate({ identifier: "StopWatcherRequest" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           targetType: S.String,
           targetAuthenticationType: S.String,
-          targetVault: S.optional(__S(256, __c32, 0)),
+          targetVault: S.optional(__S(296, __c37, 0)),
           connectionServerName: S.String,
           sqlDbResourceId: S.optional(S.String),
           sqlEpResourceId: S.optional(S.String),
@@ -1756,7 +1827,7 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(160, __c20, 0)),
+          properties: S.optional(__S(176, __c22, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1768,7 +1839,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "TargetsCreateOrUpdateRequest" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1785,7 +1856,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          datastore: S.optional(__S(168, __c21, 0)),
+          datastore: S.optional(__S(184, __c23, 0)),
           defaultAlertRuleIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatcherUpdateProperties" });
@@ -1795,9 +1866,9 @@ function __c21(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(177, __c22, 1)),
-          tags: S.optional(__S(48, __c6, 0)),
-          properties: S.optional(__S(169, __c21, 1)),
+          identity: S.optional(__S(193, __c24, 1)),
+          tags: S.optional(__S(56, __c7, 0)),
+          properties: S.optional(__S(185, __c23, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1807,27 +1878,42 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWatcherRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          location: S.String,
+          properties: S.optional(__S(58, __c7, 2)),
+          identity: S.optional(__S(61, __c7, 5)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWatcherResponse" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(144, __c18, 0));
+      return S.Record(S.String, __S(160, __c20, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(176, __c22, 0)),
+          userAssignedIdentities: S.optional(__S(192, __c24, 0)),
         }),
       ).annotate({ identifier: "UpdateWatcherRequestIdentity" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          datastore: S.optional(__S(49, __c6, 1)),
+          datastore: S.optional(__S(57, __c7, 1)),
           defaultAlertRuleIdentityResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WatcherPropertiesInput" });
@@ -1837,10 +1923,10 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           watcherName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(48, __c6, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
           location: S.String,
-          properties: S.optional(__S(184, __c23, 0)),
-          identity: S.optional(__S(177, __c22, 1)),
+          properties: S.optional(__S(200, __c25, 0)),
+          identity: S.optional(__S(193, __c24, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1850,9 +1936,23 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WatchersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          tags: S.optional(__S(56, __c7, 0)),
+          location: S.String,
+          properties: S.optional(__S(58, __c7, 2)),
+          identity: S.optional(__S(61, __c7, 5)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "WatchersCreateOrUpdateResponse" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1872,7 +1972,18 @@ function __c24(j: number): any {
       ).annotate({ identifier: "DeleteSharedPrivateLinkResourceRequest" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteSharedPrivateLinkResourceResponse" });
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1892,7 +2003,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeleteTargetRequest" });
   }
 }
-function __c26(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1911,7 +2022,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "DeleteWatcherRequest" });
   }
 }
-function __c27(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1931,7 +2042,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "GetAlertRuleResourceRequest" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1951,7 +2062,21 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetHealthValidationRequest" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(266, __c33, 2)),
+        }),
+      ).annotate({ identifier: "GetHealthValidationResponse" });
+  }
+}
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1966,30 +2091,20 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "ValidationIssue" });
     case 1:
-      return S.Array(__S(232, __c29, 0));
+      return S.Array(__S(264, __c33, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           startTime: S.String,
           endTime: S.String,
           status: S.String,
-          issues: __S(233, __c29, 1),
+          issues: __S(265, __c33, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "HealthValidationProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(234, __c29, 2)),
-        }),
-      ).annotate({ identifier: "GetHealthValidationResponse" });
   }
 }
-function __c30(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2009,7 +2124,21 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetSharedPrivateLinkResourceRequest" });
   }
 }
-function __c31(j: number): any {
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(32, __c4, 0)),
+        }),
+      ).annotate({ identifier: "GetSharedPrivateLinkResourceResponse" });
+  }
+}
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2029,7 +2158,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetTargetRequest" });
   }
 }
-function __c32(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2044,7 +2173,7 @@ function __c32(j: number): any {
         S.Struct({
           targetType: S.String,
           targetAuthenticationType: S.String,
-          targetVault: S.optional(__S(256, __c32, 0)),
+          targetVault: S.optional(__S(296, __c37, 0)),
           connectionServerName: S.String,
           provisioningState: S.optional(S.String),
           sqlDbResourceId: S.optional(S.String),
@@ -2062,7 +2191,7 @@ function __c32(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(8, __c1, 0)),
-          properties: S.optional(__S(257, __c32, 1)),
+          properties: S.optional(__S(297, __c37, 1)),
         }),
       ).annotate({ identifier: "GetTargetResponse" });
   }

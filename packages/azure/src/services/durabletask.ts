@@ -19,7 +19,12 @@ export interface DeleteRetentionPolicyRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export interface DeleteRetentionPolicyResponse {}
+export interface DeleteRetentionPolicyResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSchedulerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -28,7 +33,12 @@ export interface DeleteSchedulerRequest {
   /** The name of the Scheduler */
   schedulerName: string;
 }
-export interface DeleteSchedulerResponse {}
+export interface DeleteSchedulerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSchedulerPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -39,7 +49,12 @@ export interface DeleteSchedulerPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export interface DeleteSchedulerPrivateEndpointConnectionResponse {}
+export interface DeleteSchedulerPrivateEndpointConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteTaskHubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -50,7 +65,12 @@ export interface DeleteTaskHubRequest {
   /** The name of the TaskHub */
   taskHubName: string;
 }
-export interface DeleteTaskHubResponse {}
+export interface DeleteTaskHubResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetRetentionPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -527,6 +547,10 @@ export interface RetentionPoliciesCreateOrReplaceResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type SchedulersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -572,6 +596,10 @@ export interface SchedulersCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
@@ -605,6 +633,10 @@ export interface SchedulersCreateOrUpdatePrivateEndpointConnectionResponse {
   systemData?: SystemData;
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The properties of Task Hub */
 export type TaskHubPropertiesInput = PrivateEndpointInput;
@@ -631,6 +663,10 @@ export interface TaskHubsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: TaskHubProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateRetentionPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -653,6 +689,10 @@ export interface UpdateRetentionPolicyResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: RetentionPolicyProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR */
 export type SchedulerPropertiesUpdateInputIpAllowlistList = Array<string>;
@@ -703,6 +743,10 @@ export interface UpdateSchedulerResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: SchedulerProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The private endpoint resource. */
 export type UpdateSchedulerPrivateEndpointConnectionRequestPropertiesPrivateEndpoint =
@@ -740,6 +784,10 @@ export interface UpdateSchedulerPrivateEndpointConnectionResponse {
   systemData?: SystemData;
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type DeleteRetentionPolicyError = AzureOpError;
 /** Delete a Retention Policy */
@@ -779,7 +827,7 @@ export const DeleteSchedulerPrivateEndpointConnection: API.OperationMethod<
   DeleteSchedulerPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionRequest>,
+  input: __S(128, __c16, 0) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteSchedulerPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -794,7 +842,7 @@ export const DeleteTaskHub: API.OperationMethod<
   DeleteTaskHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(152, __c19, 0) as any as S.Schema<DeleteTaskHubRequest>,
+  input: __S(160, __c20, 0) as any as S.Schema<DeleteTaskHubRequest>,
   output: __S(8, __c1, 0) as any as S.Schema<DeleteTaskHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -809,8 +857,8 @@ export const GetRetentionPolicy: API.OperationMethod<
   GetRetentionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<GetRetentionPolicyRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<GetRetentionPolicyResponse>,
+  input: __S(168, __c21, 0) as any as S.Schema<GetRetentionPolicyRequest>,
+  output: __S(176, __c22, 0) as any as S.Schema<GetRetentionPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -824,8 +872,8 @@ export const GetScheduler: API.OperationMethod<
   GetSchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(184, __c23, 0) as any as S.Schema<GetSchedulerRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<GetSchedulerResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetSchedulerRequest>,
+  output: __S(208, __c26, 0) as any as S.Schema<GetSchedulerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -839,8 +887,8 @@ export const GetSchedulerPrivateEndpointConnection: API.OperationMethod<
   GetSchedulerPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetSchedulerPrivateEndpointConnectionRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<GetSchedulerPrivateEndpointConnectionResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetSchedulerPrivateEndpointConnectionRequest>,
+  output: __S(240, __c30, 0) as any as S.Schema<GetSchedulerPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -854,8 +902,8 @@ export const GetSchedulerPrivateLink: API.OperationMethod<
   GetSchedulerPrivateLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(232, __c29, 0) as any as S.Schema<GetSchedulerPrivateLinkRequest>,
-  output: __S(241, __c30, 1) as any as S.Schema<GetSchedulerPrivateLinkResponse>,
+  input: __S(264, __c33, 0) as any as S.Schema<GetSchedulerPrivateLinkRequest>,
+  output: __S(273, __c34, 1) as any as S.Schema<GetSchedulerPrivateLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -869,8 +917,8 @@ export const GetTaskHub: API.OperationMethod<
   GetTaskHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(248, __c31, 0) as any as S.Schema<GetTaskHubRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<GetTaskHubResponse>,
+  input: __S(280, __c35, 0) as any as S.Schema<GetTaskHubRequest>,
+  output: __S(288, __c36, 0) as any as S.Schema<GetTaskHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -884,8 +932,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(264, __c33, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(268, __c33, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(308, __c38, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -990,7 +1038,7 @@ export const RetentionPoliciesCreateOrReplace: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<RetentionPoliciesCreateOrReplaceRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<RetentionPoliciesCreateOrReplaceResponse>,
+  output: __S(81, __c10, 1) as any as S.Schema<RetentionPoliciesCreateOrReplaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1005,7 +1053,7 @@ export const SchedulersCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(97, __c12, 1) as any as S.Schema<SchedulersCreateOrUpdateRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<SchedulersCreateOrUpdateResponse>,
+  output: __S(98, __c12, 2) as any as S.Schema<SchedulersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1025,9 +1073,9 @@ export const SchedulersCreateOrUpdatePrivateEndpointConnection: API.OperationMet
     1,
   ) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionRequest>,
   output: __S(
-    211,
-    __c26,
-    3,
+    106,
+    __c13,
+    2,
   ) as any as S.Schema<SchedulersCreateOrUpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1042,8 +1090,8 @@ export const TaskHubsCreateOrUpdate: API.OperationMethod<
   TaskHubsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<TaskHubsCreateOrUpdateRequest>,
-  output: __S(257, __c32, 1) as any as S.Schema<TaskHubsCreateOrUpdateResponse>,
+  input: __S(120, __c15, 0) as any as S.Schema<TaskHubsCreateOrUpdateRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<TaskHubsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1057,8 +1105,8 @@ export const UpdateRetentionPolicy: API.OperationMethod<
   UpdateRetentionPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<UpdateRetentionPolicyRequest>,
-  output: __S(171, __c21, 3) as any as S.Schema<UpdateRetentionPolicyResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<UpdateRetentionPolicyRequest>,
+  output: __S(137, __c17, 1) as any as S.Schema<UpdateRetentionPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1072,8 +1120,8 @@ export const UpdateScheduler: API.OperationMethod<
   UpdateSchedulerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(138, __c17, 2) as any as S.Schema<UpdateSchedulerRequest>,
-  output: __S(203, __c25, 3) as any as S.Schema<UpdateSchedulerResponse>,
+  input: __S(146, __c18, 2) as any as S.Schema<UpdateSchedulerRequest>,
+  output: __S(147, __c18, 3) as any as S.Schema<UpdateSchedulerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1087,8 +1135,8 @@ export const UpdateSchedulerPrivateEndpointConnection: API.OperationMethod<
   UpdateSchedulerPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(145, __c18, 1) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionRequest>,
-  output: __S(211, __c26, 3) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionResponse>,
+  input: __S(153, __c19, 1) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionRequest>,
+  output: __S(154, __c19, 2) as any as S.Schema<UpdateSchedulerPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1117,9 +1165,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteRetentionPolicyResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteRetentionPolicyResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1159,7 +1210,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListRetentionPolicyBySchedulerRequest" });
     case 1:
-      return S.Array(__S(171, __c21, 3));
+      return S.Array(__S(176, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1190,7 +1241,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(203, __c25, 3));
+      return S.Array(__S(208, __c26, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1237,7 +1288,7 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(192, __c24, 0),
+          value: __S(216, __c27, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
@@ -1261,7 +1312,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListSchedulerPrivateLinksRequest" });
     case 1:
-      return S.Array(__S(241, __c30, 1));
+      return S.Array(__S(273, __c34, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1289,7 +1340,7 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListTaskHubBySchedulerRequest" });
     case 1:
-      return S.Array(__S(257, __c32, 1));
+      return S.Array(__S(288, __c36, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1317,6 +1368,18 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RetentionPoliciesCreateOrReplaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(186, __c23, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "RetentionPoliciesCreateOrReplaceResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1324,7 +1387,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          retentionPolicies: S.optional(__S(169, __c21, 1)),
+          retentionPolicies: S.optional(__S(185, __c23, 1)),
         }),
       ).annotate({ identifier: "RetentionPolicyPropertiesInput" });
   }
@@ -1334,8 +1397,8 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ipAllowlist: __S(216, __c27, 0),
-          sku: __S(201, __c25, 1),
+          ipAllowlist: __S(248, __c31, 0),
+          sku: __S(225, __c28, 1),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchedulerPropertiesInput" });
@@ -1345,7 +1408,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(200, __c25, 0)),
+          tags: S.optional(__S(224, __c28, 0)),
           location: S.String,
           properties: S.optional(__S(96, __c12, 0)),
         }).pipe(
@@ -1357,6 +1420,20 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SchedulersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(224, __c28, 0)),
+          location: S.String,
+          properties: S.optional(__S(226, __c28, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SchedulersCreateOrUpdateResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1364,8 +1441,8 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(8, __c1, 0)),
-          privateLinkServiceConnectionState: __S(209, __c26, 1),
+          privateEndpoint: S.optional(__S(112, __c14, 0)),
+          privateLinkServiceConnectionState: __S(233, __c29, 1),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
     case 1:
@@ -1385,9 +1462,27 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SchedulersCreateOrUpdatePrivateEndpointConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(234, __c29, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SchedulersCreateOrUpdatePrivateEndpointConnectionResponse" });
   }
 }
 function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "PrivateEndpointInput" });
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1396,7 +1491,7 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
           taskHubName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(8, __c1, 0)),
+          properties: S.optional(__S(112, __c14, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1406,9 +1501,21 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TaskHubsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(296, __c37, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "TaskHubsCreateOrUpdateResponse" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1428,7 +1535,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteSchedulerPrivateEndpointConnectionRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1446,9 +1553,21 @@ function __c16(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRetentionPolicyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(186, __c23, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateRetentionPolicyResponse" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1460,8 +1579,8 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ipAllowlist: S.optional(__S(216, __c27, 0)),
-          sku: S.optional(__S(136, __c17, 0)),
+          ipAllowlist: S.optional(__S(248, __c31, 0)),
+          sku: S.optional(__S(144, __c18, 0)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchedulerPropertiesUpdateInput" });
@@ -1471,8 +1590,8 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(137, __c17, 1)),
-          tags: S.optional(__S(200, __c25, 0)),
+          properties: S.optional(__S(145, __c18, 1)),
+          tags: S.optional(__S(224, __c28, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1482,15 +1601,29 @@ function __c17(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSchedulerRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(224, __c28, 0)),
+          location: S.String,
+          properties: S.optional(__S(226, __c28, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateSchedulerResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(8, __c1, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(209, __c26, 1)),
+          privateEndpoint: S.optional(__S(112, __c14, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(233, __c29, 1)),
         }),
       ).annotate({ identifier: "UpdateSchedulerPrivateEndpointConnectionRequestProperties" });
     case 1:
@@ -1500,7 +1633,7 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schedulerName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(144, __c18, 0)),
+          properties: S.optional(__S(152, __c19, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1510,9 +1643,21 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSchedulerPrivateEndpointConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(234, __c29, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateSchedulerPrivateEndpointConnectionResponse" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1532,7 +1677,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteTaskHubRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1551,7 +1696,21 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetRetentionPolicyRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(186, __c23, 2)),
+        }),
+      ).annotate({ identifier: "GetRetentionPolicyResponse" });
+  }
+}
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1561,27 +1720,17 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "RetentionPolicyDetails" });
     case 1:
-      return S.Array(__S(168, __c21, 0));
+      return S.Array(__S(184, __c23, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          retentionPolicies: S.optional(__S(169, __c21, 1)),
+          retentionPolicies: S.optional(__S(185, __c23, 1)),
         }),
       ).annotate({ identifier: "RetentionPolicyProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(176, __c22, 0)),
-          properties: S.optional(__S(170, __c21, 2)),
-        }),
-      ).annotate({ identifier: "GetRetentionPolicyResponse" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1596,7 +1745,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1615,13 +1764,29 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetSchedulerRequest" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(211, __c26, 3));
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(224, __c28, 0)),
+          location: S.String,
+          properties: S.optional(__S(226, __c28, 2)),
+        }),
+      ).annotate({ identifier: "GetSchedulerResponse" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(240, __c30, 0));
+  }
+}
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -1638,27 +1803,15 @@ function __c25(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           endpoint: S.optional(S.String),
-          ipAllowlist: __S(216, __c27, 0),
-          sku: __S(201, __c25, 1),
+          ipAllowlist: __S(248, __c31, 0),
+          sku: __S(225, __c28, 1),
           publicNetworkAccess: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(192, __c24, 0)),
+          privateEndpointConnections: S.optional(__S(216, __c27, 0)),
         }),
       ).annotate({ identifier: "SchedulerProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(176, __c22, 0)),
-          tags: S.optional(__S(200, __c25, 0)),
-          location: S.String,
-          properties: S.optional(__S(202, __c25, 2)),
-        }),
-      ).annotate({ identifier: "GetSchedulerResponse" });
   }
 }
-function __c26(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1677,31 +1830,35 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(216, __c27, 0)),
-          privateEndpoint: S.optional(__S(208, __c26, 0)),
-          privateLinkServiceConnectionState: __S(209, __c26, 1),
+          groupIds: S.optional(__S(248, __c31, 0)),
+          privateEndpoint: S.optional(__S(232, __c29, 0)),
+          privateLinkServiceConnectionState: __S(233, __c29, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 3:
+  }
+}
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(176, __c22, 0)),
-          properties: S.optional(__S(210, __c26, 2)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(234, __c29, 2)),
         }),
       ).annotate({ identifier: "SchedulerPropertiesPrivateEndpointConnectionsItem" });
   }
 }
-function __c27(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c28(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1721,7 +1878,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetSchedulerPrivateEndpointConnectionRequest" });
   }
 }
-function __c29(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1741,14 +1898,14 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetSchedulerPrivateLinkRequest" });
   }
 }
-function __c30(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(216, __c27, 0)),
-          requiredZoneNames: S.optional(__S(216, __c27, 0)),
+          requiredMembers: S.optional(__S(248, __c31, 0)),
+          requiredZoneNames: S.optional(__S(248, __c31, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 1:
@@ -1757,13 +1914,13 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(176, __c22, 0)),
-          properties: S.optional(__S(240, __c30, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(272, __c34, 0)),
         }),
       ).annotate({ identifier: "GetSchedulerPrivateLinkResponse" });
   }
 }
-function __c31(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1783,7 +1940,21 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetTaskHubRequest" });
   }
 }
-function __c32(j: number): any {
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(296, __c37, 0)),
+        }),
+      ).annotate({ identifier: "GetTaskHubResponse" });
+  }
+}
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1792,19 +1963,9 @@ function __c32(j: number): any {
           dashboardUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskHubProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(176, __c22, 0)),
-          properties: S.optional(__S(256, __c32, 0)),
-        }),
-      ).annotate({ identifier: "GetTaskHubResponse" });
   }
 }
-function __c33(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1831,17 +1992,17 @@ function __c33(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(265, __c33, 1)),
+          display: S.optional(__S(305, __c38, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(266, __c33, 2));
+      return S.Array(__S(306, __c38, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(267, __c33, 3)),
+          value: S.optional(__S(307, __c38, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });

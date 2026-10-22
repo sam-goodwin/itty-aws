@@ -198,6 +198,10 @@ export interface CreateElasticSanResponse {
   location: string;
   /** Properties of ElasticSan. */
   properties: ElasticSanProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Response for PrivateEndpoint */
 export interface PrivateEndpointInput {}
@@ -235,6 +239,10 @@ export interface CreatePrivateEndpointConnectionResponse {
   systemData?: SystemData;
   /** Private Endpoint Connection Properties. */
   properties: PrivateEndpointConnectionProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** This enumerates the possible sources of a volume creation. */
 export type VolumeCreateOption =
@@ -327,6 +335,10 @@ export interface CreateVolumeResponse {
   systemData?: SystemData;
   /** Properties of Volume. */
   properties: VolumeProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The identity type. */
 export type IdentityType = "None" | "SystemAssigned" | "UserAssigned";
@@ -487,6 +499,10 @@ export interface CreateVolumeGroupResponse {
   identity?: Identity;
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Data used when creating a volume snapshot. */
 export interface SnapshotCreationData {
@@ -534,6 +550,10 @@ export interface CreateVolumeSnapshotResponse {
   systemData?: SystemData;
   /** Properties of Volume Snapshot. */
   properties: SnapshotProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteElasticSanRequest {
   /** The ID of the target subscription. */
@@ -543,7 +563,12 @@ export interface DeleteElasticSanRequest {
   /** The name of the ElasticSan. */
   elasticSanName: string;
 }
-export interface DeleteElasticSanResponse {}
+export interface DeleteElasticSanResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -554,7 +579,12 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the Private Endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteVolumeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -571,7 +601,12 @@ export interface DeleteVolumeRequest {
   /** Optional, used to delete volume if active sessions present. Allowed value are only true or false. Default value is false. */
   xMsForceDelete?: string;
 }
-export interface DeleteVolumeResponse {}
+export interface DeleteVolumeResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteVolumeGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -582,7 +617,12 @@ export interface DeleteVolumeGroupRequest {
   /** The name of the VolumeGroup. */
   volumeGroupName: string;
 }
-export interface DeleteVolumeGroupResponse {}
+export interface DeleteVolumeGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteVolumeSnapshotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -595,7 +635,12 @@ export interface DeleteVolumeSnapshotRequest {
   /** The name of the volume snapshot within the given volume group. */
   snapshotName: string;
 }
-export interface DeleteVolumeSnapshotResponse {}
+export interface DeleteVolumeSnapshotResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetElasticSanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1019,6 +1064,10 @@ export interface RestoreVolumesPreRequest {
 export interface PreValidationResponse {
   /** a status value indicating success or failure of validation */
   validationStatus?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Elastic San update properties. */
 export interface ElasticSanUpdateProperties {
@@ -1062,6 +1111,10 @@ export interface UpdateElasticSanResponse {
   location: string;
   /** Properties of ElasticSan. */
   properties: ElasticSanProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Volume response properties. */
 export interface VolumeUpdateProperties {
@@ -1095,6 +1148,10 @@ export interface UpdateVolumeResponse {
   systemData?: SystemData;
   /** Properties of Volume. */
   properties: VolumeProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** VolumeGroup response properties. */
 export type VolumeGroupUpdatePropertiesInput = VolumeGroupPropertiesInput;
@@ -1125,6 +1182,10 @@ export interface UpdateVolumeGroupResponse {
   identity?: Identity;
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** array of volume names */
 export type VolumesPreBackupRequestVolumeNamesList = Array<string>;
@@ -1149,7 +1210,7 @@ export const CreateElasticSan: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1, __c0, 1) as any as S.Schema<CreateElasticSanRequest>,
-  output: __S(69, __c4, 5) as any as S.Schema<CreateElasticSanResponse>,
+  output: __S(80, __c5, 0) as any as S.Schema<CreateElasticSanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1163,8 +1224,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(97, __c6, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(51, __c3, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  input: __S(129, __c8, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(130, __c8, 2) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1178,8 +1239,8 @@ export const CreateVolume: API.OperationMethod<
   CreateVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c19, 1) as any as S.Schema<CreateVolumeRequest>,
-  output: __S(324, __c20, 4) as any as S.Schema<CreateVolumeResponse>,
+  input: __S(401, __c25, 1) as any as S.Schema<CreateVolumeRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<CreateVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1193,8 +1254,8 @@ export const CreateVolumeGroup: API.OperationMethod<
   CreateVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<CreateVolumeGroupRequest>,
-  output: __S(522, __c32, 10) as any as S.Schema<CreateVolumeGroupResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<CreateVolumeGroupRequest>,
+  output: __S(645, __c40, 5) as any as S.Schema<CreateVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1208,8 +1269,8 @@ export const CreateVolumeSnapshot: API.OperationMethod<
   CreateVolumeSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c34, 1) as any as S.Schema<CreateVolumeSnapshotRequest>,
-  output: __S(562, __c35, 2) as any as S.Schema<CreateVolumeSnapshotResponse>,
+  input: __S(657, __c41, 1) as any as S.Schema<CreateVolumeSnapshotRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<CreateVolumeSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1223,8 +1284,8 @@ export const DeleteElasticSan: API.OperationMethod<
   DeleteElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<DeleteElasticSanRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<DeleteElasticSanResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<DeleteElasticSanRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteElasticSanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1238,8 +1299,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1253,8 +1314,8 @@ export const DeleteVolume: API.OperationMethod<
   DeleteVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<DeleteVolumeRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<DeleteVolumeResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1268,8 +1329,8 @@ export const DeleteVolumeGroup: API.OperationMethod<
   DeleteVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<DeleteVolumeGroupRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<DeleteVolumeGroupResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<DeleteVolumeGroupRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1283,8 +1344,8 @@ export const DeleteVolumeSnapshot: API.OperationMethod<
   DeleteVolumeSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<DeleteVolumeSnapshotRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<DeleteVolumeSnapshotResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<DeleteVolumeSnapshotRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<DeleteVolumeSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1298,8 +1359,8 @@ export const GetElasticSan: API.OperationMethod<
   GetElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<GetElasticSanRequest>,
-  output: __S(69, __c4, 5) as any as S.Schema<GetElasticSanResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<GetElasticSanRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<GetElasticSanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1313,8 +1374,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(51, __c3, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(96, __c6, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1328,8 +1389,8 @@ export const GetVolume: API.OperationMethod<
   GetVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<GetVolumeRequest>,
-  output: __S(324, __c20, 4) as any as S.Schema<GetVolumeResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetVolumeRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1343,8 +1404,8 @@ export const GetVolumeGroup: API.OperationMethod<
   GetVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<GetVolumeGroupRequest>,
-  output: __S(522, __c32, 10) as any as S.Schema<GetVolumeGroupResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetVolumeGroupRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1358,8 +1419,8 @@ export const GetVolumeSnapshot: API.OperationMethod<
   GetVolumeSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<GetVolumeSnapshotRequest>,
-  output: __S(562, __c35, 2) as any as S.Schema<GetVolumeSnapshotResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetVolumeSnapshotRequest>,
+  output: __S(288, __c18, 0) as any as S.Schema<GetVolumeSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1373,8 +1434,8 @@ export const ListElasticSanByResourceGroup: API.OperationMethod<
   ListElasticSanByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<ListElasticSanByResourceGroupRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<ElasticSanList>,
+  input: __S(304, __c19, 0) as any as S.Schema<ListElasticSanByResourceGroupRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<ElasticSanList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1388,8 +1449,8 @@ export const ListElasticSanBySubscription: API.OperationMethod<
   ListElasticSanBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<ListElasticSanBySubscriptionRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<ElasticSanList>,
+  input: __S(336, __c21, 0) as any as S.Schema<ListElasticSanBySubscriptionRequest>,
+  output: __S(321, __c20, 1) as any as S.Schema<ElasticSanList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1403,8 +1464,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(260, __c16, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(356, __c22, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1418,8 +1479,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(273, __c17, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(369, __c23, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1433,8 +1494,8 @@ export const ListPrivateLinkResourceByElasticSan: API.OperationMethod<
   ListPrivateLinkResourceByElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<ListPrivateLinkResourceByElasticSanRequest>,
-  output: __S(292, __c18, 4) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListPrivateLinkResourceByElasticSanRequest>,
+  output: __S(388, __c24, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1509,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<ListSkusRequest>,
-  output: __S(343, __c21, 7) as any as S.Schema<SkuInformationList>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListSkusRequest>,
+  output: __S(455, __c28, 7) as any as S.Schema<SkuInformationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1463,8 +1524,8 @@ export const ListVolumeByVolumeGroup: API.OperationMethod<
   ListVolumeByVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<ListVolumeByVolumeGroupRequest>,
-  output: __S(354, __c22, 2) as any as S.Schema<VolumeList>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListVolumeByVolumeGroupRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<VolumeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1539,8 @@ export const ListVolumeGroupByElasticSan: API.OperationMethod<
   ListVolumeGroupByElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<ListVolumeGroupByElasticSanRequest>,
-  output: __S(370, __c23, 2) as any as S.Schema<VolumeGroupList>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListVolumeGroupByElasticSanRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<VolumeGroupList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1493,8 +1554,8 @@ export const ListVolumeSnapshotByVolumeGroup: API.OperationMethod<
   ListVolumeSnapshotByVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListVolumeSnapshotByVolumeGroupRequest>,
-  output: __S(386, __c24, 2) as any as S.Schema<SnapshotList>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListVolumeSnapshotByVolumeGroupRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<SnapshotList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1508,8 +1569,8 @@ export const RestoreVolumesPre: API.OperationMethod<
   RestoreVolumesPreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<RestoreVolumesPreRequest>,
-  output: __S(416, __c26, 0) as any as S.Schema<PreValidationResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<RestoreVolumesPreRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<PreValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1523,8 +1584,8 @@ export const UpdateElasticSan: API.OperationMethod<
   UpdateElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c27, 1) as any as S.Schema<UpdateElasticSanRequest>,
-  output: __S(69, __c4, 5) as any as S.Schema<UpdateElasticSanResponse>,
+  input: __S(545, __c34, 1) as any as S.Schema<UpdateElasticSanRequest>,
+  output: __S(80, __c5, 0) as any as S.Schema<UpdateElasticSanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1538,8 +1599,8 @@ export const UpdateVolume: API.OperationMethod<
   UpdateVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(449, __c28, 1) as any as S.Schema<UpdateVolumeRequest>,
-  output: __S(324, __c20, 4) as any as S.Schema<UpdateVolumeResponse>,
+  input: __S(561, __c35, 1) as any as S.Schema<UpdateVolumeRequest>,
+  output: __S(432, __c27, 0) as any as S.Schema<UpdateVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1553,8 +1614,8 @@ export const UpdateVolumeGroup: API.OperationMethod<
   UpdateVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<UpdateVolumeGroupRequest>,
-  output: __S(522, __c32, 10) as any as S.Schema<UpdateVolumeGroupResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<UpdateVolumeGroupRequest>,
+  output: __S(645, __c40, 5) as any as S.Schema<UpdateVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1568,8 +1629,8 @@ export const VolumesPreBackup: API.OperationMethod<
   VolumesPreBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<VolumesPreBackupRequest>,
-  output: __S(416, __c26, 0) as any as S.Schema<PreValidationResponse>,
+  input: __S(592, __c37, 0) as any as S.Schema<VolumesPreBackupRequest>,
+  output: __S(528, __c33, 0) as any as S.Schema<PreValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1655,16 +1716,6 @@ function __c3(j: number): any {
           groupIds: S.optional(__S(32, __c2, 0)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(50, __c3, 2),
-        }),
-      ).annotate({ identifier: "PrivateEndpointConnection" });
   }
 }
 function __c4(j: number): any {
@@ -1706,12 +1757,16 @@ function __c4(j: number): any {
           totalIops: S.optional(S.Number),
           totalMBps: S.optional(S.Number),
           totalSizeTiB: S.optional(S.Number),
-          privateEndpointConnections: S.optional(__S(80, __c5, 0)),
+          privateEndpointConnections: S.optional(__S(112, __c7, 0)),
           publicNetworkAccess: S.optional(S.String),
           autoScaleProperties: S.optional(__S(67, __c4, 3)),
         }),
       ).annotate({ identifier: "ElasticSanProperties" });
-    case 5:
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1721,14 +1776,10 @@ function __c4(j: number): any {
           tags: S.optional(__S(64, __c4, 0)),
           location: S.String,
           properties: __S(68, __c4, 4),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateElasticSanResponse" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(51, __c3, 3));
   }
 }
 function __c6(j: number): any {
@@ -1736,7 +1787,27 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(112, __c7, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(50, __c3, 2),
+        }),
+      ).annotate({ identifier: "PrivateEndpointConnection" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(96, __c6, 0));
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          privateEndpoint: S.optional(__S(144, __c9, 0)),
           privateLinkServiceConnectionState: __S(49, __c3, 1),
           groupIds: S.optional(__S(32, __c2, 0)),
         }),
@@ -1748,7 +1819,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: __S(96, __c6, 0),
+          properties: __S(128, __c8, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1758,15 +1829,27 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreatePrivateEndpointConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(50, __c3, 2),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
-function __c7(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({ identifier: "PrivateEndpointInput" });
   }
 }
-function __c8(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1785,7 +1868,23 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetElasticSanRequest" });
   }
 }
-function __c9(j: number): any {
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(64, __c4, 0)),
+          location: S.String,
+          properties: __S(68, __c4, 4),
+        }),
+      ).annotate({ identifier: "GetElasticSanResponse" });
+  }
+}
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1805,7 +1904,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c10(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1826,7 +1925,21 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetVolumeRequest" });
   }
 }
-function __c11(j: number): any {
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(419, __c26, 3),
+        }),
+      ).annotate({ identifier: "GetVolumeResponse" });
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1846,7 +1959,22 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetVolumeGroupRequest" });
   }
 }
-function __c12(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          identity: S.optional(__S(630, __c39, 6)),
+          properties: S.optional(__S(633, __c39, 9)),
+        }),
+      ).annotate({ identifier: "GetVolumeGroupResponse" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1867,7 +1995,21 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetVolumeSnapshotRequest" });
   }
 }
-function __c13(j: number): any {
+function __c18(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(673, __c42, 1),
+        }),
+      ).annotate({ identifier: "GetVolumeSnapshotResponse" });
+  }
+}
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1885,20 +2027,20 @@ function __c13(j: number): any {
       ).annotate({ identifier: "ListElasticSanByResourceGroupRequest" });
   }
 }
-function __c14(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(69, __c4, 5));
+      return S.Array(__S(176, __c11, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(224, __c14, 0),
+          value: __S(320, __c20, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ElasticSanList" });
   }
 }
-function __c15(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1915,7 +2057,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "ListElasticSanBySubscriptionRequest" });
   }
 }
-function __c16(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1942,23 +2084,23 @@ function __c16(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(257, __c16, 1)),
+          display: S.optional(__S(353, __c22, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(258, __c16, 2));
+      return S.Array(__S(354, __c22, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(259, __c16, 3)),
+          value: S.optional(__S(355, __c22, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c17(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1978,13 +2120,13 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(80, __c5, 0),
+          value: __S(112, __c7, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c18(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2016,28 +2158,28 @@ function __c18(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(289, __c18, 1)),
+          properties: S.optional(__S(385, __c24, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 3:
-      return S.Array(__S(290, __c18, 2));
+      return S.Array(__S(386, __c24, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(291, __c18, 3),
+          value: __S(387, __c24, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c19(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          creationData: S.optional(__S(320, __c20, 0)),
+          creationData: S.optional(__S(416, __c26, 0)),
           sizeGiB: S.Number,
-          managedBy: S.optional(__S(321, __c20, 1)),
+          managedBy: S.optional(__S(417, __c26, 1)),
         }),
       ).annotate({ identifier: "VolumePropertiesInput" });
     case 1:
@@ -2048,7 +2190,7 @@ function __c19(j: number): any {
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
-          properties: __S(304, __c19, 0),
+          properties: __S(400, __c25, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2060,7 +2202,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "CreateVolumeRequest" });
   }
 }
-function __c20(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2089,26 +2231,32 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          creationData: S.optional(__S(320, __c20, 0)),
+          creationData: S.optional(__S(416, __c26, 0)),
           sizeGiB: S.Number,
-          storageTarget: S.optional(__S(322, __c20, 2)),
-          managedBy: S.optional(__S(321, __c20, 1)),
+          storageTarget: S.optional(__S(418, __c26, 2)),
+          managedBy: S.optional(__S(417, __c26, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeProperties" });
-    case 4:
+  }
+}
+function __c27(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(323, __c20, 3),
+          properties: __S(419, __c26, 3),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateVolumeResponse" });
   }
 }
-function __c21(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2132,7 +2280,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "SkuLocationInfo" });
     case 2:
-      return S.Array(__S(337, __c21, 1));
+      return S.Array(__S(449, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2141,7 +2289,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "SKUCapability" });
     case 4:
-      return S.Array(__S(339, __c21, 3));
+      return S.Array(__S(451, __c28, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2149,22 +2297,22 @@ function __c21(j: number): any {
           tier: S.optional(S.String),
           resourceType: S.optional(S.String),
           locations: S.optional(__S(32, __c2, 0)),
-          locationInfo: S.optional(__S(338, __c21, 2)),
-          capabilities: S.optional(__S(340, __c21, 4)),
+          locationInfo: S.optional(__S(450, __c28, 2)),
+          capabilities: S.optional(__S(452, __c28, 4)),
         }),
       ).annotate({ identifier: "SkuInformation" });
     case 6:
-      return S.Array(__S(341, __c21, 5));
+      return S.Array(__S(453, __c28, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(342, __c21, 6),
+          value: __S(454, __c28, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuInformationList" });
   }
 }
-function __c22(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2183,17 +2331,17 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "ListVolumeByVolumeGroupRequest" });
     case 1:
-      return S.Array(__S(324, __c20, 4));
+      return S.Array(__S(224, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(353, __c22, 1),
+          value: __S(465, __c29, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeList" });
   }
 }
-function __c23(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2211,17 +2359,17 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "ListVolumeGroupByElasticSanRequest" });
     case 1:
-      return S.Array(__S(522, __c32, 10));
+      return S.Array(__S(256, __c16, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(369, __c23, 1),
+          value: __S(481, __c30, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeGroupList" });
   }
 }
-function __c24(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2241,17 +2389,17 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListVolumeSnapshotByVolumeGroupRequest" });
     case 1:
-      return S.Array(__S(562, __c35, 2));
+      return S.Array(__S(288, __c18, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(385, __c24, 1),
+          value: __S(497, __c31, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotList" });
   }
 }
-function __c25(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2272,17 +2420,19 @@ function __c25(j: number): any {
       ).annotate({ identifier: "RestoreVolumesPreRequest" });
   }
 }
-function __c26(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           validationStatus: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "PreValidationResponse" });
   }
 }
-function __c27(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2299,7 +2449,7 @@ function __c27(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(432, __c27, 0)),
+          properties: S.optional(__S(544, __c34, 0)),
           tags: S.optional(__S(64, __c4, 0)),
         }).pipe(
           T.Http({
@@ -2312,13 +2462,13 @@ function __c27(j: number): any {
       ).annotate({ identifier: "UpdateElasticSanRequest" });
   }
 }
-function __c28(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           sizeGiB: S.optional(S.Number),
-          managedBy: S.optional(__S(321, __c20, 1)),
+          managedBy: S.optional(__S(417, __c26, 1)),
         }),
       ).annotate({ identifier: "VolumeUpdateProperties" });
     case 1:
@@ -2329,7 +2479,7 @@ function __c28(j: number): any {
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(448, __c28, 0)),
+          properties: S.optional(__S(560, __c35, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2341,7 +2491,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "UpdateVolumeRequest" });
   }
 }
-function __c29(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2350,8 +2500,8 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(529, __c33, 1)),
-          properties: S.optional(__S(532, __c33, 4)),
+          identity: S.optional(__S(641, __c40, 1)),
+          properties: S.optional(__S(644, __c40, 4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2363,7 +2513,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "UpdateVolumeGroupRequest" });
   }
 }
-function __c30(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2384,7 +2534,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "VolumesPreBackupRequest" });
   }
 }
-function __c31(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2393,8 +2543,8 @@ function __c31(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(529, __c33, 1)),
-          properties: S.optional(__S(532, __c33, 4)),
+          identity: S.optional(__S(641, __c40, 1)),
+          properties: S.optional(__S(644, __c40, 4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2406,7 +2556,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "CreateVolumeGroupRequest" });
   }
 }
-function __c32(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2422,11 +2572,11 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "VirtualNetworkRule" });
     case 2:
-      return S.Array(__S(513, __c32, 1));
+      return S.Array(__S(625, __c39, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          virtualNetworkRules: S.optional(__S(514, __c32, 2)),
+          virtualNetworkRules: S.optional(__S(626, __c39, 2)),
         }),
       ).annotate({ identifier: "NetworkRuleSet" });
     case 4:
@@ -2437,14 +2587,14 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 5:
-      return S.Record(S.String, __S(516, __c32, 4));
+      return S.Record(S.String, __S(628, __c39, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(517, __c32, 5)),
+          userAssignedIdentities: S.optional(__S(629, __c39, 5)),
         }),
       ).annotate({ identifier: "Identity" });
     case 7:
@@ -2461,8 +2611,8 @@ function __c32(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(__S(519, __c32, 7)),
-          identity: S.optional(__S(512, __c32, 0)),
+          keyVaultProperties: S.optional(__S(631, __c39, 7)),
+          identity: S.optional(__S(624, __c39, 0)),
         }),
       ).annotate({ identifier: "EncryptionProperties" });
     case 9:
@@ -2471,34 +2621,23 @@ function __c32(j: number): any {
           provisioningState: S.optional(S.String),
           protocolType: S.optional(S.String),
           encryption: S.optional(S.String),
-          encryptionProperties: S.optional(__S(520, __c32, 8)),
-          networkAcls: S.optional(__S(515, __c32, 3)),
-          privateEndpointConnections: S.optional(__S(80, __c5, 0)),
+          encryptionProperties: S.optional(__S(632, __c39, 8)),
+          networkAcls: S.optional(__S(627, __c39, 3)),
+          privateEndpointConnections: S.optional(__S(112, __c7, 0)),
           enforceDataIntegrityCheckForIscsi: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VolumeGroupProperties" });
-    case 10:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          identity: S.optional(__S(518, __c32, 6)),
-          properties: S.optional(__S(521, __c32, 9)),
-        }),
-      ).annotate({ identifier: "CreateVolumeGroupResponse" });
   }
 }
-function __c33(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(112, __c7, 0));
+      return S.Record(S.String, __S(144, __c9, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(528, __c33, 0)),
+          userAssignedIdentities: S.optional(__S(640, __c40, 0)),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 2:
@@ -2512,8 +2651,8 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(__S(530, __c33, 2)),
-          identity: S.optional(__S(512, __c32, 0)),
+          keyVaultProperties: S.optional(__S(642, __c40, 2)),
+          identity: S.optional(__S(624, __c39, 0)),
         }),
       ).annotate({ identifier: "EncryptionPropertiesInput" });
     case 4:
@@ -2521,19 +2660,32 @@ function __c33(j: number): any {
         S.Struct({
           protocolType: S.optional(S.String),
           encryption: S.optional(S.String),
-          encryptionProperties: S.optional(__S(531, __c33, 3)),
-          networkAcls: S.optional(__S(515, __c32, 3)),
+          encryptionProperties: S.optional(__S(643, __c40, 3)),
+          networkAcls: S.optional(__S(627, __c39, 3)),
           enforceDataIntegrityCheckForIscsi: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VolumeGroupPropertiesInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          identity: S.optional(__S(630, __c39, 6)),
+          properties: S.optional(__S(633, __c39, 9)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateVolumeGroupResponse" });
   }
 }
-function __c34(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          creationData: __S(560, __c35, 0),
+          creationData: __S(672, __c42, 0),
         }),
       ).annotate({ identifier: "SnapshotPropertiesInput" });
     case 1:
@@ -2544,7 +2696,7 @@ function __c34(j: number): any {
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
           snapshotName: S.String.pipe(T.Label()),
-          properties: __S(544, __c34, 0),
+          properties: __S(656, __c41, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2554,9 +2706,21 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateVolumeSnapshotRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(673, __c42, 1),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateVolumeSnapshotResponse" });
   }
 }
-function __c35(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2567,25 +2731,15 @@ function __c35(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          creationData: __S(560, __c35, 0),
+          creationData: __S(672, __c42, 0),
           provisioningState: S.optional(S.String),
           sourceVolumeSizeGiB: S.optional(S.Number),
           volumeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(561, __c35, 1),
-        }),
-      ).annotate({ identifier: "CreateVolumeSnapshotResponse" });
   }
 }
-function __c36(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2604,7 +2758,18 @@ function __c36(j: number): any {
       ).annotate({ identifier: "DeleteElasticSanRequest" });
   }
 }
-function __c37(j: number): any {
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteElasticSanResponse" });
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2624,7 +2789,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c38(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2647,7 +2812,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "DeleteVolumeRequest" });
   }
 }
-function __c39(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2667,7 +2832,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "DeleteVolumeGroupRequest" });
   }
 }
-function __c40(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

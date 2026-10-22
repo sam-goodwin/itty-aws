@@ -118,6 +118,10 @@ export interface CreatePrivateEndpointConnectionResponse {
   systemData?: SystemData;
   /** Properties of the private endpoint connection. */
   properties?: CreatePrivateEndpointConnectionResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -129,7 +133,12 @@ export interface DeleteFirewallRuleRequest {
   /** The name of the mongo cluster firewall rule. */
   firewallRuleName: string;
 }
-export interface DeleteFirewallRuleResponse {}
+export interface DeleteFirewallRuleResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMongoClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -138,7 +147,12 @@ export interface DeleteMongoClusterRequest {
   /** The name of the mongo cluster. */
   mongoClusterName: string;
 }
-export interface DeleteMongoClusterResponse {}
+export interface DeleteMongoClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -149,7 +163,12 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteUserRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -160,7 +179,12 @@ export interface DeleteUserRequest {
   /** The name of the mongo cluster user. */
   userName: string;
 }
-export interface DeleteUserResponse {}
+export interface DeleteUserResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** The properties of a mongo cluster firewall rule. */
 export interface FirewallRulePropertiesInput {
   /** The start IP address of the mongo cluster firewall rule. Must be IPv4 format. */
@@ -208,6 +232,10 @@ export interface FirewallRulesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: FirewallRuleProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -946,6 +974,8 @@ export interface MongoClustersCreateOrUpdateResponse {
   properties?: MongoClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetMongoClusterResponseIdentity;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The option to apply to a promote operation. */
 export type PromoteOption = "Forced";
@@ -963,7 +993,12 @@ export interface PromoteMongoClusterRequest {
   /** The mode to apply to the promote operation. Value is optional and default value is 'Switchover'. */
   mode?: PromoteMode | (string & {});
 }
-export interface PromoteMongoClusterResponse {}
+export interface PromoteMongoClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateMongoClusterRequestIdentity = MongoClustersCreateOrUpdateRequestIdentity;
 /** Resource tags. */
@@ -1036,6 +1071,10 @@ export interface UpdateMongoClusterResponse {
   properties?: MongoClusterProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetMongoClusterResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Database roles that are assigned to the user. */
 export type UserPropertiesInputRolesList = Array<DatabaseRole>;
@@ -1069,6 +1108,8 @@ export interface UsersCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: UserProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CheckMongoClusterNameAvailabilityError = AzureOpError;
 /** Check if mongo cluster name is available for use. */
@@ -1094,7 +1135,7 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(17, __c1, 1) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
-  output: __S(83, __c5, 3) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
+  output: __S(18, __c1, 2) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1108,8 +1149,8 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1123,8 +1164,8 @@ export const DeleteMongoCluster: API.OperationMethod<
   DeleteMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<DeleteMongoClusterRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<DeleteMongoClusterResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<DeleteMongoClusterRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeleteMongoClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1138,8 +1179,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1153,8 +1194,8 @@ export const DeleteUser: API.OperationMethod<
   DeleteUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<DeleteUserRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<DeleteUserResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<DeleteUserRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1168,8 +1209,8 @@ export const FirewallRulesCreateOrUpdate: API.OperationMethod<
   FirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(433, __c27, 1) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
-  output: __S(449, __c28, 1) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
+  input: __S(465, __c29, 1) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1183,8 +1224,8 @@ export const GetFirewallRule: API.OperationMethod<
   GetFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<GetFirewallRuleRequest>,
-  output: __S(449, __c28, 1) as any as S.Schema<GetFirewallRuleResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetFirewallRuleRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<GetFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1198,8 +1239,8 @@ export const GetMongoCluster: API.OperationMethod<
   GetMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetMongoClusterRequest>,
-  output: __S(532, __c33, 4) as any as S.Schema<GetMongoClusterResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetMongoClusterRequest>,
+  output: __S(544, __c34, 0) as any as S.Schema<GetMongoClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1213,8 +1254,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(83, __c5, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(608, __c38, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1229,7 +1270,7 @@ export const GetUser: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<GetUserRequest>,
-  output: __S(117, __c7, 5) as any as S.Schema<GetUserResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<GetUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1243,8 +1284,8 @@ export const ListFirewallRuleByMongoCluster: API.OperationMethod<
   ListFirewallRuleByMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<ListFirewallRuleByMongoClusterRequest>,
-  output: __S(130, __c8, 2) as any as S.Schema<FirewallRuleListResult>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListFirewallRuleByMongoClusterRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<FirewallRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1258,8 +1299,8 @@ export const ListMongoClusterByResourceGroup: API.OperationMethod<
   ListMongoClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<ListMongoClusterByResourceGroupRequest>,
-  output: __S(161, __c10, 1) as any as S.Schema<MongoClusterListResult>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListMongoClusterByResourceGroupRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<MongoClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1273,8 +1314,8 @@ export const ListMongoClusterConnectionStrings: API.OperationMethod<
   ListMongoClusterConnectionStringsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<ListMongoClusterConnectionStringsRequest>,
-  output: __S(179, __c11, 3) as any as S.Schema<ListConnectionStringsResult>,
+  input: __S(192, __c12, 0) as any as S.Schema<ListMongoClusterConnectionStringsRequest>,
+  output: __S(195, __c12, 3) as any as S.Schema<ListConnectionStringsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1288,8 +1329,8 @@ export const ListMongoClusters: API.OperationMethod<
   ListMongoClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<ListMongoClustersRequest>,
-  output: __S(161, __c10, 1) as any as S.Schema<MongoClusterListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListMongoClustersRequest>,
+  output: __S(177, __c11, 1) as any as S.Schema<MongoClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1303,8 +1344,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(212, __c13, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(228, __c14, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1318,8 +1359,8 @@ export const ListPrivateEndpointConnectionByMongoCluster: API.OperationMethod<
   ListPrivateEndpointConnectionByMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<ListPrivateEndpointConnectionByMongoClusterRequest>,
-  output: __S(225, __c14, 1) as any as S.Schema<PrivateEndpointConnectionResourceListResult>,
+  input: __S(240, __c15, 0) as any as S.Schema<ListPrivateEndpointConnectionByMongoClusterRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<PrivateEndpointConnectionResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1333,8 +1374,8 @@ export const ListPrivateLinkByMongoCluster: API.OperationMethod<
   ListPrivateLinkByMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<ListPrivateLinkByMongoClusterRequest>,
-  output: __S(244, __c15, 4) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(256, __c16, 0) as any as S.Schema<ListPrivateLinkByMongoClusterRequest>,
+  output: __S(260, __c16, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1348,8 +1389,8 @@ export const ListReplicasByParent: API.OperationMethod<
   ListReplicasByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<ListReplicasByParentRequest>,
-  output: __S(259, __c16, 3) as any as S.Schema<ReplicaListResult>,
+  input: __S(272, __c17, 0) as any as S.Schema<ListReplicasByParentRequest>,
+  output: __S(275, __c17, 3) as any as S.Schema<ReplicaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1363,8 +1404,8 @@ export const ListUserByMongoCluster: API.OperationMethod<
   ListUserByMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<ListUserByMongoClusterRequest>,
-  output: __S(274, __c17, 2) as any as S.Schema<UserListResult>,
+  input: __S(288, __c18, 0) as any as S.Schema<ListUserByMongoClusterRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<UserListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1378,8 +1419,8 @@ export const MongoClustersCreateOrUpdate: API.OperationMethod<
   MongoClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c19, 1) as any as S.Schema<MongoClustersCreateOrUpdateRequest>,
-  output: __S(532, __c33, 4) as any as S.Schema<MongoClustersCreateOrUpdateResponse>,
+  input: __S(337, __c21, 1) as any as S.Schema<MongoClustersCreateOrUpdateRequest>,
+  output: __S(338, __c21, 2) as any as S.Schema<MongoClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1393,8 +1434,8 @@ export const PromoteMongoCluster: API.OperationMethod<
   PromoteMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<PromoteMongoClusterRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<PromoteMongoClusterResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<PromoteMongoClusterRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<PromoteMongoClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1408,8 +1449,8 @@ export const UpdateMongoCluster: API.OperationMethod<
   UpdateMongoClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(353, __c22, 1) as any as S.Schema<UpdateMongoClusterRequest>,
-  output: __S(532, __c33, 4) as any as S.Schema<UpdateMongoClusterResponse>,
+  input: __S(385, __c24, 1) as any as S.Schema<UpdateMongoClusterRequest>,
+  output: __S(386, __c24, 2) as any as S.Schema<UpdateMongoClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1423,8 +1464,8 @@ export const UsersCreateOrUpdate: API.OperationMethod<
   UsersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(369, __c23, 1) as any as S.Schema<UsersCreateOrUpdateRequest>,
-  output: __S(117, __c7, 5) as any as S.Schema<UsersCreateOrUpdateResponse>,
+  input: __S(401, __c25, 1) as any as S.Schema<UsersCreateOrUpdateRequest>,
+  output: __S(402, __c25, 2) as any as S.Schema<UsersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1485,6 +1526,18 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreatePrivateEndpointConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(82, __c5, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
 function __c2(j: number): any {
@@ -1539,16 +1592,6 @@ function __c5(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreatePrivateEndpointConnectionResponseProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(82, __c5, 2)),
-        }),
-      ).annotate({ identifier: "CreatePrivateEndpointConnectionResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1576,6 +1619,20 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(132, __c8, 4)),
+        }),
+      ).annotate({ identifier: "GetUserResponse" });
+  }
+}
+function __c8(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           principalType: S.String,
         }),
       ).annotate({ identifier: "EntraIdentityProviderProperties" });
@@ -1583,7 +1640,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          properties: S.optional(__S(112, __c7, 0)),
+          properties: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({ identifier: "IdentityProvider" });
     case 2:
@@ -1594,28 +1651,18 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseRole" });
     case 3:
-      return S.Array(__S(114, __c7, 2));
+      return S.Array(__S(130, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          identityProvider: S.optional(__S(113, __c7, 1)),
-          roles: S.optional(__S(115, __c7, 3)),
+          identityProvider: S.optional(__S(129, __c8, 1)),
+          roles: S.optional(__S(131, __c8, 3)),
         }),
       ).annotate({ identifier: "UserProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(116, __c7, 4)),
-        }),
-      ).annotate({ identifier: "GetUserResponse" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1633,17 +1680,17 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListFirewallRuleByMongoClusterRequest" });
     case 1:
-      return S.Array(__S(449, __c28, 1));
+      return S.Array(__S(512, __c32, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(129, __c8, 1),
+          value: __S(145, __c9, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirewallRuleListResult" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1661,20 +1708,20 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ListMongoClusterByResourceGroupRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(532, __c33, 4));
+      return S.Array(__S(544, __c34, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(160, __c10, 0),
+          value: __S(176, __c11, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoClusterListResult" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1700,16 +1747,16 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ConnectionString" });
     case 2:
-      return S.Array(__S(177, __c11, 1));
+      return S.Array(__S(193, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          connectionStrings: S.optional(__S(178, __c11, 2)),
+          connectionStrings: S.optional(__S(194, __c12, 2)),
         }),
       ).annotate({ identifier: "ListConnectionStringsResult" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1726,7 +1773,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListMongoClustersRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1753,23 +1800,23 @@ function __c13(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(209, __c13, 1)),
+          display: S.optional(__S(225, __c14, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(210, __c13, 2));
+      return S.Array(__S(226, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(211, __c13, 3)),
+          value: S.optional(__S(227, __c14, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1789,13 +1836,13 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(496, __c31, 0),
+          value: __S(560, __c35, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionResourceListResult" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1827,21 +1874,21 @@ function __c15(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(241, __c15, 1)),
+          properties: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 3:
-      return S.Array(__S(242, __c15, 2));
+      return S.Array(__S(258, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(243, __c15, 3),
+          value: __S(259, __c16, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1865,21 +1912,21 @@ function __c16(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(527, __c32, 15)),
+          properties: S.optional(__S(591, __c36, 15)),
         }),
       ).annotate({ identifier: "Replica" });
     case 2:
-      return S.Array(__S(257, __c16, 1));
+      return S.Array(__S(273, __c17, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(258, __c16, 2),
+          value: __S(274, __c17, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaListResult" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1897,17 +1944,17 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListUserByMongoClusterRequest" });
     case 1:
-      return S.Array(__S(117, __c7, 5));
+      return S.Array(__S(112, __c7, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(273, __c17, 1),
+          value: __S(289, __c18, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserListResult" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1927,26 +1974,37 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteFirewallRuleRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteFirewallRuleResponse" });
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           createMode: S.optional(S.String),
-          restoreParameters: S.optional(__S(512, __c32, 0)),
-          replicaParameters: S.optional(__S(513, __c32, 1)),
-          administrator: S.optional(__S(514, __c32, 2)),
+          restoreParameters: S.optional(__S(576, __c36, 0)),
+          replicaParameters: S.optional(__S(577, __c36, 1)),
+          administrator: S.optional(__S(578, __c36, 2)),
           serverVersion: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          highAvailability: S.optional(__S(515, __c32, 3)),
-          storage: S.optional(__S(516, __c32, 4)),
-          sharding: S.optional(__S(517, __c32, 5)),
-          compute: S.optional(__S(518, __c32, 6)),
+          highAvailability: S.optional(__S(579, __c36, 3)),
+          storage: S.optional(__S(580, __c36, 4)),
+          sharding: S.optional(__S(581, __c36, 5)),
+          compute: S.optional(__S(582, __c36, 6)),
           backup: S.optional(__S(32, __c2, 0)),
-          dataApi: S.optional(__S(520, __c32, 8)),
-          previewFeatures: S.optional(__S(521, __c32, 9)),
-          authConfig: S.optional(__S(523, __c32, 11)),
-          encryption: S.optional(__S(526, __c32, 14)),
+          dataApi: S.optional(__S(584, __c36, 8)),
+          previewFeatures: S.optional(__S(585, __c36, 9)),
+          authConfig: S.optional(__S(587, __c36, 11)),
+          encryption: S.optional(__S(590, __c36, 14)),
           networkBypassMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoClusterPropertiesInput" });
@@ -1956,10 +2014,10 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           mongoClusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(528, __c33, 0)),
+          tags: S.optional(__S(592, __c37, 0)),
           location: S.String,
-          properties: S.optional(__S(304, __c19, 0)),
-          identity: S.optional(__S(321, __c20, 1)),
+          properties: S.optional(__S(336, __c21, 0)),
+          identity: S.optional(__S(353, __c22, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1969,9 +2027,23 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MongoClustersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(592, __c37, 0)),
+          location: S.String,
+          properties: S.optional(__S(591, __c36, 15)),
+          identity: S.optional(__S(595, __c37, 3)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MongoClustersCreateOrUpdateResponse" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32, __c2, 0)));
@@ -1979,12 +2051,12 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(320, __c20, 0)),
+          userAssignedIdentities: S.optional(__S(352, __c22, 0)),
         }),
       ).annotate({ identifier: "MongoClustersCreateOrUpdateRequestIdentity" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2005,23 +2077,23 @@ function __c21(j: number): any {
       ).annotate({ identifier: "PromoteMongoClusterRequest" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          administrator: S.optional(__S(514, __c32, 2)),
+          administrator: S.optional(__S(578, __c36, 2)),
           serverVersion: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          highAvailability: S.optional(__S(515, __c32, 3)),
-          storage: S.optional(__S(516, __c32, 4)),
-          sharding: S.optional(__S(517, __c32, 5)),
-          compute: S.optional(__S(518, __c32, 6)),
+          highAvailability: S.optional(__S(579, __c36, 3)),
+          storage: S.optional(__S(580, __c36, 4)),
+          sharding: S.optional(__S(581, __c36, 5)),
+          compute: S.optional(__S(582, __c36, 6)),
           backup: S.optional(__S(32, __c2, 0)),
-          dataApi: S.optional(__S(520, __c32, 8)),
-          previewFeatures: S.optional(__S(521, __c32, 9)),
-          authConfig: S.optional(__S(523, __c32, 11)),
-          encryption: S.optional(__S(526, __c32, 14)),
+          dataApi: S.optional(__S(584, __c36, 8)),
+          previewFeatures: S.optional(__S(585, __c36, 9)),
+          authConfig: S.optional(__S(587, __c36, 11)),
+          encryption: S.optional(__S(590, __c36, 14)),
           networkBypassMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoClusterUpdatePropertiesInput" });
@@ -2031,9 +2103,9 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           mongoClusterName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(321, __c20, 1)),
-          tags: S.optional(__S(528, __c33, 0)),
-          properties: S.optional(__S(352, __c22, 0)),
+          identity: S.optional(__S(353, __c22, 1)),
+          tags: S.optional(__S(592, __c37, 0)),
+          properties: S.optional(__S(384, __c24, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2043,15 +2115,30 @@ function __c22(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMongoClusterRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(592, __c37, 0)),
+          location: S.String,
+          properties: S.optional(__S(591, __c36, 15)),
+          identity: S.optional(__S(595, __c37, 3)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateMongoClusterResponse" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identityProvider: S.optional(__S(113, __c7, 1)),
-          roles: S.optional(__S(115, __c7, 3)),
+          identityProvider: S.optional(__S(129, __c8, 1)),
+          roles: S.optional(__S(131, __c8, 3)),
         }),
       ).annotate({ identifier: "UserPropertiesInput" });
     case 1:
@@ -2061,7 +2148,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           mongoClusterName: S.String.pipe(T.Label()),
           userName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(368, __c23, 0)),
+          properties: S.optional(__S(400, __c25, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2071,9 +2158,20 @@ function __c23(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UsersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(132, __c8, 4)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UsersCreateOrUpdateResponse" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2092,7 +2190,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "DeleteMongoClusterRequest" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2112,7 +2210,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2132,7 +2230,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "DeleteUserRequest" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2148,7 +2246,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           mongoClusterName: S.String.pipe(T.Label()),
           firewallRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(432, __c27, 0)),
+          properties: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2158,9 +2256,21 @@ function __c27(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FirewallRulesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(480, __c30, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "FirewallRulesCreateOrUpdateResponse" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2170,19 +2280,9 @@ function __c28(j: number): any {
           endIpAddress: S.String,
         }),
       ).annotate({ identifier: "FirewallRuleProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(448, __c28, 0)),
-        }),
-      ).annotate({ identifier: "FirewallRulesCreateOrUpdateResponse" });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2202,7 +2302,21 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetFirewallRuleRequest" });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: S.optional(__S(480, __c30, 0)),
+        }),
+      ).annotate({ identifier: "GetFirewallRuleResponse" });
+  }
+}
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2221,13 +2335,30 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetMongoClusterRequest" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(83, __c5, 3));
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          tags: S.optional(__S(592, __c37, 0)),
+          location: S.String,
+          properties: S.optional(__S(591, __c36, 15)),
+          identity: S.optional(__S(595, __c37, 3)),
+        }),
+      ).annotate({ identifier: "GetMongoClusterResponse" });
   }
 }
-function __c32(j: number): any {
+function __c35(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(608, __c38, 0));
+  }
+}
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2300,7 +2431,7 @@ function __c32(j: number): any {
     case 11:
       return S.suspend(() =>
         S.Struct({
-          allowedModes: S.optional(__S(521, __c32, 9)),
+          allowedModes: S.optional(__S(585, __c36, 9)),
         }),
       ).annotate({ identifier: "AuthConfigProperties" });
     case 12:
@@ -2313,46 +2444,46 @@ function __c32(j: number): any {
     case 13:
       return S.suspend(() =>
         S.Struct({
-          keyEncryptionKeyIdentity: S.optional(__S(524, __c32, 12)),
+          keyEncryptionKeyIdentity: S.optional(__S(588, __c36, 12)),
           keyEncryptionKeyUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomerManagedKeyEncryptionProperties" });
     case 14:
       return S.suspend(() =>
         S.Struct({
-          customerManagedKeyEncryption: S.optional(__S(525, __c32, 13)),
+          customerManagedKeyEncryption: S.optional(__S(589, __c36, 13)),
         }),
       ).annotate({ identifier: "EncryptionProperties" });
     case 15:
       return S.suspend(() =>
         S.Struct({
           createMode: S.optional(S.String),
-          restoreParameters: S.optional(__S(512, __c32, 0)),
-          replicaParameters: S.optional(__S(513, __c32, 1)),
-          administrator: S.optional(__S(514, __c32, 2)),
+          restoreParameters: S.optional(__S(576, __c36, 0)),
+          replicaParameters: S.optional(__S(577, __c36, 1)),
+          administrator: S.optional(__S(578, __c36, 2)),
           serverVersion: S.optional(S.String),
           connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
           provisioningState: S.optional(S.String),
           clusterStatus: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
-          highAvailability: S.optional(__S(515, __c32, 3)),
-          storage: S.optional(__S(516, __c32, 4)),
-          sharding: S.optional(__S(517, __c32, 5)),
-          compute: S.optional(__S(518, __c32, 6)),
-          backup: S.optional(__S(519, __c32, 7)),
-          dataApi: S.optional(__S(520, __c32, 8)),
-          privateEndpointConnections: S.optional(__S(496, __c31, 0)),
-          previewFeatures: S.optional(__S(521, __c32, 9)),
-          replica: S.optional(__S(522, __c32, 10)),
+          highAvailability: S.optional(__S(579, __c36, 3)),
+          storage: S.optional(__S(580, __c36, 4)),
+          sharding: S.optional(__S(581, __c36, 5)),
+          compute: S.optional(__S(582, __c36, 6)),
+          backup: S.optional(__S(583, __c36, 7)),
+          dataApi: S.optional(__S(584, __c36, 8)),
+          privateEndpointConnections: S.optional(__S(560, __c35, 0)),
+          previewFeatures: S.optional(__S(585, __c36, 9)),
+          replica: S.optional(__S(586, __c36, 10)),
           infrastructureVersion: S.optional(S.String),
-          authConfig: S.optional(__S(523, __c32, 11)),
-          encryption: S.optional(__S(526, __c32, 14)),
+          authConfig: S.optional(__S(587, __c36, 11)),
+          encryption: S.optional(__S(590, __c36, 14)),
           networkBypassMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MongoClusterProperties" });
   }
 }
-function __c33(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -2364,32 +2495,33 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(529, __c33, 1)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(593, __c37, 1)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(530, __c33, 2)),
+          userAssignedIdentities: S.optional(__S(594, __c37, 2)),
         }),
       ).annotate({ identifier: "GetMongoClusterResponseIdentity" });
-    case 4:
+  }
+}
+function __c38(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(48, __c3, 0)),
-          tags: S.optional(__S(528, __c33, 0)),
-          location: S.String,
-          properties: S.optional(__S(527, __c32, 15)),
-          identity: S.optional(__S(531, __c33, 3)),
+          properties: S.optional(__S(82, __c5, 2)),
         }),
-      ).annotate({ identifier: "GetMongoClusterResponse" });
+      ).annotate({ identifier: "MongoClusterPropertiesPrivateEndpointConnectionsItem" });
   }
 }
-function __c34(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

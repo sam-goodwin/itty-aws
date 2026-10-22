@@ -847,6 +847,12 @@ export interface CalculateExchangeOperationResultResponse {
   properties?: CalculateExchangeResponseProperties;
   /** Required if status == failed or status == canceled. */
   error?: OperationResultError;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Properties needed for calculate refund including the scope and the reservation to be returned. */
 export interface CalculateRefundRequestProperties {
@@ -1079,6 +1085,12 @@ export interface ExchangeOperationResultResponse {
   properties?: ExchangeResponseProperties;
   /** Required if status == failed or status == canceled. */
   error?: OperationResultError;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Properties needed for refund request including the session id from calculate refund, the scope, the reservation to be returned and the return reason. */
 export interface RefundRequestProperties {
@@ -1109,6 +1121,10 @@ export interface PostReturnResponse {
   /** Properties of a reservation order. */
   properties?: ReservationOrderProperties;
   etag?: number;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AvailableScopeRequestPropertiesScopesList = Array<string>;
 /** Available scope request properties */
@@ -1137,6 +1153,10 @@ export interface SubscriptionScopeProperties {
 export interface AvailableScopeProperties {
   /** The scopes checked by the available scope api. */
   properties?: SubscriptionScopeProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ReservationOrderCalculateRequest {
   /** The name of sku */
@@ -1231,6 +1251,10 @@ export interface ReservationOrderPurchaseResponse {
   /** Properties of a reservation order. */
   properties?: ReservationOrderProperties;
   etag?: number;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** List of the quantities in the new reservations to create. */
 export type SplitPropertiesQuantitiesList = Array<number>;
@@ -1308,6 +1332,12 @@ export interface UpdateReservationResponse {
   sku?: SkuName;
   /** Resource Provider type to be reserved. */
   kind?: UpdateReservationResponseKind;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type ArchiveReservationError = AzureOpError;
 /** Archive a `Reservation`. Archiving a `Reservation` moves it to `Archived` state. */
@@ -1347,8 +1377,8 @@ export const GetCatalog: API.OperationMethod<
   GetCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<GetCatalogRequest>,
-  output: __S(282, __c17, 10) as any as S.Schema<CatalogsResult>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetCatalogRequest>,
+  output: __S(298, __c18, 10) as any as S.Schema<CatalogsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1362,8 +1392,8 @@ export const GetReservation: API.OperationMethod<
   GetReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetReservationRequest>,
-  output: __S(409, __c25, 9) as any as S.Schema<GetReservationResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetReservationRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<GetReservationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1377,8 +1407,8 @@ export const GetReservationOrder: API.OperationMethod<
   GetReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetReservationOrderRequest>,
-  output: __S(466, __c29, 2) as any as S.Schema<GetReservationOrderResponse>,
+  input: __S(448, __c28, 0) as any as S.Schema<GetReservationOrderRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<GetReservationOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1392,8 +1422,8 @@ export const ListOperation: API.OperationMethod<
   ListOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListOperationRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<OperationList>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListOperationRequest>,
+  output: __S(532, __c33, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1407,8 +1437,8 @@ export const ListReservation: API.OperationMethod<
   ListReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListReservationRequest>,
-  output: __S(512, __c32, 0) as any as S.Schema<ReservationList>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListReservationRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<ReservationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1422,8 +1452,8 @@ export const ListReservationAll: API.OperationMethod<
   ListReservationAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListReservationAllRequest>,
-  output: __S(530, __c33, 2) as any as S.Schema<ReservationsListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListReservationAllRequest>,
+  output: __S(578, __c36, 2) as any as S.Schema<ReservationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1437,8 +1467,8 @@ export const ListReservationOrder: API.OperationMethod<
   ListReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListReservationOrderRequest>,
-  output: __S(546, __c34, 2) as any as S.Schema<ReservationOrderList>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListReservationOrderRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<ReservationOrderList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1452,8 +1482,8 @@ export const ListReservationRevisions: API.OperationMethod<
   ListReservationRevisionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<ListReservationRevisionsRequest>,
-  output: __S(512, __c32, 0) as any as S.Schema<ReservationList>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListReservationRevisionsRequest>,
+  output: __S(560, __c35, 0) as any as S.Schema<ReservationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1528,7 +1558,7 @@ export const PostReturn: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(177, __c11, 1) as any as S.Schema<PostReturnRequest>,
-  output: __S(466, __c29, 2) as any as S.Schema<PostReturnResponse>,
+  output: __S(192, __c12, 0) as any as S.Schema<PostReturnResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1542,8 +1572,8 @@ export const ReservationAvailableScopes: API.OperationMethod<
   ReservationAvailableScopesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c12, 1) as any as S.Schema<ReservationAvailableScopesRequest>,
-  output: __S(197, __c12, 5) as any as S.Schema<AvailableScopeProperties>,
+  input: __S(209, __c13, 1) as any as S.Schema<ReservationAvailableScopesRequest>,
+  output: __S(213, __c13, 5) as any as S.Schema<AvailableScopeProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1557,8 +1587,8 @@ export const ReservationOrderCalculate: API.OperationMethod<
   ReservationOrderCalculateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<ReservationOrderCalculateRequest>,
-  output: __S(210, __c13, 2) as any as S.Schema<CalculatePriceResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<ReservationOrderCalculateRequest>,
+  output: __S(226, __c14, 2) as any as S.Schema<CalculatePriceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1572,8 +1602,8 @@ export const ReservationOrderChangeDirectory: API.OperationMethod<
   ReservationOrderChangeDirectoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<ReservationOrderChangeDirectoryRequest>,
-  output: __S(227, __c14, 3) as any as S.Schema<ChangeDirectoryResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<ReservationOrderChangeDirectoryRequest>,
+  output: __S(243, __c15, 3) as any as S.Schema<ChangeDirectoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1587,8 +1617,8 @@ export const ReservationOrderPurchase: API.OperationMethod<
   ReservationOrderPurchaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<ReservationOrderPurchaseRequest>,
-  output: __S(466, __c29, 2) as any as S.Schema<ReservationOrderPurchaseResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<ReservationOrderPurchaseRequest>,
+  output: __S(192, __c12, 0) as any as S.Schema<ReservationOrderPurchaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1602,7 +1632,7 @@ export const ReservationSplit: API.OperationMethod<
   ReservationSplitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(258, __c16, 2) as any as S.Schema<ReservationSplitRequest>,
+  input: __S(274, __c17, 2) as any as S.Schema<ReservationSplitRequest>,
   output: __S(80, __c5, 0) as any as S.Schema<ReservationSplitResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1617,7 +1647,7 @@ export const UnarchiveReservation: API.OperationMethod<
   UnarchiveReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<UnarchiveReservationRequest>,
+  input: __S(320, __c20, 0) as any as S.Schema<UnarchiveReservationRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<UnarchiveReservationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1632,8 +1662,8 @@ export const UpdateReservation: API.OperationMethod<
   UpdateReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(322, __c20, 2) as any as S.Schema<UpdateReservationRequest>,
-  output: __S(409, __c25, 9) as any as S.Schema<UpdateReservationResponse>,
+  input: __S(338, __c21, 2) as any as S.Schema<UpdateReservationRequest>,
+  output: __S(339, __c21, 3) as any as S.Schema<UpdateReservationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1736,7 +1766,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => __S(432, __c27, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(464, __c29, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "MergeReservationResponse",
       });
   }
@@ -1744,7 +1774,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(368, __c23, 0));
+      return S.Array(__S(384, __c24, 0));
     case 1:
       return S.Array(__S(130, __c8, 2));
     case 2:
@@ -1773,8 +1803,8 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(368, __c23, 0)),
-          billingCurrencyTotal: S.optional(__S(288, __c18, 0)),
+          properties: S.optional(__S(384, __c24, 0)),
+          billingCurrencyTotal: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "ReservationToPurchaseCalculateExchange" });
     case 6:
@@ -1783,7 +1813,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           properties: S.optional(__S(130, __c8, 2)),
-          billingCurrencyTotal: S.optional(__S(288, __c18, 0)),
+          billingCurrencyTotal: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "SavingsPlanToPurchaseCalculateExchange" });
     case 8:
@@ -1793,7 +1823,7 @@ function __c6(j: number): any {
         S.Struct({
           reservationId: S.optional(S.String),
           quantity: S.optional(S.Number),
-          billingRefundAmount: S.optional(__S(288, __c18, 0)),
+          billingRefundAmount: S.optional(__S(304, __c19, 0)),
           billingInformation: S.optional(__S(131, __c8, 3)),
         }),
       ).annotate({ identifier: "ReservationToExchange" });
@@ -1803,9 +1833,9 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionId: S.optional(S.String),
-          netPayable: S.optional(__S(288, __c18, 0)),
-          refundsTotal: S.optional(__S(288, __c18, 0)),
-          purchasesTotal: S.optional(__S(288, __c18, 0)),
+          netPayable: S.optional(__S(304, __c19, 0)),
+          refundsTotal: S.optional(__S(304, __c19, 0)),
+          purchasesTotal: S.optional(__S(304, __c19, 0)),
           reservationsToPurchase: S.optional(__S(102, __c6, 6)),
           savingsPlansToPurchase: S.optional(__S(104, __c6, 8)),
           reservationsToExchange: S.optional(__S(106, __c6, 10)),
@@ -1820,6 +1850,9 @@ function __c6(j: number): any {
           status: S.optional(S.String),
           properties: S.optional(__S(107, __c6, 11)),
           error: S.optional(__S(132, __c8, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CalculateExchangeOperationResultResponse" });
   }
@@ -1853,23 +1886,23 @@ function __c8(j: number): any {
           term: S.optional(S.String),
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(352, __c22, 0)),
+          appliedScopeProperties: S.optional(__S(368, __c23, 0)),
           commitment: S.optional(__S(128, __c8, 0)),
         }),
       ).annotate({ identifier: "SavingsPlanPurchaseRequestProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(353, __c22, 1)),
+          sku: S.optional(__S(369, __c23, 1)),
           properties: S.optional(__S(129, __c8, 1)),
         }),
       ).annotate({ identifier: "SavingsPlanPurchaseRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          billingCurrencyTotalPaidAmount: S.optional(__S(288, __c18, 0)),
-          billingCurrencyProratedAmount: S.optional(__S(288, __c18, 0)),
-          billingCurrencyRemainingCommitmentAmount: S.optional(__S(288, __c18, 0)),
+          billingCurrencyTotalPaidAmount: S.optional(__S(304, __c19, 0)),
+          billingCurrencyProratedAmount: S.optional(__S(304, __c19, 0)),
+          billingCurrencyRemainingCommitmentAmount: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "BillingInformation" });
     case 4:
@@ -1925,8 +1958,8 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          consumedRefundsTotal: S.optional(__S(288, __c18, 0)),
-          maxRefundLimit: S.optional(__S(288, __c18, 0)),
+          consumedRefundsTotal: S.optional(__S(304, __c19, 0)),
+          maxRefundLimit: S.optional(__S(304, __c19, 0)),
           policyErrors: S.optional(__S(147, __c9, 3)),
         }),
       ).annotate({ identifier: "RefundPolicyResultProperty" });
@@ -1942,9 +1975,9 @@ function __c9(j: number): any {
           billingPlan: S.optional(S.String),
           completedTransactions: S.optional(S.Number),
           totalTransactions: S.optional(S.Number),
-          billingCurrencyTotalPaidAmount: S.optional(__S(288, __c18, 0)),
-          billingCurrencyProratedAmount: S.optional(__S(288, __c18, 0)),
-          billingCurrencyRemainingCommitmentAmount: S.optional(__S(288, __c18, 0)),
+          billingCurrencyTotalPaidAmount: S.optional(__S(304, __c19, 0)),
+          billingCurrencyProratedAmount: S.optional(__S(304, __c19, 0)),
+          billingCurrencyRemainingCommitmentAmount: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "RefundBillingInformation" });
     case 7:
@@ -1952,8 +1985,8 @@ function __c9(j: number): any {
         S.Struct({
           sessionId: S.optional(S.String),
           quantity: S.optional(S.Number),
-          billingRefundAmount: S.optional(__S(288, __c18, 0)),
-          pricingRefundAmount: S.optional(__S(288, __c18, 0)),
+          billingRefundAmount: S.optional(__S(304, __c19, 0)),
+          pricingRefundAmount: S.optional(__S(304, __c19, 0)),
           policyResult: S.optional(__S(149, __c9, 5)),
           billingInformation: S.optional(__S(150, __c9, 6)),
         }),
@@ -1993,8 +2026,8 @@ function __c10(j: number): any {
         S.Struct({
           reservationOrderId: S.optional(S.String),
           reservationId: S.optional(S.String),
-          properties: S.optional(__S(368, __c23, 0)),
-          billingCurrencyTotal: S.optional(__S(288, __c18, 0)),
+          properties: S.optional(__S(384, __c24, 0)),
+          billingCurrencyTotal: S.optional(__S(304, __c19, 0)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationToPurchaseExchange" });
@@ -2006,7 +2039,7 @@ function __c10(j: number): any {
           savingsPlanOrderId: S.optional(S.String),
           savingsPlanId: S.optional(S.String),
           properties: S.optional(__S(130, __c8, 2)),
-          billingCurrencyTotal: S.optional(__S(288, __c18, 0)),
+          billingCurrencyTotal: S.optional(__S(304, __c19, 0)),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanToPurchaseExchange" });
@@ -2017,7 +2050,7 @@ function __c10(j: number): any {
         S.Struct({
           reservationId: S.optional(S.String),
           quantity: S.optional(S.Number),
-          billingRefundAmount: S.optional(__S(288, __c18, 0)),
+          billingRefundAmount: S.optional(__S(304, __c19, 0)),
           billingInformation: S.optional(__S(131, __c8, 3)),
           status: S.optional(S.String),
         }),
@@ -2028,9 +2061,9 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionId: S.optional(S.String),
-          netPayable: S.optional(__S(288, __c18, 0)),
-          refundsTotal: S.optional(__S(288, __c18, 0)),
-          purchasesTotal: S.optional(__S(288, __c18, 0)),
+          netPayable: S.optional(__S(304, __c19, 0)),
+          refundsTotal: S.optional(__S(304, __c19, 0)),
+          purchasesTotal: S.optional(__S(304, __c19, 0)),
           reservationsToPurchase: S.optional(__S(163, __c10, 3)),
           savingsPlansToPurchase: S.optional(__S(165, __c10, 5)),
           reservationsToExchange: S.optional(__S(167, __c10, 7)),
@@ -2045,6 +2078,9 @@ function __c10(j: number): any {
           status: S.optional(S.String),
           properties: S.optional(__S(168, __c10, 8)),
           error: S.optional(__S(132, __c8, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ExchangeOperationResultResponse" });
   }
@@ -2081,6 +2117,23 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(432, __c27, 0)),
+          properties: S.optional(__S(513, __c32, 1)),
+          etag: S.optional(S.Number),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PostReturnResponse" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           scopes: S.optional(__S(48, __c3, 0)),
         }),
       ).annotate({ identifier: "AvailableScopeRequestProperties" });
@@ -2089,7 +2142,7 @@ function __c12(j: number): any {
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
           reservationId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(192, __c12, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2107,29 +2160,31 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "ScopeProperties" });
     case 3:
-      return S.Array(__S(194, __c12, 2));
+      return S.Array(__S(210, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(__S(195, __c12, 3)),
+          scopes: S.optional(__S(211, __c13, 3)),
         }),
       ).annotate({ identifier: "SubscriptionScopeProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(196, __c12, 4)),
+          properties: S.optional(__S(212, __c13, 4)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "AvailableScopeProperties" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(353, __c22, 1)),
+          sku: S.optional(__S(369, __c23, 1)),
           location: S.optional(S.String),
-          properties: S.optional(__S(355, __c22, 3)),
+          properties: S.optional(__S(371, __c23, 3)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2142,7 +2197,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          billingCurrencyTotal: S.optional(__S(288, __c18, 0)),
+          billingCurrencyTotal: S.optional(__S(304, __c19, 0)),
           netTotal: S.optional(S.Number),
           taxTotal: S.optional(S.Number),
           grandTotal: S.optional(S.Number),
@@ -2151,19 +2206,19 @@ function __c13(j: number): any {
           reservationOrderId: S.optional(S.String),
           skuTitle: S.optional(S.String),
           skuDescription: S.optional(S.String),
-          pricingCurrencyTotal: S.optional(__S(288, __c18, 0)),
-          paymentSchedule: S.optional(__S(449, __c28, 1)),
+          pricingCurrencyTotal: S.optional(__S(304, __c19, 0)),
+          paymentSchedule: S.optional(__S(497, __c31, 1)),
         }),
       ).annotate({ identifier: "CalculatePriceResponseProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(209, __c13, 1)),
+          properties: S.optional(__S(225, __c14, 1)),
         }),
       ).annotate({ identifier: "CalculatePriceResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2189,25 +2244,25 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "ChangeDirectoryResult" });
     case 2:
-      return S.Array(__S(225, __c14, 1));
+      return S.Array(__S(241, __c15, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reservationOrder: S.optional(__S(225, __c14, 1)),
-          reservations: S.optional(__S(226, __c14, 2)),
+          reservationOrder: S.optional(__S(241, __c15, 1)),
+          reservations: S.optional(__S(242, __c15, 2)),
         }),
       ).annotate({ identifier: "ChangeDirectoryResponse" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
-          sku: S.optional(__S(353, __c22, 1)),
+          sku: S.optional(__S(369, __c23, 1)),
           location: S.optional(S.String),
-          properties: S.optional(__S(355, __c22, 3)),
+          properties: S.optional(__S(371, __c23, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2219,14 +2274,14 @@ function __c15(j: number): any {
       ).annotate({ identifier: "ReservationOrderPurchaseRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          quantities: S.optional(__S(256, __c16, 0)),
+          quantities: S.optional(__S(272, __c17, 0)),
           reservationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SplitProperties" });
@@ -2234,7 +2289,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(257, __c16, 1)),
+          properties: S.optional(__S(273, __c17, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2246,7 +2301,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ReservationSplitRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2272,7 +2327,7 @@ function __c17(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.Record(S.String, __S(273, __c17, 1));
+      return S.Record(S.String, __S(289, __c18, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2281,13 +2336,13 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "SkuProperty" });
     case 4:
-      return S.Array(__S(275, __c17, 3));
+      return S.Array(__S(291, __c18, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          p1Y: S.optional(__S(288, __c18, 0)),
-          p3Y: S.optional(__S(288, __c18, 0)),
-          p5Y: S.optional(__S(288, __c18, 0)),
+          p1Y: S.optional(__S(304, __c19, 0)),
+          p3Y: S.optional(__S(304, __c19, 0)),
+          p5Y: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "CatalogMsrp" });
     case 6:
@@ -2299,36 +2354,36 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "SkuRestriction" });
     case 7:
-      return S.Array(__S(278, __c17, 6));
+      return S.Array(__S(294, __c18, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
           name: S.optional(S.String),
-          billingPlans: S.optional(__S(274, __c17, 2)),
-          terms: S.optional(__S(273, __c17, 1)),
+          billingPlans: S.optional(__S(290, __c18, 2)),
+          terms: S.optional(__S(289, __c18, 1)),
           locations: S.optional(__S(48, __c3, 0)),
-          skuProperties: S.optional(__S(276, __c17, 4)),
-          msrp: S.optional(__S(277, __c17, 5)),
-          restrictions: S.optional(__S(279, __c17, 7)),
+          skuProperties: S.optional(__S(292, __c18, 4)),
+          msrp: S.optional(__S(293, __c18, 5)),
+          restrictions: S.optional(__S(295, __c18, 7)),
           tier: S.optional(S.String),
           size: S.optional(S.String),
-          capabilities: S.optional(__S(276, __c17, 4)),
+          capabilities: S.optional(__S(292, __c18, 4)),
         }),
       ).annotate({ identifier: "Catalog" });
     case 9:
-      return S.Array(__S(280, __c17, 8));
+      return S.Array(__S(296, __c18, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          value: __S(281, __c17, 9),
+          value: __S(297, __c18, 9),
           nextLink: S.optional(S.String),
           totalItems: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CatalogsResult" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2339,7 +2394,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "Price" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2357,12 +2412,12 @@ function __c19(j: number): any {
       ).annotate({ identifier: "UnarchiveReservationRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(368, __c23, 0)),
+          purchaseProperties: S.optional(__S(384, __c24, 0)),
         }),
       ).annotate({ identifier: "PatchPropertiesRenewProperties" });
     case 1:
@@ -2370,11 +2425,11 @@ function __c20(j: number): any {
         S.Struct({
           appliedScopeType: S.optional(S.String),
           appliedScopes: S.optional(__S(48, __c3, 0)),
-          appliedScopeProperties: S.optional(__S(352, __c22, 0)),
+          appliedScopeProperties: S.optional(__S(368, __c23, 0)),
           instanceFlexibility: S.optional(S.String),
           name: S.optional(S.String),
           renew: S.optional(S.Boolean),
-          renewProperties: S.optional(__S(320, __c20, 0)),
+          renewProperties: S.optional(__S(336, __c21, 0)),
           reviewDateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PatchProperties" });
@@ -2383,7 +2438,7 @@ function __c20(j: number): any {
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
           reservationId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(321, __c20, 1)),
+          properties: S.optional(__S(337, __c21, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2393,9 +2448,26 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateReservationRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(432, __c27, 0)),
+          properties: S.optional(__S(440, __c27, 8)),
+          location: S.optional(S.String),
+          etag: S.optional(S.Number),
+          sku: S.optional(__S(369, __c23, 1)),
+          kind: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateReservationResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2414,7 +2486,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetReservationRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2449,27 +2521,27 @@ function __c22(j: number): any {
           displayName: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
           appliedScopes: S.optional(__S(48, __c3, 0)),
-          appliedScopeProperties: S.optional(__S(352, __c22, 0)),
+          appliedScopeProperties: S.optional(__S(368, __c23, 0)),
           renew: S.optional(S.Boolean),
-          reservedResourceProperties: S.optional(__S(354, __c22, 2)),
+          reservedResourceProperties: S.optional(__S(370, __c23, 2)),
           reviewDateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PurchaseRequestProperties" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(353, __c22, 1)),
+          sku: S.optional(__S(369, __c23, 1)),
           location: S.optional(S.String),
-          properties: S.optional(__S(355, __c22, 3)),
+          properties: S.optional(__S(371, __c23, 3)),
         }),
       ).annotate({ identifier: "PurchaseRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2480,7 +2552,25 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ExtendedStatusInfo" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(432, __c27, 0)),
+          properties: S.optional(__S(440, __c27, 8)),
+          location: S.optional(S.String),
+          etag: S.optional(S.Number),
+          sku: S.optional(__S(369, __c23, 1)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetReservationResponse" });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2517,9 +2607,9 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(368, __c23, 0)),
-          pricingCurrencyTotal: S.optional(__S(288, __c18, 0)),
-          billingCurrencyTotal: S.optional(__S(288, __c18, 0)),
+          purchaseProperties: S.optional(__S(384, __c24, 0)),
+          pricingCurrencyTotal: S.optional(__S(304, __c19, 0)),
+          billingCurrencyTotal: S.optional(__S(304, __c19, 0)),
         }),
       ).annotate({ identifier: "RenewPropertiesResponse" });
     case 5:
@@ -2532,12 +2622,12 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "ReservationUtilizationAggregates" });
     case 6:
-      return S.Array(__S(405, __c25, 5));
+      return S.Array(__S(437, __c27, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           trend: S.optional(S.String),
-          aggregates: S.optional(__S(406, __c25, 6)),
+          aggregates: S.optional(__S(438, __c27, 6)),
         }),
       ).annotate({ identifier: "ReservationsPropertiesUtilization" });
     case 8:
@@ -2559,44 +2649,30 @@ function __c25(j: number): any {
           expiryDateTime: S.optional(S.String),
           reviewDateTime: S.optional(S.String),
           skuDescription: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(384, __c24, 0)),
+          extendedStatusInfo: S.optional(__S(400, __c25, 0)),
           billingPlan: S.optional(S.String),
           displayProvisioningState: S.optional(S.String),
           provisioningSubState: S.optional(S.String),
           purchaseDate: S.optional(S.String),
           purchaseDateTime: S.optional(S.String),
-          splitProperties: S.optional(__S(401, __c25, 1)),
-          mergeProperties: S.optional(__S(402, __c25, 2)),
-          swapProperties: S.optional(__S(403, __c25, 3)),
-          appliedScopeProperties: S.optional(__S(352, __c22, 0)),
+          splitProperties: S.optional(__S(433, __c27, 1)),
+          mergeProperties: S.optional(__S(434, __c27, 2)),
+          swapProperties: S.optional(__S(435, __c27, 3)),
+          appliedScopeProperties: S.optional(__S(368, __c23, 0)),
           billingScopeId: S.optional(S.String),
           renew: S.optional(S.Boolean),
           renewSource: S.optional(S.String),
           renewDestination: S.optional(S.String),
-          renewProperties: S.optional(__S(404, __c25, 4)),
+          renewProperties: S.optional(__S(436, __c27, 4)),
           term: S.optional(S.String),
           userFriendlyAppliedScopeType: S.optional(S.String),
           userFriendlyRenewState: S.optional(S.String),
-          utilization: S.optional(__S(407, __c25, 7)),
+          utilization: S.optional(__S(439, __c27, 7)),
         }),
       ).annotate({ identifier: "ReservationsProperties" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(400, __c25, 0)),
-          properties: S.optional(__S(408, __c25, 8)),
-          location: S.optional(S.String),
-          etag: S.optional(S.Number),
-          sku: S.optional(__S(353, __c22, 1)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetReservationResponse" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2614,39 +2690,54 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetReservationOrderRequest" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(409, __c25, 9));
+      return S.Array(__S(416, __c26, 0));
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(432, __c27, 0)),
+          properties: S.optional(__S(513, __c32, 1)),
+          etag: S.optional(S.Number),
+        }),
+      ).annotate({ identifier: "GetReservationOrderResponse" });
+  }
+}
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           dueDate: S.optional(S.String),
           paymentDate: S.optional(S.String),
-          pricingCurrencyTotal: S.optional(__S(288, __c18, 0)),
-          billingCurrencyTotal: S.optional(__S(288, __c18, 0)),
+          pricingCurrencyTotal: S.optional(__S(304, __c19, 0)),
+          billingCurrencyTotal: S.optional(__S(304, __c19, 0)),
           billingAccount: S.optional(S.String),
           status: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(384, __c24, 0)),
+          extendedStatusInfo: S.optional(__S(400, __c25, 0)),
         }),
       ).annotate({ identifier: "PaymentDetail" });
     case 1:
-      return S.Array(__S(448, __c28, 0));
+      return S.Array(__S(496, __c31, 0));
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          pricingCurrencyTotal: S.optional(__S(288, __c18, 0)),
+          pricingCurrencyTotal: S.optional(__S(304, __c19, 0)),
           startDate: S.optional(S.String),
           nextPaymentDueDate: S.optional(S.String),
-          transactions: S.optional(__S(449, __c28, 1)),
+          transactions: S.optional(__S(497, __c31, 1)),
         }),
       ).annotate({ identifier: "ReservationOrderBillingPlanInformation" });
     case 1:
@@ -2662,25 +2753,14 @@ function __c29(j: number): any {
           term: S.optional(S.String),
           provisioningState: S.optional(S.String),
           billingPlan: S.optional(S.String),
-          planInformation: S.optional(__S(464, __c29, 0)),
-          reservations: S.optional(__S(432, __c27, 0)),
+          planInformation: S.optional(__S(512, __c32, 0)),
+          reservations: S.optional(__S(464, __c29, 0)),
           reviewDateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationOrderProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(400, __c25, 0)),
-          properties: S.optional(__S(465, __c29, 1)),
-          etag: S.optional(S.Number),
-        }),
-      ).annotate({ identifier: "GetReservationOrderResponse" });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2707,23 +2787,23 @@ function __c30(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(481, __c30, 1)),
+          display: S.optional(__S(529, __c33, 1)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationResponse" });
     case 3:
-      return S.Array(__S(482, __c30, 2));
+      return S.Array(__S(530, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(483, __c30, 3)),
+          value: S.optional(__S(531, __c33, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2740,18 +2820,18 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ListReservationRequest" });
   }
 }
-function __c32(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(432, __c27, 0),
+          value: __S(464, __c29, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationList" });
   }
 }
-function __c33(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2788,14 +2868,14 @@ function __c33(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(432, __c27, 0)),
+          value: S.optional(__S(464, __c29, 0)),
           nextLink: S.optional(S.String),
-          summary: S.optional(__S(529, __c33, 1)),
+          summary: S.optional(__S(577, __c36, 1)),
         }),
       ).annotate({ identifier: "ReservationsListResult" });
   }
 }
-function __c34(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2809,17 +2889,17 @@ function __c34(j: number): any {
         ),
       ).annotate({ identifier: "ListReservationOrderRequest" });
     case 1:
-      return S.Array(__S(466, __c29, 2));
+      return S.Array(__S(480, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(545, __c34, 1),
+          value: __S(593, __c37, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReservationOrderList" });
   }
 }
-function __c35(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

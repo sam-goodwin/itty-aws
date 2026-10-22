@@ -213,6 +213,8 @@ export interface AppServiceCertificateOrdersCreateOrUpdateResponse {
   properties?: AppServiceCertificateOrderProperties;
   /** Kind of resource */
   kind?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** Resource tags. */
 export type AppServiceCertificateOrdersCreateOrUpdateCertificateRequestTagsMap = {
@@ -257,6 +259,8 @@ export interface AppServiceCertificateOrdersCreateOrUpdateCertificateResponse {
   properties?: AppServiceCertificate;
   /** Kind of resource */
   kind?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 /** ReissueCertificateOrderRequest resource specific properties */
 export interface ReissueCertificateOrderRequestProperties {
@@ -989,7 +993,7 @@ export const AppServiceCertificateOrdersCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1009,9 +1013,9 @@ export const AppServiceCertificateOrdersCreateOrUpdateCertificate: API.Operation
     0,
   ) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateRequest>,
   output: __S(
-    256,
-    __c8,
-    0,
+    225,
+    __c7,
+    1,
   ) as any as S.Schema<AppServiceCertificateOrdersCreateOrUpdateCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1026,8 +1030,8 @@ export const AppServiceCertificateOrdersReissue: API.OperationMethod<
   AppServiceCertificateOrdersReissueError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705, __c22, 1) as any as S.Schema<AppServiceCertificateOrdersReissueRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<AppServiceCertificateOrdersReissueResponse>,
+  input: __S(673, __c21, 1) as any as S.Schema<AppServiceCertificateOrdersReissueRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<AppServiceCertificateOrdersReissueResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1041,8 +1045,8 @@ export const DeleteAppServiceCertificateOrder: API.OperationMethod<
   DeleteAppServiceCertificateOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<DeleteAppServiceCertificateOrderRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<DeleteAppServiceCertificateOrderResponse>,
+  input: __S(832, __c26, 0) as any as S.Schema<DeleteAppServiceCertificateOrderRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<DeleteAppServiceCertificateOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1056,10 +1060,10 @@ export const DeleteAppServiceCertificateOrderCertificate: API.OperationMethod<
   DeleteAppServiceCertificateOrderCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<DeleteAppServiceCertificateOrderCertificateRequest>,
+  input: __S(864, __c27, 0) as any as S.Schema<DeleteAppServiceCertificateOrderCertificateRequest>,
   output: __S(
-    736,
-    __c23,
+    704,
+    __c22,
     0,
   ) as any as S.Schema<DeleteAppServiceCertificateOrderCertificateResponse>,
   errors: [UnknownAzureError],
@@ -1075,8 +1079,8 @@ export const GetAppServiceCertificateOrder: API.OperationMethod<
   GetAppServiceCertificateOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<GetAppServiceCertificateOrderRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<GetAppServiceCertificateOrderResponse>,
+  input: __S(896, __c28, 0) as any as S.Schema<GetAppServiceCertificateOrderRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<GetAppServiceCertificateOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1091,7 +1095,7 @@ export const GetAppServiceCertificateOrderCertificate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(960, __c30, 0) as any as S.Schema<GetAppServiceCertificateOrderCertificateRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<GetAppServiceCertificateOrderCertificateResponse>,
+  output: __S(992, __c31, 0) as any as S.Schema<GetAppServiceCertificateOrderCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1106,13 +1110,13 @@ export const GetAppServiceCertificateOrderCertificateActions: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    992,
-    __c31,
+    1024,
+    __c32,
     0,
   ) as any as S.Schema<GetAppServiceCertificateOrderCertificateActionsRequest>,
   output: __S(
-    995,
-    __c31,
+    1027,
+    __c32,
     3,
   ) as any as S.Schema<GetAppServiceCertificateOrderCertificateActionsResponse>,
   errors: [UnknownAzureError],
@@ -1129,13 +1133,13 @@ export const GetAppServiceCertificateOrderCertificateEmailHistory: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1024,
-    __c32,
+    1056,
+    __c33,
     0,
   ) as any as S.Schema<GetAppServiceCertificateOrderCertificateEmailHistoryRequest>,
   output: __S(
-    1027,
-    __c32,
+    1059,
+    __c33,
     3,
   ) as any as S.Schema<GetAppServiceCertificateOrderCertificateEmailHistoryResponse>,
   errors: [UnknownAzureError],
@@ -1151,8 +1155,8 @@ export const GetAppServiceCertificateOrderSiteSeal: API.OperationMethod<
   GetAppServiceCertificateOrderSiteSealError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<GetAppServiceCertificateOrderSiteSealRequest>,
-  output: __S(1057, __c33, 1) as any as S.Schema<SiteSeal>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetAppServiceCertificateOrderSiteSealRequest>,
+  output: __S(1089, __c34, 1) as any as S.Schema<SiteSeal>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1168,13 +1172,13 @@ export const GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorRes
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    288,
-    __c9,
+    256,
+    __c8,
     0,
   ) as any as S.Schema<GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest>,
   output: __S(
-    340,
-    __c10,
+    308,
+    __c9,
     20,
   ) as any as S.Schema<GetCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseResponse>,
   errors: [UnknownAzureError],
@@ -1191,11 +1195,11 @@ export const ListAppServiceCertificateOrderByResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    384,
-    __c12,
+    352,
+    __c11,
     0,
   ) as any as S.Schema<ListAppServiceCertificateOrderByResourceGroupRequest>,
-  output: __S(417, __c13, 1) as any as S.Schema<AppServiceCertificateOrderCollection>,
+  output: __S(385, __c12, 1) as any as S.Schema<AppServiceCertificateOrderCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1209,8 +1213,8 @@ export const ListAppServiceCertificateOrderCertificates: API.OperationMethod<
   ListAppServiceCertificateOrderCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<ListAppServiceCertificateOrderCertificatesRequest>,
-  output: __S(450, __c14, 2) as any as S.Schema<AppServiceCertificateCollection>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListAppServiceCertificateOrderCertificatesRequest>,
+  output: __S(418, __c13, 2) as any as S.Schema<AppServiceCertificateCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1224,8 +1228,8 @@ export const ListAppServiceCertificateOrders: API.OperationMethod<
   ListAppServiceCertificateOrdersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<ListAppServiceCertificateOrdersRequest>,
-  output: __S(417, __c13, 1) as any as S.Schema<AppServiceCertificateOrderCollection>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListAppServiceCertificateOrdersRequest>,
+  output: __S(385, __c12, 1) as any as S.Schema<AppServiceCertificateOrderCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1241,11 +1245,11 @@ export const ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorRe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    512,
-    __c16,
+    480,
+    __c15,
     0,
   ) as any as S.Schema<ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest>,
-  output: __S(514, __c16, 2) as any as S.Schema<DetectorResponseCollection>,
+  output: __S(482, __c15, 2) as any as S.Schema<DetectorResponseCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1260,11 +1264,11 @@ export const ListCertificateRegistrationProviderOperations: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    544,
-    __c17,
+    512,
+    __c16,
     0,
   ) as any as S.Schema<ListCertificateRegistrationProviderOperationsRequest>,
-  output: __S(558, __c17, 14) as any as S.Schema<CsmOperationCollection>,
+  output: __S(526, __c16, 14) as any as S.Schema<CsmOperationCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1278,8 +1282,8 @@ export const RenewAppServiceCertificateOrder: API.OperationMethod<
   RenewAppServiceCertificateOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(577, __c18, 1) as any as S.Schema<RenewAppServiceCertificateOrderRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<RenewAppServiceCertificateOrderResponse>,
+  input: __S(545, __c17, 1) as any as S.Schema<RenewAppServiceCertificateOrderRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<RenewAppServiceCertificateOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1293,8 +1297,8 @@ export const ResendAppServiceCertificateOrderEmail: API.OperationMethod<
   ResendAppServiceCertificateOrderEmailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<ResendAppServiceCertificateOrderEmailRequest>,
-  output: __S(736, __c23, 0) as any as S.Schema<ResendAppServiceCertificateOrderEmailResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<ResendAppServiceCertificateOrderEmailRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<ResendAppServiceCertificateOrderEmailResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1309,13 +1313,13 @@ export const ResendAppServiceCertificateOrderRequestEmails: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    640,
-    __c20,
+    608,
+    __c19,
     0,
   ) as any as S.Schema<ResendAppServiceCertificateOrderRequestEmailsRequest>,
   output: __S(
-    736,
-    __c23,
+    704,
+    __c22,
     0,
   ) as any as S.Schema<ResendAppServiceCertificateOrderRequestEmailsResponse>,
   errors: [UnknownAzureError],
@@ -1331,8 +1335,8 @@ export const UpdateAppServiceCertificateOrder: API.OperationMethod<
   UpdateAppServiceCertificateOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<UpdateAppServiceCertificateOrderRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<UpdateAppServiceCertificateOrderResponse>,
+  input: __S(640, __c20, 0) as any as S.Schema<UpdateAppServiceCertificateOrderRequest>,
+  output: __S(928, __c29, 0) as any as S.Schema<UpdateAppServiceCertificateOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1346,8 +1350,12 @@ export const UpdateAppServiceCertificateOrderCertificate: API.OperationMethod<
   UpdateAppServiceCertificateOrderCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c24, 0) as any as S.Schema<UpdateAppServiceCertificateOrderCertificateRequest>,
-  output: __S(256, __c8, 0) as any as S.Schema<UpdateAppServiceCertificateOrderCertificateResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<UpdateAppServiceCertificateOrderCertificateRequest>,
+  output: __S(
+    992,
+    __c31,
+    0,
+  ) as any as S.Schema<UpdateAppServiceCertificateOrderCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1362,13 +1370,13 @@ export const ValidateAppServiceCertificateOrderPurchaseInformation: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    800,
-    __c25,
+    768,
+    __c24,
     0,
   ) as any as S.Schema<ValidateAppServiceCertificateOrderPurchaseInformationRequest>,
   output: __S(
-    736,
-    __c23,
+    704,
+    __c22,
     0,
   ) as any as S.Schema<ValidateAppServiceCertificateOrderPurchaseInformationResponse>,
   errors: [UnknownAzureError],
@@ -1385,13 +1393,13 @@ export const VerifyAppServiceCertificateOrderDomainOwnership: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    832,
-    __c26,
+    800,
+    __c25,
     0,
   ) as any as S.Schema<VerifyAppServiceCertificateOrderDomainOwnershipRequest>,
   output: __S(
-    736,
-    __c23,
+    704,
+    __c22,
     0,
   ) as any as S.Schema<VerifyAppServiceCertificateOrderDomainOwnershipResponse>,
   errors: [UnknownAzureError],
@@ -1421,6 +1429,20 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AppServiceCertificateOrdersCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(163, __c5, 3)),
+          kind: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "AppServiceCertificateOrdersCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -1524,19 +1546,6 @@ function __c5(j: number): any {
           contact: S.optional(__S(162, __c5, 2)),
         }),
       ).annotate({ identifier: "AppServiceCertificateOrderProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c1, 0)),
-          tags: S.optional(__S(64, __c2, 0)),
-          location: S.String,
-          properties: S.optional(__S(163, __c5, 3)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AppServiceCertificateOrdersCreateOrUpdateResponse" });
   }
 }
 function __c6(j: number): any {
@@ -1567,11 +1576,7 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AppServiceCertificateOrdersCreateOrUpdateCertificateRequest" });
-  }
-}
-function __c8(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1582,11 +1587,12 @@ function __c8(j: number): any {
           location: S.String,
           properties: S.optional(__S(96, __c3, 0)),
           kind: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "AppServiceCertificateOrdersCreateOrUpdateCertificateResponse" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1612,7 +1618,7 @@ function __c9(j: number): any {
       });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1622,7 +1628,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "SupportTopic" });
     case 1:
-      return S.Array(__S(320, __c10, 0));
+      return S.Array(__S(288, __c9, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1631,8 +1637,8 @@ function __c10(j: number): any {
           description: S.optional(S.String),
           author: S.optional(S.String),
           category: S.optional(S.String),
-          supportTopicList: S.optional(__S(321, __c10, 1)),
-          analysisType: S.optional(__S(352, __c11, 0)),
+          supportTopicList: S.optional(__S(289, __c9, 1)),
+          analysisType: S.optional(__S(320, __c10, 0)),
           type: S.optional(S.String),
           score: S.optional(S.Number),
         }),
@@ -1646,15 +1652,15 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "DataTableResponseColumn" });
     case 4:
-      return S.Array(__S(323, __c10, 3));
+      return S.Array(__S(291, __c9, 3));
     case 5:
-      return S.Array(__S(352, __c11, 0));
+      return S.Array(__S(320, __c10, 0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           tableName: S.optional(S.String),
-          columns: S.optional(__S(324, __c10, 4)),
-          rows: S.optional(__S(325, __c10, 5)),
+          columns: S.optional(__S(292, __c9, 4)),
+          rows: S.optional(__S(293, __c9, 5)),
         }),
       ).annotate({ identifier: "DataTableResponseObject" });
     case 7:
@@ -1668,12 +1674,12 @@ function __c10(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          table: S.optional(__S(326, __c10, 6)),
-          renderingProperties: S.optional(__S(327, __c10, 7)),
+          table: S.optional(__S(294, __c9, 6)),
+          renderingProperties: S.optional(__S(295, __c9, 7)),
         }),
       ).annotate({ identifier: "DiagnosticData" });
     case 9:
-      return S.Array(__S(328, __c10, 8));
+      return S.Array(__S(296, __c9, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -1689,48 +1695,48 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "KeyValuePairStringObject" });
     case 12:
-      return S.Array(__S(331, __c10, 11));
+      return S.Array(__S(299, __c9, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
           providerName: S.optional(S.String),
-          propertyBag: S.optional(__S(332, __c10, 12)),
+          propertyBag: S.optional(__S(300, __c9, 12)),
         }),
       ).annotate({ identifier: "DataProviderMetadata" });
     case 14:
-      return S.Array(__S(333, __c10, 13));
+      return S.Array(__S(301, __c9, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          links: S.optional(__S(352, __c11, 0)),
+          links: S.optional(__S(320, __c10, 0)),
           qid: S.optional(S.String),
         }),
       ).annotate({ identifier: "SampleUtterance" });
     case 16:
       return S.suspend(() =>
         S.Struct({
-          sampleUtterance: S.optional(__S(335, __c10, 15)),
+          sampleUtterance: S.optional(__S(303, __c9, 15)),
           score: S.optional(S.Number),
         }),
       ).annotate({ identifier: "QueryUtterancesResult" });
     case 17:
-      return S.Array(__S(336, __c10, 16));
+      return S.Array(__S(304, __c9, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
-          results: S.optional(__S(337, __c10, 17)),
+          results: S.optional(__S(305, __c9, 17)),
         }),
       ).annotate({ identifier: "QueryUtterancesResults" });
     case 19:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(__S(322, __c10, 2)),
-          dataset: S.optional(__S(329, __c10, 9)),
-          status: S.optional(__S(330, __c10, 10)),
-          dataProvidersMetadata: S.optional(__S(334, __c10, 14)),
-          suggestedUtterances: S.optional(__S(338, __c10, 18)),
+          metadata: S.optional(__S(290, __c9, 2)),
+          dataset: S.optional(__S(297, __c9, 9)),
+          status: S.optional(__S(298, __c9, 10)),
+          dataProvidersMetadata: S.optional(__S(302, __c9, 14)),
+          suggestedUtterances: S.optional(__S(306, __c9, 18)),
         }),
       ).annotate({ identifier: "DetectorResponseProperties" });
     case 20:
@@ -1740,7 +1746,7 @@ function __c10(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c1, 0)),
-          properties: S.optional(__S(339, __c10, 19)),
+          properties: S.optional(__S(307, __c9, 19)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -1749,13 +1755,13 @@ function __c10(j: number): any {
       });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1773,20 +1779,20 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListAppServiceCertificateOrderByResourceGroupRequest" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(164, __c5, 4));
+      return S.Array(__S(928, __c29, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(416, __c13, 0),
+          value: __S(384, __c12, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppServiceCertificateOrderCollection" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1804,17 +1810,17 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListAppServiceCertificateOrderCertificatesRequest" });
     case 1:
-      return S.Array(__S(256, __c8, 0));
+      return S.Array(__S(992, __c31, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(449, __c14, 1),
+          value: __S(417, __c13, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppServiceCertificateCollection" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1831,7 +1837,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "ListAppServiceCertificateOrdersRequest" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1852,17 +1858,17 @@ function __c16(j: number): any {
           "ListCertificateOrdersDiagnosticAppServiceCertificateOrderDetectorResponseRequest",
       });
     case 1:
-      return S.Array(__S(340, __c10, 20));
+      return S.Array(__S(308, __c9, 20));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(513, __c16, 1),
+          value: __S(481, __c15, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DetectorResponseCollection" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1894,7 +1900,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 3:
-      return S.Array(__S(546, __c17, 2));
+      return S.Array(__S(514, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1903,7 +1909,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "MetricAvailability" });
     case 5:
-      return S.Array(__S(548, __c17, 4));
+      return S.Array(__S(516, __c16, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1919,15 +1925,15 @@ function __c17(j: number): any {
           metricFilterPattern: S.optional(S.String),
           fillGapWithZero: S.optional(S.Boolean),
           isInternal: S.optional(S.Boolean),
-          dimensions: S.optional(__S(547, __c17, 3)),
+          dimensions: S.optional(__S(515, __c16, 3)),
           category: S.optional(S.String),
-          availabilities: S.optional(__S(549, __c17, 5)),
-          supportedTimeGrainTypes: S.optional(__S(352, __c11, 0)),
-          supportedAggregationTypes: S.optional(__S(352, __c11, 0)),
+          availabilities: S.optional(__S(517, __c16, 5)),
+          supportedTimeGrainTypes: S.optional(__S(320, __c10, 0)),
+          supportedAggregationTypes: S.optional(__S(320, __c10, 0)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 7:
-      return S.Array(__S(550, __c17, 6));
+      return S.Array(__S(518, __c16, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -1938,18 +1944,18 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 9:
-      return S.Array(__S(552, __c17, 8));
+      return S.Array(__S(520, __c16, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(551, __c17, 7)),
-          logSpecifications: S.optional(__S(553, __c17, 9)),
+          metricSpecifications: S.optional(__S(519, __c16, 7)),
+          logSpecifications: S.optional(__S(521, __c16, 9)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(554, __c17, 10)),
+          serviceSpecification: S.optional(__S(522, __c16, 10)),
         }),
       ).annotate({ identifier: "CsmOperationDescriptionProperties" });
     case 12:
@@ -1957,23 +1963,23 @@ function __c17(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(545, __c17, 1)),
+          display: S.optional(__S(513, __c16, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(555, __c17, 11)),
+          properties: S.optional(__S(523, __c16, 11)),
         }),
       ).annotate({ identifier: "CsmOperationDescription" });
     case 13:
-      return S.Array(__S(556, __c17, 12));
+      return S.Array(__S(524, __c16, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
-          value: __S(557, __c17, 13),
+          value: __S(525, __c16, 13),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CsmOperationCollection" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1990,7 +1996,7 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           certificateOrderName: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(__S(576, __c18, 0)),
+          properties: S.optional(__S(544, __c17, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2002,7 +2008,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "RenewAppServiceCertificateOrderRequest" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2021,7 +2027,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ResendAppServiceCertificateOrderEmailRequest" });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2041,7 +2047,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "ResendAppServiceCertificateOrderRequestEmailsRequest" });
   }
 }
-function __c21(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2062,7 +2068,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "UpdateAppServiceCertificateOrderRequest" });
   }
 }
-function __c22(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2080,7 +2086,7 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           certificateOrderName: S.String.pipe(T.Label()),
           kind: S.optional(S.String),
-          properties: S.optional(__S(704, __c22, 0)),
+          properties: S.optional(__S(672, __c21, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2092,7 +2098,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "AppServiceCertificateOrdersReissueRequest" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -2100,7 +2106,7 @@ function __c23(j: number): any {
       });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2122,7 +2128,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "UpdateAppServiceCertificateOrderCertificateRequest" });
   }
 }
-function __c25(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2143,7 +2149,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "ValidateAppServiceCertificateOrderPurchaseInformationRequest" });
   }
 }
-function __c26(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2162,7 +2168,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "VerifyAppServiceCertificateOrderDomainOwnershipRequest" });
   }
 }
-function __c27(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2181,7 +2187,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "DeleteAppServiceCertificateOrderRequest" });
   }
 }
-function __c28(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2201,7 +2207,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "DeleteAppServiceCertificateOrderCertificateRequest" });
   }
 }
-function __c29(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2218,6 +2224,23 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAppServiceCertificateOrderRequest" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(163, __c5, 3)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetAppServiceCertificateOrderResponse" });
   }
 }
 function __c30(j: number): any {
@@ -2245,6 +2268,23 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(64, __c2, 0)),
+          location: S.String,
+          properties: S.optional(__S(96, __c3, 0)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetAppServiceCertificateOrderCertificateResponse" });
+  }
+}
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
@@ -2265,14 +2305,14 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "CertificateOrderAction" });
     case 2:
-      return S.Array(__S(993, __c31, 1));
+      return S.Array(__S(1025, __c32, 1));
     case 3:
-      return S.suspend(() => __S(994, __c31, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1026, __c32, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAppServiceCertificateOrderCertificateActionsResponse",
       });
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2297,14 +2337,14 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "CertificateEmail" });
     case 2:
-      return S.Array(__S(1025, __c32, 1));
+      return S.Array(__S(1057, __c33, 1));
     case 3:
-      return S.suspend(() => __S(1026, __c32, 2).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1058, __c33, 2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetAppServiceCertificateOrderCertificateEmailHistoryResponse",
       });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

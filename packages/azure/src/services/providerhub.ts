@@ -91,6 +91,10 @@ export interface AuthorizedApplicationsCreateOrUpdateResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
   properties?: AuthorizedApplicationProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CheckinManifestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -147,6 +151,10 @@ export interface CreateProviderMonitorSettingsResponse {
   /** The geo-location where the resource lives */
   location: string;
   properties?: ProviderMonitorSettingProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The auto provisioning configuration. */
 export interface CustomRolloutSpecificationAutoProvisionConfig {
@@ -1738,6 +1746,10 @@ export interface CustomRolloutsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Properties of the rollout. */
   properties: CustomRolloutProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ExpeditedRolloutDefinition {
   /** Indicates whether expedited rollout is enabled/disabled */
@@ -1911,6 +1923,10 @@ export interface DefaultRolloutsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Properties of the rollout. */
   properties?: DefaultRolloutProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAuthorizedApplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1992,7 +2008,12 @@ export interface DeleteResourceActionResourcesRequest {
   /** resource management action content. */
   resources?: DeleteResourceActionResourcesRequestResourcesList;
 }
-export interface DeleteResourceActionResourcesResponse {}
+export interface DeleteResourceActionResourcesResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteResourceTypeRegistrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2001,7 +2022,12 @@ export interface DeleteResourceTypeRegistrationRequest {
   /** The resource type. */
   resourceType: string;
 }
-export interface DeleteResourceTypeRegistrationResponse {}
+export interface DeleteResourceTypeRegistrationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3101,6 +3127,10 @@ export interface ProviderRegistrationsCreateOrUpdateResponse {
   properties?: ProviderRegistrationProperties;
   /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: ProviderRegistrationsCreateOrUpdateResponseKind;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
 export type ResourceTypeRegistrationsCreateOrUpdateRequestKind = "Managed" | "Hybrid" | "Direct";
@@ -3129,6 +3159,10 @@ export interface ResourceTypeRegistrationsCreateOrUpdateResponse {
   properties?: ResourceTypeRegistrationProperties;
   /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
   kind?: ResourceTypeRegistrationsCreateOrUpdateResponseKind;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SkusCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3282,7 +3316,7 @@ export const AuthorizedApplicationsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AuthorizedApplicationsCreateOrUpdateRequest>,
-  output: __S(68, __c2, 4) as any as S.Schema<AuthorizedApplicationsCreateOrUpdateResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<AuthorizedApplicationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3311,8 +3345,8 @@ export const CreateProviderMonitorSettings: API.OperationMethod<
   CreateProviderMonitorSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<CreateProviderMonitorSettingsRequest>,
-  output: __S(610, __c19, 2) as any as S.Schema<CreateProviderMonitorSettingsResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<CreateProviderMonitorSettingsRequest>,
+  output: __S(609, __c19, 1) as any as S.Schema<CreateProviderMonitorSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3326,8 +3360,8 @@ export const CustomRolloutsCreateOrUpdate: API.OperationMethod<
   CustomRolloutsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1059, __c33, 3) as any as S.Schema<CustomRolloutsCreateOrUpdateRequest>,
-  output: __S(1094, __c34, 6) as any as S.Schema<CustomRolloutsCreateOrUpdateResponse>,
+  input: __S(1219, __c38, 3) as any as S.Schema<CustomRolloutsCreateOrUpdateRequest>,
+  output: __S(1220, __c38, 4) as any as S.Schema<CustomRolloutsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3341,8 +3375,8 @@ export const DefaultRolloutsCreateOrUpdate: API.OperationMethod<
   DefaultRolloutsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1827, __c57, 3) as any as S.Schema<DefaultRolloutsCreateOrUpdateRequest>,
-  output: __S(1862, __c58, 6) as any as S.Schema<DefaultRolloutsCreateOrUpdateResponse>,
+  input: __S(2051, __c64, 3) as any as S.Schema<DefaultRolloutsCreateOrUpdateRequest>,
+  output: __S(2052, __c64, 4) as any as S.Schema<DefaultRolloutsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3356,8 +3390,8 @@ export const DeleteAuthorizedApplication: API.OperationMethod<
   DeleteAuthorizedApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<DeleteAuthorizedApplicationRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteAuthorizedApplicationResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<DeleteAuthorizedApplicationRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteAuthorizedApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3371,8 +3405,8 @@ export const DeleteCustomRollout: API.OperationMethod<
   DeleteCustomRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<DeleteCustomRolloutRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteCustomRolloutResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<DeleteCustomRolloutRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteCustomRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3386,8 +3420,8 @@ export const DeleteDefaultRollout: API.OperationMethod<
   DeleteDefaultRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<DeleteDefaultRolloutRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteDefaultRolloutResponse>,
+  input: __S(2816, __c88, 0) as any as S.Schema<DeleteDefaultRolloutRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteDefaultRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3401,8 +3435,8 @@ export const DeleteNotificationRegistration: API.OperationMethod<
   DeleteNotificationRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<DeleteNotificationRegistrationRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteNotificationRegistrationResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<DeleteNotificationRegistrationRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteNotificationRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3416,8 +3450,8 @@ export const DeleteOperation: API.OperationMethod<
   DeleteOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<DeleteOperationRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteOperationResponse>,
+  input: __S(2880, __c90, 0) as any as S.Schema<DeleteOperationRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3432,7 +3466,7 @@ export const DeleteProviderMonitorSettings: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c6, 0) as any as S.Schema<DeleteProviderMonitorSettingsRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteProviderMonitorSettingsResponse>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteProviderMonitorSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3447,7 +3481,7 @@ export const DeleteProviderRegistration: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<DeleteProviderRegistrationRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteProviderRegistrationResponse>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteProviderRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3462,7 +3496,7 @@ export const DeleteResourceActionResources: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(258, __c8, 2) as any as S.Schema<DeleteResourceActionResourcesRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteResourceActionResourcesResponse>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteResourceActionResourcesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3476,8 +3510,8 @@ export const DeleteResourceTypeRegistration: API.OperationMethod<
   DeleteResourceTypeRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c9, 0) as any as S.Schema<DeleteResourceTypeRegistrationRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteResourceTypeRegistrationResponse>,
+  input: __S(320, __c10, 0) as any as S.Schema<DeleteResourceTypeRegistrationRequest>,
+  output: __S(288, __c9, 0) as any as S.Schema<DeleteResourceTypeRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3491,8 +3525,8 @@ export const DeleteSkus: API.OperationMethod<
   DeleteSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<DeleteSkusRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteSkusResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<DeleteSkusRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3506,8 +3540,8 @@ export const DeleteSkusNestedResourceTypeFirst: API.OperationMethod<
   DeleteSkusNestedResourceTypeFirstError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<DeleteSkusNestedResourceTypeFirstRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteSkusNestedResourceTypeFirstResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteSkusNestedResourceTypeFirstRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteSkusNestedResourceTypeFirstResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3521,8 +3555,8 @@ export const DeleteSkusNestedResourceTypeSecond: API.OperationMethod<
   DeleteSkusNestedResourceTypeSecondError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<DeleteSkusNestedResourceTypeSecondRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteSkusNestedResourceTypeSecondResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteSkusNestedResourceTypeSecondRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteSkusNestedResourceTypeSecondResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3536,8 +3570,8 @@ export const DeleteSkusNestedResourceTypeThird: API.OperationMethod<
   DeleteSkusNestedResourceTypeThirdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<DeleteSkusNestedResourceTypeThirdRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<DeleteSkusNestedResourceTypeThirdResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteSkusNestedResourceTypeThirdRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<DeleteSkusNestedResourceTypeThirdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3551,8 +3585,8 @@ export const GenerateManifest: API.OperationMethod<
   GenerateManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<GenerateManifestRequest>,
-  output: __S(453, __c14, 5) as any as S.Schema<ResourceProviderManifest>,
+  input: __S(480, __c15, 0) as any as S.Schema<GenerateManifestRequest>,
+  output: __S(485, __c15, 5) as any as S.Schema<ResourceProviderManifest>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3566,8 +3600,8 @@ export const GenerateProviderRegistrationOperations: API.OperationMethod<
   GenerateProviderRegistrationOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<GenerateProviderRegistrationOperationsRequest>,
-  output: __S(481, __c15, 1) as any as S.Schema<GenerateProviderRegistrationOperationsResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GenerateProviderRegistrationOperationsRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<GenerateProviderRegistrationOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3581,8 +3615,8 @@ export const GetAuthorizedApplication: API.OperationMethod<
   GetAuthorizedApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<GetAuthorizedApplicationRequest>,
-  output: __S(68, __c2, 4) as any as S.Schema<GetAuthorizedApplicationResponse>,
+  input: __S(672, __c21, 0) as any as S.Schema<GetAuthorizedApplicationRequest>,
+  output: __S(704, __c22, 0) as any as S.Schema<GetAuthorizedApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3596,8 +3630,8 @@ export const GetCustomRollout: API.OperationMethod<
   GetCustomRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<GetCustomRolloutRequest>,
-  output: __S(1094, __c34, 6) as any as S.Schema<GetCustomRolloutResponse>,
+  input: __S(736, __c23, 0) as any as S.Schema<GetCustomRolloutRequest>,
+  output: __S(768, __c24, 0) as any as S.Schema<GetCustomRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3611,8 +3645,8 @@ export const GetDefaultRollout: API.OperationMethod<
   GetDefaultRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<GetDefaultRolloutRequest>,
-  output: __S(1862, __c58, 6) as any as S.Schema<GetDefaultRolloutResponse>,
+  input: __S(800, __c25, 0) as any as S.Schema<GetDefaultRolloutRequest>,
+  output: __S(832, __c26, 0) as any as S.Schema<GetDefaultRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3626,8 +3660,8 @@ export const GetManifest: API.OperationMethod<
   GetManifestError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<GetManifestRequest>,
-  output: __S(769, __c24, 1) as any as S.Schema<GetManifestResponse>,
+  input: __S(864, __c27, 0) as any as S.Schema<GetManifestRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<GetManifestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3641,8 +3675,8 @@ export const GetNotificationRegistration: API.OperationMethod<
   GetNotificationRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<GetNotificationRegistrationRequest>,
-  output: __S(835, __c26, 3) as any as S.Schema<GetNotificationRegistrationResponse>,
+  input: __S(928, __c29, 0) as any as S.Schema<GetNotificationRegistrationRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<GetNotificationRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3656,8 +3690,8 @@ export const GetProviderMonitorSettings: API.OperationMethod<
   GetProviderMonitorSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<GetProviderMonitorSettingsRequest>,
-  output: __S(610, __c19, 2) as any as S.Schema<GetProviderMonitorSettingsResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<GetProviderMonitorSettingsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<GetProviderMonitorSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3671,8 +3705,8 @@ export const GetProviderRegistration: API.OperationMethod<
   GetProviderRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<GetProviderRegistrationRequest>,
-  output: __S(1297, __c40, 17) as any as S.Schema<GetProviderRegistrationResponse>,
+  input: __S(1056, __c33, 0) as any as S.Schema<GetProviderRegistrationRequest>,
+  output: __S(1440, __c45, 0) as any as S.Schema<GetProviderRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3686,8 +3720,8 @@ export const GetResourceTypeRegistration: API.OperationMethod<
   GetResourceTypeRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<GetResourceTypeRegistrationRequest>,
-  output: __S(1360, __c42, 16) as any as S.Schema<GetResourceTypeRegistrationResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<GetResourceTypeRegistrationRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<GetResourceTypeRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3701,8 +3735,8 @@ export const GetSkus: API.OperationMethod<
   GetSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<GetSkusRequest>,
-  output: __S(1004, __c31, 12) as any as S.Schema<GetSkusResponse>,
+  input: __S(1120, __c35, 0) as any as S.Schema<GetSkusRequest>,
+  output: __S(1164, __c36, 12) as any as S.Schema<GetSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3716,8 +3750,8 @@ export const GetSkusNestedResourceTypeFirst: API.OperationMethod<
   GetSkusNestedResourceTypeFirstError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<GetSkusNestedResourceTypeFirstRequest>,
-  output: __S(1004, __c31, 12) as any as S.Schema<GetSkusNestedResourceTypeFirstResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<GetSkusNestedResourceTypeFirstRequest>,
+  output: __S(1164, __c36, 12) as any as S.Schema<GetSkusNestedResourceTypeFirstResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3731,8 +3765,8 @@ export const GetSkusNestedResourceTypeSecond: API.OperationMethod<
   GetSkusNestedResourceTypeSecondError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<GetSkusNestedResourceTypeSecondRequest>,
-  output: __S(1004, __c31, 12) as any as S.Schema<GetSkusNestedResourceTypeSecondResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetSkusNestedResourceTypeSecondRequest>,
+  output: __S(1164, __c36, 12) as any as S.Schema<GetSkusNestedResourceTypeSecondResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3746,8 +3780,8 @@ export const GetSkusNestedResourceTypeThird: API.OperationMethod<
   GetSkusNestedResourceTypeThirdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<GetSkusNestedResourceTypeThirdRequest>,
-  output: __S(1004, __c31, 12) as any as S.Schema<GetSkusNestedResourceTypeThirdResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<GetSkusNestedResourceTypeThirdRequest>,
+  output: __S(1164, __c36, 12) as any as S.Schema<GetSkusNestedResourceTypeThirdResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3761,10 +3795,10 @@ export const ListAuthorizedApplications: API.OperationMethod<
   ListAuthorizedApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<ListAuthorizedApplicationsRequest>,
+  input: __S(1728, __c54, 0) as any as S.Schema<ListAuthorizedApplicationsRequest>,
   output: __S(
-    1506,
-    __c47,
+    1730,
+    __c54,
     2,
   ) as any as S.Schema<AuthorizedApplicationArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
@@ -3780,8 +3814,8 @@ export const ListCustomRolloutByProviderRegistration: API.OperationMethod<
   ListCustomRolloutByProviderRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<ListCustomRolloutByProviderRegistrationRequest>,
-  output: __S(1538, __c48, 2) as any as S.Schema<CustomRolloutArrayResponseWithContinuation>,
+  input: __S(1760, __c55, 0) as any as S.Schema<ListCustomRolloutByProviderRegistrationRequest>,
+  output: __S(1762, __c55, 2) as any as S.Schema<CustomRolloutArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3795,8 +3829,8 @@ export const ListDefaultRolloutByProviderRegistration: API.OperationMethod<
   ListDefaultRolloutByProviderRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<ListDefaultRolloutByProviderRegistrationRequest>,
-  output: __S(1570, __c49, 2) as any as S.Schema<DefaultRolloutArrayResponseWithContinuation>,
+  input: __S(1792, __c56, 0) as any as S.Schema<ListDefaultRolloutByProviderRegistrationRequest>,
+  output: __S(1794, __c56, 2) as any as S.Schema<DefaultRolloutArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3811,13 +3845,13 @@ export const ListNotificationRegistrationByProviderRegistration: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1600,
-    __c50,
+    1824,
+    __c57,
     0,
   ) as any as S.Schema<ListNotificationRegistrationByProviderRegistrationRequest>,
   output: __S(
-    1602,
-    __c50,
+    1826,
+    __c57,
     2,
   ) as any as S.Schema<NotificationRegistrationArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
@@ -3833,8 +3867,8 @@ export const ListOperationByProviderRegistration: API.OperationMethod<
   ListOperationByProviderRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<ListOperationByProviderRegistrationRequest>,
-  output: __S(1668, __c52, 4) as any as S.Schema<ListOperationByProviderRegistrationResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<ListOperationByProviderRegistrationRequest>,
+  output: __S(1892, __c59, 4) as any as S.Schema<ListOperationByProviderRegistrationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3848,8 +3882,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1697, __c53, 1) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuation>,
+  input: __S(1920, __c60, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1921, __c60, 1) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3863,10 +3897,10 @@ export const ListProviderMonitorSettingsByResourceGroup: API.OperationMethod<
   ListProviderMonitorSettingsByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<ListProviderMonitorSettingsByResourceGroupRequest>,
+  input: __S(1952, __c61, 0) as any as S.Schema<ListProviderMonitorSettingsByResourceGroupRequest>,
   output: __S(
-    1761,
-    __c55,
+    1985,
+    __c62,
     1,
   ) as any as S.Schema<ProviderMonitorSettingArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
@@ -3882,10 +3916,10 @@ export const ListProviderMonitorSettingsBySubscription: API.OperationMethod<
   ListProviderMonitorSettingsBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<ListProviderMonitorSettingsBySubscriptionRequest>,
+  input: __S(2016, __c63, 0) as any as S.Schema<ListProviderMonitorSettingsBySubscriptionRequest>,
   output: __S(
-    1761,
-    __c55,
+    1985,
+    __c62,
     1,
   ) as any as S.Schema<ProviderMonitorSettingArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
@@ -3901,8 +3935,8 @@ export const ListProviderRegistrations: API.OperationMethod<
   ListProviderRegistrationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<ListProviderRegistrationsRequest>,
-  output: __S(1890, __c59, 2) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuation>,
+  input: __S(2112, __c66, 0) as any as S.Schema<ListProviderRegistrationsRequest>,
+  output: __S(2114, __c66, 2) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3917,13 +3951,13 @@ export const ListResourceTypeRegistrationByProviderRegistration: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1920,
-    __c60,
+    2144,
+    __c67,
     0,
   ) as any as S.Schema<ListResourceTypeRegistrationByProviderRegistrationRequest>,
   output: __S(
-    1921,
-    __c60,
+    2145,
+    __c67,
     1,
   ) as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
@@ -3939,8 +3973,8 @@ export const ListSkusByResourceTypeRegistrations: API.OperationMethod<
   ListSkusByResourceTypeRegistrationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<ListSkusByResourceTypeRegistrationsRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
+  input: __S(2176, __c68, 0) as any as S.Schema<ListSkusByResourceTypeRegistrationsRequest>,
+  output: __S(2209, __c69, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3955,11 +3989,11 @@ export const ListSkusByResourceTypeRegistrationsNestedResourceTypeFirst: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2016,
-    __c63,
+    2240,
+    __c70,
     0,
   ) as any as S.Schema<ListSkusByResourceTypeRegistrationsNestedResourceTypeFirstRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
+  output: __S(2209, __c69, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3974,11 +4008,11 @@ export const ListSkusByResourceTypeRegistrationsNestedResourceTypeSecond: API.Op
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2048,
-    __c64,
+    2272,
+    __c71,
     0,
   ) as any as S.Schema<ListSkusByResourceTypeRegistrationsNestedResourceTypeSecondRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
+  output: __S(2209, __c69, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3993,11 +4027,11 @@ export const ListSkusByResourceTypeRegistrationsNestedResourceTypeThird: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2080,
-    __c65,
+    2304,
+    __c72,
     0,
   ) as any as S.Schema<ListSkusByResourceTypeRegistrationsNestedResourceTypeThirdRequest>,
-  output: __S(1985, __c62, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
+  output: __S(2209, __c69, 1) as any as S.Schema<SkuResourceArrayResponseWithContinuation>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4011,8 +4045,8 @@ export const ManifestsCreateOrUpdate: API.OperationMethod<
   ManifestsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2113, __c66, 1) as any as S.Schema<ManifestsCreateOrUpdateRequest>,
-  output: __S(769, __c24, 1) as any as S.Schema<ManifestsCreateOrUpdateResponse>,
+  input: __S(2337, __c73, 1) as any as S.Schema<ManifestsCreateOrUpdateRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<ManifestsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4026,8 +4060,8 @@ export const NotificationRegistrationsCreateOrUpdate: API.OperationMethod<
   NotificationRegistrationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<NotificationRegistrationsCreateOrUpdateRequest>,
-  output: __S(835, __c26, 3) as any as S.Schema<NotificationRegistrationsCreateOrUpdateResponse>,
+  input: __S(2368, __c74, 0) as any as S.Schema<NotificationRegistrationsCreateOrUpdateRequest>,
+  output: __S(963, __c30, 3) as any as S.Schema<NotificationRegistrationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4041,8 +4075,8 @@ export const OperationsCreateOrUpdate: API.OperationMethod<
   OperationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<OperationsCreateOrUpdateRequest>,
-  output: __S(1668, __c52, 4) as any as S.Schema<OperationsCreateOrUpdateResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<OperationsCreateOrUpdateRequest>,
+  output: __S(1892, __c59, 4) as any as S.Schema<OperationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4056,8 +4090,8 @@ export const ProviderRegistrationsCreateOrUpdate: API.OperationMethod<
   ProviderRegistrationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<ProviderRegistrationsCreateOrUpdateRequest>,
-  output: __S(1297, __c40, 17) as any as S.Schema<ProviderRegistrationsCreateOrUpdateResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<ProviderRegistrationsCreateOrUpdateRequest>,
+  output: __S(2433, __c76, 1) as any as S.Schema<ProviderRegistrationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4071,8 +4105,8 @@ export const ResourceTypeRegistrationsCreateOrUpdate: API.OperationMethod<
   ResourceTypeRegistrationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateRequest>,
-  output: __S(1360, __c42, 16) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateResponse>,
+  input: __S(2528, __c79, 0) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateRequest>,
+  output: __S(2529, __c79, 1) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4086,8 +4120,8 @@ export const SkusCreateOrUpdate: API.OperationMethod<
   SkusCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<SkusCreateOrUpdateRequest>,
-  output: __S(1004, __c31, 12) as any as S.Schema<SkusCreateOrUpdateResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<SkusCreateOrUpdateRequest>,
+  output: __S(1164, __c36, 12) as any as S.Schema<SkusCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4101,10 +4135,10 @@ export const SkusCreateOrUpdateNestedResourceTypeFirst: API.OperationMethod<
   SkusCreateOrUpdateNestedResourceTypeFirstError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeFirstRequest>,
+  input: __S(2592, __c81, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeFirstRequest>,
   output: __S(
-    1004,
-    __c31,
+    1164,
+    __c36,
     12,
   ) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeFirstResponse>,
   errors: [UnknownAzureError],
@@ -4120,10 +4154,10 @@ export const SkusCreateOrUpdateNestedResourceTypeSecond: API.OperationMethod<
   SkusCreateOrUpdateNestedResourceTypeSecondError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeSecondRequest>,
+  input: __S(2624, __c82, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeSecondRequest>,
   output: __S(
-    1004,
-    __c31,
+    1164,
+    __c36,
     12,
   ) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeSecondResponse>,
   errors: [UnknownAzureError],
@@ -4139,10 +4173,10 @@ export const SkusCreateOrUpdateNestedResourceTypeThird: API.OperationMethod<
   SkusCreateOrUpdateNestedResourceTypeThirdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdRequest>,
+  input: __S(2656, __c83, 0) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdRequest>,
   output: __S(
-    1004,
-    __c31,
+    1164,
+    __c36,
     12,
   ) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdResponse>,
   errors: [UnknownAzureError],
@@ -4158,8 +4192,8 @@ export const StopCustomRollout: API.OperationMethod<
   StopCustomRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<StopCustomRolloutRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<StopCustomRolloutResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<StopCustomRolloutRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<StopCustomRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4173,8 +4207,8 @@ export const StopDefaultRollout: API.OperationMethod<
   StopDefaultRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2496, __c78, 0) as any as S.Schema<StopDefaultRolloutRequest>,
-  output: __S(2272, __c71, 0) as any as S.Schema<StopDefaultRolloutResponse>,
+  input: __S(2720, __c85, 0) as any as S.Schema<StopDefaultRolloutRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<StopDefaultRolloutResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4188,8 +4222,8 @@ export const UpdateProviderMonitorSettings: API.OperationMethod<
   UpdateProviderMonitorSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<UpdateProviderMonitorSettingsRequest>,
-  output: __S(610, __c19, 2) as any as S.Schema<UpdateProviderMonitorSettingsResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<UpdateProviderMonitorSettingsRequest>,
+  output: __S(1024, __c32, 0) as any as S.Schema<UpdateProviderMonitorSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4214,6 +4248,18 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AuthorizedApplicationsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(67, __c2, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AuthorizedApplicationsCreateOrUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -4258,16 +4304,6 @@ function __c2(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthorizedApplicationProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c1, 0)),
-          properties: S.optional(__S(67, __c2, 3)),
-        }),
-      ).annotate({ identifier: "AuthorizedApplicationsCreateOrUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -4381,6 +4417,17 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteResourceActionResourcesResponse" });
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           resourceType: S.String.pipe(T.Label()),
@@ -4395,7 +4442,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "DeleteResourceTypeRegistrationRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4415,7 +4462,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "DeleteSkusRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4436,7 +4483,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DeleteSkusNestedResourceTypeFirstRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4458,7 +4505,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "DeleteSkusNestedResourceTypeSecondRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4481,7 +4528,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteSkusNestedResourceTypeThirdRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4512,35 +4559,35 @@ function __c14(j: number): any {
           crossTenantTokenValidation: S.optional(S.String),
           resourceValidation: S.optional(S.String),
           allowedUnauthorizedActions: S.optional(__S(96, __c3, 0)),
-          allowedUnauthorizedActionsExtensions: S.optional(__S(1217, __c38, 1)),
-          authorizationActionMappings: S.optional(__S(1219, __c38, 3)),
-          linkedAccessChecks: S.optional(__S(1221, __c38, 5)),
+          allowedUnauthorizedActionsExtensions: S.optional(__S(1377, __c43, 1)),
+          authorizationActionMappings: S.optional(__S(1379, __c43, 3)),
+          linkedAccessChecks: S.optional(__S(1381, __c43, 5)),
           defaultApiVersion: S.optional(S.String),
-          loggingRules: S.optional(__S(1224, __c38, 8)),
-          throttlingRules: S.optional(__S(1228, __c38, 12)),
-          endpoints: S.optional(__S(1197, __c37, 13)),
+          loggingRules: S.optional(__S(1384, __c43, 8)),
+          throttlingRules: S.optional(__S(1388, __c43, 12)),
+          endpoints: S.optional(__S(1357, __c42, 13)),
           marketplaceType: S.optional(S.String),
-          identityManagement: S.optional(__S(449, __c14, 1)),
+          identityManagement: S.optional(__S(481, __c15, 1)),
           metadata: S.optional(S.Unknown),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
-          featuresRule: S.optional(__S(1152, __c36, 0)),
-          subscriptionStateRules: S.optional(__S(1230, __c38, 14)),
-          requestHeaderOptions: S.optional(__S(1153, __c36, 1)),
+          featuresRule: S.optional(__S(1312, __c41, 0)),
+          subscriptionStateRules: S.optional(__S(1390, __c43, 14)),
+          requestHeaderOptions: S.optional(__S(1313, __c41, 1)),
           skuLink: S.optional(S.String),
           disallowedActionVerbs: S.optional(__S(96, __c3, 0)),
-          templateDeploymentPolicy: S.optional(__S(1241, __c38, 25)),
-          extendedLocations: S.optional(__S(1232, __c38, 16)),
-          linkedOperationRules: S.optional(__S(1243, __c38, 27)),
+          templateDeploymentPolicy: S.optional(__S(1401, __c43, 25)),
+          extendedLocations: S.optional(__S(1392, __c43, 16)),
+          linkedOperationRules: S.optional(__S(1403, __c43, 27)),
           resourceDeletionPolicy: S.optional(S.String),
-          resourceDeletionPolicies: S.optional(__S(1235, __c38, 19)),
-          quotaRule: S.optional(__S(1238, __c38, 22)),
-          notifications: S.optional(__S(1160, __c36, 8)),
-          linkedNotificationRules: S.optional(__S(1240, __c38, 24)),
-          resourceProviderAuthorizationRules: S.optional(__S(1163, __c36, 11)),
+          resourceDeletionPolicies: S.optional(__S(1395, __c43, 19)),
+          quotaRule: S.optional(__S(1398, __c43, 22)),
+          notifications: S.optional(__S(1320, __c41, 8)),
+          linkedNotificationRules: S.optional(__S(1400, __c43, 24)),
+          resourceProviderAuthorizationRules: S.optional(__S(1323, __c41, 11)),
         }),
       ).annotate({ identifier: "ResourceType" });
     case 3:
-      return S.Array(__S(450, __c14, 2));
+      return S.Array(__S(482, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4551,33 +4598,33 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          providerAuthentication: S.optional(__S(1184, __c37, 0)),
-          providerAuthorizations: S.optional(__S(1191, __c37, 7)),
+          providerAuthentication: S.optional(__S(1344, __c42, 0)),
+          providerAuthorizations: S.optional(__S(1351, __c42, 7)),
           namespace: S.optional(S.String),
-          services: S.optional(__S(1193, __c37, 9)),
+          services: S.optional(__S(1353, __c42, 9)),
           serviceName: S.optional(S.String),
           providerVersion: S.optional(S.String),
           providerType: S.optional(S.String),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
-          featuresRule: S.optional(__S(1152, __c36, 0)),
-          requestHeaderOptions: S.optional(__S(1153, __c36, 1)),
-          resourceTypes: S.optional(__S(451, __c14, 3)),
-          management: S.optional(__S(1158, __c36, 6)),
-          capabilities: S.optional(__S(1195, __c37, 11)),
+          featuresRule: S.optional(__S(1312, __c41, 0)),
+          requestHeaderOptions: S.optional(__S(1313, __c41, 1)),
+          resourceTypes: S.optional(__S(483, __c15, 3)),
+          management: S.optional(__S(1318, __c41, 6)),
+          capabilities: S.optional(__S(1355, __c42, 11)),
           crossTenantTokenValidation: S.optional(S.String),
           metadata: S.optional(S.Unknown),
-          globalNotificationEndpoints: S.optional(__S(1197, __c37, 13)),
-          reRegisterSubscriptionMetadata: S.optional(__S(452, __c14, 4)),
+          globalNotificationEndpoints: S.optional(__S(1357, __c42, 13)),
+          reRegisterSubscriptionMetadata: S.optional(__S(484, __c15, 4)),
           enableTenantLinkedNotification: S.optional(S.NullOr(S.Boolean)),
-          notifications: S.optional(__S(1160, __c36, 8)),
-          linkedNotificationRules: S.optional(__S(1199, __c37, 15)),
-          resourceProviderAuthorizationRules: S.optional(__S(1163, __c36, 11)),
-          tokenAuthConfiguration: S.optional(__S(1161, __c36, 9)),
+          notifications: S.optional(__S(1320, __c41, 8)),
+          linkedNotificationRules: S.optional(__S(1359, __c42, 15)),
+          resourceProviderAuthorizationRules: S.optional(__S(1323, __c41, 11)),
+          tokenAuthConfiguration: S.optional(__S(1321, __c41, 9)),
         }),
       ).annotate({ identifier: "ResourceProviderManifest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4594,12 +4641,12 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "GenerateProviderRegistrationOperationsRequest" });
     case 1:
-      return S.suspend(() => __S(545, __c17, 1).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(577, __c18, 1).pipe(T.RawResponseRoot())).annotate({
         identifier: "GenerateProviderRegistrationOperationsResponse",
       });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4612,7 +4659,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "OperationsDisplayDefinition" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4620,16 +4667,16 @@ function __c17(j: number): any {
           name: S.String,
           isDataAction: S.optional(S.Boolean),
           origin: S.optional(S.String),
-          display: __S(512, __c16, 0),
+          display: __S(544, __c17, 0),
           actionType: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OperationsDefinition" });
     case 1:
-      return S.Array(__S(544, __c17, 0));
+      return S.Array(__S(576, __c18, 0));
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4637,9 +4684,9 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           providerMonitorSettingName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(608, __c19, 0)),
+          tags: S.optional(__S(640, __c20, 0)),
           location: S.String,
-          properties: S.optional(__S(609, __c19, 1)),
+          properties: S.optional(__S(641, __c20, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4649,9 +4696,23 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateProviderMonitorSettingsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(640, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(641, __c20, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateProviderMonitorSettingsResponse" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -4661,21 +4722,9 @@ function __c19(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProviderMonitorSettingProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c1, 0)),
-          tags: S.optional(__S(608, __c19, 0)),
-          location: S.String,
-          properties: S.optional(__S(609, __c19, 1)),
-        }),
-      ).annotate({ identifier: "CreateProviderMonitorSettingsResponse" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4694,7 +4743,21 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetAuthorizedApplicationRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(67, __c2, 3)),
+        }),
+      ).annotate({ identifier: "GetAuthorizedApplicationResponse" });
+  }
+}
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4713,7 +4776,21 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetCustomRolloutRequest" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(1253, __c39, 5),
+        }),
+      ).annotate({ identifier: "GetCustomRolloutResponse" });
+  }
+}
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4732,7 +4809,21 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetDefaultRolloutRequest" });
   }
 }
-function __c23(j: number): any {
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(2085, __c65, 5)),
+        }),
+      ).annotate({ identifier: "GetDefaultRolloutResponse" });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4751,7 +4842,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GetManifestRequest" });
   }
 }
-function __c24(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4768,12 +4859,12 @@ function __c24(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c1, 0)),
-          properties: S.optional(__S(768, __c24, 0)),
+          properties: S.optional(__S(896, __c28, 0)),
         }),
       ).annotate({ identifier: "GetManifestResponse" });
   }
 }
-function __c25(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4792,7 +4883,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "GetNotificationRegistrationRequest" });
   }
 }
-function __c26(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4802,14 +4893,14 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "NotificationEndpoint" });
     case 1:
-      return S.Array(__S(832, __c26, 0));
+      return S.Array(__S(960, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           notificationMode: S.optional(S.String),
           messageScope: S.optional(S.String),
           includedEvents: S.optional(__S(96, __c3, 0)),
-          notificationEndpoints: S.optional(__S(833, __c26, 1)),
+          notificationEndpoints: S.optional(__S(961, __c30, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationRegistrationProperties" });
@@ -4820,12 +4911,12 @@ function __c26(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c1, 0)),
-          properties: S.optional(__S(834, __c26, 2)),
+          properties: S.optional(__S(962, __c30, 2)),
         }),
       ).annotate({ identifier: "GetNotificationRegistrationResponse" });
   }
 }
-function __c27(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4844,7 +4935,23 @@ function __c27(j: number): any {
       ).annotate({ identifier: "GetProviderMonitorSettingsRequest" });
   }
 }
-function __c28(j: number): any {
+function __c32(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          tags: S.optional(__S(640, __c20, 0)),
+          location: S.String,
+          properties: S.optional(__S(641, __c20, 1)),
+        }),
+      ).annotate({ identifier: "GetProviderMonitorSettingsResponse" });
+  }
+}
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4862,7 +4969,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetProviderRegistrationRequest" });
   }
 }
-function __c29(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4881,7 +4988,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetResourceTypeRegistrationRequest" });
   }
 }
-function __c30(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4901,7 +5008,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetSkusRequest" });
   }
 }
-function __c31(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4911,28 +5018,28 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "SkuCapability" });
     case 1:
-      return S.Array(__S(992, __c31, 0));
+      return S.Array(__S(1152, __c36, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(__S(96, __c3, 0)),
-          capabilities: S.optional(__S(993, __c31, 1)),
+          capabilities: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({ identifier: "SkuZoneDetail" });
     case 3:
-      return S.Array(__S(994, __c31, 2));
+      return S.Array(__S(1154, __c36, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
           zones: S.optional(__S(96, __c3, 0)),
-          zoneDetails: S.optional(__S(995, __c31, 3)),
+          zoneDetails: S.optional(__S(1155, __c36, 3)),
           extendedLocations: S.optional(__S(96, __c3, 0)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuLocationInfo" });
     case 5:
-      return S.Array(__S(996, __c31, 4));
+      return S.Array(__S(1156, __c36, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4951,7 +5058,7 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "SkuCost" });
     case 8:
-      return S.Array(__S(999, __c31, 7));
+      return S.Array(__S(1159, __c36, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -4961,20 +5068,20 @@ function __c31(j: number): any {
           family: S.optional(S.String),
           kind: S.optional(S.String),
           locations: S.optional(__S(96, __c3, 0)),
-          locationInfo: S.optional(__S(997, __c31, 5)),
+          locationInfo: S.optional(__S(1157, __c36, 5)),
           requiredQuotaIds: S.optional(__S(96, __c3, 0)),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
-          capacity: S.optional(__S(998, __c31, 6)),
-          costs: S.optional(__S(1000, __c31, 8)),
-          capabilities: S.optional(__S(993, __c31, 1)),
+          capacity: S.optional(__S(1158, __c36, 6)),
+          costs: S.optional(__S(1160, __c36, 8)),
+          capabilities: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({ identifier: "SkuSetting" });
     case 10:
-      return S.Array(__S(1001, __c31, 9));
+      return S.Array(__S(1161, __c36, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
-          skuSettings: __S(1002, __c31, 10),
+          skuSettings: __S(1162, __c36, 10),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceTypeSku" });
@@ -4985,12 +5092,12 @@ function __c31(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c1, 0)),
-          properties: S.optional(__S(1003, __c31, 11)),
+          properties: S.optional(__S(1163, __c36, 11)),
         }),
       ).annotate({ identifier: "GetSkusResponse" });
   }
 }
-function __c32(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5011,36 +5118,36 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetSkusNestedResourceTypeFirstRequest" });
   }
 }
-function __c33(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          autoProvisionConfig: S.optional(__S(1376, __c43, 0)),
-          canary: S.optional(__S(1088, __c34, 0)),
+          autoProvisionConfig: S.optional(__S(1600, __c50, 0)),
+          canary: S.optional(__S(1248, __c39, 0)),
           releaseScopes: S.optional(__S(96, __c3, 0)),
           refreshSubscriptionRegistration: S.optional(S.Boolean),
           skipReleaseScopeValidation: S.optional(S.Boolean),
-          providerRegistration: S.optional(__S(1120, __c35, 0)),
-          resourceTypeRegistrations: S.optional(__S(1122, __c35, 2)),
+          providerRegistration: S.optional(__S(1280, __c40, 0)),
+          resourceTypeRegistrations: S.optional(__S(1282, __c40, 2)),
           rolloutId: S.optional(S.String),
-          manifestCheckinSpecification: S.optional(__S(1378, __c43, 2)),
+          manifestCheckinSpecification: S.optional(__S(1602, __c50, 2)),
         }),
       ).annotate({ identifier: "CustomRolloutSpecificationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           completedRegions: S.optional(__S(96, __c3, 0)),
-          failedOrSkippedRegions: S.optional(__S(1127, __c35, 7)),
+          failedOrSkippedRegions: S.optional(__S(1287, __c40, 7)),
           manifestCheckinStatus: S.optional(__S(160, __c5, 0)),
-          completedRegionsInfo: S.optional(__S(1090, __c34, 2)),
+          completedRegionsInfo: S.optional(__S(1250, __c39, 2)),
         }),
       ).annotate({ identifier: "CustomRolloutStatusInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          specification: __S(1056, __c33, 0),
-          status: S.optional(__S(1057, __c33, 1)),
+          specification: __S(1216, __c38, 0),
+          status: S.optional(__S(1217, __c38, 1)),
         }),
       ).annotate({ identifier: "CustomRolloutPropertiesInput" });
     case 3:
@@ -5049,7 +5156,7 @@ function __c33(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           rolloutName: S.String.pipe(T.Label()),
-          properties: __S(1058, __c33, 2),
+          properties: __S(1218, __c38, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5059,9 +5166,21 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CustomRolloutsCreateOrUpdateRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: __S(1253, __c39, 5),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CustomRolloutsCreateOrUpdateResponse" });
   }
 }
-function __c34(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5079,70 +5198,60 @@ function __c34(j: number): any {
         }),
       ).annotate({ identifier: "AppliedManifestInfo" });
     case 2:
-      return S.Array(__S(1089, __c34, 1));
+      return S.Array(__S(1249, __c39, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          autoProvisionConfig: S.optional(__S(1376, __c43, 0)),
-          canary: S.optional(__S(1088, __c34, 0)),
+          autoProvisionConfig: S.optional(__S(1600, __c50, 0)),
+          canary: S.optional(__S(1248, __c39, 0)),
           releaseScopes: S.optional(__S(96, __c3, 0)),
           refreshSubscriptionRegistration: S.optional(S.Boolean),
           skipReleaseScopeValidation: S.optional(S.Boolean),
-          providerRegistration: S.optional(__S(1297, __c40, 17)),
-          resourceTypeRegistrations: S.optional(__S(1408, __c44, 0)),
+          providerRegistration: S.optional(__S(1440, __c45, 0)),
+          resourceTypeRegistrations: S.optional(__S(1632, __c51, 0)),
           rolloutId: S.optional(S.String),
-          manifestCheckinSpecification: S.optional(__S(1378, __c43, 2)),
+          manifestCheckinSpecification: S.optional(__S(1602, __c50, 2)),
         }),
       ).annotate({ identifier: "CustomRolloutSpecification" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           completedRegions: S.optional(__S(96, __c3, 0)),
-          failedOrSkippedRegions: S.optional(__S(1383, __c43, 7)),
+          failedOrSkippedRegions: S.optional(__S(1607, __c50, 7)),
           manifestCheckinStatus: S.optional(__S(160, __c5, 0)),
-          completedRegionsInfo: S.optional(__S(1090, __c34, 2)),
+          completedRegionsInfo: S.optional(__S(1250, __c39, 2)),
         }),
       ).annotate({ identifier: "CustomRolloutStatus" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          specification: __S(1091, __c34, 3),
-          status: S.optional(__S(1092, __c34, 4)),
+          specification: __S(1251, __c39, 3),
+          status: S.optional(__S(1252, __c39, 4)),
         }),
       ).annotate({ identifier: "CustomRolloutProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c1, 0)),
-          properties: __S(1093, __c34, 5),
-        }),
-      ).annotate({ identifier: "CustomRolloutsCreateOrUpdateResponse" });
   }
 }
-function __c35(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(1296, __c40, 16)),
+          properties: S.optional(__S(1488, __c46, 16)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProviderRegistrationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(1359, __c42, 15)),
+          properties: S.optional(__S(1583, __c49, 15)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceTypeRegistrationInput" });
     case 2:
-      return S.Array(__S(1121, __c35, 1));
+      return S.Array(__S(1281, __c40, 1));
     case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1126, __c35, 6)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1286, __c40, 6)));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5150,22 +5259,22 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "TypedErrorInfoInput" });
     case 5:
-      return S.Array(__S(1124, __c35, 4));
+      return S.Array(__S(1284, __c40, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           target: S.optional(S.String),
           message: S.optional(S.String),
-          details: S.optional(__S(1123, __c35, 3)),
-          additionalInfo: S.optional(__S(1125, __c35, 5)),
+          details: S.optional(__S(1283, __c40, 3)),
+          additionalInfo: S.optional(__S(1285, __c40, 5)),
         }),
       ).annotate({ identifier: "ExtendedErrorInfoInput" });
     case 7:
-      return S.Record(S.String, __S(1126, __c35, 6));
+      return S.Record(S.String, __S(1286, __c40, 6));
   }
 }
-function __c36(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5188,7 +5297,7 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "ResourceAccessRole" });
     case 3:
-      return S.Array(__S(1154, __c36, 2));
+      return S.Array(__S(1314, __c41, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5212,10 +5321,10 @@ function __c36(j: number): any {
           incidentRoutingTeam: S.optional(S.String),
           incidentContactEmail: S.optional(S.String),
           resourceAccessPolicy: S.optional(S.String),
-          resourceAccessRoles: S.optional(__S(1155, __c36, 3)),
+          resourceAccessRoles: S.optional(__S(1315, __c41, 3)),
           expeditedRolloutSubmitters: S.optional(__S(96, __c3, 0)),
-          errorResponseMessageOptions: S.optional(__S(1156, __c36, 4)),
-          expeditedRolloutMetadata: S.optional(__S(1157, __c36, 5)),
+          errorResponseMessageOptions: S.optional(__S(1316, __c41, 4)),
+          expeditedRolloutMetadata: S.optional(__S(1317, __c41, 5)),
           canaryManifestOwners: S.optional(__S(96, __c3, 0)),
           pcCode: S.optional(S.String),
           profitCenterProgramId: S.optional(S.String),
@@ -5230,7 +5339,7 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "Notification" });
     case 8:
-      return S.Array(__S(1159, __c36, 7));
+      return S.Array(__S(1319, __c41, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -5249,12 +5358,12 @@ function __c36(j: number): any {
     case 11:
       return S.suspend(() =>
         S.Struct({
-          asyncOperationPollingRules: S.optional(__S(1162, __c36, 10)),
+          asyncOperationPollingRules: S.optional(__S(1322, __c41, 10)),
         }),
       ).annotate({ identifier: "ResourceProviderAuthorizationRules" });
   }
 }
-function __c37(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5270,11 +5379,11 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "AdditionalAuthorization" });
     case 2:
-      return S.Array(__S(1185, __c37, 1));
+      return S.Array(__S(1345, __c42, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          additionalAuthorizations: S.optional(__S(1186, __c37, 2)),
+          additionalAuthorizations: S.optional(__S(1346, __c42, 2)),
           managedByResourceRoleDefinitionId: S.optional(S.String),
           allowManagedByInheritance: S.optional(S.Boolean),
         }),
@@ -5286,20 +5395,20 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "ThirdPartyExtension" });
     case 5:
-      return S.Array(__S(1188, __c37, 4));
+      return S.Array(__S(1348, __c42, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           applicationId: S.optional(S.String),
           roleDefinitionId: S.optional(S.String),
           managedByRoleDefinitionId: S.optional(S.String),
-          managedByAuthorization: S.optional(__S(1187, __c37, 3)),
-          allowedThirdPartyExtensions: S.optional(__S(1189, __c37, 5)),
+          managedByAuthorization: S.optional(__S(1347, __c42, 3)),
+          allowedThirdPartyExtensions: S.optional(__S(1349, __c42, 5)),
           groupingTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceProviderAuthorization" });
     case 7:
-      return S.Array(__S(1190, __c37, 6));
+      return S.Array(__S(1350, __c42, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -5308,7 +5417,7 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "ResourceProviderService" });
     case 9:
-      return S.Array(__S(1192, __c37, 8));
+      return S.Array(__S(1352, __c42, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -5318,7 +5427,7 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "ResourceProviderCapabilities" });
     case 11:
-      return S.Array(__S(1194, __c37, 10));
+      return S.Array(__S(1354, __c42, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
@@ -5327,27 +5436,27 @@ function __c37(j: number): any {
           endpointUri: S.optional(S.String),
           locations: S.optional(__S(96, __c3, 0)),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
-          featuresRule: S.optional(__S(1152, __c36, 0)),
+          featuresRule: S.optional(__S(1312, __c41, 0)),
           timeout: S.optional(S.String),
           endpointType: S.optional(S.String),
           skuLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceProviderEndpoint" });
     case 13:
-      return S.Array(__S(1196, __c37, 12));
+      return S.Array(__S(1356, __c42, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
-          tokenAuthConfiguration: S.optional(__S(1161, __c36, 9)),
+          tokenAuthConfiguration: S.optional(__S(1321, __c41, 9)),
           actions: S.optional(__S(96, __c3, 0)),
-          endpoints: S.optional(__S(1197, __c37, 13)),
+          endpoints: S.optional(__S(1357, __c42, 13)),
         }),
       ).annotate({ identifier: "FanoutLinkedNotificationRule" });
     case 15:
-      return S.Array(__S(1198, __c37, 14));
+      return S.Array(__S(1358, __c42, 14));
   }
 }
-function __c38(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5357,7 +5466,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "AllowedUnauthorizedActionsExtension" });
     case 1:
-      return S.Array(__S(1216, __c38, 0));
+      return S.Array(__S(1376, __c43, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5366,7 +5475,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "AuthorizationActionMapping" });
     case 3:
-      return S.Array(__S(1218, __c38, 2));
+      return S.Array(__S(1378, __c43, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5379,7 +5488,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "LinkedAccessCheck" });
     case 5:
-      return S.Array(__S(1220, __c38, 4));
+      return S.Array(__S(1380, __c43, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5393,11 +5502,11 @@ function __c38(j: number): any {
           action: S.String,
           direction: S.String,
           detailLevel: S.String,
-          hiddenPropertyPaths: S.optional(__S(1222, __c38, 6)),
+          hiddenPropertyPaths: S.optional(__S(1382, __c43, 6)),
         }),
       ).annotate({ identifier: "LoggingRule" });
     case 8:
-      return S.Array(__S(1223, __c38, 7));
+      return S.Array(__S(1383, __c43, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -5408,18 +5517,18 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "ThrottlingMetric" });
     case 10:
-      return S.Array(__S(1225, __c38, 9));
+      return S.Array(__S(1385, __c43, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          metrics: __S(1226, __c38, 10),
+          metrics: __S(1386, __c43, 10),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
           applicationId: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "ThrottlingRule" });
     case 12:
-      return S.Array(__S(1227, __c38, 11));
+      return S.Array(__S(1387, __c43, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
@@ -5428,7 +5537,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "SubscriptionStateRule" });
     case 14:
-      return S.Array(__S(1229, __c38, 13));
+      return S.Array(__S(1389, __c43, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
@@ -5437,7 +5546,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "ExtendedLocationOptions" });
     case 16:
-      return S.Array(__S(1231, __c38, 15));
+      return S.Array(__S(1391, __c43, 15));
     case 17:
       return S.suspend(() =>
         S.Struct({
@@ -5449,11 +5558,11 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           policyName: S.optional(S.String),
-          properties: S.optional(__S(1233, __c38, 17)),
+          properties: S.optional(__S(1393, __c43, 17)),
         }),
       ).annotate({ identifier: "ResourceDeletionPolicyAndProperties" });
     case 19:
-      return S.Array(__S(1234, __c38, 18));
+      return S.Array(__S(1394, __c43, 18));
     case 20:
       return S.suspend(() =>
         S.Struct({
@@ -5463,12 +5572,12 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "LocationQuotaRule" });
     case 21:
-      return S.Array(__S(1236, __c38, 20));
+      return S.Array(__S(1396, __c43, 20));
     case 22:
       return S.suspend(() =>
         S.Struct({
           quotaPolicy: S.optional(S.String),
-          locationRules: S.optional(__S(1237, __c38, 21)),
+          locationRules: S.optional(__S(1397, __c43, 21)),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "QuotaRule" });
@@ -5483,7 +5592,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "LinkedNotificationRule" });
     case 24:
-      return S.Array(__S(1239, __c38, 23));
+      return S.Array(__S(1399, __c43, 23));
     case 25:
       return S.suspend(() =>
         S.Struct({
@@ -5501,10 +5610,10 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "LinkedOperationRule" });
     case 27:
-      return S.Array(__S(1242, __c38, 26));
+      return S.Array(__S(1402, __c43, 26));
   }
 }
-function __c39(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -5512,7 +5621,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           preflightSupported: S.optional(S.Boolean),
-          preflightOptions: S.optional(__S(1248, __c39, 0)),
+          preflightOptions: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "TemplateDeploymentOptions" });
     case 2:
@@ -5523,17 +5632,32 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "SubscriptionStateOverrideAction" });
     case 3:
-      return S.Array(__S(1250, __c39, 2));
+      return S.Array(__S(1410, __c44, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subscriptionStateOverrideActions: S.optional(__S(1251, __c39, 3)),
+          subscriptionStateOverrideActions: S.optional(__S(1411, __c44, 3)),
           softDeleteTTL: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionLifecycleNotificationSpecifications" });
   }
 }
-function __c40(j: number): any {
+function __c45(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1488, __c46, 16)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "ProviderRegistration" });
+  }
+}
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5545,7 +5669,7 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "ResourceHydrationAccount" });
     case 1:
-      return S.Array(__S(1280, __c40, 0));
+      return S.Array(__S(1472, __c46, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5555,28 +5679,28 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "EndpointInformation" });
     case 3:
-      return S.Array(__S(1282, __c40, 2));
+      return S.Array(__S(1474, __c46, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           filterQuery: S.optional(S.String),
-          endpointInformation: S.optional(__S(1283, __c40, 3)),
+          endpointInformation: S.optional(__S(1475, __c46, 3)),
         }),
       ).annotate({ identifier: "FilterRule" });
     case 5:
-      return S.Array(__S(1284, __c40, 4));
+      return S.Array(__S(1476, __c46, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          filterRules: S.optional(__S(1285, __c40, 5)),
+          filterRules: S.optional(__S(1477, __c46, 5)),
         }),
       ).annotate({ identifier: "SubscriberSetting" });
     case 7:
-      return S.Array(__S(1286, __c40, 6));
+      return S.Array(__S(1478, __c46, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          subscriberSettings: S.optional(__S(1287, __c40, 7)),
+          subscriberSettings: S.optional(__S(1479, __c46, 7)),
         }),
       ).annotate({ identifier: "ResourceProviderManifestPropertiesNotificationSettings" });
     case 9:
@@ -5601,20 +5725,20 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "LightHouseAuthorization" });
     case 12:
-      return S.Array(__S(1291, __c40, 11));
+      return S.Array(__S(1483, __c46, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
-          authorizations: S.optional(__S(1292, __c40, 12)),
+          authorizations: S.optional(__S(1484, __c46, 12)),
           managedByTenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ThirdPartyProviderAuthorization" });
     case 14:
       return S.suspend(() =>
         S.Struct({
-          providerAuthorizations: S.optional(__S(1191, __c37, 7)),
-          providerAuthentication: S.optional(__S(1184, __c37, 0)),
-          thirdPartyProviderAuthorization: S.optional(__S(1293, __c40, 13)),
+          providerAuthorizations: S.optional(__S(1351, __c42, 7)),
+          providerAuthentication: S.optional(__S(1344, __c42, 0)),
+          thirdPartyProviderAuthorization: S.optional(__S(1485, __c46, 13)),
           directRpRoleDefinitionId: S.optional(S.String),
           regionalAsyncOperationResourceTypeName: S.optional(S.String),
           globalAsyncOperationResourceTypeName: S.optional(S.String),
@@ -5629,70 +5753,74 @@ function __c40(j: number): any {
     case 16:
       return S.suspend(() =>
         S.Struct({
-          providerAuthentication: S.optional(__S(1184, __c37, 0)),
-          providerAuthorizations: S.optional(__S(1191, __c37, 7)),
+          providerAuthentication: S.optional(__S(1344, __c42, 0)),
+          providerAuthorizations: S.optional(__S(1351, __c42, 7)),
           namespace: S.optional(S.String),
-          services: S.optional(__S(1193, __c37, 9)),
+          services: S.optional(__S(1353, __c42, 9)),
           serviceName: S.optional(S.String),
           providerVersion: S.optional(S.String),
           providerType: S.optional(S.String),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
-          featuresRule: S.optional(__S(1152, __c36, 0)),
-          requestHeaderOptions: S.optional(__S(1153, __c36, 1)),
-          management: S.optional(__S(1158, __c36, 6)),
-          capabilities: S.optional(__S(1195, __c37, 11)),
+          featuresRule: S.optional(__S(1312, __c41, 0)),
+          requestHeaderOptions: S.optional(__S(1313, __c41, 1)),
+          management: S.optional(__S(1318, __c41, 6)),
+          capabilities: S.optional(__S(1355, __c42, 11)),
           crossTenantTokenValidation: S.optional(S.String),
           metadata: S.optional(S.Unknown),
-          templateDeploymentOptions: S.optional(__S(1249, __c39, 1)),
-          globalNotificationEndpoints: S.optional(__S(1197, __c37, 13)),
+          templateDeploymentOptions: S.optional(__S(1409, __c44, 1)),
+          globalNotificationEndpoints: S.optional(__S(1357, __c42, 13)),
           enableTenantLinkedNotification: S.optional(S.NullOr(S.Boolean)),
-          notifications: S.optional(__S(1160, __c36, 8)),
-          linkedNotificationRules: S.optional(__S(1199, __c37, 15)),
-          resourceProviderAuthorizationRules: S.optional(__S(1163, __c36, 11)),
+          notifications: S.optional(__S(1320, __c41, 8)),
+          linkedNotificationRules: S.optional(__S(1359, __c42, 15)),
+          resourceProviderAuthorizationRules: S.optional(__S(1323, __c41, 11)),
           notificationOptions: S.optional(S.String),
-          resourceHydrationAccounts: S.optional(__S(1281, __c40, 1)),
-          notificationSettings: S.optional(__S(1288, __c40, 8)),
-          managementGroupGlobalNotificationEndpoints: S.optional(__S(1197, __c37, 13)),
+          resourceHydrationAccounts: S.optional(__S(1473, __c46, 1)),
+          notificationSettings: S.optional(__S(1480, __c46, 8)),
+          managementGroupGlobalNotificationEndpoints: S.optional(__S(1357, __c42, 13)),
           optionalFeatures: S.optional(__S(96, __c3, 0)),
-          resourceGroupLockOptionDuringMove: S.optional(__S(1289, __c40, 9)),
-          responseOptions: S.optional(__S(1290, __c40, 10)),
+          resourceGroupLockOptionDuringMove: S.optional(__S(1481, __c46, 9)),
+          responseOptions: S.optional(__S(1482, __c46, 10)),
           legacyNamespace: S.optional(S.String),
           legacyRegistrations: S.optional(__S(96, __c3, 0)),
           customManifestVersion: S.optional(S.String),
-          providerHubMetadata: S.optional(__S(1294, __c40, 14)),
+          providerHubMetadata: S.optional(__S(1486, __c46, 14)),
           provisioningState: S.optional(S.String),
-          subscriptionLifecycleNotificationSpecifications: S.optional(__S(1252, __c39, 4)),
-          privateResourceProviderConfiguration: S.optional(__S(1295, __c40, 15)),
-          tokenAuthConfiguration: S.optional(__S(1161, __c36, 9)),
+          subscriptionLifecycleNotificationSpecifications: S.optional(__S(1412, __c44, 4)),
+          privateResourceProviderConfiguration: S.optional(__S(1487, __c46, 15)),
+          tokenAuthConfiguration: S.optional(__S(1321, __c41, 9)),
           oboSubscriptionId: S.optional(S.String),
           enablePresetResourceTypes: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ProviderRegistrationProperties" });
-    case 17:
+  }
+}
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c1, 0)),
-          properties: S.optional(__S(1296, __c40, 16)),
+          properties: S.optional(__S(1583, __c49, 15)),
           kind: S.optional(S.String),
         }),
-      ).annotate({ identifier: "ProviderRegistration" });
+      ).annotate({ identifier: "ResourceTypeRegistration" });
   }
 }
-function __c41(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           endpointUri: S.optional(S.String),
-          extensionCategories: S.optional(__S(1248, __c39, 0)),
+          extensionCategories: S.optional(__S(1408, __c44, 0)),
           timeout: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceTypeExtension" });
     case 1:
-      return S.Array(__S(1312, __c41, 0));
+      return S.Array(__S(1536, __c48, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5701,11 +5829,11 @@ function __c41(j: number): any {
           apiVersions: S.optional(__S(96, __c3, 0)),
           locations: S.optional(__S(96, __c3, 0)),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
-          featuresRule: S.optional(__S(1152, __c36, 0)),
-          extensions: S.optional(__S(1313, __c41, 1)),
+          featuresRule: S.optional(__S(1312, __c41, 0)),
+          extensions: S.optional(__S(1537, __c48, 1)),
           timeout: S.optional(S.String),
           endpointType: S.optional(S.String),
-          tokenAuthConfiguration: S.optional(__S(1161, __c36, 9)),
+          tokenAuthConfiguration: S.optional(__S(1321, __c41, 9)),
           skuLink: S.optional(S.String),
           endpointUri: S.optional(S.String),
           apiVersion: S.optional(S.String),
@@ -5714,18 +5842,18 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "ResourceTypeEndpoint" });
     case 3:
-      return S.Array(__S(1314, __c41, 2));
+      return S.Array(__S(1538, __c48, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          request: S.optional(__S(1248, __c39, 0)),
-          response: S.optional(__S(1248, __c39, 0)),
+          request: S.optional(__S(1408, __c44, 0)),
+          response: S.optional(__S(1408, __c44, 0)),
         }),
       ).annotate({ identifier: "ExtensionOptions" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resourceCreationBegin: S.optional(__S(1316, __c41, 4)),
+          resourceCreationBegin: S.optional(__S(1540, __c48, 4)),
         }),
       ).annotate({ identifier: "ResourceTypeExtensionOptions" });
     case 6:
@@ -5736,7 +5864,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "SwaggerSpecification" });
     case 7:
-      return S.Array(__S(1318, __c41, 6));
+      return S.Array(__S(1542, __c48, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -5774,7 +5902,7 @@ function __c41(j: number): any {
           enabled: S.optional(S.Boolean),
           resourceGroupLocationOverride: S.optional(S.String),
           applicationIds: S.optional(__S(96, __c3, 0)),
-          denyAssignmentConfiguration: S.optional(__S(1323, __c41, 11)),
+          denyAssignmentConfiguration: S.optional(__S(1547, __c48, 11)),
         }),
       ).annotate({ identifier: "ResourceTypeManagedResourceGroupConfiguration" });
     case 13:
@@ -5787,12 +5915,12 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "GroupConnectivityInformation" });
     case 14:
-      return S.Array(__S(1325, __c41, 13));
+      return S.Array(__S(1549, __c48, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
           minApiVersion: S.String,
-          groupConnectivityInformation: __S(1326, __c41, 14),
+          groupConnectivityInformation: __S(1550, __c48, 14),
         }),
       ).annotate({ identifier: "PrivateEndpointConfiguration" });
     case 16:
@@ -5808,7 +5936,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "ResourceConcurrencyControlOption" });
     case 18:
-      return S.Record(S.String, __S(1329, __c41, 17));
+      return S.Record(S.String, __S(1553, __c48, 17));
     case 19:
       return S.suspend(() =>
         S.Struct({
@@ -5825,7 +5953,7 @@ function __c41(j: number): any {
     case 21:
       return S.suspend(() =>
         S.Struct({
-          validation: S.optional(__S(1332, __c41, 20)),
+          validation: S.optional(__S(1556, __c48, 20)),
         }),
       ).annotate({ identifier: "OpenApiConfiguration" });
     case 22:
@@ -5851,7 +5979,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "AsyncTimeoutRule" });
     case 26:
-      return S.Array(__S(1337, __c41, 25));
+      return S.Array(__S(1561, __c48, 25));
     case 27:
       return S.suspend(() =>
         S.Struct({
@@ -5860,26 +5988,26 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "ApiProfile" });
     case 28:
-      return S.Array(__S(1339, __c41, 27));
+      return S.Array(__S(1563, __c48, 27));
     case 29:
       return S.suspend(() =>
         S.Struct({
-          disallowedLegacyOperations: S.optional(__S(1248, __c39, 0)),
+          disallowedLegacyOperations: S.optional(__S(1408, __c44, 0)),
           feature: S.optional(S.String),
         }),
       ).annotate({ identifier: "LegacyDisallowedCondition" });
     case 30:
-      return S.Array(__S(1341, __c41, 29));
+      return S.Array(__S(1565, __c48, 29));
     case 31:
       return S.suspend(() =>
         S.Struct({
-          disallowedLegacyOperations: S.optional(__S(1248, __c39, 0)),
-          disallowedConditions: S.optional(__S(1342, __c41, 30)),
+          disallowedLegacyOperations: S.optional(__S(1408, __c44, 0)),
+          disallowedConditions: S.optional(__S(1566, __c48, 30)),
         }),
       ).annotate({ identifier: "ResourceTypeRegistrationPropertiesLegacyPolicy" });
   }
 }
-function __c42(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5902,7 +6030,7 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "AllowedResourceName" });
     case 3:
-      return S.Array(__S(1346, __c42, 2));
+      return S.Array(__S(1570, __c49, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5924,7 +6052,7 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "ActionConfiguration" });
     case 7:
-      return S.Array(__S(1350, __c42, 6));
+      return S.Array(__S(1574, __c49, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -5933,7 +6061,7 @@ function __c42(j: number): any {
           batchContractVersion: S.optional(S.String),
           maxNestedBatchSize: S.optional(S.Number),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
-          actionConfigurations: S.optional(__S(1351, __c42, 7)),
+          actionConfigurations: S.optional(__S(1575, __c49, 7)),
         }),
       ).annotate({
         identifier:
@@ -5948,7 +6076,7 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "DeleteDependency" });
     case 10:
-      return S.Array(__S(1353, __c42, 9));
+      return S.Array(__S(1577, __c49, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -5961,9 +6089,9 @@ function __c42(j: number): any {
     case 12:
       return S.suspend(() =>
         S.Struct({
-          batchProvisioningSupport: S.optional(__S(1352, __c42, 8)),
-          deleteDependencies: S.optional(__S(1354, __c42, 10)),
-          nestedProvisioningSupport: S.optional(__S(1355, __c42, 11)),
+          batchProvisioningSupport: S.optional(__S(1576, __c49, 8)),
+          deleteDependencies: S.optional(__S(1578, __c49, 10)),
+          nestedProvisioningSupport: S.optional(__S(1579, __c49, 11)),
         }),
       ).annotate({ identifier: "ResourceTypeRegistrationPropertiesResourceManagementOptions" });
     case 13:
@@ -5987,96 +6115,85 @@ function __c42(j: number): any {
           additionalOptions: S.optional(S.String),
           crossTenantTokenValidation: S.optional(S.String),
           regionality: S.optional(S.String),
-          endpoints: S.optional(__S(1315, __c41, 3)),
-          extensionOptions: S.optional(__S(1317, __c41, 5)),
+          endpoints: S.optional(__S(1539, __c48, 3)),
+          extensionOptions: S.optional(__S(1541, __c48, 5)),
           marketplaceType: S.optional(S.String),
-          swaggerSpecifications: S.optional(__S(1319, __c41, 7)),
+          swaggerSpecifications: S.optional(__S(1543, __c48, 7)),
           allowedUnauthorizedActions: S.optional(__S(96, __c3, 0)),
-          allowedUnauthorizedActionsExtensions: S.optional(__S(1217, __c38, 1)),
-          authorizationActionMappings: S.optional(__S(1219, __c38, 3)),
-          linkedAccessChecks: S.optional(__S(1221, __c38, 5)),
+          allowedUnauthorizedActionsExtensions: S.optional(__S(1377, __c43, 1)),
+          authorizationActionMappings: S.optional(__S(1379, __c43, 3)),
+          linkedAccessChecks: S.optional(__S(1381, __c43, 5)),
           defaultApiVersion: S.optional(S.String),
-          loggingRules: S.optional(__S(1224, __c38, 8)),
-          throttlingRules: S.optional(__S(1228, __c38, 12)),
+          loggingRules: S.optional(__S(1384, __c43, 8)),
+          throttlingRules: S.optional(__S(1388, __c43, 12)),
           requiredFeatures: S.optional(__S(96, __c3, 0)),
-          featuresRule: S.optional(__S(1152, __c36, 0)),
+          featuresRule: S.optional(__S(1312, __c41, 0)),
           enableAsyncOperation: S.optional(S.Boolean),
           provisioningState: S.optional(S.String),
           enableThirdPartyS2S: S.optional(S.Boolean),
-          subscriptionLifecycleNotificationSpecifications: S.optional(__S(1252, __c39, 4)),
+          subscriptionLifecycleNotificationSpecifications: S.optional(__S(1412, __c44, 4)),
           isPureProxy: S.optional(S.Boolean),
-          identityManagement: S.optional(__S(1320, __c41, 8)),
-          checkNameAvailabilitySpecifications: S.optional(__S(1321, __c41, 9)),
+          identityManagement: S.optional(__S(1544, __c48, 8)),
+          checkNameAvailabilitySpecifications: S.optional(__S(1545, __c48, 9)),
           disallowedActionVerbs: S.optional(__S(96, __c3, 0)),
-          requestHeaderOptions: S.optional(__S(1153, __c36, 1)),
-          subscriptionStateRules: S.optional(__S(1230, __c38, 14)),
-          templateDeploymentOptions: S.optional(__S(1249, __c39, 1)),
-          extendedLocations: S.optional(__S(1232, __c38, 16)),
-          resourceMovePolicy: S.optional(__S(1322, __c41, 10)),
+          requestHeaderOptions: S.optional(__S(1313, __c41, 1)),
+          subscriptionStateRules: S.optional(__S(1390, __c43, 14)),
+          templateDeploymentOptions: S.optional(__S(1409, __c44, 1)),
+          extendedLocations: S.optional(__S(1392, __c43, 16)),
+          resourceMovePolicy: S.optional(__S(1546, __c48, 10)),
           resourceDeletionPolicy: S.optional(S.String),
-          resourceDeletionPolicies: S.optional(__S(1235, __c38, 19)),
-          managedResourceGroupConfiguration: S.optional(__S(1324, __c41, 12)),
-          privateEndpointConfiguration: S.optional(__S(1327, __c41, 15)),
-          writeLock: S.optional(__S(1328, __c41, 16)),
+          resourceDeletionPolicies: S.optional(__S(1395, __c43, 19)),
+          managedResourceGroupConfiguration: S.optional(__S(1548, __c48, 12)),
+          privateEndpointConfiguration: S.optional(__S(1551, __c48, 15)),
+          writeLock: S.optional(__S(1552, __c48, 16)),
           superScaleEnabled: S.optional(S.Boolean),
-          resourceConcurrencyControlOptions: S.optional(__S(1330, __c41, 18)),
-          resourceGraphConfiguration: S.optional(__S(1331, __c41, 19)),
-          management: S.optional(__S(1158, __c36, 6)),
-          openApiConfiguration: S.optional(__S(1333, __c41, 21)),
-          onBehalfOfTokens: S.optional(__S(1334, __c41, 22)),
+          resourceConcurrencyControlOptions: S.optional(__S(1554, __c48, 18)),
+          resourceGraphConfiguration: S.optional(__S(1555, __c48, 19)),
+          management: S.optional(__S(1318, __c41, 6)),
+          openApiConfiguration: S.optional(__S(1557, __c48, 21)),
+          onBehalfOfTokens: S.optional(__S(1558, __c48, 22)),
           category: S.optional(S.String),
           resourceValidation: S.optional(S.String),
           disallowedEndUserOperations: S.optional(__S(96, __c3, 0)),
-          metadata: S.optional(__S(1335, __c41, 23)),
+          metadata: S.optional(__S(1559, __c48, 23)),
           skuLink: S.optional(S.String),
-          quotaRule: S.optional(__S(1238, __c38, 22)),
-          notifications: S.optional(__S(1160, __c36, 8)),
-          linkedNotificationRules: S.optional(__S(1240, __c38, 24)),
-          resourceProviderAuthorizationRules: S.optional(__S(1163, __c36, 11)),
-          tokenAuthConfiguration: S.optional(__S(1161, __c36, 9)),
-          templateDeploymentPolicy: S.optional(__S(1241, __c38, 25)),
+          quotaRule: S.optional(__S(1398, __c43, 22)),
+          notifications: S.optional(__S(1320, __c41, 8)),
+          linkedNotificationRules: S.optional(__S(1400, __c43, 24)),
+          resourceProviderAuthorizationRules: S.optional(__S(1323, __c41, 11)),
+          tokenAuthConfiguration: S.optional(__S(1321, __c41, 9)),
+          templateDeploymentPolicy: S.optional(__S(1401, __c43, 25)),
           allowEmptyRoleAssignments: S.optional(S.Boolean),
           policyExecutionType: S.optional(S.String),
-          availabilityZoneRule: S.optional(__S(1336, __c41, 24)),
-          asyncTimeoutRules: S.optional(__S(1338, __c41, 26)),
+          availabilityZoneRule: S.optional(__S(1560, __c48, 24)),
+          asyncTimeoutRules: S.optional(__S(1562, __c48, 26)),
           commonApiVersions: S.optional(__S(96, __c3, 0)),
-          apiProfiles: S.optional(__S(1340, __c41, 28)),
-          linkedOperationRules: S.optional(__S(1243, __c38, 27)),
+          apiProfiles: S.optional(__S(1564, __c48, 28)),
+          linkedOperationRules: S.optional(__S(1403, __c43, 27)),
           legacyName: S.optional(S.String),
           legacyNames: S.optional(__S(96, __c3, 0)),
           allowedTemplateDeploymentReferenceActions: S.optional(__S(96, __c3, 0)),
-          legacyPolicy: S.optional(__S(1343, __c41, 31)),
+          legacyPolicy: S.optional(__S(1567, __c48, 31)),
           manifestLink: S.optional(S.String),
-          capacityRule: S.optional(__S(1344, __c42, 0)),
-          marketplaceOptions: S.optional(__S(1345, __c42, 1)),
-          allowedResourceNames: S.optional(__S(1347, __c42, 3)),
-          resourceCache: S.optional(__S(1348, __c42, 4)),
-          resourceQueryManagement: S.optional(__S(1349, __c42, 5)),
+          capacityRule: S.optional(__S(1568, __c49, 0)),
+          marketplaceOptions: S.optional(__S(1569, __c49, 1)),
+          allowedResourceNames: S.optional(__S(1571, __c49, 3)),
+          resourceCache: S.optional(__S(1572, __c49, 4)),
+          resourceQueryManagement: S.optional(__S(1573, __c49, 5)),
           supportsTags: S.optional(S.Boolean),
-          resourceManagementOptions: S.optional(__S(1356, __c42, 12)),
+          resourceManagementOptions: S.optional(__S(1580, __c49, 12)),
           groupingTag: S.optional(S.String),
           addResourceListTargetLocations: S.optional(S.Boolean),
-          resourceTypeCommonAttributeManagement: S.optional(__S(1357, __c42, 13)),
-          routingRule: S.optional(__S(1358, __c42, 14)),
+          resourceTypeCommonAttributeManagement: S.optional(__S(1581, __c49, 13)),
+          routingRule: S.optional(__S(1582, __c49, 14)),
           frontdoorRequestMode: S.optional(S.String),
           resourceSubType: S.optional(S.String),
           asyncOperationResourceTypeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceTypeRegistrationProperties" });
-    case 16:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c1, 0)),
-          properties: S.optional(__S(1359, __c42, 15)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ResourceTypeRegistration" });
   }
 }
-function __c43(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6096,11 +6213,11 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           manifestCheckinOption: S.optional(S.String),
-          manifestCheckinParams: S.optional(__S(1377, __c43, 1)),
+          manifestCheckinParams: S.optional(__S(1601, __c50, 1)),
         }),
       ).annotate({ identifier: "ManifestCheckinSpecification" });
     case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1382, __c43, 6)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1606, __c50, 6)));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6109,28 +6226,28 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "TypedErrorInfo" });
     case 5:
-      return S.Array(__S(1380, __c43, 4));
+      return S.Array(__S(1604, __c50, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           target: S.optional(S.String),
           message: S.optional(S.String),
-          details: S.optional(__S(1379, __c43, 3)),
-          additionalInfo: S.optional(__S(1381, __c43, 5)),
+          details: S.optional(__S(1603, __c50, 3)),
+          additionalInfo: S.optional(__S(1605, __c50, 5)),
         }),
       ).annotate({ identifier: "ExtendedErrorInfo" });
     case 7:
-      return S.Record(S.String, __S(1382, __c43, 6));
+      return S.Record(S.String, __S(1606, __c50, 6));
   }
 }
-function __c44(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1360, __c42, 16));
+      return S.Array(__S(1504, __c47, 0));
   }
 }
-function __c45(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6152,7 +6269,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "GetSkusNestedResourceTypeSecondRequest" });
   }
 }
-function __c46(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6175,7 +6292,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "GetSkusNestedResourceTypeThirdRequest" });
   }
 }
-function __c47(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6192,17 +6309,17 @@ function __c47(j: number): any {
         ),
       ).annotate({ identifier: "ListAuthorizedApplicationsRequest" });
     case 1:
-      return S.Array(__S(68, __c2, 4));
+      return S.Array(__S(704, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1505, __c47, 1),
+          value: __S(1729, __c54, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthorizedApplicationArrayResponseWithContinuation" });
   }
 }
-function __c48(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6219,17 +6336,17 @@ function __c48(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomRolloutByProviderRegistrationRequest" });
     case 1:
-      return S.Array(__S(1094, __c34, 6));
+      return S.Array(__S(768, __c24, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1537, __c48, 1),
+          value: __S(1761, __c55, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomRolloutArrayResponseWithContinuation" });
   }
 }
-function __c49(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6246,17 +6363,17 @@ function __c49(j: number): any {
         ),
       ).annotate({ identifier: "ListDefaultRolloutByProviderRegistrationRequest" });
     case 1:
-      return S.Array(__S(1862, __c58, 6));
+      return S.Array(__S(832, __c26, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1569, __c49, 1),
+          value: __S(1793, __c56, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DefaultRolloutArrayResponseWithContinuation" });
   }
 }
-function __c50(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6273,17 +6390,17 @@ function __c50(j: number): any {
         ),
       ).annotate({ identifier: "ListNotificationRegistrationByProviderRegistrationRequest" });
     case 1:
-      return S.Array(__S(835, __c26, 3));
+      return S.Array(__S(963, __c30, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1601, __c50, 1),
+          value: __S(1825, __c57, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationRegistrationArrayResponseWithContinuation" });
   }
 }
-function __c51(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6301,30 +6418,30 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ListOperationByProviderRegistrationRequest" });
   }
 }
-function __c52(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          default: __S(512, __c16, 0),
-          en: S.optional(__S(512, __c16, 0)),
-          cs: S.optional(__S(512, __c16, 0)),
-          de: S.optional(__S(512, __c16, 0)),
-          es: S.optional(__S(512, __c16, 0)),
-          fr: S.optional(__S(512, __c16, 0)),
-          hu: S.optional(__S(512, __c16, 0)),
-          it: S.optional(__S(512, __c16, 0)),
-          ja: S.optional(__S(512, __c16, 0)),
-          ko: S.optional(__S(512, __c16, 0)),
-          nl: S.optional(__S(512, __c16, 0)),
-          pl: S.optional(__S(512, __c16, 0)),
-          ptBR: S.optional(__S(512, __c16, 0)),
-          ptPT: S.optional(__S(512, __c16, 0)),
-          ru: S.optional(__S(512, __c16, 0)),
-          sv: S.optional(__S(512, __c16, 0)),
-          zhHans: S.optional(__S(512, __c16, 0)),
-          zhHant: S.optional(__S(512, __c16, 0)),
-          qpsPloc: S.optional(__S(512, __c16, 0)),
+          default: __S(544, __c17, 0),
+          en: S.optional(__S(544, __c17, 0)),
+          cs: S.optional(__S(544, __c17, 0)),
+          de: S.optional(__S(544, __c17, 0)),
+          es: S.optional(__S(544, __c17, 0)),
+          fr: S.optional(__S(544, __c17, 0)),
+          hu: S.optional(__S(544, __c17, 0)),
+          it: S.optional(__S(544, __c17, 0)),
+          ja: S.optional(__S(544, __c17, 0)),
+          ko: S.optional(__S(544, __c17, 0)),
+          nl: S.optional(__S(544, __c17, 0)),
+          pl: S.optional(__S(544, __c17, 0)),
+          ptBR: S.optional(__S(544, __c17, 0)),
+          ptPT: S.optional(__S(544, __c17, 0)),
+          ru: S.optional(__S(544, __c17, 0)),
+          sv: S.optional(__S(544, __c17, 0)),
+          zhHans: S.optional(__S(544, __c17, 0)),
+          zhHant: S.optional(__S(544, __c17, 0)),
+          qpsPloc: S.optional(__S(544, __c17, 0)),
         }),
       ).annotate({ identifier: "LocalizedOperationDisplayDefinition" });
     case 1:
@@ -6333,17 +6450,17 @@ function __c52(j: number): any {
           name: S.String,
           isDataAction: S.optional(S.Boolean),
           origin: S.optional(S.String),
-          display: __S(1664, __c52, 0),
+          display: __S(1888, __c59, 0),
           actionType: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "LocalizedOperationDefinition" });
     case 2:
-      return S.Array(__S(1665, __c52, 1));
+      return S.Array(__S(1889, __c59, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          contents: S.optional(__S(1666, __c52, 2)),
+          contents: S.optional(__S(1890, __c59, 2)),
         }),
       ).annotate({ identifier: "OperationsContentProperties" });
     case 4:
@@ -6353,12 +6470,12 @@ function __c52(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c1, 0)),
-          properties: S.optional(__S(1667, __c52, 3)),
+          properties: S.optional(__S(1891, __c59, 3)),
         }),
       ).annotate({ identifier: "ListOperationByProviderRegistrationResponse" });
   }
 }
-function __c53(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6374,13 +6491,13 @@ function __c53(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(545, __c17, 1)),
+          value: S.optional(__S(577, __c18, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationsDefinitionArrayResponseWithContinuation" });
   }
 }
-function __c54(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6398,20 +6515,20 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListProviderMonitorSettingsByResourceGroupRequest" });
   }
 }
-function __c55(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(610, __c19, 2));
+      return S.Array(__S(1024, __c32, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1760, __c55, 0),
+          value: __S(1984, __c62, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProviderMonitorSettingArrayResponseWithContinuation" });
   }
 }
-function __c56(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6428,29 +6545,29 @@ function __c56(j: number): any {
       ).annotate({ identifier: "ListProviderMonitorSettingsBySubscriptionRequest" });
   }
 }
-function __c57(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          expeditedRollout: S.optional(__S(1856, __c58, 0)),
-          canary: S.optional(__S(1857, __c58, 1)),
-          lowTraffic: S.optional(__S(1858, __c58, 2)),
-          mediumTraffic: S.optional(__S(1858, __c58, 2)),
-          highTraffic: S.optional(__S(1858, __c58, 2)),
-          restOfTheWorldGroupOne: S.optional(__S(1858, __c58, 2)),
-          restOfTheWorldGroupTwo: S.optional(__S(1858, __c58, 2)),
-          providerRegistration: S.optional(__S(1120, __c35, 0)),
-          resourceTypeRegistrations: S.optional(__S(1122, __c35, 2)),
-          autoProvisionConfig: S.optional(__S(1376, __c43, 0)),
-          manifestCheckinSpecification: S.optional(__S(1378, __c43, 2)),
+          expeditedRollout: S.optional(__S(2080, __c65, 0)),
+          canary: S.optional(__S(2081, __c65, 1)),
+          lowTraffic: S.optional(__S(2082, __c65, 2)),
+          mediumTraffic: S.optional(__S(2082, __c65, 2)),
+          highTraffic: S.optional(__S(2082, __c65, 2)),
+          restOfTheWorldGroupOne: S.optional(__S(2082, __c65, 2)),
+          restOfTheWorldGroupTwo: S.optional(__S(2082, __c65, 2)),
+          providerRegistration: S.optional(__S(1280, __c40, 0)),
+          resourceTypeRegistrations: S.optional(__S(1282, __c40, 2)),
+          autoProvisionConfig: S.optional(__S(1600, __c50, 0)),
+          manifestCheckinSpecification: S.optional(__S(1602, __c50, 2)),
         }),
       ).annotate({ identifier: "DefaultRolloutSpecificationInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           completedRegions: S.optional(__S(96, __c3, 0)),
-          failedOrSkippedRegions: S.optional(__S(1127, __c35, 7)),
+          failedOrSkippedRegions: S.optional(__S(1287, __c40, 7)),
           nextTrafficRegion: S.optional(S.String),
           nextTrafficRegionScheduledTime: S.optional(S.String),
           subscriptionReregistrationResult: S.optional(S.String),
@@ -6460,8 +6577,8 @@ function __c57(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          specification: S.optional(__S(1824, __c57, 0)),
-          status: S.optional(__S(1825, __c57, 1)),
+          specification: S.optional(__S(2048, __c64, 0)),
+          status: S.optional(__S(2049, __c64, 1)),
         }),
       ).annotate({ identifier: "DefaultRolloutPropertiesInput" });
     case 3:
@@ -6470,7 +6587,7 @@ function __c57(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           rolloutName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1826, __c57, 2)),
+          properties: S.optional(__S(2050, __c64, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6480,9 +6597,21 @@ function __c57(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DefaultRolloutsCreateOrUpdateRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(2085, __c65, 5)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DefaultRolloutsCreateOrUpdateResponse" });
   }
 }
-function __c58(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6507,24 +6636,24 @@ function __c58(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          expeditedRollout: S.optional(__S(1856, __c58, 0)),
-          canary: S.optional(__S(1857, __c58, 1)),
-          lowTraffic: S.optional(__S(1858, __c58, 2)),
-          mediumTraffic: S.optional(__S(1858, __c58, 2)),
-          highTraffic: S.optional(__S(1858, __c58, 2)),
-          restOfTheWorldGroupOne: S.optional(__S(1858, __c58, 2)),
-          restOfTheWorldGroupTwo: S.optional(__S(1858, __c58, 2)),
-          providerRegistration: S.optional(__S(1297, __c40, 17)),
-          resourceTypeRegistrations: S.optional(__S(1408, __c44, 0)),
-          autoProvisionConfig: S.optional(__S(1376, __c43, 0)),
-          manifestCheckinSpecification: S.optional(__S(1378, __c43, 2)),
+          expeditedRollout: S.optional(__S(2080, __c65, 0)),
+          canary: S.optional(__S(2081, __c65, 1)),
+          lowTraffic: S.optional(__S(2082, __c65, 2)),
+          mediumTraffic: S.optional(__S(2082, __c65, 2)),
+          highTraffic: S.optional(__S(2082, __c65, 2)),
+          restOfTheWorldGroupOne: S.optional(__S(2082, __c65, 2)),
+          restOfTheWorldGroupTwo: S.optional(__S(2082, __c65, 2)),
+          providerRegistration: S.optional(__S(1440, __c45, 0)),
+          resourceTypeRegistrations: S.optional(__S(1632, __c51, 0)),
+          autoProvisionConfig: S.optional(__S(1600, __c50, 0)),
+          manifestCheckinSpecification: S.optional(__S(1602, __c50, 2)),
         }),
       ).annotate({ identifier: "DefaultRolloutSpecification" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           completedRegions: S.optional(__S(96, __c3, 0)),
-          failedOrSkippedRegions: S.optional(__S(1383, __c43, 7)),
+          failedOrSkippedRegions: S.optional(__S(1607, __c50, 7)),
           nextTrafficRegion: S.optional(S.String),
           nextTrafficRegionScheduledTime: S.optional(S.String),
           subscriptionReregistrationResult: S.optional(S.String),
@@ -6535,23 +6664,13 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          specification: S.optional(__S(1859, __c58, 3)),
-          status: S.optional(__S(1860, __c58, 4)),
+          specification: S.optional(__S(2083, __c65, 3)),
+          status: S.optional(__S(2084, __c65, 4)),
         }),
       ).annotate({ identifier: "DefaultRolloutProperties" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c1, 0)),
-          properties: S.optional(__S(1861, __c58, 5)),
-        }),
-      ).annotate({ identifier: "DefaultRolloutsCreateOrUpdateResponse" });
   }
 }
-function __c59(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6567,17 +6686,17 @@ function __c59(j: number): any {
         ),
       ).annotate({ identifier: "ListProviderRegistrationsRequest" });
     case 1:
-      return S.Array(__S(1297, __c40, 17));
+      return S.Array(__S(1440, __c45, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1889, __c59, 1),
+          value: __S(2113, __c66, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProviderRegistrationArrayResponseWithContinuation" });
   }
 }
-function __c60(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6596,13 +6715,13 @@ function __c60(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1408, __c44, 0),
+          value: __S(1632, __c51, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceTypeRegistrationArrayResponseWithContinuation" });
   }
 }
-function __c61(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6621,20 +6740,20 @@ function __c61(j: number): any {
       ).annotate({ identifier: "ListSkusByResourceTypeRegistrationsRequest" });
   }
 }
-function __c62(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1004, __c31, 12));
+      return S.Array(__S(1164, __c36, 12));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1984, __c62, 0),
+          value: __S(2208, __c69, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuResourceArrayResponseWithContinuation" });
   }
 }
-function __c63(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6656,7 +6775,7 @@ function __c63(j: number): any {
       });
   }
 }
-function __c64(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6679,7 +6798,7 @@ function __c64(j: number): any {
       });
   }
 }
-function __c65(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6703,7 +6822,7 @@ function __c65(j: number): any {
       });
   }
 }
-function __c66(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6718,7 +6837,7 @@ function __c66(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           environment: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2112, __c66, 0)),
+          properties: S.optional(__S(2336, __c73, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6730,7 +6849,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ManifestsCreateOrUpdateRequest" });
   }
 }
-function __c67(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6738,7 +6857,7 @@ function __c67(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           notificationRegistrationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(834, __c26, 2)),
+          properties: S.optional(__S(962, __c30, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6750,14 +6869,14 @@ function __c67(j: number): any {
       ).annotate({ identifier: "NotificationRegistrationsCreateOrUpdateRequest" });
   }
 }
-function __c68(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1667, __c52, 3)),
+          properties: S.optional(__S(1891, __c59, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6769,14 +6888,14 @@ function __c68(j: number): any {
       ).annotate({ identifier: "OperationsCreateOrUpdateRequest" });
   }
 }
-function __c69(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1296, __c40, 16)),
+          properties: S.optional(__S(1488, __c46, 16)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6787,9 +6906,22 @@ function __c69(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ProviderRegistrationsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1488, __c46, 16)),
+          kind: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ProviderRegistrationsCreateOrUpdateResponse" });
   }
 }
-function __c70(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6808,7 +6940,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "DeleteAuthorizedApplicationRequest" });
   }
 }
-function __c71(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -6816,7 +6948,7 @@ function __c71(j: number): any {
       });
   }
 }
-function __c72(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6824,7 +6956,7 @@ function __c72(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           providerNamespace: S.String.pipe(T.Label()),
           resourceType: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1359, __c42, 15)),
+          properties: S.optional(__S(1583, __c49, 15)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6835,9 +6967,22 @@ function __c72(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ResourceTypeRegistrationsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c1, 0)),
+          properties: S.optional(__S(1583, __c49, 15)),
+          kind: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ResourceTypeRegistrationsCreateOrUpdateResponse" });
   }
 }
-function __c73(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6846,7 +6991,7 @@ function __c73(j: number): any {
           providerNamespace: S.String.pipe(T.Label()),
           resourceType: S.String.pipe(T.Label()),
           sku: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1003, __c31, 11)),
+          properties: S.optional(__S(1163, __c36, 11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6858,7 +7003,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "SkusCreateOrUpdateRequest" });
   }
 }
-function __c74(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6868,7 +7013,7 @@ function __c74(j: number): any {
           resourceType: S.String.pipe(T.Label()),
           nestedResourceTypeFirst: S.String.pipe(T.Label()),
           sku: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1003, __c31, 11)),
+          properties: S.optional(__S(1163, __c36, 11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6880,7 +7025,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "SkusCreateOrUpdateNestedResourceTypeFirstRequest" });
   }
 }
-function __c75(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6891,7 +7036,7 @@ function __c75(j: number): any {
           nestedResourceTypeFirst: S.String.pipe(T.Label()),
           nestedResourceTypeSecond: S.String.pipe(T.Label()),
           sku: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1003, __c31, 11)),
+          properties: S.optional(__S(1163, __c36, 11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6903,7 +7048,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "SkusCreateOrUpdateNestedResourceTypeSecondRequest" });
   }
 }
-function __c76(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6915,7 +7060,7 @@ function __c76(j: number): any {
           nestedResourceTypeSecond: S.String.pipe(T.Label()),
           nestedResourceTypeThird: S.String.pipe(T.Label()),
           sku: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1003, __c31, 11)),
+          properties: S.optional(__S(1163, __c36, 11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6927,7 +7072,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "SkusCreateOrUpdateNestedResourceTypeThirdRequest" });
   }
 }
-function __c77(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6946,7 +7091,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "StopCustomRolloutRequest" });
   }
 }
-function __c78(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6965,7 +7110,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "StopDefaultRolloutRequest" });
   }
 }
-function __c79(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6984,7 +7129,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "UpdateProviderMonitorSettingsRequest" });
   }
 }
-function __c80(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7003,7 +7148,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "DeleteCustomRolloutRequest" });
   }
 }
-function __c81(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7022,7 +7167,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "DeleteDefaultRolloutRequest" });
   }
 }
-function __c82(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7041,7 +7186,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "DeleteNotificationRegistrationRequest" });
   }
 }
-function __c83(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

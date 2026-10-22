@@ -22,7 +22,14 @@ export interface AbortAgentPoolLatestOperationRequest {
   /** The name of the agent pool. */
   agentPoolName: string;
 }
-export interface AbortAgentPoolLatestOperationResponse {}
+export interface AbortAgentPoolLatestOperationResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface AbortManagedClusterLatestOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -31,7 +38,14 @@ export interface AbortManagedClusterLatestOperationRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-export interface AbortManagedClusterLatestOperationResponse {}
+export interface AbortManagedClusterLatestOperationResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os). */
 export type OSDiskType = "Managed" | "Ephemeral";
 /** Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. */
@@ -707,6 +721,10 @@ export interface AgentPoolsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Properties of an agent pool. */
   properties?: ManagedClusterAgentPoolProfileProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface AgentPoolsUpgradeNodeImageVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -718,7 +736,14 @@ export interface AgentPoolsUpgradeNodeImageVersionRequest {
   /** The name of the agent pool. */
   agentPoolName: string;
 }
-export interface AgentPoolsUpgradeNodeImageVersionResponse {}
+export interface AgentPoolsUpgradeNodeImageVersionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface AutoUpgradeProfileOperationsGenerateUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -733,6 +758,10 @@ export interface AutoUpgradeProfileOperationsGenerateUpdateRunRequest {
 export interface GenerateResponse {
   /** The ARM resource id of the generated UpdateRun. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}'. */
   id: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Configuration of how auto upgrade will be run. */
 export type UpgradeChannel_2 = "Stable" | "Rapid" | "NodeImage" | "TargetKubernetesVersion";
@@ -845,6 +874,10 @@ export interface AutoUpgradeProfilesCreateOrUpdateResponse {
   properties?: AutoUpgradeProfileProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Specifies the level of Deployment Safeguards */
 export type DeploymentSafeguardsLevel = "Warn" | "Enforce";
@@ -905,6 +938,10 @@ export interface CreateDeploymentSafeguardResponse {
   properties?: DeploymentSafeguardsProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The labels for the fleet member. */
 export type FleetMemberPropertiesInputLabelsMap = { [key: string]: string | undefined };
@@ -989,6 +1026,8 @@ export interface CreateFleetMemberResponse {
   properties?: FleetMemberProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAgentPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1002,7 +1041,14 @@ export interface DeleteAgentPoolRequest {
   /** ignore-pod-disruption-budget=true to delete those pods on a node without considering Pod Disruption Budget */
   ignore_pod_disruption_budget?: boolean;
 }
-export interface DeleteAgentPoolResponse {}
+export interface DeleteAgentPoolResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** The agent pool machine names. */
 export type DeleteAgentPoolMachinesRequestMachineNamesList = Array<string>;
 export interface DeleteAgentPoolMachinesRequest {
@@ -1017,7 +1063,14 @@ export interface DeleteAgentPoolMachinesRequest {
   /** The agent pool machine names. */
   machineNames: DeleteAgentPoolMachinesRequestMachineNamesList;
 }
-export interface DeleteAgentPoolMachinesResponse {}
+export interface DeleteAgentPoolMachinesResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAutoUpgradeProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1028,12 +1081,22 @@ export interface DeleteAutoUpgradeProfileRequest {
   /** The name of the AutoUpgradeProfile resource. */
   autoUpgradeProfileName: string;
 }
-export interface DeleteAutoUpgradeProfileResponse {}
+export interface DeleteAutoUpgradeProfileResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDeploymentSafeguardRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-export interface DeleteDeploymentSafeguardResponse {}
+export interface DeleteDeploymentSafeguardResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1042,7 +1105,12 @@ export interface DeleteFleetRequest {
   /** The name of the Fleet resource. */
   fleetName: string;
 }
-export interface DeleteFleetResponse {}
+export interface DeleteFleetResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFleetManagedNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1053,7 +1121,12 @@ export interface DeleteFleetManagedNamespaceRequest {
   /** The name of the fleet managed namespace resource. */
   managedNamespaceName: string;
 }
-export interface DeleteFleetManagedNamespaceResponse {}
+export interface DeleteFleetManagedNamespaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFleetMemberRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1064,7 +1137,12 @@ export interface DeleteFleetMemberRequest {
   /** The name of the Fleet member resource. */
   fleetMemberName: string;
 }
-export interface DeleteFleetMemberResponse {}
+export interface DeleteFleetMemberResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFleetUpdateStrategyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1075,7 +1153,14 @@ export interface DeleteFleetUpdateStrategyRequest {
   /** The name of the UpdateStrategy resource. */
   updateStrategyName: string;
 }
-export interface DeleteFleetUpdateStrategyResponse {}
+export interface DeleteFleetUpdateStrategyResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteIdentityBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1086,7 +1171,14 @@ export interface DeleteIdentityBindingRequest {
   /** The name of the identity binding. */
   identityBindingName: string;
 }
-export interface DeleteIdentityBindingResponse {}
+export interface DeleteIdentityBindingResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMaintenanceConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1106,7 +1198,14 @@ export interface DeleteManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-export interface DeleteManagedClusterResponse {}
+export interface DeleteManagedClusterResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteManagedNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1117,7 +1216,14 @@ export interface DeleteManagedNamespaceRequest {
   /** The name of the managed namespace. */
   managedNamespaceName: string;
 }
-export interface DeleteManagedNamespaceResponse {}
+export interface DeleteManagedNamespaceResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1128,7 +1234,12 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1148,7 +1259,14 @@ export interface DeleteTrustedAccessRoleBindingRequest {
   /** The name of trusted access role binding. */
   trustedAccessRoleBindingName: string;
 }
-export interface DeleteTrustedAccessRoleBindingResponse {}
+export interface DeleteTrustedAccessRoleBindingResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1159,7 +1277,12 @@ export interface DeleteUpdateRunRequest {
   /** The name of the UpdateRun resource. */
   updateRunName: string;
 }
-export interface DeleteUpdateRunResponse {}
+export interface DeleteUpdateRunResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type FleetManagedNamespacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -1422,6 +1545,10 @@ export interface FleetManagedNamespacesCreateOrUpdateResponse {
   properties?: FleetManagedNamespaceProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type FleetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -1583,6 +1710,8 @@ export interface FleetsCreateOrUpdateResponse {
   eTag?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: FleetsCreateOrUpdateResponseIdentity;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The type of the Gate determines how it is completed. */
 export type GateType = "Approval";
@@ -1675,6 +1804,8 @@ export interface FleetUpdateStrategiesCreateOrUpdateResponse {
   properties?: FleetUpdateStrategyProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetAgentPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3515,6 +3646,10 @@ export interface RunCommandResult {
   id?: string;
   /** Properties of command result. */
   properties?: CommandResultProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetManagedClusterMeshRevisionProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4101,6 +4236,12 @@ export interface IdentityBindingsCreateOrUpdateResponse {
   properties?: IdentityBindingProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ListAgentPoolsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5501,6 +5642,10 @@ export interface ManagedClustersCreateOrUpdateResponse {
   identity?: ManagedClusterIdentity;
   /** This is primarily used to expose different UI experiences in the portal for different kinds */
   kind?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type ManagedNamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -5558,6 +5703,10 @@ export interface ManagedNamespacesCreateOrUpdateResponse {
   properties?: NamespaceProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The RequiredMembers of the resource */
 export type PostResolvePrivateLinkServiceIdRequestRequiredMembersList = Array<string>;
@@ -5591,7 +5740,12 @@ export interface ResetManagedClusterServicePrincipalProfileRequest {
   /** The secret password associated with the service principal in plain text. */
   secret?: string | Redacted.Redacted<string>;
 }
-export interface ResetManagedClusterServicePrincipalProfileResponse {}
+export interface ResetManagedClusterServicePrincipalProfileResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RotateManagedClusterClusterCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5600,7 +5754,12 @@ export interface RotateManagedClusterClusterCertificatesRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-export interface RotateManagedClusterClusterCertificatesResponse {}
+export interface RotateManagedClusterClusterCertificatesResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RotateManagedClusterServiceAccountSigningKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5609,7 +5768,12 @@ export interface RotateManagedClusterServiceAccountSigningKeysRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-export interface RotateManagedClusterServiceAccountSigningKeysResponse {}
+export interface RotateManagedClusterServiceAccountSigningKeysResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RunManagedClusterCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5675,7 +5839,12 @@ export interface StartManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-export interface StartManagedClusterResponse {}
+export interface StartManagedClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StartUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5699,6 +5868,10 @@ export interface StartUpdateRunResponse {
   properties?: UpdateRunProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StopManagedClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5708,7 +5881,12 @@ export interface StopManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-export interface StopManagedClusterResponse {}
+export interface StopManagedClusterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StopUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5732,6 +5910,10 @@ export interface StopUpdateRunResponse {
   properties?: UpdateRunProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'. */
 export type TrustedAccessRoleBindingPropertiesInputRolesList = Array<string>;
@@ -5765,6 +5947,10 @@ export interface TrustedAccessRoleBindingsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Properties for trusted access role binding */
   properties: TrustedAccessRoleBindingProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateFleetRequestTagsMap = { [key: string]: string | undefined };
@@ -5805,6 +5991,10 @@ export interface UpdateFleetResponse {
   eTag?: string;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: FleetsCreateOrUpdateResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateFleetManagedNamespaceRequestTagsMap = { [key: string]: string | undefined };
@@ -5839,6 +6029,10 @@ export interface UpdateFleetManagedNamespaceResponse {
   properties?: FleetManagedNamespaceProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The labels for the fleet member. */
 export type FleetMemberUpdatePropertiesLabelsMap = { [key: string]: string | undefined };
@@ -5874,6 +6068,10 @@ export interface UpdateFleetMemberResponse {
   properties?: FleetMemberProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Properties of a Gate that can be patched. */
 export interface GatePatchProperties {
@@ -5905,6 +6103,10 @@ export interface UpdateGateResponse {
   properties?: GateProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateManagedClusterTagsRequestTagsMap = { [key: string]: string | undefined };
@@ -5945,6 +6147,12 @@ export interface UpdateManagedClusterTagsResponse {
   identity?: ManagedClusterIdentity;
   /** This is primarily used to expose different UI experiences in the portal for different kinds */
   kind?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateManagedNamespaceRequestTagsMap = { [key: string]: string | undefined };
@@ -6064,6 +6272,8 @@ export interface UpdateRunsCreateOrUpdateResponse {
   properties?: UpdateRunProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The target type of a skip request. */
 export type TargetType = "Member" | "Group" | "Stage" | "AfterStageWait";
@@ -6101,6 +6311,10 @@ export interface UpdateRunsSkipResponse {
   properties?: UpdateRunProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateSnapshotTagsRequestTagsMap = { [key: string]: string | undefined };
@@ -6170,8 +6384,8 @@ export const AgentPoolsCreateOrUpdate: API.OperationMethod<
   AgentPoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641, __c20, 1) as any as S.Schema<AgentPoolsCreateOrUpdateRequest>,
-  output: __S(737, __c23, 1) as any as S.Schema<AgentPoolsCreateOrUpdateResponse>,
+  input: __S(673, __c21, 1) as any as S.Schema<AgentPoolsCreateOrUpdateRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<AgentPoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6185,7 +6399,7 @@ export const AgentPoolsUpgradeNodeImageVersion: API.OperationMethod<
   AgentPoolsUpgradeNodeImageVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<AgentPoolsUpgradeNodeImageVersionRequest>,
+  input: __S(1632, __c51, 0) as any as S.Schema<AgentPoolsUpgradeNodeImageVersionRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<AgentPoolsUpgradeNodeImageVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6201,11 +6415,11 @@ export const AutoUpgradeProfileOperationsGenerateUpdateRun: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2016,
-    __c63,
+    2368,
+    __c74,
     0,
   ) as any as S.Schema<AutoUpgradeProfileOperationsGenerateUpdateRunRequest>,
-  output: __S(2017, __c63, 1) as any as S.Schema<GenerateResponse>,
+  output: __S(2369, __c74, 1) as any as S.Schema<GenerateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6219,8 +6433,8 @@ export const AutoUpgradeProfilesCreateOrUpdate: API.OperationMethod<
   AutoUpgradeProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2882, __c90, 2) as any as S.Schema<AutoUpgradeProfilesCreateOrUpdateRequest>,
-  output: __S(2915, __c91, 3) as any as S.Schema<AutoUpgradeProfilesCreateOrUpdateResponse>,
+  input: __S(3362, __c105, 2) as any as S.Schema<AutoUpgradeProfilesCreateOrUpdateRequest>,
+  output: __S(3363, __c105, 3) as any as S.Schema<AutoUpgradeProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6234,8 +6448,8 @@ export const CreateDeploymentSafeguard: API.OperationMethod<
   CreateDeploymentSafeguardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3329, __c104, 1) as any as S.Schema<CreateDeploymentSafeguardRequest>,
-  output: __S(3361, __c105, 1) as any as S.Schema<CreateDeploymentSafeguardResponse>,
+  input: __S(3809, __c119, 1) as any as S.Schema<CreateDeploymentSafeguardRequest>,
+  output: __S(3810, __c119, 2) as any as S.Schema<CreateDeploymentSafeguardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6249,8 +6463,8 @@ export const CreateFleetMember: API.OperationMethod<
   CreateFleetMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3745, __c117, 1) as any as S.Schema<CreateFleetMemberRequest>,
-  output: __S(3809, __c119, 1) as any as S.Schema<CreateFleetMemberResponse>,
+  input: __S(4225, __c132, 1) as any as S.Schema<CreateFleetMemberRequest>,
+  output: __S(4226, __c132, 2) as any as S.Schema<CreateFleetMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6264,7 +6478,7 @@ export const DeleteAgentPool: API.OperationMethod<
   DeleteAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4192, __c131, 0) as any as S.Schema<DeleteAgentPoolRequest>,
+  input: __S(4672, __c146, 0) as any as S.Schema<DeleteAgentPoolRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteAgentPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6279,7 +6493,7 @@ export const DeleteAgentPoolMachines: API.OperationMethod<
   DeleteAgentPoolMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4544, __c142, 0) as any as S.Schema<DeleteAgentPoolMachinesRequest>,
+  input: __S(5024, __c157, 0) as any as S.Schema<DeleteAgentPoolMachinesRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteAgentPoolMachinesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6295,7 +6509,7 @@ export const DeleteAutoUpgradeProfile: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c3, 0) as any as S.Schema<DeleteAutoUpgradeProfileRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteAutoUpgradeProfileResponse>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteAutoUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6309,8 +6523,8 @@ export const DeleteDeploymentSafeguard: API.OperationMethod<
   DeleteDeploymentSafeguardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<DeleteDeploymentSafeguardRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteDeploymentSafeguardResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<DeleteDeploymentSafeguardRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteDeploymentSafeguardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6324,8 +6538,8 @@ export const DeleteFleet: API.OperationMethod<
   DeleteFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<DeleteFleetRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteFleetResponse>,
+  input: __S(416, __c13, 0) as any as S.Schema<DeleteFleetRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6339,8 +6553,8 @@ export const DeleteFleetManagedNamespace: API.OperationMethod<
   DeleteFleetManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<DeleteFleetManagedNamespaceRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteFleetManagedNamespaceResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<DeleteFleetManagedNamespaceRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteFleetManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6354,8 +6568,8 @@ export const DeleteFleetMember: API.OperationMethod<
   DeleteFleetMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<DeleteFleetMemberRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteFleetMemberResponse>,
+  input: __S(480, __c15, 0) as any as S.Schema<DeleteFleetMemberRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteFleetMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6369,7 +6583,7 @@ export const DeleteFleetUpdateStrategy: API.OperationMethod<
   DeleteFleetUpdateStrategyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<DeleteFleetUpdateStrategyRequest>,
+  input: __S(512, __c16, 0) as any as S.Schema<DeleteFleetUpdateStrategyRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteFleetUpdateStrategyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6384,7 +6598,7 @@ export const DeleteIdentityBinding: API.OperationMethod<
   DeleteIdentityBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<DeleteIdentityBindingRequest>,
+  input: __S(544, __c17, 0) as any as S.Schema<DeleteIdentityBindingRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteIdentityBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6399,8 +6613,8 @@ export const DeleteMaintenanceConfiguration: API.OperationMethod<
   DeleteMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<DeleteMaintenanceConfigurationRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteMaintenanceConfigurationResponse>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteMaintenanceConfigurationRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<DeleteMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6414,7 +6628,7 @@ export const DeleteManagedCluster: API.OperationMethod<
   DeleteManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<DeleteManagedClusterRequest>,
+  input: __S(608, __c19, 0) as any as S.Schema<DeleteManagedClusterRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6429,7 +6643,7 @@ export const DeleteManagedNamespace: API.OperationMethod<
   DeleteManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<DeleteManagedNamespaceRequest>,
+  input: __S(640, __c20, 0) as any as S.Schema<DeleteManagedNamespaceRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6444,8 +6658,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(992, __c31, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(993, __c31, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6459,8 +6673,8 @@ export const DeleteSnapshot: API.OperationMethod<
   DeleteSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<DeleteSnapshotRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteSnapshotResponse>,
+  input: __S(1024, __c32, 0) as any as S.Schema<DeleteSnapshotRequest>,
+  output: __S(800, __c25, 0) as any as S.Schema<DeleteSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6474,7 +6688,7 @@ export const DeleteTrustedAccessRoleBinding: API.OperationMethod<
   DeleteTrustedAccessRoleBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<DeleteTrustedAccessRoleBindingRequest>,
+  input: __S(1056, __c33, 0) as any as S.Schema<DeleteTrustedAccessRoleBindingRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<DeleteTrustedAccessRoleBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6489,8 +6703,8 @@ export const DeleteUpdateRun: API.OperationMethod<
   DeleteUpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c32, 0) as any as S.Schema<DeleteUpdateRunRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteUpdateRunResponse>,
+  input: __S(1088, __c34, 0) as any as S.Schema<DeleteUpdateRunRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<DeleteUpdateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6504,8 +6718,8 @@ export const FleetManagedNamespacesCreateOrUpdate: API.OperationMethod<
   FleetManagedNamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1057, __c33, 1) as any as S.Schema<FleetManagedNamespacesCreateOrUpdateRequest>,
-  output: __S(1139, __c35, 19) as any as S.Schema<FleetManagedNamespacesCreateOrUpdateResponse>,
+  input: __S(1121, __c35, 1) as any as S.Schema<FleetManagedNamespacesCreateOrUpdateRequest>,
+  output: __S(1122, __c35, 2) as any as S.Schema<FleetManagedNamespacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6519,8 +6733,8 @@ export const FleetsCreateOrUpdate: API.OperationMethod<
   FleetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1154, __c36, 2) as any as S.Schema<FleetsCreateOrUpdateRequest>,
-  output: __S(1221, __c38, 5) as any as S.Schema<FleetsCreateOrUpdateResponse>,
+  input: __S(1218, __c38, 2) as any as S.Schema<FleetsCreateOrUpdateRequest>,
+  output: __S(1219, __c38, 3) as any as S.Schema<FleetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6534,8 +6748,8 @@ export const FleetUpdateStrategiesCreateOrUpdate: API.OperationMethod<
   FleetUpdateStrategiesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1313, __c41, 1) as any as S.Schema<FleetUpdateStrategiesCreateOrUpdateRequest>,
-  output: __S(1377, __c43, 1) as any as S.Schema<FleetUpdateStrategiesCreateOrUpdateResponse>,
+  input: __S(1377, __c43, 1) as any as S.Schema<FleetUpdateStrategiesCreateOrUpdateRequest>,
+  output: __S(1378, __c43, 2) as any as S.Schema<FleetUpdateStrategiesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6549,8 +6763,8 @@ export const GetAgentPool: API.OperationMethod<
   GetAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c44, 0) as any as S.Schema<GetAgentPoolRequest>,
-  output: __S(737, __c23, 1) as any as S.Schema<GetAgentPoolResponse>,
+  input: __S(1472, __c46, 0) as any as S.Schema<GetAgentPoolRequest>,
+  output: __S(1504, __c47, 0) as any as S.Schema<GetAgentPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6564,8 +6778,8 @@ export const GetAgentPoolAvailableAgentPoolVersions: API.OperationMethod<
   GetAgentPoolAvailableAgentPoolVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<GetAgentPoolAvailableAgentPoolVersionsRequest>,
-  output: __S(1444, __c45, 4) as any as S.Schema<AgentPoolAvailableVersions>,
+  input: __S(1536, __c48, 0) as any as S.Schema<GetAgentPoolAvailableAgentPoolVersionsRequest>,
+  output: __S(1540, __c48, 4) as any as S.Schema<AgentPoolAvailableVersions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6579,8 +6793,8 @@ export const GetAgentPoolUpgradeProfile: API.OperationMethod<
   GetAgentPoolUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<GetAgentPoolUpgradeProfileRequest>,
-  output: __S(1476, __c46, 4) as any as S.Schema<GetAgentPoolUpgradeProfileResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<GetAgentPoolUpgradeProfileRequest>,
+  output: __S(1572, __c49, 4) as any as S.Schema<GetAgentPoolUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6594,8 +6808,8 @@ export const GetAutoUpgradeProfile: API.OperationMethod<
   GetAutoUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<GetAutoUpgradeProfileRequest>,
-  output: __S(2915, __c91, 3) as any as S.Schema<GetAutoUpgradeProfileResponse>,
+  input: __S(1664, __c52, 0) as any as S.Schema<GetAutoUpgradeProfileRequest>,
+  output: __S(1696, __c53, 0) as any as S.Schema<GetAutoUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6609,8 +6823,8 @@ export const GetDeploymentSafeguard: API.OperationMethod<
   GetDeploymentSafeguardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<GetDeploymentSafeguardRequest>,
-  output: __S(3361, __c105, 1) as any as S.Schema<GetDeploymentSafeguardResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<GetDeploymentSafeguardRequest>,
+  output: __S(1760, __c55, 0) as any as S.Schema<GetDeploymentSafeguardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6624,8 +6838,8 @@ export const GetFleet: API.OperationMethod<
   GetFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<GetFleetRequest>,
-  output: __S(1221, __c38, 5) as any as S.Schema<GetFleetResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<GetFleetRequest>,
+  output: __S(1824, __c57, 0) as any as S.Schema<GetFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6639,8 +6853,8 @@ export const GetFleetManagedNamespace: API.OperationMethod<
   GetFleetManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<GetFleetManagedNamespaceRequest>,
-  output: __S(1139, __c35, 19) as any as S.Schema<GetFleetManagedNamespaceResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<GetFleetManagedNamespaceRequest>,
+  output: __S(1888, __c59, 0) as any as S.Schema<GetFleetManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6654,8 +6868,8 @@ export const GetFleetMember: API.OperationMethod<
   GetFleetMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<GetFleetMemberRequest>,
-  output: __S(3809, __c119, 1) as any as S.Schema<GetFleetMemberResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<GetFleetMemberRequest>,
+  output: __S(1952, __c61, 0) as any as S.Schema<GetFleetMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6669,8 +6883,8 @@ export const GetFleetUpdateStrategy: API.OperationMethod<
   GetFleetUpdateStrategyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<GetFleetUpdateStrategyRequest>,
-  output: __S(1377, __c43, 1) as any as S.Schema<GetFleetUpdateStrategyResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<GetFleetUpdateStrategyRequest>,
+  output: __S(2016, __c63, 0) as any as S.Schema<GetFleetUpdateStrategyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6684,8 +6898,8 @@ export const GetGate: API.OperationMethod<
   GetGateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<GetGateRequest>,
-  output: __S(1795, __c56, 3) as any as S.Schema<GetGateResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<GetGateRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GetGateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6699,8 +6913,8 @@ export const GetIdentityBinding: API.OperationMethod<
   GetIdentityBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<GetIdentityBindingRequest>,
-  output: __S(1859, __c58, 3) as any as S.Schema<GetIdentityBindingResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetIdentityBindingRequest>,
+  output: __S(2208, __c69, 0) as any as S.Schema<GetIdentityBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6714,8 +6928,8 @@ export const GetMachine: API.OperationMethod<
   GetMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<GetMachineRequest>,
-  output: __S(1924, __c60, 4) as any as S.Schema<GetMachineResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<GetMachineRequest>,
+  output: __S(2276, __c71, 4) as any as S.Schema<GetMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6729,8 +6943,8 @@ export const GetMaintenanceConfiguration: API.OperationMethod<
   GetMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<GetMaintenanceConfigurationRequest>,
-  output: __S(1998, __c62, 14) as any as S.Schema<GetMaintenanceConfigurationResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<GetMaintenanceConfigurationRequest>,
+  output: __S(2350, __c73, 14) as any as S.Schema<GetMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6744,8 +6958,8 @@ export const GetManagedCluster: API.OperationMethod<
   GetManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c64, 0) as any as S.Schema<GetManagedClusterRequest>,
-  output: __S(2295, __c71, 23) as any as S.Schema<GetManagedClusterResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<GetManagedClusterRequest>,
+  output: __S(2496, __c78, 0) as any as S.Schema<GetManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6759,8 +6973,8 @@ export const GetManagedClusterCommandResult: API.OperationMethod<
   GetManagedClusterCommandResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<GetManagedClusterCommandResultRequest>,
-  output: __S(2337, __c73, 1) as any as S.Schema<RunCommandResult>,
+  input: __S(2688, __c84, 0) as any as S.Schema<GetManagedClusterCommandResultRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<RunCommandResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6774,8 +6988,8 @@ export const GetManagedClusterMeshRevisionProfile: API.OperationMethod<
   GetManagedClusterMeshRevisionProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<GetManagedClusterMeshRevisionProfileRequest>,
-  output: __S(2434, __c76, 2) as any as S.Schema<GetManagedClusterMeshRevisionProfileResponse>,
+  input: __S(2752, __c86, 0) as any as S.Schema<GetManagedClusterMeshRevisionProfileRequest>,
+  output: __S(2818, __c88, 2) as any as S.Schema<GetManagedClusterMeshRevisionProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6789,8 +7003,8 @@ export const GetManagedClusterMeshUpgradeProfile: API.OperationMethod<
   GetManagedClusterMeshUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2464, __c77, 0) as any as S.Schema<GetManagedClusterMeshUpgradeProfileRequest>,
-  output: __S(2496, __c78, 0) as any as S.Schema<GetManagedClusterMeshUpgradeProfileResponse>,
+  input: __S(2848, __c89, 0) as any as S.Schema<GetManagedClusterMeshUpgradeProfileRequest>,
+  output: __S(2880, __c90, 0) as any as S.Schema<GetManagedClusterMeshUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6804,8 +7018,8 @@ export const GetManagedClusterUpgradeProfile: API.OperationMethod<
   GetManagedClusterUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<GetManagedClusterUpgradeProfileRequest>,
-  output: __S(2532, __c79, 4) as any as S.Schema<GetManagedClusterUpgradeProfileResponse>,
+  input: __S(2912, __c91, 0) as any as S.Schema<GetManagedClusterUpgradeProfileRequest>,
+  output: __S(2916, __c91, 4) as any as S.Schema<GetManagedClusterUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6819,8 +7033,8 @@ export const GetManagedNamespace: API.OperationMethod<
   GetManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<GetManagedNamespaceRequest>,
-  output: __S(2593, __c81, 1) as any as S.Schema<GetManagedNamespaceResponse>,
+  input: __S(2944, __c92, 0) as any as S.Schema<GetManagedNamespaceRequest>,
+  output: __S(2976, __c93, 0) as any as S.Schema<GetManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6834,8 +7048,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2624, __c82, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(2658, __c83, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(3040, __c95, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(3074, __c96, 2) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6849,8 +7063,8 @@ export const GetSnapshot: API.OperationMethod<
   GetSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2688, __c84, 0) as any as S.Schema<GetSnapshotRequest>,
-  output: __S(2721, __c85, 1) as any as S.Schema<GetSnapshotResponse>,
+  input: __S(3104, __c97, 0) as any as S.Schema<GetSnapshotRequest>,
+  output: __S(3137, __c98, 1) as any as S.Schema<GetSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6864,8 +7078,8 @@ export const GetTrustedAccessRoleBinding: API.OperationMethod<
   GetTrustedAccessRoleBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<GetTrustedAccessRoleBindingRequest>,
-  output: __S(2785, __c87, 1) as any as S.Schema<GetTrustedAccessRoleBindingResponse>,
+  input: __S(3168, __c99, 0) as any as S.Schema<GetTrustedAccessRoleBindingRequest>,
+  output: __S(3200, __c100, 0) as any as S.Schema<GetTrustedAccessRoleBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6879,8 +7093,8 @@ export const GetUpdateRun: API.OperationMethod<
   GetUpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2816, __c88, 0) as any as S.Schema<GetUpdateRunRequest>,
-  output: __S(2866, __c89, 18) as any as S.Schema<GetUpdateRunResponse>,
+  input: __S(3264, __c102, 0) as any as S.Schema<GetUpdateRunRequest>,
+  output: __S(3296, __c103, 0) as any as S.Schema<GetUpdateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6894,8 +7108,8 @@ export const IdentityBindingsCreateOrUpdate: API.OperationMethod<
   IdentityBindingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2946, __c92, 2) as any as S.Schema<IdentityBindingsCreateOrUpdateRequest>,
-  output: __S(1859, __c58, 3) as any as S.Schema<IdentityBindingsCreateOrUpdateResponse>,
+  input: __S(3426, __c107, 2) as any as S.Schema<IdentityBindingsCreateOrUpdateRequest>,
+  output: __S(3427, __c107, 3) as any as S.Schema<IdentityBindingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6909,8 +7123,8 @@ export const ListAgentPools: API.OperationMethod<
   ListAgentPoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<ListAgentPoolsRequest>,
-  output: __S(2978, __c93, 2) as any as S.Schema<AgentPoolListResult>,
+  input: __S(3456, __c108, 0) as any as S.Schema<ListAgentPoolsRequest>,
+  output: __S(3458, __c108, 2) as any as S.Schema<AgentPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6924,8 +7138,8 @@ export const ListAutoUpgradeProfileByFleet: API.OperationMethod<
   ListAutoUpgradeProfileByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<ListAutoUpgradeProfileByFleetRequest>,
-  output: __S(3010, __c94, 2) as any as S.Schema<AutoUpgradeProfileListResult>,
+  input: __S(3488, __c109, 0) as any as S.Schema<ListAutoUpgradeProfileByFleetRequest>,
+  output: __S(3490, __c109, 2) as any as S.Schema<AutoUpgradeProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6939,8 +7153,8 @@ export const ListDeploymentSafeguards: API.OperationMethod<
   ListDeploymentSafeguardsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3040, __c95, 0) as any as S.Schema<ListDeploymentSafeguardsRequest>,
-  output: __S(3042, __c95, 2) as any as S.Schema<DeploymentSafeguardListResult>,
+  input: __S(3520, __c110, 0) as any as S.Schema<ListDeploymentSafeguardsRequest>,
+  output: __S(3522, __c110, 2) as any as S.Schema<DeploymentSafeguardListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6954,8 +7168,8 @@ export const ListFleetByResourceGroup: API.OperationMethod<
   ListFleetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<ListFleetByResourceGroupRequest>,
-  output: __S(3105, __c97, 1) as any as S.Schema<FleetListResult>,
+  input: __S(3552, __c111, 0) as any as S.Schema<ListFleetByResourceGroupRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6969,8 +7183,8 @@ export const ListFleetBySubscription: API.OperationMethod<
   ListFleetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3136, __c98, 0) as any as S.Schema<ListFleetBySubscriptionRequest>,
-  output: __S(3105, __c97, 1) as any as S.Schema<FleetListResult>,
+  input: __S(3616, __c113, 0) as any as S.Schema<ListFleetBySubscriptionRequest>,
+  output: __S(3585, __c112, 1) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6984,8 +7198,8 @@ export const ListFleetCredentials: API.OperationMethod<
   ListFleetCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<ListFleetCredentialsRequest>,
-  output: __S(3202, __c100, 2) as any as S.Schema<FleetCredentialResults>,
+  input: __S(3648, __c114, 0) as any as S.Schema<ListFleetCredentialsRequest>,
+  output: __S(3682, __c115, 2) as any as S.Schema<FleetCredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6999,8 +7213,8 @@ export const ListFleetManagedNamespaceByFleet: API.OperationMethod<
   ListFleetManagedNamespaceByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3232, __c101, 0) as any as S.Schema<ListFleetManagedNamespaceByFleetRequest>,
-  output: __S(3234, __c101, 2) as any as S.Schema<FleetManagedNamespaceListResult>,
+  input: __S(3712, __c116, 0) as any as S.Schema<ListFleetManagedNamespaceByFleetRequest>,
+  output: __S(3714, __c116, 2) as any as S.Schema<FleetManagedNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7014,8 +7228,8 @@ export const ListFleetMemberByFleet: API.OperationMethod<
   ListFleetMemberByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3264, __c102, 0) as any as S.Schema<ListFleetMemberByFleetRequest>,
-  output: __S(3266, __c102, 2) as any as S.Schema<FleetMemberListResult>,
+  input: __S(3744, __c117, 0) as any as S.Schema<ListFleetMemberByFleetRequest>,
+  output: __S(3746, __c117, 2) as any as S.Schema<FleetMemberListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7029,8 +7243,8 @@ export const ListFleetUpdateStrategyByFleet: API.OperationMethod<
   ListFleetUpdateStrategyByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3296, __c103, 0) as any as S.Schema<ListFleetUpdateStrategyByFleetRequest>,
-  output: __S(3298, __c103, 2) as any as S.Schema<FleetUpdateStrategyListResult>,
+  input: __S(3776, __c118, 0) as any as S.Schema<ListFleetUpdateStrategyByFleetRequest>,
+  output: __S(3778, __c118, 2) as any as S.Schema<FleetUpdateStrategyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7044,8 +7258,8 @@ export const ListGateByFleet: API.OperationMethod<
   ListGateByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3392, __c106, 0) as any as S.Schema<ListGateByFleetRequest>,
-  output: __S(3394, __c106, 2) as any as S.Schema<GateListResult>,
+  input: __S(3872, __c121, 0) as any as S.Schema<ListGateByFleetRequest>,
+  output: __S(3874, __c121, 2) as any as S.Schema<GateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7059,8 +7273,8 @@ export const ListIdentityBindingByManagedCluster: API.OperationMethod<
   ListIdentityBindingByManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<ListIdentityBindingByManagedClusterRequest>,
-  output: __S(3426, __c107, 2) as any as S.Schema<IdentityBindingListResult>,
+  input: __S(3904, __c122, 0) as any as S.Schema<ListIdentityBindingByManagedClusterRequest>,
+  output: __S(3906, __c122, 2) as any as S.Schema<IdentityBindingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7074,8 +7288,8 @@ export const ListMachines: API.OperationMethod<
   ListMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3456, __c108, 0) as any as S.Schema<ListMachinesRequest>,
-  output: __S(3458, __c108, 2) as any as S.Schema<MachineListResult>,
+  input: __S(3936, __c123, 0) as any as S.Schema<ListMachinesRequest>,
+  output: __S(3938, __c123, 2) as any as S.Schema<MachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7090,11 +7304,11 @@ export const ListMaintenanceConfigurationByManagedCluster: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3488,
-    __c109,
+    3968,
+    __c124,
     0,
   ) as any as S.Schema<ListMaintenanceConfigurationByManagedClusterRequest>,
-  output: __S(3490, __c109, 2) as any as S.Schema<MaintenanceConfigurationListResult>,
+  output: __S(3970, __c124, 2) as any as S.Schema<MaintenanceConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7108,8 +7322,8 @@ export const ListManagedClusterByResourceGroup: API.OperationMethod<
   ListManagedClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3520, __c110, 0) as any as S.Schema<ListManagedClusterByResourceGroupRequest>,
-  output: __S(3553, __c111, 1) as any as S.Schema<ManagedClusterListResult>,
+  input: __S(4000, __c125, 0) as any as S.Schema<ListManagedClusterByResourceGroupRequest>,
+  output: __S(4033, __c126, 1) as any as S.Schema<ManagedClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7123,8 +7337,8 @@ export const ListManagedClusterClusterAdminCredentials: API.OperationMethod<
   ListManagedClusterClusterAdminCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3584, __c112, 0) as any as S.Schema<ListManagedClusterClusterAdminCredentialsRequest>,
-  output: __S(3202, __c100, 2) as any as S.Schema<CredentialResults>,
+  input: __S(4064, __c127, 0) as any as S.Schema<ListManagedClusterClusterAdminCredentialsRequest>,
+  output: __S(3682, __c115, 2) as any as S.Schema<CredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7139,11 +7353,11 @@ export const ListManagedClusterClusterMonitoringUserCredentials: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3616,
-    __c113,
+    4096,
+    __c128,
     0,
   ) as any as S.Schema<ListManagedClusterClusterMonitoringUserCredentialsRequest>,
-  output: __S(3202, __c100, 2) as any as S.Schema<CredentialResults>,
+  output: __S(3682, __c115, 2) as any as S.Schema<CredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7157,8 +7371,8 @@ export const ListManagedClusterClusterUserCredentials: API.OperationMethod<
   ListManagedClusterClusterUserCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3648, __c114, 0) as any as S.Schema<ListManagedClusterClusterUserCredentialsRequest>,
-  output: __S(3202, __c100, 2) as any as S.Schema<CredentialResults>,
+  input: __S(4128, __c129, 0) as any as S.Schema<ListManagedClusterClusterUserCredentialsRequest>,
+  output: __S(3682, __c115, 2) as any as S.Schema<CredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7172,8 +7386,8 @@ export const ListManagedClusterKubernetesVersions: API.OperationMethod<
   ListManagedClusterKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3680, __c115, 0) as any as S.Schema<ListManagedClusterKubernetesVersionsRequest>,
-  output: __S(3686, __c115, 6) as any as S.Schema<KubernetesVersionListResult>,
+  input: __S(4160, __c130, 0) as any as S.Schema<ListManagedClusterKubernetesVersionsRequest>,
+  output: __S(4166, __c130, 6) as any as S.Schema<KubernetesVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7187,8 +7401,8 @@ export const ListManagedClusterMeshRevisionProfiles: API.OperationMethod<
   ListManagedClusterMeshRevisionProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3712, __c116, 0) as any as S.Schema<ListManagedClusterMeshRevisionProfilesRequest>,
-  output: __S(3714, __c116, 2) as any as S.Schema<MeshRevisionProfileList>,
+  input: __S(4192, __c131, 0) as any as S.Schema<ListManagedClusterMeshRevisionProfilesRequest>,
+  output: __S(4194, __c131, 2) as any as S.Schema<MeshRevisionProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7202,8 +7416,8 @@ export const ListManagedClusterMeshUpgradeProfiles: API.OperationMethod<
   ListManagedClusterMeshUpgradeProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3840, __c120, 0) as any as S.Schema<ListManagedClusterMeshUpgradeProfilesRequest>,
-  output: __S(3842, __c120, 2) as any as S.Schema<MeshUpgradeProfileList>,
+  input: __S(4320, __c135, 0) as any as S.Schema<ListManagedClusterMeshUpgradeProfilesRequest>,
+  output: __S(4322, __c135, 2) as any as S.Schema<MeshUpgradeProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7218,11 +7432,11 @@ export const ListManagedClusterOutboundNetworkDependenciesEndpoints: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3872,
-    __c121,
+    4352,
+    __c136,
     0,
   ) as any as S.Schema<ListManagedClusterOutboundNetworkDependenciesEndpointsRequest>,
-  output: __S(3879, __c121, 7) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
+  output: __S(4359, __c136, 7) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7236,8 +7450,8 @@ export const ListManagedClusters: API.OperationMethod<
   ListManagedClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3904, __c122, 0) as any as S.Schema<ListManagedClustersRequest>,
-  output: __S(3553, __c111, 1) as any as S.Schema<ManagedClusterListResult>,
+  input: __S(4384, __c137, 0) as any as S.Schema<ListManagedClustersRequest>,
+  output: __S(4033, __c126, 1) as any as S.Schema<ManagedClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7251,8 +7465,8 @@ export const ListManagedNamespaceByManagedCluster: API.OperationMethod<
   ListManagedNamespaceByManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3936, __c123, 0) as any as S.Schema<ListManagedNamespaceByManagedClusterRequest>,
-  output: __S(3938, __c123, 2) as any as S.Schema<ManagedNamespaceListResult>,
+  input: __S(4416, __c138, 0) as any as S.Schema<ListManagedNamespaceByManagedClusterRequest>,
+  output: __S(4418, __c138, 2) as any as S.Schema<ManagedNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7266,8 +7480,8 @@ export const ListManagedNamespaceCredential: API.OperationMethod<
   ListManagedNamespaceCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3968, __c124, 0) as any as S.Schema<ListManagedNamespaceCredentialRequest>,
-  output: __S(3202, __c100, 2) as any as S.Schema<CredentialResults>,
+  input: __S(4448, __c139, 0) as any as S.Schema<ListManagedNamespaceCredentialRequest>,
+  output: __S(3682, __c115, 2) as any as S.Schema<CredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7281,8 +7495,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4000, __c125, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(4004, __c125, 4) as any as S.Schema<OperationListResult>,
+  input: __S(4480, __c140, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(4484, __c140, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7296,8 +7510,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4032, __c126, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(4034, __c126, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(4512, __c141, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(4514, __c141, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7311,8 +7525,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4064, __c127, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
-  output: __S(4065, __c127, 1) as any as S.Schema<PrivateLinkResourcesListResult>,
+  input: __S(4544, __c142, 0) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(4545, __c142, 1) as any as S.Schema<PrivateLinkResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7326,8 +7540,8 @@ export const ListSnapshotByResourceGroup: API.OperationMethod<
   ListSnapshotByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4096, __c128, 0) as any as S.Schema<ListSnapshotByResourceGroupRequest>,
-  output: __S(4129, __c129, 1) as any as S.Schema<SnapshotListResult>,
+  input: __S(4576, __c143, 0) as any as S.Schema<ListSnapshotByResourceGroupRequest>,
+  output: __S(4609, __c144, 1) as any as S.Schema<SnapshotListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7341,8 +7555,8 @@ export const ListSnapshots: API.OperationMethod<
   ListSnapshotsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4160, __c130, 0) as any as S.Schema<ListSnapshotsRequest>,
-  output: __S(4129, __c129, 1) as any as S.Schema<SnapshotListResult>,
+  input: __S(4640, __c145, 0) as any as S.Schema<ListSnapshotsRequest>,
+  output: __S(4609, __c144, 1) as any as S.Schema<SnapshotListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7356,8 +7570,8 @@ export const ListTrustedAccessRoleBindings: API.OperationMethod<
   ListTrustedAccessRoleBindingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4224, __c132, 0) as any as S.Schema<ListTrustedAccessRoleBindingsRequest>,
-  output: __S(4226, __c132, 2) as any as S.Schema<TrustedAccessRoleBindingListResult>,
+  input: __S(4704, __c147, 0) as any as S.Schema<ListTrustedAccessRoleBindingsRequest>,
+  output: __S(4706, __c147, 2) as any as S.Schema<TrustedAccessRoleBindingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7371,8 +7585,8 @@ export const ListTrustedAccessRoles: API.OperationMethod<
   ListTrustedAccessRolesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4256, __c133, 0) as any as S.Schema<ListTrustedAccessRolesRequest>,
-  output: __S(4261, __c133, 5) as any as S.Schema<TrustedAccessRoleListResult>,
+  input: __S(4736, __c148, 0) as any as S.Schema<ListTrustedAccessRolesRequest>,
+  output: __S(4741, __c148, 5) as any as S.Schema<TrustedAccessRoleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7386,8 +7600,8 @@ export const ListUpdateRunByFleet: API.OperationMethod<
   ListUpdateRunByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4288, __c134, 0) as any as S.Schema<ListUpdateRunByFleetRequest>,
-  output: __S(4290, __c134, 2) as any as S.Schema<UpdateRunListResult>,
+  input: __S(4768, __c149, 0) as any as S.Schema<ListUpdateRunByFleetRequest>,
+  output: __S(4770, __c149, 2) as any as S.Schema<UpdateRunListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7401,8 +7615,8 @@ export const MaintenanceConfigurationsCreateOrUpdate: API.OperationMethod<
   MaintenanceConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4320, __c135, 0) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>,
-  output: __S(1998, __c62, 14) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>,
+  input: __S(4800, __c150, 0) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>,
+  output: __S(2350, __c73, 14) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7416,8 +7630,8 @@ export const ManagedClustersCreateOrUpdate: API.OperationMethod<
   ManagedClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4364, __c136, 12) as any as S.Schema<ManagedClustersCreateOrUpdateRequest>,
-  output: __S(2295, __c71, 23) as any as S.Schema<ManagedClustersCreateOrUpdateResponse>,
+  input: __S(4844, __c151, 12) as any as S.Schema<ManagedClustersCreateOrUpdateRequest>,
+  output: __S(4845, __c151, 13) as any as S.Schema<ManagedClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7431,8 +7645,8 @@ export const ManagedNamespacesCreateOrUpdate: API.OperationMethod<
   ManagedNamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4385, __c137, 1) as any as S.Schema<ManagedNamespacesCreateOrUpdateRequest>,
-  output: __S(2593, __c81, 1) as any as S.Schema<ManagedNamespacesCreateOrUpdateResponse>,
+  input: __S(4865, __c152, 1) as any as S.Schema<ManagedNamespacesCreateOrUpdateRequest>,
+  output: __S(4866, __c152, 2) as any as S.Schema<ManagedNamespacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7446,8 +7660,8 @@ export const PostResolvePrivateLinkServiceId: API.OperationMethod<
   PostResolvePrivateLinkServiceIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4416, __c138, 0) as any as S.Schema<PostResolvePrivateLinkServiceIdRequest>,
-  output: __S(2176, __c68, 0) as any as S.Schema<PrivateLinkResource>,
+  input: __S(4896, __c153, 0) as any as S.Schema<PostResolvePrivateLinkServiceIdRequest>,
+  output: __S(2560, __c80, 0) as any as S.Schema<PrivateLinkResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7461,8 +7675,8 @@ export const ResetManagedClusterServicePrincipalProfile: API.OperationMethod<
   ResetManagedClusterServicePrincipalProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4448, __c139, 0) as any as S.Schema<ResetManagedClusterServicePrincipalProfileRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<ResetManagedClusterServicePrincipalProfileResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<ResetManagedClusterServicePrincipalProfileRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<ResetManagedClusterServicePrincipalProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7476,8 +7690,8 @@ export const RotateManagedClusterClusterCertificates: API.OperationMethod<
   RotateManagedClusterClusterCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4480, __c140, 0) as any as S.Schema<RotateManagedClusterClusterCertificatesRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<RotateManagedClusterClusterCertificatesResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<RotateManagedClusterClusterCertificatesRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<RotateManagedClusterClusterCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7492,13 +7706,13 @@ export const RotateManagedClusterServiceAccountSigningKeys: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4512,
-    __c141,
+    4992,
+    __c156,
     0,
   ) as any as S.Schema<RotateManagedClusterServiceAccountSigningKeysRequest>,
   output: __S(
-    32,
-    __c1,
+    128,
+    __c4,
     0,
   ) as any as S.Schema<RotateManagedClusterServiceAccountSigningKeysResponse>,
   errors: [UnknownAzureError],
@@ -7514,8 +7728,8 @@ export const RunManagedClusterCommand: API.OperationMethod<
   RunManagedClusterCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4576, __c143, 0) as any as S.Schema<RunManagedClusterCommandRequest>,
-  output: __S(2337, __c73, 1) as any as S.Schema<RunCommandResult>,
+  input: __S(5056, __c158, 0) as any as S.Schema<RunManagedClusterCommandRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<RunCommandResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7529,8 +7743,8 @@ export const SnapshotsCreateOrUpdate: API.OperationMethod<
   SnapshotsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4609, __c144, 1) as any as S.Schema<SnapshotsCreateOrUpdateRequest>,
-  output: __S(2721, __c85, 1) as any as S.Schema<SnapshotsCreateOrUpdateResponse>,
+  input: __S(5089, __c159, 1) as any as S.Schema<SnapshotsCreateOrUpdateRequest>,
+  output: __S(3137, __c98, 1) as any as S.Schema<SnapshotsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7544,8 +7758,8 @@ export const StartManagedCluster: API.OperationMethod<
   StartManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4640, __c145, 0) as any as S.Schema<StartManagedClusterRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<StartManagedClusterResponse>,
+  input: __S(5120, __c160, 0) as any as S.Schema<StartManagedClusterRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<StartManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7559,8 +7773,8 @@ export const StartUpdateRun: API.OperationMethod<
   StartUpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4672, __c146, 0) as any as S.Schema<StartUpdateRunRequest>,
-  output: __S(2866, __c89, 18) as any as S.Schema<StartUpdateRunResponse>,
+  input: __S(5152, __c161, 0) as any as S.Schema<StartUpdateRunRequest>,
+  output: __S(5184, __c162, 0) as any as S.Schema<StartUpdateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7574,8 +7788,8 @@ export const StopManagedCluster: API.OperationMethod<
   StopManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4704, __c147, 0) as any as S.Schema<StopManagedClusterRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<StopManagedClusterResponse>,
+  input: __S(5216, __c163, 0) as any as S.Schema<StopManagedClusterRequest>,
+  output: __S(128, __c4, 0) as any as S.Schema<StopManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7589,8 +7803,8 @@ export const StopUpdateRun: API.OperationMethod<
   StopUpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4736, __c148, 0) as any as S.Schema<StopUpdateRunRequest>,
-  output: __S(2866, __c89, 18) as any as S.Schema<StopUpdateRunResponse>,
+  input: __S(5248, __c164, 0) as any as S.Schema<StopUpdateRunRequest>,
+  output: __S(5184, __c162, 0) as any as S.Schema<StopUpdateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7604,8 +7818,8 @@ export const TrustedAccessRoleBindingsCreateOrUpdate: API.OperationMethod<
   TrustedAccessRoleBindingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4769, __c149, 1) as any as S.Schema<TrustedAccessRoleBindingsCreateOrUpdateRequest>,
-  output: __S(2785, __c87, 1) as any as S.Schema<TrustedAccessRoleBindingsCreateOrUpdateResponse>,
+  input: __S(5281, __c165, 1) as any as S.Schema<TrustedAccessRoleBindingsCreateOrUpdateRequest>,
+  output: __S(5282, __c165, 2) as any as S.Schema<TrustedAccessRoleBindingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7619,8 +7833,8 @@ export const UpdateFleet: API.OperationMethod<
   UpdateFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4800, __c150, 0) as any as S.Schema<UpdateFleetRequest>,
-  output: __S(1221, __c38, 5) as any as S.Schema<UpdateFleetResponse>,
+  input: __S(5312, __c166, 0) as any as S.Schema<UpdateFleetRequest>,
+  output: __S(5313, __c166, 1) as any as S.Schema<UpdateFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7634,8 +7848,8 @@ export const UpdateFleetManagedNamespace: API.OperationMethod<
   UpdateFleetManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4832, __c151, 0) as any as S.Schema<UpdateFleetManagedNamespaceRequest>,
-  output: __S(1139, __c35, 19) as any as S.Schema<UpdateFleetManagedNamespaceResponse>,
+  input: __S(5344, __c167, 0) as any as S.Schema<UpdateFleetManagedNamespaceRequest>,
+  output: __S(5345, __c167, 1) as any as S.Schema<UpdateFleetManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7649,8 +7863,8 @@ export const UpdateFleetMember: API.OperationMethod<
   UpdateFleetMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4865, __c152, 1) as any as S.Schema<UpdateFleetMemberRequest>,
-  output: __S(3809, __c119, 1) as any as S.Schema<UpdateFleetMemberResponse>,
+  input: __S(5377, __c168, 1) as any as S.Schema<UpdateFleetMemberRequest>,
+  output: __S(5378, __c168, 2) as any as S.Schema<UpdateFleetMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7664,8 +7878,8 @@ export const UpdateGate: API.OperationMethod<
   UpdateGateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(129, __c4, 1) as any as S.Schema<UpdateGateRequest>,
-  output: __S(1795, __c56, 3) as any as S.Schema<UpdateGateResponse>,
+  input: __S(161, __c5, 1) as any as S.Schema<UpdateGateRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<UpdateGateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7679,8 +7893,8 @@ export const UpdateManagedClusterTags: API.OperationMethod<
   UpdateManagedClusterTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c5, 0) as any as S.Schema<UpdateManagedClusterTagsRequest>,
-  output: __S(2295, __c71, 23) as any as S.Schema<UpdateManagedClusterTagsResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<UpdateManagedClusterTagsRequest>,
+  output: __S(193, __c6, 1) as any as S.Schema<UpdateManagedClusterTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7694,8 +7908,8 @@ export const UpdateManagedNamespace: API.OperationMethod<
   UpdateManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c6, 0) as any as S.Schema<UpdateManagedNamespaceRequest>,
-  output: __S(2593, __c81, 1) as any as S.Schema<UpdateManagedNamespaceResponse>,
+  input: __S(224, __c7, 0) as any as S.Schema<UpdateManagedNamespaceRequest>,
+  output: __S(2976, __c93, 0) as any as S.Schema<UpdateManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7709,8 +7923,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(225, __c7, 1) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
-  output: __S(2658, __c83, 2) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
+  input: __S(257, __c8, 1) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(3074, __c96, 2) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7724,8 +7938,8 @@ export const UpdateRunsCreateOrUpdate: API.OperationMethod<
   UpdateRunsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(260, __c8, 4) as any as S.Schema<UpdateRunsCreateOrUpdateRequest>,
-  output: __S(2866, __c89, 18) as any as S.Schema<UpdateRunsCreateOrUpdateResponse>,
+  input: __S(292, __c9, 4) as any as S.Schema<UpdateRunsCreateOrUpdateRequest>,
+  output: __S(293, __c9, 5) as any as S.Schema<UpdateRunsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7739,8 +7953,8 @@ export const UpdateRunsSkip: API.OperationMethod<
   UpdateRunsSkipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(290, __c9, 2) as any as S.Schema<UpdateRunsSkipRequest>,
-  output: __S(2866, __c89, 18) as any as S.Schema<UpdateRunsSkipResponse>,
+  input: __S(322, __c10, 2) as any as S.Schema<UpdateRunsSkipRequest>,
+  output: __S(5184, __c162, 0) as any as S.Schema<UpdateRunsSkipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7754,8 +7968,8 @@ export const UpdateSnapshotTags: API.OperationMethod<
   UpdateSnapshotTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<UpdateSnapshotTagsRequest>,
-  output: __S(2721, __c85, 1) as any as S.Schema<UpdateSnapshotTagsResponse>,
+  input: __S(352, __c11, 0) as any as S.Schema<UpdateSnapshotTagsRequest>,
+  output: __S(3137, __c98, 1) as any as S.Schema<UpdateSnapshotTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7785,9 +7999,13 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AbortAgentPoolLatestOperationResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AbortAgentPoolLatestOperationResponse" });
   }
 }
 function __c2(j: number): any {
@@ -7834,6 +8052,17 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAutoUpgradeProfileResponse" });
+  }
+}
+function __c5(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           state: S.optional(S.String),
         }),
       ).annotate({ identifier: "GatePatchProperties" });
@@ -7844,7 +8073,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           gateName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(128, __c4, 0)),
+          properties: S.optional(__S(160, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7854,26 +8083,19 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGateRequest" });
-  }
-}
-function __c5(j: number): any {
-  switch (j) {
-    case 0:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
-            code: 200,
-            apiVersion: "2026-07-01",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateManagedClusterTagsRequest" });
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(2114, __c66, 2)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateGateResponse" });
   }
 }
 function __c6(j: number): any {
@@ -7884,8 +8106,48 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(928, __c29, 0)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}",
+            code: 200,
+            apiVersion: "2026-07-01",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateManagedClusterTagsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(2673, __c83, 17)),
+          eTag: S.optional(S.String),
+          sku: S.optional(__S(2674, __c83, 18)),
+          extendedLocation: S.optional(__S(2675, __c83, 19)),
+          identity: S.optional(__S(2678, __c83, 22)),
+          kind: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateManagedClusterTagsResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          resourceName: S.String.pipe(T.Label()),
           managedNamespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7897,13 +8159,13 @@ function __c6(j: number): any {
       ).annotate({ identifier: "UpdateManagedNamespaceRequest" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(2080, __c65, 0)),
-          privateLinkServiceConnectionState: __S(2656, __c83, 0),
+          privateEndpoint: S.optional(__S(2432, __c76, 0)),
+          privateLinkServiceConnectionState: __S(3072, __c96, 0),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
     case 1:
@@ -7913,7 +8175,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(256, __c8, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7925,30 +8187,30 @@ function __c7(j: number): any {
       ).annotate({ identifier: "UpdatePrivateEndpointConnectionRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(32, __c1, 0));
+      return S.Array(__S(800, __c25, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          customNodeImageVersions: S.optional(__S(256, __c8, 0)),
+          customNodeImageVersions: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "NodeImageSelectionInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          upgrade: __S(2848, __c89, 0),
-          nodeImageSelection: S.optional(__S(257, __c8, 1)),
+          upgrade: __S(3328, __c104, 0),
+          nodeImageSelection: S.optional(__S(289, __c9, 1)),
         }),
       ).annotate({ identifier: "ManagedClusterUpdateInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           updateStrategyId: S.optional(S.String),
-          strategy: S.optional(__S(1350, __c42, 6)),
-          managedClusterUpdate: __S(258, __c8, 2),
+          strategy: S.optional(__S(1414, __c44, 6)),
+          managedClusterUpdate: __S(290, __c9, 2),
         }),
       ).annotate({ identifier: "UpdateRunPropertiesInput" });
     case 4:
@@ -7958,7 +8220,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           updateRunName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(259, __c8, 3)),
+          properties: S.optional(__S(291, __c9, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7968,9 +8230,21 @@ function __c8(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRunsCreateOrUpdateRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(3345, __c104, 17)),
+          eTag: S.optional(S.String),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateRunsCreateOrUpdateResponse" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7980,7 +8254,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "SkipTarget" });
     case 1:
-      return S.Array(__S(288, __c9, 0));
+      return S.Array(__S(320, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -7988,7 +8262,7 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           updateRunName: S.String.pipe(T.Label()),
-          targets: __S(289, __c9, 1),
+          targets: __S(321, __c10, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8000,7 +8274,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "UpdateRunsSkipRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8008,7 +8282,7 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8020,7 +8294,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "UpdateSnapshotTagsRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8037,7 +8311,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "DeleteDeploymentSafeguardRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8056,7 +8330,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "DeleteFleetRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8076,7 +8350,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "DeleteFleetManagedNamespaceRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8096,7 +8370,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "DeleteFleetMemberRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8116,7 +8390,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteFleetUpdateStrategyRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8136,7 +8410,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "DeleteIdentityBindingRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8156,7 +8430,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeleteMaintenanceConfigurationRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8175,7 +8449,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteManagedClusterRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8195,7 +8469,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteManagedNamespaceRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8221,37 +8495,37 @@ function __c20(j: number): any {
           mode: S.optional(S.String),
           orchestratorVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
-          upgradeSettings: S.optional(__S(704, __c22, 0)),
-          powerState: S.optional(__S(705, __c22, 1)),
-          availabilityZones: S.optional(__S(800, __c25, 0)),
+          upgradeSettings: S.optional(__S(736, __c23, 0)),
+          powerState: S.optional(__S(737, __c23, 1)),
+          availabilityZones: S.optional(__S(864, __c27, 0)),
           enableNodePublicIP: S.optional(S.Boolean),
           nodePublicIPPrefixID: S.optional(S.String),
           scaleSetPriority: S.optional(S.String),
           scaleSetEvictionPolicy: S.optional(S.String),
           spotMaxPrice: S.optional(S.Number),
-          tags: S.optional(__S(864, __c27, 0)),
-          nodeLabels: S.optional(__S(864, __c27, 0)),
-          nodeTaints: S.optional(__S(800, __c25, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          nodeLabels: S.optional(__S(928, __c29, 0)),
+          nodeTaints: S.optional(__S(864, __c27, 0)),
           proximityPlacementGroupID: S.optional(S.String),
-          kubeletConfig: S.optional(__S(706, __c22, 2)),
-          linuxOSConfig: S.optional(__S(708, __c22, 4)),
+          kubeletConfig: S.optional(__S(738, __c23, 2)),
+          linuxOSConfig: S.optional(__S(740, __c23, 4)),
           enableEncryptionAtHost: S.optional(S.Boolean),
           enableUltraSSD: S.optional(S.Boolean),
           enableFIPS: S.optional(S.Boolean),
           gpuInstanceProfile: S.optional(S.String),
-          creationData: S.optional(__S(672, __c21, 0)),
+          creationData: S.optional(__S(704, __c22, 0)),
           capacityReservationGroupID: S.optional(S.String),
           hostGroupID: S.optional(S.String),
-          networkProfile: S.optional(__S(714, __c22, 10)),
-          windowsProfile: S.optional(__S(715, __c22, 11)),
-          securityProfile: S.optional(__S(716, __c22, 12)),
-          gpuProfile: S.optional(__S(717, __c22, 13)),
-          gatewayProfile: S.optional(__S(718, __c22, 14)),
-          artifactStreamingProfile: S.optional(__S(719, __c22, 15)),
-          virtualMachinesProfile: S.optional(__S(725, __c22, 21)),
-          virtualMachineNodesStatus: S.optional(__S(721, __c22, 17)),
-          status: S.optional(__S(896, __c28, 0)),
-          localDNSProfile: S.optional(__S(728, __c22, 24)),
+          networkProfile: S.optional(__S(746, __c23, 10)),
+          windowsProfile: S.optional(__S(747, __c23, 11)),
+          securityProfile: S.optional(__S(748, __c23, 12)),
+          gpuProfile: S.optional(__S(749, __c23, 13)),
+          gatewayProfile: S.optional(__S(750, __c23, 14)),
+          artifactStreamingProfile: S.optional(__S(751, __c23, 15)),
+          virtualMachinesProfile: S.optional(__S(757, __c23, 21)),
+          virtualMachineNodesStatus: S.optional(__S(753, __c23, 17)),
+          status: S.optional(__S(960, __c30, 0)),
+          localDNSProfile: S.optional(__S(760, __c23, 24)),
         }),
       ).annotate({ identifier: "ManagedClusterAgentPoolProfilePropertiesInput" });
     case 1:
@@ -8261,7 +8535,7 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           agentPoolName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(640, __c20, 0)),
+          properties: S.optional(__S(672, __c21, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8271,9 +8545,21 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AgentPoolsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(768, __c24, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AgentPoolsCreateOrUpdateResponse" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8283,7 +8569,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "CreationData" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8310,7 +8596,7 @@ function __c22(j: number): any {
           imageGcHighThreshold: S.optional(S.Number),
           imageGcLowThreshold: S.optional(S.Number),
           topologyManagerPolicy: S.optional(S.String),
-          allowedUnsafeSysctls: S.optional(__S(800, __c25, 0)),
+          allowedUnsafeSysctls: S.optional(__S(864, __c27, 0)),
           failSwapOn: S.optional(S.Boolean),
           containerLogMaxSizeMB: S.optional(S.Number),
           containerLogMaxFiles: S.optional(S.Number),
@@ -8353,7 +8639,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sysctls: S.optional(__S(707, __c22, 3)),
+          sysctls: S.optional(__S(739, __c23, 3)),
           transparentHugePageEnabled: S.optional(S.String),
           transparentHugePageDefrag: S.optional(S.String),
           swapFileSizeMB: S.optional(S.Number),
@@ -8367,7 +8653,7 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "IPTag" });
     case 6:
-      return S.Array(__S(709, __c22, 5));
+      return S.Array(__S(741, __c23, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8377,7 +8663,7 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "PortRange" });
     case 8:
-      return S.Array(__S(711, __c22, 7));
+      return S.Array(__S(743, __c23, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -8387,10 +8673,10 @@ function __c22(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({
-          nodePublicIPTags: S.optional(__S(710, __c22, 6)),
-          allowedHostPorts: S.optional(__S(712, __c22, 8)),
-          applicationSecurityGroups: S.optional(__S(800, __c25, 0)),
-          dranet: S.optional(__S(713, __c22, 9)),
+          nodePublicIPTags: S.optional(__S(742, __c23, 6)),
+          allowedHostPorts: S.optional(__S(744, __c23, 8)),
+          applicationSecurityGroups: S.optional(__S(864, __c27, 0)),
+          dranet: S.optional(__S(745, __c23, 9)),
         }),
       ).annotate({ identifier: "AgentPoolNetworkProfile" });
     case 11:
@@ -8433,7 +8719,7 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "ManualScaleProfile" });
     case 17:
-      return S.Array(__S(720, __c22, 16));
+      return S.Array(__S(752, __c23, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
@@ -8443,18 +8729,18 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "AutoScaleProfile" });
     case 19:
-      return S.Array(__S(722, __c22, 18));
+      return S.Array(__S(754, __c23, 18));
     case 20:
       return S.suspend(() =>
         S.Struct({
-          manual: S.optional(__S(721, __c22, 17)),
-          autoscale: S.optional(__S(723, __c22, 19)),
+          manual: S.optional(__S(753, __c23, 17)),
+          autoscale: S.optional(__S(755, __c23, 19)),
         }),
       ).annotate({ identifier: "ScaleProfile" });
     case 21:
       return S.suspend(() =>
         S.Struct({
-          scale: S.optional(__S(724, __c22, 20)),
+          scale: S.optional(__S(756, __c23, 20)),
         }),
       ).annotate({ identifier: "VirtualMachinesProfile" });
     case 22:
@@ -8471,25 +8757,25 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "LocalDNSOverride" });
     case 23:
-      return S.Record(S.String, __S(726, __c22, 22));
+      return S.Record(S.String, __S(758, __c23, 22));
     case 24:
       return S.suspend(() =>
         S.Struct({
           mode: S.optional(S.String),
           state: S.optional(S.String),
-          vnetDNSOverrides: S.optional(__S(727, __c22, 23)),
-          kubeDNSOverrides: S.optional(__S(727, __c22, 23)),
+          vnetDNSOverrides: S.optional(__S(759, __c23, 23)),
+          kubeDNSOverrides: S.optional(__S(759, __c23, 23)),
         }),
       ).annotate({ identifier: "LocalDNSProfile" });
     case 25:
       return S.suspend(() =>
         S.Struct({
-          provisioningError: S.optional(__S(837, __c26, 5)),
+          provisioningError: S.optional(__S(901, __c28, 5)),
         }),
       ).annotate({ identifier: "AgentPoolStatus" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8517,53 +8803,51 @@ function __c23(j: number): any {
           orchestratorVersion: S.optional(S.String),
           currentOrchestratorVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
-          upgradeSettings: S.optional(__S(704, __c22, 0)),
+          upgradeSettings: S.optional(__S(736, __c23, 0)),
           provisioningState: S.optional(S.String),
-          powerState: S.optional(__S(705, __c22, 1)),
-          availabilityZones: S.optional(__S(800, __c25, 0)),
+          powerState: S.optional(__S(737, __c23, 1)),
+          availabilityZones: S.optional(__S(864, __c27, 0)),
           enableNodePublicIP: S.optional(S.Boolean),
           nodePublicIPPrefixID: S.optional(S.String),
           scaleSetPriority: S.optional(S.String),
           scaleSetEvictionPolicy: S.optional(S.String),
           spotMaxPrice: S.optional(S.Number),
-          tags: S.optional(__S(864, __c27, 0)),
-          nodeLabels: S.optional(__S(864, __c27, 0)),
-          nodeTaints: S.optional(__S(800, __c25, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          nodeLabels: S.optional(__S(928, __c29, 0)),
+          nodeTaints: S.optional(__S(864, __c27, 0)),
           proximityPlacementGroupID: S.optional(S.String),
-          kubeletConfig: S.optional(__S(706, __c22, 2)),
-          linuxOSConfig: S.optional(__S(708, __c22, 4)),
+          kubeletConfig: S.optional(__S(738, __c23, 2)),
+          linuxOSConfig: S.optional(__S(740, __c23, 4)),
           enableEncryptionAtHost: S.optional(S.Boolean),
           enableUltraSSD: S.optional(S.Boolean),
           enableFIPS: S.optional(S.Boolean),
           gpuInstanceProfile: S.optional(S.String),
-          creationData: S.optional(__S(672, __c21, 0)),
+          creationData: S.optional(__S(704, __c22, 0)),
           capacityReservationGroupID: S.optional(S.String),
           hostGroupID: S.optional(S.String),
-          networkProfile: S.optional(__S(714, __c22, 10)),
-          windowsProfile: S.optional(__S(715, __c22, 11)),
-          securityProfile: S.optional(__S(716, __c22, 12)),
-          gpuProfile: S.optional(__S(717, __c22, 13)),
-          gatewayProfile: S.optional(__S(718, __c22, 14)),
-          artifactStreamingProfile: S.optional(__S(719, __c22, 15)),
-          virtualMachinesProfile: S.optional(__S(725, __c22, 21)),
-          virtualMachineNodesStatus: S.optional(__S(721, __c22, 17)),
-          status: S.optional(__S(729, __c22, 25)),
-          localDNSProfile: S.optional(__S(728, __c22, 24)),
+          networkProfile: S.optional(__S(746, __c23, 10)),
+          windowsProfile: S.optional(__S(747, __c23, 11)),
+          securityProfile: S.optional(__S(748, __c23, 12)),
+          gpuProfile: S.optional(__S(749, __c23, 13)),
+          gatewayProfile: S.optional(__S(750, __c23, 14)),
+          artifactStreamingProfile: S.optional(__S(751, __c23, 15)),
+          virtualMachinesProfile: S.optional(__S(757, __c23, 21)),
+          virtualMachineNodesStatus: S.optional(__S(753, __c23, 17)),
+          status: S.optional(__S(761, __c23, 25)),
+          localDNSProfile: S.optional(__S(760, __c23, 24)),
         }),
       ).annotate({ identifier: "ManagedClusterAgentPoolProfileProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(736, __c23, 0)),
-        }),
-      ).annotate({ identifier: "AgentPoolsCreateOrUpdateResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "AgentPoolStatusInputProvisioningError",
+      });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8578,16 +8862,16 @@ function __c24(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(835, __c26, 3)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(899, __c28, 3)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8596,48 +8880,48 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 2:
-      return S.Array(__S(833, __c26, 1));
+      return S.Array(__S(897, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(832, __c26, 0)),
-          additionalInfo: S.optional(__S(834, __c26, 2)),
+          details: S.optional(__S(896, __c28, 0)),
+          additionalInfo: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 4:
-      return S.Array(__S(835, __c26, 3));
+      return S.Array(__S(899, __c28, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(836, __c26, 4)),
-          additionalInfo: S.optional(__S(834, __c26, 2)),
+          details: S.optional(__S(900, __c28, 4)),
+          additionalInfo: S.optional(__S(898, __c28, 2)),
         }),
       ).annotate({ identifier: "AgentPoolStatusProvisioningError" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningError: S.optional(__S(32, __c1, 0)),
+          provisioningError: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({ identifier: "AgentPoolStatusInput" });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8655,9 +8939,16 @@ function __c29(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeletePrivateEndpointConnectionResponse" });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8676,7 +8967,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "DeleteSnapshotRequest" });
   }
 }
-function __c31(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8696,7 +8987,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "DeleteTrustedAccessRoleBindingRequest" });
   }
 }
-function __c32(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8716,15 +9007,15 @@ function __c32(j: number): any {
       ).annotate({ identifier: "DeleteUpdateRunRequest" });
   }
 }
-function __c33(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managedNamespaceProperties: S.optional(__S(1120, __c35, 0)),
+          managedNamespaceProperties: S.optional(__S(1184, __c37, 0)),
           adoptionPolicy: S.String,
           deletePolicy: S.String,
-          propagationPolicy: S.optional(__S(1137, __c35, 17)),
+          propagationPolicy: S.optional(__S(1201, __c37, 17)),
         }),
       ).annotate({ identifier: "FleetManagedNamespacePropertiesInput" });
     case 1:
@@ -8734,9 +9025,9 @@ function __c33(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           managedNamespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
           location: S.String,
-          properties: S.optional(__S(1056, __c33, 0)),
+          properties: S.optional(__S(1120, __c35, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8746,9 +9037,24 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FleetManagedNamespacesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(1202, __c37, 18)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "FleetManagedNamespacesCreateOrUpdateResponse" });
   }
 }
-function __c34(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8768,15 +9074,15 @@ function __c34(j: number): any {
       ).annotate({ identifier: "NetworkPolicy_2" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(864, __c27, 0)),
-          annotations: S.optional(__S(864, __c27, 0)),
-          defaultResourceQuota: S.optional(__S(1088, __c34, 0)),
-          defaultNetworkPolicy: S.optional(__S(1089, __c34, 1)),
+          labels: S.optional(__S(928, __c29, 0)),
+          annotations: S.optional(__S(928, __c29, 0)),
+          defaultResourceQuota: S.optional(__S(1152, __c36, 0)),
+          defaultNetworkPolicy: S.optional(__S(1153, __c36, 1)),
         }),
       ).annotate({ identifier: "ManagedNamespaceProperties" });
     case 1:
@@ -8784,16 +9090,16 @@ function __c35(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(__S(800, __c25, 0)),
+          values: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "MetaV1LabelSelectorRequirement" });
     case 2:
-      return S.Array(__S(1121, __c35, 1));
+      return S.Array(__S(1185, __c37, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          matchLabels: S.optional(__S(864, __c27, 0)),
-          matchExpressions: S.optional(__S(1122, __c35, 2)),
+          matchLabels: S.optional(__S(928, __c29, 0)),
+          matchExpressions: S.optional(__S(1186, __c37, 2)),
         }),
       ).annotate({ identifier: "MetaV1LabelSelector" });
     case 4:
@@ -8801,42 +9107,42 @@ function __c35(j: number): any {
         S.Struct({
           name: S.String,
           operator: S.String,
-          values: __S(800, __c25, 0),
+          values: __S(864, __c27, 0),
         }),
       ).annotate({ identifier: "PlacementV1PropertySelectorRequirement" });
     case 5:
-      return S.Array(__S(1124, __c35, 4));
+      return S.Array(__S(1188, __c37, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: __S(1125, __c35, 5),
+          matchExpressions: __S(1189, __c37, 5),
         }),
       ).annotate({ identifier: "PlacementV1PropertySelector" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labelSelector: S.optional(__S(1123, __c35, 3)),
-          propertySelector: S.optional(__S(1126, __c35, 6)),
+          labelSelector: S.optional(__S(1187, __c37, 3)),
+          propertySelector: S.optional(__S(1190, __c37, 6)),
         }),
       ).annotate({ identifier: "PlacementV1ClusterSelectorTerm" });
     case 8:
-      return S.Array(__S(1127, __c35, 7));
+      return S.Array(__S(1191, __c37, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          clusterSelectorTerms: __S(1128, __c35, 8),
+          clusterSelectorTerms: __S(1192, __c37, 8),
         }),
       ).annotate({ identifier: "PlacementV1ClusterSelector" });
     case 10:
       return S.suspend(() =>
         S.Struct({
-          requiredDuringSchedulingIgnoredDuringExecution: S.optional(__S(1129, __c35, 9)),
+          requiredDuringSchedulingIgnoredDuringExecution: S.optional(__S(1193, __c37, 9)),
         }),
       ).annotate({ identifier: "PlacementV1ClusterAffinity" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          clusterAffinity: S.optional(__S(1130, __c35, 10)),
+          clusterAffinity: S.optional(__S(1194, __c37, 10)),
         }),
       ).annotate({ identifier: "PlacementV1Affinity" });
     case 12:
@@ -8849,76 +9155,63 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "PlacementV1Toleration" });
     case 13:
-      return S.Array(__S(1132, __c35, 12));
+      return S.Array(__S(1196, __c37, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
           placementType: S.optional(S.String),
-          clusterNames: S.optional(__S(800, __c25, 0)),
-          affinity: S.optional(__S(1131, __c35, 11)),
-          tolerations: S.optional(__S(1133, __c35, 13)),
+          clusterNames: S.optional(__S(864, __c27, 0)),
+          affinity: S.optional(__S(1195, __c37, 11)),
+          tolerations: S.optional(__S(1197, __c37, 13)),
         }),
       ).annotate({ identifier: "PlacementV1PlacementPolicy" });
     case 15:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(__S(1134, __c35, 14)),
+          policy: S.optional(__S(1198, __c37, 14)),
         }),
       ).annotate({ identifier: "PlacementV1ClusterResourcePlacementSpec" });
     case 16:
       return S.suspend(() =>
         S.Struct({
-          defaultClusterResourcePlacement: S.optional(__S(1135, __c35, 15)),
+          defaultClusterResourcePlacement: S.optional(__S(1199, __c37, 15)),
         }),
       ).annotate({ identifier: "PlacementProfile" });
     case 17:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          placementProfile: S.optional(__S(1136, __c35, 16)),
+          placementProfile: S.optional(__S(1200, __c37, 16)),
         }),
       ).annotate({ identifier: "PropagationPolicy" });
     case 18:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          managedNamespaceProperties: S.optional(__S(1120, __c35, 0)),
+          managedNamespaceProperties: S.optional(__S(1184, __c37, 0)),
           adoptionPolicy: S.String,
           deletePolicy: S.String,
-          propagationPolicy: S.optional(__S(1137, __c35, 17)),
-          status: S.optional(__S(3776, __c118, 0)),
+          propagationPolicy: S.optional(__S(1201, __c37, 17)),
+          status: S.optional(__S(4256, __c133, 0)),
           portalFqdn: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetManagedNamespaceProperties" });
-    case 19:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          tags: S.optional(__S(864, __c27, 0)),
-          location: S.String,
-          properties: S.optional(__S(1138, __c35, 18)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FleetManagedNamespacesCreateOrUpdateResponse" });
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           dnsPrefix: S.optional(S.String),
-          apiServerAccessProfile: S.optional(__S(1216, __c38, 0)),
-          agentProfile: S.optional(__S(1217, __c38, 1)),
+          apiServerAccessProfile: S.optional(__S(1280, __c40, 0)),
+          agentProfile: S.optional(__S(1281, __c40, 1)),
         }),
       ).annotate({ identifier: "FleetHubProfileInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hubProfile: S.optional(__S(1152, __c36, 0)),
+          hubProfile: S.optional(__S(1216, __c38, 0)),
         }),
       ).annotate({ identifier: "FleetPropertiesInput" });
     case 2:
@@ -8927,10 +9220,10 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
           location: S.String,
-          properties: S.optional(__S(1153, __c36, 1)),
-          identity: S.optional(__S(1280, __c40, 0)),
+          properties: S.optional(__S(1217, __c38, 1)),
+          identity: S.optional(__S(1344, __c42, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8940,9 +9233,24 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FleetsCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(1283, __c40, 3)),
+          eTag: S.optional(S.String),
+          identity: S.optional(__S(1284, __c40, 4)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "FleetsCreateOrUpdateResponse" });
   }
 }
-function __c37(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8952,10 +9260,10 @@ function __c37(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity_2" });
     case 1:
-      return S.Record(S.String, __S(1184, __c37, 0));
+      return S.Record(S.String, __S(1248, __c39, 0));
   }
 }
-function __c38(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -8976,8 +9284,8 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dnsPrefix: S.optional(S.String),
-          apiServerAccessProfile: S.optional(__S(1216, __c38, 0)),
-          agentProfile: S.optional(__S(1217, __c38, 1)),
+          apiServerAccessProfile: S.optional(__S(1280, __c40, 0)),
+          agentProfile: S.optional(__S(1281, __c40, 1)),
           fqdn: S.optional(S.String),
           kubernetesVersion: S.optional(S.String),
           portalFqdn: S.optional(S.String),
@@ -8987,8 +9295,8 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          hubProfile: S.optional(__S(1218, __c38, 2)),
-          status: S.optional(__S(3776, __c118, 0)),
+          hubProfile: S.optional(__S(1282, __c40, 2)),
+          status: S.optional(__S(4256, __c133, 0)),
         }),
       ).annotate({ identifier: "FleetProperties" });
     case 4:
@@ -8997,48 +9305,34 @@ function __c38(j: number): any {
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1185, __c37, 1)),
+          userAssignedIdentities: S.optional(__S(1249, __c39, 1)),
         }),
       ).annotate({ identifier: "FleetsCreateOrUpdateResponseIdentity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          tags: S.optional(__S(864, __c27, 0)),
-          location: S.String,
-          properties: S.optional(__S(1219, __c38, 3)),
-          eTag: S.optional(S.String),
-          identity: S.optional(__S(1220, __c38, 4)),
-        }),
-      ).annotate({ identifier: "FleetsCreateOrUpdateResponse" });
-  }
-}
-function __c39(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, __S(32, __c1, 0));
-  }
-}
-function __c40(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(1248, __c39, 0)),
-        }),
-      ).annotate({ identifier: "FleetsCreateOrUpdateRequestIdentity" });
   }
 }
 function __c41(j: number): any {
   switch (j) {
     case 0:
+      return S.Record(S.String, __S(800, __c25, 0));
+  }
+}
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
-          strategy: __S(1350, __c42, 6),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(1312, __c41, 0)),
+        }),
+      ).annotate({ identifier: "FleetsCreateOrUpdateRequestIdentity" });
+  }
+}
+function __c43(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          strategy: __S(1414, __c44, 6),
         }),
       ).annotate({ identifier: "FleetUpdateStrategyPropertiesInput" });
     case 1:
@@ -9048,7 +9342,7 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           updateStrategyName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1312, __c41, 0)),
+          properties: S.optional(__S(1376, __c43, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9058,9 +9352,21 @@ function __c41(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FleetUpdateStrategiesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(1440, __c45, 0)),
+          eTag: S.optional(S.String),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "FleetUpdateStrategiesCreateOrUpdateResponse" });
   }
 }
-function __c42(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9070,62 +9376,51 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "GateConfiguration" });
     case 1:
-      return S.Array(__S(1344, __c42, 0));
+      return S.Array(__S(1408, __c44, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           maxConcurrency: S.optional(S.String),
-          beforeGates: S.optional(__S(1345, __c42, 1)),
-          afterGates: S.optional(__S(1345, __c42, 1)),
+          beforeGates: S.optional(__S(1409, __c44, 1)),
+          afterGates: S.optional(__S(1409, __c44, 1)),
         }),
       ).annotate({ identifier: "UpdateGroup" });
     case 3:
-      return S.Array(__S(1346, __c42, 2));
+      return S.Array(__S(1410, __c44, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          groups: S.optional(__S(1347, __c42, 3)),
+          groups: S.optional(__S(1411, __c44, 3)),
           afterStageWaitInSeconds: S.optional(S.Number),
           maxConcurrency: S.optional(S.String),
-          beforeGates: S.optional(__S(1345, __c42, 1)),
-          afterGates: S.optional(__S(1345, __c42, 1)),
+          beforeGates: S.optional(__S(1409, __c44, 1)),
+          afterGates: S.optional(__S(1409, __c44, 1)),
         }),
       ).annotate({ identifier: "UpdateStage" });
     case 5:
-      return S.Array(__S(1348, __c42, 4));
+      return S.Array(__S(1412, __c44, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          stages: __S(1349, __c42, 5),
+          stages: __S(1413, __c44, 5),
         }),
       ).annotate({ identifier: "UpdateRunStrategy" });
   }
 }
-function __c43(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          strategy: __S(1350, __c42, 6),
+          strategy: __S(1414, __c44, 6),
         }),
       ).annotate({ identifier: "FleetUpdateStrategyProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(1376, __c43, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "FleetUpdateStrategiesCreateOrUpdateResponse" });
   }
 }
-function __c44(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9145,7 +9440,21 @@ function __c44(j: number): any {
       ).annotate({ identifier: "GetAgentPoolRequest" });
   }
 }
-function __c45(j: number): any {
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(768, __c24, 0)),
+        }),
+      ).annotate({ identifier: "GetAgentPoolResponse" });
+  }
+}
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9171,11 +9480,11 @@ function __c45(j: number): any {
         }),
       ).annotate({ identifier: "AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem" });
     case 2:
-      return S.Array(__S(1441, __c45, 1));
+      return S.Array(__S(1537, __c48, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          agentPoolVersions: S.optional(__S(1442, __c45, 2)),
+          agentPoolVersions: S.optional(__S(1538, __c48, 2)),
         }),
       ).annotate({ identifier: "AgentPoolAvailableVersionsProperties" });
     case 4:
@@ -9184,12 +9493,12 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: __S(1443, __c45, 3),
+          properties: __S(1539, __c48, 3),
         }),
       ).annotate({ identifier: "AgentPoolAvailableVersions" });
   }
 }
-function __c46(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9216,14 +9525,14 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "AgentPoolRecentlyUsedVersion" });
     case 2:
-      return S.Array(__S(1473, __c46, 1));
+      return S.Array(__S(1569, __c49, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           kubernetesVersion: S.String,
           osType: S.String,
-          upgrades: S.optional(__S(1505, __c47, 1)),
-          recentlyUsedVersions: S.optional(__S(1474, __c46, 2)),
+          upgrades: S.optional(__S(1601, __c50, 1)),
+          recentlyUsedVersions: S.optional(__S(1570, __c49, 2)),
           latestNodeImageVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentPoolUpgradeProfileProperties" });
@@ -9233,13 +9542,13 @@ function __c46(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: __S(1475, __c46, 3),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: __S(1571, __c49, 3),
         }),
       ).annotate({ identifier: "GetAgentPoolUpgradeProfileResponse" });
   }
 }
-function __c47(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9249,10 +9558,10 @@ function __c47(j: number): any {
         }),
       ).annotate({ identifier: "AgentPoolUpgradeProfilePropertiesUpgradesItem" });
     case 1:
-      return S.Array(__S(1504, __c47, 0));
+      return S.Array(__S(1600, __c50, 0));
   }
 }
-function __c48(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9272,7 +9581,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "AgentPoolsUpgradeNodeImageVersionRequest" });
   }
 }
-function __c49(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9292,7 +9601,22 @@ function __c49(j: number): any {
       ).annotate({ identifier: "GetAutoUpgradeProfileRequest" });
   }
 }
-function __c50(j: number): any {
+function __c53(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(3394, __c106, 2)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetAutoUpgradeProfileResponse" });
+  }
+}
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9309,7 +9633,22 @@ function __c50(j: number): any {
       ).annotate({ identifier: "GetDeploymentSafeguardRequest" });
   }
 }
-function __c51(j: number): any {
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(3840, __c120, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDeploymentSafeguardResponse" });
+  }
+}
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9328,7 +9667,25 @@ function __c51(j: number): any {
       ).annotate({ identifier: "GetFleetRequest" });
   }
 }
-function __c52(j: number): any {
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(1283, __c40, 3)),
+          eTag: S.optional(S.String),
+          identity: S.optional(__S(1284, __c40, 4)),
+        }),
+      ).annotate({ identifier: "GetFleetResponse" });
+  }
+}
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9348,7 +9705,24 @@ function __c52(j: number): any {
       ).annotate({ identifier: "GetFleetManagedNamespaceRequest" });
   }
 }
-function __c53(j: number): any {
+function __c59(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(1202, __c37, 18)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetFleetManagedNamespaceResponse" });
+  }
+}
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9368,7 +9742,22 @@ function __c53(j: number): any {
       ).annotate({ identifier: "GetFleetMemberRequest" });
   }
 }
-function __c54(j: number): any {
+function __c61(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(4288, __c134, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetFleetMemberResponse" });
+  }
+}
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9388,7 +9777,22 @@ function __c54(j: number): any {
       ).annotate({ identifier: "GetFleetUpdateStrategyRequest" });
   }
 }
-function __c55(j: number): any {
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(1440, __c45, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetFleetUpdateStrategyResponse" });
+  }
+}
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9408,7 +9812,22 @@ function __c55(j: number): any {
       ).annotate({ identifier: "GetGateRequest" });
   }
 }
-function __c56(j: number): any {
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(2114, __c66, 2)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetGateResponse" });
+  }
+}
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9423,7 +9842,7 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          updateRunProperties: S.optional(__S(1792, __c56, 0)),
+          updateRunProperties: S.optional(__S(2112, __c66, 0)),
         }),
       ).annotate({ identifier: "GateTarget" });
     case 2:
@@ -9432,24 +9851,13 @@ function __c56(j: number): any {
           provisioningState: S.optional(S.String),
           displayName: S.optional(S.String),
           gateType: S.String,
-          target: __S(1793, __c56, 1),
+          target: __S(2113, __c66, 1),
           state: S.String,
         }),
       ).annotate({ identifier: "GateProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(1794, __c56, 2)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetGateResponse" });
   }
 }
-function __c57(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9469,7 +9877,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "GetIdentityBindingRequest" });
   }
 }
-function __c58(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9489,25 +9897,29 @@ function __c58(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          managedIdentity: __S(1856, __c58, 0),
-          oidcIssuer: S.optional(__S(1857, __c58, 1)),
+          managedIdentity: __S(2176, __c68, 0),
+          oidcIssuer: S.optional(__S(2177, __c68, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityBindingProperties" });
-    case 3:
+  }
+}
+function __c69(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(1858, __c58, 2)),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(2178, __c68, 2)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetIdentityBindingResponse" });
   }
 }
-function __c59(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9528,7 +9940,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "GetMachineRequest" });
   }
 }
-function __c60(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9538,17 +9950,17 @@ function __c60(j: number): any {
         }),
       ).annotate({ identifier: "MachineIpAddress" });
     case 1:
-      return S.Array(__S(1920, __c60, 0));
+      return S.Array(__S(2272, __c71, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ipAddresses: S.optional(__S(1921, __c60, 1)),
+          ipAddresses: S.optional(__S(2273, __c71, 1)),
         }),
       ).annotate({ identifier: "MachineNetworkProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          network: S.optional(__S(1922, __c60, 2)),
+          network: S.optional(__S(2274, __c71, 2)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MachineProperties" });
@@ -9558,14 +9970,14 @@ function __c60(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(1923, __c60, 3)),
-          zones: S.optional(__S(800, __c25, 0)),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(2275, __c71, 3)),
+          zones: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "GetMachineResponse" });
   }
 }
-function __c61(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9585,7 +9997,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "GetMaintenanceConfigurationRequest" });
   }
 }
-function __c62(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
@@ -9593,11 +10005,11 @@ function __c62(j: number): any {
       return S.suspend(() =>
         S.Struct({
           day: S.optional(S.String),
-          hourSlots: S.optional(__S(1984, __c62, 0)),
+          hourSlots: S.optional(__S(2336, __c73, 0)),
         }),
       ).annotate({ identifier: "TimeInWeek" });
     case 2:
-      return S.Array(__S(1985, __c62, 1));
+      return S.Array(__S(2337, __c73, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -9606,7 +10018,7 @@ function __c62(j: number): any {
         }),
       ).annotate({ identifier: "TimeSpan" });
     case 4:
-      return S.Array(__S(1987, __c62, 3));
+      return S.Array(__S(2339, __c73, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -9638,10 +10050,10 @@ function __c62(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({
-          daily: S.optional(__S(1989, __c62, 5)),
-          weekly: S.optional(__S(1990, __c62, 6)),
-          absoluteMonthly: S.optional(__S(1991, __c62, 7)),
-          relativeMonthly: S.optional(__S(1992, __c62, 8)),
+          daily: S.optional(__S(2341, __c73, 5)),
+          weekly: S.optional(__S(2342, __c73, 6)),
+          absoluteMonthly: S.optional(__S(2343, __c73, 7)),
+          relativeMonthly: S.optional(__S(2344, __c73, 8)),
         }),
       ).annotate({ identifier: "Schedule" });
     case 10:
@@ -9652,24 +10064,24 @@ function __c62(j: number): any {
         }),
       ).annotate({ identifier: "DateSpan" });
     case 11:
-      return S.Array(__S(1994, __c62, 10));
+      return S.Array(__S(2346, __c73, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
-          schedule: __S(1993, __c62, 9),
+          schedule: __S(2345, __c73, 9),
           durationHours: S.Number,
           utcOffset: S.optional(S.String),
           startDate: S.optional(S.String),
           startTime: S.String,
-          notAllowedDates: S.optional(__S(1995, __c62, 11)),
+          notAllowedDates: S.optional(__S(2347, __c73, 11)),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
     case 13:
       return S.suspend(() =>
         S.Struct({
-          timeInWeek: S.optional(__S(1986, __c62, 2)),
-          notAllowedTime: S.optional(__S(1988, __c62, 4)),
-          maintenanceWindow: S.optional(__S(1996, __c62, 12)),
+          timeInWeek: S.optional(__S(2338, __c73, 2)),
+          notAllowedTime: S.optional(__S(2340, __c73, 4)),
+          maintenanceWindow: S.optional(__S(2348, __c73, 12)),
         }),
       ).annotate({ identifier: "MaintenanceConfigurationProperties" });
     case 14:
@@ -9678,13 +10090,13 @@ function __c62(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(1997, __c62, 13)),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(2349, __c73, 13)),
         }),
       ).annotate({ identifier: "GetMaintenanceConfigurationResponse" });
   }
 }
-function __c63(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9706,11 +10118,13 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "GenerateResponse" });
   }
 }
-function __c64(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9729,7 +10143,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "GetManagedClusterRequest" });
   }
 }
-function __c65(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9739,19 +10153,40 @@ function __c65(j: number): any {
       ).annotate({ identifier: "ResourceReference" });
   }
 }
-function __c66(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c67(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2176, __c68, 0));
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(2673, __c83, 17)),
+          eTag: S.optional(S.String),
+          sku: S.optional(__S(2674, __c83, 18)),
+          extendedLocation: S.optional(__S(2675, __c83, 19)),
+          identity: S.optional(__S(2678, __c83, 22)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetManagedClusterResponse" });
   }
 }
-function __c68(j: number): any {
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(2560, __c80, 0));
+  }
+}
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9760,13 +10195,13 @@ function __c68(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(800, __c25, 0)),
+          requiredMembers: S.optional(__S(864, __c27, 0)),
           privateLinkServiceID: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
   }
 }
-function __c69(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -9794,43 +10229,43 @@ function __c69(j: number): any {
           orchestratorVersion: S.optional(S.String),
           currentOrchestratorVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
-          upgradeSettings: S.optional(__S(704, __c22, 0)),
+          upgradeSettings: S.optional(__S(736, __c23, 0)),
           provisioningState: S.optional(S.String),
-          powerState: S.optional(__S(705, __c22, 1)),
-          availabilityZones: S.optional(__S(800, __c25, 0)),
+          powerState: S.optional(__S(737, __c23, 1)),
+          availabilityZones: S.optional(__S(864, __c27, 0)),
           enableNodePublicIP: S.optional(S.Boolean),
           nodePublicIPPrefixID: S.optional(S.String),
           scaleSetPriority: S.optional(S.String),
           scaleSetEvictionPolicy: S.optional(S.String),
           spotMaxPrice: S.optional(S.Number),
-          tags: S.optional(__S(864, __c27, 0)),
-          nodeLabels: S.optional(__S(864, __c27, 0)),
-          nodeTaints: S.optional(__S(800, __c25, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          nodeLabels: S.optional(__S(928, __c29, 0)),
+          nodeTaints: S.optional(__S(864, __c27, 0)),
           proximityPlacementGroupID: S.optional(S.String),
-          kubeletConfig: S.optional(__S(706, __c22, 2)),
-          linuxOSConfig: S.optional(__S(708, __c22, 4)),
+          kubeletConfig: S.optional(__S(738, __c23, 2)),
+          linuxOSConfig: S.optional(__S(740, __c23, 4)),
           enableEncryptionAtHost: S.optional(S.Boolean),
           enableUltraSSD: S.optional(S.Boolean),
           enableFIPS: S.optional(S.Boolean),
           gpuInstanceProfile: S.optional(S.String),
-          creationData: S.optional(__S(672, __c21, 0)),
+          creationData: S.optional(__S(704, __c22, 0)),
           capacityReservationGroupID: S.optional(S.String),
           hostGroupID: S.optional(S.String),
-          networkProfile: S.optional(__S(714, __c22, 10)),
-          windowsProfile: S.optional(__S(715, __c22, 11)),
-          securityProfile: S.optional(__S(716, __c22, 12)),
-          gpuProfile: S.optional(__S(717, __c22, 13)),
-          gatewayProfile: S.optional(__S(718, __c22, 14)),
-          artifactStreamingProfile: S.optional(__S(719, __c22, 15)),
-          virtualMachinesProfile: S.optional(__S(725, __c22, 21)),
-          virtualMachineNodesStatus: S.optional(__S(721, __c22, 17)),
-          status: S.optional(__S(729, __c22, 25)),
-          localDNSProfile: S.optional(__S(728, __c22, 24)),
+          networkProfile: S.optional(__S(746, __c23, 10)),
+          windowsProfile: S.optional(__S(747, __c23, 11)),
+          securityProfile: S.optional(__S(748, __c23, 12)),
+          gpuProfile: S.optional(__S(749, __c23, 13)),
+          gatewayProfile: S.optional(__S(750, __c23, 14)),
+          artifactStreamingProfile: S.optional(__S(751, __c23, 15)),
+          virtualMachinesProfile: S.optional(__S(757, __c23, 21)),
+          virtualMachineNodesStatus: S.optional(__S(753, __c23, 17)),
+          status: S.optional(__S(761, __c23, 25)),
+          localDNSProfile: S.optional(__S(760, __c23, 24)),
           name: S.String,
         }),
       ).annotate({ identifier: "ManagedClusterAgentPoolProfile" });
     case 1:
-      return S.Array(__S(2208, __c69, 0));
+      return S.Array(__S(2592, __c81, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9838,18 +10273,18 @@ function __c69(j: number): any {
         }),
       ).annotate({ identifier: "ContainerServiceSshPublicKey" });
     case 3:
-      return S.Array(__S(2210, __c69, 2));
+      return S.Array(__S(2594, __c81, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          publicKeys: __S(2211, __c69, 3),
+          publicKeys: __S(2595, __c81, 3),
         }),
       ).annotate({ identifier: "ContainerServiceSshConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           adminUsername: S.String,
-          ssh: __S(2212, __c69, 4),
+          ssh: __S(2596, __c81, 4),
         }),
       ).annotate({ identifier: "ContainerServiceLinuxProfile" });
     case 6:
@@ -9867,7 +10302,7 @@ function __c69(j: number): any {
           adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           licenseType: S.optional(S.String),
           enableCSIProxy: S.optional(S.Boolean),
-          gmsaProfile: S.optional(__S(2214, __c69, 6)),
+          gmsaProfile: S.optional(__S(2598, __c81, 6)),
         }),
       ).annotate({ identifier: "ManagedClusterWindowsProfile" });
     case 8:
@@ -9889,33 +10324,33 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          config: S.optional(__S(864, __c27, 0)),
-          identity: S.optional(__S(2217, __c69, 9)),
+          config: S.optional(__S(928, __c29, 0)),
+          identity: S.optional(__S(2601, __c81, 9)),
         }),
       ).annotate({ identifier: "ManagedClusterAddonProfile" });
     case 11:
-      return S.Record(S.String, __S(2218, __c69, 10));
+      return S.Record(S.String, __S(2602, __c81, 10));
     case 12:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(2221, __c69, 13)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(2605, __c81, 13)));
     case 13:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(2220, __c69, 12)),
+          details: S.optional(__S(2604, __c81, 12)),
         }),
       ).annotate({ identifier: "ManagedClusterPodIdentityProvisioningErrorBody" });
     case 14:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(2221, __c69, 13)),
+          error: S.optional(__S(2605, __c81, 13)),
         }),
       ).annotate({ identifier: "ManagedClusterPodIdentityProvisioningError" });
     case 15:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(__S(2222, __c69, 14)),
+          error: S.optional(__S(2606, __c81, 14)),
         }),
       ).annotate({ identifier: "ManagedClusterPodIdentityProvisioningInfo" });
     case 16:
@@ -9924,30 +10359,30 @@ function __c69(j: number): any {
           name: S.String,
           namespace: S.String,
           bindingSelector: S.optional(S.String),
-          identity: __S(2217, __c69, 9),
+          identity: __S(2601, __c81, 9),
           provisioningState: S.optional(S.String),
-          provisioningInfo: S.optional(__S(2223, __c69, 15)),
+          provisioningInfo: S.optional(__S(2607, __c81, 15)),
         }),
       ).annotate({ identifier: "ManagedClusterPodIdentity" });
     case 17:
-      return S.Array(__S(2224, __c69, 16));
+      return S.Array(__S(2608, __c81, 16));
     case 18:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           namespace: S.String,
-          podLabels: __S(864, __c27, 0),
+          podLabels: __S(928, __c29, 0),
         }),
       ).annotate({ identifier: "ManagedClusterPodIdentityException" });
     case 19:
-      return S.Array(__S(2226, __c69, 18));
+      return S.Array(__S(2610, __c81, 18));
     case 20:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           allowNetworkPluginKubenet: S.optional(S.Boolean),
-          userAssignedIdentities: S.optional(__S(2225, __c69, 17)),
-          userAssignedIdentityExceptions: S.optional(__S(2227, __c69, 19)),
+          userAssignedIdentities: S.optional(__S(2609, __c81, 17)),
+          userAssignedIdentityExceptions: S.optional(__S(2611, __c81, 19)),
         }),
       ).annotate({ identifier: "ManagedClusterPodIdentityProfile" });
     case 21:
@@ -9974,7 +10409,7 @@ function __c69(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           advancedNetworkPolicies: S.optional(S.String),
-          transitEncryption: S.optional(__S(2231, __c69, 23)),
+          transitEncryption: S.optional(__S(2615, __c81, 23)),
         }),
       ).annotate({ identifier: "AdvancedNetworkingSecurity" });
     case 25:
@@ -9987,9 +10422,9 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          observability: S.optional(__S(719, __c22, 15)),
-          security: S.optional(__S(2232, __c69, 24)),
-          performance: S.optional(__S(2233, __c69, 25)),
+          observability: S.optional(__S(751, __c23, 15)),
+          security: S.optional(__S(2616, __c81, 24)),
+          performance: S.optional(__S(2617, __c81, 25)),
         }),
       ).annotate({ identifier: "AdvancedNetworking" });
     case 27:
@@ -10000,26 +10435,26 @@ function __c69(j: number): any {
         }),
       ).annotate({ identifier: "ManagedClusterLoadBalancerProfileManagedOutboundIPs" });
     case 28:
-      return S.Array(__S(2080, __c65, 0));
+      return S.Array(__S(2432, __c76, 0));
     case 29:
       return S.suspend(() =>
         S.Struct({
-          publicIPPrefixes: S.optional(__S(2236, __c69, 28)),
+          publicIPPrefixes: S.optional(__S(2620, __c81, 28)),
         }),
       ).annotate({ identifier: "ManagedClusterLoadBalancerProfileOutboundIPPrefixes" });
     case 30:
       return S.suspend(() =>
         S.Struct({
-          publicIPs: S.optional(__S(2236, __c69, 28)),
+          publicIPs: S.optional(__S(2620, __c81, 28)),
         }),
       ).annotate({ identifier: "ManagedClusterLoadBalancerProfileOutboundIPs" });
     case 31:
       return S.suspend(() =>
         S.Struct({
-          managedOutboundIPs: S.optional(__S(2235, __c69, 27)),
-          outboundIPPrefixes: S.optional(__S(2237, __c69, 29)),
-          outboundIPs: S.optional(__S(2238, __c69, 30)),
-          effectiveOutboundIPs: S.optional(__S(2236, __c69, 28)),
+          managedOutboundIPs: S.optional(__S(2619, __c81, 27)),
+          outboundIPPrefixes: S.optional(__S(2621, __c81, 29)),
+          outboundIPs: S.optional(__S(2622, __c81, 30)),
+          effectiveOutboundIPs: S.optional(__S(2620, __c81, 28)),
           allocatedOutboundPorts: S.optional(S.Number),
           idleTimeoutInMinutes: S.optional(S.Number),
           enableMultipleStandardLoadBalancers: S.optional(S.Boolean),
@@ -10028,28 +10463,28 @@ function __c69(j: number): any {
       ).annotate({ identifier: "ManagedClusterLoadBalancerProfile" });
   }
 }
-function __c70(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          publicIPPrefixes: S.optional(__S(800, __c25, 0)),
+          publicIPPrefixes: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "ManagedClusterNATGatewayProfileOutboundIPPrefixes" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          publicIPs: S.optional(__S(800, __c25, 0)),
+          publicIPs: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "ManagedClusterNATGatewayProfileOutboundIPs" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           sku: S.optional(S.String),
-          managedOutboundIPProfile: S.optional(__S(2235, __c69, 27)),
-          effectiveOutboundIPs: S.optional(__S(2236, __c69, 28)),
-          outboundIPPrefixes: S.optional(__S(2240, __c70, 0)),
-          outboundIPs: S.optional(__S(2241, __c70, 1)),
+          managedOutboundIPProfile: S.optional(__S(2619, __c81, 27)),
+          effectiveOutboundIPs: S.optional(__S(2620, __c81, 28)),
+          outboundIPPrefixes: S.optional(__S(2624, __c82, 0)),
+          outboundIPs: S.optional(__S(2625, __c82, 1)),
           idleTimeoutInMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ManagedClusterNATGatewayProfile" });
@@ -10061,18 +10496,18 @@ function __c70(j: number): any {
           networkPolicy: S.optional(S.String),
           networkMode: S.optional(S.String),
           networkDataplane: S.optional(S.String),
-          advancedNetworking: S.optional(__S(2234, __c69, 26)),
+          advancedNetworking: S.optional(__S(2618, __c81, 26)),
           podCidr: S.optional(S.String),
           serviceCidr: S.optional(S.String),
           dnsServiceIP: S.optional(S.String),
           outboundType: S.optional(S.String),
           loadBalancerSku: S.optional(S.String),
-          loadBalancerProfile: S.optional(__S(2239, __c69, 31)),
-          natGatewayProfile: S.optional(__S(2242, __c70, 2)),
-          staticEgressGatewayProfile: S.optional(__S(719, __c22, 15)),
-          podCidrs: S.optional(__S(800, __c25, 0)),
-          serviceCidrs: S.optional(__S(800, __c25, 0)),
-          ipFamilies: S.optional(__S(2112, __c66, 0)),
+          loadBalancerProfile: S.optional(__S(2623, __c81, 31)),
+          natGatewayProfile: S.optional(__S(2626, __c82, 2)),
+          staticEgressGatewayProfile: S.optional(__S(751, __c23, 15)),
+          podCidrs: S.optional(__S(864, __c27, 0)),
+          serviceCidrs: S.optional(__S(864, __c27, 0)),
+          ipFamilies: S.optional(__S(2464, __c77, 0)),
         }),
       ).annotate({ identifier: "ContainerServiceNetworkProfile" });
     case 4:
@@ -10080,7 +10515,7 @@ function __c70(j: number): any {
         S.Struct({
           managed: S.optional(S.Boolean),
           enableAzureRBAC: S.optional(S.Boolean),
-          adminGroupObjectIDs: S.optional(__S(800, __c25, 0)),
+          adminGroupObjectIDs: S.optional(__S(864, __c27, 0)),
           clientAppID: S.optional(S.String),
           serverAppID: S.optional(S.String),
           serverAppSecret: S.optional(S.String),
@@ -10104,7 +10539,7 @@ function __c70(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          overrideSettings: S.optional(__S(2246, __c70, 6)),
+          overrideSettings: S.optional(__S(2630, __c82, 6)),
         }),
       ).annotate({ identifier: "ClusterUpgradeSettings" });
     case 8:
@@ -10159,7 +10594,7 @@ function __c70(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({
-          authorizedIPRanges: S.optional(__S(800, __c25, 0)),
+          authorizedIPRanges: S.optional(__S(864, __c27, 0)),
           enablePrivateCluster: S.optional(S.Boolean),
           privateDNSZone: S.optional(S.String),
           enablePrivateClusterPublicFQDN: S.optional(S.Boolean),
@@ -10169,13 +10604,13 @@ function __c70(j: number): any {
         }),
       ).annotate({ identifier: "ManagedClusterAPIServerAccessProfile" });
     case 10:
-      return S.Record(S.String, __S(2217, __c69, 9));
+      return S.Record(S.String, __S(2601, __c81, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
           httpProxy: S.optional(S.String),
           httpsProxy: S.optional(S.String),
-          noProxy: S.optional(__S(800, __c25, 0)),
+          noProxy: S.optional(__S(864, __c27, 0)),
           trustedCa: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }),
@@ -10184,16 +10619,16 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           azureContainerRegistry: S.optional(S.String),
-          identity: S.optional(__S(2217, __c69, 9)),
+          identity: S.optional(__S(2601, __c81, 9)),
         }),
       ).annotate({ identifier: "ManagedClusterSecurityProfileDefenderSecurityGatingIdentity" });
     case 13:
-      return S.Array(__S(2252, __c70, 12));
+      return S.Array(__S(2636, __c82, 12));
     case 14:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          identities: S.optional(__S(2253, __c70, 13)),
+          identities: S.optional(__S(2637, __c82, 13)),
           allowSecretAccess: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ManagedClusterSecurityProfileDefenderSecurityGating" });
@@ -10201,8 +10636,8 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           logAnalyticsWorkspaceResourceId: S.optional(S.String),
-          securityMonitoring: S.optional(__S(719, __c22, 15)),
-          securityGating: S.optional(__S(2254, __c70, 14)),
+          securityMonitoring: S.optional(__S(751, __c23, 15)),
+          securityGating: S.optional(__S(2638, __c82, 14)),
         }),
       ).annotate({ identifier: "ManagedClusterSecurityProfileDefender" });
     case 16:
@@ -10230,27 +10665,27 @@ function __c70(j: number): any {
     case 19:
       return S.suspend(() =>
         S.Struct({
-          defender: S.optional(__S(2255, __c70, 15)),
-          azureKeyVaultKms: S.optional(__S(2256, __c70, 16)),
-          kubernetesResourceObjectEncryptionProfile: S.optional(__S(2257, __c70, 17)),
-          workloadIdentity: S.optional(__S(719, __c22, 15)),
-          imageCleaner: S.optional(__S(2258, __c70, 18)),
-          customCATrustCertificates: S.optional(__S(800, __c25, 0)),
+          defender: S.optional(__S(2639, __c82, 15)),
+          azureKeyVaultKms: S.optional(__S(2640, __c82, 16)),
+          kubernetesResourceObjectEncryptionProfile: S.optional(__S(2641, __c82, 17)),
+          workloadIdentity: S.optional(__S(751, __c23, 15)),
+          imageCleaner: S.optional(__S(2642, __c82, 18)),
+          customCATrustCertificates: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "ManagedClusterSecurityProfile" });
     case 20:
       return S.suspend(() =>
         S.Struct({
-          diskCSIDriver: S.optional(__S(719, __c22, 15)),
-          fileCSIDriver: S.optional(__S(719, __c22, 15)),
-          snapshotController: S.optional(__S(719, __c22, 15)),
-          blobCSIDriver: S.optional(__S(719, __c22, 15)),
+          diskCSIDriver: S.optional(__S(751, __c23, 15)),
+          fileCSIDriver: S.optional(__S(751, __c23, 15)),
+          snapshotController: S.optional(__S(751, __c23, 15)),
+          blobCSIDriver: S.optional(__S(751, __c23, 15)),
         }),
       ).annotate({ identifier: "ManagedClusterStorageProfile" });
     case 21:
       return S.suspend(() =>
         S.Struct({
-          appRoutingIstio: S.optional(__S(713, __c22, 9)),
+          appRoutingIstio: S.optional(__S(745, __c23, 9)),
         }),
       ).annotate({ identifier: "ManagedClusterWebAppRoutingGatewayAPIImplementations" });
     case 22:
@@ -10263,10 +10698,10 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          gatewayAPIImplementations: S.optional(__S(2261, __c70, 21)),
-          dnsZoneResourceIds: S.optional(__S(800, __c25, 0)),
-          nginx: S.optional(__S(2262, __c70, 22)),
-          identity: S.optional(__S(2217, __c69, 9)),
+          gatewayAPIImplementations: S.optional(__S(2645, __c82, 21)),
+          dnsZoneResourceIds: S.optional(__S(864, __c27, 0)),
+          nginx: S.optional(__S(2646, __c82, 22)),
+          identity: S.optional(__S(2601, __c81, 9)),
         }),
       ).annotate({ identifier: "ManagedClusterIngressProfileWebAppRouting" });
     case 24:
@@ -10278,8 +10713,8 @@ function __c70(j: number): any {
     case 25:
       return S.suspend(() =>
         S.Struct({
-          webAppRouting: S.optional(__S(2263, __c70, 23)),
-          gatewayAPI: S.optional(__S(2264, __c70, 24)),
+          webAppRouting: S.optional(__S(2647, __c82, 23)),
+          gatewayAPI: S.optional(__S(2648, __c82, 24)),
         }),
       ).annotate({ identifier: "ManagedClusterIngressProfile" });
     case 26:
@@ -10291,8 +10726,8 @@ function __c70(j: number): any {
     case 27:
       return S.suspend(() =>
         S.Struct({
-          keda: S.optional(__S(2266, __c70, 26)),
-          verticalPodAutoscaler: S.optional(__S(2266, __c70, 26)),
+          keda: S.optional(__S(2650, __c82, 26)),
+          verticalPodAutoscaler: S.optional(__S(2650, __c82, 26)),
         }),
       ).annotate({ identifier: "ManagedClusterWorkloadAutoScalerProfile" });
     case 28:
@@ -10306,8 +10741,8 @@ function __c70(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          kubeStateMetrics: S.optional(__S(2268, __c70, 28)),
-          controlPlane: S.optional(__S(719, __c22, 15)),
+          kubeStateMetrics: S.optional(__S(2652, __c82, 28)),
+          controlPlane: S.optional(__S(751, __c23, 15)),
         }),
       ).annotate({ identifier: "ManagedClusterAzureMonitorProfileMetrics" });
     case 30:
@@ -10332,22 +10767,22 @@ function __c70(j: number): any {
       });
   }
 }
-function __c71(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          autoInstrumentation: S.optional(__S(719, __c22, 15)),
-          openTelemetryMetrics: S.optional(__S(2271, __c70, 31)),
-          openTelemetryLogsAndTraces: S.optional(__S(2271, __c70, 31)),
+          autoInstrumentation: S.optional(__S(751, __c23, 15)),
+          openTelemetryMetrics: S.optional(__S(2655, __c82, 31)),
+          openTelemetryLogsAndTraces: S.optional(__S(2655, __c82, 31)),
         }),
       ).annotate({ identifier: "ManagedClusterAzureMonitorProfileAppMonitoring" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(__S(2269, __c70, 29)),
-          containerInsights: S.optional(__S(2270, __c70, 30)),
-          appMonitoring: S.optional(__S(2272, __c71, 0)),
+          metrics: S.optional(__S(2653, __c82, 29)),
+          containerInsights: S.optional(__S(2654, __c82, 30)),
+          appMonitoring: S.optional(__S(2656, __c83, 0)),
         }),
       ).annotate({ identifier: "ManagedClusterAzureMonitorProfile" });
     case 2:
@@ -10358,7 +10793,7 @@ function __c71(j: number): any {
         }),
       ).annotate({ identifier: "IstioIngressGateway" });
     case 3:
-      return S.Array(__S(2274, __c71, 2));
+      return S.Array(__S(2658, __c83, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10369,12 +10804,12 @@ function __c71(j: number): any {
         }),
       ).annotate({ identifier: "IstioEgressGateway" });
     case 5:
-      return S.Array(__S(2276, __c71, 4));
+      return S.Array(__S(2660, __c83, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ingressGateways: S.optional(__S(2275, __c71, 3)),
-          egressGateways: S.optional(__S(2277, __c71, 5)),
+          ingressGateways: S.optional(__S(2659, __c83, 3)),
+          egressGateways: S.optional(__S(2661, __c83, 5)),
           proxyRedirectionMechanism: S.optional(S.String),
         }),
       ).annotate({ identifier: "IstioComponents" });
@@ -10391,28 +10826,28 @@ function __c71(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          plugin: S.optional(__S(2279, __c71, 7)),
+          plugin: S.optional(__S(2663, __c83, 7)),
         }),
       ).annotate({ identifier: "IstioCertificateAuthority" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          components: S.optional(__S(2278, __c71, 6)),
-          certificateAuthority: S.optional(__S(2280, __c71, 8)),
-          revisions: S.optional(__S(800, __c25, 0)),
+          components: S.optional(__S(2662, __c83, 6)),
+          certificateAuthority: S.optional(__S(2664, __c83, 8)),
+          revisions: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "IstioServiceMesh" });
     case 10:
       return S.suspend(() =>
         S.Struct({
           mode: S.String,
-          istio: S.optional(__S(2281, __c71, 9)),
+          istio: S.optional(__S(2665, __c83, 9)),
         }),
       ).annotate({ identifier: "ServiceMeshProfile" });
     case 11:
       return S.suspend(() =>
         S.Struct({
-          costAnalysis: S.optional(__S(719, __c22, 15)),
+          costAnalysis: S.optional(__S(751, __c23, 15)),
         }),
       ).annotate({ identifier: "ManagedClusterMetricsProfile" });
     case 12:
@@ -10438,7 +10873,7 @@ function __c71(j: number): any {
     case 15:
       return S.suspend(() =>
         S.Struct({
-          upstream: S.optional(__S(2286, __c71, 14)),
+          upstream: S.optional(__S(2670, __c83, 14)),
         }),
       ).annotate({ identifier: "SchedulerProfile" });
     case 16:
@@ -10453,7 +10888,7 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          powerState: S.optional(__S(705, __c22, 1)),
+          powerState: S.optional(__S(737, __c23, 1)),
           maxAgentPools: S.optional(S.Number),
           kubernetesVersion: S.optional(S.String),
           currentKubernetesVersion: S.optional(S.String),
@@ -10462,44 +10897,44 @@ function __c71(j: number): any {
           fqdn: S.optional(S.String),
           privateFQDN: S.optional(S.String),
           azurePortalFQDN: S.optional(S.String),
-          agentPoolProfiles: S.optional(__S(2209, __c69, 1)),
-          linuxProfile: S.optional(__S(2213, __c69, 5)),
-          windowsProfile: S.optional(__S(2215, __c69, 7)),
-          servicePrincipalProfile: S.optional(__S(2216, __c69, 8)),
-          addonProfiles: S.optional(__S(2219, __c69, 11)),
-          podIdentityProfile: S.optional(__S(2228, __c69, 20)),
-          oidcIssuerProfile: S.optional(__S(2229, __c69, 21)),
+          agentPoolProfiles: S.optional(__S(2593, __c81, 1)),
+          linuxProfile: S.optional(__S(2597, __c81, 5)),
+          windowsProfile: S.optional(__S(2599, __c81, 7)),
+          servicePrincipalProfile: S.optional(__S(2600, __c81, 8)),
+          addonProfiles: S.optional(__S(2603, __c81, 11)),
+          podIdentityProfile: S.optional(__S(2612, __c81, 20)),
+          oidcIssuerProfile: S.optional(__S(2613, __c81, 21)),
           nodeResourceGroup: S.optional(S.String),
-          nodeResourceGroupProfile: S.optional(__S(2230, __c69, 22)),
+          nodeResourceGroupProfile: S.optional(__S(2614, __c81, 22)),
           enableRBAC: S.optional(S.Boolean),
           supportPlan: S.optional(S.String),
           enableFIPS: S.optional(S.Boolean),
-          networkProfile: S.optional(__S(2243, __c70, 3)),
-          aadProfile: S.optional(__S(2244, __c70, 4)),
-          autoUpgradeProfile: S.optional(__S(2245, __c70, 5)),
-          upgradeSettings: S.optional(__S(2247, __c70, 7)),
-          autoScalerProfile: S.optional(__S(2248, __c70, 8)),
-          apiServerAccessProfile: S.optional(__S(2249, __c70, 9)),
+          networkProfile: S.optional(__S(2627, __c82, 3)),
+          aadProfile: S.optional(__S(2628, __c82, 4)),
+          autoUpgradeProfile: S.optional(__S(2629, __c82, 5)),
+          upgradeSettings: S.optional(__S(2631, __c82, 7)),
+          autoScalerProfile: S.optional(__S(2632, __c82, 8)),
+          apiServerAccessProfile: S.optional(__S(2633, __c82, 9)),
           diskEncryptionSetID: S.optional(S.String),
-          identityProfile: S.optional(__S(2250, __c70, 10)),
-          privateLinkResources: S.optional(__S(2144, __c67, 0)),
+          identityProfile: S.optional(__S(2634, __c82, 10)),
+          privateLinkResources: S.optional(__S(2528, __c79, 0)),
           disableLocalAccounts: S.optional(S.Boolean),
-          httpProxyConfig: S.optional(__S(2251, __c70, 11)),
-          securityProfile: S.optional(__S(2259, __c70, 19)),
-          storageProfile: S.optional(__S(2260, __c70, 20)),
-          ingressProfile: S.optional(__S(2265, __c70, 25)),
+          httpProxyConfig: S.optional(__S(2635, __c82, 11)),
+          securityProfile: S.optional(__S(2643, __c82, 19)),
+          storageProfile: S.optional(__S(2644, __c82, 20)),
+          ingressProfile: S.optional(__S(2649, __c82, 25)),
           publicNetworkAccess: S.optional(S.String),
-          workloadAutoScalerProfile: S.optional(__S(2267, __c70, 27)),
-          azureMonitorProfile: S.optional(__S(2273, __c71, 1)),
-          serviceMeshProfile: S.optional(__S(2282, __c71, 10)),
+          workloadAutoScalerProfile: S.optional(__S(2651, __c82, 27)),
+          azureMonitorProfile: S.optional(__S(2657, __c83, 1)),
+          serviceMeshProfile: S.optional(__S(2666, __c83, 10)),
           resourceUID: S.optional(S.String),
-          metricsProfile: S.optional(__S(2283, __c71, 11)),
-          nodeProvisioningProfile: S.optional(__S(2284, __c71, 12)),
-          bootstrapProfile: S.optional(__S(2285, __c71, 13)),
-          aiToolchainOperatorProfile: S.optional(__S(719, __c22, 15)),
-          schedulerProfile: S.optional(__S(2287, __c71, 15)),
-          hostedSystemProfile: S.optional(__S(2288, __c71, 16)),
-          status: S.optional(__S(729, __c22, 25)),
+          metricsProfile: S.optional(__S(2667, __c83, 11)),
+          nodeProvisioningProfile: S.optional(__S(2668, __c83, 12)),
+          bootstrapProfile: S.optional(__S(2669, __c83, 13)),
+          aiToolchainOperatorProfile: S.optional(__S(751, __c23, 15)),
+          schedulerProfile: S.optional(__S(2671, __c83, 15)),
+          hostedSystemProfile: S.optional(__S(2672, __c83, 16)),
+          status: S.optional(__S(761, __c23, 25)),
         }),
       ).annotate({ identifier: "ManagedClusterProperties" });
     case 18:
@@ -10526,37 +10961,20 @@ function __c71(j: number): any {
         }),
       ).annotate({ identifier: "ManagedClusterIdentityDelegatedResourcesValue" });
     case 21:
-      return S.Record(S.String, __S(2292, __c71, 20));
+      return S.Record(S.String, __S(2676, __c83, 20));
     case 22:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          delegatedResources: S.optional(__S(2293, __c71, 21)),
-          userAssignedIdentities: S.optional(__S(1185, __c37, 1)),
+          delegatedResources: S.optional(__S(2677, __c83, 21)),
+          userAssignedIdentities: S.optional(__S(1249, __c39, 1)),
         }),
       ).annotate({ identifier: "ManagedClusterIdentity" });
-    case 23:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          tags: S.optional(__S(864, __c27, 0)),
-          location: S.String,
-          properties: S.optional(__S(2289, __c71, 17)),
-          eTag: S.optional(S.String),
-          sku: S.optional(__S(2290, __c71, 18)),
-          extendedLocation: S.optional(__S(2291, __c71, 19)),
-          identity: S.optional(__S(2294, __c71, 22)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetManagedClusterResponse" });
   }
 }
-function __c72(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10576,7 +10994,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "GetManagedClusterCommandResultRequest" });
   }
 }
-function __c73(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10593,12 +11011,14 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(__S(2336, __c73, 0)),
+          properties: S.optional(__S(2720, __c85, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "RunCommandResult" });
   }
 }
-function __c74(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10617,35 +11037,35 @@ function __c74(j: number): any {
       ).annotate({ identifier: "GetManagedClusterMeshRevisionProfileRequest" });
   }
 }
-function __c75(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          versions: S.optional(__S(800, __c25, 0)),
+          versions: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "CompatibleVersions" });
     case 1:
-      return S.Array(__S(2400, __c75, 0));
+      return S.Array(__S(2784, __c87, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           revision: S.optional(S.String),
-          upgrades: S.optional(__S(800, __c25, 0)),
-          compatibleWith: S.optional(__S(2401, __c75, 1)),
+          upgrades: S.optional(__S(864, __c27, 0)),
+          compatibleWith: S.optional(__S(2785, __c87, 1)),
         }),
       ).annotate({ identifier: "MeshRevision" });
   }
 }
-function __c76(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2402, __c75, 2));
+      return S.Array(__S(2786, __c87, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          meshRevisions: S.optional(__S(2432, __c76, 0)),
+          meshRevisions: S.optional(__S(2816, __c88, 0)),
         }),
       ).annotate({ identifier: "MeshRevisionProfileProperties" });
     case 2:
@@ -10654,13 +11074,13 @@ function __c76(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(2433, __c76, 1)),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(2817, __c88, 1)),
         }),
       ).annotate({ identifier: "GetManagedClusterMeshRevisionProfileResponse" });
   }
 }
-function __c77(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10680,7 +11100,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "GetManagedClusterMeshUpgradeProfileRequest" });
   }
 }
-function __c78(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10688,13 +11108,13 @@ function __c78(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(2402, __c75, 2)),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(2786, __c87, 2)),
         }),
       ).annotate({ identifier: "GetManagedClusterMeshUpgradeProfileResponse" });
   }
 }
-function __c79(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10717,16 +11137,16 @@ function __c79(j: number): any {
           kubernetesVersion: S.String,
           name: S.optional(S.String),
           osType: S.String,
-          upgrades: S.optional(__S(1505, __c47, 1)),
+          upgrades: S.optional(__S(1601, __c50, 1)),
         }),
       ).annotate({ identifier: "ManagedClusterPoolUpgradeProfile" });
     case 2:
-      return S.Array(__S(2529, __c79, 1));
+      return S.Array(__S(2913, __c91, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          controlPlaneProfile: __S(2529, __c79, 1),
-          agentPoolProfiles: __S(2530, __c79, 2),
+          controlPlaneProfile: __S(2913, __c91, 1),
+          agentPoolProfiles: __S(2914, __c91, 2),
         }),
       ).annotate({ identifier: "ManagedClusterUpgradeProfileProperties" });
     case 4:
@@ -10735,13 +11155,13 @@ function __c79(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: __S(2531, __c79, 3),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: __S(2915, __c91, 3),
         }),
       ).annotate({ identifier: "GetManagedClusterUpgradeProfileResponse" });
   }
 }
-function __c80(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10761,37 +11181,41 @@ function __c80(j: number): any {
       ).annotate({ identifier: "GetManagedNamespaceRequest" });
   }
 }
-function __c81(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          provisioningState: S.optional(S.String),
-          labels: S.optional(__S(864, __c27, 0)),
-          annotations: S.optional(__S(864, __c27, 0)),
-          portalFqdn: S.optional(S.String),
-          defaultResourceQuota: S.optional(__S(1088, __c34, 0)),
-          defaultNetworkPolicy: S.optional(__S(1089, __c34, 1)),
-          adoptionPolicy: S.optional(S.String),
-          deletePolicy: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NamespaceProperties" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          tags: S.optional(__S(864, __c27, 0)),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
           location: S.String,
-          properties: S.optional(__S(2592, __c81, 0)),
+          properties: S.optional(__S(3008, __c94, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetManagedNamespaceResponse" });
   }
 }
-function __c82(j: number): any {
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          provisioningState: S.optional(S.String),
+          labels: S.optional(__S(928, __c29, 0)),
+          annotations: S.optional(__S(928, __c29, 0)),
+          portalFqdn: S.optional(S.String),
+          defaultResourceQuota: S.optional(__S(1152, __c36, 0)),
+          defaultNetworkPolicy: S.optional(__S(1153, __c36, 1)),
+          adoptionPolicy: S.optional(S.String),
+          deletePolicy: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NamespaceProperties" });
+  }
+}
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10811,7 +11235,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c83(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10824,8 +11248,8 @@ function __c83(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(2080, __c65, 0)),
-          privateLinkServiceConnectionState: __S(2656, __c83, 0),
+          privateEndpoint: S.optional(__S(2432, __c76, 0)),
+          privateLinkServiceConnectionState: __S(3072, __c96, 0),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
     case 2:
@@ -10834,13 +11258,13 @@ function __c83(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(2657, __c83, 1)),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(3073, __c96, 1)),
         }),
       ).annotate({ identifier: "GetPrivateEndpointConnectionResponse" });
   }
 }
-function __c84(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10859,12 +11283,12 @@ function __c84(j: number): any {
       ).annotate({ identifier: "GetSnapshotRequest" });
   }
 }
-function __c85(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          creationData: S.optional(__S(672, __c21, 0)),
+          creationData: S.optional(__S(704, __c22, 0)),
           snapshotType: S.optional(S.String),
           kubernetesVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
@@ -10880,15 +11304,15 @@ function __c85(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          tags: S.optional(__S(864, __c27, 0)),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
           location: S.String,
-          properties: S.optional(__S(2720, __c85, 0)),
+          properties: S.optional(__S(3136, __c98, 0)),
         }),
       ).annotate({ identifier: "GetSnapshotResponse" });
   }
 }
-function __c86(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10908,29 +11332,33 @@ function __c86(j: number): any {
       ).annotate({ identifier: "GetTrustedAccessRoleBindingRequest" });
   }
 }
-function __c87(j: number): any {
+function __c100(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: __S(3232, __c101, 0),
+        }),
+      ).annotate({ identifier: "GetTrustedAccessRoleBindingResponse" });
+  }
+}
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           sourceResourceId: S.String,
-          roles: __S(800, __c25, 0),
+          roles: __S(864, __c27, 0),
         }),
       ).annotate({ identifier: "TrustedAccessRoleBindingProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: __S(2784, __c87, 0),
-        }),
-      ).annotate({ identifier: "GetTrustedAccessRoleBindingResponse" });
   }
 }
-function __c88(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10950,7 +11378,22 @@ function __c88(j: number): any {
       ).annotate({ identifier: "GetUpdateRunRequest" });
   }
 }
-function __c89(j: number): any {
+function __c103(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(3345, __c104, 17)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetUpdateRunResponse" });
+  }
+}
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10966,19 +11409,19 @@ function __c89(j: number): any {
         }),
       ).annotate({ identifier: "NodeImageVersion" });
     case 2:
-      return S.Array(__S(2849, __c89, 1));
+      return S.Array(__S(3329, __c104, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          customNodeImageVersions: S.optional(__S(2850, __c89, 2)),
+          customNodeImageVersions: S.optional(__S(3330, __c104, 2)),
         }),
       ).annotate({ identifier: "NodeImageSelection" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          upgrade: __S(2848, __c89, 0),
-          nodeImageSelection: S.optional(__S(2851, __c89, 3)),
+          upgrade: __S(3328, __c104, 0),
+          nodeImageSelection: S.optional(__S(3331, __c104, 3)),
         }),
       ).annotate({ identifier: "ManagedClusterUpdate" });
     case 5:
@@ -10987,13 +11430,13 @@ function __c89(j: number): any {
           startTime: S.optional(S.String),
           completedTime: S.optional(S.String),
           state: S.optional(S.String),
-          error: S.optional(__S(837, __c26, 5)),
+          error: S.optional(__S(901, __c28, 5)),
         }),
       ).annotate({ identifier: "UpdateStatus" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(2853, __c89, 5)),
+          status: S.optional(__S(3333, __c104, 5)),
           name: S.optional(S.String),
           clusterResourceId: S.optional(S.String),
           operationId: S.optional(S.String),
@@ -11001,63 +11444,63 @@ function __c89(j: number): any {
         }),
       ).annotate({ identifier: "MemberUpdateStatus" });
     case 7:
-      return S.Array(__S(2854, __c89, 6));
+      return S.Array(__S(3334, __c104, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           gateId: S.optional(S.String),
-          status: S.optional(__S(2853, __c89, 5)),
+          status: S.optional(__S(3333, __c104, 5)),
         }),
       ).annotate({ identifier: "UpdateRunGateStatus" });
     case 9:
-      return S.Array(__S(2856, __c89, 8));
+      return S.Array(__S(3336, __c104, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(2853, __c89, 5)),
+          status: S.optional(__S(3333, __c104, 5)),
           name: S.optional(S.String),
           maxConcurrency: S.optional(S.Number),
-          members: S.optional(__S(2855, __c89, 7)),
-          beforeGates: S.optional(__S(2857, __c89, 9)),
-          afterGates: S.optional(__S(2857, __c89, 9)),
+          members: S.optional(__S(3335, __c104, 7)),
+          beforeGates: S.optional(__S(3337, __c104, 9)),
+          afterGates: S.optional(__S(3337, __c104, 9)),
         }),
       ).annotate({ identifier: "UpdateGroupStatus" });
     case 11:
-      return S.Array(__S(2858, __c89, 10));
+      return S.Array(__S(3338, __c104, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(2853, __c89, 5)),
+          status: S.optional(__S(3333, __c104, 5)),
           waitDurationInSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WaitStatus" });
     case 13:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(2853, __c89, 5)),
+          status: S.optional(__S(3333, __c104, 5)),
           name: S.optional(S.String),
           maxConcurrency: S.optional(S.Number),
-          groups: S.optional(__S(2859, __c89, 11)),
-          beforeGates: S.optional(__S(2857, __c89, 9)),
-          afterGates: S.optional(__S(2857, __c89, 9)),
-          afterStageWaitStatus: S.optional(__S(2860, __c89, 12)),
+          groups: S.optional(__S(3339, __c104, 11)),
+          beforeGates: S.optional(__S(3337, __c104, 9)),
+          afterGates: S.optional(__S(3337, __c104, 9)),
+          afterStageWaitStatus: S.optional(__S(3340, __c104, 12)),
         }),
       ).annotate({ identifier: "UpdateStageStatus" });
     case 14:
-      return S.Array(__S(2861, __c89, 13));
+      return S.Array(__S(3341, __c104, 13));
     case 15:
       return S.suspend(() =>
         S.Struct({
-          selectedNodeImageVersions: S.optional(__S(2850, __c89, 2)),
+          selectedNodeImageVersions: S.optional(__S(3330, __c104, 2)),
         }),
       ).annotate({ identifier: "NodeImageSelectionStatus" });
     case 16:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(__S(2853, __c89, 5)),
-          stages: S.optional(__S(2862, __c89, 14)),
-          nodeImageSelection: S.optional(__S(2863, __c89, 15)),
+          status: S.optional(__S(3333, __c104, 5)),
+          stages: S.optional(__S(3342, __c104, 14)),
+          nodeImageSelection: S.optional(__S(3343, __c104, 15)),
         }),
       ).annotate({ identifier: "UpdateRunStatus" });
     case 17:
@@ -11065,31 +11508,20 @@ function __c89(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           updateStrategyId: S.optional(S.String),
-          strategy: S.optional(__S(1350, __c42, 6)),
-          managedClusterUpdate: __S(2852, __c89, 4),
-          status: S.optional(__S(2864, __c89, 16)),
+          strategy: S.optional(__S(1414, __c44, 6)),
+          managedClusterUpdate: __S(3332, __c104, 4),
+          status: S.optional(__S(3344, __c104, 16)),
           autoUpgradeProfileId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateRunProperties" });
-    case 18:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(2865, __c89, 17)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetUpdateRunResponse" });
   }
 }
-function __c90(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          lastTriggerError: S.optional(__S(32, __c1, 0)),
+          lastTriggerError: S.optional(__S(800, __c25, 0)),
         }),
       ).annotate({ identifier: "AutoUpgradeProfileStatusInput" });
     case 1:
@@ -11097,9 +11529,9 @@ function __c90(j: number): any {
         S.Struct({
           updateStrategyId: S.optional(S.String),
           channel: S.String,
-          nodeImageSelection: S.optional(__S(2912, __c91, 0)),
+          nodeImageSelection: S.optional(__S(3392, __c106, 0)),
           disabled: S.optional(S.Boolean),
-          autoUpgradeProfileStatus: S.optional(__S(2880, __c90, 0)),
+          autoUpgradeProfileStatus: S.optional(__S(3360, __c105, 0)),
           targetKubernetesVersion: S.optional(S.String),
           longTermSupport: S.optional(S.Boolean),
         }),
@@ -11111,7 +11543,7 @@ function __c90(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           autoUpgradeProfileName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2881, __c90, 1)),
+          properties: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11121,9 +11553,22 @@ function __c90(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AutoUpgradeProfilesCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(3394, __c106, 2)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AutoUpgradeProfilesCreateOrUpdateResponse" });
   }
 }
-function __c91(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11136,8 +11581,8 @@ function __c91(j: number): any {
         S.Struct({
           lastTriggeredAt: S.optional(S.String),
           lastTriggerStatus: S.optional(S.String),
-          lastTriggerError: S.optional(__S(837, __c26, 5)),
-          lastTriggerUpgradeVersions: S.optional(__S(800, __c25, 0)),
+          lastTriggerError: S.optional(__S(901, __c28, 5)),
+          lastTriggerUpgradeVersions: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "AutoUpgradeProfileStatus" });
     case 2:
@@ -11146,27 +11591,16 @@ function __c91(j: number): any {
           provisioningState: S.optional(S.String),
           updateStrategyId: S.optional(S.String),
           channel: S.String,
-          nodeImageSelection: S.optional(__S(2912, __c91, 0)),
+          nodeImageSelection: S.optional(__S(3392, __c106, 0)),
           disabled: S.optional(S.Boolean),
-          autoUpgradeProfileStatus: S.optional(__S(2913, __c91, 1)),
+          autoUpgradeProfileStatus: S.optional(__S(3393, __c106, 1)),
           targetKubernetesVersion: S.optional(S.String),
           longTermSupport: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AutoUpgradeProfileProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(2914, __c91, 2)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "AutoUpgradeProfilesCreateOrUpdateResponse" });
   }
 }
-function __c92(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11177,7 +11611,7 @@ function __c92(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          managedIdentity: __S(2944, __c92, 0),
+          managedIdentity: __S(3424, __c107, 0),
         }),
       ).annotate({ identifier: "IdentityBindingPropertiesInput" });
     case 2:
@@ -11187,7 +11621,7 @@ function __c92(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           identityBindingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2945, __c92, 1)),
+          properties: S.optional(__S(3425, __c107, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11197,9 +11631,23 @@ function __c92(j: number): any {
           }),
         ),
       ).annotate({ identifier: "IdentityBindingsCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(2178, __c68, 2)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "IdentityBindingsCreateOrUpdateResponse" });
   }
 }
-function __c93(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11217,17 +11665,17 @@ function __c93(j: number): any {
         ),
       ).annotate({ identifier: "ListAgentPoolsRequest" });
     case 1:
-      return S.Array(__S(737, __c23, 1));
+      return S.Array(__S(1504, __c47, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2977, __c93, 1),
+          value: __S(3457, __c108, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentPoolListResult" });
   }
 }
-function __c94(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11247,17 +11695,17 @@ function __c94(j: number): any {
         ),
       ).annotate({ identifier: "ListAutoUpgradeProfileByFleetRequest" });
     case 1:
-      return S.Array(__S(2915, __c91, 3));
+      return S.Array(__S(1696, __c53, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3009, __c94, 1),
+          value: __S(3489, __c109, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoUpgradeProfileListResult" });
   }
 }
-function __c95(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11273,17 +11721,17 @@ function __c95(j: number): any {
         ),
       ).annotate({ identifier: "ListDeploymentSafeguardsRequest" });
     case 1:
-      return S.Array(__S(3361, __c105, 1));
+      return S.Array(__S(1760, __c55, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3041, __c95, 1),
+          value: __S(3521, __c110, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentSafeguardListResult" });
   }
 }
-function __c96(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11301,20 +11749,20 @@ function __c96(j: number): any {
       ).annotate({ identifier: "ListFleetByResourceGroupRequest" });
   }
 }
-function __c97(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1221, __c38, 5));
+      return S.Array(__S(1824, __c57, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3104, __c97, 0),
+          value: __S(3584, __c112, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetListResult" });
   }
 }
-function __c98(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11333,7 +11781,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "ListFleetBySubscriptionRequest" });
   }
 }
-function __c99(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11352,7 +11800,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "ListFleetCredentialsRequest" });
   }
 }
-function __c100(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11362,16 +11810,16 @@ function __c100(j: number): any {
         }),
       ).annotate({ identifier: "FleetCredentialResult" });
     case 1:
-      return S.Array(__S(3200, __c100, 0));
+      return S.Array(__S(3680, __c115, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          kubeconfigs: S.optional(__S(3201, __c100, 1)),
+          kubeconfigs: S.optional(__S(3681, __c115, 1)),
         }),
       ).annotate({ identifier: "FleetCredentialResults" });
   }
 }
-function __c101(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11389,17 +11837,17 @@ function __c101(j: number): any {
         ),
       ).annotate({ identifier: "ListFleetManagedNamespaceByFleetRequest" });
     case 1:
-      return S.Array(__S(1139, __c35, 19));
+      return S.Array(__S(1888, __c59, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3233, __c101, 1),
+          value: __S(3713, __c116, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetManagedNamespaceListResult" });
   }
 }
-function __c102(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11420,17 +11868,17 @@ function __c102(j: number): any {
         ),
       ).annotate({ identifier: "ListFleetMemberByFleetRequest" });
     case 1:
-      return S.Array(__S(3809, __c119, 1));
+      return S.Array(__S(1952, __c61, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3265, __c102, 1),
+          value: __S(3745, __c117, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetMemberListResult" });
   }
 }
-function __c103(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11450,23 +11898,23 @@ function __c103(j: number): any {
         ),
       ).annotate({ identifier: "ListFleetUpdateStrategyByFleetRequest" });
     case 1:
-      return S.Array(__S(1377, __c43, 1));
+      return S.Array(__S(2016, __c63, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3297, __c103, 1),
+          value: __S(3777, __c118, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetUpdateStrategyListResult" });
   }
 }
-function __c104(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           level: S.String,
-          excludedNamespaces: S.optional(__S(800, __c25, 0)),
+          excludedNamespaces: S.optional(__S(864, __c27, 0)),
           podSecurityStandardsLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentSafeguardsPropertiesInput" });
@@ -11474,7 +11922,7 @@ function __c104(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3328, __c104, 0)),
+          properties: S.optional(__S(3808, __c119, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11484,34 +11932,36 @@ function __c104(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateDeploymentSafeguardRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(3840, __c120, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateDeploymentSafeguardResponse" });
   }
 }
-function __c105(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           level: S.String,
-          excludedNamespaces: S.optional(__S(800, __c25, 0)),
-          systemExcludedNamespaces: __S(800, __c25, 0),
+          excludedNamespaces: S.optional(__S(864, __c27, 0)),
+          systemExcludedNamespaces: __S(864, __c27, 0),
           podSecurityStandardsLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentSafeguardsProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(3360, __c105, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateDeploymentSafeguardResponse" });
   }
 }
-function __c106(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11532,17 +11982,17 @@ function __c106(j: number): any {
         ),
       ).annotate({ identifier: "ListGateByFleetRequest" });
     case 1:
-      return S.Array(__S(1795, __c56, 3));
+      return S.Array(__S(2080, __c65, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3393, __c106, 1),
+          value: __S(3873, __c121, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GateListResult" });
   }
 }
-function __c107(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11560,17 +12010,17 @@ function __c107(j: number): any {
         ),
       ).annotate({ identifier: "ListIdentityBindingByManagedClusterRequest" });
     case 1:
-      return S.Array(__S(1859, __c58, 3));
+      return S.Array(__S(2208, __c69, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3425, __c107, 1),
+          value: __S(3905, __c122, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityBindingListResult" });
   }
 }
-function __c108(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11589,17 +12039,17 @@ function __c108(j: number): any {
         ),
       ).annotate({ identifier: "ListMachinesRequest" });
     case 1:
-      return S.Array(__S(1924, __c60, 4));
+      return S.Array(__S(2276, __c71, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3457, __c108, 1),
+          value: __S(3937, __c123, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MachineListResult" });
   }
 }
-function __c109(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11617,17 +12067,17 @@ function __c109(j: number): any {
         ),
       ).annotate({ identifier: "ListMaintenanceConfigurationByManagedClusterRequest" });
     case 1:
-      return S.Array(__S(1998, __c62, 14));
+      return S.Array(__S(2350, __c73, 14));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3489, __c109, 1),
+          value: __S(3969, __c124, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceConfigurationListResult" });
   }
 }
-function __c110(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11645,20 +12095,20 @@ function __c110(j: number): any {
       ).annotate({ identifier: "ListManagedClusterByResourceGroupRequest" });
   }
 }
-function __c111(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2295, __c71, 23));
+      return S.Array(__S(2496, __c78, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3552, __c111, 0),
+          value: __S(4032, __c126, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedClusterListResult" });
   }
 }
-function __c112(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11678,7 +12128,7 @@ function __c112(j: number): any {
       ).annotate({ identifier: "ListManagedClusterClusterAdminCredentialsRequest" });
   }
 }
-function __c113(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11698,7 +12148,7 @@ function __c113(j: number): any {
       ).annotate({ identifier: "ListManagedClusterClusterMonitoringUserCredentialsRequest" });
   }
 }
-function __c114(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11719,7 +12169,7 @@ function __c114(j: number): any {
       ).annotate({ identifier: "ListManagedClusterClusterUserCredentialsRequest" });
   }
 }
-function __c115(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11738,38 +12188,38 @@ function __c115(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          supportPlan: S.optional(__S(2112, __c66, 0)),
+          supportPlan: S.optional(__S(2464, __c77, 0)),
         }),
       ).annotate({ identifier: "KubernetesVersionCapabilities" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          upgrades: S.optional(__S(800, __c25, 0)),
+          upgrades: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "KubernetesPatchVersion" });
     case 3:
-      return S.Record(S.String, __S(3682, __c115, 2));
+      return S.Record(S.String, __S(4162, __c130, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          capabilities: S.optional(__S(3681, __c115, 1)),
+          capabilities: S.optional(__S(4161, __c130, 1)),
           isDefault: S.optional(S.Boolean),
           isPreview: S.optional(S.Boolean),
-          patchVersions: S.optional(__S(3683, __c115, 3)),
+          patchVersions: S.optional(__S(4163, __c130, 3)),
         }),
       ).annotate({ identifier: "KubernetesVersion" });
     case 5:
-      return S.Array(__S(3684, __c115, 4));
+      return S.Array(__S(4164, __c130, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(__S(3685, __c115, 5)),
+          values: S.optional(__S(4165, __c130, 5)),
         }),
       ).annotate({ identifier: "KubernetesVersionListResult" });
   }
 }
-function __c116(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11786,24 +12236,24 @@ function __c116(j: number): any {
         ),
       ).annotate({ identifier: "ListManagedClusterMeshRevisionProfilesRequest" });
     case 1:
-      return S.Array(__S(2434, __c76, 2));
+      return S.Array(__S(2818, __c88, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3713, __c116, 1),
+          value: __S(4193, __c131, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeshRevisionProfileList" });
   }
 }
-function __c117(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           clusterResourceId: S.String,
           group: S.optional(S.String),
-          labels: S.optional(__S(864, __c27, 0)),
+          labels: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "FleetMemberPropertiesInput" });
     case 1:
@@ -11813,7 +12263,7 @@ function __c117(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           fleetMemberName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3744, __c117, 0)),
+          properties: S.optional(__S(4224, __c132, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11823,20 +12273,32 @@ function __c117(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFleetMemberRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(4288, __c134, 0)),
+          eTag: S.optional(S.String),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateFleetMemberResponse" });
   }
 }
-function __c118(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           lastOperationId: S.optional(S.String),
-          lastOperationError: S.optional(__S(837, __c26, 5)),
+          lastOperationError: S.optional(__S(901, __c28, 5)),
         }),
       ).annotate({ identifier: "FleetMemberStatus" });
   }
 }
-function __c119(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11844,24 +12306,13 @@ function __c119(j: number): any {
           clusterResourceId: S.String,
           group: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          labels: S.optional(__S(864, __c27, 0)),
-          status: S.optional(__S(3776, __c118, 0)),
+          labels: S.optional(__S(928, __c29, 0)),
+          status: S.optional(__S(4256, __c133, 0)),
         }),
       ).annotate({ identifier: "FleetMemberProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(768, __c24, 0)),
-          properties: S.optional(__S(3808, __c119, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateFleetMemberResponse" });
   }
 }
-function __c120(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11879,17 +12330,17 @@ function __c120(j: number): any {
         ),
       ).annotate({ identifier: "ListManagedClusterMeshUpgradeProfilesRequest" });
     case 1:
-      return S.Array(__S(2496, __c78, 0));
+      return S.Array(__S(2880, __c90, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3841, __c120, 1),
+          value: __S(4321, __c135, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeshUpgradeProfileList" });
   }
 }
-function __c121(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11916,35 +12367,35 @@ function __c121(j: number): any {
         }),
       ).annotate({ identifier: "EndpointDetail" });
     case 2:
-      return S.Array(__S(3873, __c121, 1));
+      return S.Array(__S(4353, __c136, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          endpointDetails: S.optional(__S(3874, __c121, 2)),
+          endpointDetails: S.optional(__S(4354, __c136, 2)),
         }),
       ).annotate({ identifier: "EndpointDependency" });
     case 4:
-      return S.Array(__S(3875, __c121, 3));
+      return S.Array(__S(4355, __c136, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(__S(3876, __c121, 4)),
+          endpoints: S.optional(__S(4356, __c136, 4)),
         }),
       ).annotate({ identifier: "OutboundEnvironmentEndpoint" });
     case 6:
-      return S.Array(__S(3877, __c121, 5));
+      return S.Array(__S(4357, __c136, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3878, __c121, 6),
+          value: __S(4358, __c136, 6),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutboundEnvironmentEndpointCollection" });
   }
 }
-function __c122(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11961,7 +12412,7 @@ function __c122(j: number): any {
       ).annotate({ identifier: "ListManagedClustersRequest" });
   }
 }
-function __c123(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11979,17 +12430,17 @@ function __c123(j: number): any {
         ),
       ).annotate({ identifier: "ListManagedNamespaceByManagedClusterRequest" });
     case 1:
-      return S.Array(__S(2593, __c81, 1));
+      return S.Array(__S(2976, __c93, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(3937, __c123, 1),
+          value: __S(4417, __c138, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedNamespaceListResult" });
   }
 }
-function __c124(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12009,7 +12460,7 @@ function __c124(j: number): any {
       ).annotate({ identifier: "ListManagedNamespaceCredentialRequest" });
   }
 }
-function __c125(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12036,21 +12487,21 @@ function __c125(j: number): any {
         S.Struct({
           origin: S.optional(S.String),
           name: S.optional(S.String),
-          display: S.optional(__S(4001, __c125, 1)),
+          display: S.optional(__S(4481, __c140, 1)),
         }),
       ).annotate({ identifier: "OperationValue" });
     case 3:
-      return S.Array(__S(4002, __c125, 2));
+      return S.Array(__S(4482, __c140, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4003, __c125, 3),
+          value: __S(4483, __c140, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c126(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12068,16 +12519,16 @@ function __c126(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionsRequest" });
     case 1:
-      return S.Array(__S(2658, __c83, 2));
+      return S.Array(__S(3074, __c96, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(4033, __c126, 1)),
+          value: S.optional(__S(4513, __c141, 1)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c127(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12097,12 +12548,12 @@ function __c127(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(2144, __c67, 0)),
+          value: S.optional(__S(2528, __c79, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourcesListResult" });
   }
 }
-function __c128(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12120,20 +12571,20 @@ function __c128(j: number): any {
       ).annotate({ identifier: "ListSnapshotByResourceGroupRequest" });
   }
 }
-function __c129(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2721, __c85, 1));
+      return S.Array(__S(3137, __c98, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4128, __c129, 0),
+          value: __S(4608, __c144, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotListResult" });
   }
 }
-function __c130(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12150,7 +12601,7 @@ function __c130(j: number): any {
       ).annotate({ identifier: "ListSnapshotsRequest" });
   }
 }
-function __c131(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12173,7 +12624,7 @@ function __c131(j: number): any {
       ).annotate({ identifier: "DeleteAgentPoolRequest" });
   }
 }
-function __c132(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12191,17 +12642,17 @@ function __c132(j: number): any {
         ),
       ).annotate({ identifier: "ListTrustedAccessRoleBindingsRequest" });
     case 1:
-      return S.Array(__S(2785, __c87, 1));
+      return S.Array(__S(3200, __c100, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4225, __c132, 1),
+          value: __S(4705, __c147, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrustedAccessRoleBindingListResult" });
   }
 }
-function __c133(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12220,35 +12671,35 @@ function __c133(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          verbs: S.optional(__S(800, __c25, 0)),
-          apiGroups: S.optional(__S(800, __c25, 0)),
-          resources: S.optional(__S(800, __c25, 0)),
-          resourceNames: S.optional(__S(800, __c25, 0)),
-          nonResourceURLs: S.optional(__S(800, __c25, 0)),
+          verbs: S.optional(__S(864, __c27, 0)),
+          apiGroups: S.optional(__S(864, __c27, 0)),
+          resources: S.optional(__S(864, __c27, 0)),
+          resourceNames: S.optional(__S(864, __c27, 0)),
+          nonResourceURLs: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "TrustedAccessRoleRule" });
     case 2:
-      return S.Array(__S(4257, __c133, 1));
+      return S.Array(__S(4737, __c148, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           sourceResourceType: S.optional(S.String),
           name: S.optional(S.String),
-          rules: S.optional(__S(4258, __c133, 2)),
+          rules: S.optional(__S(4738, __c148, 2)),
         }),
       ).annotate({ identifier: "TrustedAccessRole" });
     case 4:
-      return S.Array(__S(4259, __c133, 3));
+      return S.Array(__S(4739, __c148, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4260, __c133, 4),
+          value: __S(4740, __c148, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrustedAccessRoleListResult" });
   }
 }
-function __c134(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12268,17 +12719,17 @@ function __c134(j: number): any {
         ),
       ).annotate({ identifier: "ListUpdateRunByFleetRequest" });
     case 1:
-      return S.Array(__S(2866, __c89, 18));
+      return S.Array(__S(3296, __c103, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(4289, __c134, 1),
+          value: __S(4769, __c149, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateRunListResult" });
   }
 }
-function __c135(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12287,7 +12738,7 @@ function __c135(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           configName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1997, __c62, 13)),
+          properties: S.optional(__S(2349, __c73, 13)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12299,7 +12750,7 @@ function __c135(j: number): any {
       ).annotate({ identifier: "MaintenanceConfigurationsCreateOrUpdateRequest" });
   }
 }
-function __c136(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12325,68 +12776,68 @@ function __c136(j: number): any {
           mode: S.optional(S.String),
           orchestratorVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
-          upgradeSettings: S.optional(__S(704, __c22, 0)),
-          powerState: S.optional(__S(705, __c22, 1)),
-          availabilityZones: S.optional(__S(800, __c25, 0)),
+          upgradeSettings: S.optional(__S(736, __c23, 0)),
+          powerState: S.optional(__S(737, __c23, 1)),
+          availabilityZones: S.optional(__S(864, __c27, 0)),
           enableNodePublicIP: S.optional(S.Boolean),
           nodePublicIPPrefixID: S.optional(S.String),
           scaleSetPriority: S.optional(S.String),
           scaleSetEvictionPolicy: S.optional(S.String),
           spotMaxPrice: S.optional(S.Number),
-          tags: S.optional(__S(864, __c27, 0)),
-          nodeLabels: S.optional(__S(864, __c27, 0)),
-          nodeTaints: S.optional(__S(800, __c25, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          nodeLabels: S.optional(__S(928, __c29, 0)),
+          nodeTaints: S.optional(__S(864, __c27, 0)),
           proximityPlacementGroupID: S.optional(S.String),
-          kubeletConfig: S.optional(__S(706, __c22, 2)),
-          linuxOSConfig: S.optional(__S(708, __c22, 4)),
+          kubeletConfig: S.optional(__S(738, __c23, 2)),
+          linuxOSConfig: S.optional(__S(740, __c23, 4)),
           enableEncryptionAtHost: S.optional(S.Boolean),
           enableUltraSSD: S.optional(S.Boolean),
           enableFIPS: S.optional(S.Boolean),
           gpuInstanceProfile: S.optional(S.String),
-          creationData: S.optional(__S(672, __c21, 0)),
+          creationData: S.optional(__S(704, __c22, 0)),
           capacityReservationGroupID: S.optional(S.String),
           hostGroupID: S.optional(S.String),
-          networkProfile: S.optional(__S(714, __c22, 10)),
-          windowsProfile: S.optional(__S(715, __c22, 11)),
-          securityProfile: S.optional(__S(716, __c22, 12)),
-          gpuProfile: S.optional(__S(717, __c22, 13)),
-          gatewayProfile: S.optional(__S(718, __c22, 14)),
-          artifactStreamingProfile: S.optional(__S(719, __c22, 15)),
-          virtualMachinesProfile: S.optional(__S(725, __c22, 21)),
-          virtualMachineNodesStatus: S.optional(__S(721, __c22, 17)),
-          status: S.optional(__S(896, __c28, 0)),
-          localDNSProfile: S.optional(__S(728, __c22, 24)),
+          networkProfile: S.optional(__S(746, __c23, 10)),
+          windowsProfile: S.optional(__S(747, __c23, 11)),
+          securityProfile: S.optional(__S(748, __c23, 12)),
+          gpuProfile: S.optional(__S(749, __c23, 13)),
+          gatewayProfile: S.optional(__S(750, __c23, 14)),
+          artifactStreamingProfile: S.optional(__S(751, __c23, 15)),
+          virtualMachinesProfile: S.optional(__S(757, __c23, 21)),
+          virtualMachineNodesStatus: S.optional(__S(753, __c23, 17)),
+          status: S.optional(__S(960, __c30, 0)),
+          localDNSProfile: S.optional(__S(760, __c23, 24)),
           name: S.String,
         }),
       ).annotate({ identifier: "ManagedClusterAgentPoolProfileInput" });
     case 1:
-      return S.Array(__S(4352, __c136, 0));
+      return S.Array(__S(4832, __c151, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           namespace: S.String,
           bindingSelector: S.optional(S.String),
-          identity: __S(2217, __c69, 9),
+          identity: __S(2601, __c81, 9),
         }),
       ).annotate({ identifier: "ManagedClusterPodIdentityInput" });
     case 3:
-      return S.Array(__S(4354, __c136, 2));
+      return S.Array(__S(4834, __c151, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           allowNetworkPluginKubenet: S.optional(S.Boolean),
-          userAssignedIdentities: S.optional(__S(4355, __c136, 3)),
-          userAssignedIdentityExceptions: S.optional(__S(2227, __c69, 19)),
+          userAssignedIdentities: S.optional(__S(4835, __c151, 3)),
+          userAssignedIdentityExceptions: S.optional(__S(2611, __c81, 19)),
         }),
       ).annotate({ identifier: "ManagedClusterPodIdentityProfileInput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          managedOutboundIPs: S.optional(__S(2235, __c69, 27)),
-          outboundIPPrefixes: S.optional(__S(2237, __c69, 29)),
-          outboundIPs: S.optional(__S(2238, __c69, 30)),
+          managedOutboundIPs: S.optional(__S(2619, __c81, 27)),
+          outboundIPPrefixes: S.optional(__S(2621, __c81, 29)),
+          outboundIPs: S.optional(__S(2622, __c81, 30)),
           allocatedOutboundPorts: S.optional(S.Number),
           idleTimeoutInMinutes: S.optional(S.Number),
           enableMultipleStandardLoadBalancers: S.optional(S.Boolean),
@@ -12397,9 +12848,9 @@ function __c136(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sku: S.optional(S.String),
-          managedOutboundIPProfile: S.optional(__S(2235, __c69, 27)),
-          outboundIPPrefixes: S.optional(__S(2240, __c70, 0)),
-          outboundIPs: S.optional(__S(2241, __c70, 1)),
+          managedOutboundIPProfile: S.optional(__S(2619, __c81, 27)),
+          outboundIPPrefixes: S.optional(__S(2624, __c82, 0)),
+          outboundIPs: S.optional(__S(2625, __c82, 1)),
           idleTimeoutInMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ManagedClusterNATGatewayProfileInput" });
@@ -12411,18 +12862,18 @@ function __c136(j: number): any {
           networkPolicy: S.optional(S.String),
           networkMode: S.optional(S.String),
           networkDataplane: S.optional(S.String),
-          advancedNetworking: S.optional(__S(2234, __c69, 26)),
+          advancedNetworking: S.optional(__S(2618, __c81, 26)),
           podCidr: S.optional(S.String),
           serviceCidr: S.optional(S.String),
           dnsServiceIP: S.optional(S.String),
           outboundType: S.optional(S.String),
           loadBalancerSku: S.optional(S.String),
-          loadBalancerProfile: S.optional(__S(4357, __c136, 5)),
-          natGatewayProfile: S.optional(__S(4358, __c136, 6)),
-          staticEgressGatewayProfile: S.optional(__S(719, __c22, 15)),
-          podCidrs: S.optional(__S(800, __c25, 0)),
-          serviceCidrs: S.optional(__S(800, __c25, 0)),
-          ipFamilies: S.optional(__S(2112, __c66, 0)),
+          loadBalancerProfile: S.optional(__S(4837, __c151, 5)),
+          natGatewayProfile: S.optional(__S(4838, __c151, 6)),
+          staticEgressGatewayProfile: S.optional(__S(751, __c23, 15)),
+          podCidrs: S.optional(__S(864, __c27, 0)),
+          serviceCidrs: S.optional(__S(864, __c27, 0)),
+          ipFamilies: S.optional(__S(2464, __c77, 0)),
         }),
       ).annotate({ identifier: "ContainerServiceNetworkProfileInput" });
     case 8:
@@ -12432,62 +12883,62 @@ function __c136(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(800, __c25, 0)),
+          requiredMembers: S.optional(__S(864, __c27, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceInput" });
     case 9:
-      return S.Array(__S(4360, __c136, 8));
+      return S.Array(__S(4840, __c151, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
           kubernetesVersion: S.optional(S.String),
           dnsPrefix: S.optional(S.String),
           fqdnSubdomain: S.optional(S.String),
-          agentPoolProfiles: S.optional(__S(4353, __c136, 1)),
-          linuxProfile: S.optional(__S(2213, __c69, 5)),
-          windowsProfile: S.optional(__S(2215, __c69, 7)),
-          servicePrincipalProfile: S.optional(__S(2216, __c69, 8)),
-          addonProfiles: S.optional(__S(2219, __c69, 11)),
-          podIdentityProfile: S.optional(__S(4356, __c136, 4)),
-          oidcIssuerProfile: S.optional(__S(719, __c22, 15)),
+          agentPoolProfiles: S.optional(__S(4833, __c151, 1)),
+          linuxProfile: S.optional(__S(2597, __c81, 5)),
+          windowsProfile: S.optional(__S(2599, __c81, 7)),
+          servicePrincipalProfile: S.optional(__S(2600, __c81, 8)),
+          addonProfiles: S.optional(__S(2603, __c81, 11)),
+          podIdentityProfile: S.optional(__S(4836, __c151, 4)),
+          oidcIssuerProfile: S.optional(__S(751, __c23, 15)),
           nodeResourceGroup: S.optional(S.String),
-          nodeResourceGroupProfile: S.optional(__S(2230, __c69, 22)),
+          nodeResourceGroupProfile: S.optional(__S(2614, __c81, 22)),
           enableRBAC: S.optional(S.Boolean),
           supportPlan: S.optional(S.String),
           enableFIPS: S.optional(S.Boolean),
-          networkProfile: S.optional(__S(4359, __c136, 7)),
-          aadProfile: S.optional(__S(2244, __c70, 4)),
-          autoUpgradeProfile: S.optional(__S(2245, __c70, 5)),
-          upgradeSettings: S.optional(__S(2247, __c70, 7)),
-          autoScalerProfile: S.optional(__S(2248, __c70, 8)),
-          apiServerAccessProfile: S.optional(__S(2249, __c70, 9)),
+          networkProfile: S.optional(__S(4839, __c151, 7)),
+          aadProfile: S.optional(__S(2628, __c82, 4)),
+          autoUpgradeProfile: S.optional(__S(2629, __c82, 5)),
+          upgradeSettings: S.optional(__S(2631, __c82, 7)),
+          autoScalerProfile: S.optional(__S(2632, __c82, 8)),
+          apiServerAccessProfile: S.optional(__S(2633, __c82, 9)),
           diskEncryptionSetID: S.optional(S.String),
-          identityProfile: S.optional(__S(2250, __c70, 10)),
-          privateLinkResources: S.optional(__S(4361, __c136, 9)),
+          identityProfile: S.optional(__S(2634, __c82, 10)),
+          privateLinkResources: S.optional(__S(4841, __c151, 9)),
           disableLocalAccounts: S.optional(S.Boolean),
-          httpProxyConfig: S.optional(__S(2251, __c70, 11)),
-          securityProfile: S.optional(__S(2259, __c70, 19)),
-          storageProfile: S.optional(__S(2260, __c70, 20)),
-          ingressProfile: S.optional(__S(2265, __c70, 25)),
+          httpProxyConfig: S.optional(__S(2635, __c82, 11)),
+          securityProfile: S.optional(__S(2643, __c82, 19)),
+          storageProfile: S.optional(__S(2644, __c82, 20)),
+          ingressProfile: S.optional(__S(2649, __c82, 25)),
           publicNetworkAccess: S.optional(S.String),
-          workloadAutoScalerProfile: S.optional(__S(2267, __c70, 27)),
-          azureMonitorProfile: S.optional(__S(2273, __c71, 1)),
-          serviceMeshProfile: S.optional(__S(2282, __c71, 10)),
-          metricsProfile: S.optional(__S(2283, __c71, 11)),
-          nodeProvisioningProfile: S.optional(__S(2284, __c71, 12)),
-          bootstrapProfile: S.optional(__S(2285, __c71, 13)),
-          aiToolchainOperatorProfile: S.optional(__S(719, __c22, 15)),
-          schedulerProfile: S.optional(__S(2287, __c71, 15)),
-          hostedSystemProfile: S.optional(__S(2288, __c71, 16)),
-          status: S.optional(__S(896, __c28, 0)),
+          workloadAutoScalerProfile: S.optional(__S(2651, __c82, 27)),
+          azureMonitorProfile: S.optional(__S(2657, __c83, 1)),
+          serviceMeshProfile: S.optional(__S(2666, __c83, 10)),
+          metricsProfile: S.optional(__S(2667, __c83, 11)),
+          nodeProvisioningProfile: S.optional(__S(2668, __c83, 12)),
+          bootstrapProfile: S.optional(__S(2669, __c83, 13)),
+          aiToolchainOperatorProfile: S.optional(__S(751, __c23, 15)),
+          schedulerProfile: S.optional(__S(2671, __c83, 15)),
+          hostedSystemProfile: S.optional(__S(2672, __c83, 16)),
+          status: S.optional(__S(960, __c30, 0)),
         }),
       ).annotate({ identifier: "ManagedClusterPropertiesInput" });
     case 11:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          delegatedResources: S.optional(__S(2293, __c71, 21)),
-          userAssignedIdentities: S.optional(__S(1248, __c39, 0)),
+          delegatedResources: S.optional(__S(2677, __c83, 21)),
+          userAssignedIdentities: S.optional(__S(1312, __c41, 0)),
         }),
       ).annotate({ identifier: "ManagedClusterIdentityInput" });
     case 12:
@@ -12496,12 +12947,12 @@ function __c136(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
           location: S.String,
-          properties: S.optional(__S(4362, __c136, 10)),
-          sku: S.optional(__S(2290, __c71, 18)),
-          extendedLocation: S.optional(__S(2291, __c71, 19)),
-          identity: S.optional(__S(4363, __c136, 11)),
+          properties: S.optional(__S(4842, __c151, 10)),
+          sku: S.optional(__S(2674, __c83, 18)),
+          extendedLocation: S.optional(__S(2675, __c83, 19)),
+          identity: S.optional(__S(4843, __c151, 11)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12512,17 +12963,36 @@ function __c136(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ManagedClustersCreateOrUpdateRequest" });
+    case 13:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(2673, __c83, 17)),
+          eTag: S.optional(S.String),
+          sku: S.optional(__S(2674, __c83, 18)),
+          extendedLocation: S.optional(__S(2675, __c83, 19)),
+          identity: S.optional(__S(2678, __c83, 22)),
+          kind: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ManagedClustersCreateOrUpdateResponse" });
   }
 }
-function __c137(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(__S(864, __c27, 0)),
-          annotations: S.optional(__S(864, __c27, 0)),
-          defaultResourceQuota: S.optional(__S(1088, __c34, 0)),
-          defaultNetworkPolicy: S.optional(__S(1089, __c34, 1)),
+          labels: S.optional(__S(928, __c29, 0)),
+          annotations: S.optional(__S(928, __c29, 0)),
+          defaultResourceQuota: S.optional(__S(1152, __c36, 0)),
+          defaultNetworkPolicy: S.optional(__S(1153, __c36, 1)),
           adoptionPolicy: S.optional(S.String),
           deletePolicy: S.optional(S.String),
         }),
@@ -12534,9 +13004,9 @@ function __c137(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           managedNamespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
           location: S.String,
-          properties: S.optional(__S(4384, __c137, 0)),
+          properties: S.optional(__S(4864, __c152, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12546,9 +13016,24 @@ function __c137(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ManagedNamespacesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(3008, __c94, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ManagedNamespacesCreateOrUpdateResponse" });
   }
 }
-function __c138(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12560,7 +13045,7 @@ function __c138(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(800, __c25, 0)),
+          requiredMembers: S.optional(__S(864, __c27, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12572,7 +13057,7 @@ function __c138(j: number): any {
       ).annotate({ identifier: "PostResolvePrivateLinkServiceIdRequest" });
   }
 }
-function __c139(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12593,7 +13078,7 @@ function __c139(j: number): any {
       ).annotate({ identifier: "ResetManagedClusterServicePrincipalProfileRequest" });
   }
 }
-function __c140(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12612,7 +13097,7 @@ function __c140(j: number): any {
       ).annotate({ identifier: "RotateManagedClusterClusterCertificatesRequest" });
   }
 }
-function __c141(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12631,7 +13116,7 @@ function __c141(j: number): any {
       ).annotate({ identifier: "RotateManagedClusterServiceAccountSigningKeysRequest" });
   }
 }
-function __c142(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12640,7 +13125,7 @@ function __c142(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           agentPoolName: S.String.pipe(T.Label()),
-          machineNames: __S(800, __c25, 0),
+          machineNames: __S(864, __c27, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12652,7 +13137,7 @@ function __c142(j: number): any {
       ).annotate({ identifier: "DeleteAgentPoolMachinesRequest" });
   }
 }
-function __c143(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12674,12 +13159,12 @@ function __c143(j: number): any {
       ).annotate({ identifier: "RunManagedClusterCommandRequest" });
   }
 }
-function __c144(j: number): any {
+function __c159(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          creationData: S.optional(__S(672, __c21, 0)),
+          creationData: S.optional(__S(704, __c22, 0)),
           snapshotType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotPropertiesInput" });
@@ -12689,9 +13174,9 @@ function __c144(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
           location: S.String,
-          properties: S.optional(__S(4608, __c144, 0)),
+          properties: S.optional(__S(5088, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12703,7 +13188,7 @@ function __c144(j: number): any {
       ).annotate({ identifier: "SnapshotsCreateOrUpdateRequest" });
   }
 }
-function __c145(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12722,7 +13207,7 @@ function __c145(j: number): any {
       ).annotate({ identifier: "StartManagedClusterRequest" });
   }
 }
-function __c146(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12742,7 +13227,24 @@ function __c146(j: number): any {
       ).annotate({ identifier: "StartUpdateRunRequest" });
   }
 }
-function __c147(j: number): any {
+function __c162(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(3345, __c104, 17)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StartUpdateRunResponse" });
+  }
+}
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12761,7 +13263,7 @@ function __c147(j: number): any {
       ).annotate({ identifier: "StopManagedClusterRequest" });
   }
 }
-function __c148(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12781,13 +13283,13 @@ function __c148(j: number): any {
       ).annotate({ identifier: "StopUpdateRunRequest" });
   }
 }
-function __c149(j: number): any {
+function __c165(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           sourceResourceId: S.String,
-          roles: __S(800, __c25, 0),
+          roles: __S(864, __c27, 0),
         }),
       ).annotate({ identifier: "TrustedAccessRoleBindingPropertiesInput" });
     case 1:
@@ -12797,7 +13299,7 @@ function __c149(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           trustedAccessRoleBindingName: S.String.pipe(T.Label()),
-          properties: __S(4768, __c149, 0),
+          properties: __S(5280, __c165, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12807,9 +13309,21 @@ function __c149(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TrustedAccessRoleBindingsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: __S(3232, __c101, 0),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "TrustedAccessRoleBindingsCreateOrUpdateResponse" });
   }
 }
-function __c150(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12817,8 +13331,8 @@ function __c150(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
-          identity: S.optional(__S(1280, __c40, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          identity: S.optional(__S(1344, __c42, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12828,9 +13342,25 @@ function __c150(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFleetRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(1283, __c40, 3)),
+          eTag: S.optional(S.String),
+          identity: S.optional(__S(1284, __c40, 4)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFleetResponse" });
   }
 }
-function __c151(j: number): any {
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12839,7 +13369,7 @@ function __c151(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           managedNamespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(864, __c27, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12849,15 +13379,30 @@ function __c151(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFleetManagedNamespaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          tags: S.optional(__S(928, __c29, 0)),
+          location: S.String,
+          properties: S.optional(__S(1202, __c37, 18)),
+          eTag: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFleetManagedNamespaceResponse" });
   }
 }
-function __c152(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          labels: S.optional(__S(864, __c27, 0)),
+          labels: S.optional(__S(928, __c29, 0)),
         }),
       ).annotate({ identifier: "FleetMemberUpdateProperties" });
     case 1:
@@ -12867,7 +13412,7 @@ function __c152(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           fleetMemberName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4864, __c152, 0)),
+          properties: S.optional(__S(5376, __c168, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -12877,6 +13422,19 @@ function __c152(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFleetMemberRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(832, __c26, 0)),
+          properties: S.optional(__S(4288, __c134, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFleetMemberResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

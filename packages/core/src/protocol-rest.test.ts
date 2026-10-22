@@ -467,6 +467,60 @@ describe("makeRestProtocol success decoding", () => {
     expect(calls).toBe(0);
   });
 
+  describe("response header members", () => {
+    const HeaderOutput = S.Struct({
+      id: S.optional(S.String),
+      operation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+      retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+    });
+    const headerOp = API.make(() => ({
+      input: ThingInput,
+      output: HeaderOutput,
+      protocol: DefaultProtocol,
+    })) as unknown as (input: Record<string, unknown>) => Effect.Effect<any, any, any>;
+
+    test("copies declared headers onto the body, parsing number members", async () => {
+      const out = await succeed(
+        headerOp({ id: "t1" }),
+        fakeClient(() =>
+          json({ id: "t1" }, 200, {
+            "Azure-AsyncOperation": "https://status.test/op/1",
+            "retry-after": "30",
+            "x-request-id": "ignored",
+          }),
+        ),
+        creds(),
+        ResponseValidation.strict,
+      );
+      expect(out).toEqual({ id: "t1", operation: "https://status.test/op/1", retryAfter: 30 });
+    });
+
+    test("a bodiless 202 decodes to its headers", async () => {
+      const out = await succeed(
+        headerOp({ id: "t1" }),
+        fakeClient(
+          () =>
+            new Response(null, {
+              status: 202,
+              headers: { "azure-asyncoperation": "https://status.test/op/2" },
+            }),
+        ),
+        creds(),
+      );
+      expect(out).toEqual({ operation: "https://status.test/op/2" });
+    });
+
+    test("a number member keeps text that is not a number, so strict mode reports it", async () => {
+      const error = await failWith(
+        headerOp({ id: "t1" }),
+        fakeClient(() => json({}, 200, { "retry-after": "Wed, 21 Oct 2026 07:28:00 GMT" })),
+        creds(),
+        ResponseValidation.strict,
+      );
+      expect(error).toBeInstanceOf(TestParseError);
+    });
+  });
+
   test("strict validation failures go through the parseError hook with the raw body", async () => {
     const StrictOutput = S.Struct({ id: S.String });
     const strictOp = API.make(() => ({

@@ -64,6 +64,10 @@ export interface AccessControlListsResyncResponse {
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CommitL2IsolationDomainConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -78,6 +82,10 @@ export interface CommitL2IsolationDomainConfigurationResponse {
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CommitL3IsolationDomainConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -92,6 +100,10 @@ export interface CommitL3IsolationDomainConfigurationResponse {
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CommitNetworkFabricBatchStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -210,6 +222,10 @@ export interface CommitBatchStatusOperationResponse {
   resourceId?: string;
   /** Commit Batch Status Response Properties. */
   properties?: CommitBatchStatusResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Commit stage Action to be performed. */
 export type CommitStage = "Start" | "Continue" | "Rollback";
@@ -294,6 +310,10 @@ export interface CommitConfigurationResponse {
   error?: CommitConfigurationResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CommitRoutePolicyConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -308,6 +328,10 @@ export interface CommitRoutePolicyConfigurationResponse {
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateAccessControlListRequestTagsMap = { [key: string]: string | undefined };
@@ -763,6 +787,10 @@ export interface CreateAccessControlListResponse {
   location: string;
   /** The Access ControlList properties. */
   properties: AccessControlListProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Import Route Policy either IPv4 or IPv6. */
 export interface ImportRoutePolicy {
@@ -1052,6 +1080,10 @@ export interface CreateExternalNetworkResponse {
   systemData?: SystemData;
   /** External Network Properties */
   properties: ExternalNetworkProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Extension. Example: NoExtension | NPB. */
 export type InternalNetworkPropertiesInputExtension = "NoExtension" | "NPB";
@@ -1339,6 +1371,10 @@ export interface CreateInternalNetworkResponse {
   systemData?: SystemData;
   /** The Internal Network Properties */
   properties: InternalNetworkProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateInternetGatewayRequestTagsMap = { [key: string]: string | undefined };
@@ -1409,6 +1445,10 @@ export interface CreateInternetGatewayResponse {
   location: string;
   /** The Internet Gateway Properties */
   properties: InternetGatewayProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateInternetGatewayRuleRequestTagsMap = { [key: string]: string | undefined };
@@ -1501,6 +1541,10 @@ export interface CreateInternetGatewayRuleResponse {
   location: string;
   /** The Internet Gateway Rule properties */
   properties: InternetGatewayRuleProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateIpCommunityRequestTagsMap = { [key: string]: string | undefined };
@@ -1582,6 +1626,10 @@ export interface CreateIpCommunityResponse {
   location: string;
   /** The IP Community Properties */
   properties: IpCommunityProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateIpExtendedCommunityRequestTagsMap = { [key: string]: string | undefined };
@@ -1657,6 +1705,10 @@ export interface CreateIpExtendedCommunityResponse {
   location: string;
   /** The IpExtendedCommunity properties */
   properties: IpExtendedCommunityProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateIpPrefixRequestTagsMap = { [key: string]: string | undefined };
@@ -1734,6 +1786,10 @@ export interface CreateIpPrefixResponse {
   location: string;
   /** The IP Prefix properties */
   properties: IpPrefixProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateL2IsolationDomainRequestTagsMap = { [key: string]: string | undefined };
@@ -1849,6 +1905,10 @@ export interface CreateL2IsolationDomainResponse {
   properties: L2IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateL3IsolationDomainRequestTagsMap = { [key: string]: string | undefined };
@@ -2007,6 +2067,10 @@ export interface CreateL3IsolationDomainResponse {
   properties: L3IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNeighborGroupRequestTagsMap = { [key: string]: string | undefined };
@@ -2092,6 +2156,10 @@ export interface CreateNeighborGroupResponse {
   properties: NeighborGroupProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNetworkBootstrapDeviceRequestTagsMap = { [key: string]: string | undefined };
@@ -2176,6 +2244,10 @@ export interface CreateNetworkBootstrapDeviceResponse {
   properties: NetworkBootstrapDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Bootstrap Interface Properties defines the properties of the resource. */
 export interface NetworkBootstrapInterfacePropertiesInput {
@@ -2238,6 +2310,10 @@ export interface CreateNetworkBootstrapInterfaceResponse {
   systemData?: SystemData;
   /** The NetworkBootstrapInterface properties */
   properties: NetworkBootstrapInterfaceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNetworkDeviceRequestTagsMap = { [key: string]: string | undefined };
@@ -2395,6 +2471,10 @@ export interface CreateNetworkDeviceResponse {
   properties: NetworkDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNetworkFabricRequestTagsMap = { [key: string]: string | undefined };
@@ -2778,6 +2858,10 @@ export interface CreateNetworkFabricResponse {
   properties: NetworkFabricProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNetworkFabricControllerRequestTagsMap = { [key: string]: string | undefined };
@@ -2923,6 +3007,10 @@ export interface CreateNetworkFabricControllerResponse {
   properties: NetworkFabricControllerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Interface Properties defines the properties of the resource. */
 export interface NetworkInterfacePropertiesInput {
@@ -2991,6 +3079,10 @@ export interface CreateNetworkInterfaceResponse {
   properties: NetworkInterfaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNetworkMonitorRequestTagsMap = { [key: string]: string | undefined };
@@ -3106,6 +3198,10 @@ export interface CreateNetworkMonitorResponse {
   location: string;
   /** The NetworkMonitor properties. */
   properties: NetworkMonitorProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNetworkPacketBrokerRequestTagsMap = { [key: string]: string | undefined };
@@ -3180,6 +3276,10 @@ export interface CreateNetworkPacketBrokerResponse {
   properties: NetworkPacketBrokerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNetworkRackRequestTagsMap = { [key: string]: string | undefined };
@@ -3244,6 +3344,10 @@ export interface CreateNetworkRackResponse {
   location: string;
   /** Network Rack Properties */
   properties: NetworkRackProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNetworkTapRequestTagsMap = { [key: string]: string | undefined };
@@ -3356,6 +3460,10 @@ export interface CreateNetworkTapResponse {
   properties: NetworkTapProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateNetworkTapRuleRequestTagsMap = { [key: string]: string | undefined };
@@ -3549,6 +3657,10 @@ export interface CreateNetworkTapRuleResponse {
   properties: NetworkTapRuleProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Type of NNI used. Example: CE | NPB */
 export type NetworkToNetworkInterconnectPropertiesInputNniType = "CE" | "NPB";
@@ -3800,6 +3912,10 @@ export interface CreateNetworkToNetworkInterconnectResponse {
   systemData?: SystemData;
   /** The NetworkToNetworkInterconnect Properties */
   properties: NetworkToNetworkInterconnectProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateRoutePolicyRequestTagsMap = { [key: string]: string | undefined };
@@ -3953,6 +4069,10 @@ export interface CreateRoutePolicyResponse {
   location: string;
   /** The RoutePolicy properties */
   properties: RoutePolicyProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAccessControlListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3962,7 +4082,12 @@ export interface DeleteAccessControlListRequest {
   /** Name of the Access Control List. */
   accessControlListName: string;
 }
-export interface DeleteAccessControlListResponse {}
+export interface DeleteAccessControlListResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteExternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3973,7 +4098,12 @@ export interface DeleteExternalNetworkRequest {
   /** Name of the External Network. */
   externalNetworkName: string;
 }
-export interface DeleteExternalNetworkResponse {}
+export interface DeleteExternalNetworkResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteInternalNetworkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3984,7 +4114,12 @@ export interface DeleteInternalNetworkRequest {
   /** Name of the Internal Network. */
   internalNetworkName: string;
 }
-export interface DeleteInternalNetworkResponse {}
+export interface DeleteInternalNetworkResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteInternetGatewayRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3993,7 +4128,12 @@ export interface DeleteInternetGatewayRequest {
   /** Name of the Internet Gateway. */
   internetGatewayName: string;
 }
-export interface DeleteInternetGatewayResponse {}
+export interface DeleteInternetGatewayResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteInternetGatewayRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4002,7 +4142,12 @@ export interface DeleteInternetGatewayRuleRequest {
   /** Name of the Internet Gateway rule. */
   internetGatewayRuleName: string;
 }
-export interface DeleteInternetGatewayRuleResponse {}
+export interface DeleteInternetGatewayRuleResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteIpCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4011,7 +4156,12 @@ export interface DeleteIpCommunityRequest {
   /** Name of the IP Community. */
   ipCommunityName: string;
 }
-export interface DeleteIpCommunityResponse {}
+export interface DeleteIpCommunityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteIpExtendedCommunityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4020,7 +4170,12 @@ export interface DeleteIpExtendedCommunityRequest {
   /** Name of the IP Extended Community. */
   ipExtendedCommunityName: string;
 }
-export interface DeleteIpExtendedCommunityResponse {}
+export interface DeleteIpExtendedCommunityResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteIpPrefixRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4029,7 +4184,12 @@ export interface DeleteIpPrefixRequest {
   /** Name of the IP Prefix. */
   ipPrefixName: string;
 }
-export interface DeleteIpPrefixResponse {}
+export interface DeleteIpPrefixResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteL2IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4038,7 +4198,12 @@ export interface DeleteL2IsolationDomainRequest {
   /** Name of the L2 Isolation Domain. */
   l2IsolationDomainName: string;
 }
-export interface DeleteL2IsolationDomainResponse {}
+export interface DeleteL2IsolationDomainResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteL3IsolationDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4047,7 +4212,12 @@ export interface DeleteL3IsolationDomainRequest {
   /** Name of the L3 Isolation Domain. */
   l3IsolationDomainName: string;
 }
-export interface DeleteL3IsolationDomainResponse {}
+export interface DeleteL3IsolationDomainResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNeighborGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4056,7 +4226,12 @@ export interface DeleteNeighborGroupRequest {
   /** Name of the Neighbor Group. */
   neighborGroupName: string;
 }
-export interface DeleteNeighborGroupResponse {}
+export interface DeleteNeighborGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkBootstrapDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4065,7 +4240,12 @@ export interface DeleteNetworkBootstrapDeviceRequest {
   /** Name of the Network Bootstrap Device. */
   networkBootstrapDeviceName: string;
 }
-export interface DeleteNetworkBootstrapDeviceResponse {}
+export interface DeleteNetworkBootstrapDeviceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkBootstrapInterfaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4076,7 +4256,12 @@ export interface DeleteNetworkBootstrapInterfaceRequest {
   /** Name of the Network Bootstrap Interface. */
   networkBootstrapInterfaceName: string;
 }
-export interface DeleteNetworkBootstrapInterfaceResponse {}
+export interface DeleteNetworkBootstrapInterfaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4085,7 +4270,12 @@ export interface DeleteNetworkDeviceRequest {
   /** Name of the Network Device. */
   networkDeviceName: string;
 }
-export interface DeleteNetworkDeviceResponse {}
+export interface DeleteNetworkDeviceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4094,7 +4284,12 @@ export interface DeleteNetworkFabricRequest {
   /** Name of the Network Fabric. */
   networkFabricName: string;
 }
-export interface DeleteNetworkFabricResponse {}
+export interface DeleteNetworkFabricResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkFabricControllerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4103,7 +4298,12 @@ export interface DeleteNetworkFabricControllerRequest {
   /** Name of the Network Fabric Controller. */
   networkFabricControllerName: string;
 }
-export interface DeleteNetworkFabricControllerResponse {}
+export interface DeleteNetworkFabricControllerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkInterfaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4114,7 +4314,12 @@ export interface DeleteNetworkInterfaceRequest {
   /** Name of the Network Interface. */
   networkInterfaceName: string;
 }
-export interface DeleteNetworkInterfaceResponse {}
+export interface DeleteNetworkInterfaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkMonitorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4123,7 +4328,12 @@ export interface DeleteNetworkMonitorRequest {
   /** Name of the Network Monitor. */
   networkMonitorName: string;
 }
-export interface DeleteNetworkMonitorResponse {}
+export interface DeleteNetworkMonitorResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkPacketBrokerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4132,7 +4342,12 @@ export interface DeleteNetworkPacketBrokerRequest {
   /** Name of the Network Packet Broker. */
   networkPacketBrokerName: string;
 }
-export interface DeleteNetworkPacketBrokerResponse {}
+export interface DeleteNetworkPacketBrokerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkRackRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4141,7 +4356,12 @@ export interface DeleteNetworkRackRequest {
   /** Name of the Network Rack. */
   networkRackName: string;
 }
-export interface DeleteNetworkRackResponse {}
+export interface DeleteNetworkRackResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkTapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4150,7 +4370,12 @@ export interface DeleteNetworkTapRequest {
   /** Name of the Network Tap. */
   networkTapName: string;
 }
-export interface DeleteNetworkTapResponse {}
+export interface DeleteNetworkTapResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkTapRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4159,7 +4384,12 @@ export interface DeleteNetworkTapRuleRequest {
   /** Name of the Network Tap Rule. */
   networkTapRuleName: string;
 }
-export interface DeleteNetworkTapRuleResponse {}
+export interface DeleteNetworkTapRuleResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteNetworkToNetworkInterconnectRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4170,7 +4400,12 @@ export interface DeleteNetworkToNetworkInterconnectRequest {
   /** Name of the Network to Network Interconnect. */
   networkToNetworkInterconnectName: string;
 }
-export interface DeleteNetworkToNetworkInterconnectResponse {}
+export interface DeleteNetworkToNetworkInterconnectResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteRoutePolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4179,7 +4414,12 @@ export interface DeleteRoutePolicyRequest {
   /** Name of the Route Policy. */
   routePolicyName: string;
 }
-export interface DeleteRoutePolicyResponse {}
+export interface DeleteRoutePolicyResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAccessControlListRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4797,6 +5037,10 @@ export interface GetTopologyResponse {
   resourceId?: string;
   /** Properties of the GetTopology Response. */
   properties?: GetTopologyResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetNetworkInterfaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6054,6 +6298,10 @@ export interface LockNetworkFabricFabricResponse {
   operations?: LockNetworkFabricFabricResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NeighborGroupsResyncRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6126,6 +6374,10 @@ export interface NeighborGroupResyncResponse {
   error?: NeighborGroupResyncResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkBootstrapDevicesResyncPasswordsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6200,6 +6452,10 @@ export interface NetworkBootstrapDeviceResyncPasswordsResponse {
   error?: NetworkBootstrapDeviceResyncPasswordsResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkBootstrapDevicesUpgradeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6276,6 +6532,10 @@ export interface NetworkBootstrapDeviceUpgradeResponse {
   error?: NetworkBootstrapDeviceUpgradeResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkDevicesResyncCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6350,6 +6610,10 @@ export interface NetworkFabricResyncCertificatesResponse {
   error?: NetworkFabricResyncCertificatesResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkDevicesResyncPasswordsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6424,6 +6688,10 @@ export interface NetworkDeviceResyncPasswordsResponse {
   error?: NetworkDeviceResyncPasswordsResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkDevicesUpgradeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6500,6 +6768,10 @@ export interface NetworkDeviceUpgradeResponse {
   error?: NetworkDeviceUpgradeResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkFabricsArmConfigurationDiffRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6581,6 +6853,10 @@ export interface ArmConfigurationDiffOperationResponse {
   resourceId?: string;
   /** Arm Configuration Diff Response Properties. */
   properties?: ArmConfigurationDiffResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkFabricsDeprovisionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6611,6 +6887,10 @@ export interface NetworkFabricsDeprovisionResponse {
   operations?: NetworkFabricsDeprovisionResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkFabricsDiscardCommitBatchRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6693,6 +6973,10 @@ export interface DiscardCommitBatchOperationResponse {
   resourceId?: string;
   /** Discard commit batch response properties. */
   properties?: DiscardCommitBatchResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkFabricsResyncCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6775,6 +7059,10 @@ export interface NetworkFabricResyncPasswordsResponse {
   error?: NetworkFabricResyncPasswordsResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Action to be performed while upgrading the fabric. */
 export type NetworkFabricUpgradeAction = "Start" | "Complete";
@@ -6811,6 +7099,10 @@ export interface NetworkFabricsUpgradeResponse {
   operations?: NetworkFabricsUpgradeResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkFabricsViewDeviceConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6892,6 +7184,10 @@ export interface ViewDeviceConfigurationOperationResponse {
   resourceId?: string;
   /** View Device Configuration Response Properties. */
   properties?: ViewDeviceConfigurationResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkTapRulesResyncRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6964,6 +7260,10 @@ export interface NetworkTapRuleResyncResponse {
   error?: NetworkTapRuleResyncResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface NetworkTapsResyncRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7035,6 +7335,10 @@ export interface NetworkTapResyncResponse {
   error?: NetworkTapResyncResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ProvisionNetworkFabricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7065,6 +7369,10 @@ export interface ProvisionNetworkFabricResponse {
   operations?: ProvisionNetworkFabricResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RebootNetworkBootstrapDeviceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7139,6 +7447,10 @@ export interface NetworkBootstrapDeviceRebootResponse {
   error?: NetworkBootstrapDeviceRebootResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Type of reboot to be performed. Example: GracefulRebootWithZTP */
 export type RebootType =
@@ -7177,6 +7489,10 @@ export interface RebootNetworkDeviceResponse {
   operations?: RebootNetworkDeviceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RefreshNetworkBootstrapDeviceConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7251,6 +7567,10 @@ export interface NetworkBootstrapDeviceRefreshConfigurationResponse {
   error?: NetworkBootstrapDeviceRefreshConfigurationResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RefreshNetworkDeviceConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7325,6 +7645,10 @@ export interface NetworkDeviceRefreshConfigurationResponse {
   error?: NetworkDeviceRefreshConfigurationResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RefreshNetworkFabricConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7355,6 +7679,10 @@ export interface RefreshNetworkFabricConfigurationResponse {
   operations?: RefreshNetworkFabricConfigurationResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RotateNetworkFabricCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7429,6 +7757,10 @@ export interface NetworkFabricRotateCertificatesResponse {
   error?: NetworkFabricRotateCertificatesResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RotateNetworkFabricPasswordsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7503,6 +7835,10 @@ export interface NetworkFabricRotatePasswordsResponse {
   error?: NetworkFabricRotatePasswordsResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RunNetworkDeviceRoCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7540,6 +7876,10 @@ export interface RunNetworkDeviceRoCommandResponse {
   startTime?: string;
   /** Operation status. */
   status: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RunNetworkDeviceRwCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7626,6 +7966,10 @@ export interface NetworkDeviceRunRwCommandResponse {
   resourceId?: string;
   /** Network Device Run Rw Command Response properties. */
   properties?: NetworkDeviceRwCommandResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateAccessControlListRequestTagsMap = { [key: string]: string | undefined };
@@ -7900,6 +8244,10 @@ export interface UpdateAccessControlListResponse {
   location: string;
   /** The Access ControlList properties. */
   properties: AccessControlListProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateAccessControlListAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -7994,6 +8342,10 @@ export interface UpdateAdministrativeStateResponse {
   resourceId?: string;
   /** Response properties in case of successful administrative state update. */
   properties?: UpdateAdministrativeStateResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Import Route Policy either IPv4 or IPv6. */
 export type ImportRoutePolicyPatch = ImportRoutePolicy;
@@ -8166,6 +8518,10 @@ export interface UpdateExternalNetworkResponse {
   systemData?: SystemData;
   /** External Network Properties */
   properties: ExternalNetworkProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateExternalNetworkAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -8274,6 +8630,10 @@ export interface ExternalNetworkUpdateBfdAdministrativeStateResponse {
   resourceId?: string;
   /** Response properties. */
   properties?: ExternalNetworkUpdateBfdAdministrativeStateResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList =
@@ -8413,6 +8773,10 @@ export interface UpdateInternalNetworkResponse {
   systemData?: SystemData;
   /** The Internal Network Properties */
   properties: InternalNetworkProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateInternalNetworkAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -8533,6 +8897,10 @@ export interface InternalNetworkUpdateBfdAdministrativeStateResponse {
   resourceId?: string;
   /** Internal Network BFD Administrative State response properties */
   properties?: InternalNetworkUpdateBfdAdministrativeStateResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateInternalNetworkBgpAdministrativeStateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -8633,6 +9001,10 @@ export interface InternalNetworkUpdateBgpAdministrativeStateResponse {
   resourceId?: string;
   /** Internal Network BGP Administrative State response properties */
   properties?: InternalNetworkUpdateBgpAdministrativeStateResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequestResourceIdsList =
@@ -8687,6 +9059,10 @@ export interface UpdateInternetGatewayResponse {
   location: string;
   /** The Internet Gateway Properties */
   properties: InternetGatewayProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateInternetGatewayRuleRequestTagsMap = { [key: string]: string | undefined };
@@ -8717,6 +9093,10 @@ export interface UpdateInternetGatewayRuleResponse {
   location: string;
   /** The Internet Gateway Rule properties */
   properties: InternetGatewayRuleProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateIpCommunityRequestTagsMap = { [key: string]: string | undefined };
@@ -8756,6 +9136,10 @@ export interface UpdateIpCommunityResponse {
   location: string;
   /** The IP Community Properties */
   properties: IpCommunityProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateIpExtendedCommunityRequestTagsMap = { [key: string]: string | undefined };
@@ -8798,6 +9182,10 @@ export interface UpdateIpExtendedCommunityResponse {
   location: string;
   /** The IpExtendedCommunity properties */
   properties: IpExtendedCommunityProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateIpPrefixRequestTagsMap = { [key: string]: string | undefined };
@@ -8839,6 +9227,10 @@ export interface UpdateIpPrefixResponse {
   location: string;
   /** The IP Prefix properties */
   properties: IpPrefixProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateL2IsolationDomainRequestTagsMap = { [key: string]: string | undefined };
@@ -8909,6 +9301,10 @@ export interface UpdateL2IsolationDomainResponse {
   properties: L2IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateL2IsolationDomainAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -9014,6 +9410,10 @@ export interface UpdateL3IsolationDomainResponse {
   properties: L3IsolationDomainProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateL3IsolationDomainAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -9084,6 +9484,10 @@ export interface UpdateNeighborGroupResponse {
   properties: NeighborGroupProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateNetworkBootstrapDeviceRequestTagsMap = { [key: string]: string | undefined };
@@ -9131,6 +9535,10 @@ export interface UpdateNetworkBootstrapDeviceResponse {
   properties: NetworkBootstrapDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkBootstrapDeviceAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -9223,6 +9631,10 @@ export interface NetworkBootstrapDeviceUpdateAdministrativeStateResponse {
   error?: NetworkBootstrapDeviceUpdateAdministrativeStateResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Bootstrap Interface Patch properties. */
 export interface NetworkBootstrapInterfacePatchProperties {
@@ -9256,6 +9668,10 @@ export interface UpdateNetworkBootstrapInterfaceResponse {
   systemData?: SystemData;
   /** The NetworkBootstrapInterface properties */
   properties: NetworkBootstrapInterfaceProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkBootstrapInterfaceAdministrativeStateRequestResourceIdsList =
@@ -9279,6 +9695,10 @@ export interface UpdateNetworkBootstrapInterfaceAdministrativeStateResponse {
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateNetworkDeviceRequestTagsMap = { [key: string]: string | undefined };
@@ -9335,6 +9755,10 @@ export interface UpdateNetworkDeviceResponse {
   properties: NetworkDeviceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkDeviceAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -9415,6 +9839,10 @@ export interface NetworkDeviceUpdateAdministrativeStateResponse {
   error?: NetworkDeviceUpdateAdministrativeStateResponseError;
   /** Fully qualified ID of the resource against which the original async operation was started. */
   resourceId?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateNetworkFabricRequestTagsMap = { [key: string]: string | undefined };
@@ -9590,6 +10018,10 @@ export interface UpdateNetworkFabricResponse {
   properties: NetworkFabricProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateNetworkFabricControllerRequestTagsMap = { [key: string]: string | undefined };
@@ -9641,6 +10073,10 @@ export interface UpdateNetworkFabricControllerResponse {
   properties: NetworkFabricControllerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkFabricInfraManagementBfdConfigurationRequestResourceIdsList =
@@ -9703,6 +10139,10 @@ export interface UpdateNetworkInterfaceResponse {
   properties: NetworkInterfaceProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkInterfaceAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -9791,6 +10231,10 @@ export interface UpdateNetworkMonitorResponse {
   location: string;
   /** The NetworkMonitor properties. */
   properties: NetworkMonitorProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkMonitorAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -9819,6 +10263,10 @@ export interface UpdateNetworkMonitorAdministrativeStateResponse {
   successfulDevices?: UpdateNetworkMonitorAdministrativeStateResponseSuccessfulDevicesList;
   /** List of ARM Resource IDs for which the given action failed to apply. */
   failedDevices?: UpdateNetworkMonitorAdministrativeStateResponseFailedDevicesList;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateNetworkPacketBrokerRequestTagsMap = { [key: string]: string | undefined };
@@ -9855,6 +10303,10 @@ export interface UpdateNetworkPacketBrokerResponse {
   properties: NetworkPacketBrokerProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateNetworkRackRequestTagsMap = { [key: string]: string | undefined };
@@ -9885,6 +10337,10 @@ export interface UpdateNetworkRackResponse {
   location: string;
   /** Network Rack Properties */
   properties: NetworkRackProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateNetworkTapRequestTagsMap = { [key: string]: string | undefined };
@@ -9958,6 +10414,10 @@ export interface UpdateNetworkTapResponse {
   properties: NetworkTapProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkTapAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -10092,6 +10552,10 @@ export interface UpdateNetworkTapRuleResponse {
   properties: NetworkTapRuleProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateL2IsolationDomainResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkTapRuleAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -10112,6 +10576,10 @@ export interface UpdateNetworkTapRuleAdministrativeStateResponse {
   error?: ErrorDetail;
   /** Gets the configuration state. */
   configurationState?: ConfigurationState;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** List of network device interfaces resource IDs. */
 export type Layer2ConfigurationPatchInterfacesList = Array<string>;
@@ -10229,6 +10697,10 @@ export interface UpdateNetworkToNetworkInterconnectResponse {
   systemData?: SystemData;
   /** The NetworkToNetworkInterconnect Properties */
   properties: NetworkToNetworkInterconnectProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkToNetworkInterconnectAdministrativeStateRequestResourceIdsList =
@@ -10337,6 +10809,10 @@ export interface NniUpdateBfdAdministrativeStateResponse {
   resourceId?: string;
   /** Properties of the NNI BFD Administrative State response. */
   properties?: NniUpdateBfdAdministrativeStateResponseProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequestResourceIdsList =
@@ -10430,6 +10906,10 @@ export interface UpdateRoutePolicyResponse {
   location: string;
   /** The RoutePolicy properties */
   properties: RoutePolicyProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Network Fabrics or Network Rack resource Id. */
 export type UpdateRoutePolicyAdministrativeStateRequestResourceIdsList = Array<string>;
@@ -10460,6 +10940,10 @@ export interface ValidateAccessControlListConfigurationResponse {
   configurationState?: ConfigurationState;
   /** URL for the details of the response. */
   url?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ValidateL2IsolationDomainConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10476,6 +10960,10 @@ export interface ValidateL2IsolationDomainConfigurationResponse {
   configurationState?: ConfigurationState;
   /** URL for the details of the response. */
   url?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ValidateL3IsolationDomainConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10492,6 +10980,10 @@ export interface ValidateL3IsolationDomainConfigurationResponse {
   configurationState?: ConfigurationState;
   /** URL for the details of the response. */
   url?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Validate action that to be performed */
 export type ValidateAction = "Cabling" | "Configuration" | "Connectivity";
@@ -10512,6 +11004,10 @@ export interface ValidateNetworkFabricConfigurationResponse {
   configurationState?: ConfigurationState;
   /** URL for the details of the response. */
   url?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ValidateNetworkTapRuleConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10528,6 +11024,10 @@ export interface ValidateNetworkTapRuleConfigurationResponse {
   configurationState?: ConfigurationState;
   /** URL for the details of the response. */
   url?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ValidateRoutePolicyConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10544,6 +11044,10 @@ export interface ValidateRoutePolicyConfigurationResponse {
   configurationState?: ConfigurationState;
   /** URL for the details of the response. */
   url?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AccessControlListsResyncError = AzureOpError;
 /** Implements the operation to the underlying resources. */
@@ -10583,7 +11087,7 @@ export const CommitL3IsolationDomainConfiguration: API.OperationMethod<
   CommitL3IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4608, __c144, 0) as any as S.Schema<CommitL3IsolationDomainConfigurationRequest>,
+  input: __S(4640, __c145, 0) as any as S.Schema<CommitL3IsolationDomainConfigurationRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<CommitL3IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10598,8 +11102,8 @@ export const CommitNetworkFabricBatchStatus: API.OperationMethod<
   CommitNetworkFabricBatchStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5568, __c174, 0) as any as S.Schema<CommitNetworkFabricBatchStatusRequest>,
-  output: __S(5571, __c174, 3) as any as S.Schema<CommitBatchStatusOperationResponse>,
+  input: __S(5600, __c175, 0) as any as S.Schema<CommitNetworkFabricBatchStatusRequest>,
+  output: __S(5603, __c175, 3) as any as S.Schema<CommitBatchStatusOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10613,8 +11117,8 @@ export const CommitNetworkFabricConfiguration: API.OperationMethod<
   CommitNetworkFabricConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6016, __c188, 0) as any as S.Schema<CommitNetworkFabricConfigurationRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<CommitConfigurationResponse>,
+  input: __S(6080, __c190, 0) as any as S.Schema<CommitNetworkFabricConfigurationRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<CommitConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10628,7 +11132,7 @@ export const CommitRoutePolicyConfiguration: API.OperationMethod<
   CommitRoutePolicyConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6400, __c200, 0) as any as S.Schema<CommitRoutePolicyConfigurationRequest>,
+  input: __S(6464, __c202, 0) as any as S.Schema<CommitRoutePolicyConfigurationRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<CommitRoutePolicyConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10643,8 +11147,8 @@ export const CreateAccessControlList: API.OperationMethod<
   CreateAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6753, __c211, 1) as any as S.Schema<CreateAccessControlListRequest>,
-  output: __S(6839, __c213, 23) as any as S.Schema<CreateAccessControlListResponse>,
+  input: __S(7009, __c219, 1) as any as S.Schema<CreateAccessControlListRequest>,
+  output: __S(7010, __c219, 2) as any as S.Schema<CreateAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10658,8 +11162,8 @@ export const CreateExternalNetwork: API.OperationMethod<
   CreateExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7298, __c228, 2) as any as S.Schema<CreateExternalNetworkRequest>,
-  output: __S(7426, __c232, 2) as any as S.Schema<CreateExternalNetworkResponse>,
+  input: __S(7842, __c245, 2) as any as S.Schema<CreateExternalNetworkRequest>,
+  output: __S(7843, __c245, 3) as any as S.Schema<CreateExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10673,8 +11177,8 @@ export const CreateInternalNetwork: API.OperationMethod<
   CreateInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8003, __c250, 3) as any as S.Schema<CreateInternalNetworkRequest>,
-  output: __S(8136, __c254, 8) as any as S.Schema<CreateInternalNetworkResponse>,
+  input: __S(8803, __c275, 3) as any as S.Schema<CreateInternalNetworkRequest>,
+  output: __S(8804, __c275, 4) as any as S.Schema<CreateInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10688,8 +11192,8 @@ export const CreateInternetGateway: API.OperationMethod<
   CreateInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8609, __c269, 1) as any as S.Schema<CreateInternetGatewayRequest>,
-  output: __S(8641, __c270, 1) as any as S.Schema<CreateInternetGatewayResponse>,
+  input: __S(9441, __c295, 1) as any as S.Schema<CreateInternetGatewayRequest>,
+  output: __S(9442, __c295, 2) as any as S.Schema<CreateInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10704,7 +11208,7 @@ export const CreateInternetGatewayRule: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(129, __c4, 1) as any as S.Schema<CreateInternetGatewayRuleRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<CreateInternetGatewayRuleResponse>,
+  output: __S(130, __c4, 2) as any as S.Schema<CreateInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10719,7 +11223,7 @@ export const CreateIpCommunity: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(641, __c20, 1) as any as S.Schema<CreateIpCommunityRequest>,
-  output: __S(675, __c21, 3) as any as S.Schema<CreateIpCommunityResponse>,
+  output: __S(642, __c20, 2) as any as S.Schema<CreateIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10734,7 +11238,7 @@ export const CreateIpExtendedCommunity: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1153, __c36, 1) as any as S.Schema<CreateIpExtendedCommunityRequest>,
-  output: __S(1187, __c37, 3) as any as S.Schema<CreateIpExtendedCommunityResponse>,
+  output: __S(1154, __c36, 2) as any as S.Schema<CreateIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10748,8 +11252,8 @@ export const CreateIpPrefix: API.OperationMethod<
   CreateIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1601, __c50, 1) as any as S.Schema<CreateIpPrefixRequest>,
-  output: __S(1635, __c51, 3) as any as S.Schema<CreateIpPrefixResponse>,
+  input: __S(1633, __c51, 1) as any as S.Schema<CreateIpPrefixRequest>,
+  output: __S(1634, __c51, 2) as any as S.Schema<CreateIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10763,8 +11267,8 @@ export const CreateL2IsolationDomain: API.OperationMethod<
   CreateL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1985, __c62, 1) as any as S.Schema<CreateL2IsolationDomainRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<CreateL2IsolationDomainResponse>,
+  input: __S(2017, __c63, 1) as any as S.Schema<CreateL2IsolationDomainRequest>,
+  output: __S(2018, __c63, 2) as any as S.Schema<CreateL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10778,8 +11282,8 @@ export const CreateL3IsolationDomain: API.OperationMethod<
   CreateL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2465, __c77, 1) as any as S.Schema<CreateL3IsolationDomainRequest>,
-  output: __S(2503, __c78, 7) as any as S.Schema<CreateL3IsolationDomainResponse>,
+  input: __S(2497, __c78, 1) as any as S.Schema<CreateL3IsolationDomainRequest>,
+  output: __S(2498, __c78, 2) as any as S.Schema<CreateL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10793,7 +11297,7 @@ export const CreateNeighborGroup: API.OperationMethod<
   CreateNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2913, __c91, 1) as any as S.Schema<CreateNeighborGroupRequest>,
+  input: __S(2945, __c92, 1) as any as S.Schema<CreateNeighborGroupRequest>,
   output: __S(2946, __c92, 2) as any as S.Schema<CreateNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -10808,8 +11312,8 @@ export const CreateNetworkBootstrapDevice: API.OperationMethod<
   CreateNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3361, __c105, 1) as any as S.Schema<CreateNetworkBootstrapDeviceRequest>,
-  output: __S(3393, __c106, 1) as any as S.Schema<CreateNetworkBootstrapDeviceResponse>,
+  input: __S(3393, __c106, 1) as any as S.Schema<CreateNetworkBootstrapDeviceRequest>,
+  output: __S(3394, __c106, 2) as any as S.Schema<CreateNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10823,8 +11327,8 @@ export const CreateNetworkBootstrapInterface: API.OperationMethod<
   CreateNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3777, __c118, 1) as any as S.Schema<CreateNetworkBootstrapInterfaceRequest>,
-  output: __S(3809, __c119, 1) as any as S.Schema<CreateNetworkBootstrapInterfaceResponse>,
+  input: __S(3809, __c119, 1) as any as S.Schema<CreateNetworkBootstrapInterfaceRequest>,
+  output: __S(3810, __c119, 2) as any as S.Schema<CreateNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10838,8 +11342,8 @@ export const CreateNetworkDevice: API.OperationMethod<
   CreateNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4161, __c130, 1) as any as S.Schema<CreateNetworkDeviceRequest>,
-  output: __S(4260, __c133, 4) as any as S.Schema<CreateNetworkDeviceResponse>,
+  input: __S(4193, __c131, 1) as any as S.Schema<CreateNetworkDeviceRequest>,
+  output: __S(4194, __c131, 2) as any as S.Schema<CreateNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10853,8 +11357,8 @@ export const CreateNetworkFabric: API.OperationMethod<
   CreateNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4645, __c145, 5) as any as S.Schema<CreateNetworkFabricRequest>,
-  output: __S(4718, __c147, 14) as any as S.Schema<CreateNetworkFabricResponse>,
+  input: __S(4677, __c146, 5) as any as S.Schema<CreateNetworkFabricRequest>,
+  output: __S(4678, __c146, 6) as any as S.Schema<CreateNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10868,8 +11372,8 @@ export const CreateNetworkFabricController: API.OperationMethod<
   CreateNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4961, __c155, 1) as any as S.Schema<CreateNetworkFabricControllerRequest>,
-  output: __S(4997, __c156, 5) as any as S.Schema<CreateNetworkFabricControllerResponse>,
+  input: __S(4993, __c156, 1) as any as S.Schema<CreateNetworkFabricControllerRequest>,
+  output: __S(4994, __c156, 2) as any as S.Schema<CreateNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10883,8 +11387,8 @@ export const CreateNetworkInterface: API.OperationMethod<
   CreateNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5024, __c157, 0) as any as S.Schema<CreateNetworkInterfaceRequest>,
-  output: __S(5089, __c159, 1) as any as S.Schema<CreateNetworkInterfaceResponse>,
+  input: __S(5056, __c158, 0) as any as S.Schema<CreateNetworkInterfaceRequest>,
+  output: __S(5057, __c158, 1) as any as S.Schema<CreateNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10898,8 +11402,8 @@ export const CreateNetworkMonitor: API.OperationMethod<
   CreateNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5121, __c160, 1) as any as S.Schema<CreateNetworkMonitorRequest>,
-  output: __S(5155, __c161, 3) as any as S.Schema<CreateNetworkMonitorResponse>,
+  input: __S(5153, __c161, 1) as any as S.Schema<CreateNetworkMonitorRequest>,
+  output: __S(5154, __c161, 2) as any as S.Schema<CreateNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10913,8 +11417,8 @@ export const CreateNetworkPacketBroker: API.OperationMethod<
   CreateNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5185, __c162, 1) as any as S.Schema<CreateNetworkPacketBrokerRequest>,
-  output: __S(5217, __c163, 1) as any as S.Schema<CreateNetworkPacketBrokerResponse>,
+  input: __S(5217, __c163, 1) as any as S.Schema<CreateNetworkPacketBrokerRequest>,
+  output: __S(5218, __c163, 2) as any as S.Schema<CreateNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10928,8 +11432,8 @@ export const CreateNetworkRack: API.OperationMethod<
   CreateNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5249, __c164, 1) as any as S.Schema<CreateNetworkRackRequest>,
-  output: __S(5281, __c165, 1) as any as S.Schema<CreateNetworkRackResponse>,
+  input: __S(5281, __c165, 1) as any as S.Schema<CreateNetworkRackRequest>,
+  output: __S(5282, __c165, 2) as any as S.Schema<CreateNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10943,8 +11447,8 @@ export const CreateNetworkTap: API.OperationMethod<
   CreateNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5313, __c166, 1) as any as S.Schema<CreateNetworkTapRequest>,
-  output: __S(5348, __c167, 4) as any as S.Schema<CreateNetworkTapResponse>,
+  input: __S(5345, __c167, 1) as any as S.Schema<CreateNetworkTapRequest>,
+  output: __S(5346, __c167, 2) as any as S.Schema<CreateNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10958,8 +11462,8 @@ export const CreateNetworkTapRule: API.OperationMethod<
   CreateNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5377, __c168, 1) as any as S.Schema<CreateNetworkTapRuleRequest>,
-  output: __S(5417, __c169, 9) as any as S.Schema<CreateNetworkTapRuleResponse>,
+  input: __S(5409, __c169, 1) as any as S.Schema<CreateNetworkTapRuleRequest>,
+  output: __S(5410, __c169, 2) as any as S.Schema<CreateNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10973,8 +11477,8 @@ export const CreateNetworkToNetworkInterconnect: API.OperationMethod<
   CreateNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5442, __c170, 2) as any as S.Schema<CreateNetworkToNetworkInterconnectRequest>,
-  output: __S(5479, __c171, 7) as any as S.Schema<CreateNetworkToNetworkInterconnectResponse>,
+  input: __S(5474, __c171, 2) as any as S.Schema<CreateNetworkToNetworkInterconnectRequest>,
+  output: __S(5475, __c171, 3) as any as S.Schema<CreateNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10988,8 +11492,8 @@ export const CreateRoutePolicy: API.OperationMethod<
   CreateRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5505, __c172, 1) as any as S.Schema<CreateRoutePolicyRequest>,
-  output: __S(5545, __c173, 9) as any as S.Schema<CreateRoutePolicyResponse>,
+  input: __S(5537, __c173, 1) as any as S.Schema<CreateRoutePolicyRequest>,
+  output: __S(5538, __c173, 2) as any as S.Schema<CreateRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11003,8 +11507,8 @@ export const DeleteAccessControlList: API.OperationMethod<
   DeleteAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5696, __c178, 0) as any as S.Schema<DeleteAccessControlListRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteAccessControlListResponse>,
+  input: __S(5728, __c179, 0) as any as S.Schema<DeleteAccessControlListRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11018,8 +11522,8 @@ export const DeleteExternalNetwork: API.OperationMethod<
   DeleteExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5728, __c179, 0) as any as S.Schema<DeleteExternalNetworkRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteExternalNetworkResponse>,
+  input: __S(5792, __c181, 0) as any as S.Schema<DeleteExternalNetworkRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11033,8 +11537,8 @@ export const DeleteInternalNetwork: API.OperationMethod<
   DeleteInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5760, __c180, 0) as any as S.Schema<DeleteInternalNetworkRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteInternalNetworkResponse>,
+  input: __S(5824, __c182, 0) as any as S.Schema<DeleteInternalNetworkRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11048,8 +11552,8 @@ export const DeleteInternetGateway: API.OperationMethod<
   DeleteInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5792, __c181, 0) as any as S.Schema<DeleteInternetGatewayRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteInternetGatewayResponse>,
+  input: __S(5856, __c183, 0) as any as S.Schema<DeleteInternetGatewayRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11063,8 +11567,8 @@ export const DeleteInternetGatewayRule: API.OperationMethod<
   DeleteInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5824, __c182, 0) as any as S.Schema<DeleteInternetGatewayRuleRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteInternetGatewayRuleResponse>,
+  input: __S(5888, __c184, 0) as any as S.Schema<DeleteInternetGatewayRuleRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11078,8 +11582,8 @@ export const DeleteIpCommunity: API.OperationMethod<
   DeleteIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5856, __c183, 0) as any as S.Schema<DeleteIpCommunityRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteIpCommunityResponse>,
+  input: __S(5920, __c185, 0) as any as S.Schema<DeleteIpCommunityRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11093,8 +11597,8 @@ export const DeleteIpExtendedCommunity: API.OperationMethod<
   DeleteIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5888, __c184, 0) as any as S.Schema<DeleteIpExtendedCommunityRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteIpExtendedCommunityResponse>,
+  input: __S(5952, __c186, 0) as any as S.Schema<DeleteIpExtendedCommunityRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11108,8 +11612,8 @@ export const DeleteIpPrefix: API.OperationMethod<
   DeleteIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5920, __c185, 0) as any as S.Schema<DeleteIpPrefixRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteIpPrefixResponse>,
+  input: __S(5984, __c187, 0) as any as S.Schema<DeleteIpPrefixRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11123,8 +11627,8 @@ export const DeleteL2IsolationDomain: API.OperationMethod<
   DeleteL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5952, __c186, 0) as any as S.Schema<DeleteL2IsolationDomainRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteL2IsolationDomainResponse>,
+  input: __S(6016, __c188, 0) as any as S.Schema<DeleteL2IsolationDomainRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11138,8 +11642,8 @@ export const DeleteL3IsolationDomain: API.OperationMethod<
   DeleteL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(5984, __c187, 0) as any as S.Schema<DeleteL3IsolationDomainRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteL3IsolationDomainResponse>,
+  input: __S(6048, __c189, 0) as any as S.Schema<DeleteL3IsolationDomainRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11153,8 +11657,8 @@ export const DeleteNeighborGroup: API.OperationMethod<
   DeleteNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6080, __c190, 0) as any as S.Schema<DeleteNeighborGroupRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNeighborGroupResponse>,
+  input: __S(6144, __c192, 0) as any as S.Schema<DeleteNeighborGroupRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11168,8 +11672,8 @@ export const DeleteNetworkBootstrapDevice: API.OperationMethod<
   DeleteNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6112, __c191, 0) as any as S.Schema<DeleteNetworkBootstrapDeviceRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkBootstrapDeviceResponse>,
+  input: __S(6176, __c193, 0) as any as S.Schema<DeleteNetworkBootstrapDeviceRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11183,8 +11687,8 @@ export const DeleteNetworkBootstrapInterface: API.OperationMethod<
   DeleteNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6144, __c192, 0) as any as S.Schema<DeleteNetworkBootstrapInterfaceRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkBootstrapInterfaceResponse>,
+  input: __S(6208, __c194, 0) as any as S.Schema<DeleteNetworkBootstrapInterfaceRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11198,8 +11702,8 @@ export const DeleteNetworkDevice: API.OperationMethod<
   DeleteNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6176, __c193, 0) as any as S.Schema<DeleteNetworkDeviceRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkDeviceResponse>,
+  input: __S(6240, __c195, 0) as any as S.Schema<DeleteNetworkDeviceRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11213,8 +11717,8 @@ export const DeleteNetworkFabric: API.OperationMethod<
   DeleteNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6208, __c194, 0) as any as S.Schema<DeleteNetworkFabricRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkFabricResponse>,
+  input: __S(6272, __c196, 0) as any as S.Schema<DeleteNetworkFabricRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11228,8 +11732,8 @@ export const DeleteNetworkFabricController: API.OperationMethod<
   DeleteNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6240, __c195, 0) as any as S.Schema<DeleteNetworkFabricControllerRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkFabricControllerResponse>,
+  input: __S(6304, __c197, 0) as any as S.Schema<DeleteNetworkFabricControllerRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11243,8 +11747,8 @@ export const DeleteNetworkInterface: API.OperationMethod<
   DeleteNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6272, __c196, 0) as any as S.Schema<DeleteNetworkInterfaceRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkInterfaceResponse>,
+  input: __S(6336, __c198, 0) as any as S.Schema<DeleteNetworkInterfaceRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11258,8 +11762,8 @@ export const DeleteNetworkMonitor: API.OperationMethod<
   DeleteNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6304, __c197, 0) as any as S.Schema<DeleteNetworkMonitorRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkMonitorResponse>,
+  input: __S(6368, __c199, 0) as any as S.Schema<DeleteNetworkMonitorRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11273,8 +11777,8 @@ export const DeleteNetworkPacketBroker: API.OperationMethod<
   DeleteNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6336, __c198, 0) as any as S.Schema<DeleteNetworkPacketBrokerRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkPacketBrokerResponse>,
+  input: __S(6400, __c200, 0) as any as S.Schema<DeleteNetworkPacketBrokerRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11288,8 +11792,8 @@ export const DeleteNetworkRack: API.OperationMethod<
   DeleteNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6368, __c199, 0) as any as S.Schema<DeleteNetworkRackRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkRackResponse>,
+  input: __S(6432, __c201, 0) as any as S.Schema<DeleteNetworkRackRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11303,8 +11807,8 @@ export const DeleteNetworkTap: API.OperationMethod<
   DeleteNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6432, __c201, 0) as any as S.Schema<DeleteNetworkTapRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkTapResponse>,
+  input: __S(6496, __c203, 0) as any as S.Schema<DeleteNetworkTapRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11318,8 +11822,8 @@ export const DeleteNetworkTapRule: API.OperationMethod<
   DeleteNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6464, __c202, 0) as any as S.Schema<DeleteNetworkTapRuleRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkTapRuleResponse>,
+  input: __S(6528, __c204, 0) as any as S.Schema<DeleteNetworkTapRuleRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11333,8 +11837,8 @@ export const DeleteNetworkToNetworkInterconnect: API.OperationMethod<
   DeleteNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6496, __c203, 0) as any as S.Schema<DeleteNetworkToNetworkInterconnectRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteNetworkToNetworkInterconnectResponse>,
+  input: __S(6560, __c205, 0) as any as S.Schema<DeleteNetworkToNetworkInterconnectRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11348,8 +11852,8 @@ export const DeleteRoutePolicy: API.OperationMethod<
   DeleteRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6528, __c204, 0) as any as S.Schema<DeleteRoutePolicyRequest>,
-  output: __S(2048, __c64, 0) as any as S.Schema<DeleteRoutePolicyResponse>,
+  input: __S(6592, __c206, 0) as any as S.Schema<DeleteRoutePolicyRequest>,
+  output: __S(5760, __c180, 0) as any as S.Schema<DeleteRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11363,8 +11867,8 @@ export const GetAccessControlList: API.OperationMethod<
   GetAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6560, __c205, 0) as any as S.Schema<GetAccessControlListRequest>,
-  output: __S(6839, __c213, 23) as any as S.Schema<GetAccessControlListResponse>,
+  input: __S(6624, __c207, 0) as any as S.Schema<GetAccessControlListRequest>,
+  output: __S(6656, __c208, 0) as any as S.Schema<GetAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11378,8 +11882,8 @@ export const GetExternalNetwork: API.OperationMethod<
   GetExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6592, __c206, 0) as any as S.Schema<GetExternalNetworkRequest>,
-  output: __S(7426, __c232, 2) as any as S.Schema<GetExternalNetworkResponse>,
+  input: __S(6688, __c209, 0) as any as S.Schema<GetExternalNetworkRequest>,
+  output: __S(6720, __c210, 0) as any as S.Schema<GetExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11393,8 +11897,8 @@ export const GetInternalNetwork: API.OperationMethod<
   GetInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6624, __c207, 0) as any as S.Schema<GetInternalNetworkRequest>,
-  output: __S(8136, __c254, 8) as any as S.Schema<GetInternalNetworkResponse>,
+  input: __S(6752, __c211, 0) as any as S.Schema<GetInternalNetworkRequest>,
+  output: __S(6784, __c212, 0) as any as S.Schema<GetInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11408,8 +11912,8 @@ export const GetInternetGateway: API.OperationMethod<
   GetInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6656, __c208, 0) as any as S.Schema<GetInternetGatewayRequest>,
-  output: __S(8641, __c270, 1) as any as S.Schema<GetInternetGatewayResponse>,
+  input: __S(6816, __c213, 0) as any as S.Schema<GetInternetGatewayRequest>,
+  output: __S(6848, __c214, 0) as any as S.Schema<GetInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11423,8 +11927,8 @@ export const GetInternetGatewayRule: API.OperationMethod<
   GetInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6688, __c209, 0) as any as S.Schema<GetInternetGatewayRuleRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<GetInternetGatewayRuleResponse>,
+  input: __S(6880, __c215, 0) as any as S.Schema<GetInternetGatewayRuleRequest>,
+  output: __S(6912, __c216, 0) as any as S.Schema<GetInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11438,8 +11942,8 @@ export const GetIpCommunity: API.OperationMethod<
   GetIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6720, __c210, 0) as any as S.Schema<GetIpCommunityRequest>,
-  output: __S(675, __c21, 3) as any as S.Schema<GetIpCommunityResponse>,
+  input: __S(6944, __c217, 0) as any as S.Schema<GetIpCommunityRequest>,
+  output: __S(6976, __c218, 0) as any as S.Schema<GetIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11453,8 +11957,8 @@ export const GetIpExtendedCommunity: API.OperationMethod<
   GetIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6944, __c217, 0) as any as S.Schema<GetIpExtendedCommunityRequest>,
-  output: __S(1187, __c37, 3) as any as S.Schema<GetIpExtendedCommunityResponse>,
+  input: __S(7200, __c225, 0) as any as S.Schema<GetIpExtendedCommunityRequest>,
+  output: __S(7232, __c226, 0) as any as S.Schema<GetIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11468,8 +11972,8 @@ export const GetIpPrefix: API.OperationMethod<
   GetIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(6976, __c218, 0) as any as S.Schema<GetIpPrefixRequest>,
-  output: __S(1635, __c51, 3) as any as S.Schema<GetIpPrefixResponse>,
+  input: __S(7264, __c227, 0) as any as S.Schema<GetIpPrefixRequest>,
+  output: __S(7296, __c228, 0) as any as S.Schema<GetIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11483,8 +11987,8 @@ export const GetL2IsolationDomain: API.OperationMethod<
   GetL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7008, __c219, 0) as any as S.Schema<GetL2IsolationDomainRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<GetL2IsolationDomainResponse>,
+  input: __S(7328, __c229, 0) as any as S.Schema<GetL2IsolationDomainRequest>,
+  output: __S(7360, __c230, 0) as any as S.Schema<GetL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11498,8 +12002,8 @@ export const GetL3IsolationDomain: API.OperationMethod<
   GetL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7040, __c220, 0) as any as S.Schema<GetL3IsolationDomainRequest>,
-  output: __S(2503, __c78, 7) as any as S.Schema<GetL3IsolationDomainResponse>,
+  input: __S(7392, __c231, 0) as any as S.Schema<GetL3IsolationDomainRequest>,
+  output: __S(7424, __c232, 0) as any as S.Schema<GetL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11513,8 +12017,8 @@ export const GetNeighborGroup: API.OperationMethod<
   GetNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7072, __c221, 0) as any as S.Schema<GetNeighborGroupRequest>,
-  output: __S(2946, __c92, 2) as any as S.Schema<GetNeighborGroupResponse>,
+  input: __S(7456, __c233, 0) as any as S.Schema<GetNeighborGroupRequest>,
+  output: __S(7488, __c234, 0) as any as S.Schema<GetNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11528,8 +12032,8 @@ export const GetNetworkBootstrapDevice: API.OperationMethod<
   GetNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7104, __c222, 0) as any as S.Schema<GetNetworkBootstrapDeviceRequest>,
-  output: __S(3393, __c106, 1) as any as S.Schema<GetNetworkBootstrapDeviceResponse>,
+  input: __S(7520, __c235, 0) as any as S.Schema<GetNetworkBootstrapDeviceRequest>,
+  output: __S(7552, __c236, 0) as any as S.Schema<GetNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11543,8 +12047,8 @@ export const GetNetworkBootstrapInterface: API.OperationMethod<
   GetNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7136, __c223, 0) as any as S.Schema<GetNetworkBootstrapInterfaceRequest>,
-  output: __S(3809, __c119, 1) as any as S.Schema<GetNetworkBootstrapInterfaceResponse>,
+  input: __S(7584, __c237, 0) as any as S.Schema<GetNetworkBootstrapInterfaceRequest>,
+  output: __S(7616, __c238, 0) as any as S.Schema<GetNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11558,8 +12062,8 @@ export const GetNetworkDevice: API.OperationMethod<
   GetNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7168, __c224, 0) as any as S.Schema<GetNetworkDeviceRequest>,
-  output: __S(4260, __c133, 4) as any as S.Schema<GetNetworkDeviceResponse>,
+  input: __S(7648, __c239, 0) as any as S.Schema<GetNetworkDeviceRequest>,
+  output: __S(7680, __c240, 0) as any as S.Schema<GetNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11573,8 +12077,8 @@ export const GetNetworkDeviceSkus: API.OperationMethod<
   GetNetworkDeviceSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7200, __c225, 0) as any as S.Schema<GetNetworkDeviceSkusRequest>,
-  output: __S(7239, __c226, 7) as any as S.Schema<GetNetworkDeviceSkusResponse>,
+  input: __S(7712, __c241, 0) as any as S.Schema<GetNetworkDeviceSkusRequest>,
+  output: __S(7751, __c242, 7) as any as S.Schema<GetNetworkDeviceSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11588,8 +12092,8 @@ export const GetNetworkFabric: API.OperationMethod<
   GetNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7264, __c227, 0) as any as S.Schema<GetNetworkFabricRequest>,
-  output: __S(4718, __c147, 14) as any as S.Schema<GetNetworkFabricResponse>,
+  input: __S(7776, __c243, 0) as any as S.Schema<GetNetworkFabricRequest>,
+  output: __S(7808, __c244, 0) as any as S.Schema<GetNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11603,8 +12107,8 @@ export const GetNetworkFabricController: API.OperationMethod<
   GetNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7648, __c239, 0) as any as S.Schema<GetNetworkFabricControllerRequest>,
-  output: __S(4997, __c156, 5) as any as S.Schema<GetNetworkFabricControllerResponse>,
+  input: __S(8192, __c256, 0) as any as S.Schema<GetNetworkFabricControllerRequest>,
+  output: __S(8224, __c257, 0) as any as S.Schema<GetNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11618,8 +12122,8 @@ export const GetNetworkFabricSkus: API.OperationMethod<
   GetNetworkFabricSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7680, __c240, 0) as any as S.Schema<GetNetworkFabricSkusRequest>,
-  output: __S(7713, __c241, 1) as any as S.Schema<GetNetworkFabricSkusResponse>,
+  input: __S(8256, __c258, 0) as any as S.Schema<GetNetworkFabricSkusRequest>,
+  output: __S(8289, __c259, 1) as any as S.Schema<GetNetworkFabricSkusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11633,8 +12137,8 @@ export const GetNetworkFabricTopology: API.OperationMethod<
   GetNetworkFabricTopologyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7744, __c242, 0) as any as S.Schema<GetNetworkFabricTopologyRequest>,
-  output: __S(7746, __c242, 2) as any as S.Schema<GetTopologyResponse>,
+  input: __S(8320, __c260, 0) as any as S.Schema<GetNetworkFabricTopologyRequest>,
+  output: __S(8322, __c260, 2) as any as S.Schema<GetTopologyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11648,8 +12152,8 @@ export const GetNetworkInterface: API.OperationMethod<
   GetNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7776, __c243, 0) as any as S.Schema<GetNetworkInterfaceRequest>,
-  output: __S(5089, __c159, 1) as any as S.Schema<GetNetworkInterfaceResponse>,
+  input: __S(8352, __c261, 0) as any as S.Schema<GetNetworkInterfaceRequest>,
+  output: __S(8384, __c262, 0) as any as S.Schema<GetNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11663,8 +12167,8 @@ export const GetNetworkMonitor: API.OperationMethod<
   GetNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7808, __c244, 0) as any as S.Schema<GetNetworkMonitorRequest>,
-  output: __S(5155, __c161, 3) as any as S.Schema<GetNetworkMonitorResponse>,
+  input: __S(8416, __c263, 0) as any as S.Schema<GetNetworkMonitorRequest>,
+  output: __S(8448, __c264, 0) as any as S.Schema<GetNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11678,8 +12182,8 @@ export const GetNetworkPacketBroker: API.OperationMethod<
   GetNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7840, __c245, 0) as any as S.Schema<GetNetworkPacketBrokerRequest>,
-  output: __S(5217, __c163, 1) as any as S.Schema<GetNetworkPacketBrokerResponse>,
+  input: __S(8480, __c265, 0) as any as S.Schema<GetNetworkPacketBrokerRequest>,
+  output: __S(8512, __c266, 0) as any as S.Schema<GetNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11693,8 +12197,8 @@ export const GetNetworkRack: API.OperationMethod<
   GetNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7872, __c246, 0) as any as S.Schema<GetNetworkRackRequest>,
-  output: __S(5281, __c165, 1) as any as S.Schema<GetNetworkRackResponse>,
+  input: __S(8544, __c267, 0) as any as S.Schema<GetNetworkRackRequest>,
+  output: __S(8576, __c268, 0) as any as S.Schema<GetNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11708,8 +12212,8 @@ export const GetNetworkTap: API.OperationMethod<
   GetNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7904, __c247, 0) as any as S.Schema<GetNetworkTapRequest>,
-  output: __S(5348, __c167, 4) as any as S.Schema<GetNetworkTapResponse>,
+  input: __S(8608, __c269, 0) as any as S.Schema<GetNetworkTapRequest>,
+  output: __S(8640, __c270, 0) as any as S.Schema<GetNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11723,8 +12227,8 @@ export const GetNetworkTapRule: API.OperationMethod<
   GetNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7936, __c248, 0) as any as S.Schema<GetNetworkTapRuleRequest>,
-  output: __S(5417, __c169, 9) as any as S.Schema<GetNetworkTapRuleResponse>,
+  input: __S(8672, __c271, 0) as any as S.Schema<GetNetworkTapRuleRequest>,
+  output: __S(8704, __c272, 0) as any as S.Schema<GetNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11738,8 +12242,8 @@ export const GetNetworkToNetworkInterconnect: API.OperationMethod<
   GetNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(7968, __c249, 0) as any as S.Schema<GetNetworkToNetworkInterconnectRequest>,
-  output: __S(5479, __c171, 7) as any as S.Schema<GetNetworkToNetworkInterconnectResponse>,
+  input: __S(8736, __c273, 0) as any as S.Schema<GetNetworkToNetworkInterconnectRequest>,
+  output: __S(8768, __c274, 0) as any as S.Schema<GetNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11753,8 +12257,8 @@ export const GetRoutePolicy: API.OperationMethod<
   GetRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8160, __c255, 0) as any as S.Schema<GetRoutePolicyRequest>,
-  output: __S(5545, __c173, 9) as any as S.Schema<GetRoutePolicyResponse>,
+  input: __S(8960, __c280, 0) as any as S.Schema<GetRoutePolicyRequest>,
+  output: __S(8992, __c281, 0) as any as S.Schema<GetRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11768,8 +12272,8 @@ export const ListAccessControlListByResourceGroup: API.OperationMethod<
   ListAccessControlListByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8192, __c256, 0) as any as S.Schema<ListAccessControlListByResourceGroupRequest>,
-  output: __S(8225, __c257, 1) as any as S.Schema<AccessControlListsListResult>,
+  input: __S(9024, __c282, 0) as any as S.Schema<ListAccessControlListByResourceGroupRequest>,
+  output: __S(9057, __c283, 1) as any as S.Schema<AccessControlListsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11783,8 +12287,8 @@ export const ListAccessControlListBySubscription: API.OperationMethod<
   ListAccessControlListBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8256, __c258, 0) as any as S.Schema<ListAccessControlListBySubscriptionRequest>,
-  output: __S(8225, __c257, 1) as any as S.Schema<AccessControlListsListResult>,
+  input: __S(9088, __c284, 0) as any as S.Schema<ListAccessControlListBySubscriptionRequest>,
+  output: __S(9057, __c283, 1) as any as S.Schema<AccessControlListsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11798,8 +12302,8 @@ export const ListExternalNetworkByL3IsolationDomain: API.OperationMethod<
   ListExternalNetworkByL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8288, __c259, 0) as any as S.Schema<ListExternalNetworkByL3IsolationDomainRequest>,
-  output: __S(8290, __c259, 2) as any as S.Schema<ExternalNetworksList>,
+  input: __S(9120, __c285, 0) as any as S.Schema<ListExternalNetworkByL3IsolationDomainRequest>,
+  output: __S(9122, __c285, 2) as any as S.Schema<ExternalNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11813,8 +12317,8 @@ export const ListInternalNetworkByL3IsolationDomain: API.OperationMethod<
   ListInternalNetworkByL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8320, __c260, 0) as any as S.Schema<ListInternalNetworkByL3IsolationDomainRequest>,
-  output: __S(8322, __c260, 2) as any as S.Schema<InternalNetworksList>,
+  input: __S(9152, __c286, 0) as any as S.Schema<ListInternalNetworkByL3IsolationDomainRequest>,
+  output: __S(9154, __c286, 2) as any as S.Schema<InternalNetworksList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11828,8 +12332,8 @@ export const ListInternetGatewayByResourceGroup: API.OperationMethod<
   ListInternetGatewayByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8352, __c261, 0) as any as S.Schema<ListInternetGatewayByResourceGroupRequest>,
-  output: __S(8385, __c262, 1) as any as S.Schema<InternetGatewaysListResult>,
+  input: __S(9184, __c287, 0) as any as S.Schema<ListInternetGatewayByResourceGroupRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<InternetGatewaysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11843,8 +12347,8 @@ export const ListInternetGatewayBySubscription: API.OperationMethod<
   ListInternetGatewayBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8416, __c263, 0) as any as S.Schema<ListInternetGatewayBySubscriptionRequest>,
-  output: __S(8385, __c262, 1) as any as S.Schema<InternetGatewaysListResult>,
+  input: __S(9248, __c289, 0) as any as S.Schema<ListInternetGatewayBySubscriptionRequest>,
+  output: __S(9217, __c288, 1) as any as S.Schema<InternetGatewaysListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11858,8 +12362,8 @@ export const ListInternetGatewayRuleByResourceGroup: API.OperationMethod<
   ListInternetGatewayRuleByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8448, __c264, 0) as any as S.Schema<ListInternetGatewayRuleByResourceGroupRequest>,
-  output: __S(8481, __c265, 1) as any as S.Schema<InternetGatewayRulesListResult>,
+  input: __S(9280, __c290, 0) as any as S.Schema<ListInternetGatewayRuleByResourceGroupRequest>,
+  output: __S(9313, __c291, 1) as any as S.Schema<InternetGatewayRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11873,8 +12377,8 @@ export const ListInternetGatewayRuleBySubscription: API.OperationMethod<
   ListInternetGatewayRuleBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8512, __c266, 0) as any as S.Schema<ListInternetGatewayRuleBySubscriptionRequest>,
-  output: __S(8481, __c265, 1) as any as S.Schema<InternetGatewayRulesListResult>,
+  input: __S(9344, __c292, 0) as any as S.Schema<ListInternetGatewayRuleBySubscriptionRequest>,
+  output: __S(9313, __c291, 1) as any as S.Schema<InternetGatewayRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11888,8 +12392,8 @@ export const ListIpCommunityByResourceGroup: API.OperationMethod<
   ListIpCommunityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8544, __c267, 0) as any as S.Schema<ListIpCommunityByResourceGroupRequest>,
-  output: __S(8577, __c268, 1) as any as S.Schema<IpCommunitiesListResult>,
+  input: __S(9376, __c293, 0) as any as S.Schema<ListIpCommunityByResourceGroupRequest>,
+  output: __S(9409, __c294, 1) as any as S.Schema<IpCommunitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11903,8 +12407,8 @@ export const ListIpCommunityBySubscription: API.OperationMethod<
   ListIpCommunityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8672, __c271, 0) as any as S.Schema<ListIpCommunityBySubscriptionRequest>,
-  output: __S(8577, __c268, 1) as any as S.Schema<IpCommunitiesListResult>,
+  input: __S(9504, __c297, 0) as any as S.Schema<ListIpCommunityBySubscriptionRequest>,
+  output: __S(9409, __c294, 1) as any as S.Schema<IpCommunitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11918,8 +12422,8 @@ export const ListIpExtendedCommunityByResourceGroup: API.OperationMethod<
   ListIpExtendedCommunityByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8704, __c272, 0) as any as S.Schema<ListIpExtendedCommunityByResourceGroupRequest>,
-  output: __S(8737, __c273, 1) as any as S.Schema<IpExtendedCommunityListResult>,
+  input: __S(9536, __c298, 0) as any as S.Schema<ListIpExtendedCommunityByResourceGroupRequest>,
+  output: __S(9569, __c299, 1) as any as S.Schema<IpExtendedCommunityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11933,8 +12437,8 @@ export const ListIpExtendedCommunityBySubscription: API.OperationMethod<
   ListIpExtendedCommunityBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8768, __c274, 0) as any as S.Schema<ListIpExtendedCommunityBySubscriptionRequest>,
-  output: __S(8737, __c273, 1) as any as S.Schema<IpExtendedCommunityListResult>,
+  input: __S(9600, __c300, 0) as any as S.Schema<ListIpExtendedCommunityBySubscriptionRequest>,
+  output: __S(9569, __c299, 1) as any as S.Schema<IpExtendedCommunityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11948,8 +12452,8 @@ export const ListIpPrefixByResourceGroup: API.OperationMethod<
   ListIpPrefixByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8800, __c275, 0) as any as S.Schema<ListIpPrefixByResourceGroupRequest>,
-  output: __S(8833, __c276, 1) as any as S.Schema<IpPrefixesListResult>,
+  input: __S(9632, __c301, 0) as any as S.Schema<ListIpPrefixByResourceGroupRequest>,
+  output: __S(9665, __c302, 1) as any as S.Schema<IpPrefixesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11963,8 +12467,8 @@ export const ListIpPrefixBySubscription: API.OperationMethod<
   ListIpPrefixBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8864, __c277, 0) as any as S.Schema<ListIpPrefixBySubscriptionRequest>,
-  output: __S(8833, __c276, 1) as any as S.Schema<IpPrefixesListResult>,
+  input: __S(9696, __c303, 0) as any as S.Schema<ListIpPrefixBySubscriptionRequest>,
+  output: __S(9665, __c302, 1) as any as S.Schema<IpPrefixesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11978,8 +12482,8 @@ export const ListL2IsolationDomainByResourceGroup: API.OperationMethod<
   ListL2IsolationDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8896, __c278, 0) as any as S.Schema<ListL2IsolationDomainByResourceGroupRequest>,
-  output: __S(8929, __c279, 1) as any as S.Schema<L2IsolationDomainsListResult>,
+  input: __S(9728, __c304, 0) as any as S.Schema<ListL2IsolationDomainByResourceGroupRequest>,
+  output: __S(9761, __c305, 1) as any as S.Schema<L2IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11993,8 +12497,8 @@ export const ListL2IsolationDomainBySubscription: API.OperationMethod<
   ListL2IsolationDomainBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8960, __c280, 0) as any as S.Schema<ListL2IsolationDomainBySubscriptionRequest>,
-  output: __S(8929, __c279, 1) as any as S.Schema<L2IsolationDomainsListResult>,
+  input: __S(9792, __c306, 0) as any as S.Schema<ListL2IsolationDomainBySubscriptionRequest>,
+  output: __S(9761, __c305, 1) as any as S.Schema<L2IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12008,8 +12512,8 @@ export const ListL3IsolationDomainByResourceGroup: API.OperationMethod<
   ListL3IsolationDomainByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(8992, __c281, 0) as any as S.Schema<ListL3IsolationDomainByResourceGroupRequest>,
-  output: __S(9025, __c282, 1) as any as S.Schema<L3IsolationDomainsListResult>,
+  input: __S(9824, __c307, 0) as any as S.Schema<ListL3IsolationDomainByResourceGroupRequest>,
+  output: __S(9857, __c308, 1) as any as S.Schema<L3IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12023,8 +12527,8 @@ export const ListL3IsolationDomainBySubscription: API.OperationMethod<
   ListL3IsolationDomainBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9056, __c283, 0) as any as S.Schema<ListL3IsolationDomainBySubscriptionRequest>,
-  output: __S(9025, __c282, 1) as any as S.Schema<L3IsolationDomainsListResult>,
+  input: __S(9888, __c309, 0) as any as S.Schema<ListL3IsolationDomainBySubscriptionRequest>,
+  output: __S(9857, __c308, 1) as any as S.Schema<L3IsolationDomainsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12038,8 +12542,8 @@ export const ListNeighborGroupByResourceGroup: API.OperationMethod<
   ListNeighborGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(9088, __c284, 0) as any as S.Schema<ListNeighborGroupByResourceGroupRequest>,
-  output: __S(9121, __c285, 1) as any as S.Schema<NeighborGroupsListResult>,
+  input: __S(9920, __c310, 0) as any as S.Schema<ListNeighborGroupByResourceGroupRequest>,
+  output: __S(9953, __c311, 1) as any as S.Schema<NeighborGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12054,7 +12558,7 @@ export const ListNeighborGroupBySubscription: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c6, 0) as any as S.Schema<ListNeighborGroupBySubscriptionRequest>,
-  output: __S(9121, __c285, 1) as any as S.Schema<NeighborGroupsListResult>,
+  output: __S(9953, __c311, 1) as any as S.Schema<NeighborGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12467,7 +12971,7 @@ export const LockNetworkFabricFabric: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1504, __c47, 0) as any as S.Schema<LockNetworkFabricFabricRequest>,
-  output: __S(5635, __c176, 3) as any as S.Schema<LockNetworkFabricFabricResponse>,
+  output: __S(1536, __c48, 0) as any as S.Schema<LockNetworkFabricFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12481,8 +12985,8 @@ export const NeighborGroupsResync: API.OperationMethod<
   NeighborGroupsResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c48, 0) as any as S.Schema<NeighborGroupsResyncRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NeighborGroupResyncResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<NeighborGroupsResyncRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NeighborGroupResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12496,8 +13000,8 @@ export const NetworkBootstrapDevicesResyncPasswords: API.OperationMethod<
   NetworkBootstrapDevicesResyncPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c49, 0) as any as S.Schema<NetworkBootstrapDevicesResyncPasswordsRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<NetworkBootstrapDevicesResyncPasswordsRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkBootstrapDeviceResyncPasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12511,8 +13015,8 @@ export const NetworkBootstrapDevicesUpgrade: API.OperationMethod<
   NetworkBootstrapDevicesUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<NetworkBootstrapDevicesUpgradeRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkBootstrapDeviceUpgradeResponse>,
+  input: __S(1696, __c53, 0) as any as S.Schema<NetworkBootstrapDevicesUpgradeRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkBootstrapDeviceUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12526,8 +13030,8 @@ export const NetworkDevicesResyncCertificates: API.OperationMethod<
   NetworkDevicesResyncCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<NetworkDevicesResyncCertificatesRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<NetworkDevicesResyncCertificatesRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12541,8 +13045,8 @@ export const NetworkDevicesResyncPasswords: API.OperationMethod<
   NetworkDevicesResyncPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<NetworkDevicesResyncPasswordsRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkDeviceResyncPasswordsResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<NetworkDevicesResyncPasswordsRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkDeviceResyncPasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12556,8 +13060,8 @@ export const NetworkDevicesUpgrade: API.OperationMethod<
   NetworkDevicesUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<NetworkDevicesUpgradeRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkDeviceUpgradeResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<NetworkDevicesUpgradeRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkDeviceUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12571,8 +13075,8 @@ export const NetworkFabricsArmConfigurationDiff: API.OperationMethod<
   NetworkFabricsArmConfigurationDiffError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<NetworkFabricsArmConfigurationDiffRequest>,
-  output: __S(1794, __c56, 2) as any as S.Schema<ArmConfigurationDiffOperationResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<NetworkFabricsArmConfigurationDiffRequest>,
+  output: __S(1826, __c57, 2) as any as S.Schema<ArmConfigurationDiffOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12586,8 +13090,8 @@ export const NetworkFabricsDeprovision: API.OperationMethod<
   NetworkFabricsDeprovisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<NetworkFabricsDeprovisionRequest>,
-  output: __S(5635, __c176, 3) as any as S.Schema<NetworkFabricsDeprovisionResponse>,
+  input: __S(1856, __c58, 0) as any as S.Schema<NetworkFabricsDeprovisionRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<NetworkFabricsDeprovisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12601,8 +13105,8 @@ export const NetworkFabricsDiscardCommitBatch: API.OperationMethod<
   NetworkFabricsDiscardCommitBatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<NetworkFabricsDiscardCommitBatchRequest>,
-  output: __S(1858, __c58, 2) as any as S.Schema<DiscardCommitBatchOperationResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<NetworkFabricsDiscardCommitBatchRequest>,
+  output: __S(1890, __c59, 2) as any as S.Schema<DiscardCommitBatchOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12616,8 +13120,8 @@ export const NetworkFabricsResyncCertificates: API.OperationMethod<
   NetworkFabricsResyncCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<NetworkFabricsResyncCertificatesRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<NetworkFabricsResyncCertificatesRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkFabricResyncCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12631,8 +13135,8 @@ export const NetworkFabricsResyncPasswords: API.OperationMethod<
   NetworkFabricsResyncPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<NetworkFabricsResyncPasswordsRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkFabricResyncPasswordsResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<NetworkFabricsResyncPasswordsRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkFabricResyncPasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12646,8 +13150,8 @@ export const NetworkFabricsUpgrade: API.OperationMethod<
   NetworkFabricsUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<NetworkFabricsUpgradeRequest>,
-  output: __S(5635, __c176, 3) as any as S.Schema<NetworkFabricsUpgradeResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<NetworkFabricsUpgradeRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<NetworkFabricsUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12661,8 +13165,8 @@ export const NetworkFabricsViewDeviceConfiguration: API.OperationMethod<
   NetworkFabricsViewDeviceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2144, __c67, 0) as any as S.Schema<NetworkFabricsViewDeviceConfigurationRequest>,
-  output: __S(2146, __c67, 2) as any as S.Schema<ViewDeviceConfigurationOperationResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<NetworkFabricsViewDeviceConfigurationRequest>,
+  output: __S(2178, __c68, 2) as any as S.Schema<ViewDeviceConfigurationOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12676,8 +13180,8 @@ export const NetworkTapRulesResync: API.OperationMethod<
   NetworkTapRulesResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2176, __c68, 0) as any as S.Schema<NetworkTapRulesResyncRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkTapRuleResyncResponse>,
+  input: __S(2208, __c69, 0) as any as S.Schema<NetworkTapRulesResyncRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkTapRuleResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12691,8 +13195,8 @@ export const NetworkTapsResync: API.OperationMethod<
   NetworkTapsResyncError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2208, __c69, 0) as any as S.Schema<NetworkTapsResyncRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkTapResyncResponse>,
+  input: __S(2240, __c70, 0) as any as S.Schema<NetworkTapsResyncRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkTapResyncResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12706,8 +13210,8 @@ export const ProvisionNetworkFabric: API.OperationMethod<
   ProvisionNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2240, __c70, 0) as any as S.Schema<ProvisionNetworkFabricRequest>,
-  output: __S(5635, __c176, 3) as any as S.Schema<ProvisionNetworkFabricResponse>,
+  input: __S(2272, __c71, 0) as any as S.Schema<ProvisionNetworkFabricRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<ProvisionNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12721,8 +13225,8 @@ export const RebootNetworkBootstrapDevice: API.OperationMethod<
   RebootNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2272, __c71, 0) as any as S.Schema<RebootNetworkBootstrapDeviceRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkBootstrapDeviceRebootResponse>,
+  input: __S(2304, __c72, 0) as any as S.Schema<RebootNetworkBootstrapDeviceRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkBootstrapDeviceRebootResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12736,8 +13240,8 @@ export const RebootNetworkDevice: API.OperationMethod<
   RebootNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2304, __c72, 0) as any as S.Schema<RebootNetworkDeviceRequest>,
-  output: __S(5635, __c176, 3) as any as S.Schema<RebootNetworkDeviceResponse>,
+  input: __S(2336, __c73, 0) as any as S.Schema<RebootNetworkDeviceRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<RebootNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12751,10 +13255,10 @@ export const RefreshNetworkBootstrapDeviceConfiguration: API.OperationMethod<
   RefreshNetworkBootstrapDeviceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2336, __c73, 0) as any as S.Schema<RefreshNetworkBootstrapDeviceConfigurationRequest>,
+  input: __S(2368, __c74, 0) as any as S.Schema<RefreshNetworkBootstrapDeviceConfigurationRequest>,
   output: __S(
-    6048,
-    __c189,
+    6112,
+    __c191,
     0,
   ) as any as S.Schema<NetworkBootstrapDeviceRefreshConfigurationResponse>,
   errors: [UnknownAzureError],
@@ -12770,8 +13274,8 @@ export const RefreshNetworkDeviceConfiguration: API.OperationMethod<
   RefreshNetworkDeviceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2368, __c74, 0) as any as S.Schema<RefreshNetworkDeviceConfigurationRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkDeviceRefreshConfigurationResponse>,
+  input: __S(2400, __c75, 0) as any as S.Schema<RefreshNetworkDeviceConfigurationRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkDeviceRefreshConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12785,8 +13289,8 @@ export const RefreshNetworkFabricConfiguration: API.OperationMethod<
   RefreshNetworkFabricConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2400, __c75, 0) as any as S.Schema<RefreshNetworkFabricConfigurationRequest>,
-  output: __S(5635, __c176, 3) as any as S.Schema<RefreshNetworkFabricConfigurationResponse>,
+  input: __S(2432, __c76, 0) as any as S.Schema<RefreshNetworkFabricConfigurationRequest>,
+  output: __S(1536, __c48, 0) as any as S.Schema<RefreshNetworkFabricConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12800,8 +13304,8 @@ export const RotateNetworkFabricCertificates: API.OperationMethod<
   RotateNetworkFabricCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2432, __c76, 0) as any as S.Schema<RotateNetworkFabricCertificatesRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkFabricRotateCertificatesResponse>,
+  input: __S(2464, __c77, 0) as any as S.Schema<RotateNetworkFabricCertificatesRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkFabricRotateCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12815,8 +13319,8 @@ export const RotateNetworkFabricPasswords: API.OperationMethod<
   RotateNetworkFabricPasswordsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2528, __c79, 0) as any as S.Schema<RotateNetworkFabricPasswordsRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkFabricRotatePasswordsResponse>,
+  input: __S(2560, __c80, 0) as any as S.Schema<RotateNetworkFabricPasswordsRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkFabricRotatePasswordsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12830,8 +13334,8 @@ export const RunNetworkDeviceRoCommand: API.OperationMethod<
   RunNetworkDeviceRoCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2560, __c80, 0) as any as S.Schema<RunNetworkDeviceRoCommandRequest>,
-  output: __S(2562, __c80, 2) as any as S.Schema<RunNetworkDeviceRoCommandResponse>,
+  input: __S(2592, __c81, 0) as any as S.Schema<RunNetworkDeviceRoCommandRequest>,
+  output: __S(2594, __c81, 2) as any as S.Schema<RunNetworkDeviceRoCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12845,8 +13349,8 @@ export const RunNetworkDeviceRwCommand: API.OperationMethod<
   RunNetworkDeviceRwCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2592, __c81, 0) as any as S.Schema<RunNetworkDeviceRwCommandRequest>,
-  output: __S(2594, __c81, 2) as any as S.Schema<NetworkDeviceRunRwCommandResponse>,
+  input: __S(2624, __c82, 0) as any as S.Schema<RunNetworkDeviceRwCommandRequest>,
+  output: __S(2626, __c82, 2) as any as S.Schema<NetworkDeviceRunRwCommandResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12860,8 +13364,8 @@ export const UpdateAccessControlList: API.OperationMethod<
   UpdateAccessControlListError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2630, __c82, 6) as any as S.Schema<UpdateAccessControlListRequest>,
-  output: __S(6839, __c213, 23) as any as S.Schema<UpdateAccessControlListResponse>,
+  input: __S(2662, __c83, 6) as any as S.Schema<UpdateAccessControlListRequest>,
+  output: __S(2663, __c83, 7) as any as S.Schema<UpdateAccessControlListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12875,8 +13379,8 @@ export const UpdateAccessControlListAdministrativeState: API.OperationMethod<
   UpdateAccessControlListAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2656, __c83, 0) as any as S.Schema<UpdateAccessControlListAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(2688, __c84, 0) as any as S.Schema<UpdateAccessControlListAdministrativeStateRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12890,8 +13394,8 @@ export const UpdateExternalNetwork: API.OperationMethod<
   UpdateExternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2722, __c85, 2) as any as S.Schema<UpdateExternalNetworkRequest>,
-  output: __S(7426, __c232, 2) as any as S.Schema<UpdateExternalNetworkResponse>,
+  input: __S(2754, __c86, 2) as any as S.Schema<UpdateExternalNetworkRequest>,
+  output: __S(2755, __c86, 3) as any as S.Schema<UpdateExternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12905,8 +13409,8 @@ export const UpdateExternalNetworkAdministrativeState: API.OperationMethod<
   UpdateExternalNetworkAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2752, __c86, 0) as any as S.Schema<UpdateExternalNetworkAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(2784, __c87, 0) as any as S.Schema<UpdateExternalNetworkAdministrativeStateRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12920,10 +13424,10 @@ export const UpdateExternalNetworkBfdAdministrativeState: API.OperationMethod<
   UpdateExternalNetworkBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2784, __c87, 0) as any as S.Schema<UpdateExternalNetworkBfdAdministrativeStateRequest>,
+  input: __S(2816, __c88, 0) as any as S.Schema<UpdateExternalNetworkBfdAdministrativeStateRequest>,
   output: __S(
-    2817,
-    __c88,
+    2849,
+    __c89,
     1,
   ) as any as S.Schema<ExternalNetworkUpdateBfdAdministrativeStateResponse>,
   errors: [UnknownAzureError],
@@ -12940,11 +13444,11 @@ export const UpdateExternalNetworkStaticRouteBfdAdministrativeState: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2848,
-    __c89,
+    2880,
+    __c90,
     0,
   ) as any as S.Schema<UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12958,8 +13462,8 @@ export const UpdateInternalNetwork: API.OperationMethod<
   UpdateInternalNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2883, __c90, 3) as any as S.Schema<UpdateInternalNetworkRequest>,
-  output: __S(8136, __c254, 8) as any as S.Schema<UpdateInternalNetworkResponse>,
+  input: __S(2915, __c91, 3) as any as S.Schema<UpdateInternalNetworkRequest>,
+  output: __S(2916, __c91, 4) as any as S.Schema<UpdateInternalNetworkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12973,8 +13477,8 @@ export const UpdateInternalNetworkAdministrativeState: API.OperationMethod<
   UpdateInternalNetworkAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2976, __c93, 0) as any as S.Schema<UpdateInternalNetworkAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(3008, __c94, 0) as any as S.Schema<UpdateInternalNetworkAdministrativeStateRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12988,10 +13492,10 @@ export const UpdateInternalNetworkBfdAdministrativeState: API.OperationMethod<
   UpdateInternalNetworkBfdAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3008, __c94, 0) as any as S.Schema<UpdateInternalNetworkBfdAdministrativeStateRequest>,
+  input: __S(3040, __c95, 0) as any as S.Schema<UpdateInternalNetworkBfdAdministrativeStateRequest>,
   output: __S(
-    3043,
-    __c95,
+    3075,
+    __c96,
     3,
   ) as any as S.Schema<InternalNetworkUpdateBfdAdministrativeStateResponse>,
   errors: [UnknownAzureError],
@@ -13007,10 +13511,10 @@ export const UpdateInternalNetworkBgpAdministrativeState: API.OperationMethod<
   UpdateInternalNetworkBgpAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3072, __c96, 0) as any as S.Schema<UpdateInternalNetworkBgpAdministrativeStateRequest>,
+  input: __S(3104, __c97, 0) as any as S.Schema<UpdateInternalNetworkBgpAdministrativeStateRequest>,
   output: __S(
-    3043,
-    __c95,
+    3075,
+    __c96,
     3,
   ) as any as S.Schema<InternalNetworkUpdateBgpAdministrativeStateResponse>,
   errors: [UnknownAzureError],
@@ -13027,11 +13531,11 @@ export const UpdateInternalNetworkStaticRouteBfdAdministrativeState: API.Operati
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3104,
-    __c97,
+    3136,
+    __c98,
     0,
   ) as any as S.Schema<UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13045,8 +13549,8 @@ export const UpdateInternetGateway: API.OperationMethod<
   UpdateInternetGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3137, __c98, 1) as any as S.Schema<UpdateInternetGatewayRequest>,
-  output: __S(8641, __c270, 1) as any as S.Schema<UpdateInternetGatewayResponse>,
+  input: __S(3169, __c99, 1) as any as S.Schema<UpdateInternetGatewayRequest>,
+  output: __S(3170, __c99, 2) as any as S.Schema<UpdateInternetGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13060,8 +13564,8 @@ export const UpdateInternetGatewayRule: API.OperationMethod<
   UpdateInternetGatewayRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3168, __c99, 0) as any as S.Schema<UpdateInternetGatewayRuleRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<UpdateInternetGatewayRuleResponse>,
+  input: __S(3200, __c100, 0) as any as S.Schema<UpdateInternetGatewayRuleRequest>,
+  output: __S(3201, __c100, 1) as any as S.Schema<UpdateInternetGatewayRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13075,8 +13579,8 @@ export const UpdateIpCommunity: API.OperationMethod<
   UpdateIpCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3201, __c100, 1) as any as S.Schema<UpdateIpCommunityRequest>,
-  output: __S(675, __c21, 3) as any as S.Schema<UpdateIpCommunityResponse>,
+  input: __S(3233, __c101, 1) as any as S.Schema<UpdateIpCommunityRequest>,
+  output: __S(3234, __c101, 2) as any as S.Schema<UpdateIpCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13090,8 +13594,8 @@ export const UpdateIpExtendedCommunity: API.OperationMethod<
   UpdateIpExtendedCommunityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3233, __c101, 1) as any as S.Schema<UpdateIpExtendedCommunityRequest>,
-  output: __S(1187, __c37, 3) as any as S.Schema<UpdateIpExtendedCommunityResponse>,
+  input: __S(3265, __c102, 1) as any as S.Schema<UpdateIpExtendedCommunityRequest>,
+  output: __S(3266, __c102, 2) as any as S.Schema<UpdateIpExtendedCommunityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13105,8 +13609,8 @@ export const UpdateIpPrefix: API.OperationMethod<
   UpdateIpPrefixError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3265, __c102, 1) as any as S.Schema<UpdateIpPrefixRequest>,
-  output: __S(1635, __c51, 3) as any as S.Schema<UpdateIpPrefixResponse>,
+  input: __S(3297, __c103, 1) as any as S.Schema<UpdateIpPrefixRequest>,
+  output: __S(3298, __c103, 2) as any as S.Schema<UpdateIpPrefixResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13120,8 +13624,8 @@ export const UpdateL2IsolationDomain: API.OperationMethod<
   UpdateL2IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3297, __c103, 1) as any as S.Schema<UpdateL2IsolationDomainRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<UpdateL2IsolationDomainResponse>,
+  input: __S(3329, __c104, 1) as any as S.Schema<UpdateL2IsolationDomainRequest>,
+  output: __S(3330, __c104, 2) as any as S.Schema<UpdateL2IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13135,8 +13639,8 @@ export const UpdateL2IsolationDomainAdministrativeState: API.OperationMethod<
   UpdateL2IsolationDomainAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3424, __c107, 0) as any as S.Schema<UpdateL2IsolationDomainAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(3456, __c108, 0) as any as S.Schema<UpdateL2IsolationDomainAdministrativeStateRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13150,8 +13654,8 @@ export const UpdateL3IsolationDomain: API.OperationMethod<
   UpdateL3IsolationDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3457, __c108, 1) as any as S.Schema<UpdateL3IsolationDomainRequest>,
-  output: __S(2503, __c78, 7) as any as S.Schema<UpdateL3IsolationDomainResponse>,
+  input: __S(3489, __c109, 1) as any as S.Schema<UpdateL3IsolationDomainRequest>,
+  output: __S(3490, __c109, 2) as any as S.Schema<UpdateL3IsolationDomainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13165,8 +13669,8 @@ export const UpdateL3IsolationDomainAdministrativeState: API.OperationMethod<
   UpdateL3IsolationDomainAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3488, __c109, 0) as any as S.Schema<UpdateL3IsolationDomainAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(3520, __c110, 0) as any as S.Schema<UpdateL3IsolationDomainAdministrativeStateRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13180,8 +13684,8 @@ export const UpdateNeighborGroup: API.OperationMethod<
   UpdateNeighborGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3521, __c110, 1) as any as S.Schema<UpdateNeighborGroupRequest>,
-  output: __S(2946, __c92, 2) as any as S.Schema<UpdateNeighborGroupResponse>,
+  input: __S(3553, __c111, 1) as any as S.Schema<UpdateNeighborGroupRequest>,
+  output: __S(3554, __c111, 2) as any as S.Schema<UpdateNeighborGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13195,8 +13699,8 @@ export const UpdateNetworkBootstrapDevice: API.OperationMethod<
   UpdateNetworkBootstrapDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3553, __c111, 1) as any as S.Schema<UpdateNetworkBootstrapDeviceRequest>,
-  output: __S(3393, __c106, 1) as any as S.Schema<UpdateNetworkBootstrapDeviceResponse>,
+  input: __S(3585, __c112, 1) as any as S.Schema<UpdateNetworkBootstrapDeviceRequest>,
+  output: __S(3586, __c112, 2) as any as S.Schema<UpdateNetworkBootstrapDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13211,13 +13715,13 @@ export const UpdateNetworkBootstrapDeviceAdministrativeState: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3584,
-    __c112,
+    3616,
+    __c113,
     0,
   ) as any as S.Schema<UpdateNetworkBootstrapDeviceAdministrativeStateRequest>,
   output: __S(
-    6048,
-    __c189,
+    6112,
+    __c191,
     0,
   ) as any as S.Schema<NetworkBootstrapDeviceUpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
@@ -13233,8 +13737,8 @@ export const UpdateNetworkBootstrapInterface: API.OperationMethod<
   UpdateNetworkBootstrapInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3617, __c113, 1) as any as S.Schema<UpdateNetworkBootstrapInterfaceRequest>,
-  output: __S(3809, __c119, 1) as any as S.Schema<UpdateNetworkBootstrapInterfaceResponse>,
+  input: __S(3649, __c114, 1) as any as S.Schema<UpdateNetworkBootstrapInterfaceRequest>,
+  output: __S(3650, __c114, 2) as any as S.Schema<UpdateNetworkBootstrapInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13249,8 +13753,8 @@ export const UpdateNetworkBootstrapInterfaceAdministrativeState: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3648,
-    __c114,
+    3680,
+    __c115,
     0,
   ) as any as S.Schema<UpdateNetworkBootstrapInterfaceAdministrativeStateRequest>,
   output: __S(
@@ -13271,8 +13775,8 @@ export const UpdateNetworkDevice: API.OperationMethod<
   UpdateNetworkDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3681, __c115, 1) as any as S.Schema<UpdateNetworkDeviceRequest>,
-  output: __S(4260, __c133, 4) as any as S.Schema<UpdateNetworkDeviceResponse>,
+  input: __S(3713, __c116, 1) as any as S.Schema<UpdateNetworkDeviceRequest>,
+  output: __S(3714, __c116, 2) as any as S.Schema<UpdateNetworkDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13286,8 +13790,8 @@ export const UpdateNetworkDeviceAdministrativeState: API.OperationMethod<
   UpdateNetworkDeviceAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3744, __c117, 0) as any as S.Schema<UpdateNetworkDeviceAdministrativeStateRequest>,
-  output: __S(6048, __c189, 0) as any as S.Schema<NetworkDeviceUpdateAdministrativeStateResponse>,
+  input: __S(3776, __c118, 0) as any as S.Schema<UpdateNetworkDeviceAdministrativeStateRequest>,
+  output: __S(6112, __c191, 0) as any as S.Schema<NetworkDeviceUpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13301,8 +13805,8 @@ export const UpdateNetworkFabric: API.OperationMethod<
   UpdateNetworkFabricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3846, __c120, 6) as any as S.Schema<UpdateNetworkFabricRequest>,
-  output: __S(4718, __c147, 14) as any as S.Schema<UpdateNetworkFabricResponse>,
+  input: __S(3878, __c121, 6) as any as S.Schema<UpdateNetworkFabricRequest>,
+  output: __S(3879, __c121, 7) as any as S.Schema<UpdateNetworkFabricResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13316,8 +13820,8 @@ export const UpdateNetworkFabricController: API.OperationMethod<
   UpdateNetworkFabricControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3873, __c121, 1) as any as S.Schema<UpdateNetworkFabricControllerRequest>,
-  output: __S(4997, __c156, 5) as any as S.Schema<UpdateNetworkFabricControllerResponse>,
+  input: __S(3905, __c122, 1) as any as S.Schema<UpdateNetworkFabricControllerRequest>,
+  output: __S(3906, __c122, 2) as any as S.Schema<UpdateNetworkFabricControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13332,11 +13836,11 @@ export const UpdateNetworkFabricInfraManagementBfdConfiguration: API.OperationMe
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3904,
-    __c122,
+    3936,
+    __c123,
     0,
   ) as any as S.Schema<UpdateNetworkFabricInfraManagementBfdConfigurationRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13351,11 +13855,11 @@ export const UpdateNetworkFabricWorkloadManagementBfdConfiguration: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    3936,
-    __c123,
+    3968,
+    __c124,
     0,
   ) as any as S.Schema<UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13369,8 +13873,8 @@ export const UpdateNetworkInterface: API.OperationMethod<
   UpdateNetworkInterfaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(3968, __c124, 0) as any as S.Schema<UpdateNetworkInterfaceRequest>,
-  output: __S(5089, __c159, 1) as any as S.Schema<UpdateNetworkInterfaceResponse>,
+  input: __S(4000, __c125, 0) as any as S.Schema<UpdateNetworkInterfaceRequest>,
+  output: __S(4001, __c125, 1) as any as S.Schema<UpdateNetworkInterfaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13384,8 +13888,8 @@ export const UpdateNetworkInterfaceAdministrativeState: API.OperationMethod<
   UpdateNetworkInterfaceAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4000, __c125, 0) as any as S.Schema<UpdateNetworkInterfaceAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(4032, __c126, 0) as any as S.Schema<UpdateNetworkInterfaceAdministrativeStateRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13399,8 +13903,8 @@ export const UpdateNetworkMonitor: API.OperationMethod<
   UpdateNetworkMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4033, __c126, 1) as any as S.Schema<UpdateNetworkMonitorRequest>,
-  output: __S(5155, __c161, 3) as any as S.Schema<UpdateNetworkMonitorResponse>,
+  input: __S(4065, __c127, 1) as any as S.Schema<UpdateNetworkMonitorRequest>,
+  output: __S(4066, __c127, 2) as any as S.Schema<UpdateNetworkMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13414,8 +13918,8 @@ export const UpdateNetworkMonitorAdministrativeState: API.OperationMethod<
   UpdateNetworkMonitorAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4064, __c127, 0) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateRequest>,
-  output: __S(4065, __c127, 1) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateResponse>,
+  input: __S(4096, __c128, 0) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateRequest>,
+  output: __S(4097, __c128, 1) as any as S.Schema<UpdateNetworkMonitorAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13429,8 +13933,8 @@ export const UpdateNetworkPacketBroker: API.OperationMethod<
   UpdateNetworkPacketBrokerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4096, __c128, 0) as any as S.Schema<UpdateNetworkPacketBrokerRequest>,
-  output: __S(5217, __c163, 1) as any as S.Schema<UpdateNetworkPacketBrokerResponse>,
+  input: __S(4128, __c129, 0) as any as S.Schema<UpdateNetworkPacketBrokerRequest>,
+  output: __S(4129, __c129, 1) as any as S.Schema<UpdateNetworkPacketBrokerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13444,8 +13948,8 @@ export const UpdateNetworkRack: API.OperationMethod<
   UpdateNetworkRackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4128, __c129, 0) as any as S.Schema<UpdateNetworkRackRequest>,
-  output: __S(5281, __c165, 1) as any as S.Schema<UpdateNetworkRackResponse>,
+  input: __S(4160, __c130, 0) as any as S.Schema<UpdateNetworkRackRequest>,
+  output: __S(4161, __c130, 1) as any as S.Schema<UpdateNetworkRackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13459,8 +13963,8 @@ export const UpdateNetworkTap: API.OperationMethod<
   UpdateNetworkTapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4291, __c134, 3) as any as S.Schema<UpdateNetworkTapRequest>,
-  output: __S(5348, __c167, 4) as any as S.Schema<UpdateNetworkTapResponse>,
+  input: __S(4323, __c135, 3) as any as S.Schema<UpdateNetworkTapRequest>,
+  output: __S(4324, __c135, 4) as any as S.Schema<UpdateNetworkTapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13474,8 +13978,8 @@ export const UpdateNetworkTapAdministrativeState: API.OperationMethod<
   UpdateNetworkTapAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4320, __c135, 0) as any as S.Schema<UpdateNetworkTapAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(4352, __c136, 0) as any as S.Schema<UpdateNetworkTapAdministrativeStateRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13489,8 +13993,8 @@ export const UpdateNetworkTapRule: API.OperationMethod<
   UpdateNetworkTapRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4358, __c136, 6) as any as S.Schema<UpdateNetworkTapRuleRequest>,
-  output: __S(5417, __c169, 9) as any as S.Schema<UpdateNetworkTapRuleResponse>,
+  input: __S(4390, __c137, 6) as any as S.Schema<UpdateNetworkTapRuleRequest>,
+  output: __S(4391, __c137, 7) as any as S.Schema<UpdateNetworkTapRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13504,7 +14008,7 @@ export const UpdateNetworkTapRuleAdministrativeState: API.OperationMethod<
   UpdateNetworkTapRuleAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4384, __c137, 0) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateRequest>,
+  input: __S(4416, __c138, 0) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<UpdateNetworkTapRuleAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -13519,8 +14023,8 @@ export const UpdateNetworkToNetworkInterconnect: API.OperationMethod<
   UpdateNetworkToNetworkInterconnectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4418, __c138, 2) as any as S.Schema<UpdateNetworkToNetworkInterconnectRequest>,
-  output: __S(5479, __c171, 7) as any as S.Schema<UpdateNetworkToNetworkInterconnectResponse>,
+  input: __S(4450, __c139, 2) as any as S.Schema<UpdateNetworkToNetworkInterconnectRequest>,
+  output: __S(4451, __c139, 3) as any as S.Schema<UpdateNetworkToNetworkInterconnectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13535,11 +14039,11 @@ export const UpdateNetworkToNetworkInterconnectAdministrativeState: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4448,
-    __c139,
+    4480,
+    __c140,
     0,
   ) as any as S.Schema<UpdateNetworkToNetworkInterconnectAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13554,11 +14058,11 @@ export const UpdateNetworkToNetworkInterconnectBfdAdministrativeState: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4480,
-    __c140,
+    4512,
+    __c141,
     0,
   ) as any as S.Schema<UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest>,
-  output: __S(2817, __c88, 1) as any as S.Schema<NniUpdateBfdAdministrativeStateResponse>,
+  output: __S(2849, __c89, 1) as any as S.Schema<NniUpdateBfdAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13574,11 +14078,11 @@ export const UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeSt
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    4512,
-    __c141,
+    4544,
+    __c142,
     0,
   ) as any as S.Schema<UpdateNetworkToNetworkInterconnectNpbStaticRouteBfdAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13592,8 +14096,8 @@ export const UpdateRoutePolicy: API.OperationMethod<
   UpdateRoutePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4545, __c142, 1) as any as S.Schema<UpdateRoutePolicyRequest>,
-  output: __S(5545, __c173, 9) as any as S.Schema<UpdateRoutePolicyResponse>,
+  input: __S(4577, __c143, 1) as any as S.Schema<UpdateRoutePolicyRequest>,
+  output: __S(4578, __c143, 2) as any as S.Schema<UpdateRoutePolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13607,8 +14111,8 @@ export const UpdateRoutePolicyAdministrativeState: API.OperationMethod<
   UpdateRoutePolicyAdministrativeStateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4576, __c143, 0) as any as S.Schema<UpdateRoutePolicyAdministrativeStateRequest>,
-  output: __S(2689, __c84, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
+  input: __S(4608, __c144, 0) as any as S.Schema<UpdateRoutePolicyAdministrativeStateRequest>,
+  output: __S(2721, __c85, 1) as any as S.Schema<UpdateAdministrativeStateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13622,8 +14126,8 @@ export const ValidateAccessControlListConfiguration: API.OperationMethod<
   ValidateAccessControlListConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4736, __c148, 0) as any as S.Schema<ValidateAccessControlListConfigurationRequest>,
-  output: __S(4768, __c149, 0) as any as S.Schema<ValidateAccessControlListConfigurationResponse>,
+  input: __S(4768, __c149, 0) as any as S.Schema<ValidateAccessControlListConfigurationRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<ValidateAccessControlListConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13637,8 +14141,8 @@ export const ValidateL2IsolationDomainConfiguration: API.OperationMethod<
   ValidateL2IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4800, __c150, 0) as any as S.Schema<ValidateL2IsolationDomainConfigurationRequest>,
-  output: __S(4768, __c149, 0) as any as S.Schema<ValidateL2IsolationDomainConfigurationResponse>,
+  input: __S(4832, __c151, 0) as any as S.Schema<ValidateL2IsolationDomainConfigurationRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<ValidateL2IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13652,8 +14156,8 @@ export const ValidateL3IsolationDomainConfiguration: API.OperationMethod<
   ValidateL3IsolationDomainConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4832, __c151, 0) as any as S.Schema<ValidateL3IsolationDomainConfigurationRequest>,
-  output: __S(4768, __c149, 0) as any as S.Schema<ValidateL3IsolationDomainConfigurationResponse>,
+  input: __S(4864, __c152, 0) as any as S.Schema<ValidateL3IsolationDomainConfigurationRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<ValidateL3IsolationDomainConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13667,8 +14171,8 @@ export const ValidateNetworkFabricConfiguration: API.OperationMethod<
   ValidateNetworkFabricConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4864, __c152, 0) as any as S.Schema<ValidateNetworkFabricConfigurationRequest>,
-  output: __S(4768, __c149, 0) as any as S.Schema<ValidateNetworkFabricConfigurationResponse>,
+  input: __S(4896, __c153, 0) as any as S.Schema<ValidateNetworkFabricConfigurationRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<ValidateNetworkFabricConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13682,8 +14186,8 @@ export const ValidateNetworkTapRuleConfiguration: API.OperationMethod<
   ValidateNetworkTapRuleConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4896, __c153, 0) as any as S.Schema<ValidateNetworkTapRuleConfigurationRequest>,
-  output: __S(4768, __c149, 0) as any as S.Schema<ValidateNetworkTapRuleConfigurationResponse>,
+  input: __S(4928, __c154, 0) as any as S.Schema<ValidateNetworkTapRuleConfigurationRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<ValidateNetworkTapRuleConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13697,8 +14201,8 @@ export const ValidateRoutePolicyConfiguration: API.OperationMethod<
   ValidateRoutePolicyConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(4928, __c154, 0) as any as S.Schema<ValidateRoutePolicyConfigurationRequest>,
-  output: __S(4768, __c149, 0) as any as S.Schema<ValidateRoutePolicyConfigurationResponse>,
+  input: __S(4960, __c155, 0) as any as S.Schema<ValidateRoutePolicyConfigurationRequest>,
+  output: __S(4800, __c150, 0) as any as S.Schema<ValidateRoutePolicyConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -13756,6 +14260,8 @@ function __c2(j: number): any {
         S.Struct({
           error: S.optional(__S(35, __c1, 3)),
           configurationState: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "AccessControlListsResyncResponse" });
   }
@@ -13794,7 +14300,7 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           internetGatewayRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
           properties: __S(128, __c4, 0),
         }).pipe(
@@ -13806,6 +14312,20 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateInternetGatewayRuleRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(163, __c5, 3),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateInternetGatewayRuleResponse" });
   }
 }
 function __c5(j: number): any {
@@ -13814,7 +14334,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           headerName: S.optional(S.String),
-          addressList: S.optional(__S(5600, __c175, 0)),
+          addressList: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "HeaderAddressProperties" });
     case 1:
@@ -13823,10 +14343,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           action: S.String,
-          addressList: S.optional(__S(5600, __c175, 0)),
+          addressList: S.optional(__S(5632, __c176, 0)),
           condition: S.optional(S.String),
-          destinationAddressList: S.optional(__S(5600, __c175, 0)),
-          sourceAddressList: S.optional(__S(5600, __c175, 0)),
+          destinationAddressList: S.optional(__S(5632, __c176, 0)),
+          sourceAddressList: S.optional(__S(5632, __c176, 0)),
           headerAddressList: S.optional(__S(161, __c5, 1)),
         }),
       ).annotate({ identifier: "RuleProperties" });
@@ -13835,23 +14355,11 @@ function __c5(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           ruleProperties: __S(162, __c5, 2),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           provisioningState: S.optional(S.String),
-          internetGatewayIds: S.optional(__S(5600, __c175, 0)),
+          internetGatewayIds: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "InternetGatewayRuleProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(163, __c5, 3),
-        }),
-      ).annotate({ identifier: "CreateInternetGatewayRuleResponse" });
   }
 }
 function __c6(j: number): any {
@@ -13892,7 +14400,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(3393, __c106, 1));
+      return S.Array(__S(7552, __c236, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13937,7 +14445,7 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListNetworkBootstrapInterfaceByNetworkBootstrapDeviceRequest" });
     case 1:
-      return S.Array(__S(3809, __c119, 1));
+      return S.Array(__S(7616, __c238, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -13968,7 +14476,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4260, __c133, 4));
+      return S.Array(__S(7680, __c240, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14011,7 +14519,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListNetworkDeviceSkusBySubscriptionRequest" });
     case 1:
-      return S.Array(__S(7239, __c226, 7));
+      return S.Array(__S(7751, __c242, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14042,7 +14550,7 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4718, __c147, 14));
+      return S.Array(__S(7808, __c244, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14090,7 +14598,7 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(4997, __c156, 5));
+      return S.Array(__S(8224, __c257, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14115,7 +14623,7 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
           properties: __S(640, __c20, 0),
         }).pipe(
@@ -14127,6 +14635,20 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateIpCommunityRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(674, __c21, 2),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateIpCommunityResponse" });
   }
 }
 function __c21(j: number): any {
@@ -14136,8 +14658,8 @@ function __c21(j: number): any {
         S.Struct({
           action: S.String,
           sequenceNumber: S.Number,
-          wellKnownCommunities: S.optional(__S(8032, __c251, 0)),
-          communityMembers: __S(5600, __c175, 0),
+          wellKnownCommunities: S.optional(__S(8832, __c276, 0)),
+          communityMembers: __S(5632, __c176, 0),
         }),
       ).annotate({ identifier: "IpCommunityRule" });
     case 1:
@@ -14148,24 +14670,12 @@ function __c21(j: number): any {
           annotation: S.optional(S.String),
           networkFabricId: S.optional(S.String),
           ipCommunityRules: __S(673, __c21, 1),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpCommunityProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(674, __c21, 2),
-        }),
-      ).annotate({ identifier: "CreateIpCommunityResponse" });
   }
 }
 function __c22(j: number): any {
@@ -14201,7 +14711,7 @@ function __c23(j: number): any {
         ),
       ).annotate({ identifier: "ListNetworkFabricSkusBySubscriptionRequest" });
     case 1:
-      return S.Array(__S(7713, __c241, 1));
+      return S.Array(__S(8289, __c259, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14229,7 +14739,7 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListNetworkInterfaceByNetworkDeviceRequest" });
     case 1:
-      return S.Array(__S(5089, __c159, 1));
+      return S.Array(__S(8384, __c262, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14260,7 +14770,7 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5155, __c161, 3));
+      return S.Array(__S(8448, __c264, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14308,7 +14818,7 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5217, __c163, 1));
+      return S.Array(__S(8512, __c266, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14356,7 +14866,7 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5281, __c165, 1));
+      return S.Array(__S(8576, __c268, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14404,7 +14914,7 @@ function __c34(j: number): any {
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5348, __c167, 4));
+      return S.Array(__S(8640, __c270, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14429,7 +14939,7 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipExtendedCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
           properties: __S(1152, __c36, 0),
         }).pipe(
@@ -14441,6 +14951,20 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateIpExtendedCommunityRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(1186, __c37, 2),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateIpExtendedCommunityResponse" });
   }
 }
 function __c37(j: number): any {
@@ -14450,7 +14974,7 @@ function __c37(j: number): any {
         S.Struct({
           action: S.String,
           sequenceNumber: S.Number,
-          routeTargets: __S(5600, __c175, 0),
+          routeTargets: __S(5632, __c176, 0),
         }),
       ).annotate({ identifier: "IpExtendedCommunityRule" });
     case 1:
@@ -14461,24 +14985,12 @@ function __c37(j: number): any {
           annotation: S.optional(S.String),
           ipExtendedCommunityRules: __S(1185, __c37, 1),
           networkFabricId: S.optional(S.String),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpExtendedCommunityProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(1186, __c37, 2),
-        }),
-      ).annotate({ identifier: "CreateIpExtendedCommunityResponse" });
   }
 }
 function __c38(j: number): any {
@@ -14519,7 +15031,7 @@ function __c39(j: number): any {
 function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5417, __c169, 9));
+      return S.Array(__S(8704, __c272, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14564,7 +15076,7 @@ function __c42(j: number): any {
         ),
       ).annotate({ identifier: "ListNetworkToNetworkInterconnectByNetworkFabricRequest" });
     case 1:
-      return S.Array(__S(5479, __c171, 7));
+      return S.Array(__S(8768, __c274, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14638,7 +15150,7 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5545, __c173, 9));
+      return S.Array(__S(8992, __c281, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14691,6 +15203,26 @@ function __c48(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(5666, __c177, 2)),
+          error: S.optional(__S(35, __c1, 3)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "LockNetworkFabricFabricResponse" });
+  }
+}
+function __c49(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           neighborGroupName: S.String.pipe(T.Label()),
@@ -14705,7 +15237,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "NeighborGroupsResyncRequest" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14724,13 +15256,13 @@ function __c49(j: number): any {
       ).annotate({ identifier: "NetworkBootstrapDevicesResyncPasswordsRequest" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipPrefixRules: __S(1633, __c51, 1),
+          ipPrefixRules: __S(1665, __c52, 1),
         }),
       ).annotate({ identifier: "IpPrefixPropertiesInput" });
     case 1:
@@ -14739,9 +15271,9 @@ function __c50(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipPrefixName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(1600, __c50, 0),
+          properties: __S(1632, __c51, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14751,9 +15283,23 @@ function __c50(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateIpPrefixRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(1666, __c52, 2),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateIpPrefixResponse" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14766,34 +15312,22 @@ function __c51(j: number): any {
         }),
       ).annotate({ identifier: "IpPrefixRule" });
     case 1:
-      return S.Array(__S(1632, __c51, 0));
+      return S.Array(__S(1664, __c52, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           networkFabricId: S.optional(S.String),
-          ipPrefixRules: __S(1633, __c51, 1),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          ipPrefixRules: __S(1665, __c52, 1),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpPrefixProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(1634, __c51, 2),
-        }),
-      ).annotate({ identifier: "CreateIpPrefixResponse" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14813,7 +15347,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "NetworkBootstrapDevicesUpgradeRequest" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14832,7 +15366,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "NetworkDevicesResyncCertificatesRequest" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14851,7 +15385,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "NetworkDevicesResyncPasswordsRequest" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14872,7 +15406,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "NetworkDevicesUpgradeRequest" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14904,15 +15438,17 @@ function __c56(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(1793, __c56, 1)),
+          properties: S.optional(__S(1825, __c57, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ArmConfigurationDiffOperationResponse" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14931,7 +15467,7 @@ function __c57(j: number): any {
       ).annotate({ identifier: "NetworkFabricsDeprovisionRequest" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14964,15 +15500,17 @@ function __c58(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(1857, __c58, 1)),
+          properties: S.optional(__S(1889, __c59, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "DiscardCommitBatchOperationResponse" });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14991,7 +15529,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "NetworkFabricsResyncCertificatesRequest" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15010,7 +15548,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "NetworkFabricsResyncPasswordsRequest" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15031,7 +15569,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "NetworkFabricsUpgradeRequest" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15050,10 +15588,10 @@ function __c62(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l2IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(1984, __c62, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(2016, __c63, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15063,28 +15601,43 @@ function __c62(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateL2IsolationDomainRequest" });
-  }
-}
-function __c63(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(2048, __c64, 0)));
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(2016, __c63, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(2144, __c67, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
-      ).annotate({ identifier: "CreateL2IsolationDomainRequestIdentity" });
+      ).annotate({ identifier: "CreateL2IsolationDomainResponse" });
   }
 }
 function __c64(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(2080, __c65, 0)));
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(2048, __c64, 0)),
+        }),
+      ).annotate({ identifier: "CreateL2IsolationDomainRequestIdentity" });
   }
 }
 function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
+  }
+}
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15094,19 +15647,19 @@ function __c65(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(2080, __c65, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(2112, __c66, 0)));
     case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(2081, __c65, 1)),
+          userAssignedIdentities: S.optional(__S(2113, __c66, 1)),
         }),
       ).annotate({ identifier: "CreateL2IsolationDomainResponseIdentity" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15117,28 +15670,15 @@ function __c66(j: number): any {
           mtu: S.optional(S.Number),
           extendedVlan: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "L2IsolationDomainProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(2112, __c66, 0),
-          identity: S.optional(__S(2082, __c65, 2)),
-        }),
-      ).annotate({ identifier: "CreateL2IsolationDomainResponse" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15170,15 +15710,17 @@ function __c67(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(2145, __c67, 1)),
+          properties: S.optional(__S(2177, __c68, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ViewDeviceConfigurationOperationResponse" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15197,7 +15739,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "NetworkTapRulesResyncRequest" });
   }
 }
-function __c69(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15216,7 +15758,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "NetworkTapsResyncRequest" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15235,7 +15777,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "ProvisionNetworkFabricRequest" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15254,7 +15796,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "RebootNetworkBootstrapDeviceRequest" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15274,7 +15816,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "RebootNetworkDeviceRequest" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15293,7 +15835,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "RefreshNetworkBootstrapDeviceConfigurationRequest" });
   }
 }
-function __c74(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15312,7 +15854,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "RefreshNetworkDeviceConfigurationRequest" });
   }
 }
-function __c75(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15331,7 +15873,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "RefreshNetworkFabricConfigurationRequest" });
   }
 }
-function __c76(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15350,7 +15892,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "RotateNetworkFabricCertificatesRequest" });
   }
 }
-function __c77(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15358,14 +15900,14 @@ function __c77(j: number): any {
           annotation: S.optional(S.String),
           redistributeConnectedSubnets: S.optional(S.String),
           redistributeStaticRoutes: S.optional(S.String),
-          aggregateRouteConfiguration: S.optional(__S(2498, __c78, 2)),
-          connectedSubnetRoutePolicy: S.optional(__S(2499, __c78, 3)),
+          aggregateRouteConfiguration: S.optional(__S(2530, __c79, 2)),
+          connectedSubnetRoutePolicy: S.optional(__S(2531, __c79, 3)),
           networkFabricId: S.String,
-          staticRouteRoutePolicy: S.optional(__S(2499, __c78, 3)),
-          uniqueRdConfiguration: S.optional(__S(2048, __c64, 0)),
-          v4routePrefixLimit: S.optional(__S(2500, __c78, 4)),
-          v6routePrefixLimit: S.optional(__S(2500, __c78, 4)),
-          exportPolicyConfiguration: S.optional(__S(8064, __c252, 0)),
+          staticRouteRoutePolicy: S.optional(__S(2531, __c79, 3)),
+          uniqueRdConfiguration: S.optional(__S(2080, __c65, 0)),
+          v4routePrefixLimit: S.optional(__S(2532, __c79, 4)),
+          v6routePrefixLimit: S.optional(__S(2532, __c79, 4)),
+          exportPolicyConfiguration: S.optional(__S(8864, __c277, 0)),
         }),
       ).annotate({ identifier: "L3IsolationDomainPropertiesInput" });
     case 1:
@@ -15374,10 +15916,10 @@ function __c77(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(2464, __c77, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(2496, __c78, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15387,9 +15929,24 @@ function __c77(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateL3IsolationDomainRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(2534, __c79, 6),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateL3IsolationDomainResponse" });
   }
 }
-function __c78(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15398,18 +15955,18 @@ function __c78(j: number): any {
         }),
       ).annotate({ identifier: "AggregateRoute" });
     case 1:
-      return S.Array(__S(2496, __c78, 0));
+      return S.Array(__S(2528, __c79, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ipv4Routes: S.optional(__S(2497, __c78, 1)),
-          ipv6Routes: S.optional(__S(2497, __c78, 1)),
+          ipv4Routes: S.optional(__S(2529, __c79, 1)),
+          ipv6Routes: S.optional(__S(2529, __c79, 1)),
         }),
       ).annotate({ identifier: "AggregateRouteConfiguration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
         }),
       ).annotate({ identifier: "ConnectedSubnetRoutePolicy" });
     case 4:
@@ -15422,7 +15979,7 @@ function __c78(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          uniqueRds: S.optional(__S(5600, __c175, 0)),
+          uniqueRds: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "L3UniqueRouteDistinguisherProperties" });
     case 6:
@@ -15431,36 +15988,23 @@ function __c78(j: number): any {
           annotation: S.optional(S.String),
           redistributeConnectedSubnets: S.optional(S.String),
           redistributeStaticRoutes: S.optional(S.String),
-          aggregateRouteConfiguration: S.optional(__S(2498, __c78, 2)),
-          connectedSubnetRoutePolicy: S.optional(__S(2499, __c78, 3)),
+          aggregateRouteConfiguration: S.optional(__S(2530, __c79, 2)),
+          connectedSubnetRoutePolicy: S.optional(__S(2531, __c79, 3)),
           networkFabricId: S.String,
-          staticRouteRoutePolicy: S.optional(__S(2499, __c78, 3)),
-          uniqueRdConfiguration: S.optional(__S(2501, __c78, 5)),
-          v4routePrefixLimit: S.optional(__S(2500, __c78, 4)),
-          v6routePrefixLimit: S.optional(__S(2500, __c78, 4)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
-          exportPolicyConfiguration: S.optional(__S(8064, __c252, 0)),
+          staticRouteRoutePolicy: S.optional(__S(2531, __c79, 3)),
+          uniqueRdConfiguration: S.optional(__S(2533, __c79, 5)),
+          v4routePrefixLimit: S.optional(__S(2532, __c79, 4)),
+          v6routePrefixLimit: S.optional(__S(2532, __c79, 4)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
+          exportPolicyConfiguration: S.optional(__S(8864, __c277, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "L3IsolationDomainProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(2502, __c78, 6),
-          identity: S.optional(__S(2082, __c65, 2)),
-        }),
-      ).annotate({ identifier: "CreateL3IsolationDomainResponse" });
   }
 }
-function __c79(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15479,7 +16023,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "RotateNetworkFabricPasswordsRequest" });
   }
 }
-function __c80(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15512,15 +16056,17 @@ function __c80(j: number): any {
           endTime: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(2561, __c80, 1)),
+          properties: S.optional(__S(2593, __c81, 1)),
           resourceId: S.optional(S.String),
           startTime: S.optional(S.String),
           status: S.String,
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "RunNetworkDeviceRoCommandResponse" });
   }
 }
-function __c81(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15555,68 +16101,70 @@ function __c81(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(2593, __c81, 1)),
+          properties: S.optional(__S(2625, __c82, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "NetworkDeviceRunRwCommandResponse" });
   }
 }
-function __c82(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           portType: S.optional(S.String),
           layer4Protocol: S.optional(S.String),
-          ports: S.optional(__S(5600, __c175, 0)),
-          portGroupNames: S.optional(__S(5600, __c175, 0)),
-          flags: S.optional(__S(5600, __c175, 0)),
+          ports: S.optional(__S(5632, __c176, 0)),
+          portGroupNames: S.optional(__S(5632, __c176, 0)),
+          flags: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "AccessControlListPortConditionPatch" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          protocolTypes: S.optional(__S(5600, __c175, 0)),
-          vlanMatchCondition: S.optional(__S(6784, __c212, 0)),
-          ipCondition: S.optional(__S(6785, __c212, 1)),
-          etherTypes: S.optional(__S(5600, __c175, 0)),
-          fragments: S.optional(__S(5600, __c175, 0)),
-          ipLengths: S.optional(__S(5600, __c175, 0)),
-          ttlValues: S.optional(__S(5600, __c175, 0)),
-          dscpMarkings: S.optional(__S(5600, __c175, 0)),
-          portCondition: S.optional(__S(2624, __c82, 0)),
-          protocolNeighbors: S.optional(__S(5600, __c175, 0)),
-          icmpConfiguration: S.optional(__S(6817, __c213, 1)),
+          protocolTypes: S.optional(__S(5632, __c176, 0)),
+          vlanMatchCondition: S.optional(__S(7040, __c220, 0)),
+          ipCondition: S.optional(__S(7041, __c220, 1)),
+          etherTypes: S.optional(__S(5632, __c176, 0)),
+          fragments: S.optional(__S(5632, __c176, 0)),
+          ipLengths: S.optional(__S(5632, __c176, 0)),
+          ttlValues: S.optional(__S(5632, __c176, 0)),
+          dscpMarkings: S.optional(__S(5632, __c176, 0)),
+          portCondition: S.optional(__S(2656, __c83, 0)),
+          protocolNeighbors: S.optional(__S(5632, __c176, 0)),
+          icmpConfiguration: S.optional(__S(7073, __c221, 1)),
         }),
       ).annotate({ identifier: "AccessControlListMatchConditionPatch" });
     case 2:
-      return S.Array(__S(2625, __c82, 1));
+      return S.Array(__S(2657, __c83, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
           ipAddressType: S.optional(S.String),
-          matchConditions: S.optional(__S(2626, __c82, 2)),
-          actions: S.optional(__S(6824, __c213, 8)),
+          matchConditions: S.optional(__S(2658, __c83, 2)),
+          actions: S.optional(__S(7080, __c221, 8)),
         }),
       ).annotate({ identifier: "AccessControlListMatchConfigurationPatch" });
     case 4:
-      return S.Array(__S(2627, __c82, 3));
+      return S.Array(__S(2659, __c83, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           configurationType: S.optional(S.String),
           aclsUrl: S.optional(S.String),
           defaultAction: S.optional(S.String),
-          matchConfigurations: S.optional(__S(2628, __c82, 4)),
-          dynamicMatchConfigurations: S.optional(__S(6793, __c212, 9)),
-          controlPlaneAclConfiguration: S.optional(__S(6837, __c213, 21)),
+          matchConfigurations: S.optional(__S(2660, __c83, 4)),
+          dynamicMatchConfigurations: S.optional(__S(7049, __c220, 9)),
+          controlPlaneAclConfiguration: S.optional(__S(7093, __c221, 21)),
           aclType: S.optional(S.String),
           deviceRole: S.optional(S.String),
-          globalAccessControlListActions: S.optional(__S(6827, __c213, 11)),
+          globalAccessControlListActions: S.optional(__S(7083, __c221, 11)),
           annotation: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessControlListPatchProperties" });
@@ -15626,8 +16174,8 @@ function __c82(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accessControlListName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(2629, __c82, 5)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(2661, __c83, 5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15637,9 +16185,23 @@ function __c82(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAccessControlListRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(7094, __c221, 22),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateAccessControlListResponse" });
   }
 }
-function __c83(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15647,7 +16209,7 @@ function __c83(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accessControlListName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -15660,13 +16222,13 @@ function __c83(j: number): any {
       ).annotate({ identifier: "UpdateAccessControlListAdministrativeStateRequest" });
   }
 }
-function __c84(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          successfulResources: S.optional(__S(5600, __c175, 0)),
-          failedResources: S.optional(__S(5600, __c175, 0)),
+          successfulResources: S.optional(__S(5632, __c176, 0)),
+          failedResources: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "UpdateAdministrativeStateResponseProperties" });
     case 1:
@@ -15678,15 +16240,17 @@ function __c84(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(2688, __c84, 0)),
+          properties: S.optional(__S(2720, __c85, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "UpdateAdministrativeStateResponse" });
   }
 }
-function __c85(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15698,14 +16262,14 @@ function __c85(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.optional(S.Number),
           peerASN: S.optional(S.Number),
-          bfdConfiguration: S.optional(__S(7520, __c235, 0)),
+          bfdConfiguration: S.optional(__S(8064, __c252, 0)),
           ingressAclId: S.optional(S.String),
           egressAclId: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(7456, __c233, 0)),
+          bmpConfiguration: S.optional(__S(8000, __c250, 0)),
           v4OverV6BgpSession: S.optional(S.String),
           v6OverV4BgpSession: S.optional(S.String),
-          nativeIpv4PrefixLimit: S.optional(__S(7618, __c238, 2)),
-          nativeIpv6PrefixLimit: S.optional(__S(7618, __c238, 2)),
+          nativeIpv4PrefixLimit: S.optional(__S(8162, __c255, 2)),
+          nativeIpv6PrefixLimit: S.optional(__S(8162, __c255, 2)),
         }),
       ).annotate({ identifier: "ExternalNetworkPatchPropertiesOptionAPropertiesInput" });
     case 1:
@@ -15713,12 +16277,12 @@ function __c85(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
-          importRoutePolicy: S.optional(__S(7584, __c237, 0)),
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          importRoutePolicy: S.optional(__S(8128, __c254, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
           peeringOption: S.optional(S.String),
-          optionBProperties: S.optional(__S(7329, __c229, 1)),
-          optionAProperties: S.optional(__S(2720, __c85, 0)),
-          staticRouteConfiguration: S.optional(__S(7360, __c230, 0)),
+          optionBProperties: S.optional(__S(7873, __c246, 1)),
+          optionAProperties: S.optional(__S(2752, __c86, 0)),
+          staticRouteConfiguration: S.optional(__S(7904, __c247, 0)),
         }),
       ).annotate({ identifier: "ExternalNetworkPatchPropertiesInput" });
     case 2:
@@ -15728,7 +16292,7 @@ function __c85(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           externalNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2721, __c85, 1)),
+          properties: S.optional(__S(2753, __c86, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15738,9 +16302,21 @@ function __c85(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateExternalNetworkRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(7969, __c249, 1),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateExternalNetworkResponse" });
   }
 }
-function __c86(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15749,7 +16325,7 @@ function __c86(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           externalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -15762,7 +16338,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "UpdateExternalNetworkAdministrativeStateRequest" });
   }
 }
-function __c87(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15784,7 +16360,7 @@ function __c87(j: number): any {
       ).annotate({ identifier: "UpdateExternalNetworkBfdAdministrativeStateRequest" });
   }
 }
-function __c88(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15802,15 +16378,17 @@ function __c88(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(2816, __c88, 0)),
+          properties: S.optional(__S(2848, __c89, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ExternalNetworkUpdateBfdAdministrativeStateResponse" });
   }
 }
-function __c89(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15819,7 +16397,7 @@ function __c89(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           externalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -15832,12 +16410,12 @@ function __c89(j: number): any {
       ).annotate({ identifier: "UpdateExternalNetworkStaticRouteBfdAdministrativeStateRequest" });
   }
 }
-function __c90(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          neighborIpExclusions: S.optional(__S(5600, __c175, 0)),
+          neighborIpExclusions: S.optional(__S(5632, __c176, 0)),
           bmpConfigurationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "InternalNetworkBmpPatchProperties" });
@@ -15845,16 +16423,16 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bfdConfiguration: S.optional(__S(7520, __c235, 0)),
+          bfdConfiguration: S.optional(__S(8064, __c252, 0)),
           defaultRouteOriginate: S.optional(S.String),
           allowAS: S.optional(S.Number),
           allowASOverride: S.optional(S.String),
           peerASN: S.optional(S.Number),
-          ipv4ListenRangePrefixes: S.optional(__S(5600, __c175, 0)),
-          ipv6ListenRangePrefixes: S.optional(__S(5600, __c175, 0)),
-          ipv4NeighborAddress: S.optional(__S(8097, __c253, 1)),
-          ipv6NeighborAddress: S.optional(__S(8097, __c253, 1)),
-          bmpConfiguration: S.optional(__S(2880, __c90, 0)),
+          ipv4ListenRangePrefixes: S.optional(__S(5632, __c176, 0)),
+          ipv6ListenRangePrefixes: S.optional(__S(5632, __c176, 0)),
+          ipv4NeighborAddress: S.optional(__S(8897, __c278, 1)),
+          ipv6NeighborAddress: S.optional(__S(8897, __c278, 1)),
+          bmpConfiguration: S.optional(__S(2912, __c91, 0)),
           v4OverV6BgpSession: S.optional(S.String),
           v6OverV4BgpSession: S.optional(S.String),
         }),
@@ -15864,17 +16442,17 @@ function __c90(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           mtu: S.optional(S.Number),
-          connectedIPv4Subnets: S.optional(__S(8129, __c254, 1)),
-          connectedIPv6Subnets: S.optional(__S(8129, __c254, 1)),
-          importRoutePolicy: S.optional(__S(7584, __c237, 0)),
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          connectedIPv4Subnets: S.optional(__S(8929, __c279, 1)),
+          connectedIPv6Subnets: S.optional(__S(8929, __c279, 1)),
+          importRoutePolicy: S.optional(__S(8128, __c254, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
           ingressAclId: S.optional(S.String),
           egressAclId: S.optional(S.String),
           isMonitoringEnabled: S.optional(S.String),
-          bgpConfiguration: S.optional(__S(2881, __c90, 1)),
-          staticRouteConfiguration: S.optional(__S(7360, __c230, 0)),
-          nativeIpv4PrefixLimit: S.optional(__S(7618, __c238, 2)),
-          nativeIpv6PrefixLimit: S.optional(__S(7618, __c238, 2)),
+          bgpConfiguration: S.optional(__S(2913, __c91, 1)),
+          staticRouteConfiguration: S.optional(__S(7904, __c247, 0)),
+          nativeIpv4PrefixLimit: S.optional(__S(8162, __c255, 2)),
+          nativeIpv6PrefixLimit: S.optional(__S(8162, __c255, 2)),
         }),
       ).annotate({ identifier: "InternalNetworkPatchPropertiesInput" });
     case 3:
@@ -15884,7 +16462,7 @@ function __c90(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2882, __c90, 2)),
+          properties: S.optional(__S(2914, __c91, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15894,15 +16472,27 @@ function __c90(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInternalNetworkRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(8935, __c279, 7),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateInternalNetworkResponse" });
   }
 }
-function __c91(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          destination: __S(2944, __c92, 0),
+          destination: __S(2976, __c93, 0),
         }),
       ).annotate({ identifier: "NeighborGroupPropertiesInput" });
     case 1:
@@ -15911,10 +16501,10 @@ function __c91(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           neighborGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(2912, __c91, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(2944, __c92, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15924,41 +16514,19 @@ function __c91(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNeighborGroupRequest" });
-  }
-}
-function __c92(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          ipv4Addresses: S.optional(__S(5600, __c175, 0)),
-          ipv6Addresses: S.optional(__S(5600, __c175, 0)),
-        }),
-      ).annotate({ identifier: "NeighborGroupDestination" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          destination: __S(2944, __c92, 0),
-          networkTapIds: S.optional(__S(5600, __c175, 0)),
-          networkTapRuleIds: S.optional(__S(5600, __c175, 0)),
-          networkFabricIds: S.optional(__S(5600, __c175, 0)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
-          provisioningState: S.optional(S.String),
-          configurationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NeighborGroupProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(2945, __c92, 1),
-          identity: S.optional(__S(2082, __c65, 2)),
+          properties: __S(2977, __c93, 1),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateNeighborGroupResponse" });
   }
@@ -15968,11 +16536,35 @@ function __c93(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          ipv4Addresses: S.optional(__S(5632, __c176, 0)),
+          ipv6Addresses: S.optional(__S(5632, __c176, 0)),
+        }),
+      ).annotate({ identifier: "NeighborGroupDestination" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          destination: __S(2976, __c93, 0),
+          networkTapIds: S.optional(__S(5632, __c176, 0)),
+          networkTapRuleIds: S.optional(__S(5632, __c176, 0)),
+          networkFabricIds: S.optional(__S(5632, __c176, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
+          provisioningState: S.optional(S.String),
+          configurationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NeighborGroupProperties" });
+  }
+}
+function __c94(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -15985,7 +16577,7 @@ function __c93(j: number): any {
       ).annotate({ identifier: "UpdateInternalNetworkAdministrativeStateRequest" });
   }
 }
-function __c94(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16008,7 +16600,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "UpdateInternalNetworkBfdAdministrativeStateRequest" });
   }
 }
-function __c95(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16019,11 +16611,11 @@ function __c95(j: number): any {
         }),
       ).annotate({ identifier: "NeighborAddressBfdAdministrativeStatus" });
     case 1:
-      return S.Array(__S(3040, __c95, 0));
+      return S.Array(__S(3072, __c96, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          neighborAddressAdministrativeStatus: S.optional(__S(3041, __c95, 1)),
+          neighborAddressAdministrativeStatus: S.optional(__S(3073, __c96, 1)),
         }),
       ).annotate({ identifier: "InternalNetworkUpdateBfdAdministrativeStateResponseProperties" });
     case 3:
@@ -16035,15 +16627,17 @@ function __c95(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(3042, __c95, 2)),
+          properties: S.optional(__S(3074, __c96, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "InternalNetworkUpdateBfdAdministrativeStateResponse" });
   }
 }
-function __c96(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16065,7 +16659,7 @@ function __c96(j: number): any {
       ).annotate({ identifier: "UpdateInternalNetworkBgpAdministrativeStateRequest" });
   }
 }
-function __c97(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16074,7 +16668,7 @@ function __c97(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16087,7 +16681,7 @@ function __c97(j: number): any {
       ).annotate({ identifier: "UpdateInternalNetworkStaticRouteBfdAdministrativeStateRequest" });
   }
 }
-function __c98(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16101,8 +16695,8 @@ function __c98(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           internetGatewayName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3136, __c98, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3168, __c99, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16112,9 +16706,23 @@ function __c98(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInternetGatewayRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(9472, __c296, 0),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateInternetGatewayResponse" });
   }
 }
-function __c99(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16122,7 +16730,7 @@ function __c99(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           internetGatewayRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16132,9 +16740,23 @@ function __c99(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInternetGatewayRuleRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(163, __c5, 3),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateInternetGatewayRuleResponse" });
   }
 }
-function __c100(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16148,8 +16770,8 @@ function __c100(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3200, __c100, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3232, __c101, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16159,9 +16781,23 @@ function __c100(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateIpCommunityRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(674, __c21, 2),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateIpCommunityResponse" });
   }
 }
-function __c101(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16176,8 +16812,8 @@ function __c101(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipExtendedCommunityName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3232, __c101, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3264, __c102, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16187,15 +16823,29 @@ function __c101(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateIpExtendedCommunityRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(1186, __c37, 2),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateIpExtendedCommunityResponse" });
   }
 }
-function __c102(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          ipPrefixRules: S.optional(__S(1633, __c51, 1)),
+          ipPrefixRules: S.optional(__S(1665, __c52, 1)),
         }),
       ).annotate({ identifier: "IpPrefixPatchProperties" });
     case 1:
@@ -16204,8 +16854,8 @@ function __c102(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ipPrefixName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3264, __c102, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3296, __c103, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16215,9 +16865,23 @@ function __c102(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateIpPrefixRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(1666, __c52, 2),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateIpPrefixResponse" });
   }
 }
-function __c103(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16234,9 +16898,9 @@ function __c103(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l2IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3296, __c103, 0)),
-          identity: S.optional(__S(3329, __c104, 1)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3328, __c104, 0)),
+          identity: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16246,22 +16910,37 @@ function __c103(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateL2IsolationDomainRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(2144, __c67, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateL2IsolationDomainResponse" });
   }
 }
-function __c104(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(2048, __c64, 0));
+      return S.Record(S.String, __S(2080, __c65, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(3328, __c104, 0)),
+          userAssignedIdentities: S.optional(__S(3360, __c105, 0)),
         }),
       ).annotate({ identifier: "ManagedServiceIdentityPatchInput" });
   }
 }
-function __c105(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16278,10 +16957,10 @@ function __c105(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(3360, __c105, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(3392, __c106, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16291,9 +16970,24 @@ function __c105(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkBootstrapDeviceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(3424, __c107, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateNetworkBootstrapDeviceResponse" });
   }
 }
-function __c106(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16314,22 +17008,9 @@ function __c106(j: number): any {
           configurationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkBootstrapDeviceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(3392, __c106, 0),
-          identity: S.optional(__S(2082, __c65, 2)),
-        }),
-      ).annotate({ identifier: "CreateNetworkBootstrapDeviceResponse" });
   }
 }
-function __c107(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16337,7 +17018,7 @@ function __c107(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l2IsolationDomainName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16350,7 +17031,7 @@ function __c107(j: number): any {
       ).annotate({ identifier: "UpdateL2IsolationDomainAdministrativeStateRequest" });
   }
 }
-function __c108(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16358,12 +17039,12 @@ function __c108(j: number): any {
           annotation: S.optional(S.String),
           redistributeConnectedSubnets: S.optional(S.String),
           redistributeStaticRoutes: S.optional(S.String),
-          aggregateRouteConfiguration: S.optional(__S(2498, __c78, 2)),
-          connectedSubnetRoutePolicy: S.optional(__S(2499, __c78, 3)),
-          staticRouteRoutePolicy: S.optional(__S(2499, __c78, 3)),
-          v4routePrefixLimit: S.optional(__S(2500, __c78, 4)),
-          v6routePrefixLimit: S.optional(__S(2500, __c78, 4)),
-          exportPolicyConfiguration: S.optional(__S(8064, __c252, 0)),
+          aggregateRouteConfiguration: S.optional(__S(2530, __c79, 2)),
+          connectedSubnetRoutePolicy: S.optional(__S(2531, __c79, 3)),
+          staticRouteRoutePolicy: S.optional(__S(2531, __c79, 3)),
+          v4routePrefixLimit: S.optional(__S(2532, __c79, 4)),
+          v6routePrefixLimit: S.optional(__S(2532, __c79, 4)),
+          exportPolicyConfiguration: S.optional(__S(8864, __c277, 0)),
         }),
       ).annotate({ identifier: "L3IsolationDomainPatchProperties" });
     case 1:
@@ -16372,9 +17053,9 @@ function __c108(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3456, __c108, 0)),
-          identity: S.optional(__S(3329, __c104, 1)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3488, __c109, 0)),
+          identity: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16384,9 +17065,24 @@ function __c108(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateL3IsolationDomainRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(2534, __c79, 6),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateL3IsolationDomainResponse" });
   }
 }
-function __c109(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16394,7 +17090,7 @@ function __c109(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16407,13 +17103,13 @@ function __c109(j: number): any {
       ).annotate({ identifier: "UpdateL3IsolationDomainAdministrativeStateRequest" });
   }
 }
-function __c110(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          destination: S.optional(__S(2944, __c92, 0)),
+          destination: S.optional(__S(2976, __c93, 0)),
         }),
       ).annotate({ identifier: "NeighborGroupPatchProperties" });
     case 1:
@@ -16422,9 +17118,9 @@ function __c110(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           neighborGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3520, __c110, 0)),
-          identity: S.optional(__S(3329, __c104, 1)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3552, __c111, 0)),
+          identity: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16434,9 +17130,24 @@ function __c110(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNeighborGroupRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(2977, __c93, 1),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNeighborGroupResponse" });
   }
 }
-function __c111(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16452,9 +17163,9 @@ function __c111(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3552, __c111, 0)),
-          identity: S.optional(__S(3329, __c104, 1)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3584, __c112, 0)),
+          identity: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16464,9 +17175,24 @@ function __c111(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkBootstrapDeviceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(3424, __c107, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkBootstrapDeviceResponse" });
   }
 }
-function __c112(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16474,7 +17200,7 @@ function __c112(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16487,7 +17213,7 @@ function __c112(j: number): any {
       ).annotate({ identifier: "UpdateNetworkBootstrapDeviceAdministrativeStateRequest" });
   }
 }
-function __c113(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16504,7 +17230,7 @@ function __c113(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
           networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(3616, __c113, 0)),
+          properties: S.optional(__S(3648, __c114, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16514,9 +17240,21 @@ function __c113(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkBootstrapInterfaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(3840, __c120, 0),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkBootstrapInterfaceResponse" });
   }
 }
-function __c114(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16525,7 +17263,7 @@ function __c114(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
           networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16538,7 +17276,7 @@ function __c114(j: number): any {
       ).annotate({ identifier: "UpdateNetworkBootstrapInterfaceAdministrativeStateRequest" });
   }
 }
-function __c115(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16546,7 +17284,7 @@ function __c115(j: number): any {
           annotation: S.optional(S.String),
           hostName: S.optional(S.String),
           serialNumber: S.optional(S.String),
-          identitySelector: S.optional(__S(3712, __c116, 0)),
+          identitySelector: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({ identifier: "NetworkDevicePatchParametersProperties" });
     case 1:
@@ -16555,9 +17293,9 @@ function __c115(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3680, __c115, 0)),
-          identity: S.optional(__S(3329, __c104, 1)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3712, __c116, 0)),
+          identity: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16567,9 +17305,24 @@ function __c115(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkDeviceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(4291, __c134, 3),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkDeviceResponse" });
   }
 }
-function __c116(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16580,7 +17333,7 @@ function __c116(j: number): any {
       ).annotate({ identifier: "IdentitySelectorPatch" });
   }
 }
-function __c117(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16588,7 +17341,7 @@ function __c117(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16601,7 +17354,7 @@ function __c117(j: number): any {
       ).annotate({ identifier: "UpdateNetworkDeviceAdministrativeStateRequest" });
   }
 }
-function __c118(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16618,7 +17371,7 @@ function __c118(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkBootstrapDeviceName: S.String.pipe(T.Label()),
           networkBootstrapInterfaceName: S.String.pipe(T.Label()),
-          properties: __S(3776, __c118, 0),
+          properties: __S(3808, __c119, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16628,9 +17381,21 @@ function __c118(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkBootstrapInterfaceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(3840, __c120, 0),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateNetworkBootstrapInterfaceResponse" });
   }
 }
-function __c119(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16649,19 +17414,9 @@ function __c119(j: number): any {
           serialNumber: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkBootstrapInterfaceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          properties: __S(3808, __c119, 0),
-        }),
-      ).annotate({ identifier: "CreateNetworkBootstrapInterfaceResponse" });
   }
 }
-function __c120(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16685,7 +17440,7 @@ function __c120(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.optional(S.Number),
           peerASN: S.optional(S.Number),
-          bfdConfiguration: S.optional(__S(7520, __c235, 0)),
+          bfdConfiguration: S.optional(__S(8064, __c252, 0)),
         }),
       ).annotate({ identifier: "VpnOptionAPatchProperties" });
     case 2:
@@ -16693,22 +17448,22 @@ function __c120(j: number): any {
         S.Struct({
           networkToNetworkInterconnectId: S.optional(S.String),
           peeringOption: S.optional(S.String),
-          optionBProperties: S.optional(__S(7329, __c229, 1)),
-          optionAProperties: S.optional(__S(3841, __c120, 1)),
+          optionBProperties: S.optional(__S(7873, __c246, 1)),
+          optionAProperties: S.optional(__S(3873, __c121, 1)),
         }),
       ).annotate({ identifier: "VpnConfigurationPatchableProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          infrastructureVpnConfiguration: S.optional(__S(3842, __c120, 2)),
-          workloadVpnConfiguration: S.optional(__S(3842, __c120, 2)),
+          infrastructureVpnConfiguration: S.optional(__S(3874, __c121, 2)),
+          workloadVpnConfiguration: S.optional(__S(3874, __c121, 2)),
         }),
       ).annotate({ identifier: "ManagementNetworkPatchConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           storageAccountId: S.optional(S.String),
-          storageAccountIdentity: S.optional(__S(3712, __c116, 0)),
+          storageAccountIdentity: S.optional(__S(3744, __c117, 0)),
         }),
       ).annotate({ identifier: "StorageAccountPatchConfiguration" });
     case 5:
@@ -16720,16 +17475,16 @@ function __c120(j: number): any {
           ipv4Prefix: S.optional(S.String),
           ipv6Prefix: S.optional(S.String),
           fabricASN: S.optional(S.Number),
-          terminalServerConfiguration: S.optional(__S(3840, __c120, 0)),
-          managementNetworkConfiguration: S.optional(__S(3843, __c120, 3)),
-          storageAccountConfiguration: S.optional(__S(3844, __c120, 4)),
+          terminalServerConfiguration: S.optional(__S(3872, __c121, 0)),
+          managementNetworkConfiguration: S.optional(__S(3875, __c121, 3)),
+          storageAccountConfiguration: S.optional(__S(3876, __c121, 4)),
           hardwareAlertThreshold: S.optional(S.Number),
-          controlPlaneAcls: S.optional(__S(5600, __c175, 0)),
-          trustedIpPrefixes: S.optional(__S(5600, __c175, 0)),
-          uniqueRdConfiguration: S.optional(__S(4672, __c146, 0)),
-          qosConfiguration: S.optional(__S(4708, __c147, 4)),
-          featureFlags: S.optional(__S(4706, __c147, 2)),
-          authorizedTransceiver: S.optional(__S(4707, __c147, 3)),
+          controlPlaneAcls: S.optional(__S(5632, __c176, 0)),
+          trustedIpPrefixes: S.optional(__S(5632, __c176, 0)),
+          uniqueRdConfiguration: S.optional(__S(4704, __c147, 0)),
+          qosConfiguration: S.optional(__S(4740, __c148, 4)),
+          featureFlags: S.optional(__S(4738, __c148, 2)),
+          authorizedTransceiver: S.optional(__S(4739, __c148, 3)),
         }),
       ).annotate({ identifier: "NetworkFabricPatchProperties" });
     case 6:
@@ -16738,9 +17493,9 @@ function __c120(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3845, __c120, 5)),
-          identity: S.optional(__S(3329, __c104, 1)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3877, __c121, 5)),
+          identity: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16750,15 +17505,30 @@ function __c120(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkFabricRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(4749, __c148, 13),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkFabricResponse" });
   }
 }
-function __c121(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          infrastructureExpressRouteConnections: S.optional(__S(4993, __c156, 1)),
-          workloadExpressRouteConnections: S.optional(__S(4993, __c156, 1)),
+          infrastructureExpressRouteConnections: S.optional(__S(5025, __c157, 1)),
+          workloadExpressRouteConnections: S.optional(__S(5025, __c157, 1)),
         }),
       ).annotate({ identifier: "NetworkFabricControllerPatchProperties" });
     case 1:
@@ -16767,9 +17537,9 @@ function __c121(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricControllerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(3872, __c121, 0)),
-          identity: S.optional(__S(3329, __c104, 1)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(3904, __c122, 0)),
+          identity: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16779,9 +17549,24 @@ function __c121(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkFabricControllerRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5028, __c157, 4),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkFabricControllerResponse" });
   }
 }
-function __c122(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16789,7 +17574,7 @@ function __c122(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16802,7 +17587,7 @@ function __c122(j: number): any {
       ).annotate({ identifier: "UpdateNetworkFabricInfraManagementBfdConfigurationRequest" });
   }
 }
-function __c123(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16810,7 +17595,7 @@ function __c123(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16823,28 +17608,6 @@ function __c123(j: number): any {
       ).annotate({ identifier: "UpdateNetworkFabricWorkloadManagementBfdConfigurationRequest" });
   }
 }
-function __c124(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkDeviceName: S.String.pipe(T.Label()),
-          networkInterfaceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(5056, __c158, 0)),
-          identity: S.optional(__S(3329, __c104, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateNetworkInterfaceRequest" });
-  }
-}
 function __c125(j: number): any {
   switch (j) {
     case 0:
@@ -16854,7 +17617,42 @@ function __c125(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          properties: S.optional(__S(5088, __c159, 0)),
+          identity: S.optional(__S(3361, __c105, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkDevices/{networkDeviceName}/networkInterfaces/{networkInterfaceName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateNetworkInterfaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(5120, __c160, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkInterfaceResponse" });
+  }
+}
+function __c126(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
+          networkDeviceName: S.String.pipe(T.Label()),
+          networkInterfaceName: S.String.pipe(T.Label()),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16867,12 +17665,12 @@ function __c125(j: number): any {
       ).annotate({ identifier: "UpdateNetworkInterfaceAdministrativeStateRequest" });
   }
 }
-function __c126(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bmpConfiguration: S.optional(__S(5153, __c161, 1)),
+          bmpConfiguration: S.optional(__S(5185, __c162, 1)),
         }),
       ).annotate({ identifier: "NetworkMonitorPatchProperties" });
     case 1:
@@ -16881,8 +17679,8 @@ function __c126(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkMonitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(4032, __c126, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(4064, __c127, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16892,9 +17690,23 @@ function __c126(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkMonitorRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5186, __c162, 2),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkMonitorResponse" });
   }
 }
-function __c127(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16902,7 +17714,7 @@ function __c127(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkMonitorName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -16918,31 +17730,12 @@ function __c127(j: number): any {
         S.Struct({
           error: S.optional(__S(35, __c1, 3)),
           configurationState: S.optional(S.String),
-          successfulDevices: S.optional(__S(5600, __c175, 0)),
-          failedDevices: S.optional(__S(5600, __c175, 0)),
+          successfulDevices: S.optional(__S(5632, __c176, 0)),
+          failedDevices: S.optional(__S(5632, __c176, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "UpdateNetworkMonitorAdministrativeStateResponse" });
-  }
-}
-function __c128(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          subscriptionId: S.String.pipe(T.Label()),
-          resourceGroupName: S.String.pipe(T.Label()),
-          networkPacketBrokerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          identity: S.optional(__S(3329, __c104, 1)),
-        }).pipe(
-          T.Http({
-            method: "PATCH",
-            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
-            code: 200,
-            apiVersion: "2025-07-15",
-          }),
-        ),
-      ).annotate({ identifier: "UpdateNetworkPacketBrokerRequest" });
   }
 }
 function __c129(j: number): any {
@@ -16952,8 +17745,44 @@ function __c129(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
+          networkPacketBrokerName: S.String.pipe(T.Label()),
+          tags: S.optional(__S(7168, __c224, 0)),
+          identity: S.optional(__S(3361, __c105, 1)),
+        }).pipe(
+          T.Http({
+            method: "PATCH",
+            uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkPacketBrokers/{networkPacketBrokerName}",
+            code: 200,
+            apiVersion: "2025-07-15",
+          }),
+        ),
+      ).annotate({ identifier: "UpdateNetworkPacketBrokerRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5248, __c164, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkPacketBrokerResponse" });
+  }
+}
+function __c130(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          subscriptionId: S.String.pipe(T.Label()),
+          resourceGroupName: S.String.pipe(T.Label()),
           networkRackName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16963,9 +17792,23 @@ function __c129(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkRackRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5312, __c166, 0),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkRackResponse" });
   }
 }
-function __c130(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -16973,7 +17816,7 @@ function __c130(j: number): any {
           annotation: S.optional(S.String),
           hostName: S.optional(S.String),
           serialNumber: S.String,
-          identitySelector: S.optional(__S(4192, __c131, 0)),
+          identitySelector: S.optional(__S(4224, __c132, 0)),
           networkDeviceSku: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkDevicePropertiesInput" });
@@ -16983,10 +17826,10 @@ function __c130(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(4160, __c130, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(4192, __c131, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16996,9 +17839,24 @@ function __c130(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkDeviceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(4291, __c134, 3),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateNetworkDeviceResponse" });
   }
 }
-function __c131(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17009,7 +17867,7 @@ function __c131(j: number): any {
       ).annotate({ identifier: "IdentitySelector" });
   }
 }
-function __c132(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17025,15 +17883,15 @@ function __c132(j: number): any {
         S.Struct({
           lastRotationTime: S.optional(S.String),
           synchronizationStatus: S.optional(S.String),
-          secretArchiveReference: S.optional(__S(4224, __c132, 0)),
+          secretArchiveReference: S.optional(__S(4256, __c133, 0)),
           secretType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretRotationStatus" });
     case 2:
-      return S.Array(__S(4225, __c132, 1));
+      return S.Array(__S(4257, __c133, 1));
   }
 }
-function __c133(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17050,19 +17908,19 @@ function __c133(j: number): any {
           expireTime: S.optional(S.String),
           lastRotationTime: S.optional(S.String),
           synchronizationStatus: S.optional(S.String),
-          certificateArchiveReference: S.optional(__S(4256, __c133, 0)),
+          certificateArchiveReference: S.optional(__S(4288, __c134, 0)),
           certificateType: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateRotationStatus" });
     case 2:
-      return S.Array(__S(4257, __c133, 1));
+      return S.Array(__S(4289, __c134, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           hostName: S.optional(S.String),
           serialNumber: S.String,
-          identitySelector: S.optional(__S(4192, __c131, 0)),
+          identitySelector: S.optional(__S(4224, __c132, 0)),
           version: S.optional(S.String),
           networkDeviceSku: S.optional(S.String),
           networkDeviceRole: S.optional(S.String),
@@ -17070,31 +17928,18 @@ function __c133(j: number): any {
           managementIpv4Address: S.optional(S.String),
           managementIpv6Address: S.optional(S.String),
           rwDeviceConfig: S.optional(S.String),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
-          secretRotationStatus: S.optional(__S(4226, __c132, 2)),
-          certificateRotationStatus: S.optional(__S(4258, __c133, 2)),
+          secretRotationStatus: S.optional(__S(4258, __c133, 2)),
+          certificateRotationStatus: S.optional(__S(4290, __c134, 2)),
           networkFabricId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkDeviceProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(4259, __c133, 3),
-          identity: S.optional(__S(2082, __c65, 2)),
-        }),
-      ).annotate({ identifier: "CreateNetworkDeviceResponse" });
   }
 }
-function __c134(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17102,18 +17947,18 @@ function __c134(j: number): any {
           name: S.optional(S.String),
           destinationType: S.optional(S.String),
           destinationId: S.optional(S.String),
-          isolationDomainProperties: S.optional(__S(5344, __c167, 0)),
+          isolationDomainProperties: S.optional(__S(5376, __c168, 0)),
           destinationTapRuleId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DestinationPatchProperties" });
     case 1:
-      return S.Array(__S(4288, __c134, 0));
+      return S.Array(__S(4320, __c135, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           pollingType: S.optional(S.String),
-          destinations: S.optional(__S(4289, __c134, 1)),
+          destinations: S.optional(__S(4321, __c135, 1)),
         }),
       ).annotate({ identifier: "NetworkTapPatchProperties" });
     case 3:
@@ -17122,9 +17967,9 @@ function __c134(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(4290, __c134, 2)),
-          identity: S.optional(__S(3329, __c104, 1)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(4322, __c135, 2)),
+          identity: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17134,9 +17979,24 @@ function __c134(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkTapRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5379, __c168, 3),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkTapResponse" });
   }
 }
-function __c135(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17144,7 +18004,7 @@ function __c135(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -17157,51 +18017,51 @@ function __c135(j: number): any {
       ).annotate({ identifier: "UpdateNetworkTapAdministrativeStateRequest" });
   }
 }
-function __c136(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           portType: S.optional(S.String),
           layer4Protocol: S.optional(S.String),
-          ports: S.optional(__S(5600, __c175, 0)),
-          portGroupNames: S.optional(__S(5600, __c175, 0)),
+          ports: S.optional(__S(5632, __c176, 0)),
+          portGroupNames: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "PortConditionPatch" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          protocolTypes: S.optional(__S(5600, __c175, 0)),
-          vlanMatchCondition: S.optional(__S(6784, __c212, 0)),
-          ipCondition: S.optional(__S(6785, __c212, 1)),
+          protocolTypes: S.optional(__S(5632, __c176, 0)),
+          vlanMatchCondition: S.optional(__S(7040, __c220, 0)),
+          ipCondition: S.optional(__S(7041, __c220, 1)),
           encapsulationType: S.optional(S.String),
-          portCondition: S.optional(__S(4352, __c136, 0)),
+          portCondition: S.optional(__S(4384, __c137, 0)),
         }),
       ).annotate({ identifier: "NetworkTapRuleMatchConditionPatch" });
     case 2:
-      return S.Array(__S(4353, __c136, 1));
+      return S.Array(__S(4385, __c137, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
           ipAddressType: S.optional(S.String),
-          matchConditions: S.optional(__S(4354, __c136, 2)),
-          actions: S.optional(__S(5412, __c169, 4)),
+          matchConditions: S.optional(__S(4386, __c137, 2)),
+          actions: S.optional(__S(5444, __c170, 4)),
         }),
       ).annotate({ identifier: "NetworkTapRuleMatchConfigurationPatch" });
     case 4:
-      return S.Array(__S(4355, __c136, 3));
+      return S.Array(__S(4387, __c137, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           configurationType: S.optional(S.String),
           tapRulesUrl: S.optional(S.String),
-          matchConfigurations: S.optional(__S(4356, __c136, 4)),
-          dynamicMatchConfigurations: S.optional(__S(6793, __c212, 9)),
-          identitySelector: S.optional(__S(3712, __c116, 0)),
-          globalNetworkTapRuleActions: S.optional(__S(5415, __c169, 7)),
+          matchConfigurations: S.optional(__S(4388, __c137, 4)),
+          dynamicMatchConfigurations: S.optional(__S(7049, __c220, 9)),
+          identitySelector: S.optional(__S(3744, __c117, 0)),
+          globalNetworkTapRuleActions: S.optional(__S(5447, __c170, 7)),
         }),
       ).annotate({ identifier: "NetworkTapRulePatchProperties" });
     case 6:
@@ -17210,9 +18070,9 @@ function __c136(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(4357, __c136, 5)),
-          identity: S.optional(__S(3329, __c104, 1)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(4389, __c137, 5)),
+          identity: S.optional(__S(3361, __c105, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17222,9 +18082,24 @@ function __c136(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkTapRuleRequest" });
+    case 7:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5448, __c170, 8),
+          identity: S.optional(__S(2114, __c66, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkTapRuleResponse" });
   }
 }
-function __c137(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17232,7 +18107,7 @@ function __c137(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapRuleName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -17245,7 +18120,7 @@ function __c137(j: number): any {
       ).annotate({ identifier: "UpdateNetworkTapRuleAdministrativeStateRequest" });
   }
 }
-function __c138(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17256,20 +18131,20 @@ function __c138(j: number): any {
           secondaryIpv6Prefix: S.optional(S.String),
           peerASN: S.optional(S.Number),
           vlanId: S.optional(S.Number),
-          peLoopbackIpAddress: S.optional(__S(5600, __c175, 0)),
-          bmpConfiguration: S.optional(__S(7456, __c233, 0)),
-          prefixLimits: S.optional(__S(5475, __c171, 3)),
+          peLoopbackIpAddress: S.optional(__S(5632, __c176, 0)),
+          bmpConfiguration: S.optional(__S(8000, __c250, 0)),
+          prefixLimits: S.optional(__S(5507, __c172, 3)),
         }),
       ).annotate({ identifier: "OptionBLayer3ConfigurationPatchPropertiesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          layer2Configuration: S.optional(__S(5472, __c171, 0)),
-          optionBLayer3Configuration: S.optional(__S(4416, __c138, 0)),
-          npbStaticRouteConfiguration: S.optional(__S(7360, __c230, 0)),
-          staticRouteConfiguration: S.optional(__S(7360, __c230, 0)),
-          importRoutePolicy: S.optional(__S(7584, __c237, 0)),
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          layer2Configuration: S.optional(__S(5504, __c172, 0)),
+          optionBLayer3Configuration: S.optional(__S(4448, __c139, 0)),
+          npbStaticRouteConfiguration: S.optional(__S(7904, __c247, 0)),
+          staticRouteConfiguration: S.optional(__S(7904, __c247, 0)),
+          importRoutePolicy: S.optional(__S(8128, __c254, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
           egressAclId: S.optional(S.String),
           ingressAclId: S.optional(S.String),
           microBfdState: S.optional(S.String),
@@ -17282,7 +18157,7 @@ function __c138(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(4417, __c138, 1)),
+          properties: S.optional(__S(4449, __c139, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17292,9 +18167,21 @@ function __c138(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNetworkToNetworkInterconnectRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(5510, __c172, 6),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNetworkToNetworkInterconnectResponse" });
   }
 }
-function __c139(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17303,7 +18190,7 @@ function __c139(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -17316,7 +18203,7 @@ function __c139(j: number): any {
       ).annotate({ identifier: "UpdateNetworkToNetworkInterconnectAdministrativeStateRequest" });
   }
 }
-function __c140(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17338,7 +18225,7 @@ function __c140(j: number): any {
       ).annotate({ identifier: "UpdateNetworkToNetworkInterconnectBfdAdministrativeStateRequest" });
   }
 }
-function __c141(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17347,7 +18234,7 @@ function __c141(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -17362,13 +18249,13 @@ function __c141(j: number): any {
       });
   }
 }
-function __c142(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           defaultAction: S.optional(S.String),
-          statements: S.optional(__S(5543, __c173, 7)),
+          statements: S.optional(__S(5575, __c174, 7)),
         }),
       ).annotate({ identifier: "RoutePolicyPatchableProperties" });
     case 1:
@@ -17377,8 +18264,8 @@ function __c142(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           routePolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
-          properties: S.optional(__S(4544, __c142, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          properties: S.optional(__S(4576, __c143, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -17388,9 +18275,23 @@ function __c142(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRoutePolicyRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5576, __c174, 8),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateRoutePolicyResponse" });
   }
 }
-function __c143(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17398,7 +18299,7 @@ function __c143(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           routePolicyName: S.String.pipe(T.Label()),
-          resourceIds: S.optional(__S(5600, __c175, 0)),
+          resourceIds: S.optional(__S(5632, __c176, 0)),
           state: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -17411,7 +18312,7 @@ function __c143(j: number): any {
       ).annotate({ identifier: "UpdateRoutePolicyAdministrativeStateRequest" });
   }
 }
-function __c144(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17430,7 +18331,7 @@ function __c144(j: number): any {
       ).annotate({ identifier: "CommitL3IsolationDomainConfigurationRequest" });
   }
 }
-function __c145(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17454,7 +18355,7 @@ function __c145(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.Number,
           peerASN: S.Number,
-          bfdConfiguration: S.optional(__S(7520, __c235, 0)),
+          bfdConfiguration: S.optional(__S(8064, __c252, 0)),
         }),
       ).annotate({ identifier: "VpnOptionAPropertiesInput" });
     case 2:
@@ -17462,15 +18363,15 @@ function __c145(j: number): any {
         S.Struct({
           networkToNetworkInterconnectId: S.optional(S.String),
           peeringOption: S.String,
-          optionBProperties: S.optional(__S(7329, __c229, 1)),
-          optionAProperties: S.optional(__S(4641, __c145, 1)),
+          optionBProperties: S.optional(__S(7873, __c246, 1)),
+          optionAProperties: S.optional(__S(4673, __c146, 1)),
         }),
       ).annotate({ identifier: "VpnConfigurationPropertiesInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          infrastructureVpnConfiguration: __S(4642, __c145, 2),
-          workloadVpnConfiguration: __S(4642, __c145, 2),
+          infrastructureVpnConfiguration: __S(4674, __c146, 2),
+          workloadVpnConfiguration: __S(4674, __c146, 2),
         }),
       ).annotate({ identifier: "ManagementNetworkConfigurationPropertiesInput" });
     case 4:
@@ -17479,23 +18380,23 @@ function __c145(j: number): any {
           annotation: S.optional(S.String),
           networkFabricSku: S.String,
           fabricVersion: S.optional(S.String),
-          storageAccountConfiguration: S.optional(__S(4704, __c147, 0)),
+          storageAccountConfiguration: S.optional(__S(4736, __c148, 0)),
           networkFabricControllerId: S.String,
           rackCount: S.optional(S.Number),
           serverCountPerRack: S.Number,
           ipv4Prefix: S.String,
           ipv6Prefix: S.optional(S.String),
           fabricASN: S.Number,
-          terminalServerConfiguration: __S(4640, __c145, 0),
-          managementNetworkConfiguration: __S(4643, __c145, 3),
+          terminalServerConfiguration: __S(4672, __c146, 0),
+          managementNetworkConfiguration: __S(4675, __c146, 3),
           hardwareAlertThreshold: S.optional(S.Number),
-          controlPlaneAcls: S.optional(__S(5600, __c175, 0)),
-          featureFlags: S.optional(__S(4706, __c147, 2)),
-          trustedIpPrefixes: S.optional(__S(5600, __c175, 0)),
-          uniqueRdConfiguration: S.optional(__S(4672, __c146, 0)),
+          controlPlaneAcls: S.optional(__S(5632, __c176, 0)),
+          featureFlags: S.optional(__S(4738, __c148, 2)),
+          trustedIpPrefixes: S.optional(__S(5632, __c176, 0)),
+          uniqueRdConfiguration: S.optional(__S(4704, __c147, 0)),
           storageArrayCount: S.optional(S.Number),
-          authorizedTransceiver: S.optional(__S(4707, __c147, 3)),
-          qosConfiguration: S.optional(__S(4708, __c147, 4)),
+          authorizedTransceiver: S.optional(__S(4739, __c148, 3)),
+          qosConfiguration: S.optional(__S(4740, __c148, 4)),
         }),
       ).annotate({ identifier: "NetworkFabricPropertiesInput" });
     case 5:
@@ -17504,10 +18405,10 @@ function __c145(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(4644, __c145, 4),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(4676, __c146, 4),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17517,9 +18418,24 @@ function __c145(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkFabricRequest" });
+    case 6:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(4749, __c148, 13),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateNetworkFabricResponse" });
   }
 }
-function __c146(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17530,13 +18446,13 @@ function __c146(j: number): any {
       ).annotate({ identifier: "UniqueRouteDistinguisherPropertiesInput" });
   }
 }
-function __c147(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           storageAccountId: S.optional(S.String),
-          storageAccountIdentity: S.optional(__S(4192, __c131, 0)),
+          storageAccountIdentity: S.optional(__S(4224, __c132, 0)),
         }),
       ).annotate({ identifier: "StorageAccountConfiguration" });
     case 1:
@@ -17547,7 +18463,7 @@ function __c147(j: number): any {
         }),
       ).annotate({ identifier: "FeatureFlagProperties" });
     case 2:
-      return S.Array(__S(4705, __c147, 1));
+      return S.Array(__S(4737, __c148, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -17569,7 +18485,7 @@ function __c147(j: number): any {
         }),
       ).annotate({ identifier: "FabricLockProperties" });
     case 6:
-      return S.Array(__S(4709, __c147, 5));
+      return S.Array(__S(4741, __c148, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -17581,7 +18497,7 @@ function __c147(j: number): any {
           secondaryIpv4Prefix: S.String,
           secondaryIpv6Prefix: S.optional(S.String),
           networkDeviceId: S.optional(S.String),
-          secretRotationStatus: S.optional(__S(4226, __c132, 2)),
+          secretRotationStatus: S.optional(__S(4258, __c133, 2)),
         }),
       ).annotate({ identifier: "TerminalServerConfiguration" });
     case 8:
@@ -17594,7 +18510,7 @@ function __c147(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.Number,
           peerASN: S.Number,
-          bfdConfiguration: S.optional(__S(7552, __c236, 0)),
+          bfdConfiguration: S.optional(__S(8096, __c253, 0)),
         }),
       ).annotate({ identifier: "VpnOptionAProperties" });
     case 9:
@@ -17603,22 +18519,22 @@ function __c147(j: number): any {
           networkToNetworkInterconnectId: S.optional(S.String),
           administrativeState: S.optional(S.String),
           peeringOption: S.String,
-          optionBProperties: S.optional(__S(7329, __c229, 1)),
-          optionAProperties: S.optional(__S(4712, __c147, 8)),
+          optionBProperties: S.optional(__S(7873, __c246, 1)),
+          optionAProperties: S.optional(__S(4744, __c148, 8)),
         }),
       ).annotate({ identifier: "VpnConfigurationProperties" });
     case 10:
       return S.suspend(() =>
         S.Struct({
-          infrastructureVpnConfiguration: __S(4713, __c147, 9),
-          workloadVpnConfiguration: __S(4713, __c147, 9),
+          infrastructureVpnConfiguration: __S(4745, __c148, 9),
+          workloadVpnConfiguration: __S(4745, __c148, 9),
         }),
       ).annotate({ identifier: "ManagementNetworkConfigurationProperties" });
     case 11:
       return S.suspend(() =>
         S.Struct({
           uniqueRdConfigurationState: S.optional(S.String),
-          uniqueRds: S.optional(__S(5600, __c175, 0)),
+          uniqueRds: S.optional(__S(5632, __c176, 0)),
           nniDerivedUniqueRdConfigurationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "UniqueRouteDistinguisherProperties" });
@@ -17634,52 +18550,39 @@ function __c147(j: number): any {
           annotation: S.optional(S.String),
           networkFabricSku: S.String,
           fabricVersion: S.optional(S.String),
-          routerIds: S.optional(__S(5600, __c175, 0)),
-          storageAccountConfiguration: S.optional(__S(4704, __c147, 0)),
-          fabricLocks: S.optional(__S(4710, __c147, 6)),
+          routerIds: S.optional(__S(5632, __c176, 0)),
+          storageAccountConfiguration: S.optional(__S(4736, __c148, 0)),
+          fabricLocks: S.optional(__S(4742, __c148, 6)),
           networkFabricControllerId: S.String,
           rackCount: S.optional(S.Number),
           serverCountPerRack: S.Number,
           ipv4Prefix: S.String,
           ipv6Prefix: S.optional(S.String),
           fabricASN: S.Number,
-          terminalServerConfiguration: __S(4711, __c147, 7),
-          managementNetworkConfiguration: __S(4714, __c147, 10),
-          racks: S.optional(__S(5600, __c175, 0)),
-          l2IsolationDomains: S.optional(__S(5600, __c175, 0)),
-          l3IsolationDomains: S.optional(__S(5600, __c175, 0)),
+          terminalServerConfiguration: __S(4743, __c148, 7),
+          managementNetworkConfiguration: __S(4746, __c148, 10),
+          racks: S.optional(__S(5632, __c176, 0)),
+          l2IsolationDomains: S.optional(__S(5632, __c176, 0)),
+          l3IsolationDomains: S.optional(__S(5632, __c176, 0)),
           hardwareAlertThreshold: S.optional(S.Number),
-          controlPlaneAcls: S.optional(__S(5600, __c175, 0)),
-          featureFlags: S.optional(__S(4706, __c147, 2)),
-          trustedIpPrefixes: S.optional(__S(5600, __c175, 0)),
-          uniqueRdConfiguration: S.optional(__S(4715, __c147, 11)),
+          controlPlaneAcls: S.optional(__S(5632, __c176, 0)),
+          featureFlags: S.optional(__S(4738, __c148, 2)),
+          trustedIpPrefixes: S.optional(__S(5632, __c176, 0)),
+          uniqueRdConfiguration: S.optional(__S(4747, __c148, 11)),
           storageArrayCount: S.optional(S.Number),
-          activeCommitBatches: S.optional(__S(5600, __c175, 0)),
-          secretRotationSummary: S.optional(__S(4716, __c147, 12)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
-          authorizedTransceiver: S.optional(__S(4707, __c147, 3)),
+          activeCommitBatches: S.optional(__S(5632, __c176, 0)),
+          secretRotationSummary: S.optional(__S(4748, __c148, 12)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
+          authorizedTransceiver: S.optional(__S(4739, __c148, 3)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
-          qosConfiguration: S.optional(__S(4708, __c147, 4)),
+          qosConfiguration: S.optional(__S(4740, __c148, 4)),
         }),
       ).annotate({ identifier: "NetworkFabricProperties" });
-    case 14:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(4717, __c147, 13),
-          identity: S.optional(__S(2082, __c65, 2)),
-        }),
-      ).annotate({ identifier: "CreateNetworkFabricResponse" });
   }
 }
-function __c148(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17698,7 +18601,7 @@ function __c148(j: number): any {
       ).annotate({ identifier: "ValidateAccessControlListConfigurationRequest" });
   }
 }
-function __c149(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17706,11 +18609,13 @@ function __c149(j: number): any {
           error: S.optional(__S(35, __c1, 3)),
           configurationState: S.optional(S.String),
           url: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ValidateAccessControlListConfigurationResponse" });
   }
 }
-function __c150(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17729,7 +18634,7 @@ function __c150(j: number): any {
       ).annotate({ identifier: "ValidateL2IsolationDomainConfigurationRequest" });
   }
 }
-function __c151(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17748,7 +18653,7 @@ function __c151(j: number): any {
       ).annotate({ identifier: "ValidateL3IsolationDomainConfigurationRequest" });
   }
 }
-function __c152(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17768,7 +18673,7 @@ function __c152(j: number): any {
       ).annotate({ identifier: "ValidateNetworkFabricConfigurationRequest" });
   }
 }
-function __c153(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17787,7 +18692,7 @@ function __c153(j: number): any {
       ).annotate({ identifier: "ValidateNetworkTapRuleConfigurationRequest" });
   }
 }
-function __c154(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17806,15 +18711,15 @@ function __c154(j: number): any {
       ).annotate({ identifier: "ValidateRoutePolicyConfigurationRequest" });
   }
 }
-function __c155(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          infrastructureExpressRouteConnections: S.optional(__S(4993, __c156, 1)),
-          workloadExpressRouteConnections: S.optional(__S(4993, __c156, 1)),
-          managedResourceGroupConfiguration: S.optional(__S(4994, __c156, 2)),
+          infrastructureExpressRouteConnections: S.optional(__S(5025, __c157, 1)),
+          workloadExpressRouteConnections: S.optional(__S(5025, __c157, 1)),
+          managedResourceGroupConfiguration: S.optional(__S(5026, __c157, 2)),
           isWorkloadManagementNetworkEnabled: S.optional(S.String),
           ipv4AddressSpace: S.optional(S.String),
           ipv6AddressSpace: S.optional(S.String),
@@ -17827,10 +18732,10 @@ function __c155(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricControllerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(4960, __c155, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(4992, __c156, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17840,9 +18745,24 @@ function __c155(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkFabricControllerRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5028, __c157, 4),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateNetworkFabricControllerResponse" });
   }
 }
-function __c156(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17852,7 +18772,7 @@ function __c156(j: number): any {
         }),
       ).annotate({ identifier: "ExpressRouteConnectionInformation" });
     case 1:
-      return S.Array(__S(4992, __c156, 0));
+      return S.Array(__S(5024, __c157, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -17863,45 +18783,32 @@ function __c156(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ipv4AddressSpaces: S.optional(__S(5600, __c175, 0)),
-          ipv6AddressSpaces: S.optional(__S(5600, __c175, 0)),
+          ipv4AddressSpaces: S.optional(__S(5632, __c176, 0)),
+          ipv6AddressSpaces: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "ControllerServices" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          infrastructureExpressRouteConnections: S.optional(__S(4993, __c156, 1)),
-          workloadExpressRouteConnections: S.optional(__S(4993, __c156, 1)),
-          infrastructureServices: S.optional(__S(4995, __c156, 3)),
-          workloadServices: S.optional(__S(4995, __c156, 3)),
-          managedResourceGroupConfiguration: S.optional(__S(4994, __c156, 2)),
-          networkFabricIds: S.optional(__S(5600, __c175, 0)),
+          infrastructureExpressRouteConnections: S.optional(__S(5025, __c157, 1)),
+          workloadExpressRouteConnections: S.optional(__S(5025, __c157, 1)),
+          infrastructureServices: S.optional(__S(5027, __c157, 3)),
+          workloadServices: S.optional(__S(5027, __c157, 3)),
+          managedResourceGroupConfiguration: S.optional(__S(5026, __c157, 2)),
+          networkFabricIds: S.optional(__S(5632, __c176, 0)),
           isWorkloadManagementNetworkEnabled: S.optional(S.String),
-          tenantInternetGatewayIds: S.optional(__S(5600, __c175, 0)),
+          tenantInternetGatewayIds: S.optional(__S(5632, __c176, 0)),
           ipv4AddressSpace: S.optional(S.String),
           ipv6AddressSpace: S.optional(S.String),
           nfcSku: S.optional(S.String),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkFabricControllerProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(4996, __c156, 4),
-          identity: S.optional(__S(2082, __c65, 2)),
-        }),
-      ).annotate({ identifier: "CreateNetworkFabricControllerResponse" });
   }
 }
-function __c157(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17910,8 +18817,8 @@ function __c157(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkDeviceName: S.String.pipe(T.Label()),
           networkInterfaceName: S.String.pipe(T.Label()),
-          properties: __S(5056, __c158, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(5088, __c159, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17921,9 +18828,22 @@ function __c157(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkInterfaceRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(5120, __c160, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateNetworkInterfaceResponse" });
   }
 }
-function __c158(j: number): any {
+function __c159(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17934,7 +18854,7 @@ function __c158(j: number): any {
       ).annotate({ identifier: "NetworkInterfacePropertiesInput" });
   }
 }
-function __c159(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -17947,33 +18867,22 @@ function __c159(j: number): any {
           ipv6Address: S.optional(S.String),
           description: S.optional(S.String),
           additionalDescription: S.optional(S.String),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           networkFabricId: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
           configurationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkInterfaceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          properties: __S(5088, __c159, 0),
-          identity: S.optional(__S(2082, __c65, 2)),
-        }),
-      ).annotate({ identifier: "CreateNetworkInterfaceResponse" });
   }
 }
-function __c160(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(5153, __c161, 1)),
+          bmpConfiguration: S.optional(__S(5185, __c162, 1)),
         }),
       ).annotate({ identifier: "NetworkMonitorPropertiesInput" });
     case 1:
@@ -17982,9 +18891,9 @@ function __c160(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkMonitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(5120, __c160, 0),
+          properties: __S(5152, __c161, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -17994,9 +18903,23 @@ function __c160(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkMonitorRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5186, __c162, 2),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateNetworkMonitorResponse" });
   }
 }
-function __c161(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18015,40 +18938,28 @@ function __c161(j: number): any {
           stationIp: S.optional(S.String),
           stationPort: S.optional(S.Number),
           stationConnectionMode: S.optional(S.String),
-          stationConnectionProperties: S.optional(__S(5152, __c161, 0)),
+          stationConnectionProperties: S.optional(__S(5184, __c162, 0)),
           stationNetwork: S.optional(S.String),
-          monitoredNetworks: S.optional(__S(5600, __c175, 0)),
+          monitoredNetworks: S.optional(__S(5632, __c176, 0)),
           exportPolicy: S.optional(S.String),
-          exportPolicyConfiguration: S.optional(__S(8064, __c252, 0)),
-          monitoredAddressFamilies: S.optional(__S(8032, __c251, 0)),
+          exportPolicyConfiguration: S.optional(__S(8864, __c277, 0)),
+          monitoredAddressFamilies: S.optional(__S(8832, __c276, 0)),
         }),
       ).annotate({ identifier: "BmpConfigurationProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(5153, __c161, 1)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          bmpConfiguration: S.optional(__S(5185, __c162, 1)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkMonitorProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(5154, __c161, 2),
-        }),
-      ).annotate({ identifier: "CreateNetworkMonitorResponse" });
   }
 }
-function __c162(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18062,10 +18973,10 @@ function __c162(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkPacketBrokerName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(5184, __c162, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(5216, __c163, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18075,39 +18986,41 @@ function __c162(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkPacketBrokerRequest" });
-  }
-}
-function __c163(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          networkFabricId: S.String,
-          networkDeviceIds: S.optional(__S(5600, __c175, 0)),
-          sourceInterfaceIds: S.optional(__S(5600, __c175, 0)),
-          networkTapIds: S.optional(__S(5600, __c175, 0)),
-          neighborGroupIds: S.optional(__S(5600, __c175, 0)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
-          provisioningState: S.optional(S.String),
-          configurationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkPacketBrokerProperties" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(5216, __c163, 0),
-          identity: S.optional(__S(2082, __c65, 2)),
+          properties: __S(5248, __c164, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateNetworkPacketBrokerResponse" });
   }
 }
 function __c164(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          networkFabricId: S.String,
+          networkDeviceIds: S.optional(__S(5632, __c176, 0)),
+          sourceInterfaceIds: S.optional(__S(5632, __c176, 0)),
+          networkTapIds: S.optional(__S(5632, __c176, 0)),
+          neighborGroupIds: S.optional(__S(5632, __c176, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
+          provisioningState: S.optional(S.String),
+          configurationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkPacketBrokerProperties" });
+  }
+}
+function __c165(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18123,9 +19036,9 @@ function __c164(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkRackName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(5248, __c164, 0),
+          properties: __S(5280, __c165, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18135,32 +19048,18 @@ function __c164(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkRackRequest" });
-  }
-}
-function __c165(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          networkRackType: S.optional(S.String),
-          networkFabricId: S.String,
-          networkDevices: S.optional(__S(5600, __c175, 0)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
-          provisioningState: S.optional(S.String),
-          configurationState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkRackProperties" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(5280, __c165, 0),
+          properties: __S(5312, __c166, 0),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateNetworkRackResponse" });
   }
@@ -18171,8 +19070,24 @@ function __c166(j: number): any {
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
+          networkRackType: S.optional(S.String),
+          networkFabricId: S.String,
+          networkDevices: S.optional(__S(5632, __c176, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
+          provisioningState: S.optional(S.String),
+          configurationState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkRackProperties" });
+  }
+}
+function __c167(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
           networkPacketBrokerId: S.String,
-          destinations: __S(5346, __c167, 2),
+          destinations: __S(5378, __c168, 2),
           pollingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkTapPropertiesInput" });
@@ -18182,10 +19097,10 @@ function __c166(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(5312, __c166, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(5344, __c167, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18195,55 +19110,19 @@ function __c166(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkTapRequest" });
-  }
-}
-function __c167(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          encapsulation: S.optional(S.String),
-          neighborGroupIds: S.optional(__S(5600, __c175, 0)),
-        }),
-      ).annotate({ identifier: "IsolationDomainProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          name: S.String,
-          destinationType: S.String,
-          destinationId: S.String,
-          isolationDomainProperties: S.optional(__S(5344, __c167, 0)),
-          destinationTapRuleId: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DestinationProperties" });
     case 2:
-      return S.Array(__S(5345, __c167, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          annotation: S.optional(S.String),
-          networkPacketBrokerId: S.String,
-          sourceTapRuleId: S.optional(S.String),
-          networkFabricIds: S.optional(__S(5600, __c175, 0)),
-          destinations: __S(5346, __c167, 2),
-          pollingType: S.optional(S.String),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
-          configurationState: S.optional(S.String),
-          provisioningState: S.optional(S.String),
-          administrativeState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "NetworkTapProperties" });
-    case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(5347, __c167, 3),
-          identity: S.optional(__S(2082, __c65, 2)),
+          properties: __S(5379, __c168, 3),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CreateNetworkTapResponse" });
   }
@@ -18253,14 +19132,52 @@ function __c168(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          encapsulation: S.optional(S.String),
+          neighborGroupIds: S.optional(__S(5632, __c176, 0)),
+        }),
+      ).annotate({ identifier: "IsolationDomainProperties" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          name: S.String,
+          destinationType: S.String,
+          destinationId: S.String,
+          isolationDomainProperties: S.optional(__S(5376, __c168, 0)),
+          destinationTapRuleId: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "DestinationProperties" });
+    case 2:
+      return S.Array(__S(5377, __c168, 1));
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          annotation: S.optional(S.String),
+          networkPacketBrokerId: S.String,
+          sourceTapRuleId: S.optional(S.String),
+          networkFabricIds: S.optional(__S(5632, __c176, 0)),
+          destinations: __S(5378, __c168, 2),
+          pollingType: S.optional(S.String),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
+          configurationState: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          administrativeState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "NetworkTapProperties" });
+  }
+}
+function __c169(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           annotation: S.optional(S.String),
           configurationType: S.String,
           tapRulesUrl: S.optional(S.String),
-          identitySelector: S.optional(__S(4192, __c131, 0)),
-          matchConfigurations: S.optional(__S(5414, __c169, 6)),
-          dynamicMatchConfigurations: S.optional(__S(6793, __c212, 9)),
+          identitySelector: S.optional(__S(4224, __c132, 0)),
+          matchConfigurations: S.optional(__S(5446, __c170, 6)),
+          dynamicMatchConfigurations: S.optional(__S(7049, __c220, 9)),
           pollingIntervalInSeconds: S.optional(S.Number),
-          globalNetworkTapRuleActions: S.optional(__S(5415, __c169, 7)),
+          globalNetworkTapRuleActions: S.optional(__S(5447, __c170, 7)),
         }),
       ).annotate({ identifier: "NetworkTapRulePropertiesInput" });
     case 1:
@@ -18269,10 +19186,10 @@ function __c168(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           networkTapRuleName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(5376, __c168, 0),
-          identity: S.optional(__S(2017, __c63, 1)),
+          properties: __S(5408, __c169, 0),
+          identity: S.optional(__S(2049, __c64, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18282,31 +19199,46 @@ function __c168(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkTapRuleRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5448, __c170, 8),
+          identity: S.optional(__S(2114, __c66, 2)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateNetworkTapRuleResponse" });
   }
 }
-function __c169(j: number): any {
+function __c170(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           portType: S.optional(S.String),
           layer4Protocol: S.String,
-          ports: S.optional(__S(5600, __c175, 0)),
-          portGroupNames: S.optional(__S(5600, __c175, 0)),
+          ports: S.optional(__S(5632, __c176, 0)),
+          portGroupNames: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "PortCondition" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          protocolTypes: S.optional(__S(5600, __c175, 0)),
-          vlanMatchCondition: S.optional(__S(6784, __c212, 0)),
-          ipCondition: S.optional(__S(6785, __c212, 1)),
+          protocolTypes: S.optional(__S(5632, __c176, 0)),
+          vlanMatchCondition: S.optional(__S(7040, __c220, 0)),
+          ipCondition: S.optional(__S(7041, __c220, 1)),
           encapsulationType: S.optional(S.String),
-          portCondition: S.optional(__S(5408, __c169, 0)),
+          portCondition: S.optional(__S(5440, __c170, 0)),
         }),
       ).annotate({ identifier: "NetworkTapRuleMatchCondition" });
     case 2:
-      return S.Array(__S(5409, __c169, 1));
+      return S.Array(__S(5441, __c170, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -18318,19 +19250,19 @@ function __c169(j: number): any {
         }),
       ).annotate({ identifier: "NetworkTapRuleAction" });
     case 4:
-      return S.Array(__S(5411, __c169, 3));
+      return S.Array(__S(5443, __c170, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
           ipAddressType: S.optional(S.String),
-          matchConditions: S.optional(__S(5410, __c169, 2)),
-          actions: S.optional(__S(5412, __c169, 4)),
+          matchConditions: S.optional(__S(5442, __c170, 2)),
+          actions: S.optional(__S(5444, __c170, 4)),
         }),
       ).annotate({ identifier: "NetworkTapRuleMatchConfiguration" });
     case 6:
-      return S.Array(__S(5413, __c169, 5));
+      return S.Array(__S(5445, __c170, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -18344,37 +19276,24 @@ function __c169(j: number): any {
           annotation: S.optional(S.String),
           configurationType: S.String,
           tapRulesUrl: S.optional(S.String),
-          identitySelector: S.optional(__S(4192, __c131, 0)),
-          matchConfigurations: S.optional(__S(5414, __c169, 6)),
-          dynamicMatchConfigurations: S.optional(__S(6793, __c212, 9)),
+          identitySelector: S.optional(__S(4224, __c132, 0)),
+          matchConfigurations: S.optional(__S(5446, __c170, 6)),
+          dynamicMatchConfigurations: S.optional(__S(7049, __c220, 9)),
           networkTapId: S.optional(S.String),
-          networkTapIds: S.optional(__S(5600, __c175, 0)),
+          networkTapIds: S.optional(__S(5632, __c176, 0)),
           pollingIntervalInSeconds: S.optional(S.Number),
           lastSyncedTime: S.optional(S.String),
-          globalNetworkTapRuleActions: S.optional(__S(5415, __c169, 7)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
-          networkFabricIds: S.optional(__S(5600, __c175, 0)),
+          globalNetworkTapRuleActions: S.optional(__S(5447, __c170, 7)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
+          networkFabricIds: S.optional(__S(5632, __c176, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkTapRuleProperties" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(5416, __c169, 8),
-          identity: S.optional(__S(2082, __c65, 2)),
-        }),
-      ).annotate({ identifier: "CreateNetworkTapRuleResponse" });
   }
 }
-function __c170(j: number): any {
+function __c171(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18385,9 +19304,9 @@ function __c170(j: number): any {
           secondaryIpv6Prefix: S.optional(S.String),
           peerASN: S.Number,
           vlanId: S.Number,
-          peLoopbackIpAddress: S.optional(__S(5600, __c175, 0)),
-          bmpConfiguration: S.optional(__S(5473, __c171, 1)),
-          prefixLimits: S.optional(__S(5475, __c171, 3)),
+          peLoopbackIpAddress: S.optional(__S(5632, __c176, 0)),
+          bmpConfiguration: S.optional(__S(5505, __c172, 1)),
+          prefixLimits: S.optional(__S(5507, __c172, 3)),
         }),
       ).annotate({ identifier: "OptionBLayer3ConfigurationInput" });
     case 1:
@@ -18396,16 +19315,16 @@ function __c170(j: number): any {
           nniType: S.optional(S.String),
           isManagementType: S.optional(S.String),
           useOptionB: S.String,
-          layer2Configuration: S.optional(__S(5472, __c171, 0)),
-          optionBLayer3Configuration: S.optional(__S(5440, __c170, 0)),
-          npbStaticRouteConfiguration: S.optional(__S(7360, __c230, 0)),
-          staticRouteConfiguration: S.optional(__S(7360, __c230, 0)),
-          importRoutePolicy: S.optional(__S(7584, __c237, 0)),
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          layer2Configuration: S.optional(__S(5504, __c172, 0)),
+          optionBLayer3Configuration: S.optional(__S(5472, __c171, 0)),
+          npbStaticRouteConfiguration: S.optional(__S(7904, __c247, 0)),
+          staticRouteConfiguration: S.optional(__S(7904, __c247, 0)),
+          importRoutePolicy: S.optional(__S(8128, __c254, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
           egressAclId: S.optional(S.String),
           ingressAclId: S.optional(S.String),
           microBfdState: S.optional(S.String),
-          conditionalDefaultRouteConfiguration: S.optional(__S(5476, __c171, 4)),
+          conditionalDefaultRouteConfiguration: S.optional(__S(5508, __c172, 4)),
         }),
       ).annotate({ identifier: "NetworkToNetworkInterconnectPropertiesInput" });
     case 2:
@@ -18415,7 +19334,7 @@ function __c170(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           networkFabricName: S.String.pipe(T.Label()),
           networkToNetworkInterconnectName: S.String.pipe(T.Label()),
-          properties: __S(5441, __c170, 1),
+          properties: __S(5473, __c171, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18425,15 +19344,27 @@ function __c170(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateNetworkToNetworkInterconnectRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(5510, __c172, 6),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateNetworkToNetworkInterconnectResponse" });
   }
 }
-function __c171(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           mtu: S.optional(S.Number),
-          interfaces: S.optional(__S(5600, __c175, 0)),
+          interfaces: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "Layer2Configuration" });
     case 1:
@@ -18449,12 +19380,12 @@ function __c171(j: number): any {
         }),
       ).annotate({ identifier: "OptionBLayer3PrefixLimitProperties" });
     case 3:
-      return S.Array(__S(5474, __c171, 2));
+      return S.Array(__S(5506, __c172, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ipv4Routes: S.optional(__S(7586, __c237, 2)),
-          ipv6Routes: S.optional(__S(7586, __c237, 2)),
+          ipv4Routes: S.optional(__S(8130, __c254, 2)),
+          ipv6Routes: S.optional(__S(8130, __c254, 2)),
         }),
       ).annotate({ identifier: "ConditionalDefaultRouteProperties" });
     case 5:
@@ -18467,9 +19398,9 @@ function __c171(j: number): any {
           peerASN: S.Number,
           vlanId: S.Number,
           fabricASN: S.optional(S.Number),
-          peLoopbackIpAddress: S.optional(__S(5600, __c175, 0)),
-          bmpConfiguration: S.optional(__S(5473, __c171, 1)),
-          prefixLimits: S.optional(__S(5475, __c171, 3)),
+          peLoopbackIpAddress: S.optional(__S(5632, __c176, 0)),
+          bmpConfiguration: S.optional(__S(5505, __c172, 1)),
+          prefixLimits: S.optional(__S(5507, __c172, 3)),
         }),
       ).annotate({ identifier: "OptionBLayer3Configuration" });
     case 6:
@@ -18478,42 +19409,32 @@ function __c171(j: number): any {
           nniType: S.optional(S.String),
           isManagementType: S.optional(S.String),
           useOptionB: S.String,
-          layer2Configuration: S.optional(__S(5472, __c171, 0)),
-          optionBLayer3Configuration: S.optional(__S(5477, __c171, 5)),
-          npbStaticRouteConfiguration: S.optional(__S(7392, __c231, 0)),
-          staticRouteConfiguration: S.optional(__S(7392, __c231, 0)),
-          importRoutePolicy: S.optional(__S(7584, __c237, 0)),
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          layer2Configuration: S.optional(__S(5504, __c172, 0)),
+          optionBLayer3Configuration: S.optional(__S(5509, __c172, 5)),
+          npbStaticRouteConfiguration: S.optional(__S(7936, __c248, 0)),
+          staticRouteConfiguration: S.optional(__S(7936, __c248, 0)),
+          importRoutePolicy: S.optional(__S(8128, __c254, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
           egressAclId: S.optional(S.String),
           ingressAclId: S.optional(S.String),
           microBfdState: S.optional(S.String),
-          conditionalDefaultRouteConfiguration: S.optional(__S(5476, __c171, 4)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          conditionalDefaultRouteConfiguration: S.optional(__S(5508, __c172, 4)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkToNetworkInterconnectProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          properties: __S(5478, __c171, 6),
-        }),
-      ).annotate({ identifier: "CreateNetworkToNetworkInterconnectResponse" });
   }
 }
-function __c172(j: number): any {
+function __c173(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           defaultAction: S.optional(S.String),
-          statements: __S(5543, __c173, 7),
+          statements: __S(5575, __c174, 7),
           networkFabricId: S.String,
           addressFamilyType: S.optional(S.String),
         }),
@@ -18524,9 +19445,9 @@ function __c172(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           routePolicyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(5504, __c172, 0),
+          properties: __S(5536, __c173, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -18536,15 +19457,29 @@ function __c172(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateRoutePolicyRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5576, __c174, 8),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateRoutePolicyResponse" });
   }
 }
-function __c173(j: number): any {
+function __c174(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ipCommunityIds: S.optional(__S(5600, __c175, 0)),
-          ipExtendedCommunityIds: S.optional(__S(5600, __c175, 0)),
+          ipCommunityIds: S.optional(__S(5632, __c176, 0)),
+          ipExtendedCommunityIds: S.optional(__S(5632, __c176, 0)),
           type: S.optional(S.String),
           ipPrefixId: S.optional(S.String),
         }),
@@ -18552,29 +19487,29 @@ function __c173(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ipCommunityIds: S.optional(__S(5600, __c175, 0)),
+          ipCommunityIds: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "IpCommunityIdList" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          add: S.optional(__S(5537, __c173, 1)),
-          delete: S.optional(__S(5537, __c173, 1)),
-          set: S.optional(__S(5537, __c173, 1)),
+          add: S.optional(__S(5569, __c174, 1)),
+          delete: S.optional(__S(5569, __c174, 1)),
+          set: S.optional(__S(5569, __c174, 1)),
         }),
       ).annotate({ identifier: "ActionIpCommunityProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ipExtendedCommunityIds: S.optional(__S(5600, __c175, 0)),
+          ipExtendedCommunityIds: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "IpExtendedCommunityIdList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          add: S.optional(__S(5539, __c173, 3)),
-          delete: S.optional(__S(5539, __c173, 3)),
-          set: S.optional(__S(5539, __c173, 3)),
+          add: S.optional(__S(5571, __c174, 3)),
+          delete: S.optional(__S(5571, __c174, 3)),
+          set: S.optional(__S(5571, __c174, 3)),
         }),
       ).annotate({ identifier: "ActionIpExtendedCommunityProperties" });
     case 5:
@@ -18582,8 +19517,8 @@ function __c173(j: number): any {
         S.Struct({
           localPreference: S.optional(S.Number),
           actionType: S.String,
-          ipCommunityProperties: S.optional(__S(5538, __c173, 2)),
-          ipExtendedCommunityProperties: S.optional(__S(5540, __c173, 4)),
+          ipCommunityProperties: S.optional(__S(5570, __c174, 2)),
+          ipExtendedCommunityProperties: S.optional(__S(5572, __c174, 4)),
         }),
       ).annotate({ identifier: "StatementActionProperties" });
     case 6:
@@ -18591,41 +19526,29 @@ function __c173(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           sequenceNumber: S.Number,
-          condition: __S(5536, __c173, 0),
-          action: __S(5541, __c173, 5),
+          condition: __S(5568, __c174, 0),
+          action: __S(5573, __c174, 5),
         }),
       ).annotate({ identifier: "RoutePolicyStatementProperties" });
     case 7:
-      return S.Array(__S(5542, __c173, 6));
+      return S.Array(__S(5574, __c174, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
           defaultAction: S.optional(S.String),
-          statements: __S(5543, __c173, 7),
+          statements: __S(5575, __c174, 7),
           networkFabricId: S.String,
           addressFamilyType: S.optional(S.String),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoutePolicyProperties" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(5544, __c173, 8),
-        }),
-      ).annotate({ identifier: "CreateRoutePolicyResponse" });
   }
 }
-function __c174(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18646,7 +19569,7 @@ function __c174(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          failedDevices: S.optional(__S(5600, __c175, 0)),
+          failedDevices: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "CommitBatchDetails" });
     case 2:
@@ -18654,7 +19577,7 @@ function __c174(j: number): any {
         S.Struct({
           commitBatchId: S.optional(S.String),
           commitBatchState: S.optional(S.String),
-          commitBatchDetails: S.optional(__S(5569, __c174, 1)),
+          commitBatchDetails: S.optional(__S(5601, __c175, 1)),
         }),
       ).annotate({ identifier: "CommitBatchStatusResponseProperties" });
     case 3:
@@ -18666,75 +19589,77 @@ function __c174(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(5570, __c174, 2)),
+          properties: S.optional(__S(5602, __c175, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CommitBatchStatusOperationResponse" });
-  }
-}
-function __c175(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(S.String);
   }
 }
 function __c176(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(5633, __c176, 1)));
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(5632, __c176, 0)),
-          error: S.optional(__S(35, __c1, 3)),
-        }),
-      ).annotate({ identifier: "OperationStatusResult" });
-    case 2:
-      return S.Array(__S(5633, __c176, 1));
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          name: S.optional(S.String),
-          status: S.String,
-          percentComplete: S.optional(S.Number),
-          startTime: S.optional(S.String),
-          endTime: S.optional(S.String),
-          operations: S.optional(__S(5634, __c176, 2)),
-          error: S.optional(__S(35, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CommitBatchStatusOperationResponseOperationsItem" });
+      return S.Array(S.String);
   }
 }
 function __c177(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(5635, __c176, 3));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(5665, __c177, 1)));
     case 1:
-      return S.Array(__S(35, __c1, 3));
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(5664, __c177, 0)),
+          error: S.optional(__S(35, __c1, 3)),
+        }),
+      ).annotate({ identifier: "OperationStatusResult" });
     case 2:
+      return S.Array(__S(5665, __c177, 1));
+  }
+}
+function __c178(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          resourceId: S.optional(S.String),
+          name: S.optional(S.String),
+          status: S.String,
+          percentComplete: S.optional(S.Number),
+          startTime: S.optional(S.String),
+          endTime: S.optional(S.String),
+          operations: S.optional(__S(5666, __c177, 2)),
+          error: S.optional(__S(35, __c1, 3)),
+        }),
+      ).annotate({ identifier: "CommitBatchStatusOperationResponseOperationsItem" });
+    case 1:
+      return S.Array(__S(5696, __c178, 0));
+    case 2:
+      return S.Array(__S(35, __c1, 3));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(5665, __c177, 1)),
+          details: S.optional(__S(5698, __c178, 2)),
           additionalInfo: S.optional(__S(34, __c1, 2)),
         }),
       ).annotate({ identifier: "CommitBatchStatusOperationResponseError" });
   }
 }
-function __c178(j: number): any {
+function __c179(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18753,7 +19678,18 @@ function __c178(j: number): any {
       ).annotate({ identifier: "DeleteAccessControlListRequest" });
   }
 }
-function __c179(j: number): any {
+function __c180(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAccessControlListResponse" });
+  }
+}
+function __c181(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18773,7 +19709,7 @@ function __c179(j: number): any {
       ).annotate({ identifier: "DeleteExternalNetworkRequest" });
   }
 }
-function __c180(j: number): any {
+function __c182(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18793,7 +19729,7 @@ function __c180(j: number): any {
       ).annotate({ identifier: "DeleteInternalNetworkRequest" });
   }
 }
-function __c181(j: number): any {
+function __c183(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18812,7 +19748,7 @@ function __c181(j: number): any {
       ).annotate({ identifier: "DeleteInternetGatewayRequest" });
   }
 }
-function __c182(j: number): any {
+function __c184(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18831,7 +19767,7 @@ function __c182(j: number): any {
       ).annotate({ identifier: "DeleteInternetGatewayRuleRequest" });
   }
 }
-function __c183(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18850,7 +19786,7 @@ function __c183(j: number): any {
       ).annotate({ identifier: "DeleteIpCommunityRequest" });
   }
 }
-function __c184(j: number): any {
+function __c186(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18869,7 +19805,7 @@ function __c184(j: number): any {
       ).annotate({ identifier: "DeleteIpExtendedCommunityRequest" });
   }
 }
-function __c185(j: number): any {
+function __c187(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18888,7 +19824,7 @@ function __c185(j: number): any {
       ).annotate({ identifier: "DeleteIpPrefixRequest" });
   }
 }
-function __c186(j: number): any {
+function __c188(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18907,7 +19843,7 @@ function __c186(j: number): any {
       ).annotate({ identifier: "DeleteL2IsolationDomainRequest" });
   }
 }
-function __c187(j: number): any {
+function __c189(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18926,7 +19862,7 @@ function __c187(j: number): any {
       ).annotate({ identifier: "DeleteL3IsolationDomainRequest" });
   }
 }
-function __c188(j: number): any {
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18936,7 +19872,7 @@ function __c188(j: number): any {
           networkFabricName: S.String.pipe(T.Label()),
           commitStage: S.optional(S.String),
           commitPolicy: S.optional(S.String),
-          devices: S.optional(__S(5600, __c175, 0)),
+          devices: S.optional(__S(5632, __c176, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -18948,7 +19884,7 @@ function __c188(j: number): any {
       ).annotate({ identifier: "CommitNetworkFabricConfigurationRequest" });
   }
 }
-function __c189(j: number): any {
+function __c191(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18959,14 +19895,16 @@ function __c189(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CommitConfigurationResponse" });
   }
 }
-function __c190(j: number): any {
+function __c192(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -18985,7 +19923,7 @@ function __c190(j: number): any {
       ).annotate({ identifier: "DeleteNeighborGroupRequest" });
   }
 }
-function __c191(j: number): any {
+function __c193(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19004,7 +19942,7 @@ function __c191(j: number): any {
       ).annotate({ identifier: "DeleteNetworkBootstrapDeviceRequest" });
   }
 }
-function __c192(j: number): any {
+function __c194(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19024,7 +19962,7 @@ function __c192(j: number): any {
       ).annotate({ identifier: "DeleteNetworkBootstrapInterfaceRequest" });
   }
 }
-function __c193(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19043,7 +19981,7 @@ function __c193(j: number): any {
       ).annotate({ identifier: "DeleteNetworkDeviceRequest" });
   }
 }
-function __c194(j: number): any {
+function __c196(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19062,7 +20000,7 @@ function __c194(j: number): any {
       ).annotate({ identifier: "DeleteNetworkFabricRequest" });
   }
 }
-function __c195(j: number): any {
+function __c197(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19081,7 +20019,7 @@ function __c195(j: number): any {
       ).annotate({ identifier: "DeleteNetworkFabricControllerRequest" });
   }
 }
-function __c196(j: number): any {
+function __c198(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19101,7 +20039,7 @@ function __c196(j: number): any {
       ).annotate({ identifier: "DeleteNetworkInterfaceRequest" });
   }
 }
-function __c197(j: number): any {
+function __c199(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19120,7 +20058,7 @@ function __c197(j: number): any {
       ).annotate({ identifier: "DeleteNetworkMonitorRequest" });
   }
 }
-function __c198(j: number): any {
+function __c200(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19139,7 +20077,7 @@ function __c198(j: number): any {
       ).annotate({ identifier: "DeleteNetworkPacketBrokerRequest" });
   }
 }
-function __c199(j: number): any {
+function __c201(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19158,7 +20096,7 @@ function __c199(j: number): any {
       ).annotate({ identifier: "DeleteNetworkRackRequest" });
   }
 }
-function __c200(j: number): any {
+function __c202(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19177,7 +20115,7 @@ function __c200(j: number): any {
       ).annotate({ identifier: "CommitRoutePolicyConfigurationRequest" });
   }
 }
-function __c201(j: number): any {
+function __c203(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19196,7 +20134,7 @@ function __c201(j: number): any {
       ).annotate({ identifier: "DeleteNetworkTapRequest" });
   }
 }
-function __c202(j: number): any {
+function __c204(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19215,7 +20153,7 @@ function __c202(j: number): any {
       ).annotate({ identifier: "DeleteNetworkTapRuleRequest" });
   }
 }
-function __c203(j: number): any {
+function __c205(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19235,7 +20173,7 @@ function __c203(j: number): any {
       ).annotate({ identifier: "DeleteNetworkToNetworkInterconnectRequest" });
   }
 }
-function __c204(j: number): any {
+function __c206(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19254,7 +20192,7 @@ function __c204(j: number): any {
       ).annotate({ identifier: "DeleteRoutePolicyRequest" });
   }
 }
-function __c205(j: number): any {
+function __c207(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19273,7 +20211,23 @@ function __c205(j: number): any {
       ).annotate({ identifier: "GetAccessControlListRequest" });
   }
 }
-function __c206(j: number): any {
+function __c208(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(7094, __c221, 22),
+        }),
+      ).annotate({ identifier: "GetAccessControlListResponse" });
+  }
+}
+function __c209(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19293,7 +20247,21 @@ function __c206(j: number): any {
       ).annotate({ identifier: "GetExternalNetworkRequest" });
   }
 }
-function __c207(j: number): any {
+function __c210(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(7969, __c249, 1),
+        }),
+      ).annotate({ identifier: "GetExternalNetworkResponse" });
+  }
+}
+function __c211(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19313,7 +20281,21 @@ function __c207(j: number): any {
       ).annotate({ identifier: "GetInternalNetworkRequest" });
   }
 }
-function __c208(j: number): any {
+function __c212(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(8935, __c279, 7),
+        }),
+      ).annotate({ identifier: "GetInternalNetworkResponse" });
+  }
+}
+function __c213(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19332,7 +20314,23 @@ function __c208(j: number): any {
       ).annotate({ identifier: "GetInternetGatewayRequest" });
   }
 }
-function __c209(j: number): any {
+function __c214(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(9472, __c296, 0),
+        }),
+      ).annotate({ identifier: "GetInternetGatewayResponse" });
+  }
+}
+function __c215(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19351,7 +20349,23 @@ function __c209(j: number): any {
       ).annotate({ identifier: "GetInternetGatewayRuleRequest" });
   }
 }
-function __c210(j: number): any {
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(163, __c5, 3),
+        }),
+      ).annotate({ identifier: "GetInternetGatewayRuleResponse" });
+  }
+}
+function __c217(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19370,7 +20384,23 @@ function __c210(j: number): any {
       ).annotate({ identifier: "GetIpCommunityRequest" });
   }
 }
-function __c211(j: number): any {
+function __c218(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(674, __c21, 2),
+        }),
+      ).annotate({ identifier: "GetIpCommunityResponse" });
+  }
+}
+function __c219(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19379,12 +20409,12 @@ function __c211(j: number): any {
           configurationType: S.String,
           aclsUrl: S.optional(S.String),
           defaultAction: S.optional(S.String),
-          matchConfigurations: S.optional(__S(6826, __c213, 10)),
-          dynamicMatchConfigurations: S.optional(__S(6793, __c212, 9)),
+          matchConfigurations: S.optional(__S(7082, __c221, 10)),
+          dynamicMatchConfigurations: S.optional(__S(7049, __c220, 9)),
           aclType: S.optional(S.String),
           deviceRole: S.optional(S.String),
-          globalAccessControlListActions: S.optional(__S(6827, __c213, 11)),
-          controlPlaneAclConfiguration: S.optional(__S(6837, __c213, 21)),
+          globalAccessControlListActions: S.optional(__S(7083, __c221, 11)),
+          controlPlaneAclConfiguration: S.optional(__S(7093, __c221, 21)),
         }),
       ).annotate({ identifier: "AccessControlListPropertiesInput" });
     case 1:
@@ -19393,9 +20423,9 @@ function __c211(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accessControlListName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(6752, __c211, 0),
+          properties: __S(7008, __c219, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19405,16 +20435,30 @@ function __c211(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateAccessControlListRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(7094, __c221, 22),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateAccessControlListResponse" });
   }
 }
-function __c212(j: number): any {
+function __c220(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          vlans: S.optional(__S(5600, __c175, 0)),
-          innerVlans: S.optional(__S(5600, __c175, 0)),
-          vlanGroupNames: S.optional(__S(5600, __c175, 0)),
+          vlans: S.optional(__S(5632, __c176, 0)),
+          innerVlans: S.optional(__S(5632, __c176, 0)),
+          vlanGroupNames: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "VlanMatchCondition" });
     case 1:
@@ -19422,8 +20466,8 @@ function __c212(j: number): any {
         S.Struct({
           type: S.optional(S.String),
           prefixType: S.optional(S.String),
-          ipPrefixValues: S.optional(__S(5600, __c175, 0)),
-          ipGroupNames: S.optional(__S(5600, __c175, 0)),
+          ipPrefixValues: S.optional(__S(5632, __c176, 0)),
+          ipGroupNames: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "IpMatchCondition" });
     case 2:
@@ -19431,77 +20475,77 @@ function __c212(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           ipAddressType: S.optional(S.String),
-          ipPrefixes: S.optional(__S(5600, __c175, 0)),
+          ipPrefixes: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "IpGroupProperties" });
     case 3:
-      return S.Array(__S(6786, __c212, 2));
+      return S.Array(__S(7042, __c220, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          vlans: S.optional(__S(5600, __c175, 0)),
+          vlans: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "VlanGroupProperties" });
     case 5:
-      return S.Array(__S(6788, __c212, 4));
+      return S.Array(__S(7044, __c220, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          ports: S.optional(__S(5600, __c175, 0)),
+          ports: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "PortGroupProperties" });
     case 7:
-      return S.Array(__S(6790, __c212, 6));
+      return S.Array(__S(7046, __c220, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          ipGroups: S.optional(__S(6787, __c212, 3)),
-          vlanGroups: S.optional(__S(6789, __c212, 5)),
-          portGroups: S.optional(__S(6791, __c212, 7)),
+          ipGroups: S.optional(__S(7043, __c220, 3)),
+          vlanGroups: S.optional(__S(7045, __c220, 5)),
+          portGroups: S.optional(__S(7047, __c220, 7)),
         }),
       ).annotate({ identifier: "CommonDynamicMatchConfiguration" });
     case 9:
-      return S.Array(__S(6792, __c212, 8));
+      return S.Array(__S(7048, __c220, 8));
   }
 }
-function __c213(j: number): any {
+function __c221(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           portType: S.optional(S.String),
           layer4Protocol: S.String,
-          ports: S.optional(__S(5600, __c175, 0)),
-          portGroupNames: S.optional(__S(5600, __c175, 0)),
-          flags: S.optional(__S(5600, __c175, 0)),
+          ports: S.optional(__S(5632, __c176, 0)),
+          portGroupNames: S.optional(__S(5632, __c176, 0)),
+          flags: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "AccessControlListPortCondition" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          icmpTypes: S.optional(__S(5600, __c175, 0)),
+          icmpTypes: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "IcmpConfigurationProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          protocolTypes: S.optional(__S(5600, __c175, 0)),
-          vlanMatchCondition: S.optional(__S(6784, __c212, 0)),
-          ipCondition: S.optional(__S(6785, __c212, 1)),
-          etherTypes: S.optional(__S(5600, __c175, 0)),
-          fragments: S.optional(__S(5600, __c175, 0)),
-          ipLengths: S.optional(__S(5600, __c175, 0)),
-          ttlValues: S.optional(__S(5600, __c175, 0)),
-          dscpMarkings: S.optional(__S(5600, __c175, 0)),
-          protocolNeighbors: S.optional(__S(5600, __c175, 0)),
-          portCondition: S.optional(__S(6816, __c213, 0)),
-          icmpConfiguration: S.optional(__S(6817, __c213, 1)),
+          protocolTypes: S.optional(__S(5632, __c176, 0)),
+          vlanMatchCondition: S.optional(__S(7040, __c220, 0)),
+          ipCondition: S.optional(__S(7041, __c220, 1)),
+          etherTypes: S.optional(__S(5632, __c176, 0)),
+          fragments: S.optional(__S(5632, __c176, 0)),
+          ipLengths: S.optional(__S(5632, __c176, 0)),
+          ttlValues: S.optional(__S(5632, __c176, 0)),
+          dscpMarkings: S.optional(__S(5632, __c176, 0)),
+          protocolNeighbors: S.optional(__S(5632, __c176, 0)),
+          portCondition: S.optional(__S(7072, __c221, 0)),
+          icmpConfiguration: S.optional(__S(7073, __c221, 1)),
         }),
       ).annotate({ identifier: "AccessControlListMatchCondition" });
     case 3:
-      return S.Array(__S(6818, __c213, 2));
+      return S.Array(__S(7074, __c221, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -19519,8 +20563,8 @@ function __c213(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bitRate: S.optional(__S(6820, __c213, 4)),
-          burstSize: S.optional(__S(6821, __c213, 5)),
+          bitRate: S.optional(__S(7076, __c221, 4)),
+          burstSize: S.optional(__S(7077, __c221, 5)),
         }),
       ).annotate({ identifier: "PoliceRateConfigurationProperties" });
     case 7:
@@ -19529,23 +20573,23 @@ function __c213(j: number): any {
           type: S.optional(S.String),
           counterName: S.optional(S.String),
           remarkComment: S.optional(S.String),
-          policeRateConfiguration: S.optional(__S(6822, __c213, 6)),
+          policeRateConfiguration: S.optional(__S(7078, __c221, 6)),
         }),
       ).annotate({ identifier: "AccessControlListAction" });
     case 8:
-      return S.Array(__S(6823, __c213, 7));
+      return S.Array(__S(7079, __c221, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
           ipAddressType: S.optional(S.String),
-          matchConditions: S.optional(__S(6819, __c213, 3)),
-          actions: S.optional(__S(6824, __c213, 8)),
+          matchConditions: S.optional(__S(7075, __c221, 3)),
+          actions: S.optional(__S(7080, __c221, 8)),
         }),
       ).annotate({ identifier: "AccessControlListMatchConfiguration" });
     case 10:
-      return S.Array(__S(6825, __c213, 9));
+      return S.Array(__S(7081, __c221, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
@@ -19569,26 +20613,26 @@ function __c213(j: number): any {
     case 14:
       return S.suspend(() =>
         S.Struct({
-          ports: S.optional(__S(5600, __c175, 0)),
+          ports: S.optional(__S(5632, __c176, 0)),
           portMatchType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ControlPlaneAclPortCondition" });
     case 15:
       return S.suspend(() =>
         S.Struct({
-          sourcePorts: S.optional(__S(6830, __c213, 14)),
-          destinationPorts: S.optional(__S(6830, __c213, 14)),
+          sourcePorts: S.optional(__S(7086, __c221, 14)),
+          destinationPorts: S.optional(__S(7086, __c221, 14)),
         }),
       ).annotate({ identifier: "ControlPlaneAclPortMatchCondition" });
     case 16:
       return S.suspend(() =>
         S.Struct({
           protocolTypes: S.optional(S.String),
-          ipCondition: S.optional(__S(6828, __c213, 12)),
-          ttlMatchCondition: S.optional(__S(6829, __c213, 13)),
-          portCondition: S.optional(__S(6831, __c213, 15)),
-          flags: S.optional(__S(5600, __c175, 0)),
-          icmpConfiguration: S.optional(__S(6817, __c213, 1)),
+          ipCondition: S.optional(__S(7084, __c221, 12)),
+          ttlMatchCondition: S.optional(__S(7085, __c221, 13)),
+          portCondition: S.optional(__S(7087, __c221, 15)),
+          flags: S.optional(__S(5632, __c176, 0)),
+          icmpConfiguration: S.optional(__S(7073, __c221, 1)),
         }),
       ).annotate({ identifier: "ControlPlaneAclMatchCondition" });
     case 17:
@@ -19603,21 +20647,21 @@ function __c213(j: number): any {
         S.Struct({
           matchConfigurationName: S.optional(S.String),
           sequenceNumber: S.optional(S.Number),
-          matchCondition: S.optional(__S(6832, __c213, 16)),
-          action: S.optional(__S(6833, __c213, 17)),
+          matchCondition: S.optional(__S(7088, __c221, 16)),
+          action: S.optional(__S(7089, __c221, 17)),
         }),
       ).annotate({ identifier: "ControlPlaneAclMatchConfigurationProperties" });
     case 19:
-      return S.Array(__S(6834, __c213, 18));
+      return S.Array(__S(7090, __c221, 18));
     case 20:
       return S.suspend(() =>
         S.Struct({
           ipAddressType: S.optional(S.String),
-          matchConfigurations: S.optional(__S(6835, __c213, 19)),
+          matchConfigurations: S.optional(__S(7091, __c221, 19)),
         }),
       ).annotate({ identifier: "ControlPlaneAclProperties" });
     case 21:
-      return S.Array(__S(6836, __c213, 20));
+      return S.Array(__S(7092, __c221, 20));
     case 22:
       return S.suspend(() =>
         S.Struct({
@@ -19625,35 +20669,23 @@ function __c213(j: number): any {
           configurationType: S.String,
           aclsUrl: S.optional(S.String),
           defaultAction: S.optional(S.String),
-          matchConfigurations: S.optional(__S(6826, __c213, 10)),
-          dynamicMatchConfigurations: S.optional(__S(6793, __c212, 9)),
+          matchConfigurations: S.optional(__S(7082, __c221, 10)),
+          dynamicMatchConfigurations: S.optional(__S(7049, __c220, 9)),
           lastSyncedTime: S.optional(S.String),
           aclType: S.optional(S.String),
           deviceRole: S.optional(S.String),
-          globalAccessControlListActions: S.optional(__S(6827, __c213, 11)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
-          networkFabricIds: S.optional(__S(5600, __c175, 0)),
-          controlPlaneAclConfiguration: S.optional(__S(6837, __c213, 21)),
+          globalAccessControlListActions: S.optional(__S(7083, __c221, 11)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
+          networkFabricIds: S.optional(__S(5632, __c176, 0)),
+          controlPlaneAclConfiguration: S.optional(__S(7093, __c221, 21)),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessControlListProperties" });
-    case 23:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(6838, __c213, 22),
-        }),
-      ).annotate({ identifier: "CreateAccessControlListResponse" });
   }
 }
-function __c214(j: number): any {
+function __c222(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19668,7 +20700,7 @@ function __c214(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c215(j: number): any {
+function __c223(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19678,13 +20710,13 @@ function __c215(j: number): any {
       ).annotate({ identifier: "LastOperationProperties" });
   }
 }
-function __c216(j: number): any {
+function __c224(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c217(j: number): any {
+function __c225(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19703,7 +20735,23 @@ function __c217(j: number): any {
       ).annotate({ identifier: "GetIpExtendedCommunityRequest" });
   }
 }
-function __c218(j: number): any {
+function __c226(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(1186, __c37, 2),
+        }),
+      ).annotate({ identifier: "GetIpExtendedCommunityResponse" });
+  }
+}
+function __c227(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19722,7 +20770,23 @@ function __c218(j: number): any {
       ).annotate({ identifier: "GetIpPrefixRequest" });
   }
 }
-function __c219(j: number): any {
+function __c228(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(1666, __c52, 2),
+        }),
+      ).annotate({ identifier: "GetIpPrefixResponse" });
+  }
+}
+function __c229(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19741,7 +20805,24 @@ function __c219(j: number): any {
       ).annotate({ identifier: "GetL2IsolationDomainRequest" });
   }
 }
-function __c220(j: number): any {
+function __c230(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(2144, __c67, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetL2IsolationDomainResponse" });
+  }
+}
+function __c231(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19760,7 +20841,24 @@ function __c220(j: number): any {
       ).annotate({ identifier: "GetL3IsolationDomainRequest" });
   }
 }
-function __c221(j: number): any {
+function __c232(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(2534, __c79, 6),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetL3IsolationDomainResponse" });
+  }
+}
+function __c233(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19779,7 +20877,24 @@ function __c221(j: number): any {
       ).annotate({ identifier: "GetNeighborGroupRequest" });
   }
 }
-function __c222(j: number): any {
+function __c234(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(2977, __c93, 1),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetNeighborGroupResponse" });
+  }
+}
+function __c235(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19798,7 +20913,24 @@ function __c222(j: number): any {
       ).annotate({ identifier: "GetNetworkBootstrapDeviceRequest" });
   }
 }
-function __c223(j: number): any {
+function __c236(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(3424, __c107, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetNetworkBootstrapDeviceResponse" });
+  }
+}
+function __c237(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19818,7 +20950,21 @@ function __c223(j: number): any {
       ).annotate({ identifier: "GetNetworkBootstrapInterfaceRequest" });
   }
 }
-function __c224(j: number): any {
+function __c238(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(3840, __c120, 0),
+        }),
+      ).annotate({ identifier: "GetNetworkBootstrapInterfaceResponse" });
+  }
+}
+function __c239(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19837,7 +20983,24 @@ function __c224(j: number): any {
       ).annotate({ identifier: "GetNetworkDeviceRequest" });
   }
 }
-function __c225(j: number): any {
+function __c240(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(4291, __c134, 3),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetNetworkDeviceResponse" });
+  }
+}
+function __c241(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19855,7 +21018,7 @@ function __c225(j: number): any {
       ).annotate({ identifier: "GetNetworkDeviceSkusRequest" });
   }
 }
-function __c226(j: number): any {
+function __c242(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19867,7 +21030,7 @@ function __c226(j: number): any {
         }),
       ).annotate({ identifier: "SupportedVersionProperties" });
     case 1:
-      return S.Array(__S(7232, __c226, 0));
+      return S.Array(__S(7744, __c242, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -19876,25 +21039,25 @@ function __c226(j: number): any {
         }),
       ).annotate({ identifier: "SupportedConnectorProperties" });
     case 3:
-      return S.Array(__S(7234, __c226, 2));
+      return S.Array(__S(7746, __c242, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           identifier: S.optional(S.String),
           interfaceType: S.optional(S.String),
-          supportedConnectorTypes: S.optional(__S(7235, __c226, 3)),
+          supportedConnectorTypes: S.optional(__S(7747, __c242, 3)),
         }),
       ).annotate({ identifier: "DeviceInterfaceProperties" });
     case 5:
-      return S.Array(__S(7236, __c226, 4));
+      return S.Array(__S(7748, __c242, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           model: S.String,
           manufacturer: S.optional(S.String),
-          supportedVersions: S.optional(__S(7233, __c226, 1)),
-          supportedRoleTypes: S.optional(__S(8032, __c251, 0)),
-          interfaces: S.optional(__S(7237, __c226, 5)),
+          supportedVersions: S.optional(__S(7745, __c242, 1)),
+          supportedRoleTypes: S.optional(__S(8832, __c276, 0)),
+          interfaces: S.optional(__S(7749, __c242, 5)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkDeviceSkuProperties" });
@@ -19904,13 +21067,13 @@ function __c226(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          properties: __S(7238, __c226, 6),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(7750, __c242, 6),
         }),
       ).annotate({ identifier: "GetNetworkDeviceSkusResponse" });
   }
 }
-function __c227(j: number): any {
+function __c243(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19929,7 +21092,24 @@ function __c227(j: number): any {
       ).annotate({ identifier: "GetNetworkFabricRequest" });
   }
 }
-function __c228(j: number): any {
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(4749, __c148, 13),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetNetworkFabricResponse" });
+  }
+}
+function __c245(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -19941,14 +21121,14 @@ function __c228(j: number): any {
           mtu: S.optional(S.Number),
           vlanId: S.Number,
           peerASN: S.Number,
-          bfdConfiguration: S.optional(__S(7520, __c235, 0)),
+          bfdConfiguration: S.optional(__S(8064, __c252, 0)),
           ingressAclId: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(7456, __c233, 0)),
+          bmpConfiguration: S.optional(__S(8000, __c250, 0)),
           egressAclId: S.optional(S.String),
           v4OverV6BgpSession: S.optional(S.String),
           v6OverV4BgpSession: S.optional(S.String),
-          nativeIpv4PrefixLimit: S.optional(__S(7618, __c238, 2)),
-          nativeIpv6PrefixLimit: S.optional(__S(7618, __c238, 2)),
+          nativeIpv4PrefixLimit: S.optional(__S(8162, __c255, 2)),
+          nativeIpv6PrefixLimit: S.optional(__S(8162, __c255, 2)),
         }),
       ).annotate({ identifier: "ExternalNetworkPropertiesOptionAPropertiesInput" });
     case 1:
@@ -19956,12 +21136,12 @@ function __c228(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
-          importRoutePolicy: S.optional(__S(7584, __c237, 0)),
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          importRoutePolicy: S.optional(__S(8128, __c254, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
           peeringOption: S.String,
-          optionBProperties: S.optional(__S(7329, __c229, 1)),
-          optionAProperties: S.optional(__S(7296, __c228, 0)),
-          staticRouteConfiguration: S.optional(__S(7360, __c230, 0)),
+          optionBProperties: S.optional(__S(7873, __c246, 1)),
+          optionAProperties: S.optional(__S(7840, __c245, 0)),
+          staticRouteConfiguration: S.optional(__S(7904, __c247, 0)),
         }),
       ).annotate({ identifier: "ExternalNetworkPropertiesInput" });
     case 2:
@@ -19971,7 +21151,7 @@ function __c228(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           externalNetworkName: S.String.pipe(T.Label()),
-          properties: __S(7297, __c228, 1),
+          properties: __S(7841, __c245, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -19981,54 +21161,66 @@ function __c228(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateExternalNetworkRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(7969, __c249, 1),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateExternalNetworkResponse" });
   }
 }
-function __c229(j: number): any {
+function __c246(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          importIpv4RouteTargets: S.optional(__S(5600, __c175, 0)),
-          importIpv6RouteTargets: S.optional(__S(5600, __c175, 0)),
-          exportIpv4RouteTargets: S.optional(__S(5600, __c175, 0)),
-          exportIpv6RouteTargets: S.optional(__S(5600, __c175, 0)),
+          importIpv4RouteTargets: S.optional(__S(5632, __c176, 0)),
+          importIpv6RouteTargets: S.optional(__S(5632, __c176, 0)),
+          exportIpv4RouteTargets: S.optional(__S(5632, __c176, 0)),
+          exportIpv6RouteTargets: S.optional(__S(5632, __c176, 0)),
         }),
       ).annotate({ identifier: "RouteTargetInformation" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          importRouteTargets: S.optional(__S(5600, __c175, 0)),
-          exportRouteTargets: S.optional(__S(5600, __c175, 0)),
-          routeTargets: S.optional(__S(7328, __c229, 0)),
+          importRouteTargets: S.optional(__S(5632, __c176, 0)),
+          exportRouteTargets: S.optional(__S(5632, __c176, 0)),
+          routeTargets: S.optional(__S(7872, __c246, 0)),
         }),
       ).annotate({ identifier: "L3OptionBProperties" });
   }
 }
-function __c230(j: number): any {
+function __c247(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bfdConfiguration: S.optional(__S(7520, __c235, 0)),
-          ipv4Routes: S.optional(__S(7586, __c237, 2)),
-          ipv6Routes: S.optional(__S(7586, __c237, 2)),
+          bfdConfiguration: S.optional(__S(8064, __c252, 0)),
+          ipv4Routes: S.optional(__S(8130, __c254, 2)),
+          ipv6Routes: S.optional(__S(8130, __c254, 2)),
         }),
       ).annotate({ identifier: "ExternalNetworkStaticRouteConfigurationInput" });
   }
 }
-function __c231(j: number): any {
+function __c248(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          bfdConfiguration: S.optional(__S(7552, __c236, 0)),
-          ipv4Routes: S.optional(__S(7586, __c237, 2)),
-          ipv6Routes: S.optional(__S(7586, __c237, 2)),
+          bfdConfiguration: S.optional(__S(8096, __c253, 0)),
+          ipv4Routes: S.optional(__S(8130, __c254, 2)),
+          ipv6Routes: S.optional(__S(8130, __c254, 2)),
         }),
       ).annotate({ identifier: "ExternalNetworkStaticRouteConfiguration" });
   }
 }
-function __c232(j: number): any {
+function __c249(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20041,14 +21233,14 @@ function __c232(j: number): any {
           vlanId: S.Number,
           fabricASN: S.optional(S.Number),
           peerASN: S.Number,
-          bfdConfiguration: S.optional(__S(7552, __c236, 0)),
+          bfdConfiguration: S.optional(__S(8096, __c253, 0)),
           ingressAclId: S.optional(S.String),
-          bmpConfiguration: S.optional(__S(7456, __c233, 0)),
+          bmpConfiguration: S.optional(__S(8000, __c250, 0)),
           egressAclId: S.optional(S.String),
           v4OverV6BgpSession: S.optional(S.String),
           v6OverV4BgpSession: S.optional(S.String),
-          nativeIpv4PrefixLimit: S.optional(__S(7618, __c238, 2)),
-          nativeIpv6PrefixLimit: S.optional(__S(7618, __c238, 2)),
+          nativeIpv4PrefixLimit: S.optional(__S(8162, __c255, 2)),
+          nativeIpv6PrefixLimit: S.optional(__S(8162, __c255, 2)),
         }),
       ).annotate({ identifier: "ExternalNetworkPropertiesOptionAProperties" });
     case 1:
@@ -20056,32 +21248,22 @@ function __c232(j: number): any {
         S.Struct({
           annotation: S.optional(S.String),
           networkToNetworkInterconnectId: S.optional(S.String),
-          importRoutePolicy: S.optional(__S(7584, __c237, 0)),
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          importRoutePolicy: S.optional(__S(8128, __c254, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
           peeringOption: S.String,
-          optionBProperties: S.optional(__S(7329, __c229, 1)),
-          optionAProperties: S.optional(__S(7424, __c232, 0)),
-          staticRouteConfiguration: S.optional(__S(7392, __c231, 0)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          optionBProperties: S.optional(__S(7873, __c246, 1)),
+          optionAProperties: S.optional(__S(7968, __c249, 0)),
+          staticRouteConfiguration: S.optional(__S(7936, __c248, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           networkFabricId: S.optional(S.String),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalNetworkProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          properties: __S(7425, __c232, 1),
-        }),
-      ).annotate({ identifier: "CreateExternalNetworkResponse" });
   }
 }
-function __c233(j: number): any {
+function __c250(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20091,7 +21273,7 @@ function __c233(j: number): any {
       ).annotate({ identifier: "ExternalNetworkBmpProperties" });
   }
 }
-function __c234(j: number): any {
+function __c251(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20102,7 +21284,7 @@ function __c234(j: number): any {
       ).annotate({ identifier: "ExportRoutePolicy" });
   }
 }
-function __c235(j: number): any {
+function __c252(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20113,7 +21295,7 @@ function __c235(j: number): any {
       ).annotate({ identifier: "BfdConfigurationInput" });
   }
 }
-function __c236(j: number): any {
+function __c253(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20125,7 +21307,7 @@ function __c236(j: number): any {
       ).annotate({ identifier: "BfdConfiguration" });
   }
 }
-function __c237(j: number): any {
+function __c254(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20138,14 +21320,14 @@ function __c237(j: number): any {
       return S.suspend(() =>
         S.Struct({
           prefix: S.String,
-          nextHop: __S(5600, __c175, 0),
+          nextHop: __S(5632, __c176, 0),
         }),
       ).annotate({ identifier: "StaticRouteProperties" });
     case 2:
-      return S.Array(__S(7585, __c237, 1));
+      return S.Array(__S(8129, __c254, 1));
   }
 }
-function __c238(j: number): any {
+function __c255(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20156,16 +21338,16 @@ function __c238(j: number): any {
         }),
       ).annotate({ identifier: "PrefixLimitProperties" });
     case 1:
-      return S.Array(__S(7616, __c238, 0));
+      return S.Array(__S(8160, __c255, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          prefixLimits: S.optional(__S(7617, __c238, 1)),
+          prefixLimits: S.optional(__S(8161, __c255, 1)),
         }),
       ).annotate({ identifier: "NativeIpv4PrefixLimitProperties" });
   }
 }
-function __c239(j: number): any {
+function __c256(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20184,7 +21366,24 @@ function __c239(j: number): any {
       ).annotate({ identifier: "GetNetworkFabricControllerRequest" });
   }
 }
-function __c240(j: number): any {
+function __c257(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5028, __c157, 4),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetNetworkFabricControllerResponse" });
+  }
+}
+function __c258(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20202,7 +21401,7 @@ function __c240(j: number): any {
       ).annotate({ identifier: "GetNetworkFabricSkusRequest" });
   }
 }
-function __c241(j: number): any {
+function __c259(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20210,7 +21409,7 @@ function __c241(j: number): any {
           type: S.optional(S.String),
           maxComputeRacks: S.optional(S.Number),
           maximumServerCount: S.optional(S.Number),
-          supportedVersions: S.optional(__S(5600, __c175, 0)),
+          supportedVersions: S.optional(__S(5632, __c176, 0)),
           details: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
@@ -20221,13 +21420,13 @@ function __c241(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          properties: __S(7712, __c241, 0),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(8288, __c259, 0),
         }),
       ).annotate({ identifier: "GetNetworkFabricSkusResponse" });
   }
 }
-function __c242(j: number): any {
+function __c260(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20259,15 +21458,17 @@ function __c242(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(__S(5664, __c177, 0)),
-          error: S.optional(__S(5666, __c177, 2)),
+          operations: S.optional(__S(5697, __c178, 1)),
+          error: S.optional(__S(5699, __c178, 3)),
           resourceId: S.optional(S.String),
-          properties: S.optional(__S(7745, __c242, 1)),
+          properties: S.optional(__S(8321, __c260, 1)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "GetTopologyResponse" });
   }
 }
-function __c243(j: number): any {
+function __c261(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20287,7 +21488,22 @@ function __c243(j: number): any {
       ).annotate({ identifier: "GetNetworkInterfaceRequest" });
   }
 }
-function __c244(j: number): any {
+function __c262(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(5120, __c160, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetNetworkInterfaceResponse" });
+  }
+}
+function __c263(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20306,7 +21522,23 @@ function __c244(j: number): any {
       ).annotate({ identifier: "GetNetworkMonitorRequest" });
   }
 }
-function __c245(j: number): any {
+function __c264(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5186, __c162, 2),
+        }),
+      ).annotate({ identifier: "GetNetworkMonitorResponse" });
+  }
+}
+function __c265(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20325,7 +21557,24 @@ function __c245(j: number): any {
       ).annotate({ identifier: "GetNetworkPacketBrokerRequest" });
   }
 }
-function __c246(j: number): any {
+function __c266(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5248, __c164, 0),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetNetworkPacketBrokerResponse" });
+  }
+}
+function __c267(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20344,7 +21593,23 @@ function __c246(j: number): any {
       ).annotate({ identifier: "GetNetworkRackRequest" });
   }
 }
-function __c247(j: number): any {
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5312, __c166, 0),
+        }),
+      ).annotate({ identifier: "GetNetworkRackResponse" });
+  }
+}
+function __c269(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20363,7 +21628,24 @@ function __c247(j: number): any {
       ).annotate({ identifier: "GetNetworkTapRequest" });
   }
 }
-function __c248(j: number): any {
+function __c270(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5379, __c168, 3),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetNetworkTapResponse" });
+  }
+}
+function __c271(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20382,7 +21664,24 @@ function __c248(j: number): any {
       ).annotate({ identifier: "GetNetworkTapRuleRequest" });
   }
 }
-function __c249(j: number): any {
+function __c272(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5448, __c170, 8),
+          identity: S.optional(__S(2114, __c66, 2)),
+        }),
+      ).annotate({ identifier: "GetNetworkTapRuleResponse" });
+  }
+}
+function __c273(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20402,22 +21701,36 @@ function __c249(j: number): any {
       ).annotate({ identifier: "GetNetworkToNetworkInterconnectRequest" });
   }
 }
-function __c250(j: number): any {
+function __c274(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(5510, __c172, 6),
+        }),
+      ).annotate({ identifier: "GetNetworkToNetworkInterconnectResponse" });
+  }
+}
+function __c275(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bfdConfiguration: S.optional(__S(7520, __c235, 0)),
+          bfdConfiguration: S.optional(__S(8064, __c252, 0)),
           defaultRouteOriginate: S.optional(S.String),
           allowAS: S.optional(S.Number),
           allowASOverride: S.optional(S.String),
           peerASN: S.Number,
-          ipv4ListenRangePrefixes: S.optional(__S(5600, __c175, 0)),
-          ipv6ListenRangePrefixes: S.optional(__S(5600, __c175, 0)),
-          ipv4NeighborAddress: S.optional(__S(8097, __c253, 1)),
-          ipv6NeighborAddress: S.optional(__S(8097, __c253, 1)),
-          bmpConfiguration: S.optional(__S(8130, __c254, 2)),
+          ipv4ListenRangePrefixes: S.optional(__S(5632, __c176, 0)),
+          ipv6ListenRangePrefixes: S.optional(__S(5632, __c176, 0)),
+          ipv4NeighborAddress: S.optional(__S(8897, __c278, 1)),
+          ipv6NeighborAddress: S.optional(__S(8897, __c278, 1)),
+          bmpConfiguration: S.optional(__S(8930, __c279, 2)),
           v4OverV6BgpSession: S.optional(S.String),
           v6OverV4BgpSession: S.optional(S.String),
         }),
@@ -20425,9 +21738,9 @@ function __c250(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bfdConfiguration: S.optional(__S(7520, __c235, 0)),
-          ipv4Routes: S.optional(__S(7586, __c237, 2)),
-          ipv6Routes: S.optional(__S(7586, __c237, 2)),
+          bfdConfiguration: S.optional(__S(8064, __c252, 0)),
+          ipv4Routes: S.optional(__S(8130, __c254, 2)),
+          ipv6Routes: S.optional(__S(8130, __c254, 2)),
           extension: S.optional(S.String),
         }),
       ).annotate({ identifier: "StaticRouteConfigurationInput" });
@@ -20437,18 +21750,18 @@ function __c250(j: number): any {
           annotation: S.optional(S.String),
           extension: S.optional(S.String),
           mtu: S.optional(S.Number),
-          connectedIPv4Subnets: S.optional(__S(8129, __c254, 1)),
-          connectedIPv6Subnets: S.optional(__S(8129, __c254, 1)),
-          importRoutePolicy: S.optional(__S(7584, __c237, 0)),
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          connectedIPv4Subnets: S.optional(__S(8929, __c279, 1)),
+          connectedIPv6Subnets: S.optional(__S(8929, __c279, 1)),
+          importRoutePolicy: S.optional(__S(8128, __c254, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
           ingressAclId: S.optional(S.String),
           egressAclId: S.optional(S.String),
           isMonitoringEnabled: S.optional(S.String),
           vlanId: S.Number,
-          bgpConfiguration: S.optional(__S(8000, __c250, 0)),
-          staticRouteConfiguration: S.optional(__S(8001, __c250, 1)),
-          nativeIpv4PrefixLimit: S.optional(__S(7618, __c238, 2)),
-          nativeIpv6PrefixLimit: S.optional(__S(7618, __c238, 2)),
+          bgpConfiguration: S.optional(__S(8800, __c275, 0)),
+          staticRouteConfiguration: S.optional(__S(8801, __c275, 1)),
+          nativeIpv4PrefixLimit: S.optional(__S(8162, __c255, 2)),
+          nativeIpv6PrefixLimit: S.optional(__S(8162, __c255, 2)),
         }),
       ).annotate({ identifier: "InternalNetworkPropertiesInput" });
     case 3:
@@ -20458,7 +21771,7 @@ function __c250(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           l3IsolationDomainName: S.String.pipe(T.Label()),
           internalNetworkName: S.String.pipe(T.Label()),
-          properties: __S(8002, __c250, 2),
+          properties: __S(8802, __c275, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20468,25 +21781,37 @@ function __c250(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateInternalNetworkRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          properties: __S(8935, __c279, 7),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateInternalNetworkResponse" });
   }
 }
-function __c251(j: number): any {
+function __c276(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c252(j: number): any {
+function __c277(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          exportPolicies: S.optional(__S(8032, __c251, 0)),
+          exportPolicies: S.optional(__S(8832, __c276, 0)),
         }),
       ).annotate({ identifier: "BmpExportPolicyProperties" });
   }
 }
-function __c253(j: number): any {
+function __c278(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20495,10 +21820,10 @@ function __c253(j: number): any {
         }),
       ).annotate({ identifier: "NeighborAddressInput" });
     case 1:
-      return S.Array(__S(8096, __c253, 0));
+      return S.Array(__S(8896, __c278, 0));
   }
 }
-function __c254(j: number): any {
+function __c279(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20508,13 +21833,13 @@ function __c254(j: number): any {
         }),
       ).annotate({ identifier: "ConnectedSubnet" });
     case 1:
-      return S.Array(__S(8128, __c254, 0));
+      return S.Array(__S(8928, __c279, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          neighborIpExclusions: S.optional(__S(5600, __c175, 0)),
+          neighborIpExclusions: S.optional(__S(5632, __c176, 0)),
           bmpConfigurationState: S.optional(S.String),
-          exportPolicyConfiguration: S.optional(__S(8064, __c252, 0)),
+          exportPolicyConfiguration: S.optional(__S(8864, __c277, 0)),
         }),
       ).annotate({ identifier: "InternalNetworkBmpProperties" });
     case 3:
@@ -20527,22 +21852,22 @@ function __c254(j: number): any {
         }),
       ).annotate({ identifier: "NeighborAddress" });
     case 4:
-      return S.Array(__S(8131, __c254, 3));
+      return S.Array(__S(8931, __c279, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           annotation: S.optional(S.String),
-          bfdConfiguration: S.optional(__S(7552, __c236, 0)),
+          bfdConfiguration: S.optional(__S(8096, __c253, 0)),
           defaultRouteOriginate: S.optional(S.String),
           allowAS: S.optional(S.Number),
           allowASOverride: S.optional(S.String),
           fabricASN: S.optional(S.Number),
           peerASN: S.Number,
-          ipv4ListenRangePrefixes: S.optional(__S(5600, __c175, 0)),
-          ipv6ListenRangePrefixes: S.optional(__S(5600, __c175, 0)),
-          ipv4NeighborAddress: S.optional(__S(8132, __c254, 4)),
-          ipv6NeighborAddress: S.optional(__S(8132, __c254, 4)),
-          bmpConfiguration: S.optional(__S(8130, __c254, 2)),
+          ipv4ListenRangePrefixes: S.optional(__S(5632, __c176, 0)),
+          ipv6ListenRangePrefixes: S.optional(__S(5632, __c176, 0)),
+          ipv4NeighborAddress: S.optional(__S(8932, __c279, 4)),
+          ipv6NeighborAddress: S.optional(__S(8932, __c279, 4)),
+          bmpConfiguration: S.optional(__S(8930, __c279, 2)),
           v4OverV6BgpSession: S.optional(S.String),
           v6OverV4BgpSession: S.optional(S.String),
         }),
@@ -20550,9 +21875,9 @@ function __c254(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bfdConfiguration: S.optional(__S(7552, __c236, 0)),
-          ipv4Routes: S.optional(__S(7586, __c237, 2)),
-          ipv6Routes: S.optional(__S(7586, __c237, 2)),
+          bfdConfiguration: S.optional(__S(8096, __c253, 0)),
+          ipv4Routes: S.optional(__S(8130, __c254, 2)),
+          ipv6Routes: S.optional(__S(8130, __c254, 2)),
           extension: S.optional(S.String),
         }),
       ).annotate({ identifier: "StaticRouteConfiguration" });
@@ -20562,38 +21887,28 @@ function __c254(j: number): any {
           annotation: S.optional(S.String),
           extension: S.optional(S.String),
           mtu: S.optional(S.Number),
-          connectedIPv4Subnets: S.optional(__S(8129, __c254, 1)),
-          connectedIPv6Subnets: S.optional(__S(8129, __c254, 1)),
-          importRoutePolicy: S.optional(__S(7584, __c237, 0)),
-          exportRoutePolicy: S.optional(__S(7488, __c234, 0)),
+          connectedIPv4Subnets: S.optional(__S(8929, __c279, 1)),
+          connectedIPv6Subnets: S.optional(__S(8929, __c279, 1)),
+          importRoutePolicy: S.optional(__S(8128, __c254, 0)),
+          exportRoutePolicy: S.optional(__S(8032, __c251, 0)),
           ingressAclId: S.optional(S.String),
           egressAclId: S.optional(S.String),
           isMonitoringEnabled: S.optional(S.String),
           vlanId: S.Number,
-          bgpConfiguration: S.optional(__S(8133, __c254, 5)),
-          staticRouteConfiguration: S.optional(__S(8134, __c254, 6)),
-          nativeIpv4PrefixLimit: S.optional(__S(7618, __c238, 2)),
-          nativeIpv6PrefixLimit: S.optional(__S(7618, __c238, 2)),
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          bgpConfiguration: S.optional(__S(8933, __c279, 5)),
+          staticRouteConfiguration: S.optional(__S(8934, __c279, 6)),
+          nativeIpv4PrefixLimit: S.optional(__S(8162, __c255, 2)),
+          nativeIpv6PrefixLimit: S.optional(__S(8162, __c255, 2)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           networkFabricId: S.optional(S.String),
           configurationState: S.optional(S.String),
           provisioningState: S.optional(S.String),
           administrativeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "InternalNetworkProperties" });
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          properties: __S(8135, __c254, 7),
-        }),
-      ).annotate({ identifier: "CreateInternalNetworkResponse" });
   }
 }
-function __c255(j: number): any {
+function __c280(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20612,7 +21927,23 @@ function __c255(j: number): any {
       ).annotate({ identifier: "GetRoutePolicyRequest" });
   }
 }
-function __c256(j: number): any {
+function __c281(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(5576, __c174, 8),
+        }),
+      ).annotate({ identifier: "GetRoutePolicyResponse" });
+  }
+}
+function __c282(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20630,20 +21961,20 @@ function __c256(j: number): any {
       ).annotate({ identifier: "ListAccessControlListByResourceGroupRequest" });
   }
 }
-function __c257(j: number): any {
+function __c283(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(6839, __c213, 23));
+      return S.Array(__S(6656, __c208, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(8224, __c257, 0),
+          value: __S(9056, __c283, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessControlListsListResult" });
   }
 }
-function __c258(j: number): any {
+function __c284(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20660,7 +21991,7 @@ function __c258(j: number): any {
       ).annotate({ identifier: "ListAccessControlListBySubscriptionRequest" });
   }
 }
-function __c259(j: number): any {
+function __c285(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20678,17 +22009,17 @@ function __c259(j: number): any {
         ),
       ).annotate({ identifier: "ListExternalNetworkByL3IsolationDomainRequest" });
     case 1:
-      return S.Array(__S(7426, __c232, 2));
+      return S.Array(__S(6720, __c210, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(8289, __c259, 1),
+          value: __S(9121, __c285, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalNetworksList" });
   }
 }
-function __c260(j: number): any {
+function __c286(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20706,17 +22037,17 @@ function __c260(j: number): any {
         ),
       ).annotate({ identifier: "ListInternalNetworkByL3IsolationDomainRequest" });
     case 1:
-      return S.Array(__S(8136, __c254, 8));
+      return S.Array(__S(6784, __c212, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(8321, __c260, 1),
+          value: __S(9153, __c286, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InternalNetworksList" });
   }
 }
-function __c261(j: number): any {
+function __c287(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20734,20 +22065,20 @@ function __c261(j: number): any {
       ).annotate({ identifier: "ListInternetGatewayByResourceGroupRequest" });
   }
 }
-function __c262(j: number): any {
+function __c288(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(8641, __c270, 1));
+      return S.Array(__S(6848, __c214, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(8384, __c262, 0),
+          value: __S(9216, __c288, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InternetGatewaysListResult" });
   }
 }
-function __c263(j: number): any {
+function __c289(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20764,7 +22095,7 @@ function __c263(j: number): any {
       ).annotate({ identifier: "ListInternetGatewayBySubscriptionRequest" });
   }
 }
-function __c264(j: number): any {
+function __c290(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20782,20 +22113,20 @@ function __c264(j: number): any {
       ).annotate({ identifier: "ListInternetGatewayRuleByResourceGroupRequest" });
   }
 }
-function __c265(j: number): any {
+function __c291(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(164, __c5, 4));
+      return S.Array(__S(6912, __c216, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(8480, __c265, 0),
+          value: __S(9312, __c291, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InternetGatewayRulesListResult" });
   }
 }
-function __c266(j: number): any {
+function __c292(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20812,7 +22143,7 @@ function __c266(j: number): any {
       ).annotate({ identifier: "ListInternetGatewayRuleBySubscriptionRequest" });
   }
 }
-function __c267(j: number): any {
+function __c293(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20830,20 +22161,20 @@ function __c267(j: number): any {
       ).annotate({ identifier: "ListIpCommunityByResourceGroupRequest" });
   }
 }
-function __c268(j: number): any {
+function __c294(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(675, __c21, 3));
+      return S.Array(__S(6976, __c218, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(8576, __c268, 0),
+          value: __S(9408, __c294, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpCommunitiesListResult" });
   }
 }
-function __c269(j: number): any {
+function __c295(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20861,9 +22192,9 @@ function __c269(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           internetGatewayName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(6912, __c216, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
           location: S.String,
-          properties: __S(8608, __c269, 0),
+          properties: __S(9440, __c295, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -20873,9 +22204,23 @@ function __c269(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateInternetGatewayRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(7104, __c222, 0)),
+          tags: S.optional(__S(7168, __c224, 0)),
+          location: S.String,
+          properties: __S(9472, __c296, 0),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateInternetGatewayResponse" });
   }
 }
-function __c270(j: number): any {
+function __c296(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20887,25 +22232,13 @@ function __c270(j: number): any {
           type: S.optional(S.String),
           internetGatewayType: S.optional(S.String),
           networkFabricControllerId: S.String,
-          lastOperation: S.optional(__S(6880, __c215, 0)),
+          lastOperation: S.optional(__S(7136, __c223, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "InternetGatewayProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(6848, __c214, 0)),
-          tags: S.optional(__S(6912, __c216, 0)),
-          location: S.String,
-          properties: __S(8640, __c270, 0),
-        }),
-      ).annotate({ identifier: "CreateInternetGatewayResponse" });
   }
 }
-function __c271(j: number): any {
+function __c297(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20922,7 +22255,7 @@ function __c271(j: number): any {
       ).annotate({ identifier: "ListIpCommunityBySubscriptionRequest" });
   }
 }
-function __c272(j: number): any {
+function __c298(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20940,20 +22273,20 @@ function __c272(j: number): any {
       ).annotate({ identifier: "ListIpExtendedCommunityByResourceGroupRequest" });
   }
 }
-function __c273(j: number): any {
+function __c299(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1187, __c37, 3));
+      return S.Array(__S(7232, __c226, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(8736, __c273, 0),
+          value: __S(9568, __c299, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpExtendedCommunityListResult" });
   }
 }
-function __c274(j: number): any {
+function __c300(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20970,7 +22303,7 @@ function __c274(j: number): any {
       ).annotate({ identifier: "ListIpExtendedCommunityBySubscriptionRequest" });
   }
 }
-function __c275(j: number): any {
+function __c301(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -20988,20 +22321,20 @@ function __c275(j: number): any {
       ).annotate({ identifier: "ListIpPrefixByResourceGroupRequest" });
   }
 }
-function __c276(j: number): any {
+function __c302(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1635, __c51, 3));
+      return S.Array(__S(7296, __c228, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(8832, __c276, 0),
+          value: __S(9664, __c302, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpPrefixesListResult" });
   }
 }
-function __c277(j: number): any {
+function __c303(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21018,7 +22351,7 @@ function __c277(j: number): any {
       ).annotate({ identifier: "ListIpPrefixBySubscriptionRequest" });
   }
 }
-function __c278(j: number): any {
+function __c304(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21036,20 +22369,20 @@ function __c278(j: number): any {
       ).annotate({ identifier: "ListL2IsolationDomainByResourceGroupRequest" });
   }
 }
-function __c279(j: number): any {
+function __c305(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2113, __c66, 1));
+      return S.Array(__S(7360, __c230, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(8928, __c279, 0),
+          value: __S(9760, __c305, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "L2IsolationDomainsListResult" });
   }
 }
-function __c280(j: number): any {
+function __c306(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21066,7 +22399,7 @@ function __c280(j: number): any {
       ).annotate({ identifier: "ListL2IsolationDomainBySubscriptionRequest" });
   }
 }
-function __c281(j: number): any {
+function __c307(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21084,20 +22417,20 @@ function __c281(j: number): any {
       ).annotate({ identifier: "ListL3IsolationDomainByResourceGroupRequest" });
   }
 }
-function __c282(j: number): any {
+function __c308(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2503, __c78, 7));
+      return S.Array(__S(7424, __c232, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(9024, __c282, 0),
+          value: __S(9856, __c308, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "L3IsolationDomainsListResult" });
   }
 }
-function __c283(j: number): any {
+function __c309(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21114,7 +22447,7 @@ function __c283(j: number): any {
       ).annotate({ identifier: "ListL3IsolationDomainBySubscriptionRequest" });
   }
 }
-function __c284(j: number): any {
+function __c310(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -21132,14 +22465,14 @@ function __c284(j: number): any {
       ).annotate({ identifier: "ListNeighborGroupByResourceGroupRequest" });
   }
 }
-function __c285(j: number): any {
+function __c311(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2946, __c92, 2));
+      return S.Array(__S(7488, __c234, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(9120, __c285, 0),
+          value: __S(9952, __c311, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NeighborGroupsListResult" });

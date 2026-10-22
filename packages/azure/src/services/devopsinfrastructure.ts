@@ -44,7 +44,12 @@ export interface DeletePoolRequest {
   /** Name of the pool. It needs to be globally unique. */
   poolName: string;
 }
-export interface DeletePoolResponse {}
+export interface DeletePoolResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** List of resource IDs to delete. */
 export type DeletePoolResourcesRequestResourceIdsList = Array<string>;
 export interface DeletePoolResourcesRequest {
@@ -642,6 +647,8 @@ export interface PoolsCreateOrUpdateResponse {
   properties?: PoolProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: PoolsCreateOrUpdateResponseIdentity;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SubscriptionUsagesUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -754,6 +761,10 @@ export interface UpdatePoolResponse {
   properties?: PoolProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: UpdatePoolResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CheckPoolNameAvailabilityError = AzureOpError;
 /** Checks that the pool name is valid and is not already in use. */
@@ -779,7 +790,7 @@ export const DeletePool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(32, __c1, 0) as any as S.Schema<DeletePoolRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeletePoolResponse>,
+  output: __S(33, __c1, 1) as any as S.Schema<DeletePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -793,8 +804,8 @@ export const DeletePoolResources: API.OperationMethod<
   DeletePoolResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c7, 0) as any as S.Schema<DeletePoolResourcesRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<DeletePoolResourcesResponse>,
+  input: __S(192, __c6, 0) as any as S.Schema<DeletePoolResourcesRequest>,
+  output: __S(224, __c7, 0) as any as S.Schema<DeletePoolResourcesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -809,7 +820,7 @@ export const GetPool: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c9, 0) as any as S.Schema<GetPoolRequest>,
-  output: __S(372, __c11, 20) as any as S.Schema<GetPoolResponse>,
+  output: __S(352, __c11, 0) as any as S.Schema<GetPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -823,8 +834,8 @@ export const ListImageVersionByImage: API.OperationMethod<
   ListImageVersionByImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<ListImageVersionByImageRequest>,
-  output: __S(388, __c12, 4) as any as S.Schema<ImageVersionListResult>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListImageVersionByImageRequest>,
+  output: __S(420, __c13, 4) as any as S.Schema<ImageVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -838,8 +849,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(420, __c13, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -853,8 +864,8 @@ export const ListPoolByResourceGroup: API.OperationMethod<
   ListPoolByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<ListPoolByResourceGroupRequest>,
-  output: __S(481, __c15, 1) as any as S.Schema<PoolListResult>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListPoolByResourceGroupRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<PoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -868,8 +879,8 @@ export const ListPoolBySubscription: API.OperationMethod<
   ListPoolBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<ListPoolBySubscriptionRequest>,
-  output: __S(481, __c15, 1) as any as S.Schema<PoolListResult>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListPoolBySubscriptionRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<PoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -883,8 +894,8 @@ export const ListResourceDetailByPool: API.OperationMethod<
   ListResourceDetailByPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<ListResourceDetailByPoolRequest>,
-  output: __S(548, __c17, 4) as any as S.Schema<ResourceDetailsObjectListResult>,
+  input: __S(576, __c18, 0) as any as S.Schema<ListResourceDetailByPoolRequest>,
+  output: __S(580, __c18, 4) as any as S.Schema<ResourceDetailsObjectListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -898,8 +909,8 @@ export const ListSkuByLocation: API.OperationMethod<
   ListSkuByLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<ListSkuByLocationRequest>,
-  output: __S(589, __c18, 13) as any as S.Schema<ResourceSkuListResult>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListSkuByLocationRequest>,
+  output: __S(621, __c19, 13) as any as S.Schema<ResourceSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -913,8 +924,8 @@ export const PoolsCreateOrUpdate: API.OperationMethod<
   PoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c3, 0) as any as S.Schema<PoolsCreateOrUpdateRequest>,
-  output: __S(372, __c11, 20) as any as S.Schema<PoolsCreateOrUpdateResponse>,
+  input: __S(64, __c2, 0) as any as S.Schema<PoolsCreateOrUpdateRequest>,
+  output: __S(65, __c2, 1) as any as S.Schema<PoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -928,8 +939,8 @@ export const SubscriptionUsagesUsages: API.OperationMethod<
   SubscriptionUsagesUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c5, 0) as any as S.Schema<SubscriptionUsagesUsagesRequest>,
-  output: __S(164, __c5, 4) as any as S.Schema<PagedQuota>,
+  input: __S(128, __c4, 0) as any as S.Schema<SubscriptionUsagesUsagesRequest>,
+  output: __S(132, __c4, 4) as any as S.Schema<PagedQuota>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -943,8 +954,8 @@ export const UpdatePool: API.OperationMethod<
   UpdatePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c6, 1) as any as S.Schema<UpdatePoolRequest>,
-  output: __S(372, __c11, 20) as any as S.Schema<UpdatePoolResponse>,
+  input: __S(161, __c5, 1) as any as S.Schema<UpdatePoolRequest>,
+  output: __S(162, __c5, 2) as any as S.Schema<UpdatePoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -996,15 +1007,16 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePoolRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeletePoolResponse" });
   }
 }
 function __c2(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeletePoolResponse" });
-  }
-}
-function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1012,10 +1024,10 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(352, __c11, 0)),
+          tags: S.optional(__S(384, __c12, 0)),
           location: S.String,
-          properties: S.optional(__S(368, __c11, 16)),
-          identity: S.optional(__S(129, __c4, 1)),
+          properties: S.optional(__S(400, __c12, 16)),
+          identity: S.optional(__S(97, __c3, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1025,22 +1037,36 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PoolsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(320, __c10, 0)),
+          tags: S.optional(__S(384, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(400, __c12, 16)),
+          identity: S.optional(__S(403, __c12, 19)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PoolsCreateOrUpdateResponse" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(64, __c2, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(224, __c7, 0)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(128, __c4, 0)),
+          userAssignedIdentities: S.optional(__S(96, __c3, 0)),
         }),
       ).annotate({ identifier: "PoolsCreateOrUpdateRequestIdentity" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1066,7 +1092,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(__S(161, __c5, 1)),
+          name: S.optional(__S(129, __c4, 1)),
           id: S.String,
           unit: S.String,
           currentValue: S.Number,
@@ -1074,28 +1100,28 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Quota" });
     case 3:
-      return S.Array(__S(162, __c5, 2));
+      return S.Array(__S(130, __c4, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(163, __c5, 3),
+          value: __S(131, __c4, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedQuota" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
           maximumConcurrency: S.optional(S.Number),
-          organizationProfile: S.optional(__S(354, __c11, 2)),
-          agentProfile: S.optional(__S(356, __c11, 4)),
-          fabricProfile: S.optional(__S(366, __c11, 14)),
+          organizationProfile: S.optional(__S(386, __c12, 2)),
+          agentProfile: S.optional(__S(388, __c12, 4)),
+          fabricProfile: S.optional(__S(398, __c12, 14)),
           devCenterProjectResourceId: S.optional(S.String),
-          runtimeConfiguration: S.optional(__S(367, __c11, 15)),
+          runtimeConfiguration: S.optional(__S(399, __c12, 15)),
         }),
       ).annotate({ identifier: "PoolUpdateProperties" });
     case 1:
@@ -1104,9 +1130,9 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           poolName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(129, __c4, 1)),
-          tags: S.optional(__S(352, __c11, 0)),
-          properties: S.optional(__S(192, __c6, 0)),
+          identity: S.optional(__S(97, __c3, 1)),
+          tags: S.optional(__S(384, __c12, 0)),
+          properties: S.optional(__S(160, __c5, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1116,9 +1142,24 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdatePoolRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(320, __c10, 0)),
+          tags: S.optional(__S(384, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(400, __c12, 16)),
+          identity: S.optional(__S(403, __c12, 19)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdatePoolResponse" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1136,6 +1177,12 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePoolResourcesRequest" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeletePoolResourcesResponse" });
   }
 }
 function __c8(j: number): any {
@@ -1181,6 +1228,23 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(320, __c10, 0)),
+          tags: S.optional(__S(384, __c12, 0)),
+          location: S.String,
+          properties: S.optional(__S(400, __c12, 16)),
+          identity: S.optional(__S(403, __c12, 19)),
+        }),
+      ).annotate({ identifier: "GetPoolResponse" });
+  }
+}
+function __c12(j: number): any {
+  switch (j) {
+    case 0:
       return S.Record(S.String, S.String);
     case 1:
       return S.suspend(() =>
@@ -1195,7 +1259,7 @@ function __c11(j: number): any {
         S.Struct({
           kind: S.String,
           organizations: S.optional(S.Unknown),
-          permissionProfile: S.optional(__S(353, __c11, 1)),
+          permissionProfile: S.optional(__S(385, __c12, 1)),
           alias: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrganizationProfile" });
@@ -1211,7 +1275,7 @@ function __c11(j: number): any {
         S.Struct({
           kind: S.String,
           resourcePredictions: S.optional(S.Unknown),
-          resourcePredictionsProfile: S.optional(__S(355, __c11, 3)),
+          resourcePredictionsProfile: S.optional(__S(387, __c12, 3)),
           maxAgentLifetime: S.optional(S.String),
           gracePeriodTimeSpan: S.optional(S.String),
         }),
@@ -1233,7 +1297,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "PoolImage" });
     case 7:
-      return S.Array(__S(358, __c11, 6));
+      return S.Array(__S(390, __c12, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -1246,7 +1310,7 @@ function __c11(j: number): any {
     case 9:
       return S.suspend(() =>
         S.Struct({
-          secretsManagementSettings: S.optional(__S(360, __c11, 8)),
+          secretsManagementSettings: S.optional(__S(392, __c12, 8)),
           logonType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OsProfile" });
@@ -1260,12 +1324,12 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "DataDisk" });
     case 11:
-      return S.Array(__S(362, __c11, 10));
+      return S.Array(__S(394, __c12, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
           osDiskStorageAccountType: S.optional(S.String),
-          dataDisks: S.optional(__S(363, __c11, 11)),
+          dataDisks: S.optional(__S(395, __c12, 11)),
         }),
       ).annotate({ identifier: "StorageProfile" });
     case 13:
@@ -1279,11 +1343,11 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.String,
-          sku: S.optional(__S(357, __c11, 5)),
-          images: S.optional(__S(359, __c11, 7)),
-          osProfile: S.optional(__S(361, __c11, 9)),
-          storageProfile: S.optional(__S(364, __c11, 12)),
-          networkProfile: S.optional(__S(365, __c11, 13)),
+          sku: S.optional(__S(389, __c12, 5)),
+          images: S.optional(__S(391, __c12, 7)),
+          osProfile: S.optional(__S(393, __c12, 9)),
+          storageProfile: S.optional(__S(396, __c12, 12)),
+          networkProfile: S.optional(__S(397, __c12, 13)),
         }),
       ).annotate({ identifier: "FabricProfile" });
     case 15:
@@ -1297,11 +1361,11 @@ function __c11(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           maximumConcurrency: S.Number,
-          organizationProfile: __S(354, __c11, 2),
-          agentProfile: __S(356, __c11, 4),
-          fabricProfile: __S(366, __c11, 14),
+          organizationProfile: __S(386, __c12, 2),
+          agentProfile: __S(388, __c12, 4),
+          fabricProfile: __S(398, __c12, 14),
           devCenterProjectResourceId: S.optional(S.String),
-          runtimeConfiguration: S.optional(__S(367, __c11, 15)),
+          runtimeConfiguration: S.optional(__S(399, __c12, 15)),
         }),
       ).annotate({ identifier: "PoolProperties" });
     case 17:
@@ -1312,32 +1376,19 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 18:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(369, __c11, 17)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(401, __c12, 17)));
     case 19:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(370, __c11, 18)),
+          userAssignedIdentities: S.optional(__S(402, __c12, 18)),
         }),
       ).annotate({ identifier: "GetPoolResponseIdentity" });
-    case 20:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c10, 0)),
-          tags: S.optional(__S(352, __c11, 0)),
-          location: S.String,
-          properties: S.optional(__S(368, __c11, 16)),
-          identity: S.optional(__S(371, __c11, 19)),
-        }),
-      ).annotate({ identifier: "GetPoolResponse" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1367,21 +1418,21 @@ function __c12(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(320, __c10, 0)),
-          properties: S.optional(__S(385, __c12, 1)),
+          properties: S.optional(__S(417, __c13, 1)),
         }),
       ).annotate({ identifier: "ImageVersion" });
     case 3:
-      return S.Array(__S(386, __c12, 2));
+      return S.Array(__S(418, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(387, __c12, 3),
+          value: __S(419, __c13, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageVersionListResult" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1408,23 +1459,23 @@ function __c13(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(417, __c13, 1)),
+          display: S.optional(__S(449, __c14, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(418, __c13, 2));
+      return S.Array(__S(450, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(419, __c13, 3)),
+          value: S.optional(__S(451, __c14, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1442,20 +1493,20 @@ function __c14(j: number): any {
       ).annotate({ identifier: "ListPoolByResourceGroupRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(372, __c11, 20));
+      return S.Array(__S(352, __c11, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(480, __c15, 0),
+          value: __S(512, __c16, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PoolListResult" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1472,7 +1523,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ListPoolBySubscriptionRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1504,21 +1555,21 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(320, __c10, 0)),
-          properties: S.optional(__S(545, __c17, 1)),
+          properties: S.optional(__S(577, __c18, 1)),
         }),
       ).annotate({ identifier: "ResourceDetailsObject" });
     case 3:
-      return S.Array(__S(546, __c17, 2));
+      return S.Array(__S(578, __c18, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(547, __c17, 3),
+          value: __S(579, __c18, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceDetailsObjectListResult" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1542,26 +1593,26 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ResourceSkuCapabilities" });
     case 2:
-      return S.Array(__S(577, __c18, 1));
+      return S.Array(__S(609, __c19, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: __S(256, __c8, 0),
-          capabilities: __S(578, __c18, 2),
+          capabilities: __S(610, __c19, 2),
         }),
       ).annotate({ identifier: "ResourceSkuZoneDetails" });
     case 4:
-      return S.Array(__S(579, __c18, 3));
+      return S.Array(__S(611, __c19, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
           zones: __S(256, __c8, 0),
-          zoneDetails: __S(580, __c18, 4),
+          zoneDetails: __S(612, __c19, 4),
         }),
       ).annotate({ identifier: "ResourceSkuLocationInfo" });
     case 6:
-      return S.Array(__S(581, __c18, 5));
+      return S.Array(__S(613, __c19, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1574,12 +1625,12 @@ function __c18(j: number): any {
         S.Struct({
           type: S.optional(S.String),
           values: __S(256, __c8, 0),
-          restrictionInfo: __S(583, __c18, 7),
+          restrictionInfo: __S(615, __c19, 7),
           reasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
     case 9:
-      return S.Array(__S(584, __c18, 8));
+      return S.Array(__S(616, __c19, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
@@ -1588,9 +1639,9 @@ function __c18(j: number): any {
           size: S.String,
           family: S.String,
           locations: __S(256, __c8, 0),
-          locationInfo: __S(582, __c18, 6),
-          capabilities: __S(578, __c18, 2),
-          restrictions: __S(585, __c18, 9),
+          locationInfo: __S(614, __c19, 6),
+          capabilities: __S(610, __c19, 2),
+          restrictions: __S(617, __c19, 9),
         }),
       ).annotate({ identifier: "ResourceSkuProperties" });
     case 11:
@@ -1600,15 +1651,15 @@ function __c18(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(320, __c10, 0)),
-          properties: S.optional(__S(586, __c18, 10)),
+          properties: S.optional(__S(618, __c19, 10)),
         }),
       ).annotate({ identifier: "ResourceSku" });
     case 12:
-      return S.Array(__S(587, __c18, 11));
+      return S.Array(__S(619, __c19, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
-          value: __S(588, __c18, 12),
+          value: __S(620, __c19, 12),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuListResult" });

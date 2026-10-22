@@ -111,7 +111,7 @@ export interface B2CTenantResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export interface B2CTenantResource {
+export interface CreateB2CTenantResponse {
   /** The type of the B2C tenant resource. */
   type?: B2CTenantResourceType;
   sku: B2CResourceSKU;
@@ -127,6 +127,10 @@ export interface B2CTenantResource {
   tags?: B2CTenantResourceTagsMap;
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: B2CTenantResourceSystemData;
+  /** Location URI to poll for result */
+  locationHeader?: string;
+  /** Contains the number of seconds to wait before polling the location. */
+  retryAfter?: string;
 }
 /** Key-value pairs of additional resource provisioning properties. */
 export type CreateGuestUsageRequestTagsMap = { [key: string]: string | undefined };
@@ -203,7 +207,12 @@ export interface DeleteB2CTenantRequest {
   /** The initial domain name of the Azure AD B2C tenant. */
   resourceName: string;
 }
-export interface DeleteB2CTenantResponse {}
+export interface DeleteB2CTenantResponse {
+  /** Contains the URL/location which can return the deletion status. */
+  location?: string;
+  /** Contains the number of seconds to wait before checking the deletion status. */
+  retryAfter?: string;
+}
 export interface DeleteGuestUsageRequest {
   /** Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -220,6 +229,23 @@ export interface GetB2CTenantRequest {
   resourceGroupName: string;
   /** The initial domain name of the Azure AD B2C tenant. */
   resourceName: string;
+}
+export interface B2CTenantResource {
+  /** The type of the B2C tenant resource. */
+  type?: B2CTenantResourceType;
+  sku: B2CResourceSKU;
+  /** The Azure AD B2C tenant resource properties */
+  properties?: B2CTenantResourceProperties;
+  /** An identifier that represents the Azure AD B2C tenant resource. */
+  id?: string;
+  /** The name of the Azure AD B2C tenant resource. */
+  name?: string;
+  /** The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information. */
+  location: string;
+  /** Resource Tags */
+  tags?: B2CTenantResourceTagsMap;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: B2CTenantResourceSystemData;
 }
 export interface GetGuestUsageRequest {
   /** Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -355,12 +381,12 @@ export type CreateB2CTenantError = AzureOpError;
 /** Initiates an async request to create both the Azure AD B2C tenant and the corresponding Azure resource linked to a subscription. */
 export const CreateB2CTenant: API.OperationMethod<
   CreateB2CTenantRequest,
-  B2CTenantResource,
+  CreateB2CTenantResponse,
   CreateB2CTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(10, __c1, 2) as any as S.Schema<CreateB2CTenantRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<B2CTenantResource>,
+  output: __S(11, __c1, 3) as any as S.Schema<CreateB2CTenantResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -390,7 +416,7 @@ export const DeleteB2CTenant: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<DeleteB2CTenantRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<DeleteB2CTenantResponse>,
+  output: __S(81, __c10, 1) as any as S.Schema<DeleteB2CTenantResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -404,8 +430,8 @@ export const DeleteGuestUsage: API.OperationMethod<
   DeleteGuestUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeleteGuestUsageRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<DeleteGuestUsageResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeleteGuestUsageRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<DeleteGuestUsageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -419,8 +445,8 @@ export const GetB2CTenant: API.OperationMethod<
   GetB2CTenantError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetB2CTenantRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<B2CTenantResource>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetB2CTenantRequest>,
+  output: __S(104, __c13, 0) as any as S.Schema<B2CTenantResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -525,7 +551,7 @@ export const UpdateB2CTenant: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(50, __c6, 2) as any as S.Schema<UpdateB2CTenantRequest>,
-  output: __S(27, __c3, 3) as any as S.Schema<B2CTenantResource>,
+  output: __S(104, __c13, 0) as any as S.Schema<B2CTenantResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -608,6 +634,21 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateB2CTenantRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          sku: __S(24, __c3, 0),
+          properties: S.optional(__S(26, __c3, 2)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(16, __c2, 0)),
+          systemData: S.optional(__S(17, __c2, 1)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.String.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateB2CTenantResponse" });
   }
 }
 function __c2(j: number): any {
@@ -650,19 +691,6 @@ function __c3(j: number): any {
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "B2CTenantResourceProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.optional(S.String),
-          sku: __S(24, __c3, 0),
-          properties: S.optional(__S(26, __c3, 2)),
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          location: S.String,
-          tags: S.optional(__S(16, __c2, 0)),
-          systemData: S.optional(__S(17, __c2, 1)),
-        }),
-      ).annotate({ identifier: "B2CTenantResource" });
   }
 }
 function __c4(j: number): any {
@@ -840,15 +868,16 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteB2CTenantRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.String.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteB2CTenantResponse" });
   }
 }
 function __c11(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteB2CTenantResponse" });
-  }
-}
-function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -865,9 +894,11 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteGuestUsageRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteGuestUsageResponse" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -884,6 +915,23 @@ function __c13(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetB2CTenantRequest" });
+  }
+}
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.optional(S.String),
+          sku: __S(24, __c3, 0),
+          properties: S.optional(__S(26, __c3, 2)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          location: S.String,
+          tags: S.optional(__S(16, __c2, 0)),
+          systemData: S.optional(__S(17, __c2, 1)),
+        }),
+      ).annotate({ identifier: "B2CTenantResource" });
   }
 }
 function __c14(j: number): any {
@@ -926,7 +974,7 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(27, __c3, 3));
+      return S.Array(__S(104, __c13, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({

@@ -112,7 +112,12 @@ export interface DeleteLoadTestRequest {
   /** Load Test name */
   loadTestName: string;
 }
-export interface DeleteLoadTestResponse {}
+export interface DeleteLoadTestResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePlaywrightWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -121,7 +126,12 @@ export interface DeletePlaywrightWorkspaceRequest {
   /** The name of the PlaywrightWorkspace */
   playwrightWorkspaceName: string;
 }
-export interface DeletePlaywrightWorkspaceResponse {}
+export interface DeletePlaywrightWorkspaceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetLoadTestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -684,6 +694,10 @@ export interface LoadTestsCreateOrUpdateResponse {
   properties?: LoadTestProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetLoadTestResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type PlaywrightWorkspacesCreateOrUpdateRequestTagsMap = {
@@ -733,6 +747,10 @@ export interface PlaywrightWorkspacesCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: PlaywrightWorkspaceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateLoadTestRequestIdentity = LoadTestsCreateOrUpdateRequestIdentity;
@@ -775,6 +793,12 @@ export interface UpdateLoadTestResponse {
   properties?: LoadTestProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetLoadTestResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdatePlaywrightWorkspaceRequestTagsMap = { [key: string]: string | undefined };
@@ -886,7 +910,7 @@ export const GetLoadTest: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(168, __c21, 0) as any as S.Schema<GetLoadTestRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<GetLoadTestResponse>,
+  output: __S(184, __c23, 0) as any as S.Schema<GetLoadTestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -900,8 +924,8 @@ export const GetPlaywrightQuotas: API.OperationMethod<
   GetPlaywrightQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c24, 0) as any as S.Schema<GetPlaywrightQuotasRequest>,
-  output: __S(202, __c25, 2) as any as S.Schema<GetPlaywrightQuotasResponse>,
+  input: __S(200, __c25, 0) as any as S.Schema<GetPlaywrightQuotasRequest>,
+  output: __S(210, __c26, 2) as any as S.Schema<GetPlaywrightQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -915,8 +939,8 @@ export const GetPlaywrightWorkspace: API.OperationMethod<
   GetPlaywrightWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c26, 0) as any as S.Schema<GetPlaywrightWorkspaceRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<GetPlaywrightWorkspaceResponse>,
+  input: __S(216, __c27, 0) as any as S.Schema<GetPlaywrightWorkspaceRequest>,
+  output: __S(232, __c29, 0) as any as S.Schema<GetPlaywrightWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -930,8 +954,8 @@ export const GetPlaywrightWorkspaceQuotas: API.OperationMethod<
   GetPlaywrightWorkspaceQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c28, 0) as any as S.Schema<GetPlaywrightWorkspaceQuotasRequest>,
-  output: __S(234, __c29, 2) as any as S.Schema<GetPlaywrightWorkspaceQuotasResponse>,
+  input: __S(240, __c30, 0) as any as S.Schema<GetPlaywrightWorkspaceQuotasRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<GetPlaywrightWorkspaceQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -945,8 +969,8 @@ export const GetQuotas: API.OperationMethod<
   GetQuotasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c30, 0) as any as S.Schema<GetQuotasRequest>,
-  output: __S(249, __c31, 1) as any as S.Schema<GetQuotasResponse>,
+  input: __S(256, __c32, 0) as any as S.Schema<GetQuotasRequest>,
+  output: __S(265, __c33, 1) as any as S.Schema<GetQuotasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -960,8 +984,8 @@ export const ListLoadTestByResourceGroup: API.OperationMethod<
   ListLoadTestByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c32, 0) as any as S.Schema<ListLoadTestByResourceGroupRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<LoadTestResourceListResult>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListLoadTestByResourceGroupRequest>,
+  output: __S(281, __c35, 1) as any as S.Schema<LoadTestResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -976,7 +1000,7 @@ export const ListLoadTestBySubscription: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(24, __c3, 0) as any as S.Schema<ListLoadTestBySubscriptionRequest>,
-  output: __S(265, __c33, 1) as any as S.Schema<LoadTestResourceListResult>,
+  output: __S(281, __c35, 1) as any as S.Schema<LoadTestResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1104,7 +1128,7 @@ export const LoadTestsCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<LoadTestsCreateOrUpdateRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<LoadTestsCreateOrUpdateResponse>,
+  output: __S(97, __c12, 1) as any as S.Schema<LoadTestsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1119,7 +1143,7 @@ export const PlaywrightWorkspacesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c14, 0) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponse>,
+  output: __S(113, __c14, 1) as any as S.Schema<PlaywrightWorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1134,7 +1158,7 @@ export const UpdateLoadTest: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c18, 0) as any as S.Schema<UpdateLoadTestRequest>,
-  output: __S(190, __c23, 6) as any as S.Schema<UpdateLoadTestResponse>,
+  output: __S(145, __c18, 1) as any as S.Schema<UpdateLoadTestResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1149,7 +1173,7 @@ export const UpdatePlaywrightWorkspace: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(152, __c19, 0) as any as S.Schema<UpdatePlaywrightWorkspaceRequest>,
-  output: __S(217, __c27, 1) as any as S.Schema<UpdatePlaywrightWorkspaceResponse>,
+  output: __S(232, __c29, 0) as any as S.Schema<UpdatePlaywrightWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1381,7 +1405,7 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListPlaywrightQuotasBySubscriptionRequest" });
     case 1:
-      return S.Array(__S(202, __c25, 2));
+      return S.Array(__S(210, __c26, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1412,7 +1436,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(217, __c27, 1));
+      return S.Array(__S(232, __c29, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1457,7 +1481,7 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListPlaywrightWorkspaceQuotasByPlaywrightWorkspaceRequest" });
     case 1:
-      return S.Array(__S(234, __c29, 2));
+      return S.Array(__S(250, __c31, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1484,7 +1508,7 @@ function __c11(j: number): any {
         ),
       ).annotate({ identifier: "ListQuotasRequest" });
     case 1:
-      return S.Array(__S(249, __c31, 1));
+      return S.Array(__S(265, __c33, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1505,7 +1529,7 @@ function __c12(j: number): any {
           tags: S.optional(__S(176, __c22, 0)),
           location: S.String,
           properties: S.optional(__S(104, __c13, 0)),
-          identity: S.optional(__S(106, __c13, 2)),
+          identity: S.optional(__S(107, __c13, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1515,6 +1539,21 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "LoadTestsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
+          location: S.String,
+          properties: S.optional(__S(194, __c24, 2)),
+          identity: S.optional(__S(197, __c24, 5)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "LoadTestsCreateOrUpdateResponse" });
   }
 }
 function __c13(j: number): any {
@@ -1523,16 +1562,18 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          encryption: S.optional(__S(185, __c23, 1)),
+          encryption: S.optional(__S(193, __c24, 1)),
         }),
       ).annotate({ identifier: "LoadTestPropertiesInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(136, __c17, 0)));
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
     case 2:
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(105, __c13, 1)));
+    case 3:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(105, __c13, 1)),
+          userAssignedIdentities: S.optional(__S(106, __c13, 2)),
         }),
       ).annotate({ identifier: "LoadTestsCreateOrUpdateRequestIdentity" });
   }
@@ -1557,6 +1598,20 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PlaywrightWorkspacesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
+          location: S.String,
+          properties: S.optional(__S(224, __c28, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PlaywrightWorkspacesCreateOrUpdateResponse" });
   }
 }
 function __c15(j: number): any {
@@ -1592,7 +1647,12 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteLoadTestResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteLoadTestResponse" });
   }
 }
 function __c18(j: number): any {
@@ -1603,7 +1663,7 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           loadTestName: S.String.pipe(T.Label()),
-          identity: S.optional(__S(106, __c13, 2)),
+          identity: S.optional(__S(107, __c13, 3)),
           tags: S.optional(__S(176, __c22, 0)),
           properties: S.optional(__S(104, __c13, 0)),
         }).pipe(
@@ -1615,6 +1675,22 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateLoadTestRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
+          location: S.String,
+          properties: S.optional(__S(194, __c24, 2)),
+          identity: S.optional(__S(197, __c24, 5)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateLoadTestResponse" });
   }
 }
 function __c19(j: number): any {
@@ -1687,6 +1763,23 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(176, __c22, 0)),
+          location: S.String,
+          properties: S.optional(__S(194, __c24, 2)),
+          identity: S.optional(__S(197, __c24, 5)),
+        }),
+      ).annotate({ identifier: "GetLoadTestResponse" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           type: S.optional(S.String),
           resourceId: S.optional(S.NullOr(S.String)),
         }),
@@ -1694,7 +1787,7 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(__S(184, __c23, 0)),
+          identity: S.optional(__S(192, __c24, 0)),
           keyUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionProperties" });
@@ -1704,7 +1797,7 @@ function __c23(j: number): any {
           description: S.optional(S.String),
           provisioningState: S.optional(S.String),
           dataPlaneURI: S.optional(S.String),
-          encryption: S.optional(__S(185, __c23, 1)),
+          encryption: S.optional(__S(193, __c24, 1)),
         }),
       ).annotate({ identifier: "LoadTestProperties" });
     case 3:
@@ -1715,32 +1808,19 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(187, __c23, 3)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(195, __c24, 3)));
     case 5:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(188, __c23, 4)),
+          userAssignedIdentities: S.optional(__S(196, __c24, 4)),
         }),
       ).annotate({ identifier: "GetLoadTestResponseIdentity" });
-    case 6:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(176, __c22, 0)),
-          location: S.String,
-          properties: S.optional(__S(186, __c23, 2)),
-          identity: S.optional(__S(189, __c23, 5)),
-        }),
-      ).annotate({ identifier: "GetLoadTestResponse" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1759,7 +1839,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "GetPlaywrightQuotasRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1771,7 +1851,7 @@ function __c25(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          freeTrial: S.optional(__S(200, __c25, 0)),
+          freeTrial: S.optional(__S(208, __c26, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlaywrightQuotaProperties" });
@@ -1782,12 +1862,12 @@ function __c25(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(201, __c25, 1)),
+          properties: S.optional(__S(209, __c26, 1)),
         }),
       ).annotate({ identifier: "GetPlaywrightQuotasResponse" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1806,7 +1886,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetPlaywrightWorkspaceRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1818,7 +1898,11 @@ function __c27(j: number): any {
           workspaceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlaywrightWorkspaceProperties" });
-    case 1:
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -1827,12 +1911,12 @@ function __c27(j: number): any {
           systemData: S.optional(__S(16, __c2, 0)),
           tags: S.optional(__S(176, __c22, 0)),
           location: S.String,
-          properties: S.optional(__S(216, __c27, 0)),
+          properties: S.optional(__S(224, __c28, 0)),
         }),
       ).annotate({ identifier: "GetPlaywrightWorkspaceResponse" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1852,7 +1936,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetPlaywrightWorkspaceQuotasRequest" });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1867,7 +1951,7 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          freeTrial: S.optional(__S(232, __c29, 0)),
+          freeTrial: S.optional(__S(248, __c31, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlaywrightWorkspaceQuotaProperties" });
@@ -1878,12 +1962,12 @@ function __c29(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(233, __c29, 1)),
+          properties: S.optional(__S(249, __c31, 1)),
         }),
       ).annotate({ identifier: "GetPlaywrightWorkspaceQuotasResponse" });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1902,7 +1986,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetQuotasRequest" });
   }
 }
-function __c31(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1919,12 +2003,12 @@ function __c31(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(248, __c31, 0)),
+          properties: S.optional(__S(264, __c33, 0)),
         }),
       ).annotate({ identifier: "GetQuotasResponse" });
   }
 }
-function __c32(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1942,14 +2026,14 @@ function __c32(j: number): any {
       ).annotate({ identifier: "ListLoadTestByResourceGroupRequest" });
   }
 }
-function __c33(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(190, __c23, 6));
+      return S.Array(__S(184, __c23, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(264, __c33, 0),
+          value: __S(280, __c35, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoadTestResourceListResult" });

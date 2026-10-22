@@ -184,6 +184,12 @@ export interface CancelConditionalCreditResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CancelCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -359,6 +365,10 @@ export interface CancelCreditResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
 }
 export interface CancelDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -451,6 +461,12 @@ export interface CancelDiscountResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CancelMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -623,6 +639,12 @@ export interface CancelMaccResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type ConditionalCreditsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -728,6 +750,10 @@ export interface ConditionalCreditsCreateOrUpdateResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateCreditRequestTagsMap = { [key: string]: string | undefined };
@@ -841,6 +867,12 @@ export interface CreateCreditResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateDiscountRequestTagsMap = { [key: string]: string | undefined };
@@ -929,6 +961,10 @@ export interface CreateDiscountResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateFreeServiceRequestTagsMap = { [key: string]: string | undefined };
@@ -1055,6 +1091,10 @@ export interface CreateFreeServiceResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateMaccRequestTagsMap = { [key: string]: string | undefined };
@@ -1178,6 +1218,10 @@ export interface CreateMaccResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ResourceSku {
   name?: string;
@@ -1344,6 +1388,10 @@ export interface CreateReservationOrderAliasResponse {
   sku: ResourceSku;
   /** The Azure Region where the reserved resource lives. */
   location?: string;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Savings plan properties */
 export interface SavingsPlanOrderAliasPropertiesInput {
@@ -1412,6 +1460,10 @@ export interface CreateSavingsPlanOrderAliasResponse {
   sku: ResourceSku;
   /** Resource provider kind */
   kind?: string;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateSourceRequestTagsMap = { [key: string]: string | undefined };
@@ -1525,7 +1577,12 @@ export interface CreditsChangeSponsorRequest {
   /** Financial code identifying the new sponsor. This is an alphanumeric identifier assigned by the billing system, for example P20567384. */
   sponsorId?: string;
 }
-export interface CreditsChangeSponsorResponse {}
+export interface CreditsChangeSponsorResponse {
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  location?: string;
+}
 export interface DeleteConditionalCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1534,7 +1591,14 @@ export interface DeleteConditionalCreditRequest {
   /** Name of the conditional credit */
   conditionalCreditName: string;
 }
-export interface DeleteConditionalCreditResponse {}
+export interface DeleteConditionalCreditResponse {
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCreditRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1543,7 +1607,14 @@ export interface DeleteCreditRequest {
   /** Name of the credit */
   creditName: string;
 }
-export interface DeleteCreditResponse {}
+export interface DeleteCreditResponse {
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDiscountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1552,7 +1623,14 @@ export interface DeleteDiscountRequest {
   /** Name of the discount */
   discountName: string;
 }
-export interface DeleteDiscountResponse {}
+export interface DeleteDiscountResponse {
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFreeServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1561,7 +1639,14 @@ export interface DeleteFreeServiceRequest {
   /** Name of the free service */
   freeServiceName: string;
 }
-export interface DeleteFreeServiceResponse {}
+export interface DeleteFreeServiceResponse {
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMaccRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1570,7 +1655,14 @@ export interface DeleteMaccRequest {
   /** Name of primary MACC. */
   maccName: string;
 }
-export interface DeleteMaccResponse {}
+export interface DeleteMaccResponse {
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3262,6 +3354,12 @@ export interface MaccsChargeShortfallResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface MaccsWriteOffRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3314,6 +3412,12 @@ export interface MaccsWriteOffResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SavingsPlanOrderElevateRequest {
   /** Order ID of the savings plan */
@@ -3498,6 +3602,12 @@ export interface UpdateConditionalCreditResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags */
 export type UpdateCreditRequestTagsMap = { [key: string]: string | undefined };
@@ -3567,6 +3677,12 @@ export interface UpdateCreditResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Discounts patch request properties */
 export interface DiscountPatchRequestProperties {
@@ -3618,6 +3734,12 @@ export interface UpdateDiscountResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Free services patch request properties */
 export interface FreeServicesPatchRequestProperties {
@@ -3681,6 +3803,12 @@ export interface UpdateFreeServiceResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** List of milestones to update or add. */
 export type MaccPatchRequestPropertiesMilestonesList = Array<MaccMilestone>;
@@ -3764,6 +3892,12 @@ export interface UpdateMaccResponse {
   sku?: Sku;
   /** Plan for the resource. */
   plan?: Plan;
+  /** URL for checking the ongoing status of the operation. */
+  azureAsyncOperation?: string;
+  /** Location URI to poll for result. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateSavingsPlanRequest {
   /** Order ID of the savings plan */
@@ -3786,6 +3920,8 @@ export interface UpdateSavingsPlanResponse {
   properties?: SavingsPlanModelProperties;
   /** Savings plan SKU */
   sku: ResourceSku;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** Resource Tags */
 export type UpdateSourceRequestTagsMap = { [key: string]: string | undefined };
@@ -3896,7 +4032,7 @@ export const CancelConditionalCredit: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<CancelConditionalCreditRequest>,
-  output: __S(97, __c6, 1) as any as S.Schema<CancelConditionalCreditResponse>,
+  output: __S(112, __c7, 0) as any as S.Schema<CancelConditionalCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3910,8 +4046,8 @@ export const CancelCredit: API.OperationMethod<
   CancelCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c7, 0) as any as S.Schema<CancelCreditRequest>,
-  output: __S(153, __c9, 9) as any as S.Schema<CancelCreditResponse>,
+  input: __S(128, __c8, 0) as any as S.Schema<CancelCreditRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<CancelCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3925,8 +4061,8 @@ export const CancelDiscount: API.OperationMethod<
   CancelDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<CancelDiscountRequest>,
-  output: __S(403, __c25, 3) as any as S.Schema<CancelDiscountResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<CancelDiscountRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<CancelDiscountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3940,8 +4076,8 @@ export const CancelMacc: API.OperationMethod<
   CancelMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<CancelMaccRequest>,
-  output: __S(656, __c41, 0) as any as S.Schema<CancelMaccResponse>,
+  input: __S(752, __c47, 0) as any as S.Schema<CancelMaccRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<CancelMaccResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3955,8 +4091,8 @@ export const ConditionalCreditsCreateOrUpdate: API.OperationMethod<
   ConditionalCreditsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(913, __c57, 1) as any as S.Schema<ConditionalCreditsCreateOrUpdateRequest>,
-  output: __S(97, __c6, 1) as any as S.Schema<ConditionalCreditsCreateOrUpdateResponse>,
+  input: __S(1057, __c66, 1) as any as S.Schema<ConditionalCreditsCreateOrUpdateRequest>,
+  output: __S(1058, __c66, 2) as any as S.Schema<ConditionalCreditsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3970,8 +4106,8 @@ export const CreateCredit: API.OperationMethod<
   CreateCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1201, __c75, 1) as any as S.Schema<CreateCreditRequest>,
-  output: __S(153, __c9, 9) as any as S.Schema<CreateCreditResponse>,
+  input: __S(1345, __c84, 1) as any as S.Schema<CreateCreditRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<CreateCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3985,8 +4121,8 @@ export const CreateDiscount: API.OperationMethod<
   CreateDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1443, __c90, 3) as any as S.Schema<CreateDiscountRequest>,
-  output: __S(403, __c25, 3) as any as S.Schema<CreateDiscountResponse>,
+  input: __S(1603, __c100, 3) as any as S.Schema<CreateDiscountRequest>,
+  output: __S(1604, __c100, 4) as any as S.Schema<CreateDiscountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4000,8 +4136,8 @@ export const CreateFreeService: API.OperationMethod<
   CreateFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1633, __c102, 1) as any as S.Schema<CreateFreeServiceRequest>,
-  output: __S(1649, __c103, 1) as any as S.Schema<CreateFreeServiceResponse>,
+  input: __S(1793, __c112, 1) as any as S.Schema<CreateFreeServiceRequest>,
+  output: __S(1794, __c112, 2) as any as S.Schema<CreateFreeServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4015,8 +4151,8 @@ export const CreateMacc: API.OperationMethod<
   CreateMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1825, __c114, 1) as any as S.Schema<CreateMaccRequest>,
-  output: __S(656, __c41, 0) as any as S.Schema<CreateMaccResponse>,
+  input: __S(1985, __c124, 1) as any as S.Schema<CreateMaccRequest>,
+  output: __S(1986, __c124, 2) as any as S.Schema<CreateMaccResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4030,8 +4166,8 @@ export const CreateReservationOrderAlias: API.OperationMethod<
   CreateReservationOrderAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1841, __c115, 1) as any as S.Schema<CreateReservationOrderAliasRequest>,
-  output: __S(1890, __c118, 2) as any as S.Schema<CreateReservationOrderAliasResponse>,
+  input: __S(2001, __c125, 1) as any as S.Schema<CreateReservationOrderAliasRequest>,
+  output: __S(2002, __c125, 2) as any as S.Schema<CreateReservationOrderAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4045,8 +4181,8 @@ export const CreateSavingsPlanOrderAlias: API.OperationMethod<
   CreateSavingsPlanOrderAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(161, __c10, 1) as any as S.Schema<CreateSavingsPlanOrderAliasRequest>,
-  output: __S(177, __c11, 1) as any as S.Schema<CreateSavingsPlanOrderAliasResponse>,
+  input: __S(177, __c11, 1) as any as S.Schema<CreateSavingsPlanOrderAliasRequest>,
+  output: __S(178, __c11, 2) as any as S.Schema<CreateSavingsPlanOrderAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4060,8 +4196,8 @@ export const CreateSource: API.OperationMethod<
   CreateSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(193, __c12, 1) as any as S.Schema<CreateSourceRequest>,
-  output: __S(209, __c13, 1) as any as S.Schema<CreateSourceResponse>,
+  input: __S(209, __c13, 1) as any as S.Schema<CreateSourceRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<CreateSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4075,8 +4211,8 @@ export const CreditsChangeSponsor: API.OperationMethod<
   CreditsChangeSponsorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<CreditsChangeSponsorRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<CreditsChangeSponsorResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<CreditsChangeSponsorRequest>,
+  output: __S(241, __c15, 1) as any as S.Schema<CreditsChangeSponsorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4090,8 +4226,8 @@ export const DeleteConditionalCredit: API.OperationMethod<
   DeleteConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<DeleteConditionalCreditRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<DeleteConditionalCreditResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<DeleteConditionalCreditRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<DeleteConditionalCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4105,8 +4241,8 @@ export const DeleteCredit: API.OperationMethod<
   DeleteCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<DeleteCreditRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<DeleteCreditResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<DeleteCreditRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<DeleteCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4120,8 +4256,8 @@ export const DeleteDiscount: API.OperationMethod<
   DeleteDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<DeleteDiscountRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<DeleteDiscountResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<DeleteDiscountRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<DeleteDiscountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4135,8 +4271,8 @@ export const DeleteFreeService: API.OperationMethod<
   DeleteFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<DeleteFreeServiceRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<DeleteFreeServiceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<DeleteFreeServiceRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<DeleteFreeServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4150,8 +4286,8 @@ export const DeleteMacc: API.OperationMethod<
   DeleteMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<DeleteMaccRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<DeleteMaccResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DeleteMaccRequest>,
+  output: __S(272, __c17, 0) as any as S.Schema<DeleteMaccResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4165,8 +4301,8 @@ export const DeleteSource: API.OperationMethod<
   DeleteSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<DeleteSourceRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<DeleteSourceResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<DeleteSourceRequest>,
+  output: __S(1072, __c67, 0) as any as S.Schema<DeleteSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4180,8 +4316,8 @@ export const GetBillingAccountCatalogGroupsOps: API.OperationMethod<
   GetBillingAccountCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetBillingAccountCatalogGroupsOpsRequest>,
-  output: __S(371, __c23, 3) as any as S.Schema<GetBillingAccountCatalogGroupsOpsResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetBillingAccountCatalogGroupsOpsRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<GetBillingAccountCatalogGroupsOpsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4195,8 +4331,8 @@ export const GetBillingProfileCatalogGroupsOps: API.OperationMethod<
   GetBillingProfileCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<GetBillingProfileCatalogGroupsOpsRequest>,
-  output: __S(371, __c23, 3) as any as S.Schema<GetBillingProfileCatalogGroupsOpsResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetBillingProfileCatalogGroupsOpsRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<GetBillingProfileCatalogGroupsOpsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4210,8 +4346,8 @@ export const GetConditionalCredit: API.OperationMethod<
   GetConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<GetConditionalCreditRequest>,
-  output: __S(97, __c6, 1) as any as S.Schema<GetConditionalCreditResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<GetConditionalCreditRequest>,
+  output: __S(496, __c31, 0) as any as S.Schema<GetConditionalCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4225,8 +4361,8 @@ export const GetConditionalCreditContributorFromPrimary: API.OperationMethod<
   GetConditionalCreditContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetConditionalCreditContributorFromPrimaryRequest>,
-  output: __S(468, __c29, 4) as any as S.Schema<GetConditionalCreditContributorFromPrimaryResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetConditionalCreditContributorFromPrimaryRequest>,
+  output: __S(532, __c33, 4) as any as S.Schema<GetConditionalCreditContributorFromPrimaryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4240,8 +4376,8 @@ export const GetConditionalCreditTransaction: API.OperationMethod<
   GetConditionalCreditTransactionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetConditionalCreditTransactionRequest>,
-  output: __S(498, __c31, 2) as any as S.Schema<GetConditionalCreditTransactionResponse>,
+  input: __S(544, __c34, 0) as any as S.Schema<GetConditionalCreditTransactionRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<GetConditionalCreditTransactionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4255,8 +4391,8 @@ export const GetContributorFromPrimary: API.OperationMethod<
   GetContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<GetContributorFromPrimaryRequest>,
-  output: __S(528, __c33, 0) as any as S.Schema<GetContributorFromPrimaryResponse>,
+  input: __S(576, __c36, 0) as any as S.Schema<GetContributorFromPrimaryRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<GetContributorFromPrimaryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4270,8 +4406,8 @@ export const GetCredit: API.OperationMethod<
   GetCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<GetCreditRequest>,
-  output: __S(153, __c9, 9) as any as S.Schema<GetCreditResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<GetCreditRequest>,
+  output: __S(624, __c39, 0) as any as S.Schema<GetCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4285,8 +4421,8 @@ export const GetCreditTransaction: API.OperationMethod<
   GetCreditTransactionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<GetCreditTransactionRequest>,
-  output: __S(498, __c31, 2) as any as S.Schema<GetCreditTransactionResponse>,
+  input: __S(640, __c40, 0) as any as S.Schema<GetCreditTransactionRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<GetCreditTransactionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4300,8 +4436,8 @@ export const GetDiscount: API.OperationMethod<
   GetDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<GetDiscountRequest>,
-  output: __S(403, __c25, 3) as any as S.Schema<GetDiscountResponse>,
+  input: __S(656, __c41, 0) as any as S.Schema<GetDiscountRequest>,
+  output: __S(672, __c42, 0) as any as S.Schema<GetDiscountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4315,8 +4451,8 @@ export const GetFreeService: API.OperationMethod<
   GetFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<GetFreeServiceRequest>,
-  output: __S(1649, __c103, 1) as any as S.Schema<GetFreeServiceResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetFreeServiceRequest>,
+  output: __S(704, __c44, 0) as any as S.Schema<GetFreeServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4330,8 +4466,8 @@ export const GetMacc: API.OperationMethod<
   GetMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<GetMaccRequest>,
-  output: __S(656, __c41, 0) as any as S.Schema<GetMaccResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetMaccRequest>,
+  output: __S(736, __c46, 0) as any as S.Schema<GetMaccResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4345,8 +4481,8 @@ export const GetMaccTransaction: API.OperationMethod<
   GetMaccTransactionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<GetMaccTransactionRequest>,
-  output: __S(498, __c31, 2) as any as S.Schema<GetMaccTransactionResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<GetMaccTransactionRequest>,
+  output: __S(562, __c35, 2) as any as S.Schema<GetMaccTransactionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4360,8 +4496,8 @@ export const GetReservationOrderAlias: API.OperationMethod<
   GetReservationOrderAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<GetReservationOrderAliasRequest>,
-  output: __S(1890, __c118, 2) as any as S.Schema<GetReservationOrderAliasResponse>,
+  input: __S(816, __c51, 0) as any as S.Schema<GetReservationOrderAliasRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<GetReservationOrderAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4375,8 +4511,8 @@ export const GetSavingsPlan: API.OperationMethod<
   GetSavingsPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<GetSavingsPlanRequest>,
-  output: __S(743, __c46, 7) as any as S.Schema<GetSavingsPlanResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetSavingsPlanRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<GetSavingsPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4390,8 +4526,8 @@ export const GetSavingsPlanOrder: API.OperationMethod<
   GetSavingsPlanOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<GetSavingsPlanOrderRequest>,
-  output: __S(772, __c48, 4) as any as S.Schema<GetSavingsPlanOrderResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetSavingsPlanOrderRequest>,
+  output: __S(916, __c57, 4) as any as S.Schema<GetSavingsPlanOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4405,8 +4541,8 @@ export const GetSavingsPlanOrderAlias: API.OperationMethod<
   GetSavingsPlanOrderAliasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<GetSavingsPlanOrderAliasRequest>,
-  output: __S(177, __c11, 1) as any as S.Schema<GetSavingsPlanOrderAliasResponse>,
+  input: __S(928, __c58, 0) as any as S.Schema<GetSavingsPlanOrderAliasRequest>,
+  output: __S(929, __c58, 1) as any as S.Schema<GetSavingsPlanOrderAliasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4420,8 +4556,8 @@ export const GetSource: API.OperationMethod<
   GetSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<GetSourceRequest>,
-  output: __S(209, __c13, 1) as any as S.Schema<GetSourceResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<GetSourceRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<GetSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4435,8 +4571,8 @@ export const GetSubscriptionCatalogGroupsOps: API.OperationMethod<
   GetSubscriptionCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<GetSubscriptionCatalogGroupsOpsRequest>,
-  output: __S(371, __c23, 3) as any as S.Schema<GetSubscriptionCatalogGroupsOpsResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<GetSubscriptionCatalogGroupsOpsRequest>,
+  output: __S(403, __c25, 3) as any as S.Schema<GetSubscriptionCatalogGroupsOpsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4450,8 +4586,8 @@ export const ListApplicableMaccs: API.OperationMethod<
   ListApplicableMaccsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<ListApplicableMaccsRequest>,
-  output: __S(833, __c52, 1) as any as S.Schema<ApplicableMaccList>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListApplicableMaccsRequest>,
+  output: __S(977, __c61, 1) as any as S.Schema<ApplicableMaccList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4465,8 +4601,8 @@ export const ListBillingAccountCatalogGroupsOps: API.OperationMethod<
   ListBillingAccountCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<ListBillingAccountCatalogGroupsOpsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<CatalogGroupListResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListBillingAccountCatalogGroupsOpsRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<CatalogGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4480,8 +4616,8 @@ export const ListBillingProfileCatalogGroupsOps: API.OperationMethod<
   ListBillingProfileCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<ListBillingProfileCatalogGroupsOpsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<CatalogGroupListResult>,
+  input: __S(1040, __c65, 0) as any as S.Schema<ListBillingProfileCatalogGroupsOpsRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<CatalogGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4495,8 +4631,8 @@ export const ListConditionalCreditByResourceGroup: API.OperationMethod<
   ListConditionalCreditByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<ListConditionalCreditByResourceGroupRequest>,
-  output: __S(977, __c61, 1) as any as S.Schema<ConditionalCreditList>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListConditionalCreditByResourceGroupRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<ConditionalCreditList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4510,8 +4646,8 @@ export const ListConditionalCreditBySubscription: API.OperationMethod<
   ListConditionalCreditBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<ListConditionalCreditBySubscriptionRequest>,
-  output: __S(977, __c61, 1) as any as S.Schema<ConditionalCreditList>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListConditionalCreditBySubscriptionRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<ConditionalCreditList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4526,11 +4662,11 @@ export const ListConditionalCreditContributorFromApplicableConditionalCredit: AP
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1008,
-    __c63,
+    1152,
+    __c72,
     0,
   ) as any as S.Schema<ListConditionalCreditContributorFromApplicableConditionalCreditRequest>,
-  output: __S(1025, __c64, 1) as any as S.Schema<ConditionalCreditContributorList>,
+  output: __S(1169, __c73, 1) as any as S.Schema<ConditionalCreditContributorList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4544,8 +4680,8 @@ export const ListConditionalCreditContributorFromPrimary: API.OperationMethod<
   ListConditionalCreditContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<ListConditionalCreditContributorFromPrimaryRequest>,
-  output: __S(1025, __c64, 1) as any as S.Schema<ConditionalCreditContributorList>,
+  input: __S(1184, __c74, 0) as any as S.Schema<ListConditionalCreditContributorFromPrimaryRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<ConditionalCreditContributorList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4559,8 +4695,8 @@ export const ListConditionalCreditsScope: API.OperationMethod<
   ListConditionalCreditsScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<ListConditionalCreditsScopeRequest>,
-  output: __S(977, __c61, 1) as any as S.Schema<ConditionalCreditList>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ListConditionalCreditsScopeRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<ConditionalCreditList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4574,8 +4710,8 @@ export const ListConditionalCreditTransactionByParent: API.OperationMethod<
   ListConditionalCreditTransactionByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<ListConditionalCreditTransactionByParentRequest>,
-  output: __S(1089, __c68, 1) as any as S.Schema<ConditionalCreditTransactionsList>,
+  input: __S(1216, __c76, 0) as any as S.Schema<ListConditionalCreditTransactionByParentRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<ConditionalCreditTransactionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4589,8 +4725,8 @@ export const ListContributorFromApplicableMacc: API.OperationMethod<
   ListContributorFromApplicableMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<ListContributorFromApplicableMaccRequest>,
-  output: __S(1120, __c70, 0) as any as S.Schema<ContributorList>,
+  input: __S(1248, __c78, 0) as any as S.Schema<ListContributorFromApplicableMaccRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<ContributorList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4604,8 +4740,8 @@ export const ListContributorFromPrimary: API.OperationMethod<
   ListContributorFromPrimaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<ListContributorFromPrimaryRequest>,
-  output: __S(1120, __c70, 0) as any as S.Schema<ContributorList>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListContributorFromPrimaryRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<ContributorList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4619,8 +4755,8 @@ export const ListCreditApplicable: API.OperationMethod<
   ListCreditApplicableError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c72, 0) as any as S.Schema<ListCreditApplicableRequest>,
-  output: __S(1169, __c73, 1) as any as S.Schema<CreditsList>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListCreditApplicableRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<CreditsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4634,8 +4770,8 @@ export const ListCreditByResourceGroup: API.OperationMethod<
   ListCreditByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<ListCreditByResourceGroupRequest>,
-  output: __S(1169, __c73, 1) as any as S.Schema<CreditsList>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListCreditByResourceGroupRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<CreditsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4649,8 +4785,8 @@ export const ListCreditBySubscription: API.OperationMethod<
   ListCreditBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<ListCreditBySubscriptionRequest>,
-  output: __S(1169, __c73, 1) as any as S.Schema<CreditsList>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListCreditBySubscriptionRequest>,
+  output: __S(1313, __c82, 1) as any as S.Schema<CreditsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4664,8 +4800,8 @@ export const ListCreditTransactionByParent: API.OperationMethod<
   ListCreditTransactionByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<ListCreditTransactionByParentRequest>,
-  output: __S(1089, __c68, 1) as any as S.Schema<TransactionsList>,
+  input: __S(1392, __c87, 0) as any as S.Schema<ListCreditTransactionByParentRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<TransactionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4679,8 +4815,8 @@ export const ListDiscountsResourceGroup: API.OperationMethod<
   ListDiscountsResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c78, 0) as any as S.Schema<ListDiscountsResourceGroupRequest>,
-  output: __S(1265, __c79, 1) as any as S.Schema<DiscountList>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListDiscountsResourceGroupRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<DiscountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4694,8 +4830,8 @@ export const ListDiscountsScope: API.OperationMethod<
   ListDiscountsScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c80, 0) as any as S.Schema<ListDiscountsScopeRequest>,
-  output: __S(1265, __c79, 1) as any as S.Schema<DiscountList>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListDiscountsScopeRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<DiscountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4709,8 +4845,8 @@ export const ListDiscountsSubscription: API.OperationMethod<
   ListDiscountsSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<ListDiscountsSubscriptionRequest>,
-  output: __S(1265, __c79, 1) as any as S.Schema<DiscountList>,
+  input: __S(1456, __c91, 0) as any as S.Schema<ListDiscountsSubscriptionRequest>,
+  output: __S(1425, __c89, 1) as any as S.Schema<DiscountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4724,8 +4860,8 @@ export const ListFreeServiceByResourceGroup: API.OperationMethod<
   ListFreeServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c82, 0) as any as S.Schema<ListFreeServiceByResourceGroupRequest>,
-  output: __S(1329, __c83, 1) as any as S.Schema<FreeServicesList>,
+  input: __S(1472, __c92, 0) as any as S.Schema<ListFreeServiceByResourceGroupRequest>,
+  output: __S(1489, __c93, 1) as any as S.Schema<FreeServicesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4739,8 +4875,8 @@ export const ListFreeServiceBySubscription: API.OperationMethod<
   ListFreeServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c84, 0) as any as S.Schema<ListFreeServiceBySubscriptionRequest>,
-  output: __S(1329, __c83, 1) as any as S.Schema<FreeServicesList>,
+  input: __S(1504, __c94, 0) as any as S.Schema<ListFreeServiceBySubscriptionRequest>,
+  output: __S(1489, __c93, 1) as any as S.Schema<FreeServicesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4754,8 +4890,8 @@ export const ListMaccByResourceGroup: API.OperationMethod<
   ListMaccByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<ListMaccByResourceGroupRequest>,
-  output: __S(1376, __c86, 0) as any as S.Schema<MaccList>,
+  input: __S(1520, __c95, 0) as any as S.Schema<ListMaccByResourceGroupRequest>,
+  output: __S(1536, __c96, 0) as any as S.Schema<MaccList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4769,8 +4905,8 @@ export const ListMaccBySubscription: API.OperationMethod<
   ListMaccBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<ListMaccBySubscriptionRequest>,
-  output: __S(1376, __c86, 0) as any as S.Schema<MaccList>,
+  input: __S(1568, __c98, 0) as any as S.Schema<ListMaccBySubscriptionRequest>,
+  output: __S(1536, __c96, 0) as any as S.Schema<MaccList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4784,8 +4920,8 @@ export const ListMaccTransactionByParent: API.OperationMethod<
   ListMaccTransactionByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<ListMaccTransactionByParentRequest>,
-  output: __S(1089, __c68, 1) as any as S.Schema<MaccTransactionsList>,
+  input: __S(1584, __c99, 0) as any as S.Schema<ListMaccTransactionByParentRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<MaccTransactionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4799,8 +4935,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1460, __c91, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(1616, __c101, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1620, __c101, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4814,8 +4950,8 @@ export const ListSavingsPlan: API.OperationMethod<
   ListSavingsPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c92, 0) as any as S.Schema<ListSavingsPlanRequest>,
-  output: __S(1473, __c92, 1) as any as S.Schema<SavingsPlanModelList>,
+  input: __S(1632, __c102, 0) as any as S.Schema<ListSavingsPlanRequest>,
+  output: __S(1633, __c102, 1) as any as S.Schema<SavingsPlanModelList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4829,8 +4965,8 @@ export const ListSavingsPlanAll: API.OperationMethod<
   ListSavingsPlanAllError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<ListSavingsPlanAllRequest>,
-  output: __S(1508, __c94, 4) as any as S.Schema<SavingsPlanModelListResult>,
+  input: __S(1664, __c104, 0) as any as S.Schema<ListSavingsPlanAllRequest>,
+  output: __S(1668, __c104, 4) as any as S.Schema<SavingsPlanModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4844,8 +4980,8 @@ export const ListSavingsPlanOrder: API.OperationMethod<
   ListSavingsPlanOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c95, 0) as any as S.Schema<ListSavingsPlanOrderRequest>,
-  output: __S(1522, __c95, 2) as any as S.Schema<SavingsPlanOrderModelList>,
+  input: __S(1680, __c105, 0) as any as S.Schema<ListSavingsPlanOrderRequest>,
+  output: __S(1682, __c105, 2) as any as S.Schema<SavingsPlanOrderModelList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4859,8 +4995,8 @@ export const ListSellerResource: API.OperationMethod<
   ListSellerResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1537, __c96, 1) as any as S.Schema<ListSellerResourceRequest>,
-  output: __S(1538, __c96, 2) as any as S.Schema<ListSellerResourceResponse>,
+  input: __S(1697, __c106, 1) as any as S.Schema<ListSellerResourceRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<ListSellerResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4874,8 +5010,8 @@ export const ListSourceByCredit: API.OperationMethod<
   ListSourceByCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1552, __c97, 0) as any as S.Schema<ListSourceByCreditRequest>,
-  output: __S(1554, __c97, 2) as any as S.Schema<CreditSourcesList>,
+  input: __S(1712, __c107, 0) as any as S.Schema<ListSourceByCreditRequest>,
+  output: __S(1714, __c107, 2) as any as S.Schema<CreditSourcesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4889,8 +5025,8 @@ export const ListSubscriptionCatalogGroupsOps: API.OperationMethod<
   ListSubscriptionCatalogGroupsOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c98, 0) as any as S.Schema<ListSubscriptionCatalogGroupsOpsRequest>,
-  output: __S(881, __c55, 1) as any as S.Schema<CatalogGroupListResult>,
+  input: __S(1728, __c108, 0) as any as S.Schema<ListSubscriptionCatalogGroupsOpsRequest>,
+  output: __S(1025, __c64, 1) as any as S.Schema<CatalogGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4904,8 +5040,8 @@ export const MaccsChargeShortfall: API.OperationMethod<
   MaccsChargeShortfallError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<MaccsChargeShortfallRequest>,
-  output: __S(656, __c41, 0) as any as S.Schema<MaccsChargeShortfallResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<MaccsChargeShortfallRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<MaccsChargeShortfallResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4919,8 +5055,8 @@ export const MaccsWriteOff: API.OperationMethod<
   MaccsWriteOffError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c100, 0) as any as S.Schema<MaccsWriteOffRequest>,
-  output: __S(656, __c41, 0) as any as S.Schema<MaccsWriteOffResponse>,
+  input: __S(1760, __c110, 0) as any as S.Schema<MaccsWriteOffRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<MaccsWriteOffResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4934,8 +5070,8 @@ export const SavingsPlanOrderElevate: API.OperationMethod<
   SavingsPlanOrderElevateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1616, __c101, 0) as any as S.Schema<SavingsPlanOrderElevateRequest>,
-  output: __S(1618, __c101, 2) as any as S.Schema<RoleAssignmentEntity>,
+  input: __S(1776, __c111, 0) as any as S.Schema<SavingsPlanOrderElevateRequest>,
+  output: __S(1778, __c111, 2) as any as S.Schema<RoleAssignmentEntity>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4949,8 +5085,8 @@ export const SavingsPlanValidateUpdate: API.OperationMethod<
   SavingsPlanValidateUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1665, __c104, 1) as any as S.Schema<SavingsPlanValidateUpdateRequest>,
-  output: __S(1668, __c104, 4) as any as S.Schema<SavingsPlanValidateResponse>,
+  input: __S(1825, __c114, 1) as any as S.Schema<SavingsPlanValidateUpdateRequest>,
+  output: __S(1828, __c114, 4) as any as S.Schema<SavingsPlanValidateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4964,8 +5100,8 @@ export const UpdateConditionalCredit: API.OperationMethod<
   UpdateConditionalCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1700, __c106, 4) as any as S.Schema<UpdateConditionalCreditRequest>,
-  output: __S(97, __c6, 1) as any as S.Schema<UpdateConditionalCreditResponse>,
+  input: __S(1860, __c116, 4) as any as S.Schema<UpdateConditionalCreditRequest>,
+  output: __S(112, __c7, 0) as any as S.Schema<UpdateConditionalCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4979,8 +5115,8 @@ export const UpdateCredit: API.OperationMethod<
   UpdateCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1713, __c107, 1) as any as S.Schema<UpdateCreditRequest>,
-  output: __S(153, __c9, 9) as any as S.Schema<UpdateCreditResponse>,
+  input: __S(1873, __c117, 1) as any as S.Schema<UpdateCreditRequest>,
+  output: __S(1360, __c85, 0) as any as S.Schema<UpdateCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4994,8 +5130,8 @@ export const UpdateDiscount: API.OperationMethod<
   UpdateDiscountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1729, __c108, 1) as any as S.Schema<UpdateDiscountRequest>,
-  output: __S(403, __c25, 3) as any as S.Schema<UpdateDiscountResponse>,
+  input: __S(1889, __c118, 1) as any as S.Schema<UpdateDiscountRequest>,
+  output: __S(448, __c28, 0) as any as S.Schema<UpdateDiscountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5009,8 +5145,8 @@ export const UpdateFreeService: API.OperationMethod<
   UpdateFreeServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1745, __c109, 1) as any as S.Schema<UpdateFreeServiceRequest>,
-  output: __S(1649, __c103, 1) as any as S.Schema<UpdateFreeServiceResponse>,
+  input: __S(1905, __c119, 1) as any as S.Schema<UpdateFreeServiceRequest>,
+  output: __S(1906, __c119, 2) as any as S.Schema<UpdateFreeServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5024,8 +5160,8 @@ export const UpdateMacc: API.OperationMethod<
   UpdateMaccError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1761, __c110, 1) as any as S.Schema<UpdateMaccRequest>,
-  output: __S(656, __c41, 0) as any as S.Schema<UpdateMaccResponse>,
+  input: __S(1921, __c120, 1) as any as S.Schema<UpdateMaccRequest>,
+  output: __S(768, __c48, 0) as any as S.Schema<UpdateMaccResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5039,8 +5175,8 @@ export const UpdateSavingsPlan: API.OperationMethod<
   UpdateSavingsPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1776, __c111, 0) as any as S.Schema<UpdateSavingsPlanRequest>,
-  output: __S(743, __c46, 7) as any as S.Schema<UpdateSavingsPlanResponse>,
+  input: __S(1936, __c121, 0) as any as S.Schema<UpdateSavingsPlanRequest>,
+  output: __S(1937, __c121, 1) as any as S.Schema<UpdateSavingsPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5054,8 +5190,8 @@ export const UpdateSource: API.OperationMethod<
   UpdateSourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c112, 0) as any as S.Schema<UpdateSourceRequest>,
-  output: __S(209, __c13, 1) as any as S.Schema<UpdateSourceResponse>,
+  input: __S(1952, __c122, 0) as any as S.Schema<UpdateSourceRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<UpdateSourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5069,8 +5205,8 @@ export const ValidateBenefit: API.OperationMethod<
   ValidateBenefitError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1810, __c113, 2) as any as S.Schema<ValidateBenefitRequest>,
-  output: __S(1813, __c113, 5) as any as S.Schema<BenefitValidateResponse>,
+  input: __S(1970, __c123, 2) as any as S.Schema<ValidateBenefitRequest>,
+  output: __S(1973, __c123, 5) as any as S.Schema<BenefitValidateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5203,7 +5339,11 @@ function __c6(j: number): any {
           consumed: S.optional(__S(64, __c4, 0)),
         }),
       ).annotate({ identifier: "ConditionalCreditProperties" });
-    case 1:
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5219,11 +5359,14 @@ function __c6(j: number): any {
           identity: S.optional(__S(49, __c3, 1)),
           sku: S.optional(__S(18, __c1, 2)),
           plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CancelConditionalCreditResponse" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5240,9 +5383,29 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CancelCreditRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(168, __c10, 8)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CancelCreditResponse" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5254,7 +5417,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "Commitment" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5278,18 +5441,18 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "CreditDimension" });
     case 3:
-      return S.Array(__S(146, __c9, 2));
+      return S.Array(__S(162, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          allocation: S.optional(__S(128, __c8, 0)),
+          allocation: S.optional(__S(144, __c9, 0)),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
-          dimensions: S.optional(__S(147, __c9, 3)),
+          dimensions: S.optional(__S(163, __c10, 3)),
         }),
       ).annotate({ identifier: "CreditBreakdownItem" });
     case 5:
-      return S.Array(__S(148, __c9, 4));
+      return S.Array(__S(164, __c10, 4));
     case 6:
       return S.Array(S.String);
     case 7:
@@ -5298,7 +5461,7 @@ function __c9(j: number): any {
           skuTitle: S.optional(S.String),
           productFamily: S.optional(S.String),
           productType: S.optional(S.String),
-          appliedOn: S.optional(__S(150, __c9, 6)),
+          appliedOn: S.optional(__S(166, __c10, 6)),
           appliedPrice: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreditProductDetails" });
@@ -5308,15 +5471,15 @@ function __c9(j: number): any {
           status: S.optional(S.String),
           productCode: S.optional(S.String),
           displayName: S.optional(S.String),
-          reason: S.optional(__S(144, __c9, 0)),
-          credit: S.optional(__S(128, __c8, 0)),
+          reason: S.optional(__S(160, __c10, 0)),
+          credit: S.optional(__S(144, __c9, 0)),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
-          policies: S.optional(__S(145, __c9, 1)),
+          policies: S.optional(__S(161, __c10, 1)),
           billingAccountResourceId: S.optional(S.String),
           billingProfileResourceId: S.optional(S.String),
           customerResourceId: S.optional(S.String),
-          breakdown: S.optional(__S(149, __c9, 5)),
+          breakdown: S.optional(__S(165, __c10, 5)),
           provisioningState: S.optional(S.String),
           systemId: S.optional(S.String),
           orderId: S.optional(S.String),
@@ -5324,31 +5487,13 @@ function __c9(j: number): any {
           resourceId: S.optional(S.String),
           invitationId: S.optional(S.String),
           consumed: S.optional(__S(64, __c4, 0)),
-          productDetails: S.optional(__S(151, __c9, 7)),
+          productDetails: S.optional(__S(167, __c10, 7)),
           appliedScopeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreditProperties" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          tags: S.optional(__S(16, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(152, __c9, 8)),
-          managedBy: S.optional(S.String),
-          kind: S.optional(S.String),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(49, __c3, 1)),
-          sku: S.optional(__S(18, __c1, 2)),
-          plan: S.optional(__S(19, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CancelCreditResponse" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5358,8 +5503,8 @@ function __c10(j: number): any {
           term: S.optional(S.String),
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(1872, __c117, 0)),
-          commitment: S.optional(__S(128, __c8, 0)),
+          appliedScopeProperties: S.optional(__S(2032, __c127, 0)),
+          commitment: S.optional(__S(144, __c9, 0)),
           renew: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SavingsPlanOrderAliasPropertiesInput" });
@@ -5367,8 +5512,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           savingsPlanOrderAliasName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(160, __c10, 0)),
-          sku: __S(1856, __c116, 0),
+          properties: S.optional(__S(176, __c11, 0)),
+          sku: __S(2016, __c126, 0),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5379,9 +5524,23 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSavingsPlanOrderAliasRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(192, __c12, 0)),
+          sku: __S(2016, __c126, 0),
+          kind: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateSavingsPlanOrderAliasResponse" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5393,33 +5552,21 @@ function __c11(j: number): any {
           term: S.optional(S.String),
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(1872, __c117, 0)),
-          commitment: S.optional(__S(128, __c8, 0)),
+          appliedScopeProperties: S.optional(__S(2032, __c127, 0)),
+          commitment: S.optional(__S(144, __c9, 0)),
           renew: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SavingsPlanOrderAliasProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(176, __c11, 0)),
-          sku: __S(1856, __c116, 0),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateSavingsPlanOrderAliasResponse" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           sourceResourceId: S.optional(S.String),
           impactedBillingPeriod: S.optional(S.String),
-          credit: S.optional(__S(128, __c8, 0)),
+          credit: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({ identifier: "CreditSourcePropertiesInput" });
     case 1:
@@ -5431,10 +5578,10 @@ function __c12(j: number): any {
           sourceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(192, __c12, 0)),
+          properties: S.optional(__S(208, __c13, 0)),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(945, __c59, 1)),
+          identity: S.optional(__S(1089, __c68, 1)),
           sku: S.optional(__S(18, __c1, 2)),
           plan: S.optional(__S(19, __c1, 3)),
         }).pipe(
@@ -5448,7 +5595,7 @@ function __c12(j: number): any {
       ).annotate({ identifier: "CreateSourceRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5456,7 +5603,7 @@ function __c13(j: number): any {
           status: S.optional(S.String),
           sourceResourceId: S.optional(S.String),
           impactedBillingPeriod: S.optional(S.String),
-          credit: S.optional(__S(128, __c8, 0)),
+          credit: S.optional(__S(144, __c9, 0)),
         }),
       ).annotate({ identifier: "CreditSourceProperties" });
     case 1:
@@ -5468,7 +5615,7 @@ function __c13(j: number): any {
           systemData: S.optional(__S(32, __c2, 0)),
           tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(208, __c13, 0)),
+          properties: S.optional(__S(224, __c14, 0)),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
@@ -5479,7 +5626,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "CreateSourceResponse" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5497,9 +5644,16 @@ function __c14(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreditsChangeSponsorRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreditsChangeSponsorResponse" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5518,7 +5672,19 @@ function __c15(j: number): any {
       ).annotate({ identifier: "DeleteConditionalCreditRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteConditionalCreditResponse" });
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5537,7 +5703,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "DeleteCreditRequest" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5556,7 +5722,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeleteDiscountRequest" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5575,7 +5741,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "DeleteFreeServiceRequest" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5594,7 +5760,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "DeleteMaccRequest" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5614,7 +5780,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DeleteSourceRequest" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5632,13 +5798,13 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetBillingAccountCatalogGroupsOpsRequest" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5648,7 +5814,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "CatalogGroupCapability" });
     case 1:
-      return S.Array(__S(368, __c23, 0));
+      return S.Array(__S(400, __c25, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5657,10 +5823,10 @@ function __c23(j: number): any {
           shortDescription: S.optional(S.String),
           longDescription: S.optional(S.String),
           learnMoreLink: S.optional(S.String),
-          keywords: S.optional(__S(352, __c22, 0)),
+          keywords: S.optional(__S(384, __c24, 0)),
           icon: S.optional(S.String),
-          capabilities: S.optional(__S(369, __c23, 1)),
-          disclaimers: S.optional(__S(352, __c22, 0)),
+          capabilities: S.optional(__S(401, __c25, 1)),
+          disclaimers: S.optional(__S(384, __c24, 0)),
         }),
       ).annotate({ identifier: "CatalogGroupProperties" });
     case 3:
@@ -5670,12 +5836,12 @@ function __c23(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(370, __c23, 2)),
+          properties: S.optional(__S(402, __c25, 2)),
         }),
       ).annotate({ identifier: "GetBillingAccountCatalogGroupsOpsResponse" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5694,7 +5860,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "CancelDiscountRequest" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5724,10 +5890,14 @@ function __c25(j: number): any {
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(401, __c25, 1)),
+          userAssignedIdentities: S.optional(__S(433, __c27, 1)),
         }),
       ).annotate({ identifier: "ManagedServiceIdentity" });
-    case 3:
+  }
+}
+function __c28(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
@@ -5736,18 +5906,21 @@ function __c25(j: number): any {
           systemData: S.optional(__S(32, __c2, 0)),
           tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(400, __c25, 0)),
+          properties: S.optional(__S(432, __c27, 0)),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(__S(402, __c25, 2)),
+          identity: S.optional(__S(434, __c27, 2)),
           sku: S.optional(__S(18, __c1, 2)),
           plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "CancelDiscountResponse" });
   }
 }
-function __c26(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5766,7 +5939,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "GetBillingProfileCatalogGroupsOpsRequest" });
   }
 }
-function __c27(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5785,7 +5958,29 @@ function __c27(j: number): any {
       ).annotate({ identifier: "GetConditionalCreditRequest" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(96, __c6, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({ identifier: "GetConditionalCreditResponse" });
+  }
+}
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5805,12 +6000,12 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetConditionalCreditContributorFromPrimaryRequest" });
   }
 }
-function __c29(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          credit: S.optional(__S(128, __c8, 0)),
+          credit: S.optional(__S(144, __c9, 0)),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           resourceId: S.optional(S.String),
@@ -5827,11 +6022,11 @@ function __c29(j: number): any {
           status: S.optional(S.String),
           endAt: S.optional(S.String),
           spendTarget: S.optional(__S(64, __c4, 0)),
-          award: S.optional(__S(464, __c29, 0)),
+          award: S.optional(__S(528, __c33, 0)),
         }),
       ).annotate({ identifier: "ConditionalCreditMilestoneBase" });
     case 2:
-      return S.Array(__S(465, __c29, 1));
+      return S.Array(__S(529, __c33, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5851,7 +6046,7 @@ function __c29(j: number): any {
           consumed: S.optional(__S(64, __c4, 0)),
           primaryResourceId: S.optional(S.String),
           systemId: S.optional(S.String),
-          milestones: S.optional(__S(466, __c29, 2)),
+          milestones: S.optional(__S(530, __c33, 2)),
           primaryBillingAccountResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContributorConditionalCreditProperties" });
@@ -5862,12 +6057,12 @@ function __c29(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(467, __c29, 3)),
+          properties: S.optional(__S(531, __c33, 3)),
         }),
       ).annotate({ identifier: "GetConditionalCreditContributorFromPrimaryResponse" });
   }
 }
-function __c30(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5887,7 +6082,7 @@ function __c30(j: number): any {
       ).annotate({ identifier: "GetConditionalCreditTransactionRequest" });
   }
 }
-function __c31(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5910,7 +6105,7 @@ function __c31(j: number): any {
           amountInBillingCurrency: S.optional(__S(64, __c4, 0)),
           amountInPricingCurrency: S.optional(__S(64, __c4, 0)),
           productCode: S.optional(S.String),
-          productDetails: S.optional(__S(496, __c31, 0)),
+          productDetails: S.optional(__S(560, __c35, 0)),
         }),
       ).annotate({ identifier: "TransactionProperties" });
     case 2:
@@ -5920,12 +6115,12 @@ function __c31(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(497, __c31, 1)),
+          properties: S.optional(__S(561, __c35, 1)),
         }),
       ).annotate({ identifier: "GetConditionalCreditTransactionResponse" });
   }
 }
-function __c32(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5945,7 +6140,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "GetContributorFromPrimaryRequest" });
   }
 }
-function __c33(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5954,12 +6149,12 @@ function __c33(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(644, __c40, 4)),
+          properties: S.optional(__S(788, __c49, 4)),
         }),
       ).annotate({ identifier: "GetContributorFromPrimaryResponse" });
   }
 }
-function __c34(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5978,7 +6173,29 @@ function __c34(j: number): any {
       ).annotate({ identifier: "GetCreditRequest" });
   }
 }
-function __c35(j: number): any {
+function __c39(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(168, __c10, 8)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({ identifier: "GetCreditResponse" });
+  }
+}
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5998,7 +6215,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "GetCreditTransactionRequest" });
   }
 }
-function __c36(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6017,7 +6234,29 @@ function __c36(j: number): any {
       ).annotate({ identifier: "GetDiscountRequest" });
   }
 }
-function __c37(j: number): any {
+function __c42(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(432, __c27, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(434, __c27, 2)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({ identifier: "GetDiscountResponse" });
+  }
+}
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6036,7 +6275,29 @@ function __c37(j: number): any {
       ).annotate({ identifier: "GetFreeServiceRequest" });
   }
 }
-function __c38(j: number): any {
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(1808, __c113, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({ identifier: "GetFreeServiceResponse" });
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6055,7 +6316,29 @@ function __c38(j: number): any {
       ).annotate({ identifier: "GetMaccRequest" });
   }
 }
-function __c39(j: number): any {
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(788, __c49, 4)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+        }),
+      ).annotate({ identifier: "GetMaccResponse" });
+  }
+}
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6074,7 +6357,32 @@ function __c39(j: number): any {
       ).annotate({ identifier: "CancelMaccRequest" });
   }
 }
-function __c40(j: number): any {
+function __c48(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(788, __c49, 4)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CancelMaccResponse" });
+  }
+}
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6087,7 +6395,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productCode: S.optional(S.String),
-          charge: S.optional(__S(128, __c8, 0)),
+          charge: S.optional(__S(144, __c9, 0)),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           resourceId: S.optional(S.String),
@@ -6102,13 +6410,13 @@ function __c40(j: number): any {
           commitment: S.optional(__S(64, __c4, 0)),
           endAt: S.optional(S.String),
           automaticShortfall: S.optional(S.String),
-          automaticShortfallSuppressReason: S.optional(__S(640, __c40, 0)),
+          automaticShortfallSuppressReason: S.optional(__S(784, __c49, 0)),
           status: S.optional(S.String),
-          shortfall: S.optional(__S(641, __c40, 1)),
+          shortfall: S.optional(__S(785, __c49, 1)),
         }),
       ).annotate({ identifier: "MaccMilestone" });
     case 3:
-      return S.Array(__S(642, __c40, 2));
+      return S.Array(__S(786, __c49, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6118,14 +6426,14 @@ function __c40(j: number): any {
           displayName: S.optional(S.String),
           productCode: S.optional(S.String),
           billingAccountResourceId: S.optional(S.String),
-          commitment: S.optional(__S(128, __c8, 0)),
+          commitment: S.optional(__S(144, __c9, 0)),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           systemId: S.optional(S.String),
           automaticShortfall: S.optional(S.String),
-          automaticShortfallSuppressReason: S.optional(__S(640, __c40, 0)),
-          shortfall: S.optional(__S(641, __c40, 1)),
-          milestones: S.optional(__S(643, __c40, 3)),
+          automaticShortfallSuppressReason: S.optional(__S(784, __c49, 0)),
+          shortfall: S.optional(__S(785, __c49, 1)),
+          milestones: S.optional(__S(787, __c49, 3)),
           resourceId: S.optional(S.String),
           allowContributors: S.optional(S.Boolean),
           primaryResourceId: S.optional(S.String),
@@ -6138,29 +6446,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "MaccModelProperties" });
   }
 }
-function __c41(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          tags: S.optional(__S(16, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(644, __c40, 4)),
-          managedBy: S.optional(S.String),
-          kind: S.optional(S.String),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(49, __c3, 1)),
-          sku: S.optional(__S(18, __c1, 2)),
-          plan: S.optional(__S(19, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CancelMaccResponse" });
-  }
-}
-function __c42(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6180,7 +6466,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "GetMaccTransactionRequest" });
   }
 }
-function __c43(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6195,9 +6481,21 @@ function __c43(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetReservationOrderAliasRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(2049, __c128, 1)),
+          sku: __S(2016, __c126, 0),
+          location: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetReservationOrderAliasResponse" });
   }
 }
-function __c44(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6216,7 +6514,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "GetSavingsPlanRequest" });
   }
 }
-function __c45(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6227,7 +6525,22 @@ function __c45(j: number): any {
       ).annotate({ identifier: "ExtendedStatusInfo" });
   }
 }
-function __c46(j: number): any {
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(886, __c55, 6)),
+          sku: __S(2016, __c126, 0),
+        }),
+      ).annotate({ identifier: "GetSavingsPlanResponse" });
+  }
+}
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6239,12 +6552,12 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "UtilizationAggregates" });
     case 1:
-      return S.Array(__S(736, __c46, 0));
+      return S.Array(__S(880, __c55, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           trend: S.optional(S.String),
-          aggregates: S.optional(__S(737, __c46, 1)),
+          aggregates: S.optional(__S(881, __c55, 1)),
         }),
       ).annotate({ identifier: "Utilization" });
     case 3:
@@ -6255,24 +6568,24 @@ function __c46(j: number): any {
           term: S.optional(S.String),
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          commitment: S.optional(__S(128, __c8, 0)),
+          commitment: S.optional(__S(144, __c9, 0)),
           effectiveDateTime: S.optional(S.String),
           renew: S.optional(S.Boolean),
           renewAction: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(1872, __c117, 0)),
+          appliedScopeProperties: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "PurchaseRequestProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(1856, __c116, 0)),
-          properties: S.optional(__S(739, __c46, 3)),
+          sku: S.optional(__S(2016, __c126, 0)),
+          properties: S.optional(__S(883, __c55, 3)),
         }),
       ).annotate({ identifier: "PurchaseRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(740, __c46, 4)),
+          purchaseProperties: S.optional(__S(884, __c55, 4)),
         }),
       ).annotate({ identifier: "RenewProperties" });
     case 6:
@@ -6289,34 +6602,23 @@ function __c46(j: number): any {
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
           userFriendlyAppliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(1872, __c117, 0)),
-          commitment: S.optional(__S(128, __c8, 0)),
+          appliedScopeProperties: S.optional(__S(2032, __c127, 0)),
+          commitment: S.optional(__S(144, __c9, 0)),
           effectiveDateTime: S.optional(S.String),
           expiryDateTime: S.optional(S.String),
           purchaseDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(720, __c45, 0)),
+          extendedStatusInfo: S.optional(__S(848, __c53, 0)),
           renew: S.optional(S.Boolean),
-          utilization: S.optional(__S(738, __c46, 2)),
+          utilization: S.optional(__S(882, __c55, 2)),
           renewSource: S.optional(S.String),
           renewDestination: S.optional(S.String),
-          renewProperties: S.optional(__S(741, __c46, 5)),
+          renewProperties: S.optional(__S(885, __c55, 5)),
         }),
       ).annotate({ identifier: "SavingsPlanModelProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(742, __c46, 6)),
-          sku: __S(1856, __c116, 0),
-        }),
-      ).annotate({ identifier: "GetSavingsPlanResponse" });
   }
 }
-function __c47(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6334,7 +6636,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "GetSavingsPlanOrderRequest" });
   }
 }
-function __c48(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6344,19 +6646,19 @@ function __c48(j: number): any {
           pricingCurrencyTotal: S.optional(__S(64, __c4, 0)),
           billingCurrencyTotal: S.optional(__S(64, __c4, 0)),
           status: S.optional(S.String),
-          extendedStatusInfo: S.optional(__S(720, __c45, 0)),
+          extendedStatusInfo: S.optional(__S(848, __c53, 0)),
           billingAccount: S.optional(S.String),
         }),
       ).annotate({ identifier: "PaymentDetail" });
     case 1:
-      return S.Array(__S(768, __c48, 0));
+      return S.Array(__S(912, __c57, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           pricingCurrencyTotal: S.optional(__S(64, __c4, 0)),
           startDate: S.optional(S.String),
           nextPaymentDueDate: S.optional(S.String),
-          transactions: S.optional(__S(769, __c48, 1)),
+          transactions: S.optional(__S(913, __c57, 1)),
         }),
       ).annotate({ identifier: "BillingPlanInformation" });
     case 3:
@@ -6372,9 +6674,9 @@ function __c48(j: number): any {
           billingPlan: S.optional(S.String),
           expiryDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
-          planInformation: S.optional(__S(770, __c48, 2)),
-          savingsPlans: S.optional(__S(352, __c22, 0)),
-          extendedStatusInfo: S.optional(__S(720, __c45, 0)),
+          planInformation: S.optional(__S(914, __c57, 2)),
+          savingsPlans: S.optional(__S(384, __c24, 0)),
+          extendedStatusInfo: S.optional(__S(848, __c53, 0)),
         }),
       ).annotate({ identifier: "SavingsPlanOrderModelProperties" });
     case 4:
@@ -6384,13 +6686,13 @@ function __c48(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(771, __c48, 3)),
-          sku: __S(1856, __c116, 0),
+          properties: S.optional(__S(915, __c57, 3)),
+          sku: __S(2016, __c126, 0),
         }),
       ).annotate({ identifier: "GetSavingsPlanOrderResponse" });
   }
 }
-function __c49(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6405,9 +6707,21 @@ function __c49(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetSavingsPlanOrderAliasRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(192, __c12, 0)),
+          sku: __S(2016, __c126, 0),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSavingsPlanOrderAliasResponse" });
   }
 }
-function __c50(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6427,7 +6741,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "GetSourceRequest" });
   }
 }
-function __c51(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6445,7 +6759,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "GetSubscriptionCatalogGroupsOpsRequest" });
   }
 }
-function __c52(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6463,19 +6777,19 @@ function __c52(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(848, __c53, 0)),
+          value: S.optional(__S(992, __c62, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicableMaccList" });
   }
 }
-function __c53(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(528, __c33, 0));
+      return S.Array(__S(592, __c37, 0));
   }
 }
-function __c54(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6493,20 +6807,20 @@ function __c54(j: number): any {
       ).annotate({ identifier: "ListBillingAccountCatalogGroupsOpsRequest" });
   }
 }
-function __c55(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(371, __c23, 3));
+      return S.Array(__S(403, __c25, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(880, __c55, 0),
+          value: __S(1024, __c64, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogGroupListResult" });
   }
 }
-function __c56(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6525,7 +6839,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "ListBillingProfileCatalogGroupsOpsRequest" });
   }
 }
-function __c57(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6550,10 +6864,10 @@ function __c57(j: number): any {
           conditionalCreditName: S.String.pipe(T.Label()),
           tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(912, __c57, 0)),
+          properties: S.optional(__S(1056, __c66, 0)),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(945, __c59, 1)),
+          identity: S.optional(__S(1089, __c68, 1)),
           sku: S.optional(__S(18, __c1, 2)),
           plan: S.optional(__S(19, __c1, 3)),
         }).pipe(
@@ -6565,28 +6879,48 @@ function __c57(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ConditionalCreditsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(96, __c6, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ConditionalCreditsCreateOrUpdateResponse" });
   }
 }
-function __c58(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentityInput" });
   }
 }
-function __c59(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(928, __c58, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1072, __c67, 0)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(944, __c59, 0)),
+          userAssignedIdentities: S.optional(__S(1088, __c68, 0)),
         }),
       ).annotate({ identifier: "ConditionalCreditsCreateOrUpdateRequestIdentity" });
   }
 }
-function __c60(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6604,20 +6938,20 @@ function __c60(j: number): any {
       ).annotate({ identifier: "ListConditionalCreditByResourceGroupRequest" });
   }
 }
-function __c61(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(97, __c6, 1));
+      return S.Array(__S(496, __c31, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(976, __c61, 0),
+          value: __S(1120, __c70, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConditionalCreditList" });
   }
 }
-function __c62(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6634,7 +6968,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "ListConditionalCreditBySubscriptionRequest" });
   }
 }
-function __c63(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6654,20 +6988,20 @@ function __c63(j: number): any {
       });
   }
 }
-function __c64(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(468, __c29, 4));
+      return S.Array(__S(532, __c33, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1024, __c64, 0),
+          value: __S(1168, __c73, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConditionalCreditContributorList" });
   }
 }
-function __c65(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6686,7 +7020,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "ListConditionalCreditContributorFromPrimaryRequest" });
   }
 }
-function __c66(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6703,7 +7037,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ListConditionalCreditsScopeRequest" });
   }
 }
-function __c67(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6722,20 +7056,20 @@ function __c67(j: number): any {
       ).annotate({ identifier: "ListConditionalCreditTransactionByParentRequest" });
   }
 }
-function __c68(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(498, __c31, 2));
+      return S.Array(__S(562, __c35, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1088, __c68, 0),
+          value: __S(1232, __c77, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConditionalCreditTransactionsList" });
   }
 }
-function __c69(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6753,18 +7087,18 @@ function __c69(j: number): any {
       ).annotate({ identifier: "ListContributorFromApplicableMaccRequest" });
   }
 }
-function __c70(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(848, __c53, 0),
+          value: __S(992, __c62, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContributorList" });
   }
 }
-function __c71(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6783,7 +7117,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "ListContributorFromPrimaryRequest" });
   }
 }
-function __c72(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6800,20 +7134,20 @@ function __c72(j: number): any {
       ).annotate({ identifier: "ListCreditApplicableRequest" });
   }
 }
-function __c73(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(153, __c9, 9));
+      return S.Array(__S(624, __c39, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1168, __c73, 0),
+          value: __S(1312, __c82, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreditsList" });
   }
 }
-function __c74(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6831,20 +7165,20 @@ function __c74(j: number): any {
       ).annotate({ identifier: "ListCreditByResourceGroupRequest" });
   }
 }
-function __c75(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           productCode: S.optional(S.String),
           displayName: S.optional(S.String),
-          reason: S.optional(__S(144, __c9, 0)),
-          credit: S.optional(__S(128, __c8, 0)),
+          reason: S.optional(__S(160, __c10, 0)),
+          credit: S.optional(__S(144, __c9, 0)),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
-          policies: S.optional(__S(145, __c9, 1)),
+          policies: S.optional(__S(161, __c10, 1)),
           billingAccountResourceId: S.optional(S.String),
-          breakdown: S.optional(__S(149, __c9, 5)),
+          breakdown: S.optional(__S(165, __c10, 5)),
           systemId: S.optional(S.String),
           fundingSystemId: S.optional(S.String),
           resourceId: S.optional(S.String),
@@ -6860,10 +7194,10 @@ function __c75(j: number): any {
           creditName: S.String.pipe(T.Label()),
           tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(1200, __c75, 0)),
+          properties: S.optional(__S(1344, __c84, 0)),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(945, __c59, 1)),
+          identity: S.optional(__S(1089, __c68, 1)),
           sku: S.optional(__S(18, __c1, 2)),
           plan: S.optional(__S(19, __c1, 3)),
         }).pipe(
@@ -6877,7 +7211,32 @@ function __c75(j: number): any {
       ).annotate({ identifier: "CreateCreditRequest" });
   }
 }
-function __c76(j: number): any {
+function __c85(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(168, __c10, 8)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateCreditResponse" });
+  }
+}
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6894,7 +7253,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "ListCreditBySubscriptionRequest" });
   }
 }
-function __c77(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6913,7 +7272,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "ListCreditTransactionByParentRequest" });
   }
 }
-function __c78(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6931,20 +7290,20 @@ function __c78(j: number): any {
       ).annotate({ identifier: "ListDiscountsResourceGroupRequest" });
   }
 }
-function __c79(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(403, __c25, 3));
+      return S.Array(__S(672, __c42, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1264, __c79, 0),
+          value: __S(1424, __c89, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiscountList" });
   }
 }
-function __c80(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6961,7 +7320,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "ListDiscountsScopeRequest" });
   }
 }
-function __c81(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6978,7 +7337,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "ListDiscountsSubscriptionRequest" });
   }
 }
-function __c82(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6996,20 +7355,20 @@ function __c82(j: number): any {
       ).annotate({ identifier: "ListFreeServiceByResourceGroupRequest" });
   }
 }
-function __c83(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1649, __c103, 1));
+      return S.Array(__S(704, __c44, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1328, __c83, 0)),
+          value: S.optional(__S(1488, __c93, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FreeServicesList" });
   }
 }
-function __c84(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7026,7 +7385,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "ListFreeServiceBySubscriptionRequest" });
   }
 }
-function __c85(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7044,24 +7403,24 @@ function __c85(j: number): any {
       ).annotate({ identifier: "ListMaccByResourceGroupRequest" });
   }
 }
-function __c86(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1392, __c87, 0),
+          value: __S(1552, __c97, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaccList" });
   }
 }
-function __c87(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(656, __c41, 0));
+      return S.Array(__S(736, __c46, 0));
   }
 }
-function __c88(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7078,7 +7437,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "ListMaccBySubscriptionRequest" });
   }
 }
-function __c89(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7097,7 +7456,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "ListMaccTransactionByParentRequest" });
   }
 }
-function __c90(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7113,12 +7472,12 @@ function __c90(j: number): any {
         }),
       ).annotate({ identifier: "DiscountPropertiesInput" });
     case 1:
-      return S.Record(S.String, __S(928, __c58, 0));
+      return S.Record(S.String, __S(1072, __c67, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1441, __c90, 1)),
+          userAssignedIdentities: S.optional(__S(1601, __c100, 1)),
         }),
       ).annotate({ identifier: "ManagedServiceIdentityInput" });
     case 3:
@@ -7129,10 +7488,10 @@ function __c90(j: number): any {
           discountName: S.String.pipe(T.Label()),
           tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(1440, __c90, 0)),
+          properties: S.optional(__S(1600, __c100, 0)),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(1442, __c90, 2)),
+          identity: S.optional(__S(1602, __c100, 2)),
           sku: S.optional(__S(18, __c1, 2)),
           plan: S.optional(__S(19, __c1, 3)),
         }).pipe(
@@ -7144,9 +7503,29 @@ function __c90(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateDiscountRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(432, __c27, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(434, __c27, 2)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateDiscountResponse" });
   }
 }
-function __c91(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7173,23 +7552,23 @@ function __c91(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(1457, __c91, 1)),
+          display: S.optional(__S(1617, __c101, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(1458, __c91, 2));
+      return S.Array(__S(1618, __c101, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1459, __c91, 3)),
+          value: S.optional(__S(1619, __c101, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c92(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7207,19 +7586,19 @@ function __c92(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1488, __c93, 0),
+          value: __S(1648, __c103, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanModelList" });
   }
 }
-function __c93(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(743, __c46, 7));
+      return S.Array(__S(864, __c54, 0));
   }
 }
-function __c94(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7257,22 +7636,22 @@ function __c94(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          value: S.optional(__S(1505, __c94, 1)),
+          value: S.optional(__S(1665, __c104, 1)),
         }),
       ).annotate({ identifier: "SavingsPlanSummary" });
     case 3:
-      return S.Array(__S(1506, __c94, 2));
+      return S.Array(__S(1666, __c104, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1488, __c93, 0)),
+          value: S.optional(__S(1648, __c103, 0)),
           nextLink: S.optional(S.String),
-          additionalProperties: S.optional(__S(1507, __c94, 3)),
+          additionalProperties: S.optional(__S(1667, __c104, 3)),
         }),
       ).annotate({ identifier: "SavingsPlanModelListResult" });
   }
 }
-function __c95(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7286,17 +7665,17 @@ function __c95(j: number): any {
         ),
       ).annotate({ identifier: "ListSavingsPlanOrderRequest" });
     case 1:
-      return S.Array(__S(772, __c48, 4));
+      return S.Array(__S(916, __c57, 4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1521, __c95, 1),
+          value: __S(1681, __c105, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanOrderModelList" });
   }
 }
-function __c96(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7311,7 +7690,7 @@ function __c96(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(1536, __c96, 0)),
+          properties: S.optional(__S(1696, __c106, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7322,12 +7701,12 @@ function __c96(j: number): any {
         ),
       ).annotate({ identifier: "ListSellerResourceRequest" });
     case 2:
-      return S.suspend(() => __S(1392, __c87, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(1552, __c97, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSellerResourceResponse",
       });
   }
 }
-function __c97(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7345,17 +7724,17 @@ function __c97(j: number): any {
         ),
       ).annotate({ identifier: "ListSourceByCreditRequest" });
     case 1:
-      return S.Array(__S(209, __c13, 1));
+      return S.Array(__S(225, __c14, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1553, __c97, 1),
+          value: __S(1713, __c107, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreditSourcesList" });
   }
 }
-function __c98(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7373,7 +7752,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "ListSubscriptionCatalogGroupsOpsRequest" });
   }
 }
-function __c99(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7381,7 +7760,7 @@ function __c99(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           maccName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(641, __c40, 1)),
+          properties: S.optional(__S(785, __c49, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7393,7 +7772,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "MaccsChargeShortfallRequest" });
   }
 }
-function __c100(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7412,7 +7791,7 @@ function __c100(j: number): any {
       ).annotate({ identifier: "MaccsWriteOffRequest" });
   }
 }
-function __c101(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7440,12 +7819,12 @@ function __c101(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(__S(1617, __c101, 1)),
+          properties: S.optional(__S(1777, __c111, 1)),
         }),
       ).annotate({ identifier: "RoleAssignmentEntity" });
   }
 }
-function __c102(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7467,10 +7846,10 @@ function __c102(j: number): any {
           freeServiceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(1632, __c102, 0)),
+          properties: S.optional(__S(1792, __c112, 0)),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(945, __c59, 1)),
+          identity: S.optional(__S(1089, __c68, 1)),
           sku: S.optional(__S(18, __c1, 2)),
           plan: S.optional(__S(19, __c1, 3)),
         }).pipe(
@@ -7482,9 +7861,29 @@ function __c102(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateFreeServiceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(1808, __c113, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateFreeServiceResponse" });
   }
 }
-function __c103(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7503,36 +7902,18 @@ function __c103(j: number): any {
           productDetails: S.optional(__S(80, __c5, 0)),
         }),
       ).annotate({ identifier: "FreeServicesProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          tags: S.optional(__S(16, __c1, 0)),
-          location: S.String,
-          properties: S.optional(__S(1648, __c103, 0)),
-          managedBy: S.optional(S.String),
-          kind: S.optional(S.String),
-          etag: S.optional(S.String),
-          identity: S.optional(__S(49, __c3, 1)),
-          sku: S.optional(__S(18, __c1, 2)),
-          plan: S.optional(__S(19, __c1, 3)),
-        }),
-      ).annotate({ identifier: "CreateFreeServiceResponse" });
   }
 }
-function __c104(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1683, __c105, 3));
+      return S.Array(__S(1843, __c115, 3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           savingsPlanOrderId: S.String.pipe(T.Label()),
           savingsPlanId: S.String.pipe(T.Label()),
-          benefits: S.optional(__S(1664, __c104, 0)),
+          benefits: S.optional(__S(1824, __c114, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7551,17 +7932,17 @@ function __c104(j: number): any {
         }),
       ).annotate({ identifier: "SavingsPlanValidResponseProperty" });
     case 3:
-      return S.Array(__S(1666, __c104, 2));
+      return S.Array(__S(1826, __c114, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          benefits: S.optional(__S(1667, __c104, 3)),
+          benefits: S.optional(__S(1827, __c114, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavingsPlanValidateResponse" });
   }
 }
-function __c105(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7571,23 +7952,23 @@ function __c105(j: number): any {
           term: S.optional(S.String),
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          commitment: S.optional(__S(128, __c8, 0)),
+          commitment: S.optional(__S(144, __c9, 0)),
           renew: S.optional(S.Boolean),
           renewAction: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(1872, __c117, 0)),
+          appliedScopeProperties: S.optional(__S(2032, __c127, 0)),
         }),
       ).annotate({ identifier: "PurchaseRequestPropertiesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(__S(1856, __c116, 0)),
-          properties: S.optional(__S(1680, __c105, 0)),
+          sku: S.optional(__S(2016, __c126, 0)),
+          properties: S.optional(__S(1840, __c115, 0)),
         }),
       ).annotate({ identifier: "PurchaseRequestInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          purchaseProperties: S.optional(__S(1681, __c105, 1)),
+          purchaseProperties: S.optional(__S(1841, __c115, 1)),
         }),
       ).annotate({ identifier: "RenewPropertiesInput" });
     case 3:
@@ -7595,19 +7976,19 @@ function __c105(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(1872, __c117, 0)),
+          appliedScopeProperties: S.optional(__S(2032, __c127, 0)),
           renew: S.optional(S.Boolean),
-          renewProperties: S.optional(__S(1682, __c105, 2)),
+          renewProperties: S.optional(__S(1842, __c115, 2)),
         }),
       ).annotate({ identifier: "SavingsPlanUpdateRequestPropertiesInput" });
   }
 }
-function __c106(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          credit: S.optional(__S(128, __c8, 0)),
+          credit: S.optional(__S(144, __c9, 0)),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           duration: S.optional(S.String),
@@ -7621,18 +8002,18 @@ function __c106(j: number): any {
           status: S.optional(S.String),
           endAt: S.optional(S.String),
           spendTarget: S.optional(__S(64, __c4, 0)),
-          award: S.optional(__S(1696, __c106, 0)),
+          award: S.optional(__S(1856, __c116, 0)),
         }),
       ).annotate({ identifier: "ConditionalCreditMilestoneInput" });
     case 2:
-      return S.Array(__S(1697, __c106, 1));
+      return S.Array(__S(1857, __c116, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           endAt: S.optional(S.String),
           allowContributors: S.optional(S.String),
-          milestones: S.optional(__S(1698, __c106, 2)),
+          milestones: S.optional(__S(1858, __c116, 2)),
         }),
       ).annotate({ identifier: "ConditionalCreditPatchRequestPropertiesInput" });
     case 4:
@@ -7641,7 +8022,7 @@ function __c106(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           conditionalCreditName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1699, __c106, 3)),
+          properties: S.optional(__S(1859, __c116, 3)),
           tags: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
@@ -7654,14 +8035,14 @@ function __c106(j: number): any {
       ).annotate({ identifier: "UpdateConditionalCreditRequest" });
   }
 }
-function __c107(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          credit: S.optional(__S(128, __c8, 0)),
+          credit: S.optional(__S(144, __c9, 0)),
           endAt: S.optional(S.String),
-          breakdown: S.optional(__S(149, __c9, 5)),
+          breakdown: S.optional(__S(165, __c10, 5)),
         }),
       ).annotate({ identifier: "CreditPatchProperties" });
     case 1:
@@ -7671,7 +8052,7 @@ function __c107(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           creditName: S.String.pipe(T.Label()),
           tags: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(1712, __c107, 0)),
+          properties: S.optional(__S(1872, __c117, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7683,7 +8064,7 @@ function __c107(j: number): any {
       ).annotate({ identifier: "UpdateCreditRequest" });
   }
 }
-function __c108(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7698,7 +8079,7 @@ function __c108(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           discountName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1728, __c108, 0)),
+          properties: S.optional(__S(1888, __c118, 0)),
           tags: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
@@ -7711,7 +8092,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "UpdateDiscountRequest" });
   }
 }
-function __c109(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7725,7 +8106,7 @@ function __c109(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           freeServiceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1744, __c109, 0)),
+          properties: S.optional(__S(1904, __c119, 0)),
           tags: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
@@ -7736,21 +8117,42 @@ function __c109(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateFreeServiceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(1808, __c113, 0)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateFreeServiceResponse" });
   }
 }
-function __c110(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          commitment: S.optional(__S(128, __c8, 0)),
+          commitment: S.optional(__S(144, __c9, 0)),
           endAt: S.optional(S.String),
           allowContributors: S.optional(S.Boolean),
           automaticShortfall: S.optional(S.String),
-          automaticShortfallSuppressReason: S.optional(__S(640, __c40, 0)),
+          automaticShortfallSuppressReason: S.optional(__S(784, __c49, 0)),
           displayName: S.optional(S.String),
           status: S.optional(S.String),
-          milestones: S.optional(__S(643, __c40, 3)),
+          milestones: S.optional(__S(787, __c49, 3)),
           primaryResourceId: S.optional(S.String),
           primaryBillingAccountResourceId: S.optional(S.String),
         }),
@@ -7761,7 +8163,7 @@ function __c110(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           maccName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1760, __c110, 0)),
+          properties: S.optional(__S(1920, __c120, 0)),
           tags: S.optional(__S(16, __c1, 0)),
         }).pipe(
           T.Http({
@@ -7774,14 +8176,14 @@ function __c110(j: number): any {
       ).annotate({ identifier: "UpdateMaccRequest" });
   }
 }
-function __c111(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           savingsPlanOrderId: S.String.pipe(T.Label()),
           savingsPlanId: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1683, __c105, 3)),
+          properties: S.optional(__S(1843, __c115, 3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7791,9 +8193,21 @@ function __c111(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSavingsPlanRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(886, __c55, 6)),
+          sku: __S(2016, __c126, 0),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateSavingsPlanResponse" });
   }
 }
-function __c112(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7814,7 +8228,7 @@ function __c112(j: number): any {
       ).annotate({ identifier: "UpdateSourceRequest" });
   }
 }
-function __c113(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7823,11 +8237,11 @@ function __c113(j: number): any {
         }),
       ).annotate({ identifier: "BenefitValidateModel" });
     case 1:
-      return S.Array(__S(1808, __c113, 0));
+      return S.Array(__S(1968, __c123, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          benefits: S.optional(__S(1809, __c113, 1)),
+          benefits: S.optional(__S(1969, __c123, 1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7847,17 +8261,17 @@ function __c113(j: number): any {
         }),
       ).annotate({ identifier: "BenefitValidateResponseProperty" });
     case 4:
-      return S.Array(__S(1811, __c113, 3));
+      return S.Array(__S(1971, __c123, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          benefits: S.optional(__S(1812, __c113, 4)),
+          benefits: S.optional(__S(1972, __c123, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BenefitValidateResponse" });
   }
 }
-function __c114(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7867,14 +8281,14 @@ function __c114(j: number): any {
           displayName: S.optional(S.String),
           productCode: S.optional(S.String),
           billingAccountResourceId: S.optional(S.String),
-          commitment: S.optional(__S(128, __c8, 0)),
+          commitment: S.optional(__S(144, __c9, 0)),
           startAt: S.optional(S.String),
           endAt: S.optional(S.String),
           systemId: S.optional(S.String),
           automaticShortfall: S.optional(S.String),
-          automaticShortfallSuppressReason: S.optional(__S(640, __c40, 0)),
-          shortfall: S.optional(__S(641, __c40, 1)),
-          milestones: S.optional(__S(643, __c40, 3)),
+          automaticShortfallSuppressReason: S.optional(__S(784, __c49, 0)),
+          shortfall: S.optional(__S(785, __c49, 1)),
+          milestones: S.optional(__S(787, __c49, 3)),
           resourceId: S.optional(S.String),
           allowContributors: S.optional(S.Boolean),
           primaryResourceId: S.optional(S.String),
@@ -7891,10 +8305,10 @@ function __c114(j: number): any {
           maccName: S.String.pipe(T.Label()),
           tags: S.optional(__S(16, __c1, 0)),
           location: S.String,
-          properties: S.optional(__S(1824, __c114, 0)),
+          properties: S.optional(__S(1984, __c124, 0)),
           managedBy: S.optional(S.String),
           kind: S.optional(S.String),
-          identity: S.optional(__S(945, __c59, 1)),
+          identity: S.optional(__S(1089, __c68, 1)),
           sku: S.optional(__S(18, __c1, 2)),
           plan: S.optional(__S(19, __c1, 3)),
         }).pipe(
@@ -7906,9 +8320,29 @@ function __c114(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateMaccRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          tags: S.optional(__S(16, __c1, 0)),
+          location: S.String,
+          properties: S.optional(__S(788, __c49, 4)),
+          managedBy: S.optional(S.String),
+          kind: S.optional(S.String),
+          etag: S.optional(S.String),
+          identity: S.optional(__S(49, __c3, 1)),
+          sku: S.optional(__S(18, __c1, 2)),
+          plan: S.optional(__S(19, __c1, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateMaccResponse" });
   }
 }
-function __c115(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7918,23 +8352,23 @@ function __c115(j: number): any {
           term: S.optional(S.String),
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(1872, __c117, 0)),
+          appliedScopeProperties: S.optional(__S(2032, __c127, 0)),
           quantity: S.optional(S.Number),
           renew: S.optional(S.Boolean),
           renewAction: S.optional(S.String),
           reservedResourceType: S.optional(S.String),
           reviewDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
-          reservedResourceProperties: S.optional(__S(1888, __c118, 0)),
+          reservedResourceProperties: S.optional(__S(2048, __c128, 0)),
         }),
       ).annotate({ identifier: "ReservationOrderAliasRequestProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           reservationOrderAliasName: S.String.pipe(T.Label()),
-          sku: __S(1856, __c116, 0),
+          sku: __S(2016, __c126, 0),
           location: S.optional(S.String),
-          properties: S.optional(__S(1840, __c115, 0)),
+          properties: S.optional(__S(2000, __c125, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7944,9 +8378,23 @@ function __c115(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateReservationOrderAliasRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(2049, __c128, 1)),
+          sku: __S(2016, __c126, 0),
+          location: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateReservationOrderAliasResponse" });
   }
 }
-function __c116(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7956,7 +8404,7 @@ function __c116(j: number): any {
       ).annotate({ identifier: "ResourceSku" });
   }
 }
-function __c117(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7971,7 +8419,7 @@ function __c117(j: number): any {
       ).annotate({ identifier: "AppliedScopeProperties" });
   }
 }
-function __c118(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7991,7 +8439,7 @@ function __c118(j: number): any {
           term: S.optional(S.String),
           billingPlan: S.optional(S.String),
           appliedScopeType: S.optional(S.String),
-          appliedScopeProperties: S.optional(__S(1872, __c117, 0)),
+          appliedScopeProperties: S.optional(__S(2032, __c127, 0)),
           quantity: S.optional(S.Number),
           renew: S.optional(S.Boolean),
           renewAction: S.optional(S.String),
@@ -7999,21 +8447,9 @@ function __c118(j: number): any {
           reservedResourceType: S.optional(S.String),
           reviewDateTime: S.optional(S.String),
           benefitStartTime: S.optional(S.String),
-          reservedResourceProperties: S.optional(__S(1888, __c118, 0)),
+          reservedResourceProperties: S.optional(__S(2048, __c128, 0)),
         }),
       ).annotate({ identifier: "ReservationOrderAliasResponseProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(32, __c2, 0)),
-          properties: S.optional(__S(1889, __c118, 1)),
-          sku: __S(1856, __c116, 0),
-          location: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateReservationOrderAliasResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

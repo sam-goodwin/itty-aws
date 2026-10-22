@@ -41,7 +41,9 @@ export interface ClustersPromoteReadReplicaRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export interface ClustersPromoteReadReplicaResponse {}
+export interface ClustersPromoteReadReplicaResponse {
+  location?: string;
+}
 /** Resource tags. */
 export type CreateClusterRequestTagsMap = { [key: string]: string | undefined };
 /** Schedule settings for regular cluster updates. */
@@ -255,6 +257,7 @@ export interface CreateClusterResponse {
   location: string;
   /** Properties of the cluster. */
   properties?: ClusterProperties;
+  locationHeader?: string;
 }
 /** The properties of a cluster role. */
 export interface RolePropertiesInput {
@@ -293,6 +296,7 @@ export interface CreateRoleResponse {
   systemData?: SystemData;
   /** The properties of a role. */
   properties: RoleProperties;
+  location?: string;
 }
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -302,7 +306,9 @@ export interface DeleteClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export interface DeleteClusterResponse {}
+export interface DeleteClusterResponse {
+  location?: string;
+}
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -313,7 +319,9 @@ export interface DeleteFirewallRuleRequest {
   /** The name of the cluster firewall rule. */
   firewallRuleName: string;
 }
-export interface DeleteFirewallRuleResponse {}
+export interface DeleteFirewallRuleResponse {
+  location?: string;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -324,7 +332,9 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the cluster. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  location?: string;
+}
 export interface DeleteRoleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -335,7 +345,9 @@ export interface DeleteRoleRequest {
   /** The name of the cluster role. */
   roleName: string;
 }
-export interface DeleteRoleResponse {}
+export interface DeleteRoleResponse {
+  location?: string;
+}
 /** The properties of a cluster firewall rule. */
 export interface FirewallRulePropertiesInput {
   /** The start IP address of the cluster firewall rule. Must be IPv4 format. */
@@ -375,6 +387,7 @@ export interface FirewallRulesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The properties of a firewall rule. */
   properties: FirewallRuleProperties;
+  location?: string;
 }
 export interface GetClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1024,6 +1037,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
+  location?: string;
 }
 export interface RestartClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1033,7 +1047,9 @@ export interface RestartClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export interface RestartClusterResponse {}
+export interface RestartClusterResponse {
+  location?: string;
+}
 export interface StartClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1042,7 +1058,9 @@ export interface StartClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export interface StartClusterResponse {}
+export interface StartClusterResponse {
+  location?: string;
+}
 export interface StopClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1051,7 +1069,9 @@ export interface StopClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export interface StopClusterResponse {}
+export interface StopClusterResponse {
+  location?: string;
+}
 /** The properties used to update a cluster. */
 export interface ClusterPropertiesForUpdateInput {
   /** The password of the administrator login. Each cluster is created with pre-defined administrative role called 'citus'. */
@@ -1116,6 +1136,7 @@ export interface UpdateClusterResponse {
   location: string;
   /** Properties of the cluster. */
   properties?: ClusterProperties;
+  locationHeader?: string;
 }
 /** The properties of a configuration. */
 export interface ServerConfigurationPropertiesInput {
@@ -1145,6 +1166,7 @@ export interface UpdateConfigurationOnCoordinatorResponse {
   systemData?: SystemData;
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
+  location?: string;
 }
 export interface UpdateConfigurationOnNodeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1169,6 +1191,7 @@ export interface UpdateConfigurationOnNodeResponse {
   systemData?: SystemData;
   /** The properties of a configuration. */
   properties?: ServerConfigurationProperties;
+  location?: string;
 }
 export type CheckClusterNameAvailabilityError = AzureOpError;
 /** Checks availability of a cluster name. Cluster names should be globally unique; at least 3 characters and at most 40 characters long; they must only contain lowercase letters, numbers, and hyphens; and must not start or end with a hyphen. */
@@ -1193,8 +1216,8 @@ export const ClustersPromoteReadReplica: API.OperationMethod<
   ClustersPromoteReadReplicaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(16, __c1, 0) as any as S.Schema<ClustersPromoteReadReplicaRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<ClustersPromoteReadReplicaResponse>,
+  input: __S(8, __c1, 0) as any as S.Schema<ClustersPromoteReadReplicaRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<ClustersPromoteReadReplicaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1208,8 +1231,8 @@ export const CreateCluster: API.OperationMethod<
   CreateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(305, __c19, 1) as any as S.Schema<CreateClusterRequest>,
-  output: __S(376, __c23, 8) as any as S.Schema<CreateClusterResponse>,
+  input: __S(185, __c23, 1) as any as S.Schema<CreateClusterRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<CreateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1223,8 +1246,8 @@ export const CreateRole: API.OperationMethod<
   CreateRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c34, 1) as any as S.Schema<CreateRoleRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<CreateRoleResponse>,
+  input: __S(313, __c39, 1) as any as S.Schema<CreateRoleRequest>,
+  output: __S(314, __c39, 2) as any as S.Schema<CreateRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1238,8 +1261,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<DeleteClusterRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<DeleteClusterResponse>,
+  input: __S(376, __c47, 0) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1253,8 +1276,8 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
+  input: __S(384, __c48, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1268,8 +1291,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(392, __c49, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1283,8 +1306,8 @@ export const DeleteRole: API.OperationMethod<
   DeleteRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<DeleteRoleRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<DeleteRoleResponse>,
+  input: __S(400, __c50, 0) as any as S.Schema<DeleteRoleRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<DeleteRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1298,8 +1321,8 @@ export const FirewallRulesCreateOrUpdate: API.OperationMethod<
   FirewallRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(737, __c46, 1) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
-  output: __S(753, __c47, 1) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
+  input: __S(409, __c51, 1) as any as S.Schema<FirewallRulesCreateOrUpdateRequest>,
+  output: __S(410, __c51, 2) as any as S.Schema<FirewallRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1313,8 +1336,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<GetClusterRequest>,
-  output: __S(376, __c23, 8) as any as S.Schema<GetClusterResponse>,
+  input: __S(424, __c53, 0) as any as S.Schema<GetClusterRequest>,
+  output: __S(432, __c54, 0) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1328,8 +1351,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(48, __c3, 0) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(67, __c4, 3) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(24, __c3, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(35, __c4, 3) as any as S.Schema<GetConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1343,8 +1366,8 @@ export const GetConfigurationCoordinator: API.OperationMethod<
   GetConfigurationCoordinatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<GetConfigurationCoordinatorRequest>,
-  output: __S(97, __c6, 1) as any as S.Schema<GetConfigurationCoordinatorResponse>,
+  input: __S(40, __c5, 0) as any as S.Schema<GetConfigurationCoordinatorRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetConfigurationCoordinatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1358,8 +1381,8 @@ export const GetConfigurationNode: API.OperationMethod<
   GetConfigurationNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c7, 0) as any as S.Schema<GetConfigurationNodeRequest>,
-  output: __S(97, __c6, 1) as any as S.Schema<GetConfigurationNodeResponse>,
+  input: __S(64, __c8, 0) as any as S.Schema<GetConfigurationNodeRequest>,
+  output: __S(48, __c6, 0) as any as S.Schema<GetConfigurationNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1373,8 +1396,8 @@ export const GetFirewallRule: API.OperationMethod<
   GetFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<GetFirewallRuleRequest>,
-  output: __S(753, __c47, 1) as any as S.Schema<GetFirewallRuleResponse>,
+  input: __S(72, __c9, 0) as any as S.Schema<GetFirewallRuleRequest>,
+  output: __S(80, __c10, 0) as any as S.Schema<GetFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1388,8 +1411,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c9, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(161, __c10, 1) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(96, __c12, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1403,8 +1426,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(193, __c12, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(121, __c15, 1) as any as S.Schema<GetPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1418,8 +1441,8 @@ export const GetRole: API.OperationMethod<
   GetRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<GetRoleRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<GetRoleResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<GetRoleRequest>,
+  output: __S(136, __c17, 0) as any as S.Schema<GetRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1433,8 +1456,8 @@ export const GetServer: API.OperationMethod<
   GetServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<GetServerRequest>,
-  output: __S(241, __c15, 1) as any as S.Schema<GetServerResponse>,
+  input: __S(144, __c18, 0) as any as S.Schema<GetServerRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<GetServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1448,8 +1471,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
-  output: __S(273, __c17, 1) as any as S.Schema<ClusterListResult>,
+  input: __S(160, __c20, 0) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1463,8 +1486,8 @@ export const ListClusters: API.OperationMethod<
   ListClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<ListClustersRequest>,
-  output: __S(273, __c17, 1) as any as S.Schema<ClusterListResult>,
+  input: __S(176, __c22, 0) as any as S.Schema<ListClustersRequest>,
+  output: __S(169, __c21, 1) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1501,8 @@ export const ListConfigurationByCluster: API.OperationMethod<
   ListConfigurationByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListConfigurationByClusterRequest>,
-  output: __S(386, __c24, 2) as any as S.Schema<ClusterConfigurationListResult>,
+  input: __S(232, __c29, 0) as any as S.Schema<ListConfigurationByClusterRequest>,
+  output: __S(234, __c29, 2) as any as S.Schema<ClusterConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1493,8 +1516,8 @@ export const ListConfigurationByServer: API.OperationMethod<
   ListConfigurationByServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<ListConfigurationByServerRequest>,
-  output: __S(402, __c25, 2) as any as S.Schema<ServerConfigurationListResult>,
+  input: __S(240, __c30, 0) as any as S.Schema<ListConfigurationByServerRequest>,
+  output: __S(242, __c30, 2) as any as S.Schema<ServerConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1508,8 +1531,8 @@ export const ListFirewallRuleByCluster: API.OperationMethod<
   ListFirewallRuleByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<ListFirewallRuleByClusterRequest>,
-  output: __S(418, __c26, 2) as any as S.Schema<FirewallRuleListResult>,
+  input: __S(248, __c31, 0) as any as S.Schema<ListFirewallRuleByClusterRequest>,
+  output: __S(250, __c31, 2) as any as S.Schema<FirewallRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1523,8 +1546,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(437, __c27, 5) as any as S.Schema<OperationListResult>,
+  input: __S(256, __c32, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(261, __c32, 5) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1538,8 +1561,8 @@ export const ListPrivateEndpointConnectionByCluster: API.OperationMethod<
   ListPrivateEndpointConnectionByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>,
-  output: __S(450, __c28, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(264, __c33, 0) as any as S.Schema<ListPrivateEndpointConnectionByClusterRequest>,
+  output: __S(266, __c33, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1553,8 +1576,8 @@ export const ListPrivateLinkResourceByCluster: API.OperationMethod<
   ListPrivateLinkResourceByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<ListPrivateLinkResourceByClusterRequest>,
-  output: __S(466, __c29, 2) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(272, __c34, 0) as any as S.Schema<ListPrivateLinkResourceByClusterRequest>,
+  output: __S(274, __c34, 2) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1568,8 +1591,8 @@ export const ListRoleByCluster: API.OperationMethod<
   ListRoleByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListRoleByClusterRequest>,
-  output: __S(482, __c30, 2) as any as S.Schema<RoleListResult>,
+  input: __S(280, __c35, 0) as any as S.Schema<ListRoleByClusterRequest>,
+  output: __S(282, __c35, 2) as any as S.Schema<RoleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1583,8 +1606,8 @@ export const ListServerByCluster: API.OperationMethod<
   ListServerByClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListServerByClusterRequest>,
-  output: __S(498, __c31, 2) as any as S.Schema<ClusterServerListResult>,
+  input: __S(288, __c36, 0) as any as S.Schema<ListServerByClusterRequest>,
+  output: __S(290, __c36, 2) as any as S.Schema<ClusterServerListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1598,8 +1621,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(513, __c32, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
-  output: __S(161, __c10, 1) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
+  input: __S(298, __c37, 2) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(299, __c37, 3) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1613,8 +1636,8 @@ export const RestartCluster: API.OperationMethod<
   RestartClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<RestartClusterRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<RestartClusterResponse>,
+  input: __S(304, __c38, 0) as any as S.Schema<RestartClusterRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<RestartClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1628,8 +1651,8 @@ export const StartCluster: API.OperationMethod<
   StartClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<StartClusterRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<StartClusterResponse>,
+  input: __S(328, __c41, 0) as any as S.Schema<StartClusterRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<StartClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1643,8 +1666,8 @@ export const StopCluster: API.OperationMethod<
   StopClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<StopClusterRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<StopClusterResponse>,
+  input: __S(336, __c42, 0) as any as S.Schema<StopClusterRequest>,
+  output: __S(16, __c2, 0) as any as S.Schema<StopClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1658,8 +1681,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(609, __c38, 1) as any as S.Schema<UpdateClusterRequest>,
-  output: __S(376, __c23, 8) as any as S.Schema<UpdateClusterResponse>,
+  input: __S(345, __c43, 1) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(200, __c25, 0) as any as S.Schema<UpdateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1673,8 +1696,8 @@ export const UpdateConfigurationOnCoordinator: API.OperationMethod<
   UpdateConfigurationOnCoordinatorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<UpdateConfigurationOnCoordinatorRequest>,
-  output: __S(97, __c6, 1) as any as S.Schema<UpdateConfigurationOnCoordinatorResponse>,
+  input: __S(352, __c44, 0) as any as S.Schema<UpdateConfigurationOnCoordinatorRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<UpdateConfigurationOnCoordinatorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1688,8 +1711,8 @@ export const UpdateConfigurationOnNode: API.OperationMethod<
   UpdateConfigurationOnNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<UpdateConfigurationOnNodeRequest>,
-  output: __S(97, __c6, 1) as any as S.Schema<UpdateConfigurationOnNodeResponse>,
+  input: __S(368, __c46, 0) as any as S.Schema<UpdateConfigurationOnNodeRequest>,
+  output: __S(361, __c45, 1) as any as S.Schema<UpdateConfigurationOnNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1746,9 +1769,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "ClustersPromoteReadReplicaResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header())),
+        }),
+      ).annotate({ identifier: "ClustersPromoteReadReplicaResponse" });
   }
 }
 function __c3(j: number): any {
@@ -1783,7 +1808,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ServerRoleGroupConfiguration" });
     case 1:
-      return S.Array(__S(64, __c4, 0));
+      return S.Array(__S(32, __c4, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1791,7 +1816,7 @@ function __c4(j: number): any {
           dataType: S.optional(S.String),
           allowedValues: S.optional(S.String),
           requiresRestart: S.optional(S.Boolean),
-          serverRoleGroupConfigurations: __S(65, __c4, 1),
+          serverRoleGroupConfigurations: __S(33, __c4, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationProperties" });
@@ -1801,8 +1826,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c20, 0)),
-          properties: S.optional(__S(66, __c4, 2)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(34, __c4, 2)),
         }),
       ).annotate({ identifier: "GetConfigurationResponse" });
   }
@@ -1832,6 +1857,20 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
+        }),
+      ).annotate({ identifier: "GetConfigurationCoordinatorResponse" });
+  }
+}
+function __c7(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           value: S.String,
           source: S.optional(S.String),
           description: S.optional(S.String),
@@ -1842,19 +1881,9 @@ function __c6(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerConfigurationProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c20, 0)),
-          properties: S.optional(__S(96, __c6, 0)),
-        }),
-      ).annotate({ identifier: "GetConfigurationCoordinatorResponse" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1874,7 +1903,7 @@ function __c7(j: number): any {
       ).annotate({ identifier: "GetConfigurationNodeRequest" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1894,7 +1923,21 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetFirewallRuleRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: __S(416, __c52, 0),
+        }),
+      ).annotate({ identifier: "GetFirewallRuleResponse" });
+  }
+}
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1914,30 +1957,34 @@ function __c9(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c10(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({
-          groupIds: S.optional(__S(336, __c21, 0)),
-          privateEndpoint: S.optional(__S(352, __c22, 0)),
-          privateLinkServiceConnectionState: __S(353, __c22, 1),
-          provisioningState: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c20, 0)),
-          properties: S.optional(__S(160, __c10, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(104, __c13, 0)),
         }),
       ).annotate({ identifier: "GetPrivateEndpointConnectionResponse" });
   }
 }
-function __c11(j: number): any {
+function __c13(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          groupIds: S.optional(__S(208, __c26, 0)),
+          privateEndpoint: S.optional(__S(216, __c27, 0)),
+          privateLinkServiceConnectionState: __S(217, __c27, 1),
+          provisioningState: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
+  }
+}
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1957,14 +2004,14 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkResourceRequest" });
   }
 }
-function __c12(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(336, __c21, 0)),
-          requiredZoneNames: S.optional(__S(336, __c21, 0)),
+          requiredMembers: S.optional(__S(208, __c26, 0)),
+          requiredZoneNames: S.optional(__S(208, __c26, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 1:
@@ -1973,13 +2020,13 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c20, 0)),
-          properties: S.optional(__S(192, __c12, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(120, __c15, 0)),
         }),
       ).annotate({ identifier: "GetPrivateLinkResourceResponse" });
   }
 }
-function __c13(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1999,7 +2046,21 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetRoleRequest" });
   }
 }
-function __c14(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: __S(320, __c40, 0),
+        }),
+      ).annotate({ identifier: "GetRoleResponse" });
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2019,7 +2080,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetServerRequest" });
   }
 }
-function __c15(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2046,13 +2107,13 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c20, 0)),
-          properties: S.optional(__S(240, __c15, 0)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(152, __c19, 0)),
         }),
       ).annotate({ identifier: "GetServerResponse" });
   }
 }
-function __c16(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2070,20 +2131,20 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ListClusterByResourceGroupRequest" });
   }
 }
-function __c17(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(376, __c23, 8));
+      return S.Array(__S(432, __c54, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(272, __c17, 0)),
+          value: S.optional(__S(168, __c21, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
   }
 }
-function __c18(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2100,7 +2161,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ListClustersRequest" });
   }
 }
-function __c19(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2108,7 +2169,7 @@ function __c19(j: number): any {
           administratorLoginPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           postgresqlVersion: S.optional(S.String),
           citusVersion: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(369, __c23, 1)),
+          maintenanceWindow: S.optional(__S(225, __c28, 1)),
           preferredPrimaryZone: S.optional(S.String),
           enableShardsOnCoordinator: S.optional(S.Boolean),
           enableHa: S.optional(S.Boolean),
@@ -2132,9 +2193,9 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(368, __c23, 0)),
+          tags: S.optional(__S(224, __c28, 0)),
           location: S.String,
-          properties: S.optional(__S(304, __c19, 0)),
+          properties: S.optional(__S(184, __c23, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2146,7 +2207,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "CreateClusterRequest" });
   }
 }
-function __c20(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2161,13 +2222,30 @@ function __c20(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c21(j: number): any {
+function __c25(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(224, __c28, 0)),
+          location: S.String,
+          properties: S.optional(__S(231, __c28, 7)),
+          locationHeader: S.optional(S.String.pipe(T.Header("location"))),
+        }),
+      ).annotate({ identifier: "CreateClusterResponse" });
+  }
+}
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c22(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2187,7 +2265,7 @@ function __c22(j: number): any {
       });
   }
 }
-function __c23(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -2208,13 +2286,13 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "ServerNameItem" });
     case 3:
-      return S.Array(__S(370, __c23, 2));
+      return S.Array(__S(226, __c28, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(352, __c22, 0)),
-          groupIds: S.optional(__S(336, __c21, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(353, __c22, 1)),
+          privateEndpoint: S.optional(__S(216, __c27, 0)),
+          groupIds: S.optional(__S(208, __c26, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(217, __c27, 1)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionSimpleProperties" });
     case 5:
@@ -2223,12 +2301,12 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c20, 0)),
-          properties: S.optional(__S(372, __c23, 4)),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(228, __c28, 4)),
         }),
       ).annotate({ identifier: "SimplePrivateEndpointConnection" });
     case 6:
-      return S.Array(__S(373, __c23, 5));
+      return S.Array(__S(229, __c28, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2238,7 +2316,7 @@ function __c23(j: number): any {
           state: S.optional(S.String),
           postgresqlVersion: S.optional(S.String),
           citusVersion: S.optional(S.String),
-          maintenanceWindow: S.optional(__S(369, __c23, 1)),
+          maintenanceWindow: S.optional(__S(225, __c28, 1)),
           preferredPrimaryZone: S.optional(S.String),
           enableShardsOnCoordinator: S.optional(S.Boolean),
           enableHa: S.optional(S.Boolean),
@@ -2251,30 +2329,18 @@ function __c23(j: number): any {
           nodeStorageQuotaInMb: S.optional(S.Number),
           nodeVCores: S.optional(S.Number),
           nodeEnablePublicIpAccess: S.optional(S.Boolean),
-          serverNames: S.optional(__S(371, __c23, 3)),
+          serverNames: S.optional(__S(227, __c28, 3)),
           sourceResourceId: S.optional(S.String),
           sourceLocation: S.optional(S.String),
           pointInTimeUTC: S.optional(S.String),
-          readReplicas: S.optional(__S(336, __c21, 0)),
+          readReplicas: S.optional(__S(208, __c26, 0)),
           earliestRestoreTime: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(374, __c23, 6)),
+          privateEndpointConnections: S.optional(__S(230, __c28, 6)),
         }),
       ).annotate({ identifier: "ClusterProperties" });
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c20, 0)),
-          tags: S.optional(__S(368, __c23, 0)),
-          location: S.String,
-          properties: S.optional(__S(375, __c23, 7)),
-        }),
-      ).annotate({ identifier: "CreateClusterResponse" });
   }
 }
-function __c24(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2292,17 +2358,17 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListConfigurationByClusterRequest" });
     case 1:
-      return S.Array(__S(67, __c4, 3));
+      return S.Array(__S(35, __c4, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(385, __c24, 1)),
+          value: S.optional(__S(233, __c29, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterConfigurationListResult" });
   }
 }
-function __c25(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2321,17 +2387,17 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListConfigurationByServerRequest" });
     case 1:
-      return S.Array(__S(97, __c6, 1));
+      return S.Array(__S(48, __c6, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(401, __c25, 1)),
+          value: S.optional(__S(241, __c30, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerConfigurationListResult" });
   }
 }
-function __c26(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2349,16 +2415,16 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListFirewallRuleByClusterRequest" });
     case 1:
-      return S.Array(__S(753, __c47, 1));
+      return S.Array(__S(80, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(417, __c26, 1)),
+          value: S.optional(__S(249, __c31, 1)),
         }),
       ).annotate({ identifier: "FirewallRuleListResult" });
   }
 }
-function __c27(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2386,24 +2452,24 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(433, __c27, 1)),
+          display: S.optional(__S(257, __c32, 1)),
           isDataAction: S.optional(S.Boolean),
           origin: S.optional(S.String),
-          properties: S.optional(__S(434, __c27, 2)),
+          properties: S.optional(__S(258, __c32, 2)),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(__S(435, __c27, 3));
+      return S.Array(__S(259, __c32, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(436, __c27, 4)),
+          value: S.optional(__S(260, __c32, 4)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c28(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2421,16 +2487,16 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByClusterRequest" });
     case 1:
-      return S.Array(__S(161, __c10, 1));
+      return S.Array(__S(96, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(449, __c28, 1)),
+          value: S.optional(__S(265, __c33, 1)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c29(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2448,16 +2514,16 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceByClusterRequest" });
     case 1:
-      return S.Array(__S(193, __c12, 1));
+      return S.Array(__S(121, __c15, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(465, __c29, 1)),
+          value: S.optional(__S(273, __c34, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c30(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2475,16 +2541,16 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListRoleByClusterRequest" });
     case 1:
-      return S.Array(__S(561, __c35, 1));
+      return S.Array(__S(136, __c17, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(481, __c30, 1)),
+          value: S.optional(__S(281, __c35, 1)),
         }),
       ).annotate({ identifier: "RoleListResult" });
   }
 }
-function __c31(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2502,32 +2568,34 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "ListServerByClusterRequest" });
     case 1:
-      return S.Array(__S(241, __c15, 1));
+      return S.Array(__S(153, __c19, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(497, __c31, 1)),
+          value: S.optional(__S(289, __c36, 1)),
         }),
       ).annotate({ identifier: "ClusterServerListResult" });
   }
 }
-function __c32(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "PrivateEndpointInput" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(32, __c2, 0)),
-          privateLinkServiceConnectionState: __S(353, __c22, 1),
+          privateEndpoint: S.optional(__S(296, __c37, 0)),
+          privateLinkServiceConnectionState: __S(217, __c27, 1),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(512, __c32, 0)),
+          properties: S.optional(__S(297, __c37, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2537,9 +2605,20 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PrivateEndpointConnectionsCreateOrUpdateRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(104, __c13, 0)),
+          location: S.optional(S.String.pipe(T.Header())),
+        }),
+      ).annotate({ identifier: "PrivateEndpointConnectionsCreateOrUpdateResponse" });
   }
 }
-function __c33(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2558,7 +2637,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "RestartClusterRequest" });
   }
 }
-function __c34(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2573,7 +2652,7 @@ function __c34(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           roleName: S.String.pipe(T.Label()),
-          properties: __S(544, __c34, 0),
+          properties: __S(312, __c39, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2583,9 +2662,20 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateRoleRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: __S(320, __c40, 0),
+          location: S.optional(S.String.pipe(T.Header())),
+        }),
+      ).annotate({ identifier: "CreateRoleResponse" });
   }
 }
-function __c35(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2594,19 +2684,9 @@ function __c35(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c20, 0)),
-          properties: __S(560, __c35, 0),
-        }),
-      ).annotate({ identifier: "CreateRoleResponse" });
   }
 }
-function __c36(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2625,7 +2705,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "StartClusterRequest" });
   }
 }
-function __c37(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2644,7 +2724,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "StopClusterRequest" });
   }
 }
-function __c38(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2663,7 +2743,7 @@ function __c38(j: number): any {
           nodeCount: S.optional(S.Number),
           nodeStorageQuotaInMb: S.optional(S.Number),
           nodeVCores: S.optional(S.Number),
-          maintenanceWindow: S.optional(__S(369, __c23, 1)),
+          maintenanceWindow: S.optional(__S(225, __c28, 1)),
         }),
       ).annotate({ identifier: "ClusterPropertiesForUpdateInput" });
     case 1:
@@ -2672,8 +2752,8 @@ function __c38(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(608, __c38, 0)),
-          tags: S.optional(__S(368, __c23, 0)),
+          properties: S.optional(__S(344, __c43, 0)),
+          tags: S.optional(__S(224, __c28, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2685,7 +2765,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "UpdateClusterRequest" });
   }
 }
-function __c39(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2694,7 +2774,7 @@ function __c39(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(640, __c40, 0)),
+          properties: S.optional(__S(360, __c45, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2706,7 +2786,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "UpdateConfigurationOnCoordinatorRequest" });
   }
 }
-function __c40(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2714,9 +2794,20 @@ function __c40(j: number): any {
           value: S.String,
         }),
       ).annotate({ identifier: "ServerConfigurationPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: S.optional(__S(56, __c7, 0)),
+          location: S.optional(S.String.pipe(T.Header())),
+        }),
+      ).annotate({ identifier: "UpdateConfigurationOnCoordinatorResponse" });
   }
 }
-function __c41(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2725,7 +2816,7 @@ function __c41(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(640, __c40, 0)),
+          properties: S.optional(__S(360, __c45, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2737,7 +2828,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "UpdateConfigurationOnNodeRequest" });
   }
 }
-function __c42(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2756,7 +2847,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "DeleteClusterRequest" });
   }
 }
-function __c43(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2776,7 +2867,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "DeleteFirewallRuleRequest" });
   }
 }
-function __c44(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2796,7 +2887,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
   }
 }
-function __c45(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2816,7 +2907,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "DeleteRoleRequest" });
   }
 }
-function __c46(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2832,7 +2923,7 @@ function __c46(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           firewallRuleName: S.String.pipe(T.Label()),
-          properties: __S(736, __c46, 0),
+          properties: __S(408, __c51, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2842,9 +2933,20 @@ function __c46(j: number): any {
           }),
         ),
       ).annotate({ identifier: "FirewallRulesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          properties: __S(416, __c52, 0),
+          location: S.optional(S.String.pipe(T.Header())),
+        }),
+      ).annotate({ identifier: "FirewallRulesCreateOrUpdateResponse" });
   }
 }
-function __c47(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2854,19 +2956,9 @@ function __c47(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "FirewallRuleProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(320, __c20, 0)),
-          properties: __S(752, __c47, 0),
-        }),
-      ).annotate({ identifier: "FirewallRulesCreateOrUpdateResponse" });
   }
 }
-function __c48(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2883,6 +2975,22 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetClusterRequest" });
+  }
+}
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(192, __c24, 0)),
+          tags: S.optional(__S(224, __c28, 0)),
+          location: S.String,
+          properties: S.optional(__S(231, __c28, 7)),
+        }),
+      ).annotate({ identifier: "GetClusterResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.

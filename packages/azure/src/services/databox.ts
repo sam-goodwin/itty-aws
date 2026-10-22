@@ -802,6 +802,10 @@ export interface CreateJobResponse {
   sku: Sku;
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteJobRequest {
   /** The ID of the target subscription. */
@@ -811,7 +815,12 @@ export interface DeleteJobRequest {
   /** The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only */
   jobName: string;
 }
-export interface DeleteJobResponse {}
+export interface DeleteJobResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1285,6 +1294,10 @@ export interface UpdateJobResponse {
   sku: Sku;
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Identify the nature of validation. */
 export type ValidateServiceInputsRequestValidationCategory = "JobCreationValidation";
@@ -1382,7 +1395,7 @@ export const CreateJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(66, __c2, 2) as any as S.Schema<CreateJobRequest>,
-  output: __S(299, __c9, 11) as any as S.Schema<CreateJobResponse>,
+  output: __S(101, __c3, 5) as any as S.Schema<CreateJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1397,7 +1410,7 @@ export const DeleteJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(608, __c19, 0) as any as S.Schema<DeleteJobRequest>,
-  output: __S(32, __c1, 0) as any as S.Schema<DeleteJobResponse>,
+  output: __S(609, __c19, 1) as any as S.Schema<DeleteJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1412,7 +1425,7 @@ export const GetJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(640, __c20, 0) as any as S.Schema<GetJobRequest>,
-  output: __S(299, __c9, 11) as any as S.Schema<GetJobResponse>,
+  output: __S(672, __c21, 0) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1426,8 +1439,8 @@ export const JobsBookShipmentPickUp: API.OperationMethod<
   JobsBookShipmentPickUpError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<JobsBookShipmentPickUpRequest>,
-  output: __S(673, __c21, 1) as any as S.Schema<ShipmentPickUpResponse>,
+  input: __S(704, __c22, 0) as any as S.Schema<JobsBookShipmentPickUpRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<ShipmentPickUpResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1441,7 +1454,7 @@ export const JobsMarkDevicesShipped: API.OperationMethod<
   JobsMarkDevicesShippedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(705, __c22, 1) as any as S.Schema<JobsMarkDevicesShippedRequest>,
+  input: __S(737, __c23, 1) as any as S.Schema<JobsMarkDevicesShippedRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<JobsMarkDevicesShippedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1456,8 +1469,8 @@ export const ListJobByResourceGroup: API.OperationMethod<
   ListJobByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<ListJobByResourceGroupRequest>,
-  output: __S(769, __c24, 1) as any as S.Schema<JobResourceList>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListJobByResourceGroupRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<JobResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1471,8 +1484,8 @@ export const ListJobCredentials: API.OperationMethod<
   ListJobCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<ListJobCredentialsRequest>,
-  output: __S(805, __c25, 5) as any as S.Schema<UnencryptedCredentialsList>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListJobCredentialsRequest>,
+  output: __S(837, __c26, 5) as any as S.Schema<UnencryptedCredentialsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1486,8 +1499,8 @@ export const ListJobs: API.OperationMethod<
   ListJobsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<ListJobsRequest>,
-  output: __S(769, __c24, 1) as any as S.Schema<JobResourceList>,
+  input: __S(864, __c27, 0) as any as S.Schema<ListJobsRequest>,
+  output: __S(801, __c25, 1) as any as S.Schema<JobResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1501,8 +1514,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(868, __c27, 4) as any as S.Schema<OperationList>,
+  input: __S(896, __c28, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(900, __c28, 4) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1577,7 +1590,7 @@ export const UpdateJob: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(483, __c15, 3) as any as S.Schema<UpdateJobRequest>,
-  output: __S(299, __c9, 11) as any as S.Schema<UpdateJobResponse>,
+  output: __S(101, __c3, 5) as any as S.Schema<UpdateJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1721,6 +1734,22 @@ function __c3(j: number): any {
           userAssignedIdentities: S.optional(__S(99, __c3, 3)),
         }),
       ).annotate({ identifier: "ResourceIdentityInput" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(281, __c8, 25)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: __S(295, __c9, 7),
+          sku: __S(193, __c6, 1),
+          identity: S.optional(__S(298, __c9, 10)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateJobResponse" });
   }
 }
 function __c4(j: number): any {
@@ -2118,20 +2147,6 @@ function __c9(j: number): any {
           userAssignedIdentities: S.optional(__S(297, __c9, 9)),
         }),
       ).annotate({ identifier: "ResourceIdentity" });
-    case 11:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(281, __c8, 25)),
-          tags: S.optional(__S(256, __c8, 0)),
-          location: S.String,
-          properties: __S(295, __c9, 7),
-          sku: __S(193, __c6, 1),
-          identity: S.optional(__S(298, __c9, 10)),
-        }),
-      ).annotate({ identifier: "CreateJobResponse" });
   }
 }
 function __c10(j: number): any {
@@ -2491,6 +2506,13 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteJobRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteJobResponse" });
   }
 }
 function __c20(j: number): any {
@@ -2514,6 +2536,24 @@ function __c20(j: number): any {
   }
 }
 function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(281, __c8, 25)),
+          tags: S.optional(__S(256, __c8, 0)),
+          location: S.String,
+          properties: __S(295, __c9, 7),
+          sku: __S(193, __c6, 1),
+          identity: S.optional(__S(298, __c9, 10)),
+        }),
+      ).annotate({ identifier: "GetJobResponse" });
+  }
+}
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2542,7 +2582,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ShipmentPickUpResponse" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2557,7 +2597,7 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           jobName: S.String.pipe(T.Label()),
-          deliverToDcPackageDetails: __S(704, __c22, 0),
+          deliverToDcPackageDetails: __S(736, __c23, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2569,7 +2609,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "JobsMarkDevicesShippedRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2588,20 +2628,20 @@ function __c23(j: number): any {
       ).annotate({ identifier: "ListJobByResourceGroupRequest" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(299, __c9, 11));
+      return S.Array(__S(672, __c21, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(768, __c24, 0),
+          value: __S(800, __c25, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobResourceList" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2629,7 +2669,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jobSecretsType: S.String,
-          dcAccessSecurityCode: S.optional(__S(801, __c25, 1)),
+          dcAccessSecurityCode: S.optional(__S(833, __c26, 1)),
           error: S.optional(__S(132, __c4, 4)),
         }),
       ).annotate({ identifier: "JobSecrets" });
@@ -2637,21 +2677,21 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           jobName: S.optional(S.String),
-          jobSecrets: S.optional(__S(802, __c25, 2)),
+          jobSecrets: S.optional(__S(834, __c26, 2)),
         }),
       ).annotate({ identifier: "UnencryptedCredentials" });
     case 4:
-      return S.Array(__S(803, __c25, 3));
+      return S.Array(__S(835, __c26, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: __S(804, __c25, 4),
+          value: __S(836, __c26, 4),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnencryptedCredentialsList" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2669,7 +2709,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ListJobsRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2695,18 +2735,18 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(865, __c27, 1)),
+          display: S.optional(__S(897, __c28, 1)),
           properties: S.optional(S.Unknown),
           origin: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(866, __c27, 2));
+      return S.Array(__S(898, __c28, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(867, __c27, 3)),
+          value: S.optional(__S(899, __c28, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });

@@ -96,7 +96,12 @@ export interface BulkSolutionTemplateVersionReviewSolutionRequest {
   /** Configuration of solution */
   solutionConfiguration?: string;
 }
-export interface BulkSolutionTemplateVersionReviewSolutionResponse {}
+export interface BulkSolutionTemplateVersionReviewSolutionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Hierarchy Ids */
 export type HierarchyMetadataHierarchyIdsList = Array<string>;
 /** Hierarchy Ids With Level for applying config Template which will further generate ARG objects */
@@ -188,6 +193,10 @@ export interface ConfigTemplateMetadatasCreateOrUpdateResponse {
   properties?: ConfigTemplateMetadataProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type ConfigTemplatesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -240,6 +249,10 @@ export interface ConfigTemplatesCreateOrUpdateResponse {
   properties?: ConfigTemplateProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Hierarchy Ids */
 export type ConfigTemplatesLinkToHierarchiesRequestHierarchyIdsList = Array<string>;
@@ -257,7 +270,12 @@ export interface ConfigTemplatesLinkToHierarchiesRequest {
   /** Hierarchy Level */
   level?: string;
 }
-export interface ConfigTemplatesLinkToHierarchiesResponse {}
+export interface ConfigTemplatesLinkToHierarchiesResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Hierarchy Ids */
 export type ConfigTemplatesUnLinkFromHierarchiesRequestHierarchyIdsList = Array<string>;
 export interface ConfigTemplatesUnLinkFromHierarchiesRequest {
@@ -274,7 +292,12 @@ export interface ConfigTemplatesUnLinkFromHierarchiesRequest {
   /** Hierarchy Level */
   level?: string;
 }
-export interface ConfigTemplatesUnLinkFromHierarchiesResponse {}
+export interface ConfigTemplatesUnLinkFromHierarchiesResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Config Template Version Properties */
 export interface ConfigTemplateVersionPropertiesInput {
   /** Configuration values */
@@ -312,6 +335,10 @@ export interface ConfigTemplateVersionsCreateOrUpdateResponse {
   properties?: ConfigTemplateVersionProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Properties for ConfigurationReference Resource */
 export interface ConfigurationReferencePropertiesInput {
@@ -463,6 +490,10 @@ export interface ContextsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: ContextProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Denotes which part of the version number will be updated */
 export type UpdateType = "Major" | "Minor" | "Patch";
@@ -498,6 +529,10 @@ export interface CreateConfigTemplateVersionResponse {
   properties?: ConfigTemplateVersionProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Schema Version Properties */
 export interface SchemaVersionPropertiesInput {
@@ -543,6 +578,10 @@ export interface CreateSchemaVersionResponse {
   properties?: SchemaVersionProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** App components spec */
 export type SolutionTemplateVersionPropertiesInputSpecificationMap = {
@@ -614,6 +653,10 @@ export interface CreateSolutionTemplateVersionResponse {
   properties?: SolutionTemplateVersionProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteConfigTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -623,7 +666,12 @@ export interface DeleteConfigTemplateRequest {
   /** The name of the ConfigTemplate */
   configTemplateName: string;
 }
-export interface DeleteConfigTemplateResponse {}
+export interface DeleteConfigTemplateResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteConfigTemplateMetadatasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -634,7 +682,12 @@ export interface DeleteConfigTemplateMetadatasRequest {
   /** The name of the ConfigTemplateMetadataProperties */
   configTemplateMetadataName: string;
 }
-export interface DeleteConfigTemplateMetadatasResponse {}
+export interface DeleteConfigTemplateMetadatasResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -645,7 +698,12 @@ export interface DeleteConfigTemplateVersionRequest {
   /** The name of the ConfigTemplateVersion */
   configTemplateVersionName: string;
 }
-export interface DeleteConfigTemplateVersionResponse {}
+export interface DeleteConfigTemplateVersionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -670,7 +728,12 @@ export interface DeleteContextRequest {
   /** The name of the Context. */
   contextName: string;
 }
-export interface DeleteContextResponse {}
+export interface DeleteContextResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDiagnosticRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -679,7 +742,12 @@ export interface DeleteDiagnosticRequest {
   /** Name of Diagnostic. */
   diagnosticName: string;
 }
-export interface DeleteDiagnosticResponse {}
+export interface DeleteDiagnosticResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDisconnectedOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -688,7 +756,12 @@ export interface DeleteDisconnectedOperationRequest {
   /** Name of the resource */
   name: string;
 }
-export interface DeleteDisconnectedOperationResponse {}
+export interface DeleteDisconnectedOperationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDynamicConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -723,7 +796,12 @@ export interface DeleteDynamicSchemaRequest {
   /** The name of the DynamicSchema */
   dynamicSchemaName: string;
 }
-export interface DeleteDynamicSchemaResponse {}
+export interface DeleteDynamicSchemaResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDynamicSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -736,7 +814,12 @@ export interface DeleteDynamicSchemaVersionRequest {
   /** The name of the DynamicSchemaVersion */
   dynamicSchemaVersionName: string;
 }
-export interface DeleteDynamicSchemaVersionResponse {}
+export interface DeleteDynamicSchemaVersionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteExecutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -751,7 +834,12 @@ export interface DeleteExecutionRequest {
   /** The name of the Execution. */
   executionName: string;
 }
-export interface DeleteExecutionResponse {}
+export interface DeleteExecutionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteHardwareSettingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -762,7 +850,12 @@ export interface DeleteHardwareSettingsRequest {
   /** The name of the HardwareSetting */
   hardwareSettingName: string;
 }
-export interface DeleteHardwareSettingsResponse {}
+export interface DeleteHardwareSettingsResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -775,7 +868,12 @@ export interface DeleteInstanceRequest {
   /** Name of the instance */
   instanceName: string;
 }
-export interface DeleteInstanceResponse {}
+export interface DeleteInstanceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSchemaRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -784,14 +882,24 @@ export interface DeleteSchemaRequest {
   /** The name of the Schema */
   schemaName: string;
 }
-export interface DeleteSchemaResponse {}
+export interface DeleteSchemaResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSchemaReferenceRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The name of the SchemaReference */
   schemaReferenceName: string;
 }
-export interface DeleteSchemaReferenceResponse {}
+export interface DeleteSchemaReferenceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSchemaVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -802,7 +910,12 @@ export interface DeleteSchemaVersionRequest {
   /** The name of the SchemaVersion */
   schemaVersionName: string;
 }
-export interface DeleteSchemaVersionResponse {}
+export interface DeleteSchemaVersionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSiteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -822,7 +935,12 @@ export interface DeleteSiteReferenceRequest {
   /** The name of the SiteReference */
   siteReferenceName: string;
 }
-export interface DeleteSiteReferenceResponse {}
+export interface DeleteSiteReferenceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSitesByServiceGroupRequest {
   /** The name of the service group */
   servicegroupName: string;
@@ -847,7 +965,12 @@ export interface DeleteSolutionRequest {
   /** Name of the solution */
   solutionName: string;
 }
-export interface DeleteSolutionResponse {}
+export interface DeleteSolutionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSolutionTemplateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -856,7 +979,12 @@ export interface DeleteSolutionTemplateRequest {
   /** The name of the SolutionTemplate */
   solutionTemplateName: string;
 }
-export interface DeleteSolutionTemplateResponse {}
+export interface DeleteSolutionTemplateResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSolutionTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -867,7 +995,12 @@ export interface DeleteSolutionTemplateVersionRequest {
   /** The name of the SolutionTemplateVersion */
   solutionTemplateVersionName: string;
 }
-export interface DeleteSolutionTemplateVersionResponse {}
+export interface DeleteSolutionTemplateVersionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -880,7 +1013,12 @@ export interface DeleteSolutionVersionRequest {
   /** Name of the solution version */
   solutionVersionName: string;
 }
-export interface DeleteSolutionVersionResponse {}
+export interface DeleteSolutionVersionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteTargetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -891,7 +1029,12 @@ export interface DeleteTargetRequest {
   /** Force delete */
   forceDelete?: boolean;
 }
-export interface DeleteTargetResponse {}
+export interface DeleteTargetResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkflowRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -902,7 +1045,12 @@ export interface DeleteWorkflowRequest {
   /** Name of the workflow */
   workflowName: string;
 }
-export interface DeleteWorkflowResponse {}
+export interface DeleteWorkflowResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteWorkflowVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -915,7 +1063,12 @@ export interface DeleteWorkflowVersionRequest {
   /** The name of the workflowVersion. */
   versionName: string;
 }
-export interface DeleteWorkflowVersionResponse {}
+export interface DeleteWorkflowVersionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type DiagnosticsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** The properties of a Diagnostic resource. */
@@ -971,6 +1124,10 @@ export interface DiagnosticsCreateOrUpdateResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type DisconnectedOperationsCreateOrUpdateRequestTagsMap = {
@@ -1104,6 +1261,10 @@ export interface DisconnectedOperationsCreateOrUpdateResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: DisconnectedOperationProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationPropertiesInput {
@@ -1150,6 +1311,10 @@ export interface DynamicConfigurationsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Dynamic Configuration Properties */
 export interface DynamicConfigurationVersionPropertiesInput {
@@ -1198,6 +1363,10 @@ export interface DynamicConfigurationVersionsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: DynamicConfigurationVersionProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** DynamicSchema Properties */
 export type DynamicSchemaPropertiesInput = ConfigurationPropertiesInput;
@@ -1237,6 +1406,10 @@ export interface DynamicSchemasCreateOrUpdateResponse {
   properties?: DynamicSchemaProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DynamicSchemaVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1265,6 +1438,10 @@ export interface DynamicSchemaVersionsCreateOrUpdateResponse {
   properties?: SchemaVersionProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Execution specification */
 export type ExecutionPropertiesInputSpecificationMap = { [key: string]: unknown | undefined };
@@ -1359,6 +1536,10 @@ export interface ExecutionsCreateOrUpdateResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetArtifactRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3024,6 +3205,10 @@ export interface HardwareSettingsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: HardwareSettingProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ImagesListDownloadUriRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3072,7 +3257,12 @@ export interface InstallTargetSolutionRequest {
   /** Solution Version ARM Id */
   solutionVersionId: string;
 }
-export interface InstallTargetSolutionResponse {}
+export interface InstallTargetSolutionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Instance Properties */
 export interface InstancePropertiesInput {
   /** Solution version of instance */
@@ -3117,6 +3307,10 @@ export interface InstancesCreateOrUpdateResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface ListArtifactByParentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4446,6 +4640,10 @@ export interface PublishTargetSolutionVersionResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RemoveConfigTemplateVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4482,7 +4680,12 @@ export interface RemoveSolutionTemplateVersionRequest {
   /** Version of the Resource */
   version: string;
 }
-export interface RemoveSolutionTemplateVersionResponse {}
+export interface RemoveSolutionTemplateVersionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RemoveTargetRevisionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4495,7 +4698,12 @@ export interface RemoveTargetRevisionRequest {
   /** Solution Version Name */
   solutionVersion: string;
 }
-export interface RemoveTargetRevisionResponse {}
+export interface RemoveTargetRevisionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Solution Dependencies */
 export type ReviewTargetSolutionVersionRequestSolutionDependenciesList =
   Array<SolutionDependencyParameter>;
@@ -4528,6 +4736,10 @@ export interface ReviewTargetSolutionVersionResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Schema Reference Properties */
 export interface SchemaReferencePropertiesInput {
@@ -4555,6 +4767,10 @@ export interface SchemaReferencesCreateOrUpdateResponse {
   properties?: SchemaReferenceProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type SchemasCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -4593,6 +4809,10 @@ export interface SchemasCreateOrUpdateResponse {
   properties?: SchemaProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SchemaVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4619,6 +4839,10 @@ export interface SchemaVersionsCreateOrUpdateResponse {
   properties?: SchemaVersionProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Site Reference Properties */
 export interface SiteReferencePropertiesInput {
@@ -4648,6 +4872,10 @@ export interface SiteReferencesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SiteReferenceProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Key-value pairs for labeling the site resource. */
 export type SitePropertiesInputLabelsMap = { [key: string]: string | undefined };
@@ -4681,6 +4909,10 @@ export interface SitesByServiceGroupCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SitesBySubscriptionCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4701,6 +4933,10 @@ export interface SitesBySubscriptionCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface SitesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -4723,6 +4959,10 @@ export interface SitesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SiteProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Solution Properties */
 export type SolutionPropertiesInput = ConfigurationPropertiesInput;
@@ -4755,6 +4995,10 @@ export interface SolutionsCreateOrUpdateResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type SolutionTemplatesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -4804,6 +5048,10 @@ export interface SolutionTemplatesCreateOrUpdateResponse {
   properties?: SolutionTemplateProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Bulk deploy target details */
 export interface BulkDeployTargetDetails {
@@ -4825,7 +5073,12 @@ export interface SolutionTemplateVersionsBulkDeploySolutionRequest {
   /** Targets to which solution needs to be deployed */
   targets: SolutionTemplateVersionsBulkDeploySolutionRequestTargetsList;
 }
-export interface SolutionTemplateVersionsBulkDeploySolutionResponse {}
+export interface SolutionTemplateVersionsBulkDeploySolutionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Solution dependencies */
 export type BulkPublishTargetDetailsSolutionDependenciesList = Array<SolutionDependencyParameter>;
 /** Bulk publish target details */
@@ -4865,7 +5118,12 @@ export interface SolutionTemplateVersionsBulkPublishSolutionRequest {
   /** Configuration of solution */
   solutionConfiguration?: string;
 }
-export interface SolutionTemplateVersionsBulkPublishSolutionResponse {}
+export interface SolutionTemplateVersionsBulkPublishSolutionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface SolutionTemplateVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4891,6 +5149,10 @@ export interface SolutionTemplateVersionsCreateOrUpdateResponse {
   properties?: SolutionTemplateVersionProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** App components spec */
 export type SolutionVersionPropertiesInputSpecificationMap = { [key: string]: unknown | undefined };
@@ -4934,6 +5196,10 @@ export interface SolutionVersionsCreateOrUpdateResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type TargetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -4997,6 +5263,10 @@ export interface TargetsCreateOrUpdateResponse {
   eTag?: string;
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Solution Dependencies */
 export type TargetsResolveConfigurationRequestSolutionDependenciesList =
@@ -5019,6 +5289,10 @@ export interface TargetsResolveConfigurationRequest {
 export interface ResolvedConfiguration {
   /** Resolved Configuration as string */
   configuration: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface TargetsUnstageSolutionVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5045,6 +5319,10 @@ export interface TargetsUnstageSolutionVersionResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UninstallTargetSolutionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5058,7 +5336,12 @@ export interface UninstallTargetSolutionRequest {
   /** Solution Instance Name */
   solutionInstanceName?: string;
 }
-export interface UninstallTargetSolutionResponse {}
+export interface UninstallTargetSolutionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type UpdateConfigTemplateRequestTagsMap = { [key: string]: string | undefined };
 /** The updatable properties of the ConfigTemplate. */
@@ -5137,6 +5420,10 @@ export interface UpdateConfigTemplateMetadatasResponse {
   properties?: ConfigTemplateMetadataProperties;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Config Template Version Properties */
 export interface ConfigTemplateVersionPropertiesUpdate {
@@ -5263,6 +5550,10 @@ export interface UpdateContextResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: ContextProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The updatable properties of the Diagnostic. */
 export type DiagnosticUpdatePropertiesInput = ConfigurationPropertiesInput;
@@ -5301,6 +5592,10 @@ export interface UpdateDiagnosticResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateDisconnectedOperationRequestTagsMap = { [key: string]: string | undefined };
@@ -5522,6 +5817,10 @@ export interface UpdateExecutionResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Defines a ReconciliationPolicy */
 export interface ReconciliationPolicyPropertiesUpdate {
@@ -5572,6 +5871,10 @@ export interface UpdateInstanceResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The updatable properties of the Schema. */
 export type SchemaUpdatePropertiesInput = ConfigurationPropertiesInput;
@@ -5725,6 +6028,10 @@ export interface UpdateSiteReferenceResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: SiteReferenceProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateSitesByServiceGroupRequest {
   /** The name of the service group */
@@ -5795,6 +6102,10 @@ export interface UpdateSolutionResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateSolutionTemplateRequestTagsMap = { [key: string]: string | undefined };
@@ -5920,6 +6231,10 @@ export interface UpdateSolutionVersionResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateTargetRequestTagsMap = { [key: string]: string | undefined };
@@ -5979,6 +6294,10 @@ export interface UpdateTargetResponse {
   eTag?: string;
   /** The extended location of the resource. */
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The error detail. */
 export type UpdateTargetExternalValidationStatusRequestErrorDetails = ConfigurationPropertiesInput;
@@ -6015,6 +6334,10 @@ export interface UpdateTargetExternalValidationStatusResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Workflow Properties */
 export type WorkflowPropertiesInput = ConfigurationPropertiesInput;
@@ -6045,6 +6368,10 @@ export interface UpdateWorkflowResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** A list of stage specs */
 export type WorkflowVersionPropertiesUpdateStageSpecList = Array<StageSpec>;
@@ -6088,6 +6415,10 @@ export interface UpdateWorkflowVersionResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface WorkflowsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6118,6 +6449,10 @@ export interface WorkflowsCreateOrUpdateResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** A list of stage specs */
 export type WorkflowVersionPropertiesInputStageSpecList = Array<StageSpec>;
@@ -6161,6 +6496,10 @@ export interface WorkflowVersionsCreateOrUpdateResponse {
   extendedLocation?: AzureResourceManagerCommonTypesExtendedLocation;
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type ArtifactsListDownloadUriError = AzureOpError;
 /** Get artifact download link. */
@@ -6200,8 +6539,8 @@ export const ConfigTemplateMetadatasCreateOrUpdate: API.OperationMethod<
   ConfigTemplateMetadatasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1000, __c125, 0) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateRequest>,
-  output: __S(1035, __c129, 3) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateResponse>,
+  input: __S(1016, __c127, 0) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateRequest>,
+  output: __S(1017, __c127, 1) as any as S.Schema<ConfigTemplateMetadatasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6215,8 +6554,8 @@ export const ConfigTemplatesCreateOrUpdate: API.OperationMethod<
   ConfigTemplatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1121, __c140, 1) as any as S.Schema<ConfigTemplatesCreateOrUpdateRequest>,
-  output: __S(1129, __c141, 1) as any as S.Schema<ConfigTemplatesCreateOrUpdateResponse>,
+  input: __S(1137, __c142, 1) as any as S.Schema<ConfigTemplatesCreateOrUpdateRequest>,
+  output: __S(1138, __c142, 2) as any as S.Schema<ConfigTemplatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6230,7 +6569,7 @@ export const ConfigTemplatesLinkToHierarchies: API.OperationMethod<
   ConfigTemplatesLinkToHierarchiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1224, __c153, 0) as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequest>,
+  input: __S(1240, __c155, 0) as any as S.Schema<ConfigTemplatesLinkToHierarchiesRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<ConfigTemplatesLinkToHierarchiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6245,7 +6584,7 @@ export const ConfigTemplatesUnLinkFromHierarchies: API.OperationMethod<
   ConfigTemplatesUnLinkFromHierarchiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1384, __c173, 0) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequest>,
+  input: __S(1400, __c175, 0) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<ConfigTemplatesUnLinkFromHierarchiesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6260,8 +6599,8 @@ export const ConfigTemplateVersionsCreateOrUpdate: API.OperationMethod<
   ConfigTemplateVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1480, __c185, 0) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateRequest>,
-  output: __S(1497, __c187, 1) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateResponse>,
+  input: __S(1552, __c194, 0) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateRequest>,
+  output: __S(1553, __c194, 1) as any as S.Schema<ConfigTemplateVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6275,8 +6614,8 @@ export const ConfigurationReferencesCreateOrUpdate: API.OperationMethod<
   ConfigurationReferencesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1656, __c207, 0) as any as S.Schema<ConfigurationReferencesCreateOrUpdateRequest>,
-  output: __S(1673, __c209, 1) as any as S.Schema<ConfigurationReferencesCreateOrUpdateResponse>,
+  input: __S(1776, __c222, 0) as any as S.Schema<ConfigurationReferencesCreateOrUpdateRequest>,
+  output: __S(1793, __c224, 1) as any as S.Schema<ConfigurationReferencesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6290,8 +6629,8 @@ export const ConfigurationsCreateOrUpdate: API.OperationMethod<
   ConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1832, __c229, 0) as any as S.Schema<ConfigurationsCreateOrUpdateRequest>,
-  output: __S(1848, __c231, 0) as any as S.Schema<ConfigurationsCreateOrUpdateResponse>,
+  input: __S(1984, __c248, 0) as any as S.Schema<ConfigurationsCreateOrUpdateRequest>,
+  output: __S(2008, __c251, 0) as any as S.Schema<ConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6305,8 +6644,8 @@ export const ContextsCreateOrUpdate: API.OperationMethod<
   ContextsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1993, __c249, 1) as any as S.Schema<ContextsCreateOrUpdateRequest>,
-  output: __S(2005, __c250, 5) as any as S.Schema<ContextsCreateOrUpdateResponse>,
+  input: __S(2201, __c275, 1) as any as S.Schema<ContextsCreateOrUpdateRequest>,
+  output: __S(2202, __c275, 2) as any as S.Schema<ContextsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6321,7 +6660,7 @@ export const CreateConfigTemplateVersion: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(33, __c4, 1) as any as S.Schema<CreateConfigTemplateVersionRequest>,
-  output: __S(1497, __c187, 1) as any as S.Schema<CreateConfigTemplateVersionResponse>,
+  output: __S(34, __c4, 2) as any as S.Schema<CreateConfigTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6336,7 +6675,7 @@ export const CreateSchemaVersion: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(145, __c18, 1) as any as S.Schema<CreateSchemaVersionRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<CreateSchemaVersionResponse>,
+  output: __S(146, __c18, 2) as any as S.Schema<CreateSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6351,7 +6690,7 @@ export const CreateSolutionTemplateVersion: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(257, __c32, 1) as any as S.Schema<CreateSolutionTemplateVersionRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<CreateSolutionTemplateVersionResponse>,
+  output: __S(258, __c32, 2) as any as S.Schema<CreateSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6395,7 +6734,7 @@ export const DeleteConfigTemplateVersion: API.OperationMethod<
   DeleteConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(584, __c73, 0) as any as S.Schema<DeleteConfigTemplateVersionRequest>,
+  input: __S(592, __c74, 0) as any as S.Schema<DeleteConfigTemplateVersionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteConfigTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6410,8 +6749,8 @@ export const DeleteConfiguration: API.OperationMethod<
   DeleteConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(680, __c85, 0) as any as S.Schema<DeleteConfigurationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteConfigurationResponse>,
+  input: __S(696, __c87, 0) as any as S.Schema<DeleteConfigurationRequest>,
+  output: __S(1992, __c249, 0) as any as S.Schema<DeleteConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6425,8 +6764,8 @@ export const DeleteConfigurationReference: API.OperationMethod<
   DeleteConfigurationReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c96, 0) as any as S.Schema<DeleteConfigurationReferenceRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteConfigurationReferenceResponse>,
+  input: __S(784, __c98, 0) as any as S.Schema<DeleteConfigurationReferenceRequest>,
+  output: __S(1992, __c249, 0) as any as S.Schema<DeleteConfigurationReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6440,7 +6779,7 @@ export const DeleteContext: API.OperationMethod<
   DeleteContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c108, 0) as any as S.Schema<DeleteContextRequest>,
+  input: __S(880, __c110, 0) as any as S.Schema<DeleteContextRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteContextResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6455,7 +6794,7 @@ export const DeleteDiagnostic: API.OperationMethod<
   DeleteDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(952, __c119, 0) as any as S.Schema<DeleteDiagnosticRequest>,
+  input: __S(968, __c121, 0) as any as S.Schema<DeleteDiagnosticRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6470,7 +6809,7 @@ export const DeleteDisconnectedOperation: API.OperationMethod<
   DeleteDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c130, 0) as any as S.Schema<DeleteDisconnectedOperationRequest>,
+  input: __S(1056, __c132, 0) as any as S.Schema<DeleteDisconnectedOperationRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteDisconnectedOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6485,8 +6824,8 @@ export const DeleteDynamicConfiguration: API.OperationMethod<
   DeleteDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1048, __c131, 0) as any as S.Schema<DeleteDynamicConfigurationRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteDynamicConfigurationResponse>,
+  input: __S(1064, __c133, 0) as any as S.Schema<DeleteDynamicConfigurationRequest>,
+  output: __S(1992, __c249, 0) as any as S.Schema<DeleteDynamicConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6500,8 +6839,8 @@ export const DeleteDynamicConfigurationVersion: API.OperationMethod<
   DeleteDynamicConfigurationVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c132, 0) as any as S.Schema<DeleteDynamicConfigurationVersionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteDynamicConfigurationVersionResponse>,
+  input: __S(1072, __c134, 0) as any as S.Schema<DeleteDynamicConfigurationVersionRequest>,
+  output: __S(1992, __c249, 0) as any as S.Schema<DeleteDynamicConfigurationVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6515,7 +6854,7 @@ export const DeleteDynamicSchema: API.OperationMethod<
   DeleteDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1064, __c133, 0) as any as S.Schema<DeleteDynamicSchemaRequest>,
+  input: __S(1080, __c135, 0) as any as S.Schema<DeleteDynamicSchemaRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteDynamicSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6530,7 +6869,7 @@ export const DeleteDynamicSchemaVersion: API.OperationMethod<
   DeleteDynamicSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c134, 0) as any as S.Schema<DeleteDynamicSchemaVersionRequest>,
+  input: __S(1088, __c136, 0) as any as S.Schema<DeleteDynamicSchemaVersionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteDynamicSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6545,7 +6884,7 @@ export const DeleteExecution: API.OperationMethod<
   DeleteExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1080, __c135, 0) as any as S.Schema<DeleteExecutionRequest>,
+  input: __S(1096, __c137, 0) as any as S.Schema<DeleteExecutionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6560,7 +6899,7 @@ export const DeleteHardwareSettings: API.OperationMethod<
   DeleteHardwareSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c136, 0) as any as S.Schema<DeleteHardwareSettingsRequest>,
+  input: __S(1104, __c138, 0) as any as S.Schema<DeleteHardwareSettingsRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteHardwareSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6575,7 +6914,7 @@ export const DeleteInstance: API.OperationMethod<
   DeleteInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1096, __c137, 0) as any as S.Schema<DeleteInstanceRequest>,
+  input: __S(1112, __c139, 0) as any as S.Schema<DeleteInstanceRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6590,7 +6929,7 @@ export const DeleteSchema: API.OperationMethod<
   DeleteSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c138, 0) as any as S.Schema<DeleteSchemaRequest>,
+  input: __S(1120, __c140, 0) as any as S.Schema<DeleteSchemaRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6605,7 +6944,7 @@ export const DeleteSchemaReference: API.OperationMethod<
   DeleteSchemaReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1112, __c139, 0) as any as S.Schema<DeleteSchemaReferenceRequest>,
+  input: __S(1128, __c141, 0) as any as S.Schema<DeleteSchemaReferenceRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteSchemaReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6620,7 +6959,7 @@ export const DeleteSchemaVersion: API.OperationMethod<
   DeleteSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1144, __c143, 0) as any as S.Schema<DeleteSchemaVersionRequest>,
+  input: __S(1160, __c145, 0) as any as S.Schema<DeleteSchemaVersionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6635,8 +6974,8 @@ export const DeleteSite: API.OperationMethod<
   DeleteSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c144, 0) as any as S.Schema<DeleteSiteRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteSiteResponse>,
+  input: __S(1168, __c146, 0) as any as S.Schema<DeleteSiteRequest>,
+  output: __S(1992, __c249, 0) as any as S.Schema<DeleteSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6650,7 +6989,7 @@ export const DeleteSiteReference: API.OperationMethod<
   DeleteSiteReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1160, __c145, 0) as any as S.Schema<DeleteSiteReferenceRequest>,
+  input: __S(1176, __c147, 0) as any as S.Schema<DeleteSiteReferenceRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteSiteReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6665,8 +7004,8 @@ export const DeleteSitesByServiceGroup: API.OperationMethod<
   DeleteSitesByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c146, 0) as any as S.Schema<DeleteSitesByServiceGroupRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteSitesByServiceGroupResponse>,
+  input: __S(1184, __c148, 0) as any as S.Schema<DeleteSitesByServiceGroupRequest>,
+  output: __S(1992, __c249, 0) as any as S.Schema<DeleteSitesByServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6680,8 +7019,8 @@ export const DeleteSitesBySubscription: API.OperationMethod<
   DeleteSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1176, __c147, 0) as any as S.Schema<DeleteSitesBySubscriptionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeleteSitesBySubscriptionResponse>,
+  input: __S(1192, __c149, 0) as any as S.Schema<DeleteSitesBySubscriptionRequest>,
+  output: __S(1992, __c249, 0) as any as S.Schema<DeleteSitesBySubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6695,7 +7034,7 @@ export const DeleteSolution: API.OperationMethod<
   DeleteSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c148, 0) as any as S.Schema<DeleteSolutionRequest>,
+  input: __S(1200, __c150, 0) as any as S.Schema<DeleteSolutionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6710,7 +7049,7 @@ export const DeleteSolutionTemplate: API.OperationMethod<
   DeleteSolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1192, __c149, 0) as any as S.Schema<DeleteSolutionTemplateRequest>,
+  input: __S(1208, __c151, 0) as any as S.Schema<DeleteSolutionTemplateRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteSolutionTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6725,7 +7064,7 @@ export const DeleteSolutionTemplateVersion: API.OperationMethod<
   DeleteSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c150, 0) as any as S.Schema<DeleteSolutionTemplateVersionRequest>,
+  input: __S(1216, __c152, 0) as any as S.Schema<DeleteSolutionTemplateVersionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6740,7 +7079,7 @@ export const DeleteSolutionVersion: API.OperationMethod<
   DeleteSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1208, __c151, 0) as any as S.Schema<DeleteSolutionVersionRequest>,
+  input: __S(1224, __c153, 0) as any as S.Schema<DeleteSolutionVersionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6755,7 +7094,7 @@ export const DeleteTarget: API.OperationMethod<
   DeleteTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c152, 0) as any as S.Schema<DeleteTargetRequest>,
+  input: __S(1232, __c154, 0) as any as S.Schema<DeleteTargetRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6770,7 +7109,7 @@ export const DeleteWorkflow: API.OperationMethod<
   DeleteWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c154, 0) as any as S.Schema<DeleteWorkflowRequest>,
+  input: __S(1248, __c156, 0) as any as S.Schema<DeleteWorkflowRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6785,7 +7124,7 @@ export const DeleteWorkflowVersion: API.OperationMethod<
   DeleteWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1240, __c155, 0) as any as S.Schema<DeleteWorkflowVersionRequest>,
+  input: __S(1256, __c157, 0) as any as S.Schema<DeleteWorkflowVersionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<DeleteWorkflowVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6800,8 +7139,8 @@ export const DiagnosticsCreateOrUpdate: API.OperationMethod<
   DiagnosticsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c156, 0) as any as S.Schema<DiagnosticsCreateOrUpdateRequest>,
-  output: __S(1264, __c158, 0) as any as S.Schema<DiagnosticsCreateOrUpdateResponse>,
+  input: __S(1264, __c158, 0) as any as S.Schema<DiagnosticsCreateOrUpdateRequest>,
+  output: __S(1265, __c158, 1) as any as S.Schema<DiagnosticsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6815,8 +7154,8 @@ export const DisconnectedOperationsCreateOrUpdate: API.OperationMethod<
   DisconnectedOperationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1275, __c159, 3) as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequest>,
-  output: __S(1289, __c161, 1) as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponse>,
+  input: __S(1283, __c160, 3) as any as S.Schema<DisconnectedOperationsCreateOrUpdateRequest>,
+  output: __S(1284, __c160, 4) as any as S.Schema<DisconnectedOperationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6830,8 +7169,8 @@ export const DynamicConfigurationsCreateOrUpdate: API.OperationMethod<
   DynamicConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1297, __c162, 1) as any as S.Schema<DynamicConfigurationsCreateOrUpdateRequest>,
-  output: __S(1305, __c163, 1) as any as S.Schema<DynamicConfigurationsCreateOrUpdateResponse>,
+  input: __S(1305, __c163, 1) as any as S.Schema<DynamicConfigurationsCreateOrUpdateRequest>,
+  output: __S(1306, __c163, 2) as any as S.Schema<DynamicConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6845,11 +7184,11 @@ export const DynamicConfigurationVersionsCreateOrUpdate: API.OperationMethod<
   DynamicConfigurationVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1313, __c164, 1) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateRequest>,
+  input: __S(1321, __c165, 1) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateRequest>,
   output: __S(
-    1321,
+    1322,
     __c165,
-    1,
+    2,
   ) as any as S.Schema<DynamicConfigurationVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6864,7 +7203,7 @@ export const DynamicSchemasCreateOrUpdate: API.OperationMethod<
   DynamicSchemasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1328, __c166, 0) as any as S.Schema<DynamicSchemasCreateOrUpdateRequest>,
+  input: __S(1336, __c167, 0) as any as S.Schema<DynamicSchemasCreateOrUpdateRequest>,
   output: __S(1337, __c167, 1) as any as S.Schema<DynamicSchemasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -6879,8 +7218,8 @@ export const DynamicSchemaVersionsCreateOrUpdate: API.OperationMethod<
   DynamicSchemaVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c168, 0) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateResponse>,
+  input: __S(1352, __c169, 0) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateRequest>,
+  output: __S(1360, __c170, 0) as any as S.Schema<DynamicSchemaVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6894,8 +7233,8 @@ export const ExecutionsCreateOrUpdate: API.OperationMethod<
   ExecutionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1353, __c169, 1) as any as S.Schema<ExecutionsCreateOrUpdateRequest>,
-  output: __S(1364, __c170, 4) as any as S.Schema<ExecutionsCreateOrUpdateResponse>,
+  input: __S(1369, __c171, 1) as any as S.Schema<ExecutionsCreateOrUpdateRequest>,
+  output: __S(1370, __c171, 2) as any as S.Schema<ExecutionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6909,8 +7248,8 @@ export const GetArtifact: API.OperationMethod<
   GetArtifactError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1368, __c171, 0) as any as S.Schema<GetArtifactRequest>,
-  output: __S(1377, __c172, 1) as any as S.Schema<GetArtifactResponse>,
+  input: __S(1384, __c173, 0) as any as S.Schema<GetArtifactRequest>,
+  output: __S(1393, __c174, 1) as any as S.Schema<GetArtifactResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6924,8 +7263,8 @@ export const GetConfigTemplate: API.OperationMethod<
   GetConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c174, 0) as any as S.Schema<GetConfigTemplateRequest>,
-  output: __S(1129, __c141, 1) as any as S.Schema<GetConfigTemplateResponse>,
+  input: __S(1408, __c176, 0) as any as S.Schema<GetConfigTemplateRequest>,
+  output: __S(1416, __c177, 0) as any as S.Schema<GetConfigTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6939,8 +7278,8 @@ export const GetConfigTemplateMetadatas: API.OperationMethod<
   GetConfigTemplateMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1400, __c175, 0) as any as S.Schema<GetConfigTemplateMetadatasRequest>,
-  output: __S(1035, __c129, 3) as any as S.Schema<GetConfigTemplateMetadatasResponse>,
+  input: __S(1424, __c178, 0) as any as S.Schema<GetConfigTemplateMetadatasRequest>,
+  output: __S(1432, __c179, 0) as any as S.Schema<GetConfigTemplateMetadatasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6954,8 +7293,8 @@ export const GetConfigTemplateSchema: API.OperationMethod<
   GetConfigTemplateSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c176, 0) as any as S.Schema<GetConfigTemplateSchemaRequest>,
-  output: __S(1417, __c177, 1) as any as S.Schema<GetConfigTemplateSchemaResponse>,
+  input: __S(1440, __c180, 0) as any as S.Schema<GetConfigTemplateSchemaRequest>,
+  output: __S(1449, __c181, 1) as any as S.Schema<GetConfigTemplateSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6969,8 +7308,8 @@ export const GetConfigTemplateVersion: API.OperationMethod<
   GetConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c178, 0) as any as S.Schema<GetConfigTemplateVersionRequest>,
-  output: __S(1497, __c187, 1) as any as S.Schema<GetConfigTemplateVersionResponse>,
+  input: __S(1456, __c182, 0) as any as S.Schema<GetConfigTemplateVersionRequest>,
+  output: __S(1464, __c183, 0) as any as S.Schema<GetConfigTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6984,8 +7323,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1432, __c179, 0) as any as S.Schema<GetConfigurationRequest>,
-  output: __S(1848, __c231, 0) as any as S.Schema<GetConfigurationResponse>,
+  input: __S(1472, __c184, 0) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(2008, __c251, 0) as any as S.Schema<GetConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6999,8 +7338,8 @@ export const GetConfigurationReference: API.OperationMethod<
   GetConfigurationReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c180, 0) as any as S.Schema<GetConfigurationReferenceRequest>,
-  output: __S(1673, __c209, 1) as any as S.Schema<GetConfigurationReferenceResponse>,
+  input: __S(1480, __c185, 0) as any as S.Schema<GetConfigurationReferenceRequest>,
+  output: __S(1793, __c224, 1) as any as S.Schema<GetConfigurationReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7014,8 +7353,8 @@ export const GetContext: API.OperationMethod<
   GetContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1448, __c181, 0) as any as S.Schema<GetContextRequest>,
-  output: __S(2005, __c250, 5) as any as S.Schema<GetContextResponse>,
+  input: __S(1488, __c186, 0) as any as S.Schema<GetContextRequest>,
+  output: __S(1496, __c187, 0) as any as S.Schema<GetContextResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7029,8 +7368,8 @@ export const GetDiagnostic: API.OperationMethod<
   GetDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c182, 0) as any as S.Schema<GetDiagnosticRequest>,
-  output: __S(1264, __c158, 0) as any as S.Schema<GetDiagnosticResponse>,
+  input: __S(1504, __c188, 0) as any as S.Schema<GetDiagnosticRequest>,
+  output: __S(1512, __c189, 0) as any as S.Schema<GetDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7044,8 +7383,8 @@ export const GetDisconnectedOperation: API.OperationMethod<
   GetDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1464, __c183, 0) as any as S.Schema<GetDisconnectedOperationRequest>,
-  output: __S(1289, __c161, 1) as any as S.Schema<GetDisconnectedOperationResponse>,
+  input: __S(1520, __c190, 0) as any as S.Schema<GetDisconnectedOperationRequest>,
+  output: __S(1528, __c191, 0) as any as S.Schema<GetDisconnectedOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7059,8 +7398,8 @@ export const GetDynamicConfiguration: API.OperationMethod<
   GetDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c184, 0) as any as S.Schema<GetDynamicConfigurationRequest>,
-  output: __S(1305, __c163, 1) as any as S.Schema<GetDynamicConfigurationResponse>,
+  input: __S(1536, __c192, 0) as any as S.Schema<GetDynamicConfigurationRequest>,
+  output: __S(1544, __c193, 0) as any as S.Schema<GetDynamicConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7074,8 +7413,8 @@ export const GetDynamicConfigurationVersion: API.OperationMethod<
   GetDynamicConfigurationVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c188, 0) as any as S.Schema<GetDynamicConfigurationVersionRequest>,
-  output: __S(1321, __c165, 1) as any as S.Schema<GetDynamicConfigurationVersionResponse>,
+  input: __S(1576, __c197, 0) as any as S.Schema<GetDynamicConfigurationVersionRequest>,
+  output: __S(1584, __c198, 0) as any as S.Schema<GetDynamicConfigurationVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7089,8 +7428,8 @@ export const GetDynamicSchema: API.OperationMethod<
   GetDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1512, __c189, 0) as any as S.Schema<GetDynamicSchemaRequest>,
-  output: __S(1337, __c167, 1) as any as S.Schema<GetDynamicSchemaResponse>,
+  input: __S(1592, __c199, 0) as any as S.Schema<GetDynamicSchemaRequest>,
+  output: __S(1600, __c200, 0) as any as S.Schema<GetDynamicSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7104,8 +7443,8 @@ export const GetDynamicSchemaVersion: API.OperationMethod<
   GetDynamicSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1520, __c190, 0) as any as S.Schema<GetDynamicSchemaVersionRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GetDynamicSchemaVersionResponse>,
+  input: __S(1608, __c201, 0) as any as S.Schema<GetDynamicSchemaVersionRequest>,
+  output: __S(1616, __c202, 0) as any as S.Schema<GetDynamicSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7119,8 +7458,8 @@ export const GetExecution: API.OperationMethod<
   GetExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1528, __c191, 0) as any as S.Schema<GetExecutionRequest>,
-  output: __S(1364, __c170, 4) as any as S.Schema<GetExecutionResponse>,
+  input: __S(1624, __c203, 0) as any as S.Schema<GetExecutionRequest>,
+  output: __S(1632, __c204, 0) as any as S.Schema<GetExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7134,8 +7473,8 @@ export const GetHardwareSettings: API.OperationMethod<
   GetHardwareSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1536, __c192, 0) as any as S.Schema<GetHardwareSettingsRequest>,
-  output: __S(1545, __c193, 1) as any as S.Schema<GetHardwareSettingsResponse>,
+  input: __S(1640, __c205, 0) as any as S.Schema<GetHardwareSettingsRequest>,
+  output: __S(1648, __c206, 0) as any as S.Schema<GetHardwareSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7149,8 +7488,8 @@ export const GetHierarchyConfigurationMetadatas: API.OperationMethod<
   GetHierarchyConfigurationMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1552, __c194, 0) as any as S.Schema<GetHierarchyConfigurationMetadatasRequest>,
-  output: __S(1561, __c195, 1) as any as S.Schema<GetHierarchyConfigurationMetadatasResponse>,
+  input: __S(1664, __c208, 0) as any as S.Schema<GetHierarchyConfigurationMetadatasRequest>,
+  output: __S(1673, __c209, 1) as any as S.Schema<GetHierarchyConfigurationMetadatasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7164,8 +7503,8 @@ export const GetHierarchyConfigurationMetadataVersion: API.OperationMethod<
   GetHierarchyConfigurationMetadataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1568, __c196, 0) as any as S.Schema<GetHierarchyConfigurationMetadataVersionRequest>,
-  output: __S(1577, __c197, 1) as any as S.Schema<GetHierarchyConfigurationMetadataVersionResponse>,
+  input: __S(1680, __c210, 0) as any as S.Schema<GetHierarchyConfigurationMetadataVersionRequest>,
+  output: __S(1689, __c211, 1) as any as S.Schema<GetHierarchyConfigurationMetadataVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7179,8 +7518,8 @@ export const GetImage: API.OperationMethod<
   GetImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c198, 0) as any as S.Schema<GetImageRequest>,
-  output: __S(1593, __c199, 1) as any as S.Schema<GetImageResponse>,
+  input: __S(1696, __c212, 0) as any as S.Schema<GetImageRequest>,
+  output: __S(1705, __c213, 1) as any as S.Schema<GetImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7194,8 +7533,8 @@ export const GetInstance: API.OperationMethod<
   GetInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1608, __c201, 0) as any as S.Schema<GetInstanceRequest>,
-  output: __S(1633, __c204, 1) as any as S.Schema<GetInstanceResponse>,
+  input: __S(1720, __c215, 0) as any as S.Schema<GetInstanceRequest>,
+  output: __S(1728, __c216, 0) as any as S.Schema<GetInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7209,8 +7548,8 @@ export const GetInstanceHistory: API.OperationMethod<
   GetInstanceHistoryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1640, __c205, 0) as any as S.Schema<GetInstanceHistoryRequest>,
-  output: __S(1651, __c206, 3) as any as S.Schema<GetInstanceHistoryResponse>,
+  input: __S(1760, __c220, 0) as any as S.Schema<GetInstanceHistoryRequest>,
+  output: __S(1771, __c221, 3) as any as S.Schema<GetInstanceHistoryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7224,8 +7563,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1680, __c210, 0) as any as S.Schema<GetJobRequest>,
-  output: __S(1695, __c211, 7) as any as S.Schema<GetJobResponse>,
+  input: __S(1800, __c225, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(1815, __c226, 7) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7239,8 +7578,8 @@ export const GetSchema: API.OperationMethod<
   GetSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1704, __c213, 0) as any as S.Schema<GetSchemaRequest>,
-  output: __S(1720, __c215, 0) as any as S.Schema<GetSchemaResponse>,
+  input: __S(1824, __c228, 0) as any as S.Schema<GetSchemaRequest>,
+  output: __S(1840, __c230, 0) as any as S.Schema<GetSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7254,8 +7593,8 @@ export const GetSchemaReference: API.OperationMethod<
   GetSchemaReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c216, 0) as any as S.Schema<GetSchemaReferenceRequest>,
-  output: __S(1737, __c217, 1) as any as S.Schema<GetSchemaReferenceResponse>,
+  input: __S(1848, __c231, 0) as any as S.Schema<GetSchemaReferenceRequest>,
+  output: __S(1864, __c233, 0) as any as S.Schema<GetSchemaReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7269,8 +7608,8 @@ export const GetSchemaVersion: API.OperationMethod<
   GetSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1744, __c218, 0) as any as S.Schema<GetSchemaVersionRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<GetSchemaVersionResponse>,
+  input: __S(1872, __c234, 0) as any as S.Schema<GetSchemaVersionRequest>,
+  output: __S(1616, __c202, 0) as any as S.Schema<GetSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7284,8 +7623,8 @@ export const GetSite: API.OperationMethod<
   GetSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1752, __c219, 0) as any as S.Schema<GetSiteRequest>,
-  output: __S(1762, __c220, 2) as any as S.Schema<GetSiteResponse>,
+  input: __S(1880, __c235, 0) as any as S.Schema<GetSiteRequest>,
+  output: __S(1896, __c237, 0) as any as S.Schema<GetSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7299,8 +7638,8 @@ export const GetSiteReference: API.OperationMethod<
   GetSiteReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1768, __c221, 0) as any as S.Schema<GetSiteReferenceRequest>,
-  output: __S(1777, __c222, 1) as any as S.Schema<GetSiteReferenceResponse>,
+  input: __S(1904, __c238, 0) as any as S.Schema<GetSiteReferenceRequest>,
+  output: __S(1912, __c239, 0) as any as S.Schema<GetSiteReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7314,8 +7653,8 @@ export const GetSitesByServiceGroup: API.OperationMethod<
   GetSitesByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1784, __c223, 0) as any as S.Schema<GetSitesByServiceGroupRequest>,
-  output: __S(1762, __c220, 2) as any as S.Schema<GetSitesByServiceGroupResponse>,
+  input: __S(1928, __c241, 0) as any as S.Schema<GetSitesByServiceGroupRequest>,
+  output: __S(1896, __c237, 0) as any as S.Schema<GetSitesByServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7329,8 +7668,8 @@ export const GetSitesBySubscription: API.OperationMethod<
   GetSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c224, 0) as any as S.Schema<GetSitesBySubscriptionRequest>,
-  output: __S(1762, __c220, 2) as any as S.Schema<GetSitesBySubscriptionResponse>,
+  input: __S(1936, __c242, 0) as any as S.Schema<GetSitesBySubscriptionRequest>,
+  output: __S(1896, __c237, 0) as any as S.Schema<GetSitesBySubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7344,8 +7683,8 @@ export const GetSolution: API.OperationMethod<
   GetSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1800, __c225, 0) as any as S.Schema<GetSolutionRequest>,
-  output: __S(1811, __c226, 3) as any as S.Schema<GetSolutionResponse>,
+  input: __S(1944, __c243, 0) as any as S.Schema<GetSolutionRequest>,
+  output: __S(1952, __c244, 0) as any as S.Schema<GetSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7359,8 +7698,8 @@ export const GetSolutionMetadatas: API.OperationMethod<
   GetSolutionMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1816, __c227, 0) as any as S.Schema<GetSolutionMetadatasRequest>,
-  output: __S(1825, __c228, 1) as any as S.Schema<GetSolutionMetadatasResponse>,
+  input: __S(1968, __c246, 0) as any as S.Schema<GetSolutionMetadatasRequest>,
+  output: __S(1977, __c247, 1) as any as S.Schema<GetSolutionMetadatasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7374,8 +7713,8 @@ export const GetSolutionMetadataVersion: API.OperationMethod<
   GetSolutionMetadataVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c232, 0) as any as S.Schema<GetSolutionMetadataVersionRequest>,
-  output: __S(1865, __c233, 1) as any as S.Schema<GetSolutionMetadataVersionResponse>,
+  input: __S(2016, __c252, 0) as any as S.Schema<GetSolutionMetadataVersionRequest>,
+  output: __S(2025, __c253, 1) as any as S.Schema<GetSolutionMetadataVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7389,8 +7728,8 @@ export const GetSolutionSchema: API.OperationMethod<
   GetSolutionSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1872, __c234, 0) as any as S.Schema<GetSolutionSchemaRequest>,
-  output: __S(1881, __c235, 1) as any as S.Schema<GetSolutionSchemaResponse>,
+  input: __S(2032, __c254, 0) as any as S.Schema<GetSolutionSchemaRequest>,
+  output: __S(2041, __c255, 1) as any as S.Schema<GetSolutionSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7404,8 +7743,8 @@ export const GetSolutionTemplate: API.OperationMethod<
   GetSolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c236, 0) as any as S.Schema<GetSolutionTemplateRequest>,
-  output: __S(1897, __c237, 1) as any as S.Schema<GetSolutionTemplateResponse>,
+  input: __S(2048, __c256, 0) as any as S.Schema<GetSolutionTemplateRequest>,
+  output: __S(2064, __c258, 0) as any as S.Schema<GetSolutionTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7419,8 +7758,8 @@ export const GetSolutionTemplateVersion: API.OperationMethod<
   GetSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1904, __c238, 0) as any as S.Schema<GetSolutionTemplateVersionRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<GetSolutionTemplateVersionResponse>,
+  input: __S(2072, __c259, 0) as any as S.Schema<GetSolutionTemplateVersionRequest>,
+  output: __S(2080, __c260, 0) as any as S.Schema<GetSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7434,8 +7773,8 @@ export const GetSolutionVersion: API.OperationMethod<
   GetSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1912, __c239, 0) as any as S.Schema<GetSolutionVersionRequest>,
-  output: __S(1927, __c240, 7) as any as S.Schema<GetSolutionVersionResponse>,
+  input: __S(2088, __c261, 0) as any as S.Schema<GetSolutionVersionRequest>,
+  output: __S(2096, __c262, 0) as any as S.Schema<GetSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7449,8 +7788,8 @@ export const GetTarget: API.OperationMethod<
   GetTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1928, __c241, 0) as any as S.Schema<GetTargetRequest>,
-  output: __S(1937, __c242, 1) as any as S.Schema<GetTargetResponse>,
+  input: __S(2112, __c264, 0) as any as S.Schema<GetTargetRequest>,
+  output: __S(2120, __c265, 0) as any as S.Schema<GetTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7464,8 +7803,8 @@ export const GetWorkflow: API.OperationMethod<
   GetWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1944, __c243, 0) as any as S.Schema<GetWorkflowRequest>,
-  output: __S(1953, __c244, 1) as any as S.Schema<GetWorkflowResponse>,
+  input: __S(2136, __c267, 0) as any as S.Schema<GetWorkflowRequest>,
+  output: __S(2144, __c268, 0) as any as S.Schema<GetWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7479,8 +7818,8 @@ export const GetWorkflowVersion: API.OperationMethod<
   GetWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1960, __c245, 0) as any as S.Schema<GetWorkflowVersionRequest>,
-  output: __S(1975, __c246, 7) as any as S.Schema<GetWorkflowVersionResponse>,
+  input: __S(2160, __c270, 0) as any as S.Schema<GetWorkflowVersionRequest>,
+  output: __S(2168, __c271, 0) as any as S.Schema<GetWorkflowVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7494,8 +7833,8 @@ export const HardwareSettingsCreateOrUpdate: API.OperationMethod<
   HardwareSettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1977, __c247, 1) as any as S.Schema<HardwareSettingsCreateOrUpdateRequest>,
-  output: __S(1545, __c193, 1) as any as S.Schema<HardwareSettingsCreateOrUpdateResponse>,
+  input: __S(2185, __c273, 1) as any as S.Schema<HardwareSettingsCreateOrUpdateRequest>,
+  output: __S(2186, __c273, 2) as any as S.Schema<HardwareSettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7509,8 +7848,8 @@ export const ImagesListDownloadUri: API.OperationMethod<
   ImagesListDownloadUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c248, 0) as any as S.Schema<ImagesListDownloadUriRequest>,
-  output: __S(1985, __c248, 1) as any as S.Schema<ImageDownloadResult>,
+  input: __S(2192, __c274, 0) as any as S.Schema<ImagesListDownloadUriRequest>,
+  output: __S(2193, __c274, 1) as any as S.Schema<ImageDownloadResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7524,7 +7863,7 @@ export const InstallTargetSolution: API.OperationMethod<
   InstallTargetSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2008, __c251, 0) as any as S.Schema<InstallTargetSolutionRequest>,
+  input: __S(2216, __c277, 0) as any as S.Schema<InstallTargetSolutionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<InstallTargetSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -7539,8 +7878,8 @@ export const InstancesCreateOrUpdate: API.OperationMethod<
   InstancesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2017, __c252, 1) as any as S.Schema<InstancesCreateOrUpdateRequest>,
-  output: __S(1633, __c204, 1) as any as S.Schema<InstancesCreateOrUpdateResponse>,
+  input: __S(2225, __c278, 1) as any as S.Schema<InstancesCreateOrUpdateRequest>,
+  output: __S(2226, __c278, 2) as any as S.Schema<InstancesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7554,8 +7893,8 @@ export const ListArtifactByParent: API.OperationMethod<
   ListArtifactByParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2024, __c253, 0) as any as S.Schema<ListArtifactByParentRequest>,
-  output: __S(2026, __c253, 2) as any as S.Schema<ArtifactListResult>,
+  input: __S(2232, __c279, 0) as any as S.Schema<ListArtifactByParentRequest>,
+  output: __S(2234, __c279, 2) as any as S.Schema<ArtifactListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7569,8 +7908,8 @@ export const ListConfigTemplateByResourceGroup: API.OperationMethod<
   ListConfigTemplateByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2032, __c254, 0) as any as S.Schema<ListConfigTemplateByResourceGroupRequest>,
-  output: __S(2041, __c255, 1) as any as S.Schema<ConfigTemplateListResult>,
+  input: __S(2240, __c280, 0) as any as S.Schema<ListConfigTemplateByResourceGroupRequest>,
+  output: __S(2249, __c281, 1) as any as S.Schema<ConfigTemplateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7584,8 +7923,8 @@ export const ListConfigTemplateBySubscription: API.OperationMethod<
   ListConfigTemplateBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2048, __c256, 0) as any as S.Schema<ListConfigTemplateBySubscriptionRequest>,
-  output: __S(2041, __c255, 1) as any as S.Schema<ConfigTemplateListResult>,
+  input: __S(2256, __c282, 0) as any as S.Schema<ListConfigTemplateBySubscriptionRequest>,
+  output: __S(2249, __c281, 1) as any as S.Schema<ConfigTemplateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7600,11 +7939,11 @@ export const ListConfigTemplateMetadatasByConfigTemplate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2056,
-    __c257,
+    2264,
+    __c283,
     0,
   ) as any as S.Schema<ListConfigTemplateMetadatasByConfigTemplateRequest>,
-  output: __S(2058, __c257, 2) as any as S.Schema<ConfigTemplateMetadataListResult>,
+  output: __S(2266, __c283, 2) as any as S.Schema<ConfigTemplateMetadataListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7619,11 +7958,11 @@ export const ListConfigTemplateSchemaByConfigTemplateVersion: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    2064,
-    __c258,
+    2272,
+    __c284,
     0,
   ) as any as S.Schema<ListConfigTemplateSchemaByConfigTemplateVersionRequest>,
-  output: __S(2066, __c258, 2) as any as S.Schema<ConfigTemplateSchemaListResult>,
+  output: __S(2274, __c284, 2) as any as S.Schema<ConfigTemplateSchemaListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7637,8 +7976,8 @@ export const ListConfigTemplateVersionByConfigTemplate: API.OperationMethod<
   ListConfigTemplateVersionByConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2072, __c259, 0) as any as S.Schema<ListConfigTemplateVersionByConfigTemplateRequest>,
-  output: __S(2074, __c259, 2) as any as S.Schema<ConfigTemplateVersionListResult>,
+  input: __S(2280, __c285, 0) as any as S.Schema<ListConfigTemplateVersionByConfigTemplateRequest>,
+  output: __S(2282, __c285, 2) as any as S.Schema<ConfigTemplateVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7652,8 +7991,8 @@ export const ListConfigurationByResourceGroup: API.OperationMethod<
   ListConfigurationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c260, 0) as any as S.Schema<ListConfigurationByResourceGroupRequest>,
-  output: __S(2089, __c261, 1) as any as S.Schema<ConfigurationListResult>,
+  input: __S(2288, __c286, 0) as any as S.Schema<ListConfigurationByResourceGroupRequest>,
+  output: __S(2297, __c287, 1) as any as S.Schema<ConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7667,8 +8006,8 @@ export const ListConfigurationBySubscription: API.OperationMethod<
   ListConfigurationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2096, __c262, 0) as any as S.Schema<ListConfigurationBySubscriptionRequest>,
-  output: __S(2089, __c261, 1) as any as S.Schema<ConfigurationListResult>,
+  input: __S(2304, __c288, 0) as any as S.Schema<ListConfigurationBySubscriptionRequest>,
+  output: __S(2297, __c287, 1) as any as S.Schema<ConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8310,7 +8649,7 @@ export const PublishTargetSolutionVersion: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(504, __c63, 0) as any as S.Schema<PublishTargetSolutionVersionRequest>,
-  output: __S(1927, __c240, 7) as any as S.Schema<PublishTargetSolutionVersionResponse>,
+  output: __S(512, __c64, 0) as any as S.Schema<PublishTargetSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8324,8 +8663,8 @@ export const RemoveConfigTemplateVersion: API.OperationMethod<
   RemoveConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c64, 0) as any as S.Schema<RemoveConfigTemplateVersionRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<RemoveVersionResponse>,
+  input: __S(520, __c65, 0) as any as S.Schema<RemoveConfigTemplateVersionRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<RemoveVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8339,8 +8678,8 @@ export const RemoveSchemaVersion: API.OperationMethod<
   RemoveSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c66, 0) as any as S.Schema<RemoveSchemaVersionRequest>,
-  output: __S(520, __c65, 0) as any as S.Schema<RemoveVersionResponse>,
+  input: __S(536, __c67, 0) as any as S.Schema<RemoveSchemaVersionRequest>,
+  output: __S(528, __c66, 0) as any as S.Schema<RemoveVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8354,7 +8693,7 @@ export const RemoveSolutionTemplateVersion: API.OperationMethod<
   RemoveSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(536, __c67, 0) as any as S.Schema<RemoveSolutionTemplateVersionRequest>,
+  input: __S(544, __c68, 0) as any as S.Schema<RemoveSolutionTemplateVersionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<RemoveSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8369,7 +8708,7 @@ export const RemoveTargetRevision: API.OperationMethod<
   RemoveTargetRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c68, 0) as any as S.Schema<RemoveTargetRevisionRequest>,
+  input: __S(552, __c69, 0) as any as S.Schema<RemoveTargetRevisionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<RemoveTargetRevisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8384,8 +8723,8 @@ export const ReviewTargetSolutionVersion: API.OperationMethod<
   ReviewTargetSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(552, __c69, 0) as any as S.Schema<ReviewTargetSolutionVersionRequest>,
-  output: __S(1927, __c240, 7) as any as S.Schema<ReviewTargetSolutionVersionResponse>,
+  input: __S(560, __c70, 0) as any as S.Schema<ReviewTargetSolutionVersionRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<ReviewTargetSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8399,8 +8738,8 @@ export const SchemaReferencesCreateOrUpdate: API.OperationMethod<
   SchemaReferencesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(561, __c70, 1) as any as S.Schema<SchemaReferencesCreateOrUpdateRequest>,
-  output: __S(1737, __c217, 1) as any as S.Schema<SchemaReferencesCreateOrUpdateResponse>,
+  input: __S(569, __c71, 1) as any as S.Schema<SchemaReferencesCreateOrUpdateRequest>,
+  output: __S(570, __c71, 2) as any as S.Schema<SchemaReferencesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8414,8 +8753,8 @@ export const SchemasCreateOrUpdate: API.OperationMethod<
   SchemasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(568, __c71, 0) as any as S.Schema<SchemasCreateOrUpdateRequest>,
-  output: __S(1720, __c215, 0) as any as S.Schema<SchemasCreateOrUpdateResponse>,
+  input: __S(576, __c72, 0) as any as S.Schema<SchemasCreateOrUpdateRequest>,
+  output: __S(577, __c72, 1) as any as S.Schema<SchemasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8429,8 +8768,8 @@ export const SchemaVersionsCreateOrUpdate: API.OperationMethod<
   SchemaVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c72, 0) as any as S.Schema<SchemaVersionsCreateOrUpdateRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<SchemaVersionsCreateOrUpdateResponse>,
+  input: __S(584, __c73, 0) as any as S.Schema<SchemaVersionsCreateOrUpdateRequest>,
+  output: __S(1360, __c170, 0) as any as S.Schema<SchemaVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8444,8 +8783,8 @@ export const SiteReferencesCreateOrUpdate: API.OperationMethod<
   SiteReferencesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(593, __c74, 1) as any as S.Schema<SiteReferencesCreateOrUpdateRequest>,
-  output: __S(1777, __c222, 1) as any as S.Schema<SiteReferencesCreateOrUpdateResponse>,
+  input: __S(601, __c75, 1) as any as S.Schema<SiteReferencesCreateOrUpdateRequest>,
+  output: __S(602, __c75, 2) as any as S.Schema<SiteReferencesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8459,8 +8798,8 @@ export const SitesByServiceGroupCreateOrUpdate: API.OperationMethod<
   SitesByServiceGroupCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(600, __c75, 0) as any as S.Schema<SitesByServiceGroupCreateOrUpdateRequest>,
-  output: __S(1762, __c220, 2) as any as S.Schema<SitesByServiceGroupCreateOrUpdateResponse>,
+  input: __S(608, __c76, 0) as any as S.Schema<SitesByServiceGroupCreateOrUpdateRequest>,
+  output: __S(616, __c77, 0) as any as S.Schema<SitesByServiceGroupCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8474,8 +8813,8 @@ export const SitesBySubscriptionCreateOrUpdate: API.OperationMethod<
   SitesBySubscriptionCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(616, __c77, 0) as any as S.Schema<SitesBySubscriptionCreateOrUpdateRequest>,
-  output: __S(1762, __c220, 2) as any as S.Schema<SitesBySubscriptionCreateOrUpdateResponse>,
+  input: __S(632, __c79, 0) as any as S.Schema<SitesBySubscriptionCreateOrUpdateRequest>,
+  output: __S(616, __c77, 0) as any as S.Schema<SitesBySubscriptionCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8489,8 +8828,8 @@ export const SitesCreateOrUpdate: API.OperationMethod<
   SitesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c78, 0) as any as S.Schema<SitesCreateOrUpdateRequest>,
-  output: __S(1762, __c220, 2) as any as S.Schema<SitesCreateOrUpdateResponse>,
+  input: __S(640, __c80, 0) as any as S.Schema<SitesCreateOrUpdateRequest>,
+  output: __S(616, __c77, 0) as any as S.Schema<SitesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8504,8 +8843,8 @@ export const SolutionsCreateOrUpdate: API.OperationMethod<
   SolutionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(632, __c79, 0) as any as S.Schema<SolutionsCreateOrUpdateRequest>,
-  output: __S(1811, __c226, 3) as any as S.Schema<SolutionsCreateOrUpdateResponse>,
+  input: __S(648, __c81, 0) as any as S.Schema<SolutionsCreateOrUpdateRequest>,
+  output: __S(649, __c81, 1) as any as S.Schema<SolutionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8519,8 +8858,8 @@ export const SolutionTemplatesCreateOrUpdate: API.OperationMethod<
   SolutionTemplatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641, __c80, 1) as any as S.Schema<SolutionTemplatesCreateOrUpdateRequest>,
-  output: __S(1897, __c237, 1) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponse>,
+  input: __S(657, __c82, 1) as any as S.Schema<SolutionTemplatesCreateOrUpdateRequest>,
+  output: __S(658, __c82, 2) as any as S.Schema<SolutionTemplatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8534,7 +8873,7 @@ export const SolutionTemplateVersionsBulkDeploySolution: API.OperationMethod<
   SolutionTemplateVersionsBulkDeploySolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(650, __c81, 2) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionRequest>,
+  input: __S(666, __c83, 2) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<SolutionTemplateVersionsBulkDeploySolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8549,7 +8888,7 @@ export const SolutionTemplateVersionsBulkPublishSolution: API.OperationMethod<
   SolutionTemplateVersionsBulkPublishSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(658, __c82, 2) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequest>,
+  input: __S(674, __c84, 2) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<SolutionTemplateVersionsBulkPublishSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8564,8 +8903,8 @@ export const SolutionTemplateVersionsCreateOrUpdate: API.OperationMethod<
   SolutionTemplateVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(664, __c83, 0) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateResponse>,
+  input: __S(680, __c85, 0) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateRequest>,
+  output: __S(681, __c85, 1) as any as S.Schema<SolutionTemplateVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8579,8 +8918,8 @@ export const SolutionVersionsCreateOrUpdate: API.OperationMethod<
   SolutionVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(673, __c84, 1) as any as S.Schema<SolutionVersionsCreateOrUpdateRequest>,
-  output: __S(1927, __c240, 7) as any as S.Schema<SolutionVersionsCreateOrUpdateResponse>,
+  input: __S(689, __c86, 1) as any as S.Schema<SolutionVersionsCreateOrUpdateRequest>,
+  output: __S(690, __c86, 2) as any as S.Schema<SolutionVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8594,8 +8933,8 @@ export const TargetsCreateOrUpdate: API.OperationMethod<
   TargetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(689, __c86, 1) as any as S.Schema<TargetsCreateOrUpdateRequest>,
-  output: __S(1937, __c242, 1) as any as S.Schema<TargetsCreateOrUpdateResponse>,
+  input: __S(705, __c88, 1) as any as S.Schema<TargetsCreateOrUpdateRequest>,
+  output: __S(706, __c88, 2) as any as S.Schema<TargetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8609,8 +8948,8 @@ export const TargetsResolveConfiguration: API.OperationMethod<
   TargetsResolveConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(696, __c87, 0) as any as S.Schema<TargetsResolveConfigurationRequest>,
-  output: __S(697, __c87, 1) as any as S.Schema<ResolvedConfiguration>,
+  input: __S(712, __c89, 0) as any as S.Schema<TargetsResolveConfigurationRequest>,
+  output: __S(713, __c89, 1) as any as S.Schema<ResolvedConfiguration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8624,8 +8963,8 @@ export const TargetsUnstageSolutionVersion: API.OperationMethod<
   TargetsUnstageSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c88, 0) as any as S.Schema<TargetsUnstageSolutionVersionRequest>,
-  output: __S(1927, __c240, 7) as any as S.Schema<TargetsUnstageSolutionVersionResponse>,
+  input: __S(720, __c90, 0) as any as S.Schema<TargetsUnstageSolutionVersionRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<TargetsUnstageSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8639,7 +8978,7 @@ export const UninstallTargetSolution: API.OperationMethod<
   UninstallTargetSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(712, __c89, 0) as any as S.Schema<UninstallTargetSolutionRequest>,
+  input: __S(728, __c91, 0) as any as S.Schema<UninstallTargetSolutionRequest>,
   output: __S(24, __c3, 0) as any as S.Schema<UninstallTargetSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -8654,8 +8993,8 @@ export const UpdateConfigTemplate: API.OperationMethod<
   UpdateConfigTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(721, __c90, 1) as any as S.Schema<UpdateConfigTemplateRequest>,
-  output: __S(1129, __c141, 1) as any as S.Schema<UpdateConfigTemplateResponse>,
+  input: __S(737, __c92, 1) as any as S.Schema<UpdateConfigTemplateRequest>,
+  output: __S(1416, __c177, 0) as any as S.Schema<UpdateConfigTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8669,8 +9008,8 @@ export const UpdateConfigTemplateMetadatas: API.OperationMethod<
   UpdateConfigTemplateMetadatasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(728, __c91, 0) as any as S.Schema<UpdateConfigTemplateMetadatasRequest>,
-  output: __S(1035, __c129, 3) as any as S.Schema<UpdateConfigTemplateMetadatasResponse>,
+  input: __S(744, __c93, 0) as any as S.Schema<UpdateConfigTemplateMetadatasRequest>,
+  output: __S(745, __c93, 1) as any as S.Schema<UpdateConfigTemplateMetadatasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8684,8 +9023,8 @@ export const UpdateConfigTemplateVersion: API.OperationMethod<
   UpdateConfigTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(737, __c92, 1) as any as S.Schema<UpdateConfigTemplateVersionRequest>,
-  output: __S(1497, __c187, 1) as any as S.Schema<UpdateConfigTemplateVersionResponse>,
+  input: __S(753, __c94, 1) as any as S.Schema<UpdateConfigTemplateVersionRequest>,
+  output: __S(1464, __c183, 0) as any as S.Schema<UpdateConfigTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8699,8 +9038,8 @@ export const UpdateConfiguration: API.OperationMethod<
   UpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(744, __c93, 0) as any as S.Schema<UpdateConfigurationRequest>,
-  output: __S(1848, __c231, 0) as any as S.Schema<UpdateConfigurationResponse>,
+  input: __S(760, __c95, 0) as any as S.Schema<UpdateConfigurationRequest>,
+  output: __S(2008, __c251, 0) as any as S.Schema<UpdateConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8714,8 +9053,8 @@ export const UpdateConfigurationReference: API.OperationMethod<
   UpdateConfigurationReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c94, 0) as any as S.Schema<UpdateConfigurationReferenceRequest>,
-  output: __S(1673, __c209, 1) as any as S.Schema<UpdateConfigurationReferenceResponse>,
+  input: __S(768, __c96, 0) as any as S.Schema<UpdateConfigurationReferenceRequest>,
+  output: __S(1793, __c224, 1) as any as S.Schema<UpdateConfigurationReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8729,8 +9068,8 @@ export const UpdateContext: API.OperationMethod<
   UpdateContextError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(761, __c95, 1) as any as S.Schema<UpdateContextRequest>,
-  output: __S(2005, __c250, 5) as any as S.Schema<UpdateContextResponse>,
+  input: __S(777, __c97, 1) as any as S.Schema<UpdateContextRequest>,
+  output: __S(778, __c97, 2) as any as S.Schema<UpdateContextResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8744,8 +9083,8 @@ export const UpdateDiagnostic: API.OperationMethod<
   UpdateDiagnosticError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(776, __c97, 0) as any as S.Schema<UpdateDiagnosticRequest>,
-  output: __S(1264, __c158, 0) as any as S.Schema<UpdateDiagnosticResponse>,
+  input: __S(792, __c99, 0) as any as S.Schema<UpdateDiagnosticRequest>,
+  output: __S(793, __c99, 1) as any as S.Schema<UpdateDiagnosticResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8759,8 +9098,8 @@ export const UpdateDisconnectedOperation: API.OperationMethod<
   UpdateDisconnectedOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(787, __c98, 3) as any as S.Schema<UpdateDisconnectedOperationRequest>,
-  output: __S(1289, __c161, 1) as any as S.Schema<UpdateDisconnectedOperationResponse>,
+  input: __S(803, __c100, 3) as any as S.Schema<UpdateDisconnectedOperationRequest>,
+  output: __S(1528, __c191, 0) as any as S.Schema<UpdateDisconnectedOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8774,8 +9113,8 @@ export const UpdateDynamicConfiguration: API.OperationMethod<
   UpdateDynamicConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(793, __c99, 1) as any as S.Schema<UpdateDynamicConfigurationRequest>,
-  output: __S(1305, __c163, 1) as any as S.Schema<UpdateDynamicConfigurationResponse>,
+  input: __S(809, __c101, 1) as any as S.Schema<UpdateDynamicConfigurationRequest>,
+  output: __S(1544, __c193, 0) as any as S.Schema<UpdateDynamicConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8789,8 +9128,8 @@ export const UpdateDynamicConfigurationVersion: API.OperationMethod<
   UpdateDynamicConfigurationVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(801, __c100, 1) as any as S.Schema<UpdateDynamicConfigurationVersionRequest>,
-  output: __S(1321, __c165, 1) as any as S.Schema<UpdateDynamicConfigurationVersionResponse>,
+  input: __S(817, __c102, 1) as any as S.Schema<UpdateDynamicConfigurationVersionRequest>,
+  output: __S(1584, __c198, 0) as any as S.Schema<UpdateDynamicConfigurationVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8804,8 +9143,8 @@ export const UpdateDynamicSchema: API.OperationMethod<
   UpdateDynamicSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(808, __c101, 0) as any as S.Schema<UpdateDynamicSchemaRequest>,
-  output: __S(1337, __c167, 1) as any as S.Schema<UpdateDynamicSchemaResponse>,
+  input: __S(824, __c103, 0) as any as S.Schema<UpdateDynamicSchemaRequest>,
+  output: __S(1600, __c200, 0) as any as S.Schema<UpdateDynamicSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8819,8 +9158,8 @@ export const UpdateDynamicSchemaVersion: API.OperationMethod<
   UpdateDynamicSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c102, 0) as any as S.Schema<UpdateDynamicSchemaVersionRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<UpdateDynamicSchemaVersionResponse>,
+  input: __S(832, __c104, 0) as any as S.Schema<UpdateDynamicSchemaVersionRequest>,
+  output: __S(1616, __c202, 0) as any as S.Schema<UpdateDynamicSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8834,8 +9173,8 @@ export const UpdateExecution: API.OperationMethod<
   UpdateExecutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(833, __c104, 1) as any as S.Schema<UpdateExecutionRequest>,
-  output: __S(1364, __c170, 4) as any as S.Schema<UpdateExecutionResponse>,
+  input: __S(849, __c106, 1) as any as S.Schema<UpdateExecutionRequest>,
+  output: __S(850, __c106, 2) as any as S.Schema<UpdateExecutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8849,8 +9188,8 @@ export const UpdateInstance: API.OperationMethod<
   UpdateInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(842, __c105, 2) as any as S.Schema<UpdateInstanceRequest>,
-  output: __S(1633, __c204, 1) as any as S.Schema<UpdateInstanceResponse>,
+  input: __S(858, __c107, 2) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(859, __c107, 3) as any as S.Schema<UpdateInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8864,8 +9203,8 @@ export const UpdateSchema: API.OperationMethod<
   UpdateSchemaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c106, 0) as any as S.Schema<UpdateSchemaRequest>,
-  output: __S(1720, __c215, 0) as any as S.Schema<UpdateSchemaResponse>,
+  input: __S(864, __c108, 0) as any as S.Schema<UpdateSchemaRequest>,
+  output: __S(1840, __c230, 0) as any as S.Schema<UpdateSchemaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8879,8 +9218,8 @@ export const UpdateSchemaReference: API.OperationMethod<
   UpdateSchemaReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(857, __c107, 1) as any as S.Schema<UpdateSchemaReferenceRequest>,
-  output: __S(1737, __c217, 1) as any as S.Schema<UpdateSchemaReferenceResponse>,
+  input: __S(873, __c109, 1) as any as S.Schema<UpdateSchemaReferenceRequest>,
+  output: __S(1864, __c233, 0) as any as S.Schema<UpdateSchemaReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8894,8 +9233,8 @@ export const UpdateSchemaVersion: API.OperationMethod<
   UpdateSchemaVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(872, __c109, 0) as any as S.Schema<UpdateSchemaVersionRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<UpdateSchemaVersionResponse>,
+  input: __S(888, __c111, 0) as any as S.Schema<UpdateSchemaVersionRequest>,
+  output: __S(1616, __c202, 0) as any as S.Schema<UpdateSchemaVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8909,8 +9248,8 @@ export const UpdateSite: API.OperationMethod<
   UpdateSiteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c110, 0) as any as S.Schema<UpdateSiteRequest>,
-  output: __S(1762, __c220, 2) as any as S.Schema<UpdateSiteResponse>,
+  input: __S(896, __c112, 0) as any as S.Schema<UpdateSiteRequest>,
+  output: __S(1896, __c237, 0) as any as S.Schema<UpdateSiteResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8924,8 +9263,8 @@ export const UpdateSiteReference: API.OperationMethod<
   UpdateSiteReferenceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(889, __c111, 1) as any as S.Schema<UpdateSiteReferenceRequest>,
-  output: __S(1777, __c222, 1) as any as S.Schema<UpdateSiteReferenceResponse>,
+  input: __S(905, __c113, 1) as any as S.Schema<UpdateSiteReferenceRequest>,
+  output: __S(906, __c113, 2) as any as S.Schema<UpdateSiteReferenceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8939,8 +9278,8 @@ export const UpdateSitesByServiceGroup: API.OperationMethod<
   UpdateSitesByServiceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c112, 0) as any as S.Schema<UpdateSitesByServiceGroupRequest>,
-  output: __S(1762, __c220, 2) as any as S.Schema<UpdateSitesByServiceGroupResponse>,
+  input: __S(912, __c114, 0) as any as S.Schema<UpdateSitesByServiceGroupRequest>,
+  output: __S(1896, __c237, 0) as any as S.Schema<UpdateSitesByServiceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8954,8 +9293,8 @@ export const UpdateSitesBySubscription: API.OperationMethod<
   UpdateSitesBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(904, __c113, 0) as any as S.Schema<UpdateSitesBySubscriptionRequest>,
-  output: __S(1762, __c220, 2) as any as S.Schema<UpdateSitesBySubscriptionResponse>,
+  input: __S(920, __c115, 0) as any as S.Schema<UpdateSitesBySubscriptionRequest>,
+  output: __S(1896, __c237, 0) as any as S.Schema<UpdateSitesBySubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8969,8 +9308,8 @@ export const UpdateSolution: API.OperationMethod<
   UpdateSolutionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c114, 0) as any as S.Schema<UpdateSolutionRequest>,
-  output: __S(1811, __c226, 3) as any as S.Schema<UpdateSolutionResponse>,
+  input: __S(928, __c116, 0) as any as S.Schema<UpdateSolutionRequest>,
+  output: __S(929, __c116, 1) as any as S.Schema<UpdateSolutionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8984,8 +9323,8 @@ export const UpdateSolutionTemplate: API.OperationMethod<
   UpdateSolutionTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(921, __c115, 1) as any as S.Schema<UpdateSolutionTemplateRequest>,
-  output: __S(1897, __c237, 1) as any as S.Schema<UpdateSolutionTemplateResponse>,
+  input: __S(937, __c117, 1) as any as S.Schema<UpdateSolutionTemplateRequest>,
+  output: __S(2064, __c258, 0) as any as S.Schema<UpdateSolutionTemplateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8999,8 +9338,8 @@ export const UpdateSolutionTemplateVersion: API.OperationMethod<
   UpdateSolutionTemplateVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(929, __c116, 1) as any as S.Schema<UpdateSolutionTemplateVersionRequest>,
-  output: __S(281, __c35, 1) as any as S.Schema<UpdateSolutionTemplateVersionResponse>,
+  input: __S(945, __c118, 1) as any as S.Schema<UpdateSolutionTemplateVersionRequest>,
+  output: __S(2080, __c260, 0) as any as S.Schema<UpdateSolutionTemplateVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9014,8 +9353,8 @@ export const UpdateSolutionVersion: API.OperationMethod<
   UpdateSolutionVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(937, __c117, 1) as any as S.Schema<UpdateSolutionVersionRequest>,
-  output: __S(1927, __c240, 7) as any as S.Schema<UpdateSolutionVersionResponse>,
+  input: __S(953, __c119, 1) as any as S.Schema<UpdateSolutionVersionRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<UpdateSolutionVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9029,8 +9368,8 @@ export const UpdateTarget: API.OperationMethod<
   UpdateTargetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(945, __c118, 1) as any as S.Schema<UpdateTargetRequest>,
-  output: __S(1937, __c242, 1) as any as S.Schema<UpdateTargetResponse>,
+  input: __S(961, __c120, 1) as any as S.Schema<UpdateTargetRequest>,
+  output: __S(962, __c120, 2) as any as S.Schema<UpdateTargetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9044,8 +9383,8 @@ export const UpdateTargetExternalValidationStatus: API.OperationMethod<
   UpdateTargetExternalValidationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c120, 0) as any as S.Schema<UpdateTargetExternalValidationStatusRequest>,
-  output: __S(1927, __c240, 7) as any as S.Schema<UpdateTargetExternalValidationStatusResponse>,
+  input: __S(976, __c122, 0) as any as S.Schema<UpdateTargetExternalValidationStatusRequest>,
+  output: __S(512, __c64, 0) as any as S.Schema<UpdateTargetExternalValidationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9059,8 +9398,8 @@ export const UpdateWorkflow: API.OperationMethod<
   UpdateWorkflowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(968, __c121, 0) as any as S.Schema<UpdateWorkflowRequest>,
-  output: __S(1953, __c244, 1) as any as S.Schema<UpdateWorkflowResponse>,
+  input: __S(984, __c123, 0) as any as S.Schema<UpdateWorkflowRequest>,
+  output: __S(985, __c123, 1) as any as S.Schema<UpdateWorkflowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9074,8 +9413,8 @@ export const UpdateWorkflowVersion: API.OperationMethod<
   UpdateWorkflowVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(977, __c122, 1) as any as S.Schema<UpdateWorkflowVersionRequest>,
-  output: __S(1975, __c246, 7) as any as S.Schema<UpdateWorkflowVersionResponse>,
+  input: __S(993, __c124, 1) as any as S.Schema<UpdateWorkflowVersionRequest>,
+  output: __S(994, __c124, 2) as any as S.Schema<UpdateWorkflowVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9089,8 +9428,8 @@ export const WorkflowsCreateOrUpdate: API.OperationMethod<
   WorkflowsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(984, __c123, 0) as any as S.Schema<WorkflowsCreateOrUpdateRequest>,
-  output: __S(1953, __c244, 1) as any as S.Schema<WorkflowsCreateOrUpdateResponse>,
+  input: __S(1000, __c125, 0) as any as S.Schema<WorkflowsCreateOrUpdateRequest>,
+  output: __S(1001, __c125, 1) as any as S.Schema<WorkflowsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9104,8 +9443,8 @@ export const WorkflowVersionsCreateOrUpdate: API.OperationMethod<
   WorkflowVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(993, __c124, 1) as any as S.Schema<WorkflowVersionsCreateOrUpdateRequest>,
-  output: __S(1975, __c246, 7) as any as S.Schema<WorkflowVersionsCreateOrUpdateResponse>,
+  input: __S(1009, __c126, 1) as any as S.Schema<WorkflowVersionsCreateOrUpdateRequest>,
+  output: __S(1010, __c126, 2) as any as S.Schema<WorkflowVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9202,9 +9541,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "BulkSolutionTemplateVersionReviewSolutionResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BulkSolutionTemplateVersionReviewSolutionResponse" });
   }
 }
 function __c4(j: number): any {
@@ -9212,7 +9554,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(1488, __c186, 0)),
+          properties: S.optional(__S(1560, __c195, 0)),
         }),
       ).annotate({ identifier: "ConfigTemplateVersionInput" });
     case 1:
@@ -9233,6 +9575,19 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateConfigTemplateVersionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1568, __c196, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateConfigTemplateVersionResponse" });
   }
 }
 function __c5(j: number): any {
@@ -9251,7 +9606,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListConfigurationReferencesRequest" });
     case 1:
-      return S.Array(__S(1673, __c209, 1));
+      return S.Array(__S(1793, __c224, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9282,7 +9637,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2005, __c250, 5));
+      return S.Array(__S(1496, __c187, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9330,7 +9685,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1264, __c158, 0));
+      return S.Array(__S(1512, __c189, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9378,7 +9733,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1289, __c161, 1));
+      return S.Array(__S(1528, __c191, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9432,8 +9787,8 @@ function __c15(j: number): any {
           billingModel: S.String,
           connectionIntent: S.String,
           cloud: S.optional(S.String),
-          billingConfiguration: S.optional(__S(1282, __c160, 2)),
-          benefitPlans: S.optional(__S(1280, __c160, 0)),
+          billingConfiguration: S.optional(__S(1290, __c161, 2)),
+          benefitPlans: S.optional(__S(1288, __c161, 0)),
         }),
       ).annotate({ identifier: "DisconnectedOperationDeploymentManifest" });
   }
@@ -9456,7 +9811,7 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListDynamicConfigurationByConfigurationRequest" });
     case 1:
-      return S.Array(__S(1305, __c163, 1));
+      return S.Array(__S(1544, __c193, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9485,7 +9840,7 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListDynamicConfigurationVersionByDynamicConfigurationRequest" });
     case 1:
-      return S.Array(__S(1321, __c165, 1));
+      return S.Array(__S(1584, __c198, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9521,6 +9876,19 @@ function __c18(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSchemaVersionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateSchemaVersionResponse" });
   }
 }
 function __c19(j: number): any {
@@ -9542,17 +9910,6 @@ function __c20(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaVersionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(160, __c20, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateSchemaVersionResponse" });
   }
 }
 function __c21(j: number): any {
@@ -9573,7 +9930,7 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "ListDynamicSchemaBySchemaRequest" });
     case 1:
-      return S.Array(__S(1337, __c167, 1));
+      return S.Array(__S(1600, __c200, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9606,7 +9963,7 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(161, __c20, 1));
+      return S.Array(__S(1616, __c202, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9636,7 +9993,7 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListExecutionByWorkflowVersionRequest" });
     case 1:
-      return S.Array(__S(1364, __c170, 4));
+      return S.Array(__S(1632, __c204, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9664,7 +10021,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListHardwareSettingsByParentRequest" });
     case 1:
-      return S.Array(__S(1545, __c193, 1));
+      return S.Array(__S(1648, __c206, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9690,7 +10047,7 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListHierarchyConfigurationMetadatasByParentRequest" });
     case 1:
-      return S.Array(__S(1561, __c195, 1));
+      return S.Array(__S(1673, __c209, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9717,7 +10074,7 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListHierarchyConfigurationMetadataVersionByParentRequest" });
     case 1:
-      return S.Array(__S(1577, __c197, 1));
+      return S.Array(__S(1689, __c211, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9748,7 +10105,7 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ListImageByDisconnectedOperationRequest" });
     case 1:
-      return S.Array(__S(1593, __c199, 1));
+      return S.Array(__S(1705, __c213, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9777,7 +10134,7 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListInstanceBySolutionRequest" });
     case 1:
-      return S.Array(__S(1633, __c204, 1));
+      return S.Array(__S(1728, __c216, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9807,7 +10164,7 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListInstanceHistoryByInstanceRequest" });
     case 1:
-      return S.Array(__S(1651, __c206, 3));
+      return S.Array(__S(1771, __c221, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9833,7 +10190,7 @@ function __c31(j: number): any {
         ),
       ).annotate({ identifier: "ListJobByTargetRequest" });
     case 1:
-      return S.Array(__S(1695, __c211, 7));
+      return S.Array(__S(1815, __c226, 7));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9869,6 +10226,19 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateSolutionTemplateVersionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(280, __c35, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateSolutionTemplateVersionResponse" });
   }
 }
 function __c33(j: number): any {
@@ -9901,17 +10271,6 @@ function __c35(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionTemplateVersionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(280, __c35, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "CreateSolutionTemplateVersionResponse" });
   }
 }
 function __c36(j: number): any {
@@ -9983,10 +10342,10 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(1712, __c214, 0)),
+          properties: S.optional(__S(1832, __c229, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Schema" });
@@ -10034,7 +10393,7 @@ function __c40(j: number): any {
         ),
       ).annotate({ identifier: "ListSchemaReferenceByResourceGroupRequest" });
     case 1:
-      return S.Array(__S(1737, __c217, 1));
+      return S.Array(__S(1864, __c233, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10084,7 +10443,7 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1762, __c220, 2));
+      return S.Array(__S(1896, __c237, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10112,7 +10471,7 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "ListSiteReferenceByContextRequest" });
     case 1:
-      return S.Array(__S(1777, __c222, 1));
+      return S.Array(__S(1912, __c239, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10174,7 +10533,7 @@ function __c47(j: number): any {
         ),
       ).annotate({ identifier: "ListSolutionByTargetRequest" });
     case 1:
-      return S.Array(__S(1811, __c226, 3));
+      return S.Array(__S(1952, __c244, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10219,7 +10578,7 @@ function __c49(j: number): any {
         ),
       ).annotate({ identifier: "ListSolutionMetadatasByParentRequest" });
     case 1:
-      return S.Array(__S(1825, __c228, 1));
+      return S.Array(__S(1977, __c247, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10246,7 +10605,7 @@ function __c50(j: number): any {
         ),
       ).annotate({ identifier: "ListSolutionMetadataVersionByParentRequest" });
     case 1:
-      return S.Array(__S(1865, __c233, 1));
+      return S.Array(__S(2025, __c253, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10275,7 +10634,7 @@ function __c51(j: number): any {
         ),
       ).annotate({ identifier: "ListSolutionSchemaBySolutionTemplateVersionRequest" });
     case 1:
-      return S.Array(__S(1881, __c235, 1));
+      return S.Array(__S(2041, __c255, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10306,7 +10665,7 @@ function __c52(j: number): any {
 function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1897, __c237, 1));
+      return S.Array(__S(2064, __c258, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10351,7 +10710,7 @@ function __c55(j: number): any {
         ),
       ).annotate({ identifier: "ListSolutionTemplateVersionBySolutionTemplateRequest" });
     case 1:
-      return S.Array(__S(281, __c35, 1));
+      return S.Array(__S(2080, __c260, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10380,7 +10739,7 @@ function __c56(j: number): any {
         ),
       ).annotate({ identifier: "ListSolutionVersionBySolutionRequest" });
     case 1:
-      return S.Array(__S(1927, __c240, 7));
+      return S.Array(__S(2096, __c262, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10411,7 +10770,7 @@ function __c57(j: number): any {
 function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1937, __c242, 1));
+      return S.Array(__S(2120, __c265, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10456,7 +10815,7 @@ function __c60(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkflowByContextRequest" });
     case 1:
-      return S.Array(__S(1953, __c244, 1));
+      return S.Array(__S(2144, __c268, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10505,7 +10864,7 @@ function __c62(j: number): any {
         ),
       ).annotate({ identifier: "ListWorkflowVersionByWorkflowRequest" });
     case 1:
-      return S.Array(__S(1975, __c246, 7));
+      return S.Array(__S(2168, __c271, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10540,6 +10899,24 @@ function __c64(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2110, __c263, 6)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PublishTargetSolutionVersionResponse" });
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
@@ -10555,7 +10932,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "RemoveConfigTemplateVersionRequest" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10565,7 +10942,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "RemoveVersionResponse" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10585,7 +10962,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "RemoveSchemaVersionRequest" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10605,7 +10982,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "RemoveSolutionTemplateVersionRequest" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10626,7 +11003,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "RemoveTargetRevisionRequest" });
   }
 }
-function __c69(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10648,7 +11025,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "ReviewTargetSolutionVersionRequest" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10661,7 +11038,7 @@ function __c70(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           schemaReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(560, __c70, 0)),
+          properties: S.optional(__S(568, __c71, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10671,9 +11048,22 @@ function __c70(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SchemaReferencesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1856, __c232, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SchemaReferencesCreateOrUpdateResponse" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10681,9 +11071,9 @@ function __c71(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10693,9 +11083,24 @@ function __c71(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SchemasCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(1832, __c229, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SchemasCreateOrUpdateResponse" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10716,7 +11121,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "SchemaVersionsCreateOrUpdateRequest" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10736,7 +11141,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "DeleteConfigTemplateVersionRequest" });
   }
 }
-function __c74(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10751,7 +11156,7 @@ function __c74(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           siteReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(592, __c74, 0)),
+          properties: S.optional(__S(600, __c75, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10761,16 +11166,28 @@ function __c74(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SiteReferencesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1920, __c240, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SiteReferencesCreateOrUpdateResponse" });
   }
 }
-function __c75(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           servicegroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(608, __c76, 0)),
+          properties: S.optional(__S(624, __c78, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10782,27 +11199,43 @@ function __c75(j: number): any {
       ).annotate({ identifier: "SitesByServiceGroupCreateOrUpdateRequest" });
   }
 }
-function __c76(j: number): any {
+function __c77(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1889, __c236, 1)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SitesByServiceGroupCreateOrUpdateResponse" });
+  }
+}
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          siteAddress: S.optional(__S(1760, __c220, 0)),
-          labels: S.optional(__S(1136, __c142, 0)),
+          siteAddress: S.optional(__S(1888, __c236, 0)),
+          labels: S.optional(__S(1152, __c144, 0)),
         }),
       ).annotate({ identifier: "SitePropertiesInput" });
   }
 }
-function __c77(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(608, __c76, 0)),
+          properties: S.optional(__S(624, __c78, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10814,7 +11247,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "SitesBySubscriptionCreateOrUpdateRequest" });
   }
 }
-function __c78(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10822,7 +11255,7 @@ function __c78(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(608, __c76, 0)),
+          properties: S.optional(__S(624, __c78, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10834,7 +11267,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "SitesCreateOrUpdateRequest" });
   }
 }
-function __c79(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10843,8 +11276,8 @@ function __c79(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10854,15 +11287,29 @@ function __c79(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SolutionsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1962, __c245, 2)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SolutionsCreateOrUpdateResponse" });
   }
 }
-function __c80(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.String,
-          capabilities: __S(1024, __c128, 0),
+          capabilities: __S(1040, __c130, 0),
           state: S.optional(S.String),
           enableExternalValidation: S.optional(S.Boolean),
         }),
@@ -10873,9 +11320,9 @@ function __c80(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(640, __c80, 0)),
+          properties: S.optional(__S(656, __c82, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10885,9 +11332,24 @@ function __c80(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SolutionTemplatesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2056, __c257, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SolutionTemplatesCreateOrUpdateResponse" });
   }
 }
-function __c81(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10896,7 +11358,7 @@ function __c81(j: number): any {
         }),
       ).annotate({ identifier: "BulkDeployTargetDetails" });
     case 1:
-      return S.Array(__S(648, __c81, 0));
+      return S.Array(__S(664, __c83, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10904,7 +11366,7 @@ function __c81(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          targets: __S(649, __c81, 1),
+          targets: __S(665, __c83, 1),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10916,7 +11378,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "SolutionTemplateVersionsBulkDeploySolutionRequest" });
   }
 }
-function __c82(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10929,7 +11391,7 @@ function __c82(j: number): any {
         }),
       ).annotate({ identifier: "BulkPublishTargetDetails" });
     case 1:
-      return S.Array(__S(656, __c82, 0));
+      return S.Array(__S(672, __c84, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10937,7 +11399,7 @@ function __c82(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          targets: __S(657, __c82, 1),
+          targets: __S(673, __c84, 1),
           solutionInstanceName: S.optional(S.String),
           solutionDependencies: S.optional(__S(18, __c2, 2)),
           solutionConfiguration: S.optional(S.String),
@@ -10952,7 +11414,7 @@ function __c82(j: number): any {
       ).annotate({ identifier: "SolutionTemplateVersionsBulkPublishSolutionRequest" });
   }
 }
-function __c83(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -10971,15 +11433,28 @@ function __c83(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SolutionTemplateVersionsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(280, __c35, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SolutionTemplateVersionsCreateOrUpdateResponse" });
   }
 }
-function __c84(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           specification: __S(272, __c34, 0),
-          errorDetails: S.optional(__S(24, __c3, 0)),
+          errorDetails: S.optional(__S(1992, __c249, 0)),
         }),
       ).annotate({ identifier: "SolutionVersionPropertiesInput" });
     case 1:
@@ -10990,8 +11465,8 @@ function __c84(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           solutionVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(672, __c84, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
+          properties: S.optional(__S(688, __c86, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11001,9 +11476,23 @@ function __c84(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SolutionVersionsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2110, __c263, 6)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SolutionVersionsCreateOrUpdateResponse" });
   }
 }
-function __c85(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11022,7 +11511,7 @@ function __c85(j: number): any {
       ).annotate({ identifier: "DeleteConfigurationRequest" });
   }
 }
-function __c86(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11031,7 +11520,7 @@ function __c86(j: number): any {
           displayName: S.String,
           contextId: S.String,
           targetSpecification: S.optional(__S(272, __c34, 0)),
-          capabilities: __S(1024, __c128, 0),
+          capabilities: __S(1040, __c130, 0),
           hierarchyLevel: S.String,
           solutionScope: S.optional(S.String),
           state: S.optional(S.String),
@@ -11043,10 +11532,10 @@ function __c86(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(688, __c86, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
+          properties: S.optional(__S(704, __c88, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11056,9 +11545,25 @@ function __c86(j: number): any {
           }),
         ),
       ).annotate({ identifier: "TargetsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2128, __c266, 0)),
+          eTag: S.optional(S.String),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "TargetsCreateOrUpdateResponse" });
   }
 }
-function __c87(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11082,11 +11587,13 @@ function __c87(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configuration: S.String,
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "ResolvedConfiguration" });
   }
 }
-function __c88(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11106,7 +11613,7 @@ function __c88(j: number): any {
       ).annotate({ identifier: "TargetsUnstageSolutionVersionRequest" });
   }
 }
-function __c89(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11127,7 +11634,7 @@ function __c89(j: number): any {
       ).annotate({ identifier: "UninstallTargetSolutionRequest" });
   }
 }
-function __c90(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11141,8 +11648,8 @@ function __c90(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
-          properties: S.optional(__S(720, __c90, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          properties: S.optional(__S(736, __c92, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11154,7 +11661,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "UpdateConfigTemplateRequest" });
   }
 }
-function __c91(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11163,7 +11670,7 @@ function __c91(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateMetadataName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1008, __c126, 0)),
+          properties: S.optional(__S(1024, __c128, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11173,9 +11680,22 @@ function __c91(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateConfigTemplateMetadatasRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1050, __c131, 2)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateConfigTemplateMetadatasResponse" });
   }
 }
-function __c92(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11190,7 +11710,7 @@ function __c92(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(736, __c92, 0)),
+          properties: S.optional(__S(752, __c94, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11202,7 +11722,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "UpdateConfigTemplateVersionRequest" });
   }
 }
-function __c93(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11210,8 +11730,8 @@ function __c93(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
-          properties: S.optional(__S(24, __c3, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11223,14 +11743,14 @@ function __c93(j: number): any {
       ).annotate({ identifier: "UpdateConfigurationRequest" });
   }
 }
-function __c94(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           configurationReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1664, __c208, 0)),
+          properties: S.optional(__S(1784, __c223, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11242,13 +11762,13 @@ function __c94(j: number): any {
       ).annotate({ identifier: "UpdateConfigurationReferenceRequest" });
   }
 }
-function __c95(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(__S(2001, __c250, 1)),
-          hierarchies: S.optional(__S(2003, __c250, 3)),
+          capabilities: S.optional(__S(2209, __c276, 1)),
+          hierarchies: S.optional(__S(2211, __c276, 3)),
         }),
       ).annotate({ identifier: "ContextUpdateProperties" });
     case 1:
@@ -11257,8 +11777,8 @@ function __c95(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
-          properties: S.optional(__S(760, __c95, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          properties: S.optional(__S(776, __c97, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11268,9 +11788,23 @@ function __c95(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateContextRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2212, __c276, 4)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateContextResponse" });
   }
 }
-function __c96(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11288,7 +11822,7 @@ function __c96(j: number): any {
       ).annotate({ identifier: "DeleteConfigurationReferenceRequest" });
   }
 }
-function __c97(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11296,8 +11830,8 @@ function __c97(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           diagnosticName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11307,9 +11841,25 @@ function __c97(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDiagnosticRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2000, __c250, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateDiagnosticResponse" });
   }
 }
-function __c98(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11322,8 +11872,8 @@ function __c98(j: number): any {
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.optional(S.String),
-          current: S.optional(__S(784, __c98, 0)),
-          upcoming: S.optional(__S(784, __c98, 0)),
+          current: S.optional(__S(800, __c100, 0)),
+          upcoming: S.optional(__S(800, __c100, 0)),
         }),
       ).annotate({ identifier: "BillingConfigurationUpdate" });
     case 2:
@@ -11332,8 +11882,8 @@ function __c98(j: number): any {
           connectionIntent: S.optional(S.String),
           registrationStatus: S.optional(S.String),
           deviceVersion: S.optional(S.String),
-          billingConfiguration: S.optional(__S(785, __c98, 1)),
-          benefitPlans: S.optional(__S(1280, __c160, 0)),
+          billingConfiguration: S.optional(__S(801, __c100, 1)),
+          benefitPlans: S.optional(__S(1288, __c161, 0)),
         }),
       ).annotate({ identifier: "DisconnectedOperationUpdateProperties" });
     case 3:
@@ -11342,8 +11892,8 @@ function __c98(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
-          properties: S.optional(__S(786, __c98, 2)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          properties: S.optional(__S(802, __c100, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11355,7 +11905,7 @@ function __c98(j: number): any {
       ).annotate({ identifier: "UpdateDisconnectedOperationRequest" });
   }
 }
-function __c99(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11370,7 +11920,7 @@ function __c99(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(792, __c99, 0)),
+          properties: S.optional(__S(808, __c101, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11382,7 +11932,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "UpdateDynamicConfigurationRequest" });
   }
 }
-function __c100(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11398,7 +11948,7 @@ function __c100(j: number): any {
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
           dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(800, __c100, 0)),
+          properties: S.optional(__S(816, __c102, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11410,7 +11960,7 @@ function __c100(j: number): any {
       ).annotate({ identifier: "UpdateDynamicConfigurationVersionRequest" });
   }
 }
-function __c101(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11419,7 +11969,7 @@ function __c101(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           dynamicSchemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11431,7 +11981,7 @@ function __c101(j: number): any {
       ).annotate({ identifier: "UpdateDynamicSchemaRequest" });
   }
 }
-function __c102(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11441,7 +11991,7 @@ function __c102(j: number): any {
           schemaName: S.String.pipe(T.Label()),
           dynamicSchemaName: S.String.pipe(T.Label()),
           dynamicSchemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(824, __c103, 0)),
+          properties: S.optional(__S(840, __c105, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11453,7 +12003,7 @@ function __c102(j: number): any {
       ).annotate({ identifier: "UpdateDynamicSchemaVersionRequest" });
   }
 }
-function __c103(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11463,7 +12013,7 @@ function __c103(j: number): any {
       ).annotate({ identifier: "SchemaVersionPropertiesUpdate" });
   }
 }
-function __c104(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11481,7 +12031,7 @@ function __c104(j: number): any {
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
           executionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(832, __c104, 0)),
+          properties: S.optional(__S(848, __c106, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11491,9 +12041,23 @@ function __c104(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateExecutionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1379, __c172, 3)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateExecutionResponse" });
   }
 }
-function __c105(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11508,7 +12072,7 @@ function __c105(j: number): any {
           solutionVersionId: S.optional(S.String),
           targetId: S.optional(S.String),
           activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(840, __c105, 0)),
+          reconciliationPolicy: S.optional(__S(856, __c107, 0)),
           solutionScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstancePropertiesUpdate" });
@@ -11520,7 +12084,7 @@ function __c105(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(841, __c105, 1)),
+          properties: S.optional(__S(857, __c107, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11530,9 +12094,23 @@ function __c105(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateInstanceRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1752, __c219, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateInstanceResponse" });
   }
 }
-function __c106(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11540,8 +12118,8 @@ function __c106(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11553,7 +12131,7 @@ function __c106(j: number): any {
       ).annotate({ identifier: "UpdateSchemaRequest" });
   }
 }
-function __c107(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11566,7 +12144,7 @@ function __c107(j: number): any {
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           schemaReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(856, __c107, 0)),
+          properties: S.optional(__S(872, __c109, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11578,7 +12156,7 @@ function __c107(j: number): any {
       ).annotate({ identifier: "UpdateSchemaReferenceRequest" });
   }
 }
-function __c108(j: number): any {
+function __c110(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11597,7 +12175,7 @@ function __c108(j: number): any {
       ).annotate({ identifier: "DeleteContextRequest" });
   }
 }
-function __c109(j: number): any {
+function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11606,7 +12184,7 @@ function __c109(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           schemaVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(824, __c103, 0)),
+          properties: S.optional(__S(840, __c105, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11618,7 +12196,7 @@ function __c109(j: number): any {
       ).annotate({ identifier: "UpdateSchemaVersionRequest" });
   }
 }
-function __c110(j: number): any {
+function __c112(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11626,7 +12204,7 @@ function __c110(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(608, __c76, 0)),
+          properties: S.optional(__S(624, __c78, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11638,7 +12216,7 @@ function __c110(j: number): any {
       ).annotate({ identifier: "UpdateSiteRequest" });
   }
 }
-function __c111(j: number): any {
+function __c113(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11653,7 +12231,7 @@ function __c111(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           siteReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(888, __c111, 0)),
+          properties: S.optional(__S(904, __c113, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11663,16 +12241,28 @@ function __c111(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSiteReferenceRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1920, __c240, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateSiteReferenceResponse" });
   }
 }
-function __c112(j: number): any {
+function __c114(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           servicegroupName: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(608, __c76, 0)),
+          properties: S.optional(__S(624, __c78, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11684,14 +12274,14 @@ function __c112(j: number): any {
       ).annotate({ identifier: "UpdateSitesByServiceGroupRequest" });
   }
 }
-function __c113(j: number): any {
+function __c115(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           siteName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(608, __c76, 0)),
+          properties: S.optional(__S(624, __c78, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11703,7 +12293,7 @@ function __c113(j: number): any {
       ).annotate({ identifier: "UpdateSitesBySubscriptionRequest" });
   }
 }
-function __c114(j: number): any {
+function __c116(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11712,7 +12302,7 @@ function __c114(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11722,15 +12312,29 @@ function __c114(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSolutionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1962, __c245, 2)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateSolutionResponse" });
   }
 }
-function __c115(j: number): any {
+function __c117(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          capabilities: S.optional(__S(1024, __c128, 0)),
+          capabilities: S.optional(__S(1040, __c130, 0)),
           state: S.optional(S.String),
           enableExternalValidation: S.optional(S.Boolean),
         }),
@@ -11741,8 +12345,8 @@ function __c115(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
-          properties: S.optional(__S(920, __c115, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          properties: S.optional(__S(936, __c117, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11754,7 +12358,7 @@ function __c115(j: number): any {
       ).annotate({ identifier: "UpdateSolutionTemplateRequest" });
   }
 }
-function __c116(j: number): any {
+function __c118(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11771,7 +12375,7 @@ function __c116(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           solutionTemplateName: S.String.pipe(T.Label()),
           solutionTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(928, __c116, 0)),
+          properties: S.optional(__S(944, __c118, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11783,7 +12387,7 @@ function __c116(j: number): any {
       ).annotate({ identifier: "UpdateSolutionTemplateVersionRequest" });
   }
 }
-function __c117(j: number): any {
+function __c119(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11799,7 +12403,7 @@ function __c117(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           solutionVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(936, __c117, 0)),
+          properties: S.optional(__S(952, __c119, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11811,7 +12415,7 @@ function __c117(j: number): any {
       ).annotate({ identifier: "UpdateSolutionVersionRequest" });
   }
 }
-function __c118(j: number): any {
+function __c120(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11820,7 +12424,7 @@ function __c118(j: number): any {
           displayName: S.optional(S.String),
           contextId: S.optional(S.String),
           targetSpecification: S.optional(__S(272, __c34, 0)),
-          capabilities: S.optional(__S(1024, __c128, 0)),
+          capabilities: S.optional(__S(1040, __c130, 0)),
           hierarchyLevel: S.optional(S.String),
           solutionScope: S.optional(S.String),
           state: S.optional(S.String),
@@ -11832,8 +12436,8 @@ function __c118(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
-          properties: S.optional(__S(944, __c118, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          properties: S.optional(__S(960, __c120, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11843,9 +12447,25 @@ function __c118(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateTargetRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2128, __c266, 0)),
+          eTag: S.optional(S.String),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateTargetResponse" });
   }
 }
-function __c119(j: number): any {
+function __c121(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11864,7 +12484,7 @@ function __c119(j: number): any {
       ).annotate({ identifier: "DeleteDiagnosticRequest" });
   }
 }
-function __c120(j: number): any {
+function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11873,7 +12493,7 @@ function __c120(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           targetName: S.String.pipe(T.Label()),
           solutionVersionId: S.String,
-          errorDetails: S.optional(__S(24, __c3, 0)),
+          errorDetails: S.optional(__S(1992, __c249, 0)),
           externalValidationId: S.String,
           validationStatus: S.String,
         }).pipe(
@@ -11887,7 +12507,7 @@ function __c120(j: number): any {
       ).annotate({ identifier: "UpdateTargetExternalValidationStatusRequest" });
   }
 }
-function __c121(j: number): any {
+function __c123(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11896,7 +12516,7 @@ function __c121(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11906,14 +12526,28 @@ function __c121(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkflowRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2152, __c269, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkflowResponse" });
   }
 }
-function __c122(j: number): any {
+function __c124(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stageSpec: S.optional(__S(1973, __c246, 5)),
+          stageSpec: S.optional(__S(2181, __c272, 5)),
           specification: S.optional(__S(272, __c34, 0)),
         }),
       ).annotate({ identifier: "WorkflowVersionPropertiesUpdate" });
@@ -11925,7 +12559,7 @@ function __c122(j: number): any {
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(976, __c122, 0)),
+          properties: S.optional(__S(992, __c124, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -11935,9 +12569,23 @@ function __c122(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWorkflowVersionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2182, __c272, 6)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateWorkflowVersionResponse" });
   }
 }
-function __c123(j: number): any {
+function __c125(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11946,8 +12594,8 @@ function __c123(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11957,14 +12605,28 @@ function __c123(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WorkflowsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2152, __c269, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "WorkflowsCreateOrUpdateResponse" });
   }
 }
-function __c124(j: number): any {
+function __c126(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          stageSpec: __S(1973, __c246, 5),
+          stageSpec: __S(2181, __c272, 5),
           specification: S.optional(__S(272, __c34, 0)),
         }),
       ).annotate({ identifier: "WorkflowVersionPropertiesInput" });
@@ -11976,8 +12638,8 @@ function __c124(j: number): any {
           contextName: S.String.pipe(T.Label()),
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(992, __c124, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
+          properties: S.optional(__S(1008, __c126, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11987,9 +12649,23 @@ function __c124(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WorkflowVersionsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2182, __c272, 6)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "WorkflowVersionsCreateOrUpdateResponse" });
   }
 }
-function __c125(j: number): any {
+function __c127(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -11998,7 +12674,7 @@ function __c125(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateMetadataName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1008, __c126, 0)),
+          properties: S.optional(__S(1024, __c128, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12008,21 +12684,34 @@ function __c125(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ConfigTemplateMetadatasCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1050, __c131, 2)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ConfigTemplateMetadatasCreateOrUpdateResponse" });
   }
 }
-function __c126(j: number): any {
+function __c128(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           contextId: S.optional(S.String),
-          linkedHierarchies: S.optional(__S(1033, __c129, 1)),
-          unLinkedHierarchies: S.optional(__S(1033, __c129, 1)),
+          linkedHierarchies: S.optional(__S(1049, __c131, 1)),
+          unLinkedHierarchies: S.optional(__S(1049, __c131, 1)),
         }),
       ).annotate({ identifier: "ConfigTemplateMetadataPropertiesInput" });
   }
 }
-function __c127(j: number): any {
+function __c129(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12037,47 +12726,36 @@ function __c127(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c128(j: number): any {
+function __c130(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c129(j: number): any {
+function __c131(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          hierarchyIds: S.optional(__S(1024, __c128, 0)),
+          hierarchyIds: S.optional(__S(1040, __c130, 0)),
           level: S.optional(S.String),
         }),
       ).annotate({ identifier: "HierarchyMetadata" });
     case 1:
-      return S.Array(__S(1032, __c129, 0));
+      return S.Array(__S(1048, __c131, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           contextId: S.optional(S.String),
-          linkedHierarchies: S.optional(__S(1033, __c129, 1)),
-          unLinkedHierarchies: S.optional(__S(1033, __c129, 1)),
+          linkedHierarchies: S.optional(__S(1049, __c131, 1)),
+          unLinkedHierarchies: S.optional(__S(1049, __c131, 1)),
           templateUniqueIdentifier: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateMetadataProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1034, __c129, 2)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigTemplateMetadatasCreateOrUpdateResponse" });
   }
 }
-function __c130(j: number): any {
+function __c132(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12096,7 +12774,7 @@ function __c130(j: number): any {
       ).annotate({ identifier: "DeleteDisconnectedOperationRequest" });
   }
 }
-function __c131(j: number): any {
+function __c133(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12116,7 +12794,7 @@ function __c131(j: number): any {
       ).annotate({ identifier: "DeleteDynamicConfigurationRequest" });
   }
 }
-function __c132(j: number): any {
+function __c134(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12137,7 +12815,7 @@ function __c132(j: number): any {
       ).annotate({ identifier: "DeleteDynamicConfigurationVersionRequest" });
   }
 }
-function __c133(j: number): any {
+function __c135(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12157,7 +12835,7 @@ function __c133(j: number): any {
       ).annotate({ identifier: "DeleteDynamicSchemaRequest" });
   }
 }
-function __c134(j: number): any {
+function __c136(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12178,7 +12856,7 @@ function __c134(j: number): any {
       ).annotate({ identifier: "DeleteDynamicSchemaVersionRequest" });
   }
 }
-function __c135(j: number): any {
+function __c137(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12200,7 +12878,7 @@ function __c135(j: number): any {
       ).annotate({ identifier: "DeleteExecutionRequest" });
   }
 }
-function __c136(j: number): any {
+function __c138(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12220,7 +12898,7 @@ function __c136(j: number): any {
       ).annotate({ identifier: "DeleteHardwareSettingsRequest" });
   }
 }
-function __c137(j: number): any {
+function __c139(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12241,7 +12919,7 @@ function __c137(j: number): any {
       ).annotate({ identifier: "DeleteInstanceRequest" });
   }
 }
-function __c138(j: number): any {
+function __c140(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12260,7 +12938,7 @@ function __c138(j: number): any {
       ).annotate({ identifier: "DeleteSchemaRequest" });
   }
 }
-function __c139(j: number): any {
+function __c141(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12278,7 +12956,7 @@ function __c139(j: number): any {
       ).annotate({ identifier: "DeleteSchemaReferenceRequest" });
   }
 }
-function __c140(j: number): any {
+function __c142(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12292,9 +12970,9 @@ function __c140(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(1120, __c140, 0)),
+          properties: S.optional(__S(1136, __c142, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12304,9 +12982,24 @@ function __c140(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ConfigTemplatesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(1144, __c143, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ConfigTemplatesCreateOrUpdateResponse" });
   }
 }
-function __c141(j: number): any {
+function __c143(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12317,28 +13010,15 @@ function __c141(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
-          location: S.String,
-          properties: S.optional(__S(1128, __c141, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigTemplatesCreateOrUpdateResponse" });
   }
 }
-function __c142(j: number): any {
+function __c144(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c143(j: number): any {
+function __c145(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12358,7 +13038,7 @@ function __c143(j: number): any {
       ).annotate({ identifier: "DeleteSchemaVersionRequest" });
   }
 }
-function __c144(j: number): any {
+function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12377,7 +13057,7 @@ function __c144(j: number): any {
       ).annotate({ identifier: "DeleteSiteRequest" });
   }
 }
-function __c145(j: number): any {
+function __c147(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12397,7 +13077,7 @@ function __c145(j: number): any {
       ).annotate({ identifier: "DeleteSiteReferenceRequest" });
   }
 }
-function __c146(j: number): any {
+function __c148(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12415,7 +13095,7 @@ function __c146(j: number): any {
       ).annotate({ identifier: "DeleteSitesByServiceGroupRequest" });
   }
 }
-function __c147(j: number): any {
+function __c149(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12433,7 +13113,7 @@ function __c147(j: number): any {
       ).annotate({ identifier: "DeleteSitesBySubscriptionRequest" });
   }
 }
-function __c148(j: number): any {
+function __c150(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12453,7 +13133,7 @@ function __c148(j: number): any {
       ).annotate({ identifier: "DeleteSolutionRequest" });
   }
 }
-function __c149(j: number): any {
+function __c151(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12472,7 +13152,7 @@ function __c149(j: number): any {
       ).annotate({ identifier: "DeleteSolutionTemplateRequest" });
   }
 }
-function __c150(j: number): any {
+function __c152(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12492,7 +13172,7 @@ function __c150(j: number): any {
       ).annotate({ identifier: "DeleteSolutionTemplateVersionRequest" });
   }
 }
-function __c151(j: number): any {
+function __c153(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12513,7 +13193,7 @@ function __c151(j: number): any {
       ).annotate({ identifier: "DeleteSolutionVersionRequest" });
   }
 }
-function __c152(j: number): any {
+function __c154(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12533,7 +13213,7 @@ function __c152(j: number): any {
       ).annotate({ identifier: "DeleteTargetRequest" });
   }
 }
-function __c153(j: number): any {
+function __c155(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12542,7 +13222,7 @@ function __c153(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           contextId: S.String,
-          hierarchyIds: S.optional(__S(1024, __c128, 0)),
+          hierarchyIds: S.optional(__S(1040, __c130, 0)),
           level: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -12555,7 +13235,7 @@ function __c153(j: number): any {
       ).annotate({ identifier: "ConfigTemplatesLinkToHierarchiesRequest" });
   }
 }
-function __c154(j: number): any {
+function __c156(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12575,7 +13255,7 @@ function __c154(j: number): any {
       ).annotate({ identifier: "DeleteWorkflowRequest" });
   }
 }
-function __c155(j: number): any {
+function __c157(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12596,7 +13276,7 @@ function __c155(j: number): any {
       ).annotate({ identifier: "DeleteWorkflowVersionRequest" });
   }
 }
-function __c156(j: number): any {
+function __c158(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12604,10 +13284,10 @@ function __c156(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           diagnosticName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(24, __c3, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12617,9 +13297,25 @@ function __c156(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DiagnosticsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2000, __c250, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DiagnosticsCreateOrUpdateResponse" });
   }
 }
-function __c157(j: number): any {
+function __c159(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12630,25 +13326,7 @@ function __c157(j: number): any {
       ).annotate({ identifier: "AzureResourceManagerCommonTypesExtendedLocation" });
   }
 }
-function __c158(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
-          location: S.String,
-          properties: S.optional(__S(1840, __c230, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DiagnosticsCreateOrUpdateResponse" });
-  }
-}
-function __c159(j: number): any {
+function __c160(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12661,8 +13339,8 @@ function __c159(j: number): any {
       return S.suspend(() =>
         S.Struct({
           autoRenew: S.String,
-          current: __S(1272, __c159, 0),
-          upcoming: S.optional(__S(1272, __c159, 0)),
+          current: __S(1280, __c160, 0),
+          upcoming: S.optional(__S(1280, __c160, 0)),
         }),
       ).annotate({ identifier: "BillingConfigurationInput" });
     case 2:
@@ -12671,8 +13349,8 @@ function __c159(j: number): any {
           connectionIntent: S.String,
           registrationStatus: S.optional(S.String),
           deviceVersion: S.optional(S.String),
-          billingConfiguration: S.optional(__S(1273, __c159, 1)),
-          benefitPlans: S.optional(__S(1280, __c160, 0)),
+          billingConfiguration: S.optional(__S(1281, __c160, 1)),
+          benefitPlans: S.optional(__S(1288, __c161, 0)),
         }),
       ).annotate({ identifier: "DisconnectedOperationPropertiesInput" });
     case 3:
@@ -12681,9 +13359,9 @@ function __c159(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(1274, __c159, 2)),
+          properties: S.optional(__S(1282, __c160, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12693,9 +13371,23 @@ function __c159(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DisconnectedOperationsCreateOrUpdateRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(1296, __c162, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DisconnectedOperationsCreateOrUpdateResponse" });
   }
 }
-function __c160(j: number): any {
+function __c161(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12718,13 +13410,13 @@ function __c160(j: number): any {
         S.Struct({
           autoRenew: S.String,
           billingStatus: S.String,
-          current: __S(1281, __c160, 1),
-          upcoming: S.optional(__S(1281, __c160, 1)),
+          current: __S(1289, __c161, 1),
+          upcoming: S.optional(__S(1289, __c161, 1)),
         }),
       ).annotate({ identifier: "BillingConfiguration" });
   }
 }
-function __c161(j: number): any {
+function __c162(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12736,25 +13428,13 @@ function __c161(j: number): any {
           connectionStatus: S.optional(S.String),
           registrationStatus: S.optional(S.String),
           deviceVersion: S.optional(S.String),
-          billingConfiguration: S.optional(__S(1282, __c160, 2)),
-          benefitPlans: S.optional(__S(1280, __c160, 0)),
+          billingConfiguration: S.optional(__S(1290, __c161, 2)),
+          benefitPlans: S.optional(__S(1288, __c161, 0)),
         }),
       ).annotate({ identifier: "DisconnectedOperationProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
-          location: S.String,
-          properties: S.optional(__S(1288, __c161, 0)),
-        }),
-      ).annotate({ identifier: "DisconnectedOperationsCreateOrUpdateResponse" });
   }
 }
-function __c162(j: number): any {
+function __c163(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12769,7 +13449,7 @@ function __c162(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1296, __c162, 0)),
+          properties: S.optional(__S(1304, __c163, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12779,9 +13459,21 @@ function __c162(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DynamicConfigurationsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1312, __c164, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DynamicConfigurationsCreateOrUpdateResponse" });
   }
 }
-function __c163(j: number): any {
+function __c164(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12793,19 +13485,9 @@ function __c163(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicConfigurationProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1304, __c163, 0)),
-        }),
-      ).annotate({ identifier: "DynamicConfigurationsCreateOrUpdateResponse" });
   }
 }
-function __c164(j: number): any {
+function __c165(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12821,7 +13503,7 @@ function __c164(j: number): any {
           configurationName: S.String.pipe(T.Label()),
           dynamicConfigurationName: S.String.pipe(T.Label()),
           dynamicConfigurationVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1312, __c164, 0)),
+          properties: S.optional(__S(1320, __c165, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12831,9 +13513,21 @@ function __c164(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DynamicConfigurationVersionsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1328, __c166, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DynamicConfigurationVersionsCreateOrUpdateResponse" });
   }
 }
-function __c165(j: number): any {
+function __c166(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12846,19 +13540,9 @@ function __c165(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicConfigurationVersionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1320, __c165, 0)),
-        }),
-      ).annotate({ identifier: "DynamicConfigurationVersionsCreateOrUpdateResponse" });
   }
 }
-function __c166(j: number): any {
+function __c167(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12867,7 +13551,7 @@ function __c166(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           schemaName: S.String.pipe(T.Label()),
           dynamicSchemaName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12877,9 +13561,22 @@ function __c166(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DynamicSchemasCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1344, __c168, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DynamicSchemasCreateOrUpdateResponse" });
   }
 }
-function __c167(j: number): any {
+function __c168(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12890,20 +13587,9 @@ function __c167(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DynamicSchemaProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1336, __c167, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "DynamicSchemasCreateOrUpdateResponse" });
   }
 }
-function __c168(j: number): any {
+function __c169(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12925,7 +13611,24 @@ function __c168(j: number): any {
       ).annotate({ identifier: "DynamicSchemaVersionsCreateOrUpdateRequest" });
   }
 }
-function __c169(j: number): any {
+function __c170(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DynamicSchemaVersionsCreateOrUpdateResponse" });
+  }
+}
+function __c171(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12943,8 +13646,8 @@ function __c169(j: number): any {
           workflowName: S.String.pipe(T.Label()),
           versionName: S.String.pipe(T.Label()),
           executionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1352, __c169, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
+          properties: S.optional(__S(1368, __c171, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12954,9 +13657,23 @@ function __c169(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ExecutionsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1379, __c172, 3)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ExecutionsCreateOrUpdateResponse" });
   }
 }
-function __c170(j: number): any {
+function __c172(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -12972,14 +13689,14 @@ function __c170(j: number): any {
         }),
       ).annotate({ identifier: "StageStatus" });
     case 1:
-      return S.Array(__S(1360, __c170, 0));
+      return S.Array(__S(1376, __c172, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
           status: S.optional(S.Number),
           statusMessage: S.optional(S.String),
-          stageHistory: S.optional(__S(1361, __c170, 1)),
+          stageHistory: S.optional(__S(1377, __c172, 1)),
         }),
       ).annotate({ identifier: "ExecutionStatus" });
     case 3:
@@ -12987,25 +13704,13 @@ function __c170(j: number): any {
         S.Struct({
           workflowVersionId: S.String,
           specification: S.optional(__S(272, __c34, 0)),
-          status: S.optional(__S(1362, __c170, 2)),
+          status: S.optional(__S(1378, __c172, 2)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExecutionProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1363, __c170, 3)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ExecutionsCreateOrUpdateResponse" });
   }
 }
-function __c171(j: number): any {
+function __c173(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13026,7 +13731,7 @@ function __c171(j: number): any {
       ).annotate({ identifier: "GetArtifactRequest" });
   }
 }
-function __c172(j: number): any {
+function __c174(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13044,13 +13749,13 @@ function __c172(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1376, __c172, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1392, __c174, 0)),
         }),
       ).annotate({ identifier: "GetArtifactResponse" });
   }
 }
-function __c173(j: number): any {
+function __c175(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13059,7 +13764,7 @@ function __c173(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           contextId: S.String,
-          hierarchyIds: S.optional(__S(1024, __c128, 0)),
+          hierarchyIds: S.optional(__S(1040, __c130, 0)),
           level: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -13072,7 +13777,7 @@ function __c173(j: number): any {
       ).annotate({ identifier: "ConfigTemplatesUnLinkFromHierarchiesRequest" });
   }
 }
-function __c174(j: number): any {
+function __c176(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13091,7 +13796,24 @@ function __c174(j: number): any {
       ).annotate({ identifier: "GetConfigTemplateRequest" });
   }
 }
-function __c175(j: number): any {
+function __c177(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(1144, __c143, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetConfigTemplateResponse" });
+  }
+}
+function __c178(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13111,7 +13833,22 @@ function __c175(j: number): any {
       ).annotate({ identifier: "GetConfigTemplateMetadatasRequest" });
   }
 }
-function __c176(j: number): any {
+function __c179(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1050, __c131, 2)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetConfigTemplateMetadatasResponse" });
+  }
+}
+function __c180(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13132,7 +13869,7 @@ function __c176(j: number): any {
       ).annotate({ identifier: "GetConfigTemplateSchemaRequest" });
   }
 }
-function __c177(j: number): any {
+function __c181(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13148,14 +13885,14 @@ function __c177(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1416, __c177, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1448, __c181, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetConfigTemplateSchemaResponse" });
   }
 }
-function __c178(j: number): any {
+function __c182(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13175,7 +13912,22 @@ function __c178(j: number): any {
       ).annotate({ identifier: "GetConfigTemplateVersionRequest" });
   }
 }
-function __c179(j: number): any {
+function __c183(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1568, __c196, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetConfigTemplateVersionResponse" });
+  }
+}
+function __c184(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13194,7 +13946,7 @@ function __c179(j: number): any {
       ).annotate({ identifier: "GetConfigurationRequest" });
   }
 }
-function __c180(j: number): any {
+function __c185(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13212,7 +13964,7 @@ function __c180(j: number): any {
       ).annotate({ identifier: "GetConfigurationReferenceRequest" });
   }
 }
-function __c181(j: number): any {
+function __c186(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13231,7 +13983,23 @@ function __c181(j: number): any {
       ).annotate({ identifier: "GetContextRequest" });
   }
 }
-function __c182(j: number): any {
+function __c187(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2212, __c276, 4)),
+        }),
+      ).annotate({ identifier: "GetContextResponse" });
+  }
+}
+function __c188(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13250,7 +14018,25 @@ function __c182(j: number): any {
       ).annotate({ identifier: "GetDiagnosticRequest" });
   }
 }
-function __c183(j: number): any {
+function __c189(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2000, __c250, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDiagnosticResponse" });
+  }
+}
+function __c190(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13269,7 +14055,23 @@ function __c183(j: number): any {
       ).annotate({ identifier: "GetDisconnectedOperationRequest" });
   }
 }
-function __c184(j: number): any {
+function __c191(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(1296, __c162, 0)),
+        }),
+      ).annotate({ identifier: "GetDisconnectedOperationResponse" });
+  }
+}
+function __c192(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13289,7 +14091,21 @@ function __c184(j: number): any {
       ).annotate({ identifier: "GetDynamicConfigurationRequest" });
   }
 }
-function __c185(j: number): any {
+function __c193(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1312, __c164, 0)),
+        }),
+      ).annotate({ identifier: "GetDynamicConfigurationResponse" });
+  }
+}
+function __c194(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13298,7 +14114,7 @@ function __c185(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configTemplateName: S.String.pipe(T.Label()),
           configTemplateVersionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1488, __c186, 0)),
+          properties: S.optional(__S(1560, __c195, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13308,9 +14124,22 @@ function __c185(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ConfigTemplateVersionsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1568, __c196, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ConfigTemplateVersionsCreateOrUpdateResponse" });
   }
 }
-function __c186(j: number): any {
+function __c195(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13320,7 +14149,7 @@ function __c186(j: number): any {
       ).annotate({ identifier: "ConfigTemplateVersionPropertiesInput" });
   }
 }
-function __c187(j: number): any {
+function __c196(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13329,20 +14158,9 @@ function __c187(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateVersionProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1496, __c187, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "ConfigTemplateVersionsCreateOrUpdateResponse" });
   }
 }
-function __c188(j: number): any {
+function __c197(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13363,7 +14181,21 @@ function __c188(j: number): any {
       ).annotate({ identifier: "GetDynamicConfigurationVersionRequest" });
   }
 }
-function __c189(j: number): any {
+function __c198(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1328, __c166, 0)),
+        }),
+      ).annotate({ identifier: "GetDynamicConfigurationVersionResponse" });
+  }
+}
+function __c199(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13383,7 +14215,22 @@ function __c189(j: number): any {
       ).annotate({ identifier: "GetDynamicSchemaRequest" });
   }
 }
-function __c190(j: number): any {
+function __c200(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1344, __c168, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDynamicSchemaResponse" });
+  }
+}
+function __c201(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13404,7 +14251,22 @@ function __c190(j: number): any {
       ).annotate({ identifier: "GetDynamicSchemaVersionRequest" });
   }
 }
-function __c191(j: number): any {
+function __c202(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(160, __c20, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetDynamicSchemaVersionResponse" });
+  }
+}
+function __c203(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13426,7 +14288,23 @@ function __c191(j: number): any {
       ).annotate({ identifier: "GetExecutionRequest" });
   }
 }
-function __c192(j: number): any {
+function __c204(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1379, __c172, 3)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetExecutionResponse" });
+  }
+}
+function __c205(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13446,7 +14324,21 @@ function __c192(j: number): any {
       ).annotate({ identifier: "GetHardwareSettingsRequest" });
   }
 }
-function __c193(j: number): any {
+function __c206(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1656, __c207, 0)),
+        }),
+      ).annotate({ identifier: "GetHardwareSettingsResponse" });
+  }
+}
+function __c207(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13463,19 +14355,9 @@ function __c193(j: number): any {
           deviceId: S.String,
         }),
       ).annotate({ identifier: "HardwareSettingProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1544, __c193, 0)),
-        }),
-      ).annotate({ identifier: "GetHardwareSettingsResponse" });
   }
 }
-function __c194(j: number): any {
+function __c208(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13493,7 +14375,7 @@ function __c194(j: number): any {
       ).annotate({ identifier: "GetHierarchyConfigurationMetadatasRequest" });
   }
 }
-function __c195(j: number): any {
+function __c209(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13508,13 +14390,13 @@ function __c195(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1560, __c195, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1672, __c209, 0)),
         }),
       ).annotate({ identifier: "GetHierarchyConfigurationMetadatasResponse" });
   }
 }
-function __c196(j: number): any {
+function __c210(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13533,7 +14415,7 @@ function __c196(j: number): any {
       ).annotate({ identifier: "GetHierarchyConfigurationMetadataVersionRequest" });
   }
 }
-function __c197(j: number): any {
+function __c211(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13551,13 +14433,13 @@ function __c197(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1576, __c197, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1688, __c211, 0)),
         }),
       ).annotate({ identifier: "GetHierarchyConfigurationMetadataVersionResponse" });
   }
 }
-function __c198(j: number): any {
+function __c212(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13577,7 +14459,7 @@ function __c198(j: number): any {
       ).annotate({ identifier: "GetImageRequest" });
   }
 }
-function __c199(j: number): any {
+function __c213(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13588,8 +14470,8 @@ function __c199(j: number): any {
           releaseNotes: S.String,
           releaseDate: S.String,
           releaseType: S.String,
-          compatibleVersions: S.optional(__S(1024, __c128, 0)),
-          updateProperties: S.optional(__S(1600, __c200, 0)),
+          compatibleVersions: S.optional(__S(1040, __c130, 0)),
+          updateProperties: S.optional(__S(1712, __c214, 0)),
         }),
       ).annotate({ identifier: "ImageProperties" });
     case 1:
@@ -13598,13 +14480,13 @@ function __c199(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1592, __c199, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1704, __c213, 0)),
         }),
       ).annotate({ identifier: "GetImageResponse" });
   }
 }
-function __c200(j: number): any {
+function __c214(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13618,7 +14500,7 @@ function __c200(j: number): any {
       ).annotate({ identifier: "ImageUpdateProperties" });
   }
 }
-function __c201(j: number): any {
+function __c215(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13639,7 +14521,23 @@ function __c201(j: number): any {
       ).annotate({ identifier: "GetInstanceRequest" });
   }
 }
-function __c202(j: number): any {
+function __c216(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1752, __c219, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetInstanceResponse" });
+  }
+}
+function __c217(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13649,17 +14547,17 @@ function __c202(j: number): any {
         }),
       ).annotate({ identifier: "ComponentStatus" });
     case 1:
-      return S.Array(__S(1616, __c202, 0));
+      return S.Array(__S(1736, __c217, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           status: S.optional(S.String),
-          componentStatuses: S.optional(__S(1617, __c202, 1)),
+          componentStatuses: S.optional(__S(1737, __c217, 1)),
         }),
       ).annotate({ identifier: "TargetStatus" });
     case 3:
-      return S.Array(__S(1618, __c202, 2));
+      return S.Array(__S(1738, __c217, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13670,12 +14568,12 @@ function __c202(j: number): any {
           status: S.optional(S.String),
           statusDetails: S.optional(S.String),
           generation: S.optional(S.Number),
-          targetStatuses: S.optional(__S(1619, __c202, 3)),
+          targetStatuses: S.optional(__S(1739, __c217, 3)),
         }),
       ).annotate({ identifier: "DeploymentStatus" });
   }
 }
-function __c203(j: number): any {
+function __c218(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13686,7 +14584,7 @@ function __c203(j: number): any {
       ).annotate({ identifier: "ReconciliationPolicyProperties" });
   }
 }
-function __c204(j: number): any {
+function __c219(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13694,28 +14592,16 @@ function __c204(j: number): any {
           solutionVersionId: S.String,
           targetId: S.String,
           activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(1624, __c203, 0)),
+          reconciliationPolicy: S.optional(__S(1744, __c218, 0)),
           solutionScope: S.optional(S.String),
-          status: S.optional(__S(1620, __c202, 4)),
+          status: S.optional(__S(1740, __c217, 4)),
           deploymentTimestampEpoch: S.optional(S.Number),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1632, __c204, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetInstanceResponse" });
   }
 }
-function __c205(j: number): any {
+function __c220(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13737,7 +14623,7 @@ function __c205(j: number): any {
       ).annotate({ identifier: "GetInstanceHistoryRequest" });
   }
 }
-function __c206(j: number): any {
+function __c221(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13757,12 +14643,12 @@ function __c206(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          solutionVersion: __S(1648, __c206, 0),
-          target: __S(1649, __c206, 1),
+          solutionVersion: __S(1768, __c221, 0),
+          target: __S(1769, __c221, 1),
           solutionScope: S.optional(S.String),
           activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(1624, __c203, 0)),
-          status: S.optional(__S(1620, __c202, 4)),
+          reconciliationPolicy: S.optional(__S(1744, __c218, 0)),
+          status: S.optional(__S(1740, __c217, 4)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceHistoryProperties" });
@@ -13772,22 +14658,22 @@ function __c206(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1650, __c206, 2)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1770, __c221, 2)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetInstanceHistoryResponse" });
   }
 }
-function __c207(j: number): any {
+function __c222(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
           configurationReferenceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1664, __c208, 0)),
+          properties: S.optional(__S(1784, __c223, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13799,7 +14685,7 @@ function __c207(j: number): any {
       ).annotate({ identifier: "ConfigurationReferencesCreateOrUpdateRequest" });
   }
 }
-function __c208(j: number): any {
+function __c223(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13809,7 +14695,7 @@ function __c208(j: number): any {
       ).annotate({ identifier: "ConfigurationReferencePropertiesInput" });
   }
 }
-function __c209(j: number): any {
+function __c224(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13824,13 +14710,13 @@ function __c209(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1672, __c209, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1792, __c224, 0)),
         }),
       ).annotate({ identifier: "ConfigurationReferencesCreateOrUpdateResponse" });
   }
 }
-function __c210(j: number): any {
+function __c225(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13848,7 +14734,7 @@ function __c210(j: number): any {
       ).annotate({ identifier: "GetJobRequest" });
   }
 }
-function __c211(j: number): any {
+function __c226(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13863,7 +14749,7 @@ function __c211(j: number): any {
         }),
       ).annotate({ identifier: "JobStepStatisticsBase" });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1691, __c211, 3)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1811, __c226, 3)));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -13872,13 +14758,13 @@ function __c211(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           message: S.optional(S.String),
-          statistics: S.optional(__S(1689, __c211, 1)),
-          steps: S.optional(__S(1690, __c211, 2)),
-          errorDetails: S.optional(__S(1701, __c212, 5)),
+          statistics: S.optional(__S(1809, __c226, 1)),
+          steps: S.optional(__S(1810, __c226, 2)),
+          errorDetails: S.optional(__S(1821, __c227, 5)),
         }),
       ).annotate({ identifier: "JobStep" });
     case 4:
-      return S.Array(__S(1691, __c211, 3));
+      return S.Array(__S(1811, __c226, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -13892,13 +14778,13 @@ function __c211(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           status: S.String,
-          jobParameter: S.optional(__S(1688, __c211, 0)),
+          jobParameter: S.optional(__S(1808, __c226, 0)),
           correlationId: S.optional(S.String),
-          steps: S.optional(__S(1692, __c211, 4)),
+          steps: S.optional(__S(1812, __c226, 4)),
           triggeredBy: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          errorDetails: S.optional(__S(1701, __c212, 5)),
-          additionalData: S.optional(__S(1693, __c211, 5)),
+          errorDetails: S.optional(__S(1821, __c227, 5)),
+          additionalData: S.optional(__S(1813, __c226, 5)),
         }),
       ).annotate({ identifier: "JobProperties" });
     case 7:
@@ -13907,17 +14793,17 @@ function __c211(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1694, __c211, 6)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1814, __c226, 6)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetJobResponse" });
   }
 }
-function __c212(j: number): any {
+function __c227(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1699, __c212, 3)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1819, __c227, 3)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13926,32 +14812,32 @@ function __c212(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 2:
-      return S.Array(__S(1697, __c212, 1));
+      return S.Array(__S(1817, __c227, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(1696, __c212, 0)),
-          additionalInfo: S.optional(__S(1698, __c212, 2)),
+          details: S.optional(__S(1816, __c227, 0)),
+          additionalInfo: S.optional(__S(1818, __c227, 2)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 4:
-      return S.Array(__S(1699, __c212, 3));
+      return S.Array(__S(1819, __c227, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(1700, __c212, 4)),
-          additionalInfo: S.optional(__S(1698, __c212, 2)),
+          details: S.optional(__S(1820, __c227, 4)),
+          additionalInfo: S.optional(__S(1818, __c227, 2)),
         }),
       ).annotate({ identifier: "JobStepErrorDetails" });
   }
 }
-function __c213(j: number): any {
+function __c228(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13970,7 +14856,7 @@ function __c213(j: number): any {
       ).annotate({ identifier: "GetSchemaRequest" });
   }
 }
-function __c214(j: number): any {
+function __c229(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13981,7 +14867,7 @@ function __c214(j: number): any {
       ).annotate({ identifier: "SchemaProperties" });
   }
 }
-function __c215(j: number): any {
+function __c230(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -13989,16 +14875,16 @@ function __c215(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(1712, __c214, 0)),
+          properties: S.optional(__S(1832, __c229, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSchemaResponse" });
   }
 }
-function __c216(j: number): any {
+function __c231(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14016,7 +14902,7 @@ function __c216(j: number): any {
       ).annotate({ identifier: "GetSchemaReferenceRequest" });
   }
 }
-function __c217(j: number): any {
+function __c232(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14025,20 +14911,24 @@ function __c217(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaReferenceProperties" });
-    case 1:
+  }
+}
+function __c233(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1736, __c217, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1856, __c232, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSchemaReferenceResponse" });
   }
 }
-function __c218(j: number): any {
+function __c234(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14058,7 +14948,7 @@ function __c218(j: number): any {
       ).annotate({ identifier: "GetSchemaVersionRequest" });
   }
 }
-function __c219(j: number): any {
+function __c235(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14077,7 +14967,7 @@ function __c219(j: number): any {
       ).annotate({ identifier: "GetSiteRequest" });
   }
 }
-function __c220(j: number): any {
+function __c236(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14095,24 +14985,28 @@ function __c220(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          siteAddress: S.optional(__S(1760, __c220, 0)),
-          labels: S.optional(__S(1136, __c142, 0)),
+          siteAddress: S.optional(__S(1888, __c236, 0)),
+          labels: S.optional(__S(1152, __c144, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SiteProperties" });
-    case 2:
+  }
+}
+function __c237(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1761, __c220, 1)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1889, __c236, 1)),
         }),
       ).annotate({ identifier: "GetSiteResponse" });
   }
 }
-function __c221(j: number): any {
+function __c238(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14132,7 +15026,21 @@ function __c221(j: number): any {
       ).annotate({ identifier: "GetSiteReferenceRequest" });
   }
 }
-function __c222(j: number): any {
+function __c239(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1920, __c240, 0)),
+        }),
+      ).annotate({ identifier: "GetSiteReferenceResponse" });
+  }
+}
+function __c240(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14141,19 +15049,9 @@ function __c222(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SiteReferenceProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1776, __c222, 0)),
-        }),
-      ).annotate({ identifier: "GetSiteReferenceResponse" });
   }
 }
-function __c223(j: number): any {
+function __c241(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14171,7 +15069,7 @@ function __c223(j: number): any {
       ).annotate({ identifier: "GetSitesByServiceGroupRequest" });
   }
 }
-function __c224(j: number): any {
+function __c242(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14189,7 +15087,7 @@ function __c224(j: number): any {
       ).annotate({ identifier: "GetSitesBySubscriptionRequest" });
   }
 }
-function __c225(j: number): any {
+function __c243(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14209,7 +15107,23 @@ function __c225(j: number): any {
       ).annotate({ identifier: "GetSolutionRequest" });
   }
 }
-function __c226(j: number): any {
+function __c244(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1962, __c245, 2)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSolutionResponse" });
+  }
+}
+function __c245(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14220,31 +15134,19 @@ function __c226(j: number): any {
         }),
       ).annotate({ identifier: "AvailableSolutionTemplateVersion" });
     case 1:
-      return S.Array(__S(1808, __c226, 0));
+      return S.Array(__S(1960, __c245, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           solutionTemplateId: S.optional(S.String),
           displayName: S.optional(S.String),
-          availableSolutionTemplateVersions: S.optional(__S(1809, __c226, 1)),
+          availableSolutionTemplateVersions: S.optional(__S(1961, __c245, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1810, __c226, 2)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetSolutionResponse" });
   }
 }
-function __c227(j: number): any {
+function __c246(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14262,7 +15164,7 @@ function __c227(j: number): any {
       ).annotate({ identifier: "GetSolutionMetadatasRequest" });
   }
 }
-function __c228(j: number): any {
+function __c247(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14279,13 +15181,13 @@ function __c228(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1824, __c228, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1976, __c247, 0)),
         }),
       ).annotate({ identifier: "GetSolutionMetadatasResponse" });
   }
 }
-function __c229(j: number): any {
+function __c248(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14293,9 +15195,9 @@ function __c229(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(24, __c3, 0)),
+          properties: S.optional(__S(1992, __c249, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14307,7 +15209,13 @@ function __c229(j: number): any {
       ).annotate({ identifier: "ConfigurationsCreateOrUpdateRequest" });
   }
 }
-function __c230(j: number): any {
+function __c249(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "ConfigurationPropertiesInput" });
+  }
+}
+function __c250(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14317,7 +15225,7 @@ function __c230(j: number): any {
       ).annotate({ identifier: "ConfigurationProperties" });
   }
 }
-function __c231(j: number): any {
+function __c251(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14325,15 +15233,15 @@ function __c231(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(1840, __c230, 0)),
+          properties: S.optional(__S(2000, __c250, 0)),
         }),
       ).annotate({ identifier: "ConfigurationsCreateOrUpdateResponse" });
   }
 }
-function __c232(j: number): any {
+function __c252(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14352,7 +15260,7 @@ function __c232(j: number): any {
       ).annotate({ identifier: "GetSolutionMetadataVersionRequest" });
   }
 }
-function __c233(j: number): any {
+function __c253(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14370,13 +15278,13 @@ function __c233(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1864, __c233, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2024, __c253, 0)),
         }),
       ).annotate({ identifier: "GetSolutionMetadataVersionResponse" });
   }
 }
-function __c234(j: number): any {
+function __c254(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14397,7 +15305,7 @@ function __c234(j: number): any {
       ).annotate({ identifier: "GetSolutionSchemaRequest" });
   }
 }
-function __c235(j: number): any {
+function __c255(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14414,14 +15322,14 @@ function __c235(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1880, __c235, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2040, __c255, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSolutionSchemaResponse" });
   }
 }
-function __c236(j: number): any {
+function __c256(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14440,36 +15348,40 @@ function __c236(j: number): any {
       ).annotate({ identifier: "GetSolutionTemplateRequest" });
   }
 }
-function __c237(j: number): any {
+function __c257(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           uniqueIdentifier: S.optional(S.String),
           description: S.String,
-          capabilities: __S(1024, __c128, 0),
+          capabilities: __S(1040, __c130, 0),
           latestVersion: S.optional(S.String),
           state: S.optional(S.String),
           enableExternalValidation: S.optional(S.Boolean),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionTemplateProperties" });
-    case 1:
+  }
+}
+function __c258(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(1896, __c237, 0)),
+          properties: S.optional(__S(2056, __c257, 0)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetSolutionTemplateResponse" });
   }
 }
-function __c238(j: number): any {
+function __c259(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14489,7 +15401,22 @@ function __c238(j: number): any {
       ).annotate({ identifier: "GetSolutionTemplateVersionRequest" });
   }
 }
-function __c239(j: number): any {
+function __c260(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(280, __c35, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSolutionTemplateVersionResponse" });
+  }
+}
+function __c261(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14510,10 +15437,26 @@ function __c239(j: number): any {
       ).annotate({ identifier: "GetSolutionVersionRequest" });
   }
 }
-function __c240(j: number): any {
+function __c262(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1921, __c240, 1)));
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2110, __c263, 6)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetSolutionVersionResponse" });
+  }
+}
+function __c263(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(2105, __c263, 1)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -14522,13 +15465,13 @@ function __c240(j: number): any {
           status: S.String,
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          childStages: S.optional(__S(1920, __c240, 0)),
+          childStages: S.optional(__S(2104, __c263, 0)),
         }),
       ).annotate({ identifier: "StageMap" });
     case 2:
-      return S.Array(__S(1921, __c240, 1));
+      return S.Array(__S(2105, __c263, 1));
     case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(1924, __c240, 4)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(2108, __c263, 4)));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -14536,11 +15479,11 @@ function __c240(j: number): any {
           solutionInstanceName: S.optional(S.String),
           solutionTemplateVersionId: S.String,
           targetId: S.String,
-          dependencies: S.optional(__S(1923, __c240, 3)),
+          dependencies: S.optional(__S(2107, __c263, 3)),
         }),
       ).annotate({ identifier: "SolutionDependency" });
     case 5:
-      return S.Array(__S(1924, __c240, 4));
+      return S.Array(__S(2108, __c263, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -14553,32 +15496,20 @@ function __c240(j: number): any {
           reviewId: S.optional(S.String),
           externalValidationId: S.optional(S.String),
           state: S.optional(S.String),
-          currentStage: S.optional(__S(1921, __c240, 1)),
-          stages: S.optional(__S(1922, __c240, 2)),
+          currentStage: S.optional(__S(2105, __c263, 1)),
+          stages: S.optional(__S(2106, __c263, 2)),
           solutionInstanceName: S.optional(S.String),
-          solutionDependencies: S.optional(__S(1925, __c240, 5)),
-          errorDetails: S.optional(__S(1701, __c212, 5)),
+          solutionDependencies: S.optional(__S(2109, __c263, 5)),
+          errorDetails: S.optional(__S(1821, __c227, 5)),
           latestActionTrackingUri: S.optional(S.String),
           latestActionTriggeredBy: S.optional(S.String),
           actionType: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionVersionProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1926, __c240, 6)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetSolutionVersionResponse" });
   }
 }
-function __c241(j: number): any {
+function __c264(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14597,7 +15528,25 @@ function __c241(j: number): any {
       ).annotate({ identifier: "GetTargetRequest" });
   }
 }
-function __c242(j: number): any {
+function __c265(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2128, __c266, 0)),
+          eTag: S.optional(S.String),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+        }),
+      ).annotate({ identifier: "GetTargetResponse" });
+  }
+}
+function __c266(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14606,31 +15555,17 @@ function __c242(j: number): any {
           displayName: S.String,
           contextId: S.String,
           targetSpecification: S.optional(__S(272, __c34, 0)),
-          capabilities: __S(1024, __c128, 0),
+          capabilities: __S(1040, __c130, 0),
           hierarchyLevel: S.String,
-          status: S.optional(__S(1620, __c202, 4)),
+          status: S.optional(__S(1740, __c217, 4)),
           solutionScope: S.optional(S.String),
           state: S.optional(S.String),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "TargetProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
-          location: S.String,
-          properties: S.optional(__S(1936, __c242, 0)),
-          eTag: S.optional(S.String),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
-        }),
-      ).annotate({ identifier: "GetTargetResponse" });
   }
 }
-function __c243(j: number): any {
+function __c267(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14650,7 +15585,23 @@ function __c243(j: number): any {
       ).annotate({ identifier: "GetWorkflowRequest" });
   }
 }
-function __c244(j: number): any {
+function __c268(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2152, __c269, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetWorkflowResponse" });
+  }
+}
+function __c269(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14659,21 +15610,9 @@ function __c244(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1952, __c244, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetWorkflowResponse" });
   }
 }
-function __c245(j: number): any {
+function __c270(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14694,7 +15633,23 @@ function __c245(j: number): any {
       ).annotate({ identifier: "GetWorkflowVersionRequest" });
   }
 }
-function __c246(j: number): any {
+function __c271(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(2182, __c272, 6)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetWorkflowVersionResponse" });
+  }
+}
+function __c272(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14705,7 +15660,7 @@ function __c246(j: number): any {
         }),
       ).annotate({ identifier: "TaskSpec" });
     case 1:
-      return S.Array(__S(1968, __c246, 0));
+      return S.Array(__S(2176, __c272, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14717,7 +15672,7 @@ function __c246(j: number): any {
       return S.suspend(() =>
         S.Struct({
           concurrency: S.optional(S.Number),
-          errorAction: S.optional(__S(1970, __c246, 2)),
+          errorAction: S.optional(__S(2178, __c272, 2)),
         }),
       ).annotate({ identifier: "TaskOption" });
     case 4:
@@ -14725,39 +15680,27 @@ function __c246(j: number): any {
         S.Struct({
           name: S.String,
           specification: S.optional(__S(272, __c34, 0)),
-          tasks: S.optional(__S(1969, __c246, 1)),
-          taskOption: S.optional(__S(1971, __c246, 3)),
+          tasks: S.optional(__S(2177, __c272, 1)),
+          taskOption: S.optional(__S(2179, __c272, 3)),
         }),
       ).annotate({ identifier: "StageSpec" });
     case 5:
-      return S.Array(__S(1972, __c246, 4));
+      return S.Array(__S(2180, __c272, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           revision: S.optional(S.Number),
           configuration: S.optional(S.String),
-          stageSpec: __S(1973, __c246, 5),
+          stageSpec: __S(2181, __c272, 5),
           reviewId: S.optional(S.String),
           state: S.optional(S.String),
           specification: S.optional(__S(272, __c34, 0)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowVersionProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          properties: S.optional(__S(1974, __c246, 6)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
-          eTag: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetWorkflowVersionResponse" });
   }
 }
-function __c247(j: number): any {
+function __c273(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14780,7 +15723,7 @@ function __c247(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           hardwareSettingName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1976, __c247, 0)),
+          properties: S.optional(__S(2184, __c273, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14790,9 +15733,21 @@ function __c247(j: number): any {
           }),
         ),
       ).annotate({ identifier: "HardwareSettingsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1656, __c207, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "HardwareSettingsCreateOrUpdateResponse" });
   }
 }
-function __c248(j: number): any {
+function __c274(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14819,8 +15774,8 @@ function __c248(j: number): any {
           releaseNotes: S.String,
           releaseDate: S.String,
           releaseType: S.String,
-          compatibleVersions: S.optional(__S(1024, __c128, 0)),
-          updateProperties: S.optional(__S(1600, __c200, 0)),
+          compatibleVersions: S.optional(__S(1040, __c130, 0)),
+          updateProperties: S.optional(__S(1712, __c214, 0)),
           transactionId: S.String,
           downloadLink: S.String,
           linkExpiry: S.String,
@@ -14828,13 +15783,13 @@ function __c248(j: number): any {
       ).annotate({ identifier: "ImageDownloadResult" });
   }
 }
-function __c249(j: number): any {
+function __c275(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          capabilities: __S(2001, __c250, 1),
-          hierarchies: __S(2003, __c250, 3),
+          capabilities: __S(2209, __c276, 1),
+          hierarchies: __S(2211, __c276, 3),
         }),
       ).annotate({ identifier: "ContextPropertiesInput" });
     case 1:
@@ -14843,9 +15798,9 @@ function __c249(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           contextName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1136, __c142, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
           location: S.String,
-          properties: S.optional(__S(1992, __c249, 0)),
+          properties: S.optional(__S(2200, __c275, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14855,9 +15810,23 @@ function __c249(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ContextsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          tags: S.optional(__S(1152, __c144, 0)),
+          location: S.String,
+          properties: S.optional(__S(2212, __c276, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ContextsCreateOrUpdateResponse" });
   }
 }
-function __c250(j: number): any {
+function __c276(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14868,7 +15837,7 @@ function __c250(j: number): any {
         }),
       ).annotate({ identifier: "Capability" });
     case 1:
-      return S.Array(__S(2000, __c250, 0));
+      return S.Array(__S(2208, __c276, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -14877,31 +15846,19 @@ function __c250(j: number): any {
         }),
       ).annotate({ identifier: "Hierarchy" });
     case 3:
-      return S.Array(__S(2002, __c250, 2));
+      return S.Array(__S(2210, __c276, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           uniqueIdentifier: S.optional(S.String),
-          capabilities: __S(2001, __c250, 1),
-          hierarchies: __S(2003, __c250, 3),
+          capabilities: __S(2209, __c276, 1),
+          hierarchies: __S(2211, __c276, 3),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContextProperties" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(1016, __c127, 0)),
-          tags: S.optional(__S(1136, __c142, 0)),
-          location: S.String,
-          properties: S.optional(__S(2004, __c250, 4)),
-        }),
-      ).annotate({ identifier: "ContextsCreateOrUpdateResponse" });
   }
 }
-function __c251(j: number): any {
+function __c277(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14921,7 +15878,7 @@ function __c251(j: number): any {
       ).annotate({ identifier: "InstallTargetSolutionRequest" });
   }
 }
-function __c252(j: number): any {
+function __c278(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14929,7 +15886,7 @@ function __c252(j: number): any {
           solutionVersionId: S.String,
           targetId: S.String,
           activeState: S.optional(S.String),
-          reconciliationPolicy: S.optional(__S(1624, __c203, 0)),
+          reconciliationPolicy: S.optional(__S(1744, __c218, 0)),
           solutionScope: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstancePropertiesInput" });
@@ -14941,8 +15898,8 @@ function __c252(j: number): any {
           targetName: S.String.pipe(T.Label()),
           solutionName: S.String.pipe(T.Label()),
           instanceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2016, __c252, 0)),
-          extendedLocation: S.optional(__S(1256, __c157, 0)),
+          properties: S.optional(__S(2224, __c278, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14952,9 +15909,23 @@ function __c252(j: number): any {
           }),
         ),
       ).annotate({ identifier: "InstancesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(1032, __c129, 0)),
+          properties: S.optional(__S(1752, __c219, 0)),
+          extendedLocation: S.optional(__S(1272, __c159, 0)),
+          eTag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "InstancesCreateOrUpdateResponse" });
   }
 }
-function __c253(j: number): any {
+function __c279(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -14973,17 +15944,17 @@ function __c253(j: number): any {
         ),
       ).annotate({ identifier: "ListArtifactByParentRequest" });
     case 1:
-      return S.Array(__S(1377, __c172, 1));
+      return S.Array(__S(1393, __c174, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2025, __c253, 1),
+          value: __S(2233, __c279, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArtifactListResult" });
   }
 }
-function __c254(j: number): any {
+function __c280(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15001,20 +15972,20 @@ function __c254(j: number): any {
       ).annotate({ identifier: "ListConfigTemplateByResourceGroupRequest" });
   }
 }
-function __c255(j: number): any {
+function __c281(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1129, __c141, 1));
+      return S.Array(__S(1416, __c177, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2040, __c255, 0),
+          value: __S(2248, __c281, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateListResult" });
   }
 }
-function __c256(j: number): any {
+function __c282(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15031,7 +16002,7 @@ function __c256(j: number): any {
       ).annotate({ identifier: "ListConfigTemplateBySubscriptionRequest" });
   }
 }
-function __c257(j: number): any {
+function __c283(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15049,17 +16020,17 @@ function __c257(j: number): any {
         ),
       ).annotate({ identifier: "ListConfigTemplateMetadatasByConfigTemplateRequest" });
     case 1:
-      return S.Array(__S(1035, __c129, 3));
+      return S.Array(__S(1432, __c179, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2057, __c257, 1),
+          value: __S(2265, __c283, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateMetadataListResult" });
   }
 }
-function __c258(j: number): any {
+function __c284(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15078,17 +16049,17 @@ function __c258(j: number): any {
         ),
       ).annotate({ identifier: "ListConfigTemplateSchemaByConfigTemplateVersionRequest" });
     case 1:
-      return S.Array(__S(1417, __c177, 1));
+      return S.Array(__S(1449, __c181, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2065, __c258, 1),
+          value: __S(2273, __c284, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateSchemaListResult" });
   }
 }
-function __c259(j: number): any {
+function __c285(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15106,17 +16077,17 @@ function __c259(j: number): any {
         ),
       ).annotate({ identifier: "ListConfigTemplateVersionByConfigTemplateRequest" });
     case 1:
-      return S.Array(__S(1497, __c187, 1));
+      return S.Array(__S(1464, __c183, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2073, __c259, 1),
+          value: __S(2281, __c285, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigTemplateVersionListResult" });
   }
 }
-function __c260(j: number): any {
+function __c286(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -15134,20 +16105,20 @@ function __c260(j: number): any {
       ).annotate({ identifier: "ListConfigurationByResourceGroupRequest" });
   }
 }
-function __c261(j: number): any {
+function __c287(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1848, __c231, 0));
+      return S.Array(__S(2008, __c251, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(2088, __c261, 0),
+          value: __S(2296, __c287, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationListResult" });
   }
 }
-function __c262(j: number): any {
+function __c288(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

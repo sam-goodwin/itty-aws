@@ -169,6 +169,8 @@ export interface CreateCertificateProfileResponse {
   systemData?: SystemData;
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfileProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type CreateCodeSigningAccountRequestTagsMap = { [key: string]: string | undefined };
@@ -224,6 +226,8 @@ export interface CreateCodeSigningAccountResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteCertificateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -235,7 +239,12 @@ export interface DeleteCertificateProfileRequest {
   /** Certificate profile name. */
   profileName: string;
 }
-export interface DeleteCertificateProfileResponse {}
+export interface DeleteCertificateProfileResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteCodeSigningAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -244,7 +253,12 @@ export interface DeleteCodeSigningAccountRequest {
   /** Artifact Signing account name. */
   accountName: string;
 }
-export interface DeleteCodeSigningAccountResponse {}
+export interface DeleteCodeSigningAccountResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetCertificateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -460,6 +474,10 @@ export interface UpdateCodeSigningAccountResponse {
   location: string;
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CheckCodeSigningAccountNameAvailabilityError = AzureOpError;
 /** Checks if the artifact signing account name is valid and is not already in use. */
@@ -485,7 +503,7 @@ export const CreateCertificateProfile: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(9, __c1, 1) as any as S.Schema<CreateCertificateProfileRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<CreateCertificateProfileResponse>,
+  output: __S(10, __c1, 2) as any as S.Schema<CreateCertificateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -500,7 +518,7 @@ export const CreateCodeSigningAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(57, __c7, 1) as any as S.Schema<CreateCodeSigningAccountRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<CreateCodeSigningAccountResponse>,
+  output: __S(58, __c7, 2) as any as S.Schema<CreateCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -545,7 +563,7 @@ export const GetCertificateProfile: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c12, 0) as any as S.Schema<GetCertificateProfileRequest>,
-  output: __S(28, __c3, 4) as any as S.Schema<GetCertificateProfileResponse>,
+  output: __S(104, __c13, 0) as any as S.Schema<GetCertificateProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -559,8 +577,8 @@ export const GetCodeSigningAccount: API.OperationMethod<
   GetCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetCodeSigningAccountRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<GetCodeSigningAccountResponse>,
+  input: __S(112, __c14, 0) as any as S.Schema<GetCodeSigningAccountRequest>,
+  output: __S(120, __c15, 0) as any as S.Schema<GetCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -574,8 +592,8 @@ export const ListCertificateProfileByCodeSigningAccount: API.OperationMethod<
   ListCertificateProfileByCodeSigningAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<ListCertificateProfileByCodeSigningAccountRequest>,
-  output: __S(114, __c14, 2) as any as S.Schema<CertificateProfileListResult>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListCertificateProfileByCodeSigningAccountRequest>,
+  output: __S(130, __c16, 2) as any as S.Schema<CertificateProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -589,8 +607,8 @@ export const ListCodeSigningAccountByResourceGroup: API.OperationMethod<
   ListCodeSigningAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(120, __c15, 0) as any as S.Schema<ListCodeSigningAccountByResourceGroupRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<CodeSigningAccountListResult>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListCodeSigningAccountByResourceGroupRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<CodeSigningAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -604,8 +622,8 @@ export const ListCodeSigningAccountBySubscription: API.OperationMethod<
   ListCodeSigningAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListCodeSigningAccountBySubscriptionRequest>,
-  output: __S(129, __c16, 1) as any as S.Schema<CodeSigningAccountListResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListCodeSigningAccountBySubscriptionRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<CodeSigningAccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -635,7 +653,7 @@ export const RevokeCertificateProfileCertificate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(40, __c5, 0) as any as S.Schema<RevokeCertificateProfileCertificateRequest>,
-  output: __S(80, __c10, 0) as any as S.Schema<RevokeCertificateProfileCertificateResponse>,
+  output: __S(41, __c5, 1) as any as S.Schema<RevokeCertificateProfileCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -650,7 +668,7 @@ export const UpdateCodeSigningAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(50, __c6, 2) as any as S.Schema<UpdateCodeSigningAccountRequest>,
-  output: __S(67, __c8, 3) as any as S.Schema<UpdateCodeSigningAccountResponse>,
+  output: __S(51, __c6, 3) as any as S.Schema<UpdateCodeSigningAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -715,6 +733,17 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateCertificateProfileRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(27, __c3, 3)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateCertificateProfileResponse" });
   }
 }
 function __c2(j: number): any {
@@ -775,16 +804,6 @@ function __c3(j: number): any {
           certificates: S.optional(__S(26, __c3, 2)),
         }),
       ).annotate({ identifier: "CertificateProfileProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          properties: S.optional(__S(27, __c3, 3)),
-        }),
-      ).annotate({ identifier: "CreateCertificateProfileResponse" });
   }
 }
 function __c4(j: number): any {
@@ -853,6 +872,10 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RevokeCertificateProfileCertificateRequest" });
+    case 1:
+      return S.suspend(() => S.Struct({})).annotate({
+        identifier: "RevokeCertificateProfileCertificateResponse",
+      });
   }
 }
 function __c6(j: number): any {
@@ -886,6 +909,20 @@ function __c6(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateCodeSigningAccountRequest" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(66, __c8, 2)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateCodeSigningAccountResponse" });
   }
 }
 function __c7(j: number): any {
@@ -914,6 +951,19 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateCodeSigningAccountRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(66, __c8, 2)),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateCodeSigningAccountResponse" });
   }
 }
 function __c8(j: number): any {
@@ -934,18 +984,6 @@ function __c8(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodeSigningAccountProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c2, 0)),
-          tags: S.optional(__S(64, __c8, 0)),
-          location: S.String,
-          properties: S.optional(__S(66, __c8, 2)),
-        }),
-      ).annotate({ identifier: "CreateCodeSigningAccountResponse" });
   }
 }
 function __c9(j: number): any {
@@ -971,9 +1009,12 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "DeleteCertificateProfileResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteCertificateProfileResponse" });
   }
 }
 function __c11(j: number): any {
@@ -1020,6 +1061,20 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          properties: S.optional(__S(27, __c3, 3)),
+        }),
+      ).annotate({ identifier: "GetCertificateProfileResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
@@ -1034,7 +1089,23 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetCodeSigningAccountRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c2, 0)),
+          tags: S.optional(__S(64, __c8, 0)),
+          location: S.String,
+          properties: S.optional(__S(66, __c8, 2)),
+        }),
+      ).annotate({ identifier: "GetCodeSigningAccountResponse" });
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1052,17 +1123,17 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListCertificateProfileByCodeSigningAccountRequest" });
     case 1:
-      return S.Array(__S(28, __c3, 4));
+      return S.Array(__S(104, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(113, __c14, 1),
+          value: __S(129, __c16, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateProfileListResult" });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1080,20 +1151,20 @@ function __c15(j: number): any {
       ).annotate({ identifier: "ListCodeSigningAccountByResourceGroupRequest" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(67, __c8, 3));
+      return S.Array(__S(120, __c15, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(128, __c16, 0),
+          value: __S(144, __c18, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodeSigningAccountListResult" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

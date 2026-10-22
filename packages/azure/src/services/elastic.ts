@@ -22,7 +22,12 @@ export interface AssociateTrafficFilterAssociateRequest {
   /** Ruleset Id of the filter */
   rulesetId?: string;
 }
-export interface AssociateTrafficFilterAssociateResponse {}
+export interface AssociateTrafficFilterAssociateResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CreateCreateAndAssociateIPFilterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -35,7 +40,12 @@ export interface CreateCreateAndAssociateIPFilterRequest {
   /** Name of the traffic filter */
   name?: string;
 }
-export interface CreateCreateAndAssociateIPFilterResponse {}
+export interface CreateCreateAndAssociateIPFilterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CreateCreateAndAssociatePLFilterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -50,7 +60,12 @@ export interface CreateCreateAndAssociatePLFilterRequest {
   /** Name of the private endpoint */
   privateEndpointName?: string;
 }
-export interface CreateCreateAndAssociatePLFilterResponse {}
+export interface CreateCreateAndAssociatePLFilterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type CreateMonitorRequestTagsMap = { [key: string]: string | undefined };
 /** Flag specifying if the resource monitoring is enabled or disabled. */
@@ -304,6 +319,10 @@ export interface CreateMonitorResponse {
   sku?: ResourceSku;
   /** Identity properties of the monitor resource. */
   identity?: IdentityProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteDetachAndDeleteTrafficFilterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -324,7 +343,12 @@ export interface DeleteMonitorRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export interface DeleteMonitorResponse {}
+export interface DeleteMonitorResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMonitoredSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -335,7 +359,12 @@ export interface DeleteMonitoredSubscriptionRequest {
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
 }
-export interface DeleteMonitoredSubscriptionResponse {}
+export interface DeleteMonitoredSubscriptionResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteOpenAIRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -357,7 +386,12 @@ export interface DeleteTagRuleRequest {
   /** Tag Rule Set resource name */
   ruleSetName: string;
 }
-export interface DeleteTagRuleResponse {}
+export interface DeleteTagRuleResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteTrafficFilterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1039,7 +1073,12 @@ export interface MonitorUpgradeRequest {
   /** Version to which the elastic monitor should be upgraded to */
   version?: string;
 }
-export interface MonitorUpgradeResponse {}
+export interface MonitorUpgradeResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Open AI Integration details. */
 export interface OpenAIIntegrationPropertiesInput {
   /** The resource name of Open AI resource */
@@ -1112,6 +1151,10 @@ export interface OrganizationsResubscribeResponse {
   sku?: ResourceSku;
   /** Identity properties of the monitor resource. */
   identity?: IdentityProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface TagRulesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1145,7 +1188,12 @@ export interface UpdateDetachTrafficFilterRequest {
   /** Ruleset Id of the filter */
   rulesetId?: string;
 }
-export interface UpdateDetachTrafficFilterResponse {}
+export interface UpdateDetachTrafficFilterResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** elastic monitor resource tags. */
 export type UpdateMonitorRequestTagsMap = { [key: string]: string | undefined };
 export interface UpdateMonitorRequest {
@@ -1180,6 +1228,8 @@ export interface UpdateMonitorResponse {
   sku?: ResourceSku;
   /** Identity properties of the monitor resource. */
   identity?: IdentityProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 export interface UpdateMonitoredSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1202,6 +1252,10 @@ export interface UpdateMonitoredSubscriptionResponse {
   systemData?: SystemData;
   /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
   properties?: SubscriptionList;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateMonitoredSubscriptionsCreateorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1224,6 +1278,10 @@ export interface UpdateMonitoredSubscriptionsCreateorResponse {
   systemData?: SystemData;
   /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
   properties?: SubscriptionList;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Operation to be performed on the given vm resource id. */
 export type OperationName = "Add" | "Delete";
@@ -1310,7 +1368,7 @@ export const CreateCreateAndAssociatePLFilter: API.OperationMethod<
   CreateCreateAndAssociatePLFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<CreateCreateAndAssociatePLFilterRequest>,
+  input: __S(352, __c22, 0) as any as S.Schema<CreateCreateAndAssociatePLFilterRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<CreateCreateAndAssociatePLFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1325,8 +1383,8 @@ export const CreateMonitor: API.OperationMethod<
   CreateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(515, __c32, 3) as any as S.Schema<CreateMonitorRequest>,
-  output: __S(555, __c34, 11) as any as S.Schema<CreateMonitorResponse>,
+  input: __S(547, __c34, 3) as any as S.Schema<CreateMonitorRequest>,
+  output: __S(548, __c34, 4) as any as S.Schema<CreateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1340,8 +1398,8 @@ export const DeleteDetachAndDeleteTrafficFilter: API.OperationMethod<
   DeleteDetachAndDeleteTrafficFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<DeleteDetachAndDeleteTrafficFilterRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<DeleteDetachAndDeleteTrafficFilterResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<DeleteDetachAndDeleteTrafficFilterRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteDetachAndDeleteTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1355,7 +1413,7 @@ export const DeleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<DeleteMonitorRequest>,
+  input: __S(848, __c53, 0) as any as S.Schema<DeleteMonitorRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<DeleteMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1370,7 +1428,7 @@ export const DeleteMonitoredSubscription: API.OperationMethod<
   DeleteMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<DeleteMonitoredSubscriptionRequest>,
+  input: __S(864, __c54, 0) as any as S.Schema<DeleteMonitoredSubscriptionRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<DeleteMonitoredSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1385,8 +1443,8 @@ export const DeleteOpenAI: API.OperationMethod<
   DeleteOpenAIError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<DeleteOpenAIRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<DeleteOpenAIResponse>,
+  input: __S(880, __c55, 0) as any as S.Schema<DeleteOpenAIRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteOpenAIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1400,7 +1458,7 @@ export const DeleteTagRule: API.OperationMethod<
   DeleteTagRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<DeleteTagRuleRequest>,
+  input: __S(896, __c56, 0) as any as S.Schema<DeleteTagRuleRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<DeleteTagRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1415,8 +1473,8 @@ export const DeleteTrafficFilter: API.OperationMethod<
   DeleteTrafficFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<DeleteTrafficFilterRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<DeleteTrafficFilterResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeleteTrafficFilterRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<DeleteTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1461,7 +1519,7 @@ export const GetMonitor: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<GetMonitorRequest>,
-  output: __S(555, __c34, 11) as any as S.Schema<GetMonitorResponse>,
+  output: __S(128, __c8, 0) as any as S.Schema<GetMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1475,8 +1533,8 @@ export const GetMonitoredSubscription: API.OperationMethod<
   GetMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<GetMonitoredSubscriptionRequest>,
-  output: __S(163, __c10, 3) as any as S.Schema<GetMonitoredSubscriptionResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetMonitoredSubscriptionRequest>,
+  output: __S(176, __c11, 0) as any as S.Schema<GetMonitoredSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1490,8 +1548,8 @@ export const GetOpenAI: API.OperationMethod<
   GetOpenAIError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<GetOpenAIRequest>,
-  output: __S(193, __c12, 1) as any as S.Schema<GetOpenAIResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetOpenAIRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<GetOpenAIResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1505,8 +1563,8 @@ export const GetOpenAIStatus: API.OperationMethod<
   GetOpenAIStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<GetOpenAIStatusRequest>,
-  output: __S(210, __c13, 2) as any as S.Schema<OpenAIIntegrationStatusResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetOpenAIStatusRequest>,
+  output: __S(242, __c15, 2) as any as S.Schema<OpenAIIntegrationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1520,8 +1578,8 @@ export const GetOrganizationApiKey: API.OperationMethod<
   GetOrganizationApiKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<GetOrganizationApiKeyRequest>,
-  output: __S(226, __c14, 2) as any as S.Schema<UserApiKeyResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetOrganizationApiKeyRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<UserApiKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1536,13 +1594,13 @@ export const GetOrganizationElasticToAzureSubscriptionMapping: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    240,
-    __c15,
+    272,
+    __c17,
     0,
   ) as any as S.Schema<GetOrganizationElasticToAzureSubscriptionMappingRequest>,
   output: __S(
-    242,
-    __c15,
+    274,
+    __c17,
     2,
   ) as any as S.Schema<ElasticOrganizationToAzureSubscriptionMappingResponse>,
   errors: [UnknownAzureError],
@@ -1558,8 +1616,8 @@ export const GetTagRule: API.OperationMethod<
   GetTagRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<GetTagRuleRequest>,
-  output: __S(272, __c17, 0) as any as S.Schema<GetTagRuleResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetTagRuleRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<GetTagRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1573,8 +1631,8 @@ export const ListAllTrafficFilters: API.OperationMethod<
   ListAllTrafficFiltersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<ListAllTrafficFiltersRequest>,
-  output: __S(308, __c19, 4) as any as S.Schema<ElasticTrafficFilterResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<ListAllTrafficFiltersRequest>,
+  output: __S(340, __c21, 4) as any as S.Schema<ElasticTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1588,8 +1646,8 @@ export const ListConnectedPartnerResources: API.OperationMethod<
   ListConnectedPartnerResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<ListConnectedPartnerResourcesRequest>,
-  output: __S(340, __c21, 4) as any as S.Schema<ConnectedPartnerResourcesListResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListConnectedPartnerResourcesRequest>,
+  output: __S(372, __c23, 4) as any as S.Schema<ConnectedPartnerResourcesListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1603,8 +1661,8 @@ export const ListDeploymentInfo: API.OperationMethod<
   ListDeploymentInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<ListDeploymentInfoRequest>,
-  output: __S(353, __c22, 1) as any as S.Schema<DeploymentInfoResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<ListDeploymentInfoRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<DeploymentInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1618,8 +1676,8 @@ export const ListElasticVersions: API.OperationMethod<
   ListElasticVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<ListElasticVersionsRequest>,
-  output: __S(372, __c23, 4) as any as S.Schema<ElasticVersionsListResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListElasticVersionsRequest>,
+  output: __S(404, __c25, 4) as any as S.Schema<ElasticVersionsListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1633,8 +1691,8 @@ export const ListListAssociatedTrafficFilters: API.OperationMethod<
   ListListAssociatedTrafficFiltersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListListAssociatedTrafficFiltersRequest>,
-  output: __S(308, __c19, 4) as any as S.Schema<ElasticTrafficFilterResponse>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListListAssociatedTrafficFiltersRequest>,
+  output: __S(340, __c21, 4) as any as S.Schema<ElasticTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1648,8 +1706,8 @@ export const ListMonitorByResourceGroup: API.OperationMethod<
   ListMonitorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<ListMonitorByResourceGroupRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<ElasticMonitorResourceListResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ListMonitorByResourceGroupRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<ElasticMonitorResourceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1663,8 +1721,8 @@ export const ListMonitoredResources: API.OperationMethod<
   ListMonitoredResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<ListMonitoredResourcesRequest>,
-  output: __S(435, __c27, 3) as any as S.Schema<MonitoredResourceListResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListMonitoredResourcesRequest>,
+  output: __S(467, __c29, 3) as any as S.Schema<MonitoredResourceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1736,8 @@ export const ListMonitoredSubscriptions: API.OperationMethod<
   ListMonitoredSubscriptionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<ListMonitoredSubscriptionsRequest>,
-  output: __S(450, __c28, 2) as any as S.Schema<MonitoredSubscriptionPropertiesList>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListMonitoredSubscriptionsRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<MonitoredSubscriptionPropertiesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1693,8 +1751,8 @@ export const ListMonitors: API.OperationMethod<
   ListMonitorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<ListMonitorsRequest>,
-  output: __S(417, __c26, 1) as any as S.Schema<ElasticMonitorResourceListResponse>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListMonitorsRequest>,
+  output: __S(449, __c28, 1) as any as S.Schema<ElasticMonitorResourceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1708,8 +1766,8 @@ export const ListOpenAI: API.OperationMethod<
   ListOpenAIError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListOpenAIRequest>,
-  output: __S(482, __c30, 2) as any as S.Schema<OpenAIIntegrationRPModelListResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListOpenAIRequest>,
+  output: __S(514, __c32, 2) as any as S.Schema<OpenAIIntegrationRPModelListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1723,8 +1781,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(500, __c31, 4) as any as S.Schema<OperationListResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(532, __c33, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1738,8 +1796,8 @@ export const ListTagRules: API.OperationMethod<
   ListTagRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(560, __c35, 0) as any as S.Schema<ListTagRulesRequest>,
-  output: __S(562, __c35, 2) as any as S.Schema<MonitoringTagRulesListResponse>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListTagRulesRequest>,
+  output: __S(610, __c38, 2) as any as S.Schema<MonitoringTagRulesListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1753,8 +1811,8 @@ export const ListVMHost: API.OperationMethod<
   ListVMHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListVMHostRequest>,
-  output: __S(579, __c36, 3) as any as S.Schema<VMHostListResponse>,
+  input: __S(624, __c39, 0) as any as S.Schema<ListVMHostRequest>,
+  output: __S(627, __c39, 3) as any as S.Schema<VMHostListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1768,7 +1826,7 @@ export const MonitorUpgrade: API.OperationMethod<
   MonitorUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<MonitorUpgradeRequest>,
+  input: __S(640, __c40, 0) as any as S.Schema<MonitorUpgradeRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<MonitorUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1783,8 +1841,8 @@ export const OpenAICreateOrUpdate: API.OperationMethod<
   OpenAICreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(609, __c38, 1) as any as S.Schema<OpenAICreateOrUpdateRequest>,
-  output: __S(193, __c12, 1) as any as S.Schema<OpenAICreateOrUpdateResponse>,
+  input: __S(657, __c41, 1) as any as S.Schema<OpenAICreateOrUpdateRequest>,
+  output: __S(225, __c14, 1) as any as S.Schema<OpenAICreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1798,8 +1856,8 @@ export const OrganizationsResubscribe: API.OperationMethod<
   OrganizationsResubscribeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<OrganizationsResubscribeRequest>,
-  output: __S(555, __c34, 11) as any as S.Schema<OrganizationsResubscribeResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<OrganizationsResubscribeRequest>,
+  output: __S(673, __c42, 1) as any as S.Schema<OrganizationsResubscribeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1813,8 +1871,8 @@ export const TagRulesCreateOrUpdate: API.OperationMethod<
   TagRulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<TagRulesCreateOrUpdateRequest>,
-  output: __S(272, __c17, 0) as any as S.Schema<TagRulesCreateOrUpdateResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<TagRulesCreateOrUpdateRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<TagRulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1828,7 +1886,7 @@ export const UpdateDetachTrafficFilter: API.OperationMethod<
   UpdateDetachTrafficFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<UpdateDetachTrafficFilterRequest>,
+  input: __S(704, __c44, 0) as any as S.Schema<UpdateDetachTrafficFilterRequest>,
   output: __S(16, __c1, 0) as any as S.Schema<UpdateDetachTrafficFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1843,8 +1901,8 @@ export const UpdateMonitor: API.OperationMethod<
   UpdateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<UpdateMonitorRequest>,
-  output: __S(555, __c34, 11) as any as S.Schema<UpdateMonitorResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<UpdateMonitorRequest>,
+  output: __S(721, __c45, 1) as any as S.Schema<UpdateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1858,8 +1916,8 @@ export const UpdateMonitoredSubscription: API.OperationMethod<
   UpdateMonitoredSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<UpdateMonitoredSubscriptionRequest>,
-  output: __S(163, __c10, 3) as any as S.Schema<UpdateMonitoredSubscriptionResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<UpdateMonitoredSubscriptionRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UpdateMonitoredSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1873,8 +1931,8 @@ export const UpdateMonitoredSubscriptionsCreateor: API.OperationMethod<
   UpdateMonitoredSubscriptionsCreateorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorRequest>,
-  output: __S(163, __c10, 3) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1888,8 +1946,8 @@ export const UpdateVMCollection: API.OperationMethod<
   UpdateVMCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<UpdateVMCollectionRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<UpdateVMCollectionResponse>,
+  input: __S(800, __c50, 0) as any as S.Schema<UpdateVMCollectionRequest>,
+  output: __S(592, __c37, 0) as any as S.Schema<UpdateVMCollectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1903,8 +1961,8 @@ export const UpgradableVersionsDetails: API.OperationMethod<
   UpgradableVersionsDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<UpgradableVersionsDetailsRequest>,
-  output: __S(753, __c47, 1) as any as S.Schema<UpgradableVersionsList>,
+  input: __S(816, __c51, 0) as any as S.Schema<UpgradableVersionsDetailsRequest>,
+  output: __S(817, __c51, 1) as any as S.Schema<UpgradableVersionsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1918,8 +1976,8 @@ export const VMIngestionDetails: API.OperationMethod<
   VMIngestionDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<VMIngestionDetailsRequest>,
-  output: __S(769, __c48, 1) as any as S.Schema<VMIngestionDetailsResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<VMIngestionDetailsRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<VMIngestionDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1949,9 +2007,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AssociateTrafficFilterAssociateResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AssociateTrafficFilterAssociateResponse" });
   }
 }
 function __c2(j: number): any {
@@ -2092,6 +2153,25 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(576, __c36, 0)),
+          location: S.String,
+          properties: S.optional(__S(585, __c36, 9)),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(581, __c36, 5)),
+          identity: S.optional(__S(586, __c36, 10)),
+        }),
+      ).annotate({ identifier: "GetMonitorResponse" });
+  }
+}
+function __c9(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
@@ -2107,7 +2187,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetMonitoredSubscriptionRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2118,26 +2198,40 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "FilteringTag" });
     case 1:
-      return S.Array(__S(144, __c9, 0));
+      return S.Array(__S(160, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           sendAadLogs: S.optional(S.Boolean),
           sendSubscriptionLogs: S.optional(S.Boolean),
           sendActivityLogs: S.optional(S.Boolean),
-          filteringTags: S.optional(__S(145, __c9, 1)),
+          filteringTags: S.optional(__S(161, __c10, 1)),
         }),
       ).annotate({ identifier: "LogRules" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          logRules: S.optional(__S(146, __c9, 2)),
+          logRules: S.optional(__S(162, __c10, 2)),
         }),
       ).annotate({ identifier: "MonitoringTagRulesProperties" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(194, __c12, 2)),
+        }),
+      ).annotate({ identifier: "GetMonitoredSubscriptionResponse" });
+  }
+}
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2145,32 +2239,22 @@ function __c10(j: number): any {
           subscriptionId: S.String,
           status: S.optional(S.String),
           error: S.optional(S.String),
-          tagRules: S.optional(__S(147, __c9, 3)),
+          tagRules: S.optional(__S(163, __c10, 3)),
         }),
       ).annotate({ identifier: "MonitoredSubscription" });
     case 1:
-      return S.Array(__S(160, __c10, 0));
+      return S.Array(__S(192, __c12, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           operation: S.optional(S.String),
-          monitoredSubscriptionList: S.optional(__S(161, __c10, 1)),
+          monitoredSubscriptionList: S.optional(__S(193, __c12, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionList" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(528, __c33, 0)),
-          properties: S.optional(__S(162, __c10, 2)),
-        }),
-      ).annotate({ identifier: "GetMonitoredSubscriptionResponse" });
   }
 }
-function __c11(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2190,7 +2274,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetOpenAIRequest" });
   }
 }
-function __c12(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2208,13 +2292,13 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(528, __c33, 0)),
-          properties: S.optional(__S(192, __c12, 0)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(224, __c14, 0)),
         }),
       ).annotate({ identifier: "GetOpenAIResponse" });
   }
 }
-function __c13(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2241,12 +2325,12 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(209, __c13, 1)),
+          properties: S.optional(__S(241, __c15, 1)),
         }),
       ).annotate({ identifier: "OpenAIIntegrationStatusResponse" });
   }
 }
-function __c14(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2271,12 +2355,12 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(225, __c14, 1)),
+          properties: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({ identifier: "UserApiKeyResponse" });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2303,12 +2387,12 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(241, __c15, 1)),
+          properties: S.optional(__S(273, __c17, 1)),
         }),
       ).annotate({ identifier: "ElasticOrganizationToAzureSubscriptionMappingResponse" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2328,7 +2412,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetTagRuleRequest" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2336,13 +2420,13 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(528, __c33, 0)),
-          properties: S.optional(__S(147, __c9, 3)),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(163, __c10, 3)),
         }),
       ).annotate({ identifier: "GetTagRuleResponse" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2361,7 +2445,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ListAllTrafficFiltersRequest" });
   }
 }
-function __c19(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2374,7 +2458,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "ElasticTrafficFilterRule" });
     case 1:
-      return S.Array(__S(304, __c19, 0));
+      return S.Array(__S(336, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2384,20 +2468,20 @@ function __c19(j: number): any {
           region: S.optional(S.String),
           type: S.optional(S.String),
           includeByDefault: S.optional(S.Boolean),
-          rules: S.optional(__S(305, __c19, 1)),
+          rules: S.optional(__S(337, __c21, 1)),
         }),
       ).annotate({ identifier: "ElasticTrafficFilter" });
     case 3:
-      return S.Array(__S(306, __c19, 2));
+      return S.Array(__S(338, __c21, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rulesets: S.optional(__S(307, __c19, 3)),
+          rulesets: S.optional(__S(339, __c21, 3)),
         }),
       ).annotate({ identifier: "ElasticTrafficFilterResponse" });
   }
 }
-function __c20(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2419,7 +2503,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "CreateCreateAndAssociatePLFilterRequest" });
   }
 }
-function __c21(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2449,21 +2533,21 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(337, __c21, 1)),
+          properties: S.optional(__S(369, __c23, 1)),
         }),
       ).annotate({ identifier: "ConnectedPartnerResourcesListFormat" });
     case 3:
-      return S.Array(__S(338, __c21, 2));
+      return S.Array(__S(370, __c23, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(339, __c21, 3),
+          value: __S(371, __c23, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectedPartnerResourcesListResponse" });
   }
 }
-function __c22(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2496,7 +2580,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "DeploymentInfoResponse" });
   }
 }
-function __c23(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2521,21 +2605,21 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(369, __c23, 1)),
+          properties: S.optional(__S(401, __c25, 1)),
         }),
       ).annotate({ identifier: "ElasticVersionListFormat" });
     case 3:
-      return S.Array(__S(370, __c23, 2));
+      return S.Array(__S(402, __c25, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(371, __c23, 3),
+          value: __S(403, __c25, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ElasticVersionsListResponse" });
   }
 }
-function __c24(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2554,7 +2638,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ListListAssociatedTrafficFiltersRequest" });
   }
 }
-function __c25(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2572,20 +2656,20 @@ function __c25(j: number): any {
       ).annotate({ identifier: "ListMonitorByResourceGroupRequest" });
   }
 }
-function __c26(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(555, __c34, 11));
+      return S.Array(__S(128, __c8, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(416, __c26, 0),
+          value: __S(448, __c28, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ElasticMonitorResourceListResponse" });
   }
 }
-function __c27(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2611,17 +2695,17 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "MonitoredResource" });
     case 2:
-      return S.Array(__S(433, __c27, 1));
+      return S.Array(__S(465, __c29, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(434, __c27, 2),
+          value: __S(466, __c29, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitoredResourceListResponse" });
   }
 }
-function __c28(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2639,17 +2723,17 @@ function __c28(j: number): any {
         ),
       ).annotate({ identifier: "ListMonitoredSubscriptionsRequest" });
     case 1:
-      return S.Array(__S(163, __c10, 3));
+      return S.Array(__S(176, __c11, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(449, __c28, 1),
+          value: __S(481, __c30, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitoredSubscriptionPropertiesList" });
   }
 }
-function __c29(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2666,7 +2750,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ListMonitorsRequest" });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2684,17 +2768,17 @@ function __c30(j: number): any {
         ),
       ).annotate({ identifier: "ListOpenAIRequest" });
     case 1:
-      return S.Array(__S(193, __c12, 1));
+      return S.Array(__S(225, __c14, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(481, __c30, 1),
+          value: __S(513, __c32, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OpenAIIntegrationRPModelListResponse" });
   }
 }
-function __c31(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2721,37 +2805,37 @@ function __c31(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(497, __c31, 1)),
+          display: S.optional(__S(529, __c33, 1)),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationResult" });
     case 3:
-      return S.Array(__S(498, __c31, 2));
+      return S.Array(__S(530, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(499, __c31, 3),
+          value: __S(531, __c33, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c32(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          elasticCloudUser: S.optional(__S(16, __c1, 0)),
-          elasticCloudDeployment: S.optional(__S(16, __c1, 0)),
+          elasticCloudUser: S.optional(__S(592, __c37, 0)),
+          elasticCloudDeployment: S.optional(__S(592, __c37, 0)),
         }),
       ).annotate({ identifier: "ElasticPropertiesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           monitoringStatus: S.optional(S.String),
-          elasticProperties: S.optional(__S(512, __c32, 0)),
-          userInfo: S.optional(__S(546, __c34, 2)),
-          planDetails: S.optional(__S(547, __c34, 3)),
+          elasticProperties: S.optional(__S(544, __c34, 0)),
+          userInfo: S.optional(__S(578, __c36, 2)),
+          planDetails: S.optional(__S(579, __c36, 3)),
           version: S.optional(S.String),
           subscriptionState: S.optional(S.String),
           saaSAzureSubscriptionStatus: S.optional(S.String),
@@ -2759,7 +2843,7 @@ function __c32(j: number): any {
           sourceCampaignId: S.optional(S.String),
           generateApiKey: S.optional(S.Boolean),
           hostingType: S.optional(S.String),
-          projectDetails: S.optional(__S(548, __c34, 4)),
+          projectDetails: S.optional(__S(580, __c36, 4)),
         }),
       ).annotate({ identifier: "MonitorPropertiesInput" });
     case 2:
@@ -2774,12 +2858,12 @@ function __c32(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(544, __c34, 0)),
+          tags: S.optional(__S(576, __c36, 0)),
           location: S.String,
-          properties: S.optional(__S(513, __c32, 1)),
+          properties: S.optional(__S(545, __c34, 1)),
           kind: S.optional(S.String),
-          sku: S.optional(__S(549, __c34, 5)),
-          identity: S.optional(__S(514, __c32, 2)),
+          sku: S.optional(__S(581, __c36, 5)),
+          identity: S.optional(__S(546, __c34, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2789,9 +2873,26 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateMonitorRequest" });
+    case 4:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(576, __c36, 0)),
+          location: S.String,
+          properties: S.optional(__S(585, __c36, 9)),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(581, __c36, 5)),
+          identity: S.optional(__S(586, __c36, 10)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CreateMonitorResponse" });
   }
 }
-function __c33(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2806,7 +2907,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c34(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -2827,7 +2928,7 @@ function __c34(j: number): any {
           lastName: S.optional(S.String),
           companyName: S.optional(S.String),
           emailAddress: S.optional(S.String),
-          companyInfo: S.optional(__S(545, __c34, 1)),
+          companyInfo: S.optional(__S(577, __c36, 1)),
         }),
       ).annotate({ identifier: "UserInfo" });
     case 3:
@@ -2876,8 +2977,8 @@ function __c34(j: number): any {
     case 8:
       return S.suspend(() =>
         S.Struct({
-          elasticCloudUser: S.optional(__S(550, __c34, 6)),
-          elasticCloudDeployment: S.optional(__S(551, __c34, 7)),
+          elasticCloudUser: S.optional(__S(582, __c36, 6)),
+          elasticCloudDeployment: S.optional(__S(583, __c36, 7)),
         }),
       ).annotate({ identifier: "ElasticProperties" });
     case 9:
@@ -2885,9 +2986,9 @@ function __c34(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           monitoringStatus: S.optional(S.String),
-          elasticProperties: S.optional(__S(552, __c34, 8)),
-          userInfo: S.optional(__S(546, __c34, 2)),
-          planDetails: S.optional(__S(547, __c34, 3)),
+          elasticProperties: S.optional(__S(584, __c36, 8)),
+          userInfo: S.optional(__S(578, __c36, 2)),
+          planDetails: S.optional(__S(579, __c36, 3)),
           version: S.optional(S.String),
           subscriptionState: S.optional(S.String),
           saaSAzureSubscriptionStatus: S.optional(S.String),
@@ -2897,7 +2998,7 @@ function __c34(j: number): any {
           liftrResourcePreference: S.optional(S.Number),
           generateApiKey: S.optional(S.Boolean),
           hostingType: S.optional(S.String),
-          projectDetails: S.optional(__S(548, __c34, 4)),
+          projectDetails: S.optional(__S(580, __c36, 4)),
         }),
       ).annotate({ identifier: "MonitorProperties" });
     case 10:
@@ -2908,24 +3009,15 @@ function __c34(j: number): any {
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityProperties" });
-    case 11:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(528, __c33, 0)),
-          tags: S.optional(__S(544, __c34, 0)),
-          location: S.String,
-          properties: S.optional(__S(553, __c34, 9)),
-          kind: S.optional(S.String),
-          sku: S.optional(__S(549, __c34, 5)),
-          identity: S.optional(__S(554, __c34, 10)),
-        }),
-      ).annotate({ identifier: "CreateMonitorResponse" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "ElasticCloudUserInput" });
+  }
+}
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2943,17 +3035,17 @@ function __c35(j: number): any {
         ),
       ).annotate({ identifier: "ListTagRulesRequest" });
     case 1:
-      return S.Array(__S(272, __c17, 0));
+      return S.Array(__S(304, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(561, __c35, 1),
+          value: __S(609, __c38, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitoringTagRulesListResponse" });
   }
 }
-function __c36(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2977,17 +3069,17 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "VMResources" });
     case 2:
-      return S.Array(__S(577, __c36, 1));
+      return S.Array(__S(625, __c39, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(578, __c36, 2),
+          value: __S(626, __c39, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VMHostListResponse" });
   }
 }
-function __c37(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3007,7 +3099,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "MonitorUpgradeRequest" });
   }
 }
-function __c38(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3025,7 +3117,7 @@ function __c38(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           integrationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(608, __c38, 0)),
+          properties: S.optional(__S(656, __c41, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3037,7 +3129,7 @@ function __c38(j: number): any {
       ).annotate({ identifier: "OpenAICreateOrUpdateRequest" });
   }
 }
-function __c39(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3058,9 +3150,26 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "OrganizationsResubscribeRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(576, __c36, 0)),
+          location: S.String,
+          properties: S.optional(__S(585, __c36, 9)),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(581, __c36, 5)),
+          identity: S.optional(__S(586, __c36, 10)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "OrganizationsResubscribeResponse" });
   }
 }
-function __c40(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3069,7 +3178,7 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           ruleSetName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(147, __c9, 3)),
+          properties: S.optional(__S(163, __c10, 3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3081,7 +3190,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "TagRulesCreateOrUpdateRequest" });
   }
 }
-function __c41(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3101,7 +3210,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "UpdateDetachTrafficFilterRequest" });
   }
 }
-function __c42(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3109,7 +3218,7 @@ function __c42(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(544, __c34, 0)),
+          tags: S.optional(__S(576, __c36, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3119,9 +3228,25 @@ function __c42(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateMonitorRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          tags: S.optional(__S(576, __c36, 0)),
+          location: S.String,
+          properties: S.optional(__S(585, __c36, 9)),
+          kind: S.optional(S.String),
+          sku: S.optional(__S(581, __c36, 5)),
+          identity: S.optional(__S(586, __c36, 10)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateMonitorResponse" });
   }
 }
-function __c43(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3130,7 +3255,7 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(162, __c10, 2)),
+          properties: S.optional(__S(194, __c12, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3142,7 +3267,23 @@ function __c43(j: number): any {
       ).annotate({ identifier: "UpdateMonitoredSubscriptionRequest" });
   }
 }
-function __c44(j: number): any {
+function __c47(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(560, __c35, 0)),
+          properties: S.optional(__S(194, __c12, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateMonitoredSubscriptionResponse" });
+  }
+}
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3151,7 +3292,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           configurationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(162, __c10, 2)),
+          properties: S.optional(__S(194, __c12, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3163,7 +3304,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "UpdateMonitoredSubscriptionsCreateorRequest" });
   }
 }
-function __c45(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3183,7 +3324,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "DeleteDetachAndDeleteTrafficFilterRequest" });
   }
 }
-function __c46(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3204,7 +3345,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "UpdateVMCollectionRequest" });
   }
 }
-function __c47(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3230,7 +3371,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "UpgradableVersionsList" });
   }
 }
-function __c48(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3256,7 +3397,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "VMIngestionDetailsResponse" });
   }
 }
-function __c49(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3275,7 +3416,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "DeleteMonitorRequest" });
   }
 }
-function __c50(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3295,7 +3436,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "DeleteMonitoredSubscriptionRequest" });
   }
 }
-function __c51(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3315,7 +3456,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "DeleteOpenAIRequest" });
   }
 }
-function __c52(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3335,7 +3476,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteTagRuleRequest" });
   }
 }
-function __c53(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

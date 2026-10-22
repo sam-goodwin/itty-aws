@@ -35,7 +35,14 @@ export interface AdministratorsMicrosoftEntraCreateOrUpdateRequest {
   /** Properties of the server administrator associated to a Microsoft Entra principal. */
   properties?: AdministratorMicrosoftEntraPropertiesForAdd;
 }
-export interface AdministratorsMicrosoftEntraCreateOrUpdateResponse {}
+export interface AdministratorsMicrosoftEntraCreateOrUpdateResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface CancelMigrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -465,7 +472,14 @@ export interface CreateBackupsAutomaticAndOnDemandRequest {
   /** Name of the backup. */
   backupName: string;
 }
-export interface CreateBackupsAutomaticAndOnDemandResponse {}
+export interface CreateBackupsAutomaticAndOnDemandResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Properties of a database. */
 export interface DatabaseProperties {
   /** Character set of the database. */
@@ -485,7 +499,14 @@ export interface CreateDatabaseRequest {
   /** Properties of a database. */
   properties?: DatabaseProperties;
 }
-export interface CreateDatabaseResponse {}
+export interface CreateDatabaseResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type CreateMigrationRequestTagsMap = { [key: string]: string | undefined };
 /** Names of databases to migrate. */
@@ -594,7 +615,14 @@ export interface CreateVirtualEndpointRequest {
   /** Properties of the pair of virtual endpoints. */
   properties?: VirtualEndpointResourcePropertiesInput;
 }
-export interface CreateVirtualEndpointResponse {}
+export interface CreateVirtualEndpointResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAdministratorsMicrosoftEntraRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -605,7 +633,14 @@ export interface DeleteAdministratorsMicrosoftEntraRequest {
   /** Object identifier of the Microsoft Entra principal. */
   objectId: string;
 }
-export interface DeleteAdministratorsMicrosoftEntraResponse {}
+export interface DeleteAdministratorsMicrosoftEntraResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteBackupsAutomaticAndOnDemandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -616,7 +651,14 @@ export interface DeleteBackupsAutomaticAndOnDemandRequest {
   /** Name of the backup. */
   backupName: string;
 }
-export interface DeleteBackupsAutomaticAndOnDemandResponse {}
+export interface DeleteBackupsAutomaticAndOnDemandResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDatabaseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -627,7 +669,14 @@ export interface DeleteDatabaseRequest {
   /** Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server. */
   databaseName: string;
 }
-export interface DeleteDatabaseResponse {}
+export interface DeleteDatabaseResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -638,7 +687,14 @@ export interface DeleteFirewallRuleRequest {
   /** Name of the firewall rule. */
   firewallRuleName: string;
 }
-export interface DeleteFirewallRuleResponse {}
+export interface DeleteFirewallRuleResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -649,7 +705,14 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -658,7 +721,14 @@ export interface DeleteServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export interface DeleteServerResponse {}
+export interface DeleteServerResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteVirtualEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -669,7 +739,14 @@ export interface DeleteVirtualEndpointRequest {
   /** Base name of the virtual endpoints. */
   virtualEndpointName: string;
 }
-export interface DeleteVirtualEndpointResponse {}
+export interface DeleteVirtualEndpointResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Properties of a firewall rule. */
 export interface FirewallRuleProperties {
   /** IP address defining the start of the range of addresses of a firewall rule. Must be expressed in IPv4 format. */
@@ -689,7 +766,14 @@ export interface FirewallRulesCreateOrUpdateRequest {
   /** Properties of a firewall rule. */
   properties: FirewallRuleProperties;
 }
-export interface FirewallRulesCreateOrUpdateResponse {}
+export interface FirewallRulesCreateOrUpdateResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GetAdministratorsMicrosoftEntraRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2403,7 +2487,14 @@ export interface PutConfigurationRequest {
   /** Properties of a configuration (also known as server parameter). */
   properties?: ConfigurationPropertiesInput;
 }
-export interface PutConfigurationResponse {}
+export interface PutConfigurationResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Failover mode. */
 export type FailoverMode =
   | "PlannedFailover"
@@ -2422,7 +2513,14 @@ export interface RestartServerRequest {
   /** Failover mode. */
   failoverMode?: FailoverMode | (string & {});
 }
-export interface RestartServerResponse {}
+export interface RestartServerResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type ServersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Indicates if the server is configured to create geographically redundant backups. */
@@ -2511,7 +2609,14 @@ export interface ServersCreateOrUpdateRequest {
   /** User assigned managed identities assigned to the server. */
   identity?: UserAssignedIdentityInput;
 }
-export interface ServersCreateOrUpdateResponse {}
+export interface ServersCreateOrUpdateResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type ServerThreatProtectionSettingsCreateOrUpdateRequestThreatProtectionName = "Default";
 /** Properties of advanced threat protection state for a server. */
 export interface AdvancedThreatProtectionSettingsPropertiesInput {
@@ -2532,7 +2637,14 @@ export interface ServerThreatProtectionSettingsCreateOrUpdateRequest {
   /** Advanced threat protection properties. */
   properties?: AdvancedThreatProtectionSettingsPropertiesInput;
 }
-export interface ServerThreatProtectionSettingsCreateOrUpdateResponse {}
+export interface ServerThreatProtectionSettingsCreateOrUpdateResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** List of SAS uri of storage containers where backup data is to be streamed/copied. */
 export type BackupStoreDetailsSasUriListList = Array<string>;
 /** Details about the target where the backup content will be stored. */
@@ -2556,6 +2668,12 @@ export interface StartBackupsLongTermRetentionRequest {
 export interface BackupsLongTermRetentionResponse {
   /** Long Term Retention Backup Operation Resource Properties */
   properties?: LtrBackupOperationResponseProperties;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StartServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2565,7 +2683,14 @@ export interface StartServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export interface StartServerResponse {}
+export interface StartServerResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StopServerRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2574,7 +2699,14 @@ export interface StopServerRequest {
   /** The name of the server. */
   serverName: string;
 }
-export interface StopServerResponse {}
+export interface StopServerResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface UpdateConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2587,7 +2719,14 @@ export interface UpdateConfigurationRequest {
   /** Properties of a configuration (also known as server parameter). */
   properties?: ConfigurationPropertiesInput;
 }
-export interface UpdateConfigurationResponse {}
+export interface UpdateConfigurationResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Credentials of administrator users for source and target servers. */
 export interface AdminCredentialsForPatch {
   /** Password for the user of the source server. */
@@ -2698,7 +2837,14 @@ export interface UpdatePrivateEndpointConnectionRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export interface UpdatePrivateEndpointConnectionResponse {}
+export interface UpdatePrivateEndpointConnectionResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Compute information of a server. */
 export interface SkuForPatch {
   /** Name by which is known a given compute size assigned to a server. */
@@ -2787,7 +2933,14 @@ export interface UpdateServerRequest {
   /** Application-specific metadata in the form of key-value pairs. */
   tags?: UpdateServerRequestTagsMap;
 }
-export interface UpdateServerResponse {}
+export interface UpdateServerResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface UpdateVirtualEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2800,7 +2953,14 @@ export interface UpdateVirtualEndpointRequest {
   /** Properties of the pair of virtual endpoints. */
   properties?: VirtualEndpointResourcePropertiesInput;
 }
-export interface UpdateVirtualEndpointResponse {}
+export interface UpdateVirtualEndpointResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type AdministratorsMicrosoftEntraCreateOrUpdateError = AzureOpError;
 /** Creates a new server administrator associated to a Microsoft Entra principal. */
 export const AdministratorsMicrosoftEntraCreateOrUpdate: API.OperationMethod<
@@ -3762,7 +3922,7 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2881, __c90, 1) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  input: __S(2882, __c90, 2) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3832,9 +3992,13 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "AdministratorsMicrosoftEntraCreateOrUpdateResponse",
-      });
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AdministratorsMicrosoftEntraCreateOrUpdateResponse" });
   }
 }
 function __c2(j: number): any {
@@ -6112,6 +6276,9 @@ function __c84(j: number): any {
       return S.suspend(() =>
         S.Struct({
           properties: S.optional(__S(864, __c27, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "BackupsLongTermRetentionResponse" });
   }
@@ -6255,20 +6422,22 @@ function __c89(j: number): any {
 function __c90(j: number): any {
   switch (j) {
     case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "PrivateEndpointInput" });
+    case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(32, __c1, 0)),
+          privateEndpoint: S.optional(__S(2880, __c90, 0)),
           privateLinkServiceConnectionState: __S(1216, __c38, 0),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
-    case 1:
+    case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(2880, __c90, 0)),
+          properties: S.optional(__S(2881, __c90, 1)),
         }).pipe(
           T.Http({
             method: "PUT",

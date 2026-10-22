@@ -342,7 +342,12 @@ export interface DeleteManagedHsmRequest {
   /** The name of the managed HSM Pool. */
   name: string;
 }
-export interface DeleteManagedHsmResponse {}
+export interface DeleteManagedHsmResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMHSMPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -462,6 +467,10 @@ export interface DeleteMHSMPrivateEndpointConnectionResponse {
   location?: string;
   /** Resource tags. */
   tags?: DeleteMHSMPrivateEndpointConnectionResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -498,6 +507,10 @@ export interface DeletePrivateEndpointConnectionResponse {
   tags?: DeletePrivateEndpointConnectionResponseTagsMap;
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1871,6 +1884,10 @@ export interface ManagedHsmsCreateOrUpdateResponse {
   location?: string;
   /** Resource tags. */
   tags?: ManagedHsmsCreateOrUpdateResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface PurgeManagedHsmDeletedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1880,7 +1897,12 @@ export interface PurgeManagedHsmDeletedRequest {
   /** The name of the deleted managed HSM. */
   name: string;
 }
-export interface PurgeManagedHsmDeletedResponse {}
+export interface PurgeManagedHsmDeletedResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface PurgeVaultDeletedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1889,7 +1911,12 @@ export interface PurgeVaultDeletedRequest {
   /** The name of the vault. */
   vaultName: string;
 }
-export interface PurgeVaultDeletedResponse {}
+export interface PurgeVaultDeletedResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Private endpoint object properties. */
 export type MHSMPrivateEndpointInput = UserAssignedIdentityInput;
 /** Properties of the private endpoint connection resource. */
@@ -1952,6 +1979,10 @@ export interface PutMHSMPrivateEndpointConnectionResponse {
   location?: string;
   /** Resource tags. */
   tags?: PutMHSMPrivateEndpointConnectionResponseTagsMap;
+  /** (specified only if operation does not finish synchronously) The URI to poll for completion status. The response of this URI may be synchronous or asynchronous. */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Private endpoint object properties. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
@@ -1990,6 +2021,10 @@ export interface PutPrivateEndpointConnectionResponse {
   tags?: PutPrivateEndpointConnectionResponseTagsMap;
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
+  /** (specified only if operation does not finish synchronously) The URI to poll for completion status. The response of this URI may be synchronous or asynchronous. */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The tags that will be assigned to the secret. */
 export type SecretsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -2088,6 +2123,10 @@ export interface UpdateManagedHsmResponse {
   location?: string;
   /** Resource tags. */
   tags?: UpdateManagedHsmResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The tags that will be assigned to the secret. */
 export type UpdateSecretRequestTagsMap = { [key: string]: string | undefined };
@@ -2296,6 +2335,10 @@ export interface VaultsCreateOrUpdateResponse {
   location?: string;
   /** Tags assigned to the key vault resource. */
   tags?: VaultsCreateOrUpdateResponseTagsMap;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CheckManagedHsmMhsmNameAvailabilityError = AzureOpError;
 /** Checks that the managed hsm name is valid and is not already in use. */
@@ -2335,8 +2378,8 @@ export const CreateKeyIfNotExist: API.OperationMethod<
   CreateKeyIfNotExistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<CreateKeyIfNotExistRequest>,
-  output: __S(448, __c28, 0) as any as S.Schema<CreateKeyIfNotExistResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<CreateKeyIfNotExistRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<CreateKeyIfNotExistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2350,8 +2393,8 @@ export const CreateManagedHsmKeyIfNotExist: API.OperationMethod<
   CreateManagedHsmKeyIfNotExistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<CreateManagedHsmKeyIfNotExistRequest>,
-  output: __S(688, __c43, 0) as any as S.Schema<CreateManagedHsmKeyIfNotExistResponse>,
+  input: __S(736, __c46, 0) as any as S.Schema<CreateManagedHsmKeyIfNotExistRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<CreateManagedHsmKeyIfNotExistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2365,8 +2408,8 @@ export const DeleteManagedHsm: API.OperationMethod<
   DeleteManagedHsmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<DeleteManagedHsmRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<DeleteManagedHsmResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeleteManagedHsmRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<DeleteManagedHsmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2380,8 +2423,8 @@ export const DeleteMHSMPrivateEndpointConnection: API.OperationMethod<
   DeleteMHSMPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<DeleteMHSMPrivateEndpointConnectionRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<DeleteMHSMPrivateEndpointConnectionResponse>,
+  input: __S(1168, __c73, 0) as any as S.Schema<DeleteMHSMPrivateEndpointConnectionRequest>,
+  output: __S(1169, __c73, 1) as any as S.Schema<DeleteMHSMPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2395,8 +2438,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(1200, __c75, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(1232, __c77, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(1233, __c77, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2410,8 +2453,8 @@ export const DeleteVault: API.OperationMethod<
   DeleteVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<DeleteVaultRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<DeleteVaultResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<DeleteVaultRequest>,
+  output: __S(1264, __c79, 0) as any as S.Schema<DeleteVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2425,8 +2468,8 @@ export const GetKey: API.OperationMethod<
   GetKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<GetKeyRequest>,
-  output: __S(448, __c28, 0) as any as S.Schema<GetKeyResponse>,
+  input: __S(1280, __c80, 0) as any as S.Schema<GetKeyRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<GetKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2440,8 +2483,8 @@ export const GetKeyVersion: API.OperationMethod<
   GetKeyVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c78, 0) as any as S.Schema<GetKeyVersionRequest>,
-  output: __S(448, __c28, 0) as any as S.Schema<GetKeyVersionResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<GetKeyVersionRequest>,
+  output: __S(512, __c32, 0) as any as S.Schema<GetKeyVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2456,7 +2499,7 @@ export const GetManagedHsm: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c3, 0) as any as S.Schema<GetManagedHsmRequest>,
-  output: __S(119, __c7, 7) as any as S.Schema<GetManagedHsmResponse>,
+  output: __S(80, __c5, 0) as any as S.Schema<GetManagedHsmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2470,8 +2513,8 @@ export const GetManagedHsmDeleted: API.OperationMethod<
   GetManagedHsmDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<GetManagedHsmDeletedRequest>,
-  output: __S(145, __c9, 1) as any as S.Schema<GetManagedHsmDeletedResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetManagedHsmDeletedRequest>,
+  output: __S(161, __c10, 1) as any as S.Schema<GetManagedHsmDeletedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2485,8 +2528,8 @@ export const GetManagedHsmKey: API.OperationMethod<
   GetManagedHsmKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<GetManagedHsmKeyRequest>,
-  output: __S(688, __c43, 0) as any as S.Schema<GetManagedHsmKeyResponse>,
+  input: __S(176, __c11, 0) as any as S.Schema<GetManagedHsmKeyRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetManagedHsmKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2500,8 +2543,8 @@ export const GetManagedHsmKeyVersion: API.OperationMethod<
   GetManagedHsmKeyVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<GetManagedHsmKeyVersionRequest>,
-  output: __S(688, __c43, 0) as any as S.Schema<GetManagedHsmKeyVersionResponse>,
+  input: __S(192, __c12, 0) as any as S.Schema<GetManagedHsmKeyVersionRequest>,
+  output: __S(752, __c47, 0) as any as S.Schema<GetManagedHsmKeyVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2515,8 +2558,8 @@ export const GetMHSMPrivateEndpointConnection: API.OperationMethod<
   GetMHSMPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<GetMHSMPrivateEndpointConnectionRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<GetMHSMPrivateEndpointConnectionResponse>,
+  input: __S(208, __c13, 0) as any as S.Schema<GetMHSMPrivateEndpointConnectionRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetMHSMPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2530,8 +2573,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(1200, __c75, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(256, __c16, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2545,8 +2588,8 @@ export const GetSecret: API.OperationMethod<
   GetSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<GetSecretRequest>,
-  output: __S(242, __c15, 2) as any as S.Schema<GetSecretResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetSecretRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<GetSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2560,8 +2603,8 @@ export const GetVault: API.OperationMethod<
   GetVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<GetVaultRequest>,
-  output: __S(292, __c18, 4) as any as S.Schema<GetVaultResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetVaultRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<GetVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2575,8 +2618,8 @@ export const GetVaultDeleted: API.OperationMethod<
   GetVaultDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetVaultDeletedRequest>,
-  output: __S(321, __c20, 1) as any as S.Schema<GetVaultDeletedResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetVaultDeletedRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<GetVaultDeletedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2590,8 +2633,8 @@ export const ListKeys: API.OperationMethod<
   ListKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<ListKeysRequest>,
-  output: __S(353, __c22, 1) as any as S.Schema<KeyListResult>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListKeysRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<KeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2605,8 +2648,8 @@ export const ListKeyVersions: API.OperationMethod<
   ListKeyVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<ListKeyVersionsRequest>,
-  output: __S(353, __c22, 1) as any as S.Schema<KeyListResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListKeyVersionsRequest>,
+  output: __S(417, __c26, 1) as any as S.Schema<KeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2620,8 +2663,8 @@ export const ListManagedHsmByResourceGroup: API.OperationMethod<
   ListManagedHsmByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<ListManagedHsmByResourceGroupRequest>,
-  output: __S(497, __c31, 1) as any as S.Schema<ManagedHsmListResult>,
+  input: __S(544, __c34, 0) as any as S.Schema<ListManagedHsmByResourceGroupRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<ManagedHsmListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2635,8 +2678,8 @@ export const ListManagedHsmBySubscription: API.OperationMethod<
   ListManagedHsmBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<ListManagedHsmBySubscriptionRequest>,
-  output: __S(497, __c31, 1) as any as S.Schema<ManagedHsmListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListManagedHsmBySubscriptionRequest>,
+  output: __S(561, __c35, 1) as any as S.Schema<ManagedHsmListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2650,8 +2693,8 @@ export const ListManagedHsmDeleted: API.OperationMethod<
   ListManagedHsmDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListManagedHsmDeletedRequest>,
-  output: __S(530, __c33, 2) as any as S.Schema<DeletedManagedHsmListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListManagedHsmDeletedRequest>,
+  output: __S(594, __c37, 2) as any as S.Schema<DeletedManagedHsmListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2665,8 +2708,8 @@ export const ListManagedHsmKeys: API.OperationMethod<
   ListManagedHsmKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListManagedHsmKeysRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<ManagedHsmKeyListResult>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListManagedHsmKeysRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<ManagedHsmKeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2680,8 +2723,8 @@ export const ListManagedHsmKeyVersions: API.OperationMethod<
   ListManagedHsmKeyVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListManagedHsmKeyVersionsRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<ManagedHsmKeyListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListManagedHsmKeyVersionsRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<ManagedHsmKeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2695,8 +2738,8 @@ export const ListMHSMPrivateEndpointConnectionByResource: API.OperationMethod<
   ListMHSMPrivateEndpointConnectionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<ListMHSMPrivateEndpointConnectionByResourceRequest>,
-  output: __S(594, __c37, 2) as any as S.Schema<MHSMPrivateEndpointConnectionsListResult>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListMHSMPrivateEndpointConnectionByResourceRequest>,
+  output: __S(658, __c41, 2) as any as S.Schema<MHSMPrivateEndpointConnectionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2710,8 +2753,8 @@ export const ListMHSMPrivateLinkResourceByMHSMResource: API.OperationMethod<
   ListMHSMPrivateLinkResourceByMHSMResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<ListMHSMPrivateLinkResourceByMHSMResourceRequest>,
-  output: __S(611, __c38, 3) as any as S.Schema<MHSMPrivateLinkResourceListResult>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListMHSMPrivateLinkResourceByMHSMResourceRequest>,
+  output: __S(675, __c42, 3) as any as S.Schema<MHSMPrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2725,8 +2768,8 @@ export const ListMHSMRegionByResource: API.OperationMethod<
   ListMHSMRegionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c40, 0) as any as S.Schema<ListMHSMRegionByResourceRequest>,
-  output: __S(641, __c40, 1) as any as S.Schema<MHSMRegionsListResult>,
+  input: __S(704, __c44, 0) as any as S.Schema<ListMHSMRegionByResourceRequest>,
+  output: __S(705, __c44, 1) as any as S.Schema<MHSMRegionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2740,8 +2783,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(668, __c41, 12) as any as S.Schema<OperationListResult>,
+  input: __S(720, __c45, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(732, __c45, 12) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2755,8 +2798,8 @@ export const ListPrivateEndpointConnectionByResource: API.OperationMethod<
   ListPrivateEndpointConnectionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c44, 0) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>,
-  output: __S(706, __c44, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>,
+  output: __S(770, __c48, 2) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2770,8 +2813,8 @@ export const ListPrivateLinkResourceByVault: API.OperationMethod<
   ListPrivateLinkResourceByVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<ListPrivateLinkResourceByVaultRequest>,
-  output: __S(723, __c45, 3) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(784, __c49, 0) as any as S.Schema<ListPrivateLinkResourceByVaultRequest>,
+  output: __S(787, __c49, 3) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2785,8 +2828,8 @@ export const ListSecrets: API.OperationMethod<
   ListSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<ListSecretsRequest>,
-  output: __S(738, __c46, 2) as any as S.Schema<SecretListResult>,
+  input: __S(800, __c50, 0) as any as S.Schema<ListSecretsRequest>,
+  output: __S(802, __c50, 2) as any as S.Schema<SecretListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2800,8 +2843,8 @@ export const ListVaultByResourceGroup: API.OperationMethod<
   ListVaultByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<ListVaultByResourceGroupRequest>,
-  output: __S(769, __c48, 1) as any as S.Schema<VaultListResult>,
+  input: __S(816, __c51, 0) as any as S.Schema<ListVaultByResourceGroupRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<VaultListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2815,8 +2858,8 @@ export const ListVaultBySubscription: API.OperationMethod<
   ListVaultBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<ListVaultBySubscriptionRequest>,
-  output: __S(769, __c48, 1) as any as S.Schema<VaultListResult>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListVaultBySubscriptionRequest>,
+  output: __S(833, __c52, 1) as any as S.Schema<VaultListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2830,8 +2873,8 @@ export const ListVaultDeleted: API.OperationMethod<
   ListVaultDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c50, 0) as any as S.Schema<ListVaultDeletedRequest>,
-  output: __S(802, __c50, 2) as any as S.Schema<DeletedVaultListResult>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListVaultDeletedRequest>,
+  output: __S(866, __c54, 2) as any as S.Schema<DeletedVaultListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2845,8 +2888,8 @@ export const ListVaults: API.OperationMethod<
   ListVaultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<ListVaultsRequest>,
-  output: __S(819, __c51, 3) as any as S.Schema<ResourceListResult>,
+  input: __S(880, __c55, 0) as any as S.Schema<ListVaultsRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<ResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2860,8 +2903,8 @@ export const ManagedHsmsCreateOrUpdate: API.OperationMethod<
   ManagedHsmsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<ManagedHsmsCreateOrUpdateRequest>,
-  output: __S(119, __c7, 7) as any as S.Schema<ManagedHsmsCreateOrUpdateResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<ManagedHsmsCreateOrUpdateRequest>,
+  output: __S(931, __c58, 3) as any as S.Schema<ManagedHsmsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2875,8 +2918,8 @@ export const PurgeManagedHsmDeleted: API.OperationMethod<
   PurgeManagedHsmDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<PurgeManagedHsmDeletedRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<PurgeManagedHsmDeletedResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<PurgeManagedHsmDeletedRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<PurgeManagedHsmDeletedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2890,8 +2933,8 @@ export const PurgeVaultDeleted: API.OperationMethod<
   PurgeVaultDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<PurgeVaultDeletedRequest>,
-  output: __S(928, __c58, 0) as any as S.Schema<PurgeVaultDeletedResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<PurgeVaultDeletedRequest>,
+  output: __S(992, __c62, 0) as any as S.Schema<PurgeVaultDeletedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2905,8 +2948,8 @@ export const PutMHSMPrivateEndpointConnection: API.OperationMethod<
   PutMHSMPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<PutMHSMPrivateEndpointConnectionRequest>,
-  output: __S(1152, __c72, 0) as any as S.Schema<PutMHSMPrivateEndpointConnectionResponse>,
+  input: __S(1008, __c63, 0) as any as S.Schema<PutMHSMPrivateEndpointConnectionRequest>,
+  output: __S(1009, __c63, 1) as any as S.Schema<PutMHSMPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2920,8 +2963,8 @@ export const PutPrivateEndpointConnection: API.OperationMethod<
   PutPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
-  output: __S(1200, __c75, 0) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2935,8 +2978,8 @@ export const SecretsCreateOrUpdate: API.OperationMethod<
   SecretsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<SecretsCreateOrUpdateRequest>,
-  output: __S(242, __c15, 2) as any as S.Schema<SecretsCreateOrUpdateResponse>,
+  input: __S(1056, __c66, 0) as any as S.Schema<SecretsCreateOrUpdateRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<SecretsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2950,8 +2993,8 @@ export const UpdateManagedHsm: API.OperationMethod<
   UpdateManagedHsmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<UpdateManagedHsmRequest>,
-  output: __S(119, __c7, 7) as any as S.Schema<UpdateManagedHsmResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<UpdateManagedHsmRequest>,
+  output: __S(931, __c58, 3) as any as S.Schema<UpdateManagedHsmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2965,8 +3008,8 @@ export const UpdateSecret: API.OperationMethod<
   UpdateSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<UpdateSecretRequest>,
-  output: __S(242, __c15, 2) as any as S.Schema<UpdateSecretResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<UpdateSecretRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<UpdateSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2980,8 +3023,8 @@ export const UpdateVault: API.OperationMethod<
   UpdateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1057, __c66, 1) as any as S.Schema<UpdateVaultRequest>,
-  output: __S(292, __c18, 4) as any as S.Schema<UpdateVaultResponse>,
+  input: __S(1121, __c70, 1) as any as S.Schema<UpdateVaultRequest>,
+  output: __S(320, __c20, 0) as any as S.Schema<UpdateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2995,8 +3038,8 @@ export const UpdateVaultAccessPolicy: API.OperationMethod<
   UpdateVaultAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1073, __c67, 1) as any as S.Schema<UpdateVaultAccessPolicyRequest>,
-  output: __S(1074, __c67, 2) as any as S.Schema<VaultAccessPolicyParameters>,
+  input: __S(1137, __c71, 1) as any as S.Schema<UpdateVaultAccessPolicyRequest>,
+  output: __S(1138, __c71, 2) as any as S.Schema<VaultAccessPolicyParameters>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3010,8 +3053,8 @@ export const VaultsCreateOrUpdate: API.OperationMethod<
   VaultsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1089, __c68, 1) as any as S.Schema<VaultsCreateOrUpdateRequest>,
-  output: __S(292, __c18, 4) as any as S.Schema<VaultsCreateOrUpdateResponse>,
+  input: __S(1153, __c72, 1) as any as S.Schema<VaultsCreateOrUpdateRequest>,
+  output: __S(1154, __c72, 2) as any as S.Schema<VaultsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3101,7 +3144,7 @@ function __c4(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(__S(1170, __c73, 2)),
+          properties: S.optional(__S(1218, __c76, 2)),
         }),
       ).annotate({ identifier: "MHSMPrivateEndpointConnectionItem" });
     case 3:
@@ -3111,10 +3154,28 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(S.String);
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(134, __c8, 6)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1202, __c75, 2)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({ identifier: "GetManagedHsmResponse" });
   }
 }
 function __c6(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(S.String);
+  }
+}
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3125,10 +3186,10 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "MHSMGeoReplicatedRegion" });
     case 1:
-      return S.Array(__S(96, __c6, 0));
+      return S.Array(__S(112, __c7, 0));
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3137,7 +3198,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "MHSMServiceTagRule" });
     case 1:
-      return S.Array(__S(112, __c7, 0));
+      return S.Array(__S(128, __c8, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3145,15 +3206,15 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "MHSMVirtualNetworkRule" });
     case 3:
-      return S.Array(__S(114, __c7, 2));
+      return S.Array(__S(130, __c8, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           bypass: S.optional(S.String),
           defaultAction: S.optional(S.String),
           ipRules: S.optional(__S(65, __c4, 1)),
-          serviceTags: S.optional(__S(113, __c7, 1)),
-          virtualNetworkRules: S.optional(__S(115, __c7, 3)),
+          serviceTags: S.optional(__S(129, __c8, 1)),
+          virtualNetworkRules: S.optional(__S(131, __c8, 3)),
         }),
       ).annotate({ identifier: "MHSMNetworkRuleSet" });
     case 5:
@@ -3167,7 +3228,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          initialAdminObjectIds: S.optional(__S(80, __c5, 0)),
+          initialAdminObjectIds: S.optional(__S(96, __c6, 0)),
           hsmUri: S.optional(S.String),
           enableSoftDelete: S.optional(S.Boolean),
           softDeleteRetentionInDays: S.optional(S.Number),
@@ -3175,31 +3236,17 @@ function __c7(j: number): any {
           createMode: S.optional(S.String),
           statusMessage: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          networkAcls: S.optional(__S(116, __c7, 4)),
-          regions: S.optional(__S(97, __c6, 1)),
+          networkAcls: S.optional(__S(132, __c8, 4)),
+          regions: S.optional(__S(113, __c7, 1)),
           privateEndpointConnections: S.optional(__S(67, __c4, 3)),
           publicNetworkAccess: S.optional(S.String),
           scheduledPurgeDate: S.optional(S.String),
-          securityDomainProperties: S.optional(__S(117, __c7, 5)),
+          securityDomainProperties: S.optional(__S(133, __c8, 5)),
         }),
       ).annotate({ identifier: "ManagedHsmProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: S.optional(__S(118, __c7, 6)),
-          sku: S.optional(__S(1120, __c70, 0)),
-          identity: S.optional(__S(1138, __c71, 2)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
-        }),
-      ).annotate({ identifier: "GetManagedHsmResponse" });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3218,7 +3265,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "GetManagedHsmDeletedRequest" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3228,7 +3275,7 @@ function __c9(j: number): any {
           deletionDate: S.optional(S.String),
           scheduledPurgeDate: S.optional(S.String),
           purgeProtectionEnabled: S.optional(S.Boolean),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({ identifier: "DeletedManagedHsmProperties" });
     case 1:
@@ -3237,13 +3284,13 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: S.optional(__S(144, __c9, 0)),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(160, __c10, 0)),
         }),
       ).annotate({ identifier: "GetManagedHsmDeletedResponse" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3263,7 +3310,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetManagedHsmKeyRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3284,7 +3331,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetManagedHsmKeyVersionRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3304,7 +3351,26 @@ function __c12(j: number): any {
       ).annotate({ identifier: "GetMHSMPrivateEndpointConnectionRequest" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(1218, __c76, 2)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1202, __c75, 2)),
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({ identifier: "GetMHSMPrivateEndpointConnectionResponse" });
+  }
+}
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3324,7 +3390,24 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c14(j: number): any {
+function __c16(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(1218, __c76, 2)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+          etag: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetPrivateEndpointConnectionResponse" });
+  }
+}
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3344,7 +3427,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetSecretRequest" });
   }
 }
-function __c15(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3361,7 +3444,7 @@ function __c15(j: number): any {
         S.Struct({
           value: S.optional(S.String),
           contentType: S.optional(S.String),
-          attributes: S.optional(__S(240, __c15, 0)),
+          attributes: S.optional(__S(288, __c18, 0)),
           secretUri: S.optional(S.String),
           secretUriWithVersion: S.optional(S.String),
         }),
@@ -3372,15 +3455,15 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: __S(241, __c15, 1),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: __S(289, __c18, 1),
           location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({ identifier: "GetSecretResponse" });
   }
 }
-function __c16(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3399,15 +3482,31 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetVaultRequest" });
   }
 }
-function __c17(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(__S(416, __c26, 0)),
-          secrets: S.optional(__S(416, __c26, 0)),
-          certificates: S.optional(__S(416, __c26, 0)),
-          storage: S.optional(__S(416, __c26, 0)),
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: __S(355, __c22, 3),
+          location: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+        }),
+      ).annotate({ identifier: "GetVaultResponse" });
+  }
+}
+function __c21(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          keys: S.optional(__S(480, __c30, 0)),
+          secrets: S.optional(__S(480, __c30, 0)),
+          certificates: S.optional(__S(480, __c30, 0)),
+          storage: S.optional(__S(480, __c30, 0)),
         }),
       ).annotate({ identifier: "Permissions" });
     case 1:
@@ -3416,14 +3515,14 @@ function __c17(j: number): any {
           tenantId: S.String,
           objectId: S.String,
           applicationId: S.optional(S.String),
-          permissions: __S(272, __c17, 0),
+          permissions: __S(336, __c21, 0),
         }),
       ).annotate({ identifier: "AccessPolicyEntry" });
     case 2:
-      return S.Array(__S(273, __c17, 1));
+      return S.Array(__S(337, __c21, 1));
   }
 }
-function __c18(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3433,22 +3532,22 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "VirtualNetworkRule" });
     case 1:
-      return S.Array(__S(288, __c18, 0));
+      return S.Array(__S(352, __c22, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           bypass: S.optional(S.String),
           defaultAction: S.optional(S.String),
           ipRules: S.optional(__S(65, __c4, 1)),
-          virtualNetworkRules: S.optional(__S(289, __c18, 1)),
+          virtualNetworkRules: S.optional(__S(353, __c22, 1)),
         }),
       ).annotate({ identifier: "NetworkRuleSet" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.String,
-          sku: __S(1120, __c70, 0),
-          accessPolicies: S.optional(__S(274, __c17, 2)),
+          sku: __S(1184, __c74, 0),
+          accessPolicies: S.optional(__S(338, __c21, 2)),
           vaultUri: S.optional(S.String),
           hsmPoolResourceId: S.optional(S.String),
           enabledForDeployment: S.optional(S.Boolean),
@@ -3459,27 +3558,15 @@ function __c18(j: number): any {
           enableRbacAuthorization: S.optional(S.Boolean),
           createMode: S.optional(S.String),
           enablePurgeProtection: S.optional(S.Boolean),
-          networkAcls: S.optional(__S(290, __c18, 2)),
+          networkAcls: S.optional(__S(354, __c22, 2)),
           provisioningState: S.optional(S.String),
           privateEndpointConnections: S.optional(__S(67, __c4, 3)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultProperties" });
-    case 4:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: __S(291, __c18, 3),
-          location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
-        }),
-      ).annotate({ identifier: "GetVaultResponse" });
   }
 }
-function __c19(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3498,7 +3585,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetVaultDeletedRequest" });
   }
 }
-function __c20(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3507,7 +3594,7 @@ function __c20(j: number): any {
           location: S.optional(S.String),
           deletionDate: S.optional(S.String),
           scheduledPurgeDate: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
           purgeProtectionEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeletedVaultProperties" });
@@ -3517,13 +3604,13 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: S.optional(__S(320, __c20, 0)),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(384, __c24, 0)),
         }),
       ).annotate({ identifier: "GetVaultDeletedResponse" });
   }
 }
-function __c21(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3542,20 +3629,20 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ListKeysRequest" });
   }
 }
-function __c22(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(448, __c28, 0));
+      return S.Array(__S(512, __c32, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(352, __c22, 0),
+          value: __S(416, __c26, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyListResult" });
   }
 }
-function __c23(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3564,8 +3651,8 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           keyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
-          properties: __S(387, __c24, 3),
+          tags: S.optional(__S(464, __c29, 0)),
+          properties: __S(451, __c28, 3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3577,7 +3664,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "CreateKeyIfNotExistRequest" });
   }
 }
-function __c24(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3597,25 +3684,25 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(385, __c24, 1)),
-          lifetimeActions: S.optional(__S(435, __c27, 3)),
+          attributes: S.optional(__S(449, __c28, 1)),
+          lifetimeActions: S.optional(__S(499, __c31, 3)),
         }),
       ).annotate({ identifier: "RotationPolicyInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(384, __c24, 0)),
+          attributes: S.optional(__S(448, __c28, 0)),
           kty: S.optional(S.String),
-          keyOps: S.optional(__S(416, __c26, 0)),
+          keyOps: S.optional(__S(480, __c30, 0)),
           keySize: S.optional(S.Number),
           curveName: S.optional(S.String),
-          rotationPolicy: S.optional(__S(386, __c24, 2)),
-          release_policy: S.optional(__S(436, __c27, 4)),
+          rotationPolicy: S.optional(__S(450, __c28, 2)),
+          release_policy: S.optional(__S(500, __c31, 4)),
         }),
       ).annotate({ identifier: "KeyPropertiesInput" });
   }
 }
-function __c25(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
@@ -3632,13 +3719,13 @@ function __c25(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c26(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c27(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3656,12 +3743,12 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          trigger: S.optional(__S(432, __c27, 0)),
-          action: S.optional(__S(433, __c27, 1)),
+          trigger: S.optional(__S(496, __c31, 0)),
+          action: S.optional(__S(497, __c31, 1)),
         }),
       ).annotate({ identifier: "LifetimeAction" });
     case 3:
-      return S.Array(__S(434, __c27, 2));
+      return S.Array(__S(498, __c31, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3692,27 +3779,27 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(438, __c27, 6)),
-          lifetimeActions: S.optional(__S(435, __c27, 3)),
+          attributes: S.optional(__S(502, __c31, 6)),
+          lifetimeActions: S.optional(__S(499, __c31, 3)),
         }),
       ).annotate({ identifier: "RotationPolicy" });
     case 8:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(__S(437, __c27, 5)),
+          attributes: S.optional(__S(501, __c31, 5)),
           kty: S.optional(S.String),
-          keyOps: S.optional(__S(416, __c26, 0)),
+          keyOps: S.optional(__S(480, __c30, 0)),
           keySize: S.optional(S.Number),
           curveName: S.optional(S.String),
           keyUri: S.optional(S.String),
           keyUriWithVersion: S.optional(S.String),
-          rotationPolicy: S.optional(__S(439, __c27, 7)),
-          release_policy: S.optional(__S(436, __c27, 4)),
+          rotationPolicy: S.optional(__S(503, __c31, 7)),
+          release_policy: S.optional(__S(500, __c31, 4)),
         }),
       ).annotate({ identifier: "KeyProperties" });
   }
 }
-function __c28(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3720,15 +3807,15 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: __S(440, __c27, 8),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: __S(504, __c31, 8),
           location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({ identifier: "CreateKeyIfNotExistResponse" });
   }
 }
-function __c29(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3748,7 +3835,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "ListKeyVersionsRequest" });
   }
 }
-function __c30(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3767,20 +3854,20 @@ function __c30(j: number): any {
       ).annotate({ identifier: "ListManagedHsmByResourceGroupRequest" });
   }
 }
-function __c31(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(119, __c7, 7));
+      return S.Array(__S(80, __c5, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(496, __c31, 0),
+          value: __S(560, __c35, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedHsmListResult" });
   }
 }
-function __c32(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3798,7 +3885,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "ListManagedHsmBySubscriptionRequest" });
   }
 }
-function __c33(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3814,17 +3901,17 @@ function __c33(j: number): any {
         ),
       ).annotate({ identifier: "ListManagedHsmDeletedRequest" });
     case 1:
-      return S.Array(__S(145, __c9, 1));
+      return S.Array(__S(161, __c10, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(529, __c33, 1),
+          value: __S(593, __c37, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedManagedHsmListResult" });
   }
 }
-function __c34(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3843,20 +3930,20 @@ function __c34(j: number): any {
       ).annotate({ identifier: "ListManagedHsmKeysRequest" });
   }
 }
-function __c35(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(688, __c43, 0));
+      return S.Array(__S(752, __c47, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(560, __c35, 0),
+          value: __S(624, __c39, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedHsmKeyListResult" });
   }
 }
-function __c36(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3876,7 +3963,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "ListManagedHsmKeyVersionsRequest" });
   }
 }
-function __c37(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3894,17 +3981,17 @@ function __c37(j: number): any {
         ),
       ).annotate({ identifier: "ListMHSMPrivateEndpointConnectionByResourceRequest" });
     case 1:
-      return S.Array(__S(1152, __c72, 0));
+      return S.Array(__S(224, __c14, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(593, __c37, 1),
+          value: __S(657, __c41, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MHSMPrivateEndpointConnectionsListResult" });
   }
 }
-function __c38(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3927,37 +4014,37 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          tags: S.optional(__S(400, __c25, 0)),
+          systemData: S.optional(__S(465, __c29, 1)),
+          tags: S.optional(__S(464, __c29, 0)),
           location: S.String,
-          properties: S.optional(__S(624, __c39, 0)),
-          sku: S.optional(__S(1120, __c70, 0)),
-          identity: S.optional(__S(1138, __c71, 2)),
+          properties: S.optional(__S(688, __c43, 0)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1202, __c75, 2)),
         }),
       ).annotate({ identifier: "MHSMPrivateLinkResource" });
     case 2:
-      return S.Array(__S(609, __c38, 1));
+      return S.Array(__S(673, __c42, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(610, __c38, 2)),
+          value: S.optional(__S(674, __c42, 2)),
         }),
       ).annotate({ identifier: "MHSMPrivateLinkResourceListResult" });
   }
 }
-function __c39(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(80, __c5, 0)),
-          requiredZoneNames: S.optional(__S(80, __c5, 0)),
+          requiredMembers: S.optional(__S(96, __c6, 0)),
+          requiredZoneNames: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "MHSMPrivateLinkResourceProperties" });
   }
 }
-function __c40(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3977,13 +4064,13 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(97, __c6, 1),
+          value: __S(113, __c7, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MHSMRegionsListResult" });
   }
 }
-function __c41(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4014,7 +4101,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 3:
-      return S.Array(__S(658, __c41, 2));
+      return S.Array(__S(722, __c45, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4024,7 +4111,7 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "DimensionProperties" });
     case 5:
-      return S.Array(__S(660, __c41, 4));
+      return S.Array(__S(724, __c45, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4033,51 +4120,51 @@ function __c41(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(__S(80, __c5, 0)),
-          supportedTimeGrainTypes: S.optional(__S(80, __c5, 0)),
+          supportedAggregationTypes: S.optional(__S(96, __c6, 0)),
+          supportedTimeGrainTypes: S.optional(__S(96, __c6, 0)),
           lockAggregationType: S.optional(S.String),
-          dimensions: S.optional(__S(661, __c41, 5)),
+          dimensions: S.optional(__S(725, __c45, 5)),
           fillGapWithZero: S.optional(S.Boolean),
           internalMetricName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 7:
-      return S.Array(__S(662, __c41, 6));
+      return S.Array(__S(726, __c45, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(__S(659, __c41, 3)),
-          metricSpecifications: S.optional(__S(663, __c41, 7)),
+          logSpecifications: S.optional(__S(723, __c45, 3)),
+          metricSpecifications: S.optional(__S(727, __c45, 7)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(664, __c41, 8)),
+          serviceSpecification: S.optional(__S(728, __c45, 8)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 10:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(657, __c41, 1)),
+          display: S.optional(__S(721, __c45, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(665, __c41, 9)),
+          properties: S.optional(__S(729, __c45, 9)),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
     case 11:
-      return S.Array(__S(666, __c41, 10));
+      return S.Array(__S(730, __c45, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
-          value: __S(667, __c41, 11),
+          value: __S(731, __c45, 11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c42(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4086,8 +4173,8 @@ function __c42(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           keyName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
-          properties: __S(387, __c24, 3),
+          tags: S.optional(__S(464, __c29, 0)),
+          properties: __S(451, __c28, 3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4099,7 +4186,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "CreateManagedHsmKeyIfNotExistRequest" });
   }
 }
-function __c43(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4107,14 +4194,14 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: __S(440, __c27, 8),
-          tags: S.optional(__S(400, __c25, 0)),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: __S(504, __c31, 8),
+          tags: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({ identifier: "CreateManagedHsmKeyIfNotExistResponse" });
   }
 }
-function __c44(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4132,17 +4219,17 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateEndpointConnectionByResourceRequest" });
     case 1:
-      return S.Array(__S(1200, __c75, 0));
+      return S.Array(__S(256, __c16, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(705, __c44, 1),
+          value: __S(769, __c48, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c45(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4165,23 +4252,23 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: S.optional(__S(624, __c39, 0)),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(688, __c43, 0)),
           location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 2:
-      return S.Array(__S(721, __c45, 1));
+      return S.Array(__S(785, __c49, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(722, __c45, 2)),
+          value: S.optional(__S(786, __c49, 2)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c46(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4200,17 +4287,17 @@ function __c46(j: number): any {
         ),
       ).annotate({ identifier: "ListSecretsRequest" });
     case 1:
-      return S.Array(__S(242, __c15, 2));
+      return S.Array(__S(290, __c18, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(737, __c46, 1),
+          value: __S(801, __c50, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretListResult" });
   }
 }
-function __c47(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4229,20 +4316,20 @@ function __c47(j: number): any {
       ).annotate({ identifier: "ListVaultByResourceGroupRequest" });
   }
 }
-function __c48(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(292, __c18, 4));
+      return S.Array(__S(320, __c20, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(768, __c48, 0),
+          value: __S(832, __c52, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultListResult" });
   }
 }
-function __c49(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4260,7 +4347,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "ListVaultBySubscriptionRequest" });
   }
 }
-function __c50(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4276,17 +4363,17 @@ function __c50(j: number): any {
         ),
       ).annotate({ identifier: "ListVaultDeletedRequest" });
     case 1:
-      return S.Array(__S(321, __c20, 1));
+      return S.Array(__S(385, __c24, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(801, __c50, 1),
+          value: __S(865, __c54, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedVaultListResult" });
   }
 }
-function __c51(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4309,23 +4396,23 @@ function __c51(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          tags: S.optional(__S(400, __c25, 0)),
+          systemData: S.optional(__S(465, __c29, 1)),
+          tags: S.optional(__S(464, __c29, 0)),
           location: S.String,
         }),
       ).annotate({ identifier: "ResourceListResultValueItem" });
     case 2:
-      return S.Array(__S(817, __c51, 1));
+      return S.Array(__S(881, __c55, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(818, __c51, 2),
+          value: __S(882, __c55, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceListResult" });
   }
 }
-function __c52(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4333,11 +4420,11 @@ function __c52(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(866, __c54, 2)),
-          sku: S.optional(__S(1120, __c70, 0)),
-          identity: S.optional(__S(849, __c53, 1)),
+          properties: S.optional(__S(930, __c58, 2)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(913, __c57, 1)),
           location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4349,20 +4436,20 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ManagedHsmsCreateOrUpdateRequest" });
   }
 }
-function __c53(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(928, __c58, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1264, __c79, 0)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(848, __c53, 0)),
+          userAssignedIdentities: S.optional(__S(912, __c57, 0)),
         }),
       ).annotate({ identifier: "ManagedHsmsCreateOrUpdateRequestIdentity" });
   }
 }
-function __c54(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4372,24 +4459,40 @@ function __c54(j: number): any {
         }),
       ).annotate({ identifier: "MHSMGeoReplicatedRegionInput" });
     case 1:
-      return S.Array(__S(864, __c54, 0));
+      return S.Array(__S(928, __c58, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          initialAdminObjectIds: S.optional(__S(80, __c5, 0)),
+          initialAdminObjectIds: S.optional(__S(96, __c6, 0)),
           enableSoftDelete: S.optional(S.Boolean),
           softDeleteRetentionInDays: S.optional(S.Number),
           enablePurgeProtection: S.optional(S.Boolean),
           createMode: S.optional(S.String),
-          networkAcls: S.optional(__S(116, __c7, 4)),
-          regions: S.optional(__S(865, __c54, 1)),
+          networkAcls: S.optional(__S(132, __c8, 4)),
+          regions: S.optional(__S(929, __c58, 1)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedHsmPropertiesInput" });
+    case 3:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(134, __c8, 6)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1202, __c75, 2)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ManagedHsmsCreateOrUpdateResponse" });
   }
 }
-function __c55(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4408,7 +4511,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "PurgeManagedHsmDeletedRequest" });
   }
 }
-function __c56(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4427,7 +4530,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "PurgeVaultDeletedRequest" });
   }
 }
-function __c57(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4446,13 +4549,18 @@ function __c57(j: number): any {
       ).annotate({ identifier: "DeleteManagedHsmRequest" });
   }
 }
-function __c58(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteManagedHsmResponse" });
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteManagedHsmResponse" });
   }
 }
-function __c59(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4461,12 +4569,12 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(960, __c60, 0)),
-          sku: S.optional(__S(1120, __c70, 0)),
-          identity: S.optional(__S(849, __c53, 1)),
+          properties: S.optional(__S(1024, __c64, 0)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(913, __c57, 1)),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4476,20 +4584,37 @@ function __c59(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutMHSMPrivateEndpointConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(1218, __c76, 2)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1202, __c75, 2)),
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PutMHSMPrivateEndpointConnectionResponse" });
   }
 }
-function __c60(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(928, __c58, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(1169, __c73, 1)),
+          privateEndpoint: S.optional(__S(1264, __c79, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1217, __c76, 1)),
         }),
       ).annotate({ identifier: "MHSMPrivateEndpointConnectionPropertiesInput" });
   }
 }
-function __c61(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4498,7 +4623,7 @@ function __c61(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(960, __c60, 0)),
+          properties: S.optional(__S(1024, __c64, 0)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -4509,9 +4634,24 @@ function __c61(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutPrivateEndpointConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(1218, __c76, 2)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+          etag: S.optional(S.String),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PutPrivateEndpointConnectionResponse" });
   }
 }
-function __c62(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4520,8 +4660,8 @@ function __c62(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           secretName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
-          properties: __S(1009, __c63, 1),
+          tags: S.optional(__S(464, __c29, 0)),
+          properties: __S(1073, __c67, 1),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4533,7 +4673,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "SecretsCreateOrUpdateRequest" });
   }
 }
-function __c63(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4548,12 +4688,12 @@ function __c63(j: number): any {
         S.Struct({
           value: S.optional(S.String),
           contentType: S.optional(S.String),
-          attributes: S.optional(__S(1008, __c63, 0)),
+          attributes: S.optional(__S(1072, __c67, 0)),
         }),
       ).annotate({ identifier: "SecretPropertiesInput" });
   }
 }
-function __c64(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4561,11 +4701,11 @@ function __c64(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(866, __c54, 2)),
-          sku: S.optional(__S(1120, __c70, 0)),
-          identity: S.optional(__S(849, __c53, 1)),
+          properties: S.optional(__S(930, __c58, 2)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(913, __c57, 1)),
           location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4577,7 +4717,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "UpdateManagedHsmRequest" });
   }
 }
-function __c65(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4586,8 +4726,8 @@ function __c65(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           secretName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
-          properties: S.optional(__S(1009, __c63, 1)),
+          tags: S.optional(__S(464, __c29, 0)),
+          properties: S.optional(__S(1073, __c67, 1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4599,14 +4739,14 @@ function __c65(j: number): any {
       ).annotate({ identifier: "UpdateSecretRequest" });
   }
 }
-function __c66(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          sku: S.optional(__S(1120, __c70, 0)),
-          accessPolicies: S.optional(__S(274, __c17, 2)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          accessPolicies: S.optional(__S(338, __c21, 2)),
           enabledForDeployment: S.optional(S.Boolean),
           enabledForDiskEncryption: S.optional(S.Boolean),
           enabledForTemplateDeployment: S.optional(S.Boolean),
@@ -4615,7 +4755,7 @@ function __c66(j: number): any {
           softDeleteRetentionInDays: S.optional(S.Number),
           createMode: S.optional(S.String),
           enablePurgeProtection: S.optional(S.Boolean),
-          networkAcls: S.optional(__S(290, __c18, 2)),
+          networkAcls: S.optional(__S(354, __c22, 2)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultPatchProperties" });
@@ -4625,8 +4765,8 @@ function __c66(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(400, __c25, 0)),
-          properties: S.optional(__S(1056, __c66, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
+          properties: S.optional(__S(1120, __c70, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4638,12 +4778,12 @@ function __c66(j: number): any {
       ).annotate({ identifier: "UpdateVaultRequest" });
   }
 }
-function __c67(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accessPolicies: __S(274, __c17, 2),
+          accessPolicies: __S(338, __c21, 2),
         }),
       ).annotate({ identifier: "VaultAccessPolicyProperties" });
     case 1:
@@ -4653,7 +4793,7 @@ function __c67(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           operationKind: S.String.pipe(T.Label()),
-          properties: __S(1072, __c67, 0),
+          properties: __S(1136, __c71, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4670,19 +4810,19 @@ function __c67(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: __S(1072, __c67, 0),
+          properties: __S(1136, __c71, 0),
         }),
       ).annotate({ identifier: "VaultAccessPolicyParameters" });
   }
 }
-function __c68(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.String,
-          sku: __S(1120, __c70, 0),
-          accessPolicies: S.optional(__S(274, __c17, 2)),
+          sku: __S(1184, __c74, 0),
+          accessPolicies: S.optional(__S(338, __c21, 2)),
           vaultUri: S.optional(S.String),
           enabledForDeployment: S.optional(S.Boolean),
           enabledForDiskEncryption: S.optional(S.Boolean),
@@ -4692,7 +4832,7 @@ function __c68(j: number): any {
           enableRbacAuthorization: S.optional(S.Boolean),
           createMode: S.optional(S.String),
           enablePurgeProtection: S.optional(S.Boolean),
-          networkAcls: S.optional(__S(290, __c18, 2)),
+          networkAcls: S.optional(__S(354, __c22, 2)),
           provisioningState: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
         }),
@@ -4704,8 +4844,8 @@ function __c68(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(__S(400, __c25, 0)),
-          properties: __S(1088, __c68, 0),
+          tags: S.optional(__S(464, __c29, 0)),
+          properties: __S(1152, __c72, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4715,9 +4855,23 @@ function __c68(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VaultsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: __S(355, __c22, 3),
+          location: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "VaultsCreateOrUpdateResponse" });
   }
 }
-function __c69(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4735,9 +4889,26 @@ function __c69(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeleteMHSMPrivateEndpointConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(1218, __c76, 2)),
+          sku: S.optional(__S(1184, __c74, 0)),
+          identity: S.optional(__S(1202, __c75, 2)),
+          etag: S.optional(S.String),
+          location: S.optional(S.String),
+          tags: S.optional(__S(464, __c29, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteMHSMPrivateEndpointConnectionResponse" });
   }
 }
-function __c70(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4748,7 +4919,7 @@ function __c70(j: number): any {
       ).annotate({ identifier: "ManagedHsmSku" });
   }
 }
-function __c71(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4758,38 +4929,19 @@ function __c71(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1136, __c71, 0)));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1200, __c75, 0)));
     case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1137, __c71, 1)),
+          userAssignedIdentities: S.optional(__S(1201, __c75, 1)),
         }),
       ).annotate({ identifier: "DeleteMHSMPrivateEndpointConnectionResponseIdentity" });
   }
 }
-function __c72(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: S.optional(__S(1170, __c73, 2)),
-          sku: S.optional(__S(1120, __c70, 0)),
-          identity: S.optional(__S(1138, __c71, 2)),
-          etag: S.optional(S.String),
-          location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
-        }),
-      ).annotate({ identifier: "DeleteMHSMPrivateEndpointConnectionResponse" });
-  }
-}
-function __c73(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4808,14 +4960,14 @@ function __c73(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1168, __c73, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(1169, __c73, 1)),
+          privateEndpoint: S.optional(__S(1216, __c76, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1217, __c76, 1)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "MHSMPrivateEndpointConnectionProperties" });
   }
 }
-function __c74(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4833,26 +4985,24 @@ function __c74(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
-  }
-}
-function __c75(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(401, __c25, 1)),
-          properties: S.optional(__S(1170, __c73, 2)),
+          systemData: S.optional(__S(465, __c29, 1)),
+          properties: S.optional(__S(1218, __c76, 2)),
           location: S.optional(S.String),
-          tags: S.optional(__S(400, __c25, 0)),
+          tags: S.optional(__S(464, __c29, 0)),
           etag: S.optional(S.String),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "DeletePrivateEndpointConnectionResponse" });
   }
 }
-function __c76(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4871,7 +5021,13 @@ function __c76(j: number): any {
       ).annotate({ identifier: "DeleteVaultRequest" });
   }
 }
-function __c77(j: number): any {
+function __c79(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() => S.Struct({})).annotate({ identifier: "DeleteVaultResponse" });
+  }
+}
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4891,7 +5047,7 @@ function __c77(j: number): any {
       ).annotate({ identifier: "GetKeyRequest" });
   }
 }
-function __c78(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

@@ -272,7 +272,12 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+}
 /** The requested permission */
 export type GenerateAccessTokenRequestPermissionType = "Contributor" | "Reader";
 /** The requested media type */
@@ -713,7 +718,7 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c20, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(24, __c3, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  output: __S(161, __c20, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1431,6 +1436,13 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "DeletePrivateEndpointConnectionResponse" });
   }
 }
 function __c21(j: number): any {

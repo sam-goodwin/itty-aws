@@ -1114,6 +1114,18 @@ export interface RegenerateWebPubSubKeyRequest {
   resourceName: string;
   keyType?: KeyType | (string & {});
 }
+/** A class represents the access keys of the resource. */
+export interface RegenerateWebPubSubKeyResponse {
+  /** The primary access key. */
+  primaryKey?: string;
+  /** The secondary access key. */
+  secondaryKey?: string;
+  /** Connection string constructed via the primaryKey */
+  primaryConnectionString?: string;
+  /** Connection string constructed via the secondaryKey */
+  secondaryConnectionString?: string;
+  location?: string;
+}
 export interface RestartWebPubSubRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1122,7 +1134,9 @@ export interface RestartWebPubSubRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-export interface RestartWebPubSubResponse {}
+export interface RestartWebPubSubResponse {
+  location?: string;
+}
 export interface RestartWebPubSubReplicasRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1133,7 +1147,9 @@ export interface RestartWebPubSubReplicasRequest {
   /** The name of the replica. */
   replicaName: string;
 }
-export interface RestartWebPubSubReplicasResponse {}
+export interface RestartWebPubSubReplicasResponse {
+  location?: string;
+}
 /** Resource tags. */
 export type UpdateWebPubSubRequestTagsMap = { [key: string]: string | undefined };
 /** The billing information of the resource. */
@@ -1209,6 +1225,7 @@ export interface UpdateWebPubSubResponse {
   properties?: WebPubSubProperties;
   kind?: ServiceKind;
   identity?: ManagedIdentity;
+  locationHeader?: string;
 }
 /** Private endpoint connection properties */
 export interface PrivateEndpointConnectionPropertiesInput {
@@ -1278,6 +1295,7 @@ export interface UpdateWebPubSubReplicasResponse {
   location: string;
   sku?: ResourceSku;
   properties?: ReplicaProperties;
+  locationHeader?: string;
 }
 /** Resource tags. */
 export type WebPubSubCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
@@ -1527,7 +1545,7 @@ export const DeleteWebPubSubCustomCertificate: API.OperationMethod<
   DeleteWebPubSubCustomCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<DeleteWebPubSubCustomCertificateRequest>,
+  input: __S(576, __c18, 0) as any as S.Schema<DeleteWebPubSubCustomCertificateRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<DeleteWebPubSubCustomCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1557,7 +1575,7 @@ export const DeleteWebPubSubHub: API.OperationMethod<
   DeleteWebPubSubHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<DeleteWebPubSubHubRequest>,
+  input: __S(1472, __c46, 0) as any as S.Schema<DeleteWebPubSubHubRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<DeleteWebPubSubHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1572,7 +1590,7 @@ export const DeleteWebPubSubPrivateEndpointConnection: API.OperationMethod<
   DeleteWebPubSubPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionRequest>,
+  input: __S(1664, __c52, 0) as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<DeleteWebPubSubPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1587,7 +1605,7 @@ export const DeleteWebPubSubReplicas: API.OperationMethod<
   DeleteWebPubSubReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<DeleteWebPubSubReplicasRequest>,
+  input: __S(1696, __c53, 0) as any as S.Schema<DeleteWebPubSubReplicasRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<DeleteWebPubSubReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1602,7 +1620,7 @@ export const DeleteWebPubSubSharedPrivateLinkResource: API.OperationMethod<
   DeleteWebPubSubSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceRequest>,
+  input: __S(1728, __c54, 0) as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceRequest>,
   output: __S(64, __c2, 0) as any as S.Schema<DeleteWebPubSubSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1617,8 +1635,8 @@ export const GetWebPubSub: API.OperationMethod<
   GetWebPubSubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<GetWebPubSubRequest>,
-  output: __S(2033, __c63, 17) as any as S.Schema<GetWebPubSubResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<GetWebPubSubRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<GetWebPubSubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1632,8 +1650,8 @@ export const GetWebPubSubCustomCertificate: API.OperationMethod<
   GetWebPubSubCustomCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2080, __c65, 0) as any as S.Schema<GetWebPubSubCustomCertificateRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<GetWebPubSubCustomCertificateResponse>,
+  input: __S(2144, __c67, 0) as any as S.Schema<GetWebPubSubCustomCertificateRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<GetWebPubSubCustomCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1678,7 +1696,7 @@ export const GetWebPubSubPrivateEndpointConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(224, __c7, 0) as any as S.Schema<GetWebPubSubPrivateEndpointConnectionRequest>,
-  output: __S(1826, __c57, 2) as any as S.Schema<GetWebPubSubPrivateEndpointConnectionResponse>,
+  output: __S(1858, __c58, 2) as any as S.Schema<GetWebPubSubPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1693,7 +1711,7 @@ export const GetWebPubSubReplicas: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(256, __c8, 0) as any as S.Schema<GetWebPubSubReplicasRequest>,
-  output: __S(289, __c9, 1) as any as S.Schema<GetWebPubSubReplicasResponse>,
+  output: __S(320, __c10, 0) as any as S.Schema<GetWebPubSubReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1707,10 +1725,10 @@ export const GetWebPubSubReplicaSharedPrivateLinkResource: API.OperationMethod<
   GetWebPubSubReplicaSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c10, 0) as any as S.Schema<GetWebPubSubReplicaSharedPrivateLinkResourceRequest>,
+  input: __S(352, __c11, 0) as any as S.Schema<GetWebPubSubReplicaSharedPrivateLinkResourceRequest>,
   output: __S(
-    1921,
-    __c60,
+    1953,
+    __c61,
     1,
   ) as any as S.Schema<GetWebPubSubReplicaSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
@@ -1726,8 +1744,8 @@ export const GetWebPubSubSharedPrivateLinkResource: API.OperationMethod<
   GetWebPubSubSharedPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c11, 0) as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceRequest>,
-  output: __S(1921, __c60, 1) as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceResponse>,
+  input: __S(384, __c12, 0) as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<GetWebPubSubSharedPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1759,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c12, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(396, __c12, 12) as any as S.Schema<OperationList>,
+  input: __S(416, __c13, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(428, __c13, 12) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1774,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c13, 0) as any as S.Schema<ListUsagesRequest>,
-  output: __S(420, __c13, 4) as any as S.Schema<SignalRServiceUsageList>,
+  input: __S(448, __c14, 0) as any as S.Schema<ListUsagesRequest>,
+  output: __S(452, __c14, 4) as any as S.Schema<SignalRServiceUsageList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1771,8 +1789,8 @@ export const ListWebPubSubByResourceGroup: API.OperationMethod<
   ListWebPubSubByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c14, 0) as any as S.Schema<ListWebPubSubByResourceGroupRequest>,
-  output: __S(481, __c15, 1) as any as S.Schema<WebPubSubResourceList>,
+  input: __S(480, __c15, 0) as any as S.Schema<ListWebPubSubByResourceGroupRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<WebPubSubResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1804,8 @@ export const ListWebPubSubBySubscription: API.OperationMethod<
   ListWebPubSubBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c16, 0) as any as S.Schema<ListWebPubSubBySubscriptionRequest>,
-  output: __S(481, __c15, 1) as any as S.Schema<WebPubSubResourceList>,
+  input: __S(544, __c17, 0) as any as S.Schema<ListWebPubSubBySubscriptionRequest>,
+  output: __S(513, __c16, 1) as any as S.Schema<WebPubSubResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1819,8 @@ export const ListWebPubSubCustomCertificates: API.OperationMethod<
   ListWebPubSubCustomCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c18, 0) as any as S.Schema<ListWebPubSubCustomCertificatesRequest>,
-  output: __S(578, __c18, 2) as any as S.Schema<CustomCertificateList>,
+  input: __S(608, __c19, 0) as any as S.Schema<ListWebPubSubCustomCertificatesRequest>,
+  output: __S(610, __c19, 2) as any as S.Schema<CustomCertificateList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1834,8 @@ export const ListWebPubSubCustomDomains: API.OperationMethod<
   ListWebPubSubCustomDomainsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<ListWebPubSubCustomDomainsRequest>,
-  output: __S(610, __c19, 2) as any as S.Schema<CustomDomainList>,
+  input: __S(640, __c20, 0) as any as S.Schema<ListWebPubSubCustomDomainsRequest>,
+  output: __S(642, __c20, 2) as any as S.Schema<CustomDomainList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1849,8 @@ export const ListWebPubSubHubs: API.OperationMethod<
   ListWebPubSubHubsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(640, __c20, 0) as any as S.Schema<ListWebPubSubHubsRequest>,
-  output: __S(642, __c20, 2) as any as S.Schema<WebPubSubHubList>,
+  input: __S(672, __c21, 0) as any as S.Schema<ListWebPubSubHubsRequest>,
+  output: __S(674, __c21, 2) as any as S.Schema<WebPubSubHubList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1864,8 @@ export const ListWebPubSubKeys: API.OperationMethod<
   ListWebPubSubKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<ListWebPubSubKeysRequest>,
-  output: __S(704, __c22, 0) as any as S.Schema<WebPubSubKeys>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListWebPubSubKeysRequest>,
+  output: __S(705, __c22, 1) as any as S.Schema<WebPubSubKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1966,12 +1984,12 @@ export type RegenerateWebPubSubKeyError = AzureOpError;
 /** Regenerate the access key for the resource. PrimaryKey and SecondaryKey cannot be regenerated at the same time. */
 export const RegenerateWebPubSubKey: API.OperationMethod<
   RegenerateWebPubSubKeyRequest,
-  WebPubSubKeys,
+  RegenerateWebPubSubKeyResponse,
   RegenerateWebPubSubKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1056, __c33, 0) as any as S.Schema<RegenerateWebPubSubKeyRequest>,
-  output: __S(704, __c22, 0) as any as S.Schema<WebPubSubKeys>,
+  output: __S(1057, __c33, 1) as any as S.Schema<RegenerateWebPubSubKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1986,7 +2004,7 @@ export const RestartWebPubSub: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(1088, __c34, 0) as any as S.Schema<RestartWebPubSubRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<RestartWebPubSubResponse>,
+  output: __S(1120, __c35, 0) as any as S.Schema<RestartWebPubSubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2000,8 +2018,8 @@ export const RestartWebPubSubReplicas: API.OperationMethod<
   RestartWebPubSubReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<RestartWebPubSubReplicasRequest>,
-  output: __S(64, __c2, 0) as any as S.Schema<RestartWebPubSubReplicasResponse>,
+  input: __S(1152, __c36, 0) as any as S.Schema<RestartWebPubSubReplicasRequest>,
+  output: __S(1120, __c35, 0) as any as S.Schema<RestartWebPubSubReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2015,8 +2033,8 @@ export const UpdateWebPubSub: API.OperationMethod<
   UpdateWebPubSubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c36, 0) as any as S.Schema<UpdateWebPubSubRequest>,
-  output: __S(2033, __c63, 17) as any as S.Schema<UpdateWebPubSubResponse>,
+  input: __S(1184, __c37, 0) as any as S.Schema<UpdateWebPubSubRequest>,
+  output: __S(1185, __c37, 1) as any as S.Schema<UpdateWebPubSubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2030,8 +2048,8 @@ export const UpdateWebPubSubPrivateEndpointConnection: API.OperationMethod<
   UpdateWebPubSubPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1249, __c39, 1) as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionRequest>,
-  output: __S(1826, __c57, 2) as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionResponse>,
+  input: __S(1281, __c40, 1) as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionRequest>,
+  output: __S(1858, __c58, 2) as any as S.Schema<UpdateWebPubSubPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2045,8 +2063,8 @@ export const UpdateWebPubSubReplicas: API.OperationMethod<
   UpdateWebPubSubReplicasError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c40, 0) as any as S.Schema<UpdateWebPubSubReplicasRequest>,
-  output: __S(289, __c9, 1) as any as S.Schema<UpdateWebPubSubReplicasResponse>,
+  input: __S(1312, __c41, 0) as any as S.Schema<UpdateWebPubSubReplicasRequest>,
+  output: __S(1313, __c41, 1) as any as S.Schema<UpdateWebPubSubReplicasResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2060,8 +2078,8 @@ export const WebPubSubCreateOrUpdate: API.OperationMethod<
   WebPubSubCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c42, 0) as any as S.Schema<WebPubSubCreateOrUpdateRequest>,
-  output: __S(2033, __c63, 17) as any as S.Schema<WebPubSubCreateOrUpdateResponse>,
+  input: __S(1376, __c43, 0) as any as S.Schema<WebPubSubCreateOrUpdateRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<WebPubSubCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2075,8 +2093,8 @@ export const WebPubSubCustomCertificatesCreateOrUpdate: API.OperationMethod<
   WebPubSubCustomCertificatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1377, __c43, 1) as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateRequest>,
-  output: __S(2113, __c66, 1) as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateResponse>,
+  input: __S(1409, __c44, 1) as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateRequest>,
+  output: __S(2177, __c68, 1) as any as S.Schema<WebPubSubCustomCertificatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2090,7 +2108,7 @@ export const WebPubSubCustomDomainsCreateOrUpdate: API.OperationMethod<
   WebPubSubCustomDomainsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1409, __c44, 1) as any as S.Schema<WebPubSubCustomDomainsCreateOrUpdateRequest>,
+  input: __S(1441, __c45, 1) as any as S.Schema<WebPubSubCustomDomainsCreateOrUpdateRequest>,
   output: __S(129, __c4, 1) as any as S.Schema<WebPubSubCustomDomainsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2105,7 +2123,7 @@ export const WebPubSubHubsCreateOrUpdate: API.OperationMethod<
   WebPubSubHubsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<WebPubSubHubsCreateOrUpdateRequest>,
+  input: __S(1504, __c47, 0) as any as S.Schema<WebPubSubHubsCreateOrUpdateRequest>,
   output: __S(201, __c6, 9) as any as S.Schema<WebPubSubHubsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2120,8 +2138,8 @@ export const WebPubSubReplicasCreateOrUpdate: API.OperationMethod<
   WebPubSubReplicasCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<WebPubSubReplicasCreateOrUpdateRequest>,
-  output: __S(289, __c9, 1) as any as S.Schema<WebPubSubReplicasCreateOrUpdateResponse>,
+  input: __S(1536, __c48, 0) as any as S.Schema<WebPubSubReplicasCreateOrUpdateRequest>,
+  output: __S(320, __c10, 0) as any as S.Schema<WebPubSubReplicasCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2136,13 +2154,13 @@ export const WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdate: API.Opera
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1536,
-    __c48,
+    1568,
+    __c49,
     0,
   ) as any as S.Schema<WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest>,
   output: __S(
-    1921,
-    __c60,
+    1953,
+    __c61,
     1,
   ) as any as S.Schema<WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -2159,13 +2177,13 @@ export const WebPubSubSharedPrivateLinkResourcesCreateOrUpdate: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1600,
-    __c50,
+    1632,
+    __c51,
     0,
   ) as any as S.Schema<WebPubSubSharedPrivateLinkResourcesCreateOrUpdateRequest>,
   output: __S(
-    1921,
-    __c60,
+    1953,
+    __c61,
     1,
   ) as any as S.Schema<WebPubSubSharedPrivateLinkResourcesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
@@ -2254,7 +2272,7 @@ function __c4(j: number): any {
         S.Struct({
           provisioningState: S.optional(S.String),
           domainName: S.String,
-          customCertificate: __S(1760, __c55, 0),
+          customCertificate: __S(1792, __c56, 0),
         }),
       ).annotate({ identifier: "CustomDomainProperties" });
     case 1:
@@ -2263,7 +2281,7 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2048, __c64, 0)),
+          systemData: S.optional(__S(2112, __c66, 0)),
           properties: __S(128, __c4, 0),
         }),
       ).annotate({ identifier: "GetWebPubSubCustomDomainResponse" });
@@ -2309,7 +2327,7 @@ function __c6(j: number): any {
         S.Struct({
           urlTemplate: S.String,
           userEventPattern: S.optional(S.String),
-          systemEvents: S.optional(__S(1792, __c56, 0)),
+          systemEvents: S.optional(__S(1824, __c57, 0)),
           auth: S.optional(__S(193, __c6, 1)),
         }),
       ).annotate({ identifier: "EventHandler" });
@@ -2319,7 +2337,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          systemEvents: S.optional(__S(1792, __c56, 0)),
+          systemEvents: S.optional(__S(1824, __c57, 0)),
           userEventPattern: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventListenerFilter" });
@@ -2355,7 +2373,7 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2048, __c64, 0)),
+          systemData: S.optional(__S(2112, __c66, 0)),
           properties: __S(200, __c6, 8),
         }),
       ).annotate({ identifier: "GetWebPubSubHubResponse" });
@@ -2411,22 +2429,26 @@ function __c9(j: number): any {
           resourceStopped: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaProperties" });
-    case 1:
+  }
+}
+function __c10(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2048, __c64, 0)),
-          tags: S.optional(__S(1888, __c59, 0)),
+          systemData: S.optional(__S(2112, __c66, 0)),
+          tags: S.optional(__S(1920, __c60, 0)),
           location: S.String,
-          sku: S.optional(__S(1856, __c58, 0)),
+          sku: S.optional(__S(1888, __c59, 0)),
           properties: S.optional(__S(288, __c9, 0)),
         }),
       ).annotate({ identifier: "GetWebPubSubReplicasResponse" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2447,7 +2469,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "GetWebPubSubReplicaSharedPrivateLinkResourceRequest" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2467,7 +2489,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "GetWebPubSubSharedPrivateLinkResourceRequest" });
   }
 }
-function __c12(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2499,7 +2521,7 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 3:
-      return S.Array(__S(386, __c12, 2));
+      return S.Array(__S(418, __c13, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2510,11 +2532,11 @@ function __c12(j: number): any {
           aggregationType: S.optional(S.String),
           fillGapWithZero: S.optional(S.String),
           category: S.optional(S.String),
-          dimensions: S.optional(__S(387, __c12, 3)),
+          dimensions: S.optional(__S(419, __c13, 3)),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 5:
-      return S.Array(__S(388, __c12, 4));
+      return S.Array(__S(420, __c13, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2523,18 +2545,18 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 7:
-      return S.Array(__S(390, __c12, 6));
+      return S.Array(__S(422, __c13, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(389, __c12, 5)),
-          logSpecifications: S.optional(__S(391, __c12, 7)),
+          metricSpecifications: S.optional(__S(421, __c13, 5)),
+          logSpecifications: S.optional(__S(423, __c13, 7)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(392, __c12, 8)),
+          serviceSpecification: S.optional(__S(424, __c13, 8)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 10:
@@ -2542,23 +2564,23 @@ function __c12(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(385, __c12, 1)),
+          display: S.optional(__S(417, __c13, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(393, __c12, 9)),
+          properties: S.optional(__S(425, __c13, 9)),
         }),
       ).annotate({ identifier: "Operation" });
     case 11:
-      return S.Array(__S(394, __c12, 10));
+      return S.Array(__S(426, __c13, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(395, __c12, 11)),
+          value: S.optional(__S(427, __c13, 11)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationList" });
   }
 }
-function __c13(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2587,22 +2609,22 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(__S(417, __c13, 1)),
+          name: S.optional(__S(449, __c14, 1)),
           unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRServiceUsage" });
     case 3:
-      return S.Array(__S(418, __c13, 2));
+      return S.Array(__S(450, __c14, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(419, __c13, 3)),
+          value: S.optional(__S(451, __c14, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SignalRServiceUsageList" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2620,20 +2642,20 @@ function __c14(j: number): any {
       ).annotate({ identifier: "ListWebPubSubByResourceGroupRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(2033, __c63, 17));
+      return S.Array(__S(2080, __c65, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(480, __c15, 0)),
+          value: S.optional(__S(512, __c16, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebPubSubResourceList" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2650,7 +2672,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "ListWebPubSubBySubscriptionRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2670,7 +2692,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "DeleteWebPubSubCustomCertificateRequest" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2688,17 +2710,17 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListWebPubSubCustomCertificatesRequest" });
     case 1:
-      return S.Array(__S(2113, __c66, 1));
+      return S.Array(__S(2177, __c68, 1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(577, __c18, 1)),
+          value: S.optional(__S(609, __c19, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomCertificateList" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2720,13 +2742,13 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(609, __c19, 1)),
+          value: S.optional(__S(641, __c20, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomainList" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2748,13 +2770,13 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(641, __c20, 1)),
+          value: S.optional(__S(673, __c21, 1)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebPubSubHubList" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2771,11 +2793,7 @@ function __c21(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListWebPubSubKeysRequest" });
-  }
-}
-function __c22(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           primaryKey: S.optional(S.String),
@@ -2806,7 +2824,7 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1952, __c61, 0)),
+          value: S.optional(__S(1984, __c62, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionList" });
@@ -2850,8 +2868,8 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(1792, __c56, 0)),
-          requiredZoneNames: S.optional(__S(1792, __c56, 0)),
+          requiredMembers: S.optional(__S(1824, __c57, 0)),
+          requiredZoneNames: S.optional(__S(1824, __c57, 0)),
           shareablePrivateLinkResourceTypes: S.optional(__S(771, __c24, 3)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
@@ -2861,7 +2879,7 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2048, __c64, 0)),
+          systemData: S.optional(__S(2112, __c66, 0)),
           properties: S.optional(__S(772, __c24, 4)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
@@ -2894,7 +2912,7 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListWebPubSubReplicasRequest" });
     case 1:
-      return S.Array(__S(289, __c9, 1));
+      return S.Array(__S(320, __c10, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2929,7 +2947,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(1984, __c62, 0)),
+          value: S.optional(__S(2016, __c63, 0)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharedPrivateLinkResourceList" });
@@ -2973,7 +2991,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(__S(1856, __c58, 0)),
+          sku: S.optional(__S(1888, __c59, 0)),
           capacity: S.optional(__S(929, __c29, 1)),
         }),
       ).annotate({ identifier: "Sku" });
@@ -3064,6 +3082,16 @@ function __c33(j: number): any {
           }),
         ),
       ).annotate({ identifier: "RegenerateWebPubSubKeyRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          primaryKey: S.optional(S.String),
+          secondaryKey: S.optional(S.String),
+          primaryConnectionString: S.optional(S.String),
+          secondaryConnectionString: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "RegenerateWebPubSubKeyResponse" });
   }
 }
 function __c34(j: number): any {
@@ -3090,6 +3118,16 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "RestartWebPubSubResponse" });
+  }
+}
+function __c36(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
@@ -3105,7 +3143,7 @@ function __c35(j: number): any {
       ).annotate({ identifier: "RestartWebPubSubReplicasRequest" });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3113,12 +3151,12 @@ function __c36(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1888, __c59, 0)),
+          tags: S.optional(__S(1920, __c60, 0)),
           location: S.String,
-          sku: S.optional(__S(1184, __c37, 0)),
-          properties: S.optional(__S(1216, __c38, 0)),
+          sku: S.optional(__S(1216, __c38, 0)),
+          properties: S.optional(__S(1248, __c39, 0)),
           kind: S.optional(S.String),
-          identity: S.optional(__S(1218, __c38, 2)),
+          identity: S.optional(__S(1250, __c39, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3128,9 +3166,25 @@ function __c36(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWebPubSubRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2112, __c66, 0)),
+          tags: S.optional(__S(1920, __c60, 0)),
+          location: S.String,
+          sku: S.optional(__S(1888, __c59, 0)),
+          properties: S.optional(__S(2061, __c64, 13)),
+          kind: S.optional(S.String),
+          identity: S.optional(__S(2064, __c64, 16)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateWebPubSubResponse" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3142,21 +3196,21 @@ function __c37(j: number): any {
       ).annotate({ identifier: "ResourceSkuInput" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tls: S.optional(__S(2016, __c63, 0)),
-          liveTraceConfiguration: S.optional(__S(2019, __c63, 3)),
-          resourceLogConfiguration: S.optional(__S(2020, __c63, 4)),
-          networkACLs: S.optional(__S(2027, __c63, 11)),
+          tls: S.optional(__S(2048, __c64, 0)),
+          liveTraceConfiguration: S.optional(__S(2051, __c64, 3)),
+          resourceLogConfiguration: S.optional(__S(2052, __c64, 4)),
+          networkACLs: S.optional(__S(2059, __c64, 11)),
           publicNetworkAccess: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           disableAadAuth: S.optional(S.Boolean),
           regionEndpointEnabled: S.optional(S.String),
           resourceStopped: S.optional(S.String),
-          socketIO: S.optional(__S(2028, __c63, 12)),
+          socketIO: S.optional(__S(2060, __c64, 12)),
         }),
       ).annotate({ identifier: "WebPubSubPropertiesInput" });
     case 1:
@@ -3165,18 +3219,18 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(1217, __c38, 1)),
+          userAssignedIdentities: S.optional(__S(1249, __c39, 1)),
         }),
       ).annotate({ identifier: "ManagedIdentityInput" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(1760, __c55, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(1824, __c57, 0)),
+          privateEndpoint: S.optional(__S(1792, __c56, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1856, __c58, 0)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
     case 1:
@@ -3186,7 +3240,7 @@ function __c39(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1248, __c39, 0)),
+          properties: S.optional(__S(1280, __c40, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3198,7 +3252,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "UpdateWebPubSubPrivateEndpointConnectionRequest" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3207,10 +3261,10 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1888, __c59, 0)),
+          tags: S.optional(__S(1920, __c60, 0)),
           location: S.String,
-          sku: S.optional(__S(1184, __c37, 0)),
-          properties: S.optional(__S(1312, __c41, 0)),
+          sku: S.optional(__S(1216, __c38, 0)),
+          properties: S.optional(__S(1344, __c42, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3220,9 +3274,23 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWebPubSubReplicasRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(2112, __c66, 0)),
+          tags: S.optional(__S(1920, __c60, 0)),
+          location: S.String,
+          sku: S.optional(__S(1888, __c59, 0)),
+          properties: S.optional(__S(288, __c9, 0)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "UpdateWebPubSubReplicasResponse" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3233,7 +3301,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "ReplicaPropertiesInput" });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3241,12 +3309,12 @@ function __c42(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1888, __c59, 0)),
+          tags: S.optional(__S(1920, __c60, 0)),
           location: S.String,
-          sku: S.optional(__S(1184, __c37, 0)),
-          properties: S.optional(__S(1216, __c38, 0)),
+          sku: S.optional(__S(1216, __c38, 0)),
+          properties: S.optional(__S(1248, __c39, 0)),
           kind: S.optional(S.String),
-          identity: S.optional(__S(1218, __c38, 2)),
+          identity: S.optional(__S(1250, __c39, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3258,7 +3326,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "WebPubSubCreateOrUpdateRequest" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3275,7 +3343,7 @@ function __c43(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           certificateName: S.String.pipe(T.Label()),
-          properties: __S(1376, __c43, 0),
+          properties: __S(1408, __c44, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3287,13 +3355,13 @@ function __c43(j: number): any {
       ).annotate({ identifier: "WebPubSubCustomCertificatesCreateOrUpdateRequest" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           domainName: S.String,
-          customCertificate: __S(1760, __c55, 0),
+          customCertificate: __S(1792, __c56, 0),
         }),
       ).annotate({ identifier: "CustomDomainPropertiesInput" });
     case 1:
@@ -3303,7 +3371,7 @@ function __c44(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(1408, __c44, 0),
+          properties: __S(1440, __c45, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3315,7 +3383,7 @@ function __c44(j: number): any {
       ).annotate({ identifier: "WebPubSubCustomDomainsCreateOrUpdateRequest" });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3335,7 +3403,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "DeleteWebPubSubHubRequest" });
   }
 }
-function __c46(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3356,7 +3424,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "WebPubSubHubsCreateOrUpdateRequest" });
   }
 }
-function __c47(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3365,10 +3433,10 @@ function __c47(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
-          tags: S.optional(__S(1888, __c59, 0)),
+          tags: S.optional(__S(1920, __c60, 0)),
           location: S.String,
-          sku: S.optional(__S(1184, __c37, 0)),
-          properties: S.optional(__S(1312, __c41, 0)),
+          sku: S.optional(__S(1216, __c38, 0)),
+          properties: S.optional(__S(1344, __c42, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3380,7 +3448,7 @@ function __c47(j: number): any {
       ).annotate({ identifier: "WebPubSubReplicasCreateOrUpdateRequest" });
   }
 }
-function __c48(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3390,7 +3458,7 @@ function __c48(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           replicaName: S.String.pipe(T.Label()),
           sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1568, __c49, 0)),
+          properties: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3402,7 +3470,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "WebPubSubReplicaSharedPrivateLinkResourcesCreateOrUpdateRequest" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3414,7 +3482,7 @@ function __c49(j: number): any {
       ).annotate({ identifier: "SharedPrivateLinkResourcePropertiesInput" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3423,7 +3491,7 @@ function __c50(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           sharedPrivateLinkResourceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1568, __c49, 0)),
+          properties: S.optional(__S(1600, __c50, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3435,7 +3503,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "WebPubSubSharedPrivateLinkResourcesCreateOrUpdateRequest" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3455,7 +3523,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "DeleteWebPubSubPrivateEndpointConnectionRequest" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3475,7 +3543,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteWebPubSubReplicasRequest" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3495,7 +3563,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "DeleteWebPubSubSharedPrivateLinkResourceRequest" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3514,7 +3582,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "GetWebPubSubRequest" });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3524,13 +3592,13 @@ function __c55(j: number): any {
       ).annotate({ identifier: "PrivateEndpoint" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3544,9 +3612,9 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          privateEndpoint: S.optional(__S(1760, __c55, 0)),
-          groupIds: S.optional(__S(1792, __c56, 0)),
-          privateLinkServiceConnectionState: S.optional(__S(1824, __c57, 0)),
+          privateEndpoint: S.optional(__S(1792, __c56, 0)),
+          groupIds: S.optional(__S(1824, __c57, 0)),
+          privateLinkServiceConnectionState: S.optional(__S(1856, __c58, 0)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
     case 2:
@@ -3555,13 +3623,13 @@ function __c57(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2048, __c64, 0)),
-          properties: S.optional(__S(1825, __c57, 1)),
+          systemData: S.optional(__S(2112, __c66, 0)),
+          properties: S.optional(__S(1857, __c58, 1)),
         }),
       ).annotate({ identifier: "PrivateEndpointConnection" });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3575,13 +3643,13 @@ function __c58(j: number): any {
       ).annotate({ identifier: "ResourceSku" });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3599,25 +3667,25 @@ function __c60(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2048, __c64, 0)),
-          properties: S.optional(__S(1920, __c60, 0)),
+          systemData: S.optional(__S(2112, __c66, 0)),
+          properties: S.optional(__S(1952, __c61, 0)),
         }),
       ).annotate({ identifier: "SharedPrivateLinkResource" });
-  }
-}
-function __c61(j: number): any {
-  switch (j) {
-    case 0:
-      return S.Array(__S(1826, __c57, 2));
   }
 }
 function __c62(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(1921, __c60, 1));
+      return S.Array(__S(1858, __c58, 2));
   }
 }
 function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.Array(__S(1953, __c61, 1));
+  }
+}
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3633,18 +3701,18 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "LiveTraceCategory" });
     case 2:
-      return S.Array(__S(2017, __c63, 1));
+      return S.Array(__S(2049, __c64, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.String),
-          categories: S.optional(__S(2018, __c63, 2)),
+          categories: S.optional(__S(2050, __c64, 2)),
         }),
       ).annotate({ identifier: "LiveTraceConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(__S(2018, __c63, 2)),
+          categories: S.optional(__S(2050, __c64, 2)),
         }),
       ).annotate({ identifier: "ResourceLogConfiguration" });
     case 5:
@@ -3652,20 +3720,20 @@ function __c63(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          allow: S.optional(__S(2021, __c63, 5)),
-          deny: S.optional(__S(2021, __c63, 5)),
+          allow: S.optional(__S(2053, __c64, 5)),
+          deny: S.optional(__S(2053, __c64, 5)),
         }),
       ).annotate({ identifier: "NetworkACL" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          allow: S.optional(__S(2021, __c63, 5)),
-          deny: S.optional(__S(2021, __c63, 5)),
+          allow: S.optional(__S(2053, __c64, 5)),
+          deny: S.optional(__S(2053, __c64, 5)),
           name: S.String,
         }),
       ).annotate({ identifier: "PrivateEndpointACL" });
     case 8:
-      return S.Array(__S(2023, __c63, 7));
+      return S.Array(__S(2055, __c64, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
@@ -3674,14 +3742,14 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "IPRule" });
     case 10:
-      return S.Array(__S(2025, __c63, 9));
+      return S.Array(__S(2057, __c64, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
           defaultAction: S.optional(S.String),
-          publicNetwork: S.optional(__S(2022, __c63, 6)),
-          privateEndpoints: S.optional(__S(2024, __c63, 8)),
-          ipRules: S.optional(__S(2026, __c63, 10)),
+          publicNetwork: S.optional(__S(2054, __c64, 6)),
+          privateEndpoints: S.optional(__S(2056, __c64, 8)),
+          ipRules: S.optional(__S(2058, __c64, 10)),
         }),
       ).annotate({ identifier: "WebPubSubNetworkACLs" });
     case 12:
@@ -3699,19 +3767,19 @@ function __c63(j: number): any {
           publicPort: S.optional(S.Number),
           serverPort: S.optional(S.Number),
           version: S.optional(S.String),
-          privateEndpointConnections: S.optional(__S(1952, __c61, 0)),
-          sharedPrivateLinkResources: S.optional(__S(1984, __c62, 0)),
-          tls: S.optional(__S(2016, __c63, 0)),
+          privateEndpointConnections: S.optional(__S(1984, __c62, 0)),
+          sharedPrivateLinkResources: S.optional(__S(2016, __c63, 0)),
+          tls: S.optional(__S(2048, __c64, 0)),
           hostNamePrefix: S.optional(S.String),
-          liveTraceConfiguration: S.optional(__S(2019, __c63, 3)),
-          resourceLogConfiguration: S.optional(__S(2020, __c63, 4)),
-          networkACLs: S.optional(__S(2027, __c63, 11)),
+          liveTraceConfiguration: S.optional(__S(2051, __c64, 3)),
+          resourceLogConfiguration: S.optional(__S(2052, __c64, 4)),
+          networkACLs: S.optional(__S(2059, __c64, 11)),
           publicNetworkAccess: S.optional(S.String),
           disableLocalAuth: S.optional(S.Boolean),
           disableAadAuth: S.optional(S.Boolean),
           regionEndpointEnabled: S.optional(S.String),
           resourceStopped: S.optional(S.String),
-          socketIO: S.optional(__S(2028, __c63, 12)),
+          socketIO: S.optional(__S(2060, __c64, 12)),
         }),
       ).annotate({ identifier: "WebPubSubProperties" });
     case 14:
@@ -3722,34 +3790,38 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentityProperty" });
     case 15:
-      return S.Record(S.String, __S(2030, __c63, 14));
+      return S.Record(S.String, __S(2062, __c64, 14));
     case 16:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(2031, __c63, 15)),
+          userAssignedIdentities: S.optional(__S(2063, __c64, 15)),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedIdentity" });
-    case 17:
+  }
+}
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2048, __c64, 0)),
-          tags: S.optional(__S(1888, __c59, 0)),
+          systemData: S.optional(__S(2112, __c66, 0)),
+          tags: S.optional(__S(1920, __c60, 0)),
           location: S.String,
-          sku: S.optional(__S(1856, __c58, 0)),
-          properties: S.optional(__S(2029, __c63, 13)),
+          sku: S.optional(__S(1888, __c59, 0)),
+          properties: S.optional(__S(2061, __c64, 13)),
           kind: S.optional(S.String),
-          identity: S.optional(__S(2032, __c63, 16)),
+          identity: S.optional(__S(2064, __c64, 16)),
         }),
       ).annotate({ identifier: "GetWebPubSubResponse" });
   }
 }
-function __c64(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3764,7 +3836,7 @@ function __c64(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c65(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3784,7 +3856,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "GetWebPubSubCustomCertificateRequest" });
   }
 }
-function __c66(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3801,8 +3873,8 @@ function __c66(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(2048, __c64, 0)),
-          properties: __S(2112, __c66, 0),
+          systemData: S.optional(__S(2112, __c66, 0)),
+          properties: __S(2176, __c68, 0),
         }),
       ).annotate({ identifier: "GetWebPubSubCustomCertificateResponse" });
   }

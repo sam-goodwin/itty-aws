@@ -35,13 +35,17 @@ export interface GenerateOfferAccessTokenRequest {
   deviceVersion?: string;
 }
 /** The disk access token */
-export interface DiskAccessToken {
+export interface GenerateOfferAccessTokenResponse {
   /** The disk id. */
   diskId?: string;
   /** The access token creation status. */
   status?: string;
   /** The access token. */
   accessToken: string | Redacted.Redacted<string>;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetOfferRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -224,6 +228,15 @@ export interface GetOfferAccessTokenRequest {
   /** The name of the publisher. */
   requestId: string;
 }
+/** The disk access token */
+export interface DiskAccessToken {
+  /** The disk id. */
+  diskId?: string;
+  /** The access token creation status. */
+  status?: string;
+  /** The access token. */
+  accessToken: string | Redacted.Redacted<string>;
+}
 export interface GetPublisherRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
@@ -368,12 +381,12 @@ export type GenerateOfferAccessTokenError = AzureOpError;
 /** A long-running resource action. */
 export const GenerateOfferAccessToken: API.OperationMethod<
   GenerateOfferAccessTokenRequest,
-  DiskAccessToken,
+  GenerateOfferAccessTokenResponse,
   GenerateOfferAccessTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<GenerateOfferAccessTokenRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<DiskAccessToken>,
+  output: __S(1, __c0, 1) as any as S.Schema<GenerateOfferAccessTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -387,8 +400,8 @@ export const GetOffer: API.OperationMethod<
   GetOfferError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(32, __c2, 0) as any as S.Schema<GetOfferRequest>,
-  output: __S(75, __c4, 11) as any as S.Schema<GetOfferResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<GetOfferRequest>,
+  output: __S(59, __c3, 11) as any as S.Schema<GetOfferResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -402,8 +415,8 @@ export const GetOfferAccessToken: API.OperationMethod<
   GetOfferAccessTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<GetOfferAccessTokenRequest>,
-  output: __S(16, __c1, 0) as any as S.Schema<DiskAccessToken>,
+  input: __S(64, __c4, 0) as any as S.Schema<GetOfferAccessTokenRequest>,
+  output: __S(65, __c4, 1) as any as S.Schema<DiskAccessToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -417,8 +430,8 @@ export const GetPublisher: API.OperationMethod<
   GetPublisherError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<GetPublisherRequest>,
-  output: __S(113, __c7, 1) as any as S.Schema<GetPublisherResponse>,
+  input: __S(80, __c5, 0) as any as S.Schema<GetPublisherRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<GetPublisherResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -432,8 +445,8 @@ export const ListOfferBySubscription: API.OperationMethod<
   ListOfferBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<ListOfferBySubscriptionRequest>,
-  output: __S(145, __c9, 1) as any as S.Schema<OfferListResult>,
+  input: __S(112, __c7, 0) as any as S.Schema<ListOfferBySubscriptionRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<OfferListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -447,8 +460,8 @@ export const ListOffers: API.OperationMethod<
   ListOffersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c10, 0) as any as S.Schema<ListOffersRequest>,
-  output: __S(145, __c9, 1) as any as S.Schema<OfferListResult>,
+  input: __S(144, __c9, 0) as any as S.Schema<ListOffersRequest>,
+  output: __S(129, __c8, 1) as any as S.Schema<OfferListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -462,8 +475,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(176, __c11, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(180, __c11, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(160, __c10, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(164, __c10, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -477,8 +490,8 @@ export const ListPublisherBySubscription: API.OperationMethod<
   ListPublisherBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<ListPublisherBySubscriptionRequest>,
-  output: __S(209, __c13, 1) as any as S.Schema<PublisherListResult>,
+  input: __S(176, __c11, 0) as any as S.Schema<ListPublisherBySubscriptionRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<PublisherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -492,8 +505,8 @@ export const ListPublishers: API.OperationMethod<
   ListPublishersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<ListPublishersRequest>,
-  output: __S(209, __c13, 1) as any as S.Schema<PublisherListResult>,
+  input: __S(208, __c13, 0) as any as S.Schema<ListPublishersRequest>,
+  output: __S(193, __c12, 1) as any as S.Schema<PublisherListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -524,21 +537,19 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GenerateOfferAccessTokenRequest" });
-  }
-}
-function __c1(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() =>
         S.Struct({
           diskId: S.optional(S.String),
           status: S.optional(S.String),
           accessToken: S.String.pipe(T.SensitiveValue({})),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
-      ).annotate({ identifier: "DiskAccessToken" });
+      ).annotate({ identifier: "GenerateOfferAccessTokenResponse" });
   }
 }
-function __c2(j: number): any {
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -556,7 +567,7 @@ function __c2(j: number): any {
       ).annotate({ identifier: "GetOfferRequest" });
   }
 }
-function __c3(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -571,7 +582,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "SystemData" });
   }
 }
-function __c4(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -610,13 +621,13 @@ function __c4(j: number): any {
           offerType: S.optional(S.String),
           supportUri: S.optional(S.String),
           popularity: S.optional(S.Number),
-          offerPublisher: S.optional(__S(64, __c4, 0)),
+          offerPublisher: S.optional(__S(48, __c3, 0)),
           availability: S.optional(S.String),
           releaseType: S.optional(S.String),
-          iconFileUris: S.optional(__S(65, __c4, 1)),
-          termsAndConditions: S.optional(__S(66, __c4, 2)),
-          categoryIds: S.optional(__S(67, __c4, 3)),
-          operatingSystems: S.optional(__S(67, __c4, 3)),
+          iconFileUris: S.optional(__S(49, __c3, 1)),
+          termsAndConditions: S.optional(__S(50, __c3, 2)),
+          categoryIds: S.optional(__S(51, __c3, 3)),
+          operatingSystems: S.optional(__S(51, __c3, 3)),
         }),
       ).annotate({ identifier: "OfferContent" });
     case 5:
@@ -638,7 +649,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "MarketplaceSkuVersion" });
     case 7:
-      return S.Array(__S(70, __c4, 6));
+      return S.Array(__S(54, __c3, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
@@ -651,20 +662,20 @@ function __c4(j: number): any {
           description: S.optional(S.String),
           generation: S.optional(S.String),
           displayRank: S.optional(S.Number),
-          operatingSystem: S.optional(__S(69, __c4, 5)),
-          marketplaceSkuVersions: S.optional(__S(71, __c4, 7)),
+          operatingSystem: S.optional(__S(53, __c3, 5)),
+          marketplaceSkuVersions: S.optional(__S(55, __c3, 7)),
         }),
       ).annotate({ identifier: "MarketplaceSku" });
     case 9:
-      return S.Array(__S(72, __c4, 8));
+      return S.Array(__S(56, __c3, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
           contentVersion: S.optional(S.String),
           contentUrl: S.optional(S.String),
-          offerContent: __S(68, __c4, 4),
+          offerContent: __S(52, __c3, 4),
           provisioningState: S.optional(S.String),
-          marketplaceSkus: S.optional(__S(73, __c4, 9)),
+          marketplaceSkus: S.optional(__S(57, __c3, 9)),
         }),
       ).annotate({ identifier: "OfferProperties" });
     case 11:
@@ -673,13 +684,13 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(74, __c4, 10)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(58, __c3, 10)),
         }),
       ).annotate({ identifier: "GetOfferResponse" });
   }
 }
-function __c5(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -696,9 +707,17 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetOfferAccessTokenRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          diskId: S.optional(S.String),
+          status: S.optional(S.String),
+          accessToken: S.String.pipe(T.SensitiveValue({})),
+        }),
+      ).annotate({ identifier: "DiskAccessToken" });
   }
 }
-function __c6(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -716,7 +735,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "GetPublisherRequest" });
   }
 }
-function __c7(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -730,13 +749,13 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(112, __c7, 0)),
+          systemData: S.optional(__S(32, __c2, 0)),
+          properties: S.optional(__S(96, __c6, 0)),
         }),
       ).annotate({ identifier: "GetPublisherResponse" });
   }
 }
-function __c8(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -753,20 +772,20 @@ function __c8(j: number): any {
       ).annotate({ identifier: "ListOfferBySubscriptionRequest" });
   }
 }
-function __c9(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(75, __c4, 11));
+      return S.Array(__S(59, __c3, 11));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(144, __c9, 0),
+          value: __S(128, __c8, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OfferListResult" });
   }
 }
-function __c10(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -788,7 +807,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "ListOffersRequest" });
   }
 }
-function __c11(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -815,23 +834,23 @@ function __c11(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(177, __c11, 1)),
+          display: S.optional(__S(161, __c10, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(178, __c11, 2));
+      return S.Array(__S(162, __c10, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(179, __c11, 3)),
+          value: S.optional(__S(163, __c10, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -848,20 +867,20 @@ function __c12(j: number): any {
       ).annotate({ identifier: "ListPublisherBySubscriptionRequest" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(113, __c7, 1));
+      return S.Array(__S(97, __c6, 1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(208, __c13, 0),
+          value: __S(192, __c12, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublisherListResult" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

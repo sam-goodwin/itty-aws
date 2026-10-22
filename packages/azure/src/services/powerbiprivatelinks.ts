@@ -194,7 +194,10 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint. */
   privateEndpointName: string;
 }
-export interface DeletePrivateEndpointConnectionResponse {}
+export interface DeletePrivateEndpointConnectionResponse {
+  /** The Azure async operation id to poll on result. */
+  azureAsyncOperation?: string;
+}
 export interface GetPrivateEndpointConnectionRequest {
   /** The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000). */
   subscriptionId: string;
@@ -454,7 +457,7 @@ export const DeletePowerBIResource: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c10, 0) as any as S.Schema<DeletePowerBIResourceRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<DeletePowerBIResourceResponse>,
+  output: __S(81, __c10, 1) as any as S.Schema<DeletePowerBIResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -468,8 +471,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c12, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(88, __c11, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  input: __S(88, __c11, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(89, __c11, 1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -483,7 +486,7 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(104, __c13, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  input: __S(96, __c12, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
   output: __S(12, __c1, 4) as any as S.Schema<PrivateEndpointConnection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -498,8 +501,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(112, __c14, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
-  output: __S(122, __c15, 2) as any as S.Schema<PrivateLinkResource>,
+  input: __S(104, __c13, 0) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(114, __c14, 2) as any as S.Schema<PrivateLinkResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -513,8 +516,8 @@ export const GetPrivateLinkServiceResourceOperationResult: API.OperationMethod<
   GetPrivateLinkServiceResourceOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c16, 0) as any as S.Schema<GetPrivateLinkServiceResourceOperationResultRequest>,
-  output: __S(135, __c16, 7) as any as S.Schema<AsyncOperationDetail>,
+  input: __S(120, __c15, 0) as any as S.Schema<GetPrivateLinkServiceResourceOperationResultRequest>,
+  output: __S(127, __c15, 7) as any as S.Schema<AsyncOperationDetail>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -528,8 +531,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(136, __c17, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(140, __c17, 4) as any as S.Schema<ListOperationsResponse>,
+  input: __S(128, __c16, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(132, __c16, 4) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -543,8 +546,8 @@ export const ListPowerBIResourceByResourceName: API.OperationMethod<
   ListPowerBIResourceByResourceNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(144, __c18, 0) as any as S.Schema<ListPowerBIResourceByResourceNameRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ListPowerBIResourceByResourceNameResponse>,
+  input: __S(136, __c17, 0) as any as S.Schema<ListPowerBIResourceByResourceNameRequest>,
+  output: __S(145, __c18, 1) as any as S.Schema<ListPowerBIResourceByResourceNameResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -558,8 +561,8 @@ export const ListPrivateEndpointConnectionByResource: API.OperationMethod<
   ListPrivateEndpointConnectionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(160, __c20, 0) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>,
-  output: __S(161, __c20, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(152, __c19, 0) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>,
+  output: __S(153, __c19, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -589,7 +592,7 @@ export const ListPrivateLinkServiceByResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(56, __c7, 0) as any as S.Schema<ListPrivateLinkServiceByResourceGroupRequest>,
-  output: __S(153, __c19, 1) as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponse>,
+  output: __S(145, __c18, 1) as any as S.Schema<ListPrivateLinkServiceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -609,8 +612,8 @@ export const ListPrivateLinkServicesForPowerBIBySubscriptionId: API.OperationMet
     0,
   ) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdRequest>,
   output: __S(
-    153,
-    __c19,
+    145,
+    __c18,
     1,
   ) as any as S.Schema<ListPrivateLinkServicesForPowerBIBySubscriptionIdResponse>,
   errors: [UnknownAzureError],
@@ -792,7 +795,7 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListPrivateLinkResourceByResourceRequest" });
     case 1:
-      return S.Array(__S(122, __c15, 2));
+      return S.Array(__S(114, __c14, 2));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -876,17 +879,13 @@ function __c10(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePowerBIResourceRequest" });
-  }
-}
-function __c11(j: number): any {
-  switch (j) {
-    case 0:
+    case 1:
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "DeletePowerBIResourceResponse",
       });
   }
 }
-function __c12(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -904,9 +903,15 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "DeletePrivateEndpointConnectionRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+        }),
+      ).annotate({ identifier: "DeletePrivateEndpointConnectionResponse" });
   }
 }
-function __c13(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -926,7 +931,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c14(j: number): any {
+function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -946,7 +951,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetPrivateLinkResourceRequest" });
   }
 }
-function __c15(j: number): any {
+function __c14(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
@@ -954,14 +959,14 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(120, __c15, 0)),
-          requiredZoneNames: S.optional(__S(120, __c15, 0)),
+          requiredMembers: S.optional(__S(112, __c14, 0)),
+          requiredZoneNames: S.optional(__S(112, __c14, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(121, __c15, 1)),
+          properties: S.optional(__S(113, __c14, 1)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -969,7 +974,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "PrivateLinkResource" });
   }
 }
-function __c16(j: number): any {
+function __c15(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -986,7 +991,7 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "GetPrivateLinkServiceResourceOperationResultRequest" });
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(132, __c16, 4)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(124, __c15, 4)));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -995,27 +1000,27 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 3:
-      return S.Array(__S(130, __c16, 2));
+      return S.Array(__S(122, __c15, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(129, __c16, 1)),
-          additionalInfo: S.optional(__S(131, __c16, 3)),
+          details: S.optional(__S(121, __c15, 1)),
+          additionalInfo: S.optional(__S(123, __c15, 3)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 5:
-      return S.Array(__S(132, __c16, 4));
+      return S.Array(__S(124, __c15, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(133, __c16, 5)),
-          additionalInfo: S.optional(__S(131, __c16, 3)),
+          details: S.optional(__S(125, __c15, 5)),
+          additionalInfo: S.optional(__S(123, __c15, 3)),
         }),
       ).annotate({ identifier: "AsyncOperationDetailError" });
     case 7:
@@ -1026,12 +1031,12 @@ function __c16(j: number): any {
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          error: S.optional(__S(134, __c16, 6)),
+          error: S.optional(__S(126, __c15, 6)),
         }),
       ).annotate({ identifier: "AsyncOperationDetail" });
   }
 }
-function __c17(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1058,23 +1063,23 @@ function __c17(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(137, __c17, 1)),
+          display: S.optional(__S(129, __c16, 1)),
           origin: S.optional(S.String),
           actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(138, __c17, 2));
+      return S.Array(__S(130, __c16, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(139, __c17, 3)),
+          value: S.optional(__S(131, __c16, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
 }
-function __c18(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1093,17 +1098,17 @@ function __c18(j: number): any {
       ).annotate({ identifier: "ListPowerBIResourceByResourceNameRequest" });
   }
 }
-function __c19(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(26, __c3, 2));
     case 1:
-      return S.suspend(() => __S(152, __c19, 0).pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(144, __c18, 0).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPowerBIResourceByResourceNameResponse",
       });
   }
 }
-function __c20(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

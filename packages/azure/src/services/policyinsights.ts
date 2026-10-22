@@ -108,6 +108,10 @@ export interface AttestationsCreateOrUpdateAtResourceResponse {
   systemData?: SystemData;
   /** Properties for the attestation. */
   properties: AttestationProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface AttestationsCreateOrUpdateAtResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -130,6 +134,10 @@ export interface AttestationsCreateOrUpdateAtResourceGroupResponse {
   systemData?: SystemData;
   /** Properties for the attestation. */
   properties: AttestationProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface AttestationsCreateOrUpdateAtSubscriptionRequest {
   /** The ID of the target subscription. */
@@ -150,6 +158,10 @@ export interface AttestationsCreateOrUpdateAtSubscriptionResponse {
   systemData?: SystemData;
   /** Properties for the attestation. */
   properties: AttestationProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type CancelRemediationAtManagementGroupRequestManagementGroupsNamespace =
   "Microsoft.Management";
@@ -891,6 +903,7 @@ export interface ComponentPolicyState {
   policySetDefinitionVersion?: string;
   /** Evaluated policy assignment version. */
   policyAssignmentVersion?: string;
+  [key: string]: unknown;
 }
 /** Query results. */
 export type ComponentPolicyStatesQueryResultsValueList = Array<ComponentPolicyState>;
@@ -1122,6 +1135,7 @@ export interface ComponentEventDetails {
   principalOid?: string;
   /** Policy definition action, i.e. effect. */
   policyDefinitionAction?: string;
+  [key: string]: unknown;
 }
 /** Components events records populated only when URL contains $expand=components clause. */
 export type PolicyEventComponentsList = Array<ComponentEventDetails>;
@@ -1189,6 +1203,7 @@ export interface PolicyEvent {
   principalOid?: string;
   /** Components events records populated only when URL contains $expand=components clause. */
   components?: PolicyEventComponentsList;
+  [key: string]: unknown;
 }
 /** Query results. */
 export type PolicyEventsQueryResultsValueList = Array<PolicyEvent>;
@@ -1514,6 +1529,7 @@ export interface ComponentStateDetails {
   timestamp?: string;
   /** Component compliance state. */
   complianceState?: string;
+  [key: string]: unknown;
 }
 /** Components state compliance records populated only when URL contains $expand=components clause. */
 export type PolicyStateComponentsList = Array<ComponentStateDetails>;
@@ -1587,6 +1603,7 @@ export interface PolicyState {
   policySetDefinitionVersion?: string;
   /** Evaluated policy assignment version. */
   policyAssignmentVersion?: string;
+  [key: string]: unknown;
 }
 /** Query results. */
 export type PolicyStatesQueryResultsValueList = Array<PolicyState>;
@@ -2363,12 +2380,22 @@ export interface TriggerPolicyStateResourceGroupEvaluationRequest {
   /** Resource group name. */
   resourceGroupName: string;
 }
-export interface TriggerPolicyStateResourceGroupEvaluationResponse {}
+export interface TriggerPolicyStateResourceGroupEvaluationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface TriggerPolicyStateSubscriptionEvaluationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export interface TriggerPolicyStateSubscriptionEvaluationResponse {}
+export interface TriggerPolicyStateSubscriptionEvaluationResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type AttestationsCreateOrUpdateAtResourceError = AzureOpError;
 /** Creates or updates an attestation at resource scope. */
 export const AttestationsCreateOrUpdateAtResource: API.OperationMethod<
@@ -2378,7 +2405,7 @@ export const AttestationsCreateOrUpdateAtResource: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AttestationsCreateOrUpdateAtResourceRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<AttestationsCreateOrUpdateAtResourceResponse>,
+  output: __S(17, __c1, 1) as any as S.Schema<AttestationsCreateOrUpdateAtResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2393,7 +2420,7 @@ export const AttestationsCreateOrUpdateAtResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(64, __c4, 0) as any as S.Schema<AttestationsCreateOrUpdateAtResourceGroupRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<AttestationsCreateOrUpdateAtResourceGroupResponse>,
+  output: __S(17, __c1, 1) as any as S.Schema<AttestationsCreateOrUpdateAtResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2407,8 +2434,8 @@ export const AttestationsCreateOrUpdateAtSubscription: API.OperationMethod<
   AttestationsCreateOrUpdateAtSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<AttestationsCreateOrUpdateAtSubscriptionRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<AttestationsCreateOrUpdateAtSubscriptionResponse>,
+  input: __S(272, __c17, 0) as any as S.Schema<AttestationsCreateOrUpdateAtSubscriptionRequest>,
+  output: __S(17, __c1, 1) as any as S.Schema<AttestationsCreateOrUpdateAtSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2422,8 +2449,8 @@ export const CancelRemediationAtManagementGroup: API.OperationMethod<
   CancelRemediationAtManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<CancelRemediationAtManagementGroupRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<CancelRemediationAtManagementGroupResponse>,
+  input: __S(480, __c30, 0) as any as S.Schema<CancelRemediationAtManagementGroupRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<CancelRemediationAtManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2437,8 +2464,8 @@ export const CancelRemediationAtResource: API.OperationMethod<
   CancelRemediationAtResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<CancelRemediationAtResourceRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<CancelRemediationAtResourceResponse>,
+  input: __S(704, __c44, 0) as any as S.Schema<CancelRemediationAtResourceRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<CancelRemediationAtResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2452,8 +2479,8 @@ export const CancelRemediationAtResourceGroup: API.OperationMethod<
   CancelRemediationAtResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<CancelRemediationAtResourceGroupRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<CancelRemediationAtResourceGroupResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<CancelRemediationAtResourceGroupRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<CancelRemediationAtResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2467,8 +2494,8 @@ export const CancelRemediationAtSubscription: API.OperationMethod<
   CancelRemediationAtSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<CancelRemediationAtSubscriptionRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<CancelRemediationAtSubscriptionResponse>,
+  input: __S(1104, __c69, 0) as any as S.Schema<CancelRemediationAtSubscriptionRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<CancelRemediationAtSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2483,11 +2510,11 @@ export const CheckPolicyRestrictionAtManagementGroupScope: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1296,
-    __c81,
+    1312,
+    __c82,
     0,
   ) as any as S.Schema<CheckPolicyRestrictionAtManagementGroupScopeRequest>,
-  output: __S(1325, __c82, 13) as any as S.Schema<CheckRestrictionsResult>,
+  output: __S(1341, __c83, 13) as any as S.Schema<CheckRestrictionsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2501,8 +2528,8 @@ export const CheckPolicyRestrictionAtResourceGroupScope: API.OperationMethod<
   CheckPolicyRestrictionAtResourceGroupScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1424, __c89, 0) as any as S.Schema<CheckPolicyRestrictionAtResourceGroupScopeRequest>,
-  output: __S(1325, __c82, 13) as any as S.Schema<CheckRestrictionsResult>,
+  input: __S(1456, __c91, 0) as any as S.Schema<CheckPolicyRestrictionAtResourceGroupScopeRequest>,
+  output: __S(1341, __c83, 13) as any as S.Schema<CheckRestrictionsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2516,8 +2543,8 @@ export const CheckPolicyRestrictionAtSubscriptionScope: API.OperationMethod<
   CheckPolicyRestrictionAtSubscriptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<CheckPolicyRestrictionAtSubscriptionScopeRequest>,
-  output: __S(1325, __c82, 13) as any as S.Schema<CheckRestrictionsResult>,
+  input: __S(1472, __c92, 0) as any as S.Schema<CheckPolicyRestrictionAtSubscriptionScopeRequest>,
+  output: __S(1341, __c83, 13) as any as S.Schema<CheckRestrictionsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2577,7 +2604,7 @@ export const DeleteRemediationAtManagementGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<DeleteRemediationAtManagementGroupRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<DeleteRemediationAtManagementGroupResponse>,
+  output: __S(500, __c31, 4) as any as S.Schema<DeleteRemediationAtManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2592,7 +2619,7 @@ export const DeleteRemediationAtResource: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DeleteRemediationAtResourceRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<DeleteRemediationAtResourceResponse>,
+  output: __S(500, __c31, 4) as any as S.Schema<DeleteRemediationAtResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2607,7 +2634,7 @@ export const DeleteRemediationAtResourceGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<DeleteRemediationAtResourceGroupRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<DeleteRemediationAtResourceGroupResponse>,
+  output: __S(500, __c31, 4) as any as S.Schema<DeleteRemediationAtResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2622,7 +2649,7 @@ export const DeleteRemediationAtSubscription: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<DeleteRemediationAtSubscriptionRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<DeleteRemediationAtSubscriptionResponse>,
+  output: __S(500, __c31, 4) as any as S.Schema<DeleteRemediationAtSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2637,7 +2664,7 @@ export const GetAttestationAtResource: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(208, __c13, 0) as any as S.Schema<GetAttestationAtResourceRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<GetAttestationAtResourceResponse>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetAttestationAtResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2651,8 +2678,8 @@ export const GetAttestationAtResourceGroup: API.OperationMethod<
   GetAttestationAtResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<GetAttestationAtResourceGroupRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<GetAttestationAtResourceGroupResponse>,
+  input: __S(240, __c15, 0) as any as S.Schema<GetAttestationAtResourceGroupRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetAttestationAtResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2666,8 +2693,8 @@ export const GetAttestationAtSubscription: API.OperationMethod<
   GetAttestationAtSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<GetAttestationAtSubscriptionRequest>,
-  output: __S(35, __c2, 3) as any as S.Schema<GetAttestationAtSubscriptionResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetAttestationAtSubscriptionRequest>,
+  output: __S(224, __c14, 0) as any as S.Schema<GetAttestationAtSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2681,8 +2708,8 @@ export const GetPolicyMetadataResource: API.OperationMethod<
   GetPolicyMetadataResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<GetPolicyMetadataResourceRequest>,
-  output: __S(274, __c17, 2) as any as S.Schema<GetPolicyMetadataResourceResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetPolicyMetadataResourceRequest>,
+  output: __S(290, __c18, 2) as any as S.Schema<GetPolicyMetadataResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2696,8 +2723,8 @@ export const GetRemediationAtManagementGroup: API.OperationMethod<
   GetRemediationAtManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(288, __c18, 0) as any as S.Schema<GetRemediationAtManagementGroupRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<GetRemediationAtManagementGroupResponse>,
+  input: __S(304, __c19, 0) as any as S.Schema<GetRemediationAtManagementGroupRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<GetRemediationAtManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2711,8 +2738,8 @@ export const GetRemediationAtResource: API.OperationMethod<
   GetRemediationAtResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetRemediationAtResourceRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<GetRemediationAtResourceResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<GetRemediationAtResourceRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<GetRemediationAtResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2726,8 +2753,8 @@ export const GetRemediationAtResourceGroup: API.OperationMethod<
   GetRemediationAtResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(320, __c20, 0) as any as S.Schema<GetRemediationAtResourceGroupRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<GetRemediationAtResourceGroupResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<GetRemediationAtResourceGroupRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<GetRemediationAtResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2741,8 +2768,8 @@ export const GetRemediationAtSubscription: API.OperationMethod<
   GetRemediationAtSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetRemediationAtSubscriptionRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<GetRemediationAtSubscriptionResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetRemediationAtSubscriptionRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<GetRemediationAtSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2756,8 +2783,8 @@ export const ListAttestationForResource: API.OperationMethod<
   ListAttestationForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<ListAttestationForResourceRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<AttestationListResult>,
+  input: __S(368, __c23, 0) as any as S.Schema<ListAttestationForResourceRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<AttestationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2771,8 +2798,8 @@ export const ListAttestationForResourceGroup: API.OperationMethod<
   ListAttestationForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListAttestationForResourceGroupRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<AttestationListResult>,
+  input: __S(400, __c25, 0) as any as S.Schema<ListAttestationForResourceGroupRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<AttestationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2786,8 +2813,8 @@ export const ListAttestationForSubscription: API.OperationMethod<
   ListAttestationForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<ListAttestationForSubscriptionRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<AttestationListResult>,
+  input: __S(416, __c26, 0) as any as S.Schema<ListAttestationForSubscriptionRequest>,
+  output: __S(385, __c24, 1) as any as S.Schema<AttestationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2802,11 +2829,11 @@ export const ListComponentPolicyStateQueryResultsForPolicyDefinition: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    416,
-    __c26,
+    432,
+    __c27,
     0,
   ) as any as S.Schema<ListComponentPolicyStateQueryResultsForPolicyDefinitionRequest>,
-  output: __S(435, __c27, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
+  output: __S(451, __c28, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2821,11 +2848,11 @@ export const ListComponentPolicyStateQueryResultsForResource: API.OperationMetho
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    448,
-    __c28,
+    464,
+    __c29,
     0,
   ) as any as S.Schema<ListComponentPolicyStateQueryResultsForResourceRequest>,
-  output: __S(435, __c27, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
+  output: __S(451, __c28, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2840,11 +2867,11 @@ export const ListComponentPolicyStateQueryResultsForResourceGroup: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    512,
-    __c32,
+    528,
+    __c33,
     0,
   ) as any as S.Schema<ListComponentPolicyStateQueryResultsForResourceGroupRequest>,
-  output: __S(435, __c27, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
+  output: __S(451, __c28, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2860,11 +2887,11 @@ export const ListComponentPolicyStateQueryResultsForResourceGroupLevelPolicyAssi
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    528,
-    __c33,
+    544,
+    __c34,
     0,
   ) as any as S.Schema<ListComponentPolicyStateQueryResultsForResourceGroupLevelPolicyAssignmentRequest>,
-  output: __S(435, __c27, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
+  output: __S(451, __c28, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2879,11 +2906,11 @@ export const ListComponentPolicyStateQueryResultsForSubscription: API.OperationM
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    544,
-    __c34,
+    560,
+    __c35,
     0,
   ) as any as S.Schema<ListComponentPolicyStateQueryResultsForSubscriptionRequest>,
-  output: __S(435, __c27, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
+  output: __S(451, __c28, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2899,11 +2926,11 @@ export const ListComponentPolicyStateQueryResultsForSubscriptionLevelPolicyAssig
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    560,
-    __c35,
+    576,
+    __c36,
     0,
   ) as any as S.Schema<ListComponentPolicyStateQueryResultsForSubscriptionLevelPolicyAssignmentRequest>,
-  output: __S(435, __c27, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
+  output: __S(451, __c28, 3) as any as S.Schema<ComponentPolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2917,8 +2944,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(580, __c36, 4) as any as S.Schema<OperationsListResults>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(596, __c37, 4) as any as S.Schema<OperationsListResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2933,11 +2960,11 @@ export const ListPolicyEventQueryResultsForManagementGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    592,
-    __c37,
+    608,
+    __c38,
     0,
   ) as any as S.Schema<ListPolicyEventQueryResultsForManagementGroupRequest>,
-  output: __S(612, __c38, 4) as any as S.Schema<PolicyEventsQueryResults>,
+  output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2952,11 +2979,11 @@ export const ListPolicyEventQueryResultsForPolicyDefinition: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    624,
-    __c39,
+    640,
+    __c40,
     0,
   ) as any as S.Schema<ListPolicyEventQueryResultsForPolicyDefinitionRequest>,
-  output: __S(612, __c38, 4) as any as S.Schema<PolicyEventsQueryResults>,
+  output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2971,11 +2998,11 @@ export const ListPolicyEventQueryResultsForPolicySetDefinition: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    640,
-    __c40,
+    656,
+    __c41,
     0,
   ) as any as S.Schema<ListPolicyEventQueryResultsForPolicySetDefinitionRequest>,
-  output: __S(612, __c38, 4) as any as S.Schema<PolicyEventsQueryResults>,
+  output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2989,8 +3016,8 @@ export const ListPolicyEventQueryResultsForResource: API.OperationMethod<
   ListPolicyEventQueryResultsForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<ListPolicyEventQueryResultsForResourceRequest>,
-  output: __S(612, __c38, 4) as any as S.Schema<PolicyEventsQueryResults>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListPolicyEventQueryResultsForResourceRequest>,
+  output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3004,8 +3031,8 @@ export const ListPolicyEventQueryResultsForResourceGroup: API.OperationMethod<
   ListPolicyEventQueryResultsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<ListPolicyEventQueryResultsForResourceGroupRequest>,
-  output: __S(612, __c38, 4) as any as S.Schema<PolicyEventsQueryResults>,
+  input: __S(688, __c43, 0) as any as S.Schema<ListPolicyEventQueryResultsForResourceGroupRequest>,
+  output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3020,11 +3047,11 @@ export const ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignment: A
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    704,
-    __c44,
+    720,
+    __c45,
     0,
   ) as any as S.Schema<ListPolicyEventQueryResultsForResourceGroupLevelPolicyAssignmentRequest>,
-  output: __S(612, __c38, 4) as any as S.Schema<PolicyEventsQueryResults>,
+  output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3038,8 +3065,8 @@ export const ListPolicyEventQueryResultsForSubscription: API.OperationMethod<
   ListPolicyEventQueryResultsForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<ListPolicyEventQueryResultsForSubscriptionRequest>,
-  output: __S(612, __c38, 4) as any as S.Schema<PolicyEventsQueryResults>,
+  input: __S(736, __c46, 0) as any as S.Schema<ListPolicyEventQueryResultsForSubscriptionRequest>,
+  output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3054,11 +3081,11 @@ export const ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignment: AP
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    736,
-    __c46,
+    752,
+    __c47,
     0,
   ) as any as S.Schema<ListPolicyEventQueryResultsForSubscriptionLevelPolicyAssignmentRequest>,
-  output: __S(612, __c38, 4) as any as S.Schema<PolicyEventsQueryResults>,
+  output: __S(628, __c39, 4) as any as S.Schema<PolicyEventsQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3072,8 +3099,8 @@ export const ListPolicyMetadata: API.OperationMethod<
   ListPolicyMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(752, __c47, 0) as any as S.Schema<ListPolicyMetadataRequest>,
-  output: __S(756, __c47, 4) as any as S.Schema<PolicyMetadataCollection>,
+  input: __S(768, __c48, 0) as any as S.Schema<ListPolicyMetadataRequest>,
+  output: __S(772, __c48, 4) as any as S.Schema<PolicyMetadataCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3088,11 +3115,11 @@ export const ListPolicyStateQueryResultsForManagementGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    768,
-    __c48,
+    784,
+    __c49,
     0,
   ) as any as S.Schema<ListPolicyStateQueryResultsForManagementGroupRequest>,
-  output: __S(789, __c49, 5) as any as S.Schema<PolicyStatesQueryResults>,
+  output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3107,11 +3134,11 @@ export const ListPolicyStateQueryResultsForPolicyDefinition: API.OperationMethod
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    800,
-    __c50,
+    816,
+    __c51,
     0,
   ) as any as S.Schema<ListPolicyStateQueryResultsForPolicyDefinitionRequest>,
-  output: __S(789, __c49, 5) as any as S.Schema<PolicyStatesQueryResults>,
+  output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3126,11 +3153,11 @@ export const ListPolicyStateQueryResultsForPolicySetDefinition: API.OperationMet
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    816,
-    __c51,
+    832,
+    __c52,
     0,
   ) as any as S.Schema<ListPolicyStateQueryResultsForPolicySetDefinitionRequest>,
-  output: __S(789, __c49, 5) as any as S.Schema<PolicyStatesQueryResults>,
+  output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3144,8 +3171,8 @@ export const ListPolicyStateQueryResultsForResource: API.OperationMethod<
   ListPolicyStateQueryResultsForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<ListPolicyStateQueryResultsForResourceRequest>,
-  output: __S(789, __c49, 5) as any as S.Schema<PolicyStatesQueryResults>,
+  input: __S(848, __c53, 0) as any as S.Schema<ListPolicyStateQueryResultsForResourceRequest>,
+  output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3159,8 +3186,8 @@ export const ListPolicyStateQueryResultsForResourceGroup: API.OperationMethod<
   ListPolicyStateQueryResultsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<ListPolicyStateQueryResultsForResourceGroupRequest>,
-  output: __S(789, __c49, 5) as any as S.Schema<PolicyStatesQueryResults>,
+  input: __S(864, __c54, 0) as any as S.Schema<ListPolicyStateQueryResultsForResourceGroupRequest>,
+  output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3175,11 +3202,11 @@ export const ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignment: A
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    864,
-    __c54,
+    880,
+    __c55,
     0,
   ) as any as S.Schema<ListPolicyStateQueryResultsForResourceGroupLevelPolicyAssignmentRequest>,
-  output: __S(789, __c49, 5) as any as S.Schema<PolicyStatesQueryResults>,
+  output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3193,8 +3220,8 @@ export const ListPolicyStateQueryResultsForSubscription: API.OperationMethod<
   ListPolicyStateQueryResultsForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<ListPolicyStateQueryResultsForSubscriptionRequest>,
-  output: __S(789, __c49, 5) as any as S.Schema<PolicyStatesQueryResults>,
+  input: __S(912, __c57, 0) as any as S.Schema<ListPolicyStateQueryResultsForSubscriptionRequest>,
+  output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3209,11 +3236,11 @@ export const ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignment: AP
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    912,
-    __c57,
+    928,
+    __c58,
     0,
   ) as any as S.Schema<ListPolicyStateQueryResultsForSubscriptionLevelPolicyAssignmentRequest>,
-  output: __S(789, __c49, 5) as any as S.Schema<PolicyStatesQueryResults>,
+  output: __S(805, __c50, 5) as any as S.Schema<PolicyStatesQueryResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3227,8 +3254,8 @@ export const ListRemediationDeploymentsAtManagementGroup: API.OperationMethod<
   ListRemediationDeploymentsAtManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c58, 0) as any as S.Schema<ListRemediationDeploymentsAtManagementGroupRequest>,
-  output: __S(950, __c59, 6) as any as S.Schema<RemediationDeploymentsListResult>,
+  input: __S(944, __c59, 0) as any as S.Schema<ListRemediationDeploymentsAtManagementGroupRequest>,
+  output: __S(966, __c60, 6) as any as S.Schema<RemediationDeploymentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3242,8 +3269,8 @@ export const ListRemediationDeploymentsAtResource: API.OperationMethod<
   ListRemediationDeploymentsAtResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<ListRemediationDeploymentsAtResourceRequest>,
-  output: __S(950, __c59, 6) as any as S.Schema<RemediationDeploymentsListResult>,
+  input: __S(976, __c61, 0) as any as S.Schema<ListRemediationDeploymentsAtResourceRequest>,
+  output: __S(966, __c60, 6) as any as S.Schema<RemediationDeploymentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3257,8 +3284,8 @@ export const ListRemediationDeploymentsAtResourceGroup: API.OperationMethod<
   ListRemediationDeploymentsAtResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(976, __c61, 0) as any as S.Schema<ListRemediationDeploymentsAtResourceGroupRequest>,
-  output: __S(950, __c59, 6) as any as S.Schema<RemediationDeploymentsListResult>,
+  input: __S(992, __c62, 0) as any as S.Schema<ListRemediationDeploymentsAtResourceGroupRequest>,
+  output: __S(966, __c60, 6) as any as S.Schema<RemediationDeploymentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3272,8 +3299,8 @@ export const ListRemediationDeploymentsAtSubscription: API.OperationMethod<
   ListRemediationDeploymentsAtSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<ListRemediationDeploymentsAtSubscriptionRequest>,
-  output: __S(950, __c59, 6) as any as S.Schema<RemediationDeploymentsListResult>,
+  input: __S(1008, __c63, 0) as any as S.Schema<ListRemediationDeploymentsAtSubscriptionRequest>,
+  output: __S(966, __c60, 6) as any as S.Schema<RemediationDeploymentsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3287,8 +3314,8 @@ export const ListRemediationForManagementGroup: API.OperationMethod<
   ListRemediationForManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<ListRemediationForManagementGroupRequest>,
-  output: __S(1025, __c64, 1) as any as S.Schema<RemediationListResult>,
+  input: __S(1024, __c64, 0) as any as S.Schema<ListRemediationForManagementGroupRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<RemediationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3302,8 +3329,8 @@ export const ListRemediationForResource: API.OperationMethod<
   ListRemediationForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<ListRemediationForResourceRequest>,
-  output: __S(1025, __c64, 1) as any as S.Schema<RemediationListResult>,
+  input: __S(1056, __c66, 0) as any as S.Schema<ListRemediationForResourceRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<RemediationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3317,8 +3344,8 @@ export const ListRemediationForResourceGroup: API.OperationMethod<
   ListRemediationForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<ListRemediationForResourceGroupRequest>,
-  output: __S(1025, __c64, 1) as any as S.Schema<RemediationListResult>,
+  input: __S(1072, __c67, 0) as any as S.Schema<ListRemediationForResourceGroupRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<RemediationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3332,8 +3359,8 @@ export const ListRemediationForSubscription: API.OperationMethod<
   ListRemediationForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1072, __c67, 0) as any as S.Schema<ListRemediationForSubscriptionRequest>,
-  output: __S(1025, __c64, 1) as any as S.Schema<RemediationListResult>,
+  input: __S(1088, __c68, 0) as any as S.Schema<ListRemediationForSubscriptionRequest>,
+  output: __S(1041, __c65, 1) as any as S.Schema<RemediationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3347,8 +3374,8 @@ export const PolicyStatesSummarizeForManagementGroup: API.OperationMethod<
   PolicyStatesSummarizeForManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<PolicyStatesSummarizeForManagementGroupRequest>,
-  output: __S(1131, __c70, 11) as any as S.Schema<SummarizeResults>,
+  input: __S(1120, __c70, 0) as any as S.Schema<PolicyStatesSummarizeForManagementGroupRequest>,
+  output: __S(1147, __c71, 11) as any as S.Schema<SummarizeResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3362,8 +3389,8 @@ export const PolicyStatesSummarizeForPolicyDefinition: API.OperationMethod<
   PolicyStatesSummarizeForPolicyDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<PolicyStatesSummarizeForPolicyDefinitionRequest>,
-  output: __S(1131, __c70, 11) as any as S.Schema<SummarizeResults>,
+  input: __S(1152, __c72, 0) as any as S.Schema<PolicyStatesSummarizeForPolicyDefinitionRequest>,
+  output: __S(1147, __c71, 11) as any as S.Schema<SummarizeResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3377,8 +3404,8 @@ export const PolicyStatesSummarizeForPolicySetDefinition: API.OperationMethod<
   PolicyStatesSummarizeForPolicySetDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c72, 0) as any as S.Schema<PolicyStatesSummarizeForPolicySetDefinitionRequest>,
-  output: __S(1131, __c70, 11) as any as S.Schema<SummarizeResults>,
+  input: __S(1168, __c73, 0) as any as S.Schema<PolicyStatesSummarizeForPolicySetDefinitionRequest>,
+  output: __S(1147, __c71, 11) as any as S.Schema<SummarizeResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3392,8 +3419,8 @@ export const PolicyStatesSummarizeForResource: API.OperationMethod<
   PolicyStatesSummarizeForResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c73, 0) as any as S.Schema<PolicyStatesSummarizeForResourceRequest>,
-  output: __S(1131, __c70, 11) as any as S.Schema<SummarizeResults>,
+  input: __S(1184, __c74, 0) as any as S.Schema<PolicyStatesSummarizeForResourceRequest>,
+  output: __S(1147, __c71, 11) as any as S.Schema<SummarizeResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3407,8 +3434,8 @@ export const PolicyStatesSummarizeForResourceGroup: API.OperationMethod<
   PolicyStatesSummarizeForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<PolicyStatesSummarizeForResourceGroupRequest>,
-  output: __S(1131, __c70, 11) as any as S.Schema<SummarizeResults>,
+  input: __S(1200, __c75, 0) as any as S.Schema<PolicyStatesSummarizeForResourceGroupRequest>,
+  output: __S(1147, __c71, 11) as any as S.Schema<SummarizeResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3423,11 +3450,11 @@ export const PolicyStatesSummarizeForResourceGroupLevelPolicyAssignment: API.Ope
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1200,
-    __c75,
+    1216,
+    __c76,
     0,
   ) as any as S.Schema<PolicyStatesSummarizeForResourceGroupLevelPolicyAssignmentRequest>,
-  output: __S(1131, __c70, 11) as any as S.Schema<SummarizeResults>,
+  output: __S(1147, __c71, 11) as any as S.Schema<SummarizeResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3441,8 +3468,8 @@ export const PolicyStatesSummarizeForSubscription: API.OperationMethod<
   PolicyStatesSummarizeForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<PolicyStatesSummarizeForSubscriptionRequest>,
-  output: __S(1131, __c70, 11) as any as S.Schema<SummarizeResults>,
+  input: __S(1232, __c77, 0) as any as S.Schema<PolicyStatesSummarizeForSubscriptionRequest>,
+  output: __S(1147, __c71, 11) as any as S.Schema<SummarizeResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3457,11 +3484,11 @@ export const PolicyStatesSummarizeForSubscriptionLevelPolicyAssignment: API.Oper
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1232,
-    __c77,
+    1248,
+    __c78,
     0,
   ) as any as S.Schema<PolicyStatesSummarizeForSubscriptionLevelPolicyAssignmentRequest>,
-  output: __S(1131, __c70, 11) as any as S.Schema<SummarizeResults>,
+  output: __S(1147, __c71, 11) as any as S.Schema<SummarizeResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3475,10 +3502,10 @@ export const RemediationsCreateOrUpdateAtManagementGroup: API.OperationMethod<
   RemediationsCreateOrUpdateAtManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1248, __c78, 0) as any as S.Schema<RemediationsCreateOrUpdateAtManagementGroupRequest>,
+  input: __S(1264, __c79, 0) as any as S.Schema<RemediationsCreateOrUpdateAtManagementGroupRequest>,
   output: __S(
-    484,
-    __c30,
+    500,
+    __c31,
     4,
   ) as any as S.Schema<RemediationsCreateOrUpdateAtManagementGroupResponse>,
   errors: [UnknownAzureError],
@@ -3494,8 +3521,8 @@ export const RemediationsCreateOrUpdateAtResource: API.OperationMethod<
   RemediationsCreateOrUpdateAtResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c80, 0) as any as S.Schema<RemediationsCreateOrUpdateAtResourceRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<RemediationsCreateOrUpdateAtResourceResponse>,
+  input: __S(1296, __c81, 0) as any as S.Schema<RemediationsCreateOrUpdateAtResourceRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<RemediationsCreateOrUpdateAtResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3509,8 +3536,8 @@ export const RemediationsCreateOrUpdateAtResourceGroup: API.OperationMethod<
   RemediationsCreateOrUpdateAtResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<RemediationsCreateOrUpdateAtResourceGroupRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<RemediationsCreateOrUpdateAtResourceGroupResponse>,
+  input: __S(1376, __c86, 0) as any as S.Schema<RemediationsCreateOrUpdateAtResourceGroupRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<RemediationsCreateOrUpdateAtResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3524,8 +3551,8 @@ export const RemediationsCreateOrUpdateAtSubscription: API.OperationMethod<
   RemediationsCreateOrUpdateAtSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<RemediationsCreateOrUpdateAtSubscriptionRequest>,
-  output: __S(484, __c30, 4) as any as S.Schema<RemediationsCreateOrUpdateAtSubscriptionResponse>,
+  input: __S(1392, __c87, 0) as any as S.Schema<RemediationsCreateOrUpdateAtSubscriptionRequest>,
+  output: __S(500, __c31, 4) as any as S.Schema<RemediationsCreateOrUpdateAtSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3539,8 +3566,8 @@ export const TriggerPolicyStateResourceGroupEvaluation: API.OperationMethod<
   TriggerPolicyStateResourceGroupEvaluationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1392, __c87, 0) as any as S.Schema<TriggerPolicyStateResourceGroupEvaluationRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<TriggerPolicyStateResourceGroupEvaluationResponse>,
+  input: __S(1408, __c88, 0) as any as S.Schema<TriggerPolicyStateResourceGroupEvaluationRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<TriggerPolicyStateResourceGroupEvaluationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3554,8 +3581,8 @@ export const TriggerPolicyStateSubscriptionEvaluation: API.OperationMethod<
   TriggerPolicyStateSubscriptionEvaluationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<TriggerPolicyStateSubscriptionEvaluationRequest>,
-  output: __S(96, __c6, 0) as any as S.Schema<TriggerPolicyStateSubscriptionEvaluationResponse>,
+  input: __S(1440, __c90, 0) as any as S.Schema<TriggerPolicyStateSubscriptionEvaluationRequest>,
+  output: __S(1424, __c89, 0) as any as S.Schema<TriggerPolicyStateSubscriptionEvaluationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3597,6 +3624,18 @@ function __c1(j: number): any {
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "AttestationPropertiesInput" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: __S(34, __c2, 2),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AttestationsCreateOrUpdateAtResourceResponse" });
   }
 }
 function __c2(j: number): any {
@@ -3626,16 +3665,6 @@ function __c2(j: number): any {
           metadata: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "AttestationProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(48, __c3, 0)),
-          properties: __S(34, __c2, 2),
-        }),
-      ).annotate({ identifier: "AttestationsCreateOrUpdateAtResourceResponse" });
   }
 }
 function __c3(j: number): any {
@@ -3833,6 +3862,20 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(48, __c3, 0)),
+          properties: __S(34, __c2, 2),
+        }),
+      ).annotate({ identifier: "GetAttestationAtResourceResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           attestationName: S.String.pipe(T.Label()),
@@ -3847,7 +3890,7 @@ function __c14(j: number): any {
       ).annotate({ identifier: "GetAttestationAtResourceGroupRequest" });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3865,7 +3908,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetAttestationAtSubscriptionRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3884,7 +3927,7 @@ function __c16(j: number): any {
       ).annotate({ identifier: "AttestationsCreateOrUpdateAtSubscriptionRequest" });
   }
 }
-function __c17(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3919,12 +3962,12 @@ function __c17(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(273, __c17, 1)),
+          properties: S.optional(__S(289, __c18, 1)),
         }),
       ).annotate({ identifier: "GetPolicyMetadataResourceResponse" });
   }
 }
-function __c18(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3943,7 +3986,7 @@ function __c18(j: number): any {
       ).annotate({ identifier: "GetRemediationAtManagementGroupRequest" });
   }
 }
-function __c19(j: number): any {
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3961,7 +4004,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetRemediationAtResourceRequest" });
   }
 }
-function __c20(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3980,7 +4023,7 @@ function __c20(j: number): any {
       ).annotate({ identifier: "GetRemediationAtResourceGroupRequest" });
   }
 }
-function __c21(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3998,7 +4041,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetRemediationAtSubscriptionRequest" });
   }
 }
-function __c22(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4017,20 +4060,20 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ListAttestationForResourceRequest" });
   }
 }
-function __c23(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(35, __c2, 3));
+      return S.Array(__S(224, __c14, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(368, __c23, 0),
+          value: __S(384, __c24, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AttestationListResult" });
   }
 }
-function __c24(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4050,7 +4093,7 @@ function __c24(j: number): any {
       ).annotate({ identifier: "ListAttestationForResourceGroupRequest" });
   }
 }
-function __c25(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4069,7 +4112,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "ListAttestationForSubscriptionRequest" });
   }
 }
-function __c26(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4096,65 +4139,68 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ListComponentPolicyStateQueryResultsForPolicyDefinitionRequest" });
   }
 }
-function __c27(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          evaluatedExpressions: S.optional(__S(1329, __c83, 1)),
+          evaluatedExpressions: S.optional(__S(1345, __c84, 1)),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComponentPolicyEvaluationDetails" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          _odata_id: S.optional(S.String.pipe(T.Body("@odata.id"))),
-          _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
-          timestamp: S.optional(S.String),
-          componentId: S.optional(S.String),
-          componentType: S.optional(S.String),
-          componentName: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          policyAssignmentId: S.optional(S.String),
-          policyDefinitionId: S.optional(S.String),
-          subscriptionId: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          resourceLocation: S.optional(S.String),
-          resourceGroup: S.optional(S.String),
-          policyAssignmentName: S.optional(S.String),
-          policyAssignmentOwner: S.optional(S.String),
-          policyAssignmentParameters: S.optional(S.String),
-          policyAssignmentScope: S.optional(S.String),
-          policyDefinitionName: S.optional(S.String),
-          policyDefinitionAction: S.optional(S.String),
-          policyDefinitionCategory: S.optional(S.String),
-          policySetDefinitionId: S.optional(S.String),
-          policySetDefinitionName: S.optional(S.String),
-          policySetDefinitionOwner: S.optional(S.String),
-          policySetDefinitionCategory: S.optional(S.String),
-          policySetDefinitionParameters: S.optional(S.String),
-          policyDefinitionReferenceId: S.optional(S.String),
-          complianceState: S.optional(S.String),
-          policyEvaluationDetails: S.optional(__S(432, __c27, 0)),
-          policyDefinitionGroupNames: S.optional(__S(496, __c31, 0)),
-          policyDefinitionVersion: S.optional(S.String),
-          policySetDefinitionVersion: S.optional(S.String),
-          policyAssignmentVersion: S.optional(S.String),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            _odata_id: S.optional(S.String.pipe(T.Body("@odata.id"))),
+            _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
+            timestamp: S.optional(S.String),
+            componentId: S.optional(S.String),
+            componentType: S.optional(S.String),
+            componentName: S.optional(S.String),
+            resourceId: S.optional(S.String),
+            policyAssignmentId: S.optional(S.String),
+            policyDefinitionId: S.optional(S.String),
+            subscriptionId: S.optional(S.String),
+            resourceType: S.optional(S.String),
+            resourceLocation: S.optional(S.String),
+            resourceGroup: S.optional(S.String),
+            policyAssignmentName: S.optional(S.String),
+            policyAssignmentOwner: S.optional(S.String),
+            policyAssignmentParameters: S.optional(S.String),
+            policyAssignmentScope: S.optional(S.String),
+            policyDefinitionName: S.optional(S.String),
+            policyDefinitionAction: S.optional(S.String),
+            policyDefinitionCategory: S.optional(S.String),
+            policySetDefinitionId: S.optional(S.String),
+            policySetDefinitionName: S.optional(S.String),
+            policySetDefinitionOwner: S.optional(S.String),
+            policySetDefinitionCategory: S.optional(S.String),
+            policySetDefinitionParameters: S.optional(S.String),
+            policyDefinitionReferenceId: S.optional(S.String),
+            complianceState: S.optional(S.String),
+            policyEvaluationDetails: S.optional(__S(448, __c28, 0)),
+            policyDefinitionGroupNames: S.optional(__S(512, __c32, 0)),
+            policyDefinitionVersion: S.optional(S.String),
+            policySetDefinitionVersion: S.optional(S.String),
+            policyAssignmentVersion: S.optional(S.String),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "ComponentPolicyState" });
     case 2:
-      return S.Array(__S(433, __c27, 1));
+      return S.Array(__S(449, __c28, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
           _odata_count: S.optional(S.Number.pipe(T.Body("@odata.count"))),
-          value: S.optional(__S(434, __c27, 2)),
+          value: S.optional(__S(450, __c28, 2)),
         }),
       ).annotate({ identifier: "ComponentPolicyStatesQueryResults" });
   }
 }
-function __c28(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4180,7 +4226,7 @@ function __c28(j: number): any {
       ).annotate({ identifier: "ListComponentPolicyStateQueryResultsForResourceRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4199,13 +4245,13 @@ function __c29(j: number): any {
       ).annotate({ identifier: "CancelRemediationAtManagementGroupRequest" });
   }
 }
-function __c30(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(__S(496, __c31, 0)),
-          resourceIds: S.optional(__S(496, __c31, 0)),
+          locations: S.optional(__S(512, __c32, 0)),
+          resourceIds: S.optional(__S(512, __c32, 0)),
         }),
       ).annotate({ identifier: "RemediationFilters" });
     case 1:
@@ -4231,13 +4277,13 @@ function __c30(j: number): any {
           provisioningState: S.optional(S.String),
           createdOn: S.optional(S.String),
           lastUpdatedOn: S.optional(S.String),
-          filters: S.optional(__S(480, __c30, 0)),
-          deploymentStatus: S.optional(__S(481, __c30, 1)),
+          filters: S.optional(__S(496, __c31, 0)),
+          deploymentStatus: S.optional(__S(497, __c31, 1)),
           statusMessage: S.optional(S.String),
           correlationId: S.optional(S.String),
           resourceCount: S.optional(S.Number),
           parallelDeployments: S.optional(S.Number),
-          failureThreshold: S.optional(__S(482, __c30, 2)),
+          failureThreshold: S.optional(__S(498, __c31, 2)),
         }),
       ).annotate({ identifier: "RemediationProperties" });
     case 4:
@@ -4247,18 +4293,18 @@ function __c30(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(48, __c3, 0)),
-          properties: S.optional(__S(483, __c30, 3)),
+          properties: S.optional(__S(499, __c31, 3)),
         }),
       ).annotate({ identifier: "CancelRemediationAtManagementGroupResponse" });
   }
 }
-function __c31(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c32(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4284,7 +4330,7 @@ function __c32(j: number): any {
       ).annotate({ identifier: "ListComponentPolicyStateQueryResultsForResourceGroupRequest" });
   }
 }
-function __c33(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4315,7 +4361,7 @@ function __c33(j: number): any {
       });
   }
 }
-function __c34(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4340,7 +4386,7 @@ function __c34(j: number): any {
       ).annotate({ identifier: "ListComponentPolicyStateQueryResultsForSubscriptionRequest" });
   }
 }
-function __c35(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4370,7 +4416,7 @@ function __c35(j: number): any {
       });
   }
 }
-function __c36(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4397,21 +4443,21 @@ function __c36(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(577, __c36, 1)),
+          display: S.optional(__S(593, __c37, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(578, __c36, 2));
+      return S.Array(__S(594, __c37, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           _odata_count: S.optional(S.Number.pipe(T.Body("@odata.count"))),
-          value: S.optional(__S(579, __c36, 3)),
+          value: S.optional(__S(595, __c37, 3)),
         }),
       ).annotate({ identifier: "OperationsListResults" });
   }
 }
-function __c37(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4438,72 +4484,78 @@ function __c37(j: number): any {
       ).annotate({ identifier: "ListPolicyEventQueryResultsForManagementGroupRequest" });
   }
 }
-function __c38(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          principalOid: S.optional(S.String),
-          policyDefinitionAction: S.optional(S.String),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            id: S.optional(S.String),
+            type: S.optional(S.String),
+            name: S.optional(S.String),
+            timestamp: S.optional(S.String),
+            tenantId: S.optional(S.String),
+            principalOid: S.optional(S.String),
+            policyDefinitionAction: S.optional(S.String),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "ComponentEventDetails" });
     case 1:
-      return S.Array(__S(608, __c38, 0));
+      return S.Array(__S(624, __c39, 0));
     case 2:
       return S.suspend(() =>
-        S.Struct({
-          _odata_id: S.optional(S.String.pipe(T.Body("@odata.id"))),
-          _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
-          timestamp: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          policyAssignmentId: S.optional(S.String),
-          policyDefinitionId: S.optional(S.String),
-          effectiveParameters: S.optional(S.String),
-          isCompliant: S.optional(S.Boolean),
-          subscriptionId: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          resourceLocation: S.optional(S.String),
-          resourceGroup: S.optional(S.String),
-          resourceTags: S.optional(S.String),
-          policyAssignmentName: S.optional(S.String),
-          policyAssignmentOwner: S.optional(S.String),
-          policyAssignmentParameters: S.optional(S.String),
-          policyAssignmentScope: S.optional(S.String),
-          policyDefinitionName: S.optional(S.String),
-          policyDefinitionAction: S.optional(S.String),
-          policyDefinitionCategory: S.optional(S.String),
-          policySetDefinitionId: S.optional(S.String),
-          policySetDefinitionName: S.optional(S.String),
-          policySetDefinitionOwner: S.optional(S.String),
-          policySetDefinitionCategory: S.optional(S.String),
-          policySetDefinitionParameters: S.optional(S.String),
-          managementGroupIds: S.optional(S.String),
-          policyDefinitionReferenceId: S.optional(S.String),
-          complianceState: S.optional(S.String),
-          tenantId: S.optional(S.String),
-          principalOid: S.optional(S.String),
-          components: S.optional(__S(609, __c38, 1)),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            _odata_id: S.optional(S.String.pipe(T.Body("@odata.id"))),
+            _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
+            timestamp: S.optional(S.String),
+            resourceId: S.optional(S.String),
+            policyAssignmentId: S.optional(S.String),
+            policyDefinitionId: S.optional(S.String),
+            effectiveParameters: S.optional(S.String),
+            isCompliant: S.optional(S.Boolean),
+            subscriptionId: S.optional(S.String),
+            resourceType: S.optional(S.String),
+            resourceLocation: S.optional(S.String),
+            resourceGroup: S.optional(S.String),
+            resourceTags: S.optional(S.String),
+            policyAssignmentName: S.optional(S.String),
+            policyAssignmentOwner: S.optional(S.String),
+            policyAssignmentParameters: S.optional(S.String),
+            policyAssignmentScope: S.optional(S.String),
+            policyDefinitionName: S.optional(S.String),
+            policyDefinitionAction: S.optional(S.String),
+            policyDefinitionCategory: S.optional(S.String),
+            policySetDefinitionId: S.optional(S.String),
+            policySetDefinitionName: S.optional(S.String),
+            policySetDefinitionOwner: S.optional(S.String),
+            policySetDefinitionCategory: S.optional(S.String),
+            policySetDefinitionParameters: S.optional(S.String),
+            managementGroupIds: S.optional(S.String),
+            policyDefinitionReferenceId: S.optional(S.String),
+            complianceState: S.optional(S.String),
+            tenantId: S.optional(S.String),
+            principalOid: S.optional(S.String),
+            components: S.optional(__S(625, __c39, 1)),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "PolicyEvent" });
     case 3:
-      return S.Array(__S(610, __c38, 2));
+      return S.Array(__S(626, __c39, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
           _odata_count: S.optional(S.Number.pipe(T.Body("@odata.count"))),
           _odata_nextLink: S.optional(S.String.pipe(T.Body("@odata.nextLink"))),
-          value: S.optional(__S(611, __c38, 3)),
+          value: S.optional(__S(627, __c39, 3)),
         }),
       ).annotate({ identifier: "PolicyEventsQueryResults" });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4531,7 +4583,7 @@ function __c39(j: number): any {
       ).annotate({ identifier: "ListPolicyEventQueryResultsForPolicyDefinitionRequest" });
   }
 }
-function __c40(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4559,7 +4611,7 @@ function __c40(j: number): any {
       ).annotate({ identifier: "ListPolicyEventQueryResultsForPolicySetDefinitionRequest" });
   }
 }
-function __c41(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4586,7 +4638,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "ListPolicyEventQueryResultsForResourceRequest" });
   }
 }
-function __c42(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4613,7 +4665,7 @@ function __c42(j: number): any {
       ).annotate({ identifier: "ListPolicyEventQueryResultsForResourceGroupRequest" });
   }
 }
-function __c43(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4631,7 +4683,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "CancelRemediationAtResourceRequest" });
   }
 }
-function __c44(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4662,7 +4714,7 @@ function __c44(j: number): any {
       });
   }
 }
-function __c45(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4688,7 +4740,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "ListPolicyEventQueryResultsForSubscriptionRequest" });
   }
 }
-function __c46(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4718,7 +4770,7 @@ function __c46(j: number): any {
       });
   }
 }
-function __c47(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4747,24 +4799,24 @@ function __c47(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(753, __c47, 1)),
+          properties: S.optional(__S(769, __c48, 1)),
           id: S.optional(S.String),
           type: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SlimPolicyMetadata" });
     case 3:
-      return S.Array(__S(754, __c47, 2));
+      return S.Array(__S(770, __c48, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(755, __c47, 3),
+          value: __S(771, __c48, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyMetadataCollection" });
   }
 }
-function __c48(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4791,80 +4843,86 @@ function __c48(j: number): any {
       ).annotate({ identifier: "ListPolicyStateQueryResultsForManagementGroupRequest" });
   }
 }
-function __c49(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          evaluatedExpressions: S.optional(__S(1329, __c83, 1)),
-          ifNotExistsDetails: S.optional(__S(1344, __c84, 0)),
+          evaluatedExpressions: S.optional(__S(1345, __c84, 1)),
+          ifNotExistsDetails: S.optional(__S(1360, __c85, 0)),
         }),
       ).annotate({ identifier: "PolicyEvaluationDetails" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          type: S.optional(S.String),
-          name: S.optional(S.String),
-          timestamp: S.optional(S.String),
-          complianceState: S.optional(S.String),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            id: S.optional(S.String),
+            type: S.optional(S.String),
+            name: S.optional(S.String),
+            timestamp: S.optional(S.String),
+            complianceState: S.optional(S.String),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "ComponentStateDetails" });
     case 2:
-      return S.Array(__S(785, __c49, 1));
+      return S.Array(__S(801, __c50, 1));
     case 3:
       return S.suspend(() =>
-        S.Struct({
-          _odata_id: S.optional(S.String.pipe(T.Body("@odata.id"))),
-          _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
-          timestamp: S.optional(S.String),
-          resourceId: S.optional(S.String),
-          policyAssignmentId: S.optional(S.String),
-          policyDefinitionId: S.optional(S.String),
-          effectiveParameters: S.optional(S.String),
-          isCompliant: S.optional(S.Boolean),
-          subscriptionId: S.optional(S.String),
-          resourceType: S.optional(S.String),
-          resourceLocation: S.optional(S.String),
-          resourceGroup: S.optional(S.String),
-          resourceTags: S.optional(S.String),
-          policyAssignmentName: S.optional(S.String),
-          policyAssignmentOwner: S.optional(S.String),
-          policyAssignmentParameters: S.optional(S.String),
-          policyAssignmentScope: S.optional(S.String),
-          policyDefinitionName: S.optional(S.String),
-          policyDefinitionAction: S.optional(S.String),
-          policyDefinitionCategory: S.optional(S.String),
-          policySetDefinitionId: S.optional(S.String),
-          policySetDefinitionName: S.optional(S.String),
-          policySetDefinitionOwner: S.optional(S.String),
-          policySetDefinitionCategory: S.optional(S.String),
-          policySetDefinitionParameters: S.optional(S.String),
-          managementGroupIds: S.optional(S.String),
-          policyDefinitionReferenceId: S.optional(S.String),
-          complianceState: S.optional(S.String),
-          policyEvaluationDetails: S.optional(__S(784, __c49, 0)),
-          policyDefinitionGroupNames: S.optional(__S(496, __c31, 0)),
-          components: S.optional(__S(786, __c49, 2)),
-          policyDefinitionVersion: S.optional(S.String),
-          policySetDefinitionVersion: S.optional(S.String),
-          policyAssignmentVersion: S.optional(S.String),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            _odata_id: S.optional(S.String.pipe(T.Body("@odata.id"))),
+            _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
+            timestamp: S.optional(S.String),
+            resourceId: S.optional(S.String),
+            policyAssignmentId: S.optional(S.String),
+            policyDefinitionId: S.optional(S.String),
+            effectiveParameters: S.optional(S.String),
+            isCompliant: S.optional(S.Boolean),
+            subscriptionId: S.optional(S.String),
+            resourceType: S.optional(S.String),
+            resourceLocation: S.optional(S.String),
+            resourceGroup: S.optional(S.String),
+            resourceTags: S.optional(S.String),
+            policyAssignmentName: S.optional(S.String),
+            policyAssignmentOwner: S.optional(S.String),
+            policyAssignmentParameters: S.optional(S.String),
+            policyAssignmentScope: S.optional(S.String),
+            policyDefinitionName: S.optional(S.String),
+            policyDefinitionAction: S.optional(S.String),
+            policyDefinitionCategory: S.optional(S.String),
+            policySetDefinitionId: S.optional(S.String),
+            policySetDefinitionName: S.optional(S.String),
+            policySetDefinitionOwner: S.optional(S.String),
+            policySetDefinitionCategory: S.optional(S.String),
+            policySetDefinitionParameters: S.optional(S.String),
+            managementGroupIds: S.optional(S.String),
+            policyDefinitionReferenceId: S.optional(S.String),
+            complianceState: S.optional(S.String),
+            policyEvaluationDetails: S.optional(__S(800, __c50, 0)),
+            policyDefinitionGroupNames: S.optional(__S(512, __c32, 0)),
+            components: S.optional(__S(802, __c50, 2)),
+            policyDefinitionVersion: S.optional(S.String),
+            policySetDefinitionVersion: S.optional(S.String),
+            policyAssignmentVersion: S.optional(S.String),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "PolicyState" });
     case 4:
-      return S.Array(__S(787, __c49, 3));
+      return S.Array(__S(803, __c50, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
           _odata_count: S.optional(S.Number.pipe(T.Body("@odata.count"))),
           _odata_nextLink: S.optional(S.String.pipe(T.Body("@odata.nextLink"))),
-          value: S.optional(__S(788, __c49, 4)),
+          value: S.optional(__S(804, __c50, 4)),
         }),
       ).annotate({ identifier: "PolicyStatesQueryResults" });
   }
 }
-function __c50(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4892,7 +4950,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "ListPolicyStateQueryResultsForPolicyDefinitionRequest" });
   }
 }
-function __c51(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4920,7 +4978,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "ListPolicyStateQueryResultsForPolicySetDefinitionRequest" });
   }
 }
-function __c52(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4947,7 +5005,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "ListPolicyStateQueryResultsForResourceRequest" });
   }
 }
-function __c53(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4974,7 +5032,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "ListPolicyStateQueryResultsForResourceGroupRequest" });
   }
 }
-function __c54(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5005,7 +5063,7 @@ function __c54(j: number): any {
       });
   }
 }
-function __c55(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5024,7 +5082,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "CancelRemediationAtResourceGroupRequest" });
   }
 }
-function __c56(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5050,7 +5108,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "ListPolicyStateQueryResultsForSubscriptionRequest" });
   }
 }
-function __c57(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5080,7 +5138,7 @@ function __c57(j: number): any {
       });
   }
 }
-function __c58(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5100,10 +5158,10 @@ function __c58(j: number): any {
       ).annotate({ identifier: "ListRemediationDeploymentsAtManagementGroupRequest" });
   }
 }
-function __c59(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(/*@__PURE__*/ S.suspend(() => __S(947, __c59, 3)));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(963, __c60, 3)));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5112,15 +5170,15 @@ function __c59(j: number): any {
         }),
       ).annotate({ identifier: "TypedErrorInfo" });
     case 2:
-      return S.Array(__S(945, __c59, 1));
+      return S.Array(__S(961, __c60, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(__S(944, __c59, 0)),
-          additionalInfo: S.optional(__S(946, __c59, 2)),
+          details: S.optional(__S(960, __c60, 0)),
+          additionalInfo: S.optional(__S(962, __c60, 2)),
         }),
       ).annotate({ identifier: "ErrorDefinition" });
     case 4:
@@ -5130,23 +5188,23 @@ function __c59(j: number): any {
           deploymentId: S.optional(S.String),
           status: S.optional(S.String),
           resourceLocation: S.optional(S.String),
-          error: S.optional(__S(947, __c59, 3)),
+          error: S.optional(__S(963, __c60, 3)),
           createdOn: S.optional(S.String),
           lastUpdatedOn: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemediationDeployment" });
     case 5:
-      return S.Array(__S(948, __c59, 4));
+      return S.Array(__S(964, __c60, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: __S(949, __c59, 5),
+          value: __S(965, __c60, 5),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemediationDeploymentsListResult" });
   }
 }
-function __c60(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5165,7 +5223,7 @@ function __c60(j: number): any {
       ).annotate({ identifier: "ListRemediationDeploymentsAtResourceRequest" });
   }
 }
-function __c61(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5185,7 +5243,7 @@ function __c61(j: number): any {
       ).annotate({ identifier: "ListRemediationDeploymentsAtResourceGroupRequest" });
   }
 }
-function __c62(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5204,7 +5262,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "ListRemediationDeploymentsAtSubscriptionRequest" });
   }
 }
-function __c63(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5224,20 +5282,20 @@ function __c63(j: number): any {
       ).annotate({ identifier: "ListRemediationForManagementGroupRequest" });
   }
 }
-function __c64(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(484, __c30, 4));
+      return S.Array(__S(500, __c31, 4));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1024, __c64, 0),
+          value: __S(1040, __c65, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemediationListResult" });
   }
 }
-function __c65(j: number): any {
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5256,7 +5314,7 @@ function __c65(j: number): any {
       ).annotate({ identifier: "ListRemediationForResourceRequest" });
   }
 }
-function __c66(j: number): any {
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5276,7 +5334,7 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ListRemediationForResourceGroupRequest" });
   }
 }
-function __c67(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5295,7 +5353,7 @@ function __c67(j: number): any {
       ).annotate({ identifier: "ListRemediationForSubscriptionRequest" });
   }
 }
-function __c68(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5313,7 +5371,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "CancelRemediationAtSubscriptionRequest" });
   }
 }
-function __c69(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5336,7 +5394,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "PolicyStatesSummarizeForManagementGroupRequest" });
   }
 }
-function __c70(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5346,16 +5404,16 @@ function __c70(j: number): any {
         }),
       ).annotate({ identifier: "ComplianceDetail" });
     case 1:
-      return S.Array(__S(1120, __c70, 0));
+      return S.Array(__S(1136, __c71, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           queryResultsUri: S.optional(S.String),
           nonCompliantResources: S.optional(S.Number),
           nonCompliantPolicies: S.optional(S.Number),
-          resourceDetails: S.optional(__S(1121, __c70, 1)),
-          policyDetails: S.optional(__S(1121, __c70, 1)),
-          policyGroupDetails: S.optional(__S(1121, __c70, 1)),
+          resourceDetails: S.optional(__S(1137, __c71, 1)),
+          policyDetails: S.optional(__S(1137, __c71, 1)),
+          policyGroupDetails: S.optional(__S(1137, __c71, 1)),
         }),
       ).annotate({ identifier: "SummaryResults" });
     case 3:
@@ -5363,56 +5421,56 @@ function __c70(j: number): any {
         S.Struct({
           policyDefinitionId: S.optional(S.String),
           policyDefinitionReferenceId: S.optional(S.String),
-          policyDefinitionGroupNames: S.optional(__S(496, __c31, 0)),
+          policyDefinitionGroupNames: S.optional(__S(512, __c32, 0)),
           effect: S.optional(S.String),
-          results: S.optional(__S(1122, __c70, 2)),
+          results: S.optional(__S(1138, __c71, 2)),
         }),
       ).annotate({ identifier: "PolicyDefinitionSummary" });
     case 4:
-      return S.Array(__S(1123, __c70, 3));
+      return S.Array(__S(1139, __c71, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           policyGroupName: S.optional(S.String),
-          results: S.optional(__S(1122, __c70, 2)),
+          results: S.optional(__S(1138, __c71, 2)),
         }),
       ).annotate({ identifier: "PolicyGroupSummary" });
     case 6:
-      return S.Array(__S(1125, __c70, 5));
+      return S.Array(__S(1141, __c71, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           policyAssignmentId: S.optional(S.String),
           policySetDefinitionId: S.optional(S.String),
-          results: S.optional(__S(1122, __c70, 2)),
-          policyDefinitions: S.optional(__S(1124, __c70, 4)),
-          policyGroups: S.optional(__S(1126, __c70, 6)),
+          results: S.optional(__S(1138, __c71, 2)),
+          policyDefinitions: S.optional(__S(1140, __c71, 4)),
+          policyGroups: S.optional(__S(1142, __c71, 6)),
         }),
       ).annotate({ identifier: "PolicyAssignmentSummary" });
     case 8:
-      return S.Array(__S(1127, __c70, 7));
+      return S.Array(__S(1143, __c71, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           _odata_id: S.optional(S.String.pipe(T.Body("@odata.id"))),
           _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
-          results: S.optional(__S(1122, __c70, 2)),
-          policyAssignments: S.optional(__S(1128, __c70, 8)),
+          results: S.optional(__S(1138, __c71, 2)),
+          policyAssignments: S.optional(__S(1144, __c71, 8)),
         }),
       ).annotate({ identifier: "Summary" });
     case 10:
-      return S.Array(__S(1129, __c70, 9));
+      return S.Array(__S(1145, __c71, 9));
     case 11:
       return S.suspend(() =>
         S.Struct({
           _odata_context: S.optional(S.String.pipe(T.Body("@odata.context"))),
           _odata_count: S.optional(S.Number.pipe(T.Body("@odata.count"))),
-          value: S.optional(__S(1130, __c70, 10)),
+          value: S.optional(__S(1146, __c71, 10)),
         }),
       ).annotate({ identifier: "SummarizeResults" });
   }
 }
-function __c71(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5436,7 +5494,7 @@ function __c71(j: number): any {
       ).annotate({ identifier: "PolicyStatesSummarizeForPolicyDefinitionRequest" });
   }
 }
-function __c72(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5460,7 +5518,7 @@ function __c72(j: number): any {
       ).annotate({ identifier: "PolicyStatesSummarizeForPolicySetDefinitionRequest" });
   }
 }
-function __c73(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5482,7 +5540,7 @@ function __c73(j: number): any {
       ).annotate({ identifier: "PolicyStatesSummarizeForResourceRequest" });
   }
 }
-function __c74(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5505,7 +5563,7 @@ function __c74(j: number): any {
       ).annotate({ identifier: "PolicyStatesSummarizeForResourceGroupRequest" });
   }
 }
-function __c75(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5532,7 +5590,7 @@ function __c75(j: number): any {
       });
   }
 }
-function __c76(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5554,7 +5612,7 @@ function __c76(j: number): any {
       ).annotate({ identifier: "PolicyStatesSummarizeForSubscriptionRequest" });
   }
 }
-function __c77(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5580,7 +5638,7 @@ function __c77(j: number): any {
       });
   }
 }
-function __c78(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5588,7 +5646,7 @@ function __c78(j: number): any {
           managementGroupsNamespace: S.String.pipe(T.Label()),
           managementGroupId: S.String.pipe(T.Label()),
           remediationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1264, __c79, 0)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5600,7 +5658,7 @@ function __c78(j: number): any {
       ).annotate({ identifier: "RemediationsCreateOrUpdateAtManagementGroupRequest" });
   }
 }
-function __c79(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5608,22 +5666,22 @@ function __c79(j: number): any {
           policyAssignmentId: S.optional(S.String),
           policyDefinitionReferenceId: S.optional(S.String),
           resourceDiscoveryMode: S.optional(S.String),
-          filters: S.optional(__S(480, __c30, 0)),
+          filters: S.optional(__S(496, __c31, 0)),
           resourceCount: S.optional(S.Number),
           parallelDeployments: S.optional(S.Number),
-          failureThreshold: S.optional(__S(482, __c30, 2)),
+          failureThreshold: S.optional(__S(498, __c31, 2)),
         }),
       ).annotate({ identifier: "RemediationPropertiesInput" });
   }
 }
-function __c80(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
           remediationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1264, __c79, 0)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5635,15 +5693,15 @@ function __c80(j: number): any {
       ).annotate({ identifier: "RemediationsCreateOrUpdateAtResourceRequest" });
   }
 }
-function __c81(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           managementGroupsNamespace: S.String.pipe(T.Label()),
           managementGroupId: S.String.pipe(T.Label()),
-          resourceDetails: S.optional(__S(1312, __c82, 0)),
-          pendingFields: S.optional(__S(1314, __c82, 2)),
+          resourceDetails: S.optional(__S(1328, __c83, 0)),
+          pendingFields: S.optional(__S(1330, __c83, 2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5655,7 +5713,7 @@ function __c81(j: number): any {
       ).annotate({ identifier: "CheckPolicyRestrictionAtManagementGroupScopeRequest" });
   }
 }
-function __c82(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5669,11 +5727,11 @@ function __c82(j: number): any {
       return S.suspend(() =>
         S.Struct({
           field: S.String,
-          values: S.optional(__S(496, __c31, 0)),
+          values: S.optional(__S(512, __c32, 0)),
         }),
       ).annotate({ identifier: "PendingField" });
     case 2:
-      return S.Array(__S(1313, __c82, 1));
+      return S.Array(__S(1329, __c83, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5688,28 +5746,28 @@ function __c82(j: number): any {
         S.Struct({
           result: S.optional(S.String),
           defaultValue: S.optional(S.String),
-          values: S.optional(__S(496, __c31, 0)),
-          policy: S.optional(__S(1315, __c82, 3)),
+          values: S.optional(__S(512, __c32, 0)),
+          policy: S.optional(__S(1331, __c83, 3)),
           policyEffect: S.optional(S.String),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "FieldRestriction" });
     case 5:
-      return S.Array(__S(1316, __c82, 4));
+      return S.Array(__S(1332, __c83, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           field: S.optional(S.String),
-          restrictions: S.optional(__S(1317, __c82, 5)),
+          restrictions: S.optional(__S(1333, __c83, 5)),
         }),
       ).annotate({ identifier: "FieldRestrictions" });
     case 7:
-      return S.Array(__S(1318, __c82, 6));
+      return S.Array(__S(1334, __c83, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          evaluatedExpressions: S.optional(__S(1329, __c83, 1)),
-          ifNotExistsDetails: S.optional(__S(1344, __c84, 0)),
+          evaluatedExpressions: S.optional(__S(1345, __c84, 1)),
+          ifNotExistsDetails: S.optional(__S(1360, __c85, 0)),
           reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "CheckRestrictionEvaluationDetails" });
@@ -5722,30 +5780,30 @@ function __c82(j: number): any {
     case 10:
       return S.suspend(() =>
         S.Struct({
-          policyInfo: S.optional(__S(1315, __c82, 3)),
+          policyInfo: S.optional(__S(1331, __c83, 3)),
           evaluationResult: S.optional(S.String),
-          evaluationDetails: S.optional(__S(1320, __c82, 8)),
-          effectDetails: S.optional(__S(1321, __c82, 9)),
+          evaluationDetails: S.optional(__S(1336, __c83, 8)),
+          effectDetails: S.optional(__S(1337, __c83, 9)),
         }),
       ).annotate({ identifier: "PolicyEvaluationResult" });
     case 11:
-      return S.Array(__S(1322, __c82, 10));
+      return S.Array(__S(1338, __c83, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
-          policyEvaluations: S.optional(__S(1323, __c82, 11)),
+          policyEvaluations: S.optional(__S(1339, __c83, 11)),
         }),
       ).annotate({ identifier: "CheckRestrictionsResultContentEvaluationResult" });
     case 13:
       return S.suspend(() =>
         S.Struct({
-          fieldRestrictions: S.optional(__S(1319, __c82, 7)),
-          contentEvaluationResult: S.optional(__S(1324, __c82, 12)),
+          fieldRestrictions: S.optional(__S(1335, __c83, 7)),
+          contentEvaluationResult: S.optional(__S(1340, __c83, 12)),
         }),
       ).annotate({ identifier: "CheckRestrictionsResult" });
   }
 }
-function __c83(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5760,10 +5818,10 @@ function __c83(j: number): any {
         }),
       ).annotate({ identifier: "ExpressionEvaluationDetails" });
     case 1:
-      return S.Array(__S(1328, __c83, 0));
+      return S.Array(__S(1344, __c84, 0));
   }
 }
-function __c84(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5774,7 +5832,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "IfNotExistsEvaluationDetails" });
   }
 }
-function __c85(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5782,7 +5840,7 @@ function __c85(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           remediationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1264, __c79, 0)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5794,14 +5852,14 @@ function __c85(j: number): any {
       ).annotate({ identifier: "RemediationsCreateOrUpdateAtResourceGroupRequest" });
   }
 }
-function __c86(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           remediationName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1264, __c79, 0)),
+          properties: S.optional(__S(1280, __c80, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5813,7 +5871,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "RemediationsCreateOrUpdateAtSubscriptionRequest" });
   }
 }
-function __c87(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5831,7 +5889,18 @@ function __c87(j: number): any {
       ).annotate({ identifier: "TriggerPolicyStateResourceGroupEvaluationRequest" });
   }
 }
-function __c88(j: number): any {
+function __c89(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "TriggerPolicyStateResourceGroupEvaluationResponse" });
+  }
+}
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5848,15 +5917,15 @@ function __c88(j: number): any {
       ).annotate({ identifier: "TriggerPolicyStateSubscriptionEvaluationRequest" });
   }
 }
-function __c89(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          resourceDetails: __S(1312, __c82, 0),
-          pendingFields: S.optional(__S(1314, __c82, 2)),
+          resourceDetails: __S(1328, __c83, 0),
+          pendingFields: S.optional(__S(1330, __c83, 2)),
           includeAuditEffect: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -5869,14 +5938,14 @@ function __c89(j: number): any {
       ).annotate({ identifier: "CheckPolicyRestrictionAtResourceGroupScopeRequest" });
   }
 }
-function __c90(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          resourceDetails: __S(1312, __c82, 0),
-          pendingFields: S.optional(__S(1314, __c82, 2)),
+          resourceDetails: __S(1328, __c83, 0),
+          pendingFields: S.optional(__S(1330, __c83, 2)),
           includeAuditEffect: S.optional(S.Boolean),
         }).pipe(
           T.Http({

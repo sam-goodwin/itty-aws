@@ -58,6 +58,10 @@ export interface AddonsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Addon type. */
   kind: AddonType;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type DayOfWeek =
   | "Sunday"
@@ -103,6 +107,10 @@ export interface BandwidthSchedulesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList = Array<string>;
 /** Array containing the sizes of the VMs for checking if its feasible to create them on the appliance. */
@@ -143,7 +151,12 @@ export interface CheckDeviceCapacityCheckResourceCreationFeasibilityRequest {
   /** The properties of the Device Capacity Request. */
   properties: DeviceCapacityRequestInfoProperties;
 }
-export interface CheckDeviceCapacityCheckResourceCreationFeasibilityResponse {}
+export interface CheckDeviceCapacityCheckResourceCreationFeasibilityResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Storage format used for the file represented by the share. */
 export type AzureContainerDataFormat = "BlockBlob" | "PageBlob" | "AzureFile";
 /** The container properties. */
@@ -200,6 +213,10 @@ export interface ContainersCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The container properties. */
   properties: ContainerProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteAddonRequest {
   /** The ID of the target subscription. */
@@ -213,7 +230,12 @@ export interface DeleteAddonRequest {
   /** The name of the addon. */
   addonName: string;
 }
-export interface DeleteAddonResponse {}
+export interface DeleteAddonResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteBandwidthScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -224,7 +246,12 @@ export interface DeleteBandwidthScheduleRequest {
   /** The bandwidth schedule name. */
   name: string;
 }
-export interface DeleteBandwidthScheduleResponse {}
+export interface DeleteBandwidthScheduleResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -237,7 +264,12 @@ export interface DeleteContainerRequest {
   /** The container Name */
   containerName: string;
 }
-export interface DeleteContainerResponse {}
+export interface DeleteContainerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -246,7 +278,12 @@ export interface DeleteDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export interface DeleteDeviceResponse {}
+export interface DeleteDeviceResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteMonitoringConfigRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -257,7 +294,12 @@ export interface DeleteMonitoringConfigRequest {
   /** The name of the role. */
   roleName: string;
 }
-export interface DeleteMonitoringConfigResponse {}
+export interface DeleteMonitoringConfigResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteOrderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -266,7 +308,12 @@ export interface DeleteOrderRequest {
   /** The device name. */
   deviceName: string;
 }
-export interface DeleteOrderResponse {}
+export interface DeleteOrderResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteRoleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -277,7 +324,12 @@ export interface DeleteRoleRequest {
   /** The role name. */
   name: string;
 }
-export interface DeleteRoleResponse {}
+export interface DeleteRoleResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteShareRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -288,7 +340,12 @@ export interface DeleteShareRequest {
   /** The share name. */
   name: string;
 }
-export interface DeleteShareResponse {}
+export interface DeleteShareResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteStorageAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -299,7 +356,12 @@ export interface DeleteStorageAccountRequest {
   /** The storage account name. */
   storageAccountName: string;
 }
-export interface DeleteStorageAccountResponse {}
+export interface DeleteStorageAccountResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteStorageAccountCredentialsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -310,7 +372,12 @@ export interface DeleteStorageAccountCredentialsRequest {
   /** The storage account credential name. */
   name: string;
 }
-export interface DeleteStorageAccountCredentialsResponse {}
+export interface DeleteStorageAccountCredentialsResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteTriggerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -321,7 +388,12 @@ export interface DeleteTriggerRequest {
   /** The trigger name. */
   name: string;
 }
-export interface DeleteTriggerResponse {}
+export interface DeleteTriggerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteUserRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -332,7 +404,12 @@ export interface DeleteUserRequest {
   /** The user name. */
   name: string;
 }
-export interface DeleteUserResponse {}
+export interface DeleteUserResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type DevicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** DataResidencyType enum */
@@ -608,7 +685,12 @@ export interface DevicesCreateOrUpdateSecuritySettingsRequest {
   /** Properties of the security settings. */
   properties: SecuritySettingsProperties;
 }
-export interface DevicesCreateOrUpdateSecuritySettingsResponse {}
+export interface DevicesCreateOrUpdateSecuritySettingsResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DevicesGetUpdateSummaryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -739,7 +821,12 @@ export interface DevicesScanForUpdatesRequest {
   /** The device name. */
   deviceName: string;
 }
-export interface DevicesScanForUpdatesResponse {}
+export interface DevicesScanForUpdatesResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DownloadDeviceUpdatesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -748,7 +835,12 @@ export interface DownloadDeviceUpdatesRequest {
   /** The device name. */
   deviceName: string;
 }
-export interface DownloadDeviceUpdatesResponse {}
+export interface DownloadDeviceUpdatesResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface GenerateDeviceCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1963,7 +2055,12 @@ export interface InstallDeviceUpdatesRequest {
   /** The device name. */
   deviceName: string;
 }
-export interface InstallDeviceUpdatesResponse {}
+export interface InstallDeviceUpdatesResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ListAddonByRoleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2673,6 +2770,10 @@ export interface MonitoringConfigCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Order properties. */
 export interface OrderPropertiesInput {
@@ -2706,6 +2807,10 @@ export interface OrdersCreateOrUpdateResponse {
   properties?: OrderProperties;
   /** It specify the order api version. */
   kind?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RefreshContainerRequest {
   /** The ID of the target subscription. */
@@ -2719,7 +2824,12 @@ export interface RefreshContainerRequest {
   /** The container Name */
   containerName: string;
 }
-export interface RefreshContainerResponse {}
+export interface RefreshContainerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RefreshShareRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2730,7 +2840,12 @@ export interface RefreshShareRequest {
   /** The share name. */
   name: string;
 }
-export interface RefreshShareResponse {}
+export interface RefreshShareResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RolesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2754,6 +2869,10 @@ export interface RolesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Role type. */
   kind: RoleTypes;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
 export type SharePropertiesInputUserAccessRightsList = Array<UserAccessRight>;
@@ -2803,6 +2922,10 @@ export interface SharesCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The share properties. */
   properties: ShareProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StorageAccountCredentialsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2827,6 +2950,10 @@ export interface StorageAccountCredentialsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The storage account properties. */
 export interface StorageAccountPropertiesInput {
@@ -2862,6 +2989,10 @@ export interface StorageAccountsCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The Storage Account properties. */
   properties: StorageAccountProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface TriggersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -2886,6 +3017,10 @@ export interface TriggersCreateOrUpdateResponse {
   systemData?: SystemData;
   /** Trigger Kind. */
   kind: TriggerEventType;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The share properties. */
 export interface SupportPackageRequestProperties {
@@ -2906,7 +3041,12 @@ export interface TriggerSupportPackageSupportPackageRequest {
   /** The TriggerSupportPackageRequest properties. */
   properties: SupportPackageRequestProperties;
 }
-export interface TriggerSupportPackageSupportPackageResponse {}
+export interface TriggerSupportPackageSupportPackageResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** The tags attached to the Data Box Edge/Gateway resource. */
 export type UpdateDeviceRequestTagsMap = { [key: string]: string | undefined };
 /** The Data Box Edge/Gateway Edge Profile Subscription patch. */
@@ -3042,6 +3182,10 @@ export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSetting
   systemData?: SystemData;
   /** Properties of the diagnostic proactive log collection settings. */
   properties: ProactiveLogCollectionSettingsProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest {
   /** The ID of the target subscription. */
@@ -3064,6 +3208,10 @@ export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse
   systemData?: SystemData;
   /** Properties of the remote support settings. */
   properties: DiagnosticRemoteSupportSettingsProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** The authentication type. */
 export type AuthenticationType = "Invalid" | "AzureActiveDirectory";
@@ -3133,6 +3281,10 @@ export interface UsersCreateOrUpdateResponse {
   systemData?: SystemData;
   /** The storage account credential properties. */
   properties: UserProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AddonsCreateOrUpdateError = AzureOpError;
 /** Create or update a addon. */
@@ -3158,7 +3310,7 @@ export const BandwidthSchedulesCreateOrUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c3, 0) as any as S.Schema<BandwidthSchedulesCreateOrUpdateRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<BandwidthSchedulesCreateOrUpdateResponse>,
+  output: __S(49, __c3, 1) as any as S.Schema<BandwidthSchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3178,9 +3330,9 @@ export const CheckDeviceCapacityCheckResourceCreationFeasibility: API.OperationM
     4,
   ) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityRequest>,
   output: __S(
-    336,
-    __c21,
-    0,
+    309,
+    __c19,
+    5,
   ) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3195,8 +3347,8 @@ export const ContainersCreateOrUpdate: API.OperationMethod<
   ContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(545, __c34, 1) as any as S.Schema<ContainersCreateOrUpdateRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<ContainersCreateOrUpdateResponse>,
+  input: __S(577, __c36, 1) as any as S.Schema<ContainersCreateOrUpdateRequest>,
+  output: __S(578, __c36, 2) as any as S.Schema<ContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3210,8 +3362,8 @@ export const DeleteAddon: API.OperationMethod<
   DeleteAddonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<DeleteAddonRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteAddonResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeleteAddonRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteAddonResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3225,8 +3377,8 @@ export const DeleteBandwidthSchedule: API.OperationMethod<
   DeleteBandwidthScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1104, __c69, 0) as any as S.Schema<DeleteBandwidthScheduleRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteBandwidthScheduleResponse>,
+  input: __S(1248, __c78, 0) as any as S.Schema<DeleteBandwidthScheduleRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteBandwidthScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3240,8 +3392,8 @@ export const DeleteContainer: API.OperationMethod<
   DeleteContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1280, __c80, 0) as any as S.Schema<DeleteContainerRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteContainerResponse>,
+  input: __S(1424, __c89, 0) as any as S.Schema<DeleteContainerRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3255,8 +3407,8 @@ export const DeleteDevice: API.OperationMethod<
   DeleteDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1456, __c91, 0) as any as S.Schema<DeleteDeviceRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteDeviceResponse>,
+  input: __S(1600, __c100, 0) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3270,8 +3422,8 @@ export const DeleteMonitoringConfig: API.OperationMethod<
   DeleteMonitoringConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1584, __c99, 0) as any as S.Schema<DeleteMonitoringConfigRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteMonitoringConfigResponse>,
+  input: __S(1728, __c108, 0) as any as S.Schema<DeleteMonitoringConfigRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteMonitoringConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3285,8 +3437,8 @@ export const DeleteOrder: API.OperationMethod<
   DeleteOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c100, 0) as any as S.Schema<DeleteOrderRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteOrderResponse>,
+  input: __S(1744, __c109, 0) as any as S.Schema<DeleteOrderRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3301,7 +3453,7 @@ export const DeleteRole: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<DeleteRoleRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteRoleResponse>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3316,7 +3468,7 @@ export const DeleteShare: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<DeleteShareRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteShareResponse>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3331,7 +3483,7 @@ export const DeleteStorageAccount: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(128, __c8, 0) as any as S.Schema<DeleteStorageAccountRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteStorageAccountResponse>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteStorageAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3346,7 +3498,7 @@ export const DeleteStorageAccountCredentials: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(144, __c9, 0) as any as S.Schema<DeleteStorageAccountCredentialsRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteStorageAccountCredentialsResponse>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteStorageAccountCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3361,7 +3513,7 @@ export const DeleteTrigger: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(160, __c10, 0) as any as S.Schema<DeleteTriggerRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteTriggerResponse>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3376,7 +3528,7 @@ export const DeleteUser: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(176, __c11, 0) as any as S.Schema<DeleteUserRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DeleteUserResponse>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DeleteUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3406,7 +3558,7 @@ export const DevicesCreateOrUpdateSecuritySettings: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(241, __c15, 1) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsResponse>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3436,7 +3588,7 @@ export const DevicesScanForUpdates: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(288, __c18, 0) as any as S.Schema<DevicesScanForUpdatesRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DevicesScanForUpdatesResponse>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DevicesScanForUpdatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3450,8 +3602,8 @@ export const DownloadDeviceUpdates: API.OperationMethod<
   DownloadDeviceUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<DownloadDeviceUpdatesRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<DownloadDeviceUpdatesResponse>,
+  input: __S(336, __c21, 0) as any as S.Schema<DownloadDeviceUpdatesRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<DownloadDeviceUpdatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3465,8 +3617,8 @@ export const GenerateDeviceCertificate: API.OperationMethod<
   GenerateDeviceCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<GenerateDeviceCertificateRequest>,
-  output: __S(369, __c23, 1) as any as S.Schema<GenerateCertResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GenerateDeviceCertificateRequest>,
+  output: __S(353, __c22, 1) as any as S.Schema<GenerateCertResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3480,8 +3632,8 @@ export const GetAddon: API.OperationMethod<
   GetAddonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<GetAddonRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<GetAddonResponse>,
+  input: __S(368, __c23, 0) as any as S.Schema<GetAddonRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<GetAddonResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3511,7 +3663,7 @@ export const GetBandwidthSchedule: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(432, __c27, 0) as any as S.Schema<GetBandwidthScheduleRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<GetBandwidthScheduleResponse>,
+  output: __S(448, __c28, 0) as any as S.Schema<GetBandwidthScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3525,8 +3677,8 @@ export const GetContainer: API.OperationMethod<
   GetContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<GetContainerRequest>,
-  output: __S(577, __c36, 1) as any as S.Schema<GetContainerResponse>,
+  input: __S(464, __c29, 0) as any as S.Schema<GetContainerRequest>,
+  output: __S(480, __c30, 0) as any as S.Schema<GetContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3540,7 +3692,7 @@ export const GetDevice: API.OperationMethod<
   GetDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<GetDeviceRequest>,
+  input: __S(496, __c31, 0) as any as S.Schema<GetDeviceRequest>,
   output: __S(234, __c14, 10) as any as S.Schema<GetDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3555,8 +3707,8 @@ export const GetDeviceCapacityInfoDeviceCapacityInfo: API.OperationMethod<
   GetDeviceCapacityInfoDeviceCapacityInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c30, 0) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoRequest>,
-  output: __S(493, __c30, 13) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoResponse>,
+  input: __S(512, __c32, 0) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoRequest>,
+  output: __S(525, __c32, 13) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3570,8 +3722,8 @@ export const GetDeviceExtendedInformation: API.OperationMethod<
   GetDeviceExtendedInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(496, __c31, 0) as any as S.Schema<GetDeviceExtendedInformationRequest>,
-  output: __S(515, __c32, 3) as any as S.Schema<GetDeviceExtendedInformationResponse>,
+  input: __S(528, __c33, 0) as any as S.Schema<GetDeviceExtendedInformationRequest>,
+  output: __S(547, __c34, 3) as any as S.Schema<GetDeviceExtendedInformationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3585,8 +3737,8 @@ export const GetDeviceNetworkSettings: API.OperationMethod<
   GetDeviceNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<GetDeviceNetworkSettingsRequest>,
-  output: __S(535, __c33, 7) as any as S.Schema<GetDeviceNetworkSettingsResponse>,
+  input: __S(560, __c35, 0) as any as S.Schema<GetDeviceNetworkSettingsRequest>,
+  output: __S(567, __c35, 7) as any as S.Schema<GetDeviceNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3601,13 +3753,13 @@ export const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettings: API.
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    592,
-    __c37,
+    624,
+    __c39,
     0,
   ) as any as S.Schema<GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest>,
   output: __S(
-    609,
-    __c38,
+    625,
+    __c39,
     1,
   ) as any as S.Schema<GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>,
   errors: [UnknownAzureError],
@@ -3624,14 +3776,14 @@ export const GetDiagnosticSettingsDiagnosticRemoteSupportSettings: API.Operation
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    624,
-    __c39,
+    656,
+    __c41,
     0,
   ) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>,
   output: __S(
-    643,
-    __c40,
-    3,
+    657,
+    __c41,
+    1,
   ) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -3646,8 +3798,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(656, __c41, 0) as any as S.Schema<GetJobRequest>,
-  output: __S(678, __c42, 6) as any as S.Schema<GetJobResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<GetJobRequest>,
+  output: __S(710, __c44, 6) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3661,8 +3813,8 @@ export const GetMonitoringConfig: API.OperationMethod<
   GetMonitoringConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(688, __c43, 0) as any as S.Schema<GetMonitoringConfigRequest>,
-  output: __S(713, __c44, 9) as any as S.Schema<GetMonitoringConfigResponse>,
+  input: __S(720, __c45, 0) as any as S.Schema<GetMonitoringConfigRequest>,
+  output: __S(736, __c46, 0) as any as S.Schema<GetMonitoringConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3676,8 +3828,8 @@ export const GetOperationsStatus: API.OperationMethod<
   GetOperationsStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(720, __c45, 0) as any as S.Schema<GetOperationsStatusRequest>,
-  output: __S(678, __c42, 6) as any as S.Schema<GetOperationsStatusResponse>,
+  input: __S(768, __c48, 0) as any as S.Schema<GetOperationsStatusRequest>,
+  output: __S(710, __c44, 6) as any as S.Schema<GetOperationsStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3691,8 +3843,8 @@ export const GetOrder: API.OperationMethod<
   GetOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c46, 0) as any as S.Schema<GetOrderRequest>,
-  output: __S(759, __c47, 7) as any as S.Schema<GetOrderResponse>,
+  input: __S(784, __c49, 0) as any as S.Schema<GetOrderRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3706,8 +3858,8 @@ export const GetRole: API.OperationMethod<
   GetRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(768, __c48, 0) as any as S.Schema<GetRoleRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<GetRoleResponse>,
+  input: __S(832, __c52, 0) as any as S.Schema<GetRoleRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<GetRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3721,8 +3873,8 @@ export const GetShare: API.OperationMethod<
   GetShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(784, __c49, 0) as any as S.Schema<GetShareRequest>,
-  output: __S(808, __c50, 8) as any as S.Schema<GetShareResponse>,
+  input: __S(848, __c53, 0) as any as S.Schema<GetShareRequest>,
+  output: __S(864, __c54, 0) as any as S.Schema<GetShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3736,8 +3888,8 @@ export const GetStorageAccount: API.OperationMethod<
   GetStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(816, __c51, 0) as any as S.Schema<GetStorageAccountRequest>,
-  output: __S(833, __c52, 1) as any as S.Schema<GetStorageAccountResponse>,
+  input: __S(896, __c56, 0) as any as S.Schema<GetStorageAccountRequest>,
+  output: __S(912, __c57, 0) as any as S.Schema<GetStorageAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3751,8 +3903,8 @@ export const GetStorageAccountCredentials: API.OperationMethod<
   GetStorageAccountCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<GetStorageAccountCredentialsRequest>,
-  output: __S(865, __c54, 1) as any as S.Schema<GetStorageAccountCredentialsResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<GetStorageAccountCredentialsRequest>,
+  output: __S(960, __c60, 0) as any as S.Schema<GetStorageAccountCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3766,8 +3918,8 @@ export const GetTrigger: API.OperationMethod<
   GetTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<GetTriggerRequest>,
-  output: __S(32, __c2, 0) as any as S.Schema<GetTriggerResponse>,
+  input: __S(1024, __c64, 0) as any as S.Schema<GetTriggerRequest>,
+  output: __S(384, __c24, 0) as any as S.Schema<GetTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3781,8 +3933,8 @@ export const GetUser: API.OperationMethod<
   GetUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(912, __c57, 0) as any as S.Schema<GetUserRequest>,
-  output: __S(931, __c58, 3) as any as S.Schema<GetUserResponse>,
+  input: __S(1040, __c65, 0) as any as S.Schema<GetUserRequest>,
+  output: __S(1056, __c66, 0) as any as S.Schema<GetUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3796,8 +3948,8 @@ export const InstallDeviceUpdates: API.OperationMethod<
   InstallDeviceUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(944, __c59, 0) as any as S.Schema<InstallDeviceUpdatesRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<InstallDeviceUpdatesResponse>,
+  input: __S(1088, __c68, 0) as any as S.Schema<InstallDeviceUpdatesRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<InstallDeviceUpdatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3811,8 +3963,8 @@ export const ListAddonByRole: API.OperationMethod<
   ListAddonByRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c60, 0) as any as S.Schema<ListAddonByRoleRequest>,
-  output: __S(977, __c61, 1) as any as S.Schema<AddonList>,
+  input: __S(1104, __c69, 0) as any as S.Schema<ListAddonByRoleRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<AddonList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3826,8 +3978,8 @@ export const ListAlertByDataBoxEdgeDevice: API.OperationMethod<
   ListAlertByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c62, 0) as any as S.Schema<ListAlertByDataBoxEdgeDeviceRequest>,
-  output: __S(994, __c62, 2) as any as S.Schema<AlertList>,
+  input: __S(1136, __c71, 0) as any as S.Schema<ListAlertByDataBoxEdgeDeviceRequest>,
+  output: __S(1138, __c71, 2) as any as S.Schema<AlertList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3841,8 +3993,8 @@ export const ListAvailableSkus: API.OperationMethod<
   ListAvailableSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1008, __c63, 0) as any as S.Schema<ListAvailableSkusRequest>,
-  output: __S(1017, __c63, 9) as any as S.Schema<DataBoxEdgeSkuList>,
+  input: __S(1152, __c72, 0) as any as S.Schema<ListAvailableSkusRequest>,
+  output: __S(1161, __c72, 9) as any as S.Schema<DataBoxEdgeSkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3856,8 +4008,8 @@ export const ListBandwidthScheduleByDataBoxEdgeDevice: API.OperationMethod<
   ListBandwidthScheduleByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1024, __c64, 0) as any as S.Schema<ListBandwidthScheduleByDataBoxEdgeDeviceRequest>,
-  output: __S(1026, __c64, 2) as any as S.Schema<BandwidthSchedulesList>,
+  input: __S(1168, __c73, 0) as any as S.Schema<ListBandwidthScheduleByDataBoxEdgeDeviceRequest>,
+  output: __S(1170, __c73, 2) as any as S.Schema<BandwidthSchedulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3871,8 +4023,8 @@ export const ListContainerByStorageAccount: API.OperationMethod<
   ListContainerByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1040, __c65, 0) as any as S.Schema<ListContainerByStorageAccountRequest>,
-  output: __S(1042, __c65, 2) as any as S.Schema<ContainerList>,
+  input: __S(1184, __c74, 0) as any as S.Schema<ListContainerByStorageAccountRequest>,
+  output: __S(1186, __c74, 2) as any as S.Schema<ContainerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3886,8 +4038,8 @@ export const ListDeviceByResourceGroup: API.OperationMethod<
   ListDeviceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c66, 0) as any as S.Schema<ListDeviceByResourceGroupRequest>,
-  output: __S(1073, __c67, 1) as any as S.Schema<DataBoxEdgeDeviceList>,
+  input: __S(1200, __c75, 0) as any as S.Schema<ListDeviceByResourceGroupRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<DataBoxEdgeDeviceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3901,8 +4053,8 @@ export const ListDeviceBySubscription: API.OperationMethod<
   ListDeviceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c68, 0) as any as S.Schema<ListDeviceBySubscriptionRequest>,
-  output: __S(1073, __c67, 1) as any as S.Schema<DataBoxEdgeDeviceList>,
+  input: __S(1232, __c77, 0) as any as S.Schema<ListDeviceBySubscriptionRequest>,
+  output: __S(1217, __c76, 1) as any as S.Schema<DataBoxEdgeDeviceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3916,8 +4068,8 @@ export const ListMonitoringConfig: API.OperationMethod<
   ListMonitoringConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c70, 0) as any as S.Schema<ListMonitoringConfigRequest>,
-  output: __S(1122, __c70, 2) as any as S.Schema<MonitoringMetricConfigurationList>,
+  input: __S(1264, __c79, 0) as any as S.Schema<ListMonitoringConfigRequest>,
+  output: __S(1266, __c79, 2) as any as S.Schema<MonitoringMetricConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3931,8 +4083,8 @@ export const ListNodeByDataBoxEdgeDevice: API.OperationMethod<
   ListNodeByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1136, __c71, 0) as any as S.Schema<ListNodeByDataBoxEdgeDeviceRequest>,
-  output: __S(1140, __c71, 4) as any as S.Schema<NodeList>,
+  input: __S(1280, __c80, 0) as any as S.Schema<ListNodeByDataBoxEdgeDeviceRequest>,
+  output: __S(1284, __c80, 4) as any as S.Schema<NodeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3946,8 +4098,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1152, __c72, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1162, __c72, 10) as any as S.Schema<OperationsList>,
+  input: __S(1296, __c81, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1306, __c81, 10) as any as S.Schema<OperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3961,8 +4113,8 @@ export const ListOrderByDataBoxEdgeDevice: API.OperationMethod<
   ListOrderByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1168, __c73, 0) as any as S.Schema<ListOrderByDataBoxEdgeDeviceRequest>,
-  output: __S(1170, __c73, 2) as any as S.Schema<OrderList>,
+  input: __S(1312, __c82, 0) as any as S.Schema<ListOrderByDataBoxEdgeDeviceRequest>,
+  output: __S(1314, __c82, 2) as any as S.Schema<OrderList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3976,8 +4128,8 @@ export const ListOrderDCAccessCode: API.OperationMethod<
   ListOrderDCAccessCodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c74, 0) as any as S.Schema<ListOrderDCAccessCodeRequest>,
-  output: __S(1186, __c74, 2) as any as S.Schema<DCAccessCode>,
+  input: __S(1328, __c83, 0) as any as S.Schema<ListOrderDCAccessCodeRequest>,
+  output: __S(1330, __c83, 2) as any as S.Schema<DCAccessCode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3991,8 +4143,8 @@ export const ListRoleByDataBoxEdgeDevice: API.OperationMethod<
   ListRoleByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1200, __c75, 0) as any as S.Schema<ListRoleByDataBoxEdgeDeviceRequest>,
-  output: __S(977, __c61, 1) as any as S.Schema<RoleList>,
+  input: __S(1344, __c84, 0) as any as S.Schema<ListRoleByDataBoxEdgeDeviceRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<RoleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4006,8 +4158,8 @@ export const ListShareByDataBoxEdgeDevice: API.OperationMethod<
   ListShareByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1216, __c76, 0) as any as S.Schema<ListShareByDataBoxEdgeDeviceRequest>,
-  output: __S(1218, __c76, 2) as any as S.Schema<ShareList>,
+  input: __S(1360, __c85, 0) as any as S.Schema<ListShareByDataBoxEdgeDeviceRequest>,
+  output: __S(1362, __c85, 2) as any as S.Schema<ShareList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4021,8 +4173,8 @@ export const ListStorageAccountByDataBoxEdgeDevice: API.OperationMethod<
   ListStorageAccountByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1232, __c77, 0) as any as S.Schema<ListStorageAccountByDataBoxEdgeDeviceRequest>,
-  output: __S(1234, __c77, 2) as any as S.Schema<StorageAccountList>,
+  input: __S(1376, __c86, 0) as any as S.Schema<ListStorageAccountByDataBoxEdgeDeviceRequest>,
+  output: __S(1378, __c86, 2) as any as S.Schema<StorageAccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4037,11 +4189,11 @@ export const ListStorageAccountCredentialsByDataBoxEdgeDevice: API.OperationMeth
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1248,
-    __c78,
+    1392,
+    __c87,
     0,
   ) as any as S.Schema<ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest>,
-  output: __S(1250, __c78, 2) as any as S.Schema<StorageAccountCredentialList>,
+  output: __S(1394, __c87, 2) as any as S.Schema<StorageAccountCredentialList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4055,8 +4207,8 @@ export const ListTriggerByDataBoxEdgeDevice: API.OperationMethod<
   ListTriggerByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1264, __c79, 0) as any as S.Schema<ListTriggerByDataBoxEdgeDeviceRequest>,
-  output: __S(977, __c61, 1) as any as S.Schema<TriggerList>,
+  input: __S(1408, __c88, 0) as any as S.Schema<ListTriggerByDataBoxEdgeDeviceRequest>,
+  output: __S(1121, __c70, 1) as any as S.Schema<TriggerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4070,8 +4222,8 @@ export const ListUserByDataBoxEdgeDevice: API.OperationMethod<
   ListUserByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1296, __c81, 0) as any as S.Schema<ListUserByDataBoxEdgeDeviceRequest>,
-  output: __S(1298, __c81, 2) as any as S.Schema<UserList>,
+  input: __S(1440, __c90, 0) as any as S.Schema<ListUserByDataBoxEdgeDeviceRequest>,
+  output: __S(1442, __c90, 2) as any as S.Schema<UserList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4085,8 +4237,8 @@ export const MonitoringConfigCreateOrUpdate: API.OperationMethod<
   MonitoringConfigCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1312, __c82, 0) as any as S.Schema<MonitoringConfigCreateOrUpdateRequest>,
-  output: __S(713, __c44, 9) as any as S.Schema<MonitoringConfigCreateOrUpdateResponse>,
+  input: __S(1456, __c91, 0) as any as S.Schema<MonitoringConfigCreateOrUpdateRequest>,
+  output: __S(1457, __c91, 1) as any as S.Schema<MonitoringConfigCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4100,8 +4252,8 @@ export const OrdersCreateOrUpdate: API.OperationMethod<
   OrdersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1329, __c83, 1) as any as S.Schema<OrdersCreateOrUpdateRequest>,
-  output: __S(759, __c47, 7) as any as S.Schema<OrdersCreateOrUpdateResponse>,
+  input: __S(1473, __c92, 1) as any as S.Schema<OrdersCreateOrUpdateRequest>,
+  output: __S(1474, __c92, 2) as any as S.Schema<OrdersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4115,8 +4267,8 @@ export const RefreshContainer: API.OperationMethod<
   RefreshContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1344, __c84, 0) as any as S.Schema<RefreshContainerRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<RefreshContainerResponse>,
+  input: __S(1488, __c93, 0) as any as S.Schema<RefreshContainerRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<RefreshContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4130,8 +4282,8 @@ export const RefreshShare: API.OperationMethod<
   RefreshShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1360, __c85, 0) as any as S.Schema<RefreshShareRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<RefreshShareResponse>,
+  input: __S(1504, __c94, 0) as any as S.Schema<RefreshShareRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<RefreshShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4145,7 +4297,7 @@ export const RolesCreateOrUpdate: API.OperationMethod<
   RolesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1376, __c86, 0) as any as S.Schema<RolesCreateOrUpdateRequest>,
+  input: __S(1520, __c95, 0) as any as S.Schema<RolesCreateOrUpdateRequest>,
   output: __S(32, __c2, 0) as any as S.Schema<RolesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4160,8 +4312,8 @@ export const SharesCreateOrUpdate: API.OperationMethod<
   SharesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1393, __c87, 1) as any as S.Schema<SharesCreateOrUpdateRequest>,
-  output: __S(808, __c50, 8) as any as S.Schema<SharesCreateOrUpdateResponse>,
+  input: __S(1537, __c96, 1) as any as S.Schema<SharesCreateOrUpdateRequest>,
+  output: __S(1538, __c96, 2) as any as S.Schema<SharesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4175,8 +4327,8 @@ export const StorageAccountCredentialsCreateOrUpdate: API.OperationMethod<
   StorageAccountCredentialsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1408, __c88, 0) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateRequest>,
-  output: __S(865, __c54, 1) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateResponse>,
+  input: __S(1552, __c97, 0) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateRequest>,
+  output: __S(1553, __c97, 1) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4190,8 +4342,8 @@ export const StorageAccountsCreateOrUpdate: API.OperationMethod<
   StorageAccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1425, __c89, 1) as any as S.Schema<StorageAccountsCreateOrUpdateRequest>,
-  output: __S(833, __c52, 1) as any as S.Schema<StorageAccountsCreateOrUpdateResponse>,
+  input: __S(1569, __c98, 1) as any as S.Schema<StorageAccountsCreateOrUpdateRequest>,
+  output: __S(1570, __c98, 2) as any as S.Schema<StorageAccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4205,7 +4357,7 @@ export const TriggersCreateOrUpdate: API.OperationMethod<
   TriggersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c90, 0) as any as S.Schema<TriggersCreateOrUpdateRequest>,
+  input: __S(1584, __c99, 0) as any as S.Schema<TriggersCreateOrUpdateRequest>,
   output: __S(32, __c2, 0) as any as S.Schema<TriggersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4220,8 +4372,8 @@ export const TriggerSupportPackageSupportPackage: API.OperationMethod<
   TriggerSupportPackageSupportPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1473, __c92, 1) as any as S.Schema<TriggerSupportPackageSupportPackageRequest>,
-  output: __S(336, __c21, 0) as any as S.Schema<TriggerSupportPackageSupportPackageResponse>,
+  input: __S(1617, __c101, 1) as any as S.Schema<TriggerSupportPackageSupportPackageRequest>,
+  output: __S(1008, __c63, 0) as any as S.Schema<TriggerSupportPackageSupportPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4235,7 +4387,7 @@ export const UpdateDevice: API.OperationMethod<
   UpdateDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1491, __c93, 3) as any as S.Schema<UpdateDeviceRequest>,
+  input: __S(1635, __c102, 3) as any as S.Schema<UpdateDeviceRequest>,
   output: __S(234, __c14, 10) as any as S.Schema<UpdateDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4250,8 +4402,8 @@ export const UpdateDeviceExtendedInformation: API.OperationMethod<
   UpdateDeviceExtendedInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c94, 0) as any as S.Schema<UpdateDeviceExtendedInformationRequest>,
-  output: __S(515, __c32, 3) as any as S.Schema<UpdateDeviceExtendedInformationResponse>,
+  input: __S(1648, __c103, 0) as any as S.Schema<UpdateDeviceExtendedInformationRequest>,
+  output: __S(547, __c34, 3) as any as S.Schema<UpdateDeviceExtendedInformationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4266,13 +4418,13 @@ export const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettings: A
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1520,
-    __c95,
+    1664,
+    __c104,
     0,
   ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest>,
   output: __S(
-    609,
-    __c38,
+    1665,
+    __c104,
     1,
   ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>,
   errors: [UnknownAzureError],
@@ -4289,14 +4441,14 @@ export const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettings: API.Operat
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    1536,
-    __c96,
+    1680,
+    __c105,
     0,
   ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>,
   output: __S(
-    643,
-    __c40,
-    3,
+    1681,
+    __c105,
+    1,
   ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -4311,8 +4463,8 @@ export const UploadDeviceCertificate: API.OperationMethod<
   UploadDeviceCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1553, __c97, 1) as any as S.Schema<UploadDeviceCertificateRequest>,
-  output: __S(1554, __c97, 2) as any as S.Schema<UploadCertificateResponse>,
+  input: __S(1697, __c106, 1) as any as S.Schema<UploadDeviceCertificateRequest>,
+  output: __S(1698, __c106, 2) as any as S.Schema<UploadCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4326,8 +4478,8 @@ export const UsersCreateOrUpdate: API.OperationMethod<
   UsersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1569, __c98, 1) as any as S.Schema<UsersCreateOrUpdateRequest>,
-  output: __S(931, __c58, 3) as any as S.Schema<UsersCreateOrUpdateResponse>,
+  input: __S(1713, __c107, 1) as any as S.Schema<UsersCreateOrUpdateRequest>,
+  output: __S(1714, __c107, 2) as any as S.Schema<UsersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4381,6 +4533,8 @@ function __c2(j: number): any {
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
           kind: S.String,
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "AddonsCreateOrUpdateResponse" });
   }
@@ -4404,6 +4558,18 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "BandwidthSchedulesCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(80, __c5, 0),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "BandwidthSchedulesCreateOrUpdateResponse" });
   }
 }
 function __c4(j: number): any {
@@ -4423,16 +4589,6 @@ function __c5(j: number): any {
           days: __S(64, __c4, 0),
         }),
       ).annotate({ identifier: "BandwidthScheduleProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(80, __c5, 0),
-        }),
-      ).annotate({ identifier: "BandwidthSchedulesCreateOrUpdateResponse" });
   }
 }
 function __c6(j: number): any {
@@ -4871,6 +5027,13 @@ function __c19(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CheckDeviceCapacityCheckResourceCreationFeasibilityRequest" });
+    case 5:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "CheckDeviceCapacityCheckResourceCreationFeasibilityResponse" });
   }
 }
 function __c20(j: number): any {
@@ -4880,14 +5043,6 @@ function __c20(j: number): any {
   }
 }
 function __c21(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() => S.Struct({})).annotate({
-        identifier: "CheckDeviceCapacityCheckResourceCreationFeasibilityResponse",
-      });
-  }
-}
-function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4906,7 +5061,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "DownloadDeviceUpdatesRequest" });
   }
 }
-function __c23(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4933,7 +5088,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "GenerateCertResponse" });
   }
 }
-function __c24(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4952,6 +5107,20 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetAddonRequest" });
+  }
+}
+function __c24(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          kind: S.String,
+        }),
+      ).annotate({ identifier: "GetAddonResponse" });
   }
 }
 function __c25(j: number): any {
@@ -5033,6 +5202,20 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(80, __c5, 0),
+        }),
+      ).annotate({ identifier: "GetBandwidthScheduleResponse" });
+  }
+}
+function __c29(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
@@ -5049,7 +5232,21 @@ function __c28(j: number): any {
       ).annotate({ identifier: "GetContainerRequest" });
   }
 }
-function __c29(j: number): any {
+function __c30(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(608, __c38, 0),
+        }),
+      ).annotate({ identifier: "GetContainerResponse" });
+  }
+}
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5068,7 +5265,7 @@ function __c29(j: number): any {
       ).annotate({ identifier: "GetDeviceRequest" });
   }
 }
-function __c30(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5120,8 +5317,8 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fqdn: S.optional(S.String),
-          gpuCapacity: S.optional(__S(482, __c30, 2)),
-          memoryCapacity: S.optional(__S(483, __c30, 3)),
+          gpuCapacity: S.optional(__S(514, __c32, 2)),
+          memoryCapacity: S.optional(__S(515, __c32, 3)),
           lastRefreshedTime: S.optional(S.String),
           totalProvisionedNonHpnCores: S.optional(S.Number),
         }),
@@ -5134,7 +5331,7 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "VmMemory" });
     case 6:
-      return S.Record(S.String, __S(485, __c30, 5));
+      return S.Record(S.String, __S(517, __c32, 5));
     case 7:
       return S.Array(S.Number);
     case 8:
@@ -5144,33 +5341,33 @@ function __c30(j: number): any {
           totalMemoryInMb: S.optional(S.Number),
           logicalCoreCountPerCore: S.optional(S.Number),
           effectiveAvailableMemoryInMb: S.optional(S.Number),
-          freeVCpuIndexesForHpn: S.optional(__S(487, __c30, 7)),
-          vCpuIndexesForHpn: S.optional(__S(487, __c30, 7)),
-          vCpuIndexesForRoot: S.optional(__S(487, __c30, 7)),
+          freeVCpuIndexesForHpn: S.optional(__S(519, __c32, 7)),
+          vCpuIndexesForHpn: S.optional(__S(519, __c32, 7)),
+          vCpuIndexesForRoot: S.optional(__S(519, __c32, 7)),
         }),
       ).annotate({ identifier: "NumaNodeData" });
     case 9:
-      return S.Array(__S(488, __c30, 8));
+      return S.Array(__S(520, __c32, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
           hostName: S.optional(S.String),
           effectiveAvailableMemoryMbOnHost: S.optional(S.Number),
           availableGpuCount: S.optional(S.Number),
-          vmUsedMemory: S.optional(__S(486, __c30, 6)),
+          vmUsedMemory: S.optional(__S(518, __c32, 6)),
           gpuType: S.optional(S.String),
-          numaNodesData: S.optional(__S(489, __c30, 9)),
+          numaNodesData: S.optional(__S(521, __c32, 9)),
         }),
       ).annotate({ identifier: "HostCapacity" });
     case 11:
-      return S.Record(S.String, __S(490, __c30, 10));
+      return S.Record(S.String, __S(522, __c32, 10));
     case 12:
       return S.suspend(() =>
         S.Struct({
           timeStamp: S.optional(S.String),
-          clusterStorageCapacityInfo: S.optional(__S(481, __c30, 1)),
-          clusterComputeCapacityInfo: S.optional(__S(484, __c30, 4)),
-          nodeCapacityInfos: S.optional(__S(491, __c30, 11)),
+          clusterStorageCapacityInfo: S.optional(__S(513, __c32, 1)),
+          clusterComputeCapacityInfo: S.optional(__S(516, __c32, 4)),
+          nodeCapacityInfos: S.optional(__S(523, __c32, 11)),
         }),
       ).annotate({ identifier: "DeviceCapacityInfoProperties" });
     case 13:
@@ -5180,12 +5377,12 @@ function __c30(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(492, __c30, 12)),
+          properties: S.optional(__S(524, __c32, 12)),
         }),
       ).annotate({ identifier: "GetDeviceCapacityInfoDeviceCapacityInfoResponse" });
   }
 }
-function __c31(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5204,7 +5401,7 @@ function __c31(j: number): any {
       ).annotate({ identifier: "GetDeviceExtendedInformationRequest" });
   }
 }
-function __c32(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5214,7 +5411,7 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "Secret" });
     case 1:
-      return S.Record(S.String, __S(512, __c32, 0));
+      return S.Record(S.String, __S(544, __c34, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5226,7 +5423,7 @@ function __c32(j: number): any {
           channelIntegrityKeyName: S.optional(S.String),
           channelIntegrityKeyVersion: S.optional(S.String),
           keyVaultSyncStatus: S.optional(S.String),
-          deviceSecrets: S.optional(__S(513, __c32, 1)),
+          deviceSecrets: S.optional(__S(545, __c34, 1)),
           clusterWitnessType: S.optional(S.String),
           fileShareWitnessLocation: S.optional(S.String),
           fileShareWitnessUsername: S.optional(S.String),
@@ -5241,13 +5438,13 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(514, __c32, 2)),
+          properties: S.optional(__S(546, __c34, 2)),
           systemData: S.optional(__S(16, __c1, 0)),
         }),
       ).annotate({ identifier: "GetDeviceExtendedInformationResponse" });
   }
 }
-function __c33(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5291,7 +5488,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           adapterId: S.optional(S.String),
-          adapterPosition: S.optional(__S(529, __c33, 1)),
+          adapterPosition: S.optional(__S(561, __c35, 1)),
           index: S.optional(S.Number),
           nodeId: S.optional(S.String),
           networkAdapterName: S.optional(S.String),
@@ -5301,18 +5498,18 @@ function __c33(j: number): any {
           status: S.optional(S.String),
           rdmaStatus: S.optional(S.String),
           dhcpStatus: S.optional(S.String),
-          ipv4Configuration: S.optional(__S(530, __c33, 2)),
-          ipv6Configuration: S.optional(__S(531, __c33, 3)),
+          ipv4Configuration: S.optional(__S(562, __c35, 2)),
+          ipv6Configuration: S.optional(__S(563, __c35, 3)),
           ipv6LinkLocalAddress: S.optional(S.String),
           dnsServers: S.optional(__S(320, __c20, 0)),
         }),
       ).annotate({ identifier: "NetworkAdapter" });
     case 5:
-      return S.Array(__S(532, __c33, 4));
+      return S.Array(__S(564, __c35, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          networkAdapters: S.optional(__S(533, __c33, 5)),
+          networkAdapters: S.optional(__S(565, __c35, 5)),
         }),
       ).annotate({ identifier: "NetworkSettingsProperties" });
     case 7:
@@ -5322,12 +5519,12 @@ function __c33(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(534, __c33, 6)),
+          properties: S.optional(__S(566, __c35, 6)),
         }),
       ).annotate({ identifier: "GetDeviceNetworkSettingsResponse" });
   }
 }
-function __c34(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5343,7 +5540,7 @@ function __c34(j: number): any {
           deviceName: S.String.pipe(T.Label()),
           storageAccountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          properties: __S(544, __c34, 0),
+          properties: __S(576, __c36, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5353,9 +5550,21 @@ function __c34(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ContainersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(608, __c38, 0),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ContainersCreateOrUpdateResponse" });
   }
 }
-function __c35(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5368,30 +5577,20 @@ function __c35(j: number): any {
       ).annotate({ identifier: "RefreshDetails" });
   }
 }
-function __c36(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           containerStatus: S.optional(S.String),
           dataFormat: S.String,
-          refreshDetails: S.optional(__S(560, __c35, 0)),
+          refreshDetails: S.optional(__S(592, __c37, 0)),
           createdDateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(576, __c36, 0),
-        }),
-      ).annotate({ identifier: "ContainersCreateOrUpdateResponse" });
   }
 }
-function __c37(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5410,16 +5609,6 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest",
       });
-  }
-}
-function __c38(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          userConsent: S.String,
-        }),
-      ).annotate({ identifier: "ProactiveLogCollectionSettingsProperties" });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5427,14 +5616,24 @@ function __c38(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(608, __c38, 0),
+          properties: __S(640, __c40, 0),
         }),
       ).annotate({
         identifier: "GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse",
       });
   }
 }
-function __c39(j: number): any {
+function __c40(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          userConsent: S.String,
+        }),
+      ).annotate({ identifier: "ProactiveLogCollectionSettingsProperties" });
+  }
+}
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5451,9 +5650,19 @@ function __c39(j: number): any {
           }),
         ),
       ).annotate({ identifier: "GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(674, __c42, 2),
+        }),
+      ).annotate({ identifier: "GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse" });
   }
 }
-function __c40(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5464,26 +5673,16 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "RemoteSupportSettings" });
     case 1:
-      return S.Array(__S(640, __c40, 0));
+      return S.Array(__S(672, __c42, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          remoteSupportSettingsList: S.optional(__S(641, __c40, 1)),
+          remoteSupportSettingsList: S.optional(__S(673, __c42, 1)),
         }),
       ).annotate({ identifier: "DiagnosticRemoteSupportSettingsProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(642, __c40, 2),
-        }),
-      ).annotate({ identifier: "GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse" });
   }
 }
-function __c41(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5503,7 +5702,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "GetJobRequest" });
   }
 }
-function __c42(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5529,8 +5728,8 @@ function __c42(j: number): any {
         S.Struct({
           jobType: S.optional(S.String),
           currentStage: S.optional(S.String),
-          downloadProgress: S.optional(__S(672, __c42, 0)),
-          installProgress: S.optional(__S(673, __c42, 1)),
+          downloadProgress: S.optional(__S(704, __c44, 0)),
+          installProgress: S.optional(__S(705, __c44, 1)),
           totalRefreshErrors: S.optional(S.Number),
           errorManifestFile: S.optional(S.String),
           refreshedEntityId: S.optional(S.String),
@@ -5546,11 +5745,11 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "JobErrorItem" });
     case 4:
-      return S.Array(__S(675, __c42, 3));
+      return S.Array(__S(707, __c44, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          errorDetails: S.optional(__S(676, __c42, 4)),
+          errorDetails: S.optional(__S(708, __c44, 4)),
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
@@ -5562,17 +5761,17 @@ function __c42(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(674, __c42, 2)),
+          properties: S.optional(__S(706, __c44, 2)),
           status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           percentComplete: S.optional(S.Number),
-          error: S.optional(__S(677, __c42, 5)),
+          error: S.optional(__S(709, __c44, 5)),
         }),
       ).annotate({ identifier: "GetJobResponse" });
   }
 }
-function __c43(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5592,7 +5791,21 @@ function __c43(j: number): any {
       ).annotate({ identifier: "GetMonitoringConfigRequest" });
   }
 }
-function __c44(j: number): any {
+function __c46(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(760, __c47, 8),
+        }),
+      ).annotate({ identifier: "GetMonitoringConfigResponse" });
+  }
+}
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5602,56 +5815,46 @@ function __c44(j: number): any {
         }),
       ).annotate({ identifier: "MetricDimension" });
     case 1:
-      return S.Array(__S(704, __c44, 0));
+      return S.Array(__S(752, __c47, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           instance: S.optional(S.String),
-          dimensionFilter: S.optional(__S(705, __c44, 1)),
-          additionalDimensions: S.optional(__S(705, __c44, 1)),
+          dimensionFilter: S.optional(__S(753, __c47, 1)),
+          additionalDimensions: S.optional(__S(753, __c47, 1)),
         }),
       ).annotate({ identifier: "MetricCounter" });
     case 3:
-      return S.Array(__S(706, __c44, 2));
+      return S.Array(__S(754, __c47, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          counters: __S(707, __c44, 3),
+          counters: __S(755, __c47, 3),
         }),
       ).annotate({ identifier: "MetricCounterSet" });
     case 5:
-      return S.Array(__S(708, __c44, 4));
+      return S.Array(__S(756, __c47, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
           mdmAccount: S.optional(S.String),
           metricNameSpace: S.optional(S.String),
-          counterSets: __S(709, __c44, 5),
+          counterSets: __S(757, __c47, 5),
         }),
       ).annotate({ identifier: "MetricConfiguration" });
     case 7:
-      return S.Array(__S(710, __c44, 6));
+      return S.Array(__S(758, __c47, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
-          metricConfigurations: __S(711, __c44, 7),
+          metricConfigurations: __S(759, __c47, 7),
         }),
       ).annotate({ identifier: "MonitoringMetricConfigurationProperties" });
-    case 9:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(712, __c44, 8),
-        }),
-      ).annotate({ identifier: "GetMonitoringConfigResponse" });
   }
 }
-function __c45(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5671,7 +5874,7 @@ function __c45(j: number): any {
       ).annotate({ identifier: "GetOperationsStatusRequest" });
   }
 }
-function __c46(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5690,7 +5893,22 @@ function __c46(j: number): any {
       ).annotate({ identifier: "GetOrderRequest" });
   }
 }
-function __c47(j: number): any {
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(822, __c51, 6)),
+          kind: S.optional(S.String),
+        }),
+      ).annotate({ identifier: "GetOrderResponse" });
+  }
+}
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5728,42 +5946,31 @@ function __c47(j: number): any {
           status: S.String,
           updateDateTime: S.optional(S.String),
           comments: S.optional(S.String),
-          trackingInformation: S.optional(__S(754, __c47, 2)),
+          trackingInformation: S.optional(__S(818, __c51, 2)),
           additionalOrderDetails: S.optional(__S(208, __c13, 0)),
         }),
       ).annotate({ identifier: "OrderStatus" });
     case 4:
-      return S.Array(__S(755, __c47, 3));
+      return S.Array(__S(819, __c51, 3));
     case 5:
-      return S.Array(__S(754, __c47, 2));
+      return S.Array(__S(818, __c51, 2));
     case 6:
       return S.suspend(() =>
         S.Struct({
           orderId: S.optional(S.String),
-          contactInformation: __S(752, __c47, 0),
-          shippingAddress: S.optional(__S(753, __c47, 1)),
-          currentStatus: S.optional(__S(755, __c47, 3)),
-          orderHistory: S.optional(__S(756, __c47, 4)),
+          contactInformation: __S(816, __c51, 0),
+          shippingAddress: S.optional(__S(817, __c51, 1)),
+          currentStatus: S.optional(__S(819, __c51, 3)),
+          orderHistory: S.optional(__S(820, __c51, 4)),
           serialNumber: S.optional(S.String),
-          deliveryTrackingInfo: S.optional(__S(757, __c47, 5)),
-          returnTrackingInfo: S.optional(__S(757, __c47, 5)),
+          deliveryTrackingInfo: S.optional(__S(821, __c51, 5)),
+          returnTrackingInfo: S.optional(__S(821, __c51, 5)),
           shipmentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderProperties" });
-    case 7:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(758, __c47, 6)),
-          kind: S.optional(S.String),
-        }),
-      ).annotate({ identifier: "GetOrderResponse" });
   }
 }
-function __c48(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5783,7 +5990,7 @@ function __c48(j: number): any {
       ).annotate({ identifier: "GetRoleRequest" });
   }
 }
-function __c49(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5803,7 +6010,21 @@ function __c49(j: number): any {
       ).annotate({ identifier: "GetShareRequest" });
   }
 }
-function __c50(j: number): any {
+function __c54(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(887, __c55, 7),
+        }),
+      ).annotate({ identifier: "GetShareResponse" });
+  }
+}
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5821,7 +6042,7 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "UserAccessRight" });
     case 2:
-      return S.Array(__S(801, __c50, 1));
+      return S.Array(__S(881, __c55, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5830,7 +6051,7 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "ClientAccessRight" });
     case 4:
-      return S.Array(__S(803, __c50, 3));
+      return S.Array(__S(883, __c55, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5842,35 +6063,25 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "MountPointMap" });
     case 6:
-      return S.Array(__S(805, __c50, 5));
+      return S.Array(__S(885, __c55, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           shareStatus: S.String,
           monitoringStatus: S.String,
-          azureContainerInfo: S.optional(__S(800, __c50, 0)),
+          azureContainerInfo: S.optional(__S(880, __c55, 0)),
           accessProtocol: S.String,
-          userAccessRights: S.optional(__S(802, __c50, 2)),
-          clientAccessRights: S.optional(__S(804, __c50, 4)),
-          refreshDetails: S.optional(__S(560, __c35, 0)),
-          shareMappings: S.optional(__S(806, __c50, 6)),
+          userAccessRights: S.optional(__S(882, __c55, 2)),
+          clientAccessRights: S.optional(__S(884, __c55, 4)),
+          refreshDetails: S.optional(__S(592, __c37, 0)),
+          shareMappings: S.optional(__S(886, __c55, 6)),
           dataPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShareProperties" });
-    case 8:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(807, __c50, 7),
-        }),
-      ).annotate({ identifier: "GetShareResponse" });
   }
 }
-function __c51(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5890,7 +6101,21 @@ function __c51(j: number): any {
       ).annotate({ identifier: "GetStorageAccountRequest" });
   }
 }
-function __c52(j: number): any {
+function __c57(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(928, __c58, 0),
+        }),
+      ).annotate({ identifier: "GetStorageAccountResponse" });
+  }
+}
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5903,19 +6128,9 @@ function __c52(j: number): any {
           containerCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StorageAccountProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(832, __c52, 0),
-        }),
-      ).annotate({ identifier: "GetStorageAccountResponse" });
   }
 }
-function __c53(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5935,7 +6150,21 @@ function __c53(j: number): any {
       ).annotate({ identifier: "GetStorageAccountCredentialsRequest" });
   }
 }
-function __c54(j: number): any {
+function __c60(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(976, __c61, 0),
+        }),
+      ).annotate({ identifier: "GetStorageAccountCredentialsResponse" });
+  }
+}
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5950,19 +6179,9 @@ function __c54(j: number): any {
           storageAccountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAccountCredentialProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(864, __c54, 0),
-        }),
-      ).annotate({ identifier: "GetStorageAccountCredentialsResponse" });
   }
 }
-function __c55(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -5983,7 +6202,18 @@ function __c55(j: number): any {
       ).annotate({ identifier: "DeleteAddonRequest" });
   }
 }
-function __c56(j: number): any {
+function __c63(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAddonResponse" });
+  }
+}
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6003,7 +6233,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "GetTriggerRequest" });
   }
 }
-function __c57(j: number): any {
+function __c65(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6023,7 +6253,21 @@ function __c57(j: number): any {
       ).annotate({ identifier: "GetUserRequest" });
   }
 }
-function __c58(j: number): any {
+function __c66(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1074, __c67, 2),
+        }),
+      ).annotate({ identifier: "GetUserResponse" });
+  }
+}
+function __c67(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6033,28 +6277,18 @@ function __c58(j: number): any {
         }),
       ).annotate({ identifier: "ShareAccessRight" });
     case 1:
-      return S.Array(__S(928, __c58, 0));
+      return S.Array(__S(1072, __c67, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           encryptedPassword: S.optional(__S(256, __c16, 0)),
-          shareAccessRights: S.optional(__S(929, __c58, 1)),
+          shareAccessRights: S.optional(__S(1073, __c67, 1)),
           userType: S.String,
         }),
       ).annotate({ identifier: "UserProperties" });
-    case 3:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(930, __c58, 2),
-        }),
-      ).annotate({ identifier: "GetUserResponse" });
   }
 }
-function __c59(j: number): any {
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6073,7 +6307,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "InstallDeviceUpdatesRequest" });
   }
 }
-function __c60(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6093,20 +6327,20 @@ function __c60(j: number): any {
       ).annotate({ identifier: "ListAddonByRoleRequest" });
   }
 }
-function __c61(j: number): any {
+function __c70(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(32, __c2, 0));
+      return S.Array(__S(384, __c24, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(976, __c61, 0),
+          value: __S(1120, __c70, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddonList" });
   }
 }
-function __c62(j: number): any {
+function __c71(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6128,13 +6362,13 @@ function __c62(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(993, __c62, 1),
+          value: __S(1137, __c71, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertList" });
   }
 }
-function __c63(j: number): any {
+function __c72(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6158,7 +6392,7 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "SkuLocationInfo" });
     case 2:
-      return S.Array(__S(1009, __c63, 1));
+      return S.Array(__S(1153, __c72, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6168,7 +6402,7 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "SkuCost" });
     case 4:
-      return S.Array(__S(1011, __c63, 3));
+      return S.Array(__S(1155, __c72, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6177,7 +6411,7 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "SkuCapability" });
     case 6:
-      return S.Array(__S(1013, __c63, 5));
+      return S.Array(__S(1157, __c72, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6189,27 +6423,27 @@ function __c63(j: number): any {
           family: S.optional(S.String),
           locations: S.optional(__S(320, __c20, 0)),
           apiVersions: S.optional(__S(320, __c20, 0)),
-          locationInfo: S.optional(__S(1010, __c63, 2)),
-          costs: S.optional(__S(1012, __c63, 4)),
+          locationInfo: S.optional(__S(1154, __c72, 2)),
+          costs: S.optional(__S(1156, __c72, 4)),
           signupOption: S.optional(S.String),
           version: S.optional(S.String),
           availability: S.optional(S.String),
           shipmentTypes: S.optional(__S(64, __c4, 0)),
-          capabilities: S.optional(__S(1014, __c63, 6)),
+          capabilities: S.optional(__S(1158, __c72, 6)),
         }),
       ).annotate({ identifier: "DataBoxEdgeSku" });
     case 8:
-      return S.Array(__S(1015, __c63, 7));
+      return S.Array(__S(1159, __c72, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1016, __c63, 8),
+          value: __S(1160, __c72, 8),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataBoxEdgeSkuList" });
   }
 }
-function __c64(j: number): any {
+function __c73(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6227,17 +6461,17 @@ function __c64(j: number): any {
         ),
       ).annotate({ identifier: "ListBandwidthScheduleByDataBoxEdgeDeviceRequest" });
     case 1:
-      return S.Array(__S(81, __c5, 1));
+      return S.Array(__S(448, __c28, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1025, __c64, 1),
+          value: __S(1169, __c73, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BandwidthSchedulesList" });
   }
 }
-function __c65(j: number): any {
+function __c74(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6256,17 +6490,17 @@ function __c65(j: number): any {
         ),
       ).annotate({ identifier: "ListContainerByStorageAccountRequest" });
     case 1:
-      return S.Array(__S(577, __c36, 1));
+      return S.Array(__S(480, __c30, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1041, __c65, 1),
+          value: __S(1185, __c74, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerList" });
   }
 }
-function __c66(j: number): any {
+function __c75(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6285,20 +6519,20 @@ function __c66(j: number): any {
       ).annotate({ identifier: "ListDeviceByResourceGroupRequest" });
   }
 }
-function __c67(j: number): any {
+function __c76(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(234, __c14, 10));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1072, __c67, 0),
+          value: __S(1216, __c76, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataBoxEdgeDeviceList" });
   }
 }
-function __c68(j: number): any {
+function __c77(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6316,7 +6550,7 @@ function __c68(j: number): any {
       ).annotate({ identifier: "ListDeviceBySubscriptionRequest" });
   }
 }
-function __c69(j: number): any {
+function __c78(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6336,7 +6570,7 @@ function __c69(j: number): any {
       ).annotate({ identifier: "DeleteBandwidthScheduleRequest" });
   }
 }
-function __c70(j: number): any {
+function __c79(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6355,17 +6589,17 @@ function __c70(j: number): any {
         ),
       ).annotate({ identifier: "ListMonitoringConfigRequest" });
     case 1:
-      return S.Array(__S(713, __c44, 9));
+      return S.Array(__S(736, __c46, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1121, __c70, 1),
+          value: __S(1265, __c79, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitoringMetricConfigurationList" });
   }
 }
-function __c71(j: number): any {
+function __c80(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6400,21 +6634,21 @@ function __c71(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(__S(1137, __c71, 1)),
+          properties: S.optional(__S(1281, __c80, 1)),
         }),
       ).annotate({ identifier: "Node" });
     case 3:
-      return S.Array(__S(1138, __c71, 2));
+      return S.Array(__S(1282, __c80, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1139, __c71, 3),
+          value: __S(1283, __c80, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeList" });
   }
 }
-function __c72(j: number): any {
+function __c81(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6445,7 +6679,7 @@ function __c72(j: number): any {
         }),
       ).annotate({ identifier: "MetricDimensionV1" });
     case 3:
-      return S.Array(__S(1154, __c72, 2));
+      return S.Array(__S(1298, __c81, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6454,7 +6688,7 @@ function __c72(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          dimensions: S.optional(__S(1155, __c72, 3)),
+          dimensions: S.optional(__S(1299, __c81, 3)),
           fillGapWithZero: S.optional(S.Boolean),
           category: S.optional(S.String),
           resourceIdDimensionNameOverride: S.optional(S.String),
@@ -6463,17 +6697,17 @@ function __c72(j: number): any {
         }),
       ).annotate({ identifier: "MetricSpecificationV1" });
     case 5:
-      return S.Array(__S(1156, __c72, 4));
+      return S.Array(__S(1300, __c81, 4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(__S(1157, __c72, 5)),
+          metricSpecifications: S.optional(__S(1301, __c81, 5)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(__S(1158, __c72, 6)),
+          serviceSpecification: S.optional(__S(1302, __c81, 6)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 8:
@@ -6481,23 +6715,23 @@ function __c72(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(__S(1153, __c72, 1)),
+          display: S.optional(__S(1297, __c81, 1)),
           origin: S.optional(S.String),
-          properties: S.optional(__S(1159, __c72, 7)),
+          properties: S.optional(__S(1303, __c81, 7)),
         }),
       ).annotate({ identifier: "Operation" });
     case 9:
-      return S.Array(__S(1160, __c72, 8));
+      return S.Array(__S(1304, __c81, 8));
     case 10:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1161, __c72, 9),
+          value: __S(1305, __c81, 9),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationsList" });
   }
 }
-function __c73(j: number): any {
+function __c82(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6515,17 +6749,17 @@ function __c73(j: number): any {
         ),
       ).annotate({ identifier: "ListOrderByDataBoxEdgeDeviceRequest" });
     case 1:
-      return S.Array(__S(759, __c47, 7));
+      return S.Array(__S(800, __c50, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1169, __c73, 1),
+          value: __S(1313, __c82, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderList" });
   }
 }
-function __c74(j: number): any {
+function __c83(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6551,12 +6785,12 @@ function __c74(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(__S(1185, __c74, 1)),
+          properties: S.optional(__S(1329, __c83, 1)),
         }),
       ).annotate({ identifier: "DCAccessCode" });
   }
 }
-function __c75(j: number): any {
+function __c84(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6575,7 +6809,7 @@ function __c75(j: number): any {
       ).annotate({ identifier: "ListRoleByDataBoxEdgeDeviceRequest" });
   }
 }
-function __c76(j: number): any {
+function __c85(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6593,17 +6827,17 @@ function __c76(j: number): any {
         ),
       ).annotate({ identifier: "ListShareByDataBoxEdgeDeviceRequest" });
     case 1:
-      return S.Array(__S(808, __c50, 8));
+      return S.Array(__S(864, __c54, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1217, __c76, 1),
+          value: __S(1361, __c85, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShareList" });
   }
 }
-function __c77(j: number): any {
+function __c86(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6621,17 +6855,17 @@ function __c77(j: number): any {
         ),
       ).annotate({ identifier: "ListStorageAccountByDataBoxEdgeDeviceRequest" });
     case 1:
-      return S.Array(__S(833, __c52, 1));
+      return S.Array(__S(912, __c57, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1233, __c77, 1),
+          value: __S(1377, __c86, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAccountList" });
   }
 }
-function __c78(j: number): any {
+function __c87(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6649,17 +6883,17 @@ function __c78(j: number): any {
         ),
       ).annotate({ identifier: "ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest" });
     case 1:
-      return S.Array(__S(865, __c54, 1));
+      return S.Array(__S(960, __c60, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1249, __c78, 1),
+          value: __S(1393, __c87, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAccountCredentialList" });
   }
 }
-function __c79(j: number): any {
+function __c88(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6679,7 +6913,7 @@ function __c79(j: number): any {
       ).annotate({ identifier: "ListTriggerByDataBoxEdgeDeviceRequest" });
   }
 }
-function __c80(j: number): any {
+function __c89(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6700,7 +6934,7 @@ function __c80(j: number): any {
       ).annotate({ identifier: "DeleteContainerRequest" });
   }
 }
-function __c81(j: number): any {
+function __c90(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6719,17 +6953,17 @@ function __c81(j: number): any {
         ),
       ).annotate({ identifier: "ListUserByDataBoxEdgeDeviceRequest" });
     case 1:
-      return S.Array(__S(931, __c58, 3));
+      return S.Array(__S(1056, __c66, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1297, __c81, 1),
+          value: __S(1441, __c90, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserList" });
   }
 }
-function __c82(j: number): any {
+function __c91(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6738,7 +6972,7 @@ function __c82(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           roleName: S.String.pipe(T.Label()),
-          properties: __S(712, __c44, 8),
+          properties: __S(760, __c47, 8),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6748,15 +6982,27 @@ function __c82(j: number): any {
           }),
         ),
       ).annotate({ identifier: "MonitoringConfigCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(760, __c47, 8),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "MonitoringConfigCreateOrUpdateResponse" });
   }
 }
-function __c83(j: number): any {
+function __c92(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contactInformation: __S(752, __c47, 0),
-          shippingAddress: S.optional(__S(753, __c47, 1)),
+          contactInformation: __S(816, __c51, 0),
+          shippingAddress: S.optional(__S(817, __c51, 1)),
           shipmentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderPropertiesInput" });
@@ -6766,7 +7012,7 @@ function __c83(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(1328, __c83, 0)),
+          properties: S.optional(__S(1472, __c92, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6776,9 +7022,22 @@ function __c83(j: number): any {
           }),
         ),
       ).annotate({ identifier: "OrdersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(822, __c51, 6)),
+          kind: S.optional(S.String),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "OrdersCreateOrUpdateResponse" });
   }
 }
-function __c84(j: number): any {
+function __c93(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6799,7 +7058,7 @@ function __c84(j: number): any {
       ).annotate({ identifier: "RefreshContainerRequest" });
   }
 }
-function __c85(j: number): any {
+function __c94(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6819,7 +7078,7 @@ function __c85(j: number): any {
       ).annotate({ identifier: "RefreshShareRequest" });
   }
 }
-function __c86(j: number): any {
+function __c95(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6840,7 +7099,7 @@ function __c86(j: number): any {
       ).annotate({ identifier: "RolesCreateOrUpdateRequest" });
   }
 }
-function __c87(j: number): any {
+function __c96(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6848,11 +7107,11 @@ function __c87(j: number): any {
           description: S.optional(S.String),
           shareStatus: S.String,
           monitoringStatus: S.String,
-          azureContainerInfo: S.optional(__S(800, __c50, 0)),
+          azureContainerInfo: S.optional(__S(880, __c55, 0)),
           accessProtocol: S.String,
-          userAccessRights: S.optional(__S(802, __c50, 2)),
-          clientAccessRights: S.optional(__S(804, __c50, 4)),
-          refreshDetails: S.optional(__S(560, __c35, 0)),
+          userAccessRights: S.optional(__S(882, __c55, 2)),
+          clientAccessRights: S.optional(__S(884, __c55, 4)),
+          refreshDetails: S.optional(__S(592, __c37, 0)),
           dataPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharePropertiesInput" });
@@ -6863,7 +7122,7 @@ function __c87(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(1392, __c87, 0),
+          properties: __S(1536, __c96, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6873,9 +7132,21 @@ function __c87(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SharesCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(887, __c55, 7),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SharesCreateOrUpdateResponse" });
   }
 }
-function __c88(j: number): any {
+function __c97(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6884,7 +7155,7 @@ function __c88(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(864, __c54, 0),
+          properties: __S(976, __c61, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6894,9 +7165,21 @@ function __c88(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StorageAccountCredentialsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(976, __c61, 0),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StorageAccountCredentialsCreateOrUpdateResponse" });
   }
 }
-function __c89(j: number): any {
+function __c98(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6914,7 +7197,7 @@ function __c89(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           storageAccountName: S.String.pipe(T.Label()),
-          properties: __S(1424, __c89, 0),
+          properties: __S(1568, __c98, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6924,9 +7207,21 @@ function __c89(j: number): any {
           }),
         ),
       ).annotate({ identifier: "StorageAccountsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(928, __c58, 0),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "StorageAccountsCreateOrUpdateResponse" });
   }
 }
-function __c90(j: number): any {
+function __c99(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6947,7 +7242,7 @@ function __c90(j: number): any {
       ).annotate({ identifier: "TriggersCreateOrUpdateRequest" });
   }
 }
-function __c91(j: number): any {
+function __c100(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6966,7 +7261,7 @@ function __c91(j: number): any {
       ).annotate({ identifier: "DeleteDeviceRequest" });
   }
 }
-function __c92(j: number): any {
+function __c101(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -6982,7 +7277,7 @@ function __c92(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: __S(1472, __c92, 0),
+          properties: __S(1616, __c101, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6994,7 +7289,7 @@ function __c92(j: number): any {
       ).annotate({ identifier: "TriggerSupportPackageSupportPackageRequest" });
   }
 }
-function __c93(j: number): any {
+function __c102(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7005,13 +7300,13 @@ function __c93(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subscription: S.optional(__S(1488, __c93, 0)),
+          subscription: S.optional(__S(1632, __c102, 0)),
         }),
       ).annotate({ identifier: "EdgeProfilePatch" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          edgeProfile: S.optional(__S(1489, __c93, 1)),
+          edgeProfile: S.optional(__S(1633, __c102, 1)),
         }),
       ).annotate({ identifier: "DataBoxEdgeDevicePropertiesPatch" });
     case 3:
@@ -7022,7 +7317,7 @@ function __c93(j: number): any {
           deviceName: S.String.pipe(T.Label()),
           tags: S.optional(__S(208, __c13, 0)),
           identity: S.optional(__S(224, __c14, 0)),
-          properties: S.optional(__S(1490, __c93, 2)),
+          properties: S.optional(__S(1634, __c102, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7034,7 +7329,7 @@ function __c93(j: number): any {
       ).annotate({ identifier: "UpdateDeviceRequest" });
   }
 }
-function __c94(j: number): any {
+function __c103(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7058,7 +7353,7 @@ function __c94(j: number): any {
       ).annotate({ identifier: "UpdateDeviceExtendedInformationRequest" });
   }
 }
-function __c95(j: number): any {
+function __c104(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7066,7 +7361,7 @@ function __c95(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: __S(608, __c38, 0),
+          properties: __S(640, __c40, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7078,9 +7373,23 @@ function __c95(j: number): any {
       ).annotate({
         identifier: "UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest",
       });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(640, __c40, 0),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({
+        identifier: "UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse",
+      });
   }
 }
-function __c96(j: number): any {
+function __c105(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7088,7 +7397,7 @@ function __c96(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: __S(642, __c40, 2),
+          properties: __S(674, __c42, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7098,9 +7407,21 @@ function __c96(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(674, __c42, 2),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse" });
   }
 }
-function __c97(j: number): any {
+function __c106(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7115,7 +7436,7 @@ function __c97(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: __S(1552, __c97, 0),
+          properties: __S(1696, __c106, 0),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7140,7 +7461,7 @@ function __c97(j: number): any {
       ).annotate({ identifier: "UploadCertificateResponse" });
   }
 }
-function __c98(j: number): any {
+function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7156,7 +7477,7 @@ function __c98(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(1568, __c98, 0),
+          properties: __S(1712, __c107, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7166,9 +7487,21 @@ function __c98(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UsersCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: __S(1074, __c67, 2),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UsersCreateOrUpdateResponse" });
   }
 }
-function __c99(j: number): any {
+function __c108(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -7188,7 +7521,7 @@ function __c99(j: number): any {
       ).annotate({ identifier: "DeleteMonitoringConfigRequest" });
   }
 }
-function __c100(j: number): any {
+function __c109(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>

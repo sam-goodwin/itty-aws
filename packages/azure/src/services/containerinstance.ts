@@ -993,6 +993,10 @@ export interface ContainerGroupsCreateOrUpdateResponse {
   identity?: ContainerGroupIdentity;
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteCGProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1034,6 +1038,10 @@ export interface DeleteContainerGroupResponse {
   identity?: ContainerGroupIdentity;
   /** The container group properties */
   properties: ContainerGroupPropertiesProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface DeleteNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1043,7 +1051,13 @@ export interface DeleteNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-export interface DeleteNGroupResponse {}
+export interface DeleteNGroupResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSandboxGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1052,7 +1066,12 @@ export interface DeleteSandboxGroupRequest {
   /** The name of the SandboxGroup. */
   sandboxGroupName: string;
 }
-export interface DeleteSandboxGroupResponse {}
+export interface DeleteSandboxGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteSubnetServiceAssociationLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1063,7 +1082,12 @@ export interface DeleteSubnetServiceAssociationLinkRequest {
   /** The name of the subnet. */
   subnetName: string;
 }
-export interface DeleteSubnetServiceAssociationLinkResponse {}
+export interface DeleteSubnetServiceAssociationLinkResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** The size of the terminal. */
 export interface ContainerExecRequestTerminalSize {
   /** The row size of the terminal */
@@ -1953,6 +1977,9 @@ export interface NGroupsCreateOrUpdateResponse {
   zones?: NGroupsCreateOrUpdateResponseZonesList;
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface RestartContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1962,7 +1989,12 @@ export interface RestartContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-export interface RestartContainerGroupResponse {}
+export interface RestartContainerGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface RestartNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1971,7 +2003,13 @@ export interface RestartNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-export interface RestartNGroupResponse {}
+export interface RestartNGroupResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Resource tags. */
 export type SandboxGroupsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
 /** Properties of a SandboxGroup. */
@@ -2021,6 +2059,10 @@ export interface SandboxGroupsCreateOrUpdateResponse {
   properties?: SandboxGroupProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StartContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2030,7 +2072,12 @@ export interface StartContainerGroupRequest {
   /** The name of the container group. */
   containerGroupName: string;
 }
-export interface StartContainerGroupResponse {}
+export interface StartContainerGroupResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StartNGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2039,7 +2086,13 @@ export interface StartNGroupRequest {
   /** The NGroups name. */
   ngroupsName: string;
 }
-export interface StartNGroupResponse {}
+export interface StartNGroupResponse {
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface StopContainerGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2177,6 +2230,10 @@ export interface UpdateNGroupResponse {
   zones?: UpdateNGroupResponseZonesList;
   /** The identity of the NGroup, if configured. */
   identity?: NGroupIdentity;
+  azureAsyncOperation?: string;
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateSandboxGroupRequestTagsMap = { [key: string]: string | undefined };
@@ -2215,6 +2272,10 @@ export interface UpdateSandboxGroupResponse {
   properties?: SandboxGroupProperties;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GetSandboxGroupResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export type AttachContainerError = AzureOpError;
 /** Attach to the output of a specific container instance. Attach to the output stream of a specific container instance in a specified resource group and container group. */
@@ -2254,8 +2315,8 @@ export const ConnectSandboxGroup: API.OperationMethod<
   ConnectSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(800, __c25, 0) as any as S.Schema<ConnectSandboxGroupRequest>,
-  output: __S(801, __c25, 1) as any as S.Schema<SandboxGroupAccessToken>,
+  input: __S(896, __c28, 0) as any as S.Schema<ConnectSandboxGroupRequest>,
+  output: __S(897, __c28, 1) as any as S.Schema<SandboxGroupAccessToken>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2269,8 +2330,8 @@ export const ContainerGroupsCreateOrUpdate: API.OperationMethod<
   ContainerGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1217, __c38, 1) as any as S.Schema<ContainerGroupsCreateOrUpdateRequest>,
-  output: __S(1410, __c44, 2) as any as S.Schema<ContainerGroupsCreateOrUpdateResponse>,
+  input: __S(1313, __c41, 1) as any as S.Schema<ContainerGroupsCreateOrUpdateRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<ContainerGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2284,8 +2345,8 @@ export const DeleteCGProfile: API.OperationMethod<
   DeleteCGProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1792, __c56, 0) as any as S.Schema<DeleteCGProfileRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<DeleteCGProfileResponse>,
+  input: __S(1920, __c60, 0) as any as S.Schema<DeleteCGProfileRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<DeleteCGProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2299,8 +2360,8 @@ export const DeleteContainerGroup: API.OperationMethod<
   DeleteContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1888, __c59, 0) as any as S.Schema<DeleteContainerGroupRequest>,
-  output: __S(1410, __c44, 2) as any as S.Schema<DeleteContainerGroupResponse>,
+  input: __S(2016, __c63, 0) as any as S.Schema<DeleteContainerGroupRequest>,
+  output: __S(1408, __c44, 0) as any as S.Schema<DeleteContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2314,8 +2375,8 @@ export const DeleteNGroup: API.OperationMethod<
   DeleteNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1920, __c60, 0) as any as S.Schema<DeleteNGroupRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<DeleteNGroupResponse>,
+  input: __S(2048, __c64, 0) as any as S.Schema<DeleteNGroupRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<DeleteNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2329,8 +2390,8 @@ export const DeleteSandboxGroup: API.OperationMethod<
   DeleteSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1952, __c61, 0) as any as S.Schema<DeleteSandboxGroupRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<DeleteSandboxGroupResponse>,
+  input: __S(2112, __c66, 0) as any as S.Schema<DeleteSandboxGroupRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DeleteSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2344,8 +2405,8 @@ export const DeleteSubnetServiceAssociationLink: API.OperationMethod<
   DeleteSubnetServiceAssociationLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1984, __c62, 0) as any as S.Schema<DeleteSubnetServiceAssociationLinkRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<DeleteSubnetServiceAssociationLinkResponse>,
+  input: __S(2176, __c68, 0) as any as S.Schema<DeleteSubnetServiceAssociationLinkRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<DeleteSubnetServiceAssociationLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2359,7 +2420,7 @@ export const ExecuteContainerCommand: API.OperationMethod<
   ExecuteContainerCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(2017, __c63, 1) as any as S.Schema<ExecuteContainerCommandRequest>,
+  input: __S(2209, __c69, 1) as any as S.Schema<ExecuteContainerCommandRequest>,
   output: __S(32, __c1, 0) as any as S.Schema<ContainerExecResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2405,7 +2466,7 @@ export const GetContainerGroup: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(416, __c13, 0) as any as S.Schema<GetContainerGroupRequest>,
-  output: __S(1410, __c44, 2) as any as S.Schema<GetContainerGroupResponse>,
+  output: __S(448, __c14, 0) as any as S.Schema<GetContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2420,13 +2481,13 @@ export const GetContainerGroupOutboundNetworkDependenciesEndpoints: API.Operatio
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(
-    448,
-    __c14,
+    480,
+    __c15,
     0,
   ) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsRequest>,
   output: __S(
-    449,
-    __c14,
+    481,
+    __c15,
     1,
   ) as any as S.Schema<GetContainerGroupOutboundNetworkDependenciesEndpointsResponse>,
   errors: [UnknownAzureError],
@@ -2442,8 +2503,8 @@ export const GetNGroup: API.OperationMethod<
   GetNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(480, __c15, 0) as any as S.Schema<GetNGroupRequest>,
-  output: __S(537, __c16, 25) as any as S.Schema<GetNGroupResponse>,
+  input: __S(512, __c16, 0) as any as S.Schema<GetNGroupRequest>,
+  output: __S(544, __c17, 0) as any as S.Schema<GetNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2457,8 +2518,8 @@ export const GetSandboxGroup: API.OperationMethod<
   GetSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c17, 0) as any as S.Schema<GetSandboxGroupRequest>,
-  output: __S(581, __c18, 5) as any as S.Schema<GetSandboxGroupResponse>,
+  input: __S(608, __c19, 0) as any as S.Schema<GetSandboxGroupRequest>,
+  output: __S(640, __c20, 0) as any as S.Schema<GetSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2472,8 +2533,8 @@ export const ListCGProfileAllRevisions: API.OperationMethod<
   ListCGProfileAllRevisionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c19, 0) as any as S.Schema<ListCGProfileAllRevisionsRequest>,
-  output: __S(641, __c20, 1) as any as S.Schema<ContainerGroupProfileListResult>,
+  input: __S(704, __c22, 0) as any as S.Schema<ListCGProfileAllRevisionsRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2487,8 +2548,8 @@ export const ListCGProfileByResourceGroup: API.OperationMethod<
   ListCGProfileByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c21, 0) as any as S.Schema<ListCGProfileByResourceGroupRequest>,
-  output: __S(641, __c20, 1) as any as S.Schema<ContainerGroupProfileListResult>,
+  input: __S(768, __c24, 0) as any as S.Schema<ListCGProfileByResourceGroupRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2502,8 +2563,8 @@ export const ListCGProfileBySubscription: API.OperationMethod<
   ListCGProfileBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(704, __c22, 0) as any as S.Schema<ListCGProfileBySubscriptionRequest>,
-  output: __S(641, __c20, 1) as any as S.Schema<ContainerGroupProfileListResult>,
+  input: __S(800, __c25, 0) as any as S.Schema<ListCGProfileBySubscriptionRequest>,
+  output: __S(737, __c23, 1) as any as S.Schema<ContainerGroupProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2517,8 +2578,8 @@ export const ListContainerGroupByResourceGroup: API.OperationMethod<
   ListContainerGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(736, __c23, 0) as any as S.Schema<ListContainerGroupByResourceGroupRequest>,
-  output: __S(771, __c24, 3) as any as S.Schema<ContainerGroupListResult>,
+  input: __S(832, __c26, 0) as any as S.Schema<ListContainerGroupByResourceGroupRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<ContainerGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2532,8 +2593,8 @@ export const ListContainerGroups: API.OperationMethod<
   ListContainerGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c26, 0) as any as S.Schema<ListContainerGroupsRequest>,
-  output: __S(771, __c24, 3) as any as S.Schema<ContainerGroupListResult>,
+  input: __S(928, __c29, 0) as any as S.Schema<ListContainerGroupsRequest>,
+  output: __S(867, __c27, 3) as any as S.Schema<ContainerGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2547,8 +2608,8 @@ export const ListContainerLogs: API.OperationMethod<
   ListContainerLogsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c27, 0) as any as S.Schema<ListContainerLogsRequest>,
-  output: __S(865, __c27, 1) as any as S.Schema<Logs>,
+  input: __S(960, __c30, 0) as any as S.Schema<ListContainerLogsRequest>,
+  output: __S(961, __c30, 1) as any as S.Schema<Logs>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2562,8 +2623,8 @@ export const ListLocationCachedImages: API.OperationMethod<
   ListLocationCachedImagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c28, 0) as any as S.Schema<ListLocationCachedImagesRequest>,
-  output: __S(899, __c28, 3) as any as S.Schema<CachedImagesListResult>,
+  input: __S(992, __c31, 0) as any as S.Schema<ListLocationCachedImagesRequest>,
+  output: __S(995, __c31, 3) as any as S.Schema<CachedImagesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2577,8 +2638,8 @@ export const ListLocationCapabilities: API.OperationMethod<
   ListLocationCapabilitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(928, __c29, 0) as any as S.Schema<ListLocationCapabilitiesRequest>,
-  output: __S(932, __c29, 4) as any as S.Schema<CapabilitiesListResult>,
+  input: __S(1024, __c32, 0) as any as S.Schema<ListLocationCapabilitiesRequest>,
+  output: __S(1028, __c32, 4) as any as S.Schema<CapabilitiesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2592,8 +2653,8 @@ export const ListLocationUsage: API.OperationMethod<
   ListLocationUsageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(960, __c30, 0) as any as S.Schema<ListLocationUsageRequest>,
-  output: __S(964, __c30, 4) as any as S.Schema<UsageListResult>,
+  input: __S(1056, __c33, 0) as any as S.Schema<ListLocationUsageRequest>,
+  output: __S(1060, __c33, 4) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2607,8 +2668,8 @@ export const ListNGroupByResourceGroup: API.OperationMethod<
   ListNGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(992, __c31, 0) as any as S.Schema<ListNGroupByResourceGroupRequest>,
-  output: __S(1025, __c32, 1) as any as S.Schema<NGroupsListResult>,
+  input: __S(1088, __c34, 0) as any as S.Schema<ListNGroupByResourceGroupRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<NGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2622,8 +2683,8 @@ export const ListNGroups: API.OperationMethod<
   ListNGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1056, __c33, 0) as any as S.Schema<ListNGroupsRequest>,
-  output: __S(1025, __c32, 1) as any as S.Schema<NGroupsListResult>,
+  input: __S(1152, __c36, 0) as any as S.Schema<ListNGroupsRequest>,
+  output: __S(1121, __c35, 1) as any as S.Schema<NGroupsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2637,8 +2698,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1088, __c34, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(1092, __c34, 4) as any as S.Schema<OperationListResult>,
+  input: __S(1184, __c37, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(1188, __c37, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2652,8 +2713,8 @@ export const ListSandboxGroupByResourceGroup: API.OperationMethod<
   ListSandboxGroupByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1120, __c35, 0) as any as S.Schema<ListSandboxGroupByResourceGroupRequest>,
-  output: __S(1153, __c36, 1) as any as S.Schema<SandboxGroupListResult>,
+  input: __S(1216, __c38, 0) as any as S.Schema<ListSandboxGroupByResourceGroupRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2667,8 +2728,8 @@ export const ListSandboxGroupBySubscription: API.OperationMethod<
   ListSandboxGroupBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1184, __c37, 0) as any as S.Schema<ListSandboxGroupBySubscriptionRequest>,
-  output: __S(1153, __c36, 1) as any as S.Schema<SandboxGroupListResult>,
+  input: __S(1280, __c40, 0) as any as S.Schema<ListSandboxGroupBySubscriptionRequest>,
+  output: __S(1249, __c39, 1) as any as S.Schema<SandboxGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2682,8 +2743,8 @@ export const NGroupsCreateOrUpdate: API.OperationMethod<
   NGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1440, __c45, 0) as any as S.Schema<NGroupsCreateOrUpdateRequest>,
-  output: __S(537, __c16, 25) as any as S.Schema<NGroupsCreateOrUpdateResponse>,
+  input: __S(1568, __c49, 0) as any as S.Schema<NGroupsCreateOrUpdateRequest>,
+  output: __S(1569, __c49, 1) as any as S.Schema<NGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2697,8 +2758,8 @@ export const RestartContainerGroup: API.OperationMethod<
   RestartContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1472, __c46, 0) as any as S.Schema<RestartContainerGroupRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<RestartContainerGroupResponse>,
+  input: __S(1600, __c50, 0) as any as S.Schema<RestartContainerGroupRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<RestartContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2712,8 +2773,8 @@ export const RestartNGroup: API.OperationMethod<
   RestartNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1504, __c47, 0) as any as S.Schema<RestartNGroupRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<RestartNGroupResponse>,
+  input: __S(1632, __c51, 0) as any as S.Schema<RestartNGroupRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<RestartNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2727,8 +2788,8 @@ export const SandboxGroupsCreateOrUpdate: API.OperationMethod<
   SandboxGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1537, __c48, 1) as any as S.Schema<SandboxGroupsCreateOrUpdateRequest>,
-  output: __S(581, __c18, 5) as any as S.Schema<SandboxGroupsCreateOrUpdateResponse>,
+  input: __S(1665, __c52, 1) as any as S.Schema<SandboxGroupsCreateOrUpdateRequest>,
+  output: __S(1666, __c52, 2) as any as S.Schema<SandboxGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2742,8 +2803,8 @@ export const StartContainerGroup: API.OperationMethod<
   StartContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1600, __c50, 0) as any as S.Schema<StartContainerGroupRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<StartContainerGroupResponse>,
+  input: __S(1728, __c54, 0) as any as S.Schema<StartContainerGroupRequest>,
+  output: __S(2144, __c67, 0) as any as S.Schema<StartContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2757,8 +2818,8 @@ export const StartNGroup: API.OperationMethod<
   StartNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1632, __c51, 0) as any as S.Schema<StartNGroupRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<StartNGroupResponse>,
+  input: __S(1760, __c55, 0) as any as S.Schema<StartNGroupRequest>,
+  output: __S(2080, __c65, 0) as any as S.Schema<StartNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2772,8 +2833,8 @@ export const StopContainerGroup: API.OperationMethod<
   StopContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1664, __c52, 0) as any as S.Schema<StopContainerGroupRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<StopContainerGroupResponse>,
+  input: __S(1792, __c56, 0) as any as S.Schema<StopContainerGroupRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<StopContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2787,8 +2848,8 @@ export const StopNGroup: API.OperationMethod<
   StopNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1696, __c53, 0) as any as S.Schema<StopNGroupRequest>,
-  output: __S(1280, __c40, 0) as any as S.Schema<StopNGroupResponse>,
+  input: __S(1824, __c57, 0) as any as S.Schema<StopNGroupRequest>,
+  output: __S(1376, __c43, 0) as any as S.Schema<StopNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2802,7 +2863,7 @@ export const UpdateCGProfile: API.OperationMethod<
   UpdateCGProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1728, __c54, 0) as any as S.Schema<UpdateCGProfileRequest>,
+  input: __S(1856, __c58, 0) as any as S.Schema<UpdateCGProfileRequest>,
   output: __S(98, __c3, 2) as any as S.Schema<UpdateCGProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -2817,8 +2878,8 @@ export const UpdateContainerGroup: API.OperationMethod<
   UpdateContainerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1760, __c55, 0) as any as S.Schema<UpdateContainerGroupRequest>,
-  output: __S(1410, __c44, 2) as any as S.Schema<UpdateContainerGroupResponse>,
+  input: __S(1888, __c59, 0) as any as S.Schema<UpdateContainerGroupRequest>,
+  output: __S(448, __c14, 0) as any as S.Schema<UpdateContainerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2832,8 +2893,8 @@ export const UpdateNGroup: API.OperationMethod<
   UpdateNGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1824, __c57, 0) as any as S.Schema<UpdateNGroupRequest>,
-  output: __S(537, __c16, 25) as any as S.Schema<UpdateNGroupResponse>,
+  input: __S(1952, __c61, 0) as any as S.Schema<UpdateNGroupRequest>,
+  output: __S(1953, __c61, 1) as any as S.Schema<UpdateNGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2847,8 +2908,8 @@ export const UpdateSandboxGroup: API.OperationMethod<
   UpdateSandboxGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(1856, __c58, 0) as any as S.Schema<UpdateSandboxGroupRequest>,
-  output: __S(581, __c18, 5) as any as S.Schema<UpdateSandboxGroupResponse>,
+  input: __S(1984, __c62, 0) as any as S.Schema<UpdateSandboxGroupRequest>,
+  output: __S(1985, __c62, 1) as any as S.Schema<UpdateSandboxGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3435,6 +3496,24 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(192, __c6, 0)),
+          zones: S.optional(__S(160, __c5, 0)),
+          identity: S.optional(__S(1475, __c46, 3)),
+          properties: __S(1537, __c48, 1),
+        }),
+      ).annotate({ identifier: "GetContainerGroupResponse" });
+  }
+}
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           containerGroupName: S.String.pipe(T.Label()),
@@ -3453,7 +3532,7 @@ function __c14(j: number): any {
       });
   }
 }
-function __c15(j: number): any {
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3472,7 +3551,25 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetNGroupRequest" });
   }
 }
-function __c16(j: number): any {
+function __c17(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(600, __c18, 24)),
+          tags: S.optional(__S(192, __c6, 0)),
+          location: S.optional(S.String),
+          zones: S.optional(__S(160, __c5, 0)),
+          identity: S.optional(__S(1475, __c46, 3)),
+        }),
+      ).annotate({ identifier: "GetNGroupResponse" });
+  }
+}
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3483,7 +3580,7 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          guidNamingPolicy: S.optional(__S(512, __c16, 0)),
+          guidNamingPolicy: S.optional(__S(576, __c18, 0)),
         }),
       ).annotate({ identifier: "ElasticProfileContainerGroupNamingPolicy" });
     case 2:
@@ -3491,7 +3588,7 @@ function __c16(j: number): any {
         S.Struct({
           desiredCount: S.optional(S.Number),
           maintainDesiredCount: S.optional(S.Boolean),
-          containerGroupNamingPolicy: S.optional(__S(513, __c16, 1)),
+          containerGroupNamingPolicy: S.optional(__S(577, __c18, 1)),
         }),
       ).annotate({ identifier: "ElasticProfile" });
     case 3:
@@ -3513,25 +3610,25 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "LoadBalancerBackendAddressPool" });
     case 6:
-      return S.Array(__S(517, __c16, 5));
+      return S.Array(__S(581, __c18, 5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          backendAddressPools: S.optional(__S(518, __c16, 6)),
+          backendAddressPools: S.optional(__S(582, __c18, 6)),
         }),
       ).annotate({ identifier: "LoadBalancer" });
     case 8:
       return S.suspend(() =>
         S.Struct({
           resource: S.optional(S.String),
-          backendAddressPools: S.optional(__S(518, __c16, 6)),
+          backendAddressPools: S.optional(__S(582, __c18, 6)),
         }),
       ).annotate({ identifier: "ApplicationGateway" });
     case 9:
       return S.suspend(() =>
         S.Struct({
-          loadBalancer: S.optional(__S(519, __c16, 7)),
-          applicationGateway: S.optional(__S(520, __c16, 8)),
+          loadBalancer: S.optional(__S(583, __c18, 7)),
+          applicationGateway: S.optional(__S(584, __c18, 8)),
         }),
       ).annotate({ identifier: "NetworkProfile" });
     case 10:
@@ -3547,15 +3644,15 @@ function __c16(j: number): any {
           name: S.optional(S.String),
           resourceGroupName: S.optional(S.String),
           storageAccountName: S.optional(S.String),
-          properties: S.optional(__S(522, __c16, 10)),
+          properties: S.optional(__S(586, __c18, 10)),
         }),
       ).annotate({ identifier: "FileShare" });
     case 12:
-      return S.Array(__S(523, __c16, 11));
+      return S.Array(__S(587, __c18, 11));
     case 13:
       return S.suspend(() =>
         S.Struct({
-          fileShares: S.optional(__S(524, __c16, 12)),
+          fileShares: S.optional(__S(588, __c18, 12)),
         }),
       ).annotate({ identifier: "StorageProfile" });
     case 14:
@@ -3566,7 +3663,7 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "NGroupCGPropertyVolume" });
     case 15:
-      return S.Array(__S(526, __c16, 14));
+      return S.Array(__S(590, __c18, 14));
     case 16:
       return S.suspend(() =>
         S.Struct({
@@ -3577,31 +3674,31 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(__S(528, __c16, 16)),
+          properties: S.optional(__S(592, __c18, 16)),
         }),
       ).annotate({ identifier: "NGroupCGPropertyContainer" });
     case 18:
-      return S.Array(__S(529, __c16, 17));
+      return S.Array(__S(593, __c18, 17));
     case 19:
       return S.suspend(() =>
         S.Struct({
-          subnetIds: S.optional(__S(1345, __c42, 1)),
-          volumes: S.optional(__S(527, __c16, 15)),
-          containers: S.optional(__S(530, __c16, 18)),
+          subnetIds: S.optional(__S(1473, __c46, 1)),
+          volumes: S.optional(__S(591, __c18, 15)),
+          containers: S.optional(__S(594, __c18, 18)),
         }),
       ).annotate({ identifier: "NGroupContainerGroupProperties" });
     case 20:
       return S.suspend(() =>
         S.Struct({
-          resource: S.optional(__S(516, __c16, 4)),
+          resource: S.optional(__S(580, __c18, 4)),
           revision: S.optional(S.Number),
-          networkProfile: S.optional(__S(521, __c16, 9)),
-          storageProfile: S.optional(__S(525, __c16, 13)),
-          containerGroupProperties: S.optional(__S(531, __c16, 19)),
+          networkProfile: S.optional(__S(585, __c18, 9)),
+          storageProfile: S.optional(__S(589, __c18, 13)),
+          containerGroupProperties: S.optional(__S(595, __c18, 19)),
         }),
       ).annotate({ identifier: "ContainerGroupProfileStub" });
     case 21:
-      return S.Array(__S(532, __c16, 20));
+      return S.Array(__S(596, __c18, 20));
     case 22:
       return S.suspend(() =>
         S.Struct({
@@ -3615,36 +3712,22 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMode: S.optional(S.String),
-          rollingUpdateProfile: S.optional(__S(534, __c16, 22)),
+          rollingUpdateProfile: S.optional(__S(598, __c18, 22)),
         }),
       ).annotate({ identifier: "UpdateProfile" });
     case 24:
       return S.suspend(() =>
         S.Struct({
-          elasticProfile: S.optional(__S(514, __c16, 2)),
-          placementProfile: S.optional(__S(515, __c16, 3)),
-          containerGroupProfiles: S.optional(__S(533, __c16, 21)),
+          elasticProfile: S.optional(__S(578, __c18, 2)),
+          placementProfile: S.optional(__S(579, __c18, 3)),
+          containerGroupProfiles: S.optional(__S(597, __c18, 21)),
           provisioningState: S.optional(S.String),
-          updateProfile: S.optional(__S(535, __c16, 23)),
+          updateProfile: S.optional(__S(599, __c18, 23)),
         }),
       ).annotate({ identifier: "NGroupProperties" });
-    case 25:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(224, __c7, 0)),
-          properties: S.optional(__S(536, __c16, 24)),
-          tags: S.optional(__S(192, __c6, 0)),
-          location: S.optional(S.String),
-          zones: S.optional(__S(160, __c5, 0)),
-          identity: S.optional(__S(1347, __c42, 3)),
-        }),
-      ).annotate({ identifier: "GetNGroupResponse" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3663,7 +3746,24 @@ function __c17(j: number): any {
       ).annotate({ identifier: "GetSandboxGroupRequest" });
   }
 }
-function __c18(j: number): any {
+function __c20(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(192, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(675, __c21, 3)),
+          identity: S.optional(__S(676, __c21, 4)),
+        }),
+      ).annotate({ identifier: "GetSandboxGroupResponse" });
+  }
+}
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3672,18 +3772,18 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "SubnetReference" });
     case 1:
-      return S.Array(__S(576, __c18, 0));
+      return S.Array(__S(672, __c21, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subnets: S.optional(__S(577, __c18, 1)),
+          subnets: S.optional(__S(673, __c21, 1)),
         }),
       ).annotate({ identifier: "SandboxGroupNetworkProfile" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          networkProfile: S.optional(__S(578, __c18, 2)),
+          networkProfile: S.optional(__S(674, __c21, 2)),
           managementResourceGroupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SandboxGroupProperties" });
@@ -3693,25 +3793,12 @@ function __c18(j: number): any {
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1312, __c41, 0)),
+          userAssignedIdentities: S.optional(__S(1440, __c45, 0)),
         }),
       ).annotate({ identifier: "GetSandboxGroupResponseIdentity" });
-    case 5:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(224, __c7, 0)),
-          tags: S.optional(__S(192, __c6, 0)),
-          location: S.String,
-          properties: S.optional(__S(579, __c18, 3)),
-          identity: S.optional(__S(580, __c18, 4)),
-        }),
-      ).annotate({ identifier: "GetSandboxGroupResponse" });
   }
 }
-function __c19(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3730,20 +3817,20 @@ function __c19(j: number): any {
       ).annotate({ identifier: "ListCGProfileAllRevisionsRequest" });
   }
 }
-function __c20(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.Array(__S(98, __c3, 2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(640, __c20, 0),
+          value: __S(736, __c23, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerGroupProfileListResult" });
   }
 }
-function __c21(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3761,7 +3848,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "ListCGProfileByResourceGroupRequest" });
   }
 }
-function __c22(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3778,7 +3865,7 @@ function __c22(j: number): any {
       ).annotate({ identifier: "ListCGProfileBySubscriptionRequest" });
   }
 }
-function __c23(j: number): any {
+function __c26(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3796,13 +3883,13 @@ function __c23(j: number): any {
       ).annotate({ identifier: "ListContainerGroupByResourceGroupRequest" });
   }
 }
-function __c24(j: number): any {
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          secretReferences: S.optional(__S(1377, __c43, 1)),
+          secretReferences: S.optional(__S(1505, __c47, 1)),
           containers: __S(322, __c10, 2),
           imageRegistryCredentials: S.optional(__S(309, __c9, 21)),
           restartPolicy: S.optional(S.String),
@@ -3810,17 +3897,17 @@ function __c24(j: number): any {
           osType: S.String,
           volumes: S.optional(__S(312, __c9, 24)),
           diagnostics: S.optional(__S(314, __c9, 26)),
-          subnetIds: S.optional(__S(1345, __c42, 1)),
-          dnsConfig: S.optional(__S(1378, __c43, 2)),
+          subnetIds: S.optional(__S(1473, __c46, 1)),
+          dnsConfig: S.optional(__S(1506, __c47, 2)),
           sku: S.optional(S.String),
           encryptionProperties: S.optional(__S(288, __c9, 0)),
           initContainers: S.optional(__S(325, __c10, 5)),
           extensions: S.optional(__S(307, __c9, 19)),
           confidentialComputeProperties: S.optional(__S(315, __c9, 27)),
           priority: S.optional(S.String),
-          identityAcls: S.optional(__S(1381, __c43, 5)),
-          containerGroupProfile: S.optional(__S(1382, __c43, 6)),
-          standbyPoolProfile: S.optional(__S(1383, __c43, 7)),
+          identityAcls: S.optional(__S(1509, __c47, 5)),
+          containerGroupProfile: S.optional(__S(1510, __c47, 6)),
+          standbyPoolProfile: S.optional(__S(1511, __c47, 7)),
           isCreatedFromStandbyPool: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ListResultContainerGroupPropertiesProperties" });
@@ -3833,22 +3920,22 @@ function __c24(j: number): any {
           location: S.optional(S.String),
           tags: S.optional(__S(192, __c6, 0)),
           zones: S.optional(__S(160, __c5, 0)),
-          identity: S.optional(__S(1347, __c42, 3)),
-          properties: __S(768, __c24, 0),
+          identity: S.optional(__S(1475, __c46, 3)),
+          properties: __S(864, __c27, 0),
         }),
       ).annotate({ identifier: "ListResultContainerGroup" });
     case 2:
-      return S.Array(__S(769, __c24, 1));
+      return S.Array(__S(865, __c27, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(770, __c24, 2),
+          value: __S(866, __c27, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerGroupListResult" });
   }
 }
-function __c25(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3875,7 +3962,7 @@ function __c25(j: number): any {
       ).annotate({ identifier: "SandboxGroupAccessToken" });
   }
 }
-function __c26(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3892,7 +3979,7 @@ function __c26(j: number): any {
       ).annotate({ identifier: "ListContainerGroupsRequest" });
   }
 }
-function __c27(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3920,7 +4007,7 @@ function __c27(j: number): any {
       ).annotate({ identifier: "Logs" });
   }
 }
-function __c28(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3944,17 +4031,17 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "CachedImages" });
     case 2:
-      return S.Array(__S(897, __c28, 1));
+      return S.Array(__S(993, __c31, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(898, __c28, 2)),
+          value: S.optional(__S(994, __c31, 2)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CachedImagesListResult" });
   }
 }
-function __c29(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3986,21 +4073,21 @@ function __c29(j: number): any {
           location: S.optional(S.String),
           ipAddressType: S.optional(S.String),
           gpu: S.optional(S.String),
-          capabilities: S.optional(__S(929, __c29, 1)),
+          capabilities: S.optional(__S(1025, __c32, 1)),
         }),
       ).annotate({ identifier: "Capabilities" });
     case 3:
-      return S.Array(__S(930, __c29, 2));
+      return S.Array(__S(1026, __c32, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(931, __c29, 3)),
+          value: S.optional(__S(1027, __c32, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CapabilitiesListResult" });
   }
 }
-function __c30(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4030,21 +4117,21 @@ function __c30(j: number): any {
           unit: S.optional(S.String),
           currentValue: S.optional(S.Number),
           limit: S.optional(S.Number),
-          name: S.optional(__S(961, __c30, 1)),
+          name: S.optional(__S(1057, __c33, 1)),
         }),
       ).annotate({ identifier: "Usage" });
     case 3:
-      return S.Array(__S(962, __c30, 2));
+      return S.Array(__S(1058, __c33, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(__S(963, __c30, 3)),
+          value: S.optional(__S(1059, __c33, 3)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageListResult" });
   }
 }
-function __c31(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4062,20 +4149,20 @@ function __c31(j: number): any {
       ).annotate({ identifier: "ListNGroupByResourceGroupRequest" });
   }
 }
-function __c32(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(537, __c16, 25));
+      return S.Array(__S(544, __c17, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1024, __c32, 0),
+          value: __S(1120, __c35, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NGroupsListResult" });
   }
 }
-function __c33(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4092,7 +4179,7 @@ function __c33(j: number): any {
       ).annotate({ identifier: "ListNGroupsRequest" });
   }
 }
-function __c34(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4118,23 +4205,23 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          display: __S(1089, __c34, 1),
+          display: __S(1185, __c37, 1),
           properties: S.optional(S.Unknown),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(1090, __c34, 2));
+      return S.Array(__S(1186, __c37, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1091, __c34, 3),
+          value: __S(1187, __c37, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c35(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4152,20 +4239,20 @@ function __c35(j: number): any {
       ).annotate({ identifier: "ListSandboxGroupByResourceGroupRequest" });
   }
 }
-function __c36(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(581, __c18, 5));
+      return S.Array(__S(640, __c20, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(1152, __c36, 0),
+          value: __S(1248, __c39, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SandboxGroupListResult" });
   }
 }
-function __c37(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4182,12 +4269,12 @@ function __c37(j: number): any {
       ).annotate({ identifier: "ListSandboxGroupBySubscriptionRequest" });
   }
 }
-function __c38(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          secretReferences: S.optional(__S(1377, __c43, 1)),
+          secretReferences: S.optional(__S(1505, __c47, 1)),
           containers: __S(130, __c4, 2),
           imageRegistryCredentials: S.optional(__S(309, __c9, 21)),
           restartPolicy: S.optional(S.String),
@@ -4195,17 +4282,17 @@ function __c38(j: number): any {
           osType: S.optional(S.String),
           volumes: S.optional(__S(312, __c9, 24)),
           diagnostics: S.optional(__S(314, __c9, 26)),
-          subnetIds: S.optional(__S(1345, __c42, 1)),
-          dnsConfig: S.optional(__S(1378, __c43, 2)),
+          subnetIds: S.optional(__S(1473, __c46, 1)),
+          dnsConfig: S.optional(__S(1506, __c47, 2)),
           sku: S.optional(S.String),
           encryptionProperties: S.optional(__S(288, __c9, 0)),
           initContainers: S.optional(__S(133, __c4, 5)),
           extensions: S.optional(__S(307, __c9, 19)),
           confidentialComputeProperties: S.optional(__S(315, __c9, 27)),
           priority: S.optional(S.String),
-          identityAcls: S.optional(__S(1381, __c43, 5)),
-          containerGroupProfile: S.optional(__S(1382, __c43, 6)),
-          standbyPoolProfile: S.optional(__S(1383, __c43, 7)),
+          identityAcls: S.optional(__S(1509, __c47, 5)),
+          containerGroupProfile: S.optional(__S(1510, __c47, 6)),
+          standbyPoolProfile: S.optional(__S(1511, __c47, 7)),
         }),
       ).annotate({ identifier: "ContainerGroupPropertiesPropertiesInput" });
     case 1:
@@ -4217,8 +4304,8 @@ function __c38(j: number): any {
           location: S.optional(S.String),
           tags: S.optional(__S(192, __c6, 0)),
           zones: S.optional(__S(160, __c5, 0)),
-          identity: S.optional(__S(1249, __c39, 1)),
-          properties: __S(1216, __c38, 0),
+          identity: S.optional(__S(1345, __c42, 1)),
+          properties: __S(1312, __c41, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4230,26 +4317,46 @@ function __c38(j: number): any {
       ).annotate({ identifier: "ContainerGroupsCreateOrUpdateRequest" });
   }
 }
-function __c39(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, __S(1280, __c40, 0));
+      return S.Record(S.String, __S(1376, __c43, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(1248, __c39, 0)),
+          userAssignedIdentities: S.optional(__S(1344, __c42, 0)),
         }),
       ).annotate({ identifier: "ContainerGroupIdentityInput" });
   }
 }
-function __c40(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({ identifier: "UserAssignedIdentitiesInput" });
   }
 }
-function __c41(j: number): any {
+function __c44(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          location: S.optional(S.String),
+          tags: S.optional(__S(192, __c6, 0)),
+          zones: S.optional(__S(160, __c5, 0)),
+          identity: S.optional(__S(1475, __c46, 3)),
+          properties: __S(1537, __c48, 1),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "ContainerGroupsCreateOrUpdateResponse" });
+  }
+}
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4260,7 +4367,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "UserAssignedIdentities" });
   }
 }
-function __c42(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4270,21 +4377,21 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "ContainerGroupSubnetId" });
     case 1:
-      return S.Array(__S(1344, __c42, 0));
+      return S.Array(__S(1472, __c46, 0));
     case 2:
-      return S.Record(S.String, __S(1312, __c41, 0));
+      return S.Record(S.String, __S(1440, __c45, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.optional(S.String),
-          userAssignedIdentities: S.optional(__S(1346, __c42, 2)),
+          userAssignedIdentities: S.optional(__S(1474, __c46, 2)),
         }),
       ).annotate({ identifier: "ContainerGroupIdentity" });
   }
 }
-function __c43(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4295,7 +4402,7 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "SecretReference" });
     case 1:
-      return S.Array(__S(1376, __c43, 0));
+      return S.Array(__S(1504, __c47, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4312,12 +4419,12 @@ function __c43(j: number): any {
         }),
       ).annotate({ identifier: "IdentityAccessControl" });
     case 4:
-      return S.Array(__S(1379, __c43, 3));
+      return S.Array(__S(1507, __c47, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           defaultAccess: S.optional(S.String),
-          acls: S.optional(__S(1380, __c43, 4)),
+          acls: S.optional(__S(1508, __c47, 4)),
         }),
       ).annotate({ identifier: "IdentityAcls" });
     case 6:
@@ -4336,7 +4443,7 @@ function __c43(j: number): any {
       ).annotate({ identifier: "StandbyPoolProfileDefinition" });
   }
 }
-function __c44(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4349,46 +4456,32 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          secretReferences: S.optional(__S(1377, __c43, 1)),
+          secretReferences: S.optional(__S(1505, __c47, 1)),
           containers: __S(322, __c10, 2),
           imageRegistryCredentials: S.optional(__S(309, __c9, 21)),
           restartPolicy: S.optional(S.String),
           ipAddress: S.optional(__S(326, __c10, 6)),
           osType: S.optional(S.String),
           volumes: S.optional(__S(312, __c9, 24)),
-          instanceView: S.optional(__S(1408, __c44, 0)),
+          instanceView: S.optional(__S(1536, __c48, 0)),
           diagnostics: S.optional(__S(314, __c9, 26)),
-          subnetIds: S.optional(__S(1345, __c42, 1)),
-          dnsConfig: S.optional(__S(1378, __c43, 2)),
+          subnetIds: S.optional(__S(1473, __c46, 1)),
+          dnsConfig: S.optional(__S(1506, __c47, 2)),
           sku: S.optional(S.String),
           encryptionProperties: S.optional(__S(288, __c9, 0)),
           initContainers: S.optional(__S(325, __c10, 5)),
           extensions: S.optional(__S(307, __c9, 19)),
           confidentialComputeProperties: S.optional(__S(315, __c9, 27)),
           priority: S.optional(S.String),
-          identityAcls: S.optional(__S(1381, __c43, 5)),
-          containerGroupProfile: S.optional(__S(1382, __c43, 6)),
-          standbyPoolProfile: S.optional(__S(1383, __c43, 7)),
+          identityAcls: S.optional(__S(1509, __c47, 5)),
+          containerGroupProfile: S.optional(__S(1510, __c47, 6)),
+          standbyPoolProfile: S.optional(__S(1511, __c47, 7)),
           isCreatedFromStandbyPool: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ContainerGroupPropertiesProperties" });
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(224, __c7, 0)),
-          location: S.optional(S.String),
-          tags: S.optional(__S(192, __c6, 0)),
-          zones: S.optional(__S(160, __c5, 0)),
-          identity: S.optional(__S(1347, __c42, 3)),
-          properties: __S(1409, __c44, 1),
-        }),
-      ).annotate({ identifier: "ContainerGroupsCreateOrUpdateResponse" });
   }
 }
-function __c45(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4396,11 +4489,11 @@ function __c45(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ngroupsName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(536, __c16, 24)),
+          properties: S.optional(__S(600, __c18, 24)),
           tags: S.optional(__S(192, __c6, 0)),
           location: S.optional(S.String),
           zones: S.optional(__S(160, __c5, 0)),
-          identity: S.optional(__S(1249, __c39, 1)),
+          identity: S.optional(__S(1345, __c42, 1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4410,9 +4503,25 @@ function __c45(j: number): any {
           }),
         ),
       ).annotate({ identifier: "NGroupsCreateOrUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(600, __c18, 24)),
+          tags: S.optional(__S(192, __c6, 0)),
+          location: S.optional(S.String),
+          zones: S.optional(__S(160, __c5, 0)),
+          identity: S.optional(__S(1475, __c46, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "NGroupsCreateOrUpdateResponse" });
   }
 }
-function __c46(j: number): any {
+function __c50(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4431,7 +4540,7 @@ function __c46(j: number): any {
       ).annotate({ identifier: "RestartContainerGroupRequest" });
   }
 }
-function __c47(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4450,12 +4559,12 @@ function __c47(j: number): any {
       ).annotate({ identifier: "RestartNGroupRequest" });
   }
 }
-function __c48(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          networkProfile: S.optional(__S(578, __c18, 2)),
+          networkProfile: S.optional(__S(674, __c21, 2)),
         }),
       ).annotate({ identifier: "SandboxGroupPropertiesInput" });
     case 1:
@@ -4466,8 +4575,8 @@ function __c48(j: number): any {
           sandboxGroupName: S.String.pipe(T.Label()),
           tags: S.optional(__S(192, __c6, 0)),
           location: S.String,
-          properties: S.optional(__S(1536, __c48, 0)),
-          identity: S.optional(__S(1568, __c49, 0)),
+          properties: S.optional(__S(1664, __c52, 0)),
+          identity: S.optional(__S(1696, __c53, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4477,20 +4586,35 @@ function __c48(j: number): any {
           }),
         ),
       ).annotate({ identifier: "SandboxGroupsCreateOrUpdateRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(192, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(675, __c21, 3)),
+          identity: S.optional(__S(676, __c21, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "SandboxGroupsCreateOrUpdateResponse" });
   }
 }
-function __c49(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          userAssignedIdentities: S.optional(__S(1280, __c40, 0)),
+          userAssignedIdentities: S.optional(__S(1376, __c43, 0)),
         }),
       ).annotate({ identifier: "SandboxGroupsCreateOrUpdateRequestIdentity" });
   }
 }
-function __c50(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4509,7 +4633,7 @@ function __c50(j: number): any {
       ).annotate({ identifier: "StartContainerGroupRequest" });
   }
 }
-function __c51(j: number): any {
+function __c55(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4528,7 +4652,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "StartNGroupRequest" });
   }
 }
-function __c52(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4547,7 +4671,7 @@ function __c52(j: number): any {
       ).annotate({ identifier: "StopContainerGroupRequest" });
   }
 }
-function __c53(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4566,7 +4690,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "StopNGroupRequest" });
   }
 }
-function __c54(j: number): any {
+function __c58(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4586,7 +4710,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "UpdateCGProfileRequest" });
   }
 }
-function __c55(j: number): any {
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4608,7 +4732,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "UpdateContainerGroupRequest" });
   }
 }
-function __c56(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4627,7 +4751,7 @@ function __c56(j: number): any {
       ).annotate({ identifier: "DeleteCGProfileRequest" });
   }
 }
-function __c57(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4635,8 +4759,8 @@ function __c57(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           ngroupsName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(536, __c16, 24)),
-          identity: S.optional(__S(1249, __c39, 1)),
+          properties: S.optional(__S(600, __c18, 24)),
+          identity: S.optional(__S(1345, __c42, 1)),
           tags: S.optional(__S(192, __c6, 0)),
           zones: S.optional(__S(160, __c5, 0)),
         }).pipe(
@@ -4648,9 +4772,26 @@ function __c57(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          properties: S.optional(__S(600, __c18, 24)),
+          tags: S.optional(__S(192, __c6, 0)),
+          location: S.optional(S.String),
+          zones: S.optional(__S(160, __c5, 0)),
+          identity: S.optional(__S(1475, __c46, 3)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateNGroupResponse" });
   }
 }
-function __c58(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4659,7 +4800,7 @@ function __c58(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sandboxGroupName: S.String.pipe(T.Label()),
           tags: S.optional(__S(192, __c6, 0)),
-          identity: S.optional(__S(1568, __c49, 0)),
+          identity: S.optional(__S(1696, __c53, 0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -4669,9 +4810,24 @@ function __c58(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateSandboxGroupRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(224, __c7, 0)),
+          tags: S.optional(__S(192, __c6, 0)),
+          location: S.String,
+          properties: S.optional(__S(675, __c21, 3)),
+          identity: S.optional(__S(676, __c21, 4)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "UpdateSandboxGroupResponse" });
   }
 }
-function __c59(j: number): any {
+function __c63(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4690,7 +4846,7 @@ function __c59(j: number): any {
       ).annotate({ identifier: "DeleteContainerGroupRequest" });
   }
 }
-function __c60(j: number): any {
+function __c64(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4709,7 +4865,19 @@ function __c60(j: number): any {
       ).annotate({ identifier: "DeleteNGroupRequest" });
   }
 }
-function __c61(j: number): any {
+function __c65(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteNGroupResponse" });
+  }
+}
+function __c66(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4728,7 +4896,18 @@ function __c61(j: number): any {
       ).annotate({ identifier: "DeleteSandboxGroupRequest" });
   }
 }
-function __c62(j: number): any {
+function __c67(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteSandboxGroupResponse" });
+  }
+}
+function __c68(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4748,7 +4927,7 @@ function __c62(j: number): any {
       ).annotate({ identifier: "DeleteSubnetServiceAssociationLinkRequest" });
   }
 }
-function __c63(j: number): any {
+function __c69(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -4765,7 +4944,7 @@ function __c63(j: number): any {
           containerGroupName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
           command: S.optional(S.String),
-          terminalSize: S.optional(__S(2016, __c63, 0)),
+          terminalSize: S.optional(__S(2208, __c69, 0)),
         }).pipe(
           T.Http({
             method: "POST",

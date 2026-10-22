@@ -87,6 +87,10 @@ export interface AzureLargeInstanceShutdownResponse {
   operations?: AzureLargeInstanceShutdownResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface GetAzureLargeInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -484,6 +488,10 @@ export interface RestartAzureLargeInstanceResponse {
   operations?: RestartAzureLargeInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface StartAzureLargeInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -514,6 +522,10 @@ export interface StartAzureLargeInstanceResponse {
   operations?: StartAzureLargeInstanceResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Resource tags. */
 export type UpdateAzureLargeInstanceRequestTagsMap = { [key: string]: string | undefined };
@@ -828,6 +840,8 @@ function __c1(j: number): any {
           endTime: S.optional(S.String),
           operations: S.optional(__S(22, __c1, 6)),
           error: S.optional(__S(20, __c1, 4)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
         }),
       ).annotate({ identifier: "AzureLargeInstanceShutdownResponse" });
   }

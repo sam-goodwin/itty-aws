@@ -72,6 +72,10 @@ export interface AccessPolicyAssignmentCreateUpdateResponse {
   systemData?: SystemData;
   /** Properties of an access policy assignment */
   properties?: RedisCacheAccessPolicyAssignmentProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Provisioning state of access policy */
 export type AccessPolicyProvisioningState =
@@ -115,6 +119,10 @@ export interface AccessPolicyCreateUpdateResponse {
   systemData?: SystemData;
   /** Properties of an access policy. */
   properties?: RedisCacheAccessPolicyProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 export interface CheckRedisNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -174,6 +182,8 @@ export interface CreateLinkedServerResponse {
   systemData?: SystemData;
   /** Properties of the linked server. */
   properties?: RedisLinkedServerProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 /** All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta, maxmemory-policy,notify-keyspace-events, aof-backup-enabled, aof-storage-connection-string-0, aof-storage-connection-string-1 etc. */
 export interface RedisCommonPropertiesRedisConfigurationInput {
@@ -209,6 +219,7 @@ export interface RedisCommonPropertiesRedisConfigurationInput {
   storage_subscription_id?: string;
   /** Specifies whether AAD based authentication has been enabled or disabled for the cache */
   aad_enabled?: string;
+  [key: string]: unknown;
 }
 /** A dictionary of tenant settings */
 export type RedisCreatePropertiesInputTenantSettingsMap = { [key: string]: string | undefined };
@@ -345,6 +356,7 @@ export interface RedisCommonPropertiesRedisConfiguration {
   storage_subscription_id?: string;
   /** Specifies whether AAD based authentication has been enabled or disabled for the cache */
   aad_enabled?: string;
+  [key: string]: unknown;
 }
 /** A dictionary of tenant settings */
 export type RedisPropertiesTenantSettingsMap = { [key: string]: string | undefined };
@@ -533,6 +545,8 @@ export interface CreateRedisResponse {
   zones?: CreateRedisResponseZonesList;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 export interface DeleteAccessPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -544,7 +558,12 @@ export interface DeleteAccessPolicyRequest {
   /** The name of the access policy that is being added to the Redis cache. */
   accessPolicyName: string;
 }
-export interface DeleteAccessPolicyResponse {}
+export interface DeleteAccessPolicyResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteAccessPolicyAssignmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -555,7 +574,12 @@ export interface DeleteAccessPolicyAssignmentRequest {
   /** The name of the access policy assignment. */
   accessPolicyAssignmentName: string;
 }
-export interface DeleteAccessPolicyAssignmentResponse {}
+export interface DeleteAccessPolicyAssignmentResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface DeleteFirewallRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -577,7 +601,12 @@ export interface DeleteLinkedServerRequest {
   /** The name of the RedisLinkedServerWithProperties */
   linkedServerName: string;
 }
-export interface DeleteLinkedServerResponse {}
+export interface DeleteLinkedServerResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export type DeletePatchScheduleRequestDefault = "default";
 export interface DeletePatchScheduleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -609,7 +638,12 @@ export interface DeleteRedisRequest {
   /** The name of the RedisResource */
   name: string;
 }
-export interface DeleteRedisResponse {}
+export interface DeleteRedisResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ExportRedisDataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -628,7 +662,12 @@ export interface ExportRedisDataRequest {
   /** Subscription id of the storage container for data to be exported using ManagedIdentity. */
   storage_subscription_id?: string;
 }
-export interface ExportRedisDataResponse {}
+export interface ExportRedisDataResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 /** Specifies a range of IP addresses permitted to connect to the cache */
 export interface RedisFirewallRuleProperties {
   /** lowest IP address included in the range */
@@ -732,6 +771,10 @@ export interface FlushRedisCacheResponse {
   operations?: FlushRedisCacheResponseOperationsList;
   /** If present, details of the operation error. */
   error?: ErrorDetail;
+  /** A link to the status monitor */
+  azureAsyncOperation?: string;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
 }
 export interface GetAccessPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -979,7 +1022,12 @@ export interface ImportRedisDataRequest {
   /** Subscription id of the storage container containing files to import using Managed Identity. */
   storage_subscription_id?: string;
 }
-export interface ImportRedisDataResponse {}
+export interface ImportRedisDataResponse {
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
+}
 export interface ListAccessPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1367,6 +1415,10 @@ export interface PutPrivateEndpointConnectionResponse {
   systemData?: SystemData;
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  location?: string;
+  /** The Retry-After header can indicate how long the client should wait before polling the operation status. */
+  retryAfter?: number;
 }
 /** Which Redis node(s) to reboot. Depending on this value data loss is possible. */
 export type RebootType = "PrimaryNode" | "SecondaryNode" | "AllNodes";
@@ -1477,6 +1529,8 @@ export interface UpdateRedisResponse {
   zones?: UpdateRedisResponseZonesList;
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateRedisResponseIdentity;
+  /** The Location header contains the URL where the status of the long running operation can be checked. */
+  locationHeader?: string;
 }
 export type AccessPolicyAssignmentCreateUpdateError = AzureOpError;
 /** Adds the access policy assignment to the specified users */
@@ -1487,7 +1541,7 @@ export const AccessPolicyAssignmentCreateUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(0, __c0, 0) as any as S.Schema<AccessPolicyAssignmentCreateUpdateRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<AccessPolicyAssignmentCreateUpdateResponse>,
+  output: __S(1, __c0, 1) as any as S.Schema<AccessPolicyAssignmentCreateUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1502,7 +1556,7 @@ export const AccessPolicyCreateUpdate: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(48, __c3, 0) as any as S.Schema<AccessPolicyCreateUpdateRequest>,
-  output: __S(65, __c4, 1) as any as S.Schema<AccessPolicyCreateUpdateResponse>,
+  output: __S(49, __c3, 1) as any as S.Schema<AccessPolicyCreateUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1516,8 +1570,8 @@ export const CheckRedisNameAvailability: API.OperationMethod<
   CheckRedisNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(272, __c17, 0) as any as S.Schema<CheckRedisNameAvailabilityRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<CheckRedisNameAvailabilityResponse>,
+  input: __S(320, __c20, 0) as any as S.Schema<CheckRedisNameAvailabilityRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<CheckRedisNameAvailabilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1531,8 +1585,8 @@ export const CreateLinkedServer: API.OperationMethod<
   CreateLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(481, __c30, 1) as any as S.Schema<CreateLinkedServerRequest>,
-  output: __S(497, __c31, 1) as any as S.Schema<CreateLinkedServerResponse>,
+  input: __S(545, __c34, 1) as any as S.Schema<CreateLinkedServerRequest>,
+  output: __S(546, __c34, 2) as any as S.Schema<CreateLinkedServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1546,8 +1600,8 @@ export const CreateRedis: API.OperationMethod<
   CreateRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(689, __c43, 1) as any as S.Schema<CreateRedisRequest>,
-  output: __S(793, __c49, 9) as any as S.Schema<CreateRedisResponse>,
+  input: __S(753, __c47, 1) as any as S.Schema<CreateRedisRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<CreateRedisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1561,8 +1615,8 @@ export const DeleteAccessPolicy: API.OperationMethod<
   DeleteAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(832, __c52, 0) as any as S.Schema<DeleteAccessPolicyRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteAccessPolicyResponse>,
+  input: __S(912, __c57, 0) as any as S.Schema<DeleteAccessPolicyRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<DeleteAccessPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1576,8 +1630,8 @@ export const DeleteAccessPolicyAssignment: API.OperationMethod<
   DeleteAccessPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(848, __c53, 0) as any as S.Schema<DeleteAccessPolicyAssignmentRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteAccessPolicyAssignmentResponse>,
+  input: __S(944, __c59, 0) as any as S.Schema<DeleteAccessPolicyAssignmentRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<DeleteAccessPolicyAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1645,8 @@ export const DeleteFirewallRule: API.OperationMethod<
   DeleteFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(864, __c54, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
+  input: __S(960, __c60, 0) as any as S.Schema<DeleteFirewallRuleRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<DeleteFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1660,8 @@ export const DeleteLinkedServer: API.OperationMethod<
   DeleteLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(880, __c55, 0) as any as S.Schema<DeleteLinkedServerRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteLinkedServerResponse>,
+  input: __S(976, __c61, 0) as any as S.Schema<DeleteLinkedServerRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<DeleteLinkedServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1675,8 @@ export const DeletePatchSchedule: API.OperationMethod<
   DeletePatchScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(896, __c56, 0) as any as S.Schema<DeletePatchScheduleRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeletePatchScheduleResponse>,
+  input: __S(992, __c62, 0) as any as S.Schema<DeletePatchScheduleRequest>,
+  output: __S(336, __c21, 0) as any as S.Schema<DeletePatchScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1637,7 +1691,7 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(80, __c5, 0) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
+  output: __S(336, __c21, 0) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1652,7 +1706,7 @@ export const DeleteRedis: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(96, __c6, 0) as any as S.Schema<DeleteRedisRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<DeleteRedisResponse>,
+  output: __S(928, __c58, 0) as any as S.Schema<DeleteRedisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1667,7 +1721,7 @@ export const ExportRedisData: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(112, __c7, 0) as any as S.Schema<ExportRedisDataRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<ExportRedisDataResponse>,
+  output: __S(928, __c58, 0) as any as S.Schema<ExportRedisDataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1712,7 +1766,7 @@ export const GetAccessPolicy: API.OperationMethod<
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: __S(192, __c12, 0) as any as S.Schema<GetAccessPolicyRequest>,
-  output: __S(65, __c4, 1) as any as S.Schema<GetAccessPolicyResponse>,
+  output: __S(208, __c13, 0) as any as S.Schema<GetAccessPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1780,8 @@ export const GetAccessPolicyAssignment: API.OperationMethod<
   GetAccessPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(208, __c13, 0) as any as S.Schema<GetAccessPolicyAssignmentRequest>,
-  output: __S(33, __c2, 1) as any as S.Schema<GetAccessPolicyAssignmentResponse>,
+  input: __S(224, __c14, 0) as any as S.Schema<GetAccessPolicyAssignmentRequest>,
+  output: __S(240, __c15, 0) as any as S.Schema<GetAccessPolicyAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1795,8 @@ export const GetAsyncOperationStatus: API.OperationMethod<
   GetAsyncOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(224, __c14, 0) as any as S.Schema<GetAsyncOperationStatusRequest>,
-  output: __S(226, __c14, 2) as any as S.Schema<GetAsyncOperationStatusResponse>,
+  input: __S(256, __c16, 0) as any as S.Schema<GetAsyncOperationStatusRequest>,
+  output: __S(258, __c16, 2) as any as S.Schema<GetAsyncOperationStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1756,7 +1810,7 @@ export const GetFirewallRule: API.OperationMethod<
   GetFirewallRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(240, __c15, 0) as any as S.Schema<GetFirewallRuleRequest>,
+  input: __S(272, __c17, 0) as any as S.Schema<GetFirewallRuleRequest>,
   output: __S(145, __c9, 1) as any as S.Schema<GetFirewallRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
@@ -1771,8 +1825,8 @@ export const GetLinkedServer: API.OperationMethod<
   GetLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(256, __c16, 0) as any as S.Schema<GetLinkedServerRequest>,
-  output: __S(497, __c31, 1) as any as S.Schema<GetLinkedServerResponse>,
+  input: __S(288, __c18, 0) as any as S.Schema<GetLinkedServerRequest>,
+  output: __S(304, __c19, 0) as any as S.Schema<GetLinkedServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1840,8 @@ export const GetPatchSchedule: API.OperationMethod<
   GetPatchScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(304, __c19, 0) as any as S.Schema<GetPatchScheduleRequest>,
-  output: __S(323, __c20, 3) as any as S.Schema<GetPatchScheduleResponse>,
+  input: __S(352, __c22, 0) as any as S.Schema<GetPatchScheduleRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<GetPatchScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1855,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(336, __c21, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
-  output: __S(723, __c45, 3) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
+  input: __S(384, __c24, 0) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(800, __c50, 0) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1870,8 @@ export const GetRedis: API.OperationMethod<
   GetRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(352, __c22, 0) as any as S.Schema<GetRedisRequest>,
-  output: __S(793, __c49, 9) as any as S.Schema<GetRedisResponse>,
+  input: __S(400, __c25, 0) as any as S.Schema<GetRedisRequest>,
+  output: __S(416, __c26, 0) as any as S.Schema<GetRedisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1885,8 @@ export const ImportRedisData: API.OperationMethod<
   ImportRedisDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(368, __c23, 0) as any as S.Schema<ImportRedisDataRequest>,
-  output: __S(288, __c18, 0) as any as S.Schema<ImportRedisDataResponse>,
+  input: __S(432, __c27, 0) as any as S.Schema<ImportRedisDataRequest>,
+  output: __S(928, __c58, 0) as any as S.Schema<ImportRedisDataResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1900,8 @@ export const ListAccessPolicy: API.OperationMethod<
   ListAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(384, __c24, 0) as any as S.Schema<ListAccessPolicyRequest>,
-  output: __S(386, __c24, 2) as any as S.Schema<RedisCacheAccessPolicyList>,
+  input: __S(448, __c28, 0) as any as S.Schema<ListAccessPolicyRequest>,
+  output: __S(450, __c28, 2) as any as S.Schema<RedisCacheAccessPolicyList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1915,8 @@ export const ListAccessPolicyAssignment: API.OperationMethod<
   ListAccessPolicyAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(400, __c25, 0) as any as S.Schema<ListAccessPolicyAssignmentRequest>,
-  output: __S(402, __c25, 2) as any as S.Schema<RedisCacheAccessPolicyAssignmentList>,
+  input: __S(464, __c29, 0) as any as S.Schema<ListAccessPolicyAssignmentRequest>,
+  output: __S(466, __c29, 2) as any as S.Schema<RedisCacheAccessPolicyAssignmentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1930,8 @@ export const ListFirewallRules: API.OperationMethod<
   ListFirewallRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(416, __c26, 0) as any as S.Schema<ListFirewallRulesRequest>,
-  output: __S(418, __c26, 2) as any as S.Schema<RedisFirewallRuleListResult>,
+  input: __S(480, __c30, 0) as any as S.Schema<ListFirewallRulesRequest>,
+  output: __S(482, __c30, 2) as any as S.Schema<RedisFirewallRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1945,8 @@ export const ListLinkedServer: API.OperationMethod<
   ListLinkedServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(432, __c27, 0) as any as S.Schema<ListLinkedServerRequest>,
-  output: __S(434, __c27, 2) as any as S.Schema<RedisLinkedServerWithPropertiesList>,
+  input: __S(496, __c31, 0) as any as S.Schema<ListLinkedServerRequest>,
+  output: __S(498, __c31, 2) as any as S.Schema<RedisLinkedServerWithPropertiesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1906,8 +1960,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(448, __c28, 0) as any as S.Schema<ListOperationsRequest>,
-  output: __S(452, __c28, 4) as any as S.Schema<OperationListResult>,
+  input: __S(512, __c32, 0) as any as S.Schema<ListOperationsRequest>,
+  output: __S(516, __c32, 4) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1921,8 +1975,8 @@ export const ListPatchScheduleByRedisResource: API.OperationMethod<
   ListPatchScheduleByRedisResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(464, __c29, 0) as any as S.Schema<ListPatchScheduleByRedisResourceRequest>,
-  output: __S(466, __c29, 2) as any as S.Schema<RedisPatchScheduleListResult>,
+  input: __S(528, __c33, 0) as any as S.Schema<ListPatchScheduleByRedisResourceRequest>,
+  output: __S(530, __c33, 2) as any as S.Schema<RedisPatchScheduleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1936,8 +1990,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(512, __c32, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
-  output: __S(513, __c32, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
+  input: __S(576, __c36, 0) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(577, __c36, 1) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1951,8 +2005,8 @@ export const ListPrivateLinkResourceByRedisCache: API.OperationMethod<
   ListPrivateLinkResourceByRedisCacheError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(528, __c33, 0) as any as S.Schema<ListPrivateLinkResourceByRedisCacheRequest>,
-  output: __S(532, __c33, 4) as any as S.Schema<PrivateLinkResourceListResult>,
+  input: __S(592, __c37, 0) as any as S.Schema<ListPrivateLinkResourceByRedisCacheRequest>,
+  output: __S(596, __c37, 4) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1966,8 +2020,8 @@ export const ListRedisByResourceGroup: API.OperationMethod<
   ListRedisByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(544, __c34, 0) as any as S.Schema<ListRedisByResourceGroupRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<RedisListResult>,
+  input: __S(608, __c38, 0) as any as S.Schema<ListRedisByResourceGroupRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<RedisListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1981,8 +2035,8 @@ export const ListRedisBySubscription: API.OperationMethod<
   ListRedisBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(576, __c36, 0) as any as S.Schema<ListRedisBySubscriptionRequest>,
-  output: __S(561, __c35, 1) as any as S.Schema<RedisListResult>,
+  input: __S(640, __c40, 0) as any as S.Schema<ListRedisBySubscriptionRequest>,
+  output: __S(625, __c39, 1) as any as S.Schema<RedisListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1996,8 +2050,8 @@ export const ListRedisKeys: API.OperationMethod<
   ListRedisKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(592, __c37, 0) as any as S.Schema<ListRedisKeysRequest>,
-  output: __S(752, __c47, 0) as any as S.Schema<RedisAccessKeys>,
+  input: __S(656, __c41, 0) as any as S.Schema<ListRedisKeysRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<RedisAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2011,8 +2065,8 @@ export const ListRedisUpgradeNotifications: API.OperationMethod<
   ListRedisUpgradeNotificationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(608, __c38, 0) as any as S.Schema<ListRedisUpgradeNotificationsRequest>,
-  output: __S(611, __c38, 3) as any as S.Schema<NotificationListResponse>,
+  input: __S(672, __c42, 0) as any as S.Schema<ListRedisUpgradeNotificationsRequest>,
+  output: __S(675, __c42, 3) as any as S.Schema<NotificationListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2026,8 +2080,8 @@ export const PatchSchedulesCreateOrUpdate: API.OperationMethod<
   PatchSchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(624, __c39, 0) as any as S.Schema<PatchSchedulesCreateOrUpdateRequest>,
-  output: __S(323, __c20, 3) as any as S.Schema<PatchSchedulesCreateOrUpdateResponse>,
+  input: __S(688, __c43, 0) as any as S.Schema<PatchSchedulesCreateOrUpdateRequest>,
+  output: __S(371, __c23, 3) as any as S.Schema<PatchSchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2041,8 +2095,8 @@ export const PutPrivateEndpointConnection: API.OperationMethod<
   PutPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(641, __c40, 1) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
-  output: __S(723, __c45, 3) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
+  input: __S(705, __c44, 1) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
+  output: __S(706, __c44, 2) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2056,8 +2110,8 @@ export const RebootRedisForce: API.OperationMethod<
   RebootRedisForceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(657, __c41, 1) as any as S.Schema<RebootRedisForceRequest>,
-  output: __S(658, __c41, 2) as any as S.Schema<RebootRedisForceResponse>,
+  input: __S(721, __c45, 1) as any as S.Schema<RebootRedisForceRequest>,
+  output: __S(722, __c45, 2) as any as S.Schema<RebootRedisForceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2071,8 +2125,8 @@ export const RegenerateRedisKey: API.OperationMethod<
   RegenerateRedisKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(672, __c42, 0) as any as S.Schema<RegenerateRedisKeyRequest>,
-  output: __S(752, __c47, 0) as any as S.Schema<RedisAccessKeys>,
+  input: __S(736, __c46, 0) as any as S.Schema<RegenerateRedisKeyRequest>,
+  output: __S(832, __c52, 0) as any as S.Schema<RedisAccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2086,8 +2140,8 @@ export const UpdateRedis: API.OperationMethod<
   UpdateRedisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(817, __c51, 1) as any as S.Schema<UpdateRedisRequest>,
-  output: __S(793, __c49, 9) as any as S.Schema<UpdateRedisResponse>,
+  input: __S(897, __c56, 1) as any as S.Schema<UpdateRedisRequest>,
+  output: __S(883, __c55, 3) as any as S.Schema<UpdateRedisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2113,6 +2167,18 @@ function __c0(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AccessPolicyAssignmentCreateUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(32, __c2, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AccessPolicyAssignmentCreateUpdateResponse" });
   }
 }
 function __c1(j: number): any {
@@ -2141,16 +2207,6 @@ function __c2(j: number): any {
           accessPolicyName: S.String,
         }),
       ).annotate({ identifier: "RedisCacheAccessPolicyAssignmentProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(32, __c2, 0)),
-        }),
-      ).annotate({ identifier: "AccessPolicyAssignmentCreateUpdateResponse" });
   }
 }
 function __c3(j: number): any {
@@ -2172,6 +2228,18 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "AccessPolicyCreateUpdateRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(64, __c4, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "AccessPolicyCreateUpdateResponse" });
   }
 }
 function __c4(j: number): any {
@@ -2184,16 +2252,6 @@ function __c4(j: number): any {
           permissions: S.String,
         }),
       ).annotate({ identifier: "RedisCacheAccessPolicyProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(64, __c4, 0)),
-        }),
-      ).annotate({ identifier: "AccessPolicyCreateUpdateResponse" });
   }
 }
 function __c5(j: number): any {
@@ -2331,6 +2389,8 @@ function __c10(j: number): any {
           endTime: S.optional(S.String),
           operations: S.optional(__S(182, __c11, 6)),
           error: S.optional(__S(180, __c11, 4)),
+          azureAsyncOperation: S.optional(S.String.pipe(T.Header("Azure-AsyncOperation"))),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "FlushRedisCacheResponse" });
   }
@@ -2402,6 +2462,20 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(64, __c4, 0)),
+        }),
+      ).annotate({ identifier: "GetAccessPolicyResponse" });
+  }
+}
+function __c14(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
@@ -2417,7 +2491,21 @@ function __c13(j: number): any {
       ).annotate({ identifier: "GetAccessPolicyAssignmentRequest" });
   }
 }
-function __c14(j: number): any {
+function __c15(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(32, __c2, 0)),
+        }),
+      ).annotate({ identifier: "GetAccessPolicyAssignmentResponse" });
+  }
+}
+function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2447,12 +2535,12 @@ function __c14(j: number): any {
           endTime: S.optional(S.String),
           operations: S.optional(__S(182, __c11, 6)),
           error: S.optional(__S(180, __c11, 4)),
-          properties: S.optional(__S(225, __c14, 1)),
+          properties: S.optional(__S(257, __c16, 1)),
         }),
       ).annotate({ identifier: "GetAsyncOperationStatusResponse" });
   }
 }
-function __c15(j: number): any {
+function __c17(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2472,7 +2560,7 @@ function __c15(j: number): any {
       ).annotate({ identifier: "GetFirewallRuleRequest" });
   }
 }
-function __c16(j: number): any {
+function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2492,7 +2580,21 @@ function __c16(j: number): any {
       ).annotate({ identifier: "GetLinkedServerRequest" });
   }
 }
-function __c17(j: number): any {
+function __c19(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(560, __c35, 0)),
+        }),
+      ).annotate({ identifier: "GetLinkedServerResponse" });
+  }
+}
+function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2511,7 +2613,7 @@ function __c17(j: number): any {
       ).annotate({ identifier: "CheckRedisNameAvailabilityRequest" });
   }
 }
-function __c18(j: number): any {
+function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({})).annotate({
@@ -2519,7 +2621,7 @@ function __c18(j: number): any {
       });
   }
 }
-function __c19(j: number): any {
+function __c22(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2539,7 +2641,7 @@ function __c19(j: number): any {
       ).annotate({ identifier: "GetPatchScheduleRequest" });
   }
 }
-function __c20(j: number): any {
+function __c23(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2550,11 +2652,11 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ScheduleEntry" });
     case 1:
-      return S.Array(__S(320, __c20, 0));
+      return S.Array(__S(368, __c23, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scheduleEntries: __S(321, __c20, 1),
+          scheduleEntries: __S(369, __c23, 1),
         }),
       ).annotate({ identifier: "ScheduleEntries" });
     case 3:
@@ -2564,13 +2666,13 @@ function __c20(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: __S(322, __c20, 2),
+          properties: __S(370, __c23, 2),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPatchScheduleResponse" });
   }
 }
-function __c21(j: number): any {
+function __c24(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2590,7 +2692,7 @@ function __c21(j: number): any {
       ).annotate({ identifier: "GetPrivateEndpointConnectionRequest" });
   }
 }
-function __c22(j: number): any {
+function __c25(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2609,7 +2711,25 @@ function __c22(j: number): any {
       ).annotate({ identifier: "GetRedisRequest" });
   }
 }
-function __c23(j: number): any {
+function __c26(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          tags: S.optional(__S(848, __c53, 0)),
+          location: S.String,
+          properties: __S(869, __c54, 5),
+          zones: S.optional(__S(768, __c48, 0)),
+          identity: S.optional(__S(872, __c54, 8)),
+        }),
+      ).annotate({ identifier: "GetRedisResponse" });
+  }
+}
+function __c27(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2618,7 +2738,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           format: S.optional(S.String),
-          files: __S(704, __c44, 0),
+          files: __S(768, __c48, 0),
           preferred_data_archive_auth_method: S.optional(
             S.String.pipe(T.Body("preferred-data-archive-auth-method")),
           ),
@@ -2634,7 +2754,7 @@ function __c23(j: number): any {
       ).annotate({ identifier: "ImportRedisDataRequest" });
   }
 }
-function __c24(j: number): any {
+function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2652,17 +2772,17 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListAccessPolicyRequest" });
     case 1:
-      return S.Array(__S(65, __c4, 1));
+      return S.Array(__S(208, __c13, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(385, __c24, 1),
+          value: __S(449, __c28, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisCacheAccessPolicyList" });
   }
 }
-function __c25(j: number): any {
+function __c29(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2680,17 +2800,17 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListAccessPolicyAssignmentRequest" });
     case 1:
-      return S.Array(__S(33, __c2, 1));
+      return S.Array(__S(240, __c15, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(401, __c25, 1),
+          value: __S(465, __c29, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisCacheAccessPolicyAssignmentList" });
   }
 }
-function __c26(j: number): any {
+function __c30(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2712,13 +2832,13 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(417, __c26, 1),
+          value: __S(481, __c30, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisFirewallRuleListResult" });
   }
 }
-function __c27(j: number): any {
+function __c31(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2736,17 +2856,17 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListLinkedServerRequest" });
     case 1:
-      return S.Array(__S(497, __c31, 1));
+      return S.Array(__S(304, __c19, 0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(433, __c27, 1),
+          value: __S(497, __c31, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisLinkedServerWithPropertiesList" });
   }
 }
-function __c28(j: number): any {
+function __c32(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2772,21 +2892,21 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(__S(449, __c28, 1)),
+          display: S.optional(__S(513, __c32, 1)),
         }),
       ).annotate({ identifier: "Operation" });
     case 3:
-      return S.Array(__S(450, __c28, 2));
+      return S.Array(__S(514, __c32, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(451, __c28, 3),
+          value: __S(515, __c32, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
   }
 }
-function __c29(j: number): any {
+function __c33(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2804,17 +2924,17 @@ function __c29(j: number): any {
         ),
       ).annotate({ identifier: "ListPatchScheduleByRedisResourceRequest" });
     case 1:
-      return S.Array(__S(323, __c20, 3));
+      return S.Array(__S(371, __c23, 3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: __S(465, __c29, 1),
+          value: __S(529, __c33, 1),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisPatchScheduleListResult" });
   }
 }
-function __c30(j: number): any {
+function __c34(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2831,7 +2951,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           linkedServerName: S.String.pipe(T.Label()),
-          properties: __S(480, __c30, 0),
+          properties: __S(544, __c34, 0),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2841,9 +2961,20 @@ function __c30(j: number): any {
           }),
         ),
       ).annotate({ identifier: "CreateLinkedServerRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(560, __c35, 0)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+        }),
+      ).annotate({ identifier: "CreateLinkedServerResponse" });
   }
 }
-function __c31(j: number): any {
+function __c35(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2856,19 +2987,9 @@ function __c31(j: number): any {
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisLinkedServerProperties" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.optional(S.String),
-          name: S.optional(S.String),
-          type: S.optional(S.String),
-          systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(496, __c31, 0)),
-        }),
-      ).annotate({ identifier: "CreateLinkedServerResponse" });
   }
 }
-function __c32(j: number): any {
+function __c36(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2888,13 +3009,13 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(736, __c46, 0),
+          value: __S(816, __c51, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionListResult" });
   }
 }
-function __c33(j: number): any {
+function __c37(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2915,8 +3036,8 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(__S(704, __c44, 0)),
-          requiredZoneNames: S.optional(__S(704, __c44, 0)),
+          requiredMembers: S.optional(__S(768, __c48, 0)),
+          requiredZoneNames: S.optional(__S(768, __c48, 0)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceProperties" });
     case 2:
@@ -2926,21 +3047,21 @@ function __c33(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(529, __c33, 1)),
+          properties: S.optional(__S(593, __c37, 1)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResultValueItem" });
     case 3:
-      return S.Array(__S(530, __c33, 2));
+      return S.Array(__S(594, __c37, 2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: __S(531, __c33, 3),
+          value: __S(595, __c37, 3),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResourceListResult" });
   }
 }
-function __c34(j: number): any {
+function __c38(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2958,20 +3079,20 @@ function __c34(j: number): any {
       ).annotate({ identifier: "ListRedisByResourceGroupRequest" });
   }
 }
-function __c35(j: number): any {
+function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(793, __c49, 9));
+      return S.Array(__S(416, __c26, 0));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: __S(560, __c35, 0),
+          value: __S(624, __c39, 0),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RedisListResult" });
   }
 }
-function __c36(j: number): any {
+function __c40(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -2988,7 +3109,7 @@ function __c36(j: number): any {
       ).annotate({ identifier: "ListRedisBySubscriptionRequest" });
   }
 }
-function __c37(j: number): any {
+function __c41(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3007,7 +3128,7 @@ function __c37(j: number): any {
       ).annotate({ identifier: "ListRedisKeysRequest" });
   }
 }
-function __c38(j: number): any {
+function __c42(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3030,21 +3151,21 @@ function __c38(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           timestamp: S.optional(S.String),
-          upsellNotification: S.optional(__S(768, __c48, 0)),
+          upsellNotification: S.optional(__S(848, __c53, 0)),
         }),
       ).annotate({ identifier: "UpgradeNotification" });
     case 2:
-      return S.Array(__S(609, __c38, 1));
+      return S.Array(__S(673, __c42, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: __S(610, __c38, 2),
+          value: __S(674, __c42, 2),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationListResponse" });
   }
 }
-function __c39(j: number): any {
+function __c43(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3053,7 +3174,7 @@ function __c39(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           default: S.String.pipe(T.Label()),
-          properties: __S(322, __c20, 2),
+          properties: __S(370, __c23, 2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3065,13 +3186,13 @@ function __c39(j: number): any {
       ).annotate({ identifier: "PatchSchedulesCreateOrUpdateRequest" });
   }
 }
-function __c40(j: number): any {
+function __c44(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(__S(288, __c18, 0)),
-          privateLinkServiceConnectionState: __S(721, __c45, 1),
+          privateEndpoint: S.optional(__S(336, __c21, 0)),
+          privateLinkServiceConnectionState: __S(785, __c49, 1),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionPropertiesInput" });
     case 1:
@@ -3081,7 +3202,7 @@ function __c40(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           cacheName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(__S(640, __c40, 0)),
+          properties: S.optional(__S(704, __c44, 0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3091,9 +3212,21 @@ function __c40(j: number): any {
           }),
         ),
       ).annotate({ identifier: "PutPrivateEndpointConnectionRequest" });
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.optional(S.String),
+          name: S.optional(S.String),
+          type: S.optional(S.String),
+          systemData: S.optional(__S(16, __c1, 0)),
+          properties: S.optional(__S(786, __c49, 2)),
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "PutPrivateEndpointConnectionResponse" });
   }
 }
-function __c41(j: number): any {
+function __c45(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Number);
@@ -3105,7 +3238,7 @@ function __c41(j: number): any {
           name: S.String.pipe(T.Label()),
           rebootType: S.optional(S.String),
           shardId: S.optional(S.Number),
-          ports: S.optional(__S(656, __c41, 0)),
+          ports: S.optional(__S(720, __c45, 0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3123,7 +3256,7 @@ function __c41(j: number): any {
       ).annotate({ identifier: "RebootRedisForceResponse" });
   }
 }
-function __c42(j: number): any {
+function __c46(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3143,24 +3276,24 @@ function __c42(j: number): any {
       ).annotate({ identifier: "RegenerateRedisKeyRequest" });
   }
 }
-function __c43(j: number): any {
+function __c47(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          redisConfiguration: S.optional(__S(800, __c50, 0)),
+          redisConfiguration: S.optional(__S(880, __c55, 0)),
           redisVersion: S.optional(S.String),
           enableNonSslPort: S.optional(S.Boolean),
           replicasPerMaster: S.optional(S.Number),
           replicasPerPrimary: S.optional(S.Number),
-          tenantSettings: S.optional(__S(768, __c48, 0)),
+          tenantSettings: S.optional(__S(848, __c53, 0)),
           shardCount: S.optional(S.Number),
           minimumTlsVersion: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           updateChannel: S.optional(S.String),
           disableAccessKeyAuthentication: S.optional(S.Boolean),
           zonalAllocationPolicy: S.optional(S.String),
-          sku: __S(784, __c49, 0),
+          sku: __S(864, __c54, 0),
           subnetId: S.optional(S.String),
           staticIP: S.optional(S.String),
         }),
@@ -3171,11 +3304,11 @@ function __c43(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: __S(688, __c43, 0),
-          zones: S.optional(__S(704, __c44, 0)),
+          properties: __S(752, __c47, 0),
+          zones: S.optional(__S(768, __c48, 0)),
           location: S.String,
-          tags: S.optional(__S(768, __c48, 0)),
-          identity: S.optional(__S(802, __c50, 2)),
+          tags: S.optional(__S(848, __c53, 0)),
+          identity: S.optional(__S(882, __c55, 2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3187,13 +3320,13 @@ function __c43(j: number): any {
       ).annotate({ identifier: "CreateRedisRequest" });
   }
 }
-function __c44(j: number): any {
+function __c48(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
   }
 }
-function __c45(j: number): any {
+function __c49(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3212,31 +3345,35 @@ function __c45(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          groupIds: S.optional(__S(704, __c44, 0)),
-          privateEndpoint: S.optional(__S(720, __c45, 0)),
-          privateLinkServiceConnectionState: __S(721, __c45, 1),
+          groupIds: S.optional(__S(768, __c48, 0)),
+          privateEndpoint: S.optional(__S(784, __c49, 0)),
+          privateLinkServiceConnectionState: __S(785, __c49, 1),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateEndpointConnectionProperties" });
-    case 3:
+  }
+}
+function __c50(j: number): any {
+  switch (j) {
+    case 0:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          properties: S.optional(__S(722, __c45, 2)),
+          properties: S.optional(__S(786, __c49, 2)),
         }),
       ).annotate({ identifier: "RedisPropertiesPrivateEndpointConnectionsItem" });
   }
 }
-function __c46(j: number): any {
+function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(__S(723, __c45, 3));
+      return S.Array(__S(800, __c50, 0));
   }
 }
-function __c47(j: number): any {
+function __c52(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3247,13 +3384,13 @@ function __c47(j: number): any {
       ).annotate({ identifier: "RedisAccessKeys" });
   }
 }
-function __c48(j: number): any {
+function __c53(j: number): any {
   switch (j) {
     case 0:
       return S.Record(S.String, S.String);
   }
 }
-function __c49(j: number): any {
+function __c54(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3265,44 +3402,47 @@ function __c49(j: number): any {
       ).annotate({ identifier: "Sku" });
     case 1:
       return S.suspend(() =>
-        S.Struct({
-          rdb_backup_enabled: S.optional(S.String.pipe(T.Body("rdb-backup-enabled"))),
-          rdb_backup_frequency: S.optional(S.String.pipe(T.Body("rdb-backup-frequency"))),
-          rdb_backup_max_snapshot_count: S.optional(
-            S.String.pipe(T.Body("rdb-backup-max-snapshot-count")),
-          ),
-          rdb_storage_connection_string: S.optional(
-            S.String.pipe(T.Body("rdb-storage-connection-string")),
-          ),
-          aof_backup_enabled: S.optional(S.String.pipe(T.Body("aof-backup-enabled"))),
-          aof_storage_connection_string_0: S.optional(
-            S.String.pipe(T.Body("aof-storage-connection-string-0")),
-          ),
-          aof_storage_connection_string_1: S.optional(
-            S.String.pipe(T.Body("aof-storage-connection-string-1")),
-          ),
-          maxfragmentationmemory_reserved: S.optional(
-            S.String.pipe(T.Body("maxfragmentationmemory-reserved")),
-          ),
-          maxmemory_policy: S.optional(S.String.pipe(T.Body("maxmemory-policy"))),
-          maxmemory_reserved: S.optional(S.String.pipe(T.Body("maxmemory-reserved"))),
-          maxmemory_delta: S.optional(S.String.pipe(T.Body("maxmemory-delta"))),
-          maxclients: S.optional(S.String),
-          notify_keyspace_events: S.optional(S.String.pipe(T.Body("notify-keyspace-events"))),
-          preferred_data_archive_auth_method: S.optional(
-            S.String.pipe(T.Body("preferred-data-archive-auth-method")),
-          ),
-          preferred_data_persistence_auth_method: S.optional(
-            S.String.pipe(T.Body("preferred-data-persistence-auth-method")),
-          ),
-          zonal_configuration: S.optional(S.String.pipe(T.Body("zonal-configuration"))),
-          authnotrequired: S.optional(S.String),
-          storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
-          aad_enabled: S.optional(S.String.pipe(T.Body("aad-enabled"))),
-        }),
+        S.StructWithRest(
+          S.Struct({
+            rdb_backup_enabled: S.optional(S.String.pipe(T.Body("rdb-backup-enabled"))),
+            rdb_backup_frequency: S.optional(S.String.pipe(T.Body("rdb-backup-frequency"))),
+            rdb_backup_max_snapshot_count: S.optional(
+              S.String.pipe(T.Body("rdb-backup-max-snapshot-count")),
+            ),
+            rdb_storage_connection_string: S.optional(
+              S.String.pipe(T.Body("rdb-storage-connection-string")),
+            ),
+            aof_backup_enabled: S.optional(S.String.pipe(T.Body("aof-backup-enabled"))),
+            aof_storage_connection_string_0: S.optional(
+              S.String.pipe(T.Body("aof-storage-connection-string-0")),
+            ),
+            aof_storage_connection_string_1: S.optional(
+              S.String.pipe(T.Body("aof-storage-connection-string-1")),
+            ),
+            maxfragmentationmemory_reserved: S.optional(
+              S.String.pipe(T.Body("maxfragmentationmemory-reserved")),
+            ),
+            maxmemory_policy: S.optional(S.String.pipe(T.Body("maxmemory-policy"))),
+            maxmemory_reserved: S.optional(S.String.pipe(T.Body("maxmemory-reserved"))),
+            maxmemory_delta: S.optional(S.String.pipe(T.Body("maxmemory-delta"))),
+            maxclients: S.optional(S.String),
+            notify_keyspace_events: S.optional(S.String.pipe(T.Body("notify-keyspace-events"))),
+            preferred_data_archive_auth_method: S.optional(
+              S.String.pipe(T.Body("preferred-data-archive-auth-method")),
+            ),
+            preferred_data_persistence_auth_method: S.optional(
+              S.String.pipe(T.Body("preferred-data-persistence-auth-method")),
+            ),
+            zonal_configuration: S.optional(S.String.pipe(T.Body("zonal-configuration"))),
+            authnotrequired: S.optional(S.String),
+            storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
+            aad_enabled: S.optional(S.String.pipe(T.Body("aad-enabled"))),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
       ).annotate({ identifier: "RedisCommonPropertiesRedisConfiguration" });
     case 2:
-      return S.Array(__S(720, __c45, 0));
+      return S.Array(__S(784, __c49, 0));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3315,33 +3455,33 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "RedisInstanceDetails" });
     case 4:
-      return S.Array(__S(787, __c49, 3));
+      return S.Array(__S(867, __c54, 3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          redisConfiguration: S.optional(__S(785, __c49, 1)),
+          redisConfiguration: S.optional(__S(865, __c54, 1)),
           redisVersion: S.optional(S.String),
           enableNonSslPort: S.optional(S.Boolean),
           replicasPerMaster: S.optional(S.Number),
           replicasPerPrimary: S.optional(S.Number),
-          tenantSettings: S.optional(__S(768, __c48, 0)),
+          tenantSettings: S.optional(__S(848, __c53, 0)),
           shardCount: S.optional(S.Number),
           minimumTlsVersion: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           updateChannel: S.optional(S.String),
           disableAccessKeyAuthentication: S.optional(S.Boolean),
           zonalAllocationPolicy: S.optional(S.String),
-          sku: __S(784, __c49, 0),
+          sku: __S(864, __c54, 0),
           subnetId: S.optional(S.String),
           staticIP: S.optional(S.String),
           provisioningState: S.optional(S.String),
           hostName: S.optional(S.String),
           port: S.optional(S.Number),
           sslPort: S.optional(S.Number),
-          accessKeys: S.optional(__S(752, __c47, 0)),
-          linkedServers: S.optional(__S(786, __c49, 2)),
-          instances: S.optional(__S(788, __c49, 4)),
-          privateEndpointConnections: S.optional(__S(736, __c46, 0)),
+          accessKeys: S.optional(__S(832, __c52, 0)),
+          linkedServers: S.optional(__S(866, __c54, 2)),
+          instances: S.optional(__S(868, __c54, 4)),
+          privateEndpointConnections: S.optional(__S(816, __c51, 0)),
         }),
       ).annotate({ identifier: "RedisProperties" });
     case 6:
@@ -3352,96 +3492,100 @@ function __c49(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 7:
-      return S.Record(S.String, __S(790, __c49, 6));
+      return S.Record(S.String, __S(870, __c54, 6));
     case 8:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
           type: S.String,
-          userAssignedIdentities: S.optional(__S(791, __c49, 7)),
+          userAssignedIdentities: S.optional(__S(871, __c54, 7)),
         }),
       ).annotate({ identifier: "CreateRedisResponseIdentity" });
-    case 9:
+  }
+}
+function __c55(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.StructWithRest(
+          S.Struct({
+            rdb_backup_enabled: S.optional(S.String.pipe(T.Body("rdb-backup-enabled"))),
+            rdb_backup_frequency: S.optional(S.String.pipe(T.Body("rdb-backup-frequency"))),
+            rdb_backup_max_snapshot_count: S.optional(
+              S.String.pipe(T.Body("rdb-backup-max-snapshot-count")),
+            ),
+            rdb_storage_connection_string: S.optional(
+              S.String.pipe(T.Body("rdb-storage-connection-string")),
+            ),
+            aof_backup_enabled: S.optional(S.String.pipe(T.Body("aof-backup-enabled"))),
+            aof_storage_connection_string_0: S.optional(
+              S.String.pipe(T.Body("aof-storage-connection-string-0")),
+            ),
+            aof_storage_connection_string_1: S.optional(
+              S.String.pipe(T.Body("aof-storage-connection-string-1")),
+            ),
+            maxfragmentationmemory_reserved: S.optional(
+              S.String.pipe(T.Body("maxfragmentationmemory-reserved")),
+            ),
+            maxmemory_policy: S.optional(S.String.pipe(T.Body("maxmemory-policy"))),
+            maxmemory_reserved: S.optional(S.String.pipe(T.Body("maxmemory-reserved"))),
+            maxmemory_delta: S.optional(S.String.pipe(T.Body("maxmemory-delta"))),
+            notify_keyspace_events: S.optional(S.String.pipe(T.Body("notify-keyspace-events"))),
+            preferred_data_persistence_auth_method: S.optional(
+              S.String.pipe(T.Body("preferred-data-persistence-auth-method")),
+            ),
+            authnotrequired: S.optional(S.String),
+            storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
+            aad_enabled: S.optional(S.String.pipe(T.Body("aad-enabled"))),
+          }),
+          [S.Record(S.String, S.Unknown)],
+        ),
+      ).annotate({ identifier: "RedisCommonPropertiesRedisConfigurationInput" });
+    case 1:
+      return S.Record(S.String, __S(336, __c21, 0));
+    case 2:
+      return S.suspend(() =>
+        S.Struct({
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(881, __c55, 1)),
+        }),
+      ).annotate({ identifier: "CreateRedisRequestIdentity" });
+    case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
           systemData: S.optional(__S(16, __c1, 0)),
-          tags: S.optional(__S(768, __c48, 0)),
+          tags: S.optional(__S(848, __c53, 0)),
           location: S.String,
-          properties: __S(789, __c49, 5),
-          zones: S.optional(__S(704, __c44, 0)),
-          identity: S.optional(__S(792, __c49, 8)),
+          properties: __S(869, __c54, 5),
+          zones: S.optional(__S(768, __c48, 0)),
+          identity: S.optional(__S(872, __c54, 8)),
+          locationHeader: S.optional(S.String.pipe(T.Header("Location"))),
         }),
       ).annotate({ identifier: "CreateRedisResponse" });
   }
 }
-function __c50(j: number): any {
+function __c56(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rdb_backup_enabled: S.optional(S.String.pipe(T.Body("rdb-backup-enabled"))),
-          rdb_backup_frequency: S.optional(S.String.pipe(T.Body("rdb-backup-frequency"))),
-          rdb_backup_max_snapshot_count: S.optional(
-            S.String.pipe(T.Body("rdb-backup-max-snapshot-count")),
-          ),
-          rdb_storage_connection_string: S.optional(
-            S.String.pipe(T.Body("rdb-storage-connection-string")),
-          ),
-          aof_backup_enabled: S.optional(S.String.pipe(T.Body("aof-backup-enabled"))),
-          aof_storage_connection_string_0: S.optional(
-            S.String.pipe(T.Body("aof-storage-connection-string-0")),
-          ),
-          aof_storage_connection_string_1: S.optional(
-            S.String.pipe(T.Body("aof-storage-connection-string-1")),
-          ),
-          maxfragmentationmemory_reserved: S.optional(
-            S.String.pipe(T.Body("maxfragmentationmemory-reserved")),
-          ),
-          maxmemory_policy: S.optional(S.String.pipe(T.Body("maxmemory-policy"))),
-          maxmemory_reserved: S.optional(S.String.pipe(T.Body("maxmemory-reserved"))),
-          maxmemory_delta: S.optional(S.String.pipe(T.Body("maxmemory-delta"))),
-          notify_keyspace_events: S.optional(S.String.pipe(T.Body("notify-keyspace-events"))),
-          preferred_data_persistence_auth_method: S.optional(
-            S.String.pipe(T.Body("preferred-data-persistence-auth-method")),
-          ),
-          authnotrequired: S.optional(S.String),
-          storage_subscription_id: S.optional(S.String.pipe(T.Body("storage-subscription-id"))),
-          aad_enabled: S.optional(S.String.pipe(T.Body("aad-enabled"))),
-        }),
-      ).annotate({ identifier: "RedisCommonPropertiesRedisConfigurationInput" });
-    case 1:
-      return S.Record(S.String, __S(288, __c18, 0));
-    case 2:
-      return S.suspend(() =>
-        S.Struct({
-          type: S.String,
-          userAssignedIdentities: S.optional(__S(801, __c50, 1)),
-        }),
-      ).annotate({ identifier: "CreateRedisRequestIdentity" });
-  }
-}
-function __c51(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          redisConfiguration: S.optional(__S(800, __c50, 0)),
+          redisConfiguration: S.optional(__S(880, __c55, 0)),
           redisVersion: S.optional(S.String),
           enableNonSslPort: S.optional(S.Boolean),
           replicasPerMaster: S.optional(S.Number),
           replicasPerPrimary: S.optional(S.Number),
-          tenantSettings: S.optional(__S(768, __c48, 0)),
+          tenantSettings: S.optional(__S(848, __c53, 0)),
           shardCount: S.optional(S.Number),
           minimumTlsVersion: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
           updateChannel: S.optional(S.String),
           disableAccessKeyAuthentication: S.optional(S.Boolean),
           zonalAllocationPolicy: S.optional(S.String),
-          sku: S.optional(__S(784, __c49, 0)),
+          sku: S.optional(__S(864, __c54, 0)),
         }),
       ).annotate({ identifier: "RedisUpdatePropertiesInput" });
     case 1:
@@ -3450,9 +3594,9 @@ function __c51(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(__S(816, __c51, 0)),
-          tags: S.optional(__S(768, __c48, 0)),
-          identity: S.optional(__S(802, __c50, 2)),
+          properties: S.optional(__S(896, __c56, 0)),
+          tags: S.optional(__S(848, __c53, 0)),
+          identity: S.optional(__S(882, __c55, 2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3464,7 +3608,7 @@ function __c51(j: number): any {
       ).annotate({ identifier: "UpdateRedisRequest" });
   }
 }
-function __c52(j: number): any {
+function __c57(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3484,7 +3628,18 @@ function __c52(j: number): any {
       ).annotate({ identifier: "DeleteAccessPolicyRequest" });
   }
 }
-function __c53(j: number): any {
+function __c58(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          location: S.optional(S.String.pipe(T.Header("Location"))),
+          retryAfter: S.optional(S.Number.pipe(T.Header("Retry-After"))),
+        }),
+      ).annotate({ identifier: "DeleteAccessPolicyResponse" });
+  }
+}
+function __c59(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3504,7 +3659,7 @@ function __c53(j: number): any {
       ).annotate({ identifier: "DeleteAccessPolicyAssignmentRequest" });
   }
 }
-function __c54(j: number): any {
+function __c60(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3524,7 +3679,7 @@ function __c54(j: number): any {
       ).annotate({ identifier: "DeleteFirewallRuleRequest" });
   }
 }
-function __c55(j: number): any {
+function __c61(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -3544,7 +3699,7 @@ function __c55(j: number): any {
       ).annotate({ identifier: "DeleteLinkedServerRequest" });
   }
 }
-function __c56(j: number): any {
+function __c62(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
