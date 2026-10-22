@@ -5,7 +5,7 @@ name: Benchmarks comment
 #
 # Split from bench.yml so fork PRs get the comment too. bench.yml runs the
 # PR's code with no secrets and uploads its results; this workflow runs main's
-# code with the bot's secrets and only reads those results as data. It never
+# code with a write token and only reads those results as data. It never
 # checks out or runs the PR's code. Every string from the results is cleaned
 # (`ci.ts --untrusted`) before it reaches the comment or the images.
 #
@@ -31,9 +31,12 @@ jobs:
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success'
     runs-on: blacksmith-8vcpu-ubuntu-2404
+    # github.token, as github-actions[bot]: a workflow_run job runs in this
+    # repo, so it can write even when a fork PR triggered the Benchmarks run.
     permissions:
-      contents: read
-      actions: read
+      contents: write # push the images to bench-images
+      pull-requests: write # comment
+      actions: read # download the Benchmarks artifact
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -72,19 +75,11 @@ jobs:
           title=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$pr" --jq .title)
           { echo "number=$pr"; echo "sha=$RUN_SHA"; echo "title<<EOF_TITLE"; echo "$title"; echo "EOF_TITLE"; } >> "$GITHUB_OUTPUT"
 
-      - name: Generate bot token
-        id: bot-token
-        if: steps.pr.outputs.number != ''
-        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
-        with:
-          app-id: ${{ secrets.ALCHEMY_VERSION_BOT_ID }}
-          private-key: ${{ secrets.ALCHEMY_VERSION_BOT_PRIVATE_KEY }}
-
       - name: Publish the images
         id: image
         if: steps.pr.outputs.number != ''
         env:
-          GH_TOKEN: ${{ steps.bot-token.outputs.token }}
+          GH_TOKEN: ${{ github.token }}
           RESULTS: ${{ runner.temp }}/results
           PR: ${{ steps.pr.outputs.number }}
           SHA: ${{ steps.pr.outputs.sha }}
@@ -102,7 +97,7 @@ jobs:
           fi
           mkdir -p "$dir/pr-$PR/$SHA" && cp "$RUNNER_TEMP"/images/*.png "$dir/pr-$PR/$SHA/"
           git -C "$dir" add -A
-          git -C "$dir" -c user.name="alchemy-version-bot[bot]" -c user.email="alchemy-version-bot[bot]@users.noreply.github.com" \
+          git -C "$dir" -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
             commit -q -m "bench: PR #$PR at $SHA"
           # Other PRs push here too: rebase and retry on a race.
           for attempt in 1 2 3; do
@@ -115,7 +110,7 @@ jobs:
       - name: Comment on the PR
         if: steps.pr.outputs.number != ''
         env:
-          GH_TOKEN: ${{ steps.bot-token.outputs.token }}
+          GH_TOKEN: ${{ github.token }}
           RESULTS: ${{ runner.temp }}/results
           PR: ${{ steps.pr.outputs.number }}
           IMAGE_URL: ${{ steps.image.outputs.url }}
@@ -125,7 +120,7 @@ jobs:
           node benches/sdks/ci.ts report --untrusted --head "$RESULTS/head.json" $base \
             --image-base "$IMAGE_URL" --out "$RUNNER_TEMP/comment.md"
           id=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
-            --jq '.[] | select(.body | startswith("<!-- distilled-bench -->")) | .id' | head -n 1)
+            --jq '.[] | select(.user.login == "github-actions[bot]" and (.body | startswith("<!-- distilled-bench -->"))) | .id' | head -n 1)
           if [ -n "$id" ]; then
             gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -F body=@"$RUNNER_TEMP/comment.md" > /dev/null
           else

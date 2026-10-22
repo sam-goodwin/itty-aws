@@ -96,8 +96,8 @@ Sizes are deterministic.
 ## CI
 
 `.github/workflows/bench.yml` runs `ci.ts` on every PR with no secrets, so
-fork PRs run it too. `bench-comment.yml` then runs main's code with the bot's
-secrets, reads the results as untrusted data (`--untrusted` strips every
+fork PRs run it too. `bench-comment.yml` then runs main's code with a write
+`GITHUB_TOKEN`, reads the results as untrusted data (`--untrusted` strips every
 string to plain characters) and comments the comparison with main: the headline numbers as text, then one PNG per chart in
 the bench dashboard's style (`src/ci-image.ts` reuses `benches/dashboard`'s
 `charts.js` and `style.css`; drawn with headless Chrome and committed to the
