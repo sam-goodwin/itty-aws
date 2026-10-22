@@ -214,6 +214,7 @@ export const report = (head: CiRun, base: CiRun | undefined, opts: { runUrl?: st
   });
 
   // One verdict line a reader can stop at.
+  let noisyLine = "";
   if (base) {
     const say = (dir: "worse" | "better", noisy: boolean) =>
       moves
@@ -230,11 +231,10 @@ export const report = (head: CiRun, base: CiRun | undefined, opts: { runUrl?: st
         .join("; ");
     const worse = say("worse", false);
     const better = say("better", false);
-    const noisy = [say("worse", true), say("better", true)].filter(Boolean).join("; ");
+    noisyLine = [say("worse", true), say("better", true)].filter(Boolean).join("; ");
     if (worse) out.push(`### 🔴 Bigger than main: ${worse}`, "");
     if (better) out.push(`### 🟢 Smaller than main: ${better}`, "");
     if (!worse && !better) out.push("### 🟢 Same size as main", "");
-    if (noisy) out.push(`🟡 Timings moved, may be runner noise: ${noisy}`, "");
   } else out.push("### No main run to compare with yet", "");
 
   // Charts: what changed (PR as % of main), then every bundle size.
@@ -244,6 +244,7 @@ export const report = (head: CiRun, base: CiRun | undefined, opts: { runUrl?: st
   if (bundled.length) out.push(overview(bundleMetric, bundled, head), "");
 
   out.push("<details><summary>Numbers</summary>", "");
+  if (noisyLine) out.push(`🟡 Timings moved, may be runner noise: ${noisyLine}`, "");
   if (base) {
     out.push("| Metric | Change vs main | Programs |", "| --- | --- | ---: |");
     for (const { m, rows, compared } of moves) {
