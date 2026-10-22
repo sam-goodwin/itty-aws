@@ -156,49 +156,14 @@ const cell = (m: Metric, head: CiProgram | undefined, base: CiProgram | undefine
 
 const short = (sha: string) => sha.slice(0, 9);
 
-/**
- * One horizontal bar per changed program (the 15 largest moves): PR as a
- * percentage of main, with a line at 100. Horizontal, because program names
- * on a vertical chart's x-axis overlap.
- */
-const chart = (m: Metric, rows: Array<[name: string, head: number, base: number]>): string => {
-  const top = [...rows]
-    .sort((a, b) => Math.abs(b[1] / b[2] - 1) - Math.abs(a[1] / a[2] - 1))
-    .slice(0, 15);
-  const values = top.map(([, h, b]) => Math.round((h / b) * 1000) / 10);
-  const lo = Math.floor(Math.min(100, ...values) - 1);
-  const hi = Math.ceil(Math.max(100, ...values) + 1);
-  return [
-    "```mermaid",
-    `%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#0969da, #cf222e"}}}}%%`,
-    "xychart-beta horizontal",
-    `  title "${m.title}, PR as % of main"`,
-    `  x-axis [${top.map(([n]) => JSON.stringify(n)).join(", ")}]`,
-    `  y-axis "% of main (red line = main)" ${lo} --> ${hi}`,
-    `  bar [${values.join(", ")}]`,
-    `  line [${values.map(() => 100).join(", ")}]`,
-    "```",
-  ].join("\n");
-};
-
-/** Every program's absolute size, so a comment with no change still shows the cost. */
-const overview = (m: Metric, names: string[], head: CiRun): string => {
-  const kb = names.map((n) => Math.round((m.get(head.programs[n]!) ?? 0) / 102.4) / 10);
-  return [
-    "```mermaid",
-    `%%{init: {"themeVariables": {"xyChart": {"plotColorPalette": "#0969da"}}}}%%`,
-    "xychart-beta horizontal",
-    `  title "${m.title} per program, KB"`,
-    `  x-axis [${names.map((n) => JSON.stringify(n)).join(", ")}]`,
-    `  y-axis "KB" 0 --> ${Math.ceil(Math.max(...kb) * 1.05)}`,
-    `  bar [${kb.join(", ")}]`,
-    "```",
-  ].join("\n");
-};
-
-export const report = (head: CiRun, base: CiRun | undefined, opts: { runUrl?: string } = {}) => {
+export const report = (
+  head: CiRun,
+  base: CiRun | undefined,
+  opts: { runUrl?: string; imageUrl?: string } = {},
+) => {
   const names = Object.keys(head.programs).sort();
-  const out: string[] = [MARKER, "## Benchmarks", ""];
+  const out: string[] = [MARKER];
+  const verdictLines: string[] = [];
   // Per metric: the programs that moved past the noise threshold.
   const moves = METRICS.map((m) => {
     const rows: Array<[string, number, number]> = [];
@@ -232,16 +197,15 @@ export const report = (head: CiRun, base: CiRun | undefined, opts: { runUrl?: st
     const worse = say("worse", false);
     const better = say("better", false);
     noisyLine = [say("worse", true), say("better", true)].filter(Boolean).join("; ");
-    if (worse) out.push(`### 🔴 Bigger than main: ${worse}`, "");
-    if (better) out.push(`### 🟢 Smaller than main: ${better}`, "");
-    if (!worse && !better) out.push("### 🟢 Same size as main", "");
-  } else out.push("### No main run to compare with yet", "");
+    if (worse) verdictLines.push(`### 🔴 Bigger than main: ${worse}`, "");
+    if (better) verdictLines.push(`### 🟢 Smaller than main: ${better}`, "");
+    if (!worse && !better) verdictLines.push("### 🟢 Same size as main", "");
+  } else verdictLines.push("### No main run to compare with yet", "");
 
-  // Charts: what changed (PR as % of main), then every bundle size.
-  for (const { m, rows } of moves) if (rows.length && !m.noisy) out.push(chart(m, rows), "");
-  const bundleMetric = METRICS.find((x) => x.id === "bundle")!;
-  const bundled = names.filter((n) => bundleMetric.get(head.programs[n]!) !== undefined);
-  if (bundled.length) out.push(overview(bundleMetric, bundled, head), "");
+  // The image says it all; without one (fork PRs), the verdict line stands in.
+  const verdictText = verdictLines.filter(Boolean).join(" ").replaceAll("### ", "");
+  if (opts.imageUrl) out.push(`![${verdictText.replaceAll(/[[\]]/g, "")}](${opts.imageUrl})`, "");
+  else out.push("## Benchmarks", "", ...verdictLines);
 
   out.push("<details><summary>Numbers</summary>", "");
   if (noisyLine) out.push(`🟡 Timings moved, may be runner noise: ${noisyLine}`, "");

@@ -96,7 +96,9 @@ Sizes are deterministic.
 ## CI
 
 `.github/workflows/bench.yml` runs `ci.ts` on every PR and comments the
-comparison with main (charts, per-program table, download size). It is the
+comparison with main: one PNG in distilled.cloud/bench's style
+(`src/ci-image.ts`, drawn with headless Chrome and committed to the orphan
+`bench-images` branch), with the numbers folded below it. It is the
 same measurement, cut down to finish within the other CI jobs:
 
 - **Programs:** the panel in `ci.json` plus every SDK the PR changes.
@@ -115,4 +117,5 @@ same measurement, cut down to finish within the other CI jobs:
 ```sh
 node benches/sdks/ci.ts run --out /tmp/pr.json --changed-since origin/main
 node benches/sdks/ci.ts report --head /tmp/pr.json --base /tmp/main.json
+node benches/sdks/ci.ts image --head /tmp/pr.json --base /tmp/main.json --out /tmp/pr.png
 ```

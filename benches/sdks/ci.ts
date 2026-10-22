@@ -5,7 +5,8 @@
  * process per measurement, no official SDKs, no strict variants.
  *
  *   node benches/sdks/ci.ts run --out pr.json [--changed-since <rev>] [--extra a,b] [--wide]
- *   node benches/sdks/ci.ts report --head pr.json [--base main.json] --out comment.md
+ *   node benches/sdks/ci.ts report --head pr.json [--base main.json] [--image-url url] --out comment.md
+ *   node benches/sdks/ci.ts image --head pr.json [--base main.json] --out bench.png
  *
  * `--wide` (push to main) bundles every SDK and probes every SDK under the
  * runtime size limit, so a PR that changes any of them has a main number to
@@ -16,6 +17,7 @@ import { existsSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { cpus } from "node:os";
 import { join, resolve } from "node:path";
 import { BASELINES, bundle, fixtureSource } from "./src/bundle.ts";
+import { renderImage } from "./src/ci-image.ts";
 import { report, type CiRun, type CiProgram } from "./src/ci-report.ts";
 import type { ProbeRequest } from "./src/probe.ts";
 import { packSize } from "./src/size.ts";
@@ -53,15 +55,22 @@ if (command === "report") {
   const head = readJson<CiRun>(resolve(flag("head")!));
   const basePath = flag("base");
   const base = basePath && existsSync(basePath) ? readJson<CiRun>(resolve(basePath)) : undefined;
-  const md = report(head, base, { runUrl: process.env.BENCH_RUN_URL });
+  const md = report(head, base, { runUrl: process.env.BENCH_RUN_URL, imageUrl: flag("image-url") });
   const out = flag("out");
   if (out) writeFileSync(out, md);
   else process.stdout.write(md);
   process.exit(0);
 }
+if (command === "image") {
+  const head = readJson<CiRun>(resolve(flag("head")!));
+  const basePath = flag("base");
+  const base = basePath && existsSync(basePath) ? readJson<CiRun>(resolve(basePath)) : undefined;
+  await renderImage(head, base, resolve(flag("out") ?? "bench.png"));
+  process.exit(0);
+}
 if (command !== "run") {
   console.error(
-    "usage: ci.ts run --out file [--changed-since rev] [--wide] | report --head file [--base file] [--out file]",
+    "usage: ci.ts run --out file [--changed-since rev] [--wide] | report --head file [--base file] [--image-url url] [--out file] | image --head file [--base file] --out file.png",
   );
   process.exit(2);
 }

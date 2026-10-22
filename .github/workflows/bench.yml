@@ -95,27 +95,8 @@ jobs:
           path: .bench-ci/main.json
           key: bench-ci-main-${{ github.sha }}
 
-      - name: Write report
-        env:
-          BENCH_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          base=""
-          if [ "${{ github.event_name }}" = pull_request ] && [ -f .bench-ci/main.json ]; then
-            base="--base .bench-ci/main.json"
-          fi
-          node benches/sdks/ci.ts report --head .bench-ci/head.json $base --out .bench-ci/comment.md
-          cat .bench-ci/comment.md >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Upload results
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: benchmarks
-          path: .bench-ci/
-          include-hidden-files: true
-          retention-days: 30
-
       # Same bot as the website preview comment. Fork PRs get no secrets, so
-      # they get the job summary only.
+      # they get the job summary only, with the text verdict.
       - name: Generate bot token
         id: bot-token
         if: >-
@@ -125,6 +106,58 @@ jobs:
         with:
           app-id: ${{ secrets.ALCHEMY_VERSION_BOT_ID }}
           private-key: ${{ secrets.ALCHEMY_VERSION_BOT_PRIVATE_KEY }}
+
+      # The comment is one PNG in distilled.cloud/bench's style, drawn with the
+      # runner's Chrome. A PR comment can only show an image from a URL, so it
+      # is committed to the orphan `bench-images` branch (one file per PR head).
+      - name: Publish the benchmark image
+        id: image
+        if: steps.bot-token.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ steps.bot-token.outputs.token }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          base=""; [ -f .bench-ci/main.json ] && base="--base .bench-ci/main.json"
+          node benches/sdks/ci.ts image --head .bench-ci/head.json $base --out .bench-ci/bench.png
+          remote="https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+          dir="$RUNNER_TEMP/bench-images"
+          if git ls-remote --exit-code "$remote" refs/heads/bench-images > /dev/null; then
+            git clone -q --depth 1 --branch bench-images "$remote" "$dir"
+          else
+            git init -q -b bench-images "$dir" && git -C "$dir" remote add origin "$remote"
+          fi
+          mkdir -p "$dir/pr-$PR" && cp .bench-ci/bench.png "$dir/pr-$PR/$SHA.png"
+          git -C "$dir" add -A
+          git -C "$dir" -c user.name="alchemy-version-bot[bot]" -c user.email="alchemy-version-bot[bot]@users.noreply.github.com" \
+            commit -q -m "bench: PR #$PR at $SHA"
+          # Other PRs push here too: rebase and retry on a race.
+          for attempt in 1 2 3; do
+            git -C "$dir" push -q origin bench-images && break
+            git -C "$dir" pull -q --rebase origin bench-images
+          done
+          echo "url=https://raw.githubusercontent.com/$GITHUB_REPOSITORY/bench-images/pr-$PR/$SHA.png" >> "$GITHUB_OUTPUT"
+
+      - name: Write report
+        env:
+          BENCH_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          IMAGE_URL: ${{ steps.image.outputs.url }}
+        run: |
+          base=""
+          if [ "${{ github.event_name }}" = pull_request ] && [ -f .bench-ci/main.json ]; then
+            base="--base .bench-ci/main.json"
+          fi
+          node benches/sdks/ci.ts report --head .bench-ci/head.json $base ${IMAGE_URL:+--image-url "$IMAGE_URL"} --out .bench-ci/comment.md
+          cat .bench-ci/comment.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: benchmarks
+          path: .bench-ci/
+          include-hidden-files: true
+          retention-days: 30
 
       # One comment per PR, edited on every push.
       - name: Comment on the PR
