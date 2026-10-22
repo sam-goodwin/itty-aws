@@ -59,6 +59,15 @@ export class AccountNotFound
     [{ code: 7003 }],
   ) {}
 
+export class InputTooBig
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<InputTooBig>()("InputTooBig", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ status: 400, message: { includes: "input too big" } }],
+  ) {}
+
 export class ModelNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<ModelNotFound>()("ModelNotFound", {
@@ -561,8 +570,8 @@ export const createFinetune: API.OperationMethod<
   CreateFinetuneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(80, __c5, 0) as any as S.Schema<CreateFinetuneRequest>,
-  output: __S(81, __c5, 1) as any as S.Schema<CreateFinetuneResponse>,
+  input: __S(96, __c6, 0) as any as S.Schema<CreateFinetuneRequest>,
+  output: __S(97, __c6, 1) as any as S.Schema<CreateFinetuneResponse>,
   errors: [ModelNotSupported, AccountNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -576,8 +585,8 @@ export const createFinetuneAsset: API.OperationMethod<
   CreateFinetuneAssetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(96, __c6, 0) as any as S.Schema<CreateFinetuneAssetRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<CreateFinetuneAssetResponse>,
+  input: __S(112, __c7, 0) as any as S.Schema<CreateFinetuneAssetRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<CreateFinetuneAssetResponse>,
   errors: [ModelNotSupported, AccountNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -595,8 +604,8 @@ export const getModelSchema: API.OperationMethod<
   GetModelSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(128, __c8, 0) as any as S.Schema<GetModelSchemaRequest>,
-  output: __S(130, __c8, 2) as any as S.Schema<GetModelSchemaResponse>,
+  input: __S(144, __c9, 0) as any as S.Schema<GetModelSchemaRequest>,
+  output: __S(146, __c9, 2) as any as S.Schema<GetModelSchemaResponse>,
   errors: [
     ModelNotSupported,
     ModelSchemaNotFound,
@@ -618,8 +627,8 @@ export const listAuthors: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(144, __c9, 0) as any as S.Schema<ListAuthorsRequest>,
-    output: __S(161, __c10, 1) as any as S.Schema<ListAuthorsResponse>,
+    input: __S(160, __c10, 0) as any as S.Schema<ListAuthorsRequest>,
+    output: __S(177, __c11, 1) as any as S.Schema<ListAuthorsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -638,8 +647,8 @@ export const listFinetunePublics: API.PaginatedOperationMethod<
   FinetunesPublicListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(176, __c11, 0) as any as S.Schema<ListFinetunePublicsRequest>,
-    output: __S(179, __c11, 3) as any as S.Schema<ListFinetunePublicsResponse>,
+    input: __S(192, __c12, 0) as any as S.Schema<ListFinetunePublicsRequest>,
+    output: __S(195, __c12, 3) as any as S.Schema<ListFinetunePublicsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -656,8 +665,8 @@ export const listFinetunes: API.OperationMethod<
   ListFinetunesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(192, __c12, 0) as any as S.Schema<ListFinetunesRequest>,
-  output: __S(193, __c12, 1) as any as S.Schema<ListFinetunesResponse>,
+  input: __S(0, __c0, 0) as any as S.Schema<ListFinetunesRequest>,
+  output: __S(1, __c0, 1) as any as S.Schema<ListFinetunesResponse>,
   errors: [AccountNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -671,8 +680,8 @@ export const listModels: API.OperationMethod<
   ListModelsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(0, __c0, 0) as any as S.Schema<ListModelsRequest>,
-  output: __S(112, __c7, 0) as any as S.Schema<ListModelsResponse>,
+  input: __S(16, __c1, 0) as any as S.Schema<ListModelsRequest>,
+  output: __S(128, __c8, 0) as any as S.Schema<ListModelsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -688,8 +697,8 @@ export const listTasks: API.PaginatedOperationMethod<
   unknown
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(16, __c1, 0) as any as S.Schema<ListTasksRequest>,
-    output: __S(161, __c10, 1) as any as S.Schema<ListTasksResponse>,
+    input: __S(32, __c2, 0) as any as S.Schema<ListTasksRequest>,
+    output: __S(177, __c11, 1) as any as S.Schema<ListTasksResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -698,7 +707,7 @@ export const listTasks: API.PaginatedOperationMethod<
   cloudflarePaginate,
 ) as any;
 
-export type RunAiError = ModelNotFound | CloudflareOpError;
+export type RunAiError = ModelNotFound | InputTooBig | CloudflareOpError;
 /** Runs the Workers AI model specified in the URL path. Send the model's inputs directly in the request body, without a model/input/options wrapper. Accepts model-specific JSON or binary input. The response format depends on the model and the requested output. See the [model catalog](https://developers.cloudflare.com/workers-ai/models/) for supported models and their input formats. */
 export const runAi: API.OperationMethod<
   RunAiRequest,
@@ -706,9 +715,9 @@ export const runAi: API.OperationMethod<
   RunAiError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(41, __c2, 9) as any as S.Schema<RunAiRequest>,
-  output: __S(43, __c2, 11) as any as S.Schema<RunAiResponse>,
-  errors: [ModelNotFound, CloudflareRateLimited, CloudflareError],
+  input: __S(57, __c3, 9) as any as S.Schema<RunAiRequest>,
+  output: __S(59, __c3, 11) as any as S.Schema<RunAiResponse>,
+  errors: [ModelNotFound, InputTooBig, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -723,8 +732,8 @@ export const supportedToMarkdown: API.PaginatedOperationMethod<
   ToMarkdownSupportedResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: __S(48, __c3, 0) as any as S.Schema<SupportedToMarkdownRequest>,
-    output: __S(51, __c3, 3) as any as S.Schema<SupportedToMarkdownResponse>,
+    input: __S(64, __c4, 0) as any as S.Schema<SupportedToMarkdownRequest>,
+    output: __S(67, __c4, 3) as any as S.Schema<SupportedToMarkdownResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -741,8 +750,8 @@ export const transformToMarkdown: API.OperationMethod<
   TransformToMarkdownError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: __S(66, __c4, 2) as any as S.Schema<TransformToMarkdownRequest>,
-  output: __S(69, __c4, 5) as any as S.Schema<TransformToMarkdownResponse>,
+  input: __S(82, __c5, 2) as any as S.Schema<TransformToMarkdownRequest>,
+  output: __S(85, __c5, 5) as any as S.Schema<TransformToMarkdownResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -756,6 +765,29 @@ export type CreateAiToMarkdownError = TransformToMarkdownError;
 
 // Schema builders: each runs one schema initializer, on that schema's first use.
 function __c0(j: number): any {
+  switch (j) {
+    case 0:
+      return S.suspend(() =>
+        S.Struct({
+          accountId: S.String.pipe(T.Label("account_id")),
+        })
+          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/ai/finetunes", code: 200 }))
+          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListFinetunesRequest" });
+    case 1:
+      return S.suspend(() =>
+        S.Struct({
+          id: S.String,
+          createdAt: S.String.pipe(T.Body("created_at")),
+          model: S.String,
+          modifiedAt: S.String.pipe(T.Body("modified_at")),
+          name: S.String,
+          description: S.optional(S.NullOr(S.String)),
+        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
+      ).annotate({ identifier: "ListFinetunesResponse" });
+  }
+}
+function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -778,7 +810,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "ListModelsRequest" });
   }
 }
-function __c1(j: number): any {
+function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -790,7 +822,7 @@ function __c1(j: number): any {
       ).annotate({ identifier: "ListTasksRequest" });
   }
 }
-function __c2(j: number): any {
+function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
@@ -815,7 +847,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "RunRequestFunctionsItem" });
     case 6:
-      return S.Array(__S(37, __c2, 5));
+      return S.Array(__S(53, __c3, 5));
     case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([
@@ -824,26 +856,26 @@ function __c2(j: number): any {
         ]),
       );
     case 8:
-      return S.Array(__S(39, __c2, 7));
+      return S.Array(__S(55, __c3, 7));
     case 9:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           modelName: S.String.pipe(T.Label("model_name")),
-          text: S.optional(__S(32, __c2, 0)),
+          text: S.optional(__S(48, __c3, 0)),
           prompt: S.optional(S.String),
           guidance: S.optional(S.Number),
           height: S.optional(S.Number),
-          image: S.optional(__S(34, __c2, 2)),
+          image: S.optional(__S(50, __c3, 2)),
           imageB64: S.optional(S.String.pipe(T.Body("image_b64"))),
-          mask: S.optional(__S(33, __c2, 1)),
+          mask: S.optional(__S(49, __c3, 1)),
           negativePrompt: S.optional(S.String.pipe(T.Body("negative_prompt"))),
           numSteps: S.optional(S.Number.pipe(T.Body("num_steps"))),
           seed: S.optional(S.Number),
           strength: S.optional(S.Number),
           width: S.optional(S.Number),
           lang: S.optional(S.String),
-          audio: S.optional(__S(33, __c2, 1)),
+          audio: S.optional(__S(49, __c3, 1)),
           sourceLang: S.optional(S.String.pipe(T.Body("source_lang"))),
           targetLang: S.optional(S.String.pipe(T.Body("target_lang"))),
           frequencyPenalty: S.optional(S.Number.pipe(T.Body("frequency_penalty"))),
@@ -852,14 +884,14 @@ function __c2(j: number): any {
           presencePenalty: S.optional(S.Number.pipe(T.Body("presence_penalty"))),
           raw: S.optional(S.Boolean),
           repetitionPenalty: S.optional(S.Number.pipe(T.Body("repetition_penalty"))),
-          responseFormat: S.optional(__S(35, __c2, 3).pipe(T.Body("response_format"))),
+          responseFormat: S.optional(__S(51, __c3, 3).pipe(T.Body("response_format"))),
           stream: S.optional(S.Boolean),
           temperature: S.optional(S.Number),
           topK: S.optional(S.Number.pipe(T.Body("top_k"))),
           topP: S.optional(S.Number.pipe(T.Body("top_p"))),
-          messages: S.optional(__S(36, __c2, 4)),
-          functions: S.optional(__S(38, __c2, 6)),
-          tools: S.optional(__S(40, __c2, 8)),
+          messages: S.optional(__S(52, __c3, 4)),
+          functions: S.optional(__S(54, __c3, 6)),
+          tools: S.optional(__S(56, __c3, 8)),
           inputText: S.optional(S.String.pipe(T.Body("input_text"))),
           maxLength: S.optional(S.Number.pipe(T.Body("max_length"))),
           ignoreEos: S.optional(S.Boolean.pipe(T.Body("ignore_eos"))),
@@ -867,7 +899,7 @@ function __c2(j: number): any {
           .pipe(
             T.Http({
               method: "POST",
-              uri: "/accounts/{account_id}/ai/run/{model_name}",
+              uri: "/accounts/{account_id}/ai/run/{model_name+}",
               code: 200,
             }),
           )
@@ -893,11 +925,11 @@ function __c2(j: number): any {
       );
     case 11:
       return S.suspend(() =>
-        __S(42, __c2, 10).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(58, __c3, 10).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "RunAiResponse" });
   }
 }
-function __c3(j: number): any {
+function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -921,31 +953,31 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ToMarkdownSupportedResultItem" });
     case 2:
-      return S.Array(__S(49, __c3, 1));
+      return S.Array(__S(65, __c4, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(50, __c3, 2).pipe(T.EnvelopePayload()),
+          result: __S(66, __c4, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SupportedToMarkdownResponse" });
   }
 }
-function __c4(j: number): any {
+function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          files: __S(64, __c4, 0),
+          files: __S(80, __c5, 0),
         }),
       ).annotate({ identifier: "ToMarkdownTransformRequestFile" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          file: __S(65, __c4, 1),
+          file: __S(81, __c5, 1),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/ai/tomarkdown", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -961,14 +993,14 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ToMarkdownTransformResultItem" });
     case 4:
-      return S.Array(__S(67, __c4, 3));
+      return S.Array(__S(83, __c5, 3));
     case 5:
       return S.suspend(() =>
-        __S(68, __c4, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(84, __c5, 4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "TransformToMarkdownResponse" });
   }
 }
-function __c5(j: number): any {
+function __c6(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -996,7 +1028,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "CreateFinetuneResponse" });
   }
 }
-function __c6(j: number): any {
+function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1017,7 +1049,7 @@ function __c6(j: number): any {
       ).annotate({ identifier: "CreateFinetuneAssetRequest" });
   }
 }
-function __c7(j: number): any {
+function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() => S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY))).annotate({
@@ -1025,7 +1057,7 @@ function __c7(j: number): any {
       });
   }
 }
-function __c8(j: number): any {
+function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1049,13 +1081,13 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          input: __S(129, __c8, 1),
-          output: __S(129, __c8, 1),
+          input: __S(145, __c9, 1),
+          output: __S(145, __c9, 1),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetModelSchemaResponse" });
   }
 }
-function __c9(j: number): any {
+function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1069,20 +1101,20 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ListAuthorsRequest" });
   }
 }
-function __c10(j: number): any {
+function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: __S(160, __c10, 0).pipe(T.EnvelopePayload()),
+          result: __S(176, __c11, 0).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAuthorsResponse" });
   }
 }
-function __c11(j: number): any {
+function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
@@ -1110,37 +1142,14 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "FinetunesPublicListResultItem" });
     case 2:
-      return S.Array(__S(177, __c11, 1));
+      return S.Array(__S(193, __c12, 1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: __S(178, __c11, 2).pipe(T.EnvelopePayload()),
+          result: __S(194, __c12, 2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListFinetunePublicsResponse" });
-  }
-}
-function __c12(j: number): any {
-  switch (j) {
-    case 0:
-      return S.suspend(() =>
-        S.Struct({
-          accountId: S.String.pipe(T.Label("account_id")),
-        })
-          .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/ai/finetunes", code: 200 }))
-          .pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListFinetunesRequest" });
-    case 1:
-      return S.suspend(() =>
-        S.Struct({
-          id: S.String,
-          createdAt: S.String.pipe(T.Body("created_at")),
-          model: S.String,
-          modifiedAt: S.String.pipe(T.Body("modified_at")),
-          name: S.String,
-          description: S.optional(S.NullOr(S.String)),
-        }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
-      ).annotate({ identifier: "ListFinetunesResponse" });
   }
 }
 // Schema table: entry i is schema j of builder f, made on first reach.
