@@ -1305,7 +1305,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The status of the Kubernetes custom resource."
+        "smithy.api#documentation": "The status of the Kubernetes custom resource.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#ActiveDirectoryConnectorSpec": {
@@ -4119,6 +4120,27 @@
           "target": "com.azure.azurearcdata#RunSqlServerInstanceManagedInstanceLinkAssessmentResponseAssessmentsList",
           "traits": {
             "smithy.api#documentation": "The list of the results for MI Link assessment."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL to retrieve the operation status."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URL to retrieve the operation status."
           }
         }
       },
@@ -7553,6 +7575,20 @@
           "traits": {
             "smithy.api#documentation": "The link to the next page of the best practices assessment response for the SQL Server instance. Null, if no more pages are available."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL to retrieve the operation status."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URL to retrieve the operation status."
+          }
         }
       },
       "traits": {
@@ -7772,6 +7808,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The link to the next section of rows of the telemetry response for the SQL Server instance. Null if no more sections are available."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL to retrieve the operation status."
           }
         }
       },
@@ -8112,6 +8155,13 @@
           "target": "com.azure.azurearcdata#SqlServerInstanceProperties",
           "traits": {
             "smithy.api#documentation": "null"
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL of the resource used to check the status of the asynchronous operation."
           }
         }
       },
@@ -9604,7 +9654,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The properties of a failover group resource."
+        "smithy.api#documentation": "The properties of a failover group resource.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#FailoverGroupSpec": {
@@ -9655,7 +9706,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The specifications of the failover group resource."
+        "smithy.api#documentation": "The specifications of the failover group resource.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#FailoverGroupSpecRole": {
@@ -9814,7 +9866,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The properties of a failover group resource."
+        "smithy.api#documentation": "The properties of a failover group resource.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#GetFailoverGroup": {
@@ -10430,7 +10483,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The raw kubernetes information."
+        "smithy.api#documentation": "The raw kubernetes information.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#SqlManagedInstanceK8sSpec": {
@@ -10453,7 +10507,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The kubernetes spec information."
+        "smithy.api#documentation": "The kubernetes spec information.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#K8sSettings": {
@@ -10464,7 +10519,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The kubernetes settings information."
+        "smithy.api#documentation": "The kubernetes settings information.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#K8sNetworkSettings": {
@@ -10516,7 +10572,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The kubernetes security information."
+        "smithy.api#documentation": "The kubernetes security information.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#K8stransparentDataEncryption": {
@@ -10603,7 +10660,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The kubernetes scheduling information."
+        "smithy.api#documentation": "The kubernetes scheduling information.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#K8sSchedulingOptions": {
@@ -10614,7 +10672,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service"
+        "smithy.api#documentation": "The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#K8sResourceRequirements": {
@@ -10634,7 +10693,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The kubernetes resource limits and requests used to restrict or reserve resource usage."
+        "smithy.api#documentation": "The kubernetes resource limits and requests used to restrict or reserve resource usage.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.azurearcdata#K8sResourceRequirementsLimitsMap": {
@@ -12680,7 +12740,7 @@
         "target": "com.azure.azurearcdata#DeleteSqlServerAvailabilityGroupMiLinkRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.azurearcdata#DeleteSqlServerAvailabilityGroupMiLinkResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12691,6 +12751,35 @@
         },
         "smithy.api#documentation": "Deletes the MI Link between an Azure Arc-enabled SQL Server and an Azure SQL Managed Instance.",
         "com.distilled.openapi#apiVersion": "2026-01-01"
+      }
+    },
+    "com.azure.azurearcdata#DeleteSqlServerAvailabilityGroupMiLinkResponse": {
+      "type": "structure",
+      "members": {
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header indicates how long the client should wait before polling the operation status."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL of the resource used to check the status of the asynchronous operation."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "URL for checking the ongoing status of the operation.\nTo get the status of the asynchronous operation, send a GET request to the URL in Azure-AsyncOperation header value.\nMore details can be found in https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/async-api-reference.md"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.azurearcdata#DeleteSqlServerAvailabilityGroupMiLinkRequest": {
@@ -12797,6 +12886,27 @@
           "traits": {
             "smithy.api#documentation": "Properties of Arc Sql Server availability group",
             "smithy.api#required": {}
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header indicates how long the client should wait before polling the operation status."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL of the resource used to check the status of the asynchronous operation."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "URL for checking the ongoing status of the operation.\nTo get the status of the asynchronous operation, send a GET request to the URL in Azure-AsyncOperation header value.\nMore details can be found in https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/async-api-reference.md"
           }
         }
       },
@@ -13070,6 +13180,27 @@
           "traits": {
             "smithy.api#documentation": "Properties of Arc Sql Server availability group",
             "smithy.api#required": {}
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "URL for determining when an operation has completed."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "The URL to retrieve the status of the asynchronous operation."
           }
         }
       },
@@ -13889,6 +14020,13 @@
             "smithy.api#documentation": "Properties of Arc Sql Server availability group",
             "smithy.api#required": {}
           }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL of the resource used to check the status of the asynchronous operation."
+          }
         }
       },
       "traits": {
@@ -14021,6 +14159,13 @@
           "traits": {
             "smithy.api#documentation": "Properties of Arc Sql Server availability group",
             "smithy.api#required": {}
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL of the resource used to check the status of the asynchronous operation."
           }
         }
       },
@@ -14774,7 +14919,7 @@
         "target": "com.azure.azurearcdata#DeleteSqlServerAvailabilityGroupRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.azurearcdata#DeleteSqlServerAvailabilityGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14785,6 +14930,21 @@
         },
         "smithy.api#documentation": "Deletes an Arc Sql Server availability group resource.",
         "com.distilled.openapi#apiVersion": "2026-01-01"
+      }
+    },
+    "com.azure.azurearcdata#DeleteSqlServerAvailabilityGroupResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL of the resource used to check the status of the asynchronous operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.azurearcdata#DeleteSqlServerAvailabilityGroupRequest": {
@@ -14891,6 +15051,13 @@
           "traits": {
             "smithy.api#documentation": "Properties of Arc Sql Server availability group",
             "smithy.api#required": {}
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL of the resource used to check the status of the asynchronous operation."
           }
         }
       },
@@ -16477,7 +16644,7 @@
         "target": "com.azure.azurearcdata#DeleteSqlServerDatabaseRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.azurearcdata#DeleteSqlServerDatabaseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16488,6 +16655,21 @@
         },
         "smithy.api#documentation": "Deletes an Arc Sql Server database resource.",
         "com.distilled.openapi#apiVersion": "2026-01-01"
+      }
+    },
+    "com.azure.azurearcdata#DeleteSqlServerDatabaseResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL of the resource used to check the status of the asynchronous operation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.azurearcdata#DeleteSqlServerDatabaseRequest": {
@@ -16594,6 +16776,13 @@
           "traits": {
             "smithy.api#documentation": "Properties of Arc Sql Server database",
             "smithy.api#required": {}
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The URL of the resource used to check the status of the asynchronous operation."
           }
         }
       },

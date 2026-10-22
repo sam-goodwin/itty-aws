@@ -534,6 +534,12 @@
         "target": "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem"
       }
     },
+    "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryReportResponseReportFindingsItemImpactIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofMethod": {
       "type": "enum",
       "members": {
@@ -602,6 +608,12 @@
             "smithy.api#enumValue": "pending_team"
           }
         }
+      }
+    },
+    "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryReportResponseReportFindingsItemThreatIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryReportResponseReportFindingsItem": {
@@ -706,6 +718,12 @@
         "external_links": {
           "target": "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList"
         },
+        "impact_ids": {
+          "target": "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryReportResponseReportFindingsItemImpactIdsList",
+          "traits": {
+            "smithy.api#documentation": "Accepted settled impact-charter premises cited by the finding. Optional on legacy report revisions."
+          }
+        },
         "open_question": {
           "target": "smithy.api#String",
           "traits": {
@@ -722,6 +740,12 @@
           "target": "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofState",
           "traits": {
             "smithy.api#documentation": "Current proof lifecycle state. Optional on legacy report revisions."
+          }
+        },
+        "threat_ids": {
+          "target": "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryReportResponseReportFindingsItemThreatIdsList",
+          "traits": {
+            "smithy.api#documentation": "Accepted settled threat-model premises cited by the finding. Optional on legacy report revisions."
           }
         }
       }
@@ -1506,6 +1530,7 @@
         "readiness": {
           "target": "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryReadiness",
           "traits": {
+            "smithy.api#documentation": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
             "smithy.api#required": {}
           }
         },
@@ -1674,6 +1699,7 @@
         "readiness": {
           "target": "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryRepositoryResultRepositoryRepositoryReadiness",
           "traits": {
+            "smithy.api#documentation": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
             "smithy.api#required": {}
           }
         },
@@ -1739,7 +1765,7 @@
           "uri": "/accounts/{account_id}/managed-defense/vulnerability-discovery/repos",
           "code": 200
         },
-        "smithy.api#documentation": "Creates an upload repository or reserves an asynchronous deployed Worker import by name. Worker imports require Idempotency-Key."
+        "smithy.api#documentation": "Creates an upload repository or reserves an asynchronous deployed Worker import by name. Worker imports require Idempotency-Key. Push upload source to `main` or specify the `branch` to scan in the scan request."
       }
     },
     "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryRepositoryRequest": {
@@ -1885,6 +1911,7 @@
         "readiness": {
           "target": "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryRepositoryResponseRepositoryReadiness",
           "traits": {
+            "smithy.api#documentation": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
             "smithy.api#required": {}
           }
         },
@@ -2390,6 +2417,7 @@
         "readiness": {
           "target": "com.cloudflare.managed_defense#ListVulnerabilityDiscoveryRepositoriesResultItemReadiness",
           "traits": {
+            "smithy.api#documentation": "Source state. `awaiting_source`: the upload repository's default branch has no commits yet. `processing`: an import is in progress. `ready`: source is available. `failed`: the Worker import failed or could not be verified.",
             "smithy.api#required": {}
           }
         },
@@ -2443,25 +2471,39 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestReposItemHostsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestReposItem": {
+      "type": "structure",
+      "members": {
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "branch": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Branch to scan. Defaults to the repository's default branch."
+          }
+        },
+        "hosts": {
+          "target": "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestReposItemHostsList",
+          "traits": {
+            "smithy.api#documentation": "Explicit hostname scopes. Every hostname must be authorized for this repository before review admission; rejected scopes return 422 and do not persist a scan request."
+          }
+        }
+      }
+    },
     "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestReposList": {
       "type": "list",
       "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList": {
-      "type": "list",
-      "member": {
-        "target": "smithy.api#String"
-      }
-    },
-    "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestRepoHostsMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList"
+        "target": "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestReposItem"
       }
     },
     "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestTelemetryWindow": {
@@ -2500,13 +2542,8 @@
         "repos": {
           "target": "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestReposList",
           "traits": {
+            "smithy.api#documentation": "Repository names must be unique within a request.",
             "smithy.api#required": {}
-          }
-        },
-        "repo_hosts": {
-          "target": "com.cloudflare.managed_defense#CreateVulnerabilityDiscoveryScanRequestRepoHostsMap",
-          "traits": {
-            "smithy.api#documentation": "Explicit hostname scopes. Every hostname must be authorized for its repository before review admission; rejected scopes return 422 and do not persist a scan request."
           }
         },
         "telemetry_window": {
@@ -2848,7 +2885,7 @@
           "uri": "/accounts/{account_id}/managed-defense/vulnerability-discovery/scans",
           "code": 200
         },
-        "smithy.api#documentation": "Submits repository intent for operator review. This endpoint does not immediately start execution. Worker-imported repositories must be ready; explicit `repo_hosts` must be authorized before the request is persisted."
+        "smithy.api#documentation": "Submits repository intent for operator review. This endpoint does not immediately start execution. Worker-imported repositories must be ready; explicit repository host scopes must be authorized and explicit branch selections must exist before the request is persisted."
       }
     },
     "com.cloudflare.managed_defense#GetVulnerabilityDiscoveryScanRequest": {
@@ -3749,6 +3786,12 @@
         "target": "com.cloudflare.managed_defense#VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksItem"
       }
     },
+    "com.cloudflare.managed_defense#VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemImpactIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.managed_defense#VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofMethod": {
       "type": "enum",
       "members": {
@@ -3817,6 +3860,12 @@
             "smithy.api#enumValue": "pending_team"
           }
         }
+      }
+    },
+    "com.cloudflare.managed_defense#VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemThreatIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
       }
     },
     "com.cloudflare.managed_defense#VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItem": {
@@ -3921,6 +3970,12 @@
         "external_links": {
           "target": "com.cloudflare.managed_defense#VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList"
         },
+        "impact_ids": {
+          "target": "com.cloudflare.managed_defense#VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemImpactIdsList",
+          "traits": {
+            "smithy.api#documentation": "Accepted settled impact-charter premises cited by the finding. Optional on legacy report revisions."
+          }
+        },
         "open_question": {
           "target": "smithy.api#String",
           "traits": {
@@ -3937,6 +3992,12 @@
           "target": "com.cloudflare.managed_defense#VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofState",
           "traits": {
             "smithy.api#documentation": "Current proof lifecycle state. Optional on legacy report revisions."
+          }
+        },
+        "threat_ids": {
+          "target": "com.cloudflare.managed_defense#VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemThreatIdsList",
+          "traits": {
+            "smithy.api#documentation": "Accepted settled threat-model premises cited by the finding. Optional on legacy report revisions."
           }
         }
       }

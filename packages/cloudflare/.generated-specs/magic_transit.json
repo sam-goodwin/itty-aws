@@ -2150,7 +2150,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry."
           }
         },
         "import_filter_id": {
@@ -2441,7 +2441,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#CfInterconnectsGetResponseInterconnectBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry."
           }
         },
         "import_filter_id": {
@@ -2726,7 +2726,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#CfInterconnectsListResponseInterconnectsItemBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry."
           }
         },
         "import_filter_id": {
@@ -3017,7 +3017,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#CfInterconnectsUpdateRequestBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry."
           }
         },
         "import_filter_id": {
@@ -3213,7 +3213,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#CfInterconnectsUpdateResponseModifiedInterconnectBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "IPv4 prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry."
           }
         },
         "import_filter_id": {
@@ -7457,7 +7457,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -7777,7 +7777,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsCreateRequestBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -7939,7 +7939,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsCreateResponseBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -8162,7 +8162,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -8476,7 +8476,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -8790,7 +8790,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -9230,7 +9230,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -9544,7 +9544,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -9894,7 +9894,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -10067,7 +10067,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -10312,7 +10312,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -10656,7 +10656,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -11000,7 +11000,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -11448,7 +11448,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -11621,7 +11621,7 @@
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList",
           "traits": {
-            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+            "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. Each entry must be a network address in CIDR notation with no host bits set (for example `192.0.2.0/24`, not `192.0.2.1/24`) and must not repeat another entry. IPv6 prefixes are accepted only when the tunnel has an `interface_address6`."
           }
         },
         "import_filter_id": {
@@ -18640,6 +18640,12 @@
           "traits": {
             "smithy.api#documentation": "A valid CIDR notation representing an IP range."
           }
+        },
+        "secondary_gateway_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway address for the secondary connector of a high availability site."
+          }
         }
       }
     },
@@ -18688,6 +18694,12 @@
           "traits": {
             "smithy.api#documentation": "A valid CIDR notation representing an IP range."
           }
+        },
+        "secondary_gateway_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway address for the secondary connector of a high availability site."
+          }
         }
       }
     },
@@ -18719,6 +18731,18 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Priority of WAN for traffic loadbalancing."
+          }
+        },
+        "provisioned_download_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned download rate of the WAN circuit in kilobits per second."
+          }
+        },
+        "provisioned_upload_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned upload rate of the WAN circuit in kilobits per second."
           }
         },
         "site_id": {
@@ -18792,6 +18816,12 @@
           "traits": {
             "smithy.api#documentation": "A valid CIDR notation representing an IP range."
           }
+        },
+        "secondary_gateway_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway address for the secondary connector of a high availability site."
+          }
         }
       }
     },
@@ -18824,21 +18854,25 @@
         "address": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A valid CIDR notation representing an IP range.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A valid CIDR notation representing an IP range."
           }
         },
         "gateway_address": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A valid IPv4 address.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A valid IPv4 address."
           }
         },
         "secondary_address": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A valid CIDR notation representing an IP range."
+          }
+        },
+        "secondary_gateway_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway address for the secondary connector of a high availability site. Set to null to remove it."
           }
         }
       }
@@ -18888,6 +18922,12 @@
           "traits": {
             "smithy.api#documentation": "A valid CIDR notation representing an IP range."
           }
+        },
+        "secondary_gateway_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway address for the secondary connector of a high availability site."
+          }
         }
       }
     },
@@ -18935,6 +18975,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A valid CIDR notation representing an IP range."
+          }
+        },
+        "secondary_gateway_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway address for the secondary connector of a high availability site."
           }
         }
       }
@@ -18984,6 +19030,12 @@
           "traits": {
             "smithy.api#documentation": "A valid CIDR notation representing an IP range."
           }
+        },
+        "secondary_gateway_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway address for the secondary connector of a high availability site."
+          }
         }
       }
     },
@@ -19015,6 +19067,18 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Priority of WAN for traffic loadbalancing."
+          }
+        },
+        "provisioned_download_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned download rate of the WAN circuit in kilobits per second."
+          }
+        },
+        "provisioned_upload_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned upload rate of the WAN circuit in kilobits per second."
           }
         },
         "site_id": {
@@ -19072,21 +19136,25 @@
         "address": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A valid CIDR notation representing an IP range.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A valid CIDR notation representing an IP range."
           }
         },
         "gateway_address": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "A valid IPv4 address.",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "A valid IPv4 address."
           }
         },
         "secondary_address": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A valid CIDR notation representing an IP range."
+          }
+        },
+        "secondary_gateway_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway address for the secondary connector of a high availability site. Set to null to remove it."
           }
         }
       }
@@ -19135,6 +19203,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "A valid CIDR notation representing an IP range."
+          }
+        },
+        "secondary_gateway_address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Gateway address for the secondary connector of a high availability site."
           }
         }
       }
@@ -19889,6 +19963,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -21041,6 +21118,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -21164,6 +21244,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -21305,6 +21388,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -21418,6 +21504,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -21461,10 +21550,22 @@
         "priority": {
           "target": "smithy.api#Double"
         },
+        "provisioned_download_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned download rate of the WAN circuit in kilobits per second."
+          }
+        },
+        "provisioned_upload_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned upload rate of the WAN circuit in kilobits per second."
+          }
+        },
         "static_addressing": {
           "target": "com.cloudflare.magic_transit#SitesWansCreateRequestStaticAddressing",
           "traits": {
-            "smithy.api#documentation": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode."
+            "smithy.api#documentation": "Static addressing configuration for a WAN. Omit to use DHCP. Submit secondary_address when the site is in high availability mode."
           }
         },
         "vlan_tag": {
@@ -21519,6 +21620,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -22185,6 +22289,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -22286,6 +22393,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -22395,6 +22505,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -22522,6 +22635,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -22585,6 +22701,18 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Priority of WAN for traffic loadbalancing."
+          }
+        },
+        "provisioned_download_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned download rate of the WAN circuit in kilobits per second."
+          }
+        },
+        "provisioned_upload_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned upload rate of the WAN circuit in kilobits per second."
           }
         },
         "site_id": {
@@ -24591,6 +24719,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -24698,6 +24829,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -24807,6 +24941,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -24934,6 +25071,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -24999,6 +25139,18 @@
             "smithy.api#documentation": "Priority of WAN for traffic loadbalancing."
           }
         },
+        "provisioned_download_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned download rate of the WAN circuit in kilobits per second."
+          }
+        },
+        "provisioned_upload_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned upload rate of the WAN circuit in kilobits per second."
+          }
+        },
         "site_id": {
           "target": "smithy.api#String",
           "traits": {
@@ -25050,6 +25202,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -25876,6 +26031,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -25945,6 +26103,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -26014,6 +26175,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -26082,6 +26246,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -26149,6 +26316,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -26519,6 +26689,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -26652,6 +26825,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -26793,6 +26969,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -26964,6 +27143,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -27012,10 +27194,22 @@
         "priority": {
           "target": "smithy.api#Double"
         },
+        "provisioned_download_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned download rate of the WAN circuit in kilobits per second. Set to null to remove it."
+          }
+        },
+        "provisioned_upload_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned upload rate of the WAN circuit in kilobits per second. Set to null to remove it."
+          }
+        },
         "static_addressing": {
           "target": "com.cloudflare.magic_transit#SitesWansEditRequestStaticAddressing",
           "traits": {
-            "smithy.api#documentation": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode."
+            "smithy.api#documentation": "Static addressing configuration. PATCH updates only the fields provided, and PUT replaces the configuration."
           }
         },
         "vlan_tag": {
@@ -27057,6 +27251,18 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Priority of WAN for traffic loadbalancing."
+          }
+        },
+        "provisioned_download_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned download rate of the WAN circuit in kilobits per second."
+          }
+        },
+        "provisioned_upload_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned upload rate of the WAN circuit in kilobits per second."
           }
         },
         "site_id": {
@@ -27398,6 +27604,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -28059,6 +28268,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -28193,6 +28405,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -28335,6 +28550,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -28507,6 +28725,9 @@
         },
         {
           "target": "com.cloudflare.magic_transit#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.magic_transit#MagicWanNotEnabled"
         }
       ]
     },
@@ -28555,10 +28776,22 @@
         "priority": {
           "target": "smithy.api#Double"
         },
+        "provisioned_download_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned download rate of the WAN circuit in kilobits per second. Set to null to remove it."
+          }
+        },
+        "provisioned_upload_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned upload rate of the WAN circuit in kilobits per second. Set to null to remove it."
+          }
+        },
         "static_addressing": {
           "target": "com.cloudflare.magic_transit#SitesWansUpdateRequestStaticAddressing",
           "traits": {
-            "smithy.api#documentation": "(optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode."
+            "smithy.api#documentation": "Static addressing configuration. PATCH updates only the fields provided, and PUT replaces the configuration."
           }
         },
         "vlan_tag": {
@@ -28600,6 +28833,18 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Priority of WAN for traffic loadbalancing."
+          }
+        },
+        "provisioned_download_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned download rate of the WAN circuit in kilobits per second."
+          }
+        },
+        "provisioned_upload_kbps": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Provisioned upload rate of the WAN circuit in kilobits per second."
           }
         },
         "site_id": {
@@ -28721,6 +28966,28 @@
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.magic_transit#MagicWanNotEnabled": {
+      "type": "structure",
+      "members": {
+        "code": {
+          "target": "smithy.api#Integer"
+        },
+        "message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#error": "client",
+        "com.cloudflare.protocols#errorMatchers": [
+          {
+            "code": 1101,
+            "message": {
+              "includes": "feature not enabled"
+            }
+          }
+        ]
       }
     }
   }

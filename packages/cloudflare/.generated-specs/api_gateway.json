@@ -378,6 +378,108 @@
         "target": "com.cloudflare.api_gateway#DiscoveryOperationsBulkEditResultValue"
       }
     },
+    "com.cloudflare.api_gateway#EditDiscoveryOperationRequestState": {
+      "type": "enum",
+      "members": {
+        "REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "review"
+          }
+        },
+        "IGNORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ignored"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#EditDiscoveryOperationRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "discovery_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "com.cloudflare.api_gateway#EditDiscoveryOperationRequestState",
+          "traits": {
+            "smithy.api#documentation": "Mark state of operation in API Discovery"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.api_gateway#EditDiscoveryOperationResponseState": {
+      "type": "enum",
+      "members": {
+        "REVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "review"
+          }
+        },
+        "SAVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "saved"
+          }
+        },
+        "IGNORED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ignored"
+          }
+        }
+      }
+    },
+    "com.cloudflare.api_gateway#EditDiscoveryOperationResponse": {
+      "type": "structure",
+      "members": {
+        "state": {
+          "target": "com.cloudflare.api_gateway#EditDiscoveryOperationResponseState",
+          "traits": {
+            "smithy.api#documentation": "State of operation in API Discovery"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.api_gateway#EditDiscoveryOperation": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.api_gateway#EditDiscoveryOperationRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.api_gateway#EditDiscoveryOperationResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/api_gateway/discovery/operations/{discovery_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates the state of a discovered web or API operation."
+      }
+    },
     "com.cloudflare.api_gateway#DiscoveryOperationsListRequestDirection": {
       "type": "enum",
       "members": {
@@ -5506,6 +5608,9 @@
       "type": "service",
       "version": "4.0",
       "operations": [
+        {
+          "target": "com.cloudflare.api_gateway#EditDiscoveryOperation"
+        },
         {
           "target": "com.cloudflare.api_gateway#BulkCreateLabelUsers"
         },

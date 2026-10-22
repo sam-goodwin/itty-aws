@@ -935,7 +935,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "A single document, in a row-based format."
+        "smithy.api#documentation": "A single document, in a row-based format.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.turbopuffer.api#Id": {
@@ -1080,7 +1081,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "A list of documents in columnar format. Each key is a column name, mapped to an array of values for that column.\n"
+        "smithy.api#documentation": "A list of documents in columnar format. Each key is a column name, mapped to an array of values for that column.\n",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.turbopuffer.api#ColumnsIdList": {

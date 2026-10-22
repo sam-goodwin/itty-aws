@@ -2829,7 +2829,7 @@
           "uri": "/accounts/{account_id}/abuse-reports/{report_param}",
           "code": 200
         },
-        "smithy.api#documentation": "Submit an abuse report of a particular type. Requires the abuse-reports entitlement on the account (Enterprise accounts have it by default; other accounts must request access) and an API token with the `Trust and Safety Write` permission. If the account is not entitled, the request is rejected with an HTTP `401` response (see below)."
+        "smithy.api#documentation": "Submit an abuse report of a particular type. Requires the abuse-reports entitlement on the account (Enterprise accounts have it by default; other accounts must request access) and an API token with the `Trust and Safety Write` permission. If the account is not entitled, the request is rejected with an HTTP `401` response (see below). Delegated reports: In limited circumstances, Cloudflare works with select customers who have established abuse-handling programs. For these customers, Cloudflare may forward abuse reports directly and in full—including reporter contact information, comments, and supporting evidence—without redaction or preprocessing by Cloudflare. This allows the customer to investigate and respond using their own policies and processes. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of the `host_notification` and `owner_notification` values."
       },
       "errors": [
         {
@@ -2909,7 +2909,7 @@
         "host_notification": {
           "target": "com.cloudflare.abuse_reports#CreateRequestHostNotification",
           "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous."
+            "smithy.api#documentation": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous."
           }
         },
         "name": {
@@ -2928,7 +2928,7 @@
         "owner_notification": {
           "target": "com.cloudflare.abuse_reports#CreateRequestOwnerNotification",
           "traits": {
-            "smithy.api#documentation": "Notification type based on the abuse type. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
+            "smithy.api#documentation": "Notification type based on the abuse type. For delegated reports, the report—including contact information and comments—will be forwarded to the customer in full regardless of this value. NOTE: Copyright (DMCA) and Trademark reports cannot be anonymous.",
             "smithy.api#required": {}
           }
         },
@@ -2954,7 +2954,7 @@
         "comments": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters"
+            "smithy.api#documentation": "Any additional comments about the infringement not exceeding 2000 characters. Comments are kept internal to Cloudflare and not shared with the host or customer as part of regular processing. For delegated reports, comments may be shared in full."
           }
         },
         "company": {
@@ -3147,6 +3147,13 @@
           "traits": {
             "smithy.api#documentation": "How many abuse reports per page to list",
             "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Free-text search. Returns reports whose report ID starts with the term or whose domain contains the term, both case-insensitively. Surrounding whitespace is ignored, and an empty value is treated as absent. Combined with the other filters using AND.",
+            "smithy.api#httpQuery": "search"
           }
         },
         "sort": {

@@ -727,7 +727,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions."
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected."
           }
         },
         "compatibility_date": {
@@ -1249,7 +1249,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions."
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected."
           }
         },
         "compatibility_date": {
@@ -2734,7 +2734,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions.",
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project.",
             "smithy.api#required": {}
           }
         },
@@ -3264,7 +3264,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions.",
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project.",
             "smithy.api#required": {}
           }
         },
@@ -4254,6 +4254,25 @@
         }
       }
     },
+    "com.cloudflare.pages#ProjectsCreateResponseBuildImageAutoUpgrade": {
+      "type": "structure",
+      "members": {
+        "from_version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The retired build image major version the project is set to.",
+            "smithy.api#required": {}
+          }
+        },
+        "to_version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The build image major version the project's builds run on.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.pages#ProjectsCreateResponseDomainsList": {
       "type": "list",
       "member": {
@@ -4894,7 +4913,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions."
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected."
           }
         },
         "compatibility_date": {
@@ -5416,7 +5435,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions."
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, a request that sets version 1 is rejected."
           }
         },
         "compatibility_date": {
@@ -6901,7 +6920,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions.",
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project.",
             "smithy.api#required": {}
           }
         },
@@ -7431,7 +7450,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions.",
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project.",
             "smithy.api#required": {}
           }
         },
@@ -8417,6 +8436,25 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Directory to run the command."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pages#ProjectsEditResponseBuildImageAutoUpgrade": {
+      "type": "structure",
+      "members": {
+        "from_version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The retired build image major version the project is set to.",
+            "smithy.api#required": {}
+          }
+        },
+        "to_version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The build image major version the project's builds run on.",
+            "smithy.api#required": {}
           }
         }
       }
@@ -9801,7 +9839,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions.",
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project.",
             "smithy.api#required": {}
           }
         },
@@ -10331,7 +10369,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions.",
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project.",
             "smithy.api#required": {}
           }
         },
@@ -11317,6 +11355,25 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Directory to run the command."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pages#ProjectsGetResponseBuildImageAutoUpgrade": {
+      "type": "structure",
+      "members": {
+        "from_version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The retired build image major version the project is set to.",
+            "smithy.api#required": {}
+          }
+        },
+        "to_version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The build image major version the project's builds run on.",
+            "smithy.api#required": {}
           }
         }
       }
@@ -12759,7 +12816,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions.",
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project.",
             "smithy.api#required": {}
           }
         },
@@ -13289,7 +13346,7 @@
         "build_image_major_version": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "The major version of the build image to use for Pages Functions.",
+            "smithy.api#documentation": "The major version of the build image to use for Pages Functions. Version 1 is retired and its projects are moved to version 3. Once a project's builds have been moved, this is the version the builds run on and `build_image_auto_upgrade` is set on the project.",
             "smithy.api#required": {}
           }
         },
@@ -14279,6 +14336,25 @@
         }
       }
     },
+    "com.cloudflare.pages#ProjectsListResultItemBuildImageAutoUpgrade": {
+      "type": "structure",
+      "members": {
+        "from_version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The retired build image major version the project is set to.",
+            "smithy.api#required": {}
+          }
+        },
+        "to_version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The build image major version the project's builds run on.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.pages#ProjectsListResultItemDomainsList": {
       "type": "list",
       "member": {
@@ -14554,6 +14630,12 @@
           "target": "com.cloudflare.pages#ProjectsListResultItemBuildConfig",
           "traits": {
             "smithy.api#documentation": "Configs for the project build process."
+          }
+        },
+        "build_image_auto_upgrade": {
+          "target": "com.cloudflare.pages#ProjectsListResultItemBuildImageAutoUpgrade",
+          "traits": {
+            "smithy.api#documentation": "Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on."
           }
         },
         "domains": {
@@ -19467,6 +19549,12 @@
             "smithy.api#documentation": "Configs for the project build process."
           }
         },
+        "build_image_auto_upgrade": {
+          "target": "com.cloudflare.pages#ProjectsCreateResponseBuildImageAutoUpgrade",
+          "traits": {
+            "smithy.api#documentation": "Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on."
+          }
+        },
         "domains": {
           "target": "com.cloudflare.pages#ProjectsCreateResponseDomainsList",
           "traits": {
@@ -20247,6 +20335,12 @@
           "target": "com.cloudflare.pages#ProjectsGetResponseBuildConfig",
           "traits": {
             "smithy.api#documentation": "Configs for the project build process."
+          }
+        },
+        "build_image_auto_upgrade": {
+          "target": "com.cloudflare.pages#ProjectsGetResponseBuildImageAutoUpgrade",
+          "traits": {
+            "smithy.api#documentation": "Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on."
           }
         },
         "domains": {
@@ -21068,6 +21162,12 @@
           "target": "com.cloudflare.pages#ProjectsEditResponseBuildConfig",
           "traits": {
             "smithy.api#documentation": "Configs for the project build process."
+          }
+        },
+        "build_image_auto_upgrade": {
+          "target": "com.cloudflare.pages#ProjectsEditResponseBuildImageAutoUpgrade",
+          "traits": {
+            "smithy.api#documentation": "Present when the project is set to a retired build image major version and its builds have been moved to a newer one. `build_image_major_version` in `deployment_configs` then reports the version the builds run on."
           }
         },
         "domains": {

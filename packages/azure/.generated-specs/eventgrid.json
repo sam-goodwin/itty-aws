@@ -132,6 +132,12 @@
           "traits": {
             "smithy.api#documentation": "List of custom domain configurations for the namespace under topic spaces configuration."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
         }
       },
       "traits": {
@@ -1599,7 +1605,7 @@
         "target": "com.azure.eventgrid#DeleteTopicSpaceRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteTopicSpaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1610,6 +1616,20 @@
         },
         "smithy.api#documentation": "Delete a topic space.\n\nDelete an existing topic space.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteTopicSpaceResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteTopicSpaceRequest": {
@@ -2855,7 +2875,7 @@
         "target": "com.azure.eventgrid#DeleteSystemTopicRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteSystemTopicResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2866,6 +2886,20 @@
         },
         "smithy.api#documentation": "Delete a system topic.\n\nDelete existing system topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteSystemTopicResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteSystemTopicRequest": {
@@ -4223,7 +4257,7 @@
         "target": "com.azure.eventgrid#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeletePrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4234,6 +4268,20 @@
         },
         "smithy.api#documentation": "Delete a specific private endpoint connection.\n\nDelete a specific private endpoint connection under a topic, domain, or partner namespace or namespace.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeletePrivateEndpointConnectionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeletePrivateEndpointConnectionRequest": {
@@ -4932,7 +4980,7 @@
         "target": "com.azure.eventgrid#DeletePermissionBindingRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeletePermissionBindingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4943,6 +4991,20 @@
         },
         "smithy.api#documentation": "Delete a permission binding.\n\nDelete an existing permission binding.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeletePermissionBindingResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeletePermissionBindingRequest": {
@@ -6437,7 +6499,7 @@
         "target": "com.azure.eventgrid#DeletePartnerTopicRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeletePartnerTopicResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6448,6 +6510,20 @@
         },
         "smithy.api#documentation": "Delete a partner topic.\n\nDelete existing partner topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeletePartnerTopicResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeletePartnerTopicRequest": {
@@ -7502,7 +7578,7 @@
         "target": "com.azure.eventgrid#DeletePartnerRegistrationRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeletePartnerRegistrationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7513,6 +7589,20 @@
         },
         "smithy.api#documentation": "Delete a partner registration.\n\nDeletes a partner registration with the specified parameters.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeletePartnerRegistrationResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeletePartnerRegistrationRequest": {
@@ -8768,7 +8858,7 @@
         "target": "com.azure.eventgrid#DeletePartnerNamespaceRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeletePartnerNamespaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8779,6 +8869,20 @@
         },
         "smithy.api#documentation": "Delete a partner namespace.\n\nDelete existing partner namespace.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeletePartnerNamespaceResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeletePartnerNamespaceRequest": {
@@ -10447,7 +10551,7 @@
         "target": "com.azure.eventgrid#DeletePartnerConfigurationRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeletePartnerConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10458,6 +10562,20 @@
         },
         "smithy.api#documentation": "Delete a partner configuration.\n\nDelete existing partner configuration.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeletePartnerConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeletePartnerConfigurationRequest": {
@@ -11197,7 +11315,7 @@
         "target": "com.azure.eventgrid#RegenerateTopicKeyRequest"
       },
       "output": {
-        "target": "com.azure.eventgrid#TopicSharedAccessKeys"
+        "target": "com.azure.eventgrid#RegenerateTopicKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11210,7 +11328,7 @@
         "com.distilled.openapi#apiVersion": "2025-02-15"
       }
     },
-    "com.azure.eventgrid#TopicSharedAccessKeys": {
+    "com.azure.eventgrid#RegenerateTopicKeyResponse": {
       "type": "structure",
       "members": {
         "key1": {
@@ -11224,10 +11342,17 @@
           "traits": {
             "smithy.api#documentation": "Shared access key2 for the topic."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Shared access keys of the Topic"
+        "smithy.api#documentation": "Shared access keys of the Topic",
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#RegenerateTopicKeyRequest": {
@@ -11286,6 +11411,26 @@
         },
         "smithy.api#documentation": "List keys for a topic.\n\nList the two keys used to publish to a topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#TopicSharedAccessKeys": {
+      "type": "structure",
+      "members": {
+        "key1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shared access key1 for the topic."
+          }
+        },
+        "key2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shared access key2 for the topic."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Shared access keys of the Topic"
       }
     },
     "com.azure.eventgrid#ListTopicSharedAccessKeysRequest": {
@@ -11907,7 +12052,7 @@
         "target": "com.azure.eventgrid#DeleteTopicRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteTopicResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11918,6 +12063,20 @@
         },
         "smithy.api#documentation": "Delete a topic.\n\nDelete existing topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteTopicResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteTopicRequest": {
@@ -12920,7 +13079,7 @@
         "target": "com.azure.eventgrid#RegenerateNamespaceTopicKeyRequest"
       },
       "output": {
-        "target": "com.azure.eventgrid#TopicSharedAccessKeys"
+        "target": "com.azure.eventgrid#RegenerateNamespaceTopicKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12931,6 +13090,33 @@
         },
         "smithy.api#documentation": "Regenerate key for a namespace topic.\n\nRegenerate a shared access key for a namespace topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#RegenerateNamespaceTopicKeyResponse": {
+      "type": "structure",
+      "members": {
+        "key1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shared access key1 for the topic."
+          }
+        },
+        "key2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shared access key2 for the topic."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Shared access keys of the Topic",
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#RegenerateNamespaceTopicKeyRequest": {
@@ -13413,7 +13599,7 @@
         "target": "com.azure.eventgrid#DeleteNamespaceTopicRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteNamespaceTopicResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13424,6 +13610,20 @@
         },
         "smithy.api#documentation": "Delete a namespace topic.\n\nDelete existing namespace topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteNamespaceTopicResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteNamespaceTopicRequest": {
@@ -13516,6 +13716,12 @@
           "target": "com.azure.eventgrid#UpdateNamespaceTopicResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
           }
         }
       },
@@ -14167,7 +14373,7 @@
         "target": "com.azure.eventgrid#RegenerateNamespaceKeyRequest"
       },
       "output": {
-        "target": "com.azure.eventgrid#NamespaceSharedAccessKeys"
+        "target": "com.azure.eventgrid#RegenerateNamespaceKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14180,7 +14386,7 @@
         "com.distilled.openapi#apiVersion": "2025-02-15"
       }
     },
-    "com.azure.eventgrid#NamespaceSharedAccessKeys": {
+    "com.azure.eventgrid#RegenerateNamespaceKeyResponse": {
       "type": "structure",
       "members": {
         "key1": {
@@ -14194,10 +14400,17 @@
           "traits": {
             "smithy.api#documentation": "Shared access key2 for the namespace."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "Shared access keys of the Namespace."
+        "smithy.api#documentation": "Shared access keys of the Namespace.",
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#RegenerateNamespaceKeyRequest": {
@@ -14256,6 +14469,26 @@
         },
         "smithy.api#documentation": "List keys for a namespace.\n\nList the two keys used to publish to a namespace.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#NamespaceSharedAccessKeys": {
+      "type": "structure",
+      "members": {
+        "key1": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shared access key1 for the namespace."
+          }
+        },
+        "key2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Shared access key2 for the namespace."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Shared access keys of the Namespace."
       }
     },
     "com.azure.eventgrid#ListNamespaceSharedAccessKeysRequest": {
@@ -15072,7 +15305,7 @@
         "target": "com.azure.eventgrid#DeleteNamespaceRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteNamespaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15083,6 +15316,20 @@
         },
         "smithy.api#documentation": "Delete a namespace.\n\nDelete existing namespace.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteNamespaceResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteNamespaceRequest": {
@@ -15192,6 +15439,12 @@
           "target": "com.azure.eventgrid#UpdateNamespaceResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
           }
         }
       },
@@ -18524,7 +18777,7 @@
         "target": "com.azure.eventgrid#DeletePartnerTopicEventSubscriptionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeletePartnerTopicEventSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18535,6 +18788,20 @@
         },
         "smithy.api#documentation": "Delete an event subscription of a partner topic.\n\nDelete an existing event subscription of a partner topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeletePartnerTopicEventSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeletePartnerTopicEventSubscriptionRequest": {
@@ -19557,7 +19824,7 @@
         "target": "com.azure.eventgrid#DeleteSystemTopicEventSubscriptionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteSystemTopicEventSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19568,6 +19835,20 @@
         },
         "smithy.api#documentation": "Delete an event subscription of a system topic.\n\nDelete an existing event subscription of a system topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteSystemTopicEventSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteSystemTopicEventSubscriptionRequest": {
@@ -20326,7 +20607,7 @@
         "target": "com.azure.eventgrid#DeleteDomainEventSubscriptionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteDomainEventSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20337,6 +20618,20 @@
         },
         "smithy.api#documentation": "Delete an event subscription for a domain.\n\nDelete an existing event subscription for a domain.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteDomainEventSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteDomainEventSubscriptionRequest": {
@@ -21095,7 +21390,7 @@
         "target": "com.azure.eventgrid#DeleteTopicEventSubscriptionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteTopicEventSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21106,6 +21401,20 @@
         },
         "smithy.api#documentation": "Delete an event subscription for a topic.\n\nDelete an existing event subscription for a topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteTopicEventSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteTopicEventSubscriptionRequest": {
@@ -21864,7 +22173,7 @@
         "target": "com.azure.eventgrid#DeleteDomainTopicEventSubscriptionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteDomainTopicEventSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21875,6 +22184,20 @@
         },
         "smithy.api#documentation": "Delete a nested event subscription for a domain topic.\n\nDelete a nested existing event subscription for a domain topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteDomainTopicEventSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteDomainTopicEventSubscriptionRequest": {
@@ -22665,7 +22988,7 @@
         "target": "com.azure.eventgrid#DeleteEventSubscriptionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteEventSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22676,6 +22999,20 @@
         },
         "smithy.api#documentation": "Delete an event subscription.\n\nDelete an existing event subscription.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteEventSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteEventSubscriptionRequest": {
@@ -24120,7 +24457,7 @@
         "target": "com.azure.eventgrid#DeleteNamespaceTopicEventSubscriptionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteNamespaceTopicEventSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -24131,6 +24468,20 @@
         },
         "smithy.api#documentation": "Delete an event subscription of a namespace topic.\n\nDelete an existing event subscription of a namespace topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteNamespaceTopicEventSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteNamespaceTopicEventSubscriptionRequest": {
@@ -24231,6 +24582,12 @@
           "target": "com.azure.eventgrid#UpdateNamespaceTopicEventSubscriptionResponseSystemData",
           "traits": {
             "smithy.api#documentation": "Metadata pertaining to creation and last modification of the resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
           }
         }
       },
@@ -25343,7 +25700,7 @@
         "target": "com.azure.eventgrid#DeleteDomainTopicRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteDomainTopicResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25354,6 +25711,20 @@
         },
         "smithy.api#documentation": "Delete a domain topic.\n\nDelete existing domain topic.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteDomainTopicResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteDomainTopicRequest": {
@@ -26499,7 +26870,7 @@
         "target": "com.azure.eventgrid#DeleteDomainRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26510,6 +26881,20 @@
         },
         "smithy.api#documentation": "Delete a domain.\n\nDelete existing domain.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteDomainResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteDomainRequest": {
@@ -27863,7 +28248,7 @@
         "target": "com.azure.eventgrid#DeleteClientRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteClientResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -27874,6 +28259,20 @@
         },
         "smithy.api#documentation": "Delete a client.\n\nDelete an existing client.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteClientResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteClientRequest": {
@@ -28724,7 +29123,7 @@
         "target": "com.azure.eventgrid#DeleteClientGroupRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteClientGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -28735,6 +29134,20 @@
         },
         "smithy.api#documentation": "Delete a client group.\n\nDelete an existing client group.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteClientGroupResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteClientGroupRequest": {
@@ -29684,7 +30097,7 @@
         "target": "com.azure.eventgrid#DeleteChannelRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteChannelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -29695,6 +30108,20 @@
         },
         "smithy.api#documentation": "Delete a channel.\n\nDelete an existing channel.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteChannelResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteChannelRequest": {
@@ -30583,7 +31010,7 @@
         "target": "com.azure.eventgrid#DeleteCaCertificateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.eventgrid#DeleteCaCertificateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -30594,6 +31021,20 @@
         },
         "smithy.api#documentation": "Delete a CA certificate.\n\nDelete an existing CA certificate.",
         "com.distilled.openapi#apiVersion": "2025-02-15"
+      }
+    },
+    "com.azure.eventgrid#DeleteCaCertificateResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.eventgrid#DeleteCaCertificateRequest": {

@@ -24,7 +24,7 @@
         "target": "com.azure.iotoperations#DeleteRegistryEndpointRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteRegistryEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35,6 +35,28 @@
         },
         "smithy.api#documentation": "Delete a RegistryEndpointResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteRegistryEndpointResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteRegistryEndpointRequest": {
@@ -133,6 +155,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -856,7 +892,7 @@
         "target": "com.azure.iotoperations#DeleteDataflowRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteDataflowResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -867,6 +903,28 @@
         },
         "smithy.api#documentation": "Delete a DataflowResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteDataflowResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteDataflowRequest": {
@@ -973,6 +1031,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -2058,7 +2130,7 @@
         "target": "com.azure.iotoperations#DeleteDataflowGraphRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteDataflowGraphResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2069,6 +2141,28 @@
         },
         "smithy.api#documentation": "Delete a DataflowGraphResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteDataflowGraphResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteDataflowGraphRequest": {
@@ -2175,6 +2269,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -2876,7 +2984,7 @@
         "target": "com.azure.iotoperations#DeleteDataflowProfileRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteDataflowProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2887,6 +2995,28 @@
         },
         "smithy.api#documentation": "Delete a DataflowProfileResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteDataflowProfileResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteDataflowProfileRequest": {
@@ -2985,6 +3115,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -3430,7 +3574,7 @@
         "target": "com.azure.iotoperations#DeleteDataflowEndpointRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteDataflowEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3441,6 +3585,28 @@
         },
         "smithy.api#documentation": "Delete a DataflowEndpointResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteDataflowEndpointResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteDataflowEndpointRequest": {
@@ -3539,6 +3705,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -5200,7 +5380,7 @@
         "target": "com.azure.iotoperations#DeleteBrokerListenerRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteBrokerListenerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5211,6 +5391,28 @@
         },
         "smithy.api#documentation": "Delete a BrokerListenerResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteBrokerListenerResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteBrokerListenerRequest": {
@@ -5317,6 +5519,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -6154,7 +6370,7 @@
         "target": "com.azure.iotoperations#DeleteBrokerAuthorizationRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteBrokerAuthorizationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6165,6 +6381,28 @@
         },
         "smithy.api#documentation": "Delete a BrokerAuthorizationResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteBrokerAuthorizationResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteBrokerAuthorizationRequest": {
@@ -6271,6 +6509,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -6981,7 +7233,7 @@
         "target": "com.azure.iotoperations#DeleteBrokerAuthenticationRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteBrokerAuthenticationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6992,6 +7244,28 @@
         },
         "smithy.api#documentation": "Delete a BrokerAuthenticationResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteBrokerAuthenticationResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteBrokerAuthenticationRequest": {
@@ -7098,6 +7372,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -7742,7 +8030,7 @@
         "target": "com.azure.iotoperations#DeleteBrokerRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteBrokerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7753,6 +8041,28 @@
         },
         "smithy.api#documentation": "Delete a BrokerResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteBrokerResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteBrokerRequest": {
@@ -7851,6 +8161,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -9325,7 +9649,7 @@
         "target": "com.azure.iotoperations#DeleteAkriServiceRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteAkriServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9336,6 +9660,28 @@
         },
         "smithy.api#documentation": "Delete a AkriServiceResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteAkriServiceResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteAkriServiceRequest": {
@@ -9434,6 +9780,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -9768,7 +10128,7 @@
         "target": "com.azure.iotoperations#DeleteAkriConnectorRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteAkriConnectorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9779,6 +10139,28 @@
         },
         "smithy.api#documentation": "Delete a AkriConnectorResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteAkriConnectorResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteAkriConnectorRequest": {
@@ -9885,6 +10267,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -10318,7 +10714,7 @@
         "target": "com.azure.iotoperations#DeleteAkriConnectorTemplateRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteAkriConnectorTemplateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10329,6 +10725,28 @@
         },
         "smithy.api#documentation": "Delete a AkriConnectorTemplateResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteAkriConnectorTemplateResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteAkriConnectorTemplateRequest": {
@@ -10427,6 +10845,20 @@
           "target": "com.azure.iotoperations#ExtendedLocation",
           "traits": {
             "smithy.api#documentation": "Edge location of the resource."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -11084,7 +11516,7 @@
         "target": "com.azure.iotoperations#DeleteInstanceRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.iotoperations#DeleteInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11095,6 +11527,28 @@
         },
         "smithy.api#documentation": "Delete a InstanceResource",
         "com.distilled.openapi#apiVersion": "2026-10-01"
+      }
+    },
+    "com.azure.iotoperations#DeleteInstanceResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.iotoperations#DeleteInstanceRequest": {
@@ -11742,6 +12196,20 @@
           "target": "com.azure.iotoperations#InstanceSku",
           "traits": {
             "smithy.api#documentation": "The billing SKU for the AIO Instance. Defaults to Standard."
+          }
+        },
+        "azureAsyncOperation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Azure-AsyncOperation",
+            "smithy.api#documentation": "A link to the status monitor"
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },

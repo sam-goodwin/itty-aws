@@ -191,23 +191,35 @@ The protocol wires every one of them:
   the operation output — after wire→TS key mapping, before `wrapSensitive`.
   `packages/core/src/protocol-rest.ts` is the reference.
 
-2xx responses are validated only in strict mode. `ResponseValidation`
-(`import { ResponseValidation } from "@distilled.cloud/core"`) is one context
-reference shared by every SDK: lenient by default, switched with
-`Effect.provide(ResponseValidation.strict)` — only ever by layer. A new
-protocol reads the mode through `validateResponse`; it never adds its own
-flag or environment variable.
+`ResponseValidation` (`import { ResponseValidation } from
+"@distilled.cloud/core"`) is one context reference shared by every SDK, with
+three modes, switched only by layer (`Effect.provide(ResponseValidation.strict)`):
+
+| Mode | 2xx response |
+| --- | --- |
+| `lenient` (default) | returned as the protocol read it |
+| `additionalProperties` | checked against the output schema; keys the schema does not model pass |
+| `strict` | checked, and a key the schema does not model also fails, at any depth (open objects and `{}` outputs excepted) |
+
+A new protocol reads the mode through `validateResponse` (and
+`isValidating` / `failUnlessLenient` for bodies it cannot read); it never
+adds its own flag or environment variable. Pass the mapped body with every
+key the wire sent: a protocol that builds the output from modeled members
+only (Cloudflare's envelope reader, AWS's decoder) must reject the keys it
+drops in `strict` mode itself, and a protocol must not add keys the output
+does not model (acme adds `Location` only where the output declares it).
 
 Lenient mode checks only what the protocol needs in order to transform the
 body (unwrap an envelope, map keys, wrap sensitive members) and nothing
 more: a non-JSON body comes back as text, a body missing members comes back
 as read. Never decode against the output schema outside `validateResponse`.
-Strict mode surfaces every spec inaccuracy (an undocumented `null`, a new
-enum member) as a `<Pkg>ParseError`; that is the cost of opting in, and why
-strict is never the default.
+The validating modes surface every spec inaccuracy (an undocumented `null`,
+a new enum member, and in `strict` an undocumented field) as a
+`<Pkg>ParseError`; that is the cost of opting in, and why neither is ever the
+default.
 
 Do not add tests to a generated SDK. Generated code is tested once, through
-the generator and the protocols in `packages/core`. `packages/core/src/sdks.test.ts`
+the generator and the protocols in `packages/core`. `packages/core/test/sdks.test.ts`
 runs against every package and checks the glue a new SDK hand-writes: its
 `<Pkg>OpError` union reaches `<Pkg>ParseError` (so `catchTag` on a strict
 call typechecks), something outside `src/services/` constructs it, and
@@ -279,7 +291,7 @@ leaves anything already verb-first or ambiguous (`WatchPodList`,
 `AppGetOrCreate`, `accountById`) unchanged. Irregulars go in
 `operationNames` (lookup by `"METHOD path"`, then operationId) — PUT vs
 PATCH that share an upstream id need the path key. Cases live in
-`packages/core/src/codegen/rewrite-operation-ids.test.ts` (`pnpm vitest run`); add
+`packages/core/test/codegen/rewrite-operation-ids.test.ts` (`pnpm vitest run`); add
 one before changing the heuristic. Do not rename operations with a patch.
 Patch the model, not the generated TypeScript. Writing and checking a
 patch is the `distilled-sdk-patch` skill
@@ -416,7 +428,7 @@ say so in the PR when this environment is not.
 
 ```sh
 pnpm specs:check     # mirror manifest ↔ spec-repos/ ↔ .gitmodules ↔ packages/
-pnpm typecheck       # tsc -b
+pnpm typecheck       # tsrs -b
 pnpm format          # generated output is committed formatted
 ```
 
@@ -441,7 +453,7 @@ Body, in order:
    `CredentialsFromEnv`, `<Pkg>Protocol`, a real call, `Effect.runPromise`.
    A PR whose only snippet is `listX({})` is incomplete; paste the README
    quick start.
-4. `Checks: pnpm specs:check` green, `tsc -b packages/<pkg> --noCheck false`
+4. `Checks: pnpm specs:check` green, `tsrs -b packages/<pkg> --noCheck false`
    green, `DISTILLED_SPECS_LOCAL=1 pnpm generate <pkg>` reproduces output,
    and the error-construction check from step 4 finds both classes.
 

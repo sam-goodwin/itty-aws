@@ -2582,7 +2582,7 @@
         "datasetId": {
           "target": "com.cloudflare.cloudforce_one#ListThreatEventsAggregateRequestDatasetIdList",
           "traits": {
-            "smithy.api#documentation": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible non-analytics event datasets (analytics datasets are silently excluded), 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
+            "smithy.api#documentation": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Scope values query at most 50 datasets. If not provided, uses the default dataset.",
             "smithy.api#httpQuery": "datasetId"
           }
         },
@@ -3320,7 +3320,7 @@
         "datasetIds": {
           "target": "com.cloudflare.cloudforce_one#ListThreatEventsGraphRequestDatasetIdsList",
           "traits": {
-            "smithy.api#documentation": "Comma-separated dataset UUIDs to restrict neighbor scope, or one standalone scope value: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. Intersected with access grants.",
+            "smithy.api#documentation": "Comma-separated dataset UUIDs to restrict neighbor scope, or one standalone scope value: 'operational' for readable intelligence datasets (isAnalytics=false), 'analytics' for readable analytics datasets (isAnalytics=true), or 'all'/'*' for every readable dataset including analytics datasets (the graph reads analytics relationships from R2). Intersected with access grants.",
             "smithy.api#httpQuery": "datasetIds"
           }
         },
@@ -3672,7 +3672,7 @@
         "datasetIds": {
           "target": "com.cloudflare.cloudforce_one#ListThreatEventsIndicatorsRequestDatasetIdsList",
           "traits": {
-            "smithy.api#documentation": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*' for legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
+            "smithy.api#documentation": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). If not provided, uses the default dataset.",
             "smithy.api#httpQuery": "datasetIds"
           }
         },
@@ -4382,7 +4382,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/events/indicators",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieves indicators across specified datasets, ordered by createdAt descending then UUID, dataset ID, and shard ID ascending. Use the standalone datasetIds value 'all'/'*' for legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If no datasetIds are provided, uses the default dataset.",
+        "smithy.api#documentation": "Retrieves indicators across specified datasets, ordered by createdAt descending then UUID, dataset ID, and shard ID ascending. Use one standalone datasetIds scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). If no datasetIds are provided, uses the default dataset.",
         "smithy.api#readonly": {}
       }
     },
@@ -4445,7 +4445,7 @@
         "datasetIds": {
           "target": "com.cloudflare.cloudforce_one#ListThreatEventsIndicatorsAggregateRequestDatasetIdsList",
           "traits": {
-            "smithy.api#documentation": "Dataset UUIDs to filter by, or one standalone scope value: 'all'/'*' for all accessible datasets, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, aggregates across all accessible datasets.",
+            "smithy.api#documentation": "Dataset UUIDs to filter by, or one standalone scope value: 'operational' for readable intelligence datasets (isAnalytics=false), 'analytics' for readable analytics datasets (isAnalytics=true), or 'all'/'*' for every readable dataset including analytics datasets. If not provided, aggregates across all accessible datasets, including analytics datasets.",
             "smithy.api#httpQuery": "datasetIds"
           }
         },
@@ -5113,7 +5113,7 @@
         "datasetIds": {
           "target": "com.cloudflare.cloudforce_one#ListThreatEventsIndicatorsTypesRequestDatasetIdsList",
           "traits": {
-            "smithy.api#documentation": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, queries all accessible datasets.",
+            "smithy.api#documentation": "Dataset UUIDs to query, or one standalone scope value: 'operational' for readable intelligence datasets (isAnalytics=false), 'analytics' for readable analytics datasets (isAnalytics=true), or 'all'/'*' for every readable dataset including analytics datasets. If not provided, queries all accessible datasets, including analytics datasets.",
             "smithy.api#httpQuery": "datasetIds"
           }
         }
@@ -5183,20 +5183,6 @@
             "smithy.api#required": {}
           }
         },
-        "alert_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Enable alerts for this query",
-            "smithy.api#required": {}
-          }
-        },
-        "alert_rollup_enabled": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Enable alert rollup for this query",
-            "smithy.api#required": {}
-          }
-        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
@@ -5211,17 +5197,28 @@
             "smithy.api#required": {}
           }
         },
+        "alert_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Deprecated and ignored: saved-query alerting and rules were removed."
+          }
+        },
+        "alert_rollup_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Deprecated and ignored: saved-query alerting and rules were removed."
+          }
+        },
         "rule_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Enable rule for this query",
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Deprecated and ignored: saved-query alerting and rules were removed."
           }
         },
         "rule_scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Scope for the rule"
+            "smithy.api#documentation": "Deprecated and ignored: saved-query alerting and rules were removed."
           }
         }
       },
@@ -5249,14 +5246,14 @@
         "alert_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether alerts are enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
         "alert_rollup_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether alert rollup is enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
@@ -5284,7 +5281,7 @@
         "rule_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether rule is enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
@@ -5305,19 +5302,19 @@
         "custom_threat_feed_id": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Intel Indicator Feed ID (numeric)"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         },
         "rule_list_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "WAF rules list ID for blocking"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         },
         "rule_scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Scope for the rule"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         }
       },
@@ -5407,13 +5404,13 @@
         "alert_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Enable alerts for this query"
+            "smithy.api#documentation": "Deprecated and ignored: saved-query alerting and rules were removed."
           }
         },
         "alert_rollup_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Enable alert rollup for this query"
+            "smithy.api#documentation": "Deprecated and ignored: saved-query alerting and rules were removed."
           }
         },
         "name": {
@@ -5431,13 +5428,13 @@
         "rule_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Enable rule for this query"
+            "smithy.api#documentation": "Deprecated and ignored: saved-query alerting and rules were removed."
           }
         },
         "rule_scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Scope for the rule"
+            "smithy.api#documentation": "Deprecated and ignored: saved-query alerting and rules were removed."
           }
         }
       },
@@ -5465,14 +5462,14 @@
         "alert_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether alerts are enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
         "alert_rollup_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether alert rollup is enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
@@ -5500,7 +5497,7 @@
         "rule_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether rule is enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
@@ -5521,19 +5518,19 @@
         "custom_threat_feed_id": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Intel Indicator Feed ID (numeric)"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         },
         "rule_list_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "WAF rules list ID for blocking"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         },
         "rule_scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Scope for the rule"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         }
       },
@@ -5603,14 +5600,14 @@
         "alert_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether alerts are enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
         "alert_rollup_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether alert rollup is enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
@@ -5638,7 +5635,7 @@
         "rule_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether rule is enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
@@ -5659,19 +5656,19 @@
         "custom_threat_feed_id": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Intel Indicator Feed ID (numeric)"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         },
         "rule_list_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "WAF rules list ID for blocking"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         },
         "rule_scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Scope for the rule"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         }
       },
@@ -5734,14 +5731,14 @@
         "alert_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether alerts are enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
         "alert_rollup_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether alert rollup is enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
@@ -5769,7 +5766,7 @@
         "rule_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether rule is enabled",
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always false.",
             "smithy.api#required": {}
           }
         },
@@ -5790,19 +5787,19 @@
         "custom_threat_feed_id": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Intel Indicator Feed ID (numeric)"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         },
         "rule_list_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "WAF rules list ID for blocking"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         },
         "rule_scope": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Scope for the rule"
+            "smithy.api#documentation": "Deprecated: saved-query alerting and rules were removed. Always null."
           }
         }
       },
@@ -12303,7 +12300,7 @@
         "datasetIds": {
           "target": "com.cloudflare.cloudforce_one#ListThreatEventsTagsIndicatorsRequestDatasetIdsList",
           "traits": {
-            "smithy.api#documentation": "Dataset UUIDs to scope to (repeat the param for multiple), or one standalone scope: 'all'/'*', 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. Analytics datasets do not expose tag associations, so 'analytics' returns an empty result. Omit to search all readable datasets.",
+            "smithy.api#documentation": "Dataset UUIDs to scope to (repeat the param for multiple), or one standalone scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Analytics datasets do not expose tag associations, so 'analytics' returns an empty result. Omit for 'all'.",
             "smithy.api#httpQuery": "datasetIds"
           }
         },
@@ -12531,7 +12528,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/events/tags/{tag_uuid}/indicators",
           "code": 200
         },
-        "smithy.api#documentation": "Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every indicator dataset the account can read; pass datasetIds to scope to UUIDs, analytics datasets, or operational datasets. Analytics datasets do not expose tag associations, so the analytics scope returns an empty result.",
+        "smithy.api#documentation": "Returns indicators associated with the provided tag UUID, with pagination. By default fans out across every intelligence (isAnalytics=false) indicator dataset the account can read; pass datasetIds to scope to dataset UUIDs or a scope value. Analytics datasets do not expose tag associations, so the analytics scope returns an empty result.",
         "smithy.api#readonly": {}
       }
     },
@@ -13158,12 +13155,14 @@
         "article_ids": {
           "target": "com.cloudflare.cloudforce_one#ThreatSignalsArticlesBulkEditRequestArticleIdsList",
           "traits": {
+            "smithy.api#documentation": "Array of article UUIDs to mark (1-50).",
             "smithy.api#required": {}
           }
         },
         "read": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "True to mark read, false to mark unread.",
             "smithy.api#required": {}
           }
         }
@@ -13217,6 +13216,7 @@
         "article_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Threat Signals article UUID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -13224,6 +13224,7 @@
         "read": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "True to mark the article read, false to mark unread.",
             "smithy.api#required": {}
           }
         }
@@ -13500,6 +13501,7 @@
         "article_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Threat Signals article UUID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -13850,72 +13852,84 @@
         "feed_category": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Exact feed-category filter after trimming. Omit to include every category.",
             "smithy.api#httpQuery": "feed_category"
           }
         },
         "feed_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Feed UUID filter. Omit to include articles from every account feed.",
             "smithy.api#httpQuery": "feed_id"
           }
         },
         "fetched_after": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Include articles fetched at or after this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
             "smithy.api#httpQuery": "fetched_after"
           }
         },
         "fetched_before": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Include articles fetched at or before this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
             "smithy.api#httpQuery": "fetched_before"
           }
         },
         "include_total": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "When true on the first page, count matching articles and return an exact total. Defaults to false; cursor pages do not recalculate totals.",
             "smithy.api#httpQuery": "include_total"
           }
         },
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "Number of articles per cursor page, from 1 to 100. Defaults to 20.",
             "smithy.api#httpQuery": "per_page"
           }
         },
         "published_after": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Include articles published at or after this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
             "smithy.api#httpQuery": "published_after"
           }
         },
         "published_before": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Include articles published at or before this ISO 8601 date-time with Z or a numeric UTC offset; normalized to UTC.",
             "smithy.api#httpQuery": "published_before"
           }
         },
         "read": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "Filter by read state. Accepts true, false, 1, or 0; omit to include read and unread articles.",
             "smithy.api#httpQuery": "read"
           }
         },
         "search": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "NFC-normalized, trimmed literal substring filter on article titles; ASCII case-insensitive, from 1 to 500 characters.",
             "smithy.api#httpQuery": "search"
           }
         },
         "sort": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Sort by fetched_at, published_at, or title. Prefix the field with - for descending order; defaults to -fetched_at.",
             "smithy.api#httpQuery": "sort"
           }
         },
         "source_type": {
           "target": "com.cloudflare.cloudforce_one#ListThreatSignalsArticlesRequestSourceType",
           "traits": {
+            "smithy.api#documentation": "Filter by curated or custom feed source. Omit to include both source types.",
             "smithy.api#httpQuery": "source_type"
           }
         },
@@ -14196,6 +14210,7 @@
         "article_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Threat Signals article UUID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -14203,6 +14218,7 @@
         "format": {
           "target": "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesContentRequestFormat",
           "traits": {
+            "smithy.api#documentation": "Response Content-Type: text (the default) for text/plain or html for text/html. Neither value converts the content. html is deprecated; use text.",
             "smithy.api#httpQuery": "format"
           }
         }
@@ -14225,7 +14241,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/content",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieves the stored body of a Threat Signals article as plain text or HTML.",
+        "smithy.api#documentation": "Retrieves the stored content of a Threat Signals article, unchanged. Depending on how the article was captured from its source, the content is HTML, Markdown, or plain text. The format parameter sets only the response Content-Type; it does not convert the content.",
         "smithy.api#readonly": {}
       }
     },
@@ -14242,6 +14258,7 @@
         "article_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Threat Signals article UUID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -14249,6 +14266,7 @@
         "skill_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Custom Skill UUID or a Managed Default Skill ID (IOC-context: default-ioc-context-skill)",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -14258,38 +14276,163 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase3Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4ItemCase3Map": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4Item": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
+        },
+        "Double": {
+          "target": "smithy.api#Double"
+        },
+        "Boolean": {
+          "target": "smithy.api#Boolean"
+        },
+        "ThreatSignalsArticlesSkillOutputsGetResponseCustomOutputCase4ItemCase3Map": {
+          "target": "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4ItemCase3Map"
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4List": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4Item"
+      }
+    },
+    "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutput": {
+      "type": "union",
+      "members": {
+        "String": {
+          "target": "smithy.api#String"
+        },
+        "Double": {
+          "target": "smithy.api#Double"
+        },
+        "Boolean": {
+          "target": "smithy.api#Boolean"
+        },
+        "ThreatSignalsArticlesSkillOutputsGetResponseCustomOutputCase3Map": {
+          "target": "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase3Map"
+        },
+        "ThreatSignalsArticlesSkillOutputsGetResponseCustomOutputCase4List": {
+          "target": "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputCase4List"
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputParseStatus": {
+      "type": "enum",
+      "members": {
+        "PARSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "parsed"
+          }
+        },
+        "INVALID_JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "invalid_json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputValidationStatus": {
+      "type": "enum",
+      "members": {
+        "VALID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "valid"
+          }
+        },
+        "INVALID_JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "invalid_json"
+          }
+        },
+        "SCHEMA_INVALID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "schema_invalid"
+          }
+        },
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponse": {
       "type": "structure",
       "members": {
         "article_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Article UUID that received the skill output.",
+            "smithy.api#required": {}
+          }
+        },
+        "custom_output": {
+          "target": "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutput",
+          "traits": {
+            "smithy.api#documentation": "Untrusted model output: parsed JSON when the stored completion text is valid JSON, otherwise raw text. Consumers must safely render or escape it.",
+            "smithy.api#required": {}
+          }
+        },
+        "custom_output_parse_status": {
+          "target": "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputParseStatus",
+          "traits": {
+            "smithy.api#documentation": "Whether custom_output was parsed from the stored completion text.",
+            "smithy.api#required": {}
+          }
+        },
+        "custom_output_validation_status": {
+          "target": "com.cloudflare.cloudforce_one#GetThreatSignalsArticlesSkillOutputResponseCustomOutputValidationStatus",
+          "traits": {
+            "smithy.api#documentation": "Non-blocking validation classification for untrusted model output. `unknown` is retained only for historical rows.",
             "smithy.api#required": {}
           }
         },
         "custom_skill_version": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Custom Skill version that produced the output. Null when historical metadata is unavailable.",
             "smithy.api#required": {}
           }
         },
         "output_schema": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "JSON-encoded output schema of the skill. Null when the skill no longer exists.",
+            "smithy.api#documentation": "JSON-encoded output schema. Null when historical skill metadata is unavailable.",
             "smithy.api#required": {}
           }
         },
         "skill_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Custom Skill UUID that produced the output.",
             "smithy.api#required": {}
-          }
-        },
-        "custom_output": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Skill output. Parsed JSON when the stored output is valid JSON, otherwise the raw string."
           }
         }
       },
@@ -14312,7 +14455,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/articles/{article_id}/skills/{skill_id}/output",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieves the stored output of a skill for a Threat Signals article.",
+        "smithy.api#documentation": "Retrieves the stored output of a skill for a Threat Signals article. The custom_output field is parsed JSON when the stored output is valid JSON, otherwise the raw string.",
         "smithy.api#readonly": {}
       }
     },
@@ -14329,6 +14472,7 @@
         "article_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Threat Signals article UUID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -14336,6 +14480,7 @@
         "tag_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "UUID of a tag from the account's catalog to apply to the article.",
             "smithy.api#required": {}
           }
         }
@@ -14430,6 +14575,7 @@
         "article_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Threat Signals article UUID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -14437,6 +14583,7 @@
         "tag_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "UUID of a tag from the account's catalog",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -14533,6 +14680,7 @@
         "article_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Threat Signals article UUID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -14789,22 +14937,40 @@
           }
         },
         "curated_feed_id": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID of a curated feed to subscribe to. Provide exactly one of url or curated_feed_id. The account must have feed creation entitlement and not exceed feed allowance."
+          }
         },
         "display_name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override the feed's display name. Null clears it; omit to keep existing or derived value."
+          }
         },
         "enabled": {
-          "target": "smithy.api#Boolean"
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to actively poll the feed. Default true."
+          }
         },
         "poll_interval_s": {
-          "target": "smithy.api#Double"
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Polling interval in seconds (60-86400). Default 300s (5 minutes)."
+          }
         },
         "title": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override the feed's title. Null clears it; omit to keep existing or derived value."
+          }
         },
         "url": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "HTTPS RSS feed URL. Provide exactly one of url or curated_feed_id. The account must have feed creation entitlement and not exceed feed allowance."
+          }
         }
       },
       "traits": {
@@ -14929,7 +15095,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds",
           "code": 200
         },
-        "smithy.api#documentation": "Subscribes the account to a custom or curated Threat Signals feed."
+        "smithy.api#documentation": "Subscribes the account to a custom or curated Threat Signals feed. Adding a custom feed when the account is at its custom-feed limit returns 403 with `errors[0].reason` `threat_signals_feed_limit`, and `errors[0].custom_feed_limit` and `errors[0].custom_feed_count` give the limit and current count. Curated feeds are not subject to this limit."
       }
     },
     "com.cloudflare.cloudforce_one#DeleteThreatSignalsFeedRequest": {
@@ -14945,6 +15111,7 @@
         "feed_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "UUID of the Threat Signals feed",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -15142,6 +15309,7 @@
         "feed_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "UUID of the Threat Signals feed",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -15153,16 +15321,28 @@
           }
         },
         "display_name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override the feed's display name. Null clears it; omit to keep existing or derived value."
+          }
         },
         "enabled": {
-          "target": "smithy.api#Boolean"
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to actively poll the feed. Omit to keep current value."
+          }
         },
         "poll_interval_s": {
-          "target": "smithy.api#Double"
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "New polling interval in seconds (60-86400). Omit to keep current value."
+          }
         },
         "title": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Override the feed's title. Null clears it; omit to keep existing or derived value."
+          }
         }
       },
       "traits": {
@@ -15320,48 +15500,56 @@
         "category": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Exact feed-category filter, up to 100 characters. Omit to include all categories.",
             "smithy.api#httpQuery": "category"
           }
         },
         "enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "Filter by enabled state. Accepts true, false, 1, or 0; omit to include enabled and disabled feeds.",
             "smithy.api#httpQuery": "enabled"
           }
         },
         "limit": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "Optional 1–100 alias for per_page. When provided, limit takes precedence.",
             "smithy.api#httpQuery": "limit"
           }
         },
         "page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "1-based page number. Minimum 1; defaults to 1.",
             "smithy.api#httpQuery": "page"
           }
         },
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "Number of feeds per page, from 1 to 100. Defaults to 20.",
             "smithy.api#httpQuery": "per_page"
           }
         },
         "sort": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Sort by created_at, title, category, or url. Prefix the field with - for descending order; defaults to -created_at.",
             "smithy.api#httpQuery": "sort"
           }
         },
         "source_type": {
           "target": "com.cloudflare.cloudforce_one#ListThreatSignalsFeedsRequestSourceType",
           "traits": {
+            "smithy.api#documentation": "Filter by curated or custom feed source. Omit to include both source types.",
             "smithy.api#httpQuery": "source_type"
           }
         },
         "status": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Exact stored polling-status filter, such as active or error. Omit to include every status.",
             "smithy.api#httpQuery": "status"
           }
         }
@@ -15486,6 +15674,20 @@
             "smithy.api#required": {}
           }
         },
+        "custom_feed_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The current count of custom feeds for the account.",
+            "smithy.api#required": {}
+          }
+        },
+        "custom_feed_limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The resolved custom feed limit for the account.",
+            "smithy.api#required": {}
+          }
+        },
         "feeds": {
           "target": "com.cloudflare.cloudforce_one#ListThreatSignalsFeedsResponseFeedsList",
           "traits": {
@@ -15547,6 +15749,7 @@
         "feed_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "UUID of a specific feed to poll, or \"all\" to poll all feeds. Omit or pass \"all\" for all feeds.",
             "smithy.api#httpQuery": "feed_id"
           }
         }
@@ -15672,6 +15875,7 @@
         "feed_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "UUID of the Threat Signals feed",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -15679,6 +15883,7 @@
         "format": {
           "target": "com.cloudflare.cloudforce_one#GetThreatSignalsFeedsRawRequestFormat",
           "traits": {
+            "smithy.api#documentation": "Response format. Use xml for application/xml; omit it for the default text/plain response.",
             "smithy.api#httpQuery": "format"
           }
         }
@@ -15701,7 +15906,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/raw",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieves the feed document fetched by the most recent poll.",
+        "smithy.api#documentation": "Retrieves the feed document fetched by the most recent poll as text/plain by default or application/xml when format is xml.",
         "smithy.api#readonly": {}
       }
     },
@@ -15718,6 +15923,7 @@
         "feed_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "UUID of the Threat Signals feed",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -15854,7 +16060,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieves the effective skill pipeline for a Threat Signals feed.",
+        "smithy.api#documentation": "Retrieves active non-IOC-context Managed Default Skills followed by active Custom Skills assigned to the feed, with each entry's source. Free Threat Signals accounts receive only those Managed Default Skills.",
         "smithy.api#readonly": {}
       }
     },
@@ -15877,6 +16083,7 @@
         "feed_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "UUID of the Threat Signals feed",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -15884,6 +16091,7 @@
         "skill_ids": {
           "target": "com.cloudflare.cloudforce_one#UpdateThreatSignalsFeedsSkillRequestSkillIdsList",
           "traits": {
+            "smithy.api#documentation": "Ordered array of Custom Skill UUIDs (max 20). Replaces the feed's custom skill assignments. Free accounts cannot assign custom skills. Managed default skills are unaffected.",
             "smithy.api#required": {}
           }
         }
@@ -15951,7 +16159,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/feeds/{feed_id}/skills",
           "code": 200
         },
-        "smithy.api#documentation": "Replaces the ordered custom skills assigned to a Threat Signals feed.",
+        "smithy.api#documentation": "Replaces the ordered custom skills assigned to a Threat Signals feed. Requires a paid Threat Signals subscription.",
         "smithy.api#idempotent": {}
       }
     },
@@ -15968,30 +16176,35 @@
         "article_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Article UUID filter. Omit to include indicators from every article.",
             "smithy.api#httpQuery": "article_id"
           }
         },
         "cursor": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Opaque cursor from the previous response's `pagination.cursor`. When provided, page size, ordering, and filters come from the cursor. Sending `per_page`, `sort`, `include_total`, `feed_id`, `article_id`, or `search` alongside it returns a 400 `CursorFilterConflictError`.",
             "smithy.api#httpQuery": "cursor"
           }
         },
         "feed_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Feed UUID filter. Omit to include indicators from every account feed.",
             "smithy.api#httpQuery": "feed_id"
           }
         },
         "include_total": {
           "target": "smithy.api#Boolean",
           "traits": {
+            "smithy.api#documentation": "When true on the first page, count matching indicators and return an exact total. Defaults to false; cursor pages do not recalculate totals.",
             "smithy.api#httpQuery": "include_total"
           }
         },
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "Number of indicators per cursor page, from 1 to 100. Defaults to 20.",
             "smithy.api#httpQuery": "per_page"
           }
         },
@@ -16005,6 +16218,7 @@
         "sort": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Sort by id. Use id for ascending or -id for descending order; defaults to id.",
             "smithy.api#httpQuery": "sort"
           }
         }
@@ -16173,6 +16387,7 @@
         "query": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Keyword and semantic article-search text, from 1 to 1000 characters.",
             "smithy.api#httpQuery": "query",
             "smithy.api#required": {}
           }
@@ -16180,12 +16395,14 @@
         "feed_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Optional feed UUID that restricts results to articles from that feed.",
             "smithy.api#httpQuery": "feed_id"
           }
         },
         "max_results": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Maximum search matches to request, an integer from 1 to 50. Defaults to 20 when omitted or empty; multiple matches from one article can produce fewer returned articles.",
             "smithy.api#httpQuery": "max_results"
           }
         }
@@ -16311,25 +16528,28 @@
         "name": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Custom Skill name (1–100 characters).",
             "smithy.api#required": {}
           }
         },
         "output_schema": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "JSON Schema serialized as a string (max 4096 characters).",
             "smithy.api#required": {}
           }
         },
         "prompt": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "AI prompt (1–4000 characters) defining the skill's instructions.",
             "smithy.api#required": {}
           }
         },
         "type": {
           "target": "com.cloudflare.cloudforce_one#CreateThreatSignalsSkillRequestType",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#documentation": "Optional label; does not affect execution. Defaults to \"summary\"."
           }
         }
       },
@@ -16441,7 +16661,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/skills",
           "code": 200
         },
-        "smithy.api#documentation": "Creates a custom AI skill for the account."
+        "smithy.api#documentation": "Creates a Custom Skill for the account. Free Threat Signals accounts cannot create Custom Skills."
       }
     },
     "com.cloudflare.cloudforce_one#DeleteThreatSignalsSkillRequest": {
@@ -16457,6 +16677,7 @@
         "skill_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Custom Skill UUID or a Managed Default Skill ID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -16570,7 +16791,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Deletes a custom skill. Default skills cannot be deleted.",
+        "smithy.api#documentation": "Deletes a Custom Skill. The skill's stored outputs on articles are deleted with it. Managed Default Skills cannot be deleted. Free Threat Signals accounts cannot delete Custom Skills.",
         "smithy.api#idempotent": {}
       }
     },
@@ -16587,24 +16808,40 @@
         "skill_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Custom Skill UUID or a Managed Default Skill ID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
         },
         "config": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional skill configuration (stored but not currently interpreted)."
+          }
         },
         "is_active": {
-          "target": "smithy.api#Boolean"
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the skill is active and eligible for feed assignment."
+          }
         },
         "name": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom Skill name (1–100 characters)."
+          }
         },
         "output_schema": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "JSON Schema serialized as a string (max 4096 characters)."
+          }
         },
         "prompt": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "AI prompt (1–4000 characters) defining the skill's instructions."
+          }
         }
       },
       "traits": {
@@ -16715,7 +16952,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Updates a custom skill. Default skills are read-only."
+        "smithy.api#documentation": "Updates a Custom Skill. Managed Default Skills cannot be updated. Free Threat Signals accounts cannot update Custom Skills."
       }
     },
     "com.cloudflare.cloudforce_one#GetThreatSignalsSkillRequest": {
@@ -16731,6 +16968,7 @@
         "skill_id": {
           "target": "smithy.api#String",
           "traits": {
+            "smithy.api#documentation": "Custom Skill UUID or a Managed Default Skill ID",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -16844,7 +17082,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieves a default or custom skill by ID.",
+        "smithy.api#documentation": "Retrieves a Managed Default Skill or Custom Skill. Managed catalog definitions are readable. Free Threat Signals accounts cannot read Custom Skills.",
         "smithy.api#readonly": {}
       }
     },
@@ -16861,12 +17099,14 @@
         "page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "Page number (≥ 1, default 1).",
             "smithy.api#httpQuery": "page"
           }
         },
         "per_page": {
           "target": "smithy.api#Double",
           "traits": {
+            "smithy.api#documentation": "Results per page (1–100, default 20).",
             "smithy.api#httpQuery": "per_page"
           }
         }
@@ -16980,7 +17220,7 @@
         "custom_skills_available": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Whether the authenticated account may access custom-skill capabilities under Stakeout's Threat Signals access-mode policy. This is a policy availability indicator, not a row-existence indicator. False for threat_signals_only mode; true for entitled, allowlisted, cfone_internal, and service modes.",
+            "smithy.api#documentation": "Whether Custom Skills are available to the account. False for Free Threat Signals accounts, which receive managed default skills only.",
             "smithy.api#required": {}
           }
         },
@@ -17028,7 +17268,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/skills",
           "code": 200
         },
-        "smithy.api#documentation": "Lists the default and custom skills available to the account.",
+        "smithy.api#documentation": "Lists active Managed Default Skills and Custom Skills. Free Threat Signals accounts see active managed defaults only, with custom_skills_available: false.",
         "smithy.api#readonly": {}
       }
     },
@@ -17056,6 +17296,7 @@
         "skill_id": {
           "target": "com.cloudflare.cloudforce_one#GetThreatSignalsSkillsTagCategoryRequestSkillId",
           "traits": {
+            "smithy.api#documentation": "Must be default-tagging-skill; configures the managed default tagging skill",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -17117,7 +17358,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieves the tag categories the default tagging skill may choose tags from.",
+        "smithy.api#documentation": "Retrieves the Tag Categories the managed default tagging skill may select tags from. This configures the managed default tagging skill, not Custom Skills.",
         "smithy.api#readonly": {}
       }
     },
@@ -17151,6 +17392,7 @@
         "skill_id": {
           "target": "com.cloudflare.cloudforce_one#UpdateThreatSignalsSkillsTagCategoryRequestSkillId",
           "traits": {
+            "smithy.api#documentation": "Must be default-tagging-skill; configures the managed default tagging skill",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -17158,6 +17400,7 @@
         "category_uuids": {
           "target": "com.cloudflare.cloudforce_one#UpdateThreatSignalsSkillsTagCategoryRequestCategoryUuidsList",
           "traits": {
+            "smithy.api#documentation": "Up to 100 unique tag category UUIDs that the managed default tagging skill may select tags from.",
             "smithy.api#required": {}
           }
         }
@@ -17218,7 +17461,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/v2/threat-signals/skills/{skill_id}/tag-categories",
           "code": 200
         },
-        "smithy.api#documentation": "Replaces the tag categories the default tagging skill may choose tags from.",
+        "smithy.api#documentation": "Replaces the Tag Categories the managed default tagging skill may select tags from. This configures the managed default tagging skill, not Custom Skills.",
         "smithy.api#idempotent": {}
       }
     },
@@ -20780,7 +21023,7 @@
           "uri": "/accounts/{account_id}/cloudforce-one/events",
           "code": 200
         },
-        "smithy.api#documentation": "Use `datasetId=all` or `datasetId=*` for the legacy all-datasets scope, `datasetId=analytics` for datasets with `isAnalytics=true`, or `datasetId=operational` for datasets with `isAnalytics=false` (limited to 50). Scope values must be used alone. When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
+        "smithy.api#documentation": "Use one standalone `datasetId` scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Scope values query at most 50 datasets and must be used alone. When `datasetId` is unspecified, events are listed from the default Cloudforce One Threat Events dataset. To list existing datasets, use the [`List Datasets`](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/subresources/datasets/methods/list/) endpoint.",
         "smithy.api#readonly": {}
       }
     },
@@ -20812,7 +21055,7 @@
         "datasetId": {
           "target": "com.cloudflare.cloudforce_one#ThreatEventsListRequestDatasetIdList",
           "traits": {
-            "smithy.api#documentation": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*' for the legacy all-datasets behavior, 'analytics' for isAnalytics=true datasets, or 'operational' for isAnalytics=false datasets. If not provided, uses the default dataset.",
+            "smithy.api#documentation": "Dataset UUIDs to query, or one standalone scope value: 'all'/'*' or 'operational' for readable intelligence datasets (isAnalytics=false), or 'analytics' for readable analytics datasets (isAnalytics=true). Scope values query at most 50 datasets. If not provided, uses the default dataset.",
             "smithy.api#httpQuery": "datasetId"
           }
         },
