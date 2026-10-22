@@ -206,7 +206,10 @@ export const imageHtml = (
           return {
             label: k,
             value: h,
-            sub: `${arrow} ${sign}${m.format(Math.abs(d))} (${sign}${Math.abs(pct).toFixed(1)}%)`,
+            sub:
+              d === 0
+                ? "= same"
+                : `${arrow} ${sign}${m.format(Math.abs(d))} ${sign}${Math.abs(pct).toFixed(1)}%`,
             color: noise ? "var(--line-2)" : d > 0 ? "var(--rose)" : "var(--teal)",
           };
         })
@@ -217,7 +220,7 @@ export const imageHtml = (
           ? `per program · ${changed} changed vs main`
           : "per program · none changed vs main";
       return `<section class="panel chart-panel">
-      <div class="chart-head"><h3>${m.label} <span class="muted">· ${note}</span></h3><div class="how">Bar = this PR. Next to it: change vs main (≈ within noise, ▲ bigger, ▼ smaller).</div></div>
+      <div class="chart-head"><h3>${m.label} <span class="muted">· ${note}</span></h3><div class="how">Bar = this PR. Next to it: change vs main (= same, ≈ within noise, ▲ bigger, ▼ smaller).</div></div>
       <div class="chart bars">${
         // barChart colours the label with the bar; unchanged names keep the normal text colour.
         barChart(rows, { format: m.format }).replaceAll(
@@ -237,6 +240,10 @@ export const imageHtml = (
   return `<!doctype html><html data-theme="light"><head><meta charset="utf-8"><style>${css}
 html,body{width:${WIDTH}px;overflow:hidden}
 header{position:static}
+/* The font Ubuntu runners have, so a local render matches CI. */
+:root{--mono:"DejaVu Sans Mono",monospace}
+/* barChart sizes its columns for ~7.3 px per character; DejaVu is wider at 12px. */
+.charts .chart.bars text{font-size:10.5px}
 .charts{grid-template-columns:1fr 1fr}
 .latest{grid-template-columns:230px 1fr}
 .card .vs{flex-direction:column;align-items:flex-start;gap:3px}
