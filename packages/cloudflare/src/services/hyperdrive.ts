@@ -31,6 +31,15 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
   staleWhileRevalidate: "stale_while_revalidate",
 };
 
+export class HyperdriveConfigAlreadyExists
+  extends /*@__PURE__*/ T.applyErrorMatchers(
+    /*@__PURE__*/ S.TaggedError<HyperdriveConfigAlreadyExists>()("HyperdriveConfigAlreadyExists", {
+      code: S.Number,
+      message: S.String,
+    }),
+    [{ code: 2017 }],
+  ) {}
+
 export class HyperdriveConfigNotFound
   extends /*@__PURE__*/ T.applyErrorMatchers(
     /*@__PURE__*/ S.TaggedError<HyperdriveConfigNotFound>()("HyperdriveConfigNotFound", {
@@ -868,6 +877,7 @@ export type CreateConfigError =
   | PrivateHostNotAllowed
   | InvalidHyperdriveConfig
   | InvalidObjectIdentifier
+  | HyperdriveConfigAlreadyExists
   | HyperdriveOriginUnavailable
   | CloudflareOpError;
 /** Creates and returns a new Hyperdrive configuration. For a PlanetScale integration, the Cloudflare account must already be linked to PlanetScale in the Hyperdrive dashboard. */
@@ -883,6 +893,7 @@ export const createConfig: API.OperationMethod<
     PrivateHostNotAllowed,
     InvalidHyperdriveConfig,
     InvalidObjectIdentifier,
+    HyperdriveConfigAlreadyExists,
     HyperdriveOriginUnavailable,
     CloudflareRateLimited,
     CloudflareError,
@@ -963,7 +974,13 @@ export const listConfigs: API.PaginatedOperationMethod<
     ],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
-    pagination: { mode: "single", items: "result" } as const,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
   }),
   cloudflarePaginate,
 ) as any;
