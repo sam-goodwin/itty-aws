@@ -27,13 +27,8 @@ const DEFAULT_PROFILE = "default";
 export const getProfileName = (profile?: string): string =>
   profile || env(ENV_PROFILE) || DEFAULT_PROFILE;
 
-/**
- * A shared file that exists but cannot be read stops the chain: the AWS CLI
- * fails on it too, and falling through would hide the broken file behind
- * some other source's credentials.
- */
 const sourceError = (error: SharedConfigError) =>
-  new CredentialSourceError({ message: error.message, tryNextLink: false, cause: error });
+  new CredentialSourceError({ message: error.message, cause: error });
 
 export const loadProfiles = (): Effect.Effect<Profiles, CredentialSourceError> =>
   Effect.mapError(parseKnownFiles as Effect.Effect<Profiles, SharedConfigError>, sourceError);

@@ -276,6 +276,14 @@ describe("chain", () => {
 });
 
 describe("fromIni", () => {
+  test("a config file that cannot be parsed fails with the parse error as the cause", async () => {
+    writeConfig("[profile __proto__]\nregion = us-east-1\n");
+    const error = await runFail(iniSource());
+    expect(error.message).toContain('invalid profile name "profile __proto__"');
+    expect((error.cause as { _tag?: string })._tag).toBe("Alchemy::AWS::SharedConfigError");
+    expect(error.tryNextLink).toBeUndefined();
+  });
+
   test("static credentials from the credentials file", async () => {
     writeCredentials(`
 [default]
@@ -658,13 +666,13 @@ aws_secret_access_key = secret-file
     );
   });
 
-  test("a config file that cannot be parsed stops the chain", async () => {
+  test("a config file that cannot be parsed still falls through to the next source", async () => {
     writeConfig("[profile __proto__]\nregion = us-east-1\n");
     process.env.AWS_CONTAINER_CREDENTIALS_RELATIVE_URI = "/creds";
     const http = fakeHttp(() => imdsCreds("AKIA-ecs"));
-    const error = await runFail(nodeProviderChainSource().pipe(Effect.provide(http)));
-    expect(error.tryNextLink).toBe(false);
-    expect(error.message).toContain('invalid profile name "profile __proto__"');
+    expect((await run(nodeProviderChainSource().pipe(Effect.provide(http)))).accessKeyId).toBe(
+      "AKIA-ecs",
+    );
   });
 
   test("with IMDS disabled and nothing else, fails with the final message", async () => {
