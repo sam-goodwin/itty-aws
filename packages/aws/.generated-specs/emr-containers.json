@@ -1982,6 +1982,9 @@
         },
         {
           "target": "aws.patched#TooManyRequestsException"
+        },
+        {
+          "target": "aws.synthetic#EksClusterConnectionUpdating"
         }
       ],
       "traits": {
@@ -5527,6 +5530,22 @@
       "type": "structure",
       "members": {},
       "traits": {}
+    },
+    "aws.synthetic#EksClusterConnectionUpdating": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "com.amazonaws.emrcontainers#String1024"
+        }
+      },
+      "traits": {
+        "aws.codegen#synthetic": {
+          "from": "ValidationException",
+          "message": {
+            "includes": "connection is currently being updated"
+          }
+        }
+      }
     },
     "aws.synthetic#InvalidResourceArn": {
       "type": "structure",
