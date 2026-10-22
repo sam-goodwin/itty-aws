@@ -1969,7 +1969,7 @@
         "language": {
           "target": "com.cloudflare.realtime_kit#MeetingsCreateRequestAiConfigTranscriptionLanguage",
           "traits": {
-            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results."
+            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription."
           }
         },
         "profanity_filter": {
@@ -2896,7 +2896,7 @@
         "language": {
           "target": "com.cloudflare.realtime_kit#MeetingsCreateResponseDataAiConfigTranscriptionLanguage",
           "traits": {
-            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results."
+            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription."
           }
         },
         "profanity_filter": {
@@ -4878,7 +4878,7 @@
         "language": {
           "target": "com.cloudflare.realtime_kit#MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage",
           "traits": {
-            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results."
+            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription."
           }
         },
         "profanity_filter": {
@@ -6053,7 +6053,7 @@
         "language": {
           "target": "com.cloudflare.realtime_kit#MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage",
           "traits": {
-            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results."
+            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription."
           }
         },
         "profanity_filter": {
@@ -6980,7 +6980,7 @@
         "language": {
           "target": "com.cloudflare.realtime_kit#MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage",
           "traits": {
-            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results."
+            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription."
           }
         },
         "profanity_filter": {
@@ -8010,7 +8010,7 @@
         "language": {
           "target": "com.cloudflare.realtime_kit#MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage",
           "traits": {
-            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results."
+            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription."
           }
         },
         "profanity_filter": {
@@ -8954,7 +8954,7 @@
         "language": {
           "target": "com.cloudflare.realtime_kit#MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage",
           "traits": {
-            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results."
+            "smithy.api#documentation": "Specifies the language code for transcription to ensure accurate results. If omitted, the language is auto-detected for post-meeting (Whisper) transcription."
           }
         },
         "profanity_filter": {

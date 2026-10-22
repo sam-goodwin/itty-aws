@@ -99919,7 +99919,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "The input parameters for the model invocation. Fields vary by model type.\n\nFor **image generation** models (e.g., `fal-ai/flux/schnell`, `fal-ai/fast-sdxl`), use `prompt` along with optional image parameters like `output_format`, `num_inference_steps`, `guidance_scale`, `num_images`, and `enable_safety_checker`.\n\nFor **audio generation** models (e.g., `fal-ai/stable-audio-25/text-to-audio`), use `prompt` along with `seconds_total` to control the duration.\n\nFor **text-to-speech** models (e.g., `fal-ai/elevenlabs/tts/multilingual-v2`), use `text` with the content you want converted to speech.\n"
+        "smithy.api#documentation": "The input parameters for the model invocation. Fields vary by model type.\n\nFor **image generation** models (e.g., `fal-ai/flux/schnell`, `fal-ai/fast-sdxl`), use `prompt` along with optional image parameters like `output_format`, `num_inference_steps`, `guidance_scale`, `num_images`, and `enable_safety_checker`.\n\nFor **audio generation** models (e.g., `fal-ai/stable-audio-25/text-to-audio`), use `prompt` along with `seconds_total` to control the duration.\n\nFor **text-to-speech** models (e.g., `fal-ai/elevenlabs/tts/multilingual-v2`), use `text` with the content you want converted to speech.\n",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.digitalocean.api#InferenceCreateAsyncInvokeRequestTagsItem": {

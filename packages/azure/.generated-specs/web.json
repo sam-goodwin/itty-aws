@@ -618,7 +618,7 @@
         "target": "com.azure.web#CreateStaticSiteZipDeploymentForStaticSiteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#CreateStaticSiteZipDeploymentForStaticSiteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -629,6 +629,28 @@
         },
         "smithy.api#documentation": "Deploys zipped content to a static site.\n\nDescription for Deploys zipped content to a static site.",
         "com.distilled.openapi#apiVersion": "2025-05-01"
+      }
+    },
+    "com.azure.web#CreateStaticSiteZipDeploymentForStaticSiteResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#CreateStaticSiteZipDeploymentForStaticSiteRequest": {
@@ -828,6 +850,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -1841,6 +1870,13 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
         }
       },
       "traits": {
@@ -2651,7 +2687,7 @@
         "target": "com.azure.web#ValidateStaticSiteBackendRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#ValidateStaticSiteBackendResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2662,6 +2698,28 @@
         },
         "smithy.api#documentation": "Validates that a backend can be linked to a static site\n\nValidates that a backend can be linked to a static site",
         "com.distilled.openapi#apiVersion": "2025-05-01"
+      }
+    },
+    "com.azure.web#ValidateStaticSiteBackendResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#ValidateStaticSiteBackendRequest": {
@@ -2858,6 +2916,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -3342,7 +3407,7 @@
         "target": "com.azure.web#DetachStaticSiteStaticSiteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#DetachStaticSiteStaticSiteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3353,6 +3418,28 @@
         },
         "smithy.api#documentation": "Detaches a static site.\n\nDescription for Detaches a static site.",
         "com.distilled.openapi#apiVersion": "2025-05-01"
+      }
+    },
+    "com.azure.web#DetachStaticSiteStaticSiteResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#DetachStaticSiteStaticSiteRequest": {
@@ -4001,7 +4088,7 @@
         "target": "com.azure.web#ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4012,6 +4099,28 @@
         },
         "smithy.api#documentation": "Validates a particular custom domain can be added to a static site.\n\nDescription for Validates a particular custom domain can be added to a static site.",
         "com.distilled.openapi#apiVersion": "2025-05-01"
+      }
+    },
+    "com.azure.web#ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#ValidateStaticSiteCustomDomainCanBeAddedToStaticSiteRequest": {
@@ -4086,7 +4195,7 @@
         "target": "com.azure.web#DeleteStaticSiteStaticSiteCustomDomainRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#DeleteStaticSiteStaticSiteCustomDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4097,6 +4206,28 @@
         },
         "smithy.api#documentation": "Deletes a custom domain.\n\nDescription for Deletes a custom domain.",
         "com.distilled.openapi#apiVersion": "2025-05-01"
+      }
+    },
+    "com.azure.web#DeleteStaticSiteStaticSiteCustomDomainResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#DeleteStaticSiteStaticSiteCustomDomainRequest": {
@@ -4195,6 +4326,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -4982,7 +5120,7 @@
         "target": "com.azure.web#CreateStaticSiteZipDeploymentForStaticSiteBuildRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#CreateStaticSiteZipDeploymentForStaticSiteBuildResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4993,6 +5131,28 @@
         },
         "smithy.api#documentation": "Deploys zipped content to a specific environment of a static site.\n\nDescription for Deploys zipped content to a specific environment of a static site.",
         "com.distilled.openapi#apiVersion": "2025-05-01"
+      }
+    },
+    "com.azure.web#CreateStaticSiteZipDeploymentForStaticSiteBuildResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#CreateStaticSiteZipDeploymentForStaticSiteBuildRequest": {
@@ -5170,6 +5330,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -5697,7 +5864,7 @@
         "target": "com.azure.web#ValidateStaticSiteBackendForBuildRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#ValidateStaticSiteBackendForBuildResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5708,6 +5875,28 @@
         },
         "smithy.api#documentation": "Validates that a backend can be linked to a static site build\n\nValidates that a backend can be linked to a static site build",
         "com.distilled.openapi#apiVersion": "2025-05-01"
+      }
+    },
+    "com.azure.web#ValidateStaticSiteBackendForBuildResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#ValidateStaticSiteBackendForBuildRequest": {
@@ -5900,6 +6089,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -7056,7 +7252,7 @@
         "target": "com.azure.web#DeleteStaticSiteStaticSiteBuildRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#DeleteStaticSiteStaticSiteBuildResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7067,6 +7263,28 @@
         },
         "smithy.api#documentation": "Deletes a static site build.\n\nDescription for Deletes a static site build.",
         "com.distilled.openapi#apiVersion": "2025-05-01"
+      }
+    },
+    "com.azure.web#DeleteStaticSiteStaticSiteBuildResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#DeleteStaticSiteStaticSiteBuildRequest": {
@@ -8440,7 +8658,7 @@
         "target": "com.azure.web#DeleteStaticSiteStaticSiteRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#DeleteStaticSiteStaticSiteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8451,6 +8669,28 @@
         },
         "smithy.api#documentation": "Deletes a static site.\n\nDescription for Deletes a static site.",
         "com.distilled.openapi#apiVersion": "2025-05-01"
+      }
+    },
+    "com.azure.web#DeleteStaticSiteStaticSiteResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#DeleteStaticSiteStaticSiteRequest": {
@@ -9617,6 +9857,13 @@
           "target": "com.azure.web#ManagedServiceIdentity",
           "traits": {
             "smithy.api#documentation": "Managed service identity."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -13561,6 +13808,20 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -13896,7 +14157,7 @@
         "target": "com.azure.web#SwapWebAppSlotWithProductionRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#SwapWebAppSlotWithProductionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13907,6 +14168,28 @@
         },
         "smithy.api#documentation": "Swaps two deployment slots of an app.\n\nDescription for Swaps two deployment slots of an app.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#SwapWebAppSlotWithProductionResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#SwapWebAppSlotWithProductionRequest": {
@@ -16560,6 +16843,20 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -16845,7 +17142,7 @@
         "target": "com.azure.web#SwapWebAppSlotSlotRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#SwapWebAppSlotSlotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16856,6 +17153,28 @@
         },
         "smithy.api#documentation": "Swaps two deployment slots of an app.\n\nDescription for Swaps two deployment slots of an app.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#SwapWebAppSlotSlotResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#SwapWebAppSlotSlotRequest": {
@@ -17108,6 +17427,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -18293,7 +18626,7 @@
         "target": "com.azure.web#RestoreWebAppSnapshotSlotRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#RestoreWebAppSnapshotSlotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18304,6 +18637,28 @@
         },
         "smithy.api#documentation": "Restores a web app from a snapshot.\n\nDescription for Restores a web app from a snapshot.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#RestoreWebAppSnapshotSlotResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#RestoreWebAppSnapshotSlotRequest": {
@@ -18429,7 +18784,7 @@
         "target": "com.azure.web#RestoreWebAppFromDeletedAppSlotRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#RestoreWebAppFromDeletedAppSlotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18440,6 +18795,28 @@
         },
         "smithy.api#documentation": "Restores a deleted web app to this web app.\n\nDescription for Restores a deleted web app to this web app.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#RestoreWebAppFromDeletedAppSlotResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#RestoreWebAppFromDeletedAppSlotRequest": {
@@ -18532,7 +18909,7 @@
         "target": "com.azure.web#RestoreWebAppFromBackupBlobSlotRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#RestoreWebAppFromBackupBlobSlotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18543,6 +18920,28 @@
         },
         "smithy.api#documentation": "Restores an app from a backup blob in Azure Storage.\n\nDescription for Restores an app from a backup blob in Azure Storage.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#RestoreWebAppFromBackupBlobSlotResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#RestoreWebAppFromBackupBlobSlotRequest": {
@@ -21200,6 +21599,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -25900,6 +26306,20 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -29407,6 +29827,20 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -29968,6 +30402,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -34136,6 +34584,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -38619,6 +39074,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -45101,7 +45563,7 @@
         "target": "com.azure.web#RestoreWebAppSlotRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#RestoreWebAppSlotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -45112,6 +45574,28 @@
         },
         "smithy.api#documentation": "Restores a specific backup to another app (or deployment slot, if specified).\n\nDescription for Restores a specific backup to another app (or deployment slot, if specified).",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#RestoreWebAppSlotResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#RestoreWebAppSlotRequest": {
@@ -47995,6 +48479,13 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind."
           }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
         }
       },
       "traits": {
@@ -48797,6 +49288,20 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -49337,7 +49842,7 @@
         "target": "com.azure.web#RestoreWebAppSnapshotRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#RestoreWebAppSnapshotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -49348,6 +49853,28 @@
         },
         "smithy.api#documentation": "Restores a web app from a snapshot.\n\nDescription for Restores a web app from a snapshot.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#RestoreWebAppSnapshotResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#RestoreWebAppSnapshotRequest": {
@@ -49400,7 +49927,7 @@
         "target": "com.azure.web#RestoreWebAppFromDeletedAppRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#RestoreWebAppFromDeletedAppResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -49411,6 +49938,28 @@
         },
         "smithy.api#documentation": "Restores a deleted web app to this web app.\n\nDescription for Restores a deleted web app to this web app.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#RestoreWebAppFromDeletedAppResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#RestoreWebAppFromDeletedAppRequest": {
@@ -49463,7 +50012,7 @@
         "target": "com.azure.web#RestoreWebAppFromBackupBlobRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#RestoreWebAppFromBackupBlobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -49474,6 +50023,28 @@
         },
         "smithy.api#documentation": "Restores an app from a backup blob in Azure Storage.\n\nDescription for Restores an app from a backup blob in Azure Storage.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#RestoreWebAppFromBackupBlobResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#RestoreWebAppFromBackupBlobRequest": {
@@ -51716,6 +52287,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -54699,7 +55277,7 @@
         "target": "com.azure.web#MigrateWebAppMySqlRequest"
       },
       "output": {
-        "target": "com.azure.web#Operation"
+        "target": "com.azure.web#MigrateWebAppMySqlResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -54712,7 +55290,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-15"
       }
     },
-    "com.azure.web#Operation": {
+    "com.azure.web#MigrateWebAppMySqlResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -54762,10 +55340,18 @@
           "traits": {
             "smithy.api#documentation": "Applicable only for stamp operation ids."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
         }
       },
       "traits": {
-        "smithy.api#documentation": "An operation on a resource."
+        "smithy.api#documentation": "An operation on a resource.",
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#OperationErrorsList": {
@@ -54914,6 +55500,13 @@
           "target": "com.azure.web#StorageMigrationResponseProperties",
           "traits": {
             "smithy.api#documentation": "StorageMigrationResponse resource specific properties"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -56000,6 +56593,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -58553,7 +59160,7 @@
         "target": "com.azure.web#TriggerRunWorkflowRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#TriggerRunWorkflowResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -58564,6 +59171,28 @@
         },
         "smithy.api#documentation": "Runs a workflow trigger.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#TriggerRunWorkflowResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#TriggerRunWorkflowRequest": {
@@ -58779,7 +59408,7 @@
         "target": "com.azure.web#WorkflowTriggerHistoriesResubmitRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#WorkflowTriggerHistoriesResubmitResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -58790,6 +59419,28 @@
         },
         "smithy.api#documentation": "Resubmits a workflow run based on the trigger history.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#WorkflowTriggerHistoriesResubmitResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#WorkflowTriggerHistoriesResubmitRequest": {
@@ -63658,6 +64309,20 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -64153,6 +64818,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -66252,6 +66931,13 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource."
           }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
         }
       },
       "traits": {
@@ -67925,6 +68611,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -71160,7 +71853,7 @@
         "target": "com.azure.web#RestoreWebAppRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#RestoreWebAppResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -71171,6 +71864,28 @@
         },
         "smithy.api#documentation": "Restores a specific backup to another app (or deployment slot, if specified).\n\nDescription for Restores a specific backup to another app (or deployment slot, if specified).",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#RestoreWebAppResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#RestoreWebAppRequest": {
@@ -72118,6 +72833,13 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind."
           }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
         }
       },
       "traits": {
@@ -72416,6 +73138,62 @@
         },
         "smithy.api#documentation": "Recycles a managed instance worker machine.\n\nDescription for Recycles a managed instance worker machine.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#Operation": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Operation ID."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Operation name."
+          }
+        },
+        "status": {
+          "target": "com.azure.web#OperationStatus",
+          "traits": {
+            "smithy.api#documentation": "The current status of the operation."
+          }
+        },
+        "errors": {
+          "target": "com.azure.web#OperationErrorsList",
+          "traits": {
+            "smithy.api#documentation": "Any errors associate with the operation."
+          }
+        },
+        "createdTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time when operation has started."
+          }
+        },
+        "modifiedTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time when operation has been updated."
+          }
+        },
+        "expirationTime": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Time when operation will expire."
+          }
+        },
+        "geoMasterOperationId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Applicable only for stamp operation ids."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "An operation on a resource."
       }
     },
     "com.azure.web#AppServicePlansRecycleManagedInstanceWorkerRequest": {
@@ -75578,6 +76356,13 @@
           "traits": {
             "smithy.api#documentation": "Managed service identity."
           }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
         }
       },
       "traits": {
@@ -76203,7 +76988,7 @@
         "target": "com.azure.web#DeleteKubeEnvironmentRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#DeleteKubeEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -76214,6 +76999,28 @@
         },
         "smithy.api#documentation": "Delete a Kubernetes Environment.\n\nDescription for Delete a Kubernetes Environment.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#DeleteKubeEnvironmentResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#DeleteKubeEnvironmentRequest": {
@@ -76773,6 +77580,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -78054,6 +78875,13 @@
           "traits": {
             "smithy.api#documentation": "Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind."
           }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
         }
       },
       "traits": {
@@ -78422,7 +79250,7 @@
         "target": "com.azure.web#AppServiceEnvironmentsUpgradeRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#AppServiceEnvironmentsUpgradeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -78433,6 +79261,28 @@
         },
         "smithy.api#documentation": "Initiate an upgrade of an App Service Environment if one is available.\n\nDescription for Initiate an upgrade of an App Service Environment if one is available.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#AppServiceEnvironmentsUpgradeResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#AppServiceEnvironmentsUpgradeRequest": {
@@ -78524,7 +79374,7 @@
         "target": "com.azure.web#SuspendAppServiceEnvironmentRequest"
       },
       "output": {
-        "target": "com.azure.web#WebAppCollection"
+        "target": "com.azure.web#SuspendAppServiceEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -78535,6 +79385,35 @@
         },
         "smithy.api#documentation": "Suspend an App Service Environment.\n\nDescription for Suspend an App Service Environment.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#SuspendAppServiceEnvironmentResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.web#WebAppCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "The Site items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of App Service apps.",
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#SuspendAppServiceEnvironmentRequest": {
@@ -78684,7 +79563,7 @@
         "target": "com.azure.web#ResumeAppServiceEnvironmentRequest"
       },
       "output": {
-        "target": "com.azure.web#WebAppCollection"
+        "target": "com.azure.web#ResumeAppServiceEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -78695,6 +79574,35 @@
         },
         "smithy.api#documentation": "Resume an App Service Environment.\n\nDescription for Resume an App Service Environment.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#ResumeAppServiceEnvironmentResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.web#WebAppCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "The Site items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of App Service apps.",
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#ResumeAppServiceEnvironmentRequest": {
@@ -79393,6 +80301,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -80243,6 +81158,13 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
           }
         }
       },
@@ -81513,7 +82435,7 @@
         "target": "com.azure.web#AppServiceEnvironmentsChangeVnetRequest"
       },
       "output": {
-        "target": "com.azure.web#WebAppCollection"
+        "target": "com.azure.web#AppServiceEnvironmentsChangeVnetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -81524,6 +82446,35 @@
         },
         "smithy.api#documentation": "Move an App Service Environment to a different VNET.\n\nDescription for Move an App Service Environment to a different VNET.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#AppServiceEnvironmentsChangeVnetResponse": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "com.azure.web#WebAppCollectionValueList",
+          "traits": {
+            "smithy.api#documentation": "The Site items on this page",
+            "smithy.api#required": {}
+          }
+        },
+        "nextLink": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The link to the next page of items"
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#documentation": "Collection of App Service apps.",
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#AppServiceEnvironmentsChangeVnetRequest": {
@@ -81995,7 +82946,7 @@
         "target": "com.azure.web#DeleteAppServiceEnvironmentRequest"
       },
       "output": {
-        "target": "smithy.api#Unit"
+        "target": "com.azure.web#DeleteAppServiceEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -82006,6 +82957,28 @@
         },
         "smithy.api#documentation": "Delete an App Service Environment.\n\nDescription for Delete an App Service Environment.",
         "com.distilled.openapi#apiVersion": "2026-07-15"
+      }
+    },
+    "com.azure.web#DeleteAppServiceEnvironmentResponse": {
+      "type": "structure",
+      "members": {
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
       }
     },
     "com.azure.web#DeleteAppServiceEnvironmentRequest": {
@@ -82600,6 +83573,20 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind."
+          }
+        },
+        "locationHeader": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },
@@ -85232,6 +86219,20 @@
           "target": "com.azure.web#SystemData",
           "traits": {
             "smithy.api#documentation": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+          }
+        },
+        "location": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpHeader": "Location",
+            "smithy.api#documentation": "The Location header contains the URL where the status of the long running operation can be checked."
+          }
+        },
+        "retryAfter": {
+          "target": "smithy.api#Integer",
+          "traits": {
+            "smithy.api#httpHeader": "Retry-After",
+            "smithy.api#documentation": "The Retry-After header can indicate how long the client should wait before polling the operation status."
           }
         }
       },

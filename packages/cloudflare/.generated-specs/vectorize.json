@@ -300,6 +300,38 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.vectorize#IndexesGetByIdsResultItemValuesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Double"
+      }
+    },
+    "com.cloudflare.vectorize#IndexesGetByIdsResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier for a Vector"
+          }
+        },
+        "metadata": {
+          "target": "smithy.api#Document"
+        },
+        "namespace": {
+          "target": "smithy.api#String"
+        },
+        "values": {
+          "target": "com.cloudflare.vectorize#IndexesGetByIdsResultItemValuesList"
+        }
+      }
+    },
+    "com.cloudflare.vectorize#IndexesGetByIdsResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.vectorize#IndexesGetByIdsResultItem"
+      }
+    },
     "com.cloudflare.vectorize#IndexesInsertRequestUnparsableBehavior": {
       "type": "enum",
       "members": {
@@ -1240,7 +1272,7 @@
       "type": "structure",
       "members": {
         "result": {
-          "target": "smithy.api#Document",
+          "target": "com.cloudflare.vectorize#IndexesGetByIdsResultList",
           "traits": {
             "com.cloudflare.protocols#envelopePayload": {},
             "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."

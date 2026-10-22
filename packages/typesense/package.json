@@ -42,13 +42,17 @@
       "types": "./lib/index.d.ts",
       "bun": "./src/index.ts",
       "worker": "./src/index.ts",
-      "default": "./lib/index.js"
+      "module": "./lib/index.full.js",
+      "module-sync": "./lib/index.js",
+      "default": "./lib/index.full.js"
     },
     "./*": {
       "types": "./lib/services/*.d.ts",
       "bun": "./src/services/*.ts",
       "worker": "./src/services/*.ts",
-      "default": "./lib/services/*.js"
+      "module": "./lib/services.full/*.js",
+      "module-sync": "./lib/services/*.js",
+      "default": "./lib/services.full/*.js"
     },
     "./Protocol": {
       "types": "./lib/protocol.d.ts",
@@ -64,11 +68,11 @@
     }
   },
   "scripts": {
-    "build": "tsc -b",
+    "build": "tsrs -b",
     "convert": "node --conditions=bun scripts/convert.ts",
     "generate": "node --conditions=bun scripts/generate.ts",
-    "typecheck": "tsc -p tsconfig.json",
-    "typecheck:strict": "tsc -p tsconfig.strict.json",
+    "typecheck": "tsrs -p tsconfig.json",
+    "typecheck:strict": "tsrs -p tsconfig.strict.json",
     "specs:fetch": "git submodule update --force --init --depth=1 specs/spec-mirror-typesense",
     "specs:update": "git submodule update --remote --force --depth=1 specs/spec-mirror-typesense"
   },
@@ -83,7 +87,7 @@
     "effect": "catalog:"
   },
   "distilled": {
-    "generatedAt": "2026-10-05",
+    "generatedAt": "2026-10-09",
     "specUpdatedAt": "2026-09-11"
   }
 }

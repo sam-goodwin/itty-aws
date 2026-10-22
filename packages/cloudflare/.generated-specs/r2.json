@@ -5480,6 +5480,12 @@
           "target": "com.cloudflare.r2#UploadBucketObject"
         },
         {
+          "target": "com.cloudflare.r2#GetBucketLocalUploads"
+        },
+        {
+          "target": "com.cloudflare.r2#PutBucketLocalUploads"
+        },
+        {
           "target": "com.cloudflare.r2#DeleteObjects"
         }
       ],
@@ -8078,7 +8084,10 @@
       "type": "structure",
       "members": {
         "buckets": {
-          "target": "com.cloudflare.r2#BucketsListResponseBucketsList"
+          "target": "com.cloudflare.r2#BucketsListResponseBucketsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
         }
       },
       "traits": {
@@ -9446,6 +9455,144 @@
       "traits": {
         "smithy.api#output": {},
         "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.r2#GetBucketLocalUploadsRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID that owns the R2 resource.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "bucket_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.r2#GetBucketLocalUploadsResponse": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Local Uploads is enabled for the bucket.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.r2#GetBucketLocalUploads": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.r2#GetBucketLocalUploadsRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.r2#GetBucketLocalUploadsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.cloudflare.r2#NoSuchBucket"
+        },
+        {
+          "target": "com.cloudflare.r2#InvalidRoute"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the Local Uploads configuration for a bucket.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.r2#PutBucketLocalUploadsRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID that owns the R2 resource.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "bucket_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the bucket.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable (`true`) or disable (`false`) Local Uploads for the bucket.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.r2#PutBucketLocalUploadsResponse": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether Local Uploads is enabled for the bucket. The live API omits it from the PUT response (observed 2026-10-22); read it back with getBucketLocalUploads."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.r2#PutBucketLocalUploads": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.r2#PutBucketLocalUploadsRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.r2#PutBucketLocalUploadsResponse"
+      },
+      "errors": [
+        {
+          "target": "com.cloudflare.r2#NoSuchBucket"
+        },
+        {
+          "target": "com.cloudflare.r2#InvalidRoute"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/r2/buckets/{bucket_name}/local-uploads",
+          "code": 200
+        },
+        "smithy.api#documentation": "Enable or disable Local Uploads for a bucket. Upload data from clients outside the bucket's region is written near the client first, then replicated to the bucket.",
+        "smithy.api#idempotent": {}
       }
     },
     "com.cloudflare.r2#DeleteObjectsKeyList": {

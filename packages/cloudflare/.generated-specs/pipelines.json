@@ -4548,6 +4548,40 @@
         }
       }
     },
+    "com.cloudflare.pipelines#SinksListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListRequestOrderBy": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "CREATED_AT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_at"
+          }
+        }
+      }
+    },
     "com.cloudflare.pipelines#SinksListResultItemType": {
       "type": "enum",
       "members": {
@@ -7437,6 +7471,40 @@
         },
         "inferred": {
           "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListRequestOrderBy": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "CREATED_AT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_at"
+          }
         }
       }
     },
@@ -10525,11 +10593,25 @@
             "smithy.api#required": {}
           }
         },
+        "direction": {
+          "target": "com.cloudflare.pipelines#SinksListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "Sort direction.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Filters sinks by name (case-insensitive substring).",
             "smithy.api#httpQuery": "name"
+          }
+        },
+        "order_by": {
+          "target": "com.cloudflare.pipelines#SinksListRequestOrderBy",
+          "traits": {
+            "smithy.api#documentation": "Sorts sinks by this field. Defaults to `created_at`.",
+            "smithy.api#httpQuery": "order_by"
           }
         },
         "page": {
@@ -10606,11 +10688,25 @@
             "smithy.api#required": {}
           }
         },
+        "direction": {
+          "target": "com.cloudflare.pipelines#StreamsListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "Sort direction.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
         "name": {
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Filters streams by name (case-insensitive substring).",
             "smithy.api#httpQuery": "name"
+          }
+        },
+        "order_by": {
+          "target": "com.cloudflare.pipelines#StreamsListRequestOrderBy",
+          "traits": {
+            "smithy.api#documentation": "Sorts streams by this field. Defaults to `created_at`.",
+            "smithy.api#httpQuery": "order_by"
           }
         },
         "page": {

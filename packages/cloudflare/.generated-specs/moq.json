@@ -948,6 +948,7 @@
         "config": {
           "target": "com.cloudflare.moq#RelaysCreateResponseConfig",
           "traits": {
+            "smithy.api#documentation": "Relay configuration. All sub-objects use whole-object replacement when present; omitted sub-objects preserve the existing value.",
             "smithy.api#required": {}
           }
         },
@@ -1092,6 +1093,7 @@
         "config": {
           "target": "com.cloudflare.moq#RelaysGetResponseConfig",
           "traits": {
+            "smithy.api#documentation": "Relay configuration. All sub-objects use whole-object replacement when present; omitted sub-objects preserve the existing value.",
             "smithy.api#required": {}
           }
         },
@@ -1318,7 +1320,10 @@
           }
         },
         "config": {
-          "target": "com.cloudflare.moq#RelaysUpdateRequestConfig"
+          "target": "com.cloudflare.moq#RelaysUpdateRequestConfig",
+          "traits": {
+            "smithy.api#documentation": "Relay configuration. All sub-objects use whole-object replacement when present; omitted sub-objects preserve the existing value."
+          }
         },
         "name": {
           "target": "smithy.api#String"
@@ -1334,6 +1339,7 @@
         "config": {
           "target": "com.cloudflare.moq#RelaysUpdateResponseConfig",
           "traits": {
+            "smithy.api#documentation": "Relay configuration. All sub-objects use whole-object replacement when present; omitted sub-objects preserve the existing value.",
             "smithy.api#required": {}
           }
         },

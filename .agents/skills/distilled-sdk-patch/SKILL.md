@@ -160,6 +160,14 @@ marks names matching its default patterns (`password`, `api_token`,
 `packages/core/src/codegen/openapi.ts`), so check the generated type is not
 already `Redacted` before adding one.
 
+**Object is open, or should not be.** OpenAPI convert marks a structure
+with `com.distilled.openapi#additionalProperties` when the spec sets
+`additionalProperties` (`true` or a schema) next to `properties`; the
+generated interface then gains `[key: string]: unknown` and the schema an
+`unknown` rest. A spec that says so carelessly loses the marker with
+`remove …/shapes/<id>/traits/com.distilled.openapi#additionalProperties`; an
+object the wire extends but the spec closes gains it with `add` and `{}`.
+
 **One operation returns more than the shared shape promises.** Add a copy
 of the shape under a new name, change the copy, and re-point only that
 operation's member or output at it, so the other operations keep the shared
@@ -203,7 +211,7 @@ a different question — which patches the spec has absorbed — once the spec
 has moved underneath them. That is the `distilled-sdk-update` skill's job.
 
 Then check the generated TypeScript reads the way a caller needs, run
-`pnpm exec tsc -b packages/<pkg> --noCheck false`, and commit the patch
+`pnpm exec tsrs -b packages/<pkg> --noCheck false`, and commit the patch
 with the `.generated-specs/` and `src/services/` it produced, as
 `fix(<pkg>): …` naming what callers gain ("type 422s observed on the live
 API").

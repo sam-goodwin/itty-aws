@@ -2752,7 +2752,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Integration runtime status."
+        "smithy.api#documentation": "Integration runtime status.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.synapse#IntegrationRuntimeState": {
@@ -3134,7 +3135,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Monitoring data for integration runtime node."
+        "smithy.api#documentation": "Monitoring data for integration runtime node.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.synapse#ListIntegrationRuntimeMonitoringDataRequest": {
@@ -3460,7 +3462,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Connection information for encrypting the on-premises data source credentials."
+        "smithy.api#documentation": "Connection information for encrypting the on-premises data source credentials.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.synapse#GetIntegrationRuntimeConnectionInfosRequest": {
@@ -3627,7 +3630,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Azure Synapse nested object which serves as a compute resource for activities."
+        "smithy.api#documentation": "Azure Synapse nested object which serves as a compute resource for activities.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.synapse#ListIntegrationRuntimeByWorkspaceRequest": {
@@ -3920,7 +3924,8 @@
         }
       },
       "traits": {
-        "smithy.api#documentation": "Properties of Self-hosted integration runtime node."
+        "smithy.api#documentation": "Properties of Self-hosted integration runtime node.",
+        "com.distilled.openapi#additionalProperties": {}
       }
     },
     "com.azure.synapse#SelfHostedIntegrationRuntimeNodeLastUpdateResult": {

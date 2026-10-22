@@ -36853,7 +36853,7 @@
         "ip_set": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups."
+            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups."
           }
         }
       },
@@ -36932,7 +36932,7 @@
         "ip_set": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
             "smithy.api#required": {}
           }
         },
@@ -37087,7 +37087,7 @@
         "ip_set": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
             "smithy.api#required": {}
           }
         },
@@ -37295,7 +37295,7 @@
         "ip_set": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
             "smithy.api#required": {}
           }
         },
@@ -37450,7 +37450,7 @@
         "ip_set": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
             "smithy.api#required": {}
           }
         },
@@ -37607,7 +37607,7 @@
         "ip_set": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
             "smithy.api#required": {}
           }
         },
@@ -37762,7 +37762,7 @@
         "ip_set": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. The account's entitlement determines the maximum value. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
+            "smithy.api#documentation": "Selects the account-specific IP set that supplies the nameserver addresses. Nameserver sets with the same `ip_set` and `advanced` value may reuse addresses; otherwise, they use disjoint address groups.",
             "smithy.api#required": {}
           }
         },

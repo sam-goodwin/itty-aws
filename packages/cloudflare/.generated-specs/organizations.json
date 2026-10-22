@@ -892,13 +892,6 @@
             "smithy.api#required": {}
           }
         },
-        "ConsumedQuantity": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#documentation": "Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations.",
-            "smithy.api#required": {}
-          }
-        },
         "ConsumedUnit": {
           "target": "smithy.api#String",
           "traits": {
@@ -974,6 +967,12 @@
           "target": "com.cloudflare.organizations#BillingUsageGetResultItemChargeClass",
           "traits": {
             "smithy.api#documentation": "Indicates whether the row represents a correction to one or more charges invoiced in a previous billing period."
+          }
+        },
+        "ConsumedQuantity": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Measured usage amount within the charge period. Reflects raw metered consumption before pricing transformations."
           }
         },
         "ContractedCost": {
@@ -2381,7 +2380,7 @@
           "uri": "/organizations/{organization_id}/members",
           "code": 200
         },
-        "smithy.api#documentation": "Create a membership that grants access to a specific Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)"
+        "smithy.api#documentation": "Create a membership that grants access to a specific Organization."
       }
     },
     "com.cloudflare.organizations#DeleteMemberRequest": {
@@ -2421,7 +2420,7 @@
           "uri": "/organizations/{organization_id}/members/{member_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Delete a membership to a particular Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+        "smithy.api#documentation": "Delete a membership to a particular Organization.",
         "smithy.api#idempotent": {}
       }
     },
@@ -2575,7 +2574,7 @@
           "uri": "/organizations/{organization_id}/members/{member_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieve a single membership from an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+        "smithy.api#documentation": "Retrieve a single membership from an Organization.",
         "smithy.api#readonly": {}
       }
     },
@@ -2811,7 +2810,7 @@
           "uri": "/organizations/{organization_id}/members",
           "code": 200
         },
-        "smithy.api#documentation": "List memberships for an Organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+        "smithy.api#documentation": "List memberships for an Organization.",
         "smithy.api#readonly": {}
       }
     },
@@ -3103,7 +3102,7 @@
           "uri": "/organizations/{organization_id}/accounts",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieve the accounts immediately attached to a specific organization. Accounts attached to sub-organizations are not included. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+        "smithy.api#documentation": "Retrieve the accounts immediately attached to a specific organization. Accounts attached to sub-organizations are not included.",
         "smithy.api#readonly": {}
       }
     },
@@ -3215,7 +3214,7 @@
           "uri": "/organizations",
           "code": 200
         },
-        "smithy.api#documentation": "Create a new organization for a user. Sub-organization creation availability depends on the organization's capabilities. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)"
+        "smithy.api#documentation": "Create a new organization for a user. Sub-organization creation availability depends on the organization's capabilities."
       },
       "errors": [
         {
@@ -3296,7 +3295,7 @@
           "uri": "/organizations/{organization_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Delete an organization. The organization MUST be empty before deleting. It must not contain any sub-organizations, accounts, members or users. Sub-organization deletion availability depends on the organization's capabilities. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) **Access Control:** Restricted to enterprise organizations.",
+        "smithy.api#documentation": "Delete an organization. The organization MUST be empty before deleting. It must not contain any sub-organizations, accounts, members or users. Sub-organization deletion availability depends on the organization's capabilities. **Access Control:** Restricted to enterprise organizations.",
         "smithy.api#idempotent": {}
       },
       "errors": [
@@ -3352,7 +3351,7 @@
           "uri": "/organizations/{organization_id}/billable/usage",
           "code": 200
         },
-        "smithy.api#documentation": "Returns cost and usage data for all accounts within an organization, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. The response includes usage for every account belonging to the specified organization. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. An organization with no accounts, or an organization ID that does not exist, returns a successful response with an empty result set rather than an error.",
+        "smithy.api#documentation": "Returns cost and usage data for all accounts within an organization, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. The response includes usage for every account belonging to the specified organization. **Note:** This endpoint serves `usage` records only; cost and pricing fields are absent from responses. Rated costs are available per account via `POST /accounts/{account_id}/billable/usage` with `Metric: cost`. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. An organization with no accounts, or an organization ID that does not exist, returns a successful response with an empty result set rather than an error.",
         "smithy.api#readonly": {}
       }
     },
@@ -3415,7 +3414,7 @@
           "uri": "/organizations/{organization_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieve the details of a certain organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+        "smithy.api#documentation": "Retrieve the details of a certain organization.",
         "smithy.api#readonly": {}
       },
       "errors": [
@@ -3495,7 +3494,7 @@
           "uri": "/organizations/{organization_id}/profile",
           "code": 200
         },
-        "smithy.api#documentation": "Get an organizations profile if it exists. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+        "smithy.api#documentation": "Get an organizations profile if it exists.",
         "smithy.api#readonly": {}
       },
       "errors": [
@@ -3775,7 +3774,7 @@
           "uri": "/organizations",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieve a list of organizations a particular user has access to. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+        "smithy.api#documentation": "Retrieve a list of organizations a particular user has access to.",
         "smithy.api#readonly": {},
         "smithy.api#paginated": {
           "mode": "single",
@@ -3864,7 +3863,7 @@
           "uri": "/organizations/{organization_id}/profile",
           "code": 200
         },
-        "smithy.api#documentation": "Modify organization profile. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+        "smithy.api#documentation": "Modify organization profile.",
         "smithy.api#idempotent": {}
       },
       "errors": [
@@ -3935,7 +3934,7 @@
           "uri": "/organizations/{organization_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Update an organization's name. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/)",
+        "smithy.api#documentation": "Update an organization's name.",
         "smithy.api#idempotent": {}
       },
       "errors": [

@@ -107,7 +107,7 @@ the bug report you will send upstream.
 
 ```sh
 git diff --stat -- packages/<pkg>
-pnpm exec tsc -b packages/<pkg> --noCheck false   # the root typecheck:ci is heavy
+pnpm exec tsrs -b packages/<pkg> --noCheck false   # the root typecheck:ci is heavy
 pnpm lint
 ```
 
@@ -197,7 +197,7 @@ git fetch origin main "refs/pull/<n>/head:refs/remotes/pr/<n>"
 git checkout -B pr-<n> pr/<n>
 git merge --no-edit origin/main            # merge, never rebase: keep their commits
 pnpm generate <pkg>                        # resolve generated-file conflicts by regenerating
-pnpm exec tsc -b packages/<pkg> --noCheck false
+pnpm exec tsrs -b packages/<pkg> --noCheck false
 pnpm vitest run packages/<pkg>/src/<their>.test.ts
 git push https://github.com/<owner>/<repo>.git pr-<n>:<headRefName>
 ```

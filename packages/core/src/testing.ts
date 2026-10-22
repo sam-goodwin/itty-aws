@@ -1,6 +1,6 @@
 /**
  * Test helpers for SDK packages: a canned-response `HttpClient` and a runner
- * that executes one operation under both response-validation modes.
+ * that executes one operation under every response-validation mode.
  *
  * ```ts
  * const { lenient, strict } = await runValidationModes(
@@ -52,13 +52,14 @@ export const mockHttpClient = (
 
 /**
  * Run `effect` against `mockHttpClient(response)` once in lenient mode and
- * once in strict mode.
+ * once in each validating mode (`additionalProperties`, `strict`).
  */
 export const runValidationModes = <A, E>(
   effect: Effect.Effect<A, E, HttpClient.HttpClient>,
   response: Parameters<typeof mockHttpClient>[0],
 ): Promise<{
   readonly lenient: Result.Result<A, E>;
+  readonly additionalProperties: Result.Result<A, E>;
   readonly strict: Result.Result<A, E>;
 }> => {
   const run = (mode: Layer.Layer<never>) =>
@@ -66,6 +67,7 @@ export const runValidationModes = <A, E>(
   return Effect.runPromise(
     Effect.all({
       lenient: run(ResponseValidation.lenient),
+      additionalProperties: run(ResponseValidation.additionalProperties),
       strict: run(ResponseValidation.strict),
     }),
   );
