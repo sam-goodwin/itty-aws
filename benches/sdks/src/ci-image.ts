@@ -177,7 +177,7 @@ body{background-image:none}
 .rows .name{font-family:var(--mono);font-size:13px;color:var(--fg-2);text-align:right;white-space:nowrap}
 .rows .track{position:relative;height:14px}
 .rows .track i{position:absolute;left:0;top:0;bottom:0;border-radius:3px}
-.rows .track .main{background:color-mix(in oklab,var(--fg-3) 28%,transparent);border-right:2px solid var(--fg-3)}
+.rows .track .main{background:color-mix(in oklab,var(--fg-3) 22%,transparent)}
 .rows .track .pr{top:3px;bottom:3px;background:var(--line-2)}
 .rows .track .pr.bad{background:var(--rose)}
 .rows .track .pr.good{background:var(--teal)}
@@ -243,7 +243,7 @@ export const imagePages = (
     const note = !base ? "" : changed ? ` · ${changed} changed vs main` : " · none changed vs main";
     return `<section class="panel chart-panel">
   <div class="chart-head"><h3>${esc(m.label)} <span class="muted">· per program${note}</span></h3>
-  <div class="how">Grey bar with an edge = main. Bar on top = this PR (red bigger, teal smaller, grey within noise). Then the PR's ${m.id === "bundle" ? "size" : "heap"} and its change from main.</div></div>
+  <div class="how">Faint wide bar = main. Bar on top = this PR (red bigger, teal smaller, grey within noise). Then the PR's ${m.id === "bundle" ? "size" : "heap"} and its change from main.</div></div>
   <div class="rows"><span></span><span></span><span class="colhead">this PR</span><span class="colhead">vs main</span>
 ${html}</div>
 </section>`;
