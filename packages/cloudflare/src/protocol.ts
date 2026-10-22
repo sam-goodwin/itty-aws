@@ -19,6 +19,9 @@ import {
   mapsVerbatim,
   matchTypedError,
   nameOf,
+  responseHeaderMembers,
+  withResponseHeaders,
+  type ResponseHeaderMember,
 } from "@distilled.cloud/core/protocol-http";
 import {
   checkResponse,
@@ -345,16 +348,6 @@ const camelizeKeys = (v: unknown): unknown => {
   );
 };
 
-/**
- * Whether an output member's AST expects a number -- used to convert
- * header-projected values (headers arrive as strings; e.g.
- * `content-length`).
- */
-const wantsNumber = (ast: AST.AST): boolean =>
-  ast._tag === "Number" ||
-  (ast._tag === "Union" &&
-    (ast as { types?: readonly AST.AST[] }).types?.some(wantsNumber) === true);
-
 /** How one output member is read from a successful response. */
 interface MemberPlan {
   readonly key: string;
@@ -362,13 +355,12 @@ interface MemberPlan {
   /** Marked `T.ResultInfo()` (read by the paginated protocol only). */
   readonly resultInfo: boolean;
   readonly type: AST.AST;
-  /** Lower-cased header name (`header`), else the body wire name. */
+  /** The body wire name (header members are read by core's `withResponseHeaders`). */
   readonly wire: string;
   /** The service key dictionary's wire name for the member. */
   readonly dictWire: string | undefined;
   /** `mapKeys(type, value, "decode", rootDict)` returns the value unchanged. */
   readonly verbatim: boolean;
-  readonly number: boolean;
 }
 
 /** What decoding reads from an output schema, computed once per schema. */
@@ -378,6 +370,8 @@ interface OutputPlan {
   readonly rootVerbatim: boolean;
   readonly rootDict: Record<string, string> | undefined;
   readonly members: ReadonlyArray<MemberPlan>;
+  /** Members read from response headers (`T.Header`). */
+  readonly headers: ReadonlyArray<ResponseHeaderMember>;
 }
 
 const outputPlans = /*@__PURE__*/ new WeakMap<AST.AST, OutputPlan>();
@@ -401,10 +395,9 @@ const outputPlanFor = (outputAst: AST.AST): OutputPlan => {
       kind,
       resultInfo: hasPropAnn(prop, resultInfoSymbol),
       type: prop.type,
-      wire: kind === "header" ? nameOf(prop, headerSymbol).toLowerCase() : nameOf(prop, bodySymbol),
+      wire: nameOf(prop, bodySymbol),
       dictWire: rootDict?.[key],
       verbatim: rootDict === undefined && mapsVerbatim(prop.type, "decode"),
-      number: wantsNumber(prop.type),
     };
   });
   plan = {
@@ -413,6 +406,7 @@ const outputPlanFor = (outputAst: AST.AST): OutputPlan => {
     rootVerbatim: rootDict === undefined && mapsVerbatim(outputAst, "decode"),
     rootDict,
     members,
+    headers: responseHeaderMembers(outputAst),
   };
   outputPlans.set(outputAst, plan);
   return plan;
@@ -444,16 +438,17 @@ const makeProtocol = (options: { readonly resultInfo: boolean }) => {
           // Only the first binary member receives the stream.
           streamed = true;
           result[m.key] = response.stream;
-        } else if (m.kind === "header") {
-          const v = response.headers[m.wire];
-          if (v !== undefined) {
-            result[m.key] = m.number ? Number(v) : v;
-          }
         } else if (m.kind === "code") {
           result[m.key] = response.status;
         }
       }
-      return Effect.succeed(result);
+      return Effect.succeed(
+        withResponseHeaders(
+          plan.headers,
+          result,
+          response.headers as Record<string, string | undefined>,
+        ),
+      );
     }
 
     // Read as text and parse tolerantly -- Cloudflare answers some errors
@@ -619,8 +614,7 @@ const makeProtocol = (options: { readonly resultInfo: boolean }) => {
             wholePayload = true;
             result[key] = m.verbatim ? payload : mapKeys(m.type, payload, "decode", rootDict);
           } else if (m.kind === "header") {
-            const v = response.headers[m.wire];
-            if (v !== undefined) result[key] = v;
+            // Filled from the response headers below.
           } else if (m.kind === "code") {
             result[key] = response.status;
           } else {
@@ -664,7 +658,7 @@ const makeProtocol = (options: { readonly resultInfo: boolean }) => {
             );
           }
         }
-        return validate(result);
+        return validate(withResponseHeaders(plan.headers, result, headers));
       },
     });
   };
