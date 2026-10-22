@@ -160,7 +160,7 @@ export const imageHtml = (
       <div class="label">${esc(m.label)}</div>
       <div class="value">${esc(m.format(v))}</div>
       <div class="sub">median per program</div>
-      ${base ? `<div class="vs"><span>since main <code>${esc(short(base.sha))}</code></span>${deltaHtml(change(head, base, m, keys), m, true)}</div>` : `<div class="vs"><span>no main run to compare yet</span></div>`}
+      ${base ? `<div class="vs"><span>since main</span>${deltaHtml(change(head, base, m, keys), m, true)}</div>` : `<div class="vs"><span>no main run to compare yet</span></div>`}
     </div>`;
   }).join("");
 
@@ -189,38 +189,42 @@ export const imageHtml = (
   // program's size when nothing did.
   const bars = METRICS.filter((m) => m.id === "bundle" || m.id === "memory")
     .map((m) => {
-      const names = keys.filter((k) => m.read(head.programs[k]!) !== undefined);
-      const moved = names.flatMap((k) => {
-        const h = m.read(head.programs[k]!)!;
-        const b = base?.programs[k] && m.read(base.programs[k]!);
-        if (b === undefined || Math.abs(h - b) < m.noise(b)) return [];
-        const pct = ((h - b) / b) * 100;
-        return [
-          {
+      let changed = 0;
+      const rows = keys
+        .filter((k) => m.read(head.programs[k]!) !== undefined)
+        .map((k) => {
+          const h = m.read(head.programs[k]!)!;
+          const b = base?.programs[k] && m.read(base.programs[k]!);
+          if (!base) return { label: k, value: h, sub: "", color: "var(--line-2)" };
+          if (b === undefined) return { label: k, value: h, sub: "new", color: "var(--violet)" };
+          const d = h - b;
+          const pct = b ? (d / b) * 100 : 0;
+          const sign = d > 0 ? "+" : d < 0 ? "−" : "±";
+          const noise = Math.abs(d) < m.noise(b);
+          if (!noise) changed++;
+          const arrow = noise ? "≈" : d > 0 ? "▲" : "▼";
+          return {
             label: k,
-            value: Math.abs(h - b),
-            sub: `${h > b ? "+" : "−"}${Math.abs(pct).toFixed(1)}% · ${h > b ? "bigger" : "smaller"}`,
-            color: h > b ? "var(--rose)" : "var(--teal)",
-          },
-        ];
-      });
-      moved.sort((x, y) => y.value - x.value);
-      const rows = moved.length
-        ? moved
-        : names
-            .map((k) => ({
-              label: k,
-              value: m.read(head.programs[k]!)!,
-              sub: "",
-              color: undefined,
-            }))
-            .sort((x, y) => y.value - x.value);
-      const title = moved.length
-        ? `${m.label} <span class="muted">· ${moved.length} program${moved.length === 1 ? "" : "s"} changed vs main</span>`
-        : `${m.label} <span class="muted">· per program${base ? " · none changed vs main" : ""}</span>`;
+            value: h,
+            sub: `${arrow} ${sign}${m.format(Math.abs(d))} (${sign}${Math.abs(pct).toFixed(1)}%)`,
+            color: noise ? "var(--line-2)" : d > 0 ? "var(--rose)" : "var(--teal)",
+          };
+        })
+        .sort((x, y) => y.value - x.value);
+      const note = !base
+        ? "per program"
+        : changed
+          ? `per program · ${changed} changed vs main`
+          : "per program · none changed vs main";
       return `<section class="panel chart-panel">
-      <div class="chart-head"><h3>${title}</h3></div>
-      <div class="chart bars">${barChart(rows, { format: m.format })}</div>
+      <div class="chart-head"><h3>${m.label} <span class="muted">· ${note}</span></h3><div class="how">Bar = this PR. Next to it: change vs main (≈ within noise, ▲ bigger, ▼ smaller).</div></div>
+      <div class="chart bars">${
+        // barChart colours the label with the bar; unchanged names keep the normal text colour.
+        barChart(rows, { format: m.format }).replaceAll(
+          'class="bar-label" style="fill:var(--line-2)"',
+          'class="bar-label"',
+        )
+      }</div>
     </section>`;
     })
     .join("");
@@ -234,6 +238,9 @@ export const imageHtml = (
 html,body{width:${WIDTH}px;overflow:hidden}
 header{position:static}
 .charts{grid-template-columns:1fr 1fr}
+.latest{grid-template-columns:230px 1fr}
+.card .vs{flex-direction:column;align-items:flex-start;gap:3px}
+.card .vs > span:first-child{white-space:nowrap}
 .foot{font-family:var(--font-mono,ui-monospace,monospace);font-size:11px;color:var(--fg-3);padding:4px 28px 20px}
 </style></head><body>
 <header><div class="bar"><span class="brand"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"> <path d="M 6.00 6.00 L 12.60 6.00 L 12.60 3.50 L 10.10 3.50 L 10.10 1.00 L 21.90 1.00 L 21.90 3.50 L 19.40 3.50 L 19.40 6.00 L 26.00 6.00 L 26.00 12.60 L 28.50 12.60 L 28.50 10.10 L 31.00 10.10 L 31.00 21.90 L 28.50 21.90 L 28.50 19.40 L 26.00 19.40 L 26.00 26.00 L 19.40 26.00 L 19.40 28.50 L 21.90 28.50 L 21.90 31.00 L 10.10 31.00 L 10.10 28.50 L 12.60 28.50 L 12.60 26.00 L 6.00 26.00 L 6.00 19.40 L 3.50 19.40 L 3.50 21.90 L 1.00 21.90 L 1.00 10.10 L 3.50 10.10 L 3.50 12.60 L 6.00 12.60 Z" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linejoin="miter" /> <circle cx="16" cy="16" r="1.9" fill="var(--accent)" /> </svg><span class="word">Distilled</span><span class="eyebrow">benchmarks · ${esc(branch)} vs main</span></span></div></header>
@@ -243,7 +250,7 @@ header{position:static}
       <div class="eyebrow">${esc(branch)}</div>
       <div class="commit"><span class="sha">${esc(short(head.sha))}</span><span class="tag branch">${esc(branch)}</span></div>
       <div class="subject">${esc(meta.title ?? head.ref)}</div>
-      <div class="when">${keys.length} programs · ${mains.length} main run${mains.length === 1 ? "" : "s"} on the chart · offline, canned responses</div>
+      <div class="when">vs main <code>${esc(base ? short(base.sha) : "—")}</code> · ${keys.length} programs · ${mains.length} main run${mains.length === 1 ? "" : "s"} on the chart · offline, canned responses</div>
     </div>
     <div class="cards">${cards}</div>
   </section>
