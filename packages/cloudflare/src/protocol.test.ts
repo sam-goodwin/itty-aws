@@ -1,5 +1,7 @@
+import * as API from "@distilled.cloud/core/api";
 import * as Category from "@distilled.cloud/core/category";
 import * as ResponseValidation from "@distilled.cloud/core/response-validation";
+import * as S from "@distilled.cloud/core/schema-lite";
 import * as Duration from "effect/Duration";
 import * as Effect from "effect/Effect";
 import * as HttpClient from "effect/http/HttpClient";
@@ -25,7 +27,7 @@ import {
   Unauthorized,
   UnknownCloudflareError,
 } from "./errors.ts";
-import type { CloudflareOpContext } from "./protocol.ts";
+import { CloudflareProtocol, type CloudflareOpContext } from "./protocol.ts";
 import * as Retry from "./retry.ts";
 import {
   consume,
@@ -51,6 +53,7 @@ import {
   ObservabilityDestinationCreateFailed,
 } from "./services/workers.ts";
 import { getZone, InvalidZoneIdentifier } from "./services/zones.ts";
+import * as T from "./traits.ts";
 
 interface Reply {
   readonly status?: number;
@@ -256,6 +259,26 @@ describe("envelope unwrapping", () => {
     expect(result.contentType).toBe("application/octet-stream");
     const text = await Effect.runPromise(result.body.pipe(Stream.decodeText, Stream.mkString));
     expect(text).toBe("raw-bytes");
+  });
+
+  test("envelope outputs project typed headers next to the result, parsing numbers", async () => {
+    const getThing = API.make(() => ({
+      input: S.Struct({ id: S.String.pipe(T.Label()) }).pipe(
+        T.Http({ method: "GET", uri: "/things/{id}" }),
+      ),
+      output: S.Struct({
+        name: S.optional(S.String),
+        requestId: S.optional(S.String.pipe(T.Header("cf-ray"))),
+        remaining: S.optional(S.Number.pipe(T.Header("x-remaining"))),
+      }),
+      errors: [],
+      protocol: CloudflareProtocol,
+    })) as unknown as (input: { id: string }) => Effect.Effect<any, any, CloudflareOpContext>;
+    const result = await succeed(getThing({ id: "t1" }), {
+      body: envelope({ name: "thing" }),
+      headers: { "content-type": "application/json", "cf-ray": "abc-123", "x-remaining": "7" },
+    });
+    expect(result).toEqual({ name: "thing", requestId: "abc-123", remaining: 7 });
   });
 
   test("binary outputs still decode error statuses through the envelope", async () => {
