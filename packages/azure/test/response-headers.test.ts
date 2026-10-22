@@ -3,10 +3,10 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Redacted from "effect/Redacted";
 import { describe, expect, test } from "vitest";
-import { Credentials, DEFAULT_API_BASE_URL } from "./credentials.ts";
-import * as Retry from "./retry.ts";
-import { AttachedDatabaseConfigurationsCreateOrUpdate } from "./services/azure_kusto.ts";
-import { UpdateServer } from "./services/postgresql.ts";
+import { Credentials, DEFAULT_API_BASE_URL } from "../src/credentials.ts";
+import * as Retry from "../src/retry.ts";
+import { AttachedDatabaseConfigurationsCreateOrUpdate } from "../src/services/azure_kusto.ts";
+import { UpdateServer } from "../src/services/postgresql.ts";
 
 const subscriptionId = "00000000-0000-0000-0000-000000000000";
 

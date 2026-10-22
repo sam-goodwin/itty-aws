@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { convertOpenApiToSmithy } from "./openapi.ts";
+import { convertOpenApiToSmithy } from "../../src/codegen/openapi.ts";
 
 const ns = "com.example.arm";
 
