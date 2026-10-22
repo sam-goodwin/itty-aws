@@ -9,9 +9,11 @@ name: Benchmarks
 # bench: each call hits a canned in-memory response.
 #
 # Main's numbers come from the Actions cache: every push to main runs the same
-# script with `--wide` (every SDK) and saves its result under
-# `bench-ci-main-<sha>`. A PR restores the entry for its base commit, or the
-# newest main entry when that one is missing.
+# script with `--wide` (every SDK), appends it to a rolling history (the line
+# charts), and saves both under `bench-ci-main-<sha>-<run id>`. A PR restores
+# the entry for its base commit, or the newest main entry when that is missing.
+# Run the workflow by hand on main with `backfill: N` to seed the history with
+# main's last N commits.
 
 on:
   push:
@@ -19,6 +21,11 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
+    inputs:
+      backfill:
+        description: Benchmark main's last N commits into the history first (about 3 min each)
+        type: number
+        default: 0
 
 concurrency:
   group: bench-${{ github.event.pull_request.number || github.ref }}
@@ -49,14 +56,40 @@ jobs:
           install: true
           require-lockfile: true
 
+      # On main, the previous entry holds the history this run appends to.
       - name: Restore main's benchmark
         id: main-cache
-        if: github.event_name == 'pull_request'
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: .bench-ci/main.json
-          key: bench-ci-main-${{ github.event.pull_request.base.sha }}
-          restore-keys: bench-ci-main-
+          path: |
+            .bench-ci/main.json
+            .bench-ci/history.json
+          # Keys end in a run id, so the key never matches exactly: the base
+          # commit's newest entry wins, then main's newest entry.
+          key: bench-ci-main-${{ github.event.pull_request.base.sha || github.sha }}-none
+          restore-keys: |
+            bench-ci-main-${{ github.event.pull_request.base.sha || github.sha }}-
+            bench-ci-main-
+
+      - name: Backfill main's history
+        if: github.event_name == 'workflow_dispatch' && inputs.backfill > 0
+        env:
+          N: ${{ inputs.backfill }}
+        run: |
+          mkdir -p .bench-ci
+          git fetch -q --depth=$((N + 1)) origin "$GITHUB_SHA"
+          for sha in $(git rev-list --first-parent -n "$((N + 1))" "$GITHUB_SHA" | tail -n +2 | tac); do
+            dir="$RUNNER_TEMP/backfill-$sha"
+            git worktree add -q --detach "$dir" "$sha"
+            ./.github/bench-copy.sh "$dir"
+            if (cd "$dir" && pnpm install --frozen-lockfile --prefer-offline > /dev/null \
+                && BENCH_HEAD_SHA=$sha node benches/sdks/ci.ts run --wide --out "$RUNNER_TEMP/$sha.json"); then
+              node benches/sdks/ci.ts history --history .bench-ci/history.json --add "$RUNNER_TEMP/$sha.json"
+            else
+              echo "::warning::backfill of $sha failed; skipped"
+            fi
+            git worktree remove --force "$dir"
+          done
 
       - name: Benchmark
         env:
@@ -77,23 +110,25 @@ jobs:
         run: |
           base="$RUNNER_TEMP/base"
           git worktree add -q --detach "$base" HEAD^1
-          mkdir -p "$base/benches/sdks" "$base/benches/bundle"
-          cp -r benches/sdks/ci.ts benches/sdks/ci.json benches/sdks/targets.json benches/sdks/src "$base/benches/sdks/"
-          cp -r benches/bundle/src "$base/benches/bundle/"
+          ./.github/bench-copy.sh "$base"
           (cd "$base" && pnpm install --frozen-lockfile --prefer-offline > /dev/null)
           extra=$(node -p 'require("./.bench-ci/head.json").scope.changed.join(",")')
           (cd "$base" && node benches/sdks/ci.ts run --out "$GITHUB_WORKSPACE/.bench-ci/main.json" ${extra:+--extra "$extra"})
 
-      - name: Save main's benchmark
-        if: github.event_name == 'push'
-        run: cp .bench-ci/head.json .bench-ci/main.json
+      - name: Add this run to main's history
+        if: github.event_name != 'pull_request'
+        run: |
+          cp .bench-ci/head.json .bench-ci/main.json
+          node benches/sdks/ci.ts history --history .bench-ci/history.json --add .bench-ci/head.json
 
       - name: Cache main's benchmark
-        if: github.event_name == 'push'
+        if: github.event_name != 'pull_request'
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: .bench-ci/main.json
-          key: bench-ci-main-${{ github.sha }}
+          path: |
+            .bench-ci/main.json
+            .bench-ci/history.json
+          key: bench-ci-main-${{ github.sha }}-${{ github.run_id }}
 
       # Same bot as the website preview comment. Fork PRs get no secrets, so
       # they get the job summary only, with the text verdict.
@@ -117,9 +152,11 @@ jobs:
           GH_TOKEN: ${{ steps.bot-token.outputs.token }}
           PR: ${{ github.event.pull_request.number }}
           SHA: ${{ github.event.pull_request.head.sha }}
+          TITLE: ${{ github.event.pull_request.title }}
         run: |
           base=""; [ -f .bench-ci/main.json ] && base="--base .bench-ci/main.json"
-          node benches/sdks/ci.ts image --head .bench-ci/head.json $base --out .bench-ci/bench.png
+          node benches/sdks/ci.ts image --head .bench-ci/head.json $base \
+            --history .bench-ci/history.json --pr "$PR" --title "$TITLE" --out .bench-ci/bench.png
           remote="https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git"
           dir="$RUNNER_TEMP/bench-images"
           if git ls-remote --exit-code "$remote" refs/heads/bench-images > /dev/null; then

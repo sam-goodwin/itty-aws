@@ -96,9 +96,10 @@ Sizes are deterministic.
 ## CI
 
 `.github/workflows/bench.yml` runs `ci.ts` on every PR and comments the
-comparison with main: one PNG in distilled.cloud/bench's style
-(`src/ci-image.ts`, drawn with headless Chrome and committed to the orphan
-`bench-images` branch), with the numbers folded below it. It is the
+comparison with main: one PNG of the bench dashboard's cards and charts
+(`src/ci-image.ts` reuses `benches/dashboard`'s `charts.js` and `style.css`;
+drawn with headless Chrome and committed to the orphan `bench-images`
+branch), with the numbers folded below it. It is the
 same measurement, cut down to finish within the other CI jobs:
 
 - **Programs:** the panel in `ci.json` plus every SDK the PR changes.
@@ -110,9 +111,10 @@ same measurement, cut down to finish within the other CI jobs:
   SDKs, latency sampled for 400 ms (`--budget`). Each runtime probe runs 3
   times (`--repeats`): timings keep the fastest run, heap the median.
 - **Main's numbers:** each push to main runs `ci.ts run --wide` (every SDK)
-  and caches the result as `bench-ci-main-<sha>`. A PR restores its base's
-  entry or the newest one; on a miss it benchmarks the base commit in the
-  same job.
+  and caches it with a rolling history of main's runs (the line charts) as
+  `bench-ci-main-<sha>-<run id>`. A PR restores its base's entry or the
+  newest one; on a miss it benchmarks the base commit in the same job. Run
+  the workflow by hand on main with `backfill: N` to seed the history.
 
 ```sh
 node benches/sdks/ci.ts run --out /tmp/pr.json --changed-since origin/main

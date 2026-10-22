@@ -6,7 +6,8 @@
  *
  *   node benches/sdks/ci.ts run --out pr.json [--changed-since <rev>] [--extra a,b] [--wide]
  *   node benches/sdks/ci.ts report --head pr.json [--base main.json] [--image-url url] --out comment.md
- *   node benches/sdks/ci.ts image --head pr.json [--base main.json] --out bench.png
+ *   node benches/sdks/ci.ts image --head pr.json [--base main.json] [--history h.json] [--pr N] [--title t] --out bench.png
+ *   node benches/sdks/ci.ts history --history h.json --add main.json [--keep 40]
  *
  * `--wide` (push to main) bundles every SDK and probes every SDK under the
  * runtime size limit, so a PR that changes any of them has a main number to
@@ -65,7 +66,43 @@ if (command === "image") {
   const head = readJson<CiRun>(resolve(flag("head")!));
   const basePath = flag("base");
   const base = basePath && existsSync(basePath) ? readJson<CiRun>(resolve(basePath)) : undefined;
-  await renderImage(head, base, resolve(flag("out") ?? "bench.png"));
+  const historyPath = flag("history");
+  const history =
+    historyPath && existsSync(historyPath) ? readJson<CiRun[]>(resolve(historyPath)) : [];
+  await renderImage(head, base, history, resolve(flag("out") ?? "bench.png"), {
+    pr: flag("pr"),
+    title: flag("title"),
+  });
+  process.exit(0);
+}
+if (command === "history") {
+  // Main's recent runs, oldest first, for the image's line charts. Slim: only
+  // what the charts read, so the cache entry stays small.
+  const file = resolve(flag("history")!);
+  const history = existsSync(file) ? readJson<CiRun[]>(file) : [];
+  const run = readJson<CiRun>(resolve(flag("add")!));
+  const slim: CiRun = {
+    ...run,
+    sizes: {},
+    errors: [],
+    programs: Object.fromEntries(
+      Object.entries(run.programs).map(([name, p]) => [
+        name,
+        {
+          pkg: p.pkg,
+          protocol: p.protocol,
+          label: p.label,
+          ...(p.bundle ? { bundle: { ...p.bundle, composition: undefined! } } : {}),
+          ...(p.runtime ? { runtime: p.runtime } : {}),
+        },
+      ]),
+    ),
+  };
+  const next = [...history.filter((r) => r.sha !== run.sha), slim].slice(
+    -Number(flag("keep") ?? 40),
+  );
+  writeFileSync(file, `${JSON.stringify(next)}\n`);
+  log(`history: ${next.length} main run(s) in ${file}`);
   process.exit(0);
 }
 if (command !== "run") {
