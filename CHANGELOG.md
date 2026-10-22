@@ -1,3 +1,71 @@
+## v1.0.0-rc.16
+
+### &nbsp;&nbsp;&nbsp;🚨 Breaking Changes
+
+- Cut SDK bundle size, import memory and call latency; add per-SDK benchmark dashboard &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/873 [<samp>(c503e)</samp>](https://github.com/alchemy-run/distilled/commit/c503e2393)
+- **cloudflare**: One Container application type per scheduling policy &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/909 [<samp>(ec259)</samp>](https://github.com/alchemy-run/distilled/commit/ec2590f89)
+- **core**: Add the additionalProperties validation mode; strict rejects unmodeled keys &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/899 [<samp>(4e3b8)</samp>](https://github.com/alchemy-run/distilled/commit/4e3b88f8e)
+- **core,railway**: Type and decode sensitive GraphQL fields as Redacted &nbsp;-&nbsp; by **mattespapier** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/869 [<samp>(b013e)</samp>](https://github.com/alchemy-run/distilled/commit/b013eeadb)
+- **fly-io**: Redact newly created app deploy tokens &nbsp;-&nbsp; by **mattespapier** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/865 [<samp>(2c284)</samp>](https://github.com/alchemy-run/distilled/commit/2c284d5ac)
+- **onepassword**: Add the Events, Users, OAuth and Partnership APIs; move Connect into a service &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/896 [<samp>(c661e)</samp>](https://github.com/alchemy-run/distilled/commit/c661e8e40)
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **aws**:
+  - Bump spec mirror for Lambda Web Functions (lambda-web, lambda-core) &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/878 [<samp>(044b6)</samp>](https://github.com/alchemy-run/distilled/commit/044b69039)
+- **aws4signer**:
+  - Add @distilled.cloud/aws4signer standalone SigV4 signer &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/888 [<samp>(7b13f)</samp>](https://github.com/alchemy-run/distilled/commit/7b13f2f9e)
+  - AwsClient, presign and host-based scope guessing, matching aws4fetch &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/893 [<samp>(f530c)</samp>](https://github.com/alchemy-run/distilled/commit/f530c2d55)
+- **boat-dev**:
+  - Regenerate from the 2026-10-22 spec &nbsp;-&nbsp; by **Jeremy Osih** in https://github.com/alchemy-run/distilled/issues/904 [<samp>(cc993)</samp>](https://github.com/alchemy-run/distilled/commit/cc993734f)
+- **cloudflare**:
+  - Regenerate from the 2026-10-21 spec; add R2 Local Uploads ops &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/898 [<samp>(6b7ba)</samp>](https://github.com/alchemy-run/distilled/commit/6b7baf62a)
+- **core,azure**:
+  - Decode T.Header output members; expose Azure long-running operation headers &nbsp;-&nbsp; by **Michael K (Pear)** and **Maxwell Brown** in https://github.com/alchemy-run/distilled/issues/905 [<samp>(e4701)</samp>](https://github.com/alchemy-run/distilled/commit/e4701be45)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Run bundle-lib on Windows &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/887 [<samp>(3d770)</samp>](https://github.com/alchemy-run/distilled/commit/3d7706eb9)
+- Type Cloudflare AI Search deletion-in-progress and GCP CES version-in-use errors &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/885 [<samp>(eb746)</samp>](https://github.com/alchemy-run/distilled/commit/eb746e257)
+- **aws**:
+  - Renew an expired SSO access token with the cached refresh token &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/890 [<samp>(82e0e)</samp>](https://github.com/alchemy-run/distilled/commit/82e0e9dfa)
+  - Don't repeat the bucket in path-style S3 requests &nbsp;-&nbsp; by **Ethan Shumate** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/663 [<samp>(d7ed7)</samp>](https://github.com/alchemy-run/distilled/commit/d7ed7c47d)
+  - Stop swallowing errors in the endpoint resolver &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/892 [<samp>(fb050)</samp>](https://github.com/alchemy-run/distilled/commit/fb05095fc)
+  - Read sso-session sections from AWS_CONFIG_FILE &nbsp;-&nbsp; by **Michael K (Pear)** and **William Blazer** in https://github.com/alchemy-run/distilled/issues/912 [<samp>(3ea29)</samp>](https://github.com/alchemy-run/distilled/commit/3ea2974a3)
+  - **datazone**: Type EnvironmentBlueprintConfigurationInUse on deleteEnvironmentBlueprintConfiguration &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/910 [<samp>(3d5c9)</samp>](https://github.com/alchemy-run/distilled/commit/3d5c9df64)
+  - **emr-containers**: Type EksClusterConnectionUpdating on createVirtualCluster &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/908 [<samp>(338f4)</samp>](https://github.com/alchemy-run/distilled/commit/338f4c92b)
+  - **lambda**: Type IAM and security-group propagation errors &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/879 [<samp>(a6517)</samp>](https://github.com/alchemy-run/distilled/commit/a65178cea)
+  - **lambda-web**: Type ExecutionRoleNotAssumable &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/874 [<samp>(8bd88)</samp>](https://github.com/alchemy-run/distilled/commit/8bd88a5fe)
+- **cloudflare**:
+  - Paginate observability destinations &nbsp;-&nbsp; by **Yannic Charlon** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/881 [<samp>(f8e56)</samp>](https://github.com/alchemy-run/distilled/commit/f8e560af0)
+  - Keep the response body when an error envelope has no errors[0].message &nbsp;-&nbsp; by **TBIQ007**, **TBIQ** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/827 [<samp>(8c444)</samp>](https://github.com/alchemy-run/distilled/commit/8c44428f8)
+  - Stop double-wrapping the endpoint healthcheck list &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/901 [<samp>(840b9)</samp>](https://github.com/alchemy-run/distilled/commit/840b97149)
+  - Keep destinationConf on observability destination responses, now optional &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/902 [<samp>(b6595)</samp>](https://github.com/alchemy-run/distilled/commit/b65951432)
+  - Paginate hyperdrive listConfigs and type the name-exists error &nbsp;-&nbsp; by **Matthias Pichler** and **Claude Fable 5.1** in https://github.com/alchemy-run/distilled/issues/825 [<samp>(c63a0)</samp>](https://github.com/alchemy-run/distilled/commit/c63a0ace7)
+  - **ai**: Keep slashes in runAi model names; type InputTooBig &nbsp;-&nbsp; by **sam**, **Claude Fable 5.1** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/863 [<samp>(4ba45)</samp>](https://github.com/alchemy-run/distilled/commit/4ba4575d8)
+  - **r2**: PutBucketLocalUploads response omits enabled &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/911 [<samp>(6fb92)</samp>](https://github.com/alchemy-run/distilled/commit/6fb929209)
+- **core**:
+  - Extract large pagination arrays without stack overflow &nbsp;-&nbsp; by **Ibrahim Elkamali** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/880 [<samp>(62c61)</samp>](https://github.com/alchemy-run/distilled/commit/62c616f5b)
+  - Refuse a "." or ".." path label before sending &nbsp;-&nbsp; by **mattespapier** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/840 [<samp>(4fa89)</samp>](https://github.com/alchemy-run/distilled/commit/4fa89cfbc)
+  - Keep GraphQL field tables when the client is bundled &nbsp;-&nbsp; by **mattespapier** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/841 [<samp>(e59fe)</samp>](https://github.com/alchemy-run/distilled/commit/e59fe880a)
+  - Unwrap Redacted GraphQL variables before encoding and field dedup &nbsp;-&nbsp; by **mattespapier** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/868 [<samp>(f7466)</samp>](https://github.com/alchemy-run/distilled/commit/f74669bdd)
+  - Redact sensitive fields when a response fails to parse &nbsp;-&nbsp; by **mattespapier** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/839 [<samp>(12751)</samp>](https://github.com/alchemy-run/distilled/commit/12751a703)
+- **core,turbopuffer**:
+  - Keep additionalProperties on OpenAPI objects that also declare properties &nbsp;-&nbsp; by **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/897 [<samp>(63b16)</samp>](https://github.com/alchemy-run/distilled/commit/63b168d07)
+- **digitalocean**:
+  - Paginate list operations, type page links, add duplicate-key and unknown-tag errors &nbsp;-&nbsp; by **Ricardo**, **Claude Fable 5.1** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/822 [<samp>(9892e)</samp>](https://github.com/alchemy-run/distilled/commit/9892e563f)
+- **doppler**:
+  - Accept any secret name, null values and full config inheritance &nbsp;-&nbsp; by **Patt O'Brien** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/876 [<samp>(65aaf)</samp>](https://github.com/alchemy-run/distilled/commit/65aaf6d9b)
+- **fly-io**:
+  - Accept a null next_continuation_token from listSprites &nbsp;-&nbsp; by **mattespapier** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/864 [<samp>(1defd)</samp>](https://github.com/alchemy-run/distilled/commit/1defd96d3)
+  - Redact sensitive fields in GraphQL add-on responses &nbsp;-&nbsp; by **mattespapier** and **Michael K (Pear)** in https://github.com/alchemy-run/distilled/issues/867 [<samp>(45e1f)</samp>](https://github.com/alchemy-run/distilled/commit/45e1f51df)
+- **gcp**:
+  - Type HTTP 412 on storage objects.delete and objects.patch &nbsp;-&nbsp; by **Lucas Duailibe** in https://github.com/alchemy-run/distilled/issues/877 [<samp>(4cd62)</samp>](https://github.com/alchemy-run/distilled/commit/4cd626765)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v1.0.0-rc.15...HEAD)
+
+---
+
 ## v1.0.0-rc.15
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
