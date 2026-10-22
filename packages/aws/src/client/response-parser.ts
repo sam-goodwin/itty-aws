@@ -84,7 +84,7 @@ export type Decoded =
 /**
  * The success path of {@link makeResponseParser} without effects, for an
  * operation whose output never streams: converts what the protocol's
- * `deserializeText` read and, in strict mode, validates it. `context` is
+ * `deserializeText` read and, unless lenient, validates it. `context` is
  * the calling fiber's (it carries the validation mode).
  */
 export const makeSuccessDecoder = (
@@ -94,13 +94,16 @@ export const makeSuccessDecoder = (
   const outputAst = operation.output.ast;
   const what = `${options?.service ?? "AWS"}.${options?.operation ?? "operation"}`;
   return (context: Context.Context<any>, read: unknown): Decoded => {
-    const strict = Context.get(context, ResponseValidation) === "strict";
+    const mode = Context.get(context, ResponseValidation);
+    const strict = mode !== "lenient";
     if (read instanceof Unreadable) {
       return strict ? { ok: false, error: read.error } : { ok: true, value: read.asRead };
     }
     let decoded: unknown;
     try {
-      decoded = decode(outputAst, read, true);
+      // Decoding keeps only modeled members, so strict mode rejects the
+      // others here; the check below sees the decoded value.
+      decoded = decode(outputAst, read, mode === "strict" ? "closed" : true);
     } catch (error) {
       return strict
         ? {

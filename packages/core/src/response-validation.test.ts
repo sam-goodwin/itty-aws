@@ -71,15 +71,54 @@ describe("makeRestProtocol response validation", () => {
     expect((result as any).failure.body).toEqual({});
   });
 
-  test("strict passes a matching body through unchanged, extra members included", async () => {
+  test("additionalProperties passes a matching body through unchanged, extra members included", async () => {
     const result = await run(
       decode(JSON.stringify({ id: "a", extra: 1 })),
-      ResponseValidation.strict,
+      ResponseValidation.additionalProperties,
     );
     expect(result).toMatchObject({
       _tag: "Success",
       success: { id: "a", extra: 1 },
     });
+  });
+
+  test("additionalProperties fails a body missing a required member", async () => {
+    const result = await run(decode("{}"), ResponseValidation.additionalProperties);
+    expect(Result.isFailure(result) && result.failure).toBeInstanceOf(TestParseError);
+  });
+
+  test("strict fails a member the schema does not model, at its path", async () => {
+    const result = await run(
+      decode(JSON.stringify({ id: "a", extra: 1 })),
+      ResponseValidation.strict,
+    );
+    expect(Result.isFailure(result) && result.failure).toBeInstanceOf(TestParseError);
+    expect(result).toMatchObject({
+      failure: {
+        cause: { path: ["extra"], expected: "no value (the schema does not model this key)" },
+      },
+    });
+  });
+
+  test("strict passes a body with exactly the modeled members", async () => {
+    const result = await run(decode(JSON.stringify({ id: "a" })), ResponseValidation.strict);
+    expect(result).toMatchObject({ _tag: "Success", success: { id: "a" } });
+  });
+
+  test("strict accepts any key on an open object and on an empty struct", async () => {
+    const Open = Schema.StructWithRest(Schema.Struct({ id: Schema.String }), [
+      Schema.Record(Schema.String, Schema.Unknown),
+    ]);
+    const open = await run(
+      decode(JSON.stringify({ id: "a", title: "x" }), Open.ast),
+      ResponseValidation.strict,
+    );
+    expect(open).toMatchObject({ _tag: "Success", success: { id: "a", title: "x" } });
+    const opaque = await run(
+      decode(JSON.stringify({ anything: 1 }), Schema.Struct({}).ast),
+      ResponseValidation.strict,
+    );
+    expect(opaque).toMatchObject({ _tag: "Success", success: { anything: 1 } });
   });
 
   test("an inner lenient layer overrides an outer strict one", async () => {

@@ -191,20 +191,32 @@ The protocol wires every one of them:
   the operation output — after wire→TS key mapping, before `wrapSensitive`.
   `packages/core/src/protocol-rest.ts` is the reference.
 
-2xx responses are validated only in strict mode. `ResponseValidation`
-(`import { ResponseValidation } from "@distilled.cloud/core"`) is one context
-reference shared by every SDK: lenient by default, switched with
-`Effect.provide(ResponseValidation.strict)` — only ever by layer. A new
-protocol reads the mode through `validateResponse`; it never adds its own
-flag or environment variable.
+`ResponseValidation` (`import { ResponseValidation } from
+"@distilled.cloud/core"`) is one context reference shared by every SDK, with
+three modes, switched only by layer (`Effect.provide(ResponseValidation.strict)`):
+
+| Mode | 2xx response |
+| --- | --- |
+| `lenient` (default) | returned as the protocol read it |
+| `additionalProperties` | checked against the output schema; keys the schema does not model pass |
+| `strict` | checked, and a key the schema does not model also fails, at any depth (open objects and `{}` outputs excepted) |
+
+A new protocol reads the mode through `validateResponse` (and
+`isValidating` / `failUnlessLenient` for bodies it cannot read); it never
+adds its own flag or environment variable. Pass the mapped body with every
+key the wire sent: a protocol that builds the output from modeled members
+only (Cloudflare's envelope reader, AWS's decoder) must reject the keys it
+drops in `strict` mode itself, and a protocol must not add keys the output
+does not model (acme adds `Location` only where the output declares it).
 
 Lenient mode checks only what the protocol needs in order to transform the
 body (unwrap an envelope, map keys, wrap sensitive members) and nothing
 more: a non-JSON body comes back as text, a body missing members comes back
 as read. Never decode against the output schema outside `validateResponse`.
-Strict mode surfaces every spec inaccuracy (an undocumented `null`, a new
-enum member) as a `<Pkg>ParseError`; that is the cost of opting in, and why
-strict is never the default.
+The validating modes surface every spec inaccuracy (an undocumented `null`,
+a new enum member, and in `strict` an undocumented field) as a
+`<Pkg>ParseError`; that is the cost of opting in, and why neither is ever the
+default.
 
 Do not add tests to a generated SDK. Generated code is tested once, through
 the generator and the protocols in `packages/core`. `packages/core/src/sdks.test.ts`

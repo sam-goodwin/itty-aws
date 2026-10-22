@@ -10,9 +10,9 @@
  * machinery into every bundle that never decodes. These nodes carry the
  * same fields protocol code reads, so it runs unchanged.
  *
- * When a caller asks for real validation (`ResponseValidation.strict`),
- * {@link toEffect} rebuilds the equivalent Effect schema from a lite node,
- * loading `effect/Schema` only then.
+ * When a caller asks for real validation (`ResponseValidation.strict` or
+ * `additionalProperties`), {@link toEffect} rebuilds the equivalent Effect
+ * schema from a lite node, loading `effect/Schema` only then.
  *
  * Every value here has the members generated code uses on schemas: `.ast`,
  * `.pipe(...)`, `.annotate(...)`, `.fields` (structs) and `.key`/`.value`

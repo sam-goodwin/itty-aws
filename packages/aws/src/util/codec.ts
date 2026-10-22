@@ -12,7 +12,9 @@
  * `decode` is the reverse, for values a protocol read off the wire. Lenient
  * decoding never fails: a value that does not fit its schema is kept as
  * read, and the rest of the response still converts. Exact decoding throws
- * on the first mismatch instead. Only members the schema declares are kept.
+ * on the first mismatch instead; `"closed"` exact decoding also throws on a
+ * key the schema does not model (`ResponseValidation.strict`). Only members
+ * the schema declares are kept.
  */
 import { encodeKeysKey, type Node } from "@distilled.cloud/core/schema-lite-impl";
 import * as Effect from "effect/Effect";
@@ -243,11 +245,17 @@ const encodeUnion = (n: Node, v: unknown): unknown => {
 //#region decode
 
 /**
+ * How {@link decode} treats a mismatch: `false` keeps the value as read,
+ * `true` throws, `"closed"` also throws on a key the schema does not model.
+ */
+export type Exactness = boolean | "closed";
+
+/**
  * The typed form of `v`, a value read off the wire for the type `n`
  * declares. Lenient by default: a value that does not fit is kept as read.
  * With `exact`, a mismatch throws {@link CodecError} instead.
  */
-export const decode = (n: Node, v: unknown, exact = false): unknown => {
+export const decode = (n: Node, v: unknown, exact: Exactness = false): unknown => {
   const codec = codecOf(n);
   if (codec !== undefined) return decodeCodec(codec, n, v, exact);
   switch (n._tag) {
@@ -264,7 +272,7 @@ export const decode = (n: Node, v: unknown, exact = false): unknown => {
   }
 };
 
-const decodeCodec = (codec: CodecKind, n: Node, v: unknown, exact: boolean): unknown => {
+const decodeCodec = (codec: CodecKind, n: Node, v: unknown, exact: Exactness): unknown => {
   if (codec === "sensitive") return Redacted.make(decode(innerOf(n), v, exact));
   if (codec === "blob") {
     if (typeof v === "string") {
@@ -286,7 +294,7 @@ const decodeCodec = (codec: CodecKind, n: Node, v: unknown, exact: boolean): unk
   return exact ? fail(codec === "epoch-seconds" ? "epoch seconds" : "a date string", v) : v;
 };
 
-const decodeObjects = (n: Node, v: unknown, exact: boolean): unknown => {
+const decodeObjects = (n: Node, v: unknown, exact: Exactness): unknown => {
   if (!isRecord(v)) return exact ? fail("an object", v) : v;
   const shape = shapeOf(n);
   const out: Record<string, unknown> = {};
@@ -313,10 +321,19 @@ const decodeObjects = (n: Node, v: unknown, exact: boolean): unknown => {
         throw within(e, key);
       }
     }
+  else if (exact === "closed" && shape.members.length > 0)
+    for (const key of Object.keys(v))
+      if (!shape.wireKeys.has(key) && v[key] !== undefined)
+        throw within(
+          new CodecError(
+            `Expected no value (the schema does not model this key), got ${show(v[key])}`,
+          ),
+          key,
+        );
   return out;
 };
 
-const decodeUnion = (n: Node, v: unknown, exact: boolean): unknown => {
+const decodeUnion = (n: Node, v: unknown, exact: Exactness): unknown => {
   const types = n.types!;
   if (isOptional(n) && types.length === 2)
     return v === undefined ? undefined : decode(types[0]!, v, exact);
@@ -324,7 +341,7 @@ const decodeUnion = (n: Node, v: unknown, exact: boolean): unknown => {
   for (const t of types) {
     if (!fits(t, v, true)) continue;
     try {
-      return decode(t, v, true);
+      return decode(t, v, exact === "closed" ? "closed" : true);
     } catch (e) {
       first ??= e;
     }

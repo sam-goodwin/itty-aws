@@ -168,4 +168,34 @@ describe("2xx response validation", () => {
     );
     expect(output).toMatchObject({ FunctionName: "fn" });
   });
+
+  const withExtra = {
+    ...mismatched,
+    body: JSON.stringify({ FunctionName: "fn", NotInTheModel: 1 }),
+  };
+
+  test("additionalProperties allows a member the model does not declare", async () => {
+    const output = await Effect.runPromise(
+      parseCreateFunction(withExtra).pipe(Effect.provide(ResponseValidation.additionalProperties)),
+    );
+    expect(output).toMatchObject({ FunctionName: "fn" });
+  });
+
+  test("additionalProperties still fails a mismatch", async () => {
+    const error = await Effect.runPromise(
+      parseCreateFunction(mismatched).pipe(
+        Effect.provide(ResponseValidation.additionalProperties),
+        Effect.flip,
+      ),
+    );
+    expect(error).toBeInstanceOf(ParseError);
+  });
+
+  test("strict fails a member the model does not declare", async () => {
+    const error = await Effect.runPromise(
+      parseCreateFunction(withExtra).pipe(Effect.provide(ResponseValidation.strict), Effect.flip),
+    );
+    expect(error).toBeInstanceOf(ParseError);
+    expect((error as ParseError).message).toContain('["NotInTheModel"]');
+  });
 });

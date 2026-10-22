@@ -20,7 +20,11 @@ import {
   matchTypedError,
   nameOf,
 } from "@distilled.cloud/core/protocol-http";
-import { checkResponse } from "@distilled.cloud/core/response-validation";
+import {
+  checkResponse,
+  ResponseValidation,
+  SchemaMismatch,
+} from "@distilled.cloud/core/response-validation";
 import { parseRetryAfterForStatus, parseServerRetryHint } from "@distilled.cloud/core/retry-after";
 import {
   bodySymbol,
@@ -565,8 +569,8 @@ const makeProtocol = (options: { readonly resultInfo: boolean }) => {
           );
         }
 
-        // Strict mode (core/response-validation) checks the TS-shaped output
-        // against the schema; lenient mode returns it as built.
+        // Validating modes (core/response-validation) check the TS-shaped
+        // output against the schema; lenient mode returns it as built.
         const body: unknown = nonJson ? text : json;
         const validate = (value: unknown): Effect.Effect<unknown> => {
           const cause = checkResponse(context, outputAst, value);
@@ -600,6 +604,10 @@ const makeProtocol = (options: { readonly resultInfo: boolean }) => {
         if (nonJson) return validate(text);
 
         const result: Record<string, unknown> = {};
+        // Payload keys a member read; strict mode rejects the rest, which the
+        // struct built here drops.
+        const consumed = new Set<string>();
+        let wholePayload = false;
 
         for (const m of plan.members) {
           const key = m.key;
@@ -608,6 +616,7 @@ const makeProtocol = (options: { readonly resultInfo: boolean }) => {
               result[key] = camelizeKeys(json.result_info);
             }
           } else if (m.kind === "payload") {
+            wholePayload = true;
             result[key] = m.verbatim ? payload : mapKeys(m.type, payload, "decode", rootDict);
           } else if (m.kind === "header") {
             const v = response.headers[m.wire];
@@ -631,9 +640,28 @@ const makeProtocol = (options: { readonly resultInfo: boolean }) => {
                     : undefined
                 : undefined;
             if (src !== undefined) {
+              consumed.add(src);
               const v = (payload as Record<string, unknown>)[src];
               result[key] = m.verbatim ? v : mapKeys(m.type, v, "decode", rootDict);
             }
+          }
+        }
+        if (
+          !wholePayload &&
+          plan.members.length > 0 &&
+          payload !== null &&
+          typeof payload === "object" &&
+          !Array.isArray(payload) &&
+          Context.get(context, ResponseValidation) === "strict"
+        ) {
+          for (const [k, v] of Object.entries(payload)) {
+            if (consumed.has(k) || v === undefined) continue;
+            return fail(
+              new CloudflareParseError({
+                body,
+                cause: new SchemaMismatch([k], "no value (the schema does not model this key)", v),
+              }),
+            );
           }
         }
         return validate(result);

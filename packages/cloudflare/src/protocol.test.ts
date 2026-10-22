@@ -542,6 +542,29 @@ describe("response validation", () => {
     const error = await failWith(strict(getNamespace(ns)), { body: "not json" });
     expect(error).toBeInstanceOf(CloudflareParseError);
   });
+
+  const unmodeled = envelope({ ...namespace, beta: true });
+
+  test("additionalProperties passes a payload key the schema does not model", async () => {
+    const result = await succeed(
+      getNamespace(ns).pipe(Effect.provide(ResponseValidation.additionalProperties)),
+      { body: unmodeled },
+    );
+    expect(result).toEqual({ id: "ns", title: "kv", supportsUrlEncoding: true });
+  });
+
+  test("strict fails a payload key the schema does not model, at its key", async () => {
+    const error = await failWith(strict(getNamespace(ns)), { body: unmodeled });
+    expect(error).toBeInstanceOf(CloudflareParseError);
+    expect(error).toMatchObject({ cause: { path: ["beta"] } });
+  });
+
+  test("strict ignores the envelope's own keys", async () => {
+    const result = await succeed(strict(getNamespace(ns)), {
+      body: envelope(namespace, { result_info: { page: 1 } }),
+    });
+    expect(result).toEqual({ id: "ns", title: "kv", supportsUrlEncoding: true });
+  });
 });
 
 describe("per-operation host (K2 data plane)", () => {

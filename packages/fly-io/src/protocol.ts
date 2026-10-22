@@ -17,7 +17,7 @@ import {
   wrapSensitive,
 } from "@distilled.cloud/core/protocol-rest";
 import {
-  failIfStrict,
+  failUnlessLenient,
   validateResponse,
   withholdActual,
 } from "@distilled.cloud/core/response-validation";
@@ -746,7 +746,7 @@ const graphqlDecode = ({
         );
       }
       // Lenient mode returns the body as read.
-      return yield* failIfStrict(
+      return yield* failUnlessLenient(
         new FlyIoParseError({
           body: text,
           cause: "response body is not valid JSON",
