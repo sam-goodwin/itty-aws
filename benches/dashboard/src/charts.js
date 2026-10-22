@@ -31,9 +31,9 @@ let clipId = 0;
 
 /**
  * points: [{ value, label, branch, cls, tip, id }]
- * opts: { format, branchLabel, second?: { label, values }, refs?: [{ value, label, short, color, kind, detail?(i) }] }
+ * opts: { format, branchLabel, around0?, minSpan?, second?: { label, values }, refs?: [{ value, label, short, color, kind, detail?(i) }] }
  * Each ref is a flat line across the whole chart: kind "exp" (an experiment) or "official" (an official SDK).
- * The y-axis always starts at 0 (or below, if a value is negative).
+ * The y-axis starts at 0 (or below, if a value is negative); with `around0` it is centred on 0.
  */
 export const lineChart = (points, opts) => {
   const last_ = points.length - 1;
@@ -76,6 +76,12 @@ export const lineChart = (points, opts) => {
   ];
   let lo = Math.min(0, ...values);
   let hi = Math.max(...values);
+  // opts.around0: a change chart. 0 sits in the middle, the axis spans the
+  // largest move (at least opts.minSpan either way), so small moves fill it.
+  if (opts.around0) {
+    hi = Math.max(Math.abs(lo), Math.abs(hi), opts.minSpan ?? 1) * 1.15;
+    lo = -hi;
+  }
   if (hi === lo) {
     hi += Math.abs(hi) * 0.05 || 1;
     lo -= Math.abs(lo) * 0.05 || 1;

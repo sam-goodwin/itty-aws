@@ -249,11 +249,17 @@ ${html}</div>
 </section>`;
   };
 
+  // Change vs main in percent: main is 0, so the chart shows the move, not the size.
   const line = (m: Metric) => {
+    const ref = base ? valueOf(base, m, keys) : valueOf(runs[0]!, m, keys);
+    const pct = (v: number | undefined) =>
+      v === undefined || !ref ? undefined : ((v - ref) / ref) * 100;
+    const fmt = (p: number) =>
+      `${p > 0.05 ? "+" : p < -0.05 ? "−" : "±"}${Math.abs(p).toFixed(1)}%`;
     const points = runs.map((r, i) => {
       const c = change(r, runs[i - 1], m, keys);
       return {
-        value: valueOf(r, m, keys),
+        value: pct(valueOf(r, m, keys)),
         label: r === head ? branch : short(r.sha).slice(0, 7),
         branch: r === head,
         cls: !c ? "" : c.noise ? "flat" : c.diff < 0 ? "good" : "bad",
@@ -262,9 +268,9 @@ ${html}</div>
       };
     });
     return `<section class="panel chart-panel">
-  <div class="chart-head"><h3>${esc(m.label)} <span class="muted">· median per program · lower is better</span></h3>
-  <div class="how">${esc(m.how)}</div></div>
-  <div class="chart">${lineChart(points, { format: m.format, branchLabel: "PR" })}</div>
+  <div class="chart-head"><h3>${esc(m.label)} <span class="muted">· change vs main ${base ? `<code>${esc(short(base.sha))}</code>` : ""} · median per program</span></h3>
+  <div class="how">${esc(m.label)} of this PR: ${esc(m.format(valueOf(head, m, keys)))}, main: ${esc(m.format(ref))}. Lower is better.</div></div>
+  <div class="chart">${lineChart(points, { format: fmt, branchLabel: "PR", around0: true, minSpan: 1 })}</div>
 </section>`;
   };
 
